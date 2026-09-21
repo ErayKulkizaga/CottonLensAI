@@ -50,14 +50,14 @@ def run(drive_root: Path, refresh: bool) -> Path:
     mlflow.set_tracking_uri(paths.mlruns.as_uri())
     mlflow.set_experiment("cottonlens-forecasting")
     with mlflow.start_run(run_name="locked-model-comparison"):
-        naive = naive_candidates(splits["test"])
+        naive = naive_candidates(splits["test"], splits["validation"])
         tree = train_xgboost(
             splits["train"], splits["validation"], splits["test"], paths.checkpoints
         )
         _, _, sequence = train_lstm(
             splits["train"], splits["validation"], splits["test"], paths.checkpoints
         )
-        selected = select_production(naive, tree, sequence)
+        selected, selection_audit = select_production(naive, tree, sequence)
         candidates = [*naive.values(), *tree.values(), *sequence.values()]
         for candidate in candidates:
             mlflow.log_metrics(
@@ -70,6 +70,7 @@ def run(drive_root: Path, refresh: bool) -> Path:
             market,
             candidates,
             selected,
+            selection_audit,
         )
 
 

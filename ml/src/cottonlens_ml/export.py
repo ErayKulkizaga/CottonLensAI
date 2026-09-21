@@ -101,6 +101,7 @@ def export_release(
     market: pd.DataFrame,
     all_candidates: list[Candidate],
     selected: dict[int, Candidate],
+    selection_audit: dict[int, dict],
 ) -> Path:
     version = datetime.now(UTC).strftime("v%Y%m%d-%H%M")
     with tempfile.TemporaryDirectory(prefix="cottonlens-release-") as temp:
@@ -172,7 +173,13 @@ def export_release(
         schema = {"schema_hash": schema_hash(), "features": FEATURE_NAMES}
         (root / "feature_schema.json").write_text(json.dumps(schema, indent=2), encoding="utf-8")
         metrics = [
-            {"model": item.name, "horizon": item.horizon, **item.metrics, "selected": selected[item.horizon].name == item.name}
+            {
+                "model": item.name,
+                "horizon": item.horizon,
+                **item.metrics,
+                "validation_metrics": item.validation_metrics,
+                "selected": selected[item.horizon].name == item.name,
+            }
             for item in all_candidates
         ]
         (root / "metrics.json").write_text(json.dumps(metrics, indent=2), encoding="utf-8")
@@ -195,6 +202,13 @@ def export_release(
             },
             "feature_schema_hash": schema_hash(),
             "production_models": model_entries,
+            "selection_policy": {
+                "minimum_mae_improvement_pct_vs_naive": 5.0,
+                "minimum_directional_accuracy": {"T+1": 53.0, "T+5": 55.0},
+                "lstm_minimum_mae_improvement_pct_vs_xgboost": 5.0,
+                "required_splits": ["validation", "test"],
+            },
+            "selection_audit": selection_audit,
             "required_runtimes": {"python": ">=3.12,<3.14", "xgboost": ">=3,<4", "onnxruntime": ">=1.20,<2"},
             "source_freshness": {
                 "market_as_of": str(pd.to_datetime(market.date).max().date()),

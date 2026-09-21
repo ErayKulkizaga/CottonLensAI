@@ -62,7 +62,7 @@ MyDrive/CottonLensAI/
 └── artifacts/releases
 ```
 
-The pipeline has a bounded search budget: at most 10 XGBoost configurations and 6 LSTM configurations. It uses a chronological 65/15/20 split and applies the documented model-selection rule only after candidates are locked.
+The pipeline has a bounded search budget: at most 10 XGBoost configurations and 6 LSTM configurations. It uses a chronological 65/15/20 split and applies its strict release gate only after candidates are locked: a learned model must improve MAE by at least 5% over Naive on both validation and locked test, while directional accuracy must be at least 53% for T+1 and 55% for T+5. LSTM must additionally improve locked-test MAE by at least 5% over XGBoost without reducing directional accuracy.
 
 Each completed experiment is fingerprinted against its train/validation data and checkpointed directly in Drive. Reconnecting to the same data resumes those candidates; refreshed source data receives a new fingerprint and is trained with the locked configuration. LSTM exports embed the train-fitted scaler in the ONNX graph and are rejected when TensorFlow/ONNX parity reaches or exceeds `1e-4` maximum absolute error. LSTM SHAP values are precomputed in Colab, so neither TensorFlow nor SHAP is needed locally.
 

@@ -17,7 +17,7 @@ CFTC Tuesday positions become usable on Friday. Other sources are aligned to Cot
 
 Data is split chronologically into 65% train, 15% validation, and 20% locked test. Scalers are fit only on train. Candidate budgets are capped at ten XGBoost and six LSTM configurations with fixed seed and early stopping.
 
-For each horizon, a learned model must beat Naive MAE. LSTM is selected over XGBoost only when test MAE is at least 5% lower and directional accuracy is no worse. Otherwise XGBoost is selected. If neither learned model beats Naive, the primary forecast is Naive and the XGBoost sensitivity model is labelled experimental.
+For each horizon, a learned model must improve MAE by at least 5% over Naive on both validation and the one-time locked test. Directional accuracy must be at least 53% for T+1 and 55% for T+5 on both splits. LSTM is selected over a qualifying XGBoost model only when its locked-test MAE is at least 5% lower and directional accuracy is no worse. If neither learned model passes, the primary forecast is Naive and the XGBoost sensitivity model is labelled experimental.
 
 Every Colab release contains a generated model card with the exact selected models, artifact version, split ranges, and locked holdout metrics.
 

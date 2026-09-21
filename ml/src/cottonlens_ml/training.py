@@ -16,6 +16,7 @@ from sklearn.metrics import mean_absolute_error, mean_squared_error
 from sklearn.preprocessing import StandardScaler
 
 from cottonlens_ml.config import FEATURE_NAMES
+from cottonlens_ml.selection import select_model_name
 
 SEED = 42
 
@@ -35,6 +36,7 @@ class Candidate:
     model: object
     predictions: np.ndarray
     metrics: dict[str, float]
+    validation_metrics: dict[str, float] | None = None
     scaler: StandardScaler | None = None
 
 
@@ -51,7 +53,7 @@ def evaluate(
     }
 
 
-def naive_candidates(test: pd.DataFrame) -> dict[int, Candidate]:
+def naive_candidates(test: pd.DataFrame, validation: pd.DataFrame) -> dict[int, Candidate]:
     candidates: dict[int, Candidate] = {}
     for horizon in (1, 5):
         predictions = np.zeros(len(test), dtype=np.float64)
@@ -60,7 +62,14 @@ def naive_candidates(test: pd.DataFrame) -> dict[int, Candidate]:
             test[f"target_return_{horizon}"].to_numpy(),
             predictions,
         )
-        candidates[horizon] = Candidate("Naive", horizon, None, predictions, metrics)
+        validation_metrics = evaluate(
+            validation["cotton_close"].to_numpy(),
+            validation[f"target_return_{horizon}"].to_numpy(),
+            np.zeros(len(validation), dtype=np.float64),
+        )
+        candidates[horizon] = Candidate(
+            "Naive", horizon, None, predictions, metrics, validation_metrics=validation_metrics
+        )
     return candidates
 
 
@@ -138,7 +147,19 @@ def train_xgboost(
         metrics = evaluate(
             test["cotton_close"].to_numpy(), test[f"target_return_{horizon}"].to_numpy(), predictions
         )
-        result[horizon] = Candidate("XGBoost", horizon, selected, predictions, metrics)
+        validation_metrics = evaluate(
+            validation["cotton_close"].to_numpy(),
+            validation[f"target_return_{horizon}"].to_numpy(),
+            selected.predict(validation[FEATURE_NAMES]),
+        )
+        result[horizon] = Candidate(
+            "XGBoost",
+            horizon,
+            selected,
+            predictions,
+            metrics,
+            validation_metrics=validation_metrics,
+        )
     return result
 
 
@@ -208,7 +229,9 @@ def train_lstm(
                 model.save(best_path)
     selected = tf.keras.models.load_model(best_path)
     predictions = selected.predict(test_x, verbose=0)
+    validation_predictions = selected.predict(validation_x, verbose=0)
     aligned = test.iloc[59:].copy()
+    aligned_validation = validation.iloc[59:].copy()
     candidates: dict[int, Candidate] = {}
     for column, horizon in enumerate((1, 5)):
         metrics = evaluate(
@@ -216,8 +239,19 @@ def train_lstm(
             aligned[f"target_return_{horizon}"].to_numpy(),
             predictions[:, column],
         )
+        validation_metrics = evaluate(
+            aligned_validation["cotton_close"].to_numpy(),
+            aligned_validation[f"target_return_{horizon}"].to_numpy(),
+            validation_predictions[:, column],
+        )
         candidates[horizon] = Candidate(
-            "LSTM", horizon, selected, predictions[:, column], metrics, scaler=scaler
+            "LSTM",
+            horizon,
+            selected,
+            predictions[:, column],
+            metrics,
+            validation_metrics=validation_metrics,
+            scaler=scaler,
         )
     joblib.dump(scaler, checkpoint_root / "lstm-scaler.joblib")
     return selected, scaler, candidates
@@ -227,18 +261,22 @@ def select_production(
     naive: dict[int, Candidate],
     xgboost_candidates: dict[int, Candidate],
     lstm_candidates: dict[int, Candidate],
-) -> dict[int, Candidate]:
+) -> tuple[dict[int, Candidate], dict[int, dict]]:
     selected: dict[int, Candidate] = {}
+    audit: dict[int, dict] = {}
     for horizon in (1, 5):
         baseline = naive[horizon]
         tree = xgboost_candidates[horizon]
         sequence = lstm_candidates[horizon]
-        if tree.metrics["mae"] >= baseline.metrics["mae"] and sequence.metrics["mae"] >= baseline.metrics["mae"]:
-            selected[horizon] = baseline
-            continue
-        materially_better = sequence.metrics["mae"] <= tree.metrics["mae"] * 0.95
-        direction_not_worse = (
-            sequence.metrics["directional_accuracy"] >= tree.metrics["directional_accuracy"]
+        model_name, horizon_audit = select_model_name(
+            baseline.validation_metrics or {},
+            baseline.metrics,
+            tree.validation_metrics or {},
+            tree.metrics,
+            sequence.validation_metrics or {},
+            sequence.metrics,
+            horizon,
         )
-        selected[horizon] = sequence if materially_better and direction_not_worse else tree
-    return selected
+        selected[horizon] = {"Naive": baseline, "XGBoost": tree, "LSTM": sequence}[model_name]
+        audit[horizon] = horizon_audit
+    return selected, audit
