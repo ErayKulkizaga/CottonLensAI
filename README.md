@@ -49,8 +49,7 @@ docker compose down
 
 1. Push or otherwise make this repository available to Colab.
 2. Open `ml/notebooks/cottonlens_colab.ipynb` in a GPU runtime.
-3. Replace `REPOSITORY_URL` without placing a private token in the notebook.
-4. Run all cells.
+3. Run all cells. The public repository URL is already configured in the notebook.
 
 The notebook mounts Drive and writes to:
 
