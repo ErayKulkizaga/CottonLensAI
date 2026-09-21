@@ -1,0 +1,59 @@
+name: cottonlens
+
+services:
+  postgres:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-cottonlens}
+      POSTGRES_USER: ${POSTGRES_USER:-cottonlens}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-cottonlens-local}
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-cottonlens} -d ${POSTGRES_DB:-cottonlens}"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+    volumes:
+      - cottonlens-db:/var/lib/postgresql/data
+    deploy:
+      resources:
+        limits:
+          memory: 384M
+
+  backend:
+    build:
+      context: ./backend
+    environment:
+      DATABASE_URL: postgresql+psycopg://${POSTGRES_USER:-cottonlens}:${POSTGRES_PASSWORD:-cottonlens-local}@postgres:5432/${POSTGRES_DB:-cottonlens}
+      ARTIFACT_DIR: /app/runtime/artifacts/current
+      DEMO_MODE: ${DEMO_MODE:-true}
+      CORS_ORIGINS: http://localhost:8080,http://localhost:4200
+    volumes:
+      - ./runtime:/app/runtime
+    depends_on:
+      postgres:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/api/v1/health/live')"]
+      interval: 10s
+      timeout: 3s
+      retries: 10
+    deploy:
+      resources:
+        limits:
+          memory: 768M
+
+  frontend:
+    build:
+      context: ./frontend
+    ports:
+      - "8080:80"
+    depends_on:
+      backend:
+        condition: service_healthy
+    deploy:
+      resources:
+        limits:
+          memory: 96M
+
+volumes:
+  cottonlens-db:
