@@ -55,7 +55,7 @@ There is **one notebook with seven code cells**:
 
 ```text
 Drive mount → clean repo clone/pull → isolated Python + locked dependencies
-→ mandatory GPU/synthetic smoke → refreshed source validation → training
+→ mandatory GPU/synthetic smoke → cached source validation → training
 → ZIP/checksum/backend-runtime validation
 ```
 
@@ -102,7 +102,7 @@ Invalid price observations are recorded with series/date/field/value in `data/pr
 
 The pipeline has a bounded search budget: at most 10 XGBoost configurations and 6 LSTM configurations. It uses a chronological 65/15/20 split and applies its strict release gate only after candidates are locked: a learned model must improve MAE by at least 5% over Naive on both validation and locked test, while directional accuracy must be at least 53% for T+1 and 55% for T+5. LSTM must additionally improve locked-test MAE by at least 5% over XGBoost without reducing directional accuracy.
 
-Each completed experiment is fingerprinted against its train/validation data and checkpointed directly in Drive. Reconnecting to the same data resumes those candidates; refreshed source data receives a new fingerprint and is trained with the locked configuration. LSTM exports embed the train-fitted scaler in the ONNX graph and are rejected when TensorFlow/ONNX parity reaches or exceeds `1e-4` maximum absolute error. LSTM SHAP values are precomputed in Colab, so neither TensorFlow nor SHAP is needed locally.
+Each completed experiment is fingerprinted against its train/validation data and checkpointed directly in Drive. Normal Run All reuses its last successful Drive cache, avoiding unnecessary Yahoo requests. An intentional refresh runs `python -m cottonlens_ml.prepare --drive-root /content/drive/MyDrive/CottonLensAI --refresh`; refreshed source data receives a new fingerprint and is trained with the locked configuration. LSTM exports embed the train-fitted scaler in the ONNX graph and are rejected when TensorFlow/ONNX parity reaches or exceeds `1e-4` maximum absolute error. LSTM SHAP values are precomputed in Colab, so neither TensorFlow nor SHAP is needed locally.
 
 The exporter uses [native Keras ONNX export](https://keras.io/api/models/model_saving_apis/export/) rather than `tf2onnx.from_keras`. An inference-only CPU clone uses standard LSTM ops instead of cuDNN-only ops; original fitted weights, 60-step training sequences, multi-output training and model selection are unchanged. Both the wrapper and ONNX outputs are compared against the original model with the train-fitted scaler. There is no silent converter fallback: an incompatible stack stops at the smoke stage. XGBoost export keeps only the early-stopping-selected trees so the native backend and sklearn predictions agree; its training/search/selection policy is unchanged.
 
