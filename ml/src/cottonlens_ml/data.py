@@ -2,24 +2,63 @@ from __future__ import annotations
 
 import io
 import re
+import time
 import zipfile
 from datetime import date
 from pathlib import Path
 
 import pandas as pd
 import requests
-import yfinance as yf
 
 TICKERS = {"cotton": "CT=F", "dxy": "DX-Y.NYB", "wti": "CL=F"}
 CFTC_MARKET_CODE = "033661"
+YAHOO_ATTEMPTS = 4
+YAHOO_RETRY_DELAYS_SECONDS = (10, 30, 60)
+
+
+class MarketDownloadError(RuntimeError):
+    """A source failed after visible, bounded retries; no partial dataset is returned."""
+
+
+def _download_ticker_with_retry(
+    ticker: str,
+    start: str,
+    *,
+    download=None,
+    sleep=time.sleep,
+) -> pd.DataFrame:
+    if download is None:
+        import yfinance as yf
+
+        download = yf.download
+    failures: list[str] = []
+    for attempt in range(1, YAHOO_ATTEMPTS + 1):
+        try:
+            raw = download(ticker, start=start, auto_adjust=False, progress=False, threads=False)
+            if not raw.empty:
+                return raw
+            failures.append("empty response (Yahoo may have rate-limited this request)")
+        except Exception as exc:
+            failures.append(f"{type(exc).__name__}: {exc}")
+        if attempt < YAHOO_ATTEMPTS:
+            delay = YAHOO_RETRY_DELAYS_SECONDS[attempt - 1]
+            print(
+                f"Yahoo request for {ticker} failed (attempt {attempt}/{YAHOO_ATTEMPTS}); "
+                f"retrying in {delay}s...",
+                flush=True,
+            )
+            sleep(delay)
+    raise MarketDownloadError(
+        f"Yahoo returned no usable data for {ticker} after {YAHOO_ATTEMPTS} attempts. "
+        "It is temporarily rate-limited; wait 5–10 minutes and rerun only the data cell. "
+        f"Details: {' | '.join(failures)}"
+    )
 
 
 def download_market_data(start: str = "2010-01-01") -> pd.DataFrame:
     frames: list[pd.DataFrame] = []
     for series, ticker in TICKERS.items():
-        raw = yf.download(ticker, start=start, auto_adjust=False, progress=False, threads=False)
-        if raw.empty:
-            raise RuntimeError(f"no data returned for {ticker}")
+        raw = _download_ticker_with_retry(ticker, start)
         if isinstance(raw.columns, pd.MultiIndex):
             raw.columns = raw.columns.get_level_values(0)
         normalized = raw.rename(columns=str.lower).reset_index()
@@ -67,13 +106,16 @@ def cache_sources(root: Path, refresh: bool = False) -> tuple[pd.DataFrame, pd.D
     cftc_path = root / "cftc.parquet"
     if refresh or not market_path.exists():
         market = download_market_data()
-        market.to_parquet(market_path, index=False)
+        temporary = market_path.with_suffix(".pending.parquet")
+        market.to_parquet(temporary, index=False)
+        temporary.replace(market_path)
     else:
         market = pd.read_parquet(market_path)
     if refresh or not cftc_path.exists():
         cftc = download_cftc()
-        cftc.to_parquet(cftc_path, index=False)
+        temporary = cftc_path.with_suffix(".pending.parquet")
+        cftc.to_parquet(temporary, index=False)
+        temporary.replace(cftc_path)
     else:
         cftc = pd.read_parquet(cftc_path)
     return market, cftc
-
