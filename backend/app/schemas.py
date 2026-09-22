@@ -67,6 +67,7 @@ class ExplanationResponse(BaseModel):
     base_value_pct: float
     predicted_return_pct: float
     contributions: list[Contribution]
+    approximation_error_pct: float = 0.0
     equation: str = "ŷ = E[f(X)] + Σ φᵢ"
 
 
@@ -89,6 +90,7 @@ class SimulationHorizonResult(BaseModel):
     delta_cents_per_lb: float
     delta_pct: float
     model_name: str
+    baseline_kind: Literal["production", "experimental"] = "production"
 
 
 class SimulationResponse(BaseModel):
@@ -108,6 +110,17 @@ class ModelMetric(BaseModel):
     directional_accuracy: float
     selected: bool
     data_quality: str
+    walkforward: dict | None = None
+    validation_metrics: dict | None = None
+    parameters: dict | None = None
+    training_history: list[dict] | None = None
+
+
+class ModelEvaluationResponse(BaseModel):
+    artifact_version: str | None = None
+    walkforward_report: dict | None = None
+    selection_audit: dict | None = None
+    note: str
 
 
 class ReplayResponse(BaseModel):
@@ -119,4 +132,3 @@ class ApiError(BaseModel):
     code: str
     message: str
     details: dict | list | None = None
-

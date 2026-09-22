@@ -24,6 +24,7 @@ from app.schemas import (
     LatestForecastResponse,
     MarketHistoryResponse,
     MarketPoint,
+    ModelEvaluationResponse,
     ModelMetric,
     ReplayResponse,
     SimulationHorizonResult,
@@ -43,6 +44,11 @@ def load_runtime() -> None:
         runtime_error = None
     except Exception as exc:  # readiness reports the precise artifact issue
         runtime_error = str(exc)
+
+
+def _active_artifact_version(db: Session) -> str | None:
+    imported = db.scalar(select(ArtifactImport).order_by(desc(ArtifactImport.imported_at)))
+    return imported.artifact_version if imported else None
 
 
 @router.get("/health/live", response_model=HealthResponse)
@@ -115,15 +121,22 @@ def market_history(
 
 @router.get("/forecasts/latest", response_model=LatestForecastResponse)
 def latest_forecasts(db: Session = Depends(get_db)) -> LatestForecastResponse:
-    latest_date = db.scalar(select(func.max(Forecast.as_of_date)).where(Forecast.origin_type == "live"))
+    active_version = _active_artifact_version(db)
+    latest_query = select(func.max(Forecast.as_of_date)).join(ModelVersion).where(Forecast.origin_type == "live")
+    if active_version:
+        latest_query = latest_query.where(ModelVersion.artifact_version == active_version)
+    latest_date = db.scalar(latest_query)
     if latest_date is None:
         raise HTTPException(status_code=404, detail="no live forecasts are available")
-    rows = db.scalars(
-        select(Forecast)
+    query = (
+        select(Forecast).join(ModelVersion)
         .options(joinedload(Forecast.model_version))
         .where(Forecast.origin_type == "live", Forecast.as_of_date == latest_date)
         .order_by(Forecast.horizon)
-    ).all()
+    )
+    if active_version:
+        query = query.where(ModelVersion.artifact_version == active_version)
+    rows = db.scalars(query).all()
     mapped = [_forecast_response(row) for row in rows]
     return LatestForecastResponse(
         forecasts=mapped,
@@ -145,13 +158,17 @@ def forecast_history(
         raise HTTPException(status_code=422, detail="horizon must be 1 or 5")
     if origin_type not in ("backtest", "live"):
         raise HTTPException(status_code=422, detail="origin_type must be backtest or live")
-    rows = db.scalars(
-        select(Forecast)
+    query = (
+        select(Forecast).join(ModelVersion)
         .options(joinedload(Forecast.model_version))
         .where(Forecast.horizon == horizon, Forecast.origin_type == origin_type)
         .order_by(desc(Forecast.as_of_date))
         .limit(limit)
-    ).all()
+    )
+    active_version = _active_artifact_version(db)
+    if active_version:
+        query = query.where(ModelVersion.artifact_version == active_version)
+    rows = db.scalars(query).all()
     return [_forecast_response(row) for row in reversed(rows)]
 
 
@@ -172,12 +189,20 @@ def forecast_explanation(forecast_id: str, db: Session = Depends(get_db)) -> Exp
         base_value_pct=row.explanation.base_value,
         predicted_return_pct=row.predicted_return_pct,
         contributions=row.explanation.contributions,
+        approximation_error_pct=(
+            row.predicted_return_pct - row.explanation.base_value
+            - sum(item["contribution_pct"] for item in row.explanation.contributions)
+        ),
     )
 
 
 @router.get("/models/metrics", response_model=list[ModelMetric])
 def model_metrics(db: Session = Depends(get_db)) -> list[ModelMetric]:
-    rows = db.scalars(select(ModelVersion).order_by(ModelVersion.horizon, ModelVersion.model_name)).all()
+    imported = db.scalar(select(ArtifactImport).order_by(desc(ArtifactImport.imported_at)))
+    query = select(ModelVersion).order_by(ModelVersion.horizon, ModelVersion.model_name)
+    if imported:
+        query = query.where(ModelVersion.artifact_version == imported.artifact_version)
+    rows = db.scalars(query).all()
     return [
         ModelMetric(
             model=row.model_name,
@@ -190,14 +215,36 @@ def model_metrics(db: Session = Depends(get_db)) -> list[ModelMetric]:
     ]
 
 
+@router.get("/models/evaluation", response_model=ModelEvaluationResponse)
+def model_evaluation(db: Session = Depends(get_db)) -> ModelEvaluationResponse:
+    imported = db.scalar(select(ArtifactImport).order_by(desc(ArtifactImport.imported_at)))
+    if imported is None:
+        return ModelEvaluationResponse(note="Development fixture; no measured evaluation available")
+    report = imported.manifest.get("walkforward_report")
+    return ModelEvaluationResponse(
+        artifact_version=imported.artifact_version,
+        walkforward_report=report,
+        selection_audit=imported.manifest.get("selection_audit"),
+        note=(
+            "Four pre-2024-06-18 rolling-origin folds; 2024 onward is a previously "
+            "observed historical audit, not an independent test."
+            if report else "Legacy artifact: walk-forward evidence is unavailable."
+        ),
+    )
+
+
 @router.get("/replay/{as_of_date}", response_model=ReplayResponse)
 def replay(as_of_date: date, db: Session = Depends(get_db)) -> ReplayResponse:
-    rows = db.scalars(
-        select(Forecast)
+    query = (
+        select(Forecast).join(ModelVersion)
         .options(joinedload(Forecast.model_version))
         .where(Forecast.as_of_date == as_of_date, Forecast.origin_type == "backtest")
         .order_by(Forecast.horizon)
-    ).all()
+    )
+    active_version = _active_artifact_version(db)
+    if active_version:
+        query = query.where(ModelVersion.artifact_version == active_version)
+    rows = db.scalars(query).all()
     if not rows:
         raise HTTPException(status_code=404, detail="no backtest forecast exists for this date")
     return ReplayResponse(as_of_date=as_of_date, forecasts=[_forecast_response(row) for row in rows])
@@ -205,12 +252,16 @@ def replay(as_of_date: date, db: Session = Depends(get_db)) -> ReplayResponse:
 
 @router.post("/simulations", response_model=SimulationResponse, status_code=status.HTTP_201_CREATED)
 def create_simulation(payload: SimulationRequest, db: Session = Depends(get_db)) -> SimulationResponse:
-    forecasts = db.scalars(
-        select(Forecast)
+    query = (
+        select(Forecast).join(ModelVersion)
         .options(joinedload(Forecast.model_version))
         .where(Forecast.as_of_date == payload.as_of_date, Forecast.origin_type == "live")
         .order_by(Forecast.horizon)
-    ).all()
+    )
+    active_version = _active_artifact_version(db)
+    if active_version:
+        query = query.where(ModelVersion.artifact_version == active_version)
+    forecasts = db.scalars(query).all()
     if not forecasts:
         raise HTTPException(status_code=404, detail="no live baseline exists for the requested date")
     snapshot = db.scalar(select(FeatureSnapshot).where(FeatureSnapshot.as_of_date == payload.as_of_date))
@@ -220,6 +271,7 @@ def create_simulation(payload: SimulationRequest, db: Session = Depends(get_db))
     adjustments = payload.adjustments.model_dump()
     results: list[SimulationHorizonResult] = []
     for forecast in forecasts:
+        experimental = False
         if runtime.ready:
             if runtime.model_format(forecast.horizon) == "onnx":
                 snapshots = list(
@@ -235,27 +287,34 @@ def create_simulation(payload: SimulationRequest, db: Session = Depends(get_db))
                 features: dict[str, float] | list[dict[str, float]] = [
                     dict(item.values) for item in reversed(snapshots)
                 ]
+                baseline_features = [dict(row) for row in features]
                 _apply_adjustments(features[-1], adjustments)
             else:
                 features = dict(snapshot.values)
+                baseline_features = dict(features)
                 _apply_adjustments(features, adjustments)
+            experimental = runtime.model_name(forecast.horizon).startswith("XGBoost experimental")
+            baseline_log_return = runtime.predict_return(forecast.horizon, baseline_features)
+            baseline_price = runtime.price_from_log_return(forecast.current_price, baseline_log_return)
             predicted_log_return = runtime.predict_return(forecast.horizon, features)
             scenario_price = runtime.price_from_log_return(forecast.current_price, predicted_log_return)
         else:
+            baseline_price = forecast.predicted_price
             scenario_price = _demo_scenario_price(forecast, adjustments)
-        delta = scenario_price - forecast.predicted_price
+        delta = scenario_price - baseline_price
         results.append(
             SimulationHorizonResult(
                 horizon=forecast.horizon,
-                baseline_price_cents_per_lb=round(forecast.predicted_price, 4),
+                baseline_price_cents_per_lb=round(baseline_price, 4),
                 scenario_price_cents_per_lb=round(scenario_price, 4),
                 delta_cents_per_lb=round(delta, 4),
-                delta_pct=round(delta / forecast.predicted_price * 100, 4),
+                delta_pct=round(delta / baseline_price * 100, 4),
                 model_name=(
                     runtime.model_name(forecast.horizon)
                     if runtime.ready
                     else forecast.model_version.model_name
                 ),
+                baseline_kind="experimental" if experimental else "production",
             )
         )
     simulation_id = str(uuid.uuid4())

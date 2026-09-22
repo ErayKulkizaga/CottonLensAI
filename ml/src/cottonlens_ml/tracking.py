@@ -81,7 +81,7 @@ class TrackingSession:
         while not self.stop.wait(30):
             try:
                 self.backup()
-            except Exception as exc:
+            except Exception as exc:  # noqa: BLE001 - surface any failed Drive snapshot
                 self.errors.append(exc)
                 print(f"MLflow Drive backup failed: {exc}", flush=True)
                 return

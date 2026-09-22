@@ -5,7 +5,7 @@ from pathlib import Path
 import numpy as np
 
 
-def export_lstm(model, scaler, horizon: int, path: Path, raw_sequences: np.ndarray) -> dict:
+def export_lstm(model, scaler, horizon: int, path: Path, raw_sequences: np.ndarray, target_scaler=None) -> dict:
     import onnx
     import onnxruntime as ort
     import tensorflow as tf
@@ -38,10 +38,18 @@ def export_lstm(model, scaler, horizon: int, path: Path, raw_sequences: np.ndarr
             name="train_fitted_standard_scaler",
         )(inputs)
         outputs = inference_model(scaled, training=False)[:, column:column + 1]
+        if target_scaler is not None:
+            outputs = tf.keras.layers.Rescaling(
+                scale=float(target_scaler.scale_[column]),
+                offset=float(target_scaler.mean_[column]),
+                name="train_fitted_target_inverse",
+            )(outputs)
         wrapper = tf.keras.Model(inputs, outputs)
         expected = np.asarray(wrapper(raw, training=False))
         scaled_reference = scaler.transform(raw.reshape(-1, raw.shape[-1])).reshape(raw.shape).astype(np.float32)
         original = np.asarray(model(scaled_reference, training=False))[:, column:column + 1]
+        if target_scaler is not None:
+            original = original * target_scaler.scale_[column] + target_scaler.mean_[column]
         if not np.isfinite(expected).all() or not np.isfinite(original).all():
             raise ValueError("Non-finite TensorFlow prediction")
         wrapper_error = float(np.max(np.abs(original - expected)))

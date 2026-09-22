@@ -2,7 +2,8 @@ import { Component, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 import { ApiService } from '../api.service';
-import { LatestForecast, SimulationAdjustments, SimulationResponse } from '../types';
+import { LatestForecast, ModelEvaluation, SimulationAdjustments, SimulationResponse } from '../types';
+import { forkJoin } from 'rxjs';
 
 @Component({
   standalone: true,
@@ -34,8 +35,9 @@ import { LatestForecast, SimulationAdjustments, SimulationResponse } from '../ty
             </label>
             <label class="range-control">
               <span><strong>CFTC managed money</strong><output>{{ signedInteger(adjustments.cftc_net_delta_contracts) }}</output></span>
-              <input type="range" min="-50000" max="50000" step="2500" [(ngModel)]="adjustments.cftc_net_delta_contracts" name="cftc" />
+              <input type="range" min="-50000" max="50000" step="2500" [(ngModel)]="adjustments.cftc_net_delta_contracts" name="cftc" [disabled]="cftcExcluded()" />
               <small><span>−50k</span><span>Contracts</span><span>+50k</span></small>
+              @if (cftcExcluded()) { <small>Excluded from this model: actual publication time is unverified.</small> }
             </label>
             <label class="range-control">
               <span><strong>20-day volatility</strong><output>{{ adjustments.volatility_multiplier.toFixed(2) }}×</output></span>
@@ -54,7 +56,7 @@ import { LatestForecast, SimulationAdjustments, SimulationResponse } from '../ty
                   @for (item of simulation.results; track item.horizon) {
                     <div class="scenario-result">
                       <span>T+{{ item.horizon }}</span>
-                      <div><small>Baseline</small><strong>{{ item.baseline_price_cents_per_lb.toFixed(2) }}¢</strong></div>
+                      <div><small>{{ item.baseline_kind === 'experimental' ? 'Experimental baseline' : 'Baseline' }}</small><strong>{{ item.baseline_price_cents_per_lb.toFixed(2) }}¢</strong></div>
                       <div class="bridge" [class.negative]="item.delta_pct < 0"><i></i><span>{{ signed(item.delta_pct) }}%</span></div>
                       <div><small>Scenario</small><strong>{{ item.scenario_price_cents_per_lb.toFixed(2) }}¢</strong></div>
                     </div>
@@ -75,15 +77,22 @@ import { LatestForecast, SimulationAdjustments, SimulationResponse } from '../ty
 export class SensitivityPage {
   private readonly api = inject(ApiService);
   readonly latest = signal<LatestForecast | null>(null);
+  readonly evaluation = signal<ModelEvaluation | null>(null);
   readonly result = signal<SimulationResponse | null>(null);
   readonly loadingBase = signal(true);
   readonly running = signal(false);
   readonly error = signal('');
+  readonly cftcExcluded = signal(false);
   adjustments: SimulationAdjustments = this.defaults();
 
   constructor() {
-    this.api.latest().subscribe({
-      next: (value) => { this.latest.set(value); this.loadingBase.set(false); },
+    forkJoin({ latest: this.api.latest(), evaluation: this.api.evaluation() }).subscribe({
+      next: ({ latest, evaluation }) => {
+        this.latest.set(latest);
+        this.evaluation.set(evaluation);
+        this.cftcExcluded.set(Boolean(evaluation.walkforward_report?.cftc_candidate.startsWith('excluded')));
+        this.loadingBase.set(false);
+      },
       error: (error: { message?: string }) => { this.error.set(error.message ?? 'Unknown API error'); this.loadingBase.set(false); },
     });
   }
@@ -103,4 +112,3 @@ export class SensitivityPage {
   signedInteger(value: number): string { return `${value >= 0 ? '+' : ''}${Number(value).toLocaleString()}`; }
   private defaults(): SimulationAdjustments { return { dxy_pct_change: 0, wti_pct_change: 0, cftc_net_delta_contracts: 0, volatility_multiplier: 1 }; }
 }
-

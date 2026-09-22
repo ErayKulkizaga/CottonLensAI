@@ -30,6 +30,7 @@ import { Explanation, LatestForecast } from '../types';
               <div><dt>ŷ</dt><dd>Predicted return: <strong>{{ signed(exp.predicted_return_pct) }}%</strong></dd></div>
               <div><dt>E[f(X)]</dt><dd>Model baseline: {{ signed(exp.base_value_pct) }}%</dd></div>
               <div><dt>φ<sub>i</sub></dt><dd>Each feature’s local contribution</dd></div>
+              @if (Math.abs(exp.approximation_error_pct ?? 0) >= 0.01) { <div><dt>ε</dt><dd>Approximation residual: {{ signed(exp.approximation_error_pct ?? 0) }} pp</dd></div> }
             </dl>
             <div class="decision-note"><strong>Reading rule</strong><p>Rightward bars support the forecast; leftward bars oppose it. Contribution is association inside the fitted model, not causality.</p></div>
           </aside>
@@ -40,7 +41,7 @@ import { Explanation, LatestForecast } from '../types';
             @for (item of sortedContributions(); track item.feature) {
               <div class="feature-row">
                 <span><strong>{{ item.display_name }}</strong><small>{{ item.feature }}</small></span>
-                <span class="data-value">{{ item.feature_value.toFixed(3) }}</span>
+                <span class="data-value">{{ item.feature === 'other' ? '—' : item.feature_value.toFixed(3) }}</span>
                 <span [class.positive]="item.contribution_pct >= 0" [class.negative]="item.contribution_pct < 0">{{ signed(item.contribution_pct) }} pp</span>
               </div>
             }
@@ -51,6 +52,7 @@ import { Explanation, LatestForecast } from '../types';
   `,
 })
 export class WhyPage {
+  readonly Math = Math;
   private readonly api = inject(ApiService);
   readonly latest = signal<LatestForecast | null>(null);
   readonly explanation = signal<Explanation | null>(null);
@@ -78,4 +80,3 @@ export class WhyPage {
 
   signed(value: number): string { return `${value >= 0 ? '+' : ''}${value.toFixed(2)}`; }
 }
-

@@ -11,19 +11,19 @@ CottonLens forecasts one- and five-session Cotton No. 2 log returns for a resear
 - WTI proxy: Yahoo Finance `CL=F`
 - CFTC Disaggregated Futures Only, Cotton No. 2 market code `033661`
 
-CFTC Tuesday positions become usable on Friday. Other sources are aligned to Cotton trading dates with forward fill only. The latest feature rows remain available for live inference even when their future targets are not yet known.
+CFTC rows are retained for data auditing but excluded from model inputs until actual per-report publication timestamps are verified. DXY/WTI are delayed one Cotton session and forward-filled only from the past. The latest feature rows remain available for live inference even when their future targets are not yet known.
 
 ## Evaluation and selection
 
-Data is split chronologically into 65% train, 15% validation, and 20% locked test. Scalers are fit only on train. Candidate budgets are capped at ten XGBoost and six LSTM configurations with fixed seed and early stopping.
+The next Colab release selects candidates on four 126-session pre-18-June-2024 rolling-origin folds. Five-session target purges protect each inner-validation and fold boundary. Scalers are fit only on train. Budgets are eight XGBoost and four LSTM configurations per horizon/fold with fixed seed and early stopping; Ridge is a fixed-parameter reference.
 
-For each horizon, a learned model must improve MAE by at least 5% over Naive on both validation and the one-time locked test. Directional accuracy must be at least 53% for T+1 and 55% for T+5 on both splits. LSTM is selected over a qualifying XGBoost model only when its locked-test MAE is at least 5% lower and directional accuracy is no worse. If neither learned model passes, the primary forecast is Naive and the XGBoost sensitivity model is labelled experimental.
+For each horizon, a learned model must improve aggregate walk-forward MAE by at least 5% over Naive, reach directional accuracy of 53% for T+1 or 55% for T+5, and beat Naive in at least three of four folds. LSTM is selected over qualifying XGBoost only when aggregate MAE is at least 5% lower and directional accuracy is no worse. The previously seen 2024 onward period is a historical rejection audit only; it cannot be used to search for a different winner. If no learned model passes, the primary forecast is Naive and XGBoost sensitivity is labelled experimental.
 
-Every Colab release contains a generated model card with the exact selected models, artifact version, split ranges, and locked holdout metrics.
+Every new Colab release contains a generated model card with exact selected models, artifact version, fold evidence, training curves, and historical-audit metrics. The currently installed older artifact predates this protocol and must be labelled legacy until replaced.
 
 ## Explainability
 
-XGBoost uses native `pred_contribs` TreeSHAP. LSTM explanations use SHAP GradientExplainer and are precomputed in Colab. Only the eight largest displayed contributions are returned; omitted contribution mass is folded into the displayed base value so the UI equation remains additive.
+XGBoost uses native `pred_contribs` TreeSHAP. LSTM explanations use SHAP GradientExplainer and are precomputed in Colab. The actual model baseline is preserved; omitted feature mass is displayed as “Other features”. GradientExplainer's approximation residual is shown explicitly rather than being scaled away.
 
 ## Limitations
 

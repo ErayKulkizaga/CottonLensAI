@@ -4,6 +4,7 @@ import zipfile
 from pathlib import Path
 
 import pytest
+
 from app.artifacts import REQUIRED_FILES, ArtifactVerificationError, install_bundle
 
 

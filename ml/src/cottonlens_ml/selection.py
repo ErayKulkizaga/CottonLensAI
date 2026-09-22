@@ -79,3 +79,52 @@ def select_model_name(
         },
         "selected": selected,
     }
+
+
+def select_walkforward_name(
+    report: dict,
+    horizon: int,
+    historical_audit: Mapping[str, Metrics],
+) -> tuple[str, dict]:
+    aggregate = report["aggregate"]
+    naive = aggregate[f"Naive-T+{horizon}"]
+    tree = aggregate[f"XGBoost-T+{horizon}"]
+    sequence = aggregate[f"LSTM-T+{horizon}"]
+    fold_wins = {
+        name: sum(
+            fold["metrics"][f"{name}-T+{horizon}"]["mae"]
+            < fold["metrics"][f"Naive-T+{horizon}"]["mae"]
+            for fold in report["folds"]
+        )
+        for name in ("XGBoost", "LSTM")
+    }
+    tree_gate = quality_gate(naive, tree, horizon)
+    sequence_gate = quality_gate(naive, sequence, horizon)
+    tree_ok = bool(tree_gate["passes"] and fold_wins["XGBoost"] >= 3)
+    sequence_ok = bool(sequence_gate["passes"] and fold_wins["LSTM"] >= 3)
+    lstm_beats_tree = (
+        mae_improvement_pct(tree, sequence) >= LSTM_VS_XGBOOST_MAE_IMPROVEMENT_PCT
+        and sequence["directional_accuracy"] >= tree["directional_accuracy"]
+    )
+    if sequence_ok and (not tree_ok or lstm_beats_tree):
+        locked = "LSTM"
+    elif tree_ok:
+        locked = "XGBoost"
+    else:
+        locked = "Naive"
+    selected = locked
+    if locked != "Naive" and not quality_gate(
+        historical_audit["Naive"], historical_audit[locked], horizon
+    )["passes"]:
+        selected = "Naive"
+    return selected, {
+        "locked_from": "four_pre_audit_walkforward_folds",
+        "locked_candidate": locked,
+        "selected": selected,
+        "audit_role": "historical_rejection_only_not_independent_test",
+        "fold_wins_vs_naive": fold_wins,
+        "xgboost_walkforward_gate": tree_gate,
+        "lstm_walkforward_gate": sequence_gate,
+        "lstm_beats_xgboost": lstm_beats_tree,
+        "historical_audit": dict(historical_audit),
+    }

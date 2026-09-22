@@ -2,10 +2,12 @@
 
 Explainable Cotton No. 2 forecasting and market-sensitivity dashboard. CottonLens separates expensive model development from the lightweight interview demo:
 
-- Google Colab performs ingestion, feature generation, XGBoost/LSTM training, MLflow tracking, holdout evaluation, explanations, and artifact export.
+- Google Colab performs ingestion, feature generation, Ridge/XGBoost/LSTM training, MLflow tracking, rolling-origin evaluation, explanations, and artifact export.
 - The local stack only serves Angular, FastAPI, PostgreSQL, and CPU inference from a verified artifact.
 
 The repository includes an explicitly labelled development fixture so the complete product flow can be reviewed before a real Colab artifact exists. Fixture values are never presented as trained results.
+
+The artifact currently installed at `runtime/artifacts/current` was created with the **previous** evaluation protocol. The new walk-forward pipeline and Model Lab evidence become measured results only after a fresh Colab Run All and validated artifact import. This repository change alone does not improve an already-trained model or establish a new accuracy score.
 
 ## Architecture
 
@@ -15,7 +17,7 @@ Google Colab + GPU                    Local Docker
 │ Yahoo/CFTC ingestion    │          │ Angular 22 + Nginx    │
 │ leakage-safe features   │  ZIP     │          ↓            │
 │ XGBoost + LSTM          ├─────────▶│ FastAPI inference     │
-│ MLflow + holdout tests  │ verified │     ↙          ↘      │
+│ MLflow + walk-forward   │ verified │     ↙          ↘      │
 │ SHAP + artifact export  │          │ PostgreSQL   XGB/ONNX │
 └───────────┬─────────────┘          └───────────────────────┘
             ▼
@@ -55,7 +57,7 @@ There is **one notebook with seven code cells**:
 
 ```text
 Drive mount → clean repo clone/pull → isolated Python + locked dependencies
-→ mandatory GPU/synthetic smoke → cached source validation → training
+→ mandatory GPU/synthetic smoke → cached source validation → walk-forward training
 → ZIP/checksum/backend-runtime validation
 ```
 
@@ -98,11 +100,15 @@ MLflow uses a **local SQLite database**, not a database opened directly on the D
 
 Only one Colab writer may use the same Drive root. If a killed runtime leaves `tracking/.writer-lock`, first stop the old runtime, then remove that empty lock directory in Drive and rerun. Do not remove a live writer's lock. Corrupt snapshots are rejected; `mlflow.previous.sqlite` is retained for explicit recovery. If final Drive backup fails, the error prints a local recovery database path: keep the Colab session open and copy that database to safe storage before disconnecting.
 
-Invalid price observations are recorded with series/date/field/value in `data/processed/data_quality.json`. Zero, non-finite and non-positive prices are excluded from logarithms, not hidden with warning suppression. Cotton gaps are not filled or removed before target alignment; external features may only forward-fill past valid observations. Genuine negative WTI prices are retained in raw data but excluded from log-price calculations. Incomplete feature rows are excluded deterministically; future observations never repair past inputs.
+Invalid price observations are recorded with series/date/field/value in `data/processed/data_quality.json`. Zero, non-finite and non-positive prices are excluded from logarithms, not hidden with warning suppression. Cotton gaps are not filled or removed before target alignment; external features forward-fill only from the past and DXY/WTI are delayed one Cotton session. Current UTC-day candles are excluded because they may be incomplete. Genuine negative WTI prices are retained in raw data but excluded from log-price calculations. The report records each source's first date and the first modeling date, so the actual reason for a 2016 start can be inspected rather than guessed.
 
-The pipeline has a bounded search budget: at most 10 XGBoost configurations and 6 LSTM configurations. It uses a chronological 65/15/20 split and applies its strict release gate only after candidates are locked: a learned model must improve MAE by at least 5% over Naive on both validation and locked test, while directional accuracy must be at least 53% for T+1 and 55% for T+5. LSTM must additionally improve locked-test MAE by at least 5% over XGBoost without reducing directional accuracy.
+The **next Colab run** uses four 126-Cotton-session rolling-origin folds ending before 18 June 2024. Every fold has an earlier training/inner-validation period, a five-session purge at both boundaries, and train-only transformations. Naive persistence and a fixed Ridge reference appear beside the learned models. The selected learned model must improve aggregate price MAE by at least 5% versus Naive, reach directional accuracy of 53% (T+1) or 55% (T+5), and beat Naive in at least 3/4 periods. LSTM displaces XGBoost only with another 5% MAE improvement and no directional-accuracy loss. The 2024 onward interval is a **previously observed historical audit**, not an untouched independent test: it may reject a locked candidate to Naive, but never trigger a search for another winner. No future accuracy is promised.
 
-Each completed experiment is fingerprinted against its train/validation data and checkpointed directly in Drive. Normal Run All reuses its last successful Drive cache, avoiding unnecessary Yahoo requests. An intentional refresh runs `python -m cottonlens_ml.prepare --drive-root /content/drive/MyDrive/CottonLensAI --refresh`; refreshed source data receives a new fingerprint and is trained with the locked configuration. LSTM exports embed the train-fitted scaler in the ONNX graph and are rejected when TensorFlow/ONNX parity reaches or exceeds `1e-4` maximum absolute error. LSTM SHAP values are precomputed in Colab, so neither TensorFlow nor SHAP is needed locally.
+The Colab experiment budget is eight XGBoost hyperparameter configurations per horizon, four LSTM unit/dropout configurations, and fixed-configuration feature ablations. XGBoost has at most 1,200 trees with 50-round early stopping; LSTM has at most 100 epochs with 10-epoch early stopping. The 60-step LSTM carries prior feature context into each evaluation block, so its forecasts are measured on the exact same 126 dates as Naive/XGBoost; previous blocks' target labels are never used for fitting. Both input and output scalers are fit on training rows only. The inverse output transform and input scaler are embedded in each ONNX graph.
+
+Because the annual CFTC archive does not prove each report's actual release timestamp, CFTC values remain in the quality report but are **excluded from trained model inputs**. The new artifact disables the CFTC sensitivity control. No CFTC improvement is claimed. The feature-ablation report compares Cotton, Cotton+macro, and Cotton+macro+historical regime/volume/correlation features. Twenty-session block bootstrap MAE intervals, balanced accuracy, majority-direction reference, fold sample counts, hyperparameters, and LSTM loss/validation-loss curves are included in the artifact and Model Lab.
+
+Each completed experiment is fingerprinted against its train/validation data and checkpointed directly in Drive. Normal Run All reuses its last successful Drive cache, avoiding unnecessary Yahoo requests. An intentional refresh runs `python -m cottonlens_ml.prepare --drive-root /content/drive/MyDrive/CottonLensAI --refresh` inside the isolated Colab environment; refreshed source data receives a new fingerprint. ONNX exports are rejected when TensorFlow/ONNX parity reaches or exceeds `1e-4` maximum absolute error. LSTM SHAP values are precomputed in Colab; their approximation residual is reported instead of rescaling contributions to force an exact match. Neither TensorFlow nor SHAP is needed locally.
 
 The exporter uses [native Keras ONNX export](https://keras.io/api/models/model_saving_apis/export/) rather than `tf2onnx.from_keras`. An inference-only CPU clone uses standard LSTM ops instead of cuDNN-only ops; original fitted weights, 60-step training sequences, multi-output training and model selection are unchanged. Both the wrapper and ONNX outputs are compared against the original model with the train-fitted scaler. There is no silent converter fallback: an incompatible stack stops at the smoke stage. XGBoost export keeps only the early-stopping-selected trees so the native backend and sklearn predictions agree; its training/search/selection policy is unchanged.
 
@@ -140,7 +146,7 @@ The installer verifies the outer ZIP digest before opening it, then verifies eve
 - `CT=F`, `DX-Y.NYB`, and `CL=F` are downloaded through yfinance.
 - `CT=F` is a convenient continuous-futures research proxy, not official ICE settlement data.
 - CFTC Cotton No. 2 uses market code `033661` from annual Disaggregated Futures Only files.
-- Tuesday CFTC positions become available to features on Friday; no backward filling is permitted.
+- CFTC archive positions are not a model input until actual per-report publication timestamps can be verified; Friday-by-formula dates are not treated as proof.
 - Historical reconstructed results are labelled `backtest`; they are not represented as forecasts that were recorded live.
 - Sensitivity results hold other features fixed. They are model response, not causal inference.
 
@@ -155,7 +161,8 @@ The installer verifies the outer ZIP digest before opening it, then verifies eve
 | GET | `/api/v1/forecasts/history` | Live or backtest history |
 | GET | `/api/v1/forecasts/{id}/explanation` | Local feature contributions |
 | POST | `/api/v1/simulations` | Bounded sensitivity inference |
-| GET | `/api/v1/models/metrics` | Locked holdout metrics |
+| GET | `/api/v1/models/metrics` | Model metrics and optional fold/learning-curve evidence |
+| GET | `/api/v1/models/evaluation` | Walk-forward folds, feature ablation and selection audit; explicitly flags older artifacts |
 | GET | `/api/v1/replay/{date}` | Point-in-time backtest audit |
 
 Simulation bounds are enforced server-side: DXY ±5%, WTI ±20%, CFTC net position ±50,000 contracts, volatility multiplier 0.5–2.0.
@@ -189,10 +196,12 @@ Model training is deliberately not part of local tests or CI. Tests use the labe
 
 ## Five-minute demo
 
+Turkish talk track and technical Q&A: [docs/INTERVIEW_DEMO.md](docs/INTERVIEW_DEMO.md).
+
 1. Show T+1/T+5 forecast and the backtest chart.
 2. Open **Why?** and explain `ŷ = E[f(X)] + Σφᵢ`.
-3. Run a DXY/WTI/CFTC scenario and point out the non-causal disclaimer.
-4. Compare Naive, XGBoost and LSTM in Model Lab.
+3. Run a DXY/WTI scenario and point out the non-causal disclaimer; the new release disables CFTC sensitivity until publication dates are verified.
+4. Compare Naive, Ridge, XGBoost and LSTM in Model Lab, including folds and LSTM training curves when the new artifact is installed.
 5. Replay a historical forecast and distinguish it from a live record.
 6. Close with the Colab → verified artifact → lightweight local runtime architecture.
 

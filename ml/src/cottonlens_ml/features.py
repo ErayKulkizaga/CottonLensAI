@@ -17,6 +17,9 @@ def build_features(market: pd.DataFrame, cftc: pd.DataFrame) -> pd.DataFrame:
     # Fill external series on their full source timeline before taking Cotton sessions.
     indexed[["dxy", "wti"]] = indexed[["dxy", "wti"]].ffill()
     indexed = indexed.reindex(cotton_rows.index)
+    # External daily closes may arrive after the Cotton decision cutoff. A full
+    # Cotton-session lag is conservative and does not require timestamp guesses.
+    indexed[["dxy", "wti"]] = indexed[["dxy", "wti"]].shift(1)
     features = pd.DataFrame(index=indexed.index)
     cotton = indexed["cotton"]
     for window in (1, 5, 10, 20):
@@ -28,15 +31,25 @@ def build_features(market: pd.DataFrame, cftc: pd.DataFrame) -> pd.DataFrame:
     daily_return = np.log(cotton / cotton.shift(1))
     features["cotton_volatility_5"] = daily_return.rolling(5).std()
     features["cotton_volatility_20"] = daily_return.rolling(20).std()
+    volatility_60 = daily_return.rolling(60).std()
+    features["cotton_volatility_regime_20_60"] = features["cotton_volatility_20"] / volatility_60.where(volatility_60 > 0)
     features["cotton_range"] = (cotton_rows["high"] - cotton_rows["low"]) / cotton_rows["close"]
     volume = cotton_rows["volume"]
     features["cotton_volume_change"] = volume / volume.shift(1).where(volume.shift(1) > 0) - 1
+    volume_std = volume.rolling(20).std()
+    features["cotton_volume_z20"] = (volume - volume.rolling(20).mean()) / volume_std.where(volume_std > 0)
     for series in ("dxy", "wti"):
         aligned = indexed[series].ffill()
         for window in (1, 5, 20):
             features[f"{series}_ret_{window}"] = np.log(aligned / aligned.shift(window))
+        features[f"cotton_{series}_corr_60"] = daily_return.rolling(60).corr(
+            features[f"{series}_ret_1"]
+        )
 
     cftc_values = cftc.set_index("available_date")["cftc_managed_money_net"].sort_index()
+    if not cftc_values.empty:
+        cftc_values.index = pd.to_datetime(cftc_values.index)
+    cftc_values = pd.to_numeric(cftc_values, errors="coerce")
     available = cftc_values.reindex(features.index.union(cftc_values.index)).sort_index().ffill()
     features["cftc_managed_money_net"] = available.reindex(features.index)
     weekly = cftc_values.diff()
@@ -62,6 +75,9 @@ def build_features(market: pd.DataFrame, cftc: pd.DataFrame) -> pd.DataFrame:
         {"date": features.index[row].isoformat(), "feature": features.columns[column]}
         for row, column in zip(*np.where(infinite), strict=True)
     ]
+    cotton_dates = pd.Series(features.index, index=features.index)
+    features["target_date_1"] = cotton_dates.shift(-1)
+    features["target_date_5"] = cotton_dates.shift(-5)
     result = (
         features.replace([np.inf, -np.inf], np.nan).dropna(subset=[*FEATURE_NAMES, "cotton_close"])
         .reset_index()
@@ -80,8 +96,12 @@ def schema_hash() -> str:
 def chronological_split(frame: pd.DataFrame) -> dict[str, pd.DataFrame]:
     train_end = int(len(frame) * 0.65)
     validation_end = int(len(frame) * 0.80)
-    return {
-        "train": frame.iloc[:train_end].copy(),
-        "validation": frame.iloc[train_end:validation_end].copy(),
-        "test": frame.iloc[validation_end:].copy(),
-    }
+    validation_start = frame.iloc[train_end]["date"]
+    test_start = frame.iloc[validation_end]["date"]
+    train = frame.iloc[:train_end].copy()
+    validation = frame.iloc[train_end:validation_end].copy()
+    # An origin in the preceding split is not trainable when its T+5 outcome
+    # lands in the following split, even if its feature timestamp is earlier.
+    train = train.loc[train.target_date_5 < validation_start]
+    validation = validation.loc[validation.target_date_5 < test_start]
+    return {"train": train, "validation": validation, "test": frame.iloc[validation_end:].copy()}

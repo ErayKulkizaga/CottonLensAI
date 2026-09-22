@@ -1,4 +1,4 @@
-from cottonlens_ml.selection import select_model_name
+from cottonlens_ml.selection import select_model_name, select_walkforward_name
 
 
 def metrics(mae: float, directional_accuracy: float) -> dict[str, float]:
@@ -62,3 +62,46 @@ def test_t5_uses_higher_directional_accuracy_threshold() -> None:
     )
     assert selected == "Naive"
     assert audit["xgboost"]["test"]["min_directional_accuracy"] == 55.0
+
+
+def _walkforward_report(wins: int = 3) -> dict:
+    folds = []
+    for index in range(4):
+        folds.append({"metrics": {
+            "Naive-T+1": metrics(10, 0),
+            "XGBoost-T+1": metrics(9 if index < wins else 11, 56),
+            "LSTM-T+1": metrics(8 if index < wins else 12, 56),
+        }})
+    return {"aggregate": {
+        "Naive-T+1": metrics(10, 0),
+        "XGBoost-T+1": metrics(9.2, 56),
+        "LSTM-T+1": metrics(8.6, 56),
+    }, "folds": folds}
+
+
+def test_walkforward_selects_lstm_before_historical_audit() -> None:
+    selected, audit = select_walkforward_name(
+        _walkforward_report(), 1,
+        {"Naive": metrics(10, 0), "XGBoost": metrics(9.2, 56), "LSTM": metrics(8.8, 56)},
+    )
+    assert selected == "LSTM"
+    assert audit["locked_candidate"] == "LSTM"
+    assert audit["fold_wins_vs_naive"]["LSTM"] == 3
+
+
+def test_historical_audit_can_only_reject_locked_model() -> None:
+    selected, audit = select_walkforward_name(
+        _walkforward_report(), 1,
+        {"Naive": metrics(10, 0), "XGBoost": metrics(7, 70), "LSTM": metrics(11, 56)},
+    )
+    assert audit["locked_candidate"] == "LSTM"
+    assert selected == "Naive"  # Strong XGBoost audit result must not cause a search.
+
+
+def test_period_consistency_rejects_two_of_four_wins() -> None:
+    selected, audit = select_walkforward_name(
+        _walkforward_report(wins=2), 1,
+        {"Naive": metrics(10, 0), "XGBoost": metrics(9, 56), "LSTM": metrics(8, 56)},
+    )
+    assert selected == "Naive"
+    assert audit["fold_wins_vs_naive"]["XGBoost"] == 2

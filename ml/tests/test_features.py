@@ -66,10 +66,12 @@ def test_split_is_chronological_and_65_15_20() -> None:
         subset=["target_return_1", "target_return_5"]
     )
     splits = chronological_split(features)
-    assert len(splits["train"]) == int(len(features) * 0.65)
-    assert len(splits["validation"]) == int(len(features) * 0.80) - len(splits["train"])
+    assert len(splits["train"]) == int(len(features) * 0.65) - 5
+    assert len(splits["validation"]) == int(len(features) * 0.80) - int(len(features) * 0.65) - 5
     assert splits["train"].date.max() < splits["validation"].date.min()
     assert splits["validation"].date.max() < splits["test"].date.min()
+    assert splits["train"].target_date_5.max() < splits["validation"].date.min()
+    assert splits["validation"].target_date_5.max() < splits["test"].date.min()
 
 
 @pytest.mark.parametrize("bad_value", [-37.63, 0.0, float("inf"), float("nan")])
@@ -85,7 +87,7 @@ def test_invalid_external_prices_are_reported_and_only_past_filled(bad_value) ->
     issue = next(item for item in result.attrs["data_quality"]["invalid_market_values"] if item["field"] == "close")
     assert issue["series"] == "wti"
     assert issue["date"] == bad_date.isoformat()
-    assert result.set_index("date").loc[bad_date, "wti_ret_1"] == pytest.approx(0.0)
+    assert result.set_index("date").loc[bad_date + pd.offsets.BDay(1), "wti_ret_1"] == pytest.approx(0.0)
     # Altering future prices must not affect any feature already available.
     changed = market.copy()
     changed.loc[(changed.series == "wti") & (changed.date > bad_date), "close"] *= 2
@@ -115,4 +117,25 @@ def test_zero_volume_and_constant_cftc_never_produce_infinite_features() -> None
     cftc = _cftc_fixture()
     cftc["cftc_managed_money_net"] = 1.0
     result = build_features(market, cftc)
-    assert result.empty  # Undefined z-score is missing, never fabricated as zero.
+    assert not result.empty  # Unverified CFTC values are not model inputs.
+    assert result.cftc_net_z52.isna().all()
+
+
+def test_same_day_external_close_cannot_change_cotton_feature() -> None:
+    market = _market_fixture()
+    original = build_features(market, _cftc_fixture()).set_index("date")
+    decision_date = pd.Timestamp("2023-04-03")
+    market.loc[(market.series == "dxy") & (market.date == decision_date), "close"] *= 1.1
+    changed = build_features(market, _cftc_fixture()).set_index("date")
+    pd.testing.assert_series_equal(
+        original.loc[decision_date, ["dxy_ret_1", "dxy_ret_5", "dxy_ret_20"]],
+        changed.loc[decision_date, ["dxy_ret_1", "dxy_ret_5", "dxy_ret_20"]],
+    )
+
+
+def test_missing_audit_only_cftc_does_not_block_model_features() -> None:
+    cftc = pd.DataFrame(columns=["available_date", "cftc_managed_money_net"])
+    result = build_features(_market_fixture(), cftc)
+    assert not result.empty
+    assert result.cftc_managed_money_net.isna().all()
+    assert np.isfinite(result[FEATURE_NAMES].to_numpy()).all()

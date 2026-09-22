@@ -43,8 +43,8 @@ def import_artifact_directory(db: Session, root: Path) -> str:
             selected=bool(metric.get("selected")),
             data_quality=manifest.get("data_quality", "validated_holdout"),
             metrics={
-                key: float(metric[key])
-                for key in ("mae", "rmse", "mape", "directional_accuracy")
+                key: value for key, value in metric.items()
+                if key not in ("model", "horizon", "selected")
             },
         )
         db.add(model)
@@ -73,14 +73,21 @@ def import_artifact_directory(db: Session, root: Path) -> str:
     schema_hash = manifest["feature_schema_hash"]
     for row in pq.read_table(root / "feature_snapshots.parquet").to_pylist():
         as_of = _as_date(row.pop("date"))
-        if db.scalar(select(FeatureSnapshot).where(FeatureSnapshot.as_of_date == as_of)) is None:
+        existing_snapshot = db.scalar(select(FeatureSnapshot).where(FeatureSnapshot.as_of_date == as_of))
+        values = {key: float(value) for key, value in row.items() if value is not None}
+        if existing_snapshot is None:
             db.add(
                 FeatureSnapshot(
                     as_of_date=as_of,
                     schema_hash=schema_hash,
-                    values={key: float(value) for key, value in row.items() if value is not None},
+                    values=values,
                 )
             )
+        else:
+            # A refreshed release can revise features on overlapping dates. The
+            # newest validated import owns the inference snapshot for that date.
+            existing_snapshot.schema_hash = schema_hash
+            existing_snapshot.values = values
 
     forecast_lookup: dict[str, Forecast] = {}
     selected_by_horizon = {

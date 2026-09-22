@@ -50,6 +50,7 @@ export interface Explanation {
   base_value_pct: number;
   predicted_return_pct: number;
   contributions: Contribution[];
+  approximation_error_pct?: number;
   equation: string;
 }
 
@@ -62,6 +63,24 @@ export interface ModelMetric {
   directional_accuracy: number;
   selected: boolean;
   data_quality: DataQuality;
+  walkforward?: {
+    mae: number; rmse: number; mape: number; directional_accuracy: number;
+    balanced_accuracy: number; majority_direction_accuracy: number;
+    sample_count: number; mae_ci_95: number[];
+  } | null;
+  parameters?: Record<string, string | number> | null;
+  training_history?: { epoch: number; loss: number; val_loss: number }[] | null;
+}
+
+export interface ModelEvaluation {
+  artifact_version: string | null;
+  note: string;
+  selection_audit: Record<string, { locked_candidate?: string; selected?: string; fold_wins_vs_naive?: Record<string, number> }> | null;
+  walkforward_report: {
+    folds: { fold: number; test_start: string; test_end: string; sample_count: number; metrics: Record<string, { mae: number; directional_accuracy: number }> }[];
+    feature_ablation: { fold: number; horizon: number; cotton_mae: number; cotton_macro_mae: number; full_mae: number }[];
+    cftc_candidate: string;
+  } | null;
 }
 
 export interface SimulationAdjustments {
@@ -78,6 +97,7 @@ export interface SimulationResult {
   delta_cents_per_lb: number;
   delta_pct: number;
   model_name: string;
+  baseline_kind?: 'production' | 'experimental';
 }
 
 export interface SimulationResponse {
@@ -89,4 +109,3 @@ export interface SimulationResponse {
 }
 
 export interface ReplayResponse { as_of_date: string; forecasts: Forecast[]; }
-

@@ -10,9 +10,10 @@ import site
 import subprocess
 import sys
 import tempfile
-import tomllib
 import traceback
 from pathlib import Path
+
+import tomllib
 
 
 def environment(repo: Path, require_gpu: bool) -> dict:
@@ -76,22 +77,24 @@ def synthetic_checks(repo: Path, inference_python: Path, work: Path, tracking_ro
     scaler = StandardScaler().fit(raw[:8].reshape(-1, len(names)))
     scaled = scaler.transform(raw.reshape(-1, len(names))).reshape(raw.shape).astype(np.float32)
     targets = rng.normal(0, 0.01, (12, 2)).astype(np.float32)
+    target_scaler = StandardScaler().fit(targets[:8])
+    scaled_targets = target_scaler.transform(targets).astype(np.float32)
     inputs = tf.keras.Input(shape=(60, len(names)))
     hidden = tf.keras.layers.LSTM(4)(inputs)
     hidden = tf.keras.layers.Dropout(0.1)(hidden)
     hidden = tf.keras.layers.Dense(32, activation="relu")(hidden)
     model = tf.keras.Model(inputs, tf.keras.layers.Dense(2)(hidden))
     model.compile(optimizer="adam", loss="mae")
-    model.fit(scaled[:8], targets[:8], validation_data=(scaled[8:], targets[8:]), epochs=1, batch_size=4, verbose=2)
-    expected = np.asarray(model(scaled[8:], training=False))
+    model.fit(scaled[:8], scaled_targets[:8], validation_data=(scaled[8:], scaled_targets[8:]), epochs=1, batch_size=4, verbose=2)
+    expected = target_scaler.inverse_transform(np.asarray(model(scaled[8:], training=False)))
     path = work / "tiny.keras"
     model.save(path)
     restored = tf.keras.models.load_model(path)
-    np.testing.assert_allclose(restored(scaled[8:], training=False), expected, atol=1e-6)
+    np.testing.assert_allclose(target_scaler.inverse_transform(np.asarray(restored(scaled[8:], training=False))), expected, atol=1e-6)
     entries, parity = [], {}
     for horizon in (1, 5):
         path = work / f"lstm-t{horizon}.onnx"
-        parity[str(horizon)] = export_lstm(restored, scaler, horizon, path, raw[8:])
+        parity[str(horizon)] = export_lstm(restored, scaler, horizon, path, raw[8:], target_scaler)
         entries.append({"horizon": horizon, "format": "onnx", "path": path.name})
     cases = [{"features": [dict(zip(names, row.tolist(), strict=True)) for row in sequence],
               "expected": {str(h): float(expected[i, col]) for col, h in enumerate((1, 5))}}
@@ -115,12 +118,14 @@ def synthetic_checks(repo: Path, inference_python: Path, work: Path, tracking_ro
     frame.to_parquet(parquet, index=False)
     pd.testing.assert_frame_equal(frame, pd.read_parquet(parquet))
 
-    with tracking_session(tracking_root, "smoke"):
-        with tracked_run(run_name="parent") as parent:
-            with tracked_run(run_name="child", nested=True) as child:
-                mlflow.log_metric("smoke", 1.0)
-                mlflow.log_artifact(str(parquet))
-                child_id = child.info.run_id
+    with (
+        tracking_session(tracking_root, "smoke"),
+        tracked_run(run_name="parent") as parent,
+        tracked_run(run_name="child", nested=True) as child,
+    ):
+        mlflow.log_metric("smoke", 1.0)
+        mlflow.log_artifact(str(parquet))
+        child_id = child.info.run_id
         parent_id = parent.info.run_id
     with tracking_session(tracking_root, "smoke"):
         saved = mlflow.get_run(child_id)

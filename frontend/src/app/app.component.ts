@@ -1,5 +1,8 @@
-import { Component } from '@angular/core';
-import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { Component, inject, signal } from '@angular/core';
+import { Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+
+import { ApiService } from './api.service';
+import { LatestForecast } from './types';
 
 @Component({
   selector: 'app-root',
@@ -37,9 +40,25 @@ import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
           <a routerLink="/replay" routerLinkActive="active">Replay</a>
         </nav>
       </header>
-      <main class="workspace"><router-outlet /></main>
+      <main class="workspace">
+        @if (router.url !== '/' && latest(); as data) {
+          <div class="workspace-meta" aria-label="Current artifact context">
+            <span>Data {{ data.data_as_of }}</span><span>Artifact {{ data.artifact_version }}</span>
+            <span>{{ data.forecasts[0].model_name }} T+1 · {{ data.forecasts[1].model_name }} T+5</span>
+            <span>{{ data.data_quality === 'illustrative' ? 'Illustrative fixture' : (data.stale ? 'Stale data' : 'Latest available data') }} · live snapshot</span>
+          </div>
+        }
+        <router-outlet />
+      </main>
     </div>
   `,
 })
-export class AppComponent {}
+export class AppComponent {
+  readonly router = inject(Router);
+  private readonly api = inject(ApiService);
+  readonly latest = signal<LatestForecast | null>(null);
 
+  constructor() {
+    this.api.latest().subscribe({ next: (data) => this.latest.set(data) });
+  }
+}

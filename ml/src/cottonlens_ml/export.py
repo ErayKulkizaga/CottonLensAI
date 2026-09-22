@@ -44,6 +44,34 @@ def _sequence_matrix(frame: pd.DataFrame, scaler: object) -> np.ndarray:
     )
 
 
+def _sequence_matrix_with_history(
+    history: pd.DataFrame, frame: pd.DataFrame, scaler: object
+) -> np.ndarray:
+    prior = history.loc[history.date < frame.date.min()].tail(59)
+    if len(prior) != 59:
+        raise ValueError("LSTM explanation needs 59 preceding feature snapshots")
+    values = scaler.transform(pd.concat([prior, frame])[FEATURE_NAMES]).astype(np.float32)
+    return np.asarray([values[index:index + 60] for index in range(len(frame))], dtype=np.float32)
+
+
+def _display_contributions(values: np.ndarray, features: pd.Series) -> list[dict]:
+    top = np.argsort(np.abs(values))[-8:]
+    rows = [
+        {
+            "feature": FEATURE_NAMES[index],
+            "display_name": FEATURE_NAMES[index].replace("_", " ").title(),
+            "feature_value": float(features[FEATURE_NAMES[index]]),
+            "contribution_pct": float(values[index] * 100),
+        }
+        for index in top
+    ]
+    rows.append({
+        "feature": "other", "display_name": "Other features", "feature_value": 0.0,
+        "contribution_pct": float((values.sum() - values[top].sum()) * 100),
+    })
+    return rows
+
+
 def _lstm_shap(
     candidate: Candidate,
     full_features: pd.DataFrame,
@@ -57,7 +85,7 @@ def _lstm_shap(
     background = _sequence_matrix(train_rows.tail(160), candidate.scaler)
     if len(background) > 64:
         background = background[np.linspace(0, len(background) - 1, 64, dtype=int)]
-    test_inputs = _sequence_matrix(test, candidate.scaler)
+    test_inputs = _sequence_matrix_with_history(full_features, test, candidate.scaler)
     live_values = candidate.scaler.transform(full_features[FEATURE_NAMES].tail(60)).astype(
         np.float32
     )
@@ -82,14 +110,11 @@ def _lstm_shap(
     base_value = float(
         np.mean(candidate.model.predict(background, verbose=0)[:, output_index])
     )
-    predictions = np.concatenate(
-        [candidate.predictions, np.asarray([candidate.model.predict(live_values[None, ...], verbose=0)[0, output_index]])]
-    )
-    for index, prediction in enumerate(predictions):
-        observed_sum = float(contributions[index].sum())
-        desired_sum = float(prediction - base_value)
-        if abs(observed_sum) > 1e-12:
-            contributions[index] *= desired_sum / observed_sum
+    if candidate.target_scaler is not None:
+        scale = float(candidate.target_scaler.scale_[output_index])
+        offset = float(candidate.target_scaler.mean_[output_index])
+        contributions *= scale
+        base_value = base_value * scale + offset
     return contributions, base_value
 
 
@@ -101,6 +126,7 @@ def export_release(
     all_candidates: list[Candidate],
     selected: dict[int, Candidate],
     selection_audit: dict[int, dict],
+    walkforward_report: dict,
 ) -> Path:
     version = datetime.now(UTC).strftime("v%Y%m%d-%H%M")
     with tempfile.TemporaryDirectory(prefix="cottonlens-release-") as temp:
@@ -119,9 +145,14 @@ def export_release(
                 )
             elif candidate.name == "LSTM":
                 path = model_root / f"lstm-t{horizon}.onnx"
-                ends = np.linspace(60, len(test), min(16, len(test) - 59), dtype=int)
-                raw_sequences = np.stack([test[FEATURE_NAMES].iloc[end - 60:end].to_numpy(dtype=np.float32) for end in ends])
-                parity = export_lstm(candidate.model, candidate.scaler, horizon, path, raw_sequences)
+                history = full_features.loc[full_features.date <= test.date.max()]
+                sampled = np.linspace(0, len(test) - 1, min(16, len(test)), dtype=int)
+                raw_sequences = np.stack([
+                    pd.concat([history.loc[history.date < test.date.min()].tail(59), test])[FEATURE_NAMES]
+                    .iloc[index:index + 60].to_numpy(dtype=np.float32)
+                    for index in sampled
+                ])
+                parity = export_lstm(candidate.model, candidate.scaler, horizon, path, raw_sequences, candidate.target_scaler)
                 model_entries.append(
                     {
                         "horizon": horizon,
@@ -155,14 +186,17 @@ def export_release(
                 "horizon": item.horizon,
                 **item.metrics,
                 "validation_metrics": item.validation_metrics,
+                "training_history": item.training_history,
+                "parameters": item.parameters,
+                "walkforward": walkforward_report["aggregate"][f"{item.name}-T+{item.horizon}"],
                 "selected": selected[item.horizon].name == item.name,
             }
             for item in all_candidates
         ]
         (root / "metrics.json").write_text(json.dumps(metrics, indent=2), encoding="utf-8")
         modeling_rows = full_features.dropna(subset=["target_return_1", "target_return_5"])
-        train_end = int(len(modeling_rows) * 0.65)
-        validation_end = int(len(modeling_rows) * 0.80)
+        from cottonlens_ml.walkforward import audit_split
+        split_frames = audit_split(modeling_rows)
 
         def date_range(frame: pd.DataFrame) -> dict[str, str]:
             return {"start": str(frame.date.min().date()), "end": str(frame.date.max().date())}
@@ -173,9 +207,9 @@ def export_release(
             "git_sha": _git_sha(),
             "dataset_range": {"start": str(full_features.date.min().date()), "end": str(full_features.date.max().date())},
             "split_ranges": {
-                "train": date_range(modeling_rows.iloc[:train_end]),
-                "validation": date_range(modeling_rows.iloc[train_end:validation_end]),
-                "test": date_range(modeling_rows.iloc[validation_end:]),
+                "train": date_range(split_frames["train"]),
+                "validation": date_range(split_frames["validation"]),
+                "historical_audit": date_range(split_frames["test"]),
             },
             "feature_schema_hash": schema_hash(),
             "production_models": model_entries,
@@ -183,15 +217,17 @@ def export_release(
                 "minimum_mae_improvement_pct_vs_naive": 5.0,
                 "minimum_directional_accuracy": {"T+1": 53.0, "T+5": 55.0},
                 "lstm_minimum_mae_improvement_pct_vs_xgboost": 5.0,
-                "required_splits": ["validation", "test"],
+                "selection_basis": "four pre-2024-06-18 rolling-origin folds",
+                "historical_audit_role": "rejection only; previously observed, not independent",
             },
             "selection_audit": selection_audit,
+            "walkforward_report": walkforward_report,
             "required_runtimes": {"python": ">=3.12,<3.14", "xgboost": ">=3,<4", "onnxruntime": ">=1.20,<2"},
             "source_freshness": {
                 "market_as_of": str(pd.to_datetime(market.date).max().date()),
                 "features_as_of": str(full_features.date.max().date()),
             },
-            "data_quality": "validated_holdout",
+            "data_quality": "historical_audit",
             "source_note": "Yahoo Finance continuous futures proxy; not official ICE settlement data.",
         }
         (root / "manifest.json").write_text(json.dumps(manifest, indent=2), encoding="utf-8")
@@ -215,13 +251,13 @@ def export_release(
                     "## Selected production models",
                     selection_rows,
                     "",
-                    "## Locked holdout metrics",
+                    "## Historical audit metrics (2024 onward; previously observed)",
                     "| Model | Horizon | MAE (¢/lb) | RMSE (¢/lb) | Directional accuracy | Selected |",
                     "|---|---:|---:|---:|---:|---:|",
                     metric_rows,
                     "",
                     "## Evaluation boundary",
-                    "Chronological 65/15/20 split. Preprocessing is fit on train only; hyperparameters use train/validation; the locked test set is evaluated once.",
+                    "Four pre-2024-06-18 rolling-origin folds select the model. Each fold purges T+5 boundary targets and fits transforms on its train portion. The 2024 onward period is a previously seen historical rejection audit, not a new independent test. See metrics.json and manifest.json for fold evidence.",
                     "",
                     "## Limitations",
                     "Yahoo Finance continuous futures are a research proxy. Results can be affected by roll construction, revised upstream data, regime shifts, and missing exogenous drivers. Sensitivity output is not causal inference.",
@@ -231,14 +267,20 @@ def export_release(
             encoding="utf-8",
         )
 
-        market.rename(columns={"date": "observed_on"}).to_parquet(root / "market_history.parquet", index=False)
+        finite_market = market.loc[
+            np.isfinite(pd.to_numeric(market.close, errors="coerce"))
+            & ((market.series == "wti") | (market.close > 0))
+        ]
+        finite_market.rename(columns={"date": "observed_on"}).to_parquet(
+            root / "market_history.parquet", index=False
+        )
         full_features[["date", *FEATURE_NAMES]].tail(500).to_parquet(
             root / "feature_snapshots.parquet", index=False
         )
         forecast_rows: list[dict] = []
         explanation_rows: list[dict] = []
         for horizon, candidate in selected.items():
-            aligned_test = test.iloc[59:].copy() if candidate.name == "LSTM" else test.copy()
+            aligned_test = test.copy()
             predictions = candidate.predictions
             lstm_contributions: np.ndarray | None = None
             lstm_base_value = 0.0
@@ -253,7 +295,7 @@ def export_release(
                     {
                         "id": forecast_id,
                         "as_of_date": row.date,
-                        "target_date": row.date + pd.offsets.BDay(horizon),
+                        "target_date": row[f"target_date_{horizon}"],
                         "horizon": horizon,
                         "current_price": row.cotton_close,
                         "predicted_price": row.cotton_close * np.exp(predicted_return),
@@ -266,50 +308,24 @@ def export_release(
                 dmatrix = xgb.DMatrix(aligned_test[FEATURE_NAMES], feature_names=FEATURE_NAMES)
                 contributions = inference_booster(candidate.model).predict(dmatrix, pred_contribs=True)
                 for row_index, values in enumerate(contributions):
-                    top = np.argsort(np.abs(values[:-1]))[-8:]
-                    display_base = values[-1] + values[:-1].sum() - values[top].sum()
                     explanation_rows.append(
                         {
                             "forecast_id": f"{version}-{horizon}-{row_index}",
-                            "base_value": float(display_base * 100),
+                            "base_value": float(values[-1] * 100),
                             "explainer": "XGBoost pred_contribs (TreeSHAP)",
-                            "contributions": json.dumps(
-                                [
-                                    {
-                                        "feature": FEATURE_NAMES[index],
-                                        "display_name": FEATURE_NAMES[index].replace("_", " ").title(),
-                                        "feature_value": float(aligned_test.iloc[row_index][FEATURE_NAMES[index]]),
-                                        "contribution_pct": float(values[index] * 100),
-                                    }
-                                    for index in top
-                                ]
-                            ),
+                            "contributions": json.dumps(_display_contributions(values[:-1], aligned_test.iloc[row_index])),
                         }
                     )
             elif candidate.name == "LSTM" and lstm_contributions is not None:
                 for row_index, values in enumerate(lstm_contributions[:-1]):
-                    top = np.argsort(np.abs(values))[-8:]
-                    display_base = lstm_base_value + values.sum() - values[top].sum()
+                    error = float(candidate.predictions[row_index] - lstm_base_value - values.sum())
                     explanation_rows.append(
                         {
                             "forecast_id": f"{version}-{horizon}-{row_index}",
-                            "base_value": float(display_base * 100),
+                            "base_value": float(lstm_base_value * 100),
                             "explainer": "SHAP GradientExplainer (precomputed in Colab)",
-                            "contributions": json.dumps(
-                                [
-                                    {
-                                        "feature": FEATURE_NAMES[index],
-                                        "display_name": FEATURE_NAMES[index]
-                                        .replace("_", " ")
-                                        .title(),
-                                        "feature_value": float(
-                                            aligned_test.iloc[row_index][FEATURE_NAMES[index]]
-                                        ),
-                                        "contribution_pct": float(values[index] * 100),
-                                    }
-                                    for index in top
-                                ]
-                            ),
+                            "contributions": json.dumps(_display_contributions(values, aligned_test.iloc[row_index])),
+                            "approximation_error_pct": error * 100,
                         }
                     )
             else:
@@ -328,7 +344,13 @@ def export_release(
             elif candidate.name == "LSTM":
                 sequence = candidate.scaler.transform(full_features[FEATURE_NAMES].tail(60)).astype(np.float32)
                 outputs = candidate.model.predict(sequence.reshape(1, 60, len(FEATURE_NAMES)), verbose=0)[0]
-                latest_prediction = float(outputs[0 if horizon == 1 else 1])
+                output_column = 0 if horizon == 1 else 1
+                latest_prediction = float(outputs[output_column])
+                if candidate.target_scaler is not None:
+                    latest_prediction = (
+                        latest_prediction * candidate.target_scaler.scale_[output_column]
+                        + candidate.target_scaler.mean_[output_column]
+                    )
             else:
                 latest_prediction = 0.0
             live_id = f"{version}-{horizon}-live"
@@ -350,52 +372,24 @@ def export_release(
                     xgb.DMatrix(latest[FEATURE_NAMES].to_frame().T, feature_names=FEATURE_NAMES),
                     pred_contribs=True,
                 )[0]
-                top = np.argsort(np.abs(latest_contributions[:-1]))[-8:]
-                display_base = (
-                    latest_contributions[-1]
-                    + latest_contributions[:-1].sum()
-                    - latest_contributions[top].sum()
-                )
                 explanation_rows.append(
                     {
                         "forecast_id": live_id,
-                        "base_value": float(display_base * 100),
+                        "base_value": float(latest_contributions[-1] * 100),
                         "explainer": "XGBoost pred_contribs (TreeSHAP)",
-                        "contributions": json.dumps(
-                            [
-                                {
-                                    "feature": FEATURE_NAMES[index],
-                                    "display_name": FEATURE_NAMES[index].replace("_", " ").title(),
-                                    "feature_value": float(latest[FEATURE_NAMES[index]]),
-                                    "contribution_pct": float(latest_contributions[index] * 100),
-                                }
-                                for index in top
-                            ]
-                        ),
+                        "contributions": json.dumps(_display_contributions(latest_contributions[:-1], latest)),
                     }
                 )
             elif candidate.name == "LSTM" and lstm_contributions is not None:
                 values = lstm_contributions[-1]
-                top = np.argsort(np.abs(values))[-8:]
-                display_base = lstm_base_value + values.sum() - values[top].sum()
+                error = float(latest_prediction - lstm_base_value - values.sum())
                 explanation_rows.append(
                     {
                         "forecast_id": live_id,
-                        "base_value": float(display_base * 100),
+                        "base_value": float(lstm_base_value * 100),
                         "explainer": "SHAP GradientExplainer (precomputed in Colab)",
-                        "contributions": json.dumps(
-                            [
-                                {
-                                    "feature": FEATURE_NAMES[index],
-                                    "display_name": FEATURE_NAMES[index]
-                                    .replace("_", " ")
-                                    .title(),
-                                    "feature_value": float(latest[FEATURE_NAMES[index]]),
-                                    "contribution_pct": float(values[index] * 100),
-                                }
-                                for index in top
-                            ]
-                        ),
+                        "contributions": json.dumps(_display_contributions(values, latest)),
+                        "approximation_error_pct": error * 100,
                     }
                 )
             else:

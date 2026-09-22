@@ -14,16 +14,16 @@ FEATURE_NAMES = [
     "cotton_volatility_20",
     "cotton_range",
     "cotton_volume_change",
+    "cotton_volume_z20",
+    "cotton_volatility_regime_20_60",
     "dxy_ret_1",
     "dxy_ret_5",
     "dxy_ret_20",
     "wti_ret_1",
     "wti_ret_5",
     "wti_ret_20",
-    "cftc_managed_money_net",
-    "cftc_net_change_1w",
-    "cftc_net_change_4w",
-    "cftc_net_z52",
+    "cotton_dxy_corr_60",
+    "cotton_wti_corr_60",
     "month_sin",
     "month_cos",
 ]
@@ -56,4 +56,3 @@ class PipelinePaths:
     def create(self) -> None:
         for path in (self.raw, self.processed, self.mlruns, self.checkpoints, self.releases):
             path.mkdir(parents=True, exist_ok=True)
-

@@ -8,6 +8,7 @@ import {
   LatestForecast,
   MarketHistory,
   ModelMetric,
+  ModelEvaluation,
   ReplayResponse,
   SimulationAdjustments,
   SimulationResponse,
@@ -44,6 +45,10 @@ export class ApiService {
     return this.http.get<ModelMetric[]>(`${this.base}/models/metrics`);
   }
 
+  evaluation(): Observable<ModelEvaluation> {
+    return this.http.get<ModelEvaluation>(`${this.base}/models/evaluation`);
+  }
+
   replay(date: string): Observable<ReplayResponse> {
     return this.http.get<ReplayResponse>(`${this.base}/replay/${date}`);
   }
@@ -55,4 +60,3 @@ export class ApiService {
     });
   }
 }
-

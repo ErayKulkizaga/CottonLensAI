@@ -20,20 +20,20 @@ import { Forecast, ReplayResponse } from '../types';
         <div class="replay-grid">
           @for (forecast of data.forecasts; track forecast.id) {
             <article class="replay-card">
-              <div class="replay-head"><span>T+{{ forecast.horizon }}</span><span [class.correct]="forecast.direction_correct" [class.incorrect]="!forecast.direction_correct">{{ forecast.direction_correct ? 'Direction correct' : 'Direction missed' }}</span></div>
+              <div class="replay-head"><span>T+{{ forecast.horizon }}</span><span [class.correct]="forecast.direction_correct === true" [class.incorrect]="forecast.direction_correct === false">{{ forecast.direction_correct === null ? 'Pending' : (forecast.direction_correct ? 'Direction correct' : 'Direction missed') }}</span></div>
               <div class="price-journey">
                 <span><small>Known close</small><strong>{{ forecast.current_price_cents_per_lb.toFixed(2) }}¢</strong></span>
                 <i aria-hidden="true">→</i>
                 <span><small>Forecast</small><strong>{{ forecast.predicted_price_cents_per_lb.toFixed(2) }}¢</strong></span>
                 <i aria-hidden="true">→</i>
-                <span><small>Actual</small><strong>{{ forecast.actual_price_cents_per_lb?.toFixed(2) }}¢</strong></span>
+                <span><small>Actual</small><strong>{{ forecast.actual_price_cents_per_lb === null ? 'Pending' : forecast.actual_price_cents_per_lb.toFixed(2) + '¢' }}</strong></span>
               </div>
-              <div class="error-strip"><span>Absolute error</span><strong>{{ forecast.absolute_error?.toFixed(2) }} ¢/lb</strong></div>
+              <div class="error-strip"><span>Absolute error</span><strong>{{ forecast.absolute_error === null ? 'Pending' : forecast.absolute_error.toFixed(2) + ' ¢/lb' }}</strong></div>
               <footer><span>{{ forecast.model_name }}</span><span>Target {{ forecast.target_date }}</span></footer>
             </article>
           }
         </div>
-        <article class="panel replay-note"><p class="card-label">Audit note</p><h2>What was knowable on {{ data.as_of_date }}?</h2><p>The replay uses only features whose availability date was on or before the forecast origin. Weekly CFTC positioning is delayed until its Friday publication window.</p></article>
+        <article class="panel replay-note"><p class="card-label">Audit note</p><h2>What was knowable on {{ data.as_of_date }}?</h2><p>These rows were reconstructed later, not stored live at the forecast origin. New releases delay DXY/WTI one Cotton session and exclude CFTC until actual publication timestamps are verified.</p></article>
       }
     </section>
   `,
@@ -65,4 +65,3 @@ export class ReplayPage {
     });
   }
 }
-

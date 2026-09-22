@@ -4,7 +4,7 @@ import io
 import re
 import time
 import zipfile
-from datetime import date
+from datetime import UTC, datetime
 from pathlib import Path
 
 import pandas as pd
@@ -38,7 +38,7 @@ def _download_ticker_with_retry(
             if not raw.empty:
                 return raw
             failures.append("empty response (Yahoo may have rate-limited this request)")
-        except Exception as exc:
+        except Exception as exc:  # noqa: BLE001 - preserve provider failure for bounded retry
             failures.append(f"{type(exc).__name__}: {exc}")
         if attempt < YAHOO_ATTEMPTS:
             delay = YAHOO_RETRY_DELAYS_SECONDS[attempt - 1]
@@ -75,7 +75,7 @@ def _normalized_column(value: str) -> str:
 
 
 def download_cftc(start_year: int = 2010, end_year: int | None = None) -> pd.DataFrame:
-    end_year = end_year or date.today().year
+    end_year = end_year or datetime.now(UTC).year
     frames: list[pd.DataFrame] = []
     for year in range(start_year, end_year + 1):
         url = f"https://www.cftc.gov/files/dea/history/fut_disagg_txt_{year}.zip"
@@ -112,10 +112,16 @@ def cache_sources(root: Path, refresh: bool = False) -> tuple[pd.DataFrame, pd.D
     else:
         market = pd.read_parquet(market_path)
     if refresh or not cftc_path.exists():
-        cftc = download_cftc()
-        temporary = cftc_path.with_suffix(".pending.parquet")
-        cftc.to_parquet(temporary, index=False)
-        temporary.replace(cftc_path)
+        try:
+            cftc = download_cftc()
+            temporary = cftc_path.with_suffix(".pending.parquet")
+            cftc.to_parquet(temporary, index=False)
+            temporary.replace(cftc_path)
+        except (OSError, ValueError, requests.RequestException, zipfile.BadZipFile) as exc:
+            print(f"CFTC audit-only source unavailable: {exc}; model inputs exclude CFTC", flush=True)
+            cftc = pd.read_parquet(cftc_path) if cftc_path.exists() else pd.DataFrame(
+                columns=["available_date", "cftc_managed_money_net"]
+            )
     else:
         cftc = pd.read_parquet(cftc_path)
     return market, cftc
