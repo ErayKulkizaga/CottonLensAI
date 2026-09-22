@@ -26,7 +26,7 @@ services:
       DATABASE_URL: postgresql+psycopg://${POSTGRES_USER:-cottonlens}:${POSTGRES_PASSWORD:-cottonlens-local}@postgres:5432/${POSTGRES_DB:-cottonlens}
       ARTIFACT_DIR: /app/runtime/artifacts/current
       DEMO_MODE: ${DEMO_MODE:-true}
-      CORS_ORIGINS: http://localhost:8080,http://localhost:4200
+      CORS_ORIGINS: '["http://localhost:8080","http://localhost:4200"]'
     volumes:
       - ./runtime:/app/runtime
     depends_on:
