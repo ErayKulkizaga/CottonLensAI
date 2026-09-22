@@ -1,5 +1,7 @@
 import numpy as np
 import pandas as pd
+import pytest
+from cottonlens_ml.config import FEATURE_NAMES
 from cottonlens_ml.features import build_features, chronological_split
 
 
@@ -68,3 +70,49 @@ def test_split_is_chronological_and_65_15_20() -> None:
     assert len(splits["validation"]) == int(len(features) * 0.80) - len(splits["train"])
     assert splits["train"].date.max() < splits["validation"].date.min()
     assert splits["validation"].date.max() < splits["test"].date.min()
+
+
+@pytest.mark.parametrize("bad_value", [-37.63, 0.0, float("inf"), float("nan")])
+def test_invalid_external_prices_are_reported_and_only_past_filled(bad_value) -> None:
+    market = _market_fixture()
+    wti = market.index[market.series == "wti"]
+    index = wti[300]
+    bad_date = market.at[index, "date"]
+    market.at[index, "close"] = bad_value
+    with np.errstate(invalid="raise", divide="raise"):
+        result = build_features(market, _cftc_fixture())
+    assert np.isfinite(result[FEATURE_NAMES].to_numpy()).all()
+    issue = next(item for item in result.attrs["data_quality"]["invalid_market_values"] if item["field"] == "close")
+    assert issue["series"] == "wti"
+    assert issue["date"] == bad_date.isoformat()
+    assert result.set_index("date").loc[bad_date, "wti_ret_1"] == pytest.approx(0.0)
+    # Altering future prices must not affect any feature already available.
+    changed = market.copy()
+    changed.loc[(changed.series == "wti") & (changed.date > bad_date), "close"] *= 2
+    future = build_features(changed, _cftc_fixture())
+    pd.testing.assert_frame_equal(
+        result.loc[result.date <= bad_date, FEATURE_NAMES],
+        future.loc[future.date <= bad_date, FEATURE_NAMES],
+    )
+
+
+def test_invalid_cotton_is_not_filled_or_removed_from_target_calendar() -> None:
+    market = _market_fixture()
+    rows = market.index[market.series == "cotton"]
+    bad_date = market.at[rows[300], "date"]
+    preceding_date = market.at[rows[295], "date"]
+    market.at[rows[300], "close"] = -1
+    result = build_features(market, _cftc_fixture()).set_index("date")
+    assert bad_date not in result.index
+    assert pd.isna(result.loc[preceding_date, "target_return_5"])
+
+
+def test_zero_volume_and_constant_cftc_never_produce_infinite_features() -> None:
+    market = _market_fixture()
+    market.loc[market.index[market.series == "cotton"][300], "volume"] = 0
+    result = build_features(market, _cftc_fixture())
+    assert np.isfinite(result[FEATURE_NAMES].to_numpy()).all()
+    cftc = _cftc_fixture()
+    cftc["cftc_managed_money_net"] = 1.0
+    result = build_features(market, cftc)
+    assert result.empty  # Undefined z-score is missing, never fabricated as zero.

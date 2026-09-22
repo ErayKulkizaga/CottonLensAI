@@ -17,6 +17,7 @@ from sklearn.preprocessing import StandardScaler
 
 from cottonlens_ml.config import FEATURE_NAMES
 from cottonlens_ml.selection import select_model_name
+from cottonlens_ml.tracking import tracked_run
 
 SEED = 42
 
@@ -91,7 +92,7 @@ def train_xgboost(
     for horizon in (1, 5):
         best: tuple[float, xgb.XGBRegressor] | None = None
         for depth, learning_rate, subsample in grid:
-            with mlflow.start_run(run_name=f"xgboost-t{horizon}", nested=True):
+            with tracked_run(run_name=f"xgboost-t{horizon}", nested=True):
                 checkpoint = checkpoint_root / (
                     f"xgb-{fingerprint}-t{horizon}-d{depth}-lr{learning_rate}-s{subsample}.json"
                 )
@@ -190,7 +191,7 @@ def train_lstm(
     best_loss = float("inf")
     best_path = checkpoint_root / f"lstm-{fingerprint}-best.keras"
     for units, dropout in configs:
-        with mlflow.start_run(run_name="lstm-multi-horizon", nested=True):
+        with tracked_run(run_name="lstm-multi-horizon", nested=True):
             checkpoint = checkpoint_root / (
                 f"lstm-{fingerprint}-{units}-{int(dropout * 100)}.keras"
             )

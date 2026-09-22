@@ -7,11 +7,16 @@ import numpy as np
 import pandas as pd
 
 from cottonlens_ml.config import FEATURE_NAMES
+from cottonlens_ml.quality import clean_market
 
 
 def build_features(market: pd.DataFrame, cftc: pd.DataFrame) -> pd.DataFrame:
+    market, quality = clean_market(market)
     indexed = market.pivot(index="date", columns="series", values="close").sort_index()
     cotton_rows = market[market["series"] == "cotton"].set_index("date").sort_index()
+    # Fill external series on their full source timeline before taking Cotton sessions.
+    indexed[["dxy", "wti"]] = indexed[["dxy", "wti"]].ffill()
+    indexed = indexed.reindex(cotton_rows.index)
     features = pd.DataFrame(index=indexed.index)
     cotton = indexed["cotton"]
     for window in (1, 5, 10, 20):
@@ -24,7 +29,8 @@ def build_features(market: pd.DataFrame, cftc: pd.DataFrame) -> pd.DataFrame:
     features["cotton_volatility_5"] = daily_return.rolling(5).std()
     features["cotton_volatility_20"] = daily_return.rolling(20).std()
     features["cotton_range"] = (cotton_rows["high"] - cotton_rows["low"]) / cotton_rows["close"]
-    features["cotton_volume_change"] = cotton_rows["volume"].pct_change()
+    volume = cotton_rows["volume"]
+    features["cotton_volume_change"] = volume / volume.shift(1).where(volume.shift(1) > 0) - 1
     for series in ("dxy", "wti"):
         aligned = indexed[series].ffill()
         for window in (1, 5, 20):
@@ -35,7 +41,8 @@ def build_features(market: pd.DataFrame, cftc: pd.DataFrame) -> pd.DataFrame:
     features["cftc_managed_money_net"] = available.reindex(features.index)
     weekly = cftc_values.diff()
     four_week = cftc_values.diff(4)
-    z52 = (cftc_values - cftc_values.rolling(52).mean()) / cftc_values.rolling(52).std()
+    deviation = cftc_values.rolling(52).std()
+    z52 = (cftc_values - cftc_values.rolling(52).mean()) / deviation.where(deviation > 0)
     for name, values in (
         ("cftc_net_change_1w", weekly),
         ("cftc_net_change_4w", four_week),
@@ -50,11 +57,19 @@ def build_features(market: pd.DataFrame, cftc: pd.DataFrame) -> pd.DataFrame:
     features["cotton_close"] = cotton
     # Keep the newest rows even though their future targets are not known yet; they are
     # required for live inference. Modeling code drops missing targets before splitting.
-    return (
-        features.dropna(subset=[*FEATURE_NAMES, "cotton_close"])
+    infinite = np.isinf(features.to_numpy(dtype=float))
+    quality["infinite_feature_values"] = [
+        {"date": features.index[row].isoformat(), "feature": features.columns[column]}
+        for row, column in zip(*np.where(infinite), strict=True)
+    ]
+    result = (
+        features.replace([np.inf, -np.inf], np.nan).dropna(subset=[*FEATURE_NAMES, "cotton_close"])
         .reset_index()
         .rename(columns={"index": "date"})
     )
+    quality["dropped_incomplete_feature_rows"] = len(features) - len(result)
+    result.attrs["data_quality"] = quality
+    return result
 
 
 def schema_hash() -> str:

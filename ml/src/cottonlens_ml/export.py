@@ -10,16 +10,15 @@ from datetime import UTC, datetime
 from pathlib import Path
 
 import numpy as np
-import onnxruntime as ort
 import pandas as pd
 import shap
-import tensorflow as tf
-import tf2onnx
 import xgboost as xgb
 
 from cottonlens_ml.config import FEATURE_NAMES
 from cottonlens_ml.features import schema_hash
+from cottonlens_ml.onnx_export import export_lstm
 from cottonlens_ml.training import Candidate
+from cottonlens_ml.xgb_export import inference_booster
 
 
 def _git_sha() -> str:
@@ -114,44 +113,22 @@ def export_release(
         for horizon, candidate in selected.items():
             if candidate.name == "XGBoost":
                 path = model_root / f"xgboost-t{horizon}.json"
-                candidate.model.get_booster().save_model(path)
+                inference_booster(candidate.model).save_model(path)
                 model_entries.append(
                     {"horizon": horizon, "name": candidate.name, "format": "xgboost_json", "path": f"model/{path.name}"}
                 )
             elif candidate.name == "LSTM":
-                input_shape = candidate.model.input_shape
-                inputs = tf.keras.Input(shape=input_shape[1:], name="features")
-                if candidate.scaler is None:
-                    raise ValueError("LSTM export requires its train-fitted scaler")
-                mean = tf.constant(candidate.scaler.mean_, dtype=tf.float32)
-                scale = tf.constant(candidate.scaler.scale_, dtype=tf.float32)
-                normalized = (inputs - mean) / scale
-                output = candidate.model(normalized)[:, 0 if horizon == 1 else 1 : 1 if horizon == 1 else 2]
-                wrapper = tf.keras.Model(inputs, output)
                 path = model_root / f"lstm-t{horizon}.onnx"
-                tf2onnx.convert.from_keras(
-                    wrapper,
-                    input_signature=(tf.TensorSpec((None, *input_shape[1:]), tf.float32, name="features"),),
-                    output_path=str(path),
-                )
-                raw_sequence = test[FEATURE_NAMES].iloc[:60].to_numpy(dtype=np.float32)[None, ...]
-                expected = np.asarray(wrapper.predict(raw_sequence, verbose=0)).reshape(-1)
-                session = ort.InferenceSession(str(path), providers=["CPUExecutionProvider"])
-                actual = np.asarray(
-                    session.run(None, {session.get_inputs()[0].name: raw_sequence})[0]
-                ).reshape(-1)
-                maximum_error = float(np.max(np.abs(expected - actual)))
-                if maximum_error >= 1e-4:
-                    raise ValueError(
-                        f"ONNX parity failed for T+{horizon}: max abs diff={maximum_error:.8f}"
-                    )
+                ends = np.linspace(60, len(test), min(16, len(test) - 59), dtype=int)
+                raw_sequences = np.stack([test[FEATURE_NAMES].iloc[end - 60:end].to_numpy(dtype=np.float32) for end in ends])
+                parity = export_lstm(candidate.model, candidate.scaler, horizon, path, raw_sequences)
                 model_entries.append(
                     {
                         "horizon": horizon,
                         "name": candidate.name,
                         "format": "onnx",
                         "path": f"model/{path.name}",
-                        "onnx_max_abs_diff": maximum_error,
+                        **parity,
                     }
                 )
             else:
@@ -159,7 +136,7 @@ def export_release(
                     item for item in all_candidates if item.horizon == horizon and item.name == "XGBoost"
                 )
                 path = model_root / f"xgboost-t{horizon}-experimental.json"
-                tree_fallback.model.get_booster().save_model(path)
+                inference_booster(tree_fallback.model).save_model(path)
                 model_entries.append(
                     {
                         "horizon": horizon,
@@ -287,7 +264,7 @@ def export_release(
                 )
             if candidate.name == "XGBoost":
                 dmatrix = xgb.DMatrix(aligned_test[FEATURE_NAMES], feature_names=FEATURE_NAMES)
-                contributions = candidate.model.get_booster().predict(dmatrix, pred_contribs=True)
+                contributions = inference_booster(candidate.model).predict(dmatrix, pred_contribs=True)
                 for row_index, values in enumerate(contributions):
                     top = np.argsort(np.abs(values[:-1]))[-8:]
                     display_base = values[-1] + values[:-1].sum() - values[top].sum()
@@ -369,7 +346,7 @@ def export_release(
                 }
             )
             if candidate.name == "XGBoost":
-                latest_contributions = candidate.model.get_booster().predict(
+                latest_contributions = inference_booster(candidate.model).predict(
                     xgb.DMatrix(latest[FEATURE_NAMES].to_frame().T, feature_names=FEATURE_NAMES),
                     pred_contribs=True,
                 )[0]
