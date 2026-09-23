@@ -121,6 +121,7 @@ def train_xgboost(
     result: dict[int, Candidate] = {}
     for horizon in (1, 5):
         best: tuple[float, xgb.XGBRegressor, dict] | None = None
+        trials: list[dict] = []
         for depth, learning_rate, subsample in grid:
             print(f"XGBoost T+{horizon}: depth={depth}, lr={learning_rate}, subsample={subsample}", flush=True)
             with tracked_run(run_name=f"xgboost-t{horizon}", nested=True):
@@ -171,10 +172,18 @@ def train_xgboost(
                     }
                 )
                 mlflow.log_metric("validation_mae", validation_mae)
+                trials.append({
+                    "max_depth": depth,
+                    "learning_rate": learning_rate,
+                    "subsample": subsample,
+                    "best_iteration": int(model.best_iteration),
+                    "validation_mae": validation_mae,
+                    "resumed_from_drive": resumed,
+                })
                 if best is None or validation_mae < best[0]:
                     best = validation_mae, model, {
                         "max_depth": depth, "learning_rate": learning_rate,
-                        "subsample": subsample, "best_iteration": model.best_iteration,
+                        "subsample": subsample, "best_iteration": int(model.best_iteration),
                     }
         assert best is not None
         selected = best[1]
@@ -194,7 +203,7 @@ def train_xgboost(
             predictions,
             metrics,
             validation_metrics=validation_metrics,
-            parameters=best[2],
+            parameters={**best[2], "seed": SEED, "trials": trials},
         )
     return result
 
@@ -242,6 +251,7 @@ def train_lstm(
     best_loss = float("inf")
     best_history: list[dict[str, float]] | None = None
     best_parameters: dict | None = None
+    trials: list[dict] = []
     best_path = checkpoint_root / f"lstm-{fingerprint}-best.keras"
     for units, dropout in configs:
         print(f"LSTM: units={units}, dropout={dropout}", flush=True)
@@ -290,12 +300,23 @@ def train_lstm(
                 {"units": units, "dropout": dropout, "window": 60, "resumed_from_drive": resumed}
             )
             mlflow.log_metric("validation_loss", loss)
+            trials.append({
+                "units": units,
+                "dropout": dropout,
+                "validation_loss": loss,
+                "epochs_run": len(history_rows),
+                "best_epoch": min(history_rows, key=lambda row: row["val_loss"])["epoch"]
+                if history_rows else None,
+                "resumed_from_drive": resumed,
+            })
             if loss < best_loss:
                 best_loss = loss
                 model.save(best_path)
                 best_history = history_rows
                 best_parameters = {"units": units, "dropout": dropout, "batch_size": 64,
                                    "epochs_run": len(history_rows), "optimizer": "adam", "loss": "mae"}
+    if best_parameters is not None:
+        best_parameters = {**best_parameters, "seed": SEED, "trials": trials}
     selected = tf.keras.models.load_model(best_path)
     predictions = target_scaler.inverse_transform(selected.predict(test_x, verbose=0))
     validation_predictions = target_scaler.inverse_transform(selected.predict(validation_x, verbose=0))

@@ -58,7 +58,7 @@ There is **one notebook with seven code cells**:
 ```text
 Drive mount → clean repo clone/pull → isolated Python + locked dependencies
 → mandatory GPU/synthetic smoke → cached source validation → walk-forward training
-→ ZIP/checksum/backend-runtime validation
+→ ZIP/checksum/backend-runtime validation → shareable results report
 ```
 
 The Colab kernel can remain Python 3.13. `ml/colab_setup.py` installs uv 0.12.0 with `pip --target` into a separate tool directory (no global installation or `ensurepip` requirement), provisions managed **Python 3.12.11**, and runs `uv sync --locked --extra cuda` into `/content/cottonlens-py312`. It never installs training dependencies into Colab's global Python. All training subprocesses force `MPLBACKEND=Agg`, disable user-site imports, and stream stdout and stderr, including original tracebacks. A failed stage stops Run All before training/export can continue.
@@ -112,7 +112,7 @@ Each completed experiment is fingerprinted against its train/validation data and
 
 The exporter uses [native Keras ONNX export](https://keras.io/api/models/model_saving_apis/export/) rather than `tf2onnx.from_keras`. An inference-only CPU clone uses standard LSTM ops instead of cuDNN-only ops; original fitted weights, 60-step training sequences, multi-output training and model selection are unchanged. Both the wrapper and ONNX outputs are compared against the original model with the train-fitted scaler. There is no silent converter fallback: an incompatible stack stops at the smoke stage. XGBoost export keeps only the early-stopping-selected trees so the native backend and sklearn predictions agree; its training/search/selection policy is unchanged.
 
-The final cell verifies the ZIP with the existing backend importer and checks the exported live forecasts against the TensorFlow-free backend runtime. Only use the ZIP printed by that successful final cell. All shell commands are orchestrated by the notebook; no local training command is required.
+The final cell verifies the ZIP with the existing backend importer, checks the exported live forecasts against the TensorFlow-free backend runtime, and prints/downloads `cottonlens-results-vYYYYMMDD-HHMM.txt`. The same text file and complete machine-readable `.json` evidence are retained under `MyDrive/CottonLensAI/reports/`. The report includes data quality, exact package/GPU versions, all four folds and aggregate metrics, confidence intervals, Naive/Ridge/XGBoost/LSTM comparison, feature ablations, all validation trial settings/results, the selected LSTM epoch curve, historical-audit outcomes, selection-gate reasons, export formats and ZIP digest. Send **only this text report** in chat for model review; keep the ZIP and `.sha256` in Drive until the final release is approved for local integration. A result that misses the predefined gates is reported honestly rather than hidden or endlessly re-tuned against the already viewed audit period. All shell commands are orchestrated by the notebook; no local training command is required.
 
 The resulting bundle is named similar to:
 

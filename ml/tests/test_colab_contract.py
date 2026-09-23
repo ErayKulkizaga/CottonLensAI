@@ -17,6 +17,10 @@ def test_notebook_is_single_valid_python_orchestration():
     assert [cell["id"] for cell in code] == ["drive", "repo", "environment", "smoke", "data", "train", "artifact"]
     for cell in code:
         ast.parse("".join(cell["source"]))
+    final_cell = "".join(code[-1]["source"])
+    assert "cottonlens_ml.validate_release" in final_cell
+    assert final_cell.index("cottonlens_ml.validate_release") < final_cell.index("cottonlens_ml.report")
+    assert "files.download(str(REPORT))" in final_cell
 
 
 def test_headless_backend_overrides_inherited_colab_value_before_import():

@@ -176,6 +176,10 @@ def run_walkforward(modeling: pd.DataFrame, features: pd.DataFrame, checkpoint_r
             "test_end": str(fold.test.date.max().date()),
             "sample_count": len(fold.test),
             "metrics": fold_metrics,
+            "experiments": {
+                f"{candidate.name}-T+{candidate.horizon}": candidate.parameters
+                for candidate in [*ridge.values(), *trees.values(), *sequences.values()]
+            },
         })
         for horizon in (1, 5):
             ablation.append({
