@@ -180,7 +180,8 @@ schema-v4 uncertainty/API/replay migration. These remain implementation work.
 
 Colab GPU smoke, actual ablation/search, reproduction and release parity are still
 required. No model improvement or complete-plan delivery is claimed from local tests.
-# Verified availability bounds
+
+## Verified availability bounds
 
 The reviewed-source compiler also accepts an evidenced upper bound for a specific
 data version. These packages use `availability_schema=verified-availability-v1`
@@ -197,4 +198,3 @@ certification of historical truth. Schedules, embargoes, arbitrary lags and a
 present-day download cannot establish historical availability. Freshness is
 measured from the evidenced availability clock. Equal-time origins cannot use a
 new release. This contract does not admit any existing unverified archive.
-
