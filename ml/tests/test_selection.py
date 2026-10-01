@@ -89,13 +89,13 @@ def test_walkforward_selects_lstm_before_historical_audit() -> None:
     assert audit["fold_wins_vs_naive"]["LSTM"] == 3
 
 
-def test_historical_audit_can_only_reject_locked_model() -> None:
+def test_seen_historical_audit_cannot_reject_or_replace_locked_model() -> None:
     selected, audit = select_walkforward_name(
         _walkforward_report(), 1,
         {"Naive": metrics(10, 0), "XGBoost": metrics(7, 70), "LSTM": metrics(11, 56)},
     )
     assert audit["locked_candidate"] == "LSTM"
-    assert selected == "Naive"  # Strong XGBoost audit result must not cause a search.
+    assert selected == "LSTM"  # Seen history has no selection or veto authority.
 
 
 def test_period_consistency_rejects_two_of_four_wins() -> None:
@@ -105,3 +105,38 @@ def test_period_consistency_rejects_two_of_four_wins() -> None:
     )
     assert selected == "Naive"
     assert audit["fold_wins_vs_naive"]["XGBoost"] == 2
+
+
+def test_lstm_cannot_bypass_extra_gate_when_xgboost_direction_fails():
+    report = _walkforward_report()
+    report["aggregate"]["XGBoost-T+1"] = metrics(9.0, 52.0)
+    report["aggregate"]["LSTM-T+1"] = metrics(9.3, 54.0)
+    selected, audit = select_walkforward_name(report, 1, {})
+    assert selected == "Naive"
+    assert not audit["lstm_beats_xgboost"]
+
+
+def test_legacy_selector_also_enforces_extra_lstm_gate():
+    selected, _ = select_model_name(
+        metrics(10, 0), metrics(10, 0), metrics(9, 52), metrics(9, 52),
+        metrics(9.3, 54), metrics(9.3, 54), horizon=1,
+    )
+    assert selected == "Naive"
+
+
+def test_seen_audit_values_never_change_selection():
+    report = _walkforward_report()
+    decisions = [select_walkforward_name(report, 1, audit)[0] for audit in (
+        {}, {"Naive": metrics(1, 0), "LSTM": metrics(100, 0)},
+        {"Naive": metrics(100, 0), "XGBoost": metrics(.01, 100)},
+    )]
+    assert decisions == ["LSTM"] * 3
+
+
+def test_horizons_are_selected_independently():
+    report = _walkforward_report()
+    for row in [report["aggregate"], *(fold["metrics"] for fold in report["folds"])]:
+        for model in ("Naive", "XGBoost", "LSTM"):
+            row[f"{model}-T+5"] = metrics(10 if model == "Naive" else 9, 54)
+    assert select_walkforward_name(report, 1, {})[0] == "LSTM"
+    assert select_walkforward_name(report, 5, {})[0] == "Naive"

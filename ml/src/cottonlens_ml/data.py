@@ -102,8 +102,19 @@ def download_cftc(start_year: int = 2010, end_year: int | None = None) -> pd.Dat
 
 
 def cache_sources(root: Path, refresh: bool = False) -> tuple[pd.DataFrame, pd.DataFrame]:
+    from cottonlens_ml.snapshots import write_snapshot
+
+    root.mkdir(parents=True, exist_ok=True)
     market_path = root / "market.parquet"
     cftc_path = root / "cftc.parquet"
+    # Preserve the previous cache before a refresh can replace it. An incomplete
+    # old source set is still evidence and is labelled accordingly.
+    if refresh and (market_path.exists() or cftc_path.exists()):
+        prior = {
+            name: pd.read_parquet(path)
+            for name, path in (("market", market_path), ("cftc", cftc_path)) if path.exists()
+        }
+        write_snapshot(root / "snapshots", prior, {"kind": "pre_refresh_source_cache"})
     if refresh or not market_path.exists():
         market = download_market_data()
         temporary = market_path.with_suffix(".pending.parquet")
@@ -124,4 +135,5 @@ def cache_sources(root: Path, refresh: bool = False) -> tuple[pd.DataFrame, pd.D
             )
     else:
         cftc = pd.read_parquet(cftc_path)
+    write_snapshot(root / "snapshots", {"market": market, "cftc": cftc}, {"kind": "source_cache"})
     return market, cftc

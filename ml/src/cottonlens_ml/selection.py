@@ -52,7 +52,7 @@ def select_model_name(
         and lstm_test["directional_accuracy"] >= xgboost_test["directional_accuracy"]
     )
 
-    if lstm_qualified and (not tree_qualified or lstm_beats_tree):
+    if lstm_qualified and lstm_beats_tree:
         selected = "LSTM"
     elif tree_qualified:
         selected = "XGBoost"
@@ -86,6 +86,8 @@ def select_walkforward_name(
     horizon: int,
     historical_audit: Mapping[str, Metrics],
 ) -> tuple[str, dict]:
+    if len(report["folds"]) != 4:
+        raise ValueError("Selection requires exactly four frozen evaluation folds")
     aggregate = report["aggregate"]
     naive = aggregate[f"Naive-T+{horizon}"]
     tree = aggregate[f"XGBoost-T+{horizon}"]
@@ -106,22 +108,18 @@ def select_walkforward_name(
         mae_improvement_pct(tree, sequence) >= LSTM_VS_XGBOOST_MAE_IMPROVEMENT_PCT
         and sequence["directional_accuracy"] >= tree["directional_accuracy"]
     )
-    if sequence_ok and (not tree_ok or lstm_beats_tree):
+    if sequence_ok and lstm_beats_tree:
         locked = "LSTM"
     elif tree_ok:
         locked = "XGBoost"
     else:
         locked = "Naive"
     selected = locked
-    if locked != "Naive" and not quality_gate(
-        historical_audit["Naive"], historical_audit[locked], horizon
-    )["passes"]:
-        selected = "Naive"
     return selected, {
         "locked_from": "four_pre_audit_walkforward_folds",
         "locked_candidate": locked,
         "selected": selected,
-        "audit_role": "historical_rejection_only_not_independent_test",
+        "audit_role": "seen_historical_audit_descriptive_only_no_selection_or_veto",
         "fold_wins_vs_naive": fold_wins,
         "xgboost_walkforward_gate": tree_gate,
         "lstm_walkforward_gate": sequence_gate,

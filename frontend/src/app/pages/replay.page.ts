@@ -29,7 +29,7 @@ import { Forecast, ReplayResponse } from '../types';
                 <span><small>Actual</small><strong>{{ forecast.actual_price_cents_per_lb === null ? 'Pending' : forecast.actual_price_cents_per_lb.toFixed(2) + '¢' }}</strong></span>
               </div>
               <div class="error-strip"><span>Absolute error</span><strong>{{ forecast.absolute_error === null ? 'Pending' : forecast.absolute_error.toFixed(2) + ' ¢/lb' }}</strong></div>
-              <footer><span>{{ forecast.model_name }}</span><span>Target {{ forecast.target_date }}</span></footer>
+              <footer><span>{{ forecast.model_name }}</span><span>Target {{ forecast.target_date ?? 'observation date unknown' }}</span></footer>
             </article>
           }
         </div>

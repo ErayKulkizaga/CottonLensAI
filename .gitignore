@@ -1,4 +1,15 @@
 .env
+.env.*
+!.env.example
+!.env.*.example
+*.sqlite
+*.sqlite3
+*.db-wal
+*.db-shm
+*.pem
+*.key
+credentials.json
+service-account*.json
 .venv/
 __pycache__/
 .pytest_cache/

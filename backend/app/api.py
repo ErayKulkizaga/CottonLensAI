@@ -1,11 +1,13 @@
 import math
 import uuid
 from datetime import date
+from pathlib import Path
 
 from fastapi import APIRouter, Depends, HTTPException, Query, status
 from sqlalchemy import and_, desc, func, select, text
 from sqlalchemy.orm import Session, joinedload
 
+from app.artifacts import verify_directory
 from app.config import get_settings
 from app.database import get_db
 from app.models import (
@@ -40,9 +42,12 @@ runtime_error: str | None = None
 def load_runtime() -> None:
     global runtime_error
     try:
+        verify_directory(Path(get_settings().artifact_dir))
         runtime.load()
         runtime_error = None
     except Exception as exc:  # readiness reports the precise artifact issue
+        runtime.manifest = {}
+        runtime.models = {}
         runtime_error = str(exc)
 
 
@@ -226,8 +231,11 @@ def model_evaluation(db: Session = Depends(get_db)) -> ModelEvaluationResponse:
         walkforward_report=report,
         selection_audit=imported.manifest.get("selection_audit"),
         note=(
+            f"{report.get('fold_count', len(report.get('folds', [])))} pre-2024 nested chronological research folds; "
+            "reused historical evidence, not an independent holdout. 2024+ is excluded from selection."
+            if report and imported.manifest.get('artifact_schema_version') == 3 else
             "Four pre-2024-06-18 rolling-origin folds; 2024 onward is a previously "
-            "observed historical audit, not an independent test."
+            "observed descriptive historical audit; it never selects or rejects a candidate."
             if report else "Legacy artifact: walk-forward evidence is unavailable."
         ),
     )
@@ -273,17 +281,18 @@ def create_simulation(payload: SimulationRequest, db: Session = Depends(get_db))
     for forecast in forecasts:
         experimental = False
         if runtime.ready:
-            if runtime.model_format(forecast.horizon) == "onnx":
+            window = runtime.required_window(forecast.horizon)
+            if window > 1:
                 snapshots = list(
                     db.scalars(
                         select(FeatureSnapshot)
                         .where(FeatureSnapshot.as_of_date <= payload.as_of_date)
                         .order_by(desc(FeatureSnapshot.as_of_date))
-                        .limit(60)
+                        .limit(window)
                     ).all()
                 )
-                if len(snapshots) != 60:
-                    raise HTTPException(status_code=409, detail="60 feature snapshots are required for LSTM inference")
+                if len(snapshots) != window:
+                    raise HTTPException(status_code=409, detail=f"{window} feature snapshots are required for inference")
                 features: dict[str, float] | list[dict[str, float]] = [
                     dict(item.values) for item in reversed(snapshots)
                 ]
@@ -338,12 +347,20 @@ def create_simulation(payload: SimulationRequest, db: Session = Depends(get_db))
 
 
 def _forecast_response(row: Forecast) -> ForecastResponse:
+    identity = row.model_version.metrics.get(
+        "deployment_identity" if row.origin_type == "live" else "evaluation_identity", {}
+    )
     predicted_direction = _direction(row.predicted_price - row.current_price)
     actual_direction = _direction(row.actual_price - row.current_price) if row.actual_price is not None else None
     return ForecastResponse(
         id=row.id,
         as_of_date=row.as_of_date,
         target_date=row.target_date,
+        target_calendar_policy=("next_valid_cotton_observation; future_session_date_unknown"
+                                if identity else "legacy_calendar_unverified"),
+        model_role=identity.get("model_role", "legacy"),
+        model_identity=identity.get("model_identity"),
+        fit_cutoff=identity.get("fit_cutoff"),
         horizon=row.horizon,
         current_price_cents_per_lb=row.current_price,
         predicted_price_cents_per_lb=row.predicted_price,

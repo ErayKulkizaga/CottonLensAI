@@ -69,7 +69,7 @@ class Forecast(Base):
 
     id: Mapped[str] = mapped_column(String(36), primary_key=True, default=lambda: str(uuid.uuid4()))
     as_of_date: Mapped[date] = mapped_column(Date, index=True)
-    target_date: Mapped[date] = mapped_column(Date)
+    target_date: Mapped[date | None] = mapped_column(Date, nullable=True)
     horizon: Mapped[int] = mapped_column(Integer, index=True)
     current_price: Mapped[float] = mapped_column(Float)
     predicted_price: Mapped[float] = mapped_column(Float)

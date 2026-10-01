@@ -1,0 +1,98 @@
+{
+  "schema": 1,
+  "purpose": "Prior evidence and lessons, not reusable checkpoints for a different protocol",
+  "experiments": [
+    {
+      "name": "corrected-v2-day1-r2",
+      "release": "v20260924-185501-519b9c1a",
+      "source_id": "fed7eac3d25a92aeced8470fad6e109ba12f13dbd4f952c46815bcbea99dbb65",
+      "decision": "Naive both horizons",
+      "lessons": [
+        "Seen audit is descriptive only",
+        "Missing report history does not mean zero LSTM training",
+        "Complete-feature cohorts exclude zero-volume-related missing rows"
+      ]
+    },
+    {
+      "name": "tabular-sprint-v1",
+      "release": "v20260925-074708-5d7bdf26",
+      "source_id": "9c4b67d198b90149b51b70e7e1068f3c06abd1449ca7d57841b35ba3a62f3a09",
+      "zip_sha256": "71b4185e9a505d9ffb9c381ca86f4d49ed142767b53b35cc29351129a3919292",
+      "decision": "Naive both horizons; reproduction max difference zero",
+      "benchmark": {
+        "1": {
+          "gain_pct": 0.06009985365889037,
+          "direction_pct": 46.62698412698413
+        },
+        "5": {
+          "gain_pct": -2.0881825339758464,
+          "direction_pct": 47.817460317460316
+        }
+      },
+      "lessons": [
+        "XGBoost CPU despite T4 runtime",
+        "Fixed regularization and narrow recipes do not exhaust model possibilities",
+        "Development T5 gain 0.743 percent did not transfer",
+        "21-observation refit failed predeclared comparison; retain this result, not a universal ban",
+        "Excessive regularization is an unverified hypothesis"
+      ]
+    },
+    {
+      "name": "research-v1",
+      "source_id": "01c5dd80f1f0a5406969d9c4a7dbc8a9ea2e6f3b61b01b7f9623238a688813c2",
+      "decision": "Stopped in sequence diagnostic before market search",
+      "failure": "Keras CPU-only RangeDataset inherited explicit GPU scope with soft placement disabled",
+      "completed_controls": 4,
+      "next_experiment": "research-v2-tf-placement",
+      "repeat_reason": "bugfix_verification",
+      "lessons": [
+        "Scope explicit GPU placement to model construction; leave Keras data adapter and saving unscoped",
+        "Assert GPU trainable-variable placement and output device separately; do not equate CPU input orchestration with CPU model training"
+      ]
+    },
+    {
+      "name": "research-v2-tf-placement",
+      "source_id": "73a92265cbdeb2ecae26f589193086fbfac1367673d8985ae02a97a12741b6a1",
+      "split_id": "b746560fcdb72496282d4898e7bbf121db01475c78a9f3483bb51e0a8fe6bc0b",
+      "evidence_sha256": "c158d3f09b903b195f0602f8cc7733e4b8ce98900cddd88bb60b9a9995c2d1e2",
+      "evidence_file": "output/reports/research-v2-A-saved-results.json",
+      "decision": "No price model passed; preserve completed round A without rerunning",
+      "lessons": [
+        "Past inner gains did not establish outer MAE superiority",
+        "Direction must be compared with past majority, not only 50 percent",
+        "Increase information content before reopening broad base-data search"
+      ]
+    },
+    {
+      "name": "research-market-v1",
+      "source_id": "9e071564c70150ac1f25e6e506daac768ae58ad556ddca38c93c4b16cf73e0c4",
+      "evidence_file": "output/reports/research-market-v1-ablation-review-20261001.json",
+      "report_record_id": "9b2dadda57ec990de57e225f8317453cda66392671db387ab296ebd876eeb7e1",
+      "ablation_record_id": "0e9e0955561aba105d057e848f11176e747fc239656e4b668fcf347f89bbd5f9",
+      "decision": "Do not repeat completed ablation or open broader unchanged-information search. Review first eligible new source before enlarged search.",
+      "best_t5": {
+        "group": "ablate-expanded_availability",
+        "family": "xgboost",
+        "horizon": 5,
+        "mae_gain_pct": 0.76305199645057,
+        "direction_pct": 57.53968253968254,
+        "gain_ci_95_pct": [
+          -1.4156340814988138,
+          2.1838100590906837
+        ],
+        "fold_wins": 5,
+        "gate_passes": false,
+        "inner_score": 0.9839087241864231
+      },
+      "admitted_groups": [],
+      "lessons": [
+        "All four T1 feature packages failed MAE and direction gates.",
+        "T5 expanded-availability XGBoost gain 0.763 percent, direction 57.540 percent, five of eight fold wins; paired gain interval crosses zero.",
+        "Inner gain against base is 0.380 percent with five fold wins, below the predeclared 0.5 percent admission threshold.",
+        "Synthetic learnability passed; small market predictions do not alone prove a training defect.",
+        "Completed 20360 subfits cover 128 outer units; never repeat this experiment merely for a larger GPU.",
+        "Print aggregate metrics only; preserve origin records inside immutable report files."
+      ]
+    }
+  ]
+}
