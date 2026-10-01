@@ -22,6 +22,22 @@ def load_package(folder):
     if manifest.get('rows_file') not in manifest['files']:
         raise ValueError('Publication rows must be checksummed')
     rows = pd.read_parquet(folder / manifest['rows_file'])
+    if 'available_at' in rows:
+        from cottonlens_ml.sources.public import reviewed_upper_bound
+        if manifest.get('availability_schema') != 'verified-availability-v1':
+            raise ValueError('Explicit reviewed availability schema required')
+        for row in rows.to_dict('records'):
+            if row.get('availability_basis') == 'verified_upper_bound':
+                if not pd.isna(row.get('published_at')):
+                    raise ValueError('Upper bounds must not claim exact publication')
+                receipt = {**row, 'published_at': None, 'available_by': row['available_at']}
+                if row.get('source_file') not in manifest['files']:
+                    raise ValueError('Availability source file must be checksummed')
+                if manifest['files'][row['source_file']] != row['source_sha256']:
+                    raise ValueError('Availability source hash mismatch')
+                reviewed_upper_bound(receipt, manifest['files'], folder)
+    elif manifest.get('availability_schema'):
+        raise ValueError('Availability schema requires an availability clock')
     for column in ('publication_evidence_file', 'vintage_evidence_file'):
         if column not in rows or not rows[column].isin(manifest['files']).all():
             raise ValueError('Per-release publication and vintage evidence files required')
@@ -30,9 +46,9 @@ def load_package(folder):
     features = manifest['features']
     if not features or any(not f.startswith(manifest['kind'] + '_') for f in features):
         raise ValueError('External features must use their source namespace')
-    if manifest['kind'] not in ('cftc', 'wasde', 'contract_curve'):
-        if manifest.get('usage', {}).get('research_allowed') is not True or manifest['usage'].get('cost_tl') != 0:
-            raise ValueError('Verified zero-cost research usage required')
+    if (manifest['kind'] not in ('cftc', 'wasde', 'contract_curve')
+            and (manifest.get('usage', {}).get('research_allowed') is not True or manifest['usage'].get('cost_tl') != 0)):
+        raise ValueError('Verified zero-cost research usage required')
     return manifest, rows, features
 
 
@@ -42,7 +58,8 @@ def attach_package(history, manifest, rows, features):
         raise ValueError('Duplicate source feature names')
     merged = attach_releases(history[['date']].copy(), rows, features)
     result = history.copy()
-    age = (merged.decision_at - merged.published_at).dt.total_seconds() / 86400
+    clock = 'available_at' if 'available_at' in merged else 'published_at'
+    age = (merged.decision_at - merged[clock]).dt.total_seconds() / 86400
     maximum = manifest.get('max_age_days')
     if maximum is not None:
         if not isinstance(maximum, int) or not 1 <= maximum <= 366:
@@ -77,7 +94,8 @@ def main():
     args.output.mkdir(parents=True)
     merged.to_parquet(args.output / 'history.parquet', index=False)
     freeze_record(args.output / 'availability.json', {'source': manifest, 'features': features,
-        'first_available': str(rows.published_at.min()), 'coverage_rows': int(merged[features].notna().all(axis=1).sum()),
+        'first_available': str(rows['available_at' if 'available_at' in rows else 'published_at'].min()),
+        'coverage_rows': int(merged[features].notna().all(axis=1).sum()),
         'history_sha256': digest(args.output / 'history.parquet'),
         'policy': 'Use a new frozen research namespace; shorter coverage cannot compete against full-cohort scores'})
 

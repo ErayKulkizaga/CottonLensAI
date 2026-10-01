@@ -138,6 +138,36 @@ def verify_observation(path, *, cutoff=None):
     return body
 
 
+def reviewed_upper_bound(release, files, root):
+    """Validate a human-reviewed, specific-version availability receipt.
+
+    This checks the review contract, not the truth of a publisher's assertion.
+    Schedules, embargoes and present-day retrieval dates are not evidence types.
+    """
+    if release.get('published_at') is not None or release.get('timestamp_verified') is not False:
+        raise ValueError('An availability upper bound is not an exact publication timestamp')
+    if release.get('availability_verified') is not True:
+        raise ValueError('Reviewed availability evidence required')
+    name = release['publication_evidence_file']
+    if name not in files:
+        raise ValueError('Availability receipt must be checksummed')
+    evidence = json.loads((Path(root) / name).read_text(encoding='utf-8'))
+    stamp = utc_timestamp(release['available_by'])
+    if (evidence.get('schema') != 'source-availability-upper-bound-v1'
+            or evidence.get('basis') not in ('official_release_record', 'contemporaneous_archive_capture')
+            or evidence.get('version_verified') is not True
+            or evidence.get('timing_verified') is not True
+            or evidence.get('vintage_id') != release['vintage_id']
+            or evidence.get('source_sha256') != files[release['source_file']]
+            or utc_timestamp(evidence['available_by']) != stamp):
+        raise ValueError('Specific-version availability evidence mismatch')
+    members = evidence.get('evidence_files')
+    if (not isinstance(members, list) or not members
+            or any(not isinstance(member, str) or member not in files or member == name for member in members)):
+        raise ValueError('Checksummed underlying availability evidence required')
+    return stamp
+
+
 def compile_review(review_file, output):
     """Review rows are complete feature snapshots at an evidenced publication time.
 
@@ -145,6 +175,8 @@ def compile_review(review_file, output):
     supplies values, observed_through, published_at, vintage_id, source_url,
     source_file, publication_evidence_file, vintage_evidence_file, timestamp_verified.
     The named evidence files must be included in the SHA256 file map.
+    Bounded availability additionally supplies available_by, availability_verified
+    and availability_basis=verified_upper_bound, with a reviewed version receipt.
     """
     review_file, output = Path(review_file), Path(output)
     review = json.loads(review_file.read_text(encoding='utf-8'))
@@ -164,9 +196,13 @@ def compile_review(review_file, output):
     rows = []
     for release in review['releases']:
         validate_url(kind, release['source_url'])
-        if release.get('timestamp_verified') is not True or not release.get('vintage_id'):
+        if release.get('availability_basis', 'exact_publication') not in ('exact_publication', 'verified_upper_bound'):
+            raise ValueError('Unsupported availability evidence basis')
+        bounded = release.get('availability_basis') == 'verified_upper_bound'
+        if not release.get('vintage_id') or (not bounded and release.get('timestamp_verified') is not True):
             raise ValueError('Actual publication and vintage review required')
-        stamp = utc_timestamp(release['published_at'])
+        stamp = (reviewed_upper_bound(release, review['files'], root) if bounded
+                 else utc_timestamp(release['published_at']))
         observed = utc_timestamp(release['observed_through'])
         if observed > stamp:
             raise ValueError('Observed period extends beyond publication')
@@ -175,15 +211,22 @@ def compile_review(review_file, output):
         for name in ('source_file', 'publication_evidence_file', 'vintage_evidence_file'):
             if release[name] not in review['files']:
                 raise ValueError('Every release needs checksummed publication/vintage evidence')
-        rows.append({**release['values'], 'published_at': stamp,
+        rows.append({**release['values'], 'published_at': pd.NaT if bounded else stamp,
+                     'available_at': stamp, 'availability_verified': True,
+                     'availability_basis': 'verified_upper_bound' if bounded else 'exact_publication',
                      'observed_through': observed, 'vintage_id': release['vintage_id'],
                      'source_url': release['source_url'], 'source_sha256': review['files'][release['source_file']],
-                     'timestamp_verified': True,
+                     'timestamp_verified': not bounded,
+                     'source_file': release['source_file'],
                      'publication_evidence_file': release['publication_evidence_file'],
                      'vintage_evidence_file': release['vintage_evidence_file']})
     frame = pd.DataFrame(rows)
-    if frame.empty or frame.published_at.duplicated().any():
+    if frame.empty or frame.available_at.duplicated().any():
         raise ValueError('Nonempty unique publication snapshots required')
+    has_bounds = frame.availability_basis.eq('verified_upper_bound').any()
+    if not has_bounds:
+        # Preserve the legacy package schema and join clock for exact reviews.
+        frame = frame.drop(columns=['available_at', 'availability_verified', 'availability_basis', 'source_file'])
     if output.exists():
         raise ValueError('Publication packages are immutable; choose a new output')
     output.parent.mkdir(parents=True, exist_ok=True)
@@ -196,11 +239,13 @@ def compile_review(review_file, output):
     rows_name = 'released-features.parquet'
     if rows_name in review['files'] or 'publication-manifest.json' in review['files']:
         raise ValueError('Reserved package member')
-    frame.sort_values('published_at').to_parquet(staging / rows_name, index=False)
+    frame.sort_values('available_at' if has_bounds else 'published_at').to_parquet(staging / rows_name, index=False)
     files = {**review['files'], rows_name: digest(staging / rows_name)}
     manifest = {'kind': kind, 'features': features, 'files': files, 'rows_file': rows_name,
                 'vintage_policy': 'as_published', 'usage': usage,
                 'review_sha256': digest(review_file), 'max_age_days': review['max_age_days']}
+    if has_bounds:
+        manifest['availability_schema'] = 'verified-availability-v1'
     if not isinstance(manifest['max_age_days'], int) or not 1 <= manifest['max_age_days'] <= 366:
         raise ValueError('Explicit bounded source freshness policy required')
     (staging / 'publication-manifest.json').write_text(json.dumps(manifest, indent=2), encoding='utf-8')

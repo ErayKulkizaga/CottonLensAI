@@ -173,15 +173,34 @@ def inputs(history, origins, processor, window=1):
 def attach_releases(history, records, features):
     """Point-in-time integration requires explicit publication and vintage evidence."""
     required = {'published_at', 'vintage_id', 'source_url', 'source_sha256', 'timestamp_verified', *features}
-    if not required.issubset(records.columns) or not records.timestamp_verified.eq(True).all():
+    if not required.issubset(records.columns):
+        raise ValueError('Actual verified publication/vintage evidence required')
+    clock = 'published_at'
+    if 'available_at' in records:
+        availability = {'availability_verified', 'availability_basis'}
+        if (not availability.issubset(records.columns)
+                or not records.availability_verified.eq(True).all()
+                or not records.availability_basis.isin(['exact_publication', 'verified_upper_bound']).all()):
+            raise ValueError('Verified availability clock required')
+        exact = records.availability_basis.eq('exact_publication')
+        if (not records.loc[exact, 'timestamp_verified'].eq(True).all()
+                or not records.loc[~exact, 'timestamp_verified'].eq(False).all()
+                or not records.loc[~exact, 'published_at'].isna().all()):
+            raise ValueError('Upper bounds must not claim exact publication')
+        if not (pd.to_datetime(records.loc[exact, 'published_at'], utc=True)
+                == pd.to_datetime(records.loc[exact, 'available_at'], utc=True)).all():
+            raise ValueError('Exact publication and availability clocks disagree')
+        clock = 'available_at'
+    elif not records.timestamp_verified.eq(True).all():
         raise ValueError('Actual verified publication/vintage evidence required')
     if records[['vintage_id', 'source_url', 'source_sha256']].isna().any().any():
         raise ValueError('Missing source evidence')
     release = records.copy()
     release['published_at'] = pd.to_datetime(release.published_at, utc=True)
-    if release.published_at.isna().any() or release.published_at.duplicated().any():
+    release[clock] = pd.to_datetime(release[clock], utc=True)
+    if release[clock].isna().any() or release[clock].duplicated().any():
         raise ValueError('Unique publication timestamps required')
     left = history.copy()
     left['decision_at'] = pd.to_datetime(left.date, utc=True) + pd.Timedelta(days=1)
-    return pd.merge_asof(left.sort_values('decision_at'), release.sort_values('published_at'),
-                         left_on='decision_at', right_on='published_at', direction='backward', allow_exact_matches=False)
+    return pd.merge_asof(left.sort_values('decision_at'), release.sort_values(clock),
+                         left_on='decision_at', right_on=clock, direction='backward', allow_exact_matches=False)

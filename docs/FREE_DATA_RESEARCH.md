@@ -180,3 +180,21 @@ schema-v4 uncertainty/API/replay migration. These remain implementation work.
 
 Colab GPU smoke, actual ablation/search, reproduction and release parity are still
 required. No model improvement or complete-plan delivery is claimed from local tests.
+# Verified availability bounds
+
+The reviewed-source compiler also accepts an evidenced upper bound for a specific
+data version. These packages use `availability_schema=verified-availability-v1`
+and join on `available_at`; unknown `published_at` stays null and
+`timestamp_verified` stays false. Legacy exact-publication packages retain their
+existing schema and join clock.
+
+A bounded release must name a checksummed `source-availability-upper-bound-v1`
+receipt. The receipt binds `available_by`, `source_sha256`, `vintage_id`, reviewed
+timing/version flags, and checksummed underlying `evidence_files`. Accepted bases
+are `official_release_record` and `contemporaneous_archive_capture`. A reviewer
+must verify those assertions against the evidence; validation is not automatic
+certification of historical truth. Schedules, embargoes, arbitrary lags and a
+present-day download cannot establish historical availability. Freshness is
+measured from the evidenced availability clock. Equal-time origins cannot use a
+new release. This contract does not admit any existing unverified archive.
+
