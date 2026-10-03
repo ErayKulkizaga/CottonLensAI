@@ -93,7 +93,7 @@ def test_interruption_cache_complete_comparison_and_corrupt_marker(packet, monke
         return {'recipe': spec, 'weight': 0., 'inner_score': 1., 'iterations': 1}
 
     monkeypatch.setattr(path_pilot, 'inner_price', inner)
-    monkeypatch.setattr(path_pilot, 'predict_chunks', lambda exp, spec, origins, role: np.zeros(len(origins)))
+    monkeypatch.setattr(path_pilot, 'predict_chunks', lambda exp, spec, origins, role, iterations: np.zeros(len(origins)))
     assert path_pilot.run(experiment, 60)['status'] == 'planned_pause'
     assert len(computed) == 1
     pause[0] = False

@@ -146,7 +146,7 @@ def test_shared_runner_interruption_resume_baselines_and_complete_report(experim
         return {'recipe':spec,'weight':0.,'inner_score':1.,'iterations':1}
 
     monkeypatch.setattr(path_pilot,'inner_price',inner)
-    monkeypatch.setattr(path_pilot,'predict_chunks',lambda experiment,spec,origins,role: np.zeros(len(origins)))
+    monkeypatch.setattr(path_pilot,'predict_chunks',lambda experiment,spec,origins,role,iterations: np.zeros(len(origins)))
     assert path_pilot.run(exp,60,**transfer.options())['status']=='planned_pause'
     pause[0]=False
     assert path_pilot.run(exp,60,**transfer.options())['saved_outputs']==32

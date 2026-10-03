@@ -121,6 +121,8 @@ def inner_price(experiment, spec, fold):
         count = 1
         if spec['family'] == 'xgboost':
             past = experiment.train_rows(test.date.min(), spec)
+            if 'asset' in past:
+                past = past.loc[past.asset.eq('cotton')]
             validation = past.tail(63)
             train = experiment.train_rows(validation.date.min(), spec)
             record = experiment.fit(spec, train, validation, validation, f'early-{fold["year"]}-{i}')

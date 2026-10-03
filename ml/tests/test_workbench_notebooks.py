@@ -166,7 +166,7 @@ def test_return_path_uses_same_workbench_and_explicit_training_gate():
     source = '\n'.join(cells)
     assert 'return-path-pilot-v1-inputs-20261003' in source
     assert "'path-outputs' if PROFILE == 'return-path-pilot-v1'" in source
-    assert "total=32 if PROFILE in ('return-path-pilot-v1','agri-transfer-pilot-v1')" in source
+    assert "total=32 if PROFILE in ('return-path-pilot-v1','agri-transfer-pilot-v1','agri-nonlinear-pilot-v1')" in source
 
 
 def test_agricultural_transfer_uses_frozen_packet_and_existing_workbench():
@@ -181,5 +181,22 @@ def test_agricultural_transfer_uses_frozen_packet_and_existing_workbench():
         assert scope['RUN_TRAINING'] is False
     source = '\n'.join(cells)
     assert "'data/agri-transfer-pilot-v1-inputs-20261003'" in source
-    assert "reference = local if PROFILE == 'agri-transfer-pilot-v1'" in source
+    assert "reference = local if PROFILE in ('agri-transfer-pilot-v1','agri-nonlinear-pilot-v1')" in source
     assert "'transfer-outputs' if PROFILE == 'agri-transfer-pilot-v1'" in source
+
+
+def test_nonlinear_transfer_uses_gpu_only_for_prepare_and_training():
+    cells = code('cottonlens_research_workbench.ipynb')
+    configuration = cells[0].replace("PROFILE = 'full-year-v1'", "PROFILE = 'agri-nonlinear-pilot-v1'",1)
+    for workflow in ('status','prepare','pilot_plan','pilot','compare'):
+        scope = {}
+        exec(compile(configuration.replace("WORKFLOW = 'status'",f'WORKFLOW = {workflow!r}',1),  # noqa: S102 - trusted local configuration
+            '<nonlinear-workflow>','exec'),scope)
+        assert scope['EXPERIMENT']=='research-agri-nonlinear-pilot-v1'
+        assert scope['SOURCE_BUNDLE']=='source-agri-nonlinear-pilot-v1-20261003.zip'
+        assert scope['RUN_TRAINING'] is False
+    source = '\n'.join(cells)
+    assert "GPU_FIT = PROFILE == 'agri-nonlinear-pilot-v1' and WORKFLOW in ('prepare','pilot')" in source
+    assert 'setup(research=True) if GPU_FIT else setup_cpu()' in source
+    assert "'data/agri-nonlinear-pilot-v1-inputs-20261003'" in source
+    assert "'nonlinear-outputs' if PROFILE == 'agri-nonlinear-pilot-v1'" in source

@@ -91,3 +91,24 @@ The existing Experiment/Ledger and two workbenches are used. New metadata catalo
 - All ML tests passed locally in the isolated CPU environment: 472 passed, one skipped. Changed Python files pass Ruff. Prior GitHub backend, frontend, ML data contracts and Compose checks passed; the latest commit's CI status must be checked separately. This does not verify GPU training or Linux Colab execution. A prior broad Ruff scan reported six import-order findings in unchanged test files.
 
 Canonical decisions: [MASTER_PLAN_20261001.md](MASTER_PLAN_20261001.md). D21 remains 22 October 2026 at 20:06:59 UTC; adding a new experiment does not restart that date. Local data, model files, credentials and private handoff material are excluded from Git.
+
+
+## Fixed nonlinear shared-training pilot: implementation ready, results pending
+
+Completed-combination inventory reviewed722 signed decisions/8068 candidate evaluations
+and48 sampled markers; it did not reverify all old checkpoint payloads. The pooled
+agricultural comparison previously used Ridge only in this scoped inventory.
+One distinct fixed XGBoost comparison is now implemented as `agri-nonlinear-pilot-v1`,
+experiment `research-agri-nonlinear-pilot-v1`: Cotton-only versus shared Cotton/corn/soybean,
+same six causal features/2006 origins per horizon, Cotton-fit transforms and matched total
+sample weights. CUDA/hist only, no extra parameter/feature search;772 maximum fits/32 outputs.
+Cotton-only past validation controls early stopping; yearly median tree counts propagate
+through21-observation refits. Completed fits and metadata remain on the existing ledger/mirror.
+
+Local ML verification:477 passed/one skipped; changed Python files pass Ruff.
+GPU estimators were mocked, not trained locally. Actual Linux/CUDA execution and any new
+market result remain pending. Tier A blocks release regardless of numeric gate results.
+The existing Drive Research Workbench is delivered with this profile, status/RUN_TRAINING=False;
+choose pilot deliberately in a T4/L4 session, initially MAX_MINUTES=15, and resume unchanged.
+The old frozen bundles/experiments and DB are retained. D21 is unchanged.
+Completion: `output/reports/agri-nonlinear-implementation-20261003/completion.md`.

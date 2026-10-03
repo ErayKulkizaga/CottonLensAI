@@ -608,3 +608,33 @@ Yeni eğitim0;288 iç fit receipt'i32 yıllık seçim skor/ağırlığını1e-12
 Pooled dış tahmin standart sapması kontrolün%59/%58'i, iki model tahmin korelasyonu0,835/0,896. Daha düşük gürültüyle uyumludur; mekanizma/ek bilgi kanıtı değildir. Dış Spearman IC0,0252/0,0339 ve ham yön%50,15/%51,89; eşikler geçilmez. T+5 ham OOS log-return R² negatif. Shrinkage kaldırılmaz. Seçilmiş iç skor (eşit ağırlıklı blok göreli MAE) ile ham aggregate fiyat-MAE farklı ölçümlerdir; karıştırılmaz.
 
 Sabit ortak-lineer hipotez gate için yetersiz olarak kapanır; küçük eşlenmiş kontrol katkısı korunur. Alpha/seri payı/cadence veya aynı panel araması büyütülmez. Sonraki sınırlı iş tamamlanan model/objective/feature kombinasyonlarını recipe üreticisinin seçeneklerinden ayıran sicil envanteri ve tek farklı hipotezin ön kaydıdır. Absolute-error eski recipe üreticisinde zaten vardır; gerçekten çalıştırılmış receipt'ler doğrulanmadan yeni denenmemiş fikir diye sunulmaz. Kanıt `output/reports/agri-transfer-diagnosis-20261003/completion.md`;12 dosya Drive klasöründe hash-readback ile doğrulandı. ML kaynak kimliği,676 fit/32 çıktı, eski DB ve D21 değişmedi.
+
+
+## Sabit nonlinear ortak-eğitim pilotu — 3 Ekim 2026
+
+Tamamlanan kombinasyon envanteri: 722 imzalı karar, 8068 aday değerlendirmesi ve 48
+örneklenmiş completed marker. Sayılar bağımsız deney/benzersiz fit değildir; bütün eski
+payload'lar yeniden doğrulanmadı. Eski XGBoost/CatBoost squared/absolute loss kayıtları
+vardır. Yeni hipotez loss değişimi değil, ortak tarımsal eğitimin sabit küçük XGBoost
+yapısıyla eşlenmiş Cotton kontrolüne katkısıdır. Envanter ve ön kayıt:
+`output/reports/completed-combination-inventory-20261003/v2/`.
+
+`agri-nonlinear-pilot-v1`: iki kol, aynı altı nedensel own-series feature ve her horizon'da
+aynı 2006 origin; Cotton-only preprocessing/target scaling; ortak kolda 50/25/25 seri
+ağırlığı ve Cotton kontrolüyle aynı toplam ağırlık. Depth2, squared-error, seed42,
+en fazla600 ağaç; sadece geçmiş63 Cotton validation gözleminde fiyat-MAE early stopping50.
+Üç geçmiş iç bloktaki ağaç sayısının medyanı yıl başlamadan kilitlenir;21 gözlem refit'lerinde
+değişmez. Yıllık shrinkage yalnız geçmiş iç sonuçlardan seçilir. Yeni ayar/feature/seed/history/
+cadence/seri-pay araması açılmaz. Üst sınır772 fit (96 early stopping +676 refit),32 yıllık çıktı.
+
+Tek mevcut Experiment/Ledger ve Research Workbench kullanılır. Yeni GPU source bundle:
+`source-agri-nonlinear-pilot-v1-20261003.zip`; Colab-only CUDA/hist, CPU fallback hata.
+Status/compare ayrı CPU ortamında; Run All varsayılanı status/RUN_TRAINING=False.
+İlk15 dakikalık oturum süre ölçümü içindir; aynı kimlikle resume tamamlanmış işleri kullanır.
+477 ML testi geçti/1 atlandı; GPU yolu mock ile test edildi. Gerçek CUDA/Colab çalışması,
+yeni fiyat sonucu, reproduction ve deployment parity henüz doğrulanmadı.
+
+Tier A release engeli, fiyat gate'leri,2024+ seçimsiz audit ve D21 tarihi değişmez.
+Negatif sonuç aynı alanı büyütmez; sıradaki ayrı hipotez karar raporuyla açılır.
+Eski DB,676 lineer fit, kaynak paketleri ve diğer tamamlanmış deneyler korunur.
+Teslim raporu: `output/reports/agri-nonlinear-implementation-20261003/completion.md`.

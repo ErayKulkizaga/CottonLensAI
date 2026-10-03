@@ -24,17 +24,19 @@ GROUPS = ('cotton_only', 'cotton_corn_soybean')
 POLICY = 'cotton_transform_fixed_asset_weights_v1'
 
 
-def validate_design(registration):
+def validate_design(registration, *, profile=PROFILE, model=None, fit_budget=None):
     d = registration['design']
-    if (registration['design_id'] != content_id(d) or d['profile'] != PROFILE
+    model = model or {'family':'ridge','alpha':10,'target':'scaled_log','seed':42}
+    fit_budget = fit_budget or {'total_maximum':676,'annual_outputs':32}
+    if (registration['design_id'] != content_id(d) or d['profile'] != profile
             or d['series'] != list(SERIES) or d['features'] != FEATURES
             or d['arms'] != list(GROUPS) or d['feature_lag_own_observations'] != 1
-            or d['model'] != {'family':'ridge','alpha':10,'target':'scaled_log','seed':42}
+            or d['model'] != model
             or d['cadence'] != 21 or d['purge_cotton_observations'] != 5
             or d['split']['purge_observations'] != 5 or d['split']['refit_cadence'] != 21
             or [f['year'] for f in d['split']['folds']] != list(range(2016,2024))
             or d['shrinkage_weights'] != [0,.25,.5,.75,1]
-            or d['fit_budget'] != {'total_maximum':676,'annual_outputs':32}
+            or d['fit_budget'] != fit_budget
             or d['price_gate_unchanged'] != {'gain_pct':5,'direction_pct':{'1':53,'5':55},'year_wins':6}
             or d['audit_2024_used'] is not False or d['automatic_release'] is not False):
         raise ValueError('Frozen transfer design changed')
@@ -51,7 +53,10 @@ def recipe(design, group, h):
 
 def training_state(history, train, test, spec):
     """Cotton-only transforms; fixed total weights keep Ridge penalty comparable."""
-    if spec != recipe({}, spec.get('arm'), spec.get('horizon')):
+    recipe_fn = recipe
+    if spec.get('training_policy') == 'cotton_transform_fixed_asset_weights_xgb_v1':
+        from cottonlens_ml.research.nonlinear_transfer import recipe as recipe_fn
+    if spec != recipe_fn({}, spec.get('arm'), spec.get('horizon')):
         raise ValueError('Transfer fit recipe changed')
     assets = set(train.asset)
     expected = {'cotton'} if spec['arm']==GROUPS[0] else set(SERIES)
@@ -80,12 +85,14 @@ def training_state(history, train, test, spec):
         totals[asset] = float(weights[mask].sum())
     if not np.isclose(weights.sum(),len(cotton)):
         raise ValueError('Transfer objective normalization changed')
-    return processor, target, weights, {'training_policy':POLICY,'asset_loss_weight_totals':totals,
+    return processor, target, weights, {'training_policy':spec['training_policy'],'asset_loss_weight_totals':totals,
         'cotton_transform_rows':len(cotton),'asset_rows':train.asset.value_counts().to_dict(),
         'source_tier':'A_exploration_only','release_allowed':False}
 
 
 class TransferExperiment(Experiment):
+    recipe_fn = staticmethod(recipe)
+
     def __init__(self, root, repo=None):
         super().__init__(root,repo=repo)
         if digest(self.root/'panel.parquet') != self.ready['panel_sha256']:
@@ -93,7 +100,7 @@ class TransferExperiment(Experiment):
         self.panel = pd.read_parquet(self.root/'panel.parquet')
 
     def train_rows(self, cutoff, spec):
-        if spec != recipe(self.identity['design'],spec.get('arm'),spec.get('horizon')):
+        if spec != self.recipe_fn(self.identity['design'],spec.get('arm'),spec.get('horizon')):
             raise ValueError('Transfer training recipe changed')
         cotton = super().train_rows(cutoff,spec)
         if spec['arm']==GROUPS[0]:
@@ -113,9 +120,9 @@ class TransferExperiment(Experiment):
         return pd.concat(parts,ignore_index=True)
 
 
-def prepare(repo, folder, packet):
+def prepare(repo, folder, packet, *, validate_fn=validate_design):
     registration = read_record(packet/'preregistered.json')
-    design = validate_design(registration)
+    design = validate_fn(registration)
     reference = packet/'reference'
     old, original = verify_history(reference)
     hashes = design['data_hashes']
@@ -145,13 +152,15 @@ def prepare(repo, folder, packet):
         rows_at(history,fold['origins'])
     budget = 4*(sum(len(chunks(history,b['origins'])) for f in design['split']['folds'] for b in f['inner'])
         +sum(len(chunks(history,f['origins'])) for f in design['split']['folds']))
-    if budget>676:
+    if design['model']['family']=='xgboost':
+        budget += 32*3
+    if budget>design['fit_budget']['total_maximum']:
         raise ValueError('Frozen transfer work budget exceeded')
-    identity = {'profile':PROFILE,'source_id':research_source_identity(repo)['source_id'],
+    identity = {'profile':design['profile'],'source_id':research_source_identity(repo)['source_id'],
         'design_id':registration['design_id'],'design':design,'split':design['split'],
         'python':sys.version.split()[0],'versions':{p:importlib.metadata.version(p) for p in
             ('numpy','pandas','scipy','scikit-learn','xgboost')},'lock_sha256':digest(repo/'ml/uv.lock'),
-        'execution':{'device':'cpu','threads':2},'exact_fit_budget':budget}
+        'execution':{'device':design['model'].get('device','cpu'),'threads':2},'exact_fit_budget':budget}
     with writer(folder):
         if (folder/'ready.json').exists():
             ready = read_record(folder/'ready.json')

@@ -108,7 +108,8 @@ def selected_decision(path, spec):
     decision = read_record(path)
     chosen = decision['selected']
     if (decision['selection_used_outer'] is not False or chosen['recipe'] != spec
-            or chosen['weight'] not in SHRINKAGE or chosen['iterations'] != 1
+            or chosen['weight'] not in SHRINKAGE or type(chosen['iterations']) is not int
+            or not 1 <= chosen['iterations'] <= spec.get('max_iterations',1)
             or not np.isfinite(chosen['inner_score'])):
         raise ValueError('Frozen path selection changed; no silent retraining')
     return chosen
@@ -164,7 +165,7 @@ def run(experiment, max_minutes, *, group_names=GROUPS, namespace='path', recipe
                         freeze_record(path, {'selected': inner_price(experiment, spec, fold), 'selection_used_outer': False})
                     chosen = selected_decision(path, spec)
                     test = rows_at(experiment.history, fold['origins']).copy()
-                    raw = predict_chunks(experiment, spec, fold['origins'], f'path-outer-{group}-{fold["year"]}')
+                    raw = predict_chunks(experiment, spec, fold['origins'], f'path-outer-{group}-{fold["year"]}',chosen['iterations'])
                     test['raw_predicted_return'], test['predicted_return'] = raw, chosen['weight'] * raw
                     test['median_return'], test['past_majority_sign'] = np.nan, np.nan
                     for block in chunks(experiment.history, fold['origins']):

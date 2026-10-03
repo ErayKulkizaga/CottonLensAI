@@ -208,8 +208,9 @@ def fit_predict(history, train, validation, test, spec, workspace, *, iterations
             else:
                 config = {**params, 'objective': spec['loss'], 'device': device_requested, 'tree_method': 'hist',
                           'seed': seed, 'nthread': 2, 'disable_default_eval_metric': 1}
-                weights = train.cotton_close.to_numpy() / train.cotton_close.mean() if spec.get('price_weighted') else None
-                dtrain = xgb.DMatrix(x, label=y, weight=weights)
+                xgb_weights = weights if transfer else (
+                    train.cotton_close.to_numpy() / train.cotton_close.mean() if spec.get('price_weighted') else None)
+                dtrain = xgb.DMatrix(x, label=y, weight=xgb_weights)
                 evals = [(dtrain, 'train')]
                 prices_by_id = {id(dtrain): train.cotton_close.to_numpy()}
                 if validation is not None:
@@ -221,7 +222,14 @@ def fit_predict(history, train, validation, test, spec, workspace, *, iterations
                     prices = prices_by_id[id(data)]
                     a = target.inverse(data.get_label(), prices)
                     p = target.inverse(pred, prices)
-                    return 'price_mae', evaluate(prices, a, p)['mae']
+                    measured = train.asset.eq('cotton').to_numpy() if transfer and data is dtrain else np.ones(len(prices),dtype=bool)
+                    value = evaluate(prices[measured], a[measured], p[measured])['mae']
+                    if transfer:
+                        loss_weights = xgb_weights if data is dtrain else np.ones(len(prices))
+                        target_loss = float(np.average(np.square(data.get_label()-pred),weights=loss_weights))
+                        # Last metric drives stopping: Cotton price-MAE, never pooled price levels.
+                        return [('weighted_target_mse',target_loss),('price_mae',value)]
+                    return 'price_mae', value
                 model = xgb.train(config, dtrain, num_boost_round=limit, evals=evals, custom_metric=price_eval,
                                   early_stopping_rounds=spec.get('patience', 150) if iterations is None else None,
                                   evals_result=curves, verbose_eval=False)
@@ -238,7 +246,8 @@ def fit_predict(history, train, validation, test, spec, workspace, *, iterations
             dump = model.get_dump(dump_format='json')
             details = {'effective_device': device, 'trees': len(dump),
                        'splits': sum(tree.count('"split":') for tree in dump),
-                       'used_features': model.get_score(), 'iterations_run': len(next(iter(curves['train'].values())))}
+                       'used_features': model.get_score(), 'iterations_run': len(next(iter(curves['train'].values()))),
+                       **transfer_details}
         elif family == 'catboost':
             from catboost import CatBoostClassifier, CatBoostRegressor, Pool
             config = {**params, 'iterations': limit, 'random_seed': seed, 'task_type': 'GPU', 'devices': '0',
