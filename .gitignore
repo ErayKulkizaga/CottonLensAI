@@ -1,4 +1,15 @@
 .env
+.env.*
+!.env.example
+!.env.*.example
+*.sqlite
+*.sqlite3
+*.db-wal
+*.db-shm
+*.pem
+*.key
+credentials.json
+service-account*.json
 .venv/
 __pycache__/
 .pytest_cache/
@@ -24,3 +35,6 @@ ml/data/
 *.zip
 *.parquet
 !.github/
+
+# Local review handoff contains machine-specific/private context.
+docs/CLAUDE_PROJECT_HANDOFF_20261001.md

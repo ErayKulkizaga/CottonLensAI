@@ -15,11 +15,11 @@ CFTC rows are retained for data auditing but excluded from model inputs until ac
 
 ## Evaluation and selection
 
-The next Colab release selects candidates on four 126-session pre-18-June-2024 rolling-origin folds. Five-session target purges protect each inner-validation and fold boundary. Scalers are fit only on train. Budgets are eight XGBoost and four LSTM configurations per horizon/fold with fixed seed and early stopping; Ridge is a fixed-parameter reference.
+The next Colab release selects candidates on four 126-session pre-18-June-2024 rolling-origin folds. Five-session target purges protect each inner-validation and fold boundary. Protocol v2 selects settings with the most recent 126 valid inner-validation origins, then refits with all labels available before the evaluation period. Scalers are fit separately for tuning and refit, never with evaluation data. XGBoost early stopping uses price MAE. Budgets are eight XGBoost and four LSTM configurations per horizon/fold with fixed seed and early stopping; Ridge is a fixed-parameter reference. These folds have already informed revisions and count as development evidence.
 
-For each horizon, a learned model must improve aggregate walk-forward MAE by at least 5% over Naive, reach directional accuracy of 53% for T+1 or 55% for T+5, and beat Naive in at least three of four folds. LSTM is selected over qualifying XGBoost only when aggregate MAE is at least 5% lower and directional accuracy is no worse. The previously seen 2024 onward period is a historical rejection audit only; it cannot be used to search for a different winner. If no learned model passes, the primary forecast is Naive and XGBoost sensitivity is labelled experimental.
+For each horizon, a learned model must improve aggregate walk-forward MAE by at least 5% over Naive, reach directional accuracy of 53% for T+1 or 55% for T+5, and beat Naive in at least three of four folds. LSTM is selected over XGBoost only when aggregate MAE is at least 5% lower and directional accuracy is no worse, even if XGBoost fails its own gate. The previously seen 2024 onward period is descriptive only: it cannot select, reject or tune a candidate. If no learned model passes, the primary forecast is Naive and XGBoost sensitivity is labelled experimental.
 
-Every new Colab release contains a generated model card with exact selected models, artifact version, fold evidence, training curves, and historical-audit metrics. The currently installed older artifact predates this protocol and must be labelled legacy until replaced.
+Every new Colab release contains a generated model card with exact selected models, artifact version, fold evidence, training curves, and historical-audit metrics. The first completed v1 study selected Naive for both horizons; v2 market performance has not yet been measured. The currently installed older artifact predates this protocol and must be labelled legacy until replaced.
 
 ## Explainability
 

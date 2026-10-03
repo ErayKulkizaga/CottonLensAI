@@ -3,13 +3,31 @@
 Explainable Cotton No. 2 forecasting and market-sensitivity dashboard. CottonLens separates expensive model development from the lightweight interview demo:
 
 - Google Colab performs ingestion, feature generation, Ridge/XGBoost/LSTM training, MLflow tracking, rolling-origin evaluation, explanations, and artifact export.
-- The local stack only serves Angular, FastAPI, PostgreSQL, and CPU inference from a verified artifact.
+- The application stack serves Angular, FastAPI, PostgreSQL, and CPU inference from a verified artifact. An explicitly authorized, isolated CPU research environment can run the small full-year pilot with one job and at most two threads; it is separate from backend dependencies and CI.
 
 The repository includes an explicitly labelled development fixture so the complete product flow can be reviewed before a real Colab artifact exists. Fixture values are never presented as trained results.
 
 The artifact currently installed at `runtime/artifacts/current` was created with the **previous** evaluation protocol. The new walk-forward pipeline and Model Lab evidence become measured results only after a fresh Colab Run All and validated artifact import. This repository change alone does not improve an already-trained model or establish a new accuracy score.
 
 ## Architecture
+
+Free-data research continuation: [workflow and current limitations](docs/FREE_DATA_RESEARCH.md),
+[free USDA keys and Colab Secrets setup](docs/USDA_COLAB_SETUP.md),
+and [new research notebook](ml/notebooks/cottonlens_free_research_colab.ipynb).
+Existing research-v2 checkpoints remain a separate reference.
+
+The current research contract is [MASTER_PLAN_20261001.md](docs/MASTER_PLAN_20261001.md).
+Measured outcomes, limits and the current matched Ridge comparison are summarized
+in [research status](docs/RESEARCH_STATUS_20261003.md). Completed full-year and
+recency experiments did not pass the fixed price gates; Naive remains primary.
+Use the existing [research workbench](ml/notebooks/cottonlens_research_workbench.ipynb)
+and [data workbench](ml/notebooks/cottonlens_data_workbench.ipynb); Run All defaults
+to status/readiness and does not train. The local CPU launcher is
+`python ml/full_year_cpu.py setup`, followed by `status` or `compare`.
+An actual pilot/reproduction requires an explicit stage, a matching frozen source
+and environment, and a bounded session. Old experiments and releases are immutable.
+Live archive scripts are in `ml/scripts/`; a successful task registration and local
+credentials are required before claiming unattended collection is active.
 
 ```text
 Google Colab + GPU                    Local Docker
@@ -49,15 +67,15 @@ docker compose down
 
 ## Train in Google Colab
 
-1. Push or otherwise make this repository available to Colab.
-2. Open `ml/notebooks/cottonlens_colab.ipynb` in a GPU runtime.
-3. Select **Runtime → Run all**, approve Drive access, and leave the session running. The public repository URL is configured; make sure GitHub contains the notebook's matching code revision.
+1. From this working tree, run `python ml/source_bundle.py --output output/cottonlens-day1-source.zip`. Keep the generated `.zip` and `.zip.sha256` together; the bundle includes uncommitted source changes and records the Git HEAD separately.
+2. Place both files in `MyDrive/CottonLensAI/sources/`, and open `ml/notebooks/cottonlens_colab.ipynb` from this same working tree in a T4 GPU Colab runtime.
+3. Run cells through **preflight**, inspect the frozen `ready.json` and 504-origin `cohort.json`, then set `RUN_TRAINING = True` in the training cell only when beginning the Colab experiment. Finally run artifact validation. No repository clone, pull, commit or push is part of the notebook.
 
-There is **one notebook with seven code cells**:
+There is **one notebook with eight code cells**:
 
 ```text
-Drive mount → clean repo clone/pull → isolated Python + locked dependencies
-→ mandatory GPU/synthetic smoke → cached source validation → walk-forward training
+Drive mount → checksum-verified local source bundle → isolated Python + locked dependencies
+→ mandatory GPU/synthetic smoke → cached source validation → frozen preflight → walk-forward training
 → ZIP/checksum/backend-runtime validation → shareable results report
 ```
 
@@ -102,17 +120,19 @@ Only one Colab writer may use the same Drive root. If a killed runtime leaves `t
 
 Invalid price observations are recorded with series/date/field/value in `data/processed/data_quality.json`. Zero, non-finite and non-positive prices are excluded from logarithms, not hidden with warning suppression. Cotton gaps are not filled or removed before target alignment; external features forward-fill only from the past and DXY/WTI are delayed one Cotton session. Current UTC-day candles are excluded because they may be incomplete. Genuine negative WTI prices are retained in raw data but excluded from log-price calculations. The report records each source's first date and the first modeling date, so the actual reason for a 2016 start can be inspected rather than guessed.
 
-The **next Colab run** uses four 126-Cotton-session rolling-origin folds ending before 18 June 2024. Every fold has an earlier training/inner-validation period, a five-session purge at both boundaries, and train-only transformations. Naive persistence and a fixed Ridge reference appear beside the learned models. The selected learned model must improve aggregate price MAE by at least 5% versus Naive, reach directional accuracy of 53% (T+1) or 55% (T+5), and beat Naive in at least 3/4 periods. LSTM displaces XGBoost only with another 5% MAE improvement and no directional-accuracy loss. The 2024 onward interval is a **previously observed historical audit**, not an untouched independent test: it may reject a locked candidate to Naive, but never trigger a search for another winner. No future accuracy is promised.
+The **next Colab run** uses four frozen 126-Cotton-observation rolling-origin folds ending before 18 June 2024. Their exact 504 origins and data/code identities are frozen before model fitting. Every fold has an earlier training/inner-validation period, a five-observation target purge at both boundaries, and train-only transformations. Naive persistence and a fixed Ridge reference appear beside the learned models. A learned model must improve aggregate price MAE by at least 5% versus Naive, reach directional accuracy of 53% (T+1) or 55% (T+5), and beat Naive in at least 3/4 periods. LSTM displaces XGBoost only with another 5% MAE improvement and no directional-accuracy loss. The 2024 onward interval is a **previously observed historical audit**: it has no selection, veto or tuning role. No future accuracy is promised.
 
-The Colab experiment budget is eight XGBoost hyperparameter configurations per horizon, four LSTM unit/dropout configurations, and fixed-configuration feature ablations. XGBoost has at most 1,200 trees with 50-round early stopping; LSTM has at most 100 epochs with 10-epoch early stopping. The 60-step LSTM carries prior feature context into each evaluation block, so its forecasts are measured on the exact same 126 dates as Naive/XGBoost; previous blocks' target labels are never used for fitting. Both input and output scalers are fit on training rows only. The inverse output transform and input scaler are embedded in each ONNX graph.
+The Colab experiment budget is eight XGBoost hyperparameter configurations per horizon, four LSTM unit/dropout configurations, and fixed-configuration feature ablations. XGBoost has at most 1,200 trees with 50-round early stopping; LSTM has at most 100 epochs with 10-epoch early stopping. Protocol v2 uses a fixed 126-observation inner validation period, selects settings there, and **refits on the available pre-evaluation training + validation rows** using the locked tree/epoch count. Test labels never enter refitting or early stopping. XGBoost early stopping now measures the same price MAE as candidate selection. Scalers are fitted separately on the tuning training rows and the final refit rows. LSTM evaluation windows retain past feature context even when an intermediate target is missing, preserving the same evaluation dates as Naive/XGBoost. The 60-step input represents retained feature observations; the data report explicitly counts gaps caused by incomplete rows. The inverse output transform and input scaler are embedded in each ONNX graph.
+
+The first completed v1 study did not pass the declared model gates. [The experiment log](docs/MODEL_EXPERIMENTS.md) records its scores, the confirmed stale-fit/metric issues, and the v2 hypotheses. These previously reviewed folds are development evidence; repeated evaluation does not turn them into an independent test. The acceptance thresholds are unchanged. Reports now include per-fold/audit sample counts, consistent zero-return direction handling, prediction spread, train/validation drift and a paired 20-observation block-bootstrap interval for MAE gain versus Naive. An interval crossing zero does not establish a reliable gain.
 
 Because the annual CFTC archive does not prove each report's actual release timestamp, CFTC values remain in the quality report but are **excluded from trained model inputs**. The new artifact disables the CFTC sensitivity control. No CFTC improvement is claimed. The feature-ablation report compares Cotton, Cotton+macro, and Cotton+macro+historical regime/volume/correlation features. Twenty-session block bootstrap MAE intervals, balanced accuracy, majority-direction reference, fold sample counts, hyperparameters, and LSTM loss/validation-loss curves are included in the artifact and Model Lab.
 
-Each completed experiment is fingerprinted against its train/validation data and checkpointed directly in Drive. Normal Run All reuses its last successful Drive cache, avoiding unnecessary Yahoo requests. An intentional refresh runs `python -m cottonlens_ml.prepare --drive-root /content/drive/MyDrive/CottonLensAI --refresh` inside the isolated Colab environment; refreshed source data receives a new fingerprint. ONNX exports are rejected when TensorFlow/ONNX parity reaches or exceeds `1e-4` maximum absolute error. LSTM SHAP values are precomputed in Colab; their approximation residual is reported instead of rescaling contributions to force an exact match. Neither TensorFlow nor SHAP is needed locally.
+Each completed experiment is fingerprinted against its training source, protocol and train/validation data, then checkpointed directly in Drive. An interrupted LSTM trial without completed history restarts; a best-so-far checkpoint alone does not mark it complete. Normal Run All reuses its last successful Drive data cache, avoiding unnecessary Yahoo requests. An intentional refresh runs `python -m cottonlens_ml.prepare --drive-root /content/drive/MyDrive/CottonLensAI --refresh` inside the isolated Colab environment; refreshed source data receives a new fingerprint. ONNX exports are rejected when TensorFlow/ONNX parity reaches or exceeds `1e-4` maximum absolute error. LSTM SHAP values are precomputed in Colab; their approximation residual is reported instead of rescaling contributions to force an exact match. Neither TensorFlow nor SHAP is needed locally.
 
-The exporter uses [native Keras ONNX export](https://keras.io/api/models/model_saving_apis/export/) rather than `tf2onnx.from_keras`. An inference-only CPU clone uses standard LSTM ops instead of cuDNN-only ops; original fitted weights, 60-step training sequences, multi-output training and model selection are unchanged. Both the wrapper and ONNX outputs are compared against the original model with the train-fitted scaler. There is no silent converter fallback: an incompatible stack stops at the smoke stage. XGBoost export keeps only the early-stopping-selected trees so the native backend and sklearn predictions agree; its training/search/selection policy is unchanged.
+The exporter uses [native Keras ONNX export](https://keras.io/api/models/model_saving_apis/export/) rather than `tf2onnx.from_keras`. An inference-only CPU clone uses standard LSTM ops instead of cuDNN-only ops; the refit weights, 60-step two-output architecture and model selection are preserved. Both the wrapper and ONNX outputs are compared against the refit model with the refit-fitted scaler. There is no silent converter fallback: an incompatible stack stops at the smoke stage. XGBoost export contains the locked tree count fitted on the available pre-evaluation history so native backend and sklearn predictions agree.
 
-The final cell verifies the ZIP with the existing backend importer, checks the exported live forecasts against the TensorFlow-free backend runtime, and prints/downloads `cottonlens-results-vYYYYMMDD-HHMM.txt`. The same text file and complete machine-readable `.json` evidence are retained under `MyDrive/CottonLensAI/reports/`. The report includes data quality, exact package/GPU versions, all four folds and aggregate metrics, confidence intervals, Naive/Ridge/XGBoost/LSTM comparison, feature ablations, all validation trial settings/results, the selected LSTM epoch curve, historical-audit outcomes, selection-gate reasons, export formats and ZIP digest. Send **only this text report** in chat for model review; keep the ZIP and `.sha256` in Drive until the final release is approved for local integration. A result that misses the predefined gates is reported honestly rather than hidden or endlessly re-tuned against the already viewed audit period. All shell commands are orchestrated by the notebook; no local training command is required.
+The final cell validates the ZIP with the backend verifier and TensorFlow-free runtime, writes a checksum-bound receipt, then publishes `latest.txt` and downloads a text report. Keep the text and machine-readable JSON report, ZIP and SHA-256, validation receipt, source bundle, snapshot manifests, frozen cohort/readiness/selection, checkpoints and tracking evidence in Drive. The report includes data coverage, package/GPU versions, all four folds and paired metrics, candidate comparison, fixed validation trials and the descriptive audit. Feature ablation training is disabled on Day 1; its natural coverage is reported separately. A result that misses predefined gates is reported without changing them.
 
 The resulting bundle is named similar to:
 

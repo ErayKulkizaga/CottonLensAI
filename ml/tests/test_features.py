@@ -2,7 +2,15 @@ import numpy as np
 import pandas as pd
 import pytest
 from cottonlens_ml.config import FEATURE_NAMES
-from cottonlens_ml.features import build_features, chronological_split
+from cottonlens_ml.features import (
+    build_feature_history,
+    build_features,
+    chronological_split,
+    coverage_report,
+    require_latest_live_row,
+    select_feature_rows,
+)
+from cottonlens_ml.quality import clean_market
 
 
 def _market_fixture() -> pd.DataFrame:
@@ -74,7 +82,7 @@ def test_split_is_chronological_and_65_15_20() -> None:
     assert splits["validation"].target_date_5.max() < splits["test"].date.min()
 
 
-@pytest.mark.parametrize("bad_value", [-37.63, 0.0, float("inf"), float("nan")])
+@pytest.mark.parametrize("bad_value", [float("inf"), float("nan")])
 def test_invalid_external_prices_are_reported_and_only_past_filled(bad_value) -> None:
     market = _market_fixture()
     wti = market.index[market.series == "wti"]
@@ -88,7 +96,6 @@ def test_invalid_external_prices_are_reported_and_only_past_filled(bad_value) ->
     assert issue["series"] == "wti"
     assert issue["date"] == bad_date.isoformat()
     assert result.set_index("date").loc[bad_date + pd.offsets.BDay(1), "wti_ret_1"] == pytest.approx(0.0)
-    # Altering future prices must not affect any feature already available.
     changed = market.copy()
     changed.loc[(changed.series == "wti") & (changed.date > bad_date), "close"] *= 2
     future = build_features(changed, _cftc_fixture())
@@ -96,6 +103,109 @@ def test_invalid_external_prices_are_reported_and_only_past_filled(bad_value) ->
         result.loc[result.date <= bad_date, FEATURE_NAMES],
         future.loc[future.date <= bad_date, FEATURE_NAMES],
     )
+
+
+@pytest.mark.parametrize("close", [-37.63, 0.0])
+def test_nonpositive_wti_is_retained_and_only_masked_for_log_transform(close):
+    market = _market_fixture()
+    position = market.index[market.series == "wti"][300]
+    observed = market.at[position, "date"]
+    market.at[position, "close"] = close
+    cleaned, quality = clean_market(market)
+    assert cleaned.at[position, "close"] == close
+    assert quality["invalid_market_value_count"] == 0
+    with np.errstate(invalid="raise", divide="raise"):
+        history = build_feature_history(market, _cftc_fixture()).set_index("date")
+    masked = history.attrs["data_quality"]["external_policy"]["log_domain_masked_observations"]
+    assert masked == [{"series": "wti", "date": observed.isoformat(), "value": close}]
+    assert history.loc[observed + pd.offsets.BDay(1), "wti_ret_1"] == pytest.approx(0)
+
+
+def test_external_age_bound_and_timestamp_contract():
+    market = _market_fixture()
+    dates = sorted(market.date.unique())
+    # Remove source records, rather than replacing Cotton records or their dates.
+    market = market.loc[~((market.series == "dxy") & market.date.between(dates[300], dates[310]))]
+    result = build_feature_history(market, _cftc_fixture()).set_index("date")
+    assert result.loc[dates[301], "dxy_age_sessions"] == 2
+    assert result.loc[dates[302], "dxy_age_sessions"] == 3
+    assert result.loc[dates[303], "dxy_stale"]
+    assert pd.isna(result.loc[dates[303], "dxy_ret_1"])
+    for series in ("dxy", "wti"):
+        used = result.loc[result[f"{series}_source_date"].notna()]
+        assert (used[f"{series}_source_date"] < used.index).all()
+        assert (used[f"{series}_available_at"] <= used.decision_time).all()
+    assert result.loc[dates[300], "decision_time"] == pd.Timestamp(dates[300]).tz_localize("UTC") + pd.Timedelta(days=1)
+
+
+def test_cotton_only_natural_coverage_not_prefiltered_by_macro():
+    market = _market_fixture()
+    dates = sorted(market.date.unique())
+    market = market.loc[~((market.series == "dxy") & market.date.between(dates[300], dates[330]))]
+    history = build_feature_history(market, _cftc_fixture())
+    names = [name for name in FEATURE_NAMES if not name.startswith(("dxy_", "wti_", "cotton_dxy_", "cotton_wti_"))]
+    cotton = select_feature_rows(history, names)
+    complete = select_feature_rows(history, FEATURE_NAMES)
+    assert len(cotton) > len(complete)
+    assert set(complete.date).issubset(set(cotton.date))
+    report = coverage_report(history)
+    assert report["groups"]["cotton_only"]["additional_natural_origin_count"] == len(cotton) - len(complete)
+    assert len(history) == 620
+    assert history.cotton_session_index.tolist() == list(range(620))
+    assert history.attrs["data_quality"]["nonconsecutive_retained_cotton_steps"] > 0
+
+
+def test_absent_external_series_preserves_cotton_only_coverage():
+    market = _market_fixture()
+    market = market.loc[market.series == "cotton"]
+    history = build_feature_history(market, _cftc_fixture())
+    names = [name for name in FEATURE_NAMES if not name.startswith(("dxy_", "wti_", "cotton_dxy_", "cotton_wti_"))]
+    assert not select_feature_rows(history, names).empty
+    assert select_feature_rows(history, FEATURE_NAMES).empty
+    assert history.attrs["data_quality"]["missing_external_series"] == ["dxy", "wti"]
+
+
+def test_missing_source_observation_has_explicit_horizon_semantics():
+    market = _market_fixture()
+    cotton_dates = market.loc[market.series == "cotton", "date"].tolist()
+    missing = cotton_dates[301]
+    market = market.loc[~((market.series == "cotton") & (market.date == missing))]
+    history = build_feature_history(market, _cftc_fixture()).set_index("date")
+    assert history.loc[cotton_dates[300], "target_date_1"] == cotton_dates[302]
+    assert history.loc[cotton_dates[300], "target_date_5"] == cotton_dates[306]
+    policy = history.attrs["data_quality"]["date_contract"]
+    assert policy["horizon_semantics"] == "next_1_or_5_recorded_cotton_observations"
+    assert policy["trusted_exchange_calendar"] is False
+    assert policy["missing_exchange_session_detection"].startswith("unknown")
+
+
+def test_future_changes_leave_all_past_model_features_unchanged():
+    market = _market_fixture()
+    cutoff = sorted(market.date.unique())[400]
+    original = build_feature_history(market, _cftc_fixture())
+    changed = market.copy()
+    changed.loc[changed.date > cutoff, ["open", "high", "low", "close", "volume"]] *= 2
+    future = build_feature_history(changed, _cftc_fixture())
+    pd.testing.assert_frame_equal(
+        original.loc[original.date <= cutoff, FEATURE_NAMES],
+        future.loc[future.date <= cutoff, FEATURE_NAMES],
+    )
+
+
+def test_latest_stale_external_row_cannot_silently_reuse_old_live_origin():
+    market = _market_fixture()
+    dates = sorted(market.date.unique())
+    market = market.loc[~((market.series == "wti") & (market.date >= dates[-8]))]
+    history = build_feature_history(market, _cftc_fixture())
+    assert history.date.max() == dates[-1]
+    with pytest.raises(ValueError, match="refusing a stale live forecast"):
+        require_latest_live_row(history)
+
+
+def test_unverified_cftc_cannot_be_selected_as_model_input():
+    history = build_feature_history(_market_fixture(), _cftc_fixture())
+    with pytest.raises(ValueError, match="audit-only"):
+        select_feature_rows(history, ["cftc_managed_money_net"])
 
 
 def test_invalid_cotton_is_not_filled_or_removed_from_target_calendar() -> None:

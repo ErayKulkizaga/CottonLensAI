@@ -11,13 +11,13 @@ import { ModelEvaluation, ModelMetric } from '../types';
   imports: [ChartComponent],
   template: `
     <section class="page">
-      <header class="page-head"><div><p class="eyebrow">Rolling-origin evidence</p><h1>Model lab</h1></div><div class="policy-note">Persistence (Naive) is the MAE baseline. A learned model needs ≥5% lower MAE, ≥3/4 fold wins, and direction ≥53% for T+1 or ≥55% for T+5.</div></header>
+      <header class="page-head"><div><p class="eyebrow">Rolling-origin evidence</p><h1>Model lab</h1></div><div class="policy-note">Persistence (Naive) is the MAE baseline. A learned model needs ≥5% lower MAE, {{ requiredWins() }}/{{ foldCount() }} fold wins, and direction ≥53% for T+1 or ≥55% for T+5.</div></header>
       @if (loading()) { <div class="state-panel"><span class="loader"></span><p>Loading experiment evidence…</p></div> }
       @else if (error()) { <div class="state-panel error"><strong>Metrics unavailable</strong><p>{{ error() }}</p></div> }
       @else {
         @if (isFixture()) { <div class="fixture-banner"><strong>Development fixture</strong><span>Metric values are illustrative placeholders, never production claims.</span></div> }
         @if (!evaluation()?.walkforward_report && !isFixture()) { <div class="backtest-banner"><strong>Legacy evaluation</strong><span>This artifact has no walk-forward evidence. Its historical numbers must not be presented as independent validation.</span></div> }
-        @if (evaluation()?.walkforward_report) { <div class="backtest-banner"><strong>Historical audit</strong><span>Selection used four earlier rolling-origin periods. The 2024–2026 audit was previously observed and can only reject a locked candidate.</span></div> }
+        @if (evaluation()?.walkforward_report) { <div class="backtest-banner"><strong>Historical audit</strong><span>The evaluation periods were previously observed. The 2024–2026 audit is descriptive only and cannot select or reject a candidate.</span></div> }
         <div class="model-summary">
           @for (horizon of [1, 5]; track horizon) {
             <article class="winner-card">
@@ -25,15 +25,15 @@ import { ModelEvaluation, ModelMetric } from '../types';
               <strong>{{ selected(horizon)?.model }}</strong>
               <p>{{ selected(horizon)?.walkforward ? 'Walk-forward MAE' : 'Historical MAE' }} {{ (selected(horizon)?.walkforward?.mae ?? selected(horizon)?.mae)?.toFixed(2) }} ¢/lb</p>
               @if (selected(horizon)?.walkforward; as evidence) {
-                <div class="gate-line"><span>MAE {{ improvement(horizon).toFixed(1) }}% vs Naive</span><span>Direction {{ evidence.directional_accuracy.toFixed(1) }}%</span><span>{{ decision(horizon)?.fold_wins_vs_naive?.[decision(horizon)?.locked_candidate ?? ''] ?? 0 }}/4 folds</span></div>
+                <div class="gate-line"><span>MAE {{ improvement(horizon).toFixed(1) }}% vs Naive</span><span>Direction {{ evidence.directional_accuracy.toFixed(1) }}%</span><span>Candidate {{ foldWins(horizon) }}/{{ foldCount() }} folds</span></div>
               } @else { <p>Walk-forward evidence unavailable for this artifact.</p> }
-              @if (decision(horizon); as audit) { <p>{{ audit.locked_candidate === audit.selected ? 'Walk-forward choice retained' : 'Historical audit fallback to Naive' }}</p> }
+              @if (decision(horizon); as audit) { <p>Selection follows the declared development-fold gates.</p> }
             </article>
           }
           @if (!isFixture()) { <article class="policy-card"><span>Selection policy · not a measured result</span><strong>Weak candidates fall back to the Naive baseline.</strong></article> }
         </div>
         <article class="panel metric-panel">
-          <div class="panel-head"><div><p class="card-label">{{ evaluation()?.walkforward_report ? 'Four equal-date folds' : 'Artifact-reported historical period' }}</p><h2>Performance matrix</h2></div><span class="origin-chip">Lower error is better</span></div>
+          <div class="panel-head"><div><p class="card-label">{{ evaluation()?.walkforward_report ? foldCount() + ' equal-date folds' : 'Artifact-reported historical period' }}</p><h2>Performance matrix</h2></div><span class="origin-chip">Lower error is better</span></div>
           <div class="metric-table" role="table" aria-label="Model metrics">
             <div class="metric-row metric-header" role="row"><span>Model</span><span>Horizon</span><span>MAE</span><span>RMSE</span><span>MAPE</span><span>Direction</span></div>
             @for (metric of metrics(); track metric.model + metric.horizon) {
@@ -51,7 +51,7 @@ import { ModelEvaluation, ModelMetric } from '../types';
         @if (evaluation()?.walkforward_report; as report) {
           <div class="evidence-grid">
             <article class="panel evidence-panel">
-              <div class="panel-head"><div><p class="card-label">Pre-audit · 126 sessions each</p><h2>Fold ledger</h2></div></div>
+              <div class="panel-head"><div><p class="card-label">Historical research · 126 origins each</p><h2>Fold ledger</h2></div></div>
               @for (fold of report.folds; track fold.fold) {
                 <div class="evidence-row"><strong>Fold {{ fold.fold }}</strong><span>{{ fold.test_start }} → {{ fold.test_end }}</span><span>n={{ fold.sample_count }}</span></div>
               }
@@ -59,10 +59,10 @@ import { ModelEvaluation, ModelMetric } from '../types';
             </article>
             <article class="panel evidence-panel">
               <div class="panel-head"><div><p class="card-label">T+1 / T+5 · cents/lb MAE</p><h2>Feature groups</h2></div></div>
-              @for (row of report.feature_ablation; track row.fold + '-' + row.horizon) {
+              @for (row of report.feature_ablation ?? []; track row.fold + '-' + row.horizon) {
                 <div class="evidence-row"><strong>Fold {{ row.fold }} · T+{{ row.horizon }}</strong><span>Cotton {{ row.cotton_mae.toFixed(2) }}</span><span>+ macro {{ row.cotton_macro_mae.toFixed(2) }}</span><span>+ regime {{ row.full_mae.toFixed(2) }}</span></div>
               }
-              <p class="evidence-footnote">CFTC excluded: actual publication timestamp is not verified. Full feature model results appear in the matrix.</p>
+              <p class="evidence-footnote">Feature comparisons require the same origins. Unverified publication data is excluded. Full model results appear in the matrix.</p>
             </article>
           </div>
           @if (lstmHistory().length) {
@@ -115,8 +115,14 @@ export class ModelLabPage {
   }
 
   selected(horizon: number): ModelMetric | undefined { return this.metrics().find((item) => item.horizon === horizon && item.selected); }
-  decision(horizon: number): { locked_candidate?: string; selected?: string; fold_wins_vs_naive?: Record<string, number> } | null {
+  decision(horizon: number) {
     return this.evaluation()?.selection_audit?.[String(horizon)] ?? null;
+  }
+  readonly foldCount = computed(() => this.evaluation()?.walkforward_report?.folds.length ?? 4);
+  readonly requiredWins = computed(() => this.foldCount() === 8 ? 6 : 3);
+  foldWins(horizon: number): number {
+    const decision = this.decision(horizon);
+    return decision?.gate?.fold_wins ?? decision?.fold_wins_vs_naive?.[decision?.locked_candidate ?? ''] ?? 0;
   }
   improvement(horizon: number): number {
     const naive = this.metrics().find((item) => item.horizon === horizon && item.model === 'Naive')?.walkforward?.mae;

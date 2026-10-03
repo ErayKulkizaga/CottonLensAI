@@ -51,7 +51,7 @@ import { Forecast, LatestForecast, MarketHistory } from '../types';
                 <p>Expected close</p>
                 <strong>{{ forecast.predicted_price_cents_per_lb.toFixed(2) }}<small>¢</small></strong>
                 <div class="movement"><span>{{ forecast.direction === 'up' ? '↗' : forecast.direction === 'down' ? '↘' : '→' }}</span>{{ signed(forecast.predicted_return_pct) }}%</div>
-                <small>Target {{ forecast.target_date }}</small>
+                <small>Target {{ forecast.target_date ?? 'date unknown · future Cotton observation' }}</small>
               </article>
             }
           </div>
@@ -63,7 +63,7 @@ import { Forecast, LatestForecast, MarketHistory } from '../types';
             <app-chart [options]="priceOptions()" label="Historical cotton close prices" />
           </article>
           <article class="panel chart-panel">
-            <div class="panel-head"><div><p class="card-label">Holdout evidence</p><h2>Backtest: forecast vs actual</h2></div><span class="origin-chip">Backtest</span></div>
+            <div class="panel-head"><div><p class="card-label">Historical development evidence</p><h2>Backtest: forecast vs actual</h2></div><span class="origin-chip">Backtest</span></div>
             <app-chart [options]="backtestOptions()" label="Backtest forecast and actual prices" />
           </article>
         </div>
@@ -91,7 +91,7 @@ export class DashboardPage {
   readonly backtestOptions = computed<EChartsCoreOption>(() => {
     const points = this.history();
     return baseLineOptions(
-      points.map((point) => point.target_date),
+      points.map((point) => point.target_date ?? point.as_of_date),
       [
         { name: 'Forecast', data: points.map((point) => point.predicted_price_cents_per_lb), color: '#d29b56', lineType: 'dashed' },
         { name: 'Actual', data: points.map((point) => point.actual_price_cents_per_lb), color: '#204f4b', lineType: 'solid' },
@@ -113,7 +113,7 @@ export class DashboardPage {
   }
 
   signed(value: number): string { return `${value >= 0 ? '+' : ''}${value.toFixed(2)}`; }
-  qualityLabel(value: string): string { return value === 'illustrative' ? 'Fixture only' : 'Validated holdout'; }
+  qualityLabel(value: string): string { return value === 'illustrative' ? 'Fixture only' : value === 'historical_audit' ? 'Historical development evidence' : 'Legacy · protocol unverified'; }
 }
 
 function baseLineOptions(

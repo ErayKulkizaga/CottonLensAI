@@ -1,11 +1,4 @@
-import os
-import tempfile
 from datetime import date
-from pathlib import Path
-
-os.environ["DATABASE_URL"] = f"sqlite:///{Path(tempfile.gettempdir()) / 'cottonlens-api-tests.db'}"
-os.environ["DEMO_MODE"] = "true"
-os.environ["ARTIFACT_DIR"] = str(Path(tempfile.gettempdir()) / "missing-cottonlens-artifact")
 
 import pytest
 from fastapi.testclient import TestClient
@@ -19,6 +12,8 @@ from app.models import ArtifactImport, FeatureSnapshot, Forecast, ModelVersion
 
 @pytest.fixture(scope="module", autouse=True)
 def database() -> None:
+    # Destructive fixture operations must never resolve to a workspace database.
+    assert "cottonlens-backend-tests-" in str(engine.url.database)
     Base.metadata.drop_all(engine)
     Base.metadata.create_all(engine)
     yield
