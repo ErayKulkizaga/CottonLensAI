@@ -130,3 +130,23 @@ release; D21 unchanged. The existing Drive workbench returns to status/RUN_TRAIN
 no repeat GPU run is needed. Next bounded work: preregister small statistical-reference
 feasibility without assuming ARIMA local CPU permission. Review evidence:
 `output/reports/agri-nonlinear-colab-review-20261003/completion.md`. Zero new fits.
+
+
+## Statistical-reference pilot prepared; market results pending
+
+The existing matched runner now supports a small past-only candidate selection:
+Naive, unshrunk training-mean drift reference, ARIMA(1,1,0)/(0,1,1). Same2006 origins per
+horizon, annual past-only selection/shrinkage,5-observation purge and21 refit cadence.
+ARIMA coefficients use mature purged training prices; observed-only state filtering
+updates inputs through each origin without re-estimation. No auto order/seasonal search.
+statsmodels0.14.5 is already locked in the separate CPU group. Colab CPU-only permission
+is explicit; local CPU allowlist remains unchanged. At most964 ledger jobs/482 numerical
+ARIMA estimations/32 annual outputs. Invalid inner candidates are signed/excluded;
+selected outside failures block instead of replacing forecasts after seeing outcomes.
+483 local ML tests passed/one skipped; after a helper-hash check, five focused tests passed.
+Only synthetic/mocked fits ran locally; no new market-data model/score or reproduction
+claim. CI tests the same installed statsmodels API synthetically. The existing Drive
+Research Workbench is configured for statistical-pilot-v1, status/RUN_TRAINING=False,
+initial15-minute session; CPU runtime suffices. Old source packages/data/DB remain intact.
+Canonical gates, no-selection2024+ audit and D21 are unchanged; automatic release closed.
+Evidence:output/reports/statistical-implementation-20261003/completion.md.

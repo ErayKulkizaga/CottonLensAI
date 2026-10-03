@@ -655,3 +655,27 @@ Kanıt:output/reports/agri-nonlinear-colab-review-20261003/completion.md. Yeni f
 Mevcut workbench status/RUN_TRAINING=False; GPU oturumu kapatılabilir.
 Sıradaki sınırlı iş küçük Naive/drift/ARIMA fizibilitesinin ön kaydı; CPU izin/dependency
 sözleşmesi varsayılmaz, bu incelemede yeni ARIMA eğitimi açılmaz. D21 değişmez.
+
+
+## Küçük istatistiksel referans pilotu hazır — 3 Ekim 2026
+
+statistical-pilot-v1/research-statistical-pilot-v1: önceki aynı2006 Cotton origin/horizon,
+2016–2023 sekiz yıl, üç geçmiş63-origin iç blok,5-observation purge/olgun etiket ve21-refit.
+Tek seri log fiyat; Naive, geçmiş günlük log-getiri ortalamalı drift, ARIMA(1,1,0)/(0,1,1).
+Drift referans kolu w=1; seçilen kol Naive/drift/iki ARIMA ve önceki beş shrinkage ağırlığını
+yalnız geçmiş iç fiyat-MAE ile seçer. Eşitlikte Naive, drift, AR10, MA01 sırası. Katsayılar
+son olgun/purged training origin'inde öğrenilir; kaynakta gerçekten gözlenen her barla
+durum filtrelenir, katsayı yeniden fit edilmez. Gelecek fiyat/etiket state update'e girmez.
+
+Üst sınır964 ledger computation işi; en fazla482 sayısal ARIMA fit'i,32 yıllık çıktı.
+statsmodels0.14.5 zaten CPU lock'tadır; optimizer100 iterasyon, auto_arima/seasonal search yok.
+Yakınsamayan iç aday incomplete/numerical_failure kaydıyla dışlanır; kimlikli kayıt tekrar
+denenmez. Seçilen modelin dış refit hatası yeni aday/Naive ile gizlice değiştirilmez.
+Colab CPU-only/tek süreç/en fazla2 thread; yerel CPU allowlist genişletilmedi. Mevcut
+Experiment/Ledger, matched runner ve tek Research Workbench. Run All status/eğitim kapalı.
+Yeni kaynak paketi source-statistical-pilot-v1-20261003.zip; ilk çalışma15 dakikalık budget.
+483 ML testi geçti/1 atlandı; statsmodels API gerçek sentetik seriyle de test edildi,
+son helper-hash kontrolü sonrası5 odak testi geçti. Gerçek piyasa ARIMA fit'i başlatılmadı;
+yeni skor, reproduction veya deployment parity yok. Release otomatik kapalı.
+Gates/2024+ audit/D21, eski DB/source paketleri ve tamamlanmış Colab deneyleri korunur.
+Ön kayıt/teslim:output/reports/statistical-implementation-20261003/.

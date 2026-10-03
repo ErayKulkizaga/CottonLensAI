@@ -107,11 +107,28 @@ def prepare(repo, folder, reference):
 def selected_decision(path, spec):
     decision = read_record(path)
     chosen = decision['selected']
-    if (decision['selection_used_outer'] is not False or chosen['recipe'] != spec
+    options = spec if isinstance(spec,list) else [spec]
+    if (decision['selection_used_outer'] is not False or chosen['recipe'] not in options
             or chosen['weight'] not in SHRINKAGE or type(chosen['iterations']) is not int
-            or not 1 <= chosen['iterations'] <= spec.get('max_iterations',1)
+            or not 1 <= chosen['iterations'] <= chosen['recipe'].get('max_iterations',1)
             or not np.isfinite(chosen['inner_score'])):
         raise ValueError('Frozen path selection changed; no silent retraining')
+    if isinstance(spec,list):
+        candidates = decision['candidates']
+        if [c['recipe'] for c in candidates] != options:
+            raise ValueError('Frozen statistical candidates changed')
+        completed = []
+        for candidate in candidates:
+            if candidate['status']=='complete':
+                result = candidate['selected']
+                if (result['recipe']!=candidate['recipe'] or result['iterations']!=1
+                        or result['weight'] not in SHRINKAGE or not np.isfinite(result['inner_score'])):
+                    raise ValueError('Invalid completed statistical candidate')
+                completed.append(result)
+            elif candidate['status']!='numerical_failure' or candidate['recipe']['family']!='arima':
+                raise ValueError('Incomplete candidate cannot be selected')
+        if not completed or min(completed,key=lambda c:c['inner_score']) != chosen:
+            raise ValueError('Statistical choice differs from past-only score/tie break')
     return chosen
 
 
@@ -135,7 +152,8 @@ def output(folder, name, fold, group, h, design, history, *, namespace='path', r
     return record, frame
 
 
-def run(experiment, max_minutes, *, group_names=GROUPS, namespace='path', recipe_fn=recipe, validate_fn=validate_design):
+def run(experiment, max_minutes, *, group_names=GROUPS, namespace='path', recipe_fn=recipe, validate_fn=validate_design,
+        selection_fn=None):
     if not 0 < max_minutes <= 60:
         raise ValueError('Path session budget must be positive and at most 60 minutes')
     design = experiment.identity['design']
@@ -162,8 +180,11 @@ def run(experiment, max_minutes, *, group_names=GROUPS, namespace='path', recipe
                     path = experiment.root / f'{namespace}-decisions' / name
                     print(f'STAGE {namespace} {group} year={fold["year"]} T+{h}', flush=True)
                     if not path.exists():
-                        freeze_record(path, {'selected': inner_price(experiment, spec, fold), 'selection_used_outer': False})
+                        selection = ({'selected':inner_price(experiment,spec,fold)} if selection_fn is None
+                            else selection_fn(experiment,spec,fold))
+                        freeze_record(path, {**selection, 'selection_used_outer': False})
                     chosen = selected_decision(path, spec)
+                    spec = chosen['recipe']
                     test = rows_at(experiment.history, fold['origins']).copy()
                     raw = predict_chunks(experiment, spec, fold['origins'], f'path-outer-{group}-{fold["year"]}',chosen['iterations'])
                     test['raw_predicted_return'], test['predicted_return'] = raw, chosen['weight'] * raw

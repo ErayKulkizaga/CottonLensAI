@@ -150,6 +150,12 @@ class PriceMetric:
 def fit_predict(history, train, validation, test, spec, workspace, *, iterations=None):
     device_requested = spec.get('device', 'cuda')
     require_training(spec.get('family'), device_requested)
+    if spec['family'] in ('arima', 'drift', 'naive'):
+        from cottonlens_ml.research.statistical_models import (
+            fit_predict as statistical_fit,
+        )
+        with CPUTelemetry():
+            return statistical_fit(history, train, test, spec, workspace)
     if spec['family'] in ('har', 'garch'):
         from cottonlens_ml.research.volatility import fit_predict as volatility_fit
         with CPUTelemetry():

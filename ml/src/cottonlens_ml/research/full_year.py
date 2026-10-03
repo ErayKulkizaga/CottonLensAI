@@ -114,7 +114,7 @@ def predict_chunks(experiment, spec, origins, role, iterations=1):
     return np.asarray(outputs)
 
 
-def inner_price(experiment, spec, fold):
+def inner_price(experiment, spec, fold, *, weights=SHRINKAGE):
     blocks, counts = [], []
     for i, block in enumerate(fold['inner']):
         test = rows_at(experiment.history, block['origins'])
@@ -133,11 +133,11 @@ def inner_price(experiment, spec, fold):
         baseline = np.mean(prices * np.abs(np.expm1(actual)))
         if baseline <= 0:
             raise ValueError('Nonzero Naive error required')
-        blocks.append([float(np.mean(prices * np.abs(np.exp(actual) - np.exp(w * prediction))) / baseline) for w in SHRINKAGE])
+        blocks.append([float(np.mean(prices * np.abs(np.exp(actual) - np.exp(w * prediction))) / baseline) for w in weights])
         counts.append(count)
     scores = np.mean(blocks, axis=0)
     index = int(np.argmin(scores))
-    return {'recipe': spec, 'weight': SHRINKAGE[index], 'inner_score': float(scores[index]),
+    return {'recipe': spec, 'weight': weights[index], 'inner_score': float(scores[index]),
             'iterations': int(np.median(counts))}
 
 
