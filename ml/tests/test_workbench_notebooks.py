@@ -71,7 +71,7 @@ def test_resume_selects_fit_source_and_reporting_selects_current_source():
             source = source.replace("PROFILE = 'full-year-v1'", f'PROFILE = {profile!r}', 1)
             scope = {}
             exec(compile(source, '<workflow>', 'exec'), scope)  # noqa: S102 - trusted local config
-            expected = fit_bundle if workflow in ('prepare','pilot_plan','pilot') else 'source-return-path-pilot-v1-20261003.zip'
+            expected = fit_bundle if workflow in ('prepare','pilot_plan','pilot') else 'source-return-path-report-v2-20261003.zip'
             assert scope['SOURCE_BUNDLE'] == expected
             assert scope['RUN_TRAINING'] is False
     source = '\n'.join(code('cottonlens_research_workbench.ipynb'))
@@ -145,7 +145,7 @@ def test_recency_selects_new_source_and_preserves_read_only_defaults():
         scope = {}
         exec(compile(configuration.replace("WORKFLOW = 'status'", f'WORKFLOW = {workflow!r}', 1), '<recency-workflow>', 'exec'), scope)  # noqa: S102
         assert scope['EXPERIMENT'] == 'research-recency-pilot-v1'
-        assert scope['SOURCE_BUNDLE'] == ('source-recency-pilot-v1-20261003.zip' if workflow in ('prepare','pilot') else 'source-return-path-pilot-v1-20261003.zip')
+        assert scope['SOURCE_BUNDLE'] == ('source-recency-pilot-v1-20261003.zip' if workflow in ('prepare','pilot') else 'source-return-path-report-v2-20261003.zip')
         assert scope['RUN_TRAINING'] is False
     source = '\n'.join(cells)
     assert "'recency-outputs' if PROFILE == 'recency-pilot-v1'" in source
@@ -160,7 +160,7 @@ def test_return_path_uses_same_workbench_and_explicit_training_gate():
     scope = {}
     exec(compile(configuration, '<path-workflow>', 'exec'), scope)  # noqa: S102
     assert scope['EXPERIMENT'] == 'research-return-path-pilot-v1'
-    assert scope['SOURCE_BUNDLE'] == 'source-return-path-pilot-v1-20261003.zip'
+    assert scope['SOURCE_BUNDLE'] == 'source-return-path-report-v2-20261003.zip'
     assert scope['RUN_TRAINING'] is False and scope['STAGES'] == [('status','A')]
     source = '\n'.join(cells)
     assert 'return-path-pilot-v1-inputs-20261003' in source

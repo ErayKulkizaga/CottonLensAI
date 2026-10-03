@@ -218,7 +218,7 @@ def compare(folder, repetitions=10000):
             gain = float(100 * (1 - losses[:, 1].mean() / losses[:, 0].mean()))
             direction = float(100 * directions[:, 0].mean())
             scores[group] = {'count': len(losses), 'price_mae': float(losses[:, 1].mean()), 'naive_mae_gain_pct': gain,
-                'direction_pct': direction, 'majority_direction_pct': float(directions[:, 1].mean()),
+                'direction_pct': direction, 'majority_direction_pct': float(100 * directions[:, 1].mean()),
                 'flat_count': arm['flat'], 'fold_wins': arm['wins'],
                 'price_thresholds_passed': bool(gain >= 5 and direction >= (53 if h == 1 else 55) and arm['wins'] >= 6),
                 'versus_naive': {str(b): paired_bootstrap(arm['losses'], block=b, repetitions=repetitions,

@@ -103,9 +103,16 @@ def test_interruption_cache_complete_comparison_and_corrupt_marker(packet, monke
     assert len(computed) == 32
     result = path_pilot.compare(folder, repetitions=100)
     assert result['status'] == 'complete' and result['release_allowed'] is False
-    for h in result['horizons'].values():
+    for horizon, h in result['horizons'].items():
         assert h['research_priority_signal'] is False
         assert all(v['naive_mae_gain_pct'] == 0 and not v['price_thresholds_passed'] for v in h['arms'].values())
+        for group, arm in h['arms'].items():
+            records = [row for marker in (folder / 'path-outputs').glob(f'{group}-t{horizon}-year*.json')
+                for row in read_record(marker)['records']]
+            expected = 100 * sum(np.sign(row[f'target_return_{horizon}']) == row['past_majority_sign']
+                for row in records) / len(records)
+            assert arm['majority_direction_pct'] == pytest.approx(expected)
+            assert 0 <= arm['majority_direction_pct'] <= 100
     path = next((folder / 'path-outputs').glob('*.json'))
     path.write_bytes(path.read_bytes() + b'bad')
     with pytest.raises(ValueError):
