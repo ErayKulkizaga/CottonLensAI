@@ -42,6 +42,20 @@ All 2028 fit payload hashes were verified. Cached replay added zero fits. Sevent
 
 Decision: do not expand the same linear lag-window search or release the challenger. Naive stays primary. The next bounded task is diagnosis of the saved unshrunk challenger predictions against the matched control, separating transport failure from a representation that contains no usable linear signal. This negative comparison does not justify a broader nonlinear/GPU search.
 
+### Raw-forecast diagnosis and next feasibility check
+
+That diagnosis is complete, with zero fits. Reconstructing 288 signed inner fit receipts verified all selected yearly inner scores/weights. Raw path forecasts lost MAE both inside (-5.026% / -7.167% versus Naive) and outside (-4.424% / -5.971%). Outside direction accuracy was 49.45% / 50.05%; Spearman IC -0.02695 / -0.01303. Actual OOS log-return R² versus zero return was negative (-0.0525 / -0.0975). Removing shrinkage is not a remedy. These statistics describe this fixed linear model, not every model family.
+
+Raw path losses concentrate in small realized movements (-23.01% / -29.70% MAE gain within that diagnostic bin). Bins use past-training quantile boundaries, but membership depends on future realized movement: this is explanatory evidence, never a rule for removing origins or predicting an investable regime. All 2006 origins remain in the score. Repeated inner dates are not independent observations.
+
+The next single preregistered hypothesis is `agri-transfer-pilot-v1`: a shared Cotton/corn/soybean model against a matched Cotton-only model. The earlier crop ablation added crop feature columns; this comparison adds supervised auxiliary examples under shared coefficients. It does not assume that correlated markets provide three times the independent information or that shared training will improve forecasts.
+
+Feasibility inputs contain 10568 recorded rows (3520 Cotton, 3524 corn, 3524 soybean) and six preceding-observation return/volatility/SMA features. Missing rows stay present; missing labels are never filled. The same 2006 Cotton origins and targets were verified. Historical crop publication/roll/vintage metadata remains unverified, so this is Tier-A exploration and cannot support release even if its exploratory score is positive.
+
+Fixed Ridge(alpha=10), seed42, full history, annual past-only shrinkage, five-Cotton-observation purge and 21-observation refit; no basket/window/alpha/mixture/cadence search. Both arms use preprocessing/target transforms learned on mature Cotton training only. The pooled objective has fixed 50% Cotton / 25% corn / 25% soybean total weights, normalized to the control's total weight. Maximum 676 fits/32 outputs. Design ID `752a333dfdcbfd34f28467128c48940506b96914cd4a88b0e1c1d7291607b7c2`.
+
+Training readiness remains false until the same-ledger pooled-fit adapter and weighted-fit, temporal and resume contracts pass. Only the causal input builder and feasibility checks are implemented at this point; no new training command or notebook is delivered. The completed return-path experiment and frozen source packages are unchanged. Local evidence: `output/reports/return-path-diagnosis-20261003/completion.md`.
+
 The existing Experiment/Ledger and two workbenches are used. New metadata catalogues allow status/compare to restore preparation and result batches without scanning model packages. Resume verifies completed work; incomplete or corrupt checkpoints cannot silently become completed experiments. Run All defaults to read-only status. GPU/sequence training stays in Colab. The isolated CPU group does not install TensorFlow/CUDA into the backend.
 
 ## Evidence and operating limits
