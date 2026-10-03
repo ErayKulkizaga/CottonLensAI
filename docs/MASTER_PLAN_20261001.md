@@ -638,3 +638,20 @@ Tier A release engeli, fiyat gate'leri,2024+ seçimsiz audit ve D21 tarihi deği
 Negatif sonuç aynı alanı büyütmez; sıradaki ayrı hipotez karar raporuyla açılır.
 Eski DB,676 lineer fit, kaynak paketleri ve diğer tamamlanmış deneyler korunur.
 Teslim raporu: `output/reports/agri-nonlinear-implementation-20261003/completion.md`.
+
+
+## Sabit nonlinear pilot tamamlandı — 3 Ekim 2026
+
+Colab research-agri-nonlinear-pilot-v1:772 ayrı durably_saved ID/32 yıllık çıktı tamamlandı.
+34 metadata paketi ve32 sonuç/karar hash'i doğrulandı;32 checkpoint örneği NVIDIA L4/cuda:0,
+sabit ağırlık, olgun etiket cutoff ve örneklenmiş refit ağaç sayısını doğruladı.96 payload
+hash kontrolü tam772-model denetimi, reproduction veya deployment parity değildir.
+Naive MAE kazancı Cotton kontrol:+0.038311%/+0.213315%; ortak kol:-0.051932%/-0.035006%.
+Ortak iç katkı:+0.015967%/+0.373482%,3/8 ve4/8 iç kazanım. Priority/price gate'leri false;
+Naive birincil/Tier A release engeli korunur. Ortak ham tahminler de Naive'ı geçmez;
+shrinkage kaldırılmaz, aynı ortak alan genişletilmez. Flat tahminler yön yüzdesini düşürür;
+nonflat alt küme ana gate yerine geçmez. Aynı-origin MAE/MAPE/gerçek OOS R² köprüsü kaydedildi.
+Kanıt:output/reports/agri-nonlinear-colab-review-20261003/completion.md. Yeni fit yok.
+Mevcut workbench status/RUN_TRAINING=False; GPU oturumu kapatılabilir.
+Sıradaki sınırlı iş küçük Naive/drift/ARIMA fizibilitesinin ön kaydı; CPU izin/dependency
+sözleşmesi varsayılmaz, bu incelemede yeni ARIMA eğitimi açılmaz. D21 değişmez.

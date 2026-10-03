@@ -112,3 +112,21 @@ The existing Drive Research Workbench is delivered with this profile, status/RUN
 choose pilot deliberately in a T4/L4 session, initially MAX_MINUTES=15, and resume unchanged.
 The old frozen bundles/experiments and DB are retained. D21 is unchanged.
 Completion: `output/reports/agri-nonlinear-implementation-20261003/completion.md`.
+
+
+## Fixed nonlinear Colab outcome: complete, gates failed
+
+772 distinct saved fit IDs in the completed console log;32 annual outputs and34 small
+metadata packages verified.32 checkpoint spot-checks confirm NVIDIA L4/cuda:0, fixed
+asset weights, label maturity and sampled annual tree-count propagation;96 payload
+hashes checked. This is not full772-payload reproduction or deployment parity.
+Cotton-only Naive MAE gain:+0.038311%/+0.213315%; pooled:-0.051932%/-0.035006%.
+Pooled inner contribution:+0.015967%/+0.373482%,3/8 and4/8 inner wins. Both price gates
+and priority signals fail. Raw forecasts also lose Naive; no shrinkage removal or expanded
+shared-model search. Flat forecasts explain low all-origin direction percentages; report
+the full cohort rather than replacing the gate with conditional nonflat accuracy.
+Same-origin MAE/MAPE/actual OOS R² bridge is recorded. Naive remains primary/Tier A blocks
+release; D21 unchanged. The existing Drive workbench returns to status/RUN_TRAINING=False;
+no repeat GPU run is needed. Next bounded work: preregister small statistical-reference
+feasibility without assuming ARIMA local CPU permission. Review evidence:
+`output/reports/agri-nonlinear-colab-review-20261003/completion.md`. Zero new fits.
