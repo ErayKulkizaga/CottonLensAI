@@ -69,6 +69,16 @@ All 2028 payload hashes, saved transform matching, fixed asset-weight totals and
 
 The existing Research Workbench and frozen `source-agri-transfer-pilot-v1-20261003.zip` support status/prepare/pilot/compare; Run All remains read-only. No new notebook was created. Local evidence: `output/reports/agri-transfer-implementation-20261003/completion.md`; report `transfer-d0a1908023824705.json`. Next: examine saved raw shared-model forecasts without new fits before selecting a distinct hypothesis. Do not retune asset weights, alpha or cadence on outside results. The completed return-path source packages and experiment are unchanged.
 
+### Shared-model raw diagnosis completed
+
+288 signed inner fit receipts reconstructed all 32 yearly selected scores/weights within 1e-12; 355 input-evidence hashes were verified with zero fits. Repeated inner dates remain dependent. Raw pooled forecasts gained 0.1985% / 0.9126% against the raw Cotton-only control, winning 8/8 / 7/8 years, but raw Naive gains were only +0.0239% / -0.0990%. The exploratory T+5 raw matched-control interval excludes zero; both raw-versus-Naive intervals include zero. This post-hoc comparison cannot replace the preregistered selected-strategy gate or establish release superiority.
+
+Pooled outside prediction standard deviation is 59% / 58% of the control's, and their predictions correlate 0.835 / 0.896. This is compatible with reduced noise; it does not prove a causal denoising mechanism or stronger information. Outside rank IC is small (0.0252 / 0.0339), raw direction 50.15% / 51.89% fails 53% / 55%, and raw T+5 log-return R² versus zero is negative. Removing shrinkage is unsupported.
+
+Selected inner scores average equal-weight relative block errors after past-only weight selection; raw aggregate metrics pool price errors over all prediction slots. They are different measures, not interchangeable success criteria. Realized-movement bins remain explanatory and never remove origins.
+
+The fixed shared-linear hypothesis is closed as insufficient for the price gate. Preserve its exploratory matched-control improvement; no larger mixture/alpha/cadence search is opened. Absolute-error objectives already exist in the earlier tabular recipe generator, so an objective change cannot be called untried without evidence of actual executed trials. Next bounded task: inventory completed model/objective/feature combinations, distinguishing executed receipts from available recipes, then preregister one distinct hypothesis. Evidence: `output/reports/agri-transfer-diagnosis-20261003/completion.md`. Frozen ML source, existing fits, DB and D21 are unchanged; 12 diagnostic files were checksum-readback verified in the Drive directory.
+
 The existing Experiment/Ledger and two workbenches are used. New metadata catalogues allow status/compare to restore preparation and result batches without scanning model packages. Resume verifies completed work; incomplete or corrupt checkpoints cannot silently become completed experiments. Run All defaults to read-only status. GPU/sequence training stays in Colab. The isolated CPU group does not install TensorFlow/CUDA into the backend.
 
 ## Evidence and operating limits
