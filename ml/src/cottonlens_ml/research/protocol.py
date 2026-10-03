@@ -69,6 +69,39 @@ def rows_at(history, dates):
     return history.set_index('date', drop=False).loc[pd.to_datetime(dates)].reset_index(drop=True)
 
 
+def full_year_manifest(history):
+    """New identity only: all eligible pre-2024 dates, never alter legacy splits."""
+    if history.date.duplicated().any() or not history.date.is_monotonic_increasing:
+        raise ValueError('Unique sorted Cotton observations required')
+    rows = eligible(history)
+    rows = rows.loc[(rows.date >= '2016-01-01') & (rows.date < '2024-01-01')
+                    & (rows.target_date_5 < '2024-01-01')]
+    folds = []
+    for year in range(2016, 2024):
+        outer = rows.loc[rows.date.dt.year == year]
+        if outer.empty:
+            raise ValueError(f'No complete-year cohort for {year}')
+        preceding = mature(history, outer.date.min()).tail(189)
+        if len(preceding) != 189:
+            raise ValueError('Three past 63-origin inner blocks required')
+        inner = []
+        for i in range(3):
+            validation = preceding.iloc[63 * i:63 * (i + 1)]
+            train = mature(history, validation.date.min())
+            if len(train) < 500:
+                raise ValueError('At least 500 past mature training rows required')
+            inner.append({'origins': validation.date.dt.strftime('%Y-%m-%d').tolist(),
+                          'cutoff': validation.date.min().isoformat()})
+        folds.append({'fold': len(folds) + 1, 'year': year,
+                      'origins': outer.date.dt.strftime('%Y-%m-%d').tolist(), 'inner': inner})
+    payload = {'version': 'full-year-v1', 'role': 'seen_historical_research', 'audit_used': False,
+               'folds': folds, 'purge_observations': 5, 'refit_cadence': 21,
+               'decision_time': '00:15 UTC following the completed source bar date',
+               'label_identity': frame_identity(rows, ['date', 'cotton_close', 'target_return_1',
+                                                     'target_return_5', 'target_date_1', 'target_date_5'])}
+    return {**payload, 'split_id': content_id(payload)}
+
+
 def feature_history(history, market=None):
     """Add only causal features; preserve rows and ordinal time, including missingness."""
     result = history.copy()

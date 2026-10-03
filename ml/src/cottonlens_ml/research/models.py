@@ -9,7 +9,7 @@ import numpy as np
 
 from cottonlens_ml.evaluation import evaluate
 from cottonlens_ml.research.protocol import Preprocessor, Target, inputs
-from cottonlens_ml.runtime_guard import require_colab_training
+from cottonlens_ml.runtime_guard import require_colab_training, require_training
 
 os.environ.setdefault('CUBLAS_WORKSPACE_CONFIG', ':4096:8')
 
@@ -48,6 +48,20 @@ class Telemetry:
             raise RuntimeError('GPU telemetry failed: ' + self.errors[0])
         return {'samples': self.samples, 'peak_memory_fraction': max(s['used_mb'] / s['total_mb'] for s in self.samples),
                 'mean_utilization_pct': float(np.mean([s['utilization_pct'] for s in self.samples]))}
+
+
+class CPUTelemetry:
+    def __enter__(self):
+        from threadpoolctl import threadpool_limits
+        self.limits = threadpool_limits(limits=2)
+        self.limits.__enter__()
+        return self
+
+    def __exit__(self, *args):
+        self.limits.__exit__(*args)
+
+    def report(self):
+        return {'device': 'cpu', 'thread_limit': 2, 'gpu_utilization_claimed': False}
 
 
 def tensorflow_gpu(seed):
@@ -134,7 +148,12 @@ class PriceMetric:
 
 
 def fit_predict(history, train, validation, test, spec, workspace, *, iterations=None):
-    require_colab_training()
+    device_requested = spec.get('device', 'cuda')
+    require_training(spec.get('family'), device_requested)
+    if spec['family'] in ('har', 'garch'):
+        from cottonlens_ml.research.volatility import fit_predict as volatility_fit
+        with CPUTelemetry():
+            return volatility_fit(history, train, test, spec, workspace)
     started = time.monotonic()
     family, h = spec['family'], spec['horizon']
     classification = spec.get('task', 'price') == 'direction'
@@ -157,7 +176,7 @@ def fit_predict(history, train, validation, test, spec, workspace, *, iterations
     data_seconds = time.monotonic() - started
     curves, details = {}, {}
     params, seed = spec.get('params', {}), spec['seed']
-    limit = iterations or (300 if family in ('mlp', 'lstm', 'tcn') else 4000)
+    limit = iterations or spec.get('max_iterations', 300 if family in ('mlp', 'lstm', 'tcn') else 4000)
     model_path = workspace / 'model.json'
 
     def metric(actual, predicted):
@@ -166,13 +185,13 @@ def fit_predict(history, train, validation, test, spec, workspace, *, iterations
         log = target.inverse(predicted, validation.cotton_close.to_numpy())
         return evaluate(validation.cotton_close.to_numpy(), validation[f'target_return_{h}'].to_numpy(), log)['mae']
 
-    with Telemetry() as telemetry:
+    with (CPUTelemetry() if device_requested == 'cpu' else Telemetry()) as telemetry:
         if family == 'xgboost':
             import xgboost as xgb
             if classification:
                 # Low-level multi:softprob supports absent classes with num_class=3.
                 config = {**params, 'objective': 'multi:softprob', 'num_class': 3, 'eval_metric': 'mlogloss',
-                          'device': 'cuda', 'tree_method': 'hist', 'seed': seed, 'nthread': 2}
+                          'device': device_requested, 'tree_method': 'hist', 'seed': seed, 'nthread': 2}
                 dtrain = xgb.DMatrix(x, label=train_labels)
                 evals = [(dtrain, 'train')]
                 if validation is not None:
@@ -181,7 +200,7 @@ def fit_predict(history, train, validation, test, spec, workspace, *, iterations
                                   early_stopping_rounds=150 if iterations is None else None,
                                   evals_result=curves, verbose_eval=False)
             else:
-                config = {**params, 'objective': spec['loss'], 'device': 'cuda', 'tree_method': 'hist',
+                config = {**params, 'objective': spec['loss'], 'device': device_requested, 'tree_method': 'hist',
                           'seed': seed, 'nthread': 2, 'disable_default_eval_metric': 1}
                 weights = train.cotton_close.to_numpy() / train.cotton_close.mean() if spec.get('price_weighted') else None
                 dtrain = xgb.DMatrix(x, label=y, weight=weights)
@@ -198,11 +217,13 @@ def fit_predict(history, train, validation, test, spec, workspace, *, iterations
                     p = target.inverse(pred, prices)
                     return 'price_mae', evaluate(prices, a, p)['mae']
                 model = xgb.train(config, dtrain, num_boost_round=limit, evals=evals, custom_metric=price_eval,
-                                  early_stopping_rounds=150 if iterations is None else None,
+                                  early_stopping_rounds=spec.get('patience', 150) if iterations is None else None,
                                   evals_result=curves, verbose_eval=False)
             device = json.loads(model.save_config())['learner']['generic_param']['device']
-            if not device.startswith('cuda'):
+            if device_requested == 'cuda' and not device.startswith('cuda'):
                 raise RuntimeError(f'XGBoost silently fell back to {device}')
+            if device_requested == 'cpu' and device != 'cpu':
+                raise RuntimeError('CPU fit used an unexpected device')
             count = model.best_iteration + 1 if iterations is None and validation is not None else limit
             model = model[:count]
             prediction = model.predict(xgb.DMatrix(xt))

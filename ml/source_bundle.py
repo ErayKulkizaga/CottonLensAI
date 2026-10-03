@@ -30,6 +30,7 @@ def write_bundle(repo: Path, output: Path, paths: list[str], *, head: str, dirty
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument('--exclude', action='append', default=[], help='Explicit source-relative files to preserve locally only')
     args = parser.parse_args()
     repo = Path(__file__).resolve().parents[1]
 
@@ -38,10 +39,12 @@ def main():
 
     paths = []
     for name in git("ls-files", "--cached", "--others", "--exclude-standard").splitlines():
+        if name in args.exclude:
+            continue
         path = Path(name)
         if ((path.parts[0] in {"ml", "backend", "docs", "frontend", ".github"} or name in {"README.md", "AGENTS.md"})
                 and (repo / path).is_file()
-                and path.suffix in {".py", ".toml", ".lock", ".txt", ".json", ".md", ".ini", ".ipynb", ".ts", ".html", ".css", ".yml", ".yaml", ".mako"}):
+                and path.suffix in {".py", ".ps1", ".toml", ".lock", ".txt", ".json", ".md", ".ini", ".ipynb", ".ts", ".html", ".css", ".yml", ".yaml", ".mako"}):
             paths.append(path.as_posix())
     manifest = write_bundle(repo, args.output, paths, head=git("rev-parse", "HEAD"), dirty=bool(git("status", "--porcelain")))
     print(json.dumps({"zip": str(args.output.resolve()), "zip_sha256": digest(args.output),

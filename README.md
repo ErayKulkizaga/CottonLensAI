@@ -3,7 +3,7 @@
 Explainable Cotton No. 2 forecasting and market-sensitivity dashboard. CottonLens separates expensive model development from the lightweight interview demo:
 
 - Google Colab performs ingestion, feature generation, Ridge/XGBoost/LSTM training, MLflow tracking, rolling-origin evaluation, explanations, and artifact export.
-- The local stack only serves Angular, FastAPI, PostgreSQL, and CPU inference from a verified artifact.
+- The application stack serves Angular, FastAPI, PostgreSQL, and CPU inference from a verified artifact. An explicitly authorized, isolated CPU research environment can run the small full-year pilot with one job and at most two threads; it is separate from backend dependencies and CI.
 
 The repository includes an explicitly labelled development fixture so the complete product flow can be reviewed before a real Colab artifact exists. Fixture values are never presented as trained results.
 
@@ -15,6 +15,19 @@ Free-data research continuation: [workflow and current limitations](docs/FREE_DA
 [free USDA keys and Colab Secrets setup](docs/USDA_COLAB_SETUP.md),
 and [new research notebook](ml/notebooks/cottonlens_free_research_colab.ipynb).
 Existing research-v2 checkpoints remain a separate reference.
+
+The current research contract is [MASTER_PLAN_20261001.md](docs/MASTER_PLAN_20261001.md).
+Measured outcomes, limits and the current matched Ridge comparison are summarized
+in [research status](docs/RESEARCH_STATUS_20261003.md). Completed full-year and
+recency experiments did not pass the fixed price gates; Naive remains primary.
+Use the existing [research workbench](ml/notebooks/cottonlens_research_workbench.ipynb)
+and [data workbench](ml/notebooks/cottonlens_data_workbench.ipynb); Run All defaults
+to status/readiness and does not train. The local CPU launcher is
+`python ml/full_year_cpu.py setup`, followed by `status` or `compare`.
+An actual pilot/reproduction requires an explicit stage, a matching frozen source
+and environment, and a bounded session. Old experiments and releases are immutable.
+Live archive scripts are in `ml/scripts/`; a successful task registration and local
+credentials are required before claiming unattended collection is active.
 
 ```text
 Google Colab + GPU                    Local Docker

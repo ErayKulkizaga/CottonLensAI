@@ -52,6 +52,7 @@ class USDAClient:
         else:
             auth = (self._key, '')
         # One request at a time with bounded retries; never print prepared URLs.
+        started = datetime.now(UTC).isoformat()
         for attempt in range(3):
             self._pause(1)
             try:
@@ -101,6 +102,11 @@ class USDAClient:
                     'parameters': parameters, 'source_sha256': checksum, 'retrieved_at': datetime.now(UTC).isoformat(),
                     'model_eligible': False, 'vintage_policy': 'latest_api_snapshot_requires_review',
                     'attribution': NASS_ATTRIBUTION if self.provider == 'nass' else 'USDA', 'cost_tl': 0})
+            observed = {'provider': self.provider, 'source_url': url, 'parameters': parameters,
+                'request_started_at': started, 'observed_available_at': datetime.now(UTC).isoformat(),
+                'source_sha256': checksum, 'source_file': 'source.json', 'published_at': None,
+                'model_eligible': False, 'availability_basis': 'actual_download_completion_not_first_publication'}
+            freeze_record(folder / 'observations' / (content_id(observed) + '.json'), observed)
             return folder, payload
         raise RuntimeError('USDA request attempts exhausted')
 

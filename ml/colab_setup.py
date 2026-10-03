@@ -74,5 +74,20 @@ def setup(*, research: bool = False, data: bool = False) -> Path:
     return python
 
 
+def setup_cpu() -> Path:
+    """Same lock, CPU group only. Preserve the separate historical GPU venv."""
+    if sys.platform != 'linux' or not Path('/content/drive/MyDrive').is_dir():
+        raise RuntimeError('Mount Drive in Colab before CPU setup')
+    tools_root = Path('/content/cottonlens-tools')
+    run([sys.executable, '-m', 'pip', 'install', '--no-deps', '--upgrade', '--target', str(tools_root), f'uv=={UV_VERSION}'])
+    uv = str(tools_root/'bin/uv')
+    environment = Path('/content/cottonlens-cpu312')
+    env = process_env()
+    env.update({'UV_PROJECT_ENVIRONMENT': str(environment), 'UV_PYTHON_INSTALL_DIR': '/content/cottonlens-python'})
+    run([uv, 'sync', '--project', 'ml', '--locked', '--only-group', 'cpu', '--python', '3.12.14', '--managed-python'], env=env)
+    run([uv, 'pip', 'check', '--python', str(environment/'bin/python')], env=env)
+    return environment/'bin/python'
+
+
 if __name__ == "__main__":
     print(setup())

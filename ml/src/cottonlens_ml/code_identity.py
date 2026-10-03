@@ -32,3 +32,15 @@ def source_identity(repo: Path) -> dict:
             if path.relative_to(repo).as_posix() not in manifest["files"]:
                 raise ValueError(f"Unmanifested source module: {path.name}")
     return manifest
+
+
+def research_source_identity(repo: Path) -> dict:
+    """CPU and Colab use the same ML source bytes, independent of Git checkout."""
+    files = {}
+    for path in (Path(repo) / 'ml').rglob('*'):
+        if (path.is_file() and path.suffix in ('.py', '.ps1', '.toml', '.lock', '.txt')
+                and not any(p in ('.venv', '__pycache__') for p in path.parts)):
+            files[path.relative_to(repo).as_posix()] = digest(path)
+    if not files:
+        raise ValueError('ML source files required')
+    return {'source_id': manifest_id(files), 'files': files}

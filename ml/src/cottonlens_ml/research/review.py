@@ -28,6 +28,30 @@ def verify_history(root):
     return ready, history
 
 
+def audit_market(root, ready, history):
+    """Join checksum-bound raw OHLC only for integrity/variance diagnostics."""
+    from cottonlens_ml.preflight import _snapshot
+    identity = ready['identity'].get('source_data', {})
+    if not identity.get('raw_id'):
+        return history, {'status': 'raw_identity_unavailable'}
+    path = Path(root).parent.parent/'data/raw/snapshots'/identity['raw_id']/'manifest.json'
+    if not path.exists():
+        return history, {'status': 'raw_snapshot_unavailable', 'expected_raw_id': identity['raw_id']}
+    _, folder = _snapshot(path, identity['raw_id'], identity['source_checksums'])
+    market = pd.read_parquet(folder/'market.parquet')
+    cotton = market.loc[market.series.eq('cotton')].set_index('date')
+    if cotton.index.has_duplicates:
+        raise ValueError('Duplicate raw Cotton dates')
+    cotton = cotton.reindex(history.date)
+    if not np.allclose(cotton.close, history.cotton_close, equal_nan=False, rtol=1e-12):
+        raise ValueError('Raw and frozen research Cotton prices disagree')
+    enriched = history.copy()
+    for name in ('open','high','low','volume'):
+        enriched['cotton_'+name] = cotton[name].to_numpy()
+    return enriched, {'status': 'checksum_verified', 'raw_id': identity['raw_id'],
+                      'market_sha256': digest(folder/'market.parquet')}
+
+
 def training_rows(history, cutoff, recipe, coverage_start):
     rows = mature(history, cutoff, recipe.get('years'))
     if coverage_start:
@@ -123,7 +147,7 @@ def summary(rows):
     return result
 
 
-def review_predictions(root, ready, history):
+def review_predictions(root, ready, history, *, extended=False, repetitions=10000):
     """Read outer records only. No global ledger/payload scan or winner selection."""
     candidates, hashes = [], {}
     folds = {f['fold']: f for f in ready['identity']['split']['folds']}
@@ -156,6 +180,23 @@ def review_predictions(root, ready, history):
                 'fold_wins': int(sum(r.model_error.mean() < r.naive_error.mean() for r in blocks.values())),
                 'overall': summary(rows), 'strata': strata,
                 'origins_id': content_id(rows.date.dt.strftime('%Y-%m-%d').tolist())})
+            if extended:
+                from cottonlens_ml.research.roll import audit
+                from cottonlens_ml.research.statistics import (
+                    paired_prediction_diagnostics,
+                )
+                item = candidates[-1]
+                item['statistics'] = paired_prediction_diagnostics(rows, repetitions=repetitions)
+                item['strata']['month'] = {str(m): summary(g) for m, g in rows.groupby(rows.date.dt.month)}
+                audit_history, audit_provenance = audit_market(root, ready, history)
+                annotated = audit(audit_history).set_index('date')
+                flag = annotated.loc[rows.date, f'roll_window_{horizon}'].to_numpy(dtype=bool)
+                clean = rows.loc[~flag]
+                item['roll_sensitivity'] = {'primary_count': len(rows), 'flagged_count': int(flag.sum()),
+                    'unflagged': summary(clean) if len(clean) else None,
+                    'role': 'ex_post_sensitivity_only_not_primary_cohort_or_feature', 'raw_integrity': audit_provenance,
+                    'flags': {c: int(annotated[c].sum()) for c in ('zero_volume_flag','duplicate_date_flag','invalid_price_flag','invalid_ohlc_flag','ohlc_unavailable_flag')},
+                    'contract_roll_proven': False}
     if not candidates:
         raise ValueError('No saved price predictions to review')
     return {'candidates': candidates, 'verified_outer_files': hashes,
@@ -250,7 +291,7 @@ def sample_learning_curve(root, ready, history):
         'validation_used_for_selection': True, 'model_payload_verified': False}
 
 
-def build_review(root, repo, readiness, *, with_curve_sample=False):
+def build_review(root, repo, readiness, *, with_curve_sample=False, extended=False, repetitions=10000):
     ready, history = verify_history(root)
     return {'version': VERSION, 'experiment': Path(root).name,
         'evidence': 'seen_historical_research_diagnostic_not_independent_holdout',
@@ -258,12 +299,15 @@ def build_review(root, repo, readiness, *, with_curve_sample=False):
         'ready_sha256': digest(Path(root) / 'ready.json'),
         'history_sha256': ready['history_sha256'], 'reviewer_sha256': digest(Path(__file__)),
         'research_rows': len(history), 'audit_used': False, 'new_fits': 0,
-        'predictions': review_predictions(root, ready, history),
+        'predictions': review_predictions(root, ready, history, extended=extended, repetitions=repetitions),
         'learning_curve_sample': sample_learning_curve(root, ready, history) if with_curve_sample else None,
         'source_inventory': source_inventory(repo, readiness, history),
         'large_source_return_dates': history.loc[history.cotton_ret_1.abs() > .2, 'date'].dt.strftime('%Y-%m-%d').tolist(),
         'contract_roll_interpretation': 'unknown; flagged dates retained in every score',
-        'next_action': 'Resolve a bounded AMS/FAS publication-version package; do not rerun completed ablation'}
+        'next_action': 'Freeze full-year protocol and run bounded price/uncertainty pilot; preserve completed ablation',
+        'extended_statistics': extended,
+        'diagnostic_code_sha256': {name: digest(Path(__file__).with_name(name)) for name in
+                                 ('statistics.py', 'roll.py')} if extended else {}}
 
 
 def write_review(body, output):
@@ -281,8 +325,7 @@ def write_review(body, output):
             f'{gain_text} | {s["direction_pct"]:.2f} | '
             f'{s["past_majority_direction_pct"]:.2f} | {candidate["fold_wins"]}/{candidate["fold_count"]}')
     lines.extend(['', 'Source pilot: ' + body['source_inventory']['pilot_status'],
-                  body['source_inventory']['pilot_blocker'],
-                  'Term: MAE is the average absolute error in the original price unit.'])
+                  body['source_inventory']['pilot_blocker']])
     text = '\n'.join(lines) + '\n'
     path = folder / 'review.txt'
     if path.exists() and path.read_text(encoding='utf-8') != text:
@@ -300,11 +343,12 @@ def main():
     parser.add_argument('--output', type=Path, required=True)
     parser.add_argument('--with-curve-sample', action='store_true',
                         help='Load one selected fit receipt and curve; may hydrate Drive files')
+    parser.add_argument('--extended', action='store_true', help='Paired 10000-repeat diagnostics and roll sensitivity')
     args = parser.parse_args()
     if args.output.resolve().is_relative_to(args.experiment_root.resolve()):
         raise ValueError('Review output must be outside the preserved experiment')
     folder = write_review(build_review(args.experiment_root, args.repo, args.readiness,
-                                      with_curve_sample=args.with_curve_sample), args.output)
+                                      with_curve_sample=args.with_curve_sample, extended=args.extended), args.output)
     print((folder / 'review.txt').read_text(encoding='utf-8'))
     print('Detailed report:', folder / 'review.json')
 

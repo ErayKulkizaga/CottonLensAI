@@ -48,6 +48,16 @@ class Ledger:
         index = read_record(index_path) if index_path.exists() else {'keys': [], 'timing': {}}
         if not set(index['keys']).issubset(completed):
             raise ValueError('Summary references missing completed records')
+        # Remote metadata restore carries small receipts, not a mutable summary index.
+        # Rebuild the read-only projection without loading fitted payloads/results.
+        for path in (self.root/'receipts').glob('*.json'):
+            if path.stem not in index['keys']:
+                receipt = read_record(path)
+                if path.stem not in completed or receipt['experiment_id'] != path.stem:
+                    raise ValueError('Receipt references missing completed record')
+                index['keys'].append(path.stem)
+                for name in ('compute_seconds','checkpoint_copy_seconds','data_seconds'):
+                    index['timing'][name] = index['timing'].get(name, 0.) + receipt[name]
         return {'durably_saved': len(completed), 'timing_receipts': len(index['keys']),
                 'unindexed_legacy_fits': len(completed) - len(index['keys']),
                 'payloads_verified_by_status': False, 'timing': index['timing'],
@@ -71,8 +81,8 @@ class Ledger:
         run_id = uuid.uuid4().hex
         spool = Path('/content/cottonlens-research-work') / content_id(str(self.root.resolve())) / key
         if not Path('/content').is_dir():
-            # Synthetic tests only; real fits separately enforce the Colab guard.
-            spool = self.root / 'synthetic-work' / key
+            # Real small CPU fits separately enforce explicit permission and the thread limit.
+            spool = self.root / ('local-work' if self.identity.get('profile') in ('full-year-v1', 'ams-exploration-v1', 'fas-exploration-v1', 'nass-exploration-v1', 'wasde-exploration-v1', 'cftc-exploration-v1', 'fx-exploration-v1', 'crop-exploration-v1', 'weather-exploration-v1', 'recency-pilot-v1', 'return-path-pilot-v1') else 'synthetic-work') / key
         staged_path = spool / 'locally-completed.json'
         try:
             if staged_path.exists():
