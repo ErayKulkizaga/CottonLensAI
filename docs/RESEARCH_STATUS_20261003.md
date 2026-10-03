@@ -54,7 +54,20 @@ Feasibility inputs contain 10568 recorded rows (3520 Cotton, 3524 corn, 3524 soy
 
 Fixed Ridge(alpha=10), seed42, full history, annual past-only shrinkage, five-Cotton-observation purge and 21-observation refit; no basket/window/alpha/mixture/cadence search. Both arms use preprocessing/target transforms learned on mature Cotton training only. The pooled objective has fixed 50% Cotton / 25% corn / 25% soybean total weights, normalized to the control's total weight. Maximum 676 fits/32 outputs. Design ID `752a333dfdcbfd34f28467128c48940506b96914cd4a88b0e1c1d7291607b7c2`.
 
-Training readiness remains false until the same-ledger pooled-fit adapter and weighted-fit, temporal and resume contracts pass. Only the causal input builder and feasibility checks are implemented at this point; no new training command or notebook is delivered. The completed return-path experiment and frozen source packages are unchanged. Local evidence: `output/reports/return-path-diagnosis-20261003/completion.md`.
+The same-ledger adapter and weighted-fit, temporal and resume contracts now pass. All 676 small CPU fits and 32 annual outputs completed, with the same 2006 origins per horizon. The preserved reference's terminal labels reaching 2024 are masked in this new preparation; the old snapshot is unchanged and those audit outcomes never enter this fit.
+
+| Six-feature matched Ridge arm | T+1 Naive MAE gain | T+5 Naive MAE gain | Winning years T+1 / T+5 |
+|---|---:|---:|---:|
+| Cotton-only control | -0.025% | -0.092% | 3/8 / 2/8 |
+| Shared Cotton/corn/soybean | +0.062% | +0.176% | 5/8 / 4/8 |
+
+Shared training lost inside against its matched control: -0.0206% / -0.1124%, with 4/8 inner wins each. Neither research-priority signal nor price gate passed. Paired matched-control confidence intervals include zero; BH-adjusted p-values are 0.2216 / 0.2050. These small historical outside gains do not justify enlarging the same panel/mixture search.
+
+All-origin direction is 44.37% / 39.23%, with 252 / 497 flat forecasts; majority-direction references are 48.75% / 52.74%. This is price-implied direction with flats, not a binary classifier. Naive stays primary and Tier-A data blocks release.
+
+All 2028 payload hashes, saved transform matching, fixed asset-weight totals and refit label/purge boundaries were verified. Cache replay added zero fits. Seventy-seven checksum batches were copied to the Drive directory; a clean 34-package metadata-only restore reproduced the exact report. This verifies replay, not fresh reproduction, GPU training, deployment parity or cloud synchronization. Compute receipts total 20.017 seconds, excluding runner/report/transfer wall time.
+
+The existing Research Workbench and frozen `source-agri-transfer-pilot-v1-20261003.zip` support status/prepare/pilot/compare; Run All remains read-only. No new notebook was created. Local evidence: `output/reports/agri-transfer-implementation-20261003/completion.md`; report `transfer-d0a1908023824705.json`. Next: examine saved raw shared-model forecasts without new fits before selecting a distinct hypothesis. Do not retune asset weights, alpha or cadence on outside results. The completed return-path source packages and experiment are unchanged.
 
 The existing Experiment/Ledger and two workbenches are used. New metadata catalogues allow status/compare to restore preparation and result batches without scanning model packages. Resume verifies completed work; incomplete or corrupt checkpoints cannot silently become completed experiments. Run All defaults to read-only status. GPU/sequence training stays in Colab. The isolated CPU group does not install TensorFlow/CUDA into the backend.
 
@@ -65,6 +78,6 @@ The existing Experiment/Ledger and two workbenches are used. New metadata catalo
 - The Windows collector records prospective Naive/EWMA forecasts and source vintages with cutoff/missing/no-backfill rules. Computer uptime and local Drive copy verification do not establish continuous service or cloud synchronization.
 - New sources require specific availability/vintage evidence for Tier B. Public access alone does not establish redistribution rights. Data budget is zero; paid resources need separate approval.
 - Old databases, preservation backups, snapshot/release identities and the 24-column production artifact remain protected. The 83-column challenger cannot enter runtime without exporter/importer/runtime/parity contracts being upgraded together.
-- All ML tests passed locally in the isolated CPU environment: 458 passed, one skipped; after the reporting correction, 14 focused runner/notebook regression checks also passed. GitHub backend, frontend, ML data contracts and Compose checks passed. This does not verify GPU training or Linux Colab execution. Changed Python files pass Ruff; a broad scan also reported six pre-existing import-order findings in unchanged test files.
+- All ML tests passed locally in the isolated CPU environment: 472 passed, one skipped. Changed Python files pass Ruff. Prior GitHub backend, frontend, ML data contracts and Compose checks passed; the latest commit's CI status must be checked separately. This does not verify GPU training or Linux Colab execution. A prior broad Ruff scan reported six import-order findings in unchanged test files.
 
 Canonical decisions: [MASTER_PLAN_20261001.md](MASTER_PLAN_20261001.md). D21 remains 22 October 2026 at 20:06:59 UTC; adding a new experiment does not restart that date. Local data, model files, credentials and private handoff material are excluded from Git.

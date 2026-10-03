@@ -114,10 +114,10 @@ def selected_decision(path, spec):
     return chosen
 
 
-def output(folder, name, fold, group, h, design, history):
-    record = read_record(folder / 'path-outputs' / name)
-    path = folder / 'path-decisions' / name
-    chosen = selected_decision(path, recipe(design, group, h))
+def output(folder, name, fold, group, h, design, history, *, namespace='path', recipe_fn=recipe):
+    record = read_record(folder / f'{namespace}-outputs' / name)
+    path = folder / f'{namespace}-decisions' / name
+    chosen = selected_decision(path, recipe_fn(design, group, h))
     frame = pd.DataFrame(record['records'])
     actual = rows_at(history, fold['origins'])
     fields = ['cotton_close', f'target_return_{h}', 'predicted_return', 'raw_predicted_return',
@@ -134,11 +134,11 @@ def output(folder, name, fold, group, h, design, history):
     return record, frame
 
 
-def run(experiment, max_minutes):
+def run(experiment, max_minutes, *, group_names=GROUPS, namespace='path', recipe_fn=recipe, validate_fn=validate_design):
     if not 0 < max_minutes <= 60:
         raise ValueError('Path session budget must be positive and at most 60 minutes')
     design = experiment.identity['design']
-    validate_design({'design_id': experiment.identity['design_id'], 'design': design})
+    validate_fn({'design_id': experiment.identity['design_id'], 'design': design})
     deadline = time.monotonic() + max_minutes * 60
 
     def before():
@@ -149,16 +149,17 @@ def run(experiment, max_minutes):
     try:
         for fold in experiment.identity['split']['folds']:
             for h in (1, 5):
-                for group in GROUPS:
+                for group in group_names:
                     name = f'{group}-t{h}-year{fold["year"]}.json'
-                    marker = experiment.root / 'path-outputs' / name
+                    marker = experiment.root / f'{namespace}-outputs' / name
                     if marker.exists():
-                        output(experiment.root, name, fold, group, h, design, experiment.history)
-                        print(f'CACHE path {group} {fold["year"]} T+{h}; no new fits', flush=True)
+                        output(experiment.root, name, fold, group, h, design, experiment.history,
+                            namespace=namespace, recipe_fn=recipe_fn)
+                        print(f'CACHE {namespace} {group} {fold["year"]} T+{h}; no new fits', flush=True)
                         continue
-                    spec = recipe(design, group, h)
-                    path = experiment.root / 'path-decisions' / name
-                    print(f'STAGE path {group} year={fold["year"]} T+{h}', flush=True)
+                    spec = recipe_fn(design, group, h)
+                    path = experiment.root / f'{namespace}-decisions' / name
+                    print(f'STAGE {namespace} {group} year={fold["year"]} T+{h}', flush=True)
                     if not path.exists():
                         freeze_record(path, {'selected': inner_price(experiment, spec, fold), 'selection_used_outer': False})
                     chosen = selected_decision(path, spec)
@@ -168,6 +169,8 @@ def run(experiment, max_minutes):
                     test['median_return'], test['past_majority_sign'] = np.nan, np.nan
                     for block in chunks(experiment.history, fold['origins']):
                         past = experiment.train_rows(block.date.min(), spec)
+                        if 'asset' in past:
+                            past = past.loc[past.asset.eq('cotton')]
                         signs, counts = np.unique(np.sign(past[f'target_return_{h}']), return_counts=True)
                         mask = test.date.isin(block.date)
                         test.loc[mask, 'median_return'] = float(past[f'target_return_{h}'].median())
@@ -181,26 +184,28 @@ def run(experiment, max_minutes):
                     if getattr(experiment, 'mirror', None):
                         experiment.mirror.publish_metadata([marker.relative_to(experiment.root).as_posix(),
                             path.relative_to(experiment.root).as_posix()])
-                    print(f'SAVED path {group} {fold["year"]} T+{h}', flush=True)
+                    print(f'SAVED {namespace} {group} {fold["year"]} T+{h}', flush=True)
     except FitBudgetReached:
         print('PILOT planned_pause: path checkpoint preserved; resume same profile', flush=True)
-        return {'status': 'planned_pause', 'saved_outputs': len(list((experiment.root / 'path-outputs').glob('*.json')))}
+        return {'status': 'planned_pause', 'saved_outputs': len(list((experiment.root / f'{namespace}-outputs').glob('*.json')))}
     return {'status': 'complete', 'saved_outputs': 32}
 
 
-def compare(folder, repetitions=10000):
+def compare(folder, repetitions=10000, *, group_names=GROUPS, namespace='path', recipe_fn=recipe,
+            validate_fn=validate_design, hypothesis_prefix='L', scope='reused historical research; no independent holdout claim'):
     ready, history = verify_history(folder)
-    design = validate_design({'design_id': ready['identity']['design_id'], 'design': ready['identity']['design']})
-    if len(list((folder / 'path-outputs').glob('*.json'))) != 32:
+    design = validate_fn({'design_id': ready['identity']['design_id'], 'design': ready['identity']['design']})
+    if len(list((folder / f'{namespace}-outputs').glob('*.json'))) != 32:
         return {'status': 'pending', 'required_outputs': 32}
     horizons, hypotheses = {}, {}
     for h in (1, 5):
-        comparisons, inner, arms = [], [], {g: {'losses': [], 'direction': [], 'wins': 0, 'flat': 0} for g in GROUPS}
+        comparisons, inner, arms = [], [], {g: {'losses': [], 'direction': [], 'wins': 0, 'flat': 0} for g in group_names}
         for fold in design['split']['folds']:
             records, errors = {}, {}
-            for group in GROUPS:
+            for group in group_names:
                 name = f'{group}-t{h}-year{fold["year"]}.json'
-                record, frame = output(folder, name, fold, group, h, design, history)
+                record, frame = output(folder, name, fold, group, h, design, history,
+                    namespace=namespace, recipe_fn=recipe_fn)
                 a, c, p = (frame[k].to_numpy() for k in (f'target_return_{h}', 'cotton_close', 'predicted_return'))
                 naive = c * np.abs(np.expm1(a))
                 errors[group] = c * np.abs(np.expm1(a) - np.expm1(p))
@@ -210,8 +215,8 @@ def compare(folder, repetitions=10000):
                 arm['wins'] += int(errors[group].mean() < naive.mean())
                 arm['flat'] += int(frame.predicted_return.eq(0).sum())
                 records[group] = record
-            comparisons.append(np.column_stack([errors['base'], errors['base_plus_return_path']]))
-            inner.append((records['base']['inner_score'], records['base_plus_return_path']['inner_score']))
+            comparisons.append(np.column_stack([errors[group_names[0]], errors[group_names[1]]]))
+            inner.append((records[group_names[0]]['inner_score'], records[group_names[1]]['inner_score']))
         scores = {}
         for group, arm in arms.items():
             losses, directions = np.concatenate(arm['losses']), np.concatenate(arm['direction'])
@@ -225,21 +230,21 @@ def compare(folder, repetitions=10000):
                     normalization=float(losses[:, 0].mean())) for b in (10, 20, 40)},
                 'direction_vs_majority': paired_bootstrap(arm['direction'], repetitions=repetitions)}
         ci = {str(b): paired_bootstrap(comparisons, block=b, repetitions=repetitions,
-            normalization=scores['base']['price_mae']) for b in (10, 20, 40)}
+            normalization=scores[group_names[0]]['price_mae']) for b in (10, 20, 40)}
         inner_gain = float(100 * (1 - np.mean([i[1] for i in inner]) / np.mean([i[0] for i in inner])))
         inner_wins = sum(new < old for old, new in inner)
-        challenger = scores['base_plus_return_path']
+        challenger = scores[group_names[1]]
         horizons[str(h)] = {'arms': scores, 'inner_gain_vs_base_pct': inner_gain, 'inner_year_wins': inner_wins,
             'paired_vs_base': ci, 'research_priority_signal': bool(inner_gain >= .5 and inner_wins >= 5
                 and challenger['naive_mae_gain_pct'] > 0 and challenger['fold_wins'] >= 5)}
-        hypotheses[f'L{h}'] = {'p_two_sided': ci['20']['centered_bootstrap_p_two_sided']}
+        hypotheses[f'{hypothesis_prefix}{h}'] = {'p_two_sided': ci['20']['centered_bootstrap_p_two_sided']}
     for key, q in zip(hypotheses, bh_adjust([p['p_two_sided'] for p in hypotheses.values()]), strict=True):
         hypotheses[key]['bh_adjusted_p'] = q
-    body = {'status': 'complete', 'scope': 'reused historical research; no independent holdout claim',
+    body = {'status': 'complete', 'scope': scope,
         'design_id': ready['identity']['design_id'], 'horizons': horizons, 'hypotheses': hypotheses,
         'release_allowed': False, 'ready_sha256': digest(folder / 'ready.json'),
-        'output_sha256': {p.name: digest(p) for p in sorted((folder / 'path-outputs').glob('*.json'))}}
-    freeze_record(folder / 'reports' / f'path-{content_id(body)[:16]}.json', body)
+        'output_sha256': {p.name: digest(p) for p in sorted((folder / f'{namespace}-outputs').glob('*.json'))}}
+    freeze_record(folder / 'reports' / f'{namespace}-{content_id(body)[:16]}.json', body)
     return body
 
 

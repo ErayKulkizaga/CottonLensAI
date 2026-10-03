@@ -15,7 +15,7 @@ def main():
     parser.add_argument('--max-minutes', type=float, default=60.)
     parser.add_argument('--python', default='3.12.14')
     parser.add_argument('--experiment')
-    parser.add_argument('--profile', choices=('full-year-v1', 'ams-exploration-v1', 'fas-exploration-v1', 'nass-exploration-v1', 'wasde-exploration-v1', 'cftc-exploration-v1', 'fx-exploration-v1', 'crop-exploration-v1', 'weather-exploration-v1', 'oncall-exploration-v1', 'oncall-exploration-v2', 'recency-pilot-v1', 'return-path-pilot-v1'), default='full-year-v1')
+    parser.add_argument('--profile', choices=('full-year-v1', 'ams-exploration-v1', 'fas-exploration-v1', 'nass-exploration-v1', 'wasde-exploration-v1', 'cftc-exploration-v1', 'fx-exploration-v1', 'crop-exploration-v1', 'weather-exploration-v1', 'oncall-exploration-v1', 'oncall-exploration-v2', 'recency-pilot-v1', 'return-path-pilot-v1', 'agri-transfer-pilot-v1'), default='full-year-v1')
     parser.add_argument('--ams-table', type=Path)
     parser.add_argument('--ams-publications', type=Path)
     parser.add_argument('--fas-table', type=Path)
@@ -40,6 +40,7 @@ def main():
             'oncall-exploration-v1':'research-oncall-exploration-v1',
             'recency-pilot-v1':'research-recency-pilot-v1',
             'return-path-pilot-v1':'research-return-path-pilot-v1',
+            'agri-transfer-pilot-v1':'research-agri-transfer-pilot-v1',
             'oncall-exploration-v2':'research-oncall-exploration-v2'}.get(args.profile,'research-full-year-v1-r2')
     environment = repo/'output/full-year-cpu-env'
     env = os.environ.copy()

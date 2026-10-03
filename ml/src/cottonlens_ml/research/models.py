@@ -157,10 +157,16 @@ def fit_predict(history, train, validation, test, spec, workspace, *, iterations
     started = time.monotonic()
     family, h = spec['family'], spec['horizon']
     classification = spec.get('task', 'price') == 'direction'
-    processor = Preprocessor.fit(train, spec['features'])
-    target = Target.fit(train, h, spec.get('target', 'scaled_log'))
+    transfer = spec.get('training_policy') is not None
+    weights, transfer_details = None, {}
+    if transfer:
+        from cottonlens_ml.research.transfer import training_state
+        processor, target, weights, transfer_details = training_state(history,train,test,spec)
+    else:
+        processor = Preprocessor.fit(train, spec['features'])
+        target = Target.fit(train, h, spec.get('target', 'scaled_log'))
     window = spec.get('window', 1)
-    x = inputs(history, train, processor, window)
+    x = processor.transform(train) if transfer else inputs(history, train, processor, window)
     xt = inputs(history, test, processor, window)
     xv = inputs(history, validation, processor, window) if validation is not None else None
     train_labels = class_labels(train, h) if classification else target.forward(train, h)
@@ -335,11 +341,12 @@ def fit_predict(history, train, validation, test, spec, workspace, *, iterations
                 linear = {'coef': model.coef_.tolist(), 'intercept': model.intercept_.tolist(), 'classes': model.classes_.tolist()}
             else:
                 model = (Ridge(alpha=params['alpha']) if family == 'ridge' else ElasticNet(
-                    alpha=params['alpha'], l1_ratio=params['l1_ratio'], max_iter=10000, random_state=seed)).fit(x, y)
+                    alpha=params['alpha'], l1_ratio=params['l1_ratio'], max_iter=10000, random_state=seed))
+                model.fit(x,y,**({'sample_weight':weights} if transfer else {}))
                 prediction, training_prediction = model.predict(xt), model.predict(x)
                 linear = {'coef': model.coef_.tolist(), 'intercept': float(model.intercept_)}
             model_path.write_text(json.dumps(linear), encoding='utf-8')
-            count, details = 1, {'effective_device': 'CPU_reference_explicit'}
+            count, details = 1, {'effective_device': 'CPU_reference_explicit', **transfer_details}
         else:
             raise ValueError(f'Unsupported family: {family}')
     if classification:
@@ -351,7 +358,9 @@ def fit_predict(history, train, validation, test, spec, workspace, *, iterations
         training_log = target.inverse(training_prediction, train.cotton_close.to_numpy())
         metrics = (evaluate(test.cotton_close.to_numpy(), test[f'target_return_{h}'].to_numpy(), predictions)
                    if np.isfinite(test[f'target_return_{h}']).all() else {'role': 'unlabeled_live_prediction'})
-        train_metrics = evaluate(train.cotton_close.to_numpy(), train[f'target_return_{h}'].to_numpy(), training_log)
+        measured = train.asset.eq('cotton').to_numpy() if transfer else np.ones(len(train),dtype=bool)
+        train_metrics = evaluate(train.cotton_close.to_numpy()[measured],
+            train[f'target_return_{h}'].to_numpy()[measured],training_log[measured])
     metadata = {'spec': spec, 'processor': processor.as_dict(), 'target': target.as_dict(),
                 'model_file': model_path.name, 'iterations': count, 'fit_cutoff': test.date.min().isoformat(),
                 'last_fit_label': train.target_date_5.max().isoformat(), 'window': window}
