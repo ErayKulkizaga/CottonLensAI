@@ -1,11 +1,13 @@
 # CottonLensAI
 
-Pamuk piyasası için araştırma ve açıklanabilir tahmin uygulaması. Güncel ürün amacı **vadeli piyasada işlem yönü ve pozisyon kararını desteklemek**. Henüz maliyet sonrası işlem üstünlüğü doğrulanmadı; mevcut T+1/T+5 fiyat tahmininde Naive korunuyor.
+Pamuk piyasası için **araştırma/ispat projesi** ve açıklanabilir tahmin uygulaması.
+ICE Cotton No. 2 referansında tahmin katkısı ve yön/pozisyon simülasyonu incelenir;
+gerçek alım/satım yapılmaz. Mevcut T+1/T+5 fiyat tahmininde Naive korunuyor.
 
 ## Nereden başlanır?
 
 1. [Güncel durum ve kararlar](docs/STATUS.md).
-2. [İşlem araştırmasının hedefi ve sınırları](docs/TRADING_RESEARCH_CONTRACT_20261005.md).
+2. [İspat amacı ve yardımcı simülasyonun sınırları](docs/TRADING_RESEARCH_CONTRACT_20261005.md).
 3. **Yeni deney önermeden önce** [deney sicilini](research/README.md) kontrol edin.
 
 ```bash
@@ -51,6 +53,8 @@ Bu tarif pratik hedefi geçmedi. Sonuç bütün modellerin veya bütün temel ka
 Eski LSTM'nin 498 Naive / 439 LSTM origin karşılaştırması geçersizdi: aynı pencere için yeniden kurulan T+1 toplu kazanç **−%1,6961**, eski +%2,7647 iddiası geçersiz. Tam LSTM tahminleri bulunmadığından paired güven aralığı yok. TCN sentetik öğrenme kontrolünün yanlış `passed` yorumu ayrıca düzeltildi. [Düzeltme kayıtları](research/evidence/) eski artifact'leri değiştirmez.
 
 [İlk işlem hedefi teslimatı](docs/TRADING_WASDE_DELIVERY_20261005.md), mevcut tahminlerde 2.006 T+1 origin'i yeni fit olmadan inceledi. Seçilmiş müdahalenin brüt proxy sonucu tek aktif yıldan geliyor; kontrol katkısı belirsiz ve gerçek giriş/maliyet doğrulanmış değil. Bölgesel WASDE bilgisi 95 rapor/26 alanlı aday pakete geri alındı, eğitim kabulü verilmedi. Sürümlü karar saati ve CLI/engine tazelik eşitliği düzeltildi; 690 eski dosyanın SHA-256'sı korundu. [Yeni payload Release'i](https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/research-delivery-20261005) eski yedeğe ek kanıttır.
+
+[Fiyat alanı/seans denetimi](docs/PRICE_SEMANTICS_AUDIT_20261005.md): 268/2.006 hedef barda `close` high–low aralığı dışında. Bu settlement/mark ayrımını gerektirir; doğrudan bozuk tahmin etiketi demek değildir. Ham proxy kazancı yalnız bu barlardan gelmiyor. Veri değiştirilmedi; tahmin araştırması broker/komisyon bilgisine bağlanmıyor.
 
 ## Veriler, modeller ve tam kanıt yedeği
 

@@ -1,26 +1,33 @@
-# CottonLensAI: işlem yönü ve pozisyon araştırma sözleşmesi
+# CottonLensAI: araştırma ispatı ve yön/pozisyon simülasyonu sözleşmesi
 
-Kullanıcı kararı: vadeli piyasada işlem yönü ve pozisyon. Tarih: 5 Ekim 2026.
-Durum: araştırma hedefi; canlı işlem veya model yayını onayı değildir.
+Kullanıcı kararı: vadeli piyasa yön/pozisyon fikrini inceleyen **araştırma/ispat projesi**.
+5 Ekim 2026 açıklaması: gerçek alım/satım yapılmayacak; aracı kurum seçimi gerekmiyor.
+ICE Cotton No. 2 (CT), araştırma referansı olarak belirlenmiştir.
 
 ## Amaç
 
-Geçmişte gerçekten kullanılabilir bilgiyle, işlem maliyetleri sonrası pozitif
-fayda sağlayan **long / flat / short** kararları üretmek. Fiyat-MAE ve doğru yön
-oranı tanısal ölçümlerdir. Kazancın büyüklüğü, kaybın büyüklüğü ve maliyet olmadan
-yön doğruluğu stratejinin değerini belirleyemez.
+Geçmişte kullanılabilir bilgiyle **ölçülebilir tahmin katkısı** göstermek. Birincil
+kanıt ortak origin/hedeflerde OOS tahmin hatası ve yön sonuçları, referans farkı,
+yıllık istikrar ve zamansal bağımlılığa uygun belirsizliktir. Gösterim uygulamasının
+çalışması ve pozitif brüt proxy sonucu, tahmin katkısının kanıtı sayılmaz.
+
+Long/flat/short ve kontrat-birim PnL yalnız yardımcı simülasyondur. Broker,
+gerçek komisyon, emir/fill ve sermaye tanımı tahmin araştırmasının ön koşulu
+değildir. Gerçek/net işlem kazancı iddia edilirse ayrıca doğrulanmaları gerekir.
+İncelenecek fiyat alanının anlamı, veri sürümü ve karar saatindeki erişilebilirlik
+bu bir ispat projesi olsa da açık kalmalıdır. Bilinmeyenler varsayım diye etiketlenir.
 
 Önceki fiyat tahmini deneylerinin %5 MAE, %53/%55 yön ve 6/8 yıl eşikleri
-değişmez. Yeni işlem hedefi, o deneyleri başarılı saymak veya bir modeli eski
+değişmez. Yardımcı simülasyon, o deneyleri başarılı saymak veya bir modeli eski
 yayın kapısından geçirmek için kullanılamaz. Hiçbir eski modelin işlem becerisi
 bu sözleşmeyle kabul edilmiş olmaz.
 
 ## İlk araştırmanın sınırı
 
-- Çalışma varsayımı: ICE Cotton No. 2 (CT). Kullanıcının işlem yaptığı ürün farklıysa
-  fiyatlama, maliyet ve seans sözleşmesi değiştirilip değerlendirmeden önce kilitlenir.
-- T+1 birincil: kararın ardından ilk Cotton seansında giriş ve aynı seans sonunda çıkış.
-  T+5 için ilk teslimatta pozisyon stratejisi veya ufuk seçimi yapılmaz.
+- Çalışma referansı: ICE Cotton No. 2 (CT). Broker veya hesap açılmaz.
+- T+1 birincil; mevcut T+5 fiyat araştırması ayrıca korunur. Fiyat hedefi mevcut
+  Cotton `close → sonraki close` log getirileridir. Yardımcı open/close simülasyonu
+  bu hedefin yerine geçirilmez; sonuçlara bakılarak yeni ufuk/strateji seçilmez.
 - Karar anı: Cotton kaynak tarihini izleyen gün 00:15 UTC; mevcut kaynak
   erişilebilirliği varsayımları açıkça korunur, doğrulanmış yayın zamanı sayılmaz.
 - Giriş: karar anından **sonra**, işlem yapılabilir ilk seansta uygulanabilir fiyat.
@@ -32,7 +39,7 @@ bu sözleşmeyle kabul edilmiş olmaz.
 - Kontrat açık pozisyonda değiştirilemez. Daha uzun tutuş veya roll içeren ileriki
   araştırma, gerçek kontrat fiyatları ve önceden kilitli geçiş kuralı gerektirir.
 
-## İşlem sonucu ve başarı
+## Yardımcı simülasyon ve iddia sınırı
 
 CT'nin kontrat büyüklüğü 50.000 lb; fiyat cent/lb, tick 0,01 cent/lb = 5 USD.
 Dolayısıyla bir kontrat için:
@@ -45,8 +52,8 @@ Maliyetler çift yönlüdür; doldurma fiyatı spread/slippage'ı zaten içeriyo
 ikinci kez düşülmez. Flat pozisyonun işlem maliyeti sıfırdır. Limitte işlem
 gerçekleşememesi veya eksik fiyat, otomatik gerçekleşmiş işlem sayılmaz.
 
-Birincil ölçüm, **bütün uygun karar günleri dahil** maliyet sonrası ortalama
-kontrat-birim PnL'dir. İşlem başına PnL, işlem sayısı, aktif oran, turnover,
+Simülasyon ölçümü, **bütün uygun karar günleri dahil** ortalama kontrat-birim
+PnL'dir; maliyet bilinmiyorsa yalnız brüt proxy hesaplanır. İşlem başına PnL, işlem sayısı, aktif oran, turnover,
 yıllık sonuç ve dolar drawdown ayrıca raporlanır. Yalnız kazandıran işlem günleri
 veya en iyi yıllar seçilmez. Sermaye ve marjin tanımı olmadan yüzde hesap getirisi
 ve kaldıraçlı performans iddiası üretilmez.
@@ -56,9 +63,10 @@ Aynı aktif günlerde sabit yön karşılaştırması, getirinin yön seçiminde
 hangi günlerde işlem yapıldığından mı geldiğini ayırır. Basit referanslardan
 üstünlük henüz ölçülmüş veya kabul edilmiş değildir.
 
-Tarihsel bir adayın hedeflenmiş ileri doğrulamaya geçebilmesi için uygulanabilir
-fiyat/veri kimliği, gerçekçi maliyet hesabı, pozitif net sonuç ve 20/60 günlük
-bloklarda eşlenmiş üstünlük kanıtı gerekir. Mevcut sekiz yıllık kapsamda en az
+**Gerçek işlem üstünlüğü iddiası için** uygulanabilir fiyat/veri kimliği,
+gerçekçi maliyet hesabı, pozitif net sonuç ve 20/60 günlük bloklarda eşlenmiş
+üstünlük kanıtı gerekir. Bu, tahmin ispatını broker bilgisine bağlayan kapı değildir.
+Mevcut sekiz yıllık kapsamda en az
 6/8 yıl pozitif net sonuç, bu yeni araştırma için **önerilen ve ilk hesap öncesi
 kilitlenecek** istikrar koşuludur. Bu koşullar yeterli canlı yayın kanıtı değildir.
 Kabul edilebilir drawdown ve sermaye riski kullanıcı kullanımına göre ayrıca

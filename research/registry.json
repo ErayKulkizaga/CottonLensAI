@@ -14884,6 +14884,44 @@
         "us_stock_use_revision"
       ],
       "id": "6d279d1217de82b44a9c90404fbc367847f79005a62e554b893845b41ece2570"
+    },
+    {
+      "experiment": "cotton-ohlc-semantics-audit-v1",
+      "profile": "cotton-ohlc-semantics-audit-v1",
+      "kind": "no_fit_source_semantics_audit",
+      "horizon": 1,
+      "coverage": "2006_fixed_proxy_targets",
+      "classification": "INCONCLUSIVE",
+      "model_families": [],
+      "recipes": [],
+      "completed_new_fits": 0,
+      "independent_holdout": false,
+      "model_eligible": false,
+      "reason": "OHLC flags do not prove corrupt settlement labels or trading execution. Raw proxy remains positive outside flagged bars.",
+      "code_id": "b2e3345b8af055e74f85e85c25e957809538a741678dbbf901025275db474947",
+      "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/research-semantics-20261005",
+      "evidence": "research/evidence/price-semantics-20261005.json",
+      "evidence_sha256": "a387d3942a0c9cb82230f824b2130a5a8d5f40ad63961af97f7ea96c47576ea7",
+      "id": "f5244c08ec3cb71498eb14dae34cb7cb3e75c5fd2021e046ac73677f92beeca7"
+    },
+    {
+      "experiment": "ams-cotton-price-reconciliation-v1",
+      "profile": "ams-cotton-price-reconciliation-v1",
+      "kind": "no_fit_existing_source_reconciliation",
+      "horizon": null,
+      "coverage": "998_hashed_documents_997_verified_dates",
+      "classification": "INCONCLUSIVE",
+      "model_families": [],
+      "recipes": [],
+      "completed_new_fits": 0,
+      "independent_holdout": false,
+      "model_eligible": false,
+      "reason": "996 of 997 dated first contract quotes match Close; 20 quote transitions. Non-transition fixed predictions still lack practical MAE skill. No certified vendor contract/vintage proof or new market experiment.",
+      "code_id": "b2e3345b8af055e74f85e85c25e957809538a741678dbbf901025275db474947",
+      "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/research-semantics-20261005",
+      "evidence": "research/evidence/price-semantics-20261005.json",
+      "evidence_sha256": "a387d3942a0c9cb82230f824b2130a5a8d5f40ad63961af97f7ea96c47576ea7",
+      "id": "1f2811123ef826572dcfc615ff3e4f1aafbfaf921caeb32508b417d35e23429b"
     }
   ],
   "local_evidence": [
@@ -14920,6 +14958,15 @@
     {
       "path": "evidence/trading-wasde-release-20261005.json",
       "sha256": "3bd89451e3a6cd144f3c6ee26c42718899f5576ea212db6d05053f8d7ef78ea1"
+    },
+    {
+      "path": "evidence/price-semantics-20261005.json",
+      "sha256": "a387d3942a0c9cb82230f824b2130a5a8d5f40ad63961af97f7ea96c47576ea7",
+      "original_path": "output/execution-provenance-20261005"
+    },
+    {
+      "path": "evidence/price-semantics-release-20261005.json",
+      "sha256": "4b361209b7580ca94f9ee835842d26cfcb0ab4cf23ba3fd1f5bc72329018eed5"
     }
   ]
 }
