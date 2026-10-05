@@ -1,8 +1,7 @@
 import json
 
-import pytest
-
 import export_ams_diagnostic as diagnostic
+import pytest
 from cottonlens_ml.code_identity import digest
 
 

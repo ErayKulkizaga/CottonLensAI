@@ -1,0 +1,143 @@
+{
+  "schema": 1,
+  "source_git_head": "470f1e56c700ef7b7bd999aff6f6a80c4551a172",
+  "policy": "Archive evidence, remove superseded entry points from active directories; no scientific payload deletion",
+  "moves": [
+    {
+      "original": "docs/CONTINUOUS_RESEARCH.md",
+      "current": "docs/archive/CONTINUOUS_RESEARCH.md",
+      "original_sha256": "982cef1a4a95e388f4f6dc4c989a9373c114e69500c1dc20cb79a05ae7059775",
+      "reason": "Historical evidence or superseded operational plan; not current instructions"
+    },
+    {
+      "original": "docs/DAY1_R2_EVIDENCE_REVIEW.md",
+      "current": "docs/archive/DAY1_R2_EVIDENCE_REVIEW.md",
+      "original_sha256": "1f20497d8d0b45be4e1535da2b517c25146b5682da762561bed09352c155bcb7",
+      "reason": "Historical evidence or superseded operational plan; not current instructions"
+    },
+    {
+      "original": "docs/FREE_DATA_RESEARCH.md",
+      "current": "docs/archive/FREE_DATA_RESEARCH.md",
+      "original_sha256": "25666723c3908ebf84da6117eed2fab5229ab1ee2d6a4fdcdfd1afeda438ba44",
+      "reason": "Historical evidence or superseded operational plan; not current instructions"
+    },
+    {
+      "original": "docs/INTERVIEW_DEMO.md",
+      "current": "docs/archive/INTERVIEW_DEMO.md",
+      "original_sha256": "46defd673bd7d13de87eca7b441d7bb05993b16bfdac655a0653b2a573d77355",
+      "reason": "Historical evidence or superseded operational plan; not current instructions"
+    },
+    {
+      "original": "docs/MASTER_PLAN_20261001.md",
+      "current": "docs/archive/MASTER_PLAN_20261001.md",
+      "original_sha256": "d186bd4a51f9d1fcea89ba14c86917af88190aab918cd7c7208488a7b7b3aea1",
+      "reason": "Historical evidence or superseded operational plan; not current instructions"
+    },
+    {
+      "original": "docs/MODEL_CARD.md",
+      "current": "docs/archive/MODEL_CARD.md",
+      "original_sha256": "01ff44552c2ee2135d0f7869545ecbc611d6087c25b392dcb55f21c969e251b6",
+      "reason": "Historical evidence or superseded operational plan; not current instructions"
+    },
+    {
+      "original": "docs/MODEL_EXPERIMENTS.md",
+      "current": "docs/archive/MODEL_EXPERIMENTS.md",
+      "original_sha256": "b8ed73a57d3c98dd2e0dc992b45f792a3d345db6826f5a71767ee9815e11fcad",
+      "reason": "Historical evidence or superseded operational plan; not current instructions"
+    },
+    {
+      "original": "docs/RESEARCH_DIRECTIVES_REVIEW_20261002.md",
+      "current": "docs/archive/RESEARCH_DIRECTIVES_REVIEW_20261002.md",
+      "original_sha256": "2285ad88fa0bccb5bdea956174798145348899ae858c4db54eaa62a8819200ea",
+      "reason": "Historical evidence or superseded operational plan; not current instructions"
+    },
+    {
+      "original": "docs/RESEARCH_PLAN_20261001.md",
+      "current": "docs/archive/RESEARCH_PLAN_20261001.md",
+      "original_sha256": "66eb5a654e8f6378977f0e1c6f21c533f8d325eaef5477c1c045e5df5d0a4364",
+      "reason": "Historical evidence or superseded operational plan; not current instructions"
+    },
+    {
+      "original": "docs/RESEARCH_RESET_20260928.md",
+      "current": "docs/archive/RESEARCH_RESET_20260928.md",
+      "original_sha256": "7fa9b369b5ba9896d9eaea4750964b6fc1f55e33694bc6b22e1ef949aa9920b7",
+      "reason": "Historical evidence or superseded operational plan; not current instructions"
+    },
+    {
+      "original": "docs/RESEARCH_STATUS_20261003.md",
+      "current": "docs/archive/RESEARCH_STATUS_20261003.md",
+      "original_sha256": "9c34f1dccdf014e5bb9d3de429ca9edfe33fb2674e015d9f02ae5bfc2e43c1e7",
+      "reason": "Historical evidence or superseded operational plan; not current instructions"
+    },
+    {
+      "original": "docs/THREE_DAY_SPRINT.md",
+      "current": "docs/archive/THREE_DAY_SPRINT.md",
+      "original_sha256": "de4249c050f2f82f1f58b15085fd1f2f215319d346a678a934dd6c0765bb03de",
+      "reason": "Historical evidence or superseded operational plan; not current instructions"
+    },
+    {
+      "original": "docs/USDA_VINTAGE_REVIEW.md",
+      "current": "docs/archive/USDA_VINTAGE_REVIEW.md",
+      "original_sha256": "1cd39335f6804db39c0e4a2139ce349c464b58c7a0441fca2b998d1bab342c9d",
+      "reason": "Historical evidence or superseded operational plan; not current instructions"
+    },
+    {
+      "original": "ml/notebooks/cottonlens_colab.ipynb",
+      "current": "ml/notebooks/archive/cottonlens_colab.ipynb",
+      "original_sha256": "ceac4827176e1945467cfa84805d8b2ac43f4f0c749bb6cd909fb7d0abb91e9b",
+      "reason": "Retained historical orchestration; do not start new research from this notebook"
+    },
+    {
+      "original": "ml/notebooks/cottonlens_free_research_ablation_unit1.ipynb",
+      "current": "ml/notebooks/archive/cottonlens_free_research_ablation_unit1.ipynb",
+      "original_sha256": "7032657932f6195228a7f83a0c773dc246b3da4723b4520c14177d85f0507802",
+      "reason": "Retained historical orchestration; do not start new research from this notebook"
+    },
+    {
+      "original": "ml/notebooks/cottonlens_free_research_colab.ipynb",
+      "current": "ml/notebooks/archive/cottonlens_free_research_colab.ipynb",
+      "original_sha256": "953b4ad8964b346db5f293387ffcd4f3299bad9ae3d06e6d7d95d99c51ab1bad",
+      "reason": "Retained historical orchestration; do not start new research from this notebook"
+    },
+    {
+      "original": "ml/notebooks/cottonlens_free_research_diagnose.ipynb",
+      "current": "ml/notebooks/archive/cottonlens_free_research_diagnose.ipynb",
+      "original_sha256": "316acf63f2e7c774f736a1267e10d6c40015f5529b389301f7f21987721a9369",
+      "reason": "Retained historical orchestration; do not start new research from this notebook"
+    },
+    {
+      "original": "ml/notebooks/cottonlens_free_research_pilot.ipynb",
+      "current": "ml/notebooks/archive/cottonlens_free_research_pilot.ipynb",
+      "original_sha256": "86cbcf31766d51678ea6279e6464bff0875b0582beffd1996b9953e957c548ab",
+      "reason": "Retained historical orchestration; do not start new research from this notebook"
+    },
+    {
+      "original": "ml/notebooks/cottonlens_research_colab.ipynb",
+      "current": "ml/notebooks/archive/cottonlens_research_colab.ipynb",
+      "original_sha256": "d5eeacb0a7d43f3e8d0881a3022f29774555da65d0a07d5c305858a8801340c1",
+      "reason": "Retained historical orchestration; do not start new research from this notebook"
+    },
+    {
+      "original": "ml/notebooks/cottonlens_research_colab_progress.ipynb",
+      "current": "ml/notebooks/archive/cottonlens_research_colab_progress.ipynb",
+      "original_sha256": "b51943d5caa151bfeb607efe54bf75eeb8c4a3e7dc5fa4e7b1454096cc88f895",
+      "reason": "Retained historical orchestration; do not start new research from this notebook"
+    },
+    {
+      "original": "ml/notebooks/cottonlens_research_colab_recovery.ipynb",
+      "current": "ml/notebooks/archive/cottonlens_research_colab_recovery.ipynb",
+      "original_sha256": "f00c7f163d5a73735190d03769823f47ca75011f8f1f2c50eca636247c37509f",
+      "reason": "Retained historical orchestration; do not start new research from this notebook"
+    },
+    {
+      "original": "ml/notebooks/cottonlens_sprint_colab.ipynb",
+      "current": "ml/notebooks/archive/cottonlens_sprint_colab.ipynb",
+      "original_sha256": "7a8d0d49b8f91d0ef4a8ebb7653312c421cc68ae9794775610361dc5517912e3",
+      "reason": "Retained historical orchestration; do not start new research from this notebook"
+    }
+  ],
+  "excluded_local_settings": [
+    "opencode.json"
+  ],
+  "removed_scientific_payloads": []
+}

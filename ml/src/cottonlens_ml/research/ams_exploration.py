@@ -303,7 +303,8 @@ def run(experiment, max_minutes):
                 if decision.exists():
                     chosen = read_record(decision)
                 else:
-                    choices = [inner_price(experiment, r, fold) for r in specs(names)]
+                    recipes = experiment.identity.get('fixed_recipes', {}).get(group)
+                    choices = [inner_price(experiment, r, fold) for r in (recipes if recipes is not None else specs(names))]
                     # Strictly past inner outcomes, then simpler family/weight.
                     best = min(enumerate(choices), key=lambda x:(x[1]['inner_score'],x[0],x[1]['weight']))[1]
                     chosen = {'selected':best,'all_candidates':choices,'selection_used_outer':False}
@@ -377,7 +378,8 @@ def compare(folder):
                 normalization=float(values[:,0].mean())) for b in identity['bootstrap_lengths'] if b!=20}
     controls = identity.get('comparison_controls', {f'quote_L{lag}':f'missing_L{lag}' for lag in LAGS})
     for quote, control in controls.items():
-        for benchmark in ('base',control):
+        base = identity.get('comparison_bases', {}).get(quote, 'base')
+        for benchmark in (base,control):
             parts = [np.column_stack([b[:,1],q[:,1]]) for b,q in zip(matrices[benchmark],matrices[quote],strict=True)]
             groups[quote]['vs_'+benchmark] = paired_bootstrap(parts,repetitions=10000,normalization=groups[benchmark]['price_mae'])
             if identity.get('bootstrap_lengths'):

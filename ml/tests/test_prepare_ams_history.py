@@ -1,6 +1,5 @@
-import pytest
-
 import prepare_ams_history as history
+import pytest
 
 
 def test_year_resume_uses_completed_months_and_rejects_missing_report(tmp_path, monkeypatch):

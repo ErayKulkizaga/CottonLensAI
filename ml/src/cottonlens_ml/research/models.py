@@ -165,16 +165,24 @@ def fit_predict(history, train, validation, test, spec, workspace, *, iterations
     classification = spec.get('task', 'price') == 'direction'
     transfer = spec.get('training_policy') is not None
     weights, transfer_details = None, {}
+    text_adapter = spec.get('text_adapter')
+    if text_adapter and (transfer or family != 'ridge' or h != 5
+                         or device_requested != 'cpu' or spec.get('window', 1) != 1 or classification):
+        raise ValueError('Text pilot is fixed CPU Ridge T+5 only')
     if transfer:
         from cottonlens_ml.research.transfer import training_state
         processor, target, weights, transfer_details = training_state(history,train,test,spec)
+    elif text_adapter:
+        from cottonlens_ml.research.text_adapter import TextPreprocessor
+        processor = TextPreprocessor.fit(train, spec['features'], text_adapter)
+        target = Target.fit(train, h, spec.get('target', 'scaled_log'))
     else:
         processor = Preprocessor.fit(train, spec['features'])
         target = Target.fit(train, h, spec.get('target', 'scaled_log'))
     window = spec.get('window', 1)
-    x = processor.transform(train) if transfer else inputs(history, train, processor, window)
-    xt = inputs(history, test, processor, window)
-    xv = inputs(history, validation, processor, window) if validation is not None else None
+    x = processor.transform(train) if transfer or text_adapter else inputs(history, train, processor, window)
+    xt = processor.transform(test) if text_adapter else inputs(history, test, processor, window)
+    xv = (processor.transform(validation) if text_adapter else inputs(history, validation, processor, window)) if validation is not None else None
     train_labels = class_labels(train, h) if classification else target.forward(train, h)
     classes = np.unique(train_labels).astype(int).tolist() if classification else []
     if classification and len(classes) < 2:

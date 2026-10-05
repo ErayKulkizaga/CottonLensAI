@@ -1,5 +1,4 @@
 import pytest
-
 from cottonlens_ml.sprint import freeze_record
 from review_wasde_availability import inventory
 

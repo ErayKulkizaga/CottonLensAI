@@ -6,7 +6,7 @@ from pathlib import Path
 
 
 def test_diagnose_notebook_is_pinned_and_does_not_launch_search():
-    notebook = Path(__file__).parents[1] / "notebooks/cottonlens_free_research_diagnose.ipynb"
+    notebook = Path(__file__).parents[1] / "notebooks/archive/cottonlens_free_research_diagnose.ipynb"
     cells = json.loads(notebook.read_text(encoding="utf-8"))["cells"]
     code = ["".join(cell["source"]) for cell in cells if cell["cell_type"] == "code"]
     for cell in code:
@@ -24,7 +24,7 @@ def test_diagnose_notebook_is_pinned_and_does_not_launch_search():
 
 
 def test_pilot_notebook_runs_one_resume_safe_real_data_candidate():
-    notebook = Path(__file__).parents[1] / "notebooks/cottonlens_free_research_pilot.ipynb"
+    notebook = Path(__file__).parents[1] / "notebooks/archive/cottonlens_free_research_pilot.ipynb"
     cells = json.loads(notebook.read_text(encoding="utf-8"))["cells"]
     code = ["".join(cell["source"]) for cell in cells if cell["cell_type"] == "code"]
     for cell in code:

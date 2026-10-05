@@ -1,6 +1,5 @@
-import pytest
-
 import export_nass_diagnostic as diagnostic
+import pytest
 from cottonlens_ml.sprint import freeze_record
 
 

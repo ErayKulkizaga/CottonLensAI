@@ -1,8 +1,11 @@
 """Offline orchestration contracts; no training or Drive calls."""
 
 import ast
+import hashlib
 import json
-from pathlib import Path
+from pathlib import Path, PurePosixPath
+
+import pytest
 
 ROOT = Path(__file__).parents[1] / 'notebooks'
 
@@ -123,7 +126,7 @@ def test_observation_workflow_fetches_public_current_sources_without_admission()
 
 
 def test_pilot_verifier_resolves_payload_under_ledger(tmp_path):
-    cells = code('cottonlens_free_research_pilot.ipynb')
+    cells = code('archive/cottonlens_free_research_pilot.ipynb')
     tree = ast.parse(cells[-1])
     assignment = next(n for n in tree.body if isinstance(n, ast.Assign)
                       and any(isinstance(t, ast.Name) and t.id == 'pilot_program' for t in n.targets))
@@ -166,7 +169,7 @@ def test_return_path_uses_same_workbench_and_explicit_training_gate():
     source = '\n'.join(cells)
     assert 'return-path-pilot-v1-inputs-20261003' in source
     assert "'path-outputs' if PROFILE == 'return-path-pilot-v1'" in source
-    assert "total=32 if PROFILE in ('return-path-pilot-v1','agri-transfer-pilot-v1','agri-nonlinear-pilot-v1','statistical-pilot-v1')" in source
+    assert "else 32 if PROFILE in ('return-path-pilot-v1','agri-transfer-pilot-v1','agri-nonlinear-pilot-v1','statistical-pilot-v1','nonlinear-path-pilot-v1')" in source
 
 
 def test_agricultural_transfer_uses_frozen_packet_and_existing_workbench():
@@ -181,7 +184,7 @@ def test_agricultural_transfer_uses_frozen_packet_and_existing_workbench():
         assert scope['RUN_TRAINING'] is False
     source = '\n'.join(cells)
     assert "'data/agri-transfer-pilot-v1-inputs-20261003'" in source
-    assert "reference = local if PROFILE in ('agri-transfer-pilot-v1','agri-nonlinear-pilot-v1','statistical-pilot-v1')" in source
+    assert "reference = local if PROFILE in ('agri-transfer-pilot-v1','agri-nonlinear-pilot-v1','statistical-pilot-v1','nonlinear-path-pilot-v1')" in source
     assert "'transfer-outputs' if PROFILE == 'agri-transfer-pilot-v1'" in source
 
 
@@ -196,7 +199,7 @@ def test_nonlinear_transfer_uses_gpu_only_for_prepare_and_training():
         assert scope['SOURCE_BUNDLE']=='source-agri-nonlinear-pilot-v1-20261003.zip'
         assert scope['RUN_TRAINING'] is False
     source = '\n'.join(cells)
-    assert "GPU_FIT = PROFILE == 'agri-nonlinear-pilot-v1' and WORKFLOW in ('prepare','pilot')" in source
+    assert "GPU_FIT = PROFILE in ('agri-nonlinear-pilot-v1','nonlinear-path-pilot-v1') and WORKFLOW in ('prepare','pilot')" in source
     assert 'setup(research=True) if GPU_FIT else setup_cpu()' in source
     assert "'data/agri-nonlinear-pilot-v1-inputs-20261003'" in source
     assert "'nonlinear-outputs' if PROFILE == 'agri-nonlinear-pilot-v1'" in source
@@ -215,4 +218,104 @@ def test_statistical_pilot_keeps_same_workbench_and_cpu_only_setup():
     source = '\n'.join(cells)
     assert "'data/statistical-pilot-v1-inputs-20261003'" in source
     assert "'statistical-outputs' if PROFILE == 'statistical-pilot-v1'" in source
-    assert "GPU_FIT = PROFILE == 'agri-nonlinear-pilot-v1' and WORKFLOW in ('prepare','pilot')" in source
+    assert "GPU_FIT = PROFILE in ('agri-nonlinear-pilot-v1','nonlinear-path-pilot-v1') and WORKFLOW in ('prepare','pilot')" in source
+
+
+def test_nonlinear_path_uses_fixed_bundle_gpu_and_new_namespace():
+    cells = code('cottonlens_research_workbench.ipynb')
+    config = cells[0].replace("PROFILE = 'full-year-v1'","PROFILE = 'nonlinear-path-pilot-v1'",1)
+    for workflow in ('status','prepare','pilot_plan','pilot','compare'):
+        scope = {}
+        exec(compile(config.replace("WORKFLOW = 'status'",f'WORKFLOW = {workflow!r}',1),  # noqa: S102 - trusted configuration
+                     '<nonlinear-path-workflow>','exec'),scope)
+        assert scope['EXPERIMENT']=='research-nonlinear-path-pilot-v1'
+        assert scope['SOURCE_BUNDLE']=='source-nonlinear-path-pilot-v1-20261003.zip'
+        assert scope['RUN_TRAINING'] is False
+        env = ast.parse(cells[2])
+        assignment = next(n for n in env.body if isinstance(n,ast.Assign)
+                          and any(getattr(t,'id',None)=='GPU_FIT' for t in n.targets))
+        gpu = eval(compile(ast.Expression(assignment.value),'<gpu-guard>','eval'),scope)
+        assert gpu is (workflow in ('prepare','pilot'))
+    source = '\n'.join(cells)
+    assert "'data/nonlinear-path-pilot-v1-inputs-20261003'" in source
+    assert "'nonlinear-path-outputs' if PROFILE == 'nonlinear-path-pilot-v1'" in source
+
+
+def test_wasde_text_pilot_uses_same_cpu_workbench_and_fixed_source():
+    cells = code('cottonlens_research_workbench.ipynb')
+    config = cells[0].replace("PROFILE = 'full-year-v1'","PROFILE = 'wasde-text-pilot-v1'",1)
+    for workflow in ('status','prepare','pilot_plan','pilot','compare'):
+        scope = {}
+        exec(compile(config.replace("WORKFLOW = 'status'",f'WORKFLOW = {workflow!r}',1),  # noqa: S102 - trusted configuration
+                     '<text-workflow>','exec'),scope)
+        assert scope['EXPERIMENT']=='research-wasde-text-pilot-v1'
+        assert scope['SOURCE_BUNDLE']=='source-wasde-text-pilot-v1-20261003.zip'
+        assert scope['RUN_TRAINING'] is False
+        env = ast.parse(cells[2])
+        assignment = next(n for n in env.body if isinstance(n,ast.Assign)
+                          and any(getattr(t,'id',None)=='GPU_FIT' for t in n.targets))
+        assert eval(compile(ast.Expression(assignment.value),'<cpu-guard>','eval'),scope) is False
+    source = '\n'.join(cells)
+    assert "'data/wasde-text-pilot-v1-inputs-20261003'" in source
+    assert "BASE += ['--wasde-corpus',local/'corpus-v4.json']" in source
+    assert "else 45 if PROFILE == 'wasde-text-pilot-v1'" in source
+    assert "else 'information-outputs' if PROFILE in ('wasde-text-pilot-v1','fundamental-joint-pilot-v1')" in source
+
+
+def test_fundamental_joint_keeps_single_workbench_cpu_and_registered_profile():
+    cells = code('cottonlens_research_workbench.ipynb')
+    config = cells[0].replace("PROFILE = 'full-year-v1'","PROFILE = 'fundamental-joint-pilot-v1'",1)
+    for workflow in ('status','prepare','pilot_plan','pilot','compare'):
+        scope = {}
+        exec(compile(config.replace("WORKFLOW = 'status'",f'WORKFLOW = {workflow!r}',1),  # noqa: S102 - trusted config
+                     '<joint-workflow>','exec'),scope)
+        assert scope['EXPERIMENT']=='research-fundamental-joint-pilot-v1'
+        assert scope['SOURCE_BUNDLE']=='source-fundamental-joint-pilot-v1-20261004.zip'
+        assert scope['RUN_TRAINING'] is False
+        node = next(n for n in ast.parse(cells[2]).body if isinstance(n,ast.Assign)
+                    and any(getattr(t,'id',None)=='GPU_FIT' for t in n.targets))
+        assert eval(compile(ast.Expression(node.value),'<cpu-only>','eval'),scope) is False
+    source = '\n'.join(cells)
+    assert "BASE += ['--information-inputs',local]" in source
+    assert "'data/fundamental-joint-pilot-v1-inputs-20261004'" in source
+    assert "total=72 if PROFILE == 'fundamental-joint-pilot-v1'" in source
+
+
+@pytest.mark.parametrize('cache',['fresh','payloads_only','completed','conflicting_manifest'])
+def test_joint_workbench_restores_signed_manifest_before_prepare(tmp_path,cache):
+    from cottonlens_ml.sprint import freeze_record, read_record
+    packet=tmp_path/'drive/data/fundamental-joint-pilot-v1-inputs-20261004'
+    files={}
+    for kind in ('fas','nass','weather'):
+        for name in ('ready.json','history.parquet'):
+            path=packet/kind/name
+            path.parent.mkdir(parents=True,exist_ok=True)
+            path.write_bytes(f'synthetic {kind}/{name}'.encode())
+            files[f'{kind}/{name}']=hashlib.sha256(path.read_bytes()).hexdigest()
+    body={'profile':'fundamental-joint-pilot-v1','files':files}
+    freeze_record(packet/'input-manifest.json',body)
+    local=tmp_path/'local'
+    if cache!='fresh':
+        for name in files:
+            target=local/name; target.parent.mkdir(parents=True,exist_ok=True)
+            target.write_bytes((packet/name).read_bytes())
+    if cache=='completed':
+        (local/'input-manifest.json').write_bytes((packet/'input-manifest.json').read_bytes())
+    elif cache=='conflicting_manifest':
+        (local/'input-manifest.json').write_bytes(b'preserve-conflicting-evidence')
+    cell=next(c for c in code('cottonlens_research_workbench.ipynb') if 'cottonlens-joint-inputs' in c)
+    source=cell[cell.index("if PROFILE == 'fundamental-joint-pilot-v1'"):]
+    scope={'PROFILE':'fundamental-joint-pilot-v1','WORKFLOW':'pilot','DRIVE_ROOT':tmp_path/'drive',
+        'json':json,'hashlib':hashlib,'PurePosixPath':PurePosixPath,'BASE':[],
+        'Path':lambda value:local if value=='/content/cottonlens-joint-inputs' else Path(value)}
+    def restore():
+        exec(compile(source,'<packet-restore>','exec'),scope)  # noqa: S102 - actual trusted notebook block
+    if cache=='conflicting_manifest':
+        with pytest.raises(AssertionError,match='Conflicting local input manifest'):restore()
+        assert (local/'input-manifest.json').read_bytes()==b'preserve-conflicting-evidence'
+        assert scope['BASE']==[]
+    else:
+        restore()
+        assert read_record(local/'input-manifest.json')==body
+        assert scope['BASE']==['--information-inputs',local]
+        assert all(hashlib.sha256((local/name).read_bytes()).hexdigest()==sha for name,sha in files.items())

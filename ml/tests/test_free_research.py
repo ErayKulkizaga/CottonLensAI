@@ -149,7 +149,7 @@ def test_source_urls_are_public_and_credential_free(url):
 
 
 def test_free_notebook_preserves_old_experiment_and_uses_dynamic_progress():
-    notebook = Path(__file__).parents[1] / 'notebooks/cottonlens_free_research_colab.ipynb'
+    notebook = Path(__file__).parents[1] / 'notebooks/archive/cottonlens_free_research_colab.ipynb'
     cells = json.loads(notebook.read_text(encoding='utf-8'))['cells']
     code = [''.join(c['source']) for c in cells if c['cell_type'] == 'code']
     for cell in code:

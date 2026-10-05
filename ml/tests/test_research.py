@@ -198,7 +198,7 @@ def test_nested_tuning_uses_earlier_stopping_and_cadence_mature_labels(tmp_path,
 
 
 def test_notebook_does_not_start_release_or_remote_actions():
-    path = Path(__file__).resolve().parents[1] / 'notebooks/cottonlens_research_colab.ipynb'
+    path = Path(__file__).resolve().parents[1] / 'notebooks/archive/cottonlens_research_colab.ipynb'
     if not path.exists():
         pytest.skip('Notebook delivery is generated after engine tests')
     import ast

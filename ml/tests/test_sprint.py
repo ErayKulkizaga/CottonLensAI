@@ -217,7 +217,7 @@ def test_stages_resume_lock_then_benchmark_once_and_reproduce_fresh(tmp_path, mo
 def test_sprint_notebook_preserves_r2_and_stages_do_not_run_all_implicitly():
     import ast
     from pathlib import Path
-    notebook = json.loads((Path(__file__).resolve().parents[1] / 'notebooks/cottonlens_sprint_colab.ipynb').read_text())
+    notebook = json.loads((Path(__file__).resolve().parents[1] / 'notebooks/archive/cottonlens_sprint_colab.ipynb').read_text())
     cells = {c['id']: ''.join(c['source']) for c in notebook['cells'] if c['cell_type'] == 'code'}
     for source in cells.values():
         ast.parse(source)

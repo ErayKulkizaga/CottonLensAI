@@ -64,9 +64,10 @@ def validate_design(registration):
     return design
 
 
-def prepare(repo, folder, reference):
-    registration = read_record(reference.parent / 'return-path-preregistration.json')
-    design = validate_design(registration)
+def prepare(repo, folder, reference, *, profile=PROFILE, validate_fn=validate_design,
+            registration_name='return-path-preregistration.json', device='cpu'):
+    registration = read_record(reference.parent / registration_name)
+    design = validate_fn(registration)
     old, history = verify_history(reference)
     if (digest(reference / 'ready.json') != design['reference_ready_sha256']
             or digest(reference / 'history.parquet') != design['history_sha256']
@@ -78,13 +79,15 @@ def prepare(repo, folder, reference):
         raise ValueError('Frozen feature data changed')
     budget = 4 * (sum(len(chunks(history, b['origins'])) for f in design['split']['folds'] for b in f['inner'])
         + sum(len(chunks(history, f['origins'])) for f in design['split']['folds']))
+    if design['recipes']['family'] == 'xgboost':
+        budget += 4 * sum(len(f['inner']) for f in design['split']['folds'])
     if budget != design['fit_budget']['total'] or design['fit_budget']['annual_outputs'] != 32:
         raise ValueError('Frozen work budget changed')
-    identity = {'profile': PROFILE, 'source_id': research_source_identity(repo)['source_id'],
+    identity = {'profile': profile, 'source_id': research_source_identity(repo)['source_id'],
         'design_id': registration['design_id'], 'design': design, 'split': design['split'],
         'python': sys.version.split()[0], 'versions': {p: importlib.metadata.version(p) for p in
             ('numpy', 'pandas', 'scipy', 'scikit-learn', 'xgboost')},
-        'lock_sha256': digest(repo / 'ml/uv.lock'), 'execution': {'device': 'cpu', 'threads': 2}}
+        'lock_sha256': digest(repo / 'ml/uv.lock'), 'execution': {'device': device, 'threads': 2}}
     with writer(folder):
         if (folder / 'ready.json').exists():
             ready = read_record(folder / 'ready.json')
@@ -153,7 +156,7 @@ def output(folder, name, fold, group, h, design, history, *, namespace='path', r
 
 
 def run(experiment, max_minutes, *, group_names=GROUPS, namespace='path', recipe_fn=recipe, validate_fn=validate_design,
-        selection_fn=None):
+        selection_fn=None, record_frame_fn=None, output_fn=output, before_fit=None):
     if not 0 < max_minutes <= 60:
         raise ValueError('Path session budget must be positive and at most 60 minutes')
     design = experiment.identity['design']
@@ -163,6 +166,8 @@ def run(experiment, max_minutes, *, group_names=GROUPS, namespace='path', recipe
     def before():
         if time.monotonic() >= deadline:
             raise FitBudgetReached('Planned path pause')
+        if before_fit is not None:
+            before_fit()
 
     experiment.before_compute = before
     try:
@@ -172,7 +177,7 @@ def run(experiment, max_minutes, *, group_names=GROUPS, namespace='path', recipe
                     name = f'{group}-t{h}-year{fold["year"]}.json'
                     marker = experiment.root / f'{namespace}-outputs' / name
                     if marker.exists():
-                        output(experiment.root, name, fold, group, h, design, experiment.history,
+                        output_fn(experiment.root, name, fold, group, h, design, experiment.history,
                             namespace=namespace, recipe_fn=recipe_fn)
                         print(f'CACHE {namespace} {group} {fold["year"]} T+{h}; no new fits', flush=True)
                         continue
@@ -198,11 +203,14 @@ def run(experiment, max_minutes, *, group_names=GROUPS, namespace='path', recipe
                         test.loc[mask, 'median_return'] = float(past[f'target_return_{h}'].median())
                         test.loc[mask, 'past_majority_sign'] = float(signs[np.argmax(counts)])
                     test['date'] = test.date.dt.strftime('%Y-%m-%d')
+                    payload = test[['date', 'cotton_close', f'target_return_{h}',
+                        'predicted_return', 'raw_predicted_return', 'median_return', 'past_majority_sign']].copy()
+                    if record_frame_fn is not None:
+                        payload = record_frame_fn(test, payload, group, h, chosen)
                     freeze_record(marker, {'year': fold['year'], 'horizon': h, 'group': group,
                         'design_id': experiment.identity['design_id'], 'decision_sha256': digest(path),
                         'recipe': spec, 'weight': chosen['weight'], 'inner_score': chosen['inner_score'],
-                        'records': json_predictions(test[['date', 'cotton_close', f'target_return_{h}',
-                            'predicted_return', 'raw_predicted_return', 'median_return', 'past_majority_sign']])})
+                        'records': json_predictions(payload)})
                     if getattr(experiment, 'mirror', None):
                         experiment.mirror.publish_metadata([marker.relative_to(experiment.root).as_posix(),
                             path.relative_to(experiment.root).as_posix()])

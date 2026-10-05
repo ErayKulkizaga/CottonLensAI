@@ -2,7 +2,6 @@ import hashlib
 import json
 
 import pytest
-
 from cottonlens_ml.sources.nass_archive import (
     HistoricalDelayNotice,
     archive_release,

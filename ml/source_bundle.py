@@ -42,7 +42,7 @@ def main():
         if name in args.exclude:
             continue
         path = Path(name)
-        if ((path.parts[0] in {"ml", "backend", "docs", "frontend", ".github"} or name in {"README.md", "AGENTS.md"})
+        if ((path.parts[0] in {"ml", "backend", "docs", "frontend", "research", ".github"} or name in {"README.md", "AGENTS.md"})
                 and (repo / path).is_file()
                 and path.suffix in {".py", ".ps1", ".toml", ".lock", ".txt", ".json", ".md", ".ini", ".ipynb", ".ts", ".html", ".css", ".yml", ".yaml", ".mako"}):
             paths.append(path.as_posix())

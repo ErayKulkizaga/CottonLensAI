@@ -1,7 +1,6 @@
 import json
 
 import pytest
-
 from cottonlens_ml.sources.ams_archive import (
     archive_spot_excerpt,
     archive_spot_month_listing,

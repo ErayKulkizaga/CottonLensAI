@@ -14,9 +14,13 @@ from cottonlens_ml.config import (
 )
 from cottonlens_ml.quality import clean_market
 
+LEGACY_ALIGNMENT = "preceding-cotton-observation"
+AVAILABILITY_ALIGNMENT = "assumed-next-day-0015-utc"
+
 
 def _external_alignment(
-    market: pd.DataFrame, cotton_dates: pd.DatetimeIndex, series: str
+    market: pd.DataFrame, cotton_dates: pd.DatetimeIndex, series: str,
+    *, policy: str = LEGACY_ALIGNMENT, decision_times=None,
 ) -> pd.DataFrame:
     """Positive log-domain prices known no later than the preceding Cotton row.
 
@@ -24,6 +28,8 @@ def _external_alignment(
     No same-origin external close enters a feature; age counts Cotton observations
     since the last usable source close, including that mandatory lag.
     """
+    if policy not in (LEGACY_ALIGNMENT, AVAILABILITY_ALIGNMENT):
+        raise ValueError("Unknown external alignment policy")
     rows = market.loc[market.series == series].set_index("date").sort_index()
     valid = rows.close.where(rows.close > 0).dropna()
     result = pd.DataFrame(index=cotton_dates)
@@ -32,9 +38,18 @@ def _external_alignment(
         result["source_date"] = pd.NaT
         result["age_sessions"] = np.nan
     else:
-        prior = pd.Series(cotton_dates, index=cotton_dates).shift(1)
-        positions = valid.index.searchsorted(pd.DatetimeIndex(prior), side="right") - 1
-        usable = prior.notna().to_numpy() & (positions >= 0)
+        if policy == LEGACY_ALIGNMENT:
+            prior = pd.Series(cotton_dates, index=cotton_dates).shift(1)
+            positions = valid.index.searchsorted(pd.DatetimeIndex(prior), side="right") - 1
+            usable = prior.notna().to_numpy() & (positions >= 0)
+        else:
+            decisions = pd.DatetimeIndex(decision_times) if decision_times is not None else (
+                pd.to_datetime(cotton_dates, utc=True) + pd.Timedelta(days=1, minutes=15))
+            if len(decisions) != len(cotton_dates) or decisions.hasnans or decisions.tz is None:
+                raise ValueError("One timezone-aware decision timestamp per Cotton observation required")
+            availability = pd.to_datetime(valid.index, utc=True) + pd.Timedelta(days=1)
+            positions = availability.searchsorted(decisions, side="right") - 1
+            usable = positions >= 0
         chosen = np.maximum(positions, 0)
         result["close"] = np.where(usable, valid.to_numpy()[chosen], np.nan)
         source_dates = pd.Series(valid.index.take(chosen), index=cotton_dates).where(usable)
@@ -49,7 +64,8 @@ def _external_alignment(
     return result
 
 
-def build_feature_history(market: pd.DataFrame, cftc: pd.DataFrame) -> pd.DataFrame:
+def build_feature_history(market: pd.DataFrame, cftc: pd.DataFrame, *,
+                          alignment_policy: str = LEGACY_ALIGNMENT) -> pd.DataFrame:
     """Keep every recorded Cotton observation, including incomplete feature rows."""
     market, quality = clean_market(market)
     cotton_rows = market[market["series"] == "cotton"].set_index("date").sort_index()
@@ -73,7 +89,7 @@ def build_feature_history(market: pd.DataFrame, cftc: pd.DataFrame) -> pd.DataFr
     features["cotton_volume_z20"] = (volume - volume.rolling(20).mean()) / volume_std.where(volume_std > 0)
     alignments = {}
     for series in ("dxy", "wti"):
-        alignment = _external_alignment(market, cotton_rows.index, series)
+        alignment = _external_alignment(market, cotton_rows.index, series, policy=alignment_policy)
         alignments[series] = alignment
         aligned = alignment.close
         for window in (1, 5, 20):
@@ -117,6 +133,8 @@ def build_feature_history(market: pd.DataFrame, cftc: pd.DataFrame) -> pd.DataFr
     features = features.replace([np.inf, -np.inf], np.nan)
     features["cotton_session_index"] = np.arange(len(features), dtype=np.int64)
     features["decision_time"] = pd.to_datetime(features.index, utc=True) + pd.Timedelta(days=1)
+    if alignment_policy == AVAILABILITY_ALIGNMENT:
+        features["decision_time"] += pd.Timedelta(minutes=15)
     for series, alignment in alignments.items():
         for name in ("source_date", "available_at", "age_sessions", "stale"):
             features[f"{series}_{name}"] = alignment[name]
@@ -141,14 +159,17 @@ def build_feature_history(market: pd.DataFrame, cftc: pd.DataFrame) -> pd.DataFr
     quality["date_contract"] = {
         "policy_version": DATA_POLICY_VERSION,
         "horizon_semantics": HORIZON_SEMANTICS,
-        "decision_clock": "00:00 UTC on the day after the Cotton source observation date",
+        "decision_clock": ("00:15" if alignment_policy == AVAILABILITY_ALIGNMENT else "00:00")
+            + " UTC on the day after the Cotton source observation date",
         "source_close_availability": "Daily source dates conservatively usable next UTC day; not vendor publication proof",
         "trusted_exchange_calendar": False,
         "missing_exchange_session_detection": "unknown; holidays and absent provider rows are not inferred",
         "live_target_date_policy": "unknown until the future Cotton observation is recorded",
     }
     quality["external_policy"] = {
-        "lag_cotton_observations": 1,
+        "alignment_policy": alignment_policy,
+        "availability_evidence": "assumption, not verified historical publication or ingestion",
+        "lag_cotton_observations": 1 if alignment_policy == LEGACY_ALIGNMENT else 0,
         "max_age_cotton_observations_including_lag": EXTERNAL_MAX_AGE_SESSIONS,
         "nonpositive_log_domain": "mask only transformed input, use bounded earlier positive close",
         "stale_counts": {name: int(value.stale.sum()) for name, value in alignments.items()},

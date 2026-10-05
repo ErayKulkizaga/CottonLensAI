@@ -12,7 +12,7 @@ ROOT = Path(__file__).resolve().parents[2]
 
 
 def test_notebook_is_single_valid_python_orchestration():
-    notebook = json.loads((ROOT / "ml/notebooks/cottonlens_colab.ipynb").read_text())
+    notebook = json.loads((ROOT / "ml/notebooks/archive/cottonlens_colab.ipynb").read_text())
     code = [cell for cell in notebook["cells"] if cell["cell_type"] == "code"]
     assert [cell["id"] for cell in code] == ["drive", "repo", "environment", "smoke", "data", "preflight", "train", "artifact"]
     for cell in code:

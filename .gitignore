@@ -38,3 +38,6 @@ ml/data/
 
 # Local review handoff contains machine-specific/private context.
 docs/CLAUDE_PROJECT_HANDOFF_20261001.md
+
+# Personal tool configuration may contain credentials.
+/opencode.json
