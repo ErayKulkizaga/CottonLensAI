@@ -6,6 +6,11 @@ eğitim veya veri kabulü yapıldığını göstermez. Ürün amacı ve mevcut k
 kalır. İncelenen ek: `CottonLens_Model_Dogrulugu_Plan (1).md`; belge kimliği ve
 bu incelemenin sayısal kanıtı [doğrulama kaydında](../research/evidence/plan-review-20261005.json).
 
+**Uygulama durumu:** ilk sınırlı teslimat tamamlandı: saat/CLI tazelik düzeltmeleri,
+2.006 origin'lik sıfır-fit işlem tanısı ve 95 rapor/26 alanlı WASDE aday paketi.
+[Sonuç ve kabul engelleri](TRADING_WASDE_DELIVERY_20261005.md). Aşağıdaki planın
+tam kaynak kabulü ve işlem pilotu aşamaları tamamlanmış sayılmaz; yeni fit yok.
+
 ## Karar
 
 Ekli planı olduğu gibi uygulamayacağız. Ana eksik, bütün modelleri yeniden

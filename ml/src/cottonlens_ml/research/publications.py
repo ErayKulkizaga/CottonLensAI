@@ -56,13 +56,17 @@ def attach_package(history, manifest, rows, features):
     """Isolate source metadata, enforce freshness and keep a single decision clock."""
     if set(features) & set(history.columns):
         raise ValueError('Duplicate source feature names')
-    merged = attach_releases(history[['date']].copy(), rows, features)
+    if (history.date.isna().any() or history.date.duplicated().any()
+            or not history.date.is_monotonic_increasing):
+        raise ValueError('Unique chronological history required; never reorder feature origins silently')
+    merged = attach_releases(history[['date']].copy(), rows, features,
+        decision_clock=manifest.get('decision_clock', 'legacy-midnight-v1'))
     result = history.copy()
     clock = 'available_at' if 'available_at' in merged else 'published_at'
     age = (merged.decision_at - merged[clock]).dt.total_seconds() / 86400
     maximum = manifest.get('max_age_days')
     if maximum is not None:
-        if not isinstance(maximum, int) or not 1 <= maximum <= 366:
+        if type(maximum) is not int or not 1 <= maximum <= 366:
             raise ValueError('Invalid source freshness policy')
         merged.loc[age > maximum, features] = float('nan')
     for name in features:
@@ -88,12 +92,14 @@ def main():
     args = parser.parse_args()
     manifest, rows, features = load_package(args.package)
     history = pd.read_parquet(args.history)
-    merged = attach_releases(history, rows, features)
+    merged = attach_package(history, manifest, rows, features)
     if args.output.exists():
         raise ValueError('Never overwrite an existing information snapshot')
     args.output.mkdir(parents=True)
     merged.to_parquet(args.output / 'history.parquet', index=False)
     freeze_record(args.output / 'availability.json', {'source': manifest, 'features': features,
+        'decision_clock': manifest.get('decision_clock', 'legacy-midnight-v1'),
+        'max_age_days': manifest.get('max_age_days'),
         'first_available': str(rows['available_at' if 'available_at' in rows else 'published_at'].min()),
         'coverage_rows': int(merged[features].notna().all(axis=1).sum()),
         'history_sha256': digest(args.output / 'history.parquet'),

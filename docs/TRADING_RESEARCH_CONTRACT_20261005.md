@@ -68,7 +68,7 @@ kilitlenmeden pozisyon büyüklüğü veya canlı kullanıma GO verilemez.
 PnL hesaplamak onları yeni holdout yapmaz. İleri doğrulama, tarif dondurulduktan
 sonra zamanında arşivlenen sinyallerle yapılır; izlenmiş geçmiş tarihten başlatılamaz.
 
-## Şimdi yapılacak tek analiz
+## İlk analiz için kilitlenen kurallar
 
 Yeni fit olmadan, `research-availability-clock-pilot-v1` kayıtlarındaki **T+1**
 kontrol ve müdahale tahminleri kullanılacak. Her kol için kural önceden sabit:
@@ -94,8 +94,9 @@ Günlük open değerinin 00:15 UTC'den sonra uygulanabilir olduğu doğrulanmı�
 Gerçek kontrat/seans/işlem maliyeti doğrulanmadan net strateji GO'su verilemez.
 
 Bu analiz model araması, eşik optimizasyonu, daha uzun ufuk taraması veya yeni
-veri edinimini otomatik başlatmaz. Hesap ve kısa karar raporu, bir sonraki sınırlı
-teslimat olarak hazırlanır; bu sözleşme yazılırken yeni fit/backtest çalıştırılmadı.
+veri edinimini otomatik başlatmaz. Sözleşme ilk yazıldığında hesap çalıştırılmamıştı;
+[ilk teslimatta](TRADING_WASDE_DELIVERY_20261005.md) bu sabit kurallarla sıfır yeni
+fit kullanılarak tamamlandı. Gerçek giriş/seans/maliyet doğrulaması hâlâ gerekli.
 
 ## Birincil dayanaklar
 

@@ -9,6 +9,11 @@
 - `organization.json`: taşınan belgeler/notebook'lar, eski yollar, orijinal hash'ler ve nedenleri.
 - `archive-summary.json`: Release varlıkları, arşiv manifesti checksum'ı, kapsam ve açıkça dışlanan/gizli bilgileri ayıklanan dosyalar.
 
+Son eklenen kayıtlar `clock-t1-open-close-proxy-v1` (2.006 origin, sıfır yeni fit,
+gerçek işlem becerisi için inconclusive) ve `wasde-regional-candidate-v1`
+(95 rapor/26 alan, eğitime kabul edilmemiş veri hazırlığı). İlki yeni model eğitimi,
+ikincisi tamamlanmış piyasa deneyi değildir. [Sonuç ve yeni Release](../docs/TRADING_WASDE_DELIVERY_20261005.md).
+
 `INCONCLUSIVE`, bir tarifin hiç denenmediği anlamına gelmez. Tamamlanmamış çıktı, sentetik kontrol veya sıfıra küçültülmüş tahmin tüm kaynakta sinyal yokluğunu göstermez. Sicil evrende denenmiş bütün fikirleri kapsamaz; yalnız mevcut kanıtı kapsar.
 
 ## Proje komutları
@@ -20,6 +25,8 @@ python ml/history.py validate
 python ml/history.py check --family xgboost --horizon 5
 python ml/history.py check --feature nass --horizon 5
 python ml/history.py check --query availability
+python ml/history.py check --query trading --horizon 1
+python ml/history.py check --query wasde-regional
 python ml/history.py check --profile availability-clock-pilot-v1 --json
 python ml/history.py list
 ```
