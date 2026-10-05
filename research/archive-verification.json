@@ -34,5 +34,12 @@
     "working_tree_dirty": true,
     "scope": "Original fit-source bytes recovered; research ML-only identity and full-bundle identity are distinct"
   },
-  "missing_referenced_payload_file_count": 22299
+  "missing_referenced_payload_file_count": 22299,
+  "secret_scan": {
+    "all_release_parts_scanned": true,
+    "genuine_unredacted_credential_findings": 0,
+    "exact_false_positive_findings_reviewed": 46,
+    "source_bundle_findings_verified_sha256_not_credentials": 100,
+    "frozen_source_bundles_directly_scanned": 25
+  }
 }

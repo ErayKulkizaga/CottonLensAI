@@ -108,4 +108,4 @@ npm run build
 
 Frontend Node 24.15+ ister. Bağımlılık kimlikleri `ml/uv.lock`, `ml/constraints/`, backend manifesti ve npm lockfile'ında kayıtlıdır. Sentetik test veya build başarısı tahmin/işlem üstünlüğünün kanıtı değildir.
 
-Eski `research-v2-tf-placement` i�in 7.331 fit ve k�smi on-call i�in 102 fit makbuzunun model payload kopyalar� yerelde yok: toplam 22.299 dosya referans�. Makbuzlar/tahmin kan�t� korunur; bunlar yeniden kullan�labilir tam checkpoint gibi g�sterilmez. Yeni zamanlama deneyinin 6.157 dosyas� checksum do�rulamas�yla geri kurulmu�tur. Kaybolan eski dosyalar yeni e�itimle yeniden �retilmedi.
+Eski `research-v2-tf-placement` için 7.331 fit ve kısmi on-call için 102 fit makbuzunun model payload kopyaları yerelde yok: toplam 22.299 dosya referansı. Makbuzlar/tahmin kanıtı korunur; bunlar yeniden kullanılabilir tam checkpoint gibi gösterilmez. Yeni zamanlama deneyinin 6.157 dosyası checksum doğrulamasıyla geri kurulmuştur. Kaybolan eski dosyalar yeni eğitimle yeniden üretilmedi.
