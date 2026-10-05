@@ -1,0 +1,21 @@
+{
+  "dxy": {
+    "origins": 2006,
+    "newer_source_bar_count": 2005,
+    "same_source_bar_count": 1,
+    "control_median_age_cotton_observations": 1.0,
+    "available_median_age_cotton_observations": 0.0,
+    "control_stale_count": 0,
+    "available_stale_count": 0
+  },
+  "wti": {
+    "origins": 2006,
+    "newer_source_bar_count": 2004,
+    "same_source_bar_count": 2,
+    "control_median_age_cotton_observations": 1.0,
+    "available_median_age_cotton_observations": 0.0,
+    "control_stale_count": 0,
+    "available_stale_count": 0
+  },
+  "record_id": "44fe1004004823287bf27dbfab35054d11610868cf4df4a844556152e321d57e"
+}

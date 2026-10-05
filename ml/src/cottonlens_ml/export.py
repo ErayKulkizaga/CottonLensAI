@@ -5,18 +5,19 @@ import json
 import shutil
 import subprocess
 import tempfile
+import uuid
 import zipfile
 from datetime import UTC, datetime
 from pathlib import Path
 
 import numpy as np
 import pandas as pd
-import shap
 import xgboost as xgb
 
 from cottonlens_ml.config import FEATURE_NAMES
-from cottonlens_ml.features import schema_hash
+from cottonlens_ml.features import schema_hash, select_feature_rows
 from cottonlens_ml.onnx_export import export_lstm
+from cottonlens_ml.sequences import sequences
 from cottonlens_ml.training import Candidate
 from cottonlens_ml.xgb_export import inference_booster
 
@@ -36,22 +37,16 @@ def _sha256(path: Path) -> str:
     return digest.hexdigest()
 
 
-def _sequence_matrix(frame: pd.DataFrame, scaler: object) -> np.ndarray:
-    values = scaler.transform(frame[FEATURE_NAMES]).astype(np.float32)
-    return np.asarray(
-        [values[index - 59 : index + 1] for index in range(59, len(values))],
-        dtype=np.float32,
-    )
-
-
 def _sequence_matrix_with_history(
     history: pd.DataFrame, frame: pd.DataFrame, scaler: object
 ) -> np.ndarray:
-    prior = history.loc[history.date < frame.date.min()].tail(59)
-    if len(prior) != 59:
-        raise ValueError("LSTM explanation needs 59 preceding feature snapshots")
-    values = scaler.transform(pd.concat([prior, frame])[FEATURE_NAMES]).astype(np.float32)
-    return np.asarray([values[index:index + 60] for index in range(len(frame))], dtype=np.float32)
+    inputs, _ = sequences(frame, scaler, history=history)
+    return inputs
+
+
+def _numeric_feature_row(row: pd.Series) -> pd.DataFrame:
+    """A mixed date/feature Series otherwise turns XGBoost inputs into object dtype."""
+    return pd.DataFrame([row[FEATURE_NAMES].to_numpy(dtype=float)], columns=FEATURE_NAMES)
 
 
 def _display_contributions(values: np.ndarray, features: pd.Series) -> list[dict]:
@@ -77,19 +72,29 @@ def _lstm_shap(
     full_features: pd.DataFrame,
     test: pd.DataFrame,
     horizon: int,
+    *, include_live: bool = True,
 ) -> tuple[np.ndarray, float]:
+    import shap
+
     if candidate.scaler is None:
         raise ValueError("LSTM explanations require the train-fitted scaler")
-    modeling_rows = full_features.dropna(subset=["target_return_1", "target_return_5"])
-    train_rows = modeling_rows.iloc[: int(len(modeling_rows) * 0.65)]
-    background = _sequence_matrix(train_rows.tail(160), candidate.scaler)
+    modeling_rows = select_feature_rows(full_features, FEATURE_NAMES)
+    from cottonlens_ml.walkforward import audit_split
+    cutoff = (candidate.parameters or {}).get("refit_end")
+    train_rows = (
+        modeling_rows.loc[modeling_rows.date <= pd.Timestamp(cutoff)]
+        if cutoff else audit_split(modeling_rows)["train"]
+    )
+    if len(train_rows) < 160:
+        raise ValueError("LSTM explanation needs 160 pre-audit labeled rows")
+    background, _ = sequences(train_rows.tail(160).iloc[59:], candidate.scaler, history=full_features)
     if len(background) > 64:
         background = background[np.linspace(0, len(background) - 1, 64, dtype=int)]
-    test_inputs = _sequence_matrix_with_history(full_features, test, candidate.scaler)
-    live_values = candidate.scaler.transform(full_features[FEATURE_NAMES].tail(60)).astype(
-        np.float32
-    )
-    explained_inputs = np.concatenate([test_inputs, live_values[None, ...]], axis=0)
+    test_inputs = (_sequence_matrix_with_history(full_features, test, candidate.scaler)
+                   if len(test) else np.empty((0, 60, len(FEATURE_NAMES)), dtype=np.float32))
+    live_values = _sequence_matrix_with_history(full_features, full_features.tail(1), candidate.scaler)[0]
+    explained_inputs = (np.concatenate([test_inputs, live_values[None, ...]], axis=0)
+                        if include_live else test_inputs)
     explainer = shap.GradientExplainer(candidate.model, background)
     batches: list[np.ndarray] = []
     output_index = 0 if horizon == 1 else 1
@@ -127,8 +132,45 @@ def export_release(
     selected: dict[int, Candidate],
     selection_audit: dict[int, dict],
     walkforward_report: dict,
+    *,
+    deployment_selected: dict[int, Candidate],
+    deployment_candidates: list[Candidate],
+    evidence_identity: dict,
 ) -> Path:
-    version = datetime.now(UTC).strftime("v%Y%m%d-%H%M")
+    required_identity = {"code_identity", "protocol_identity", "data_identity", "cohort_identity",
+                         "data_quality", "environment_smoke"}
+    if any(not evidence_identity.get(key) for key in required_identity):
+        raise ValueError("Release requires frozen code/protocol/data/cohort/quality/environment evidence")
+    if set(selected) != {1, 5} or set(deployment_selected) != {1, 5}:
+        raise ValueError("Evaluation and deployment must each define T+1 and T+5")
+    if any(selected[h].name != deployment_selected[h].name for h in (1, 5)):
+        raise ValueError("Deployment must use the independently locked evaluation model family")
+    if any(candidate.name not in {"Naive", "XGBoost", "LSTM"} for candidate in selected.values()):
+        raise ValueError("Unsupported production model family; an explicit runtime adapter is required")
+    version = datetime.now(UTC).strftime("v%Y%m%d-%H%M%S-") + uuid.uuid4().hex[:8]
+
+    def forecast_id(horizon: int, origin: object) -> str:
+        return uuid.uuid5(uuid.NAMESPACE_URL, f"{version}/{horizon}/{origin}").hex
+
+    def identity(candidate: Candidate, role: str) -> dict:
+        parameters = candidate.parameters or {}
+        if candidate.name != "Naive" and parameters.get("model_role") != role:
+            raise ValueError(f"{role} requires a separately fitted candidate with the matching role")
+        payload = {
+            "model_role": role, "name": candidate.name, "horizon": candidate.horizon,
+            "fit_cutoff": parameters.get("fit_cutoff"),
+            "fit_origin_cutoff": parameters.get("fit_origin_cutoff", parameters.get("refit_end")),
+            "fit_label_cutoff": parameters.get("fit_label_cutoff"),
+            "recipe_identity": parameters.get("recipe_identity"),
+            "experiment_identity": parameters.get("experiment_identity"),
+        }
+        if candidate.name != "Naive" and not parameters.get("model_identity"):
+            raise ValueError(f"{role} {candidate.name} lacks an immutable model identity")
+        payload["model_identity"] = parameters.get("model_identity") or hashlib.sha256(
+            json.dumps({**payload, "data": evidence_identity["data_identity"]}, sort_keys=True).encode()
+        ).hexdigest()
+        return payload
+
     with tempfile.TemporaryDirectory(prefix="cottonlens-release-") as temp:
         root = Path(temp) / f"cottonlens-model-{version}"
         model_root = root / "model"
@@ -136,7 +178,7 @@ def export_release(
         model_root.mkdir(parents=True)
         preprocessing_root.mkdir()
         model_entries: list[dict] = []
-        for horizon, candidate in selected.items():
+        for horizon, candidate in deployment_selected.items():
             if candidate.name == "XGBoost":
                 path = model_root / f"xgboost-t{horizon}.json"
                 inference_booster(candidate.model).save_model(path)
@@ -145,13 +187,8 @@ def export_release(
                 )
             elif candidate.name == "LSTM":
                 path = model_root / f"lstm-t{horizon}.onnx"
-                history = full_features.loc[full_features.date <= test.date.max()]
-                sampled = np.linspace(0, len(test) - 1, min(16, len(test)), dtype=int)
-                raw_sequences = np.stack([
-                    pd.concat([history.loc[history.date < test.date.min()].tail(59), test])[FEATURE_NAMES]
-                    .iloc[index:index + 60].to_numpy(dtype=np.float32)
-                    for index in sampled
-                ])
+                sampled = select_feature_rows(full_features, FEATURE_NAMES, require_targets=False).tail(16)
+                raw_sequences, _ = sequences(sampled, None, history=full_features)
                 parity = export_lstm(candidate.model, candidate.scaler, horizon, path, raw_sequences, candidate.target_scaler)
                 model_entries.append(
                     {
@@ -164,7 +201,7 @@ def export_release(
                 )
             else:
                 tree_fallback = next(
-                    item for item in all_candidates if item.horizon == horizon and item.name == "XGBoost"
+                    item for item in deployment_candidates if item.horizon == horizon and item.name == "XGBoost"
                 )
                 path = model_root / f"xgboost-t{horizon}-experimental.json"
                 inference_booster(tree_fallback.model).save_model(path)
@@ -177,6 +214,20 @@ def export_release(
                         "path": f"model/{path.name}",
                     }
                 )
+            model_entries[-1].update(identity(candidate, "deployment_live"))
+            if candidate.name == "Naive":
+                model_entries[-1]["name"] = "XGBoost experimental sensitivity model"
+                model_entries[-1]["runtime_model_identity"] = identity(tree_fallback, "deployment_live")
+                model_entries[-1]["runtime_reference_return"] = float(
+                    tree_fallback.model.predict(_numeric_feature_row(full_features.iloc[-1]))[0]
+                )
+
+        evaluation_models = [identity(candidate, "evaluation_backtest") for candidate in selected.values()]
+        for evaluation in evaluation_models:
+            deployed = next(entry for entry in model_entries if entry["horizon"] == evaluation["horizon"])
+            if evaluation["name"] != "Naive" and evaluation["recipe_identity"] != deployed["recipe_identity"]:
+                raise ValueError("Deployment refit changed the locked evaluation recipe")
+        (root / "evidence.json").write_text(json.dumps(evidence_identity, indent=2, allow_nan=False), encoding="utf-8")
 
         schema = {"schema_hash": schema_hash(), "features": FEATURE_NAMES}
         (root / "feature_schema.json").write_text(json.dumps(schema, indent=2), encoding="utf-8")
@@ -193,8 +244,8 @@ def export_release(
             }
             for item in all_candidates
         ]
-        (root / "metrics.json").write_text(json.dumps(metrics, indent=2), encoding="utf-8")
-        modeling_rows = full_features.dropna(subset=["target_return_1", "target_return_5"])
+        (root / "metrics.json").write_text(json.dumps(metrics, indent=2, allow_nan=False), encoding="utf-8")
+        modeling_rows = select_feature_rows(full_features, FEATURE_NAMES)
         from cottonlens_ml.walkforward import audit_split
         split_frames = audit_split(modeling_rows)
 
@@ -202,9 +253,17 @@ def export_release(
             return {"start": str(frame.date.min().date()), "end": str(frame.date.max().date())}
 
         manifest = {
+            "artifact_schema_version": 2,
             "artifact_version": version,
             "generated_at": datetime.now(UTC).isoformat(),
-            "git_sha": _git_sha(),
+            "git_sha": evidence_identity["code_identity"].get("git_head") or _git_sha(),
+            "code_identity": evidence_identity["code_identity"],
+            "protocol_identity": evidence_identity["protocol_identity"],
+            "data_identity": evidence_identity["data_identity"],
+            "cohort_identity": evidence_identity["cohort_identity"],
+            "evaluation_models": evaluation_models,
+            "evidence_path": "evidence.json",
+            "target_calendar_policy": "next_valid_cotton_observation; future_session_date_unknown",
             "dataset_range": {"start": str(full_features.date.min().date()), "end": str(full_features.date.max().date())},
             "split_ranges": {
                 "train": date_range(split_frames["train"]),
@@ -218,7 +277,7 @@ def export_release(
                 "minimum_directional_accuracy": {"T+1": 53.0, "T+5": 55.0},
                 "lstm_minimum_mae_improvement_pct_vs_xgboost": 5.0,
                 "selection_basis": "four pre-2024-06-18 rolling-origin folds",
-                "historical_audit_role": "rejection only; previously observed, not independent",
+                "historical_audit_role": "descriptive only; previously observed; never selects or rejects",
             },
             "selection_audit": selection_audit,
             "walkforward_report": walkforward_report,
@@ -257,7 +316,7 @@ def export_release(
                     metric_rows,
                     "",
                     "## Evaluation boundary",
-                    "Four pre-2024-06-18 rolling-origin folds select the model. Each fold purges T+5 boundary targets and fits transforms on its train portion. The 2024 onward period is a previously seen historical rejection audit, not a new independent test. See metrics.json and manifest.json for fold evidence.",
+                    "Four previously reviewed rolling-origin folds provide development selection evidence. T+5 boundary targets are purged. The 2024 onward period is descriptive only, never a selection or rejection gate. Evaluation weights and current deployment refits have distinct identities in manifest.json.",
                     "",
                     "## Limitations",
                     "Yahoo Finance continuous futures are a research proxy. Results can be affected by roll construction, revised upstream data, regime shifts, and missing exogenous drivers. Sensitivity output is not causal inference.",
@@ -274,7 +333,7 @@ def export_release(
         finite_market.rename(columns={"date": "observed_on"}).to_parquet(
             root / "market_history.parquet", index=False
         )
-        full_features[["date", *FEATURE_NAMES]].tail(500).to_parquet(
+        select_feature_rows(full_features, FEATURE_NAMES, require_targets=False)[["date", *FEATURE_NAMES]].tail(500).to_parquet(
             root / "feature_snapshots.parquet", index=False
         )
         forecast_rows: list[dict] = []
@@ -286,14 +345,14 @@ def export_release(
             lstm_base_value = 0.0
             if candidate.name == "LSTM":
                 lstm_contributions, lstm_base_value = _lstm_shap(
-                    candidate, full_features, test, horizon
+                    candidate, full_features, test, horizon, include_live=False
                 )
             for row_index, (_, row) in enumerate(aligned_test.iterrows()):
                 predicted_return = float(predictions[row_index])
-                forecast_id = f"{version}-{horizon}-{row_index}"
+                row_id = forecast_id(horizon, row_index)
                 forecast_rows.append(
                     {
-                        "id": forecast_id,
+                        "id": row_id,
                         "as_of_date": row.date,
                         "target_date": row[f"target_date_{horizon}"],
                         "horizon": horizon,
@@ -310,18 +369,18 @@ def export_release(
                 for row_index, values in enumerate(contributions):
                     explanation_rows.append(
                         {
-                            "forecast_id": f"{version}-{horizon}-{row_index}",
+                            "forecast_id": forecast_id(horizon, row_index),
                             "base_value": float(values[-1] * 100),
                             "explainer": "XGBoost pred_contribs (TreeSHAP)",
                             "contributions": json.dumps(_display_contributions(values[:-1], aligned_test.iloc[row_index])),
                         }
                     )
             elif candidate.name == "LSTM" and lstm_contributions is not None:
-                for row_index, values in enumerate(lstm_contributions[:-1]):
+                for row_index, values in enumerate(lstm_contributions):
                     error = float(candidate.predictions[row_index] - lstm_base_value - values.sum())
                     explanation_rows.append(
                         {
-                            "forecast_id": f"{version}-{horizon}-{row_index}",
+                            "forecast_id": forecast_id(horizon, row_index),
                             "base_value": float(lstm_base_value * 100),
                             "explainer": "SHAP GradientExplainer (precomputed in Colab)",
                             "contributions": json.dumps(_display_contributions(values, aligned_test.iloc[row_index])),
@@ -332,17 +391,18 @@ def export_release(
                 for row_index in range(len(aligned_test)):
                     explanation_rows.append(
                         {
-                            "forecast_id": f"{version}-{horizon}-{row_index}",
+                            "forecast_id": forecast_id(horizon, row_index),
                             "base_value": 0.0,
                             "explainer": "Naive persistence baseline",
                             "contributions": "[]",
                         }
                     )
+            candidate = deployment_selected[horizon]
             latest = full_features.iloc[-1]
             if candidate.name == "XGBoost":
-                latest_prediction = float(candidate.model.predict(latest[FEATURE_NAMES].to_frame().T)[0])
+                latest_prediction = float(candidate.model.predict(_numeric_feature_row(latest))[0])
             elif candidate.name == "LSTM":
-                sequence = candidate.scaler.transform(full_features[FEATURE_NAMES].tail(60)).astype(np.float32)
+                sequence = _sequence_matrix_with_history(full_features, full_features.tail(1), candidate.scaler)[0]
                 outputs = candidate.model.predict(sequence.reshape(1, 60, len(FEATURE_NAMES)), verbose=0)[0]
                 output_column = 0 if horizon == 1 else 1
                 latest_prediction = float(outputs[output_column])
@@ -353,12 +413,12 @@ def export_release(
                     )
             else:
                 latest_prediction = 0.0
-            live_id = f"{version}-{horizon}-live"
+            live_id = forecast_id(horizon, "live")
             forecast_rows.append(
                 {
                     "id": live_id,
                     "as_of_date": latest.date,
-                    "target_date": latest.date + pd.offsets.BDay(horizon),
+                    "target_date": None,
                     "horizon": horizon,
                     "current_price": latest.cotton_close,
                     "predicted_price": latest.cotton_close * np.exp(latest_prediction),
@@ -369,7 +429,7 @@ def export_release(
             )
             if candidate.name == "XGBoost":
                 latest_contributions = inference_booster(candidate.model).predict(
-                    xgb.DMatrix(latest[FEATURE_NAMES].to_frame().T, feature_names=FEATURE_NAMES),
+                    xgb.DMatrix(_numeric_feature_row(latest), feature_names=FEATURE_NAMES),
                     pred_contribs=True,
                 )[0]
                 explanation_rows.append(
@@ -380,8 +440,11 @@ def export_release(
                         "contributions": json.dumps(_display_contributions(latest_contributions[:-1], latest)),
                     }
                 )
-            elif candidate.name == "LSTM" and lstm_contributions is not None:
-                values = lstm_contributions[-1]
+            elif candidate.name == "LSTM":
+                live_contributions, lstm_base_value = _lstm_shap(
+                    candidate, full_features, test.iloc[:0], horizon
+                )
+                values = live_contributions[-1]
                 error = float(latest_prediction - lstm_base_value - values.sum())
                 explanation_rows.append(
                     {

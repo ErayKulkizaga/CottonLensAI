@@ -12,15 +12,20 @@ ROOT = Path(__file__).resolve().parents[2]
 
 
 def test_notebook_is_single_valid_python_orchestration():
-    notebook = json.loads((ROOT / "ml/notebooks/cottonlens_colab.ipynb").read_text())
+    notebook = json.loads((ROOT / "ml/notebooks/archive/cottonlens_colab.ipynb").read_text())
     code = [cell for cell in notebook["cells"] if cell["cell_type"] == "code"]
-    assert [cell["id"] for cell in code] == ["drive", "repo", "environment", "smoke", "data", "train", "artifact"]
+    assert [cell["id"] for cell in code] == ["drive", "repo", "environment", "smoke", "data", "preflight", "train", "artifact"]
     for cell in code:
         ast.parse("".join(cell["source"]))
     final_cell = "".join(code[-1]["source"])
     assert "cottonlens_ml.validate_release" in final_cell
     assert final_cell.index("cottonlens_ml.validate_release") < final_cell.index("cottonlens_ml.report")
     assert "files.download(str(REPORT))" in final_cell
+    assert "'--release', RELEASE" in final_cell
+    all_code = "\n".join("".join(cell["source"]) for cell in code)
+    assert "'clone'" not in all_code and "'pull'" not in all_code
+    assert "RUN_TRAINING = False" in all_code
+    assert ".source-manifest.json" in all_code
 
 
 def test_headless_backend_overrides_inherited_colab_value_before_import():
@@ -65,3 +70,21 @@ def test_setup_uses_managed_python_lock_and_only_targeted_bootstrap(monkeypatch)
     sync = next(command for command in commands if "sync" in command)
     assert all(option in sync for option in ("--locked", "--managed-python", "3.12.11", "cuda"))
     assert not any("--system-site-packages" in command or "--system" in command for command in commands)
+
+
+def test_data_setup_selects_locked_transport_extra_without_cuda(monkeypatch):
+    spec = importlib.util.spec_from_file_location("colab_setup", ROOT / "ml/colab_setup.py")
+    setup = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(setup)
+    commands = []
+    monkeypatch.setattr(setup.sys, "platform", "linux")
+    monkeypatch.setattr(Path, "is_dir", lambda self: True)
+    monkeypatch.setattr(setup, "run", lambda command, **kwargs: commands.append([str(x) for x in command]))
+    setup.setup(data=True)
+    sync = next(command for command in commands if "sync" in command)
+    assert '--locked' in sync and sync[sync.index('--extra') + 1] == 'data'
+    assert 'cuda' not in sync
+    project = tomllib.loads((ROOT / "ml/pyproject.toml").read_text())
+    lock = tomllib.loads((ROOT / "ml/uv.lock").read_text())
+    assert project['project']['optional-dependencies']['data'] == ['curl-cffi==0.13.0']
+    assert next(package['version'] for package in lock['package'] if package['name'] == 'curl-cffi') == '0.13.0'

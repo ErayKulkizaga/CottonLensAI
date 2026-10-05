@@ -1,0 +1,45 @@
+{
+  "old_evidence_manifest_entries": 165781,
+  "old_evidence_original_hashes_changed": [],
+  "old_entries_not_in_public_archive": [],
+  "registry_prediction_source_references_missing_or_changed": [],
+  "completed_ledger_records_checked": 24579,
+  "payload_hash_mismatches": [],
+  "all_objects_content_hashed": true,
+  "archive_logical_files": 199142,
+  "archive_unique_objects": 119065,
+  "scope": "Original hashes checked against pre-existing evidence inventory; public sanitization differences are explicit. Receipt payload absence is retained, not invented.",
+  "missing_payload_summary": {
+    "research-v2-tf-placement": {
+      "fit_receipts": 7331,
+      "missing_referenced_files": 21993
+    },
+    "research-oncall-exploration-v2": {
+      "fit_receipts": 102,
+      "missing_referenced_files": 306
+    }
+  },
+  "availability_clock_full_restore": {
+    "status": "passed",
+    "files": 6157,
+    "sanitized_files": 0,
+    "no_model_execution": true
+  },
+  "frozen_fit_source_verified": {
+    "research_source_id": "1cb25671e4051a42eb004943c439d0c1bd1bfcb3332ca8d2a20121ea8e1cb239",
+    "bundle_source_id": "cb2cc5213ceefc1ed8c77d6b6499853a0500e0eb21aa0bfc1be8f21d4144393f",
+    "bundle_sha256": "26a0557d761459867c02f921e8f898486eb24a77b9c9daf99e8e75f0d175cf2b",
+    "ml_files_verified": 185,
+    "git_head": "470f1e56c700ef7b7bd999aff6f6a80c4551a172",
+    "working_tree_dirty": true,
+    "scope": "Original fit-source bytes recovered; research ML-only identity and full-bundle identity are distinct"
+  },
+  "missing_referenced_payload_file_count": 22299,
+  "secret_scan": {
+    "all_release_parts_scanned": true,
+    "genuine_unredacted_credential_findings": 0,
+    "exact_false_positive_findings_reviewed": 46,
+    "source_bundle_findings_verified_sha256_not_credentials": 100,
+    "frozen_source_bundles_directly_scanned": 25
+  }
+}

@@ -7,7 +7,6 @@ from pathlib import Path
 
 PYTHON_VERSION = "3.12.11"
 UV_VERSION = "0.12.0"
-REPOSITORY = "https://github.com/ErayKulkizaga/CottonLensAI.git"
 PROJECT = Path("/content/CottonLensAI")
 ENVIRONMENT = Path("/content/cottonlens-py312")
 INFERENCE = Path("/content/cottonlens-inference")
@@ -26,10 +25,10 @@ def process_env() -> dict[str, str]:
     return env
 
 
-def run(command: list[str], *, env=None, cwd=PROJECT) -> None:
+def run(command: list[str], *, env=None, cwd=None) -> None:
     command = [str(part) for part in command]
     print("$ " + " ".join(command), flush=True)
-    with subprocess.Popen(command, cwd=cwd, env=env or process_env(), stdout=subprocess.PIPE,
+    with subprocess.Popen(command, cwd=cwd or PROJECT, env=env or process_env(), stdout=subprocess.PIPE,
                           stderr=subprocess.STDOUT, text=True, bufsize=1) as child:
         assert child.stdout is not None
         try:
@@ -44,7 +43,7 @@ def run(command: list[str], *, env=None, cwd=PROJECT) -> None:
         raise RuntimeError(f"Stage failed (exit {code}). Full stdout/stderr is printed above: {' '.join(command)}")
 
 
-def setup() -> Path:
+def setup(*, research: bool = False, data: bool = False) -> Path:
     if sys.platform != "linux" or not Path("/content/drive/MyDrive").is_dir():
         raise RuntimeError("Run setup in Google Colab after mounting Drive")
     tools_root = Path("/content/cottonlens-tools")
@@ -57,7 +56,8 @@ def setup() -> Path:
     env["UV_PYTHON_INSTALL_DIR"] = "/content/cottonlens-python"
     env["UV_PROJECT_ENVIRONMENT"] = str(ENVIRONMENT)
     run([uv, "python", "install", PYTHON_VERSION], env=env)
-    run([uv, "sync", "--project", "ml", "--locked", "--no-dev", "--extra", "cuda",
+    extras = ["--extra", "data"] if data else ["--extra", "cuda"]
+    run([uv, "sync", "--project", "ml", "--locked", "--no-dev", *extras,
          "--python", PYTHON_VERSION, "--managed-python"], env=env)
     python = ENVIRONMENT / "bin/python"
     run([uv, "pip", "check", "--python", str(python)], env=env)
@@ -68,7 +68,25 @@ def setup() -> Path:
          "--no-hashes", "--output-file", str(requirements)], env=env)
     run([uv, "pip", "install", "--python", str(INFERENCE / "bin/python"),
          "--constraint", str(requirements), "numpy==2.1.3", "onnxruntime==1.22.1", "xgboost==3.0.2"], env=env)
+    if research:
+        run([uv, "pip", "install", "--python", str(INFERENCE / "bin/python"),
+             "--constraint", str(requirements), "pyarrow==21.0.0"], env=env)
     return python
+
+
+def setup_cpu() -> Path:
+    """Same lock, CPU group only. Preserve the separate historical GPU venv."""
+    if sys.platform != 'linux' or not Path('/content/drive/MyDrive').is_dir():
+        raise RuntimeError('Mount Drive in Colab before CPU setup')
+    tools_root = Path('/content/cottonlens-tools')
+    run([sys.executable, '-m', 'pip', 'install', '--no-deps', '--upgrade', '--target', str(tools_root), f'uv=={UV_VERSION}'])
+    uv = str(tools_root/'bin/uv')
+    environment = Path('/content/cottonlens-cpu312')
+    env = process_env()
+    env.update({'UV_PROJECT_ENVIRONMENT': str(environment), 'UV_PYTHON_INSTALL_DIR': '/content/cottonlens-python'})
+    run([uv, 'sync', '--project', 'ml', '--locked', '--only-group', 'cpu', '--python', '3.12.14', '--managed-python'], env=env)
+    run([uv, 'pip', 'check', '--python', str(environment/'bin/python')], env=env)
+    return environment/'bin/python'
 
 
 if __name__ == "__main__":

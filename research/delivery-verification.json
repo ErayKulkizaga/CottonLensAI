@@ -1,0 +1,69 @@
+{
+  "as_of": "2026-10-05",
+  "ml_full_suite": {
+    "passed": 586,
+    "skipped": 3,
+    "seconds": 211.92
+  },
+  "focused_after_final_changes": {
+    "passed": 40,
+    "seconds": 2.97
+  },
+  "backend": {
+    "passed": 29,
+    "seconds": 50.86
+  },
+  "ruff": {
+    "ml": "passed",
+    "backend": "passed"
+  },
+  "frontend": {
+    "node": "24.19.0",
+    "production_build": "passed",
+    "ui_scope": "existing legacy API fixture; no database writes",
+    "viewports": [
+      {
+        "width": 1440,
+        "horizontal_overflow_px": 0,
+        "corrected_legacy_notice_visible": true
+      },
+      {
+        "width": 1024,
+        "horizontal_overflow_px": 0,
+        "corrected_legacy_notice_visible": true
+      },
+      {
+        "width": 390,
+        "horizontal_overflow_px": 0,
+        "corrected_legacy_notice_visible": true
+      }
+    ],
+    "page_errors": [],
+    "locked_angular_version": "22.2.1"
+  },
+  "source_and_git_secret_scans": "no findings; 23 commits scanned",
+  "gpu_training_run": false,
+  "new_market_training_run": false,
+  "new_dataset_downloaded": false,
+  "dependency_audit": {
+    "before": {
+      "total": 8,
+      "high": 6,
+      "critical": 2
+    },
+    "after": {
+      "info": 0,
+      "low": 0,
+      "moderate": 0,
+      "high": 0,
+      "critical": 0,
+      "total": 0
+    },
+    "change": "Removed seven unused Karma/Jasmine dependencies and empty test scaffold; updated lockfile within existing declared version ranges",
+    "automatic_force_upgrade_run": false
+  },
+  "scientific_limits": [
+    "Synthetic tests and builds are not evidence of market or trading skill",
+    "Full legacy LSTM row predictions remain unavailable"
+  ]
+}

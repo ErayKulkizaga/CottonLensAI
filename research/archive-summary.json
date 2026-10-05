@@ -1,0 +1,192 @@
+{
+  "additional_assets": [
+    {
+      "bundle_source_id": "cb2cc5213ceefc1ed8c77d6b6499853a0500e0eb21aa0bfc1be8f21d4144393f",
+      "bytes": 877116,
+      "name": "availability-clock-frozen-source.zip",
+      "research_source_id": "1cb25671e4051a42eb004943c439d0c1bd1bfcb3332ca8d2a20121ea8e1cb239",
+      "sha256": "26a0557d761459867c02f921e8f898486eb24a77b9c9daf99e8e75f0d175cf2b"
+    }
+  ],
+  "as_of": "2026-10-05",
+  "assets": [
+    {
+      "bytes": 168810922,
+      "name": "evidence-part-01.zip",
+      "sha256": "e5a9b8d43bf44d12de312b802f33d977d56b775782f96b1eb6af3d0358082b0c"
+    },
+    {
+      "bytes": 86050002,
+      "name": "evidence-part-02.zip",
+      "sha256": "e4e6251f6cb662879d8a12db1223e84fa08a79dcc4e92fac44fb5adc4f1b679b"
+    },
+    {
+      "bytes": 163290435,
+      "name": "evidence-part-03.zip",
+      "sha256": "83a4ec95c2299c31747696b3d8c7e88cfb2d548550fd3c4babd1a5b17f19409d"
+    },
+    {
+      "bytes": 102647632,
+      "name": "evidence-part-04.zip",
+      "sha256": "1fa77286e5a6a5e3dca434be8799e0a02e8774a0adbf938ad776336ff56ed69b"
+    },
+    {
+      "bytes": 142625902,
+      "name": "evidence-part-05.zip",
+      "sha256": "0d65eb4fec77599e5c826b8e184308161345b3bbde916eefeff9bfd2a9fed223"
+    },
+    {
+      "bytes": 155404661,
+      "name": "evidence-part-06.zip",
+      "sha256": "3b8811fe27c68d43f6ed7d3e0982e816452fd8cae1885d45ae1c87d9195edfdb"
+    },
+    {
+      "bytes": 136962369,
+      "name": "evidence-part-07.zip",
+      "sha256": "0d601d581f7d1f22f3805b33e780efb9f8741bb934e442e0e6bcf8e787f0ffb5"
+    },
+    {
+      "bytes": 128917840,
+      "name": "evidence-part-08.zip",
+      "sha256": "064457cc71dd2b2d290b45f86e7f6de9a5dec0352000f8b619a3bc4689cb8f04"
+    },
+    {
+      "bytes": 194388861,
+      "name": "evidence-part-09.zip",
+      "sha256": "1aa60d8d75118d708a4e9b1ed792e1a0086ef672a467d7598c3f36cad0647e3b"
+    },
+    {
+      "bytes": 180626423,
+      "name": "evidence-part-10.zip",
+      "sha256": "09caa4c4d6c3e6b92026fb0da6865a614ed037b8cb5edaeed30f252296805305"
+    },
+    {
+      "bytes": 126578131,
+      "name": "evidence-part-11.zip",
+      "sha256": "91ca8559cb53b4ecd0e3b21013550023d15c384599872f99422b6affa7eb5cb9"
+    },
+    {
+      "bytes": 201268518,
+      "name": "evidence-part-12.zip",
+      "sha256": "c36871bd0f44159507ca8686bd92b532891951134029d97e6409a7bea2db612b"
+    },
+    {
+      "bytes": 132793,
+      "name": "tracking-research-metadata.zip",
+      "sha256": "0ccbbea28b0571a57248d74c94ba3851f0e2141b7a8a3d59fdaae742aa5cc809"
+    },
+    {
+      "bytes": 17166186,
+      "name": "frozen-sources.zip",
+      "sha256": "17224b9702bf9089ba4c1782908609b330fa7c1b29fd7f6f48350d83aa56c1b1"
+    }
+  ],
+  "excluded_categories": [
+    ".git",
+    ".pytest_cache",
+    ".ruff_cache",
+    ".venv",
+    "__pycache__",
+    "bootstrap-uv-01214",
+    "full-year-cpu-env",
+    "node_modules",
+    "playwright",
+    "presentation",
+    "publish-audit",
+    "repository-curation",
+    "site-packages"
+  ],
+  "excluded_files": [
+    {
+      "path": "output/configure-live-secrets.ps1",
+      "reason": "private settings, unreviewed database, executable dependency or cache"
+    },
+    {
+      "path": "output/ams-transport-probe/_cffi_backend.cp313-win_amd64.pyd",
+      "reason": "private settings, unreviewed database, executable dependency or cache"
+    },
+    {
+      "path": "output/ams-transport-probe/bin/cffi-gen-src.exe",
+      "reason": "private settings, unreviewed database, executable dependency or cache"
+    },
+    {
+      "path": "output/ams-transport-probe/certifi/cacert.pem",
+      "reason": "private settings, unreviewed database, executable dependency or cache"
+    },
+    {
+      "path": "output/ams-transport-probe/curl_cffi/_wrapper.pyd",
+      "reason": "private settings, unreviewed database, executable dependency or cache"
+    },
+    {
+      "path": "output/availability-clock-implementation/initial-files/opencode.json",
+      "reason": "private settings, unreviewed database, executable dependency or cache"
+    },
+    {
+      "path": "output/claude-audit/drive/reports/smoke-tracking/tracking/mlflow.previous.sqlite",
+      "reason": "private settings, unreviewed database, executable dependency or cache"
+    },
+    {
+      "path": "output/claude-audit/drive/reports/smoke-tracking/tracking/mlflow.sqlite",
+      "reason": "private settings, unreviewed database, executable dependency or cache"
+    },
+    {
+      "path": "output/claude-audit/drive/tracking/mlflow.previous.sqlite",
+      "reason": "private settings, unreviewed database, executable dependency or cache"
+    },
+    {
+      "path": "output/claude-audit/drive/tracking/mlflow.sqlite",
+      "reason": "private settings, unreviewed database, executable dependency or cache"
+    },
+    {
+      "path": "output/day1-incident/backend-cottonlens-after-tests.db",
+      "reason": "private settings, unreviewed database, executable dependency or cache"
+    },
+    {
+      "path": "output/frozen-source-ams-v1/ml/scripts/configure-live-secrets.ps1",
+      "reason": "private settings, unreviewed database, executable dependency or cache"
+    },
+    {
+      "path": "output/preservation/return-path-integration-20261003/3328158ab62d332073603fd15ec4facc2dcaf71abe5b4433a94b211af5e24d02/docs/CLAUDE_PROJECT_HANDOFF_20261001.md",
+      "reason": "private settings, unreviewed database, executable dependency or cache"
+    },
+    {
+      "path": "output/preservation/return-path-integration-20261003/f903a425f1fdb9da2e9a084a7a858b03f503478e3a2029fdccda2bb6dec5d8bb/ml/scripts/configure-live-secrets.ps1",
+      "reason": "private settings, unreviewed database, executable dependency or cache"
+    },
+    {
+      "path": "output/recency-source-audit-20261003/ml/scripts/configure-live-secrets.ps1",
+      "reason": "private settings, unreviewed database, executable dependency or cache"
+    },
+    {
+      "path": "output/return-path-source-audit-20261003/ml/scripts/configure-live-secrets.ps1",
+      "reason": "private settings, unreviewed database, executable dependency or cache"
+    }
+  ],
+  "missing_evidence": [
+    "Full per-origin legacy LSTM predictions not available locally; no reconstruction invented."
+  ],
+  "sanitization": "Public copies redact known credentials and credential-bearing URLs/assignments. Original and public hashes differ explicitly when sanitized.",
+  "schema": 1,
+  "scope": "All available scientific files under output/runtime/ml data/checkpoints, excluding dependencies, UI fixtures and private settings. Original local files unchanged.",
+  "statistics": {
+    "excluded_files": 16,
+    "logical_files": 199142,
+    "sanitized_files": 112,
+    "seconds": 2347,
+    "unique_objects": 119065
+  },
+  "verification": {
+    "all_objects_content_hashed": true,
+    "legitimate_frozen_source_archives_recovered": 24,
+    "logical_paths_verified": true,
+    "objects_verified": 119065,
+    "postscan_redacted_objects": 46,
+    "tracking_credential_tables_published": false,
+    "tracking_research_rows_exported_per_snapshot": 4018,
+    "frozen_sources_checked_after_archive_write": 24
+  },
+  "manifest": {
+    "name": "evidence-manifest.json.gz",
+    "sha256": "8f5d46a65f5345195df7b5e8c02e08b87acb294c0cd0b977e0dba450d81144f9"
+  }
+}

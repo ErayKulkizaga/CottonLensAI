@@ -1,0 +1,4 @@
+# Evidence hashes bind bytes. Git must not rewrite their line endings.
+/research/evidence/** -text
+/docs/archive/** -text
+/ml/notebooks/archive/** -text

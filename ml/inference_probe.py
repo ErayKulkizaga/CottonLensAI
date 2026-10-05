@@ -13,6 +13,7 @@ def main():
     parser.add_argument("bundle", type=Path)
     parser.add_argument("--backend-runtime", type=Path, required=True)
     parser.add_argument("--release", action="store_true")
+    parser.add_argument("--cases", type=Path)
     args = parser.parse_args()
     for name in ("tensorflow", "keras", "tf2onnx", "mlflow"):
         if importlib.util.find_spec(name) is not None:
@@ -23,12 +24,14 @@ def main():
     runtime = module.ArtifactRuntime(str(args.bundle))
     runtime.load()
     if args.release:
-        cases = json.loads((args.bundle / "release_cases.json").read_text())
+        if args.cases is None:
+            raise ValueError("Release validation requires an external cases file")
+        cases = json.loads(args.cases.read_text())
         for horizon, case in cases.items():
             prediction = runtime.predict_return(int(horizon), case["features"])
             if not np.isfinite(prediction):
                 raise ValueError("Non-finite runtime prediction")
-            if not case["experimental"] and abs(prediction - case["expected"]) >= 1e-4:
+            if abs(prediction - case["expected"]) >= 1e-4:
                 raise ValueError(f"Release forecast/runtime parity failed: T+{horizon}")
         print("Release loads with backend runtime; TensorFlow absent; forecast parity passed", flush=True)
         return

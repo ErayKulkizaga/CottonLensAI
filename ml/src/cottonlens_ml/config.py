@@ -1,6 +1,12 @@
 from dataclasses import dataclass
 from pathlib import Path
 
+# Ages include the mandatory one-Cotton-observation lag. This is a data-quality
+# limit, not a predictive hyperparameter; three observations is the Day-1 default.
+EXTERNAL_MAX_AGE_SESSIONS = 3
+DATA_POLICY_VERSION = "cotton-observation-next-utc-day-v1"
+HORIZON_SEMANTICS = "next_1_or_5_recorded_cotton_observations"
+
 FEATURE_NAMES = [
     "cotton_ret_1",
     "cotton_ret_5",

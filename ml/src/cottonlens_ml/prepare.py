@@ -6,15 +6,37 @@ from datetime import UTC, datetime
 from pathlib import Path
 
 import numpy as np
+import pandas as pd
 
-from cottonlens_ml.config import PipelinePaths
+from cottonlens_ml.config import DATA_POLICY_VERSION, FEATURE_NAMES, PipelinePaths
 from cottonlens_ml.data import cache_sources
-from cottonlens_ml.features import build_features, chronological_split
+from cottonlens_ml.features import (
+    build_feature_history,
+    coverage_report,
+    require_latest_live_row,
+    select_feature_rows,
+)
+from cottonlens_ml.snapshots import write_snapshot
+from cottonlens_ml.walkforward import audit_split
 
 
 def prepare(paths: PipelinePaths, refresh: bool = False):
     paths.create()
+    previous_dataset = paths.processed / "training_dataset.parquet"
+    if previous_dataset.exists():
+        evidence = {}
+        for name in ("data_quality", "split_manifest"):
+            path = paths.processed / f"{name}.json"
+            if path.exists():
+                evidence[name] = json.loads(path.read_text(encoding="utf-8"))
+        write_snapshot(
+            paths.processed / "snapshots", {"previous_training_dataset": pd.read_parquet(previous_dataset)},
+            {"kind": "pre_prepare_processed_cache", **evidence},
+        )
     market, cftc = cache_sources(paths.raw, refresh=refresh)
+    raw_snapshot = write_snapshot(
+        paths.raw / "snapshots", {"market": market, "cftc": cftc}, {"kind": "source_cache"}
+    )
     # Yahoo can return an in-progress current-day candle. Delay at most one
     # session rather than treating an incomplete close as an observed target.
     utc_today = datetime.now(UTC).date()
@@ -24,8 +46,8 @@ def prepare(paths: PipelinePaths, refresh: bool = False):
         raise ValueError("CFTC source contains non-finite net positions")
     if not cftc.empty and (cftc.available_date.isna().any() or cftc.available_date.duplicated().any()):
         raise ValueError("CFTC availability dates must be present and unique")
-    features = build_features(market, cftc)
-    modeling = features.dropna(subset=["target_return_1", "target_return_5"]).copy()
+    features = build_feature_history(market, cftc)
+    modeling = select_feature_rows(features, FEATURE_NAMES)
     report = {
         **features.attrs["data_quality"],
         "market_rows": len(market), "cftc_rows": len(cftc), "modeling_rows": len(modeling),
@@ -39,16 +61,29 @@ def prepare(paths: PipelinePaths, refresh: bool = False):
         "cftc_release_timestamp_verified": False,
         "cftc_model_policy": "excluded until actual per-report publication times are verified",
         "cftc_source_available": not cftc.empty,
+        "feature_coverage": coverage_report(features),
     }
+    features.attrs["data_quality"] = report
+    snapshot = write_snapshot(
+        paths.processed / "snapshots", {"feature_history": features},
+        {"raw_id": raw_snapshot["snapshot_id"], "data_policy": DATA_POLICY_VERSION,
+         "feature_schema": FEATURE_NAMES, "data_quality": report},
+    )
+    features.attrs["data_identity"] = {
+        "data_id": snapshot["snapshot_id"], "raw_id": raw_snapshot["snapshot_id"],
+        "manifest_path": snapshot["manifest_path"], "raw_manifest_path": raw_snapshot["manifest_path"],
+        "checksums": snapshot["checksums"], "source_checksums": raw_snapshot["checksums"],
+    }
+    (paths.processed / "data_identity.json").write_text(
+        json.dumps(features.attrs["data_identity"], indent=2, allow_nan=False), encoding="utf-8"
+    )
     (paths.processed / "data_quality.json").write_text(
         json.dumps(report, indent=2, allow_nan=False), encoding="utf-8"
     )
-    splits = chronological_split(modeling)
+    splits = audit_split(modeling)
     if any(len(frame) < 61 for frame in splits.values()):
-        raise ValueError("Insufficient complete data for 60-step train/validation/test sequences; see data_quality.json")
-    latest_cotton_date = market.loc[market.series == "cotton", "date"].max()
-    if features.date.max() != latest_cotton_date:
-        raise ValueError("Latest Cotton row has invalid/incomplete features; refusing a stale live forecast")
+        raise ValueError("Insufficient data for 60-step train/validation/audit sequences; see data_quality.json")
+    require_latest_live_row(features)
     features.to_parquet(paths.processed / "training_dataset.parquet", index=False)
     split_manifest = {
         name: {"start": str(frame.date.min()), "end": str(frame.date.max()), "rows": len(frame)}

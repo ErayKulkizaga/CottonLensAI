@@ -28,7 +28,11 @@ class ForecastResponse(BaseModel):
 
     id: str
     as_of_date: date
-    target_date: date
+    target_date: date | None
+    target_calendar_policy: str = "legacy_calendar_unverified"
+    model_role: str = "legacy"
+    model_identity: str | None = None
+    fit_cutoff: str | None = None
     horizon: int
     current_price_cents_per_lb: float
     predicted_price_cents_per_lb: float

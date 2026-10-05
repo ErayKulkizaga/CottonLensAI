@@ -1,11 +1,5 @@
-import os
-import tempfile
 from datetime import date
-from pathlib import Path
-
-os.environ["DATABASE_URL"] = f"sqlite:///{Path(tempfile.gettempdir()) / 'cottonlens-api-tests.db'}"
-os.environ["DEMO_MODE"] = "true"
-os.environ["ARTIFACT_DIR"] = str(Path(tempfile.gettempdir()) / "missing-cottonlens-artifact")
+from types import SimpleNamespace
 
 import pytest
 from fastapi.testclient import TestClient
@@ -19,6 +13,8 @@ from app.models import ArtifactImport, FeatureSnapshot, Forecast, ModelVersion
 
 @pytest.fixture(scope="module", autouse=True)
 def database() -> None:
+    # Destructive fixture operations must never resolve to a workspace database.
+    assert "cottonlens-backend-tests-" in str(engine.url.database)
     Base.metadata.drop_all(engine)
     Base.metadata.create_all(engine)
     yield
@@ -36,6 +32,13 @@ def test_health_distinguishes_live_from_ready(client: TestClient) -> None:
     ready = client.get("/api/v1/health/ready")
     assert ready.status_code == 200
     assert "development fixture" in ready.json()["detail"]
+
+
+def test_legacy_evaluation_warns_about_unmatched_origins() -> None:
+    imported = SimpleNamespace(artifact_version="legacy", manifest={})
+    response = api.model_evaluation(SimpleNamespace(scalar=lambda _: imported))
+    assert response.walkforward_report is None
+    assert "verified identical forecast origins and targets" in response.note
 
 
 def test_ready_rejects_runtime_without_matching_database_import(

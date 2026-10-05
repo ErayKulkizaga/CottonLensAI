@@ -117,6 +117,21 @@ def test_report_refuses_incomplete_or_unverified_evidence():
         build_report(evidence)
 
 
+def test_report_uses_development_curve_after_audit_refit_clears_history():
+    evidence = _evidence()
+    for row in evidence["metrics"]:
+        row["training_history"] = None
+    report = build_report(evidence)
+    assert "Curve unavailable in this release" in report
+    assert "Epochs recorded: 0" not in report
+    evidence["manifest"]["walkforward_report"]["folds"][-1]["lstm_validation_training_history"] = [
+        {"epoch": 1, "loss": 0.8, "val_loss": 0.9},
+    ]
+    report = build_report(evidence)
+    assert "development fold 4 selected validation trial" in report
+    assert "epoch=1 train_loss=0.80000" in report
+
+
 def test_collect_evidence_rejects_tampered_zip(tmp_path):
     release_root = tmp_path / "artifacts" / "releases"
     release_root.mkdir(parents=True)
@@ -131,6 +146,14 @@ def test_collect_evidence_rejects_tampered_zip(tmp_path):
 
 def test_collect_evidence_reads_matching_release_and_reports(tmp_path):
     sample = _evidence()
+    sample["manifest"].update({
+        "artifact_schema_version": 2, "evidence_path": "evidence.json",
+        **{key: {"id": key} for key in ("code_identity", "data_identity", "protocol_identity", "cohort_identity")},
+    })
+    frozen = {
+        **{key: sample["manifest"][key] for key in ("code_identity", "data_identity", "protocol_identity", "cohort_identity")},
+        "data_quality": sample["data_quality"], "environment_smoke": sample["environment_smoke"],
+    }
     release_root = tmp_path / "artifacts" / "releases"
     release_root.mkdir(parents=True)
     name = "cottonlens-model-v20260923-1200.zip"
@@ -139,16 +162,37 @@ def test_collect_evidence_reads_matching_release_and_reports(tmp_path):
     with zipfile.ZipFile(release_root / name, "w") as archive:
         archive.writestr(f"{prefix}/manifest.json", json.dumps(sample["manifest"]))
         archive.writestr(f"{prefix}/metrics.json", json.dumps(sample["metrics"]))
+        archive.writestr(f"{prefix}/evidence.json", json.dumps(frozen))
     digest = hashlib.sha256((release_root / name).read_bytes()).hexdigest()
     (release_root / f"{name}.sha256").write_text(f"{digest}  {name}\n", encoding="utf-8")
     processed = tmp_path / "data" / "processed"
     processed.mkdir(parents=True)
-    (processed / "data_quality.json").write_text(json.dumps(sample["data_quality"]), encoding="utf-8")
+    (processed / "data_quality.json").write_text(json.dumps({"wrong_later_run": True}), encoding="utf-8")
     reports = tmp_path / "reports"
     reports.mkdir()
     (reports / "environment-smoke.json").write_text(
-        json.dumps(sample["environment_smoke"]), encoding="utf-8"
+        json.dumps({"status": "failed", "wrong_later_run": True}), encoding="utf-8"
     )
+    receipt_path = (release_root / name).with_suffix(".validation.json")
+    receipt_path.write_text(json.dumps({
+        "status": "passed", "zip_sha256": digest,
+        "artifact_version": sample["manifest"]["artifact_version"],
+    }), encoding="utf-8")
     collected = collect_evidence(tmp_path)
     assert collected["zip_sha256"] == digest
+    assert collected["data_quality"] == sample["data_quality"]
+    assert collected["environment_smoke"] == sample["environment_smoke"]
     assert "Fold 4" in build_report(collected)
+    receipt_path.write_text(json.dumps({"status": "passed", "zip_sha256": "wrong"}), encoding="utf-8")
+    with pytest.raises(ValueError, match="exact release"):
+        collect_evidence(tmp_path)
+    receipt_path.unlink()
+    with pytest.raises(ValueError, match="no runtime validation receipt"):
+        collect_evidence(tmp_path)
+
+
+def test_schema_v2_report_requires_digest_bound_receipt():
+    evidence = _evidence()
+    evidence["manifest"]["artifact_schema_version"] = 2
+    with pytest.raises(ValueError, match="matching runtime validation receipt"):
+        build_report(evidence)

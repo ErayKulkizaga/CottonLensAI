@@ -3,7 +3,11 @@ export type DataQuality = 'illustrative' | 'validated_holdout' | 'validated' | s
 export interface Forecast {
   id: string;
   as_of_date: string;
-  target_date: string;
+  target_date: string | null;
+  target_calendar_policy?: string;
+  model_role?: string;
+  model_identity?: string | null;
+  fit_cutoff?: string | null;
   horizon: 1 | 5;
   current_price_cents_per_lb: number;
   predicted_price_cents_per_lb: number;
@@ -75,10 +79,10 @@ export interface ModelMetric {
 export interface ModelEvaluation {
   artifact_version: string | null;
   note: string;
-  selection_audit: Record<string, { locked_candidate?: string; selected?: string; fold_wins_vs_naive?: Record<string, number> }> | null;
+  selection_audit: Record<string, { locked_candidate?: string; selected?: string; gate?: { fold_wins: number; total_folds: number }; fold_wins_vs_naive?: Record<string, number> }> | null;
   walkforward_report: {
     folds: { fold: number; test_start: string; test_end: string; sample_count: number; metrics: Record<string, { mae: number; directional_accuracy: number }> }[];
-    feature_ablation: { fold: number; horizon: number; cotton_mae: number; cotton_macro_mae: number; full_mae: number }[];
+    feature_ablation?: { fold: number; horizon: number; cotton_mae: number; cotton_macro_mae: number; full_mae: number }[];
     cftc_candidate: string;
   } | null;
 }
