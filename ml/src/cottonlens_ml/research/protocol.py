@@ -203,8 +203,17 @@ def inputs(history, origins, processor, window=1):
     return np.stack([transformed[i - window + 1:i + 1] for i in indexes])
 
 
-def attach_releases(history, records, features):
+DECISION_CLOCKS = {
+    'legacy-midnight-v1': (pd.Timedelta(days=1), False),
+    'cotton-next-day-0015-v1': (pd.Timedelta(days=1, minutes=15), True),
+}
+
+
+def attach_releases(history, records, features, *, decision_clock='legacy-midnight-v1'):
     """Point-in-time integration requires explicit publication and vintage evidence."""
+    if decision_clock not in DECISION_CLOCKS:
+        raise ValueError('Unknown decision clock; an explicit versioned policy is required')
+    offset, exact_matches = DECISION_CLOCKS[decision_clock]
     required = {'published_at', 'vintage_id', 'source_url', 'source_sha256', 'timestamp_verified', *features}
     if not required.issubset(records.columns):
         raise ValueError('Actual verified publication/vintage evidence required')
@@ -234,6 +243,6 @@ def attach_releases(history, records, features):
     if release[clock].isna().any() or release[clock].duplicated().any():
         raise ValueError('Unique publication timestamps required')
     left = history.copy()
-    left['decision_at'] = pd.to_datetime(left.date, utc=True) + pd.Timedelta(days=1)
+    left['decision_at'] = pd.to_datetime(left.date, utc=True) + offset
     return pd.merge_asof(left.sort_values('decision_at'), release.sort_values(clock),
-                         left_on='decision_at', right_on=clock, direction='backward', allow_exact_matches=False)
+                         left_on='decision_at', right_on=clock, direction='backward', allow_exact_matches=exact_matches)

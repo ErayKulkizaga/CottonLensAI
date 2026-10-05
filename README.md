@@ -50,6 +50,8 @@ Bu tarif pratik hedefi geçmedi. Sonuç bütün modellerin veya bütün temel ka
 
 Eski LSTM'nin 498 Naive / 439 LSTM origin karşılaştırması geçersizdi: aynı pencere için yeniden kurulan T+1 toplu kazanç **−%1,6961**, eski +%2,7647 iddiası geçersiz. Tam LSTM tahminleri bulunmadığından paired güven aralığı yok. TCN sentetik öğrenme kontrolünün yanlış `passed` yorumu ayrıca düzeltildi. [Düzeltme kayıtları](research/evidence/) eski artifact'leri değiştirmez.
 
+[İlk işlem hedefi teslimatı](docs/TRADING_WASDE_DELIVERY_20261005.md), mevcut tahminlerde 2.006 T+1 origin'i yeni fit olmadan inceledi. Seçilmiş müdahalenin brüt proxy sonucu tek aktif yıldan geliyor; kontrol katkısı belirsiz ve gerçek giriş/maliyet doğrulanmış değil. Bölgesel WASDE bilgisi 95 rapor/26 alanlı aday pakete geri alındı, eğitim kabulü verilmedi. Sürümlü karar saati ve CLI/engine tazelik eşitliği düzeltildi; 690 eski dosyanın SHA-256'sı korundu. [Yeni payload Release'i](https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/research-delivery-20261005) eski yedeğe ek kanıttır.
+
 ## Veriler, modeller ve tam kanıt yedeği
 
 Büyük ham veriler, tahminler, checkpoint'ler, kaynak ZIP'leri ve ledger'lar [evidence-20261005 Release](https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/evidence-20261005) altında tutulur. [Arşiv açıklaması](research/README.md) ve `research/archive-summary.json`, mevcut dosyaların kapsamını, eksikleri, redaksiyonları ve SHA-256 değerlerini gösterir. Git geçmişi korunur; bütün eski eğitimin eksiksiz geri kazanıldığı iddia edilmez.
