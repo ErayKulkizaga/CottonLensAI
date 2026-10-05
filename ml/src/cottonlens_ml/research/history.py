@@ -41,6 +41,8 @@ def check(registry, trials, *, proposal=None, **filters):
         if not isinstance(proposal, dict) or not isinstance(proposal.get('recipe'), dict):
             raise ValueError('Proposal requires a recipe object')
         recipe = proposal['recipe']
+        if not recipe.get('family') or recipe.get('horizon') not in (1, 5):
+            raise ValueError('Proposal recipe requires family and horizon 1 or 5')
         filters['family'] = recipe.get('family')
         filters['horizon'] = recipe.get('horizon')
     records = [r for r in registry['records'] if matches(r, **filters)]
@@ -57,6 +59,8 @@ def check(registry, trials, *, proposal=None, **filters):
 
 def validate(root):
     registry, trials = load_registry(root)
+    if trials.get('rejected_receipts'):
+        raise ValueError('Registry contains rejected ledger receipts; review before proceeding')
     ids = set()
     for document in (registry, trials):
         for record in document['records']:
@@ -102,6 +106,7 @@ def main(argv=None):
         if args.command == 'validate':
             print(json.dumps(validate(args.registry_root), indent=2))
             return 0
+        validate(args.registry_root)
         registry, trials = load_registry(args.registry_root)
         if args.command == 'list':
             result = {'experiments': registry['records'], 'fit_recipes': trials['records']}

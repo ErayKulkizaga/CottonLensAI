@@ -62,6 +62,7 @@ def test_invalid_registry_fails_closed_and_command_is_read_only(tmp_path):
     (tmp_path/'trials.json').write_text(json.dumps({'schema': 1, 'records': []}))
     before = {p.name: p.read_bytes() for p in tmp_path.iterdir()}
     assert main(['--registry-root', str(tmp_path), 'validate']) == 2
+    assert main(['--registry-root', str(tmp_path), 'check']) == 2
     assert before == {p.name: p.read_bytes() for p in tmp_path.iterdir()}
     with pytest.raises(ValueError, match='Missing or duplicate'):
         validate(tmp_path)
@@ -74,3 +75,32 @@ def test_corrupt_evidence_and_path_traversal_fail_validation(tmp_path):
             'local_evidence': [{'path': path, 'sha256': digest}]}))
         (tmp_path/'trials.json').write_text(json.dumps({'schema': 1, 'records': []}))
         assert main(['--registry-root', str(tmp_path), 'validate']) == 2
+
+
+def test_historical_synthetic_spec_and_gpu_smoke_are_not_market_recipes(tmp_path):
+    recipe = receipt(tmp_path)
+    path = tmp_path/'experiment/ledger/completed/fit.json'
+    value = json.loads(path.read_text())
+    value.pop('record_id')
+    value['specification'] = {'role': 'synthetic_control_not_market_evidence',
+                              'kind': 'known_signal', 'spec': recipe}
+    value['experiment_id'] = fingerprint({'identity': value['identity'], 'specification': value['specification']})
+    value['record_id'] = fingerprint(value)
+    path.write_text(json.dumps(value))
+    result = index(tmp_path)
+    assert result['records'][0]['kind'] == 'synthetic_control:known_signal'
+    assert result['rejected_receipts'] == []
+    value.pop('record_id')
+    value['specification'] = {'role': 'gpu_objective_smoke', 'family': 'xgboost', 'task': 'absolute_price'}
+    value['experiment_id'] = fingerprint({'identity': value['identity'], 'specification': value['specification']})
+    value['record_id'] = fingerprint(value)
+    path.write_text(json.dumps(value))
+    result = index(tmp_path)
+    assert result['records'] == []
+    assert result['non_fit_controls'][0]['kind'] == 'gpu_objective_smoke_not_market_evidence'
+    assert result['rejected_receipts'] == []
+
+
+def test_incomplete_proposal_is_not_an_exact_match():
+    with pytest.raises(ValueError, match='family and horizon'):
+        check({'records': []}, {'records': []}, proposal={'recipe': {}})
