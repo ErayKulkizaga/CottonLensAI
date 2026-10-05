@@ -139,5 +139,20 @@
   "excluded_local_settings": [
     "opencode.json"
   ],
-  "removed_scientific_payloads": []
+  "removed_scientific_payloads": [],
+  "removed_unused_scaffolding": {
+    "files": [
+      "frontend/tsconfig.spec.json"
+    ],
+    "dependencies": [
+      "@types/jasmine",
+      "jasmine-core",
+      "karma",
+      "karma-chrome-launcher",
+      "karma-coverage",
+      "karma-jasmine",
+      "karma-jasmine-html-reporter"
+    ],
+    "reason": "No frontend *.spec.ts files exist; unused Karma/Jasmine scaffold did not run a verified test suite"
+  }
 }

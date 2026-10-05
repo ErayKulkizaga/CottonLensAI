@@ -14006,7 +14006,7 @@
         2022,
         2023
       ],
-      "classification": "DECISIVE NEGATIVE",
+      "classification": "DECISIVE_NEGATIVE",
       "reason": "Fixed Ridge timing sensitivity does not rescue 5% price-MAE objective; not all-model/source no-signal proof",
       "ready": "output/full-year/experiments/research-availability-clock-pilot-v1/ready.json",
       "payloads": {
@@ -14018,7 +14018,9 @@
         "output/full-year/experiments/research-availability-clock-pilot-v1/clock-outputs/control-t1-year2021.json": "3fc5a2a4d9e3e054bee80635018c1dd4c1f7af65e57aaf381c26496211789188",
         "output/full-year/experiments/research-availability-clock-pilot-v1/clock-outputs/control-t1-year2022.json": "6392387718ba788ac85b6f71d99659e40fe8d4cea705faa099fae1f142e468be",
         "output/full-year/experiments/research-availability-clock-pilot-v1/clock-outputs/control-t1-year2023.json": "b1eb15740d687ece70b40a5c60e8499c97ef8058c87b8e298e8da0d374a3ff47"
-      }
+      },
+      "selection": "Fixed Ridge alpha=1 per horizon; expanding mature-label history; 3x63 prior inner validation; refit every 21 observations; weight in [0,.25,.5,.75,1] selected only in past validation",
+      "availability_scope": "Assumption sensitivity: bar-date+1 day 00:00 UTC available before next-day 00:15 UTC. Not verified historical Yahoo delivery."
     },
     {
       "id": "1975d5f48525dbf12108d1c40131195ab68ca6dbed3e056bc4e344a2e21f7264",
@@ -14104,7 +14106,7 @@
         2022,
         2023
       ],
-      "classification": "DECISIVE NEGATIVE",
+      "classification": "DECISIVE_NEGATIVE",
       "reason": "Fixed Ridge timing sensitivity does not rescue 5% price-MAE objective; not all-model/source no-signal proof",
       "ready": "output/full-year/experiments/research-availability-clock-pilot-v1/ready.json",
       "payloads": {
@@ -14116,7 +14118,9 @@
         "output/full-year/experiments/research-availability-clock-pilot-v1/clock-outputs/control-t5-year2021.json": "d21b7020fb179e2e13064367fc8dd785a6f7175a3353a17e9cd6fd44ed5eb4bc",
         "output/full-year/experiments/research-availability-clock-pilot-v1/clock-outputs/control-t5-year2022.json": "f084af1b6151215446fd1293c467cfe2030bfb2d09caf3ea3615e444546ec003",
         "output/full-year/experiments/research-availability-clock-pilot-v1/clock-outputs/control-t5-year2023.json": "1845a37d95e6d43ef358a04edd5676541cc6268508879e8d90976a08bb3e42e6"
-      }
+      },
+      "selection": "Fixed Ridge alpha=1 per horizon; expanding mature-label history; 3x63 prior inner validation; refit every 21 observations; weight in [0,.25,.5,.75,1] selected only in past validation",
+      "availability_scope": "Assumption sensitivity: bar-date+1 day 00:00 UTC available before next-day 00:15 UTC. Not verified historical Yahoo delivery."
     },
     {
       "id": "1a0b5e6667f4a0302d1317be9df67d0787c91d8174d3bfb2a38600bd43beffb1",
@@ -14202,7 +14206,7 @@
         2022,
         2023
       ],
-      "classification": "DECISIVE NEGATIVE",
+      "classification": "DECISIVE_NEGATIVE",
       "reason": "Fixed Ridge timing sensitivity does not rescue 5% price-MAE objective; not all-model/source no-signal proof",
       "ready": "output/full-year/experiments/research-availability-clock-pilot-v1/ready.json",
       "payloads": {
@@ -14214,7 +14218,9 @@
         "output/full-year/experiments/research-availability-clock-pilot-v1/clock-outputs/available-t1-year2021.json": "ab325cacd20476a3c4c8fe21e829d800aec06d3517d20b694bc525a3dbdc8324",
         "output/full-year/experiments/research-availability-clock-pilot-v1/clock-outputs/available-t1-year2022.json": "9994d5798aab29162ebac7f58c9647a8f7994e9a6106f4cad07be4f0ca67ebea",
         "output/full-year/experiments/research-availability-clock-pilot-v1/clock-outputs/available-t1-year2023.json": "d3029e4b1d75ea3d566882982ec892d72e0560156310c3708461652fdeebb350"
-      }
+      },
+      "selection": "Fixed Ridge alpha=1 per horizon; expanding mature-label history; 3x63 prior inner validation; refit every 21 observations; weight in [0,.25,.5,.75,1] selected only in past validation",
+      "availability_scope": "Assumption sensitivity: bar-date+1 day 00:00 UTC available before next-day 00:15 UTC. Not verified historical Yahoo delivery."
     },
     {
       "id": "b360683e07f0a41c0fab03ab9d6b4b8962617bed2cb6ea23ea6c892d54815bef",
@@ -14300,7 +14306,7 @@
         2022,
         2023
       ],
-      "classification": "DECISIVE NEGATIVE",
+      "classification": "DECISIVE_NEGATIVE",
       "reason": "Fixed Ridge timing sensitivity does not rescue 5% price-MAE objective; not all-model/source no-signal proof",
       "ready": "output/full-year/experiments/research-availability-clock-pilot-v1/ready.json",
       "payloads": {
@@ -14312,7 +14318,9 @@
         "output/full-year/experiments/research-availability-clock-pilot-v1/clock-outputs/available-t5-year2021.json": "dcbf41aa7da6a53c3074f0068baf8e3620c3c8aeab5343b89af678060d01e924",
         "output/full-year/experiments/research-availability-clock-pilot-v1/clock-outputs/available-t5-year2022.json": "95f7e16e71184c6318a731b85a34cd33ddd923d1ea7f0eca7dd49238db90695a",
         "output/full-year/experiments/research-availability-clock-pilot-v1/clock-outputs/available-t5-year2023.json": "dacb0b270c50a33d46b6bc32633ee4aa42fe7df0d4dbed27839bd956c307fbee"
-      }
+      },
+      "selection": "Fixed Ridge alpha=1 per horizon; expanding mature-label history; 3x63 prior inner validation; refit every 21 observations; weight in [0,.25,.5,.75,1] selected only in past validation",
+      "availability_scope": "Assumption sensitivity: bar-date+1 day 00:00 UTC available before next-day 00:15 UTC. Not verified historical Yahoo delivery."
     },
     {
       "id": "21d386c2b1f5798f439b7e10a150e191e54e5747a83cae1269f828bef133bd73",

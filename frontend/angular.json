@@ -14,15 +14,30 @@
           "options": {
             "browser": "src/main.ts",
             "tsConfig": "tsconfig.app.json",
-            "assets": [{ "glob": "**/*", "input": "public" }],
-            "styles": ["src/styles.css"],
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "public"
+              }
+            ],
+            "styles": [
+              "src/styles.css"
+            ],
             "outputPath": "dist/cottonlens"
           },
           "configurations": {
             "production": {
               "budgets": [
-                { "type": "initial", "maximumWarning": "1.2MB", "maximumError": "2MB" },
-                { "type": "anyComponentStyle", "maximumWarning": "12kB", "maximumError": "20kB" }
+                {
+                  "type": "initial",
+                  "maximumWarning": "1.2MB",
+                  "maximumError": "2MB"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "12kB",
+                  "maximumError": "20kB"
+                }
               ],
               "outputHashing": "all"
             },
@@ -36,16 +51,18 @@
         },
         "serve": {
           "builder": "@angular/build:dev-server",
-          "options": { "proxyConfig": "proxy.conf.json" },
+          "options": {
+            "proxyConfig": "proxy.conf.json"
+          },
           "configurations": {
-            "production": { "buildTarget": "cottonlens:build:production" },
-            "development": { "buildTarget": "cottonlens:build:development" }
+            "production": {
+              "buildTarget": "cottonlens:build:production"
+            },
+            "development": {
+              "buildTarget": "cottonlens:build:development"
+            }
           },
           "defaultConfiguration": "development"
-        },
-        "test": {
-          "builder": "@angular/build:unit-test",
-          "options": { "tsConfig": "tsconfig.spec.json" }
         }
       }
     }
