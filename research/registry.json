@@ -14962,6 +14962,26 @@
       "evidence": "research/evidence/wasde-as-reported-20261008.json",
       "evidence_sha256": "8d69f10bebfb62150d783ee0fbcf4f4f0bed1abf03694eab8406682d615db66a",
       "id": "0e65cc79accc164cd3991e5600e8283cc0fe3e26d91db69f1b773701a5ad65b7"
+    },
+    {
+      "experiment": "wasde-clock-case-20181211-v1",
+      "profile": "wasde-clock-case-20181211-v1",
+      "kind": "no_fit_source_clock_case_review",
+      "horizon": null,
+      "coverage": "one_report_two_source_versions",
+      "classification": "INCONCLUSIVE",
+      "model_families": [],
+      "recipes": [],
+      "completed_new_fits": 0,
+      "numeric_verified": true,
+      "model_eligible": false,
+      "independent_holdout": false,
+      "code_id": "82a4d6fa5d06d8d6ecea6108da86ebac362d51235bbbd739cee63e9496197e21",
+      "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/wasde-clock-case-20261008",
+      "evidence": "research/evidence/wasde-clock-case-20261008.json",
+      "evidence_sha256": "4348b38f282437a27bca87f8e2ce1a7918d4ea3955336dfa74741737254e5eac",
+      "reason": "Cotton values unchanged by repost and matched in independent academic table; pre-decision delivery bound not established. Not a market-skill experiment.",
+      "id": "3626b2499b8c9fe0e016c0ddbb8b356bc733b47b96822c86e0d00026248a9ad1"
     }
   ],
   "local_evidence": [
@@ -15024,6 +15044,14 @@
     {
       "path": "evidence/wasde-as-reported-release-20261008.json",
       "sha256": "9db4d59f7d26c938bbdb2501151609ece36281109854aba9afb0bde05518f251"
+    },
+    {
+      "path": "evidence/wasde-clock-case-20261008.json",
+      "sha256": "4348b38f282437a27bca87f8e2ce1a7918d4ea3955336dfa74741737254e5eac"
+    },
+    {
+      "path": "evidence/wasde-clock-case-release-20261008.json",
+      "sha256": "47b7b4cec5f1638da6d33d1360b0d8c209890cb75ec59314e3425f5dfc872d58"
     }
   ]
 }

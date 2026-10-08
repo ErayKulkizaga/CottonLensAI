@@ -60,6 +60,8 @@ Eski LSTM'nin 498 Naive / 439 LSTM origin karşılaştırması geçersizdi: ayn�
 
 ## Veriler, modeller ve tam kanıt yedeği
 
+[11 Aralık 2018 WASDE kontrolü](docs/WASDE_CLOCK_CASE_20261008.md) tamamlandı: 11/14 Aralık PDF/XML çiftlerinde 392 hücre eşleşti; repost Cotton değerlerini değiştirmedi. Bağımsız üniversite kopyasının on değeri de eşleşti, fakat karar kesiminden önce erişim kanıtı kurulamadı. 2.190 eski dosya değişmedi. Tarihsel kabul ve yeni fit yok; sonraki iş, tek varsayımlı katkı deneyinin manifestini kilitlemek.
+
 [Resmî WASDE geçmişiyle son mutabakat](docs/WASDE_AS_REPORTED_20261008.md): 95 raporun 950 temel değeri ve 2.470 toplam alan kontrolü eşleşti; fark yok, 117 bilinmeyen revizyon korundu. CSV teslim saati rapor saatinden ayrı tutuldu. Eski veriler değiştirilmedi; tarihsel eğitim kabulü ve yeni fit yok. [Ek kanıt paketi](https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/wasde-as-reported-20261008) yeniden kontrol için resmî export'ları ve çıktıları saklar.
 
 Büyük ham veriler, tahminler, checkpoint'ler, kaynak ZIP'leri ve ledger'lar [evidence-20261005 Release](https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/evidence-20261005) altında tutulur. [Arşiv açıklaması](research/README.md) ve `research/archive-summary.json`, mevcut dosyaların kapsamını, eksikleri, redaksiyonları ve SHA-256 değerlerini gösterir. Git geçmişi korunur; bütün eski eğitimin eksiksiz geri kazanıldığı iddia edilmez.
