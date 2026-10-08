@@ -97,6 +97,12 @@ Bu komut veritabanını silmez. Artifact kullanım/operasyon ayrıntıları [bel
 
 ## Araştırma araçları
 
+Sonraki iş **FAS ülke/commitment kabul denetimi**, yeni eğitim değildir.
+Mevcut 15 ham kaynağın 752 haftalık ulusal toplamları yeniden doğrulandı;
+ülke kod/ad ve rapor/vintage eşleştirmesi tamamlanmadan özellikler kabul edilmez.
+[Güncel sıra ve durma koşulları](docs/RESEARCH_DATA_REENTRY_PLAN_20261005.md).
+WASDE pilotu, DXY/WTI saat deneyi ve eski FAS ulusal T+5 tarifleri tekrar açılmaz.
+
 Güncel girişler [data workbench](ml/notebooks/cottonlens_data_workbench.ipynb) ve [research workbench](ml/notebooks/cottonlens_research_workbench.ipynb). Varsayılan akış durum/hazırlık kontrolüdür, eğitim değildir. Arşivdeki notebook'lar yalnız tarihsel protokolü incelemek içindir.
 
 ```bash

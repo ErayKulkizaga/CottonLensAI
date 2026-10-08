@@ -1,0 +1,680 @@
+{
+  "schema": 1,
+  "profile": "fas-country-field-audit-v1",
+  "market_fits": 0,
+  "audit_source_sha256": "0de3d0fe92108c8e69d359213ce0b7e59603ec2f7935dd86ee3ab73164057179",
+  "manifest_sha256": "4c37a2ad8af2216ac4b4e3da9cecbdd3a882e377f25af2adacadcc20bed1bae2",
+  "table_sha256": "cd5cd3f7434bf65e6b9c873006e06bef9e6586fb62cdbc16ef5541cdf49af827",
+  "catalog_sha256": "38449fd690f631f2cabc4cca7373e9923487680ae242efd0ec12a36de49b811b",
+  "annual": [
+    {
+      "market_year": 2010,
+      "sha256": "da5dc6bd239597ecf60e9584baf594ad09ba2b99d3ad8c4376fe44e035378c62",
+      "raw_rows": 2129,
+      "retained_rows": 2087,
+      "other_marketing_year_rows": 42,
+      "excluded_2024_plus_rows": 0
+    },
+    {
+      "market_year": 2011,
+      "sha256": "cf8f912c5902cea2f895ba5f30e07fbf6839200b081e58c8d8ee53eb989bad83",
+      "raw_rows": 2202,
+      "retained_rows": 2155,
+      "other_marketing_year_rows": 47,
+      "excluded_2024_plus_rows": 0
+    },
+    {
+      "market_year": 2012,
+      "sha256": "eff127d6cf9e451cef84f4f888ee643ba64ae389f942f296584cdda5266b1d1c",
+      "raw_rows": 1984,
+      "retained_rows": 1944,
+      "other_marketing_year_rows": 40,
+      "excluded_2024_plus_rows": 0
+    },
+    {
+      "market_year": 2013,
+      "sha256": "46e66bbff9052b283e0ae0b9cc9f29b970f515f366e8a9cc85eb20f4deccaea0",
+      "raw_rows": 1773,
+      "retained_rows": 1738,
+      "other_marketing_year_rows": 35,
+      "excluded_2024_plus_rows": 0
+    },
+    {
+      "market_year": 2014,
+      "sha256": "2f9f9024811da98d3fe250b1e78f5316060efa838959de0adc4212b54e392751",
+      "raw_rows": 1823,
+      "retained_rows": 1823,
+      "other_marketing_year_rows": 0,
+      "excluded_2024_plus_rows": 0
+    },
+    {
+      "market_year": 2015,
+      "sha256": "3191b8e2cabbc1ae2cd039d1e89a80ed840b47031a607ceae94ec0d35531e59f",
+      "raw_rows": 1891,
+      "retained_rows": 1852,
+      "other_marketing_year_rows": 39,
+      "excluded_2024_plus_rows": 0
+    },
+    {
+      "market_year": 2016,
+      "sha256": "c6cae16f4dc9c1dd7449ea6df2df593627bbb12bb48cfe1ed3957b050f3d366e",
+      "raw_rows": 1844,
+      "retained_rows": 1806,
+      "other_marketing_year_rows": 38,
+      "excluded_2024_plus_rows": 0
+    },
+    {
+      "market_year": 2017,
+      "sha256": "651ca742efaaff1ee02fa218b59b1c15e131b2b633a08094d65646b4b2265ea1",
+      "raw_rows": 1917,
+      "retained_rows": 1878,
+      "other_marketing_year_rows": 39,
+      "excluded_2024_plus_rows": 0
+    },
+    {
+      "market_year": 2018,
+      "sha256": "959bf35189682a205daa84ae0181696f09e1e98eb5af17fde2f82480c94da185",
+      "raw_rows": 1854,
+      "retained_rows": 1815,
+      "other_marketing_year_rows": 39,
+      "excluded_2024_plus_rows": 0
+    },
+    {
+      "market_year": 2019,
+      "sha256": "cfd8fd78f5701771b1e6b6916005aad60dd69839af0b9f0939312b7d22f1dc0d",
+      "raw_rows": 1871,
+      "retained_rows": 1832,
+      "other_marketing_year_rows": 39,
+      "excluded_2024_plus_rows": 0
+    },
+    {
+      "market_year": 2020,
+      "sha256": "9973f506fa67950687cb3f945c36cf601ed3cf8c49420ee2ada45bfc52ad3c83",
+      "raw_rows": 1898,
+      "retained_rows": 1860,
+      "other_marketing_year_rows": 38,
+      "excluded_2024_plus_rows": 0
+    },
+    {
+      "market_year": 2021,
+      "sha256": "669569a067490bfdf4f4f881bc961d74a207dcf1add43cd1fd39d42a198e454b",
+      "raw_rows": 1660,
+      "retained_rows": 1627,
+      "other_marketing_year_rows": 33,
+      "excluded_2024_plus_rows": 0
+    },
+    {
+      "market_year": 2022,
+      "sha256": "88bda4ee9b117aacce67af0358781c16fdfa3bfe0748e570e411a88e40e89b9e",
+      "raw_rows": 1671,
+      "retained_rows": 1638,
+      "other_marketing_year_rows": 33,
+      "excluded_2024_plus_rows": 0
+    },
+    {
+      "market_year": 2023,
+      "sha256": "e07331166bb185785a846b10da15a8843617474c5998b1ee3fd0502f110db5d4",
+      "raw_rows": 1595,
+      "retained_rows": 1562,
+      "other_marketing_year_rows": 33,
+      "excluded_2024_plus_rows": 0
+    },
+    {
+      "market_year": 2024,
+      "sha256": "6136325c8ac5171c7269f0fde7f28cb819ce99a77ae1ee94b61c54e7cc9a7480",
+      "raw_rows": 1775,
+      "retained_rows": 696,
+      "other_marketing_year_rows": 36,
+      "excluded_2024_plus_rows": 1043
+    }
+  ],
+  "raw_rows": 27887,
+  "retained_rows": 26313,
+  "weeks": 752,
+  "start": "2009-08-06",
+  "end": "2023-12-28",
+  "numeric_fields": [
+    "weeklyExports",
+    "accumulatedExports",
+    "outstandingSales",
+    "grossNewSales",
+    "currentMYNetSales",
+    "currentMYTotalCommitment",
+    "nextMYOutstandingSales",
+    "nextMYNetSales"
+  ],
+  "accounting": {
+    "commitment_identity_mismatches": 0,
+    "negative_net_sales_rows": 3121
+  },
+  "nonpositive_outstanding_total_weeks": 0,
+  "nonpositive_net_sales_total_weeks": 65,
+  "countries": [
+    {
+      "code": 1220,
+      "observed_weeks": 417,
+      "absent_weeks_not_imputed": 335,
+      "start": "2009-08-06",
+      "end": "2017-07-27",
+      "negative_net_sales_rows": 20
+    },
+    {
+      "code": 2010,
+      "observed_weeks": 752,
+      "absent_weeks_not_imputed": 0,
+      "start": "2009-08-06",
+      "end": "2023-12-28",
+      "negative_net_sales_rows": 136
+    },
+    {
+      "code": 2050,
+      "observed_weeks": 752,
+      "absent_weeks_not_imputed": 0,
+      "start": "2009-08-06",
+      "end": "2023-12-28",
+      "negative_net_sales_rows": 113
+    },
+    {
+      "code": 2110,
+      "observed_weeks": 752,
+      "absent_weeks_not_imputed": 0,
+      "start": "2009-08-06",
+      "end": "2023-12-28",
+      "negative_net_sales_rows": 241
+    },
+    {
+      "code": 2150,
+      "observed_weeks": 607,
+      "absent_weeks_not_imputed": 145,
+      "start": "2010-02-11",
+      "end": "2023-12-28",
+      "negative_net_sales_rows": 70
+    },
+    {
+      "code": 2190,
+      "observed_weeks": 511,
+      "absent_weeks_not_imputed": 241,
+      "start": "2009-08-06",
+      "end": "2023-12-28",
+      "negative_net_sales_rows": 55
+    },
+    {
+      "code": 2230,
+      "observed_weeks": 507,
+      "absent_weeks_not_imputed": 245,
+      "start": "2014-04-17",
+      "end": "2023-12-28",
+      "negative_net_sales_rows": 72
+    },
+    {
+      "code": 2250,
+      "observed_weeks": 8,
+      "absent_weeks_not_imputed": 744,
+      "start": "2023-11-09",
+      "end": "2023-12-28",
+      "negative_net_sales_rows": 1
+    },
+    {
+      "code": 2360,
+      "observed_weeks": 16,
+      "absent_weeks_not_imputed": 736,
+      "start": "2013-04-11",
+      "end": "2013-07-25",
+      "negative_net_sales_rows": 0
+    },
+    {
+      "code": 3010,
+      "observed_weeks": 752,
+      "absent_weeks_not_imputed": 0,
+      "start": "2009-08-06",
+      "end": "2023-12-28",
+      "negative_net_sales_rows": 138
+    },
+    {
+      "code": 3070,
+      "observed_weeks": 500,
+      "absent_weeks_not_imputed": 252,
+      "start": "2009-08-06",
+      "end": "2023-07-27",
+      "negative_net_sales_rows": 13
+    },
+    {
+      "code": 3310,
+      "observed_weeks": 752,
+      "absent_weeks_not_imputed": 0,
+      "start": "2009-08-06",
+      "end": "2023-12-28",
+      "negative_net_sales_rows": 99
+    },
+    {
+      "code": 3330,
+      "observed_weeks": 752,
+      "absent_weeks_not_imputed": 0,
+      "start": "2009-08-06",
+      "end": "2023-12-28",
+      "negative_net_sales_rows": 96
+    },
+    {
+      "code": 3350,
+      "observed_weeks": 40,
+      "absent_weeks_not_imputed": 712,
+      "start": "2009-10-29",
+      "end": "2010-07-29",
+      "negative_net_sales_rows": 1
+    },
+    {
+      "code": 3370,
+      "observed_weeks": 104,
+      "absent_weeks_not_imputed": 648,
+      "start": "2009-08-06",
+      "end": "2011-07-28",
+      "negative_net_sales_rows": 15
+    },
+    {
+      "code": 3510,
+      "observed_weeks": 611,
+      "absent_weeks_not_imputed": 141,
+      "start": "2009-08-06",
+      "end": "2023-12-28",
+      "negative_net_sales_rows": 60
+    },
+    {
+      "code": 3550,
+      "observed_weeks": 52,
+      "absent_weeks_not_imputed": 700,
+      "start": "2014-08-07",
+      "end": "2015-07-30",
+      "negative_net_sales_rows": 2
+    },
+    {
+      "code": 3570,
+      "observed_weeks": 97,
+      "absent_weeks_not_imputed": 655,
+      "start": "2009-12-24",
+      "end": "2017-07-27",
+      "negative_net_sales_rows": 3
+    },
+    {
+      "code": 4010,
+      "observed_weeks": 136,
+      "absent_weeks_not_imputed": 616,
+      "start": "2009-08-13",
+      "end": "2014-07-31",
+      "negative_net_sales_rows": 2
+    },
+    {
+      "code": 4230,
+      "observed_weeks": 622,
+      "absent_weeks_not_imputed": 130,
+      "start": "2009-08-06",
+      "end": "2023-12-28",
+      "negative_net_sales_rows": 7
+    },
+    {
+      "code": 4270,
+      "observed_weeks": 104,
+      "absent_weeks_not_imputed": 648,
+      "start": "2009-08-06",
+      "end": "2011-07-28",
+      "negative_net_sales_rows": 1
+    },
+    {
+      "code": 4280,
+      "observed_weeks": 704,
+      "absent_weeks_not_imputed": 48,
+      "start": "2009-08-06",
+      "end": "2023-12-28",
+      "negative_net_sales_rows": 26
+    },
+    {
+      "code": 4330,
+      "observed_weeks": 144,
+      "absent_weeks_not_imputed": 608,
+      "start": "2011-03-03",
+      "end": "2015-07-30",
+      "negative_net_sales_rows": 1
+    },
+    {
+      "code": 4410,
+      "observed_weeks": 202,
+      "absent_weeks_not_imputed": 550,
+      "start": "2012-02-09",
+      "end": "2023-12-28",
+      "negative_net_sales_rows": 7
+    },
+    {
+      "code": 4490,
+      "observed_weeks": 33,
+      "absent_weeks_not_imputed": 719,
+      "start": "2010-12-16",
+      "end": "2011-07-28",
+      "negative_net_sales_rows": 1
+    },
+    {
+      "code": 4700,
+      "observed_weeks": 66,
+      "absent_weeks_not_imputed": 686,
+      "start": "2011-01-27",
+      "end": "2020-07-30",
+      "negative_net_sales_rows": 1
+    },
+    {
+      "code": 4710,
+      "observed_weeks": 619,
+      "absent_weeks_not_imputed": 133,
+      "start": "2010-01-14",
+      "end": "2023-12-28",
+      "negative_net_sales_rows": 12
+    },
+    {
+      "code": 4750,
+      "observed_weeks": 752,
+      "absent_weeks_not_imputed": 0,
+      "start": "2009-08-06",
+      "end": "2023-12-28",
+      "negative_net_sales_rows": 47
+    },
+    {
+      "code": 4799,
+      "observed_weeks": 62,
+      "absent_weeks_not_imputed": 690,
+      "start": "2018-05-24",
+      "end": "2019-07-25",
+      "negative_net_sales_rows": 0
+    },
+    {
+      "code": 4840,
+      "observed_weeks": 29,
+      "absent_weeks_not_imputed": 723,
+      "start": "2018-05-17",
+      "end": "2019-07-25",
+      "negative_net_sales_rows": 1
+    },
+    {
+      "code": 4870,
+      "observed_weeks": 28,
+      "absent_weeks_not_imputed": 724,
+      "start": "2011-01-20",
+      "end": "2011-07-28",
+      "negative_net_sales_rows": 1
+    },
+    {
+      "code": 4890,
+      "observed_weeks": 752,
+      "absent_weeks_not_imputed": 0,
+      "start": "2009-08-06",
+      "end": "2023-12-28",
+      "negative_net_sales_rows": 94
+    },
+    {
+      "code": 5200,
+      "observed_weeks": 308,
+      "absent_weeks_not_imputed": 444,
+      "start": "2009-08-06",
+      "end": "2022-07-28",
+      "negative_net_sales_rows": 10
+    },
+    {
+      "code": 5230,
+      "observed_weeks": 66,
+      "absent_weeks_not_imputed": 686,
+      "start": "2019-05-02",
+      "end": "2020-07-30",
+      "negative_net_sales_rows": 0
+    },
+    {
+      "code": 5250,
+      "observed_weeks": 478,
+      "absent_weeks_not_imputed": 274,
+      "start": "2010-10-14",
+      "end": "2020-07-30",
+      "negative_net_sales_rows": 27
+    },
+    {
+      "code": 5330,
+      "observed_weeks": 752,
+      "absent_weeks_not_imputed": 0,
+      "start": "2009-08-06",
+      "end": "2023-12-28",
+      "negative_net_sales_rows": 88
+    },
+    {
+      "code": 5350,
+      "observed_weeks": 752,
+      "absent_weeks_not_imputed": 0,
+      "start": "2009-08-06",
+      "end": "2023-12-28",
+      "negative_net_sales_rows": 125
+    },
+    {
+      "code": 5380,
+      "observed_weeks": 752,
+      "absent_weeks_not_imputed": 0,
+      "start": "2009-08-06",
+      "end": "2023-12-28",
+      "negative_net_sales_rows": 115
+    },
+    {
+      "code": 5420,
+      "observed_weeks": 276,
+      "absent_weeks_not_imputed": 476,
+      "start": "2009-08-06",
+      "end": "2019-07-25",
+      "negative_net_sales_rows": 4
+    },
+    {
+      "code": 5460,
+      "observed_weeks": 35,
+      "absent_weeks_not_imputed": 717,
+      "start": "2013-12-05",
+      "end": "2014-07-31",
+      "negative_net_sales_rows": 0
+    },
+    {
+      "code": 5490,
+      "observed_weeks": 752,
+      "absent_weeks_not_imputed": 0,
+      "start": "2009-08-06",
+      "end": "2023-12-28",
+      "negative_net_sales_rows": 94
+    },
+    {
+      "code": 5520,
+      "observed_weeks": 752,
+      "absent_weeks_not_imputed": 0,
+      "start": "2009-08-06",
+      "end": "2023-12-28",
+      "negative_net_sales_rows": 70
+    },
+    {
+      "code": 5550,
+      "observed_weeks": 52,
+      "absent_weeks_not_imputed": 700,
+      "start": "2009-08-06",
+      "end": "2010-07-29",
+      "negative_net_sales_rows": 1
+    },
+    {
+      "code": 5570,
+      "observed_weeks": 752,
+      "absent_weeks_not_imputed": 0,
+      "start": "2009-08-06",
+      "end": "2023-12-28",
+      "negative_net_sales_rows": 103
+    },
+    {
+      "code": 5590,
+      "observed_weeks": 414,
+      "absent_weeks_not_imputed": 338,
+      "start": "2009-08-06",
+      "end": "2023-12-28",
+      "negative_net_sales_rows": 14
+    },
+    {
+      "code": 5600,
+      "observed_weeks": 752,
+      "absent_weeks_not_imputed": 0,
+      "start": "2009-08-06",
+      "end": "2023-12-28",
+      "negative_net_sales_rows": 94
+    },
+    {
+      "code": 5650,
+      "observed_weeks": 752,
+      "absent_weeks_not_imputed": 0,
+      "start": "2009-08-06",
+      "end": "2023-12-28",
+      "negative_net_sales_rows": 75
+    },
+    {
+      "code": 5660,
+      "observed_weeks": 115,
+      "absent_weeks_not_imputed": 637,
+      "start": "2016-09-15",
+      "end": "2023-12-28",
+      "negative_net_sales_rows": 15
+    },
+    {
+      "code": 5700,
+      "observed_weeks": 752,
+      "absent_weeks_not_imputed": 0,
+      "start": "2009-08-06",
+      "end": "2023-12-28",
+      "negative_net_sales_rows": 124
+    },
+    {
+      "code": 5800,
+      "observed_weeks": 752,
+      "absent_weeks_not_imputed": 0,
+      "start": "2009-08-06",
+      "end": "2023-12-28",
+      "negative_net_sales_rows": 195
+    },
+    {
+      "code": 5820,
+      "observed_weeks": 663,
+      "absent_weeks_not_imputed": 89,
+      "start": "2009-08-06",
+      "end": "2022-07-28",
+      "negative_net_sales_rows": 90
+    },
+    {
+      "code": 5830,
+      "observed_weeks": 752,
+      "absent_weeks_not_imputed": 0,
+      "start": "2009-08-06",
+      "end": "2023-12-28",
+      "negative_net_sales_rows": 53
+    },
+    {
+      "code": 5880,
+      "observed_weeks": 752,
+      "absent_weeks_not_imputed": 0,
+      "start": "2009-08-06",
+      "end": "2023-12-28",
+      "negative_net_sales_rows": 283
+    },
+    {
+      "code": 6020,
+      "observed_weeks": 36,
+      "absent_weeks_not_imputed": 716,
+      "start": "2010-11-25",
+      "end": "2011-07-28",
+      "negative_net_sales_rows": 0
+    },
+    {
+      "code": 7140,
+      "observed_weeks": 531,
+      "absent_weeks_not_imputed": 221,
+      "start": "2009-08-06",
+      "end": "2021-07-29",
+      "negative_net_sales_rows": 60
+    },
+    {
+      "code": 7210,
+      "observed_weeks": 165,
+      "absent_weeks_not_imputed": 587,
+      "start": "2018-07-05",
+      "end": "2023-07-27",
+      "negative_net_sales_rows": 3
+    },
+    {
+      "code": 7230,
+      "observed_weeks": 429,
+      "absent_weeks_not_imputed": 323,
+      "start": "2009-08-06",
+      "end": "2020-07-30",
+      "negative_net_sales_rows": 13
+    },
+    {
+      "code": 7290,
+      "observed_weeks": 728,
+      "absent_weeks_not_imputed": 24,
+      "start": "2009-11-12",
+      "end": "2023-12-28",
+      "negative_net_sales_rows": 48
+    },
+    {
+      "code": 7740,
+      "observed_weeks": 70,
+      "absent_weeks_not_imputed": 682,
+      "start": "2020-04-02",
+      "end": "2021-07-29",
+      "negative_net_sales_rows": 0
+    },
+    {
+      "code": 7770,
+      "observed_weeks": 97,
+      "absent_weeks_not_imputed": 655,
+      "start": "2015-03-26",
+      "end": "2023-12-28",
+      "negative_net_sales_rows": 2
+    },
+    {
+      "code": 7850,
+      "observed_weeks": 37,
+      "absent_weeks_not_imputed": 715,
+      "start": "2010-11-18",
+      "end": "2011-07-28",
+      "negative_net_sales_rows": 0
+    },
+    {
+      "code": 7910,
+      "observed_weeks": 83,
+      "absent_weeks_not_imputed": 669,
+      "start": "2010-12-30",
+      "end": "2012-07-26",
+      "negative_net_sales_rows": 6
+    },
+    {
+      "code": 7990,
+      "observed_weeks": 74,
+      "absent_weeks_not_imputed": 678,
+      "start": "2011-03-03",
+      "end": "2012-07-26",
+      "negative_net_sales_rows": 0
+    },
+    {
+      "code": 9990,
+      "observed_weeks": 397,
+      "absent_weeks_not_imputed": 355,
+      "start": "2009-08-06",
+      "end": "2022-07-28",
+      "negative_net_sales_rows": 73
+    }
+  ],
+  "national_flow_totals_match_prior_table": true,
+  "old_inputs_unchanged": true,
+  "input_files_verified": 18,
+  "model_eligible": false,
+  "release_allowed": false,
+  "historical_publication_verified": false,
+  "first_version_verified": false,
+  "country_names_verified": false,
+  "limits": [
+    "Country codes are not mapped to names without a pinned country catalog.",
+    "Absent country rows remain unknown, not zero.",
+    "Stock accounting is not a report-value or publication/vintage reconciliation.",
+    "No features, availability clocks, forecasts or performance results were created."
+  ]
+}
