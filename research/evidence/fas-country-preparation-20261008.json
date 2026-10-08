@@ -1,0 +1,87 @@
+{
+  "schema": 1,
+  "profile": "fas-country-quarantine-v1",
+  "as_of": "2026-10-08",
+  "kind": "no_fit_country_panel_preparation",
+  "market_fits": 0,
+  "ml_source_id": "d67ca7f4c74a0d6901cc6484105a622f2fab38e7eb9dbbb8cbe4f74ded325176",
+  "source_bundle_files": 221,
+  "source_bundle_sha256": "8b95ab652b59ed02d85896cc70073f4ec9afcf63d2fd272525751243f34e4de3",
+  "summary": {
+    "rows": 3008,
+    "weeks": 752,
+    "start": "2009-08-06",
+    "end": "2023-12-28",
+    "countries": {
+      "4890": {
+        "present": 752,
+        "missing": 0,
+        "negative_sales": 94,
+        "four_week_totals_present": 707
+      },
+      "5350": {
+        "present": 752,
+        "missing": 0,
+        "negative_sales": 125,
+        "four_week_totals_present": 707
+      },
+      "5520": {
+        "present": 752,
+        "missing": 0,
+        "negative_sales": 70,
+        "four_week_totals_present": 707
+      },
+      "5700": {
+        "present": 752,
+        "missing": 0,
+        "negative_sales": 124,
+        "four_week_totals_present": 707
+      }
+    },
+    "negative_outstanding_observations": [
+      {
+        "week_ending": "2021-07-29",
+        "country_code": 2230,
+        "reported_value": "-76"
+      }
+    ],
+    "panel_sha256": "84557e73abbfe1736c0781da59443dcf26c2394d73db8ac4ab5f3c0ff085be03",
+    "candidate_id": "83e78277f5acda6ba36b0d78f18d8883480ce838a45bb2f92b172d2e3c8d8836",
+    "model_eligible": false
+  },
+  "model_eligible": false,
+  "release_allowed": false,
+  "availability_policy": "UNSET",
+  "historical_publication_verified": false,
+  "first_version_verified": false,
+  "preservation": {
+    "old_pinned_inputs": 18,
+    "old_registry_records": 137,
+    "old_completed_fit_recipes": 435,
+    "old_completed_fit_receipts": 25000,
+    "protected_file_hashes_unchanged": true,
+    "old_registry_records_unchanged": true,
+    "trials_unchanged": true,
+    "primary_working_tree_status_unchanged": true,
+    "old_registered_evidence_files": 30,
+    "old_protected_evidence_files": 31,
+    "protected_file_count": 50
+  },
+  "verification": {
+    "focused_tests": "34 passed",
+    "full_ml_suite_before_final_boundary_test_strengthening": "779 passed, 3 skipped",
+    "final_candidate_tests": "18 passed",
+    "ruff": "passed",
+    "no_real_training": true
+  },
+  "limits": [
+    "Quarantined latest snapshots, not a historically admitted model input.",
+    "Country codes are identifiers; the full historical name mapping remains unverified.",
+    "Shares use all reported rows, whose full report coverage is not certified.",
+    "Missing country/week or nonpositive denominator yields null, never zero.",
+    "Signed outstanding values are preserved; any negative component disables that week share.",
+    "Four-week totals require four consecutive calendar weeks in one marketing year.",
+    "No accumulatedExports/commitment field, Cotton alignment, imputation or fitting.",
+    "Past-only arithmetic cannot remove revision/vintage leakage in source snapshots."
+  ]
+}

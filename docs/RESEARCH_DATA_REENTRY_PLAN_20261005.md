@@ -13,6 +13,10 @@ mutabakatı ve [bölgesel T+1 deneyi](WASDE_REGIONAL_T1_RESULT_20261008.md) tama
 WASDE kapsamını/modelini büyütmek otomatik sonraki iş değildir.
 
 **Şimdiki iş — FAS ülke bilgisinin kabul denetimi; sıfır fit.**
+[Karantina ülke hazırlığı](FAS_COUNTRY_PREPARATION_20261008.md) ayrıca tamamlandı:
+752 hafta × dört kod, seviyeler/paylar/dört haftalık akışlar. Negatif stok
+bileşeninin bulunduğu haftada pay üretilmez; kaynak sürümü/saat kabulü ve
+eğitim adapter'i açılmadı. Dış kanıt beklerken aynı PDF/form araması tekrarlanmaz.
 [Yeni okunabilir kanıt](../research/evidence/fas-country-field-audit-20261008.json):
 15 yıllık kaynakta 27.887 ham satır; aynı pazarlama yılı kuralıyla 26.313 satır,
 752 hafta ve 64 ülke kodu. Ulusal satış/sevkiyat toplamları eski tabloyla tam
@@ -223,8 +227,9 @@ net işlem iddiasının ayrı koşuludur; FAS kaynak içerik denetimini engellem
 
 WASDE tablo, revizyon, sayısal doğrulama ve sınırlı T+1 pilotu tamamlandı;
 [negatif sonuç](WASDE_REGIONAL_T1_RESULT_20261008.md) korunur. FAS ülke/commitment
-adayında yukarıdaki sıfır-fit alan denetimi tamamlandı, kabul ve özellik paketi
-henüz tamamlanmadı. İlk pakette bütün kaynaklar aynı anda birleştirilmez.
+adayında sıfır-fit alan denetimi ve karantina ülke aritmetiği tamamlandı; kabul
+ve Cotton'a hizalanmış eğitim paketi henüz tamamlanmadı. İlk pakette bütün
+kaynaklar aynı anda birleştirilmez.
 Her pakette kaynak/kolon kapsamı, veri kaybı, revision/availability kanıtı, orijinal
 hash koruması ve kullanım statüsü raporlanır. Salt parser başarısı eğitim kabulü
 sayılmaz. Texas evreleri ve CFTC maskeleri aynı matriste ayrı bağımlılıklar olarak

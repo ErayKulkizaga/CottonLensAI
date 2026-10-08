@@ -2,6 +2,11 @@
 
 ## Sicil
 
+`fas-country-quarantine-v1`: 752 hafta × dört kod = 3.008 satırlık **sıfır-fit
+hazırlık**, piyasa testi değil. Negatif satışlar korunur; negatif stok bileşeni
+olan haftanın stok payları bilinmeyendir. Tarihsel saat/sürüm kabulü kapalı.
+[Hazırlık ve eğitime kalan iş](../docs/FAS_COUNTRY_PREPARATION_20261008.md).
+
 Güncel ekler: tamamlanmış bölgesel WASDE T+1 piyasa sonucu ve ayrı sentetik kontrol;
 ardından `fas-country-field-audit-v1` **sıfır-fit veri denetimi**. Sonuncusu
 ülke dağılımının piyasa katkısını veya tarihsel erişimini test etmiş sayılmaz.
@@ -56,6 +61,16 @@ eski Release'ten ayrı dizine restore edilebilir; `FAS_RAW_ROOT`, iki seviyeli
 ```bash
 python ml/review_fas_countries.py --raw-root FAS_RAW_ROOT --manifest MANIFEST --table TABLE
 ```
+
+Aynı pinned girdilerden karantina ülke paneli (stdout JSON, Python 3.12+, paket
+kurulmaz; önce/sonra kaynak doğrulaması, başarısızlıkta exit 2):
+
+```bash
+python -S ml/prepare_fas_countries.py --raw-root FAS_RAW_ROOT --manifest MANIFEST --table TABLE
+```
+
+`week_ending` yayın tarihi değildir; çıktı saat politikası `UNSET` ve
+`model_eligible=false` taşır. Doğrudan eğitim/günlük seans hizalaması yapılmaz.
 
 Checksum/şema/ülke-hafta/toplam uyuşmazlığında exit 2; sıfır/eksik değer
 uydurulmaz. Başarılı JSON, publication/vintage veya model eligibility onayı değildir.
