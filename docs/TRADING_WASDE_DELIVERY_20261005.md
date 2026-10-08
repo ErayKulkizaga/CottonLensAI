@@ -1,5 +1,10 @@
 # İlk işlem tanısı ve bölgesel WASDE teslimatı — 5 Ekim 2026
 
+Sonraki kullanıcı açıklaması: proje araştırma/ispat kapsamındadır, gerçek işlem
+yoktur. Aşağıdaki maliyet/gerçekleşme engelleri net işlem iddiası içindir; tahmin
+araştırmasının ön koşulu değildir. [Sonraki fiyat/seans denetimi](PRICE_SEMANTICS_AUDIT_20261005.md)
+open/close semantiğine ilişkin yeni kanıt ekler; bu ilk raporun sayıları değişmedi.
+
 **Karar: yeni model eğitimi başlamıyor; Naive ve canlı artifact korunuyor.**
 Kayıtlı T+1 tahminlerinin sabit yön kuralı, uygulanabilir maliyet sonrası işlem
 üstünlüğünü henüz göstermiyor. WASDE'nin dışarıda kalmış ülke alanları kurtarıldı;

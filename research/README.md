@@ -27,9 +27,18 @@ python ml/history.py check --feature nass --horizon 5
 python ml/history.py check --query availability
 python ml/history.py check --query trading --horizon 1
 python ml/history.py check --query wasde-regional
+python ml/history.py check --query semantics
+python ml/history.py check --query reconciliation
 python ml/history.py check --profile availability-clock-pilot-v1 --json
 python ml/history.py list
 ```
+
+Son eklenen iki kayıt `cotton-ohlc-semantics-audit-v1` ve
+`ams-cotton-price-reconciliation-v1`: sıfır fit kaynak denetimleridir; yeni
+piyasa başarı/başarısızlık deneyi değildir. 998 eski AMS belge hash'i,
+997 doğrulanmış rapor tarihi, 996 Close eşleşmesi ve 20 kontrat değişimi
+korunur. Tarihi okunamayan bir rapor ve eşleşmeyen bir fiyat açıkça ayrıdır.
+[Rapor ve Release](../docs/PRICE_SEMANTICS_AUDIT_20261005.md).
 
 Kesin tarif kontrolü: `trials.json` içinden `scope_id` ve `recipes[0]` alınarak `{ "scope_id": "...", "recipe": {...} }` biçiminde bir öneri JSON'u oluşturun:
 

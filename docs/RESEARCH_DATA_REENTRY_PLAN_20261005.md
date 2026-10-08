@@ -11,6 +11,11 @@ bu incelemenin sayısal kanıtı [doğrulama kaydında](../research/evidence/pla
 [Sonuç ve kabul engelleri](TRADING_WASDE_DELIVERY_20261005.md). Aşağıdaki planın
 tam kaynak kabulü ve işlem pilotu aşamaları tamamlanmış sayılmaz; yeni fit yok.
 
+**Kapsam açıklaması:** kullanıcı projeyi araştırma/ispat olarak tanımladı; gerçek
+alım/satım yapılmayacak. Aşağıdaki broker/giriş/maliyet koşulları yalnız gerçek
+veya net işlem kazancı iddiasına aittir, tahmin araştırmasını bloke etmez.
+[Fiyat/seans denetimi](PRICE_SEMANTICS_AUDIT_20261005.md) yeni kanıtı ve sınırları kaydeder.
+
 ## Karar
 
 Ekli planı olduğu gibi uygulamayacağız. Ana eksik, bütün modelleri yeniden
