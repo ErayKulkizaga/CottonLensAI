@@ -28,6 +28,7 @@ python ml/history.py check --query availability
 python ml/history.py check --query trading --horizon 1
 python ml/history.py check --query wasde-regional
 python ml/history.py check --query wasde-regional-numeric-verification
+python ml/history.py check --query wasde-as-reported
 python ml/history.py check --query semantics
 python ml/history.py check --query reconciliation
 python ml/history.py check --profile availability-clock-pilot-v1 --json
@@ -46,6 +47,11 @@ korunur. Tarihi okunamayan bir rapor ve eşleşmeyen bir fiyat açıkça ayrıd�
 piyasa katkısı birbirinden ayrılır. Eski aday kaydı değişmez; bu ek kayıt
 ve [doğrulama raporu](../docs/WASDE_REGIONAL_VERIFICATION_20261008.md)
 hangi kontrolün gerçekten tamamlandığını gösterir.
+
+`wasde-as-reported-verification-v1`: resmî CSV ile 95 rapor/2.470 alanın sıfır-fit
+mutabakatı. 950 temel değer eşleşir; 117 bilinmeyen revizyon korunur. CSV'nin
+rapor saati, CSV'nin fiilî teslim saati değildir. Tarihsel kabul ve piyasa becerisi
+çıkarımı yok. [Kanıt ve erişim saati ayrımı](../docs/WASDE_AS_REPORTED_20261008.md).
 
 Kesin tarif kontrolü: `trials.json` içinden `scope_id` ve `recipes[0]` alınarak `{ "scope_id": "...", "recipe": {...} }` biçiminde bir öneri JSON'u oluşturun:
 

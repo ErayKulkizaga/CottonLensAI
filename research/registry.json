@@ -14942,6 +14942,26 @@
       "evidence": "research/evidence/wasde-regional-verification-20261008.json",
       "evidence_sha256": "0eee010ef731768b81857b7bdc75c2d1d598cd52df7b4e313562eacdfc8d10ae",
       "id": "80830514fcf13c41c346860dd3d7f6f639b7d9bbc77488a17b9be86d5da20b04"
+    },
+    {
+      "experiment": "wasde-as-reported-verification-v1",
+      "profile": "wasde-as-reported-verification-v1",
+      "kind": "no_fit_dataset_validation",
+      "horizon": null,
+      "coverage": "95_reports_950_base_2470_feature_cells",
+      "classification": "INCONCLUSIVE",
+      "model_families": [],
+      "recipes": [],
+      "completed_new_fits": 0,
+      "independent_holdout": false,
+      "model_eligible": false,
+      "numeric_verified": true,
+      "code_id": "82a4d6fa5d06d8d6ecea6108da86ebac362d51235bbbd739cee63e9496197e21",
+      "reason": "Official as-reported values match; CSV report clock cannot prove CSV delivery. 117 unknown revisions preserved. No market fitting/performance evidence.",
+      "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/wasde-as-reported-20261008",
+      "evidence": "research/evidence/wasde-as-reported-20261008.json",
+      "evidence_sha256": "8d69f10bebfb62150d783ee0fbcf4f4f0bed1abf03694eab8406682d615db66a",
+      "id": "0e65cc79accc164cd3991e5600e8283cc0fe3e26d91db69f1b773701a5ad65b7"
     }
   ],
   "local_evidence": [
@@ -14996,6 +15016,14 @@
     {
       "path": "evidence/wasde-regional-release-20261008.json",
       "sha256": "46fa8a7da38a3e0d0dfb68dfe261aa3d5cd458424c838675ebbf71d634634b1d"
+    },
+    {
+      "path": "evidence/wasde-as-reported-20261008.json",
+      "sha256": "8d69f10bebfb62150d783ee0fbcf4f4f0bed1abf03694eab8406682d615db66a"
+    },
+    {
+      "path": "evidence/wasde-as-reported-release-20261008.json",
+      "sha256": "9db4d59f7d26c938bbdb2501151609ece36281109854aba9afb0bde05518f251"
     }
   ]
 }

@@ -1,0 +1,78 @@
+{
+  "schema": 1,
+  "as_of": "2026-10-08",
+  "release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/wasde-as-reported-20261008",
+  "fits": 0,
+  "ml_source_id": "82a4d6fa5d06d8d6ecea6108da86ebac362d51235bbbd739cee63e9496197e21",
+  "audit_identity": "38d9e7955a3302f40500ec72ce876dd4b095c0d905158429327a149efc6563e2",
+  "summary": {
+    "reports": 95,
+    "base_cells_compared": 950,
+    "feature_cells_compared": 2470,
+    "missing_cells_preserved": 117,
+    "mismatches": 0,
+    "numeric_verified": true,
+    "historical_model_eligible_rows": 0,
+    "model_eligible": false
+  },
+  "csv_rows_read": 468362,
+  "official_export_count": 37,
+  "official_export_bytes": 36711505,
+  "old_input_files_reverified": 2089,
+  "old_candidates_and_results_changed": false,
+  "clock_review": {
+    "schema": "wasde-export-clock-review-v1",
+    "as_of": "2026-10-08T10:13:47.431710+00:00",
+    "historical_model_eligible_rows": 0,
+    "availability_inferred_from_release_time": false,
+    "value_version_status": "Candidate values agree with official as-reported history; first PDF/XML byte version not authenticated",
+    "findings": [
+      {
+        "source": "policy-documents/2021-users-booklet.pdf",
+        "sha256": "47026d45c85dc6fc945a7cd96c80767af013fb1fd388650ec76ab50f4e504637",
+        "page_indexes": [
+          23
+        ],
+        "visual_reviewed": true,
+        "finding": "2010-2020 consolidated history first available in 2021; monthly CSV updated within two business days of report release",
+        "per_file_actual_clock": false
+      },
+      {
+        "source": "policy-documents/2025-users-qa.pdf",
+        "sha256": "f8a99f7d89b039511fa3e0459ccb005e0bd911ff603745a49223dcbcccc79e2f",
+        "page_indexes": [
+          7,
+          8
+        ],
+        "visual_reviewed": true,
+        "finding": "CSV released following day; follow-up plans same-day within approximately two hours starting May 2025",
+        "per_file_actual_clock": false
+      }
+    ],
+    "not_proven": [
+      "Actual CSV release/download clock for each 2016-2023 file",
+      "Exact audited Cotton values accessible from PDF before each decision cutoff"
+    ],
+    "next_single_check": "2018-12-11 Cotton value-level specific-version availability upper-bound review; no automatic timestamp assignment or fit"
+  },
+  "verification": {
+    "new_tests_passed": 21,
+    "focused_wasde_passed": 67,
+    "ml_passed": 670,
+    "ml_skipped": 3,
+    "ruff_passed": true,
+    "gpu_checks_run": false
+  },
+  "payload_sha256": {
+    "sources.json": "897d87c0a0b169593c48b96ebfaf06c6b33ea32bffc08330a4e774781409a842",
+    "audit/report.json": "db264febc673317b88bc5cd23e8e1a480332ca2abc0490d99cfe93521ba7716b",
+    "audit/complete.json": "ccfaf5bf01da799170c167e6a98bc4d97f851d276d0f7f9f6e5544af349bc394",
+    "audit/comparison.csv": "df8cc2df037fdd5d8d5de429ae86ac9c522487f912cd64d1a65916089e7e6e1a",
+    "audit/coverage.csv": "2b32a59ce47d15e217d78ded46e17ad36f0abaf9639a6d8432b0d137be56fa1c",
+    "independent-check.json": "879ed65341c3f04f4e903206e086bfd4d7f36b90c0a4f0280bcca3eedd34dab9",
+    "clock-review.json": "b16313d15964a812f0e1246bd52fedc97f2a6e260ff4f28297089e2466ba70ef",
+    "environment.json": "ebf482c560705af6d33f65005fa4060dab6e1b2bffbaf02a487c099fc949d2c4"
+  },
+  "scientific_status": "No-fit source reconciliation; INCONCLUSIVE for market skill. No available_at inference, no first-file authentication, no real-market training.",
+  "next_single_check": "2018-12-11 Cotton value-level specific-version availability upper-bound review; no automatic timestamp assignment or fit"
+}
