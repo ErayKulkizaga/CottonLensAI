@@ -10,13 +10,17 @@ def main():
     repo = Path(__file__).resolve().parents[1]
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('stage', choices=('setup', 'status', 'prepare', 'pilot-plan', 'pilot', 'compare', 'report', 'track', 'reproduce'))
+    parser.add_argument('--registration-root', type=Path)
+    parser.add_argument('--decision-contract', type=Path)
+    parser.add_argument('--cpu-environment', type=Path)
+    parser.add_argument('--drive-root', type=Path)
     parser.add_argument('--market-file', type=Path)
     parser.add_argument('--reference-root', type=Path)
     parser.add_argument('--mirror-root', type=Path)
     parser.add_argument('--max-minutes', type=float, default=60.)
     parser.add_argument('--python', default='3.12.14')
     parser.add_argument('--experiment')
-    parser.add_argument('--profile', choices=('full-year-v1', 'ams-exploration-v1', 'fas-exploration-v1', 'nass-exploration-v1', 'wasde-exploration-v1', 'cftc-exploration-v1', 'fx-exploration-v1', 'crop-exploration-v1', 'weather-exploration-v1', 'oncall-exploration-v1', 'oncall-exploration-v2', 'recency-pilot-v1', 'availability-clock-pilot-v1', 'return-path-pilot-v1', 'agri-transfer-pilot-v1'), default='full-year-v1')
+    parser.add_argument('--profile', choices=('full-year-v1', 'ams-exploration-v1', 'fas-exploration-v1', 'nass-exploration-v1', 'wasde-exploration-v1', 'cftc-exploration-v1', 'fx-exploration-v1', 'crop-exploration-v1', 'weather-exploration-v1', 'oncall-exploration-v1', 'oncall-exploration-v2', 'recency-pilot-v1', 'availability-clock-pilot-v1', 'return-path-pilot-v1', 'agri-transfer-pilot-v1', 'wasde-regional-t1-pilot-v1'), default='full-year-v1')
     parser.add_argument('--ams-table', type=Path)
     parser.add_argument('--ams-publications', type=Path)
     parser.add_argument('--fas-table', type=Path)
@@ -30,7 +34,7 @@ def main():
     parser.add_argument('--oncall-table', type=Path)
     args = parser.parse_args()
     if args.experiment is None:
-        args.experiment = {'availability-clock-pilot-v1': 'research-availability-clock-pilot-v1','ams-exploration-v1':'research-ams-exploration-v1',
+        args.experiment = {'wasde-regional-t1-pilot-v1': 'research-wasde-regional-t1-pilot-v1', 'availability-clock-pilot-v1': 'research-availability-clock-pilot-v1','ams-exploration-v1':'research-ams-exploration-v1',
             'fas-exploration-v1':'research-fas-exploration-v1',
             'nass-exploration-v1':'research-nass-exploration-v1',
             'wasde-exploration-v1':'research-wasde-exploration-v1',
@@ -43,7 +47,7 @@ def main():
             'return-path-pilot-v1':'research-return-path-pilot-v1',
             'agri-transfer-pilot-v1':'research-agri-transfer-pilot-v1',
             'oncall-exploration-v2':'research-oncall-exploration-v2'}.get(args.profile,'research-full-year-v1-r2')
-    environment = repo/'output/full-year-cpu-env'
+    environment = args.cpu_environment or repo/'output/full-year-cpu-env'
     env = os.environ.copy()
     env.update({'PYTHONPATH': str(repo/'ml/src'), 'PYTHONNOUSERSITE': '1', 'PYTHONUNBUFFERED': '1',
                 'OMP_NUM_THREADS': '2', 'OPENBLAS_NUM_THREADS': '2', 'MKL_NUM_THREADS': '2',
@@ -56,8 +60,12 @@ def main():
         if not python.exists():
             raise RuntimeError('Run setup first; CPU packages are separate from backend and GPU environments')
         command = [str(python), '-m', 'cottonlens_ml.research.engine', '--repo', str(repo),
-                   '--drive-root', str(repo/'output/full-year'), '--experiment', args.experiment,
-                   '--profile', args.profile, '--stage', args.stage, '--max-minutes', str(min(args.max_minutes, 30.) if args.profile == 'availability-clock-pilot-v1' else args.max_minutes)]
+                   '--drive-root', str(args.drive_root or repo/'output/full-year'), '--experiment', args.experiment,
+                   '--profile', args.profile, '--stage', args.stage, '--max-minutes', str(min(args.max_minutes, 30.) if args.profile in ('availability-clock-pilot-v1', 'wasde-regional-t1-pilot-v1') else args.max_minutes)]
+        if args.registration_root:
+            command += ['--registration-root', str(args.registration_root)]
+        if args.decision_contract:
+            command += ['--decision-contract', str(args.decision_contract)]
         if args.market_file:
             command += ['--market-file', str(args.market_file)]
         if args.reference_root:
