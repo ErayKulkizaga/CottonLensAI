@@ -61,6 +61,8 @@ uydurulmaz. Başarılı JSON, publication/vintage veya model eligibility onayı 
 
 `fas-country-report-review-v1`: sıfır-fit ülke/rapor içerik kontrolü; 22/24 stok alanı eşleşti, 28 Mayıs Çin/Pakistan birikimli ihracatı −55/−53 balya farklı. Ulusal toplamın geçmesi ülke alanlarının geçmesi değildir. Haftalık akış veya tarihsel yayın/vintage onayı yok. [Sonuç ve tek sonraki kontrol](../docs/FAS_COUNTRY_REPORT_REVIEW_20261008.md). Release girdileriyle `ml/review_fas_archive.py --country-reference` çalışır; sayısal uyuşmazlık kaydı korunur ve exit 2 döner. Bu bir piyasa negatif sonucu değildir.
 
+`fas-may28-subtype-precision-v1`: sıfır-fit açıklama kontrolü. İki fark alt sınıf yuvarlama varsayımıyla uyumlu; bu, tolerans/kaynak kabulünü değiştirmez veya gerçek nedeni kanıtlamaz. `ml/review_fas_archive.py --subtype-precision` mevcut incelemeye tanı ekler; pinned `--country-reference` zorunludur ve doğrudan fark exit 2 kalır. [Tek eksik as-issued hücre ve erişim sınırı](../docs/FAS_MAY28_VERSION_AUDIT_20261008.md).
+
 Önceki iki kayıt `cotton-ohlc-semantics-audit-v1` ve
 `ams-cotton-price-reconciliation-v1`: sıfır fit kaynak denetimleridir; yeni
 piyasa başarı/başarısızlık deneyi değildir. 998 eski AMS belge hash'i,
