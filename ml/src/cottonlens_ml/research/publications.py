@@ -46,6 +46,12 @@ def load_package(folder):
     features = manifest['features']
     if not features or any(not f.startswith(manifest['kind'] + '_') for f in features):
         raise ValueError('External features must use their source namespace')
+    if manifest['kind'] == 'wasde':
+        from cottonlens_ml.sources.public import utc_timestamp
+        from cottonlens_ml.sources.wasde_admission import require_review
+        for row in rows.to_dict('records'):
+            clock = row['available_at'] if 'available_at' in row else row['published_at']
+            require_review(row, manifest['files'], folder, features, utc_timestamp(clock))
     if (manifest['kind'] not in ('cftc', 'wasde', 'contract_curve')
             and (manifest.get('usage', {}).get('research_allowed') is not True or manifest['usage'].get('cost_tl') != 0)):
         raise ValueError('Verified zero-cost research usage required')

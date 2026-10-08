@@ -1,6 +1,8 @@
-# Güncel kararlar — 5 Ekim 2026
+# Güncel kararlar — 8 Ekim 2026
 
 Bu dosya ve [işlem araştırması sözleşmesi](TRADING_RESEARCH_CONTRACT_20261005.md) güncel karar kaynaklarıdır. `archive/` belgeleri tarihsel tanıklık/kanıttır; eski “sonraki deney” talimatları etkin değildir.
+
+- Son çalışma: 95 rapor/26 alanlı bölgesel WASDE adayı için PDF/XML sayısal mutabakatı ve bağımsız revizyon hesabı; model kabulünde kaynak/değer/vintage/saat bağlama koruması. 117 bilinmeyen revizyon hücresi korunur. İlk sürümün geçmişte erişilebilirliği onaylanmadı; 26 alan doğrudan mevcut sonlu-snapshot compiler sözleşmesine sokulmaz. Yeni fit yok. **Tek sonraki kontrol:** resmî “as reported” export ile 95 raporun temel hücrelerini eşleştirmek, değer sürümü ve karar anından önce erişilebilirlik dayanağını ayrı doğrulamak. [Kanıt ve sınırlar](WASDE_REGIONAL_VERIFICATION_20261008.md).
 
 - Kullanıcı açıklaması: **araştırma/ispat projesi**, gerçek alım/satım yok. ICE Cotton No. 2 araştırma referansı; tahmin katkısı birincil, yön/pozisyon ve PnL yardımcı simülasyon. Broker/komisyon bilgisi tahmin araştırmasını engellemez. Eski fiyat başarı eşikleri korunur.
 - Fiyat/seans denetimi tamamlandı: 268/2.006 hedef `close` high–low dışında. Tarihi doğrulanan 997 USDA raporunun 996'sında ilk vadeli fiyat Close ile eşleşiyor; kapsamdaki 136 aralık-dışı Close'un tamamı eşleşiyor. 20 kontrat değişimi görüldü. Aynı-kontrat yollarında ham müdahale MAE kazancı T+1 −%1,52, T+5 −%3,22; yalnız roll temizlemek kayıtlı başarısızlığı açıklamıyor. Hiçbir fiyat değiştirilmedi. [Kanıt, saat karşılığı ve sonraki tek kontrol](PRICE_SEMANTICS_AUDIT_20261005.md).

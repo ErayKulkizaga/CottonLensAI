@@ -3,6 +3,7 @@ import ast
 import json
 import os
 import sys
+import time
 from pathlib import Path
 
 import pytest
@@ -56,8 +57,13 @@ def test_completed_cache_does_not_need_new_fits(functions):
     assert result['status'] == 'complete'
 
 
-def test_frozen_supervisor_receipt_continues_without_a_new_runner(functions, tmp_path):
+def test_frozen_supervisor_receipt_continues_without_a_new_runner(functions, tmp_path, monkeypatch):
     import colab_progress
+    copyfile = colab_progress.shutil.copyfile
+    def delayed_copy(*args, **kwargs):
+        time.sleep(.05)  # Deliberately longer than the supervisor's 10 ms wait.
+        return copyfile(*args, **kwargs)
+    monkeypatch.setattr(colab_progress.shutil, 'copyfile', delayed_copy)
     state = {'calls': 0}
     def stage(_):
         state['calls'] += 1
@@ -72,6 +78,11 @@ def test_frozen_supervisor_receipt_continues_without_a_new_runner(functions, tmp
     result = functions['pilot_session'](stage, lambda: state['calls'], minutes=1,
         segment_minutes=1, gpu=False, update=lambda _: None)
     assert state['calls'] == 2 and result['status'] == 'complete'
+    # supervise deliberately returns with a pending async log copy after its
+    # bounded final wait (10 ms here). Test eventual publication, not scheduling.
+    deadline = time.monotonic() + 5
+    while not all(Path(item['drive_log']).exists() for item in result['segments']) and time.monotonic() < deadline:
+        time.sleep(.01)
     assert all(Path(item['drive_log']).exists() for item in result['segments'])
 
 

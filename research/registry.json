@@ -14922,6 +14922,26 @@
       "evidence": "research/evidence/price-semantics-20261005.json",
       "evidence_sha256": "a387d3942a0c9cb82230f824b2130a5a8d5f40ad63961af97f7ea96c47576ea7",
       "id": "1f2811123ef826572dcfc615ff3e4f1aafbfaf921caeb32508b417d35e23429b"
+    },
+    {
+      "experiment": "wasde-regional-numeric-verification-v1",
+      "profile": "wasde-regional-numeric-verification-v1",
+      "kind": "no_fit_dataset_validation",
+      "horizon": null,
+      "coverage": "95_reports_26_fields_98_source_versions",
+      "classification": "INCONCLUSIVE",
+      "model_families": [],
+      "recipes": [],
+      "completed_new_fits": 0,
+      "independent_holdout": false,
+      "model_eligible": false,
+      "numeric_verified": true,
+      "reason": "19208 PDF/XML cells agree; 117 missing revisions retained. Historical specific-value version availability remains unproved. No market fitting/performance evidence.",
+      "code_id": "3bc492a96154ef16e51b3371a079b8963b6d79b61a2d95ec90640ab392ee1962",
+      "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/wasde-verification-20261008",
+      "evidence": "research/evidence/wasde-regional-verification-20261008.json",
+      "evidence_sha256": "0eee010ef731768b81857b7bdc75c2d1d598cd52df7b4e313562eacdfc8d10ae",
+      "id": "80830514fcf13c41c346860dd3d7f6f639b7d9bbc77488a17b9be86d5da20b04"
     }
   ],
   "local_evidence": [
@@ -14967,6 +14987,15 @@
     {
       "path": "evidence/price-semantics-release-20261005.json",
       "sha256": "314164a2badf836f9be3825415fde4c91d60070473358e0a7dbb2219dc0d0b59"
+    },
+    {
+      "path": "evidence/wasde-regional-verification-20261008.json",
+      "sha256": "0eee010ef731768b81857b7bdc75c2d1d598cd52df7b4e313562eacdfc8d10ae",
+      "original_path": "output/wasde-regional-verification-20261008"
+    },
+    {
+      "path": "evidence/wasde-regional-release-20261008.json",
+      "sha256": "46fa8a7da38a3e0d0dfb68dfe261aa3d5cd458424c838675ebbf71d634634b1d"
     }
   ]
 }

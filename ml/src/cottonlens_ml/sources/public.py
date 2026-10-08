@@ -211,6 +211,9 @@ def compile_review(review_file, output):
         for name in ('source_file', 'publication_evidence_file', 'vintage_evidence_file'):
             if release[name] not in review['files']:
                 raise ValueError('Every release needs checksummed publication/vintage evidence')
+        if kind == 'wasde':
+            from cottonlens_ml.sources.wasde_admission import require_review
+            require_review(release, review['files'], root, features, stamp)
         rows.append({**release['values'], 'published_at': pd.NaT if bounded else stamp,
                      'available_at': stamp, 'availability_verified': True,
                      'availability_basis': 'verified_upper_bound' if bounded else 'exact_publication',
