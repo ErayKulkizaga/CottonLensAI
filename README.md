@@ -56,6 +56,8 @@ Eski LSTM'nin 498 Naive / 439 LSTM origin karşılaştırması geçersizdi: ayn�
 
 [Fiyat alanı/seans denetimi](docs/PRICE_SEMANTICS_AUDIT_20261005.md): 268/2.006 hedef barda `close` high–low aralığı dışında. Bu settlement/mark ayrımını gerektirir; doğrudan bozuk tahmin etiketi demek değildir. Ham proxy kazancı yalnız bu barlardan gelmiyor. Veri değiştirilmedi; tahmin araştırması broker/komisyon bilgisine bağlanmıyor.
 
+[Bölgesel WASDE doğrulaması](docs/WASDE_REGIONAL_VERIFICATION_20261008.md), 95 rapor/26 alanlı adayın kaynak değerlerini ve nedensel revizyonlarını ayrı denetler. 117 bilinmeyen revizyon hücresi korunur. Compile/import artık kaynak, tam değer, vintage ve saat kanıtını birbirine bağlar; yeniden checksum'lanan sonraki değerler eski kanıtı kullanamaz. Tarihsel erişilebilirlik onayı ve yeni piyasa becerisi iddiası yoktur; yeni fit başlatılmadı.
+
 ## Veriler, modeller ve tam kanıt yedeği
 
 Büyük ham veriler, tahminler, checkpoint'ler, kaynak ZIP'leri ve ledger'lar [evidence-20261005 Release](https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/evidence-20261005) altında tutulur. [Arşiv açıklaması](research/README.md) ve `research/archive-summary.json`, mevcut dosyaların kapsamını, eksikleri, redaksiyonları ve SHA-256 değerlerini gösterir. Git geçmişi korunur; bütün eski eğitimin eksiksiz geri kazanıldığı iddia edilmez.

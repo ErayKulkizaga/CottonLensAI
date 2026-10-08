@@ -27,6 +27,7 @@ python ml/history.py check --feature nass --horizon 5
 python ml/history.py check --query availability
 python ml/history.py check --query trading --horizon 1
 python ml/history.py check --query wasde-regional
+python ml/history.py check --query wasde-regional-numeric-verification
 python ml/history.py check --query semantics
 python ml/history.py check --query reconciliation
 python ml/history.py check --profile availability-clock-pilot-v1 --json
@@ -39,6 +40,12 @@ piyasa başarı/başarısızlık deneyi değildir. 998 eski AMS belge hash'i,
 997 doğrulanmış rapor tarihi, 996 Close eşleşmesi ve 20 kontrat değişimi
 korunur. Tarihi okunamayan bir rapor ve eşleşmeyen bir fiyat açıkça ayrıdır.
 [Rapor ve Release](../docs/PRICE_SEMANTICS_AUDIT_20261005.md).
+
+`wasde-regional-numeric-verification-v1` de sıfır-fit veri doğrulamasıdır.
+95 raporun sayısal mutabakatı, erişilebilirlik/vintage onayı ve T+1/T+5
+piyasa katkısı birbirinden ayrılır. Eski aday kaydı değişmez; bu ek kayıt
+ve [doğrulama raporu](../docs/WASDE_REGIONAL_VERIFICATION_20261008.md)
+hangi kontrolün gerçekten tamamlandığını gösterir.
 
 Kesin tarif kontrolü: `trials.json` içinden `scope_id` ve `recipes[0]` alınarak `{ "scope_id": "...", "recipe": {...} }` biçiminde bir öneri JSON'u oluşturun:
 
