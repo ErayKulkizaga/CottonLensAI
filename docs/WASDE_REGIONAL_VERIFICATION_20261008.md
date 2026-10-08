@@ -112,6 +112,15 @@ Doğrulama: 53 dar kapsamlı test, tam ML suite'inde 649 geçti / 3 atlandı;
 Ruff geçti. Bunlar sentetik/sözleşme kontrolleridir. GPU ve gerçek piyasa
 eğitimi yapılmadı; API/runtime artifact şeması, backend ve frontend değişmedi.
 
+İlk push CI'ında eski `test_workbench_session.py` log testi başarısızken PR
+CI'ı geçti. Test, supervisor'ın 10 ms'lik son beklemesi bitince asenkron Drive
+kopyasının da mutlaka bittiğini varsayıyordu; gerçek sözleşme `still pending`
+sonucuna izin verir. Test artık en fazla 5 saniye içinde dosyaların gerçekten
+oluşmasını bekler; assertion kaldırılmadı, supervisor kodu değiştirilmedi.
+Bu son test düzeltmesi PDF denetiminin ardından yapıldı. Denetimin dondurulmuş
+kaynak snapshot'ı ve sayısal sonuçları değişmez; teslimatın son CI kaynak farkı
+Release'teki ek bağlam manifestinde ayrı korunur.
+
 Yeniden kontrol, ayrı çıktı dizini ve mevcut PDF inceleme ortamında
 (`PYTHONPATH=ml/src`; `pypdf`/`pdfplumber` backend bağımlılığı değildir):
 
