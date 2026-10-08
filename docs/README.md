@@ -7,6 +7,7 @@
 - [Fiyat anlamı, USDA eşleşmesi ve kontrat geçişi denetimi](PRICE_SEMANTICS_AUDIT_20261005.md)
 - [Bölgesel WASDE sayı/sürüm/zaman doğrulaması ve model kabul koruması](WASDE_REGIONAL_VERIFICATION_20261008.md)
 - [WASDE resmî as-reported mutabakatı ve CSV/rapor erişim saati ayrımı](WASDE_AS_REPORTED_20261008.md)
+- [Bölgesel WASDE T+1 sonucu: tamamlanan 424 fit, negatif pratik hedef ve mekanizma](WASDE_REGIONAL_T1_RESULT_20261008.md)
 - [Bölgesel WASDE T+1 ön kaydı: eşit eksiklik kontrolleri, saat varsayımı ve karar kuralları](WASDE_REGIONAL_T1_PREREGISTRATION_20261008.md)
 - [11 Aralık 2018 WASDE: repost değerleri ve sınırlı saat kanıtı incelemesi](WASDE_CLOCK_CASE_20261008.md)
 - [Tamamlanan zamanlama deneyi ve düzeltmeler](AVAILABILITY_CLOCK_RESULT_20261005.md)
