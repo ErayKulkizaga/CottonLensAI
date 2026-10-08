@@ -38489,6 +38489,550 @@
       ],
       "coverage": "completed fit receipts; not experiment completion",
       "payload_hashes_revalidated_by_index": false
+    },
+    {
+      "id": "3b67797752c135fc316ef9572b0f15d536a43887e4fbf98b44b385338be5d4c5",
+      "scope": {
+        "identity_id": "908460df3d612e0f4d865cbe49d55240ee69cc6656460cca1f0de8037b9d16ee",
+        "source_id": "e7d172882aaac57fd0d42602a61bbd840863bb4e0d95a80bfd00026aed388436",
+        "data_id": "4f17132ba8161512273b62fe11cabb21fcc5d953b5922d0962ec4a70b975b795",
+        "split_id": "d6ec218f5b27ff2ca2f0aad9469e2a0d3c051e191da509bad05bba34627074e6",
+        "profile": "wasde-regional-t1-pilot-v1"
+      },
+      "scope_id": "57013932d1c5b412ef20039510332a321399bb6e1f971477a1da931d396625ad",
+      "profile": "wasde-regional-t1-pilot-v1",
+      "horizon": 1,
+      "recipes": [
+        {
+          "family": "ridge",
+          "params": {
+            "alpha": 1.0
+          },
+          "horizon": 1,
+          "task": "price",
+          "device": "cpu",
+          "seed": 42,
+          "target": "scaled_log",
+          "years": null,
+          "cadence": 21,
+          "window": 1,
+          "features": [
+            "cotton_ret_1",
+            "cotton_ret_5",
+            "cotton_ret_10",
+            "cotton_ret_20",
+            "cotton_momentum_5",
+            "cotton_momentum_20",
+            "cotton_sma_ratio_5_20",
+            "cotton_sma_ratio_20_50",
+            "cotton_volatility_5",
+            "cotton_volatility_20",
+            "cotton_range",
+            "cotton_volume_change",
+            "cotton_volume_z20",
+            "cotton_volatility_regime_20_60",
+            "dxy_ret_1",
+            "dxy_ret_5",
+            "dxy_ret_20",
+            "wti_ret_1",
+            "wti_ret_5",
+            "wti_ret_20",
+            "cotton_dxy_corr_60",
+            "cotton_wti_corr_60",
+            "month_sin",
+            "month_cos",
+            "regional_D1_age_sessions",
+            "regional_D1_unavailable",
+            "numeric_D1_world_production",
+            "numeric_D1_world_consumption",
+            "numeric_D1_world_ending_stocks",
+            "numeric_D1_us_production",
+            "numeric_D1_us_consumption",
+            "numeric_D1_us_exports",
+            "numeric_D1_us_ending_stocks",
+            "numeric_D1_china_consumption",
+            "numeric_D1_india_production",
+            "numeric_D1_brazil_production",
+            "numeric_D1_world_stock_use",
+            "numeric_D1_world_production_use",
+            "numeric_D1_us_stock_use",
+            "numeric_D1_world_production_revision",
+            "numeric_D1_world_consumption_revision",
+            "numeric_D1_world_ending_stocks_revision",
+            "numeric_D1_us_production_revision",
+            "numeric_D1_us_consumption_revision",
+            "numeric_D1_us_exports_revision",
+            "numeric_D1_us_ending_stocks_revision",
+            "numeric_D1_china_consumption_revision",
+            "numeric_D1_india_production_revision",
+            "numeric_D1_brazil_production_revision",
+            "numeric_D1_world_stock_use_revision",
+            "numeric_D1_world_production_use_revision",
+            "numeric_D1_us_stock_use_revision"
+          ]
+        }
+      ],
+      "model_families": [
+        "ridge"
+      ],
+      "kind": "market_fit_receipt",
+      "completed_fits": 106,
+      "sample_receipts": [
+        {
+          "path": "output/full-year/experiments/research-wasde-regional-t1-pilot-v1/ledger/completed/0022ca3636ada9d507bb6581afdc12834ef004a32eb6a0c3026ff43464cefd79.json",
+          "record_id": "be2c83c621bcdfe08fb0eb2820edb2c7b746d80486b4115a3faa126c3e01dcad",
+          "experiment_id": "0022ca3636ada9d507bb6581afdc12834ef004a32eb6a0c3026ff43464cefd79"
+        },
+        {
+          "path": "output/full-year/experiments/research-wasde-regional-t1-pilot-v1/ledger/completed/025916b1ead8b76e6d94b18653b82073539245a96e2000b291e839e55aecc0a4.json",
+          "record_id": "d220ee5e80c8594c7a2f91d0370ed432b93e12dfee44b55dcf3a9753ed12df4e",
+          "experiment_id": "025916b1ead8b76e6d94b18653b82073539245a96e2000b291e839e55aecc0a4"
+        },
+        {
+          "path": "output/full-year/experiments/research-wasde-regional-t1-pilot-v1/ledger/completed/03b326b9d30256294a0a59e877a0a30db770a1eaabef58615b8a1acfd2c019c3.json",
+          "record_id": "04e1b8288deec8f8246e99e20a604051809372cd911840a4911e9fb191e3ebf6",
+          "experiment_id": "03b326b9d30256294a0a59e877a0a30db770a1eaabef58615b8a1acfd2c019c3"
+        }
+      ],
+      "roles": [
+        "path",
+        "inner"
+      ],
+      "coverage": "completed fit receipts; not experiment completion",
+      "payload_hashes_revalidated_by_index": false
+    },
+    {
+      "id": "751148b82ef67801b0cdc2083799543b5e5de3437f4046bd1528506767c68399",
+      "scope": {
+        "identity_id": "908460df3d612e0f4d865cbe49d55240ee69cc6656460cca1f0de8037b9d16ee",
+        "source_id": "e7d172882aaac57fd0d42602a61bbd840863bb4e0d95a80bfd00026aed388436",
+        "data_id": "4f17132ba8161512273b62fe11cabb21fcc5d953b5922d0962ec4a70b975b795",
+        "split_id": "d6ec218f5b27ff2ca2f0aad9469e2a0d3c051e191da509bad05bba34627074e6",
+        "profile": "wasde-regional-t1-pilot-v1"
+      },
+      "scope_id": "57013932d1c5b412ef20039510332a321399bb6e1f971477a1da931d396625ad",
+      "profile": "wasde-regional-t1-pilot-v1",
+      "horizon": 1,
+      "recipes": [
+        {
+          "family": "ridge",
+          "params": {
+            "alpha": 1.0
+          },
+          "horizon": 1,
+          "task": "price",
+          "device": "cpu",
+          "seed": 42,
+          "target": "scaled_log",
+          "years": null,
+          "cadence": 21,
+          "window": 1,
+          "features": [
+            "cotton_ret_1",
+            "cotton_ret_5",
+            "cotton_ret_10",
+            "cotton_ret_20",
+            "cotton_momentum_5",
+            "cotton_momentum_20",
+            "cotton_sma_ratio_5_20",
+            "cotton_sma_ratio_20_50",
+            "cotton_volatility_5",
+            "cotton_volatility_20",
+            "cotton_range",
+            "cotton_volume_change",
+            "cotton_volume_z20",
+            "cotton_volatility_regime_20_60",
+            "dxy_ret_1",
+            "dxy_ret_5",
+            "dxy_ret_20",
+            "wti_ret_1",
+            "wti_ret_5",
+            "wti_ret_20",
+            "cotton_dxy_corr_60",
+            "cotton_wti_corr_60",
+            "month_sin",
+            "month_cos",
+            "regional_D0_age_sessions",
+            "regional_D0_unavailable",
+            "numeric_D0_world_production",
+            "numeric_D0_world_consumption",
+            "numeric_D0_world_ending_stocks",
+            "numeric_D0_us_production",
+            "numeric_D0_us_consumption",
+            "numeric_D0_us_exports",
+            "numeric_D0_us_ending_stocks",
+            "numeric_D0_china_consumption",
+            "numeric_D0_india_production",
+            "numeric_D0_brazil_production",
+            "numeric_D0_world_stock_use",
+            "numeric_D0_world_production_use",
+            "numeric_D0_us_stock_use",
+            "numeric_D0_world_production_revision",
+            "numeric_D0_world_consumption_revision",
+            "numeric_D0_world_ending_stocks_revision",
+            "numeric_D0_us_production_revision",
+            "numeric_D0_us_consumption_revision",
+            "numeric_D0_us_exports_revision",
+            "numeric_D0_us_ending_stocks_revision",
+            "numeric_D0_china_consumption_revision",
+            "numeric_D0_india_production_revision",
+            "numeric_D0_brazil_production_revision",
+            "numeric_D0_world_stock_use_revision",
+            "numeric_D0_world_production_use_revision",
+            "numeric_D0_us_stock_use_revision"
+          ]
+        }
+      ],
+      "model_families": [
+        "ridge"
+      ],
+      "kind": "market_fit_receipt",
+      "completed_fits": 106,
+      "sample_receipts": [
+        {
+          "path": "output/full-year/experiments/research-wasde-regional-t1-pilot-v1/ledger/completed/00e63d18b6ecc20d8e8e27135becbcb9920aec6cda6126a0afb81f22dc5e52bf.json",
+          "record_id": "97196529a4a044dc156e8454299b068038b6d332c7707027604fda45a85c2e9d",
+          "experiment_id": "00e63d18b6ecc20d8e8e27135becbcb9920aec6cda6126a0afb81f22dc5e52bf"
+        },
+        {
+          "path": "output/full-year/experiments/research-wasde-regional-t1-pilot-v1/ledger/completed/0141ead14c160097677d5abd5be41036732bcf7f79a36da3fa9797b641963399.json",
+          "record_id": "bd2ee6e1864bbe3dec054816b9b67998c229159e76fdc2a790cb4851dd7b6fc5",
+          "experiment_id": "0141ead14c160097677d5abd5be41036732bcf7f79a36da3fa9797b641963399"
+        },
+        {
+          "path": "output/full-year/experiments/research-wasde-regional-t1-pilot-v1/ledger/completed/0194c4aab2d89ef1aa533074655f37fc70b60220cad2fd6383ea911de38f9538.json",
+          "record_id": "264b616e7517aed1ecdbc3c7763636d7243712b1824366948426da2a795bd792",
+          "experiment_id": "0194c4aab2d89ef1aa533074655f37fc70b60220cad2fd6383ea911de38f9538"
+        }
+      ],
+      "roles": [
+        "path",
+        "inner"
+      ],
+      "coverage": "completed fit receipts; not experiment completion",
+      "payload_hashes_revalidated_by_index": false
+    },
+    {
+      "id": "7be76f2108b1e1e433ba239ecde5777694348948a0e95e096a745180021d9797",
+      "scope": {
+        "identity_id": "908460df3d612e0f4d865cbe49d55240ee69cc6656460cca1f0de8037b9d16ee",
+        "source_id": "e7d172882aaac57fd0d42602a61bbd840863bb4e0d95a80bfd00026aed388436",
+        "data_id": "4f17132ba8161512273b62fe11cabb21fcc5d953b5922d0962ec4a70b975b795",
+        "split_id": "d6ec218f5b27ff2ca2f0aad9469e2a0d3c051e191da509bad05bba34627074e6",
+        "profile": "wasde-regional-t1-pilot-v1"
+      },
+      "scope_id": "57013932d1c5b412ef20039510332a321399bb6e1f971477a1da931d396625ad",
+      "profile": "wasde-regional-t1-pilot-v1",
+      "horizon": 1,
+      "recipes": [
+        {
+          "family": "ridge",
+          "params": {
+            "alpha": 1.0
+          },
+          "horizon": 1,
+          "task": "price",
+          "device": "cpu",
+          "seed": 42,
+          "target": "scaled_log",
+          "years": null,
+          "cadence": 21,
+          "window": 1,
+          "features": [
+            "cotton_ret_1",
+            "cotton_ret_5",
+            "cotton_ret_10",
+            "cotton_ret_20",
+            "cotton_momentum_5",
+            "cotton_momentum_20",
+            "cotton_sma_ratio_5_20",
+            "cotton_sma_ratio_20_50",
+            "cotton_volatility_5",
+            "cotton_volatility_20",
+            "cotton_range",
+            "cotton_volume_change",
+            "cotton_volume_z20",
+            "cotton_volatility_regime_20_60",
+            "dxy_ret_1",
+            "dxy_ret_5",
+            "dxy_ret_20",
+            "wti_ret_1",
+            "wti_ret_5",
+            "wti_ret_20",
+            "cotton_dxy_corr_60",
+            "cotton_wti_corr_60",
+            "month_sin",
+            "month_cos",
+            "regional_D1_age_sessions",
+            "regional_D1_unavailable",
+            "mask_D1_world_production",
+            "mask_D1_world_consumption",
+            "mask_D1_world_ending_stocks",
+            "mask_D1_us_production",
+            "mask_D1_us_consumption",
+            "mask_D1_us_exports",
+            "mask_D1_us_ending_stocks",
+            "mask_D1_china_consumption",
+            "mask_D1_india_production",
+            "mask_D1_brazil_production",
+            "mask_D1_world_stock_use",
+            "mask_D1_world_production_use",
+            "mask_D1_us_stock_use",
+            "mask_D1_world_production_revision",
+            "mask_D1_world_consumption_revision",
+            "mask_D1_world_ending_stocks_revision",
+            "mask_D1_us_production_revision",
+            "mask_D1_us_consumption_revision",
+            "mask_D1_us_exports_revision",
+            "mask_D1_us_ending_stocks_revision",
+            "mask_D1_china_consumption_revision",
+            "mask_D1_india_production_revision",
+            "mask_D1_brazil_production_revision",
+            "mask_D1_world_stock_use_revision",
+            "mask_D1_world_production_use_revision",
+            "mask_D1_us_stock_use_revision"
+          ]
+        }
+      ],
+      "model_families": [
+        "ridge"
+      ],
+      "kind": "market_fit_receipt",
+      "completed_fits": 106,
+      "sample_receipts": [
+        {
+          "path": "output/full-year/experiments/research-wasde-regional-t1-pilot-v1/ledger/completed/02984fb0b18523d7a7f6895fcf3a7d06eb6e30af4c4e94fb6e1234640047e776.json",
+          "record_id": "7da9d911683a6d7f1421c925711439ef223717ffd8bd1367b7464ec9b7e2c05f",
+          "experiment_id": "02984fb0b18523d7a7f6895fcf3a7d06eb6e30af4c4e94fb6e1234640047e776"
+        },
+        {
+          "path": "output/full-year/experiments/research-wasde-regional-t1-pilot-v1/ledger/completed/081ec66777b29ab9d125e0af355fcf543525e364a51e59624c3df58530a0d90a.json",
+          "record_id": "f19d0e37c6a1b51a27c51bc73f8210b06abc09dc53dc33a49603c35873cf580e",
+          "experiment_id": "081ec66777b29ab9d125e0af355fcf543525e364a51e59624c3df58530a0d90a"
+        },
+        {
+          "path": "output/full-year/experiments/research-wasde-regional-t1-pilot-v1/ledger/completed/08bca5204e017b1614abde04c3b823bc633aa2ccd1c5e1deafe5bc1181282467.json",
+          "record_id": "1d03f51ecaa3047ae6a4ea106337ca135375300ed1a120063856e3bdbef7de69",
+          "experiment_id": "08bca5204e017b1614abde04c3b823bc633aa2ccd1c5e1deafe5bc1181282467"
+        }
+      ],
+      "roles": [
+        "path",
+        "inner"
+      ],
+      "coverage": "completed fit receipts; not experiment completion",
+      "payload_hashes_revalidated_by_index": false
+    },
+    {
+      "id": "a9472b1a16aabaa6c4f0204b7d1ec8cbce883f873ad60bf58430e4cc88b79edd",
+      "scope": {
+        "identity_id": "908460df3d612e0f4d865cbe49d55240ee69cc6656460cca1f0de8037b9d16ee",
+        "source_id": "e7d172882aaac57fd0d42602a61bbd840863bb4e0d95a80bfd00026aed388436",
+        "data_id": "4f17132ba8161512273b62fe11cabb21fcc5d953b5922d0962ec4a70b975b795",
+        "split_id": "d6ec218f5b27ff2ca2f0aad9469e2a0d3c051e191da509bad05bba34627074e6",
+        "profile": "wasde-regional-t1-pilot-v1"
+      },
+      "scope_id": "57013932d1c5b412ef20039510332a321399bb6e1f971477a1da931d396625ad",
+      "profile": "wasde-regional-t1-pilot-v1",
+      "horizon": 1,
+      "recipes": [
+        {
+          "family": "ridge",
+          "params": {
+            "alpha": 1.0
+          },
+          "horizon": 1,
+          "task": "price",
+          "device": "cpu",
+          "seed": 42,
+          "target": "scaled_log",
+          "years": null,
+          "cadence": 21,
+          "window": 1,
+          "features": [
+            "cotton_ret_1",
+            "cotton_ret_5",
+            "cotton_ret_10",
+            "cotton_ret_20",
+            "cotton_momentum_5",
+            "cotton_momentum_20",
+            "cotton_sma_ratio_5_20",
+            "cotton_sma_ratio_20_50",
+            "cotton_volatility_5",
+            "cotton_volatility_20",
+            "cotton_range",
+            "cotton_volume_change",
+            "cotton_volume_z20",
+            "cotton_volatility_regime_20_60",
+            "dxy_ret_1",
+            "dxy_ret_5",
+            "dxy_ret_20",
+            "wti_ret_1",
+            "wti_ret_5",
+            "wti_ret_20",
+            "cotton_dxy_corr_60",
+            "cotton_wti_corr_60",
+            "month_sin",
+            "month_cos",
+            "regional_D0_age_sessions",
+            "regional_D0_unavailable",
+            "mask_D0_world_production",
+            "mask_D0_world_consumption",
+            "mask_D0_world_ending_stocks",
+            "mask_D0_us_production",
+            "mask_D0_us_consumption",
+            "mask_D0_us_exports",
+            "mask_D0_us_ending_stocks",
+            "mask_D0_china_consumption",
+            "mask_D0_india_production",
+            "mask_D0_brazil_production",
+            "mask_D0_world_stock_use",
+            "mask_D0_world_production_use",
+            "mask_D0_us_stock_use",
+            "mask_D0_world_production_revision",
+            "mask_D0_world_consumption_revision",
+            "mask_D0_world_ending_stocks_revision",
+            "mask_D0_us_production_revision",
+            "mask_D0_us_consumption_revision",
+            "mask_D0_us_exports_revision",
+            "mask_D0_us_ending_stocks_revision",
+            "mask_D0_china_consumption_revision",
+            "mask_D0_india_production_revision",
+            "mask_D0_brazil_production_revision",
+            "mask_D0_world_stock_use_revision",
+            "mask_D0_world_production_use_revision",
+            "mask_D0_us_stock_use_revision"
+          ]
+        }
+      ],
+      "model_families": [
+        "ridge"
+      ],
+      "kind": "market_fit_receipt",
+      "completed_fits": 106,
+      "sample_receipts": [
+        {
+          "path": "output/full-year/experiments/research-wasde-regional-t1-pilot-v1/ledger/completed/013efb971c0cfea5d2a04ec2845068d4cfbc11bc8abafb0e686f813bc4299d36.json",
+          "record_id": "8f7b6092fcc8b952f1ab382571319e5ae58c8bd3957a8ca48dc05eb260a9c577",
+          "experiment_id": "013efb971c0cfea5d2a04ec2845068d4cfbc11bc8abafb0e686f813bc4299d36"
+        },
+        {
+          "path": "output/full-year/experiments/research-wasde-regional-t1-pilot-v1/ledger/completed/1762574fc5655a87fa55ef3e7767d6a995da05ebddfd62f430ffa88915447e80.json",
+          "record_id": "62d7a0f47824d2409bd251c1dc0a0f492aa1ed0dc669552b7ee662626c19ecdb",
+          "experiment_id": "1762574fc5655a87fa55ef3e7767d6a995da05ebddfd62f430ffa88915447e80"
+        },
+        {
+          "path": "output/full-year/experiments/research-wasde-regional-t1-pilot-v1/ledger/completed/17fb44f5be7df9d32c7d4ba0c8cfc56ac27327ca8a82771e5a304a140159edce.json",
+          "record_id": "6ffa42f5afa75837c0bcbdc243eedd82ce06eb72ac6bdde44976de8991b5b2c6",
+          "experiment_id": "17fb44f5be7df9d32c7d4ba0c8cfc56ac27327ca8a82771e5a304a140159edce"
+        }
+      ],
+      "roles": [
+        "inner",
+        "path"
+      ],
+      "coverage": "completed fit receipts; not experiment completion",
+      "payload_hashes_revalidated_by_index": false
+    },
+    {
+      "scope": {
+        "identity_id": "fdbc384874891b761a622905e743e4edf61ec8b5af983e3d600092115abff354",
+        "source_id": "e7d172882aaac57fd0d42602a61bbd840863bb4e0d95a80bfd00026aed388436",
+        "data_id": null,
+        "split_id": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+        "profile": null
+      },
+      "scope_id": "f9b38d747d16f92bfd37879dba03f16cc3c5fa4dca7d0dedd0e5c80d7bef3781",
+      "profile": null,
+      "horizon": 1,
+      "recipes": [
+        {
+          "family": "ridge",
+          "params": {
+            "alpha": 1.0
+          },
+          "horizon": 1,
+          "task": "price",
+          "device": "cpu",
+          "seed": 42,
+          "target": "scaled_log",
+          "years": null,
+          "cadence": 21,
+          "window": 1,
+          "features": [
+            "cotton_ret_1",
+            "cotton_ret_5",
+            "cotton_ret_10",
+            "cotton_ret_20",
+            "cotton_momentum_5",
+            "cotton_momentum_20",
+            "cotton_sma_ratio_5_20",
+            "cotton_sma_ratio_20_50",
+            "cotton_volatility_5",
+            "cotton_volatility_20",
+            "cotton_range",
+            "cotton_volume_change",
+            "cotton_volume_z20",
+            "cotton_volatility_regime_20_60",
+            "dxy_ret_1",
+            "dxy_ret_5",
+            "dxy_ret_20",
+            "wti_ret_1",
+            "wti_ret_5",
+            "wti_ret_20",
+            "cotton_dxy_corr_60",
+            "cotton_wti_corr_60",
+            "month_sin",
+            "month_cos",
+            "regional_D0_age_sessions",
+            "regional_D0_unavailable",
+            "numeric_D0_world_production",
+            "numeric_D0_world_consumption",
+            "numeric_D0_world_ending_stocks",
+            "numeric_D0_us_production",
+            "numeric_D0_us_consumption",
+            "numeric_D0_us_exports",
+            "numeric_D0_us_ending_stocks",
+            "numeric_D0_china_consumption",
+            "numeric_D0_india_production",
+            "numeric_D0_brazil_production",
+            "numeric_D0_world_stock_use",
+            "numeric_D0_world_production_use",
+            "numeric_D0_us_stock_use",
+            "numeric_D0_world_production_revision",
+            "numeric_D0_world_consumption_revision",
+            "numeric_D0_world_ending_stocks_revision",
+            "numeric_D0_us_production_revision",
+            "numeric_D0_us_consumption_revision",
+            "numeric_D0_us_exports_revision",
+            "numeric_D0_us_ending_stocks_revision",
+            "numeric_D0_china_consumption_revision",
+            "numeric_D0_india_production_revision",
+            "numeric_D0_brazil_production_revision",
+            "numeric_D0_world_stock_use_revision",
+            "numeric_D0_world_production_use_revision",
+            "numeric_D0_us_stock_use_revision"
+          ]
+        }
+      ],
+      "model_families": [
+        "ridge"
+      ],
+      "kind": "synthetic_control:unspecified",
+      "completed_fits": 1,
+      "sample_receipts": [
+        {
+          "path": "output/full-year/experiments/research-wasde-regional-t1-pilot-v1/learning-control-ledger/completed/8b78cccb59800b0a905dee7f37d698d0d6af9324c6da034a71c31119eba31a2e.json",
+          "record_id": "e4d20c6b6e8523ec9a803e4860ec67d3dba74ba7218b604e459c77c2a89efe71",
+          "experiment_id": "8b78cccb59800b0a905dee7f37d698d0d6af9324c6da034a71c31119eba31a2e"
+        }
+      ],
+      "roles": [
+        "synthetic_known_signal_not_market_evidence"
+      ],
+      "coverage": "synthetic learning only; not experiment completion",
+      "payload_hashes_revalidated_by_index": false,
+      "id": "a6c3f306103a69be4123384bd94323885615584550b8662b5cf4f9a9716db83d"
     }
   ],
   "rejected_receipts": [],

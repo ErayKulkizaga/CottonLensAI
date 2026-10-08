@@ -60,7 +60,7 @@ Eski LSTM'nin 498 Naive / 439 LSTM origin karşılaştırması geçersizdi: ayn�
 
 ## Veriler, modeller ve tam kanıt yedeği
 
-[Bölgesel WASDE T+1 ön kaydı](docs/WASDE_REGIONAL_T1_PREREGISTRATION_20261008.md) kilitlendi: aynı 1.254 origin üzerinde dört kol; eksiklik bilgisi eşit kontrol, açık saat varsayımı ve bir gözlem gecikme stresi. 424 fit planlandı, **henüz fit/tahmin yok**. 2.441 eski dosya korundu. Sonraki tek iş, mevcut engine/ledger ile bu sınırlı deneyi çalıştırmaya bağlamak; ön kayıt tamamlanmış piyasa deneyi sayılmaz.
+[Bölgesel WASDE T+1 sonucu](docs/WASDE_REGIONAL_T1_RESULT_20261008.md): ön kayıt değişmeden, dört kol × 1.254 origin üzerinde 424 piyasa fit'i tamamlandı. Sayısal D0/D1 seçilmiş Naive kazancı −%0,5229 / −%0,0107; ham kazanç −%10,2134 / −%9,3435. Pratik %5 hedefi bu sabit tarifte desteklenmiyor; **Naive korunur, program otomatik büyütülmez**. 2.682 eski dosya korundu. Saat/vintage varsayımı gerçek erişim kanıtı değildir. [Ek sonuç paketi](https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/wasde-regional-result-20261008) tahminleri, 424 fit checkpoint'ini ve ayrı sentetik kontrolü saklar.
 
 [11 Aralık 2018 WASDE kontrolü](docs/WASDE_CLOCK_CASE_20261008.md) tamamlandı: 11/14 Aralık PDF/XML çiftlerinde 392 hücre eşleşti; repost Cotton değerlerini değiştirmedi. Bağımsız üniversite kopyasının on değeri de eşleşti, fakat karar kesiminden önce erişim kanıtı kurulamadı. 2.190 eski dosya değişmedi. Tarihsel kabul ve yeni fit yok.
 

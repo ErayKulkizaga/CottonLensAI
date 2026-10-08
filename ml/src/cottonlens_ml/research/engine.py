@@ -136,7 +136,7 @@ class Experiment:
         self.root = Path(folder)
         self.ready = read_record(self.root / 'ready.json')
         self.identity = self.ready['identity']
-        identity_fn = research_source_identity if self.identity.get('profile') in ('full-year-v1', 'ams-exploration-v1', 'fas-exploration-v1', 'nass-exploration-v1', 'wasde-exploration-v1', 'cftc-exploration-v1', 'fx-exploration-v1', 'crop-exploration-v1', 'weather-exploration-v1', 'oncall-exploration-v1', 'oncall-exploration-v2', 'recency-pilot-v1', 'availability-clock-pilot-v1', 'return-path-pilot-v1', 'agri-transfer-pilot-v1', 'agri-nonlinear-pilot-v1', 'statistical-pilot-v1', 'nonlinear-path-pilot-v1', 'wasde-text-pilot-v1', 'fundamental-joint-pilot-v1') else source_identity
+        identity_fn = research_source_identity if self.identity.get('profile') in ('full-year-v1', 'ams-exploration-v1', 'fas-exploration-v1', 'nass-exploration-v1', 'wasde-exploration-v1', 'cftc-exploration-v1', 'fx-exploration-v1', 'crop-exploration-v1', 'weather-exploration-v1', 'oncall-exploration-v1', 'oncall-exploration-v2', 'recency-pilot-v1', 'availability-clock-pilot-v1', 'return-path-pilot-v1', 'agri-transfer-pilot-v1', 'agri-nonlinear-pilot-v1', 'statistical-pilot-v1', 'nonlinear-path-pilot-v1', 'wasde-text-pilot-v1', 'fundamental-joint-pilot-v1', 'wasde-regional-t1-pilot-v1') else source_identity
         if repo is not None and identity_fn(repo)['source_id'] != self.identity['source_id']:
             raise ValueError('Research source identity changed')
         if repo is not None:
@@ -506,7 +506,9 @@ def main():
     parser.add_argument('--round', choices=('A', 'B', 'C', 'D', 'E'), default='A')
     parser.add_argument('--extension', type=int, default=0)
     parser.add_argument('--publication-package', type=Path, action='append', default=[])
-    parser.add_argument('--profile', choices=('legacy', 'free-data-v1', 'full-year-v1', 'ams-exploration-v1', 'fas-exploration-v1', 'nass-exploration-v1', 'wasde-exploration-v1', 'cftc-exploration-v1', 'fx-exploration-v1', 'crop-exploration-v1', 'weather-exploration-v1', 'oncall-exploration-v1', 'oncall-exploration-v2', 'recency-pilot-v1', 'availability-clock-pilot-v1', 'return-path-pilot-v1', 'agri-transfer-pilot-v1', 'agri-nonlinear-pilot-v1', 'statistical-pilot-v1', 'nonlinear-path-pilot-v1', 'wasde-text-pilot-v1', 'fundamental-joint-pilot-v1'), default='legacy')
+    parser.add_argument('--profile', choices=('legacy', 'free-data-v1', 'full-year-v1', 'ams-exploration-v1', 'fas-exploration-v1', 'nass-exploration-v1', 'wasde-exploration-v1', 'cftc-exploration-v1', 'fx-exploration-v1', 'crop-exploration-v1', 'weather-exploration-v1', 'oncall-exploration-v1', 'oncall-exploration-v2', 'recency-pilot-v1', 'availability-clock-pilot-v1', 'return-path-pilot-v1', 'agri-transfer-pilot-v1', 'agri-nonlinear-pilot-v1', 'statistical-pilot-v1', 'nonlinear-path-pilot-v1', 'wasde-text-pilot-v1', 'fundamental-joint-pilot-v1', 'wasde-regional-t1-pilot-v1'), default='legacy')
+    parser.add_argument('--registration-root', type=Path)
+    parser.add_argument('--decision-contract', type=Path)
     parser.add_argument('--market-file', type=Path)
     parser.add_argument('--reference-root', type=Path)
     parser.add_argument('--mirror-root', type=Path, help='Separate Drive root for local-first CPU copies')
@@ -525,6 +527,10 @@ def main():
     parser.add_argument('--oncall-table', type=Path)
     parser.add_argument('--max-minutes', type=float, default=60.)
     args = parser.parse_args()
+    if args.profile == 'wasde-regional-t1-pilot-v1':
+        from cottonlens_ml.research.wasde_regional_execution import dispatch
+        dispatch(args)
+        return
     if args.profile == 'availability-clock-pilot-v1':
         from cottonlens_ml.research.availability_clock import dispatch
         dispatch(args)

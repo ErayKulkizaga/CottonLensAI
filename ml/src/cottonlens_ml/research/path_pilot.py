@@ -156,7 +156,7 @@ def output(folder, name, fold, group, h, design, history, *, namespace='path', r
 
 
 def run(experiment, max_minutes, *, group_names=GROUPS, namespace='path', recipe_fn=recipe, validate_fn=validate_design,
-        selection_fn=None, record_frame_fn=None, output_fn=output, before_fit=None):
+        selection_fn=None, record_frame_fn=None, output_fn=output, before_fit=None, horizons=(1, 5)):
     if not 0 < max_minutes <= 60:
         raise ValueError('Path session budget must be positive and at most 60 minutes')
     design = experiment.identity['design']
@@ -172,7 +172,7 @@ def run(experiment, max_minutes, *, group_names=GROUPS, namespace='path', recipe
     experiment.before_compute = before
     try:
         for fold in experiment.identity['split']['folds']:
-            for h in (1, 5):
+            for h in horizons:
                 for group in group_names:
                     name = f'{group}-t{h}-year{fold["year"]}.json'
                     marker = experiment.root / f'{namespace}-outputs' / name
@@ -218,7 +218,7 @@ def run(experiment, max_minutes, *, group_names=GROUPS, namespace='path', recipe
     except FitBudgetReached:
         print('PILOT planned_pause: path checkpoint preserved; resume same profile', flush=True)
         return {'status': 'planned_pause', 'saved_outputs': len(list((experiment.root / f'{namespace}-outputs').glob('*.json')))}
-    return {'status': 'complete', 'saved_outputs': 32}
+    return {'status': 'complete', 'saved_outputs': len(group_names) * len(horizons) * len(experiment.identity['split']['folds'])}
 
 
 def compare(folder, repetitions=10000, *, group_names=GROUPS, namespace='path', recipe_fn=recipe,
