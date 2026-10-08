@@ -17,7 +17,10 @@ from cottonlens_ml.sources.fas_archive import (
     reconcile_upland,
     report_period_end,
 )
-from cottonlens_ml.sources.fas_country_review import reconcile_countries
+from cottonlens_ml.sources.fas_country_review import (
+    reconcile_countries,
+    subtype_precision,
+)
 from cottonlens_ml.sprint import freeze_record, read_record
 
 HOST = 'apps.fas.usda.gov'
@@ -59,9 +62,11 @@ def checked_release_cover(folder):
 
 
 def review(index_folder, report_folders, year, output, *, api_snapshot=None, commodity_catalog=None,
-           release_cover=None, country_reference=None):
+           release_cover=None, country_reference=None, subtype_review=False):
     import pypdf
 
+    if subtype_review and country_reference is None:
+        raise ValueError('Subtype review requires the pinned country reference')
     raw, requested_year, index_evidence = checked_response(
         index_folder, 'GetArchivedWeeklyReportsList', 'selectedYear')
     if requested_year != str(year):
@@ -112,6 +117,8 @@ def review(index_folder, report_folders, year, output, *, api_snapshot=None, com
             result['numeric_reconciliation_scope'] = 'content_diagnostic_only_not_publication_or_vintage'
             if reference_text is not None:
                 result['country_stock_comparison'] = reconcile_countries(payload, catalog, full_text, reference_text)
+                if subtype_review:
+                    result['subtype_precision_diagnostic'] = subtype_precision(payload, catalog, full_text, reference_text)
         responses.append({**result, **evidence, 'pdf_pages': len(document.pages),
                           'pdf_creation_date_literal': str((document.metadata or {}).get('/CreationDate'))})
     if not responses:
@@ -150,6 +157,7 @@ def review(index_folder, report_folders, year, output, *, api_snapshot=None, com
         'model_eligible': False, 'publication_timestamp_verified': False,
         'numeric_inputs': numeric_inputs,
         'country_reference': reference_evidence,
+        'subtype_precision_diagnostic_requested': subtype_review,
         'country_stock_values_match': country_match,
         'country_review_code_sha256': digest(Path(__file__).parent / 'src/cottonlens_ml/sources/fas_country_review.py')
             if country_reference is not None else None,
@@ -175,10 +183,12 @@ def main():
     parser.add_argument('--commodity-catalog', type=Path)
     parser.add_argument('--release-cover', type=Path)
     parser.add_argument('--country-reference', type=Path, help='Pinned current Census reference folder; no historical admission')
+    parser.add_argument('--subtype-precision', action='store_true', help='Diagnostic rounding assumption only; direct stock gate remains fixed')
     args = parser.parse_args()
     result = review(args.index, args.report, args.year, args.output,
                     api_snapshot=args.api_snapshot, commodity_catalog=args.commodity_catalog,
-                    release_cover=args.release_cover, country_reference=args.country_reference)
+                    release_cover=args.release_cover, country_reference=args.country_reference,
+                    subtype_review=args.subtype_precision)
     print(f"Reviewed {len(result['responses'])} responses; "
           f"unique PDF payloads={result['distinct_pdf_payloads']}; model_eligible=false")
     if result['country_stock_values_match'] is False:

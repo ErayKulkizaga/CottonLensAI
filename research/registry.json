@@ -15416,6 +15416,38 @@
         "research/evidence/fas-country-report-release-20261008.json": "dd44f77ede6b72bc0dd531d5c669261b4bc3415327de0e96393df4a48004599d"
       },
       "id": "cfec9f8bb60ec63191078fdfda84b0f011490a50bbc285a3366698024b281b22"
+    },
+    {
+      "experiment": "fas-may28-subtype-precision-v1",
+      "profile": "fas-may28-subtype-precision-v1",
+      "kind": "no_fit_source_subtype_precision_review",
+      "horizon": null,
+      "code_id": "5c6f952f69a8f337b03a14ccfe26072382b0aff64ec9eaf1ca4f90620802e776",
+      "data_id": "47e36483799269f4e113ab9fa6ca6c9c80f0e4f95b5e4d2952c4e2b2bd8e7c43",
+      "coverage": "1_report_week_2_countries_6_subtype_stocks",
+      "independent_holdout": false,
+      "classification": "INCONCLUSIVE",
+      "reason": "No market fits; rounding compatibility does not distinguish printed calculation from numeric vintage difference",
+      "market_fits": 0,
+      "model_families": [],
+      "recipes": [],
+      "metrics": {},
+      "prediction_payload_exists": false,
+      "sources": {
+        "fas": {
+          "commodity_code": 1404,
+          "unit_id": 2,
+          "publication_verified": false,
+          "first_version_verified": false,
+          "model_eligible": false
+        }
+      },
+      "payloads": {
+        "research/evidence/fas-may28-subtype-review-20261008.json": "0da3f0d010a135039b896e1070c603ec557ff0231dcaaa1c2017c5d05fb6f6e5",
+        "research/evidence/fas-may28-version-audit-20261008.json": "66130acf3d1b06407519439bde0631b051929a2debe3f15b8ea4e3a59de8b687",
+        "research/evidence/fas-may28-version-release-20261008.json": "31ea7316502dc7bfc5585958dbaa82319b6f0c78db3c32f989c6367c2ad1e35e"
+      },
+      "id": "bb4c9d779fb41a56c689c154259513398692e35003f94c36a067d7965809051e"
     }
   ],
   "local_evidence": [
@@ -15518,6 +15550,18 @@
     {
       "path": "evidence/fas-country-report-release-20261008.json",
       "sha256": "dd44f77ede6b72bc0dd531d5c669261b4bc3415327de0e96393df4a48004599d"
+    },
+    {
+      "path": "evidence/fas-may28-subtype-review-20261008.json",
+      "sha256": "0da3f0d010a135039b896e1070c603ec557ff0231dcaaa1c2017c5d05fb6f6e5"
+    },
+    {
+      "path": "evidence/fas-may28-version-audit-20261008.json",
+      "sha256": "66130acf3d1b06407519439bde0631b051929a2debe3f15b8ea4e3a59de8b687"
+    },
+    {
+      "path": "evidence/fas-may28-version-release-20261008.json",
+      "sha256": "31ea7316502dc7bfc5585958dbaa82319b6f0c78db3c32f989c6367c2ad1e35e"
     }
   ]
 }

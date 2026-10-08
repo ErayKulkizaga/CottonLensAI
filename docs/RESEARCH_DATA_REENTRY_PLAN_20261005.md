@@ -23,7 +23,7 @@ payı oluşturulmaz. Eksik ülke satırları sıfır sayılmaz.
 Commitment, outstanding ve accumulated toplamına eşit olduğundan bunlar üç
 bağımsız bilgi kaynağı diye sayılmaz; yeni temsil bu cebirsel tekrarı gözetir.
 
-**Ülke raporu kontrolü tamamlandı, kabul tamamlanmadı:** [iki haftalık mutabakat](FAS_COUNTRY_REPORT_REVIEW_20261008.md) dört ülke/üç stok alanında 22/24 eşleşme buldu. 28 Mayıs Çin/Pakistan accumulatedExports farkı −55/−53 balya; ulusal toplam eşitliği bunları gizliyor. Değer veya ±50 sınırı değiştirilmedi. Haftalık akışlar, tam tarihsel katalog ve sürüme bağlı erişim doğrulanmadı. Şimdi tek iş 28 Mayıs özgün yayın sürümünde bu iki alanın karşılaştırılması; kanıt olmadan aşağıdaki ön kayıt/eğitim aşamalarına geçilmez.
+**Ülke raporu kontrolü tamamlandı, kabul tamamlanmadı:** [iki haftalık mutabakat](FAS_COUNTRY_REPORT_REVIEW_20261008.md) dört ülke/üç stok alanında 22/24 eşleşme buldu. 28 Mayıs Çin/Pakistan accumulatedExports farkı −55/−53 balya; ulusal toplam eşitliği bunları gizliyor. Değer veya ±50 sınırı değiştirilmedi. Haftalık akışlar, tam tarihsel katalog ve sürüme bağlı erişim doğrulanmadı. [Alt sınıf kontrolü](FAS_MAY28_VERSION_AUDIT_20261008.md) bu iki farkın yuvarlama varsayımıyla uyumunu gösterdi, nedeni kanıtlamadı. Şimdi tek ayırıcı test Çin'in 28 Mayıs özgün tam-balya accumulated hücresidir; yalnız güncel API/aynı PDF aramasını büyütmek yeterli değil. Kanıt olmadan aşağıdaki ön kayıt/eğitim aşamalarına geçilmez.
 
 Sonraki üç teslimatın sırası ve durma koşulu:
 

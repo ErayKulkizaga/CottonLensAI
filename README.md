@@ -101,8 +101,11 @@ Sonraki iş **FAS ülke/commitment kabul denetimi**, yeni eğitim değildir.
 Mevcut 15 ham kaynağın 752 haftalık ulusal toplamları doğrulandı.
 [İki haftalık ülke kontrolünde](docs/FAS_COUNTRY_REPORT_REVIEW_20261008.md) 24 alanın
 22'si eşleşti; Çin/Pakistan birikimli ihracatında −55/−53 balya fark korunur.
-Sonraki iş bu farkın özgün yayın sürümüyle incelenmesidir; saat/vintage
-kanıtı ve kaynak kabulü tamamlanmadan özellikler eğitime alınmaz.
+[Alt sınıf aralık kontrolü](docs/FAS_MAY28_VERSION_AUDIT_20261008.md) iki farkın
+yuvarlama varsayımıyla uyumlu olduğunu gösterdi; gerçek neden kanıtlanmadı.
+Sonraki tek test Çin'in 28 Mayıs özgün tam-balya değeridir; güncel API
+veya yalnız PDF araması bu sürüm ayrımını çözmez. Saat/vintage kanıtı ve
+kaynak kabulü tamamlanmadan özellikler eğitime alınmaz.
 [Güncel sıra ve durma koşulları](docs/RESEARCH_DATA_REENTRY_PLAN_20261005.md).
 WASDE pilotu, DXY/WTI saat deneyi ve eski FAS ulusal T+5 tarifleri tekrar açılmaz.
 

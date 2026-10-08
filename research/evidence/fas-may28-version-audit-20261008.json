@@ -1,0 +1,214 @@
+{
+  "schema": 1,
+  "experiment": "fas-may28-subtype-precision-v1",
+  "market_fits": 0,
+  "ml_source_id": "5c6f952f69a8f337b03a14ccfe26072382b0aff64ec9eaf1ca4f90620802e776",
+  "data_id": "47e36483799269f4e113ab9fa6ca6c9c80f0e4f95b5e4d2952c4e2b2bd8e7c43",
+  "inputs": [
+    {
+      "path": "pinned-api-2020.json",
+      "sha256": "9973f506fa67950687cb3f945c36cf601ed3cf8c49420ee2ada45bfc52ad3c83"
+    },
+    {
+      "path": "pinned-commodity-catalog.json",
+      "sha256": "38449fd690f631f2cabc4cca7373e9923487680ae242efd0ec12a36de49b811b"
+    },
+    {
+      "path": "index-2020/source.bin",
+      "sha256": "7b527026b4870c6e84f3698aae0cae6e045e7128148c20702f26bbd5be12dc98"
+    },
+    {
+      "path": "index-2020/retrieval.json",
+      "sha256": "13757643ef9bf83682afd368b56f78bcbb2de724b72cc74e57be82aac9a8d1d0"
+    },
+    {
+      "path": "recovered-20200528/source.bin",
+      "sha256": "1905ec8bcef929c29d4a2dcd9ebd1af3d3e8e1de55335aa6b0754910054ea51a"
+    },
+    {
+      "path": "recovered-20200528/retrieval.json",
+      "sha256": "a97ecd8b7831ad1ee3f366409d70043d3c696d4ed1814474af2ecdb8463c9c22"
+    },
+    {
+      "path": "census-country-codes/source.html",
+      "sha256": "c6ff60439d3694fdc2e61db58c18f7c9ad13a1c465d9b851cd12d94d50838523"
+    },
+    {
+      "path": "census-country-codes/retrieval.json",
+      "sha256": "b5689f94cf7a8949758139ef0f20a9341bed03984cbeeae399c82428773fd259"
+    }
+  ],
+  "review_sha256": "0da3f0d010a135039b896e1070c603ec557ff0231dcaaa1c2017c5d05fb6f6e5",
+  "diagnostic": {
+    "scope": "China/Pakistan accumulatedExports only; explanatory diagnostic",
+    "observation_date": "2020-05-28",
+    "countries": [
+      {
+        "name": "China",
+        "country_code": 5700,
+        "parts": [
+          {
+            "commodity_code": 1401,
+            "printed_accumulated_bales": 1472800,
+            "assumed_rounding_min_bales": 1472750,
+            "assumed_rounding_max_bales": 1472850
+          },
+          {
+            "commodity_code": 1402,
+            "printed_accumulated_bales": 5500,
+            "assumed_rounding_min_bales": 5450,
+            "assumed_rounding_max_bales": 5550
+          },
+          {
+            "commodity_code": 1403,
+            "printed_accumulated_bales": 400,
+            "assumed_rounding_min_bales": 350,
+            "assumed_rounding_max_bales": 450
+          }
+        ],
+        "printed_subtype_sum_bales": 1478700,
+        "printed_all_upland_bales": 1478700,
+        "api_all_upland_bales": 1478645,
+        "direct_difference_bales": -55,
+        "direct_within_50_bales": false,
+        "assumed_sum_min_bales": 1478550,
+        "assumed_sum_max_bales": 1478850,
+        "api_compatible_with_subtype_rounding": true
+      },
+      {
+        "name": "Pakistan",
+        "country_code": 5350,
+        "parts": [
+          {
+            "commodity_code": 1401,
+            "printed_accumulated_bales": 1720600,
+            "assumed_rounding_min_bales": 1720550,
+            "assumed_rounding_max_bales": 1720650
+          },
+          {
+            "commodity_code": 1402,
+            "printed_accumulated_bales": 40400,
+            "assumed_rounding_min_bales": 40350,
+            "assumed_rounding_max_bales": 40450
+          },
+          {
+            "commodity_code": 1403,
+            "printed_accumulated_bales": 0,
+            "assumed_rounding_min_bales": 0,
+            "assumed_rounding_max_bales": 50
+          }
+        ],
+        "printed_subtype_sum_bales": 1761000,
+        "printed_all_upland_bales": 1761000,
+        "api_all_upland_bales": 1760947,
+        "direct_difference_bales": -53,
+        "direct_within_50_bales": false,
+        "assumed_sum_min_bales": 1760900,
+        "assumed_sum_max_bales": 1761150,
+        "api_compatible_with_subtype_rounding": true
+      }
+    ],
+    "assumption": "Each printed grade rounds independently to nearest 100 running bales; endpoints inclusive, stocks nonnegative",
+    "publisher_rounding_method_verified": false,
+    "exact_api_grade_values_present": false,
+    "rounding_only_cause_verified": false,
+    "vintage_verified": false,
+    "direct_stock_gate_changed": false,
+    "publication_timestamp_verified": false,
+    "first_version_verified": false,
+    "model_eligible": false,
+    "release_allowed": false
+  },
+  "country_stock_values_match": false,
+  "expected_cli_exit": 2,
+  "model_eligible": false,
+  "publication_timestamp_verified": false,
+  "first_version_verified": false,
+  "cause_verified": false,
+  "competing_explanations": [
+    "printed subtype calculation/rounding",
+    "API and report numeric vintage difference"
+  ],
+  "minimal_discriminator": {
+    "country_code": 5700,
+    "week": "2020-05-28",
+    "commodity_code": 1404,
+    "field": "accumulatedExports",
+    "pinned_api_value": 1478645,
+    "required": "original as-issued full-bale value with version-bound evidence; rounded PDF/current API insufficient"
+  },
+  "http_attempts": {
+    "attempts": [
+      {
+        "url": "https://apps.fas.usda.gov/export-sales/Year2020/CAM-5-28-20.pdf",
+        "retrieved_at": "2026-10-08T17:50:03.578615+00:00",
+        "authenticated": false,
+        "http_status": 404,
+        "final_url": "https://apps.fas.usda.gov/export-sales/Year2020/CAM-5-28-20.pdf",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "content_type": null
+      },
+      {
+        "url": "https://apps.fas.usda.gov/export-Sales/Year2020/CAM-5-28-20.pdf",
+        "retrieved_at": "2026-10-08T17:50:04.603959+00:00",
+        "authenticated": false,
+        "http_status": 404,
+        "final_url": "https://apps.fas.usda.gov/export-Sales/Year2020/CAM-5-28-20.pdf",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "content_type": null
+      },
+      {
+        "url": "https://apps.fas.usda.gov/export-sales/weeklyHist.htm",
+        "retrieved_at": "2026-10-08T17:50:05.413096+00:00",
+        "authenticated": false,
+        "http_status": 404,
+        "final_url": "https://apps.fas.usda.gov/export-sales/weeklyHist.htm",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "content_type": null
+      }
+    ],
+    "publication_timestamp_verified": false,
+    "first_version_verified": false,
+    "model_eligible": false
+  },
+  "preservation": {
+    "input_checksums_unchanged": 8,
+    "prior_registry_records_unchanged": 134,
+    "prior_evidence_sha256": {
+      "research/evidence/availability-clock-result.json": "68f7382912a825a3628842c6774d9cfce5a1f87c4998f2058d9e88f6cb1c697f",
+      "research/evidence/fas-country-field-audit-20261008.json": "0392c53cbaaf72e1070be312d4ef50bb69ebeaf26c94e5709af6363dcd11f576",
+      "research/evidence/fas-country-report-release-20261008.json": "dd44f77ede6b72bc0dd531d5c669261b4bc3415327de0e96393df4a48004599d",
+      "research/evidence/fas-country-report-review-20261008.json": "ae2e031160d12980e2c1fa2be17e0156a47806c58e21a4a24d3c6ca543a9f278",
+      "research/evidence/fas-country-report-verification-20261008.json": "be2593eebfb5c7cec2d106e46df68194b1a7d688fdf864f10184629eb0245d5e",
+      "research/evidence/independent-verification.json": "4870594191971cdb6e56d93ce738d6488759926e8be6bb465a32744e5edc0353",
+      "research/evidence/information-delivery-check.json": "4f0c4bb2f7b8a5065e3967a0a49d4e2f752660f0ad643dca5fe60ffa95ae0e04",
+      "research/evidence/learning-control-correction.json": "5047911b72a7e0a280c7ad7e88e943a426760c3d9371d32bdde3109e96b2d628",
+      "research/evidence/legacy-lstm-correction.json": "a6c229b39dd53af08bd45be6686eddb14ea36f503e7cda8307e2a7481e94ec83",
+      "research/evidence/plan-review-20261005.json": "4900f8213f765d9806e6b739fbdf3a627ab6e6ac1acfe936db1fa7335707e04d",
+      "research/evidence/price-semantics-20261005.json": "a387d3942a0c9cb82230f824b2130a5a8d5f40ad63961af97f7ea96c47576ea7",
+      "research/evidence/price-semantics-release-20261005.json": "314164a2badf836f9be3825415fde4c91d60070473358e0a7dbb2219dc0d0b59",
+      "research/evidence/trading-wasde-delivery-20261005.json": "95eee29780199f9c4c2412d39e89005371d2afb7792bb3d148e05eba24689d3e",
+      "research/evidence/trading-wasde-release-20261005.json": "3bd89451e3a6cd144f3c6ee26c42718899f5576ea212db6d05053f8d7ef78ea1",
+      "research/evidence/wasde-as-reported-20261008.json": "8d69f10bebfb62150d783ee0fbcf4f4f0bed1abf03694eab8406682d615db66a",
+      "research/evidence/wasde-as-reported-release-20261008.json": "9db4d59f7d26c938bbdb2501151609ece36281109854aba9afb0bde05518f251",
+      "research/evidence/wasde-clock-case-20261008.json": "4348b38f282437a27bca87f8e2ce1a7918d4ea3955336dfa74741737254e5eac",
+      "research/evidence/wasde-clock-case-release-20261008.json": "47b7b4cec5f1638da6d33d1360b0d8c209890cb75ec59314e3425f5dfc872d58",
+      "research/evidence/wasde-regional-preregistration-20261008.json": "9d11b6004f8818230a5488f8d8910193f0a8536cb6a8b778531934a5532f83e3",
+      "research/evidence/wasde-regional-preregistration-release-20261008.json": "a103c800328dbdaf5283d9db28a9eaebc369c26c73955e9359eb5d5bd7f5047a",
+      "research/evidence/wasde-regional-release-20261008.json": "46fa8a7da38a3e0d0dfb68dfe261aa3d5cd458424c838675ebbf71d634634b1d",
+      "research/evidence/wasde-regional-result-20261008.json": "d1b8b4269a50d6aec8271db1a69e048866b67729bf21f56ae708e0caf2ce3750",
+      "research/evidence/wasde-regional-result-release-20261008.json": "d3fb9057ed0ff94a4bf15e776d2b1fafeb3ec1178d55ff23871f64ec0109160b",
+      "research/evidence/wasde-regional-verification-20261008.json": "0eee010ef731768b81857b7bdc75c2d1d598cd52df7b4e313562eacdfc8d10ae"
+    },
+    "trials_sha256": "52b15504c580eaa220bb57815045da55930e268b87e3595d9c13c4934b7e04ff"
+  },
+  "validation": {
+    "targeted_tests_passed": 83,
+    "ruff_passed": true,
+    "source_admission_gate_changed": false
+  },
+  "scope": "content diagnosis only; rounding assumption not verified publisher method or vintage proof"
+}
