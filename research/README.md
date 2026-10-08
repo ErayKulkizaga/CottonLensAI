@@ -2,6 +2,13 @@
 
 ## Sicil
 
+Güncel ekler: tamamlanmış bölgesel WASDE T+1 piyasa sonucu ve ayrı sentetik kontrol;
+ardından `fas-country-field-audit-v1` **sıfır-fit veri denetimi**. Sonuncusu
+ülke dağılımının piyasa katkısını veya tarihsel erişimini test etmiş sayılmaz.
+15 kaynak/27.887 ham satır, eski 752 haftalık tabloyla eşleşir; ülke isimleri
+ve ülke bazlı rapor değerleri henüz kabul edilmiş değildir.
+[Devam sınırı](../docs/RESEARCH_DATA_REENTRY_PLAN_20261005.md).
+
 - `registry.json`: deney/grup/ufuk bazında mevcut OOS kanıtı, origin sayısı, ham/seçilmiş MAE, kaynak/veri kimliği, yıllık kapsam, tahmin dosyalarının SHA-256 değerleri ve kanıt sınıfı. Eski özetler ayrıca **testimony** olarak işaretlidir.
 - `trials.json`: gerçekten tamamlanmış, checksum ve dondurulmuş kimliği doğrulanmış ledger **fit makbuzlarının** benzersiz tarifleri. Tek fit ≠ tamamlanmış OOS deney. Model payload'larının yeniden hash'lenmesi bu indeksleme adımının iddiası değildir.
 - `evidence/`: legacy LSTM, TCN, zamanlama deneyi ve bağımsız metrik doğrulaması; eski dosyaları değiştiren düzeltmeler değildir.
@@ -9,7 +16,7 @@
 - `organization.json`: taşınan belgeler/notebook'lar, eski yollar, orijinal hash'ler ve nedenleri.
 - `archive-summary.json`: Release varlıkları, arşiv manifesti checksum'ı, kapsam ve açıkça dışlanan/gizli bilgileri ayıklanan dosyalar.
 
-Son eklenen kayıtlar `clock-t1-open-close-proxy-v1` (2.006 origin, sıfır yeni fit,
+Önceki kayıtlar `clock-t1-open-close-proxy-v1` (2.006 origin, sıfır yeni fit,
 gerçek işlem becerisi için inconclusive) ve `wasde-regional-candidate-v1`
 (95 rapor/26 alan, eğitime kabul edilmemiş veri hazırlığı). İlki yeni model eğitimi,
 ikincisi tamamlanmış piyasa deneyi değildir. [Sonuç ve yeni Release](../docs/TRADING_WASDE_DELIVERY_20261005.md).
@@ -27,6 +34,9 @@ python ml/history.py check --feature nass --horizon 5
 python ml/history.py check --query availability
 python ml/history.py check --query trading --horizon 1
 python ml/history.py check --query wasde-regional
+python ml/history.py check --query fas-country
+python ml/history.py check --feature fas --horizon 1
+python ml/history.py check --feature fas --horizon 5
 python ml/history.py check --query wasde-regional-numeric-verification
 python ml/history.py check --query wasde-as-reported
 python ml/history.py check --query wasde-clock-case
@@ -36,7 +46,20 @@ python ml/history.py check --profile availability-clock-pilot-v1 --json
 python ml/history.py list
 ```
 
-Son eklenen iki kayıt `cotton-ohlc-semantics-audit-v1` ve
+FAS alan denetimi, yalnız mevcut pinned girdileri okur; stdout JSON üretir,
+veri indirmez, kaynak/feature/ledger değiştirmez ve eğitim başlatmaz. Girdiler
+eski Release'ten ayrı dizine restore edilebilir; `FAS_RAW_ROOT`, iki seviyeli
+`request_hash/source_sha/source.json` düzenindeki FAS köküdür. `MANIFEST` ve
+`TABLE`, eski `weekly-sales-2010-2023.manifest.json` / `.csv` çiftidir:
+
+```bash
+python ml/review_fas_countries.py --raw-root FAS_RAW_ROOT --manifest MANIFEST --table TABLE
+```
+
+Checksum/şema/ülke-hafta/toplam uyuşmazlığında exit 2; sıfır/eksik değer
+uydurulmaz. Başarılı JSON, publication/vintage veya model eligibility onayı değildir.
+
+Önceki iki kayıt `cotton-ohlc-semantics-audit-v1` ve
 `ams-cotton-price-reconciliation-v1`: sıfır fit kaynak denetimleridir; yeni
 piyasa başarı/başarısızlık deneyi değildir. 998 eski AMS belge hash'i,
 997 doğrulanmış rapor tarihi, 996 Close eşleşmesi ve 20 kontrat değişimi

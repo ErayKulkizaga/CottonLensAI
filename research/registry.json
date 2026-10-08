@@ -15353,6 +15353,37 @@
       "evidence_sha256": "d1b8b4269a50d6aec8271db1a69e048866b67729bf21f56ae708e0caf2ce3750",
       "reason": "Known-signal learning passed; not real-market predictive evidence.",
       "id": "8fb223703bed95f215c81ec530e283ec6beadfaf25bf6b499fcc452495866b56"
+    },
+    {
+      "experiment": "fas-country-field-audit-v1",
+      "profile": "fas-country-field-audit-v1",
+      "kind": "no_fit_source_field_audit",
+      "horizon": null,
+      "code_id": "0de3d0fe92108c8e69d359213ce0b7e59603ec2f7935dd86ee3ab73164057179",
+      "data_id": "4c37a2ad8af2216ac4b4e3da9cecbdd3a882e377f25af2adacadcc20bed1bae2",
+      "coverage": "15_pinned_marketing_years_27887_raw_26313_retained_rows_752_weeks",
+      "independent_holdout": false,
+      "classification": "INCONCLUSIVE",
+      "reason": "Country-field numeric inventory only; no market fit, country-name reconciliation or availability/vintage certification",
+      "market_fits": 0,
+      "model_families": [],
+      "recipes": [],
+      "metrics": {},
+      "prediction_payload_exists": false,
+      "sources": {
+        "fas": {
+          "commodity_code": 1404,
+          "unit_id": 2,
+          "country_code_count": 64,
+          "publication_verified": false,
+          "first_version_verified": false,
+          "model_eligible": false
+        }
+      },
+      "payloads": {
+        "research/evidence/fas-country-field-audit-20261008.json": "0392c53cbaaf72e1070be312d4ef50bb69ebeaf26c94e5709af6363dcd11f576"
+      },
+      "id": "20c5a65c95c0ac97a09ae2376e123521ae8978030dcad0a9ced6818aec03f97a"
     }
   ],
   "local_evidence": [
@@ -15439,6 +15470,10 @@
     {
       "path": "evidence/wasde-regional-result-release-20261008.json",
       "sha256": "d3fb9057ed0ff94a4bf15e776d2b1fafeb3ec1178d55ff23871f64ec0109160b"
+    },
+    {
+      "path": "evidence/fas-country-field-audit-20261008.json",
+      "sha256": "0392c53cbaaf72e1070be312d4ef50bb69ebeaf26c94e5709af6363dcd11f576"
     }
   ]
 }
