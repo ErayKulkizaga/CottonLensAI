@@ -1,5 +1,12 @@
 # Güncel kararlar — 8 Ekim 2026
 
+**Son veri hazırlığı:** [FAS ülke karantina paneli](FAS_COUNTRY_PREPARATION_20261008.md)
+3.008 satır/752 hafta; dört kodda eksik satır yok, 413 negatif satış korunur.
+29 Temmuz 2021 kod2230 bekleyen satış −76: ham değer korunur, o haftanın stok
+payları tanımsız bırakılır. Yeni fit **0**, saat politikası unset ve kabul kapalı.
+CPU eğitim motoru çalışıyor; engel yalnız FAS tarihsel kaynak kabulüdür. Özgün
+tek hücre bütün tarihçeyi kabul ettirmez; sonrasında adapter/test ve ön kayıt gerekir.
+
 Bu dosya ve [işlem araştırması sözleşmesi](TRADING_RESEARCH_CONTRACT_20261005.md) güncel karar kaynaklarıdır. `archive/` belgeleri tarihsel tanıklık/kanıttır; eski “sonraki deney” talimatları etkin değildir.
 
 - Son çalışma: **bölgesel WASDE T+1 deneyi tamamlandı:** 424 piyasa fit'i + ayrı 1 sentetik kontrol, dört kol × 1.254 origin, 5.016 tahmin. Seçilmiş sayısal D0/D1 Naive kazancı −%0,5229 / −%0,0107; iki blokta da üst sınır %5'in altında. Ham sayısal tahmin −%10,2134 / −%9,3435, 0/5 yıl kazanıyor. Kilitli karar: **FIXED_RECIPE_BELOW_PRACTICAL_GOAL; Naive korunur, aynı program büyütülmez.** 424 model çıkarımı ve 20 geçmiş seçim bağımsız doğrulandı; 2.682 eski dosya değişmedi. Kaynakta evrensel sinyal yokluğu veya gerçek saat onayı çıkarılmaz. [Sonuç, mekanizma ve sınırlar](WASDE_REGIONAL_T1_RESULT_20261008.md).

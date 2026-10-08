@@ -15502,6 +15502,36 @@
         "research/evidence/fas-historical-reference-environment-correction-20261008.json": "fc5411edb47dbff38226674d6ea23705fb488b173f4e7b050bd24f5ba606c390"
       },
       "id": "6d2ea11a5993bb73adbf3c8a01c4dcbeccfbabc3743cd80c569342ea95b91128"
+    },
+    {
+      "experiment": "fas-country-quarantine-v1",
+      "profile": "fas-country-quarantine-v1",
+      "kind": "no_fit_country_panel_preparation",
+      "horizon": null,
+      "code_id": "d67ca7f4c74a0d6901cc6484105a622f2fab38e7eb9dbbb8cbe4f74ded325176",
+      "data_id": "83e78277f5acda6ba36b0d78f18d8883480ce838a45bb2f92b172d2e3c8d8836",
+      "coverage": "752_weeks_4_codes_3008_quarantined_rows",
+      "independent_holdout": false,
+      "classification": "INCONCLUSIVE",
+      "reason": "Country arithmetic and integrity tested; no source admission, historical availability or market signal test",
+      "market_fits": 0,
+      "model_families": [],
+      "recipes": [],
+      "metrics": {},
+      "prediction_payload_exists": false,
+      "sources": {
+        "fas": {
+          "model_eligible": false,
+          "publication_verified": false,
+          "first_version_verified": false,
+          "availability_policy": "UNSET"
+        }
+      },
+      "payloads": {
+        "research/evidence/fas-country-preparation-20261008.json": "742057802bb57f969bec70cb2f193df5b545751ba4065c02d82dd24808681b03",
+        "research/evidence/fas-country-preparation-release-20261008.json": "ceafcbed846cad64d16f8ff6ff7f5d430dc6bc27001a6148b2b548304c6796cc"
+      },
+      "id": "539bda13ec43dc70feed294387d394541202fb4639107233e1f14fce7838ad8a"
     }
   ],
   "local_evidence": [
@@ -15632,6 +15662,14 @@
     {
       "path": "evidence/fas-historical-reference-environment-correction-20261008.json",
       "sha256": "fc5411edb47dbff38226674d6ea23705fb488b173f4e7b050bd24f5ba606c390"
+    },
+    {
+      "path": "evidence/fas-country-preparation-20261008.json",
+      "sha256": "742057802bb57f969bec70cb2f193df5b545751ba4065c02d82dd24808681b03"
+    },
+    {
+      "path": "evidence/fas-country-preparation-release-20261008.json",
+      "sha256": "ceafcbed846cad64d16f8ff6ff7f5d430dc6bc27001a6148b2b548304c6796cc"
     }
   ]
 }

@@ -98,6 +98,10 @@ Bu komut veritabanını silmez. Artifact kullanım/operasyon ayrıntıları [bel
 ## Araştırma araçları
 
 Sonraki iş **FAS ülke/commitment kabul denetimi**, yeni eğitim değildir.
+Bekleme sırasında [karantina ülke paneli](docs/FAS_COUNTRY_PREPARATION_20261008.md)
+hazırlandı: 752 hafta/3.008 satır, negatif satış ve bilinmeyenler korunur.
+29 Temmuz 2021 negatif stok bileşeni o haftanın stok paylarını tanımsız kılar.
+Bu panel eğitim girdisi değildir; kaynak kabulü, adapter/test ve ön kayıt kalır.
 Mevcut 15 ham kaynağın 752 haftalık ulusal toplamları doğrulandı.
 [İki haftalık ülke kontrolünde](docs/FAS_COUNTRY_REPORT_REVIEW_20261008.md) 24 alanın
 22'si eşleşti; Çin/Pakistan birikimli ihracatında −55/−53 balya fark korunur.
