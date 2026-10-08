@@ -3,6 +3,7 @@
 ## Güncel
 
 - [Durum ve kararlar](STATUS.md)
+- [FAS ülke raporu mutabakatı: iki küçük uyuşmazlık ve kapalı kaynak kabulü](FAS_COUNTRY_REPORT_REVIEW_20261008.md)
 - [İspat amacı ve yardımcı simülasyon sözleşmesi](TRADING_RESEARCH_CONTRACT_20261005.md)
 - [Fiyat anlamı, USDA eşleşmesi ve kontrat geçişi denetimi](PRICE_SEMANTICS_AUDIT_20261005.md)
 - [Bölgesel WASDE sayı/sürüm/zaman doğrulaması ve model kabul koruması](WASDE_REGIONAL_VERIFICATION_20261008.md)
