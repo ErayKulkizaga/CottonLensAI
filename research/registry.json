@@ -14982,6 +14982,30 @@
       "evidence_sha256": "4348b38f282437a27bca87f8e2ce1a7918d4ea3955336dfa74741737254e5eac",
       "reason": "Cotton values unchanged by repost and matched in independent academic table; pre-decision delivery bound not established. Not a market-skill experiment.",
       "id": "3626b2499b8c9fe0e016c0ddbb8b356bc733b47b96822c86e0d00026248a9ad1"
+    },
+    {
+      "experiment": "research-wasde-regional-t1-pilot-v1",
+      "profile": "wasde-regional-t1-pilot-v1",
+      "kind": "no_fit_preregistration",
+      "horizon": 1,
+      "coverage": "planned_2019_2023_1254_origins_four_arms",
+      "classification": "INCONCLUSIVE",
+      "model_families": [
+        "ridge"
+      ],
+      "recipes": [],
+      "completed_new_fits": 0,
+      "completed_experiment": false,
+      "planned_fits": 424,
+      "model_eligible": false,
+      "independent_holdout": false,
+      "code_id": "86329dfba9a5fb2090e90b85e078323181c2b1ef498f85500a2ca375c6b23fd0",
+      "registration_id": "985c35f68fde70b7060a71852d08b907cc4a5f22b50660f81ea22167d4c68063",
+      "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/wasde-regional-preregistration-20261008",
+      "evidence": "research/evidence/wasde-regional-preregistration-20261008.json",
+      "evidence_sha256": "9d11b6004f8818230a5488f8d8910193f0a8536cb6a8b778531934a5532f83e3",
+      "reason": "Frozen regional T+1 incremental-value design with identical missingness controls and explicit unverified availability/delay stress; zero fits, not a market negative.",
+      "id": "42cb1e8ce7869a81e4b017572c04831423944c62be8a7448f779547c450e35ba"
     }
   ],
   "local_evidence": [
@@ -15052,6 +15076,14 @@
     {
       "path": "evidence/wasde-clock-case-release-20261008.json",
       "sha256": "47b7b4cec5f1638da6d33d1360b0d8c209890cb75ec59314e3425f5dfc872d58"
+    },
+    {
+      "path": "evidence/wasde-regional-preregistration-20261008.json",
+      "sha256": "9d11b6004f8818230a5488f8d8910193f0a8536cb6a8b778531934a5532f83e3"
+    },
+    {
+      "path": "evidence/wasde-regional-preregistration-release-20261008.json",
+      "sha256": "a103c800328dbdaf5283d9db28a9eaebc369c26c73955e9359eb5d5bd7f5047a"
     }
   ]
 }

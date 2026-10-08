@@ -1,0 +1,110 @@
+{
+  "schema": 1,
+  "as_of": "2026-10-08",
+  "experiment": "research-wasde-regional-t1-pilot-v1",
+  "profile": "wasde-regional-t1-pilot-v1",
+  "kind": "no_fit_preregistration",
+  "release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/wasde-regional-preregistration-20261008",
+  "completed_preregistration": true,
+  "completed_experiment": false,
+  "fits": 0,
+  "ml_source_id": "86329dfba9a5fb2090e90b85e078323181c2b1ef498f85500a2ca375c6b23fd0",
+  "registration_id": "985c35f68fde70b7060a71852d08b907cc4a5f22b50660f81ea22167d4c68063",
+  "preregistered_sha256": "2e50411354c789f45b58f7506a731eaac5e3c98cb7186791085ae2797be60a1c",
+  "complete_sha256": "3e886d7a72e223c22bdb9b7289dfd20c00883c83f77625a9b8cc512011ce3da6",
+  "decision_contract": {
+    "schema": 1,
+    "registration_id": "985c35f68fde70b7060a71852d08b907cc4a5f22b50660f81ea22167d4c68063",
+    "preregistered_sha256": "2e50411354c789f45b58f7506a731eaac5e3c98cb7186791085ae2797be60a1c",
+    "frozen_before_market_fits": true,
+    "fits_completed": 0,
+    "primary": "selected numeric_D0 minus mask_D0 paired absolute price-error improvement; positive means numeric is better",
+    "gain_definition": "100 * (1 - numeric_MAE / comparator_MAE), on identical rows; positive means improvement",
+    "stress": "selected numeric_D1 versus mask_D1; never choose a delay using OOS",
+    "decision_precedence": [
+      {
+        "if": "any identity, row/target equality, source-time or payload verification fails",
+        "then": "INVALID; no scientific inference or further fitting until the failed check is resolved"
+      },
+      {
+        "if": "D0 and D1 paired improvement intervals both have lower bound > 0 for block 20 and 60, and D0 Naive point gain >= 5% and all-origin direction >= 53%",
+        "then": "CONDITIONAL_CANDIDATE; lock the recipe for real availability and prospective validation; not release eligible"
+      },
+      {
+        "if": "both numeric arms have Naive gain interval upper bound < 5% for block 20 and 60",
+        "then": "FIXED_RECIPE_BELOW_PRACTICAL_GOAL; retain Naive and stop enlarging this fixed program"
+      },
+      {
+        "if": "D0 and D1 paired improvement lower bounds > 0 for block 20 and 60, but practical point thresholds fail",
+        "then": "INCREMENTAL_BUT_BELOW_GOAL; record the contribution, no automatic model/source search"
+      },
+      {
+        "if": "D0 shows improvement but D1 does not support it, or intervals do not distinguish a useful effect",
+        "then": "INCONCLUSIVE_OR_DELAY_SENSITIVE; no post-hoc delay choice or automatic extra fits"
+      },
+      {
+        "if": "otherwise",
+        "then": "INCONCLUSIVE; report uncertainty without universal no-signal claims"
+      }
+    ],
+    "limitations": [
+      "Five reused years cannot satisfy the unchanged 6/8 full-year release rule.",
+      "Assumed availability is not verified publication or vintage availability.",
+      "Zero selected shrinkage and [0,0] differences test the selected rule, not absence of source information.",
+      "Raw, active-rate, annual, trimmed and age-subset results remain diagnostics, never substitutes for the primary.",
+      "Intervals do not account for every historical human/model/source selection."
+    ],
+    "automatic_release": false,
+    "historical_source_admitted": false
+  },
+  "decision_contract_sha256": "ae7a5f33bb9636db52a0cf5cba066c055994ca2a5a3988b0da4e4c7b1693b020",
+  "fit_budget": {
+    "inner": 180,
+    "outer": 244,
+    "total": 424,
+    "annual_outputs": 20,
+    "prediction_rows": 5016,
+    "processes": 1,
+    "threads": 2,
+    "session_minutes": 30
+  },
+  "planned_coverage": "2019-2023; 1254 common origins per arm; four arms",
+  "summary": {
+    "reports_in_candidate": 95,
+    "distinct_reports_in_oos_features": 60,
+    "minimum_distinct_reports_in_inner_training": 27,
+    "core_features": 24,
+    "numeric_features": 26,
+    "logical_features_each_arm": 52,
+    "transformed_columns_each_arm": 104,
+    "old_files_reverified": 2441,
+    "old_files_changed": 0
+  },
+  "availability_verified": false,
+  "model_eligible": false,
+  "independent_holdout": false,
+  "archive": {
+    "name": "wasde-regional-preregistration-20261008.zip",
+    "sha256": "c5a9175e8d1ca25ed611c0d726b41ccbad57048ac3f3a8cf6ebf4eaaea62a396",
+    "bytes": 4722892
+  },
+  "release_manifest_sha256": "a103c800328dbdaf5283d9db28a9eaebc369c26c73955e9359eb5d5bd7f5047a",
+  "checks": {
+    "fits_completed": 0,
+    "focused_ml": {
+      "passed": 71,
+      "failed": 0
+    },
+    "full_local_ml": {
+      "passed": 691,
+      "skipped": 3,
+      "failed": 0,
+      "seconds": 185.85
+    },
+    "ruff": "passed for the two new files",
+    "gpu_checks_run": false,
+    "backend_frontend_local_checks_run": false,
+    "reason": "no backend/frontend changes; CI checks them"
+  },
+  "limits": "Preregistration is complete; no engine profile, market predictions or fit receipts exist. Not market-performance evidence."
+}
