@@ -103,9 +103,11 @@ Mevcut 15 ham kaynağın 752 haftalık ulusal toplamları doğrulandı.
 22'si eşleşti; Çin/Pakistan birikimli ihracatında −55/−53 balya fark korunur.
 [Alt sınıf aralık kontrolü](docs/FAS_MAY28_VERSION_AUDIT_20261008.md) iki farkın
 yuvarlama varsayımıyla uyumlu olduğunu gösterdi; gerçek neden kanıtlanmadı.
-Sonraki tek test Çin'in 28 Mayıs özgün tam-balya değeridir; güncel API
-veya yalnız PDF araması bu sürüm ayrımını çözmez. Saat/vintage kanıtı ve
-kaynak kabulü tamamlanmadan özellikler eğitime alınmaz.
+[Tarihsel form denetimi](docs/FAS_HISTORICAL_REFERENCE_20261008.md) dört kod için
+2020 tanığı buldu; özgün Çin hücresi hâlâ dış kanıt bekliyor. Aynı PDF/form
+araması tekrarlanmaz. Sonraki tek test ilk yayın sürümüne bağlı kesin değerdir;
+güncel API bunun yerine geçmez. Saat/vintage ve kaynak kabulü tamamlanmadan
+özellikler eğitime alınmaz.
 [Güncel sıra ve durma koşulları](docs/RESEARCH_DATA_REENTRY_PLAN_20261005.md).
 WASDE pilotu, DXY/WTI saat deneyi ve eski FAS ulusal T+5 tarifleri tekrar açılmaz.
 
