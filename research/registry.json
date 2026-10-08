@@ -15481,6 +15481,27 @@
         "research/evidence/fas-historical-reference-release-20261008.json": "93e0b8d5447a645d5c82be877cdaebe8db44c5dee2ad0ee4f1f8cf31d8e50e84"
       },
       "id": "cbaa9b8296d716302900eb307141c3ae40afe5f5b120ffa64f05a826c2f1231c"
+    },
+    {
+      "experiment": "fas-historical-reference-environment-correction-v1",
+      "profile": "fas-historical-reference-environment-correction-v1",
+      "kind": "no_fit_environment_metadata_correction",
+      "horizon": null,
+      "code_id": "91f43a67917834a9c7ff90deb66c4b0e2bf1061791a1445dae6c3c1096b04299",
+      "data_id": "9bdd0306e59a9c49eabdb83580085fd72e51988b9e4807aedad50f9da3309219",
+      "coverage": "one_environment_metadata_field",
+      "classification": "INCONCLUSIVE",
+      "independent_holdout": false,
+      "reason": "Corrects false standard-library-only metadata; byte-identical numerical review remains reproducible in existing CPU environment",
+      "market_fits": 0,
+      "model_families": [],
+      "recipes": [],
+      "metrics": {},
+      "prediction_payload_exists": false,
+      "payloads": {
+        "research/evidence/fas-historical-reference-environment-correction-20261008.json": "fc5411edb47dbff38226674d6ea23705fb488b173f4e7b050bd24f5ba606c390"
+      },
+      "id": "6d2ea11a5993bb73adbf3c8a01c4dcbeccfbabc3743cd80c569342ea95b91128"
     }
   ],
   "local_evidence": [
@@ -15607,6 +15628,10 @@
     {
       "path": "evidence/fas-historical-reference-release-20261008.json",
       "sha256": "93e0b8d5447a645d5c82be877cdaebe8db44c5dee2ad0ee4f1f8cf31d8e50e84"
+    },
+    {
+      "path": "evidence/fas-historical-reference-environment-correction-20261008.json",
+      "sha256": "fc5411edb47dbff38226674d6ea23705fb488b173f4e7b050bd24f5ba606c390"
     }
   ]
 }

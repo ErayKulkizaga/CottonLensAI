@@ -82,3 +82,11 @@ sicil kaydı ve trials aynı; 435 tarif / 25.000 fit makbuzu değişmedi.
 96 ilgili test ve Ruff geçti. Gerçek piyasa/GPU eğitimi yapılmadı.
 15 arşiv üyesi ve 218 kaynak dosyası yeni dizinde checksum ile doğrulandı;
 o kaynaktan çevrimdışı tekrar, dondurulmuş incelemeyle tam JSON eşitliği verdi.
+
+**Ortam düzeltmesi:** V1 arşivindeki `environment.json` alanı
+`review_uses_standard_library_only=true` hatalıdır. Ortak `sprint.freeze_record`
+import'u NumPy/Pandas ve ML modüllerini yükler; yeniden üretim mevcut ayrı CPU
+ortamında doğrulandı. [Ek düzeltme kaydı](../research/evidence/fas-historical-reference-environment-correction-20261008.json)
+gerçek sürümleri ve V1 checksum bağını içerir; aynı Release'te ek varlıktır.
+V1 ve sayısal inceleme değiştirilmedi. Düzeltme ayrı sicil kaydıdır; toplam
+137 kayıt, 435 tarif / 25.000 fit makbuzu; yeni eğitim veya kurulum yok.

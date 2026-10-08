@@ -1,0 +1,43 @@
+{
+  "schema": 1,
+  "kind": "environment_metadata_correction",
+  "corrects_archive": {
+    "name": "fas-historical-reference-20261008-v1.zip",
+    "sha256": "a1cf67b34fe85dc7cdd9b1a0e4ba5cb4a7c2fc3c2bf9b49c39f71b88fbdec572",
+    "bytes": 3628428
+  },
+  "original_member": "environment.json",
+  "original_member_sha256": "745f51baab956726712b1b0deccd3078fa188b3837d9f5d9cd60965e1c786676",
+  "incorrect_field": {
+    "review_uses_standard_library_only": true
+  },
+  "corrected_field": {
+    "review_uses_standard_library_only": false
+  },
+  "reason": "review_fas_reference imports sprint.freeze_record; sprint imports NumPy/Pandas and common ML modules at import time",
+  "required_environment": "existing isolated CottonLensAI CPU environment or its declared CPU dependencies; no TensorFlow/CUDA required",
+  "verified_runtime_versions": {
+    "numpy": "2.1.3",
+    "pandas": "2.2.3",
+    "scipy": "1.18.1",
+    "scikit-learn": "1.6.1"
+  },
+  "python": "3.12.14",
+  "ml_source_id": "91f43a67917834a9c7ff90deb66c4b0e2bf1061791a1445dae6c3c1096b04299",
+  "restore_replay_in_verified_cpu_environment": {
+    "exit": 0,
+    "review_json_equal": true,
+    "members_verified": 15,
+    "source_files_verified": 218
+  },
+  "raw_data_or_numerical_review_changed": false,
+  "original_archive_retained": true,
+  "market_fits": 0,
+  "dependency_installations": 0,
+  "preservation": {
+    "previous_records_unchanged": 136,
+    "previous_evidence_unchanged": 30,
+    "trials_sha256": "52b15504c580eaa220bb57815045da55930e268b87e3595d9c13c4934b7e04ff"
+  },
+  "release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/fas-historical-reference-20261008"
+}
