@@ -1,0 +1,273 @@
+{
+  "schema": 1,
+  "as_of": "2026-10-08",
+  "experiment": "wasde-clock-case-20181211-v1",
+  "release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/wasde-clock-case-20261008",
+  "fits": 0,
+  "ml_source_id": "82a4d6fa5d06d8d6ecea6108da86ebac362d51235bbbd739cee63e9496197e21",
+  "report_sha256": "3ae5723f88b6846faf8c5c2297f39d55ae3bba8ea5bdc04556adcc8695535e6e",
+  "review_script_sha256": "e85ae08ac52693cea614b74a3c98dea73e7c030453d3b9ee188f6a195b041d49",
+  "summary": {
+    "report_date": "2018-12-11",
+    "first_decision_cutoff": "2018-12-12T00:15:00Z",
+    "fresh_pdf_xml_cells": 392,
+    "mismatches": 0,
+    "cotton_values_identical": true,
+    "university_base_cells_matched": 10,
+    "availability_verified": false,
+    "available_at": null,
+    "historical_model_eligible_rows": 0,
+    "old_files_reverified": 2190,
+    "old_files_changed": 0
+  },
+  "versions": [
+    {
+      "release_page_date": "2018-12-11",
+      "report_cover_date": "2018-12-11",
+      "source_sha256": {
+        "pdf": "fe3e6594557910407b9f66606d8164255d4111cf98cb7805e20f2646f308b4ac",
+        "xml": "3a4bac051ec804324f9b806063b654c01cb9d324aee2ca75c60f0b762fe0a654",
+        "page": "50a0ee98b2d5dac91e5f874bb26887387380aed8f31e551cc6e31309d4d5d2cf"
+      },
+      "source_urls": {
+        "pdf": "https://esmis.nal.usda.gov/sites/default/release-files/3t945q76s/0r967743q/g445cj002/latest.pdf",
+        "xml": "https://esmis.nal.usda.gov/sites/default/release-files/3t945q76s/0r967743q/h415pf206/latest.xml",
+        "page": "https://esmis.nal.usda.gov/publication/world-agricultural-supply-and-demand-estimates/2018-12-11"
+      },
+      "ingested_at": {
+        "pdf": "2026-09-29T08:00:31.961200+00:00",
+        "xml": "2026-09-29T07:52:17.278774+00:00",
+        "page": "2026-09-29T07:52:15.622592+00:00"
+      },
+      "values": {
+        "crop_year": 2018,
+        "world_production": 118.74,
+        "world_consumption": 125.63,
+        "world_ending_stocks": 73.19,
+        "us_production": 18.59,
+        "us_consumption": 3.3,
+        "us_exports": 15.0,
+        "us_ending_stocks": 4.4,
+        "china_consumption": 41.5,
+        "india_production": 27.5,
+        "brazil_production": 11.0,
+        "world_stock_use": 0.5825837777600892,
+        "world_production_use": 0.945156411685107,
+        "us_stock_use": 0.24043715846994537
+      },
+      "values_sha256": "68759c40c1baa9bead4f56fb3702a5ec1f13517957e3f74430aab480567ba91f",
+      "qualifiers": {
+        "world_production": "numeric",
+        "world_consumption": "numeric",
+        "world_ending_stocks": "numeric",
+        "us_production": "numeric",
+        "us_consumption": "numeric",
+        "us_exports": "numeric",
+        "us_ending_stocks": "numeric",
+        "china_consumption": "numeric",
+        "india_production": "numeric",
+        "brazil_production": "numeric"
+      },
+      "fresh_pdf_xml_comparison": {
+        "method": "pypdf fixed-column layout",
+        "compared_cells": 196,
+        "pdf_page_indexes": [
+          25,
+          26
+        ],
+        "pdf_sha256": "fe3e6594557910407b9f66606d8164255d4111cf98cb7805e20f2646f308b4ac",
+        "pdf_creation_metadata": "D:20181211102012-05'00'",
+        "pdf_modification_metadata": "D:20181211104324-05'00'",
+        "metadata_is_publication_evidence": false
+      },
+      "milk_2019_december_fat_basis": {
+        "commercial_exports": 11.0,
+        "domestic_commercial_use": 215.3
+      },
+      "milk_units": "billion pounds",
+      "milk_page_index": 32,
+      "publication_clock_verified": false,
+      "available_at": null
+    },
+    {
+      "release_page_date": "2018-12-14",
+      "report_cover_date": "2018-12-11",
+      "source_sha256": {
+        "pdf": "9742e770c1bb1beec45894dc5bec06a79aa156a3050970c6c8fefa9aeb7e0315",
+        "xml": "27ff2c80034616c654e2e46efbac801b751f539763178cd72ac6cd3ec3e2d00e",
+        "page": "efbb723047daaedbc44f82380ecac79d7cd98fb10f854169a56125334f44449e"
+      },
+      "source_urls": {
+        "pdf": "https://esmis.nal.usda.gov/sites/default/release-files/3t945q76s/4q77fw19m/kk91fq550/latest.pdf",
+        "xml": "https://esmis.nal.usda.gov/sites/default/release-files/3t945q76s/4q77fw19m/9k41zj60m/latest.xml",
+        "page": "https://esmis.nal.usda.gov/publication/world-agricultural-supply-and-demand-estimates/2018-12-14"
+      },
+      "ingested_at": {
+        "pdf": "2026-09-29T08:00:35.855209+00:00",
+        "xml": "2026-09-29T07:52:22.171496+00:00",
+        "page": "2026-09-29T07:52:20.453543+00:00"
+      },
+      "values": {
+        "crop_year": 2018,
+        "world_production": 118.74,
+        "world_consumption": 125.63,
+        "world_ending_stocks": 73.19,
+        "us_production": 18.59,
+        "us_consumption": 3.3,
+        "us_exports": 15.0,
+        "us_ending_stocks": 4.4,
+        "china_consumption": 41.5,
+        "india_production": 27.5,
+        "brazil_production": 11.0,
+        "world_stock_use": 0.5825837777600892,
+        "world_production_use": 0.945156411685107,
+        "us_stock_use": 0.24043715846994537
+      },
+      "values_sha256": "68759c40c1baa9bead4f56fb3702a5ec1f13517957e3f74430aab480567ba91f",
+      "qualifiers": {
+        "world_production": "numeric",
+        "world_consumption": "numeric",
+        "world_ending_stocks": "numeric",
+        "us_production": "numeric",
+        "us_consumption": "numeric",
+        "us_exports": "numeric",
+        "us_ending_stocks": "numeric",
+        "china_consumption": "numeric",
+        "india_production": "numeric",
+        "brazil_production": "numeric"
+      },
+      "fresh_pdf_xml_comparison": {
+        "method": "pypdf fixed-column layout",
+        "compared_cells": 196,
+        "pdf_page_indexes": [
+          25,
+          26
+        ],
+        "pdf_sha256": "9742e770c1bb1beec45894dc5bec06a79aa156a3050970c6c8fefa9aeb7e0315",
+        "pdf_creation_metadata": "D:20181214120921-05'00'",
+        "pdf_modification_metadata": "D:20181214121802-05'00'",
+        "metadata_is_publication_evidence": false
+      },
+      "milk_2019_december_fat_basis": {
+        "commercial_exports": 10.0,
+        "domestic_commercial_use": 216.3
+      },
+      "milk_units": "billion pounds",
+      "milk_page_index": 32,
+      "publication_clock_verified": false,
+      "available_at": null
+    }
+  ],
+  "university_value_corroboration": {
+    "url": "https://news.utcrops.com/wp-content/uploads/2018/12/Monthly-Crop-Outlook-12-11-18.pdf",
+    "source_sha256": "f003137dfb97875ffee1fa0225e5b4ccc8db35b6d94d941827611709b1d5145e",
+    "page_index": 5,
+    "values": {
+      "world_production": 118.74,
+      "world_consumption": 125.63,
+      "world_ending_stocks": 73.19,
+      "us_production": 18.59,
+      "us_consumption": 3.3,
+      "us_exports": 15.0,
+      "us_ending_stocks": 4.4,
+      "china_consumption": 41.5,
+      "india_production": 27.5,
+      "brazil_production": 11.0
+    },
+    "base_cells_matched": 10,
+    "metadata": {
+      "/Author": "Chuck Danehower",
+      "/Company": "Microsoft",
+      "/CreationDate": "D:20181212081942-05'00'",
+      "/Creator": "Acrobat PDFMaker 19 for Word",
+      "/Keywords": "",
+      "/ModDate": "D:20181212155518-06'00'",
+      "/Producer": "Adobe PDF Library 19.8.103",
+      "/SourceModified": "",
+      "/Subject": "",
+      "/Title": ""
+    },
+    "clock_evidence": false,
+    "reason": "Dated report/filename is not delivery proof. PDF creation/modification metadata is after first decision cutoff and is not publication."
+  },
+  "bounded_archive_queries": {
+    "cdx-cornell-december": {
+      "url": "https://web.archive.org/cdx/search/cdx",
+      "params": {
+        "url": "downloads.usda.library.cornell.edu/usda-esmis/files/3t945q76s/0r967743q/g445cj002/latest.pdf",
+        "from": "20181201",
+        "to": "20181231",
+        "output": "json",
+        "filter": "statuscode:200",
+        "fl": "timestamp,original,statuscode,mimetype,digest",
+        "limit": "50"
+      },
+      "requested_at": "2026-10-08T10:34:44.388907+00:00",
+      "historical_clock_proof": false,
+      "error": "ReadTimeout: HTTPSConnectionPool(host='web.archive.org', port=443): Read timed out. (read timeout=18)",
+      "finished_at": "2026-10-08T10:35:02.857301+00:00"
+    },
+    "cdx-usda-december": {
+      "url": "https://web.archive.org/cdx/search/cdx",
+      "params": {
+        "url": "www.usda.gov/oce/commodity/wasde/wasde1218.pdf",
+        "from": "20181201",
+        "to": "20181231",
+        "output": "json",
+        "filter": "statuscode:200",
+        "fl": "timestamp,original,statuscode,mimetype,digest",
+        "limit": "50"
+      },
+      "requested_at": "2026-10-08T10:34:25.903167+00:00",
+      "historical_clock_proof": false,
+      "error": "ReadTimeout: HTTPSConnectionPool(host='web.archive.org', port=443): Read timed out. (read timeout=18)",
+      "finished_at": "2026-10-08T10:34:44.388907+00:00"
+    },
+    "cdx-ut-december": {
+      "url": "https://web.archive.org/cdx/search/cdx",
+      "params": {
+        "url": "news.utcrops.com/wp-content/uploads/2018/12/Monthly-Crop-Outlook-12-11-18.pdf",
+        "from": "20181201",
+        "to": "20181231",
+        "output": "json",
+        "filter": "statuscode:200",
+        "fl": "timestamp,original,statuscode,mimetype,digest",
+        "limit": "50"
+      },
+      "requested_at": "2026-10-08T10:35:02.861133+00:00",
+      "historical_clock_proof": false,
+      "final_url": "https://web.archive.org/cdx/search/cdx?url=news.utcrops.com%2Fwp-content%2Fuploads%2F2018%2F12%2FMonthly-Crop-Outlook-12-11-18.pdf&from=20181201&to=20181231&output=json&filter=statuscode%3A200&fl=timestamp%2Coriginal%2Cstatuscode%2Cmimetype%2Cdigest&limit=50",
+      "status": 200,
+      "headers": {
+        "Date": "Thu, 08 Oct 2026 10:35:12 GMT",
+        "Content-Type": "application/json"
+      },
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "index_response": [],
+      "interpretation": "Index observation only; no records is not evidence of nonpublication.",
+      "finished_at": "2026-10-08T10:35:11.870852+00:00"
+    }
+  },
+  "limits": [
+    "No archive record is not proof of nonpublication; timeouts are unobserved index state.",
+    "Current migrated release-page time and PDF metadata are not historical delivery clocks.",
+    "Whole-PDF byte differences do not imply Cotton value revisions.",
+    "One report cannot establish point-in-time availability of all 95 reports.",
+    "This candidate was not admitted to completed historical fits; clock gap is not demonstrated cause of their losses."
+  ],
+  "decision": "Bounded verified-clock route not established; no automatic stamp, source import, fit or whole-history archive hunt.",
+  "next_single_step": "Pre-register ONE explicitly assumption-labelled regional WASDE incremental-value pilot against frozen Cotton core; existing balance/text T+5 runs are related evidence, not exact repeated recipe. No fit or model admission in this review.",
+  "verification": {
+    "focused_tests_passed": 20,
+    "new_fit_or_gpu_checks": false,
+    "code_changed": false
+  },
+  "archive": {
+    "name": "wasde-clock-case-20261008-v2.zip",
+    "sha256": "020fe9a56aae6ffeb3eccb0f474bf3df9afdc9801be961b872a84f8dd3906d9c",
+    "bytes": 5227000
+  },
+  "release_manifest_sha256": "47b7b4cec5f1638da6d33d1360b0d8c209890cb75ec59314e3425f5dfc872d58",
+  "environment_sha256": "b2a1250a919f7b1ff1796a205a249c1193efead964d3370d49c9271c526bbd75"
+}
