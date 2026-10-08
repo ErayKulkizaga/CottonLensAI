@@ -15448,6 +15448,39 @@
         "research/evidence/fas-may28-version-release-20261008.json": "31ea7316502dc7bfc5585958dbaa82319b6f0c78db3c32f989c6367c2ad1e35e"
       },
       "id": "bb4c9d779fb41a56c689c154259513398692e35003f94c36a067d7965809051e"
+    },
+    {
+      "experiment": "fas-historical-reference-witness-v1",
+      "profile": "fas-historical-reference-witness-v1",
+      "kind": "no_fit_historical_reference_and_cell_access_review",
+      "horizon": null,
+      "code_id": "91f43a67917834a9c7ff90deb66c4b0e2bf1061791a1445dae6c3c1096b04299",
+      "data_id": "17e906f1f4598ee74ac8bea661c2d9d0156a6d595a6f306e9f6cac7c297e731c",
+      "coverage": "2_archived_query_forms_4_country_code_pairs_1_headings_only_adjustment_week",
+      "independent_holdout": false,
+      "classification": "INCONCLUSIVE",
+      "reason": "Four historical code witnesses observed; original numerical cell still unavailable; no market negative or source admission",
+      "as_issued_cell_access": "BLOCKED_EXTERNAL_EVIDENCE",
+      "market_fits": 0,
+      "model_families": [],
+      "recipes": [],
+      "metrics": {},
+      "prediction_payload_exists": false,
+      "sources": {
+        "fas": {
+          "four_code_name_pairs_observed": true,
+          "full_historical_catalog_verified": false,
+          "publication_verified": false,
+          "first_version_verified": false,
+          "model_eligible": false
+        }
+      },
+      "payloads": {
+        "research/evidence/fas-historical-reference-review-20261008.json": "ab9077905a4c83e798cc239462fc7eb883ed838856b61ae43fe5c991c3f1e529",
+        "research/evidence/fas-as-issued-cell-access-20261008.json": "0ed0d95c45f3d6a4af2014e65963476fbed11dc33fe7da8c703b5bb7a06d0987",
+        "research/evidence/fas-historical-reference-release-20261008.json": "93e0b8d5447a645d5c82be877cdaebe8db44c5dee2ad0ee4f1f8cf31d8e50e84"
+      },
+      "id": "cbaa9b8296d716302900eb307141c3ae40afe5f5b120ffa64f05a826c2f1231c"
     }
   ],
   "local_evidence": [
@@ -15562,6 +15595,18 @@
     {
       "path": "evidence/fas-may28-version-release-20261008.json",
       "sha256": "31ea7316502dc7bfc5585958dbaa82319b6f0c78db3c32f989c6367c2ad1e35e"
+    },
+    {
+      "path": "evidence/fas-historical-reference-review-20261008.json",
+      "sha256": "ab9077905a4c83e798cc239462fc7eb883ed838856b61ae43fe5c991c3f1e529"
+    },
+    {
+      "path": "evidence/fas-as-issued-cell-access-20261008.json",
+      "sha256": "0ed0d95c45f3d6a4af2014e65963476fbed11dc33fe7da8c703b5bb7a06d0987"
+    },
+    {
+      "path": "evidence/fas-historical-reference-release-20261008.json",
+      "sha256": "93e0b8d5447a645d5c82be877cdaebe8db44c5dee2ad0ee4f1f8cf31d8e50e84"
     }
   ]
 }

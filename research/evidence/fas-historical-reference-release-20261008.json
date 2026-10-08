@@ -1,0 +1,74 @@
+{
+  "schema": 1,
+  "release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/fas-historical-reference-20261008",
+  "models_trained": 0,
+  "ml_source_id": "91f43a67917834a9c7ff90deb66c4b0e2bf1061791a1445dae6c3c1096b04299",
+  "archive": {
+    "name": "fas-historical-reference-20261008-v1.zip",
+    "sha256": "a1cf67b34fe85dc7cdd9b1a0e4ba5cb4a7c2fc3c2bf9b49c39f71b88fbdec572",
+    "bytes": 3628428
+  },
+  "members": {
+    "access-review.json": {
+      "sha256": "0ed0d95c45f3d6a4af2014e65963476fbed11dc33fe7da8c703b5bb7a06d0987",
+      "bytes": 8238
+    },
+    "adjustments-20200604.html": {
+      "sha256": "8d25bfb01494a443264acb41c8197567d4c78834fe269431891d3eb463080a72",
+      "bytes": 73347
+    },
+    "environment.json": {
+      "sha256": "745f51baab956726712b1b0deccd3078fa188b3837d9f5d9cd60965e1c786676",
+      "bytes": 287
+    },
+    "manual.pdf": {
+      "sha256": "a8448537758c90dbe07ecc631c71601aecf3d8f898f130f2c996297bad2930b7",
+      "bytes": 3178757
+    },
+    "README.txt": {
+      "sha256": "ba82a6b417a199a09c9bec3fa411984a29f0b49f743877f29c80046e86286139",
+      "bytes": 901
+    },
+    "reference-review-v1.json": {
+      "sha256": "ab9077905a4c83e798cc239462fc7eb883ed838856b61ae43fe5c991c3f1e529",
+      "bytes": 3239
+    },
+    "retrievals.json": {
+      "sha256": "c82f3602ac81d5c7d9d6f2e4bce89a102c97996ebafd3a9294b5ce1402a3ce20",
+      "bytes": 1797
+    },
+    "review-source.zip": {
+      "sha256": "c0030fe288b1f25c21e070b46b64f2c3907c7c71246fa11a9140152a4f04a6e1",
+      "bytes": 679421
+    },
+    "review-source.zip.sha256": {
+      "sha256": "feccdf6ea1614ef24f961b4b4d03ae53194b5f4058bffa435f282b0629f0b294",
+      "bytes": 85
+    },
+    "wayback-form-retrieval.json": {
+      "sha256": "41fc452fa61dab50881d71869ae11dffee29005b56eb5401fa46b08d40ec4c39",
+      "bytes": 905
+    },
+    "wayback-preperiod-retrieval.json": {
+      "sha256": "d88bc81949c63fabd45203523b56cb6ccacc6c441221c5c6d16d546f6b47702e",
+      "bytes": 905
+    },
+    "wayback-query-form-20200417.html": {
+      "sha256": "a9bb9fcc823bfc0b5046e932c323380df254c574057276b34d5992469b12a0d1",
+      "bytes": 65136
+    },
+    "wayback-query-form-20200701.html": {
+      "sha256": "9628062cb01e5bb9b791fa3ef625ce56ced2d9fb15c1935984b2ad4a2d519e51",
+      "bytes": 65136
+    },
+    "wayback-query-index.html": {
+      "sha256": "bdd1ddf3b8953042cd8657b5e3806f1c2968219d78c771dbb2886dcc27613960",
+      "bytes": 1254
+    },
+    "manifest.json": {
+      "sha256": "d0a4cc77336d7e4ac163da5eacf30ae00c9bbd08678cbc677a63e1cf9e960915",
+      "bytes": 2187
+    }
+  },
+  "scope": "historical reference witnesses; no numerical/source/vintage promotion"
+}

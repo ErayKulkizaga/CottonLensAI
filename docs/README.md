@@ -3,6 +3,7 @@
 ## Güncel
 
 - [Durum ve kararlar](STATUS.md)
+- [FAS tarihsel kod tanığı ve özgün hücre için dış kanıt sınırı](FAS_HISTORICAL_REFERENCE_20261008.md)
 - [FAS 28 Mayıs: alt sınıf yuvarlaması, sürüm belirsizliği ve tek ayırıcı hücre](FAS_MAY28_VERSION_AUDIT_20261008.md)
 - [FAS ülke raporu mutabakatı: iki küçük uyuşmazlık ve kapalı kaynak kabulü](FAS_COUNTRY_REPORT_REVIEW_20261008.md)
 - [İspat amacı ve yardımcı simülasyon sözleşmesi](TRADING_RESEARCH_CONTRACT_20261005.md)

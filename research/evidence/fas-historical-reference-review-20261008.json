@@ -1,0 +1,85 @@
+{
+  "scope": "four code/name witnesses in two archived public query forms",
+  "observation_date": "2020-05-28",
+  "index_sha256": "bdd1ddf3b8953042cd8657b5e3806f1c2968219d78c771dbb2886dcc27613960",
+  "review_code_sha256": "bdd890ea9687b8291a237c2011e3de6ac6e29f0141a940d4daf03989397879a7",
+  "snapshots": [
+    {
+      "archive_capture_timestamp_literal": "20200417213154",
+      "original_url": "https://apps.fas.usda.gov/esrquery/esrq.aspx",
+      "archive_url": "https://web.archive.org/web/20200417213154id_/https://apps.fas.usda.gov/esrquery/esrq.aspx",
+      "sha256": "a9bb9fcc823bfc0b5046e932c323380df254c574057276b34d5992469b12a0d1",
+      "receipt_sha256": "d88bc81949c63fabd45203523b56cb6ccacc6c441221c5c6d16d546f6b47702e",
+      "pairs": [
+        {
+          "label": "CHINA, PEOPLES REPUBLIC OF",
+          "country_code": 5700,
+          "literal_option_value": "7:5700"
+        },
+        {
+          "label": "VIETNAM",
+          "country_code": 5520,
+          "literal_option_value": "9:5520"
+        },
+        {
+          "label": "TURKEY",
+          "country_code": 4890,
+          "literal_option_value": "2:4890"
+        },
+        {
+          "label": "PAKISTAN",
+          "country_code": 5350,
+          "literal_option_value": "9:5350"
+        }
+      ],
+      "cdx_payload_digest_matches": true,
+      "commodity_code": 1404,
+      "commodity_label": "All Upland Cotton",
+      "archive_timestamp_is_usda_publication_proof": false
+    },
+    {
+      "archive_capture_timestamp_literal": "20200701005521",
+      "original_url": "https://apps.fas.usda.gov/esrquery/esrq.aspx",
+      "archive_url": "https://web.archive.org/web/20200701005521id_/https://apps.fas.usda.gov/esrquery/esrq.aspx",
+      "sha256": "9628062cb01e5bb9b791fa3ef625ce56ced2d9fb15c1935984b2ad4a2d519e51",
+      "receipt_sha256": "41fc452fa61dab50881d71869ae11dffee29005b56eb5401fa46b08d40ec4c39",
+      "pairs": [
+        {
+          "label": "CHINA, PEOPLES REPUBLIC OF",
+          "country_code": 5700,
+          "literal_option_value": "7:5700"
+        },
+        {
+          "label": "VIETNAM",
+          "country_code": 5520,
+          "literal_option_value": "9:5520"
+        },
+        {
+          "label": "TURKEY",
+          "country_code": 4890,
+          "literal_option_value": "2:4890"
+        },
+        {
+          "label": "PAKISTAN",
+          "country_code": 5350,
+          "literal_option_value": "9:5350"
+        }
+      ],
+      "cdx_payload_digest_matches": true,
+      "commodity_code": 1404,
+      "commodity_label": "All Upland Cotton",
+      "archive_timestamp_is_usda_publication_proof": false
+    }
+  ],
+  "four_code_name_pairs_observed": true,
+  "continuous_validity_between_snapshots_verified": false,
+  "full_historical_catalog_verified": false,
+  "unit_verified": false,
+  "exact_accumulated_exports_cell_verified": false,
+  "publication_timestamp_verified": false,
+  "first_version_verified": false,
+  "model_eligible": false,
+  "market_fits": 0,
+  "decision": "Historical reference witnesses only; no numerical cell or vintage admission",
+  "record_id": "0362a77c81ad6340702d212db7b58f9af1865c2315faae31f1929e5d29c8adc8"
+}

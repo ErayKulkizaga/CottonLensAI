@@ -35,6 +35,7 @@ python ml/history.py check --query availability
 python ml/history.py check --query trading --horizon 1
 python ml/history.py check --query wasde-regional
 python ml/history.py check --query fas-country
+python ml/history.py check --query fas-historical-reference
 python ml/history.py check --feature fas --horizon 1
 python ml/history.py check --feature fas --horizon 5
 python ml/history.py check --query wasde-regional-numeric-verification
@@ -112,3 +113,5 @@ Mevcut ham kaynaklar, model/checkpoint'ler, ledger'lar, tahminler, raporlar, kay
 İndirme/restore komutları ana README'de. Restore araçları model/pickle çalıştırmaz. Başarısız checksum, tehlikeli yol veya mevcut hedef dosya üzerine yazma girişimi durur. Restore edilen eski bilimsel snapshot yeni kodla otomatik devam ettirilmez.
 
 Eski `research-v2-tf-placement` için 7.331 fit ve kısmi on-call için 102 fit makbuzunun model payload kopyaları yerelde yok: toplam 22.299 dosya referansı. Makbuzlar/tahmin kanıtı korunur; bunlar yeniden kullanılabilir tam checkpoint gibi gösterilmez. Yeni zamanlama deneyinin 6.157 dosyası checksum doğrulamasıyla geri kurulmuştur. Kaybolan eski dosyalar yeni eğitimle yeniden üretilmedi.
+
+`fas-historical-reference-witness-v1`: iki 2020 arşiv formundaki dört kod için sıfır-fit tanık denetimi; özgün hücre erişimi `BLOCKED_EXTERNAL_EVIDENCE`. Aynı PDF/form/tek boş sorgu yeni deney diye tekrar açılmaz. Kapsam ve çevrimdışı `ml/review_fas_reference.py` komutu için [tarihsel tanık raporu](../docs/FAS_HISTORICAL_REFERENCE_20261008.md).
