@@ -36,6 +36,18 @@ hesaplaması veya başka bir nedenden geldiği **belirlenmedi**. Sınır yalnız
 Bu büyüklükteki farkın önceki tahmin başarısızlığını açıkladığı gösterilmedi.
 Hiçbir API/PDF değeri değiştirilmedi veya “düzeltilmiş veri” diye yeniden yazılmadı.
 
+### Karşı kanıt: basılı alt sınıfların yuvarlaması
+
+Aynı 28 Mayıs PDF'sinin 31–33. sayfalarında Çin'in accumulated değerleri
+1.472,8 + 5,5 + 0,4 = 1.478,7; Pakistan'ın 1.720,6 + 40,4 + 0,0 = 1.761,0
+(bin running bale). Bunlar basılı All Upland değerine eşittir. Alt sınıfların
+ayrı yuvarlanıp toplanması, tek sayı için ±50 sınırını aşabilen bir açıklamadır;
+kesin API alt sınıf değerleri ve rapor hesaplama yöntemi olmadığından **neden
+kanıtı değildir**. Basılı toplamı değiştirmek veya toleransı otomatik genişletmek
+için kullanılmadı. İki başarısız kontrol, tek başına revizyon/veri bozulması
+kanıtı olarak yorumlanmamalıdır. Özgün yayın sürümü incelemesinde bu alt sınıf
+değerleri/hesaplama kuralı da kontrol edilir; mevcut uyuşmazlık kaydı korunur.
+
 ## Tamamlanmayan kontroller ve tek sonraki iş
 
 Haftalık exports/netSales basılı ülke değerleri doğrulanmadı; ardışık
