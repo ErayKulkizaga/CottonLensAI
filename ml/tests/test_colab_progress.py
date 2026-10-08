@@ -4,6 +4,7 @@ import os
 import subprocess
 import sys
 import threading
+import time
 from pathlib import Path
 
 import pytest
@@ -27,7 +28,16 @@ def test_silent_child_has_heartbeat_and_mirrored_log(tmp_path):
     assert len(updates) > 3
     assert any('Starting or loading' in message for message in updates)
     assert any('elasticnet T+5 fold 6/8' in message for message in updates)
-    assert 'candidate=24/24' in Path(result['drive_log']).read_text()
+    assert 'candidate=24/24' in Path(result['local_log']).read_text()
+    # The short synthetic heartbeat allows supervise to return with final
+    # Drive sync still pending. Verify eventual mirroring, not thread timing.
+    target = Path(result['drive_log'])
+    deadline = time.monotonic() + 5
+    while time.monotonic() < deadline:
+        if target.exists() and 'candidate=24/24' in target.read_text():
+            break
+        time.sleep(.01)
+    assert target.exists() and 'candidate=24/24' in target.read_text(), updates[-1]
 
 
 def test_failure_preserves_trace(tmp_path):

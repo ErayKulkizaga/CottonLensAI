@@ -72,3 +72,10 @@ Yerel doğrulama: 739 ML testi geçti, 3 test atlandı; Ruff ve sicil doğrulama
 geçti. Release'in 19 üyesi ve 215 kaynak dosyası ayrı dizinlere checksum ile
 geri kuruldu; çevrimdışı tekrar aynı kayıt gövdesini ve beklenen exit 2
 sonucunu üretti. GPU ve gerçek piyasa eğitimi çalıştırılmadı.
+
+PR CI'sinde mevcut log testi, asenkron Drive kopyası henüz bitmeden okuma
+yaparak bir kez başarısız oldu; aynı ilk commit'in diğer iki CI çalışması
+geçti. Test artık yerel kaydı hemen, Drive kopyasını en fazla 5 saniyede
+doğruluyor; supervision/eğitim kodu değişmedi. Kanıt Release'inin kaynak
+snapshot'ı incelemenin yürütüldüğü `fb4f1a71343e4d95f961f9d091d502a7ff58effe`
+commit'ine aittir; sonraki yalnız-test düzeltmesi donmuş kanıtı değiştirmez.
