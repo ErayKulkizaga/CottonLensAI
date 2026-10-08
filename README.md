@@ -98,8 +98,11 @@ Bu komut veritabanını silmez. Artifact kullanım/operasyon ayrıntıları [bel
 ## Araştırma araçları
 
 Sonraki iş **FAS ülke/commitment kabul denetimi**, yeni eğitim değildir.
-Mevcut 15 ham kaynağın 752 haftalık ulusal toplamları yeniden doğrulandı;
-ülke kod/ad ve rapor/vintage eşleştirmesi tamamlanmadan özellikler kabul edilmez.
+Mevcut 15 ham kaynağın 752 haftalık ulusal toplamları doğrulandı.
+[İki haftalık ülke kontrolünde](docs/FAS_COUNTRY_REPORT_REVIEW_20261008.md) 24 alanın
+22'si eşleşti; Çin/Pakistan birikimli ihracatında −55/−53 balya fark korunur.
+Sonraki iş bu farkın özgün yayın sürümüyle incelenmesidir; saat/vintage
+kanıtı ve kaynak kabulü tamamlanmadan özellikler eğitime alınmaz.
 [Güncel sıra ve durma koşulları](docs/RESEARCH_DATA_REENTRY_PLAN_20261005.md).
 WASDE pilotu, DXY/WTI saat deneyi ve eski FAS ulusal T+5 tarifleri tekrar açılmaz.
 

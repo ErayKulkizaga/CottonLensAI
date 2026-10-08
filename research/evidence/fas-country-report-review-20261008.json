@@ -1,0 +1,612 @@
+{
+  "scope": "observed public archive responses, not a historical publication ledger",
+  "year": 2020,
+  "index": {
+    "source_url": "https://apps.fas.usda.gov/esrqs/api/reports/GetArchivedWeeklyReportsList?selectedYear=2020",
+    "sha256": "7b527026b4870c6e84f3698aae0cae6e045e7128148c20702f26bbd5be12dc98",
+    "retrieved_at": "2026-10-01T12:36:15.724199+00:00",
+    "receipt_sha256": "13757643ef9bf83682afd368b56f78bcbb2de724b72cc74e57be82aac9a8d1d0"
+  },
+  "index_rows": 52,
+  "placeholder_created_time_rows": 52,
+  "responses": [
+    {
+      "archive_id": "2248fde3-edca-41ba-99a5-0274a21e9a7c",
+      "requested_index_week_ending": "2020-06-04",
+      "pdf_report_period_end": "2020-06-04",
+      "content_identity_status": "historical_period_unverified",
+      "index_date_equals_pdf_period_end": true,
+      "index_date_semantics_verified": false,
+      "numeric_reconciliation_allowed": true,
+      "created_time_literal": "0001-01-01T00:00:00",
+      "publication_timestamp_verified": false,
+      "vintage_verified": false,
+      "model_eligible": false,
+      "cotton_content_comparison": {
+        "observation_date": "2020-06-04",
+        "unit": "running_bales",
+        "rounding_half_width": 50,
+        "totals": {
+          "outstandingSales": 5115600,
+          "accumulatedExports": 11609700,
+          "nextMYOutstandingSales": 3027700
+        },
+        "scope": "TOTAL KNOWN & UNKNOWN; own-account exports excluded",
+        "country_rows": 37,
+        "api_commodity_code": 1404,
+        "api_unit_id": 2,
+        "comparisons": {
+          "outstandingSales": {
+            "api_total": 5115630,
+            "pdf_printed_total": 5115600,
+            "difference_bales": 30,
+            "within_printed_precision": true
+          },
+          "accumulatedExports": {
+            "api_total": 11609744,
+            "pdf_printed_total": 11609700,
+            "difference_bales": 44,
+            "within_printed_precision": true
+          },
+          "nextMYOutstandingSales": {
+            "api_total": 3027694,
+            "pdf_printed_total": 3027700,
+            "difference_bales": -6,
+            "within_printed_precision": true
+          }
+        },
+        "unit_basis": "pinned 1404 commodity catalog and same-commodity PDF running-bale table",
+        "content_matches_at_printed_precision": true,
+        "publication_timestamp_verified": false,
+        "vintage_verified": false,
+        "model_eligible": false
+      },
+      "numeric_reconciliation_scope": "content_diagnostic_only_not_publication_or_vintage",
+      "country_stock_comparison": {
+        "observation_date": "2020-06-04",
+        "unit": "running_bales",
+        "countries": [
+          {
+            "name": "China",
+            "code": 5700,
+            "iso": "CN",
+            "report_label": "CHINA",
+            "comparisons": {
+              "outstandingSales": {
+                "api_value": 1816369,
+                "report_printed_value": 1816400,
+                "difference_bales": -31,
+                "rounding_half_width": 50,
+                "within_printed_precision": true
+              },
+              "accumulatedExports": {
+                "api_value": 1565019,
+                "report_printed_value": 1565000,
+                "difference_bales": 19,
+                "rounding_half_width": 50,
+                "within_printed_precision": true
+              },
+              "nextMYOutstandingSales": {
+                "api_value": 906168,
+                "report_printed_value": 906200,
+                "difference_bales": -32,
+                "rounding_half_width": 50,
+                "within_printed_precision": true
+              }
+            },
+            "commitment_api_value": 3381388,
+            "commitment_is_derived_not_separately_printed": true,
+            "all_stock_values_match": true
+          },
+          {
+            "name": "Vietnam",
+            "code": 5520,
+            "iso": "VN",
+            "report_label": "VIETNAM",
+            "comparisons": {
+              "outstandingSales": {
+                "api_value": 811339,
+                "report_printed_value": 811300,
+                "difference_bales": 39,
+                "rounding_half_width": 50,
+                "within_printed_precision": true
+              },
+              "accumulatedExports": {
+                "api_value": 2874016,
+                "report_printed_value": 2874000,
+                "difference_bales": 16,
+                "rounding_half_width": 50,
+                "within_printed_precision": true
+              },
+              "nextMYOutstandingSales": {
+                "api_value": 466921,
+                "report_printed_value": 466900,
+                "difference_bales": 21,
+                "rounding_half_width": 50,
+                "within_printed_precision": true
+              }
+            },
+            "commitment_api_value": 3685355,
+            "commitment_is_derived_not_separately_printed": true,
+            "all_stock_values_match": true
+          },
+          {
+            "name": "Turkey",
+            "code": 4890,
+            "iso": "TR",
+            "report_label": "TURKEY",
+            "comparisons": {
+              "outstandingSales": {
+                "api_value": 472244,
+                "report_printed_value": 472200,
+                "difference_bales": 44,
+                "rounding_half_width": 50,
+                "within_printed_precision": true
+              },
+              "accumulatedExports": {
+                "api_value": 1305952,
+                "report_printed_value": 1306000,
+                "difference_bales": -48,
+                "rounding_half_width": 50,
+                "within_printed_precision": true
+              },
+              "nextMYOutstandingSales": {
+                "api_value": 203597,
+                "report_printed_value": 203600,
+                "difference_bales": -3,
+                "rounding_half_width": 50,
+                "within_printed_precision": true
+              }
+            },
+            "commitment_api_value": 1778196,
+            "commitment_is_derived_not_separately_printed": true,
+            "all_stock_values_match": true
+          },
+          {
+            "name": "Pakistan",
+            "code": 5350,
+            "iso": "PK",
+            "report_label": "PAKISTN",
+            "comparisons": {
+              "outstandingSales": {
+                "api_value": 334203,
+                "report_printed_value": 334200,
+                "difference_bales": 3,
+                "rounding_half_width": 50,
+                "within_printed_precision": true
+              },
+              "accumulatedExports": {
+                "api_value": 1793350,
+                "report_printed_value": 1793400,
+                "difference_bales": -50,
+                "rounding_half_width": 50,
+                "within_printed_precision": true
+              },
+              "nextMYOutstandingSales": {
+                "api_value": 167380,
+                "report_printed_value": 167400,
+                "difference_bales": -20,
+                "rounding_half_width": 50,
+                "within_printed_precision": true
+              }
+            },
+            "commitment_api_value": 2127553,
+            "commitment_is_derived_not_separately_printed": true,
+            "all_stock_values_match": true
+          }
+        ],
+        "direct_stock_checks": 12,
+        "all_stock_values_match": true,
+        "national_stock_values_match": true,
+        "reference_basis": "four current Census Schedule C code/name/ISO pairs; not full historical FAS catalog",
+        "weekly_exports_verified": false,
+        "weekly_net_sales_verified": false,
+        "historical_code_validity_verified": false,
+        "publication_timestamp_verified": false,
+        "first_version_verified": false,
+        "model_eligible": false,
+        "release_allowed": false
+      },
+      "source_url": "https://apps.fas.usda.gov/esrqs/api/reports/GetPdfFile?Id=2248fde3-edca-41ba-99a5-0274a21e9a7c",
+      "sha256": "52294267f5f00b1edb1f106f637a9dfcef2554e1392894dfe10f6e890bc68df2",
+      "retrieved_at": "2026-10-01T13:00:35.507050+00:00",
+      "receipt_sha256": "ecd1c4211f94380bc1a575a36ce747505bc27e4e692780fe29a078a77da16d32",
+      "pdf_pages": 60,
+      "pdf_creation_date_literal": "D:20200610163559-04'00'"
+    },
+    {
+      "archive_id": "6b702a17-3665-4769-afd3-36decce617ad",
+      "requested_index_week_ending": "2020-05-28",
+      "pdf_report_period_end": "2020-05-28",
+      "content_identity_status": "historical_period_unverified",
+      "index_date_equals_pdf_period_end": true,
+      "index_date_semantics_verified": false,
+      "numeric_reconciliation_allowed": true,
+      "created_time_literal": "0001-01-01T00:00:00",
+      "publication_timestamp_verified": false,
+      "vintage_verified": false,
+      "model_eligible": false,
+      "cotton_content_comparison": {
+        "observation_date": "2020-05-28",
+        "unit": "running_bales",
+        "rounding_half_width": 50,
+        "totals": {
+          "outstandingSales": 5010300,
+          "accumulatedExports": 11315400,
+          "nextMYOutstandingSales": 2834300
+        },
+        "scope": "TOTAL KNOWN & UNKNOWN; own-account exports excluded",
+        "country_rows": 37,
+        "api_commodity_code": 1404,
+        "api_unit_id": 2,
+        "comparisons": {
+          "outstandingSales": {
+            "api_total": 5010336,
+            "pdf_printed_total": 5010300,
+            "difference_bales": 36,
+            "within_printed_precision": true
+          },
+          "accumulatedExports": {
+            "api_total": 11315417,
+            "pdf_printed_total": 11315400,
+            "difference_bales": 17,
+            "within_printed_precision": true
+          },
+          "nextMYOutstandingSales": {
+            "api_total": 2834271,
+            "pdf_printed_total": 2834300,
+            "difference_bales": -29,
+            "within_printed_precision": true
+          }
+        },
+        "unit_basis": "pinned 1404 commodity catalog and same-commodity PDF running-bale table",
+        "content_matches_at_printed_precision": true,
+        "publication_timestamp_verified": false,
+        "vintage_verified": false,
+        "model_eligible": false
+      },
+      "numeric_reconciliation_scope": "content_diagnostic_only_not_publication_or_vintage",
+      "country_stock_comparison": {
+        "observation_date": "2020-05-28",
+        "unit": "running_bales",
+        "countries": [
+          {
+            "name": "China",
+            "code": 5700,
+            "iso": "CN",
+            "report_label": "CHINA",
+            "comparisons": {
+              "outstandingSales": {
+                "api_value": 1693199,
+                "report_printed_value": 1693200,
+                "difference_bales": -1,
+                "rounding_half_width": 50,
+                "within_printed_precision": true
+              },
+              "accumulatedExports": {
+                "api_value": 1478645,
+                "report_printed_value": 1478700,
+                "difference_bales": -55,
+                "rounding_half_width": 50,
+                "within_printed_precision": false
+              },
+              "nextMYOutstandingSales": {
+                "api_value": 744512,
+                "report_printed_value": 744500,
+                "difference_bales": 12,
+                "rounding_half_width": 50,
+                "within_printed_precision": true
+              }
+            },
+            "commitment_api_value": 3171844,
+            "commitment_is_derived_not_separately_printed": true,
+            "all_stock_values_match": false
+          },
+          {
+            "name": "Vietnam",
+            "code": 5520,
+            "iso": "VN",
+            "report_label": "VIETNAM",
+            "comparisons": {
+              "outstandingSales": {
+                "api_value": 702558,
+                "report_printed_value": 702600,
+                "difference_bales": -42,
+                "rounding_half_width": 50,
+                "within_printed_precision": true
+              },
+              "accumulatedExports": {
+                "api_value": 2806609,
+                "report_printed_value": 2806600,
+                "difference_bales": 9,
+                "rounding_half_width": 50,
+                "within_printed_precision": true
+              },
+              "nextMYOutstandingSales": {
+                "api_value": 444921,
+                "report_printed_value": 444900,
+                "difference_bales": 21,
+                "rounding_half_width": 50,
+                "within_printed_precision": true
+              }
+            },
+            "commitment_api_value": 3509167,
+            "commitment_is_derived_not_separately_printed": true,
+            "all_stock_values_match": true
+          },
+          {
+            "name": "Turkey",
+            "code": 4890,
+            "iso": "TR",
+            "report_label": "TURKEY",
+            "comparisons": {
+              "outstandingSales": {
+                "api_value": 517633,
+                "report_printed_value": 517600,
+                "difference_bales": 33,
+                "rounding_half_width": 50,
+                "within_printed_precision": true
+              },
+              "accumulatedExports": {
+                "api_value": 1249481,
+                "report_printed_value": 1249500,
+                "difference_bales": -19,
+                "rounding_half_width": 50,
+                "within_printed_precision": true
+              },
+              "nextMYOutstandingSales": {
+                "api_value": 203597,
+                "report_printed_value": 203600,
+                "difference_bales": -3,
+                "rounding_half_width": 50,
+                "within_printed_precision": true
+              }
+            },
+            "commitment_api_value": 1767114,
+            "commitment_is_derived_not_separately_printed": true,
+            "all_stock_values_match": true
+          },
+          {
+            "name": "Pakistan",
+            "code": 5350,
+            "iso": "PK",
+            "report_label": "PAKISTN",
+            "comparisons": {
+              "outstandingSales": {
+                "api_value": 353363,
+                "report_printed_value": 353400,
+                "difference_bales": -37,
+                "rounding_half_width": 50,
+                "within_printed_precision": true
+              },
+              "accumulatedExports": {
+                "api_value": 1760947,
+                "report_printed_value": 1761000,
+                "difference_bales": -53,
+                "rounding_half_width": 50,
+                "within_printed_precision": false
+              },
+              "nextMYOutstandingSales": {
+                "api_value": 167380,
+                "report_printed_value": 167400,
+                "difference_bales": -20,
+                "rounding_half_width": 50,
+                "within_printed_precision": true
+              }
+            },
+            "commitment_api_value": 2114310,
+            "commitment_is_derived_not_separately_printed": true,
+            "all_stock_values_match": false
+          }
+        ],
+        "direct_stock_checks": 12,
+        "all_stock_values_match": false,
+        "national_stock_values_match": true,
+        "reference_basis": "four current Census Schedule C code/name/ISO pairs; not full historical FAS catalog",
+        "weekly_exports_verified": false,
+        "weekly_net_sales_verified": false,
+        "historical_code_validity_verified": false,
+        "publication_timestamp_verified": false,
+        "first_version_verified": false,
+        "model_eligible": false,
+        "release_allowed": false
+      },
+      "source_url": "https://apps.fas.usda.gov/esrqs/api/reports/GetPdfFile?Id=6b702a17-3665-4769-afd3-36decce617ad",
+      "sha256": "1905ec8bcef929c29d4a2dcd9ebd1af3d3e8e1de55335aa6b0754910054ea51a",
+      "retrieved_at": "2026-10-01T13:00:36.428472+00:00",
+      "receipt_sha256": "a97ecd8b7831ad1ee3f366409d70043d3c696d4ed1814474af2ecdb8463c9c22",
+      "pdf_pages": 51,
+      "pdf_creation_date_literal": "D:20200603162424-04'00'"
+    }
+  ],
+  "distinct_pdf_payloads": 2,
+  "pdf_parser": {
+    "name": "pypdf",
+    "version": "6.10.0",
+    "page": 1
+  },
+  "review_code_sha256": "09086fa5e83b4f6bc6ebef43097b21acdea1dd25cf129ed21387650645c1dc8a",
+  "identity_code_sha256": "5c5175f58acdb5b816b5ab9e08ec7d71e7833ac7da0cd03c46e1a265982ab2f0",
+  "model_eligible": false,
+  "publication_timestamp_verified": false,
+  "numeric_inputs": {
+    "api_snapshot_sha256": "9973f506fa67950687cb3f945c36cf601ed3cf8c49420ee2ada45bfc52ad3c83",
+    "commodity_catalog_sha256": "38449fd690f631f2cabc4cca7373e9923487680ae242efd0ec12a36de49b811b"
+  },
+  "country_reference": {
+    "source_url": "https://www.census.gov/foreign-trade/schedules/c/countrycodes.html",
+    "sha256": "c6ff60439d3694fdc2e61db58c18f7c9ad13a1c465d9b851cd12d94d50838523",
+    "retrieved_at": "2026-10-08T16:05:32.640527+00:00",
+    "receipt_sha256": "b5689f94cf7a8949758139ef0f20a9341bed03984cbeeae399c82428773fd259"
+  },
+  "country_stock_values_match": false,
+  "country_review_code_sha256": "383fe7fc56f68bbc980dcbce475fc736f3ebde9173ebf2cfbc32c7245a1db48b",
+  "release_cover": {
+    "source_url": "https://content.govdelivery.com/attachments/USDAFAS/2020/06/10/file_attachments/1471324/wr06042020.pdf",
+    "sha256": "02c8bd9f80ff8d4a727f6b8255b8dd5a27922a8f28b8b28d137e7b9569c08e69",
+    "retrieved_at": "2026-10-01T13:09:08.927825+00:00",
+    "receipt_sha256": "c6999a62438c0fb8866a457fac9a287ae5f34091cd9920b43d4cb3df69cc71db",
+    "scheduled_release_date": "2020-06-11",
+    "local_time_literal": "8:30 AM",
+    "timezone": null,
+    "basis": "per_report_printed_embargo_not_actual_publication",
+    "publication_timestamp_verified": false,
+    "first_version_verified": false,
+    "model_eligible": false,
+    "report_period_end": "2020-06-04",
+    "pdf_pages": 52,
+    "numeric_comparison_performed": true,
+    "same_version_as_selected_archive_verified": false,
+    "country_stock_comparison": {
+      "observation_date": "2020-06-04",
+      "unit": "running_bales",
+      "countries": [
+        {
+          "name": "China",
+          "code": 5700,
+          "iso": "CN",
+          "report_label": "CHINA",
+          "comparisons": {
+            "outstandingSales": {
+              "api_value": 1816369,
+              "report_printed_value": 1816400,
+              "difference_bales": -31,
+              "rounding_half_width": 50,
+              "within_printed_precision": true
+            },
+            "accumulatedExports": {
+              "api_value": 1565019,
+              "report_printed_value": 1565000,
+              "difference_bales": 19,
+              "rounding_half_width": 50,
+              "within_printed_precision": true
+            },
+            "nextMYOutstandingSales": {
+              "api_value": 906168,
+              "report_printed_value": 906200,
+              "difference_bales": -32,
+              "rounding_half_width": 50,
+              "within_printed_precision": true
+            }
+          },
+          "commitment_api_value": 3381388,
+          "commitment_is_derived_not_separately_printed": true,
+          "all_stock_values_match": true
+        },
+        {
+          "name": "Vietnam",
+          "code": 5520,
+          "iso": "VN",
+          "report_label": "VIETNAM",
+          "comparisons": {
+            "outstandingSales": {
+              "api_value": 811339,
+              "report_printed_value": 811300,
+              "difference_bales": 39,
+              "rounding_half_width": 50,
+              "within_printed_precision": true
+            },
+            "accumulatedExports": {
+              "api_value": 2874016,
+              "report_printed_value": 2874000,
+              "difference_bales": 16,
+              "rounding_half_width": 50,
+              "within_printed_precision": true
+            },
+            "nextMYOutstandingSales": {
+              "api_value": 466921,
+              "report_printed_value": 466900,
+              "difference_bales": 21,
+              "rounding_half_width": 50,
+              "within_printed_precision": true
+            }
+          },
+          "commitment_api_value": 3685355,
+          "commitment_is_derived_not_separately_printed": true,
+          "all_stock_values_match": true
+        },
+        {
+          "name": "Turkey",
+          "code": 4890,
+          "iso": "TR",
+          "report_label": "TURKEY",
+          "comparisons": {
+            "outstandingSales": {
+              "api_value": 472244,
+              "report_printed_value": 472200,
+              "difference_bales": 44,
+              "rounding_half_width": 50,
+              "within_printed_precision": true
+            },
+            "accumulatedExports": {
+              "api_value": 1305952,
+              "report_printed_value": 1306000,
+              "difference_bales": -48,
+              "rounding_half_width": 50,
+              "within_printed_precision": true
+            },
+            "nextMYOutstandingSales": {
+              "api_value": 203597,
+              "report_printed_value": 203600,
+              "difference_bales": -3,
+              "rounding_half_width": 50,
+              "within_printed_precision": true
+            }
+          },
+          "commitment_api_value": 1778196,
+          "commitment_is_derived_not_separately_printed": true,
+          "all_stock_values_match": true
+        },
+        {
+          "name": "Pakistan",
+          "code": 5350,
+          "iso": "PK",
+          "report_label": "PAKISTN",
+          "comparisons": {
+            "outstandingSales": {
+              "api_value": 334203,
+              "report_printed_value": 334200,
+              "difference_bales": 3,
+              "rounding_half_width": 50,
+              "within_printed_precision": true
+            },
+            "accumulatedExports": {
+              "api_value": 1793350,
+              "report_printed_value": 1793400,
+              "difference_bales": -50,
+              "rounding_half_width": 50,
+              "within_printed_precision": true
+            },
+            "nextMYOutstandingSales": {
+              "api_value": 167380,
+              "report_printed_value": 167400,
+              "difference_bales": -20,
+              "rounding_half_width": 50,
+              "within_printed_precision": true
+            }
+          },
+          "commitment_api_value": 2127553,
+          "commitment_is_derived_not_separately_printed": true,
+          "all_stock_values_match": true
+        }
+      ],
+      "direct_stock_checks": 12,
+      "all_stock_values_match": true,
+      "national_stock_values_match": true,
+      "reference_basis": "four current Census Schedule C code/name/ISO pairs; not full historical FAS catalog",
+      "weekly_exports_verified": false,
+      "weekly_net_sales_verified": false,
+      "historical_code_validity_verified": false,
+      "publication_timestamp_verified": false,
+      "first_version_verified": false,
+      "model_eligible": false,
+      "release_allowed": false
+    },
+    "selected_country_content_matches_archive": true
+  },
+  "numeric_reconciliation_allowed": true,
+  "cause_verified": false,
+  "decision": "country stock mismatch; no source admission; publication/version metadata still required",
+  "pdf_creation_date_is_publication_proof": false,
+  "record_id": "9520274b26f14f00b57ba8a2c4f0fc4c6c5461b4f476eb938deddba8bd4595d8"
+}

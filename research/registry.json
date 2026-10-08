@@ -15384,6 +15384,38 @@
         "research/evidence/fas-country-field-audit-20261008.json": "0392c53cbaaf72e1070be312d4ef50bb69ebeaf26c94e5709af6363dcd11f576"
       },
       "id": "20c5a65c95c0ac97a09ae2376e123521ae8978030dcad0a9ced6818aec03f97a"
+    },
+    {
+      "experiment": "fas-country-report-review-v1",
+      "profile": "fas-country-report-review-v1",
+      "kind": "no_fit_source_country_report_review",
+      "horizon": null,
+      "code_id": "650a4bc6f68abdd81f27b7515818cee921f4934d2b791665bfe45e023f9f3179",
+      "data_id": "475751d5e86accf22a8cbea1361dde7e4aebf2cc1e09a062cebfd3cb0afe1531",
+      "coverage": "2_report_weeks_4_countries_24_stock_checks_22_matched",
+      "independent_holdout": false,
+      "classification": "INCONCLUSIVE",
+      "reason": "No market fits; two small country stock mismatches, incomplete weekly-flow/historical-code/availability/vintage admission",
+      "market_fits": 0,
+      "model_families": [],
+      "recipes": [],
+      "metrics": {},
+      "prediction_payload_exists": false,
+      "sources": {
+        "fas": {
+          "commodity_code": 1404,
+          "unit_id": 2,
+          "publication_verified": false,
+          "first_version_verified": false,
+          "model_eligible": false
+        }
+      },
+      "payloads": {
+        "research/evidence/fas-country-report-verification-20261008.json": "be2593eebfb5c7cec2d106e46df68194b1a7d688fdf864f10184629eb0245d5e",
+        "research/evidence/fas-country-report-review-20261008.json": "ae2e031160d12980e2c1fa2be17e0156a47806c58e21a4a24d3c6ca543a9f278",
+        "research/evidence/fas-country-report-release-20261008.json": "dd44f77ede6b72bc0dd531d5c669261b4bc3415327de0e96393df4a48004599d"
+      },
+      "id": "cfec9f8bb60ec63191078fdfda84b0f011490a50bbc285a3366698024b281b22"
     }
   ],
   "local_evidence": [
@@ -15474,6 +15506,18 @@
     {
       "path": "evidence/fas-country-field-audit-20261008.json",
       "sha256": "0392c53cbaaf72e1070be312d4ef50bb69ebeaf26c94e5709af6363dcd11f576"
+    },
+    {
+      "path": "evidence/fas-country-report-verification-20261008.json",
+      "sha256": "be2593eebfb5c7cec2d106e46df68194b1a7d688fdf864f10184629eb0245d5e"
+    },
+    {
+      "path": "evidence/fas-country-report-review-20261008.json",
+      "sha256": "ae2e031160d12980e2c1fa2be17e0156a47806c58e21a4a24d3c6ca543a9f278"
+    },
+    {
+      "path": "evidence/fas-country-report-release-20261008.json",
+      "sha256": "dd44f77ede6b72bc0dd531d5c669261b4bc3415327de0e96393df4a48004599d"
     }
   ]
 }

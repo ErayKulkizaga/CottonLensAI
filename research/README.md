@@ -59,6 +59,8 @@ python ml/review_fas_countries.py --raw-root FAS_RAW_ROOT --manifest MANIFEST --
 Checksum/şema/ülke-hafta/toplam uyuşmazlığında exit 2; sıfır/eksik değer
 uydurulmaz. Başarılı JSON, publication/vintage veya model eligibility onayı değildir.
 
+`fas-country-report-review-v1`: sıfır-fit ülke/rapor içerik kontrolü; 22/24 stok alanı eşleşti, 28 Mayıs Çin/Pakistan birikimli ihracatı −55/−53 balya farklı. Ulusal toplamın geçmesi ülke alanlarının geçmesi değildir. Haftalık akış veya tarihsel yayın/vintage onayı yok. [Sonuç ve tek sonraki kontrol](../docs/FAS_COUNTRY_REPORT_REVIEW_20261008.md). Release girdileriyle `ml/review_fas_archive.py --country-reference` çalışır; sayısal uyuşmazlık kaydı korunur ve exit 2 döner. Bu bir piyasa negatif sonucu değildir.
+
 Önceki iki kayıt `cotton-ohlc-semantics-audit-v1` ve
 `ams-cotton-price-reconciliation-v1`: sıfır fit kaynak denetimleridir; yeni
 piyasa başarı/başarısızlık deneyi değildir. 998 eski AMS belge hash'i,
