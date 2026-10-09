@@ -1,6 +1,7 @@
 """Semi-synthetic calibration, identity and bounded execution; no market fits."""
 import copy
 import json
+import os
 import runpy
 import shutil
 import sys
@@ -245,7 +246,7 @@ def test_failed_uncheckpointed_fit_is_not_automatically_retried(packet):
 
 def test_cpu_launcher_profile_default_threads_and_session_limit(tmp_path, monkeypatch):
     launcher = runpy.run_path(str(Path(__file__).parents[1] / 'full_year_cpu.py'))
-    python = tmp_path / 'Scripts/python.exe'
+    python = tmp_path / ('Scripts/python.exe' if os.name == 'nt' else 'bin/python')
     python.parent.mkdir()
     python.touch()
     captured = []
@@ -254,8 +255,33 @@ def test_cpu_launcher_profile_default_threads_and_session_limit(tmp_path, monkey
                                     '--cpu-environment', str(tmp_path), '--reference-root', str(tmp_path), '--max-minutes', '60'])
     launcher['main']()
     command, kwargs = captured[0]
-    assert command[command.index('--experiment') + 1] == 'research-weak-signal-control-v1'
+    assert command[command.index('--experiment') + 1] == 'research-weak-signal-control-v1-r2'
     assert command[command.index('--max-minutes') + 1] == '30.0'
     assert kwargs['env']['COTTONLENS_ALLOW_LOCAL_CPU_TABULAR'] == '1'
     for name in ('OMP_NUM_THREADS', 'OPENBLAS_NUM_THREADS', 'MKL_NUM_THREADS'):
         assert kwargs['env'][name] == '2'
+
+
+def test_registered_revision_proof_is_selected_by_identity(packet):
+    repo, _, root = packet
+    old = repo / 'research/evidence/weak-signal-preregistration-20261009.json'
+    new = old.with_name('weak-signal-preregistration-r2-20261009.json')
+    new.write_bytes(old.read_bytes())
+    path = repo / 'research/registry.json'
+    registry = json.loads(path.read_bytes())
+    registry['local_evidence'][-1] = {'path': 'evidence/' + new.name, 'sha256': digest(new)}
+    path.write_text(json.dumps(registry))
+    assert study.verify_registered_evidence(repo, root) == digest(new)
+
+
+def test_ambiguous_registered_proofs_fail_closed(packet):
+    repo, _, root = packet
+    old = repo / 'research/evidence/weak-signal-preregistration-20261009.json'
+    new = old.with_name('weak-signal-preregistration-duplicate.json')
+    new.write_bytes(old.read_bytes())
+    path = repo / 'research/registry.json'
+    registry = json.loads(path.read_bytes())
+    registry['local_evidence'].append({'path': 'evidence/' + new.name, 'sha256': digest(new)})
+    path.write_text(json.dumps(registry))
+    with pytest.raises(ValueError, match='Exactly one registered zero-fit proof'):
+        study.verify_registered_evidence(repo, root)

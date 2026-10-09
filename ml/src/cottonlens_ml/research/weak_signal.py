@@ -374,16 +374,27 @@ def run(repo, root, reference_root, minutes):
 
 
 def verify_registered_evidence(repo, root):
-    path = Path(repo) / 'research/evidence/weak-signal-preregistration-20261009.json'
-    proof = read_record(path)
     registration = study(root)
+    research = Path(repo) / 'research'
+    validate(research)
+    registry = json.loads((research / 'registry.json').read_bytes())
+    candidates = []
+    for item in registry['local_evidence']:
+        path = research / item['path']
+        if path.name.startswith('weak-signal-preregistration-'):
+            body = json.loads(path.read_bytes())
+            if body.get('completed_experiment') is False and body.get('registration_id') == content_id(registration):
+                candidates.append(path)
+    if len(candidates) != 1:
+        raise ValueError('Exactly one registered zero-fit proof for this frozen identity required')
+    path = candidates[0]
+    proof = read_record(path)
     if (proof['completed_experiment'] is not False or proof['synthetic_fits'] != 0
             or proof['market_fits'] != 0 or proof['registration_id'] != content_id(registration)
             or proof['registration_sha256'] != digest(Path(root) / REGISTRATION)
             or proof['complete_sha256'] != digest(Path(root) / 'complete.json')
             or proof['source_id'] != registration['source_id']):
         raise ValueError('Published zero-fit preregistration differs from study')
-    validate(Path(repo) / 'research')
     return digest(path)
 
 

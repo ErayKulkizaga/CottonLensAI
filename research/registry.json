@@ -16255,6 +16255,98 @@
       "evidence_sha256": "9c4e25f48a709d6b051c3fde6a2d74a3b57a4cca1fb2e9bf49eabc82c1c04d5f",
       "reason": "Prior noiseless known-signal controls near 100% MAE gain did not test a weak effect under frozen Texas missingness and past shrinkage.",
       "id": "6af4b99b80abd327571f09666a24877a2ad6ab56c6f6e6c52806a336e83abc41"
+    },
+    {
+      "experiment": "research-weak-signal-control-v1-r2",
+      "profile": "weak-signal-control-v1",
+      "kind": "zero_fit_synthetic_preregistration",
+      "horizon": 1,
+      "coverage": "planned_20_conditions_seeds_2006_origins_each",
+      "classification": "INCONCLUSIVE",
+      "model_families": [
+        "ridge"
+      ],
+      "recipes": [
+        {
+          "family": "ridge",
+          "params": {
+            "alpha": 1.0
+          },
+          "horizon": 1,
+          "task": "price",
+          "device": "cpu",
+          "seed": 42,
+          "target": "scaled_log",
+          "years": null,
+          "cadence": 21,
+          "window": 1,
+          "features": [
+            "cotton_ret_1",
+            "cotton_ret_5",
+            "cotton_ret_10",
+            "cotton_ret_20",
+            "cotton_momentum_5",
+            "cotton_momentum_20",
+            "cotton_sma_ratio_5_20",
+            "cotton_sma_ratio_20_50",
+            "cotton_volatility_5",
+            "cotton_volatility_20",
+            "cotton_range",
+            "cotton_volume_change",
+            "cotton_volume_z20",
+            "cotton_volatility_regime_20_60",
+            "dxy_ret_1",
+            "dxy_ret_5",
+            "dxy_ret_20",
+            "wti_ret_1",
+            "wti_ret_5",
+            "wti_ret_20",
+            "cotton_dxy_corr_60",
+            "cotton_wti_corr_60",
+            "month_sin",
+            "month_cos",
+            "nass_D0_age_sessions",
+            "nass_D0_unavailable",
+            "nass_D0_national_good_excellent",
+            "nass_D0_national_poor_very_poor",
+            "nass_D0_national_ge_change",
+            "numeric_D0_texas_minus_national_ge",
+            "numeric_D0_texas_minus_national_pvp",
+            "numeric_D0_texas_minus_national_ge_change",
+            "numeric_D0_texas_planted_gap",
+            "numeric_D0_texas_squaring_gap",
+            "numeric_D0_texas_setting_bolls_gap",
+            "numeric_D0_texas_bolls_opening_gap",
+            "numeric_D0_texas_harvested_gap"
+          ]
+        }
+      ],
+      "completed_new_fits": 0,
+      "code_id": "f6028315cc38ff61ad81c9e9bc8b89bf9d11dd1070dd091b276aef33ed04192f",
+      "registration_id": "359a4c58ddb76d5fc79df23c2e8c7a47ab3d7cd45a8ea2e908ee14864f4fcb95",
+      "model_eligible": false,
+      "independent_holdout": false,
+      "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/weak-signal-preregistration-r2-20261009",
+      "evidence": "research/evidence/weak-signal-preregistration-r2-20261009.json",
+      "evidence_sha256": "b0d8095d95355ec98eb86e761fdd5bd13d398c2207ae0dd2111a20be7c99f741",
+      "reason": "Prior noiseless known-signal controls near 100% MAE gain did not test a weak effect under frozen Texas missingness and past shrinkage.; v1 had zero fits and a portable-test failure, not negative learning evidence.",
+      "id": "a9eb37b01f052fe4d98438b42f1112afa299b829e20b4042d1cd68cae681bf3d"
+    },
+    {
+      "experiment": "weak-signal-v1-ci-supersession",
+      "profile": "weak-signal-control-v1",
+      "kind": "zero_fit_preregistration_supersession",
+      "horizon": 1,
+      "classification": "INCONCLUSIVE",
+      "model_families": [
+        "ridge"
+      ],
+      "recipes": [],
+      "completed_new_fits": 0,
+      "evidence": "research/evidence/weak-signal-ci-revision-20261009.json",
+      "evidence_sha256": "6f6edbcdd7aa820cd11fe3c6b0762a7693b72cbefc97a5f2acef63b70edef7b2",
+      "reason": "Preserve v1 zero-fit evidence; correct portable fixture and proof identity lookup; use distinct r2 execution namespace. This is not a market or learning negative.",
+      "id": "6b7bc65857d32f1f65883511fecc2ea3949b4de954a47c59c1ae8d53a80a401e"
     }
   ],
   "local_evidence": [
@@ -16437,6 +16529,18 @@
     {
       "path": "evidence/weak-signal-preregistration-release-20261009.json",
       "sha256": "20acfa4dfbad9c5ed51a6d6a314d969c77aa706da34dae1cb5be5b085fc6b690"
+    },
+    {
+      "path": "evidence/weak-signal-preregistration-r2-20261009.json",
+      "sha256": "b0d8095d95355ec98eb86e761fdd5bd13d398c2207ae0dd2111a20be7c99f741"
+    },
+    {
+      "path": "evidence/weak-signal-ci-revision-20261009.json",
+      "sha256": "6f6edbcdd7aa820cd11fe3c6b0762a7693b72cbefc97a5f2acef63b70edef7b2"
+    },
+    {
+      "path": "evidence/weak-signal-preregistration-release-r2-20261009.json",
+      "sha256": "68b995da408d3e7450504aaebfa050fed887d7b7cbd6c04d829507581bb5c029"
     }
   ]
 }

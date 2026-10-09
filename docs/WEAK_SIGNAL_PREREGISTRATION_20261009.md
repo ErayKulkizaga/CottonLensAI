@@ -1,8 +1,15 @@
 # Zayıf sinyal kalibrasyonu — sıfır-fit ön kayıt
 
-Profil `weak-signal-control-v1`, deney `research-weak-signal-control-v1`.
+Profil `weak-signal-control-v1`, yürütme `research-weak-signal-control-v1-r2`.
 Bu çalışma sentetiktir; piyasa becerisi, gerçek tarihsel veri erişimi veya
 bağımsız holdout doğrulaması değildir. Texas/NASS negatif piyasa sonucu değişmez.
+
+İlk sıfır-fit kayıt `research-weak-signal-control-v1` arşivde korunur. GitHub
+Linux kontrolü yalnız sahte CPU executable yolundaki Windows varsayımını
+yakaladı; piyasa/sentetik fit başlamadı. Test düzeltmesi kaynak kimliğini
+değiştirdiği için r2 ayrı namespace/ön kayıt/Release kullanır. Tarif, seed'ler,
+kalibrasyon ve sentetik veri değişmez. Ön kayıt tanığı artık dosya adına değil
+tekil dondurulmuş kayıt kimliğine göre seçilir; iki tanık varsa işlem durur.
 
 ## Soru ve sabit tasarım
 

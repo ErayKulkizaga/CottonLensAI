@@ -9,7 +9,8 @@ gerçek alım/satım yapılmaz. Mevcut T+1/T+5 fiyat tahmininde Naive korunuyor.
 
 [Yeni zayıf sinyal kontrolü](docs/WEAK_SIGNAL_PREREGISTRATION_20261009.md)
 ön kayıt aşamasında: aynı düzenin küçük, kodlanmış sentetik etkiyi yakalayıp
-yakalayamadığı sınanacak. 3.380 sentetik fit planlandı; henüz fit yok.
+yakalayamadığı sınanacak. 3.380 sentetik fit planlandı; henüz fit yok. Taşınabilir
+test düzeltmesi sonrası ayrı `r2` kaydı kullanılıyor; ilk sıfır-fit kayıt korunuyor.
 
 ## Nereden başlanır?
 

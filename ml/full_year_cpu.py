@@ -34,7 +34,7 @@ def main():
     parser.add_argument('--oncall-table', type=Path)
     args = parser.parse_args()
     if args.experiment is None:
-        args.experiment = {'weak-signal-control-v1': 'research-weak-signal-control-v1', 'nass-regional-t1-pilot-v1': 'research-nass-regional-t1-pilot-v1', 'wasde-regional-t1-pilot-v1': 'research-wasde-regional-t1-pilot-v1', 'availability-clock-pilot-v1': 'research-availability-clock-pilot-v1','ams-exploration-v1':'research-ams-exploration-v1',
+        args.experiment = {'weak-signal-control-v1': 'research-weak-signal-control-v1-r2', 'nass-regional-t1-pilot-v1': 'research-nass-regional-t1-pilot-v1', 'wasde-regional-t1-pilot-v1': 'research-wasde-regional-t1-pilot-v1', 'availability-clock-pilot-v1': 'research-availability-clock-pilot-v1','ams-exploration-v1':'research-ams-exploration-v1',
             'fas-exploration-v1':'research-fas-exploration-v1',
             'nass-exploration-v1':'research-nass-exploration-v1',
             'wasde-exploration-v1':'research-wasde-exploration-v1',

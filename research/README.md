@@ -7,6 +7,10 @@ tarifinin küçük doğrusal etkiye duyarlılığını sınayacak. 10 seed × nu
 3.380 sentetik fit planlandı; piyasa fit'i yok. Güçlü/gürültüsüz eski öğrenme
 kontrollerinin tekrarı değildir. [Kilitli tasarım](../docs/WEAK_SIGNAL_PREREGISTRATION_20261009.md).
 
+İlk sıfır-fit ön kayıt Linux test fixture yolunda başarısız oldu; hiçbir fit
+başlamadı. Aynı 20 sentetik geçmiş ayrı `research-weak-signal-control-v1-r2`
+kimliğiyle yürütülecek. İlk kayıt negatife çevrilmez ve arşivi değiştirilmez.
+
 `nass-regional-t1-pilot-v1`: **tamamlanan sınırlı piyasa deneyi**, 676 piyasa
 fit'i + ayrı 1 sentetik kontrol; dört kol × 2.006 ortak origin. Seçilmiş sayısal
 D0/D1 Naive kazancı −%0,0274/−%0,2556; iki gecikme/blokta %5 üst sınırın dışında.

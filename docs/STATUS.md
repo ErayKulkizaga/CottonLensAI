@@ -4,7 +4,9 @@
 Mevcut Texas `numeric_D0` Ridge/missingness/shrinkage düzeni, gerçek fiyat ve
 özelliklerin kopyalarında 10 seed × null/enjekte koşuluyla sınanacak. 3.380
 sentetik fit / 160 çıktı / 40.120 satır bütçesi; yeni piyasa fit'i 0. Kod,
-16 yeni test ve 937 mevcut ML testi/3 skip doğrulandı. Ön kayıt sıfır-fit;
+18 yeni test ve 937 mevcut ML testi/3 skip doğrulandı. İlk sıfır-fit kaydın
+Linux sahte-interpreter testi düzeltilerek ayrı `r2` kimliğine geçildi; 20
+sentetik geçmişin byte hash'leri aynı. Eski kayıt/arşiv değişmedi. Ön kayıt sıfır-fit;
 GitHub yayını ve kimlik kontrolü tamamlanmadan pilot başlamaz. Başarı yalnız
 bu sabit doğrusal sentetik sinyale duyarlılık gösterecek; Naive korunur.
 
