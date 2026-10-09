@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/weak-signal-result-20261009",
+  "archive": {
+    "name": "weak-signal-result-20261009.zip",
+    "sha256": "e3b4fd4c06a6c84c2b2a86470b29b5150b899c3e16a8d1c338720d34e896533a",
+    "bytes": 170900232
+  },
+  "members": 17586,
+  "inventory_member": "checksums.json",
+  "inventory_sha256": "caa446171a86ae3d207f99967b7f6e28d39425fa9cdb99c2ec7d677f38afa636",
+  "market_fits": 0,
+  "synthetic_fits": 3380,
+  "excluded": [
+    "Duplicate local-work checkpoints, caches, logs, packaging helpers and machine-specific preservation snapshots; originals retained."
+  ],
+  "synthetic_only": true,
+  "release_allowed": false
+}

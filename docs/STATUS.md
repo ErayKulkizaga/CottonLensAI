@@ -1,14 +1,18 @@
 # Güncel kararlar — 9 Ekim 2026
 
-**Yeni iş:** [zayıf sinyal ön kaydı](WEAK_SIGNAL_PREREGISTRATION_20261009.md).
-Mevcut Texas `numeric_D0` Ridge/missingness/shrinkage düzeni, gerçek fiyat ve
-özelliklerin kopyalarında 10 seed × null/enjekte koşuluyla sınanacak. 3.380
-sentetik fit / 160 çıktı / 40.120 satır bütçesi; yeni piyasa fit'i 0. Kod,
-18 yeni test ve 937 mevcut ML testi/3 skip doğrulandı. İlk sıfır-fit kaydın
-Linux sahte-interpreter testi düzeltilerek ayrı `r2` kimliğine geçildi; 20
-sentetik geçmişin byte hash'leri aynı. Eski kayıt/arşiv değişmedi. Ön kayıt sıfır-fit;
-GitHub yayını ve kimlik kontrolü tamamlanmadan pilot başlamaz. Başarı yalnız
-bu sabit doğrusal sentetik sinyale duyarlılık gösterecek; Naive korunur.
+**Son kontrol:** [zayıf sinyal sonucu](WEAK_SIGNAL_RESULT_20261009.md).
+3.380 sentetik fit / 160 çıktı / 40.120 satır tamamlandı; yeni piyasa fit'i 0.
+Ham/seçilmiş ortalama MAE kazancı %1,9551/%1,8752; oracle %3,6054.
+Kilitli karar RAW_ONLY_RECOVERS: medyan oracle koruması %59,8533/%49,5611.
+Seçilmiş sonuç %50 eşiğini yalnız 0,4389 yüzde puan kaçırır; 10/10 seed pozitiftir.
+Null'da pratik yanlış pozitif 0/10, küçültme on seed'de de zararı azaltır.
+Bu, küçültmenin piyasa başarısızlığını açıkladığı veya piyasa sinyali bulunduğu
+kanıtı değildir. 3.380 çıkarım / 160 geçmiş seçim / 120 aralık bağımsız replay edildi.
+949 girdi, 6.646 eski deney dosyası, 42 eski kanıt, 146 sicil / 440 trial korunur.
+Kaynak/ön kayıt değişmedi; 18 yeni kontrol, yerel 937 ML testi / 3 skip;
+ön kayıt GitHub CI'da 947 ML testi / 12 skip ve diğer üç job doğrulandı.
+**Naive korunur; tek sonraki iş kayıtlı iç doğrulamada seçim kararlılığı
+analizi, yeni fit 0.** Ön kayıt ve ilk sıfır-fit v1 arşivi değiştirilmez.
 
 **Son araştırma işi:** [Texas/NASS T+1 sonucu](NASS_REGIONAL_T1_RESULT_20261009.md).
 676 piyasa + ayrı 1 sentetik fit, 32 çıktı, 8.024 tahmin tamamlandı; aynı 2.006

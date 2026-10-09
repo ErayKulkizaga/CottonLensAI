@@ -7,10 +7,13 @@ gerçek alım/satım yapılmaz. Mevcut T+1/T+5 fiyat tahmininde Naive korunuyor.
 676 piyasa fit'i, 2.006 ortak origin/kol; seçilmiş D0/D1 Naive kazancı
 −%0,0274/−%0,2556. Sabit tarif %5 hedefini kurtarmadı; yeni grid açılmıyor.
 
-[Yeni zayıf sinyal kontrolü](docs/WEAK_SIGNAL_PREREGISTRATION_20261009.md)
-ön kayıt aşamasında: aynı düzenin küçük, kodlanmış sentetik etkiyi yakalayıp
-yakalayamadığı sınanacak. 3.380 sentetik fit planlandı; henüz fit yok. Taşınabilir
-test düzeltmesi sonrası ayrı `r2` kaydı kullanılıyor; ilk sıfır-fit kayıt korunuyor.
+[Zayıf sinyal kontrolü](docs/WEAK_SIGNAL_RESULT_20261009.md) tamamlandı:
+3.380 sentetik fit, 20 senaryo, 40.120 OOS satırı bağımsız doğrulandı.
+Ham/seçilmiş ortalama kazanç %1,955/%1,875; oracle %3,605. Kilitli karar
+`RAW_ONLY_RECOVERS`, fakat seçilmiş sonuç %50 koruma eşiğini yalnız 0,439 yüzde
+puan kaçırdı. Bu piyasa başarısı veya küçültmenin ana kusur olduğunun kanıtı
+değildir. Sonraki tek iş mevcut iç doğrulama tahminlerinde seçim kararlılığı
+analizi; otomatik yeni eğitim yok. İlk sıfır-fit kayıt ve r2 ön kaydı korunuyor.
 
 ## Nereden başlanır?
 
