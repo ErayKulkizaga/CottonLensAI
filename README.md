@@ -41,6 +41,12 @@ Python giriş araçları `ml/` altında kalır: `history.py`, `full_year_cpu.py`
 
 ## Ölçülmüş son durum
 
+[Texas/NASS denetimi](docs/NASS_REGIONAL_AUDIT_20261009.md), mevcut 311 rapordan
+Texas kondisyonunu ve 636 gelişim tablosunu ayırdı; iki gerçek geçmiş-hafta
+revizyonu ayrı korundu. 949 girdi değişmedi. Ekim yalnız 46 raporda; tam sezon
+ve tarihsel erişim doğrulanmış değil. Sıfır fit, panel karantinada; önceki ulusal
+T+5 sonucu bu bölgesel bilgiyi test etmiş sayılmaz.
+
 [İleri yayın görevi](docs/FORWARD_RUNTIME_WINDOW_20261009.md), checksum bağlı
 sabit kodla gerçek gündüz toplamasında exit 0 verdi. Yayın penceresinde ağ/skor
 işi yapılmaz; yavaş yazımın son saat kontrolü düzeltildi. Zamanında tahmin henüz

@@ -1,0 +1,151 @@
+{
+  "schema": "nass-texas-report-audit-v1",
+  "reports": 311,
+  "first_week": "2010-05-30",
+  "last_week": "2023-10-29",
+  "coverage": {
+    "Planted": {
+      "present_reports": 46,
+      "absent_reports": 265,
+      "by_year": {
+        "2010": 3,
+        "2011": 1,
+        "2012": 3,
+        "2013": 2,
+        "2014": 2,
+        "2015": 4,
+        "2016": 3,
+        "2017": 4,
+        "2018": 3,
+        "2019": 4,
+        "2020": 4,
+        "2021": 4,
+        "2022": 4,
+        "2023": 5
+      }
+    },
+    "Squaring": {
+      "present_reports": 148,
+      "absent_reports": 163,
+      "by_year": {
+        "2010": 10,
+        "2011": 9,
+        "2012": 11,
+        "2013": 10,
+        "2014": 9,
+        "2015": 10,
+        "2016": 10,
+        "2017": 11,
+        "2018": 11,
+        "2019": 10,
+        "2020": 11,
+        "2021": 13,
+        "2022": 11,
+        "2023": 12
+      }
+    },
+    "Setting Bolls": {
+      "present_reports": 157,
+      "absent_reports": 154,
+      "by_year": {
+        "2010": 11,
+        "2011": 10,
+        "2012": 11,
+        "2013": 10,
+        "2014": 11,
+        "2015": 11,
+        "2016": 10,
+        "2017": 11,
+        "2018": 11,
+        "2019": 11,
+        "2020": 12,
+        "2021": 13,
+        "2022": 12,
+        "2023": 13
+      }
+    },
+    "Bolls Opening": {
+      "present_reports": 173,
+      "absent_reports": 138,
+      "by_year": {
+        "2010": 11,
+        "2011": 12,
+        "2012": 13,
+        "2013": 10,
+        "2014": 13,
+        "2015": 12,
+        "2016": 13,
+        "2017": 13,
+        "2018": 14,
+        "2019": 12,
+        "2020": 12,
+        "2021": 13,
+        "2022": 12,
+        "2023": 13
+      }
+    },
+    "Harvested": {
+      "present_reports": 112,
+      "absent_reports": 199,
+      "by_year": {
+        "2010": 8,
+        "2011": 9,
+        "2012": 8,
+        "2013": 7,
+        "2014": 8,
+        "2015": 8,
+        "2016": 8,
+        "2017": 8,
+        "2018": 9,
+        "2019": 8,
+        "2020": 8,
+        "2021": 8,
+        "2022": 7,
+        "2023": 8
+      }
+    }
+  },
+  "backwards_progress": [],
+  "previous_week_revisions": [
+    {
+      "week_ending": "2012-06-10",
+      "stage": "Planted",
+      "original_previous": 81,
+      "later_previous": 83
+    },
+    {
+      "week_ending": "2012-06-10",
+      "stage": "Squaring",
+      "original_previous": 12,
+      "later_previous": 11
+    }
+  ],
+  "inputs_unchanged": true,
+  "market_fits": 0,
+  "model_eligible": false,
+  "release_allowed": false,
+  "historical_publication_verified": false,
+  "first_version_verified": false,
+  "availability_policy": "UNSET",
+  "full_crop_season_coverage_verified": false,
+  "source_id": "ec003b687a0c5b164579950822b0bbeb482ea25ab303064d8436bc2ee6a583fa",
+  "source_files": 229,
+  "ml_source_zip_sha256": "023964c9eaa32a493bf31274ef39529dd80b216e45fd6ae58c8f0f34de8b5709",
+  "input_files": 949,
+  "input_identity": "88fd1fba1bcb677c54c6ca5fb3623561df13734f2614c56eb4db2d3d60426a53",
+  "panel_sha256": "3f2354e3b3b18d63ade4ad817d650fa55c54d7d3fdb45ad4442c4d71dda03fe2",
+  "texas_vs_national_good_excellent": {
+    "different_weeks": 311,
+    "median_absolute_gap_pp": 13,
+    "min_gap_pp": -24,
+    "max_gap_pp": 8
+  },
+  "focused_new_tests_passed": 33,
+  "interpretation": "Unreviewed regional information is present; no predictive contribution or historical availability was tested.",
+  "old_registry_records_preserved": 141,
+  "old_evidence_files_preserved": 37,
+  "old_forward_files_preserved": 13,
+  "primary_checkout_unchanged": true,
+  "production_runtime_changed": false,
+  "automation_changed": false
+}

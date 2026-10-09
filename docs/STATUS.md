@@ -1,5 +1,12 @@
 # Güncel kararlar — 9 Ekim 2026
 
+**Son veri işi:** [Texas/NASS bölgesel rapor denetimi](NASS_REGIONAL_AUDIT_20261009.md).
+311 mevcut rapor/949 girdi doğrulandı; Texas kondisyonu ve 636 gelişim tablosu
+karantina paneline ayrıldı. İki gerçek önceki-hafta revizyonu özgün kayıtları
+değiştirmeden korunur. Ekim yalnız 46 raporda var; tam sezon kabul edilmez.
+Yeni fit 0, tarihsel erişim kabulü kapalı; tek sonraki NASS işi 30 Mayıs 2023
+belirli sürümünün erişim tanığıdır. Gece görevine ve otomasyonuna dokunulmadı.
+
 **Çalışan kaynak:** [İleri yayın görevi düzeltmesi](FORWARD_RUNTIME_WINDOW_20261009.md).
 Mevcut görev 226 dosyalık frozen source `44f3d16f…` kullanır; gerçek gündüz
 çağrısı exit 0 ve quote makbuzu doğrulandı. Yayın penceresi ağ/skor/mirror'dan

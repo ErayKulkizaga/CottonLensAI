@@ -15609,6 +15609,28 @@
         "research/evidence/forward-runtime-window-20261009.json": "ca0611b72153706cdf36b823f419b4a797c8dc943f03aa6dc7d1d49f83c253e2"
       },
       "id": "b0c7b1a370c67cd397fcb48cb54193fcba370b2e9609769f54adb2778cd38c3b"
+    },
+    {
+      "experiment": "nass-texas-report-audit-v1",
+      "profile": "nass-texas-report-audit-v1",
+      "kind": "no_fit_data_audit",
+      "horizon": null,
+      "code_id": "ec003b687a0c5b164579950822b0bbeb482ea25ab303064d8436bc2ee6a583fa",
+      "data_id": "88fd1fba1bcb677c54c6ca5fb3623561df13734f2614c56eb4db2d3d60426a53",
+      "classification": "INCONCLUSIVE",
+      "coverage": "311_condition_selected_reports_2010_2023_636_texas_progress_tables",
+      "independent_holdout": false,
+      "market_fits": 0,
+      "model_families": [],
+      "recipes": [],
+      "metrics": {},
+      "prediction_payload_exists": false,
+      "reason": "Texas regional data and two later previous-week revisions are preserved, not market tested or PIT admitted; full crop seasons are not covered.",
+      "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/nass-regional-audit-20261009",
+      "payloads": {
+        "research/evidence/nass-regional-audit-20261009.json": "2a0399603a6e072f01a4bd398c3318ce7c298a8a023438309ecc2240643a6aa1"
+      },
+      "id": "10dcac19c4b46ca2e63c13f295f908e1624408e74b64c906d0f7f4af1192ff6d"
     }
   ],
   "local_evidence": [
@@ -15763,6 +15785,10 @@
     {
       "path": "evidence/forward-runtime-window-20261009.json",
       "sha256": "ca0611b72153706cdf36b823f419b4a797c8dc943f03aa6dc7d1d49f83c253e2"
+    },
+    {
+      "path": "evidence/nass-regional-audit-20261009.json",
+      "sha256": "2a0399603a6e072f01a4bd398c3318ce7c298a8a023438309ecc2240643a6aa1"
     }
   ]
 }
