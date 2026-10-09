@@ -2,6 +2,11 @@
 
 ## Sicil
 
+`nass-texas-report-audit-v1`: **sıfır-fit bölgesel içerik denetimi**; 311 rapor,
+636 gelişim tablosu, 949 girdi. Ulusal T+5 deneyi Texas'ı elemez. İki gerçek
+revizyon ayrı korunur; tam sezon ve tarihsel erişim kabulü yoktur.
+[Kanıt, komut ve devam sınırı](../docs/NASS_REGIONAL_AUDIT_20261009.md).
+
 `forward-runtime-window-v1`: **sıfır-fit görev düzeltmesi ve gündüz gerçek
 çağrı doğrulaması**; ileri piyasa testi değildir. Kaynak kimliği sabit,
 yayın penceresi ağdan ayrıdır; altı missing kayıt korunur ve yeni yayın 0.
@@ -58,6 +63,7 @@ python ml/history.py check --query wasde-regional
 python ml/history.py check --query fas-country
 python ml/history.py check --query forward-evidence
 python ml/history.py check --query forward-runtime
+python ml/history.py check --query nass-texas
 python ml/history.py check --query fas-reviewed-alignment
 python ml/history.py check --query fas-historical-reference
 python ml/history.py check --feature fas --horizon 1

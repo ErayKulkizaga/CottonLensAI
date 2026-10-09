@@ -12,7 +12,13 @@ mutabakatı ve [bölgesel T+1 deneyi](WASDE_REGIONAL_T1_RESULT_20261008.md) tama
 −%0,5229 / −%0,0107: bu tarif %5 hedefini kurtarmadı. Eski veriler değişmedi.
 WASDE kapsamını/modelini büyütmek otomatik sonraki iş değildir.
 
-**Şimdiki iş — FAS ülke bilgisinin kabul denetimi; sıfır fit.**
+**9 Ekim bağımsız veri işi:** [Texas/NASS denetimi](NASS_REGIONAL_AUDIT_20261009.md)
+311 mevcut raporda kondisyon ve 636 gelişim tablosunu ayırdı; iki revizyon ayrı
+korundu. Ekim 46 raporla sınırlı, tam sezon varsayımı yapılamaz. Veri karantinada;
+NASS için sonraki tek iş 30 Mayıs 2023 sürümüne bağlı erişim tanığıdır. Yeni fit 0;
+FAS engeli ve gece ileri yayın görevi aynı kalır.
+
+**FAS işi — dış kanıt bekleyen ülke bilgisinin kabul denetimi; sıfır fit.**
 9 Ekim: [değer/sürüm/saat koruması ve ortak-origin adapter'i](FAS_REVIEWED_ALIGNMENT_20261009.md)
 sentetik paketle tamamlandı. Gerçek country-feature snapshot'ları ve tarihsel
 erişim kabulü hazırlanmadı; tek ön kayıt/eğitim aşaması hâlâ kapalı.

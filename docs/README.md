@@ -3,6 +3,7 @@
 ## Güncel
 
 - [Durum ve kararlar](STATUS.md)
+- [Texas/NASS: bölgesel bilgi, sütun tarihleri, revizyonlar ve sezon kapsamı](NASS_REGIONAL_AUDIT_20261009.md)
 - [Sabit kaynakla çalışan görev, yayın penceresi ve gerçek gece doğrulaması](FORWARD_RUNTIME_WINDOW_20261009.md)
 - [İleri kayıt: sıfır yayın, makbuz/saat denetimi ve tek operasyon kontrolü](FORWARD_EVIDENCE_AUDIT_20261009.md)
 - [FAS sürüm/değer/saat sözleşmesi ve ortak-origin hizalama kontrolü](FAS_REVIEWED_ALIGNMENT_20261009.md)
