@@ -2,6 +2,11 @@
 
 ## Sicil
 
+`nass-regional-t1-pilot-v1`: **sıfır-fit ön kayıt**. D0/D1 ×mask/numeric;
+ulusal kondisyon ortak, yalnız Texas katkısı. 2.006 origin/kol, 676 piyasa + 1
+sentetik fit bütçesi; completed fit/piyasa negatifi değildir. [Tasarım ve
+kimlik](../docs/NASS_REGIONAL_T1_PREREGISTRATION_20261009.md).
+
 `nass-clock-case-v1`: **sıfır-fit tek raporlu saat incelemesi**; 22 hücre
 eşleşir, tarihsel sürüm/erişim kanıtlanmadı. Üç CDX timeout/503, tekrar sorgu yok;
 bu bir piyasa negatifi değildir. [Kanıt ve çevrimdışı replay](../docs/NASS_CLOCK_CASE_20261009.md).
@@ -69,6 +74,7 @@ python ml/history.py check --query forward-evidence
 python ml/history.py check --query forward-runtime
 python ml/history.py check --query nass-texas
 python ml/history.py check --query nass-clock-case
+python ml/history.py check --query nass-regional --horizon 1
 python ml/history.py check --query fas-reviewed-alignment
 python ml/history.py check --query fas-historical-reference
 python ml/history.py check --feature fas --horizon 1
