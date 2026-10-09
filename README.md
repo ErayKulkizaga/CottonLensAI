@@ -7,6 +7,10 @@ gerçek alım/satım yapılmaz. Mevcut T+1/T+5 fiyat tahmininde Naive korunuyor.
 676 piyasa fit'i, 2.006 ortak origin/kol; seçilmiş D0/D1 Naive kazancı
 −%0,0274/−%0,2556. Sabit tarif %5 hedefini kurtarmadı; yeni grid açılmıyor.
 
+[Yeni zayıf sinyal kontrolü](docs/WEAK_SIGNAL_PREREGISTRATION_20261009.md)
+ön kayıt aşamasında: aynı düzenin küçük, kodlanmış sentetik etkiyi yakalayıp
+yakalayamadığı sınanacak. 3.380 sentetik fit planlandı; henüz fit yok.
+
 ## Nereden başlanır?
 
 1. [Güncel durum ve kararlar](docs/STATUS.md).
@@ -46,8 +50,9 @@ Python giriş araçları `ml/` altında kalır: `history.py`, `full_year_cpu.py`
 
 [Texas/NASS T+1 ön kaydı](docs/NASS_REGIONAL_T1_PREREGISTRATION_20261009.md):
 aynı 2.006 origin'de ulusal kondisyonun üzerine Texas katkısını sınayacak
-**676 piyasa + 1 sentetik** fit bütçesi kilitlendi. Henüz eğitim/performans yok;
-erişim ve vintage varsayımsal. Sonraki iş yalnız bu deneyi mevcut CPU yolunda yürütmek.
+**676 piyasa + 1 sentetik** fit bütçesi kilitlenmişti ve deney tamamlandı.
+[Sonuç](docs/NASS_REGIONAL_T1_RESULT_20261009.md) bu sabit tarif için negatiftir;
+erişim ve vintage varsayımsaldır. Ön kayıt tarihsel belge olarak korunur.
 
 [NASS tek raporlu saat kontrolü](docs/NASS_CLOCK_CASE_20261009.md): 22 hücre
 TXT/PDF'lerde eşleşti; metadata tarihsel erişim kanıtı sayılmadı. Sıfır fit,

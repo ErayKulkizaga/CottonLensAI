@@ -1,5 +1,13 @@
 # Güncel kararlar — 9 Ekim 2026
 
+**Yeni iş:** [zayıf sinyal ön kaydı](WEAK_SIGNAL_PREREGISTRATION_20261009.md).
+Mevcut Texas `numeric_D0` Ridge/missingness/shrinkage düzeni, gerçek fiyat ve
+özelliklerin kopyalarında 10 seed × null/enjekte koşuluyla sınanacak. 3.380
+sentetik fit / 160 çıktı / 40.120 satır bütçesi; yeni piyasa fit'i 0. Kod,
+16 yeni test ve 937 mevcut ML testi/3 skip doğrulandı. Ön kayıt sıfır-fit;
+GitHub yayını ve kimlik kontrolü tamamlanmadan pilot başlamaz. Başarı yalnız
+bu sabit doğrusal sentetik sinyale duyarlılık gösterecek; Naive korunur.
+
 **Son araştırma işi:** [Texas/NASS T+1 sonucu](NASS_REGIONAL_T1_RESULT_20261009.md).
 676 piyasa + ayrı 1 sentetik fit, 32 çıktı, 8.024 tahmin tamamlandı; aynı 2.006
 origin/kol. Seçilmiş sayısal D0/D1 Naive kazancı −%0,0274/−%0,2556; en yüksek
