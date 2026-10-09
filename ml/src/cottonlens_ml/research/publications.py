@@ -52,13 +52,24 @@ def load_package(folder):
         for row in rows.to_dict('records'):
             clock = row['available_at'] if 'available_at' in row else row['published_at']
             require_review(row, manifest['files'], folder, features, utc_timestamp(clock))
+    if manifest['kind'] == 'export_sales':
+        from cottonlens_ml.sources.fas_admission import DECISION_CLOCK, require_review
+        from cottonlens_ml.sources.public import utc_timestamp
+        if (manifest.get('decision_clock') != DECISION_CLOCK or rows.empty
+                or type(manifest.get('max_age_days')) is not int
+                or not 1 <= manifest['max_age_days'] <= 366):
+            raise ValueError('FAS nonempty releases, explicit decision clock and freshness required')
+        for row in rows.to_dict('records'):
+            clock = row['available_at'] if 'available_at' in row else row['published_at']
+            require_review(row, manifest['files'], folder, features, utc_timestamp(clock))
+        rows[features] = rows[features].astype('float64')
     if (manifest['kind'] not in ('cftc', 'wasde', 'contract_curve')
             and (manifest.get('usage', {}).get('research_allowed') is not True or manifest['usage'].get('cost_tl') != 0)):
         raise ValueError('Verified zero-cost research usage required')
     return manifest, rows, features
 
 
-def attach_package(history, manifest, rows, features):
+def attach_package(history, manifest, rows, features, *, include_provenance=False):
     """Isolate source metadata, enforce freshness and keep a single decision clock."""
     if set(features) & set(history.columns):
         raise ValueError('Duplicate source feature names')
@@ -83,6 +94,16 @@ def attach_package(history, manifest, rows, features):
             raise ValueError('Source feature collides with reserved availability channel')
         result[age_name] = age.to_numpy()
         result[missing_name] = merged[features].isna().any(axis=1).astype(float).to_numpy()
+    if include_provenance:
+        kind = manifest.get('kind')
+        if not kind:
+            raise ValueError('Provenance requires a named source')
+        columns = {'vintage_id': 'vintage_id', 'source_sha256': 'source_sha256',
+                   'observed_through': 'observed_through', 'available_at': clock}
+        if {kind + '_' + name for name in columns} & (set(history.columns) | set(features)):
+            raise ValueError('Source provenance collides with an existing column')
+        for name, original in columns.items():
+            result[kind + '_' + name] = merged[original].to_numpy()
     return result
 
 

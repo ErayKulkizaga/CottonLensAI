@@ -2,6 +2,11 @@
 
 ## Sicil
 
+`fas-reviewed-alignment-v1`: **sıfır-fit sentetik sözleşme/hizalama kontrolü**;
+FAS specific-version receipt, 00:15 karar sınırı, ortak eksiklik göstergeleri ve
+provenance. Gerçek kaynak kabulü veya ülke modelinin piyasa testi değildir.
+[Uyumluluk ve kalan koşullar](../docs/FAS_REVIEWED_ALIGNMENT_20261009.md).
+
 `fas-country-quarantine-v1`: 752 hafta × dört kod = 3.008 satırlık **sıfır-fit
 hazırlık**, piyasa testi değil. Negatif satışlar korunur; negatif stok bileşeni
 olan haftanın stok payları bilinmeyendir. Tarihsel saat/sürüm kabulü kapalı.
@@ -40,6 +45,7 @@ python ml/history.py check --query availability
 python ml/history.py check --query trading --horizon 1
 python ml/history.py check --query wasde-regional
 python ml/history.py check --query fas-country
+python ml/history.py check --query fas-reviewed-alignment
 python ml/history.py check --query fas-historical-reference
 python ml/history.py check --feature fas --horizon 1
 python ml/history.py check --feature fas --horizon 5
