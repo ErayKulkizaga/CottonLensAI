@@ -116,6 +116,7 @@ def analyze(study, release_manifest, output, *, repetitions=10000):
                     for j, (_, chunk) in enumerate(test.groupby(buckets, sort=True)):
                         train = training_rows(history, chunk.date.min(), recipe, identity['split'].get('coverage_start'))
                         spec = {'recipe': recipe, 'role': f'inner-{fold["year"]}-{i}-{j}', 'iterations': 1,
+                                'repeat_reason': None,
                                 'train_dates': train.date.dt.strftime('%Y-%m-%d').tolist(), 'validation_dates': [],
                                 'test_dates': chunk.date.dt.strftime('%Y-%m-%d').tolist(),
                                 'train_identity': frame_identity(train, list(train))}
