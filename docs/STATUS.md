@@ -1,5 +1,12 @@
 # Güncel kararlar — 9 Ekim 2026
 
+**Son operasyon kanıtı:** [İleri kayıt denetimi](FORWARD_EVIDENCE_AUDIT_20261009.md)
+08:09 UTC snapshot'ında altı origin'in altısı missing, yayımlanmış tahmin **0**.
+Her origin'de kesim-öncesi yerel makbuz yok. Durum komutu artık kaynak/girdi/saat
+ve kilitli çıktıyı doğrular; salt dosya sayısı kanıt sayılmaz. Eski kayıtlar
+değişmedi, yeni fit 0; mevcut görev ana checkout'ta kalır. Sonraki tek operasyon
+kontrolü gerçek 00:05 yakalama →00:20 yayın zinciridir; saat/backfill değiştirilmez.
+
 **Son yazılım kontrolü:** [FAS sürüm/değer/saat sözleşmesi ve ortak-origin
 hizalaması](FAS_REVIEWED_ALIGNMENT_20261009.md) sentetik paketlerle doğrulandı.
 Yeni piyasa fit'i **0**. İki kol aynı eksiklik göstergelerini taşır; seçilen
@@ -10,7 +17,7 @@ erişimi kanıtlanmış snapshot ve sayısal inceleme sonrası tek ön kayıt ka
 3.008 satır/752 hafta; dört kodda eksik satır yok, 413 negatif satış korunur.
 29 Temmuz 2021 kod2230 bekleyen satış −76: ham değer korunur, o haftanın stok
 payları tanımsız bırakılır. Yeni fit **0**, saat politikası unset ve kabul kapalı.
-CPU eğitim motoru çalışıyor; engel yalnız FAS tarihsel kaynak kabulüdür. Özgün
+CPU eğitim motoru çalışıyor; bu ülke pilotunun engeli FAS tarihsel kaynak kabulüdür. Özgün
 tek hücre bütün tarihçeyi kabul ettirmez; sonrasında adapter/test ve ön kayıt gerekir.
 
 Bu dosya ve [işlem araştırması sözleşmesi](TRADING_RESEARCH_CONTRACT_20261005.md) güncel karar kaynaklarıdır. `archive/` belgeleri tarihsel tanıklık/kanıttır; eski “sonraki deney” talimatları etkin değildir.

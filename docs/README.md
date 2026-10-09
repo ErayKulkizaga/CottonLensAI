@@ -3,6 +3,7 @@
 ## Güncel
 
 - [Durum ve kararlar](STATUS.md)
+- [İleri kayıt: sıfır yayın, makbuz/saat denetimi ve tek operasyon kontrolü](FORWARD_EVIDENCE_AUDIT_20261009.md)
 - [FAS sürüm/değer/saat sözleşmesi ve ortak-origin hizalama kontrolü](FAS_REVIEWED_ALIGNMENT_20261009.md)
 - [FAS karantina ülke paneli, stok anomalisi ve eğitime kalan iş](FAS_COUNTRY_PREPARATION_20261008.md)
 - [FAS tarihsel kod tanığı ve özgün hücre için dış kanıt sınırı](FAS_HISTORICAL_REFERENCE_20261008.md)

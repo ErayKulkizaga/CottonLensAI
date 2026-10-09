@@ -257,6 +257,11 @@ denetimi dışında yeni eğitim, model araması veya otomatik hedef değişimi 
 
 ### D — Kilitli ileri kayıt ve kanıt paketi
 
+9 Ekim sıfır-fit denetimi tamamlandı: altı missing origin, sıfır yayımlanmış
+tahmin; kesim-öncesi yerel makbuz yok. [Kanıt ve durum komutu](FORWARD_EVIDENCE_AUDIT_20261009.md).
+Sonraki operasyon kontrolü mevcut görevde tek gerçek 00:05→00:20 UTC zinciridir;
+altyapı kurulmuş olması ileri performans birikimi sayılmaz.
+
 `research/prospective.py` ve `research/live.py` mevcut; yeni CSV tabanlı paralel
 canlı sistem kurulmaz. Naive/EWMA kayıtları ve kaçırılmış günler önce denetlenir.
 Zamanında oluşturulan tahmin, input manifesti ve kod/model kimliği değişmez;
