@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/price-mae-calibration-20261010",
+  "archive": {
+    "name": "price-mae-calibration-20261010.zip",
+    "sha256": "920d5586d2bf342acf59b8b13fa7117af0b9b0e002a25ffdb06fded1e3f1e677",
+    "bytes": 9882657
+  },
+  "members": 1115,
+  "inventory_member": "checksums.json",
+  "inventory_sha256": "61f2f5574db4fb6078ae6fcabb9235b65b31a69451e0bda5c74aa13f2f77465d",
+  "new_model_fits": 0,
+  "scalar_calibration_updates": 169,
+  "scope": "Frozen inference/calibration code and only the original NASS inputs consumed here; not a new model fit or the entire NASS study."
+}

@@ -2,6 +2,13 @@
 
 ## Sicil
 
+`price-mae-calibration-v1`: **tamamlanan piyasa postprocessing deneyi**;
+0 yeni model fit'i, 169 skaler kalibrasyon, aynı 2.006 T+1 origin.
+Ham/seçilmiş Naive kazancı −%3,73685/−%0,02608; kontrol katkısı belirsiz.
+Bu global çarpan tarifi için DECISIVE_NEGATIVE; tam koşullu quantile modeli
+ve tüm kaynaklarda bilgi yokluğu sınanmadı. Model fit sicili değişmez;
+skaler tahminler ayrı envanterlenir. [Sonuç ve kapsam](../docs/PRICE_MAE_CALIBRATION_RESULT_20261010.md).
+
 `weak-signal-selection-stability-v1`: **tamamlanan sıfır-fit tanı**;
 160 geçmiş seçim / 1.440 iç makbuz / 30.240 doğrulama tahmini.
 Blok20 enjekte koşulunda kayıtlı ağırlığı medyan %56,19 sıklıkla seçer;
@@ -90,6 +97,7 @@ python ml/history.py validate
 python ml/history.py check --family xgboost --horizon 5
 python ml/history.py check --feature nass --horizon 5
 python ml/history.py check --query availability
+python ml/history.py check --query price-mae-calibration --horizon 1
 python ml/history.py check --query trading --horizon 1
 python ml/history.py check --query wasde-regional
 python ml/history.py check --query fas-country
