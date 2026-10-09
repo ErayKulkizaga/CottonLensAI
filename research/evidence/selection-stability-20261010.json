@@ -1,0 +1,46 @@
+{
+  "schema": 1,
+  "profile": "weak-signal-selection-stability-v1",
+  "status": "completed_no_fit_diagnostic",
+  "analysis_source_id": "dfa6035c02e2e0ecdfe4846b2e325712cf1f77a853683a00eb0f281cc3a29a73",
+  "report_sha256": "cae535d499b430edf60268d69c7d45e4d87e1cae285e67ce5ae0c662c823f939",
+  "release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/selection-stability-20261010",
+  "input_count": 5960,
+  "inner_fit_receipts": 1440,
+  "selection_count": 160,
+  "bootstrap_diagnostics": 320,
+  "new_fits": 0,
+  "summary": {
+    "null": {
+      "year_selections": 80,
+      "median_winner_runner_up_margin_pp": 0.1791472588558718,
+      "leave_one_block_out_always_same": 25,
+      "median_recorded_choice_frequency": {
+        "20": 0.5194000000000001,
+        "60": 0.9693499999999999
+      }
+    },
+    "injected": {
+      "year_selections": 80,
+      "median_winner_runner_up_margin_pp": 0.2735111745710672,
+      "leave_one_block_out_always_same": 21,
+      "median_recorded_choice_frequency": {
+        "20": 0.56185,
+        "60": 0.982
+      }
+    }
+  },
+  "market_skill_demonstrated": false,
+  "independent_holdout": false,
+  "old_weight_selections_unchanged": true,
+  "old_registry_records_preserved": 150,
+  "old_trial_records_preserved": 460,
+  "old_proof_files_preserved": 49,
+  "decision": "Keep Naive; selection instability does not justify removing shrinkage or establish a market signal.",
+  "limitations": [
+    "Historical reuse; no independent holdout.",
+    "Resampling saved losses does not refit models or measure full selection uncertainty.",
+    "Block60 inside a63-row block has few possible starts; apparent stability is not evidence of power.",
+    "No outer predictions or outcomes used to choose a new weight; original selections and market gates remain unchanged."
+  ]
+}

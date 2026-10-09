@@ -1,4 +1,14 @@
-# Güncel kararlar — 9 Ekim 2026
+# Güncel kararlar — 10 Ekim 2026
+
+**Yeni sıfır-fit sonuç:** [iç doğrulama seçim kararlılığı](SELECTION_STABILITY_RESULT_20261010.md).
+160 eski karar / 1.440 iç makbuz / 30.240 geçmiş tahmin yeniden kuruldu.
+Enjekte koşulunda leave-one-block-out 59/80 kararı değiştirir; blok20 kayıtlı
+ağırlığı medyan %56,19 sıklıkla seçer. Blok60'ta %98,20, fakat 63 satırda
+yalnız dört başlangıç olduğundan bu güç kanıtı değildir. Kaynak/veri ve eski
+ağırlıklar değişmedi; 5.960 kullanılan girdi orijinal envanterle eşleşti.
+Naive korunur; eski küçültme kaldırılmaz. Sonraki ayırıcı aday yalnız olgun
+eğitim verisinden fiyat-MAE çarpan kalibrasyonudur; kapsam/ön kayıt olmadan
+başlatılmaz. Yeni veri, piyasa fit'i veya canlı model yayını yapılmadı.
 
 **Son kontrol:** [zayıf sinyal sonucu](WEAK_SIGNAL_RESULT_20261009.md).
 3.380 sentetik fit / 160 çıktı / 40.120 satır tamamlandı; yeni piyasa fit'i 0.

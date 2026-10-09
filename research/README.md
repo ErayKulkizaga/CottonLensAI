@@ -2,6 +2,13 @@
 
 ## Sicil
 
+`weak-signal-selection-stability-v1`: **tamamlanan sıfır-fit tanı**;
+160 geçmiş seçim / 1.440 iç makbuz / 30.240 doğrulama tahmini.
+Blok20 enjekte koşulunda kayıtlı ağırlığı medyan %56,19 sıklıkla seçer;
+leave-one-block-out 59/80 kararı değiştirir. Blok60 küçük başlangıç kümesi
+nedeniyle güç kanıtı değildir. Eski ağırlıklar ve fit sicili değişmedi.
+[Sonuç ve sınır](../docs/SELECTION_STABILITY_RESULT_20261010.md).
+
 `weak-signal-control-v1`: **tamamlanan sentetik duyarlılık kontrolü**;
 10 seed × null/enjekte, 3.380 sentetik fit, 160 çıktı, 40.120 satır; piyasa fit'i 0.
 Ham/seçilmiş ortalama kazanç %1,9551/%1,8752, oracle %3,6054. Ön kayıtlı
