@@ -2,7 +2,10 @@
 
 Pamuk piyasası için **araştırma/ispat projesi** ve açıklanabilir tahmin uygulaması.
 ICE Cotton No. 2 referansında tahmin katkısı ve yön/pozisyon simülasyonu incelenir;
-gerçek alım/satım yapılmaz. Mevcut T+1/T+5 fiyat tahmininde Naive korunuyor.
+gerçek alım/satım yapılmaz. Mevcut T+1/T+5 fiyat tahmininde Naive korunuyor. Son
+[Texas/NASS T+1 deneyi](docs/NASS_REGIONAL_T1_RESULT_20261009.md) tamamlandı:
+676 piyasa fit'i, 2.006 ortak origin/kol; seçilmiş D0/D1 Naive kazancı
+−%0,0274/−%0,2556. Sabit tarif %5 hedefini kurtarmadı; yeni grid açılmıyor.
 
 ## Nereden başlanır?
 

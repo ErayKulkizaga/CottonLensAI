@@ -2,10 +2,13 @@
 
 ## Sicil
 
-`nass-regional-t1-pilot-v1`: **sıfır-fit ön kayıt**. D0/D1 ×mask/numeric;
-ulusal kondisyon ortak, yalnız Texas katkısı. 2.006 origin/kol, 676 piyasa + 1
-sentetik fit bütçesi; completed fit/piyasa negatifi değildir. [Tasarım ve
-kimlik](../docs/NASS_REGIONAL_T1_PREREGISTRATION_20261009.md).
+`nass-regional-t1-pilot-v1`: **tamamlanan sınırlı piyasa deneyi**, 676 piyasa
+fit'i + ayrı 1 sentetik kontrol; dört kol × 2.006 ortak origin. Seçilmiş sayısal
+D0/D1 Naive kazancı −%0,0274/−%0,2556; iki gecikme/blokta %5 üst sınırın dışında.
+Bu sabit tarif için DECISIVE_NEGATIVE; bütün Texas bilgisinde sinyal yokluğu
+veya doğrulanmış vintage/saat sonucu değildir. [Sonuç/yeniden çıkarım](../docs/NASS_REGIONAL_T1_RESULT_20261009.md).
+Eski sıfır-fit [ön kayıt](../docs/NASS_REGIONAL_T1_PREREGISTRATION_20261009.md)
+değişmedi; tamamlanmış piyasa ve sentetik kayıtları ayrı tutulur.
 
 `nass-clock-case-v1`: **sıfır-fit tek raporlu saat incelemesi**; 22 hücre
 eşleşir, tarihsel sürüm/erişim kanıtlanmadı. Üç CDX timeout/503, tekrar sorgu yok;

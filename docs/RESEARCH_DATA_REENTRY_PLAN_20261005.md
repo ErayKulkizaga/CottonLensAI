@@ -19,8 +19,11 @@ korundu. Ekim 46 raporla sınırlı, tam sezon varsayımı yapılamaz. Veri kara
 eşleşti; tarihsel erişim saati doğrulanmadı. Sınırlı CDX araması tekrar edilmeyecek.
 [Texas T+1 ön kaydı](NASS_REGIONAL_T1_PREREGISTRATION_20261009.md) tamamlandı:
 ortak 2.006 origin ve 676 piyasa + 1 sentetik fit bütçesi; ulusal kondisyon ortak.
-Tek sonraki iş yeni kimlikle mevcut CPU yolunda yalnız bu deneyi yürütmek.
-Henüz fit/erişim kabulü yok. FAS engeli/gece görevi değişmedi.
+[Yürütme/sonuç](NASS_REGIONAL_T1_RESULT_20261009.md) tamamlandı: 676 piyasa+1
+sentetik fit; seçilmiş D0/D1 Naive kazancı −%0,0274/−%0,2556. Sabit tarifin %5
+hedefi iki gecikme/blokta dışlandı; Naive korunur, yeni grid yok. Vintage/saat
+kabulü kapalı; FAS engeli/gece görevi değişmedi. Sonraki operasyon kontrolü
+mevcut ileri görevde ilk zamanında yayının makbuz zinciridir.
 
 **FAS işi — dış kanıt bekleyen ülke bilgisinin kabul denetimi; sıfır fit.**
 9 Ekim: [değer/sürüm/saat koruması ve ortak-origin adapter'i](FAS_REVIEWED_ALIGNMENT_20261009.md)
