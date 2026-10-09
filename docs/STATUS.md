@@ -1,12 +1,14 @@
 # Güncel kararlar — 9 Ekim 2026
 
-**Son araştırma işi:** [Texas/NASS T+1 ön kaydı](NASS_REGIONAL_T1_PREREGISTRATION_20261009.md).
-Ulusal kondisyon iki kolda ortak; yalnız sekiz Texas alanının artımlı katkısı
-sınanacak. D0/D1 × kontrol/sayısal, aynı 2.006 origin: **676 piyasa + 1 sentetik**
-fit bütçesi kilitlendi, gerçekleşen fit 0. D0'da 1.080 origin için sezon kaynağı yok;
-180 ayrı kullanılabilir rapor vardır. 77.440 bağımsız hizalama kontrolü, 62 dar test geçti.
-Erişim/ilk vintage varsayımsal, kabul kapalı. Tek sonraki iş mevcut CPU engine'e
-bağlayıp yeni yürütme kimliğinde bu sınırlı deneyi çalıştırmak; yeni grid/veri yok.
+**Son araştırma işi:** [Texas/NASS T+1 sonucu](NASS_REGIONAL_T1_RESULT_20261009.md).
+676 piyasa + ayrı 1 sentetik fit, 32 çıktı, 8.024 tahmin tamamlandı; aynı 2.006
+origin/kol. Seçilmiş sayısal D0/D1 Naive kazancı −%0,0274/−%0,2556; en yüksek
+%95 üst sınır %0,2274, %5 hedefinin altında. Texas'ın kontrol üzerine küçük
+katkısı belirsiz; kaynakta evrensel sinyal yokluğu çıkarılmaz. **Naive korunur;
+aynı tarifte yeni grid/fit açılmaz.** 676 çıkarım, 32 seçim, 24 aralık bağımsız
+replay edildi; 937 ML testi/3 skip. Eski ön kayıt ve 949 girdi değişmedi.
+Saat/vintage varsayımsal, tarihsel kabul kapalı; gece görevi değişmedi.
+Sonraki operasyon kontrolü mevcut görevde ilk zamanında yayının makbuz zinciri.
 
 **Son veri işi:** [NASS 30 Mayıs 2023 saat kontrolü](NASS_CLOCK_CASE_20261009.md).
 22 hücre (21 sayı + 1 NA) TXT/PDF'lerde eşleşti; Texas PDF'si yalnız planted'ı
