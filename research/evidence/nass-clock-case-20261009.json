@@ -1,0 +1,288 @@
+{
+  "scope": "2023-05-30_release_2023-05-28_observation_single_case",
+  "input_sha256": {
+    "inputs/report.txt": "890b9fa8f78c84272bdc42ffe4b5fdc11b829e97bf0d99e533ce60f1c62000d8",
+    "inputs/retrieval.json": "5abe2b9654dfaf7dfa049056785e67d57d916ad8062394b1397d1e822f0d93aa",
+    "inputs/release-page.html": "7abe2606ebfc0e8b003b48e6073c554705ee58201cf9fa9e14a13dc8fba03b18",
+    "inputs/table.csv": "733293135b7e34ec1d09c355538074338e9abc36deba84ae2905d5ffab4f33a5",
+    "inputs/table.manifest.json": "995bc9c723ca27b920bcea4bbed1f3947019ad2422aa4afd43335aeaaf412fe9",
+    "inputs/year-audit-2023.json": "f0abf4e262b7b7393f1ffc4864421b91943342ca94cb66c170ba6199945af234",
+    "inputs/calendar.html": "8a91227a76aed50ed4947f59e7bf692c12851fc976576c924beb9e2401d6ac4f",
+    "inputs/calendar-retrieval.json": "46cf7fde6dfcfc89378084e1e6a49dcd168704bbbd0f2275e76a2a9dff0a1c8b",
+    "inputs/corrections-reconciliation.json": "90dcb63d5a1913f803fb27aaf407965a5b8b2f65dad336d8d7451c3792f4a2c1",
+    "national-pdf/receipt.json": "24ff70efe7603b112450323ca2ae8772d9dfd58d104e004849611135853573d8",
+    "national-pdf/response.bin": "8b8d1ff86624bbdb8ca918013b10b631859eb71746750db31c8fbf49889ac340",
+    "texas-report/receipt.json": "692367d369e44110637e46820d4ef36370e8a359ccb11434e868224234daeafb",
+    "texas-report/response.bin": "52f3eaccba6a967571e0663e7ec6ee97713348aa42ca850b1e9f691c8306e21f",
+    "cdx-cornell-txt/receipt.json": "1e0e9dbcc04bc23f433b0792603c0ee6b2662e132464a695e3630422c8661ca1",
+    "cdx-cornell-page/receipt.json": "028a2d6ac2f466a82f23c383da00090768ee444fd187725110b94a87f85ea717",
+    "cdx-texas-pdf/receipt.json": "cfaf498d6d2b4e2f0c576d9bee9893dd697fc5e4104e8174118b35c3aaa9b37d",
+    "cdx-texas-pdf/response.bin": "e084d527921708642a79724e9f0210da659bbc0905c6ce9a3a1f416e4628091c"
+  },
+  "input_files": 17,
+  "inputs_unchanged": true,
+  "values": {
+    "texas_planted": [
+      58,
+      35,
+      50,
+      54
+    ],
+    "texas_squaring": [
+      11,
+      null,
+      5,
+      10
+    ],
+    "texas_condition": [
+      2,
+      19,
+      51,
+      24,
+      4
+    ],
+    "national_condition": [
+      1,
+      12,
+      39,
+      41,
+      7
+    ],
+    "regional_texas_planted": [
+      50,
+      35,
+      58,
+      54
+    ]
+  },
+  "cell_checks": 22,
+  "numeric_cells": 21,
+  "missing_cells": 1,
+  "dual_extractors_agree": true,
+  "pdf_evidence": {
+    "national-pdf": {
+      "sha256": "8b8d1ff86624bbdb8ca918013b10b631859eb71746750db31c8fbf49889ac340",
+      "pages": 17,
+      "metadata": {
+        "/Title": "Crop Progress 05/30/2023",
+        "/CreationDate": "D:20230530144618-04'00'",
+        "/ModDate": "D:20230530144618-04'00'"
+      },
+      "response_headers": {
+        "Date": "Fri, 09 Oct 2026 12:03:30 GMT",
+        "Content-Type": "application/pdf",
+        "Last-Modified": "Tue, 30 May 2023 20:00:59 GMT",
+        "ETag": "\"dcd08-5fceea97534c0\""
+      },
+      "checks": [
+        {
+          "extractor": "pypdf_layout",
+          "values": {
+            "texas_planted": [
+              58,
+              35,
+              50,
+              54
+            ],
+            "texas_squaring": [
+              11,
+              null,
+              5,
+              10
+            ],
+            "texas_condition": [
+              2,
+              19,
+              51,
+              24,
+              4
+            ],
+            "national_condition": [
+              1,
+              12,
+              39,
+              41,
+              7
+            ]
+          }
+        },
+        {
+          "extractor": "pdfplumber",
+          "values": {
+            "texas_planted": [
+              58,
+              35,
+              50,
+              54
+            ],
+            "texas_squaring": [
+              11,
+              null,
+              5,
+              10
+            ],
+            "texas_condition": [
+              2,
+              19,
+              51,
+              24,
+              4
+            ],
+            "national_condition": [
+              1,
+              12,
+              39,
+              41,
+              7
+            ]
+          }
+        }
+      ]
+    },
+    "texas-report": {
+      "sha256": "52f3eaccba6a967571e0663e7ec6ee97713348aa42ca850b1e9f691c8306e21f",
+      "pages": 4,
+      "metadata": {
+        "/Title": "Texas Crop Progress and Condition",
+        "/CreationDate": "D:20230530160033-05'00'",
+        "/ModDate": "D:20230530160303-05'00'"
+      },
+      "response_headers": {
+        "Date": "Fri, 09 Oct 2026 12:03:30 GMT",
+        "Content-Type": "application/pdf",
+        "Last-Modified": "Thu, 15 Aug 2024 17:51:46 GMT",
+        "ETag": "\"85a94-61fbc7f1a31c1\""
+      },
+      "checks": [
+        {
+          "extractor": "pypdf_layout",
+          "values": {
+            "regional_texas_planted": [
+              50,
+              35,
+              58,
+              54
+            ]
+          }
+        },
+        {
+          "extractor": "pdfplumber",
+          "values": {
+            "regional_texas_planted": [
+              50,
+              35,
+              58,
+              54
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "schedule_entry": {
+    "release_date": "2023-05-30",
+    "scheduled_time_et": "4:00 pm ET",
+    "status_at_retrieval": "Published",
+    "landing_url": "https://data.nass.usda.gov/Publications/Calendar/calendar-landing.php?source=n&year=23&month=05&day=30&report_id=17011"
+  },
+  "scheduled_utc": "2023-05-30T20:00:00Z",
+  "release_page_date_field": "2023-05-30T12:00:00Z",
+  "original_txt_ingestion_time": "2026-09-29T20:26:36.601719+00:00",
+  "archive_queries": {
+    "cdx-cornell-txt": {
+      "url": "https://web.archive.org/cdx/search/cdx",
+      "params": {
+        "url": "https://downloads.usda.library.cornell.edu/usda-esmis/files/8336h188j/tx31s021v/d217s394g/prog2123.txt",
+        "output": "json",
+        "filter": "statuscode:200",
+        "from": "20230530",
+        "to": "20230602",
+        "limit": "20",
+        "fl": "timestamp,original,mimetype,statuscode,digest"
+      },
+      "started_at": "2026-10-09T12:03:29.253402+00:00",
+      "purpose": "single_report_source_witness",
+      "model_eligible": false,
+      "error_type": "ReadTimeout",
+      "finished_at": "2026-10-09T12:03:47.728620+00:00"
+    },
+    "cdx-cornell-page": {
+      "url": "https://web.archive.org/cdx/search/cdx",
+      "params": {
+        "url": "https://usda.library.cornell.edu/concern/publications/8336h188j",
+        "output": "json",
+        "filter": "statuscode:200",
+        "from": "20230530",
+        "to": "20230602",
+        "limit": "20",
+        "fl": "timestamp,original,mimetype,statuscode,digest"
+      },
+      "started_at": "2026-10-09T12:03:35.064750+00:00",
+      "purpose": "single_report_source_witness",
+      "model_eligible": false,
+      "error_type": "ReadTimeout",
+      "finished_at": "2026-10-09T12:03:53.508803+00:00"
+    },
+    "cdx-texas-pdf": {
+      "url": "https://web.archive.org/cdx/search/cdx",
+      "params": {
+        "url": "https://www.nass.usda.gov/Statistics_by_State/Texas/Publications/Crop_Progress_%26_Condition/prevCW/2023/tx-cw-05-28-2023.pdf",
+        "output": "json",
+        "filter": "statuscode:200",
+        "from": "20230530",
+        "to": "20230602",
+        "limit": "20",
+        "fl": "timestamp,original,mimetype,statuscode,digest"
+      },
+      "started_at": "2026-10-09T12:03:29.420396+00:00",
+      "purpose": "single_report_source_witness",
+      "model_eligible": false,
+      "status": 503,
+      "final_url": "https://web.archive.org/cdx/search/cdx?url=https%3A%2F%2Fwww.nass.usda.gov%2FStatistics_by_State%2FTexas%2FPublications%2FCrop_Progress_%2526_Condition%2FprevCW%2F2023%2Ftx-cw-05-28-2023.pdf&output=json&filter=statuscode%3A200&from=20230530&to=20230602&limit=20&fl=timestamp%2Coriginal%2Cmimetype%2Cstatuscode%2Cdigest",
+      "response_headers": {
+        "Date": "Fri, 09 Oct 2026 12:03:37 GMT",
+        "Content-Type": "text/html"
+      },
+      "sha256": "e084d527921708642a79724e9f0210da659bbc0905c6ce9a3a1f416e4628091c",
+      "bytes": 11832,
+      "finished_at": "2026-10-09T12:03:35.048656+00:00"
+    }
+  },
+  "cornell_url_mapping_hypothesized_not_verified": true,
+  "matched_correction_notice": false,
+  "absence_of_revisions_proven": false,
+  "first_decision_cutoff": "2023-05-31T00:15:00Z",
+  "content_verified": true,
+  "first_version_verified": false,
+  "historical_availability_verified": false,
+  "available_at": null,
+  "model_eligible": false,
+  "release_allowed": false,
+  "admitted_rows": 0,
+  "market_fits": 0,
+  "classification": "INCONCLUSIVE",
+  "extractor_versions": {
+    "pypdf": "6.10.0",
+    "pdfplumber": "0.11.9"
+  },
+  "interpretation": "Content agrees. Schedule, PDF metadata and current HTTP Last-Modified do not prove historical availability. Failed CDX requests are not empty indexes or proof of non-publication.",
+  "source_id": "ec003b687a0c5b164579950822b0bbeb482ea25ab303064d8436bc2ee6a583fa",
+  "source_files": 229,
+  "audit_code_sha256": {
+    "replay_case.py": "3687244643e8943fb071c0641ce62aaa27b0ef14b59b7e32ff1620c1269f299c",
+    "test_replay.py": "473e56c914d0db4d02fe7a9ff8df3dc07f3d98ba7a644cf12da64ff6a09dd8dd",
+    "capture_http.py": "b85182d2cd6668073cac2438d90473a1f792ae9ad3f18d340d82867023835803"
+  },
+  "audit_code_id": "1c0451cdcc95ebb220c62262e12b5d4a4b005b8515bfd7bc36ce288384aeb46b",
+  "input_manifest_sha256": "c30aa7db181719f465d1bc3409e9d9e6e7ddb998c2f66cf81e18c72c16a96655",
+  "focused_offline_tests_passed": 8,
+  "gpu_validation_run": false,
+  "old_949_input_files_preserved": 949,
+  "old_registry_records_preserved": 142,
+  "old_evidence_files_preserved": 38,
+  "old_forward_files_preserved": 13,
+  "production_runtime_changed": false,
+  "automation_changed": false,
+  "primary_checkout_unchanged": true,
+  "next_action": "One separately frozen NASS regional assumption-sensitivity preregistration; no automatic training or further CDX sweep."
+}
