@@ -2,6 +2,11 @@
 
 ## Sicil
 
+`forward-runtime-window-v1`: **sıfır-fit görev düzeltmesi ve gündüz gerçek
+çağrı doğrulaması**; ileri piyasa testi değildir. Kaynak kimliği sabit,
+yayın penceresi ağdan ayrıdır; altı missing kayıt korunur ve yeni yayın 0.
+[Gerçek takvim kontrolü ve sınırlar](../docs/FORWARD_RUNTIME_WINDOW_20261009.md).
+
 `forward-evidence-audit-v1`: **sıfır-fit operasyon denetimi**; altı missing origin,
 sıfır yayımlanmış tahmin. Piyasa performans testi değil. Salt okunur komut:
 `PYTHONPATH=ml/src python -m cottonlens_ml.research.live --store EXISTING_STORE --status`.
@@ -52,6 +57,7 @@ python ml/history.py check --query trading --horizon 1
 python ml/history.py check --query wasde-regional
 python ml/history.py check --query fas-country
 python ml/history.py check --query forward-evidence
+python ml/history.py check --query forward-runtime
 python ml/history.py check --query fas-reviewed-alignment
 python ml/history.py check --query fas-historical-reference
 python ml/history.py check --feature fas --horizon 1

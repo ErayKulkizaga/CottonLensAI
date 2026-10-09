@@ -241,7 +241,11 @@ def record_baselines(root, snapshots, *, now=None):
                 temporary = target.with_suffix('.pending')
                 context.reset_index(drop=True).to_parquet(temporary, index=False)
                 temporary.rename(target)
-            body = {'origin': key, 'decision_at': decision.isoformat(), 'recorded_at': stamp.isoformat(),
+            # Real execution must not label a slow write using its earlier start
+            # time. Explicit now remains a deterministic synthetic-test clock.
+            emitted = stamp if now is not None else pd.Timestamp(datetime.now(UTC))
+            published = published and decision <= emitted < end
+            body = {'origin': key, 'decision_at': decision.isoformat(), 'recorded_at': emitted.isoformat(),
                 'state': 'published' if published else 'missing', 'lock_id': content_id(locked),
                 'previous_record_id': content_id(existing[-1]) if existing else None,
                 'current_price': float(context.cotton_close.iloc[-1]),

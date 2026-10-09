@@ -15587,6 +15587,28 @@
         "research/evidence/forward-evidence-audit-20261009.json": "2ab7374d0031f0c7a01eafdad2213aceddc45ab313d0bbda3968ec98440b29f4"
       },
       "id": "e68eb59cd6381d2fbe7e4dcd0a7edd5fe0fa4a3781f1a5f573c1e9a717496134"
+    },
+    {
+      "experiment": "forward-runtime-window-v1",
+      "profile": "forward-runtime-window-v1",
+      "kind": "no_fit_operational_deployment",
+      "horizon": null,
+      "code_id": "44f3d16f90af44d9ec0ecbc058055c89a2779e5b3e7ad2006eed19428c0ed965",
+      "data_id": "06f054e1a675f404880d3e9f8ee6ed3651e120d19a954343e93a39a06884b233",
+      "classification": "INCONCLUSIVE",
+      "coverage": "one_real_daylight_collection_6_missing_origins_0_publications",
+      "independent_holdout": false,
+      "market_fits": 0,
+      "model_families": [],
+      "recipes": [],
+      "metrics": {},
+      "prediction_payload_exists": false,
+      "reason": "Pinned collector ran successfully in daylight; actual in-window publication and predictive skill remain unverified.",
+      "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/forward-runtime-window-20261009",
+      "payloads": {
+        "research/evidence/forward-runtime-window-20261009.json": "ca0611b72153706cdf36b823f419b4a797c8dc943f03aa6dc7d1d49f83c253e2"
+      },
+      "id": "b0c7b1a370c67cd397fcb48cb54193fcba370b2e9609769f54adb2778cd38c3b"
     }
   ],
   "local_evidence": [
@@ -15737,6 +15759,10 @@
     {
       "path": "evidence/forward-evidence-audit-20261009.json",
       "sha256": "2ab7374d0031f0c7a01eafdad2213aceddc45ab313d0bbda3968ec98440b29f4"
+    },
+    {
+      "path": "evidence/forward-runtime-window-20261009.json",
+      "sha256": "ca0611b72153706cdf36b823f419b4a797c8dc943f03aa6dc7d1d49f83c253e2"
     }
   ]
 }

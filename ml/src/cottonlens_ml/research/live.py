@@ -10,7 +10,7 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-from cottonlens_ml.code_identity import digest
+from cottonlens_ml.code_identity import digest, research_source_identity
 from cottonlens_ml.cohort import content_id
 from cottonlens_ml.research.ledger import freeze_record, read_record, writer
 from cottonlens_ml.research.mirror import Mirror
@@ -19,6 +19,7 @@ from cottonlens_ml.research.prospective import (
     baseline_status,
     record_baselines,
     score_baselines,
+    verify_baseline_chain,
 )
 from cottonlens_ml.sources.public import archive_observation
 from cottonlens_ml.sources.usda import KEYS, USDAClient
@@ -90,12 +91,20 @@ def market_snapshots(root):
 def collect(root, *, mirror_root=None):
     root = Path(root)
     now = datetime.now(UTC)
-    tasks, status = [], {}
+    tasks, status = [], {'execution_source_id': research_source_identity(Path(__file__).resolve().parents[4])['source_id']}
     # Publication uses existing pre-cutoff receipts before any slow network work.
     baseline_lock(root/'forward', now=now)
     snapshots = market_snapshots(root/'market')
     if snapshots:
-        status['forward'] = record_baselines(root/'forward', snapshots, now=now)
+        status['forward'] = record_baselines(root/'forward', snapshots)
+    if now.hour == 0 and 15 <= now.minute < 30:
+        # Use pre-cutoff receipts only; unrelated source requests/mirroring cannot
+        # occupy this task's publication invocation or expose partial scores.
+        _, records = verify_baseline_chain(root/'forward')
+        status.update({'phase': 'publication_only', 'observed_at': now.isoformat(),
+                       'tasks': [], 'training': False, 'forward_record_ids': [content_id(r) for r in records]})
+        freeze_record(root/'runs'/(content_id(status)+'.json'), status)
+        return status
     def task(name, operation):
         try:
             result = operation()
@@ -145,7 +154,9 @@ def collect(root, *, mirror_root=None):
     if snapshots:
         status['forward'] = record_baselines(root/'forward', snapshots)
         status['outcome'] = score_baselines(root/'forward', snapshots[-1][0])
-    status.update({'observed_at': now.isoformat(), 'tasks': tasks, 'training': False})
+    _, records = verify_baseline_chain(root/'forward')
+    status.update({'observed_at': now.isoformat(), 'tasks': tasks, 'training': False,
+                   'phase': 'collection', 'forward_record_ids': [content_id(r) for r in records]})
     report = root/'runs'/(content_id(status)+'.json')
     freeze_record(report, status)
     if mirror_root:

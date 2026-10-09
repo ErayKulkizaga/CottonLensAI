@@ -1,10 +1,17 @@
 # Güncel kararlar — 9 Ekim 2026
 
+**Çalışan kaynak:** [İleri yayın görevi düzeltmesi](FORWARD_RUNTIME_WINDOW_20261009.md).
+Mevcut görev 226 dosyalık frozen source `44f3d16f…` kullanır; gerçek gündüz
+çağrısı exit 0 ve quote makbuzu doğrulandı. Yayın penceresi ağ/skor/mirror'dan
+ayrıldı; yavaş yazım sonrası saat tekrar denetlenir. Eski altı origin missing,
+yeni zamanında yayın **0**, yeni fit **0**. WakeToRun açık; sistem güç politikası
+değişmedi. 03:35 Türkiye saatli devam kontrolü aktif; gece yayını henüz kanıtlanmadı.
+
 **Son operasyon kanıtı:** [İleri kayıt denetimi](FORWARD_EVIDENCE_AUDIT_20261009.md)
 08:09 UTC snapshot'ında altı origin'in altısı missing, yayımlanmış tahmin **0**.
 Her origin'de kesim-öncesi yerel makbuz yok. Durum komutu artık kaynak/girdi/saat
 ve kilitli çıktıyı doğrular; salt dosya sayısı kanıt sayılmaz. Eski kayıtlar
-değişmedi, yeni fit 0; mevcut görev ana checkout'ta kalır. Sonraki tek operasyon
+değişmedi, yeni fit 0; o denetim anında görev ana checkout'u kullanıyordu. Sonraki tek operasyon
 kontrolü gerçek 00:05 yakalama →00:20 yayın zinciridir; saat/backfill değiştirilmez.
 
 **Son yazılım kontrolü:** [FAS sürüm/değer/saat sözleşmesi ve ortak-origin
