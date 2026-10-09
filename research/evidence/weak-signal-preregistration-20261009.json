@@ -1,0 +1,62 @@
+{
+  "schema": 1,
+  "as_of": "2026-10-09",
+  "experiment": "research-weak-signal-control-v1",
+  "profile": "weak-signal-control-v1",
+  "completed_experiment": false,
+  "synthetic_fits": 0,
+  "market_fits": 0,
+  "registration_id": "62cdc32cffdcda8edab9425d13a4731a87cef56d403e1f68f4df965d8d20c40b",
+  "registration_sha256": "508c7df3ee5d790847f13ed8b66bd1f99f56a5b4b4ec6664f80d08ce1d0a89fc",
+  "complete_sha256": "7ed28fc6000d854c92e2e632b3de598066c626e0ab72cc9422aa6253f61d51d6",
+  "source_id": "2beaea0d3922606c448a6e1514e6e1508c8cc3eba02cd1020239abe250389467",
+  "source_files": 236,
+  "release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/weak-signal-preregistration-20261009",
+  "fit_budget": 3380,
+  "annual_outputs": 160,
+  "prediction_rows": 40120,
+  "conditions": [
+    "null",
+    "injected"
+  ],
+  "seeds": [
+    1201,
+    1202,
+    1203,
+    1204,
+    1205,
+    1206,
+    1207,
+    1208,
+    1209,
+    1210
+  ],
+  "calibration": {
+    "period_start": "2010-01-01",
+    "period_end_exclusive": "2015-01-01",
+    "observations": 1139,
+    "known_source_observations": 553,
+    "source": "numeric_D0_texas_minus_national_ge",
+    "source_median": -0.14,
+    "source_scale": 0.07907266917124799,
+    "volatility_fallback_median": 0.016287377083312043,
+    "noise_volatility_clip": [
+      0.005,
+      0.05
+    ],
+    "beta": 0.008453569350107845,
+    "expected_calibration_oracle_gain_pct": 4.999999999999982,
+    "calibrated_without_2015_or_later_outcomes": true
+  },
+  "synthetic_only": true,
+  "market_skill_demonstrated": false,
+  "independent_holdout": false,
+  "validation": {
+    "new_tests_passed": 16,
+    "existing_ml_tests_passed": 937,
+    "existing_skips": 3,
+    "ruff": "passed",
+    "note": "Full run exposed null CSV interpretation; corrected new suite re-run passed. No GPU/backend/UI changes."
+  },
+  "record_id": "c17f400f3ff8e1767bfebc32d731476831e1ea2b2a92f6a4ee729974266b8d35"
+}
