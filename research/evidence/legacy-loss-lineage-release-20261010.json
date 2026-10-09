@@ -1,0 +1,14 @@
+{
+  "schema": 1,
+  "release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/legacy-loss-lineage-20261010",
+  "archive": {
+    "name": "legacy-loss-lineage-20261010.zip",
+    "sha256": "97f431547c1d524c7f7410fe28a057fb547e7c74e07968e444f27e2ec5b7dbcd",
+    "bytes": 149971078
+  },
+  "members": 6906,
+  "inventory_member": "checksums.json",
+  "inventory_sha256": "3ac04ada648b06e49b34292e0ba616e01df48d5c51f8ad2926eab149a7ecbf94",
+  "new_model_fits": 0,
+  "scope": "Consumed legacy fit receipts/history/ready/source archive, frozen audit reader, protocol/result and complete original public inventory; missing model payloads are not reconstructed."
+}

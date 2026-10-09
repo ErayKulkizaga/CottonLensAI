@@ -16539,6 +16539,37 @@
       "independent_holdout": false,
       "information_absence_identified": false,
       "id": "f7cc7e5d2eb8f28f6e7f4c6ec0dc6a3394a6d94024e08959fcb1262481533204"
+    },
+    {
+      "profile": "legacy-loss-lineage-v1",
+      "kind": "no_fit_historical_loss_scope_audit",
+      "horizon": 1,
+      "coverage": "2016_2023_1008_common_origins_8_half_year_periods",
+      "classification": "INCONCLUSIVE",
+      "classification_scope": "Causal effect of loss alone: historical search changed target, loss and parameters together.",
+      "price_strategy_classification": "DECISIVE_NEGATIVE",
+      "model_families": [
+        "xgboost"
+      ],
+      "new_model_fits": 0,
+      "legacy_fit_receipts": 6648,
+      "code_id": "045d32f1c5412ff8db21a2b27832e390e2ce2b87a261ce07ec93e4117986cf20",
+      "reference_code_id": "73a92265cbdeb2ecae26f589193086fbfac1367673d8985ae02a97a12741b6a1",
+      "data_id": "d678a590530212a24884c34fbf6f2db2f1759bd1dfe7b69d7047585e62bc7f7c",
+      "evidence": "research/evidence/legacy-loss-lineage-20261010.json",
+      "evidence_sha256": "f561bf7cf6d14b60c916ef353cd499d20d4959e07ad72602935048393546d44f",
+      "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/legacy-loss-lineage-20261010",
+      "metrics": {
+        "selected": {
+          "gain_pct": -0.6110172877478393,
+          "direction_pct": 46.92460317460318,
+          "period_wins": 1
+        }
+      },
+      "independent_holdout": false,
+      "loss_effect_isolated": false,
+      "information_absence_identified": false,
+      "id": "98dd3fd9e6a5db8c4d6f0e63e12e799fc5f1e668a9cea53d65bcd6dbebbfb4a8"
     }
   ],
   "local_evidence": [
@@ -16757,6 +16788,14 @@
     {
       "path": "evidence/price-mae-calibration-20261010.json",
       "sha256": "210afe89013fdae5306b84657ffff7fc3822aac9b432cc0cff6ce91c990f5787"
+    },
+    {
+      "path": "evidence/legacy-loss-lineage-20261010.json",
+      "sha256": "f561bf7cf6d14b60c916ef353cd499d20d4959e07ad72602935048393546d44f"
+    },
+    {
+      "path": "evidence/legacy-loss-lineage-release-20261010.json",
+      "sha256": "80f81abb102974ef8c252bc490fd73664d62142d70ec09478cef8add2b9430fd"
     }
   ]
 }

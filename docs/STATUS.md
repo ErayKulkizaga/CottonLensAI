@@ -1,5 +1,16 @@
 # Güncel kararlar — 10 Ekim 2026
 
+**Son sıfır-fit yeniden kurma:** [eski loss seçiminin gerçek kapsamı](LEGACY_LOSS_LINEAGE_RESULT_20261010.md).
+6.648 makbuz / 128 aday / 8 geçmiş seçim; 1.008 ortak T+1 origin.
+Seçilmiş eski program −%0,611017 Naive kazancı, %46,9246 yön, 1/8 dönem;
+iki paired aralığın üst sınırı negatif. Altı dönemde MAE, üçünde doğrudan
+price_delta+MAE seçilmişti. “MAE hiç denenmedi” yanlış; aynı parametreli
+loss ablation'ı ise yok. Öğrenilmiş model payload'ları eksik olduğundan
+çıkarım replay'i iddia edilmez; kaynak, kohort, seçim ve tahmin/kayıp kuruldu.
+Genel MAE grid'i tekrarlanmaz. Loss'u ayırmak gerekirse yalnız ayrı ön kayıtlı
+48-fit eşleştirilmiş kontrol; eski Haziran seçimleri Ocak origin'lerine taşınmaz.
+Yeni fit 0; mevcut Naive ve gece görevi korunur.
+
 **Son tamamlanan piyasa postprocessing testi:** [fiyat-MAE kalibrasyonu](PRICE_MAE_CALIBRATION_RESULT_20261010.md).
 169 olgun-geçmiş skaler güncelleme, yeni model fit'i 0, aynı 2.006 T+1 origin.
 Kalibre ham/seçilmiş Naive kazancı −%3,73685/−%0,02608; seçilmiş kontrole
@@ -8,8 +19,8 @@ katkı yalnız %0,001362 ve iki paired aralık sıfırı içeriyor. Naive'ye gö
 169 model çıkarımı, 8 seçim ve 12 aralık bağımsız doğrulandı; rapor/CSV replay
 birebir. **Global bias kalibrasyonu tarifini büyütme; Naive korunur.**
 Tam koşullu quantile/loss etkisi veya tüm kaynaklarda bilgi yokluğu sınanmadı.
-Sonraki tek inceleme, zaten denenmiş MAE/absolute-loss tariflerinin mevcut
-ortak-origin payload kapsamı; yeni eğitim kendiliğinden başlamaz.
+MAE/absolute-loss kapsamı incelemesi yukarıda tamamlandı; yeni eğitim
+kendiliğinden başlamaz.
 
 **Yeni sıfır-fit sonuç:** [iç doğrulama seçim kararlılığı](SELECTION_STABILITY_RESULT_20261010.md).
 160 eski karar / 1.440 iç makbuz / 30.240 geçmiş tahmin yeniden kuruldu.

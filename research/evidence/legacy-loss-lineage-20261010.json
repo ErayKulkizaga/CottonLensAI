@@ -1,0 +1,173 @@
+{
+  "schema": 1,
+  "profile": "legacy-loss-lineage-v1",
+  "status": "reconstructed_legacy_selection_from_saved_predictions",
+  "source_commit": "74db853b24ddd1efd24d4d44c3fd111a0f902798",
+  "source_id": "045d32f1c5412ff8db21a2b27832e390e2ce2b87a261ce07ec93e4117986cf20",
+  "reference_source_id": "73a92265cbdeb2ecae26f589193086fbfac1367673d8985ae02a97a12741b6a1",
+  "report_sha256": "bc6bb02d0ad30e2418d5b03919682390a2767eb1482a0c1930ca57a74012039a",
+  "predictions_sha256": "163fdf8ecd8d658c7a399df120838a1a78453c14b468dec1ef92e3c8fdcd7403",
+  "release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/legacy-loss-lineage-20261010",
+  "new_model_fits": 0,
+  "input_count": 6651,
+  "legacy_fit_receipts": 6648,
+  "origin_count": 1008,
+  "horizon": 1,
+  "classification": "INCONCLUSIVE",
+  "classification_scope": "Causal effect of loss alone: historical search changed target, loss and parameters together.",
+  "price_strategy_classification": "DECISIVE_NEGATIVE",
+  "price_strategy_scope": "Practical 5% MAE improvement of this reconstructed adaptive legacy program; not source-wide absence of predictive information.",
+  "metrics": {
+    "gain_pct": -0.6110172877478393,
+    "direction_pct": 46.92460317460318,
+    "period_wins": 1,
+    "periods": 8
+  },
+  "paired_bootstrap": {
+    "20": {
+      "count": 1008,
+      "block_length": 20,
+      "replicates": 10000,
+      "paired_difference": -0.0060685897528068855,
+      "difference_ci_95": [
+        -0.010946050244695058,
+        -0.0012553871162827432
+      ],
+      "difference_ci_method": "fold-preserving moving-block, recentered basic interval",
+      "column_mean_ci_95": [
+        [
+          0.9169834088711516,
+          0.922886304525475
+        ],
+        [
+          1.0487416479322644,
+          1.0529175490561549
+        ]
+      ],
+      "standard_error": 0.0025168942834550047,
+      "centered_bootstrap_p_two_sided": 0.0156984301569843,
+      "normal_approx_mde_80pct_relative": 0.007095593453417314,
+      "power_at_relative_effect": {
+        "0.005": 0.5184,
+        "0.01": 0.9801,
+        "0.02": 1.0,
+        "0.05": 1.0
+      },
+      "power_identifiable": true,
+      "power_limitation": null,
+      "power_assumptions": "post-hoc paired noise held fixed under additive alternatives; selection not adjusted",
+      "gate_changed": false
+    },
+    "60": {
+      "count": 1008,
+      "block_length": 60,
+      "replicates": 10000,
+      "paired_difference": -0.0060685897528068855,
+      "difference_ci_95": [
+        -0.010027953044288902,
+        -0.0021485523973668146
+      ],
+      "difference_ci_method": "fold-preserving moving-block, recentered basic interval",
+      "column_mean_ci_95": [
+        [
+          0.9385861120526755,
+          0.9455077348840114
+        ],
+        [
+          1.0485247534418862,
+          1.0514934329014878
+        ]
+      ],
+      "standard_error": 0.002044021395501827,
+      "centered_bootstrap_p_two_sided": 0.0014998500149985001,
+      "normal_approx_mde_80pct_relative": 0.005762476766667491,
+      "power_at_relative_effect": {
+        "0.005": 0.6827,
+        "0.01": 0.9988,
+        "0.02": 1.0,
+        "0.05": 1.0
+      },
+      "power_identifiable": true,
+      "power_limitation": null,
+      "power_assumptions": "post-hoc paired noise held fixed under additive alternatives; selection not adjusted",
+      "gate_changed": false
+    }
+  },
+  "periods": [
+    {
+      "year": 2016,
+      "target": "scaled_log",
+      "loss": "reg:absoluteerror",
+      "validation_score": 0.9983145743225021,
+      "gain_pct": 0.12158864666050873
+    },
+    {
+      "year": 2017,
+      "target": "scaled_log",
+      "loss": "reg:squarederror",
+      "validation_score": 0.9952349147053167,
+      "gain_pct": -2.499831101790484
+    },
+    {
+      "year": 2018,
+      "target": "price_delta",
+      "loss": "reg:absoluteerror",
+      "validation_score": 0.9952374833303335,
+      "gain_pct": -0.7188889572813606
+    },
+    {
+      "year": 2019,
+      "target": "scaled_log",
+      "loss": "reg:absoluteerror",
+      "validation_score": 0.9993028703061057,
+      "gain_pct": -0.18709362109912142
+    },
+    {
+      "year": 2020,
+      "target": "price_delta",
+      "loss": "reg:squarederror",
+      "validation_score": 0.9967906701199901,
+      "gain_pct": -1.0863514342808855
+    },
+    {
+      "year": 2021,
+      "target": "scaled_log",
+      "loss": "reg:absoluteerror",
+      "validation_score": 0.995422461837463,
+      "gain_pct": -0.2661793376859345
+    },
+    {
+      "year": 2022,
+      "target": "price_delta",
+      "loss": "reg:absoluteerror",
+      "validation_score": 0.9936848522141908,
+      "gain_pct": -0.589825157563828
+    },
+    {
+      "year": 2023,
+      "target": "price_delta",
+      "loss": "reg:absoluteerror",
+      "validation_score": 0.9998597692607536,
+      "gain_pct": -0.2087739183600057
+    }
+  ],
+  "absolute_loss_periods": 6,
+  "price_delta_absolute_loss_periods": 3,
+  "independent_checks": {
+    "saved_outer_receipt_ensembles": 24,
+    "origin_target_maturity": true,
+    "paired_price_errors": 1008,
+    "bootstrap_intervals": 2,
+    "exact_report_and_csv_reproduction": true
+  },
+  "trained_model_inference_verified": false,
+  "serialized_payloads_available": 0,
+  "old_registry_objects_preserved": 152,
+  "old_trial_objects_preserved": 460,
+  "old_proof_files_preserved": 53,
+  "market_skill_demonstrated": false,
+  "independent_holdout": false,
+  "historical_source_admitted": false,
+  "release_allowed": false,
+  "next": "Only a separately preregistered 48-fit paired price_delta squared/absolute loss control can isolate the loss effect in these fixed legacy recipes; no new grid or generic MAE search."
+}

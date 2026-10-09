@@ -19,6 +19,9 @@ değişiyor. Bu, küçültmeyi kaldırmayı veya piyasa başarısı iddiasını 
 tamamlandı: yeni model fit'i 0, 169 geçmiş skaler düzeltme. Kalibre seçilmiş
 Naive kazancı −%0,02608; global bias düzeltmesi hedefi kurtarmadı.
 Naive korunur; bu tarif büyütülmez, otomatik yeni eğitim yok.
+[Eski loss araması](docs/LEGACY_LOSS_LINEAGE_RESULT_20261010.md) da yeniden
+kuruldu: 1.008 T+1 origin'de −%0,6110 kazanç, 1/8 dönem. MAE denenmişti;
+loss/hedef/parametreler birlikte değiştiği için kontrollü loss etkisi ayrılmamıştı.
 İlk sıfır-fit kayıt ve r2 ön kaydı korunuyor.
 
 ## Nereden başlanır?
