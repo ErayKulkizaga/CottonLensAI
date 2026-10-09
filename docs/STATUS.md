@@ -1,14 +1,24 @@
 # Güncel kararlar — 10 Ekim 2026
 
+**Son tamamlanan piyasa postprocessing testi:** [fiyat-MAE kalibrasyonu](PRICE_MAE_CALIBRATION_RESULT_20261010.md).
+169 olgun-geçmiş skaler güncelleme, yeni model fit'i 0, aynı 2.006 T+1 origin.
+Kalibre ham/seçilmiş Naive kazancı −%3,73685/−%0,02608; seçilmiş kontrole
+katkı yalnız %0,001362 ve iki paired aralık sıfırı içeriyor. Naive'ye göre
+üst sınırlar %0,23134/%0,18585, %5 hedefinin altında. 169 optimum/maturity,
+169 model çıkarımı, 8 seçim ve 12 aralık bağımsız doğrulandı; rapor/CSV replay
+birebir. **Global bias kalibrasyonu tarifini büyütme; Naive korunur.**
+Tam koşullu quantile/loss etkisi veya tüm kaynaklarda bilgi yokluğu sınanmadı.
+Sonraki tek inceleme, zaten denenmiş MAE/absolute-loss tariflerinin mevcut
+ortak-origin payload kapsamı; yeni eğitim kendiliğinden başlamaz.
+
 **Yeni sıfır-fit sonuç:** [iç doğrulama seçim kararlılığı](SELECTION_STABILITY_RESULT_20261010.md).
 160 eski karar / 1.440 iç makbuz / 30.240 geçmiş tahmin yeniden kuruldu.
 Enjekte koşulunda leave-one-block-out 59/80 kararı değiştirir; blok20 kayıtlı
 ağırlığı medyan %56,19 sıklıkla seçer. Blok60'ta %98,20, fakat 63 satırda
 yalnız dört başlangıç olduğundan bu güç kanıtı değildir. Kaynak/veri ve eski
 ağırlıklar değişmedi; 5.960 kullanılan girdi orijinal envanterle eşleşti.
-Naive korunur; eski küçültme kaldırılmaz. Sonraki ayırıcı aday yalnız olgun
-eğitim verisinden fiyat-MAE çarpan kalibrasyonudur; kapsam/ön kayıt olmadan
-başlatılmaz. Yeni veri, piyasa fit'i veya canlı model yayını yapılmadı.
+Naive korunur; eski küçültme kaldırılmaz. Bu tanının sonraki çarpan kalibrasyonu
+yukarıda tamamlandı. Yeni veri, model fit'i veya canlı model yayını yapılmadı.
 
 **Son kontrol:** [zayıf sinyal sonucu](WEAK_SIGNAL_RESULT_20261009.md).
 3.380 sentetik fit / 160 çıktı / 40.120 satır tamamlandı; yeni piyasa fit'i 0.
@@ -21,8 +31,8 @@ kanıtı değildir. 3.380 çıkarım / 160 geçmiş seçim / 120 aralık bağım
 949 girdi, 6.646 eski deney dosyası, 42 eski kanıt, 146 sicil / 440 trial korunur.
 Kaynak/ön kayıt değişmedi; 18 yeni kontrol, yerel 937 ML testi / 3 skip;
 ön kayıt GitHub CI'da 947 ML testi / 12 skip ve diğer üç job doğrulandı.
-**Naive korunur; tek sonraki iş kayıtlı iç doğrulamada seçim kararlılığı
-analizi, yeni fit 0.** Ön kayıt ve ilk sıfır-fit v1 arşivi değiştirilmez.
+**Naive korunur; ardından yapılan seçim kararlılığı analizi yukarıda tamamlandı.**
+Ön kayıt ve ilk sıfır-fit v1 arşivi değiştirilmez.
 
 **Son araştırma işi:** [Texas/NASS T+1 sonucu](NASS_REGIONAL_T1_RESULT_20261009.md).
 676 piyasa + ayrı 1 sentetik fit, 32 çıktı, 8.024 tahmin tamamlandı; aynı 2.006

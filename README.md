@@ -15,7 +15,10 @@ puan kaçırdı. Bu piyasa başarısı veya küçültmenin ana kusur olduğunun 
 değildir. [Seçim kararlılığı analizi](docs/SELECTION_STABILITY_RESULT_20261010.md)
 de tamamlandı: enjekte koşulunda bir doğrulama bloğu çıkarılınca 59/80 karar
 değişiyor. Bu, küçültmeyi kaldırmayı veya piyasa başarısı iddiasını desteklemez.
-Sonraki ayırıcı aday geçmişten fiyat-MAE kalibrasyonu; otomatik yeni eğitim yok.
+[Fiyat-MAE kalibrasyonu](docs/PRICE_MAE_CALIBRATION_RESULT_20261010.md) da
+tamamlandı: yeni model fit'i 0, 169 geçmiş skaler düzeltme. Kalibre seçilmiş
+Naive kazancı −%0,02608; global bias düzeltmesi hedefi kurtarmadı.
+Naive korunur; bu tarif büyütülmez, otomatik yeni eğitim yok.
 İlk sıfır-fit kayıt ve r2 ön kaydı korunuyor.
 
 ## Nereden başlanır?

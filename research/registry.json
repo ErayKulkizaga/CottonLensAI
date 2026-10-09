@@ -16506,6 +16506,39 @@
         }
       },
       "id": "10352b05ea8af10d22d7fb02d09fb6c99e0ddec02a792333e90caf66917e62dd"
+    },
+    {
+      "profile": "price-mae-calibration-v1",
+      "kind": "completed_market_postprocessing_experiment",
+      "horizon": 1,
+      "coverage": "2016_2023_2006_common_origins",
+      "classification": "DECISIVE_NEGATIVE",
+      "classification_scope": "Practical 5% price-MAE goal for this fixed global training-residual multiplicative calibration; not full conditional-quantile testing or universal absence of market information.",
+      "model_families": [
+        "ridge"
+      ],
+      "new_model_fits": 0,
+      "scalar_calibration_updates": 169,
+      "code_id": "b20fec5aae9c3bab3b0112679c32c1cb4bde588577cb43608cd42cb53e4438a0",
+      "reference_code_id": "ca0d95b7cf585c4c3800d3bdb7be601dd12fb29256e2e33d1903e485ca42be71",
+      "data_id": "175199fe68f43120c47d0a82bc57ed8231314555ac3606f2ed08e7bca1d56052",
+      "evidence": "research/evidence/price-mae-calibration-20261010.json",
+      "evidence_sha256": "210afe89013fdae5306b84657ffff7fc3822aac9b432cc0cff6ce91c990f5787",
+      "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/price-mae-calibration-20261010",
+      "metrics": {
+        "selected": {
+          "gain_pct": -0.02608146329374783,
+          "price_mae": 1.0212185211304425,
+          "direction_pct": 18.39481555333998,
+          "year_wins": 1
+        },
+        "raw": {
+          "gain_pct": -3.736847686107403
+        }
+      },
+      "independent_holdout": false,
+      "information_absence_identified": false,
+      "id": "f7cc7e5d2eb8f28f6e7f4c6ec0dc6a3394a6d94024e08959fcb1262481533204"
     }
   ],
   "local_evidence": [
@@ -16716,6 +16749,14 @@
     {
       "path": "evidence/selection-stability-20261010.json",
       "sha256": "a0a1c0bf72e1f3135479fbe8dd0c238bede6b325a50261a9547e63fce009a336"
+    },
+    {
+      "path": "evidence/price-mae-calibration-release-20261010.json",
+      "sha256": "bc0850e052ca5677fca56fc8e8a6232a581326db027ba59464c0d477cf5bb1ac"
+    },
+    {
+      "path": "evidence/price-mae-calibration-20261010.json",
+      "sha256": "210afe89013fdae5306b84657ffff7fc3822aac9b432cc0cff6ce91c990f5787"
     }
   ]
 }
