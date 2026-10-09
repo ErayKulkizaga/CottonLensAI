@@ -15,8 +15,10 @@ WASDE kapsamını/modelini büyütmek otomatik sonraki iş değildir.
 **9 Ekim bağımsız veri işi:** [Texas/NASS denetimi](NASS_REGIONAL_AUDIT_20261009.md)
 311 mevcut raporda kondisyon ve 636 gelişim tablosunu ayırdı; iki revizyon ayrı
 korundu. Ekim 46 raporla sınırlı, tam sezon varsayımı yapılamaz. Veri karantinada;
-NASS için sonraki tek iş 30 Mayıs 2023 sürümüne bağlı erişim tanığıdır. Yeni fit 0;
-FAS engeli ve gece ileri yayın görevi aynı kalır.
+[30 Mayıs tek raporlu kontrol](NASS_CLOCK_CASE_20261009.md) tamamlandı: 22 hücre
+eşleşti; tarihsel erişim saati doğrulanmadı. Sınırlı CDX araması tekrar edilmeyecek.
+NASS için tek sonraki iş ayrı varsayım-duyarlılığı ön kaydı; fit bütçesi ve
+ortak-origin tasarımı kilitlenmeden eğitim yok. FAS engeli/gece görevi değişmedi.
 
 **FAS işi — dış kanıt bekleyen ülke bilgisinin kabul denetimi; sıfır fit.**
 9 Ekim: [değer/sürüm/saat koruması ve ortak-origin adapter'i](FAS_REVIEWED_ALIGNMENT_20261009.md)

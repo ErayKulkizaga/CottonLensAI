@@ -1,11 +1,18 @@
 # Güncel kararlar — 9 Ekim 2026
 
-**Son veri işi:** [Texas/NASS bölgesel rapor denetimi](NASS_REGIONAL_AUDIT_20261009.md).
+**Son veri işi:** [NASS 30 Mayıs 2023 saat kontrolü](NASS_CLOCK_CASE_20261009.md).
+22 hücre (21 sayı + 1 NA) TXT/PDF'lerde eşleşti; Texas PDF'si yalnız planted'ı
+ayrıca doğrular. Schedule/PDF/HTTP metadata tarihsel erişim tanığı yapılmadı.
+Üç sınırlı CDX sorgusu timeout/503; tekrar arama yok. Sıfır fit/kabul, 949 eski
+girdi değişmedi. Sonraki tek NASS işi ayrı varsayım-duyarlılığı ön kaydıdır;
+tam fit bütçesi ve ortak-origin tasarımı kilitlenmeden eğitim başlamaz.
+
+**Önceki veri işi:** [Texas/NASS bölgesel rapor denetimi](NASS_REGIONAL_AUDIT_20261009.md).
 311 mevcut rapor/949 girdi doğrulandı; Texas kondisyonu ve 636 gelişim tablosu
 karantina paneline ayrıldı. İki gerçek önceki-hafta revizyonu özgün kayıtları
 değiştirmeden korunur. Ekim yalnız 46 raporda var; tam sezon kabul edilmez.
-Yeni fit 0, tarihsel erişim kabulü kapalı; tek sonraki NASS işi 30 Mayıs 2023
-belirli sürümünün erişim tanığıdır. Gece görevine ve otomasyonuna dokunulmadı.
+Yeni fit 0, tarihsel erişim kabulü kapalı; tek raporlu saat kontrolü yukarıda
+tamamlandı. Gece görevine ve otomasyonuna dokunulmadı.
 
 **Çalışan kaynak:** [İleri yayın görevi düzeltmesi](FORWARD_RUNTIME_WINDOW_20261009.md).
 Mevcut görev 226 dosyalık frozen source `44f3d16f…` kullanır; gerçek gündüz

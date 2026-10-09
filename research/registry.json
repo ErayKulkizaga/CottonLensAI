@@ -15631,6 +15631,29 @@
         "research/evidence/nass-regional-audit-20261009.json": "2a0399603a6e072f01a4bd398c3318ce7c298a8a023438309ecc2240643a6aa1"
       },
       "id": "10dcac19c4b46ca2e63c13f295f908e1624408e74b64c906d0f7f4af1192ff6d"
+    },
+    {
+      "experiment": "nass-clock-case-v1",
+      "profile": "nass-clock-case-v1",
+      "kind": "no_fit_source_clock_audit",
+      "horizon": null,
+      "code_id": "1c0451cdcc95ebb220c62262e12b5d4a4b005b8515bfd7bc36ce288384aeb46b",
+      "ml_source_id": "ec003b687a0c5b164579950822b0bbeb482ea25ab303064d8436bc2ee6a583fa",
+      "data_id": "120dc02d037c851bd9e2a87e768920894df23724b062cf36e705cd13f1a07cd7",
+      "classification": "INCONCLUSIVE",
+      "coverage": "one_2023_05_30_release_22_cells_3_failed_CDX_queries",
+      "independent_holdout": false,
+      "market_fits": 0,
+      "model_families": [],
+      "recipes": [],
+      "metrics": {},
+      "prediction_payload_exists": false,
+      "reason": "TXT/national PDF agree; regional PDF confirms planted only. Metadata and schedule are not version-bound historical access witnesses; no PIT admission or market claim.",
+      "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/nass-clock-case-20261009",
+      "payloads": {
+        "research/evidence/nass-clock-case-20261009.json": "3130e9e19ea90d91c55d46daf2398242590fe161352c601e81da602c3efaf0c4"
+      },
+      "id": "a2175b84c0f3932d3f7810f5390a005820dede5fab99ecd0b84c6f826b764792"
     }
   ],
   "local_evidence": [
@@ -15789,6 +15812,10 @@
     {
       "path": "evidence/nass-regional-audit-20261009.json",
       "sha256": "2a0399603a6e072f01a4bd398c3318ce7c298a8a023438309ecc2240643a6aa1"
+    },
+    {
+      "path": "evidence/nass-clock-case-20261009.json",
+      "sha256": "3130e9e19ea90d91c55d46daf2398242590fe161352c601e81da602c3efaf0c4"
     }
   ]
 }

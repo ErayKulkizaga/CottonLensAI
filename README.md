@@ -41,6 +41,10 @@ Python giriş araçları `ml/` altında kalır: `history.py`, `full_year_cpu.py`
 
 ## Ölçülmüş son durum
 
+[NASS tek raporlu saat kontrolü](docs/NASS_CLOCK_CASE_20261009.md): 22 hücre
+TXT/PDF'lerde eşleşti; metadata tarihsel erişim kanıtı sayılmadı. Sıfır fit,
+kabul kapalı. Sonraki iş tek varsayım-duyarlılığı ön kaydı; yeni model/grid yok.
+
 [Texas/NASS denetimi](docs/NASS_REGIONAL_AUDIT_20261009.md), mevcut 311 rapordan
 Texas kondisyonunu ve 636 gelişim tablosunu ayırdı; iki gerçek geçmiş-hafta
 revizyonu ayrı korundu. 949 girdi değişmedi. Ekim yalnız 46 raporda; tam sezon

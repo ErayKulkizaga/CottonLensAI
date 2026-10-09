@@ -2,6 +2,10 @@
 
 ## Sicil
 
+`nass-clock-case-v1`: **sıfır-fit tek raporlu saat incelemesi**; 22 hücre
+eşleşir, tarihsel sürüm/erişim kanıtlanmadı. Üç CDX timeout/503, tekrar sorgu yok;
+bu bir piyasa negatifi değildir. [Kanıt ve çevrimdışı replay](../docs/NASS_CLOCK_CASE_20261009.md).
+
 `nass-texas-report-audit-v1`: **sıfır-fit bölgesel içerik denetimi**; 311 rapor,
 636 gelişim tablosu, 949 girdi. Ulusal T+5 deneyi Texas'ı elemez. İki gerçek
 revizyon ayrı korunur; tam sezon ve tarihsel erişim kabulü yoktur.
@@ -64,6 +68,7 @@ python ml/history.py check --query fas-country
 python ml/history.py check --query forward-evidence
 python ml/history.py check --query forward-runtime
 python ml/history.py check --query nass-texas
+python ml/history.py check --query nass-clock-case
 python ml/history.py check --query fas-reviewed-alignment
 python ml/history.py check --query fas-historical-reference
 python ml/history.py check --feature fas --horizon 1
