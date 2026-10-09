@@ -257,6 +257,11 @@ denetimi dışında yeni eğitim, model araması veya otomatik hedef değişimi 
 
 ### D — Kilitli ileri kayıt ve kanıt paketi
 
+9 Ekim görev düzeltmesi dağıtıldı: [sabit kaynak/yayın penceresi](FORWARD_RUNTIME_WINDOW_20261009.md),
+gündüz gerçek çağrı exit 0; gece yayını ve tahmin becerisi henüz doğrulanmadı.
+Mevcut görev/tetikleyiciler korunur; 03:35 Türkiye saatinde bu sohbetin devam
+kontrolü aktiftir. Genel sistem güç ayarları ve araştırma karar saati değişmedi.
+
 9 Ekim sıfır-fit denetimi tamamlandı: altı missing origin, sıfır yayımlanmış
 tahmin; kesim-öncesi yerel makbuz yok. [Kanıt ve durum komutu](FORWARD_EVIDENCE_AUDIT_20261009.md).
 Sonraki operasyon kontrolü mevcut görevde tek gerçek 00:05→00:20 UTC zinciridir;

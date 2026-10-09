@@ -41,6 +41,11 @@ Python giriş araçları `ml/` altında kalır: `history.py`, `full_year_cpu.py`
 
 ## Ölçülmüş son durum
 
+[İleri yayın görevi](docs/FORWARD_RUNTIME_WINDOW_20261009.md), checksum bağlı
+sabit kodla gerçek gündüz toplamasında exit 0 verdi. Yayın penceresinde ağ/skor
+işi yapılmaz; yavaş yazımın son saat kontrolü düzeltildi. Zamanında tahmin henüz
+0; bu model başarısı değildir. Gece kontrolü için 03:35 Türkiye saatli devam aktif.
+
 [İleri kayıt denetimi](docs/FORWARD_EVIDENCE_AUDIT_20261009.md): 9 Ekim 08:09 UTC
 snapshot'ında altı origin'in altısı missing, yayımlanmış tahmin **0**. Kaynak
 makbuzu/girdi/saat doğrulayan `research.live --status` tamamlandı; model eğitimi
