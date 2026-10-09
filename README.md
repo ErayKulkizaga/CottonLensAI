@@ -41,6 +41,11 @@ Python giriş araçları `ml/` altında kalır: `history.py`, `full_year_cpu.py`
 
 ## Ölçülmüş son durum
 
+[Texas/NASS T+1 ön kaydı](docs/NASS_REGIONAL_T1_PREREGISTRATION_20261009.md):
+aynı 2.006 origin'de ulusal kondisyonun üzerine Texas katkısını sınayacak
+**676 piyasa + 1 sentetik** fit bütçesi kilitlendi. Henüz eğitim/performans yok;
+erişim ve vintage varsayımsal. Sonraki iş yalnız bu deneyi mevcut CPU yolunda yürütmek.
+
 [NASS tek raporlu saat kontrolü](docs/NASS_CLOCK_CASE_20261009.md): 22 hücre
 TXT/PDF'lerde eşleşti; metadata tarihsel erişim kanıtı sayılmadı. Sıfır fit,
 kabul kapalı. Sonraki iş tek varsayım-duyarlılığı ön kaydı; yeni model/grid yok.

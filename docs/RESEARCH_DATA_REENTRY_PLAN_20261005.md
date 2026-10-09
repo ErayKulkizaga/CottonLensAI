@@ -17,8 +17,10 @@ WASDE kapsamını/modelini büyütmek otomatik sonraki iş değildir.
 korundu. Ekim 46 raporla sınırlı, tam sezon varsayımı yapılamaz. Veri karantinada;
 [30 Mayıs tek raporlu kontrol](NASS_CLOCK_CASE_20261009.md) tamamlandı: 22 hücre
 eşleşti; tarihsel erişim saati doğrulanmadı. Sınırlı CDX araması tekrar edilmeyecek.
-NASS için tek sonraki iş ayrı varsayım-duyarlılığı ön kaydı; fit bütçesi ve
-ortak-origin tasarımı kilitlenmeden eğitim yok. FAS engeli/gece görevi değişmedi.
+[Texas T+1 ön kaydı](NASS_REGIONAL_T1_PREREGISTRATION_20261009.md) tamamlandı:
+ortak 2.006 origin ve 676 piyasa + 1 sentetik fit bütçesi; ulusal kondisyon ortak.
+Tek sonraki iş yeni kimlikle mevcut CPU yolunda yalnız bu deneyi yürütmek.
+Henüz fit/erişim kabulü yok. FAS engeli/gece görevi değişmedi.
 
 **FAS işi — dış kanıt bekleyen ülke bilgisinin kabul denetimi; sıfır fit.**
 9 Ekim: [değer/sürüm/saat koruması ve ortak-origin adapter'i](FAS_REVIEWED_ALIGNMENT_20261009.md)
