@@ -15563,6 +15563,30 @@
         "research/evidence/fas-reviewed-alignment-release-20261009.json": "980e60f12e47f49c9889c9c5366954fbc487f24611c6f68b52df51d1223f7462"
       },
       "id": "8207768dd761f08b0f40cbc13efe67e0db407db54fc61248703881b8ce591edd"
+    },
+    {
+      "experiment": "forward-evidence-audit-v1",
+      "profile": "forward-evidence-audit-v1",
+      "kind": "no_fit_read_only_operational_audit",
+      "horizon": null,
+      "code_id": "e2b0462d670ccc0ea3ea2f866591ff8cfe58a0f90973c208e6342002f8f300a2",
+      "data_id": "023064248fe87208375dfca7dc1ac08bb7695062893c7e2ed4aad9bdf779bdcd",
+      "coverage": "6_missing_origins_0_published_94_verified_files",
+      "independent_holdout": false,
+      "classification": "INCONCLUSIVE",
+      "reason": "No forward predictions yet; local pre-cutoff receipt absent in all six origins. No model performance test.",
+      "market_fits": 0,
+      "model_families": [],
+      "recipes": [],
+      "metrics": {},
+      "prediction_payload_exists": false,
+      "registered_origins": 6,
+      "published_origins": 0,
+      "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/forward-evidence-audit-20261009",
+      "payloads": {
+        "research/evidence/forward-evidence-audit-20261009.json": "2ab7374d0031f0c7a01eafdad2213aceddc45ab313d0bbda3968ec98440b29f4"
+      },
+      "id": "e68eb59cd6381d2fbe7e4dcd0a7edd5fe0fa4a3781f1a5f573c1e9a717496134"
     }
   ],
   "local_evidence": [
@@ -15709,6 +15733,10 @@
     {
       "path": "evidence/fas-reviewed-alignment-release-20261009.json",
       "sha256": "980e60f12e47f49c9889c9c5366954fbc487f24611c6f68b52df51d1223f7462"
+    },
+    {
+      "path": "evidence/forward-evidence-audit-20261009.json",
+      "sha256": "2ab7374d0031f0c7a01eafdad2213aceddc45ab313d0bbda3968ec98440b29f4"
     }
   ]
 }

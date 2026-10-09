@@ -2,6 +2,12 @@
 
 ## Sicil
 
+`forward-evidence-audit-v1`: **sıfır-fit operasyon denetimi**; altı missing origin,
+sıfır yayımlanmış tahmin. Piyasa performans testi değil. Salt okunur komut:
+`PYTHONPATH=ml/src python -m cottonlens_ml.research.live --store EXISTING_STORE --status`.
+Windows'ta `PYTHONPATH` ortam değişkenini ayrı ayarlayın; mevcut ML CPU ortamı
+gerekir. [Makbuz/saat kanıtı ve kalan tek kontrol](../docs/FORWARD_EVIDENCE_AUDIT_20261009.md).
+
 `fas-reviewed-alignment-v1`: **sıfır-fit sentetik sözleşme/hizalama kontrolü**;
 FAS specific-version receipt, 00:15 karar sınırı, ortak eksiklik göstergeleri ve
 provenance. Gerçek kaynak kabulü veya ülke modelinin piyasa testi değildir.
@@ -45,6 +51,7 @@ python ml/history.py check --query availability
 python ml/history.py check --query trading --horizon 1
 python ml/history.py check --query wasde-regional
 python ml/history.py check --query fas-country
+python ml/history.py check --query forward-evidence
 python ml/history.py check --query fas-reviewed-alignment
 python ml/history.py check --query fas-historical-reference
 python ml/history.py check --feature fas --horizon 1

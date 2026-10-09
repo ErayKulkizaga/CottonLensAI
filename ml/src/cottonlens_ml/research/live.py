@@ -16,6 +16,7 @@ from cottonlens_ml.research.ledger import freeze_record, read_record, writer
 from cottonlens_ml.research.mirror import Mirror
 from cottonlens_ml.research.prospective import (
     baseline_lock,
+    baseline_status,
     record_baselines,
     score_baselines,
 )
@@ -166,8 +167,11 @@ def main():
     parser.add_argument('--status', action='store_true')
     args = parser.parse_args()
     if args.status:
-        print(json.dumps({'baseline_lock_present': (args.store/'forward/baseline-lock.json').exists(),
-                          'registered_origins': len(list((args.store/'forward/baseline-origins').glob('*.json')))}))
+        try:
+            result = baseline_status(args.store/'forward', args.store/'market')
+        except (OSError, ValueError, RuntimeError, KeyError, TypeError) as exc:
+            parser.exit(2, f'Forward evidence audit failed ({type(exc).__name__}); no collection or training performed.\n')
+        print(json.dumps(result, indent=2))
         return
     with writer(args.store):
         result = collect(args.store, mirror_root=args.mirror_root)

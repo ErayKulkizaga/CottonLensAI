@@ -8,7 +8,7 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-from cottonlens_ml.code_identity import digest
+from cottonlens_ml.code_identity import digest, safe_member
 from cottonlens_ml.cohort import content_id
 from cottonlens_ml.evaluation import evaluate
 from cottonlens_ml.research.ledger import freeze_record, read_record, writer
@@ -40,6 +40,8 @@ def verify_baseline_chain(root):
         body = read_record(path)
         if body['previous_record_id'] != previous or body['lock_id'] != content_id(lock):
             raise ValueError('Forward chain or lock identity mismatch')
+        if not safe_member(body['input_file']) or body['input_file'] != 'baseline-inputs/' + path.stem + '.parquet':
+            raise ValueError('Invalid forward input path')
         if digest(root / body['input_file']) != body['input_sha256']:
             raise ValueError('Forward input changed')
         records.append(body)
@@ -47,6 +49,136 @@ def verify_baseline_chain(root):
     if len(records) > 126:
         raise ValueError('Fixed forward cohort exceeded')
     return lock, records
+
+
+def baseline_status(root, market_root, *, now=None):
+    """Read-only receipt/input/clock audit; never score, collect or backfill.
+
+    Absence of a pre-cutoff archived snapshot proves absence of local evidence,
+    not that the provider could not have supplied the bar at that time.
+    """
+    root, market_root = Path(root), Path(market_root)
+    stamp = pd.Timestamp(now or datetime.now(UTC))
+    if stamp.tzinfo is None:
+        raise ValueError('Timezone-aware audit time required')
+    if (root / '.writer-lock').exists() or (root.parent / '.writer-lock').exists():
+        raise RuntimeError('Forward writer active or interrupted; audit a stable copy')
+    if not (root / 'baseline-lock.json').exists():
+        if any((root / 'baseline-origins').glob('*.json')):
+            raise ValueError('Forward records without lock')
+        return {'status': 'not_locked', 'baseline_lock_present': False}
+    locked, records = verify_baseline_chain(root)
+    expected = {'schema': 'prospective-baselines-v2', 'required_origins': 126,
+                'decision_utc': '00:15', 'publication_end_utc': '00:30',
+                'recipes': {'price': {'family': 'naive', 'log_return': 0.},
+                            'variance': {'family': 'ewma', 'lambda': .94}}}
+    if any(locked.get(k) != v for k, v in expected.items()):
+        raise ValueError('Unsupported forward lock policy; do not reinterpret existing evidence')
+    locked_at = pd.Timestamp(locked['locked_at'])
+    if locked_at.tzinfo is None or locked_at > stamp:
+        raise ValueError('Invalid forward lock time')
+
+    def frame_dates(frame):
+        dates = pd.DatetimeIndex(frame.date)
+        if (frame.empty or dates.tz is not None or dates.hasnans or dates.has_duplicates
+                or not dates.is_monotonic_increasing or not dates.equals(dates.normalize())
+                or not np.isfinite(frame.cotton_close).all() or (frame.cotton_close <= 0).any()):
+            raise ValueError('Invalid forward daily-bar snapshot')
+        return dates
+
+    receipts, eligible = {}, set()
+    for path in sorted((market_root / 'observations').glob('*.json')):
+        receipt = read_record(path)
+        if receipt['symbol'] != 'CT=F':
+            continue
+        observed = pd.Timestamp(receipt['observed_available_at'])
+        if observed.tzinfo is None or observed > stamp:
+            raise ValueError('Invalid forward receipt observation time')
+        name = receipt['source_file']
+        if not safe_member(name) or not name.startswith('objects/'):
+            raise ValueError('Invalid market snapshot path')
+        source = market_root / name
+        if digest(source) != receipt['source_sha256']:
+            raise ValueError('Observed market snapshot checksum mismatch')
+        frame = pd.read_parquet(source).rename(columns={'close': 'cotton_close'})
+        dates = frame_dates(frame)
+        if dates.max() >= observed.tz_convert('UTC').tz_localize(None).normalize():
+            raise ValueError('Receipt contains an uncompleted daily bar')
+        receipts[content_id(receipt)] = (frame, dates, observed)
+        for date in dates:
+            decision = date.tz_localize('UTC') + pd.Timedelta(days=1, minutes=15)
+            if locked_at < decision <= stamp:
+                eligible.add(date.strftime('%Y-%m-%d'))
+
+    details, seen = [], set()
+    for path, record in zip(sorted((root / 'baseline-origins').glob('*.json')), records, strict=True):
+        origin = pd.Timestamp(record['origin'])
+        decision = origin.tz_localize('UTC') + pd.Timedelta(days=1, minutes=15)
+        emitted = pd.Timestamp(record['recorded_at'])
+        if (record['origin'] != path.stem or origin != origin.normalize()
+                or record['origin'] in seen or (seen and record['origin'] <= max(seen))
+                or pd.Timestamp(record['decision_at']) != decision
+                or not locked_at < decision <= stamp or emitted.tzinfo is None
+                or not decision <= emitted <= stamp or record['state'] not in ('published', 'missing')):
+            raise ValueError('Invalid forward origin, state or publication clock')
+        seen.add(record['origin'])
+        if record['source_receipt_id'] not in receipts:
+            raise ValueError('Missing selected forward source receipt')
+        frame, _, observed = receipts[record['source_receipt_id']]
+        context = frame.loc[frame.date <= origin].reset_index(drop=True)
+        frozen = pd.read_parquet(root / record['input_file'])
+        frame_dates(frozen)
+        try:
+            pd.testing.assert_frame_equal(frozen, context)
+        except AssertionError as exc:
+            raise ValueError('Forward input does not match selected source receipt') from exc
+        if (frozen.date.iloc[-1] != origin or record['current_price'] != float(frozen.cotton_close.iloc[-1])
+                or observed > emitted):
+            raise ValueError('Forward origin price or selected receipt time mismatch')
+        ontime = sum(observed_at <= decision and origin in dates
+                     for _, dates, observed_at in receipts.values())
+        if record['state'] == 'published':
+            if observed > decision or not decision <= emitted < decision + pd.Timedelta(minutes=15):
+                raise ValueError('Published forecast missed input cutoff or publication window')
+            returns = np.log(frozen.cotton_close / frozen.cotton_close.shift())
+            variance = float((returns**2).ewm(alpha=.06, adjust=False).mean().iloc[-1])
+            predictions = record['predictions']
+            if set(predictions) != {'1', '5'} or record['missing_reason'] is not None:
+                raise ValueError('Incomplete published baseline predictions')
+            for h in (1, 5):
+                prediction = predictions[str(h)]
+                if (prediction['price_model'] != 'naive' or prediction['log_return'] != 0.
+                        or prediction['variance_model'] != 'ewma-lambda-0.94'
+                        or not np.isfinite(variance) or variance <= 0
+                        or not np.isclose(prediction['variance'], h * variance, rtol=1e-12, atol=0)):
+                    raise ValueError('Forward prediction differs from locked baseline recipe')
+            diagnosis = 'published_with_pre_cutoff_input'
+        else:
+            if record['predictions'] or not record['missing_reason']:
+                raise ValueError('Missing origin must not contain a forecast')
+            diagnosis = ('no_archived_pre_cutoff_input' if not ontime else
+                         'publication_window_missed' if emitted >= decision + pd.Timedelta(minutes=15)
+                         else 'recorded_missing_requires_input_review')
+        first = min(t for _, dates, t in receipts.values() if origin in dates)
+        details.append({'origin': record['origin'], 'state': record['state'], 'diagnosis': diagnosis,
+                        'decision_at': decision.isoformat(), 'recorded_at': emitted.isoformat(),
+                        'pre_cutoff_snapshots': int(ontime), 'first_archived_input_at': first.isoformat(),
+                        'source_receipt_id': record['source_receipt_id'], 'input_sha256': record['input_sha256']})
+    published = sum(r['state'] == 'published' for r in records)
+    unregistered = sorted(eligible - seen)
+    overdue = [d for d in unregistered if pd.Timestamp(d).tz_localize('UTC') +
+               pd.Timedelta(days=1, minutes=30) <= stamp]
+    return {'status': 'collecting' if published else 'awaiting_forward_predictions',
+            'audit_schema': 'prospective-baseline-status-v1', 'audited_at': stamp.isoformat(),
+            'baseline_lock_present': True, 'lock_id': content_id(locked),
+            'registered_origins': len(records), 'published_origins': published,
+            'missing_origins': len(records) - published, 'required_origins': 126,
+            'remaining_origin_slots': 126 - len(records),
+            'recorded_coverage': published / len(records) if records else None,
+            'unregistered_origins': overdue,
+            'pending_publication_origins': sorted(set(unregistered) - set(overdue)), 'origins': details,
+            'performance_feedback': 'not_computed; separate score requires all 126 origins mature',
+            'limits': 'Local archive evidence only; no external attestation, provider latency proof or independent model skill.'}
 
 
 def record_baselines(root, snapshots, *, now=None):

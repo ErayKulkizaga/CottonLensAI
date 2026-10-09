@@ -41,6 +41,11 @@ Python giriş araçları `ml/` altında kalır: `history.py`, `full_year_cpu.py`
 
 ## Ölçülmüş son durum
 
+[İleri kayıt denetimi](docs/FORWARD_EVIDENCE_AUDIT_20261009.md): 9 Ekim 08:09 UTC
+snapshot'ında altı origin'in altısı missing, yayımlanmış tahmin **0**. Kaynak
+makbuzu/girdi/saat doğrulayan `research.live --status` tamamlandı; model eğitimi
+ve performans skoru yapılmadı. Görev kurulumu ileri tahmin kanıtı değildir.
+
 [Zamanlama deneyi](docs/AVAILABILITY_CLOCK_RESULT_20261005.md), 2016–2023'te her kol/ufuk için aynı 2.006 origin'de 676 küçük CPU fit tamamladı. DXY/WTI daha yeni barları fiilen kullandı; geçmiş Yahoo teslim saatleri **varsayımdır**.
 
 | Sonuç | T+1 Naive'ye fiyat-MAE kazancı | T+5 kazancı |
