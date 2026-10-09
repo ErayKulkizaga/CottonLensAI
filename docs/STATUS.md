@@ -1,4 +1,10 @@
-# Güncel kararlar — 8 Ekim 2026
+# Güncel kararlar — 9 Ekim 2026
+
+**Son yazılım kontrolü:** [FAS sürüm/değer/saat sözleşmesi ve ortak-origin
+hizalaması](FAS_REVIEWED_ALIGNMENT_20261009.md) sentetik paketlerle doğrulandı.
+Yeni piyasa fit'i **0**. İki kol aynı eksiklik göstergelerini taşır; seçilen
+kaynak sürümü/saatinin izi korunur. Gerçek tarihsel kaynak kabulü kapalı;
+erişimi kanıtlanmış snapshot ve sayısal inceleme sonrası tek ön kayıt kalır.
 
 **Son veri hazırlığı:** [FAS ülke karantina paneli](FAS_COUNTRY_PREPARATION_20261008.md)
 3.008 satır/752 hafta; dört kodda eksik satır yok, 413 negatif satış korunur.

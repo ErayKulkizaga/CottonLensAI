@@ -98,6 +98,8 @@ Bu komut veritabanını silmez. Artifact kullanım/operasyon ayrıntıları [bel
 ## Araştırma araçları
 
 Sonraki iş **FAS ülke/commitment kabul denetimi**, yeni eğitim değildir.
+[Kaynak kabul koruması ve ortak-origin hizalaması](docs/FAS_REVIEWED_ALIGNMENT_20261009.md)
+sentetik veride doğrulandı; bu, gerçek tarihsel sürüm/saat onayı değildir.
 Bekleme sırasında [karantina ülke paneli](docs/FAS_COUNTRY_PREPARATION_20261008.md)
 hazırlandı: 752 hafta/3.008 satır, negatif satış ve bilinmeyenler korunur.
 29 Temmuz 2021 negatif stok bileşeni o haftanın stok paylarını tanımsız kılar.

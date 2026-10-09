@@ -3,6 +3,7 @@
 ## Güncel
 
 - [Durum ve kararlar](STATUS.md)
+- [FAS sürüm/değer/saat sözleşmesi ve ortak-origin hizalama kontrolü](FAS_REVIEWED_ALIGNMENT_20261009.md)
 - [FAS karantina ülke paneli, stok anomalisi ve eğitime kalan iş](FAS_COUNTRY_PREPARATION_20261008.md)
 - [FAS tarihsel kod tanığı ve özgün hücre için dış kanıt sınırı](FAS_HISTORICAL_REFERENCE_20261008.md)
 - [FAS 28 Mayıs: alt sınıf yuvarlaması, sürüm belirsizliği ve tek ayırıcı hücre](FAS_MAY28_VERSION_AUDIT_20261008.md)

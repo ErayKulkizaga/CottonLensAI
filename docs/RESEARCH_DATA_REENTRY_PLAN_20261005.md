@@ -13,6 +13,9 @@ mutabakatı ve [bölgesel T+1 deneyi](WASDE_REGIONAL_T1_RESULT_20261008.md) tama
 WASDE kapsamını/modelini büyütmek otomatik sonraki iş değildir.
 
 **Şimdiki iş — FAS ülke bilgisinin kabul denetimi; sıfır fit.**
+9 Ekim: [değer/sürüm/saat koruması ve ortak-origin adapter'i](FAS_REVIEWED_ALIGNMENT_20261009.md)
+sentetik paketle tamamlandı. Gerçek country-feature snapshot'ları ve tarihsel
+erişim kabulü hazırlanmadı; tek ön kayıt/eğitim aşaması hâlâ kapalı.
 [Karantina ülke hazırlığı](FAS_COUNTRY_PREPARATION_20261008.md) ayrıca tamamlandı:
 752 hafta × dört kod, seviyeler/paylar/dört haftalık akışlar. Negatif stok
 bileşeninin bulunduğu haftada pay üretilmez; kaynak sürümü/saat kabulü ve
