@@ -2,6 +2,12 @@
 
 ## Sicil
 
+`legacy-loss-lineage-v1`: **sıfır-fit eski seçim/kayıp yeniden kurması**;
+6.648 makbuz, 128 aday × 8 dönem, 1.008 ortak T+1 origin. Seçilmiş eski
+fiyat programı −%0,6110, 1/8 dönem; doğrudan fiyat-MAE loss'u denenmişti.
+Kontrollü loss ablation'ı INCONCLUSIVE; model payload'ları yok. Generic
+MAE grid'ini tekrar etmeyin. [Kapsam ve tek küçük kontrol](../docs/LEGACY_LOSS_LINEAGE_RESULT_20261010.md).
+
 `price-mae-calibration-v1`: **tamamlanan piyasa postprocessing deneyi**;
 0 yeni model fit'i, 169 skaler kalibrasyon, aynı 2.006 T+1 origin.
 Ham/seçilmiş Naive kazancı −%3,73685/−%0,02608; kontrol katkısı belirsiz.
@@ -98,6 +104,7 @@ python ml/history.py check --family xgboost --horizon 5
 python ml/history.py check --feature nass --horizon 5
 python ml/history.py check --query availability
 python ml/history.py check --query price-mae-calibration --horizon 1
+python ml/history.py check --query legacy-loss-lineage --horizon 1
 python ml/history.py check --query trading --horizon 1
 python ml/history.py check --query wasde-regional
 python ml/history.py check --query fas-country
