@@ -5,7 +5,6 @@ import sys
 
 import numpy as np
 import pytest
-
 from cottonlens_ml.cohort import content_id
 from cottonlens_ml.research.legacy_loss_lineage import (
     generated_candidates,
