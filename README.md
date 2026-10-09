@@ -12,8 +12,11 @@ gerçek alım/satım yapılmaz. Mevcut T+1/T+5 fiyat tahmininde Naive korunuyor.
 Ham/seçilmiş ortalama kazanç %1,955/%1,875; oracle %3,605. Kilitli karar
 `RAW_ONLY_RECOVERS`, fakat seçilmiş sonuç %50 koruma eşiğini yalnız 0,439 yüzde
 puan kaçırdı. Bu piyasa başarısı veya küçültmenin ana kusur olduğunun kanıtı
-değildir. Sonraki tek iş mevcut iç doğrulama tahminlerinde seçim kararlılığı
-analizi; otomatik yeni eğitim yok. İlk sıfır-fit kayıt ve r2 ön kaydı korunuyor.
+değildir. [Seçim kararlılığı analizi](docs/SELECTION_STABILITY_RESULT_20261010.md)
+de tamamlandı: enjekte koşulunda bir doğrulama bloğu çıkarılınca 59/80 karar
+değişiyor. Bu, küçültmeyi kaldırmayı veya piyasa başarısı iddiasını desteklemez.
+Sonraki ayırıcı aday geçmişten fiyat-MAE kalibrasyonu; otomatik yeni eğitim yok.
+İlk sıfır-fit kayıt ve r2 ön kaydı korunuyor.
 
 ## Nereden başlanır?
 

@@ -16469,6 +16469,43 @@
       "evidence_sha256": "b1c70b2ef09dddc39111696e7062898082a84c61ab0362dd0f9332de3373f96c",
       "reason": "Completed weak-signal sensitivity calibration; no market performance claim.",
       "id": "3409f7fbfccfe72235c3fe1b0aa965a728c84c7093bf39752d9befa8ae621659"
+    },
+    {
+      "profile": "weak-signal-selection-stability-v1",
+      "kind": "completed_no_fit_synthetic_selection_diagnostic",
+      "horizon": 1,
+      "coverage": "160_choices_1440_inner_receipts_30240_inner_predictions",
+      "classification": "INCONCLUSIVE",
+      "classification_scope": "Descriptive historical selection stability; no market performance test.",
+      "model_families": [
+        "ridge"
+      ],
+      "new_fits": 0,
+      "code_id": "dfa6035c02e2e0ecdfe4846b2e325712cf1f77a853683a00eb0f281cc3a29a73",
+      "evidence": "research/evidence/selection-stability-20261010.json",
+      "evidence_sha256": "a0a1c0bf72e1f3135479fbe8dd0c238bede6b325a50261a9547e63fce009a336",
+      "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/selection-stability-20261010",
+      "summary": {
+        "null": {
+          "year_selections": 80,
+          "median_winner_runner_up_margin_pp": 0.1791472588558718,
+          "leave_one_block_out_always_same": 25,
+          "median_recorded_choice_frequency": {
+            "20": 0.5194000000000001,
+            "60": 0.9693499999999999
+          }
+        },
+        "injected": {
+          "year_selections": 80,
+          "median_winner_runner_up_margin_pp": 0.2735111745710672,
+          "leave_one_block_out_always_same": 21,
+          "median_recorded_choice_frequency": {
+            "20": 0.56185,
+            "60": 0.982
+          }
+        }
+      },
+      "id": "10352b05ea8af10d22d7fb02d09fb6c99e0ddec02a792333e90caf66917e62dd"
     }
   ],
   "local_evidence": [
@@ -16671,6 +16708,14 @@
     {
       "path": "evidence/weak-signal-result-release-20261009.json",
       "sha256": "2489f1184074ecf9f10b8bb07fd67b3ca501b50307338be59a3b9b6434348592"
+    },
+    {
+      "path": "evidence/selection-stability-release-20261010.json",
+      "sha256": "69eacaa2223a021950077bd76e2695503b467c1b78a9096a4877d9e9c713b553"
+    },
+    {
+      "path": "evidence/selection-stability-20261010.json",
+      "sha256": "a0a1c0bf72e1f3135479fbe8dd0c238bede6b325a50261a9547e63fce009a336"
     }
   ]
 }
