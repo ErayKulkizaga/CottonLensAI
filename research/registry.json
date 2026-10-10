@@ -17188,6 +17188,10 @@
     {
       "path": "evidence/contract-curve-result-release-20261010.json",
       "sha256": "025cce7b5899947687fd96a892c6ec0fb2713ae6fd9218b94aa4296de3023835"
+    },
+    {
+      "path": "evidence/contract-curve-delivery-20261010.json",
+      "sha256": "97fee5ec6ce791f1a47b30f794be544c4e7b97347bf4c275ce60d9ab18d4b55e"
     }
   ]
 }

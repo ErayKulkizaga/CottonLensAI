@@ -91,6 +91,13 @@ korunur. Ön kayıt Release'i değiştirilmez. Sicile yalnız tamamlanmış bu
 deney ve dört piyasa/ayrı bir sentetik tarif eklenir; eski158 çalışma/508
 tarif aynen kalır. Toplam159 çalışma/513 tarif; sınıf INCONCLUSIVE.
 
+GitHub'dan yeniden indirilen 2.834 güvenli üyenin checksum'ları ve **253
+çıkarım/12 seçim/16 aralık/exact rapor+CSV** tekrar doğrulandı; yerel ve fresh
+doğrulama makbuzları byte olarak aynı, yeni fit0.
+[Teslimat makbuzu](../research/evidence/contract-curve-delivery-20261010.json).
+Kod commit'inin sekiz CI kontrolü başarılı; sonuç/delivery commit'lerinin
+devam eden kontrolleri bu makbuzda geçmiş gibi gösterilmez.
+
 ## Sonraki tek bilimsel adım
 
 **Bu sabit T+1 tarifini büyütmeyi durdur.** Sonraki iş, aynı gerçek eğri,

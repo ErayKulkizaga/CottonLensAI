@@ -1,0 +1,48 @@
+{
+  "schema": 1,
+  "profile": "contract-curve-t1-pilot-v1",
+  "pr": "https://github.com/ErayKulkizaga/CottonLensAI/pull/32",
+  "source_commit": "8c89cc1b3a045ae069fe1539768474e3dc2efe95",
+  "result_commit": "2206bedf083bbade16299644da7434aacb9eec38",
+  "source_id": "84d40007e33b75ecff9ca422958daab79d30d67f3adb59b7bb419bc873412d1a",
+  "fresh_github_archive": {
+    "verified": true,
+    "archive_sha256": "197de751ff52afb4f0e86a66d9943ee7f51f5a213e786619796f71c784f5deba",
+    "members": 2834,
+    "inventory_sha256": "191aab5f3a9a218deb1be54927e63f83a95c26777be21026a40c7c338f94a5a8",
+    "safe_members": true
+  },
+  "fresh_github_verification": {
+    "status": "passed",
+    "source_id": "84d40007e33b75ecff9ca422958daab79d30d67f3adb59b7bb419bc873412d1a",
+    "registration_id": "e2fac4fa52a20d48ba4a09346ca1b7b9ae32db88133f61dcc8080bcec5ac2698",
+    "independent_source_decisions": 7040,
+    "original_history_unchanged": true,
+    "new_model_fits": 0,
+    "availability_verified": false,
+    "historical_source_admitted": false,
+    "saved_inferences_replayed": 253,
+    "inner_shrinkage_decisions_replayed": 12,
+    "exact_report_and_csv_replay": true,
+    "decision": "FIXED_RECIPE_BELOW_PRACTICAL_GOAL_SOURCE_INCONCLUSIVE",
+    "independent_primary_intervals_recomputed": 16,
+    "all_arm_price_direction_active_metrics_recomputed": true
+  },
+  "fresh_verification_sha256": "ce98efad08928ca1f878f0f06a522a00c23dc13803729aa787292576f944c188",
+  "exact_local_vs_fresh_verification_bytes": true,
+  "preserved_registry_objects": 158,
+  "preserved_recipe_objects": 508,
+  "preserved_proof_files": 66,
+  "new_verification_fits": 0,
+  "dependencies_installed": false,
+  "model_published": false,
+  "tasks_changed": false,
+  "automatic_merge": false,
+  "code_head_ci": {
+    "commit": "8c89cc1b3a045ae069fe1539768474e3dc2efe95",
+    "all_eight_checks": "SUCCESS"
+  },
+  "result_head_ci_at_receipt": "Six checks successful; two ML checks still running; not claimed passed",
+  "release_allowed": false,
+  "availability_verified": false
+}
