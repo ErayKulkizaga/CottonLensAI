@@ -159,3 +159,15 @@ replay ile teslimat kapanır. Sonraki tek bilimsel karar, mevcut sicilde
 **aynı named hedef/ortak cohort'ta** nonlinear kontrol gerçekten
 sınanmış mı denetlemek; genel eski nonlinear deneyi yeniden çalıştırmak
 değil. Bu denetim tamamlanmadan kapasite deneyi önermeyiz.
+
+
+## Taze GitHub teslimatı kapandı
+
+[PR39](https://github.com/ErayKulkizaga/CottonLensAI/pull/39),
+[sonuç arşivi](https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/named-label-control-result-20261010).
+513 üye/5.793.715 byte,ZIP SHA256 `07fcbcd9bb99d23c9e2aeea5172a122d52afb23fbdb343038888f28264e6ed70`.
+Yerel ve taze GitHub kopyasından44 native çıkarım/12 scalar aralık/8 ret kontrolü
+yenilendi;rapor/984 satırlı CSV/complete ve bağımsız makbuz birebir.
+Yeni doğrulama fit'i0. Eski166 sicil kaydı,518 tarif ve87 proof byte'ı
+korundu;güncel168 çalışma/520 tarif. Result head7d455351 üzerinde12 CI
+kontrolü başarılı gözlendi. Son teslimat head'inin CI durumu ayrıca kontrol edilir.

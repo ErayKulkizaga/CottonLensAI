@@ -18018,6 +18018,10 @@
     {
       "path": "evidence/named-label-control-result-release-20261010.json",
       "sha256": "e38c8abd2181d5e07277e6a800b3b6946e800858c0c07c4415f3e4c15fddc3d6"
+    },
+    {
+      "path": "evidence/named-label-control-delivery-20261010.json",
+      "sha256": "5cbe9f5812d6b035df970179e482394f4b5d7ea2845da8bddbceb003fc0ac562"
     }
   ]
 }
