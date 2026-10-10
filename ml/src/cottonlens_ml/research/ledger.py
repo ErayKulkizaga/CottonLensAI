@@ -82,7 +82,7 @@ class Ledger:
         spool = Path('/content/cottonlens-research-work') / content_id(str(self.root.resolve())) / key
         if not Path('/content').is_dir():
             # Real small CPU fits separately enforce explicit permission and the thread limit.
-            spool = self.root / ('local-work' if self.identity.get('profile') in ('full-year-v1', 'ams-exploration-v1', 'fas-exploration-v1', 'nass-exploration-v1', 'wasde-exploration-v1', 'cftc-exploration-v1', 'fx-exploration-v1', 'crop-exploration-v1', 'weather-exploration-v1', 'recency-pilot-v1', 'availability-clock-pilot-v1', 'return-path-pilot-v1', 'agri-transfer-pilot-v1', 'wasde-text-pilot-v1', 'fundamental-joint-pilot-v1', 'wasde-regional-t1-pilot-v1', 'nass-regional-t1-pilot-v1', 'weak-signal-control-v1') else 'synthetic-work') / key
+            spool = self.root / ('local-work' if self.identity.get('profile') in ('full-year-v1', 'ams-exploration-v1', 'fas-exploration-v1', 'nass-exploration-v1', 'wasde-exploration-v1', 'cftc-exploration-v1', 'fx-exploration-v1', 'crop-exploration-v1', 'weather-exploration-v1', 'recency-pilot-v1', 'availability-clock-pilot-v1', 'return-path-pilot-v1', 'agri-transfer-pilot-v1', 'wasde-text-pilot-v1', 'fundamental-joint-pilot-v1', 'wasde-regional-t1-pilot-v1', 'nass-regional-t1-pilot-v1', 'weak-signal-control-v1', 'paired-price-loss-control-v1') else 'synthetic-work') / key
         staged_path = spool / 'locally-completed.json'
         try:
             if staged_path.exists():
