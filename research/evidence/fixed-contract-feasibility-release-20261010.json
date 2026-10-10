@@ -1,0 +1,14 @@
+{
+  "schema": 1,
+  "release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/fixed-contract-feasibility-20261010",
+  "archive": {
+    "name": "fixed-contract-feasibility-20261010.zip",
+    "sha256": "e2ab2d87148be258dfbf5a15ac64b970897d5375c9abbd3ce4b8116a3f398d6e",
+    "bytes": 1847474
+  },
+  "members": 21,
+  "inventory_sha256": "e7e32d12d892082d723875761b9aec976a5b053cc9095aed44b9d971875e8948",
+  "new_fits": 0,
+  "source_id": "20d0c1869afc35b9c83b34cfd3fc8de8ec90a56ebd64c1cf3dcb3b085685d7b3",
+  "scope": "Seven frozen inputs;14080 label-candidate rows,96 maturity/readiness cutoffs,12 transfer checks. Independent Decimal/scalar verification and8 rejection tests; no performance score or historical source admission."
+}

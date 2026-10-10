@@ -17403,6 +17403,38 @@
       "historical_source_admitted": false,
       "release_allowed": false,
       "id": "5d4bff6c8d9a0f02f1427af0447a8c023a39611c3d6517edbed155b00332e478"
+    },
+    {
+      "experiment": "fixed-contract-feasibility-v1",
+      "profile": "fixed-contract-feasibility-v1",
+      "horizon": 5,
+      "kind": "zero_fit_origin_fixed_contract_label_feasibility",
+      "classification": "INCONCLUSIVE",
+      "classification_scope": "Forecast skill not tested. Label coverage/readiness verified; unchanged original protocol cannot transfer. No market negative.",
+      "code_id": "20d0c1869afc35b9c83b34cfd3fc8de8ec90a56ebd64c1cf3dcb3b085685d7b3",
+      "analysis_code_id": "9b3627478dcb1cde0605288f6713668d5494535b67970128cad00240c012f092",
+      "data_id": "519a6c7dcdfa4b6f870bae1a4764299fd0c92ed7ddc1bb61a64f8a7ba38db6bd",
+      "model_families": [],
+      "completed_fits": 0,
+      "origin_count": 749,
+      "diagnostic_rows": 14080,
+      "prediction_payload_exists": false,
+      "diagnostic_payload_exists": true,
+      "metrics": {
+        "second_contemporaneous_T1_eligible": 739,
+        "second_contemporaneous_T5_eligible": 739,
+        "original_origins_retained": 749,
+        "unchanged_transfer_checks_passed": 0,
+        "unchanged_transfer_checks_total": 12
+      },
+      "evidence": "research/evidence/fixed-contract-feasibility-20261010.json",
+      "evidence_sha256": "228ba10bc63c5e1afb2f24490b78bfacf63fed036bb7705407718b0b79d39e1a",
+      "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/fixed-contract-feasibility-20261010",
+      "independent_holdout": false,
+      "historical_source_admitted": false,
+      "future_contract_identity_feature_allowed": false,
+      "release_allowed": false,
+      "id": "b57ac3039b66a7394506066134f75c49e9374ad83165607c3db0b807140e2b30"
     }
   ],
   "local_evidence": [
@@ -17733,6 +17765,18 @@
     {
       "path": "evidence/curve-carry-attribution-delivery-20261010.json",
       "sha256": "f2f46ab55f116485bb2553d3c8d01f471b175c81c48d12d4210fe5e8d4fc5bdf"
+    },
+    {
+      "path": "evidence/fixed-contract-feasibility-20261010.json",
+      "sha256": "228ba10bc63c5e1afb2f24490b78bfacf63fed036bb7705407718b0b79d39e1a"
+    },
+    {
+      "path": "evidence/fixed-contract-feasibility-release-20261010.json",
+      "sha256": "98f87701c1512ed275feaa7e874369fa4006a52bc9c62213d42f1f90e8244fbb"
+    },
+    {
+      "path": "evidence/fixed-contract-feasibility-delivery-20261010.json",
+      "sha256": "ddeb06251f1364d0c17a43e0a615498707947dcb82b970cc1ffc532b0117a5a0"
     }
   ]
 }

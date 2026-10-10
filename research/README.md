@@ -2,6 +2,15 @@
 
 ## Sicil
 
+`fixed-contract-feasibility-v1`: **sıfır-fit kurulabilirlik doğrulandı**.
+749 origin/14.080 aday label korunur; ikinci contemporaneous T+1/T+5
+uygun739. 96 olgunluk kesimi ve 12 değişmeden aktarım kontrolü; 12'si
+başarısız. Kontrat geçmişi2020'de başlar, proxy geçmişinin label'ları
+aynı hedef değildir. Sekiz ret kontrolü/Decimal replay; yeni fit0.
+Tahmin becerisi INCONCLUSIVE, skor yok. [Kanıt ve tek sonraki soru](../docs/FIXED_CONTRACT_FEASIBILITY_20261010.md).
+Sonraki sıfır-fit tahmin taşıma ayrı ön kayıt gerektirir; eski kaynak
+kabulü, gate, hedef, model veya origin değişmez.
+
 `curve-carry-attribution-v1`: **sıfır-fit karşıolgusal mekanizma doğrulandı**.
 T+5'in749 origin/2996 kayıtlı tahmini korunur;743 kaynak çifti,6 bilinmeyen.
 Ham D0'ın74 geçiş origin'indeki +24,657265 katkısı gap çıkarılınca

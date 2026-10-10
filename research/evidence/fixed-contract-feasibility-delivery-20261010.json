@@ -1,0 +1,158 @@
+{
+  "schema": 1,
+  "status": "zero_fit_feasibility_delivered",
+  "profile": "fixed-contract-feasibility-v1",
+  "pull_request": "https://github.com/ErayKulkizaga/CottonLensAI/pull/37",
+  "result_commit": "b6aa2e9f0f27815f53a06fb3f077c2b20895d769",
+  "source_id": "20d0c1869afc35b9c83b34cfd3fc8de8ec90a56ebd64c1cf3dcb3b085685d7b3",
+  "release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/fixed-contract-feasibility-20261010",
+  "archive_sha256": "e2ab2d87148be258dfbf5a15ac64b970897d5375c9abbd3ce4b8116a3f398d6e",
+  "fresh_github_restore": {
+    "status": "verified",
+    "archive_sha256": "e2ab2d87148be258dfbf5a15ac64b970897d5375c9abbd3ce4b8116a3f398d6e",
+    "members_verified": 21,
+    "exact_report_rows_completion_replay": true,
+    "exact_independent_decimal_verification_replay": true,
+    "rejection_controls": 8,
+    "new_fits": 0
+  },
+  "independent_verification": {
+    "status": "passed",
+    "new_fits": 0,
+    "source_id": "20d0c1869afc35b9c83b34cfd3fc8de8ec90a56ebd64c1cf3dcb3b085685d7b3",
+    "inputs_sha256": {
+      "curve-carry-attribution-20261010.json": "70c67f77dc25145841fbb78c3c1a82c7d49e7f83a7b2f52fba87e311a542e6f1",
+      "curve-carry-attribution-delivery-20261010.json": "f2f46ab55f116485bb2553d3c8d01f471b175c81c48d12d4210fe5e8d4fc5bdf",
+      "history.parquet": "575c19cb25437a28ed6b1c1c3062eb48becead51571e3b57d76b7306e5e4f792",
+      "quotes.json": "3cf19b853ce43978342427b915a22d5b11a7886e9db2018274e825bdecf1d91f",
+      "ready.json": "c600c5b1984273f11e73cd49dba089c22cad59b54c69cda82e2a5ec7c5d1b5ad",
+      "source-proof.json": "9356ed3fc7e41f8c6d6bc63e2060d69bc553171f67e55f9f22b0714ae58927cf",
+      "t5-result-proof.json": "d9ec547f37ee02708ee41534ed85d6eb4a4361c332827a98319d3b91f04e8524"
+    },
+    "analyzer_sha256": "9b3627478dcb1cde0605288f6713668d5494535b67970128cad00240c012f092",
+    "verifier_sha256": "dec73956ad8cfdb2de7d0427bae2d028f2f51347df9e1fbaa6346fed9f170bac",
+    "contract_sha256": "58d5a2c2b575c19f1301c9e58a46acf34d247559eb3ddf9f83ee90f6d93d496c",
+    "source_choices_recomputed": 3520,
+    "unique_candidate_rows_verified": 14080,
+    "decimal_log_labels_checked": 7655,
+    "boundary_target_dates_retained": 12,
+    "readiness_cutoff_counts_recomputed": 96,
+    "transfer_checks_recomputed": 12,
+    "original_cohort_origins_retained": 749,
+    "historically_admitted": 0,
+    "market_skill_claimed": false
+  },
+  "rejection_controls": [
+    "selected-contract-rejected",
+    "origin-clock-rejected",
+    "label-value-rejected",
+    "missing-label-fill-rejected",
+    "readiness-count-rejected",
+    "dropped-origin-rejected",
+    "quote-input-rejected",
+    "existing-output-overwrite-rejected"
+  ],
+  "local_and_github_report_rows_verification_controls_bytes_equal": true,
+  "new_fits": 0,
+  "old_studies_preserved": 163,
+  "old_recipes_preserved": 518,
+  "old_proofs_preserved": 81,
+  "old_raw_inputs_preserved": 1000,
+  "training_source_changed": false,
+  "goal_achieved": false,
+  "classification": "INCONCLUSIVE",
+  "classification_scope": "Forecast skill not tested. Label coverage/readiness verified; unchanged original protocol cannot transfer. No market negative.",
+  "historical_availability_verified": false,
+  "first_vintage_verified": false,
+  "market_skill_claimed": false,
+  "independent_holdout": false,
+  "release_allowed": false,
+  "initial_local_restore": {
+    "status": "orchestration_timeout_not_scientific_failure",
+    "stage": "local restore controls aggregate",
+    "destination": "restored-local",
+    "group_timeout_seconds": 60,
+    "original_report_or_labels_changed": false,
+    "new_fits": 0,
+    "recovery": "Preserve namespace, await child termination/completion, resume only after separately checking inventory and exact analysis,verification,controls replay; future aggregate timeout180. No numeric tolerance or scientific script changes."
+  },
+  "ci": {
+    "head": "b6aa2e9f0f27815f53a06fb3f077c2b20895d769",
+    "checks": [
+      {
+        "name": "backend",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "url": "https://github.com/ErayKulkizaga/CottonLensAI/actions/runs/38063130882/job/114245275509"
+      },
+      {
+        "name": "backend",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "url": "https://github.com/ErayKulkizaga/CottonLensAI/actions/runs/38063126083/job/114245260912"
+      },
+      {
+        "name": "backend",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "url": "https://github.com/ErayKulkizaga/CottonLensAI/actions/runs/38063148502/job/114245326581"
+      },
+      {
+        "name": "frontend",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "url": "https://github.com/ErayKulkizaga/CottonLensAI/actions/runs/38063130882/job/114245275408"
+      },
+      {
+        "name": "frontend",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "url": "https://github.com/ErayKulkizaga/CottonLensAI/actions/runs/38063126083/job/114245260795"
+      },
+      {
+        "name": "frontend",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "url": "https://github.com/ErayKulkizaga/CottonLensAI/actions/runs/38063148502/job/114245326629"
+      },
+      {
+        "name": "ml-data-contracts",
+        "status": "IN_PROGRESS",
+        "conclusion": "",
+        "url": "https://github.com/ErayKulkizaga/CottonLensAI/actions/runs/38063130882/job/114245275530"
+      },
+      {
+        "name": "ml-data-contracts",
+        "status": "IN_PROGRESS",
+        "conclusion": "",
+        "url": "https://github.com/ErayKulkizaga/CottonLensAI/actions/runs/38063126083/job/114245260890"
+      },
+      {
+        "name": "ml-data-contracts",
+        "status": "IN_PROGRESS",
+        "conclusion": "",
+        "url": "https://github.com/ErayKulkizaga/CottonLensAI/actions/runs/38063148502/job/114245326712"
+      },
+      {
+        "name": "compose-contract",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "url": "https://github.com/ErayKulkizaga/CottonLensAI/actions/runs/38063130882/job/114245275535"
+      },
+      {
+        "name": "compose-contract",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "url": "https://github.com/ErayKulkizaga/CottonLensAI/actions/runs/38063126083/job/114245260894"
+      },
+      {
+        "name": "compose-contract",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "url": "https://github.com/ErayKulkizaga/CottonLensAI/actions/runs/38063148502/job/114245326674"
+      }
+    ],
+    "limits": "This observed result head only; running checks are not passed. Later delivery commit CI is separate."
+  },
+  "next": "Separate zero-fit preregistration: transport frozen CT return forecasts to the origin-known second contract; keep all749 receipts,10 explicit unknown/ineligible; compare candidate and Naive on same named target. Not same-target retraining or PIT proof. No automatic model/grid/download/refit."
+}
