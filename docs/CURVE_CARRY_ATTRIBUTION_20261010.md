@@ -134,3 +134,11 @@ ve [Release](https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/curve-ca
 `227ce52023dba9b1f91bbe0724fdf13df30c99024559bbe15bd4917a929260a1`.
 Arşivdeki RESULT.md bu teslimat ekinden önce dondurulan bilimsel rapordur.
 Yeni sicil toplamı 163 çalışma/518 tarif; eski nesneler aynen korunur.
+
+GitHub'dan yeniden indirilen 29 üyenin checksum'ı, rapor/satırların exact
+replay'i, bağımsız Decimal makbuzu ve yedi ret kontrolü tekrar doğrulandı.
+Yerel ve fresh makbuzlar byte olarak aynı; fit0.
+[Teslimat kanıtı](../research/evidence/curve-carry-attribution-delivery-20261010.json).
+Bu makbuzun gözlemlediği başlıkta 12 CI kontrolünden dokuzu başarılı,
+üçü çalışıyordu; sonraki teslimat commit'inin CI'sı ayrı değerlendirilir.
+Obsidian kanonik proje notuna sonuç ve karşıolgu yorum sınırı eklendi.

@@ -17729,6 +17729,10 @@
     {
       "path": "evidence/curve-carry-attribution-release-20261010.json",
       "sha256": "348d4edbd71de39792cf3e1562fa5e0b5156fbcb3eb48f77ddb67c7e287334a5"
+    },
+    {
+      "path": "evidence/curve-carry-attribution-delivery-20261010.json",
+      "sha256": "f2f46ab55f116485bb2553d3c8d01f471b175c81c48d12d4210fe5e8d4fc5bdf"
     }
   ]
 }
