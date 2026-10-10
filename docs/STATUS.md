@@ -1,5 +1,16 @@
 # Güncel kararlar — 10 Ekim 2026
 
+**Ön kayıt tamamlandı; eğitim başlamadı:** [eşleştirilmiş fiyat-loss protokolü](PAIRED_PRICE_LOSS_PROTOCOL_20261010.md),
+[PR #27](https://github.com/ErayKulkizaga/CottonLensAI/pull/27).
+İki CPU XGBoost kolunda aynı price_delta, 24 özellik, olgun kohort ve eski
+seed/ağaç sayıları; yalnız MSE/MAE değişir. Bütçe 48 piyasa fit'i / 2.688 ağaç,
+ayrı 6 sentetik kontrol; 1.008 ortak origin. Yeni arama veya küçültme yok.
+19 profil testi, 74 ortak kontrol, geniş ML 1.004 passed/3 skip ve Ruff geçti;
+kod commit'inin push/PR CI'sı başarılı. Hazırlama/pilot-plan sıfır fit doğrulandı.
+Sıfır-fit kimlik/veri/ortam kanıtı kamu Release'ine bağlanır; eşleşmeden pilot
+başlamaz. Eski düşük iteration'lara koşullu sonuç; genel MAE veya bütün
+kaynaklarda sinyal yokluğu sınaması değildir. Naive ve gece görevi korunur.
+
 **Son sıfır-fit yeniden kurma:** [eski loss seçiminin gerçek kapsamı](LEGACY_LOSS_LINEAGE_RESULT_20261010.md).
 6.648 makbuz / 128 aday / 8 geçmiş seçim; 1.008 ortak T+1 origin.
 Seçilmiş eski program −%0,611017 Naive kazancı, %46,9246 yön, 1/8 dönem;

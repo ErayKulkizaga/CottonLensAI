@@ -2,6 +2,12 @@
 
 ## Sicil
 
+`paired-price-loss-control-v1`: **sıfır-fit ön kayıt; piyasa sonucu yok**.
+48 sabit CPU XGBoost fit'i / 2.688 ağaç ve ayrı 6 öğrenme kontrolü;
+iki price_delta kolunda yalnız MSE/MAE değişir, 1.008 ortak origin.
+Eski MAE grid'ini tekrarlamaz; tarihsel parametre/iteration'lara koşullu
+loss kontrolüdür. [Protokol](../docs/PAIRED_PRICE_LOSS_PROTOCOL_20261010.md).
+
 `legacy-loss-lineage-v1`: **sıfır-fit eski seçim/kayıp yeniden kurması**;
 6.648 makbuz, 128 aday × 8 dönem, 1.008 ortak T+1 origin. Seçilmiş eski
 fiyat programı −%0,6110, 1/8 dönem; doğrudan fiyat-MAE loss'u denenmişti.
@@ -105,6 +111,7 @@ python ml/history.py check --feature nass --horizon 5
 python ml/history.py check --query availability
 python ml/history.py check --query price-mae-calibration --horizon 1
 python ml/history.py check --query legacy-loss-lineage --horizon 1
+python ml/history.py check --query paired-price-loss --horizon 1
 python ml/history.py check --query trading --horizon 1
 python ml/history.py check --query wasde-regional
 python ml/history.py check --query fas-country
