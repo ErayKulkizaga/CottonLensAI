@@ -1,5 +1,14 @@
 # Güncel kararlar — 10 Ekim 2026
 
+**Yeni operasyon engeli:** [gece yayın penceresi denetimi](FORWARD_WINDOW_AUDIT_20261010.md).
+00:05/00:20 UTC makbuzları yok; yayın 0, eski altı missing ve 126-origin kilidi
+korunuyor. Sabit 226 ML dosyası ve 115 store dosyası doğrulandı. OS uyku olayı
+22:51–06:59 UTC aralığını gösteriyor; daha sonraki 07:05 görev isteği
+`0x800710E0` ile reddedilmiş. Gece tetikleyicisinin kesin hata nedeni bilinmiyor;
+Operational günlük kapalı. Görev/otomasyon/güç ayarları değişmedi, yeni fit/skor
+yok. Sonraki operasyon işi mevcut interactive görev reddini incelemek;
+zamanında yayın veya öğrenilmiş model becerisi iddia edilmez.
+
 **Ön kayıt tamamlandı; eğitim başlamadı:** [eşleştirilmiş fiyat-loss protokolü](PAIRED_PRICE_LOSS_PROTOCOL_20261010.md),
 [PR #27](https://github.com/ErayKulkizaga/CottonLensAI/pull/27).
 İki CPU XGBoost kolunda aynı price_delta, 24 özellik, olgun kohort ve eski
