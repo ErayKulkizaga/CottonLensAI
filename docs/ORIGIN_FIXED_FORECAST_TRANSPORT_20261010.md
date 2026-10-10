@@ -138,3 +138,20 @@ Bu iki açıklamayı ayırmadan daha büyük model aramak bilimsel ilerleme değ
 [sonuç proof](../research/evidence/origin-fixed-forecast-transport-result-20261010.json),
 [Release manifest](../research/evidence/origin-fixed-forecast-transport-result-release-20261010.json),
 [payload](https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/origin-fixed-forecast-transport-result-20261010).
+
+## GitHub teslimatı
+
+Sonuç paketi35 üye/2.749.679 byte; SHA256
+`4977ef9014b61a0205c2af4f2caf8af0a66968c0123d8239af2835f5f28afe0a`.
+Ön kayıt paketi27 üye/2.415.174 byte,sonuçtan önce yayımlandı ve sıfır
+skorla GitHub'dan doğrulandı. Sonuç arşivi yerel temiz namespace ve
+GitHub'dan yeniden indirmede exact rapor/CSV/tamamlama/bağımsız verifier
+makbuzu/dokuz ret kontrolünü yeniden üretti; fit0. Arşiv RESULT.md bu
+teslimat ekinden önce donduruldu. Eski164 çalışma/518 tarif/84 proof ve
+1.000 ham hash korundu; ön kayıt+sonuç ile sicil166 çalışma oldu.
+
+[PR38](https://github.com/ErayKulkizaga/CottonLensAI/pull/38),
+[teslimat makbuzu](../research/evidence/origin-fixed-forecast-transport-delivery-20261010.json).
+Makbuzdaki CI sadece gözlemlenen sonuç head'ini kapsar; son teslimat
+commit'inin CI'sı ayrıca değerlendirilir. Obsidian kanonik proje notuna
+doğrulanmış sonuç ve ölçüm-only/yeniden-eğitim ayrımı eklendi.

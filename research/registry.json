@@ -17856,6 +17856,10 @@
     {
       "path": "evidence/origin-fixed-forecast-transport-result-release-20261010.json",
       "sha256": "631a187fd1e0a98f5a54649712f030f3ca8ef89c2664b5f64e453c65848a9d95"
+    },
+    {
+      "path": "evidence/origin-fixed-forecast-transport-delivery-20261010.json",
+      "sha256": "6e35753ccaf9326767ec75758b9f9977b4a6c22ad8e7eac18749293712a710b0"
     }
   ]
 }
