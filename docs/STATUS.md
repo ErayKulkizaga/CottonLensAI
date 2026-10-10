@@ -1,5 +1,16 @@
 # Güncel kararlar — 10 Ekim 2026
 
+**Sonuç-sonrası carry ayrımı tamamlandı:** [sıfır-fit tanı](CURVE_CARRY_ATTRIBUTION_20261010.md).
+Aynı749 origin/tahmin;743 kaynak çifti,6 bilinmeyen korunur.74 geçiş
+origin'inde dört karşılaştırmanın katkısı gap çıkarılınca tersine dönüyor:
+ham D0 +24,657265→−3,367436.669 aynı-kontrat katkısı birebir aynı ve
+negatif kalıyor;roll bütün başarısızlığın ana açıklaması değil. Ekim2022
+olayı ham D0 geçiş katkısının %64,35'ini taşıyor.2996 scalar satır/2972
+Decimal karşıolgu,7 ret kontrolü ve Ruff geçti,yeni fit0. Saat/vintage
+varsayımlı;Birincil karar/gate/ML kaynak kimliği değişmedi. Tek sonraki bilimsel iş
+origin'de sabitlenen kontrat label'ının mevcut veriyle kurulabilirlik
+denetimi;eski hedef yazılmaz,yeni model/grid/veri kabulü yok.
+
 **T+5 tamamlandı:** [tek ufuk sonucu](CONTRACT_CURVE_T5_RESULT_20261010.md).
 252 piyasa +1 ayrı sentetik fit,749 origin/kol,12 çıktı/2.996 satır.
 Bütün kolların geçmiş ağırlıkları [0;0,25;0];numeric D0 seçilmiş Naive

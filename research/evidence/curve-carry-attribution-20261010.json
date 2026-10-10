@@ -1,0 +1,697 @@
+{
+  "schema": 1,
+  "profile": "curve-carry-attribution-v1",
+  "status": "completed_zero_fit_counterfactual_diagnostic",
+  "source_id": "20d0c1869afc35b9c83b34cfd3fc8de8ec90a56ebd64c1cf3dcb3b085685d7b3",
+  "parent_registration_id": "aeed8a21350c322a34125f080a9c5adc77029ce4407e1d3e8356a2a2774ca8b6",
+  "inputs_sha256": {
+    "history.parquet": "575c19cb25437a28ed6b1c1c3062eb48becead51571e3b57d76b7306e5e4f792",
+    "ready.json": "c600c5b1984273f11e73cd49dba089c22cad59b54c69cda82e2a5ec7c5d1b5ad",
+    "quotes.json": "3cf19b853ce43978342427b915a22d5b11a7886e9db2018274e825bdecf1d91f",
+    "source-proof.json": "9356ed3fc7e41f8c6d6bc63e2060d69bc553171f67e55f9f22b0714ae58927cf",
+    "predictions.csv": "43e44ed429d0d1bee2270355b4811f749dfd49bb9b68417f44184ece541a4305",
+    "primary-report.json": "eaca95ed2c7cb361510911c17ac57c2406b7f91782bf7a1af9bce3990eea0869",
+    "transition-attribution.json": "2e28dbce44f12632b865d807a707561d66a62c4cd0c6d90ec4f91e965579b775",
+    "t5-result-proof.json": "d9ec547f37ee02708ee41534ed85d6eb4a4361c332827a98319d3b91f04e8524",
+    "t5-delivery.json": "d737ed1edb18005950179e57c632d3da19c073e025ec06e60702c707e3f1031b",
+    "parent-verification.json": "1134a36f522b9c39802dc531aa7bccf0d5b55254116bf9db7da7474f164e1095"
+  },
+  "contract_sha256": "524a090f06041c534c696597e54da74048774c2652e4d4837cf40359ebb1d775",
+  "analyzer_sha256": "2d23ab651d6cb28b7ebaa6c6004cdc7422573fe6687f549abb18d7d928020940",
+  "origin_count": 749,
+  "diagnostic_rows": 2996,
+  "counts": {
+    "unchanged": 669,
+    "transition": 74,
+    "unknown": 6
+  },
+  "distinct_transition_events": 15,
+  "paired": {
+    "raw_D0": {
+      "full_count": 749,
+      "full_original_error_reduction_sum": -77.14552509038326,
+      "covered_count": 743,
+      "covered_original_error_reduction_sum": -69.79927462769041,
+      "covered_counterfactual_error_reduction_sum": -97.82397627763606,
+      "covered_carry_counterfactual_difference_sum": 28.024701649945655,
+      "strata": {
+        "transition": {
+          "count": 74,
+          "original_error_reduction_sum": 24.657265209379318,
+          "counterfactual_error_reduction_sum": -3.367436440566337,
+          "carry_counterfactual_difference_sum": 28.024701649945655
+        },
+        "unchanged": {
+          "count": 669,
+          "original_error_reduction_sum": -94.45653983706973,
+          "counterfactual_error_reduction_sum": -94.45653983706973,
+          "carry_counterfactual_difference_sum": 0.0
+        },
+        "unknown": {
+          "count": 6,
+          "original_error_reduction_sum": -7.346250462692851,
+          "counterfactual_error_reduction_sum": null,
+          "carry_counterfactual_difference_sum": null
+        }
+      },
+      "events": [
+        {
+          "id": "2021-03-10",
+          "count": 5,
+          "original_error_reduction_sum": -0.21476444230985692,
+          "counterfactual_error_reduction_sum": -0.21476444230985692,
+          "carry_counterfactual_difference_sum": 0.0
+        },
+        {
+          "id": "2021-05-07",
+          "count": 5,
+          "original_error_reduction_sum": 0.06054954183240113,
+          "counterfactual_error_reduction_sum": 0.06054954183240113,
+          "carry_counterfactual_difference_sum": 0.0
+        },
+        {
+          "id": "2021-07-09",
+          "count": 5,
+          "original_error_reduction_sum": 1.7391116921990886,
+          "counterfactual_error_reduction_sum": 0.3837121279633493,
+          "carry_counterfactual_difference_sum": 1.3553995642357393
+        },
+        {
+          "id": "2021-10-08",
+          "count": 5,
+          "original_error_reduction_sum": 0.036988640839950904,
+          "counterfactual_error_reduction_sum": 0.036988640839950904,
+          "carry_counterfactual_difference_sum": 0.0
+        },
+        {
+          "id": "2021-12-09",
+          "count": 5,
+          "original_error_reduction_sum": 1.9401822600830627,
+          "counterfactual_error_reduction_sum": 1.072059659570229,
+          "carry_counterfactual_difference_sum": 0.8681226005128337
+        },
+        {
+          "id": "2022-03-10",
+          "count": 5,
+          "original_error_reduction_sum": 3.9140864844721506,
+          "counterfactual_error_reduction_sum": 0.6766310872178138,
+          "carry_counterfactual_difference_sum": 3.2374553972543367
+        },
+        {
+          "id": "2022-05-09",
+          "count": 5,
+          "original_error_reduction_sum": 1.1760670211546653,
+          "counterfactual_error_reduction_sum": 1.001352246201236,
+          "carry_counterfactual_difference_sum": 0.17471477495342924
+        },
+        {
+          "id": "2022-07-08",
+          "count": 4,
+          "original_error_reduction_sum": -1.0245820045648344,
+          "counterfactual_error_reduction_sum": -3.243312909880032,
+          "carry_counterfactual_difference_sum": 2.218730905315198
+        },
+        {
+          "id": "2022-10-10",
+          "count": 5,
+          "original_error_reduction_sum": 15.868017287237208,
+          "counterfactual_error_reduction_sum": -1.8983492636548505,
+          "carry_counterfactual_difference_sum": 17.76636655089206
+        },
+        {
+          "id": "2022-12-08",
+          "count": 5,
+          "original_error_reduction_sum": -0.8093542389195818,
+          "counterfactual_error_reduction_sum": -0.3803079817107289,
+          "carry_counterfactual_difference_sum": -0.4290462572088529
+        },
+        {
+          "id": "2023-03-10",
+          "count": 5,
+          "original_error_reduction_sum": -1.3404476897130735,
+          "counterfactual_error_reduction_sum": -1.3404476897130735,
+          "carry_counterfactual_difference_sum": 0.0
+        },
+        {
+          "id": "2023-05-09",
+          "count": 5,
+          "original_error_reduction_sum": 1.054968406586724,
+          "counterfactual_error_reduction_sum": -1.5614360059983454,
+          "carry_counterfactual_difference_sum": 2.6164044125850694
+        },
+        {
+          "id": "2023-07-10",
+          "count": 5,
+          "original_error_reduction_sum": 1.079520478311892,
+          "counterfactual_error_reduction_sum": 0.862966776906049,
+          "carry_counterfactual_difference_sum": 0.21655370140584296
+        },
+        {
+          "id": "2023-10-10",
+          "count": 5,
+          "original_error_reduction_sum": -1.2005750916205926,
+          "counterfactual_error_reduction_sum": -1.2005750916205926,
+          "carry_counterfactual_difference_sum": 0.0
+        },
+        {
+          "id": "2023-12-07",
+          "count": 5,
+          "original_error_reduction_sum": 2.377496863790114,
+          "counterfactual_error_reduction_sum": 2.377496863790114,
+          "carry_counterfactual_difference_sum": 0.0
+        }
+      ],
+      "covered_years": [
+        {
+          "id": "2021",
+          "count": 250,
+          "original_error_reduction_sum": -11.458086675471407,
+          "counterfactual_error_reduction_sum": -13.68160884021998,
+          "carry_counterfactual_difference_sum": 2.223522164748573
+        },
+        {
+          "id": "2022",
+          "count": 249,
+          "original_error_reduction_sum": -24.661218115898976,
+          "counterfactual_error_reduction_sum": -47.629439487105145,
+          "carry_counterfactual_difference_sum": 22.96822137120617
+        },
+        {
+          "id": "2023",
+          "count": 244,
+          "original_error_reduction_sum": -33.679969836320026,
+          "counterfactual_error_reduction_sum": -36.51292795031094,
+          "carry_counterfactual_difference_sum": 2.8329581139909124
+        }
+      ]
+    },
+    "selected_D0": {
+      "full_count": 749,
+      "full_original_error_reduction_sum": -1.6546660495485241,
+      "covered_count": 743,
+      "covered_original_error_reduction_sum": -0.0013831231145218226,
+      "covered_counterfactual_error_reduction_sum": -8.667387848131057,
+      "covered_carry_counterfactual_difference_sum": 8.666004725016535,
+      "strata": {
+        "transition": {
+          "count": 74,
+          "original_error_reduction_sum": 4.8290436069052305,
+          "counterfactual_error_reduction_sum": -3.8369611181113044,
+          "carry_counterfactual_difference_sum": 8.666004725016535
+        },
+        "unchanged": {
+          "count": 669,
+          "original_error_reduction_sum": -4.830426730019752,
+          "counterfactual_error_reduction_sum": -4.830426730019752,
+          "carry_counterfactual_difference_sum": 0.0
+        },
+        "unknown": {
+          "count": 6,
+          "original_error_reduction_sum": -1.6532829264340023,
+          "counterfactual_error_reduction_sum": null,
+          "carry_counterfactual_difference_sum": null
+        }
+      },
+      "events": [
+        {
+          "id": "2021-03-10",
+          "count": 5,
+          "original_error_reduction_sum": 0.0,
+          "counterfactual_error_reduction_sum": 0.0,
+          "carry_counterfactual_difference_sum": 0.0
+        },
+        {
+          "id": "2021-05-07",
+          "count": 5,
+          "original_error_reduction_sum": 0.0,
+          "counterfactual_error_reduction_sum": 0.0,
+          "carry_counterfactual_difference_sum": 0.0
+        },
+        {
+          "id": "2021-07-09",
+          "count": 5,
+          "original_error_reduction_sum": 0.0,
+          "counterfactual_error_reduction_sum": 0.0,
+          "carry_counterfactual_difference_sum": 0.0
+        },
+        {
+          "id": "2021-10-08",
+          "count": 5,
+          "original_error_reduction_sum": 0.0,
+          "counterfactual_error_reduction_sum": 0.0,
+          "carry_counterfactual_difference_sum": 0.0
+        },
+        {
+          "id": "2021-12-09",
+          "count": 5,
+          "original_error_reduction_sum": 0.0,
+          "counterfactual_error_reduction_sum": 0.0,
+          "carry_counterfactual_difference_sum": 0.0
+        },
+        {
+          "id": "2022-03-10",
+          "count": 5,
+          "original_error_reduction_sum": 0.5836195027095243,
+          "counterfactual_error_reduction_sum": -0.6374127980737967,
+          "carry_counterfactual_difference_sum": 1.221032300783321
+        },
+        {
+          "id": "2022-05-09",
+          "count": 5,
+          "original_error_reduction_sum": 0.29691540933106353,
+          "counterfactual_error_reduction_sum": 0.2535598120239797,
+          "carry_counterfactual_difference_sum": 0.043355597307083826
+        },
+        {
+          "id": "2022-07-08",
+          "count": 4,
+          "original_error_reduction_sum": 0.3453576275946233,
+          "counterfactual_error_reduction_sum": -0.8065770005439532,
+          "carry_counterfactual_difference_sum": 1.1519346281385765
+        },
+        {
+          "id": "2022-10-10",
+          "count": 5,
+          "original_error_reduction_sum": 3.926234369849169,
+          "counterfactual_error_reduction_sum": -2.3234478289383844,
+          "carry_counterfactual_difference_sum": 6.2496821987875535
+        },
+        {
+          "id": "2022-12-08",
+          "count": 5,
+          "original_error_reduction_sum": -0.32308330257914974,
+          "counterfactual_error_reduction_sum": -0.32308330257914974,
+          "carry_counterfactual_difference_sum": 0.0
+        },
+        {
+          "id": "2023-03-10",
+          "count": 5,
+          "original_error_reduction_sum": 0.0,
+          "counterfactual_error_reduction_sum": 0.0,
+          "carry_counterfactual_difference_sum": 0.0
+        },
+        {
+          "id": "2023-05-09",
+          "count": 5,
+          "original_error_reduction_sum": 0.0,
+          "counterfactual_error_reduction_sum": 0.0,
+          "carry_counterfactual_difference_sum": 0.0
+        },
+        {
+          "id": "2023-07-10",
+          "count": 5,
+          "original_error_reduction_sum": 0.0,
+          "counterfactual_error_reduction_sum": 0.0,
+          "carry_counterfactual_difference_sum": 0.0
+        },
+        {
+          "id": "2023-10-10",
+          "count": 5,
+          "original_error_reduction_sum": 0.0,
+          "counterfactual_error_reduction_sum": 0.0,
+          "carry_counterfactual_difference_sum": 0.0
+        },
+        {
+          "id": "2023-12-07",
+          "count": 5,
+          "original_error_reduction_sum": 0.0,
+          "counterfactual_error_reduction_sum": 0.0,
+          "carry_counterfactual_difference_sum": 0.0
+        }
+      ],
+      "covered_years": [
+        {
+          "id": "2021",
+          "count": 250,
+          "original_error_reduction_sum": 0.0,
+          "counterfactual_error_reduction_sum": 0.0,
+          "carry_counterfactual_difference_sum": 0.0
+        },
+        {
+          "id": "2022",
+          "count": 249,
+          "original_error_reduction_sum": -0.0013831231145218226,
+          "counterfactual_error_reduction_sum": -8.667387848131057,
+          "carry_counterfactual_difference_sum": 8.666004725016535
+        },
+        {
+          "id": "2023",
+          "count": 244,
+          "original_error_reduction_sum": 0.0,
+          "counterfactual_error_reduction_sum": 0.0,
+          "carry_counterfactual_difference_sum": 0.0
+        }
+      ]
+    },
+    "raw_D1": {
+      "full_count": 749,
+      "full_original_error_reduction_sum": -72.65479228003446,
+      "covered_count": 743,
+      "covered_original_error_reduction_sum": -67.39163797443204,
+      "covered_counterfactual_error_reduction_sum": -82.94332818065793,
+      "covered_carry_counterfactual_difference_sum": 15.551690206225885,
+      "strata": {
+        "transition": {
+          "count": 74,
+          "original_error_reduction_sum": 13.59270469057742,
+          "counterfactual_error_reduction_sum": -1.9589855156484646,
+          "carry_counterfactual_difference_sum": 15.551690206225885
+        },
+        "unchanged": {
+          "count": 669,
+          "original_error_reduction_sum": -80.98434266500946,
+          "counterfactual_error_reduction_sum": -80.98434266500946,
+          "carry_counterfactual_difference_sum": 0.0
+        },
+        "unknown": {
+          "count": 6,
+          "original_error_reduction_sum": -5.263154305602413,
+          "counterfactual_error_reduction_sum": null,
+          "carry_counterfactual_difference_sum": null
+        }
+      },
+      "events": [
+        {
+          "id": "2021-03-10",
+          "count": 5,
+          "original_error_reduction_sum": -0.01763561246541201,
+          "counterfactual_error_reduction_sum": -0.01763561246541201,
+          "carry_counterfactual_difference_sum": 0.0
+        },
+        {
+          "id": "2021-05-07",
+          "count": 5,
+          "original_error_reduction_sum": -0.01904511552368149,
+          "counterfactual_error_reduction_sum": -0.01904511552368149,
+          "carry_counterfactual_difference_sum": 0.0
+        },
+        {
+          "id": "2021-07-09",
+          "count": 5,
+          "original_error_reduction_sum": 0.69219973779866,
+          "counterfactual_error_reduction_sum": 0.34389626564740183,
+          "carry_counterfactual_difference_sum": 0.3483034721512581
+        },
+        {
+          "id": "2021-10-08",
+          "count": 5,
+          "original_error_reduction_sum": -0.30987455514878093,
+          "counterfactual_error_reduction_sum": -0.30987455514878093,
+          "carry_counterfactual_difference_sum": 0.0
+        },
+        {
+          "id": "2021-12-09",
+          "count": 5,
+          "original_error_reduction_sum": -1.609896874407994,
+          "counterfactual_error_reduction_sum": -0.9618980349556949,
+          "carry_counterfactual_difference_sum": -0.6479988394522991
+        },
+        {
+          "id": "2022-03-10",
+          "count": 5,
+          "original_error_reduction_sum": 1.7035504681302314,
+          "counterfactual_error_reduction_sum": 0.1956333068352194,
+          "carry_counterfactual_difference_sum": 1.507917161295012
+        },
+        {
+          "id": "2022-05-09",
+          "count": 5,
+          "original_error_reduction_sum": -0.04791345256950308,
+          "counterfactual_error_reduction_sum": 0.1574295398055483,
+          "carry_counterfactual_difference_sum": -0.20534299237505138
+        },
+        {
+          "id": "2022-07-08",
+          "count": 4,
+          "original_error_reduction_sum": -0.04133823116875135,
+          "counterfactual_error_reduction_sum": -2.2505512876887366,
+          "carry_counterfactual_difference_sum": 2.2092130565199852
+        },
+        {
+          "id": "2022-10-10",
+          "count": 5,
+          "original_error_reduction_sum": 11.830412112863826,
+          "counterfactual_error_reduction_sum": 1.0353419914425501,
+          "carry_counterfactual_difference_sum": 10.795070121421276
+        },
+        {
+          "id": "2022-12-08",
+          "count": 5,
+          "original_error_reduction_sum": -0.036376652131849596,
+          "counterfactual_error_reduction_sum": 0.12737905443074737,
+          "carry_counterfactual_difference_sum": -0.16375570656259697
+        },
+        {
+          "id": "2023-03-10",
+          "count": 5,
+          "original_error_reduction_sum": -1.236344970766055,
+          "counterfactual_error_reduction_sum": -1.236344970766055,
+          "carry_counterfactual_difference_sum": 0.0
+        },
+        {
+          "id": "2023-05-09",
+          "count": 5,
+          "original_error_reduction_sum": 0.9565729018649876,
+          "counterfactual_error_reduction_sum": -0.751711031363314,
+          "carry_counterfactual_difference_sum": 1.7082839332283015
+        },
+        {
+          "id": "2023-07-10",
+          "count": 5,
+          "original_error_reduction_sum": 0.6904240203475354,
+          "counterfactual_error_reduction_sum": 0.6904240203475354,
+          "carry_counterfactual_difference_sum": 0.0
+        },
+        {
+          "id": "2023-10-10",
+          "count": 5,
+          "original_error_reduction_sum": -0.8308731637841476,
+          "counterfactual_error_reduction_sum": -0.8308731637841476,
+          "carry_counterfactual_difference_sum": 0.0
+        },
+        {
+          "id": "2023-12-07",
+          "count": 5,
+          "original_error_reduction_sum": 1.8688440775383555,
+          "counterfactual_error_reduction_sum": 1.8688440775383555,
+          "carry_counterfactual_difference_sum": 0.0
+        }
+      ],
+      "covered_years": [
+        {
+          "id": "2021",
+          "count": 250,
+          "original_error_reduction_sum": -12.987597469645095,
+          "counterfactual_error_reduction_sum": -12.687902102344054,
+          "carry_counterfactual_difference_sum": -0.29969536730104096
+        },
+        {
+          "id": "2022",
+          "count": 249,
+          "original_error_reduction_sum": -31.086800550403936,
+          "counterfactual_error_reduction_sum": -45.22990219070256,
+          "carry_counterfactual_difference_sum": 14.143101640298624
+        },
+        {
+          "id": "2023",
+          "count": 244,
+          "original_error_reduction_sum": -23.317239954383012,
+          "counterfactual_error_reduction_sum": -25.025523887611314,
+          "carry_counterfactual_difference_sum": 1.7082839332283015
+        }
+      ]
+    },
+    "selected_D1": {
+      "full_count": 749,
+      "full_original_error_reduction_sum": -4.877333627193693,
+      "covered_count": 743,
+      "covered_original_error_reduction_sum": -3.689959046563402,
+      "covered_counterfactual_error_reduction_sum": -9.61859635771431,
+      "covered_carry_counterfactual_difference_sum": 5.928637311150908,
+      "strata": {
+        "transition": {
+          "count": 74,
+          "original_error_reduction_sum": 3.338605438017609,
+          "counterfactual_error_reduction_sum": -2.5900318731332987,
+          "carry_counterfactual_difference_sum": 5.928637311150908
+        },
+        "unchanged": {
+          "count": 669,
+          "original_error_reduction_sum": -7.028564484581011,
+          "counterfactual_error_reduction_sum": -7.028564484581011,
+          "carry_counterfactual_difference_sum": 0.0
+        },
+        "unknown": {
+          "count": 6,
+          "original_error_reduction_sum": -1.1873745806302907,
+          "counterfactual_error_reduction_sum": null,
+          "carry_counterfactual_difference_sum": null
+        }
+      },
+      "events": [
+        {
+          "id": "2021-03-10",
+          "count": 5,
+          "original_error_reduction_sum": 0.0,
+          "counterfactual_error_reduction_sum": 0.0,
+          "carry_counterfactual_difference_sum": 0.0
+        },
+        {
+          "id": "2021-05-07",
+          "count": 5,
+          "original_error_reduction_sum": 0.0,
+          "counterfactual_error_reduction_sum": 0.0,
+          "carry_counterfactual_difference_sum": 0.0
+        },
+        {
+          "id": "2021-07-09",
+          "count": 5,
+          "original_error_reduction_sum": 0.0,
+          "counterfactual_error_reduction_sum": 0.0,
+          "carry_counterfactual_difference_sum": 0.0
+        },
+        {
+          "id": "2021-10-08",
+          "count": 5,
+          "original_error_reduction_sum": 0.0,
+          "counterfactual_error_reduction_sum": 0.0,
+          "carry_counterfactual_difference_sum": 0.0
+        },
+        {
+          "id": "2021-12-09",
+          "count": 5,
+          "original_error_reduction_sum": 0.0,
+          "counterfactual_error_reduction_sum": 0.0,
+          "carry_counterfactual_difference_sum": 0.0
+        },
+        {
+          "id": "2022-03-10",
+          "count": 5,
+          "original_error_reduction_sum": 0.24536823559209608,
+          "counterfactual_error_reduction_sum": -0.31714368024459816,
+          "carry_counterfactual_difference_sum": 0.5625119158366942
+        },
+        {
+          "id": "2022-05-09",
+          "count": 5,
+          "original_error_reduction_sum": -0.011139722745156178,
+          "counterfactual_error_reduction_sum": 0.03979412444704167,
+          "carry_counterfactual_difference_sum": -0.050933847192197845
+        },
+        {
+          "id": "2022-07-08",
+          "count": 4,
+          "original_error_reduction_sum": 0.3242045500097106,
+          "counterfactual_error_reduction_sum": -0.5606021364743299,
+          "carry_counterfactual_difference_sum": 0.8848066864840405
+        },
+        {
+          "id": "2022-10-10",
+          "count": 5,
+          "original_error_reduction_sum": 2.9168509113149383,
+          "counterfactual_error_reduction_sum": -1.6154016447074326,
+          "carry_counterfactual_difference_sum": 4.532252556022371
+        },
+        {
+          "id": "2022-12-08",
+          "count": 5,
+          "original_error_reduction_sum": -0.13667853615397973,
+          "counterfactual_error_reduction_sum": -0.13667853615397973,
+          "carry_counterfactual_difference_sum": 0.0
+        },
+        {
+          "id": "2023-03-10",
+          "count": 5,
+          "original_error_reduction_sum": 0.0,
+          "counterfactual_error_reduction_sum": 0.0,
+          "carry_counterfactual_difference_sum": 0.0
+        },
+        {
+          "id": "2023-05-09",
+          "count": 5,
+          "original_error_reduction_sum": 0.0,
+          "counterfactual_error_reduction_sum": 0.0,
+          "carry_counterfactual_difference_sum": 0.0
+        },
+        {
+          "id": "2023-07-10",
+          "count": 5,
+          "original_error_reduction_sum": 0.0,
+          "counterfactual_error_reduction_sum": 0.0,
+          "carry_counterfactual_difference_sum": 0.0
+        },
+        {
+          "id": "2023-10-10",
+          "count": 5,
+          "original_error_reduction_sum": 0.0,
+          "counterfactual_error_reduction_sum": 0.0,
+          "carry_counterfactual_difference_sum": 0.0
+        },
+        {
+          "id": "2023-12-07",
+          "count": 5,
+          "original_error_reduction_sum": 0.0,
+          "counterfactual_error_reduction_sum": 0.0,
+          "carry_counterfactual_difference_sum": 0.0
+        }
+      ],
+      "covered_years": [
+        {
+          "id": "2021",
+          "count": 250,
+          "original_error_reduction_sum": 0.0,
+          "counterfactual_error_reduction_sum": 0.0,
+          "carry_counterfactual_difference_sum": 0.0
+        },
+        {
+          "id": "2022",
+          "count": 249,
+          "original_error_reduction_sum": -3.689959046563402,
+          "counterfactual_error_reduction_sum": -9.61859635771431,
+          "carry_counterfactual_difference_sum": 5.928637311150908
+        },
+        {
+          "id": "2023",
+          "count": 244,
+          "original_error_reduction_sum": 0.0,
+          "counterfactual_error_reduction_sum": 0.0,
+          "carry_counterfactual_difference_sum": 0.0
+        }
+      ]
+    }
+  },
+  "original_primary_decision_unchanged": "FIXED_RECIPE_BELOW_PRACTICAL_GOAL_SOURCE_INCONCLUSIVE",
+  "new_fits": 0,
+  "future_contract_feature_allowed": false,
+  "market_or_position_skill_claimed": false,
+  "historical_availability_verified": false,
+  "first_vintage_verified": false,
+  "confidence_intervals": null,
+  "selection_changed": false,
+  "original_targets_changed": false,
+  "limits": "Future target identity oracle only,not origin-known. Keep predictions fixed;counterfactual target is NOT same-contract-trained OOS skill. No inference intervals/significance/threshold changes/selection from15 overlapping transition events. Original full749 decision immutable;historical clocks/vintages still assumed.",
+  "kind": "zero_fit_post_result_carry_counterfactual",
+  "classification": "INCONCLUSIVE",
+  "classification_scope": "Source forecast skill unresolved;fixed prior recipe fails practical goal. Counterfactual aggregate proxy-gap dependence verified,not a new forecasting effect or causal/position proof.",
+  "parent_result_commit": "58ed4a2481935dd64fb65c6867d0aa6f45b0a032",
+  "parent_result_pr": "https://github.com/ErayKulkizaga/CottonLensAI/pull/35",
+  "report_sha256": "36127f8c18afc8532ac83ad2242906dff63df31a6cb906c725ac6ef9f655e6d4",
+  "rows_sha256": "60b6ee0a031ecd0547a4a739353d3d95a123219efc8cb7bdf47263e6cc1dceaa",
+  "verification_sha256": "289214ac84de5a76a73dd9882a63076f15daaf02cedd56a87802521e1549ba10",
+  "verification_script_sha256": "31ade7ca9c129a1690148916e0255618a94e8ec6f433deedebe91e251a027c41",
+  "controls_sha256": "40b68c3fcc8a5f90f150218ec90aaf536e58bd7d734bc11ab9473bca500ffba5",
+  "controls_script_sha256": "643a2763d3635d4af2d1e022256762d4d4e5233716e68a2842df83ee7772fe69",
+  "release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/curve-carry-attribution-20261010",
+  "prediction_payload_exists": false,
+  "parent_prediction_payload_exists": true,
+  "diagnostic_payload_exists": true,
+  "training_source_changed": false,
+  "old_registry_objects_preserved": 162,
+  "old_recipe_objects_preserved": 518,
+  "old_proof_files_preserved": 78,
+  "old_raw_input_hashes_preserved": 1000,
+  "historical_source_admitted": false,
+  "independent_holdout": false,
+  "release_allowed": false,
+  "next": "One zero-fit feasibility audit of origin-fixed first/second named contract targets at T1/T5 using existing quotes,not future-first oracle. No target overwrite,forward fill,origin drop,model/grid/data or training automatically."
+}
