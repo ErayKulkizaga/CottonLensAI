@@ -127,3 +127,14 @@ PR zincirinin #10'dan başlayan entegrasyon incelemesi ayrı mühendislik hattı
 otomatik merge veya canlı görev/model güncellemesi yok. Gece operasyonunda
 mevcut ret nedeni salt okunur incelenebilir; saat/backfill/güç politikası
 sessizce değiştirilemez. Bu işler bilimsel adayı başarıya çevirmiyor.
+
+## P4 kabul kararı — kullanıcı araştırmacıya devretti
+
+[Gerçek vade farkı ön kayıt tarifi](CONTRACT_CURVE_PROTOCOL_20261010.md):
+erişim/ilk vintage açık varsayım, tarihsel source admission kapalı. Eski
+spot-basis T+5 ile karıştırılmaz. İlk 2.006-origin taslağı fit0 ile korunur;
+kaynak bulunmayan iç bloklar yüzünden 2021–2023/749 ortak origin, sabit
+Ridge alpha1, 252 piyasa +en fazla1 sentetik fit seçildi. Geçmiş fiyat
+history resetlenmez, kaynak eksikliği origin düşürmez. D0 birincil/D1 ikincil;
+üç yıl 6/8 koşulunu değiştirmez. Önce kod/test/input/ortam ve karar sözleşmesi
+sıfır-fit kimlikleriyle GitHub'da dondurulur. Yeni grid/model ailesi yok.

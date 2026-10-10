@@ -1,5 +1,13 @@
 # Güncel kararlar — 10 Ekim 2026
 
+**Kilitlenecek tek kaynak testi:** [gerçek vade farkı T+1](CONTRACT_CURVE_PROTOCOL_20261010.md).
+Kullanıcının devrettiği kararla saat/ilk vintage varsayımlı duyarlılık seçildi;
+tarihsel kaynak kabulü açılmadı. Geçmiş iç blok kaynak uygunluğu 2021–2023'te
+749 ortak origin bırakıyor; bütün Cotton history korunuyor. Dört eşleşmiş
+kol, sabit Ridge alpha1, 252 piyasa +en fazla1 ayrı sentetik fit; yeni grid
+yok. Üç yıl 6/8 kapısını ölçemez veya değiştiremez. Kod/test/veri/ortam ve
+karar sözleşmesi GitHub'da sıfır-fit ön kayda bağlandıktan sonra çalıştırılır.
+
 **Sıfır-fit bilgi elemesi tamamlandı:** [mevcut gerçek vade fiyatları](INFORMATION_ADMISSION_20261010.md).
 1.000 eski girdi rehash; 997 AMS tablosunda 9.970 gerçek kontrat fiyatı,
 2016–2019 kapsamı yok. Eski spot-basis deneyi bu farkı sınamadı. UTC/ilk sürüm

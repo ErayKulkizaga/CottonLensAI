@@ -1,5 +1,10 @@
 # CottonLensAI
 
+Sıradaki sınırlı bilimsel adım: [gerçek vade farkı T+1 duyarlılığı](docs/CONTRACT_CURVE_PROTOCOL_20261010.md).
+2021–2023'te 749 ortak origin; saat/ilk sürüm varsayımı açık, gerçek zamanlı
+erişim ispatı yok. Sabit Ridge ve 252 piyasa fit'i bütçesi; üç yıllık kaynak
+katkısı sonucu 6/8 yıl başarı koşulunun yerine geçmez. Naive korunur.
+
 Pamuk piyasası için **araştırma/ispat projesi** ve açıklanabilir tahmin uygulaması.
 ICE Cotton No. 2 referansında tahmin katkısı ve yön/pozisyon simülasyonu incelenir;
 gerçek alım/satım yapılmaz. Mevcut T+1/T+5 fiyat tahmininde Naive korunuyor. Son

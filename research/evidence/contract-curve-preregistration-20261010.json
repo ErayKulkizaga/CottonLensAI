@@ -1,0 +1,33 @@
+{
+  "schema": 1,
+  "profile": "contract-curve-t1-pilot-v1",
+  "registration_id": "e2fac4fa52a20d48ba4a09346ca1b7b9ae32db88133f61dcc8080bcec5ac2698",
+  "preregistered_sha256": "20d366f14d8d0ab7ea1c38aee344f4def3fc5dc54cecb0843cdc43f861977fd2",
+  "complete_sha256": "c42ee406f98c21961d01c3f5b765a85f8f949161ef06687abe9dc64042b1433b",
+  "decision_contract_sha256": "945483209de270c94b43669e15ad11857146bdd2f9e189dc0efae53d4e72e1ad",
+  "source_inventory_sha256": "9356ed3fc7e41f8c6d6bc63e2060d69bc553171f67e55f9f22b0714ae58927cf",
+  "source_id": "84d40007e33b75ecff9ca422958daab79d30d67f3adb59b7bb419bc873412d1a",
+  "market_fits": 0,
+  "synthetic_fits": 0,
+  "origin_count": 749,
+  "fit_budget": {
+    "inner": 108,
+    "outer": 144,
+    "total": 252,
+    "synthetic_guard": 1,
+    "maximum_all_fits": 253,
+    "annual_outputs": 12,
+    "prediction_rows": 2996,
+    "processes": 1,
+    "threads": 2,
+    "session_minutes": 30
+  },
+  "mode": "assumption_sensitivity_not_historical_pit",
+  "availability_verified": false,
+  "historical_source_admitted": false,
+  "first_vintage_verified": false,
+  "gate_evaluated": false,
+  "independent_holdout": false,
+  "release_allowed": false,
+  "release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/contract-curve-preregistration-20261010"
+}
