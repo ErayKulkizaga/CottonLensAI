@@ -1,0 +1,32 @@
+{
+  "schema": 1,
+  "release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/named-capacity-preregistration-20261010",
+  "archive": {
+    "name": "named-capacity-preregistration-20261010.zip",
+    "sha256": "12fefeeffc1a10bd77b31d1d67a853e016a969066188ed36353c13fd8c5ec786",
+    "bytes": 8338987
+  },
+  "inventory_sha256": "8811f6adb86d9bc3d257619d1404ed29c6649a96c44a3f7b010a47b21a336495",
+  "members": 769,
+  "source_id": "4a2feff2817bf57db64970c94c8b6a7bbd55cbdc97c8c872225a0756a9dd15af",
+  "market_fit_budget": 22,
+  "synthetic_fit_budget": 4,
+  "new_market_fits": 0,
+  "new_synthetic_fits": 0,
+  "new_market_scores": 0,
+  "report_script_sha256": "430f146af488ad9c3068299bd062dd4258632b6a9f507442533a6ff4f07131aa",
+  "verifier_script_sha256": "40e5cce72f0d960e94a4c73aadd29c5906b94237281a7e6622bc70323e0314ca",
+  "ml_tests": {
+    "full_suite_passed": 1064,
+    "skipped": 3,
+    "existing_warnings": 2,
+    "final_source_narrow_passed": 34,
+    "new_capacity_tests": 17,
+    "last_guard_added_after_full_collection": true,
+    "ruff": "passed",
+    "full_log_sha256": "1c643bfc50b9d4f8492429d17dfe80f96772a9007bb9e46d791a7ea271bfbcfc",
+    "final_narrow_log_sha256": "704711a39dc43f613c6bd75cb7019b97f25cf1fab89a216791d784814d5963eb",
+    "fits_in_new_profile": 0
+  },
+  "record_id": "cb5a9dd4d45c7e241214b13c8306cf3ab856c66f5b4df7495cb93f8173c44c4d"
+}

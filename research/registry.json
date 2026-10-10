@@ -17640,6 +17640,76 @@
       "historical_source_admitted": false,
       "release_allowed": false,
       "id": "f0dc9ef21f220e9f24a63e15fb95e74d407085a202aefc72c1bd4b2825d91c64"
+    },
+    {
+      "experiment": "named-capacity-preregistration-20261010",
+      "profile": "named-capacity-control-t5-v1",
+      "code_id": "4a2feff2817bf57db64970c94c8b6a7bbd55cbdc97c8c872225a0756a9dd15af",
+      "data_id": "aad637dbe0c0431a2d73357e42a572cb6642660f18523e5f9e2504cb29da1f4e",
+      "horizon": 5,
+      "model_families": [
+        "xgboost"
+      ],
+      "recipes": [
+        {
+          "family": "xgboost",
+          "horizon": 5,
+          "device": "cpu",
+          "seed": 42,
+          "task": "price",
+          "target": "scaled_log",
+          "loss": "reg:squarederror",
+          "params": {
+            "max_depth": 2,
+            "eta": 0.03,
+            "min_child_weight": 20,
+            "alpha": 0,
+            "lambda": 1
+          },
+          "window": 1,
+          "cadence": 21,
+          "years": null,
+          "features": [
+            "cotton_ret_1",
+            "cotton_ret_5",
+            "cotton_ret_10",
+            "cotton_ret_20",
+            "cotton_momentum_5",
+            "cotton_momentum_20",
+            "cotton_sma_ratio_5_20",
+            "cotton_sma_ratio_20_50",
+            "cotton_volatility_5",
+            "cotton_volatility_20",
+            "cotton_range",
+            "cotton_volume_change",
+            "cotton_volume_z20",
+            "cotton_volatility_regime_20_60",
+            "dxy_ret_1",
+            "dxy_ret_5",
+            "dxy_ret_20",
+            "wti_ret_1",
+            "wti_ret_5",
+            "wti_ret_20",
+            "cotton_dxy_corr_60",
+            "cotton_wti_corr_60",
+            "month_sin",
+            "month_cos",
+            "curve_D0_age_sessions",
+            "curve_D0_unavailable",
+            "curve_D0_gap_months",
+            "numeric_D0_spread"
+          ],
+          "max_iterations": 100
+        }
+      ],
+      "classification": "INCONCLUSIVE",
+      "kind": "preregistration_not_completed_market_evidence",
+      "completed_fits": 0,
+      "coverage": "246 retained2023 receipts;242 named labels;exact frozen named Ridge reference",
+      "evidence": "evidence/named-capacity-preregistration-20261010.json",
+      "metrics": null,
+      "limits": "One previously reviewed year; clock/final vintage assumed; no independent holdout,8yeargate or production proof",
+      "id": "a19faef598ddc92777cf52c906c9c7897b6ee867bfbff9bd18c3d9bae0adac81"
     }
   ],
   "local_evidence": [
@@ -18022,6 +18092,14 @@
     {
       "path": "evidence/named-label-control-delivery-20261010.json",
       "sha256": "5cbe9f5812d6b035df970179e482394f4b5d7ea2845da8bddbceb003fc0ac562"
+    },
+    {
+      "path": "evidence/named-capacity-preregistration-20261010.json",
+      "sha256": "b2583cecaa02cc57631324aecfb729fa7fe11e1e396bd7d293b40c74b7d98440"
+    },
+    {
+      "path": "evidence/named-capacity-preregistration-release-20261010.json",
+      "sha256": "8d970db3ce39cd620e873af047f3bbfdeb647ed358a6fbf31425192c11b9511d"
     }
   ]
 }
