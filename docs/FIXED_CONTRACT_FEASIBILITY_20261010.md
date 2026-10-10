@@ -94,3 +94,21 @@ Bu, aynı hedefte yeniden eğitilmiş modelin beceri testi değildir.
 Last-known-price kullanılırsa güncel Cotton hareketini zaten bilen bir
 nowcast baseline olmadan eski quote Naive'sini geçmek ileri tahmin sayılmaz.
 Yeni model/grid/veri veya otomatik yeniden eğitim bu sonuçla açılmaz.
+
+## Ayrı teslimat doğrulaması
+
+21 üye /1.847.474 byte; ZIP SHA256
+`e2ab2d87148be258dfbf5a15ac64b970897d5375c9abbd3ce4b8116a3f398d6e`.
+Yerel temiz dizin ve GitHub'dan yeniden indirilen arşivde rapor,14.080
+satır,tamamlama kaydı,bağımsız makbuz ve sekiz ret kontrolü byte olarak
+aynı üretildi; fit0. İlk yerel helper'ın60 saniyelik toplam kontrol
+sınırında kalan dizini korundu;180 saniyelik helper ile yeni namespace
+tamamlandı. Bilimsel script/veri/tolerans değişmedi; eski yarım çalışma
+tamamlanmış sayılmadı. Arşiv RESULT.md bu teslimat ekinden önce donduruldu.
+
+[PR37](https://github.com/ErayKulkizaga/CottonLensAI/pull/37),
+[teslimat kanıtı](../research/evidence/fixed-contract-feasibility-delivery-20261010.json).
+Sicil164 çalışma/518 tarif; önceki nesneler ve ham checksum'lar korundu.
+Teslimat makbuzunun gözlemlediği sonuç commit'inde12 CI kontrolünün
+dokuzu başarılı,üç ML kontrolü sürüyordu; sonraki commit CI'sı ayrıdır.
+Obsidian kanonik proje notuna yeni hedef/eksik-label/nowcast sınırı işlendi.

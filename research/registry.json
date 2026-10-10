@@ -17773,6 +17773,10 @@
     {
       "path": "evidence/fixed-contract-feasibility-release-20261010.json",
       "sha256": "98f87701c1512ed275feaa7e874369fa4006a52bc9c62213d42f1f90e8244fbb"
+    },
+    {
+      "path": "evidence/fixed-contract-feasibility-delivery-20261010.json",
+      "sha256": "ddeb06251f1364d0c17a43e0a615498707947dcb82b970cc1ffc532b0117a5a0"
     }
   ]
 }
