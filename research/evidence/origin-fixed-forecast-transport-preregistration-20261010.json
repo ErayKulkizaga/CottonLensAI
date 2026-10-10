@@ -1,0 +1,100 @@
+{
+  "schema": 1,
+  "profile": "origin-fixed-forecast-transport-v1-r2",
+  "status": "frozen_zero_fit_forecast_transport",
+  "new_fits": 0,
+  "training_allowed": false,
+  "source_id": "20d0c1869afc35b9c83b34cfd3fc8de8ec90a56ebd64c1cf3dcb3b085685d7b3",
+  "parent_pr": "https://github.com/ErayKulkizaga/CottonLensAI/pull/37",
+  "parent_commit": "9f7ee8b7087bbae46946ee8ce0fa9f7684cfbf7a",
+  "inputs_sha256": {
+    "history.parquet": "575c19cb25437a28ed6b1c1c3062eb48becead51571e3b57d76b7306e5e4f792",
+    "label-complete.json": "b4d40ea16dbf5428891c4387d0568a4f7164f1a16ff2ad9eeff51c18661bcdb4",
+    "label-delivery.json": "ddeb06251f1364d0c17a43e0a615498707947dcb82b970cc1ffc532b0117a5a0",
+    "label-proof.json": "228ba10bc63c5e1afb2f24490b78bfacf63fed036bb7705407718b0b79d39e1a",
+    "label-report.json": "848f48c76432ff49f9fe54f3043e51c564d0b28bace348bd223e6ada9e81ae10",
+    "label-verification.json": "6464b66a29981af77d3c5effb6ab3cf2dd4870c982d244ea6f7951240a2a475d",
+    "labels.csv": "4dfcf6b19c811b9309f7ffc2ffa31e242d4467471b81efbe503dd6f677e336a1",
+    "quotes.json": "3cf19b853ce43978342427b915a22d5b11a7886e9db2018274e825bdecf1d91f",
+    "t1-predictions.csv": "681e66d4a57f478ee5790e4742d1531436df234d40a158818e040a6592099532",
+    "t1-proof.json": "496cebd3e9c55de747118a81d608c0a2a2e9681419e8ed4bc1bfcc48b1349b7f",
+    "t1-ready.json": "6865dd1d8f1a5afef10a7397b6eba94d9e0d57a56290f425f1fca0a971fe8693",
+    "t5-predictions.csv": "43e44ed429d0d1bee2270355b4811f749dfd49bb9b68417f44184ece541a4305",
+    "t5-proof.json": "d9ec547f37ee02708ee41534ed85d6eb4a4361c332827a98319d3b91f04e8524",
+    "t5-ready.json": "c600c5b1984273f11e73cd49dba089c22cad59b54c69cda82e2a5ec7c5d1b5ad"
+  },
+  "hypothesis": "Frozen CT forecasts retain practically useful price-direction information when transported with beta1 to the origin-known second contract, rather than measuring CT front-proxy switches. No same-target retraining inference.",
+  "primary": "T5 numeric_D0 raw vs same-contract Naive",
+  "secondary": "T5 selected companion,paired numeric_D0 vs mask_D0 source attribution; T1 selected/raw diagnostic; no T1 rescue of T5",
+  "groups": [
+    "mask_D0",
+    "numeric_D0"
+  ],
+  "modes": [
+    "raw",
+    "selected"
+  ],
+  "horizons": [
+    1,
+    5
+  ],
+  "contract_rule": "D0 latest assumed-available report at original decision; select second_contract then hold exact name fixed. No future contract identity.",
+  "label_rule": "contemporaneous reference-day origin quote available_by_decision; future same-name target quote at original Cotton targetdate; no filling/substitution.",
+  "decision": "Cotton reference date+1 calendar day00:15UTC",
+  "availability": "max(report_date,unverified publication calendar day)+1 day00:00UTC; age<=3 Cotton observations; final vintage assumed,NOT admitted",
+  "transport": "named_predicted_price=origin_named_price*exp(frozen_CT_predicted_log_return);beta1 fixed",
+  "baseline": "named_origin_price; no stale available_quote variant and no old-proxy baseline score",
+  "cohort": "All749 original receipts retained;739 paired eligible per horizon,10 explicit missing/ineligible; preserve252/251/246 Cotton ordinals and original targetdates",
+  "selection": "No fitting/reselection/calibration; original past selected weights frozen",
+  "bootstrap": {
+    "replicates": 10000,
+    "seed": 42,
+    "blocks": [
+      20,
+      60
+    ],
+    "chunk": 128,
+    "method": "year-preserving moving-block recentered basic; full749 ordinal slots, zero bookkeeping contributions for missing with weight0, divide by resampled eligible weight; fixed observed comparator MAE normalization. No synthetic zero-error labels, no calendar compression.",
+    "selection_adjusted": false
+  },
+  "sensitivity": "Remove ceil(1% of739)=8 largest same-contract Naive errors; ties stable origin order; same removal for both arms/modes per horizon. Descriptive,not new selection.",
+  "decision_rules": {
+    "strong_candidate": "Primary RAW gain>=5%,direction>=55%,all3 observed years won,both20/60 CIs lower>0; named-target follow-up candidate only,not unchanged6/8 gate or PIT proof. Selected companion reported separately with flats and active-rate semantics.",
+    "fixed_transport_below_goal": "Both primary RAW20/60 gain CI uppers<5%; fixed frozen-return transport does not rescue the practical target. Does not reject named-target retraining or all capacities.",
+    "otherwise": "Inconclusive; no automatic new fit/grid.",
+    "not_tested": "Retrained named-target models,all sources/model capacities or production skill"
+  },
+  "limits": "Reviewed2021-23 development evidence,not independent holdout; clock/vintage assumed; missingness bias not repaired by bootstrap; price field is printed AMS future quote, not proven executable settlement/fill. No trade,source admission,newdata,promotion,gate change.",
+  "ex_ante_amendment": {
+    "prior_contract_sha256": "da657713fc648ba1a734c5579f4d04869a2499b6f991be1a71b203428ca043ea",
+    "reason": "Stored T5 weights[0,.25,0] imply two flat years and about one-third non-flat prediction coverage. Flat-actual matches can affect all-origin direction,so no unconditional55% accuracy impossibility claim. Raw frozen returns directly test information transport; no named-target scores yet and no re-selection allowed.",
+    "new_fits": 0,
+    "prior_draft_preserved": true,
+    "semantic_clarification_of_draft": "daba1964cb01b3d0c1f3dbc106247276dee38e10c01453887149149ecda0f1f6"
+  },
+  "kind": "zero_fit_frozen_forecast_transport_preregistration",
+  "classification": "INCONCLUSIVE",
+  "classification_scope": "Design only;no new named-target score.",
+  "freeze": {
+    "profile": "origin-fixed-forecast-transport-v1-r2",
+    "contract_sha256": "750b2de1652ce16b523b190b2020b367f241d4eec9ba9f3072ed7a27c5b5a44f",
+    "scripts_sha256": {
+      "analysis.py": "4578dae770a5963e54454b6fd79adec6bf488ef52bc6683a73e7a0acdc6fbe60",
+      "verify.py": "1058c4cb8b5ba18a6eb75347c2d67be310e90d656617873eb120aafb06d47d0c",
+      "controls.py": "4ced36b2a05886611391eed9e0aa796675b0e6ba1cdff09288a99c35ba86b2a9",
+      "synthetic-check.py": "68b472cd0fbd71439fbab19e5ec4876df291e7f6e388b412a84e9bd1020ef631"
+    },
+    "synthetic_checks_sha256": "884929efb5b0747b229a22bbbe5a8e854ccbaade5cdcc872c971d54368082207",
+    "new_fits": 0,
+    "market_scores_computed": 0
+  },
+  "freeze_sha256": "e48a1fe34e3ee252aae36da3c8a247179286c40f7e199e85b75a05372772d47d",
+  "old_study_objects_preserved": 164,
+  "old_recipe_objects_preserved": 518,
+  "old_proofs_preserved": 84,
+  "prediction_payload_exists": false,
+  "diagnostic_payload_exists": false,
+  "release_allowed": false,
+  "historical_source_admitted": false,
+  "independent_holdout": false
+}

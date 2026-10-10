@@ -1,0 +1,14 @@
+{
+  "schema": 1,
+  "release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/origin-fixed-forecast-transport-preregistration-20261010",
+  "archive": {
+    "name": "origin-fixed-forecast-transport-preregistration-20261010.zip",
+    "bytes": 2415174,
+    "sha256": "a32169df7604063ecd4609a2cf442d1ac5a121b8c20f1f2665d2fe4fb62904a7"
+  },
+  "members": 27,
+  "inventory_sha256": "0694e6f02835fb6f95b395dfe917881951c6d5cc9c4350982bd591e9630cbdd8",
+  "new_fits": 0,
+  "new_market_scores": 0,
+  "source_id": "20d0c1869afc35b9c83b34cfd3fc8de8ec90a56ebd64c1cf3dcb3b085685d7b3"
+}

@@ -17435,6 +17435,29 @@
       "future_contract_identity_feature_allowed": false,
       "release_allowed": false,
       "id": "b57ac3039b66a7394506066134f75c49e9374ad83165607c3db0b807140e2b30"
+    },
+    {
+      "experiment": "origin-fixed-forecast-transport-v1-r2-preregistration",
+      "profile": "origin-fixed-forecast-transport-v1-r2",
+      "horizon": 5,
+      "kind": "zero_fit_frozen_forecast_transport_preregistration",
+      "classification": "INCONCLUSIVE",
+      "classification_scope": "Design only;no new named-target score.",
+      "code_id": "20d0c1869afc35b9c83b34cfd3fc8de8ec90a56ebd64c1cf3dcb3b085685d7b3",
+      "analysis_code_id": "4578dae770a5963e54454b6fd79adec6bf488ef52bc6683a73e7a0acdc6fbe60",
+      "data_id": "8d8e27ad04f14c0bc198f525858a2358eeb593c9ab3f5223c2294a736f2709fb",
+      "model_families": [],
+      "completed_fits": 0,
+      "origin_count_if_executed": 749,
+      "expected_eligible_per_horizon": 739,
+      "prediction_payload_exists": false,
+      "diagnostic_payload_exists": false,
+      "evidence": "research/evidence/origin-fixed-forecast-transport-preregistration-20261010.json",
+      "evidence_sha256": "f208d36089439a649cee63aef617534ec841bdf1d2ea3df81a67409b275794e8",
+      "historical_source_admitted": false,
+      "independent_holdout": false,
+      "release_allowed": false,
+      "id": "4e97431d928b312f449e91db52282bc036ada1bb3a0cba7ffaab28e607e627aa"
     }
   ],
   "local_evidence": [
@@ -17777,6 +17800,14 @@
     {
       "path": "evidence/fixed-contract-feasibility-delivery-20261010.json",
       "sha256": "ddeb06251f1364d0c17a43e0a615498707947dcb82b970cc1ffc532b0117a5a0"
+    },
+    {
+      "path": "evidence/origin-fixed-forecast-transport-preregistration-20261010.json",
+      "sha256": "f208d36089439a649cee63aef617534ec841bdf1d2ea3df81a67409b275794e8"
+    },
+    {
+      "path": "evidence/origin-fixed-forecast-transport-preregistration-release-20261010.json",
+      "sha256": "1c851734d746fe1b0e4a00052b1f052ea414ed313ee9b1a5b8e090f6fd8b27fe"
     }
   ]
 }
