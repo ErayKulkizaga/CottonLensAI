@@ -48695,6 +48695,3942 @@
       "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/weak-signal-result-20261009",
       "receipt_inventory_member": "checksums.json",
       "coverage": "completed synthetic calibration; not market evidence"
+    },
+    {
+      "id": "012f72f4883cf34562241d97c457bf7074e6e6ed60355d0bfccb55ac38cf54b0",
+      "scope": {
+        "identity_id": "cd9512fc07b0011d427265e0d75b85381e46a08c1eac96774606d4dba2a8c953",
+        "source_id": "d3ca00e498639dc266f34dafb60f2f24dbba5e66ee0deeda0d9c4c0e5b7f7313",
+        "data_id": "f46410d913d1dc7bf798a473cc7e37c7567d40a0e5ac2a83b42901f64089bb67",
+        "split_id": "eb1abf500bf77e10b5761586554240188e94c588ac915bd377864bdb89aff236",
+        "profile": "paired-price-loss-control-v1"
+      },
+      "scope_id": "50a19300ddcf4950bf821d3cfbd8476bca095853d46848f8434d89792b13b8af",
+      "profile": "paired-price-loss-control-v1",
+      "horizon": 1,
+      "recipes": [
+        {
+          "family": "xgboost",
+          "horizon": 1,
+          "task": "price",
+          "params": {
+            "max_depth": 8,
+            "eta": 0.016406280707971357,
+            "min_child_weight": 1.4313081449731246,
+            "alpha": 1.4785914585898694,
+            "lambda": 0.010373906271792813,
+            "subsample": 0.6213419652080218,
+            "colsample_bytree": 0.7325998884182489
+          },
+          "seed": 101,
+          "target": "price_delta",
+          "loss": "reg:absoluteerror",
+          "window": 1,
+          "features": [
+            "cotton_ret_1",
+            "cotton_ret_5",
+            "cotton_ret_10",
+            "cotton_ret_20",
+            "cotton_momentum_5",
+            "cotton_momentum_20",
+            "cotton_sma_ratio_5_20",
+            "cotton_sma_ratio_20_50",
+            "cotton_volatility_5",
+            "cotton_volatility_20",
+            "cotton_range",
+            "cotton_volume_change",
+            "cotton_volume_z20",
+            "cotton_volatility_regime_20_60",
+            "dxy_ret_1",
+            "dxy_ret_5",
+            "dxy_ret_20",
+            "wti_ret_1",
+            "wti_ret_5",
+            "wti_ret_20",
+            "cotton_dxy_corr_60",
+            "cotton_wti_corr_60",
+            "month_sin",
+            "month_cos"
+          ],
+          "years": null,
+          "cadence": 126,
+          "hypothesis": "fixed price-delta loss contrast; no new selection",
+          "device": "cpu"
+        }
+      ],
+      "model_families": [
+        "xgboost"
+      ],
+      "kind": "market_fit_receipt",
+      "completed_fits": 2,
+      "sample_receipts": [
+        {
+          "path": "experiment/ledger/completed/b3a9833ecc9b25bd20b7a11a23cb1a343069e4b0436d2fa92155d3f2e2caf655.json",
+          "record_id": "07416535a882b7ae08ed8c89e2fef43c29a926649d1b4b2cfb6bbc1bf33759e6",
+          "experiment_id": "b3a9833ecc9b25bd20b7a11a23cb1a343069e4b0436d2fa92155d3f2e2caf655"
+        },
+        {
+          "path": "experiment/ledger/completed/d24fca3d816ffa18cf7112fbf85373b8f45fac75ac9e57efb4ee10102df6141c.json",
+          "record_id": "10a3517d2fdff0fcf6d9f05de7f8319ea87910b7b453f9400b4d58e654f5289f",
+          "experiment_id": "d24fca3d816ffa18cf7112fbf85373b8f45fac75ac9e57efb4ee10102df6141c"
+        }
+      ],
+      "roles": [
+        "paired"
+      ],
+      "coverage": "completed fit receipts; not experiment completion",
+      "payload_hashes_revalidated_by_index": false,
+      "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/paired-price-loss-result-20261010",
+      "payload_hashes_revalidated_separately": true
+    },
+    {
+      "id": "08879e9169f76827d5c4e0d5348acad53096ce5ac84a1c832c2d247e584aade9",
+      "scope": {
+        "identity_id": "cd9512fc07b0011d427265e0d75b85381e46a08c1eac96774606d4dba2a8c953",
+        "source_id": "d3ca00e498639dc266f34dafb60f2f24dbba5e66ee0deeda0d9c4c0e5b7f7313",
+        "data_id": "f46410d913d1dc7bf798a473cc7e37c7567d40a0e5ac2a83b42901f64089bb67",
+        "split_id": "eb1abf500bf77e10b5761586554240188e94c588ac915bd377864bdb89aff236",
+        "profile": "paired-price-loss-control-v1"
+      },
+      "scope_id": "50a19300ddcf4950bf821d3cfbd8476bca095853d46848f8434d89792b13b8af",
+      "profile": "paired-price-loss-control-v1",
+      "horizon": 1,
+      "recipes": [
+        {
+          "family": "xgboost",
+          "horizon": 1,
+          "task": "price",
+          "params": {
+            "max_depth": 8,
+            "eta": 0.016406280707971357,
+            "min_child_weight": 1.4313081449731246,
+            "alpha": 1.4785914585898694,
+            "lambda": 0.010373906271792813,
+            "subsample": 0.6213419652080218,
+            "colsample_bytree": 0.7325998884182489
+          },
+          "seed": 42,
+          "target": "price_delta",
+          "loss": "reg:squarederror",
+          "window": 1,
+          "features": [
+            "cotton_ret_1",
+            "cotton_ret_5",
+            "cotton_ret_10",
+            "cotton_ret_20",
+            "cotton_momentum_5",
+            "cotton_momentum_20",
+            "cotton_sma_ratio_5_20",
+            "cotton_sma_ratio_20_50",
+            "cotton_volatility_5",
+            "cotton_volatility_20",
+            "cotton_range",
+            "cotton_volume_change",
+            "cotton_volume_z20",
+            "cotton_volatility_regime_20_60",
+            "dxy_ret_1",
+            "dxy_ret_5",
+            "dxy_ret_20",
+            "wti_ret_1",
+            "wti_ret_5",
+            "wti_ret_20",
+            "cotton_dxy_corr_60",
+            "cotton_wti_corr_60",
+            "month_sin",
+            "month_cos"
+          ],
+          "years": null,
+          "cadence": 126,
+          "hypothesis": "fixed price-delta loss contrast; no new selection",
+          "device": "cpu"
+        }
+      ],
+      "model_families": [
+        "xgboost"
+      ],
+      "kind": "market_fit_receipt",
+      "completed_fits": 2,
+      "sample_receipts": [
+        {
+          "path": "experiment/ledger/completed/03ab53844ce6ced30d5e86d98872bcde1cc85f4271233c821cd6789d836b609b.json",
+          "record_id": "713c98a0d15312ab083fdee44aeb0bb8b2a15838662b01bc296642f31b0f7fef",
+          "experiment_id": "03ab53844ce6ced30d5e86d98872bcde1cc85f4271233c821cd6789d836b609b"
+        },
+        {
+          "path": "experiment/ledger/completed/ad26589b10400149a54fe880ebb491b4803d1c2c647b391dc39cea4fc0a5493a.json",
+          "record_id": "756d4b8d874cf5be1b451c1690a5db8e0c8d869f3845a809e96f011e634dd3ba",
+          "experiment_id": "ad26589b10400149a54fe880ebb491b4803d1c2c647b391dc39cea4fc0a5493a"
+        }
+      ],
+      "roles": [
+        "paired"
+      ],
+      "coverage": "completed fit receipts; not experiment completion",
+      "payload_hashes_revalidated_by_index": false,
+      "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/paired-price-loss-result-20261010",
+      "payload_hashes_revalidated_separately": true
+    },
+    {
+      "id": "1ad9d0575b9a20f4d80df8273ba9086b68a588183f4deba3b9dad2050cd730c9",
+      "scope": {
+        "identity_id": "cd9512fc07b0011d427265e0d75b85381e46a08c1eac96774606d4dba2a8c953",
+        "source_id": "d3ca00e498639dc266f34dafb60f2f24dbba5e66ee0deeda0d9c4c0e5b7f7313",
+        "data_id": "f46410d913d1dc7bf798a473cc7e37c7567d40a0e5ac2a83b42901f64089bb67",
+        "split_id": "eb1abf500bf77e10b5761586554240188e94c588ac915bd377864bdb89aff236",
+        "profile": "paired-price-loss-control-v1"
+      },
+      "scope_id": "50a19300ddcf4950bf821d3cfbd8476bca095853d46848f8434d89792b13b8af",
+      "profile": "paired-price-loss-control-v1",
+      "horizon": 1,
+      "recipes": [
+        {
+          "family": "xgboost",
+          "horizon": 1,
+          "task": "price",
+          "params": {
+            "max_depth": 3,
+            "eta": 0.013940634523724502,
+            "min_child_weight": 9.893240098384746,
+            "alpha": 0.0001439522241517037,
+            "lambda": 0.0032325150847186974,
+            "subsample": 0.8136043840516958,
+            "colsample_bytree": 0.9395057813740026
+          },
+          "seed": 101,
+          "target": "price_delta",
+          "loss": "reg:absoluteerror",
+          "window": 1,
+          "features": [
+            "cotton_ret_1",
+            "cotton_ret_5",
+            "cotton_ret_10",
+            "cotton_ret_20",
+            "cotton_momentum_5",
+            "cotton_momentum_20",
+            "cotton_sma_ratio_5_20",
+            "cotton_sma_ratio_20_50",
+            "cotton_volatility_5",
+            "cotton_volatility_20",
+            "cotton_range",
+            "cotton_volume_change",
+            "cotton_volume_z20",
+            "cotton_volatility_regime_20_60",
+            "dxy_ret_1",
+            "dxy_ret_5",
+            "dxy_ret_20",
+            "wti_ret_1",
+            "wti_ret_5",
+            "wti_ret_20",
+            "cotton_dxy_corr_60",
+            "cotton_wti_corr_60",
+            "month_sin",
+            "month_cos"
+          ],
+          "years": null,
+          "cadence": 126,
+          "hypothesis": "fixed price-delta loss contrast; no new selection",
+          "device": "cpu"
+        }
+      ],
+      "model_families": [
+        "xgboost"
+      ],
+      "kind": "market_fit_receipt",
+      "completed_fits": 1,
+      "sample_receipts": [
+        {
+          "path": "experiment/ledger/completed/78b7f4643d4cda6e4f2f9ec844e5eb6325a075536c5b0729b29af2e0e90ae17f.json",
+          "record_id": "767d233e8e5bd074e3d74f39dd4d971681bf40aed3cbac03d17dd180f7f83503",
+          "experiment_id": "78b7f4643d4cda6e4f2f9ec844e5eb6325a075536c5b0729b29af2e0e90ae17f"
+        }
+      ],
+      "roles": [
+        "paired"
+      ],
+      "coverage": "completed fit receipts; not experiment completion",
+      "payload_hashes_revalidated_by_index": false,
+      "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/paired-price-loss-result-20261010",
+      "payload_hashes_revalidated_separately": true
+    },
+    {
+      "id": "20a9694d87d1c1c9c34028d77e904da7a9d7a48c51e24933a3cedca7d69a748f",
+      "scope": {
+        "identity_id": "cd9512fc07b0011d427265e0d75b85381e46a08c1eac96774606d4dba2a8c953",
+        "source_id": "d3ca00e498639dc266f34dafb60f2f24dbba5e66ee0deeda0d9c4c0e5b7f7313",
+        "data_id": "f46410d913d1dc7bf798a473cc7e37c7567d40a0e5ac2a83b42901f64089bb67",
+        "split_id": "eb1abf500bf77e10b5761586554240188e94c588ac915bd377864bdb89aff236",
+        "profile": "paired-price-loss-control-v1"
+      },
+      "scope_id": "50a19300ddcf4950bf821d3cfbd8476bca095853d46848f8434d89792b13b8af",
+      "profile": "paired-price-loss-control-v1",
+      "horizon": 1,
+      "recipes": [
+        {
+          "family": "xgboost",
+          "horizon": 1,
+          "task": "price",
+          "params": {
+            "max_depth": 3,
+            "eta": 0.013940634523724502,
+            "min_child_weight": 9.893240098384746,
+            "alpha": 0.0001439522241517037,
+            "lambda": 0.0032325150847186974,
+            "subsample": 0.8136043840516958,
+            "colsample_bytree": 0.9395057813740026
+          },
+          "seed": 42,
+          "target": "price_delta",
+          "loss": "reg:absoluteerror",
+          "window": 1,
+          "features": [
+            "cotton_ret_1",
+            "cotton_ret_5",
+            "cotton_ret_10",
+            "cotton_ret_20",
+            "cotton_momentum_5",
+            "cotton_momentum_20",
+            "cotton_sma_ratio_5_20",
+            "cotton_sma_ratio_20_50",
+            "cotton_volatility_5",
+            "cotton_volatility_20",
+            "cotton_range",
+            "cotton_volume_change",
+            "cotton_volume_z20",
+            "cotton_volatility_regime_20_60",
+            "dxy_ret_1",
+            "dxy_ret_5",
+            "dxy_ret_20",
+            "wti_ret_1",
+            "wti_ret_5",
+            "wti_ret_20",
+            "cotton_dxy_corr_60",
+            "cotton_wti_corr_60",
+            "month_sin",
+            "month_cos"
+          ],
+          "years": null,
+          "cadence": 126,
+          "hypothesis": "fixed price-delta loss contrast; no new selection",
+          "device": "cpu"
+        }
+      ],
+      "model_families": [
+        "xgboost"
+      ],
+      "kind": "market_fit_receipt",
+      "completed_fits": 1,
+      "sample_receipts": [
+        {
+          "path": "experiment/ledger/completed/e021b9aa8f3c4b0373671449918356638d1850dfc43cb1294b0caf92610d8593.json",
+          "record_id": "d316af8253b12bea22ca070df6c79c1401633da8651552d9661801a10f456406",
+          "experiment_id": "e021b9aa8f3c4b0373671449918356638d1850dfc43cb1294b0caf92610d8593"
+        }
+      ],
+      "roles": [
+        "paired"
+      ],
+      "coverage": "completed fit receipts; not experiment completion",
+      "payload_hashes_revalidated_by_index": false,
+      "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/paired-price-loss-result-20261010",
+      "payload_hashes_revalidated_separately": true
+    },
+    {
+      "id": "23fced925f07645c4d13c20f2814f479ac939605afdf5fb8c911a5ffe663f8a4",
+      "scope": {
+        "identity_id": "fa52450ca807abcbdd4a5d5866518b1f9d13503e0923714d2a7c2a3e9fd96299",
+        "source_id": "d3ca00e498639dc266f34dafb60f2f24dbba5e66ee0deeda0d9c4c0e5b7f7313",
+        "data_id": "f46410d913d1dc7bf798a473cc7e37c7567d40a0e5ac2a83b42901f64089bb67",
+        "split_id": "eb1abf500bf77e10b5761586554240188e94c588ac915bd377864bdb89aff236",
+        "profile": "paired-price-loss-control-v1"
+      },
+      "scope_id": "d073301009388b73adb93fabaaf95c876efdf7d9308bd7d6dcac56d759ac52d6",
+      "profile": "paired-price-loss-control-v1",
+      "horizon": 1,
+      "recipes": [
+        {
+          "family": "xgboost",
+          "horizon": 1,
+          "task": "price",
+          "device": "cpu",
+          "features": [
+            "cotton_ret_1",
+            "cotton_ret_5",
+            "cotton_ret_10",
+            "cotton_ret_20",
+            "cotton_momentum_5",
+            "cotton_momentum_20",
+            "cotton_sma_ratio_5_20",
+            "cotton_sma_ratio_20_50",
+            "cotton_volatility_5",
+            "cotton_volatility_20",
+            "cotton_range",
+            "cotton_volume_change",
+            "cotton_volume_z20",
+            "cotton_volatility_regime_20_60",
+            "dxy_ret_1",
+            "dxy_ret_5",
+            "dxy_ret_20",
+            "wti_ret_1",
+            "wti_ret_5",
+            "wti_ret_20",
+            "cotton_dxy_corr_60",
+            "cotton_wti_corr_60",
+            "month_sin",
+            "month_cos"
+          ],
+          "seed": 42,
+          "window": 1,
+          "target": "price_delta",
+          "loss": "reg:squarederror",
+          "params": {
+            "max_depth": 8,
+            "eta": 0.15,
+            "min_child_weight": 1,
+            "alpha": 0,
+            "lambda": 0.01
+          }
+        }
+      ],
+      "model_families": [
+        "xgboost"
+      ],
+      "kind": "synthetic_control:small_subset_overfit",
+      "completed_fits": 1,
+      "sample_receipts": [
+        {
+          "path": "experiment/learning-control-ledger/completed/567f0c252822dfae2913c1abd3d5e357cced0894dde38c5fc24cb0f823f3e984.json",
+          "record_id": "be06e6a03cb7fd445d13bd07814d18ef8e80f61d703b08bb464854db39157055",
+          "experiment_id": "567f0c252822dfae2913c1abd3d5e357cced0894dde38c5fc24cb0f823f3e984"
+        }
+      ],
+      "roles": [
+        "synthetic_control_not_market_evidence"
+      ],
+      "coverage": "completed fit receipts; not experiment completion",
+      "payload_hashes_revalidated_by_index": false,
+      "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/paired-price-loss-result-20261010",
+      "payload_hashes_revalidated_separately": true
+    },
+    {
+      "id": "266807a6ae69f589ecbe9a971f3666745f7f25a26c64caba43b269e5f23bc247",
+      "scope": {
+        "identity_id": "cd9512fc07b0011d427265e0d75b85381e46a08c1eac96774606d4dba2a8c953",
+        "source_id": "d3ca00e498639dc266f34dafb60f2f24dbba5e66ee0deeda0d9c4c0e5b7f7313",
+        "data_id": "f46410d913d1dc7bf798a473cc7e37c7567d40a0e5ac2a83b42901f64089bb67",
+        "split_id": "eb1abf500bf77e10b5761586554240188e94c588ac915bd377864bdb89aff236",
+        "profile": "paired-price-loss-control-v1"
+      },
+      "scope_id": "50a19300ddcf4950bf821d3cfbd8476bca095853d46848f8434d89792b13b8af",
+      "profile": "paired-price-loss-control-v1",
+      "horizon": 1,
+      "recipes": [
+        {
+          "family": "xgboost",
+          "horizon": 1,
+          "task": "price",
+          "params": {
+            "max_depth": 3,
+            "eta": 0.013940634523724502,
+            "min_child_weight": 9.893240098384746,
+            "alpha": 0.0001439522241517037,
+            "lambda": 0.0032325150847186974,
+            "subsample": 0.8136043840516958,
+            "colsample_bytree": 0.9395057813740026
+          },
+          "seed": 101,
+          "target": "price_delta",
+          "loss": "reg:squarederror",
+          "window": 1,
+          "features": [
+            "cotton_ret_1",
+            "cotton_ret_5",
+            "cotton_ret_10",
+            "cotton_ret_20",
+            "cotton_momentum_5",
+            "cotton_momentum_20",
+            "cotton_sma_ratio_5_20",
+            "cotton_sma_ratio_20_50",
+            "cotton_volatility_5",
+            "cotton_volatility_20",
+            "cotton_range",
+            "cotton_volume_change",
+            "cotton_volume_z20",
+            "cotton_volatility_regime_20_60",
+            "dxy_ret_1",
+            "dxy_ret_5",
+            "dxy_ret_20",
+            "wti_ret_1",
+            "wti_ret_5",
+            "wti_ret_20",
+            "cotton_dxy_corr_60",
+            "cotton_wti_corr_60",
+            "month_sin",
+            "month_cos"
+          ],
+          "years": null,
+          "cadence": 126,
+          "hypothesis": "fixed price-delta loss contrast; no new selection",
+          "device": "cpu"
+        }
+      ],
+      "model_families": [
+        "xgboost"
+      ],
+      "kind": "market_fit_receipt",
+      "completed_fits": 1,
+      "sample_receipts": [
+        {
+          "path": "experiment/ledger/completed/0e207e83c208ca37ddddf130120c144447f2b60f91e76f14976ef248ef1b814b.json",
+          "record_id": "540115a224841175c5ac591e4e14aa32a1775a07f3f650541ec76fb4de38b553",
+          "experiment_id": "0e207e83c208ca37ddddf130120c144447f2b60f91e76f14976ef248ef1b814b"
+        }
+      ],
+      "roles": [
+        "paired"
+      ],
+      "coverage": "completed fit receipts; not experiment completion",
+      "payload_hashes_revalidated_by_index": false,
+      "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/paired-price-loss-result-20261010",
+      "payload_hashes_revalidated_separately": true
+    },
+    {
+      "id": "2994edfb8855bb67dd173875df9085065e99370bcb1ce5384afa69f299079c73",
+      "scope": {
+        "identity_id": "cd9512fc07b0011d427265e0d75b85381e46a08c1eac96774606d4dba2a8c953",
+        "source_id": "d3ca00e498639dc266f34dafb60f2f24dbba5e66ee0deeda0d9c4c0e5b7f7313",
+        "data_id": "f46410d913d1dc7bf798a473cc7e37c7567d40a0e5ac2a83b42901f64089bb67",
+        "split_id": "eb1abf500bf77e10b5761586554240188e94c588ac915bd377864bdb89aff236",
+        "profile": "paired-price-loss-control-v1"
+      },
+      "scope_id": "50a19300ddcf4950bf821d3cfbd8476bca095853d46848f8434d89792b13b8af",
+      "profile": "paired-price-loss-control-v1",
+      "horizon": 1,
+      "recipes": [
+        {
+          "family": "xgboost",
+          "horizon": 1,
+          "task": "price",
+          "params": {
+            "max_depth": 4,
+            "eta": 0.009863516889682346,
+            "min_child_weight": 8.96206611334584,
+            "alpha": 0.0,
+            "lambda": 0.06061131926647169,
+            "subsample": 0.9756727582126963,
+            "colsample_bytree": 0.6164659232295507
+          },
+          "seed": 17,
+          "target": "price_delta",
+          "loss": "reg:squarederror",
+          "window": 1,
+          "features": [
+            "cotton_ret_1",
+            "cotton_ret_5",
+            "cotton_ret_10",
+            "cotton_ret_20",
+            "cotton_momentum_5",
+            "cotton_momentum_20",
+            "cotton_sma_ratio_5_20",
+            "cotton_sma_ratio_20_50",
+            "cotton_volatility_5",
+            "cotton_volatility_20",
+            "cotton_range",
+            "cotton_volume_change",
+            "cotton_volume_z20",
+            "cotton_volatility_regime_20_60",
+            "dxy_ret_1",
+            "dxy_ret_5",
+            "dxy_ret_20",
+            "wti_ret_1",
+            "wti_ret_5",
+            "wti_ret_20",
+            "cotton_dxy_corr_60",
+            "cotton_wti_corr_60",
+            "month_sin",
+            "month_cos"
+          ],
+          "years": null,
+          "cadence": 126,
+          "hypothesis": "fixed price-delta loss contrast; no new selection",
+          "device": "cpu"
+        }
+      ],
+      "model_families": [
+        "xgboost"
+      ],
+      "kind": "market_fit_receipt",
+      "completed_fits": 1,
+      "sample_receipts": [
+        {
+          "path": "experiment/ledger/completed/999a54d5a907fb1d696f56f5c2b8646711f6dfab851a8f6810d32bad7fd03615.json",
+          "record_id": "4858036b821921605c25968a936f393699e4da9698f61768c8564a9778f8f380",
+          "experiment_id": "999a54d5a907fb1d696f56f5c2b8646711f6dfab851a8f6810d32bad7fd03615"
+        }
+      ],
+      "roles": [
+        "paired"
+      ],
+      "coverage": "completed fit receipts; not experiment completion",
+      "payload_hashes_revalidated_by_index": false,
+      "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/paired-price-loss-result-20261010",
+      "payload_hashes_revalidated_separately": true
+    },
+    {
+      "id": "2b6736a87d5d2187196af26e86e366b10ff46ce981e91b2f194874e882a76039",
+      "scope": {
+        "identity_id": "cd9512fc07b0011d427265e0d75b85381e46a08c1eac96774606d4dba2a8c953",
+        "source_id": "d3ca00e498639dc266f34dafb60f2f24dbba5e66ee0deeda0d9c4c0e5b7f7313",
+        "data_id": "f46410d913d1dc7bf798a473cc7e37c7567d40a0e5ac2a83b42901f64089bb67",
+        "split_id": "eb1abf500bf77e10b5761586554240188e94c588ac915bd377864bdb89aff236",
+        "profile": "paired-price-loss-control-v1"
+      },
+      "scope_id": "50a19300ddcf4950bf821d3cfbd8476bca095853d46848f8434d89792b13b8af",
+      "profile": "paired-price-loss-control-v1",
+      "horizon": 1,
+      "recipes": [
+        {
+          "family": "xgboost",
+          "horizon": 1,
+          "task": "price",
+          "params": {
+            "max_depth": 1,
+            "eta": 0.1071642092467754,
+            "min_child_weight": 28.473107497222667,
+            "alpha": 5.952400639752211,
+            "lambda": 33.39034462012904,
+            "subsample": 0.9058048416468771,
+            "colsample_bytree": 0.688076624429072
+          },
+          "seed": 17,
+          "target": "price_delta",
+          "loss": "reg:absoluteerror",
+          "window": 1,
+          "features": [
+            "cotton_ret_1",
+            "cotton_ret_5",
+            "cotton_ret_10",
+            "cotton_ret_20",
+            "cotton_momentum_5",
+            "cotton_momentum_20",
+            "cotton_sma_ratio_5_20",
+            "cotton_sma_ratio_20_50",
+            "cotton_volatility_5",
+            "cotton_volatility_20",
+            "cotton_range",
+            "cotton_volume_change",
+            "cotton_volume_z20",
+            "cotton_volatility_regime_20_60",
+            "dxy_ret_1",
+            "dxy_ret_5",
+            "dxy_ret_20",
+            "wti_ret_1",
+            "wti_ret_5",
+            "wti_ret_20",
+            "cotton_dxy_corr_60",
+            "cotton_wti_corr_60",
+            "month_sin",
+            "month_cos"
+          ],
+          "years": null,
+          "cadence": 126,
+          "hypothesis": "fixed price-delta loss contrast; no new selection",
+          "device": "cpu"
+        }
+      ],
+      "model_families": [
+        "xgboost"
+      ],
+      "kind": "market_fit_receipt",
+      "completed_fits": 1,
+      "sample_receipts": [
+        {
+          "path": "experiment/ledger/completed/a84244171ff0ecedf3ff36253d897c826fe25fb891d8218630c49af8a556ea37.json",
+          "record_id": "3a66d23ad677daab107f491501124186b8fede27996aa65e03550a44865c7283",
+          "experiment_id": "a84244171ff0ecedf3ff36253d897c826fe25fb891d8218630c49af8a556ea37"
+        }
+      ],
+      "roles": [
+        "paired"
+      ],
+      "coverage": "completed fit receipts; not experiment completion",
+      "payload_hashes_revalidated_by_index": false,
+      "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/paired-price-loss-result-20261010",
+      "payload_hashes_revalidated_separately": true
+    },
+    {
+      "id": "2cd597e0e72a77816bb8319cae3e27a1fd595390a31b1558d178d04ef5ebc0bf",
+      "scope": {
+        "identity_id": "fa52450ca807abcbdd4a5d5866518b1f9d13503e0923714d2a7c2a3e9fd96299",
+        "source_id": "d3ca00e498639dc266f34dafb60f2f24dbba5e66ee0deeda0d9c4c0e5b7f7313",
+        "data_id": "f46410d913d1dc7bf798a473cc7e37c7567d40a0e5ac2a83b42901f64089bb67",
+        "split_id": "eb1abf500bf77e10b5761586554240188e94c588ac915bd377864bdb89aff236",
+        "profile": "paired-price-loss-control-v1"
+      },
+      "scope_id": "d073301009388b73adb93fabaaf95c876efdf7d9308bd7d6dcac56d759ac52d6",
+      "profile": "paired-price-loss-control-v1",
+      "horizon": 1,
+      "recipes": [
+        {
+          "family": "xgboost",
+          "horizon": 1,
+          "task": "price",
+          "device": "cpu",
+          "features": [
+            "cotton_ret_1",
+            "cotton_ret_5",
+            "cotton_ret_10",
+            "cotton_ret_20",
+            "cotton_momentum_5",
+            "cotton_momentum_20",
+            "cotton_sma_ratio_5_20",
+            "cotton_sma_ratio_20_50",
+            "cotton_volatility_5",
+            "cotton_volatility_20",
+            "cotton_range",
+            "cotton_volume_change",
+            "cotton_volume_z20",
+            "cotton_volatility_regime_20_60",
+            "dxy_ret_1",
+            "dxy_ret_5",
+            "dxy_ret_20",
+            "wti_ret_1",
+            "wti_ret_5",
+            "wti_ret_20",
+            "cotton_dxy_corr_60",
+            "cotton_wti_corr_60",
+            "month_sin",
+            "month_cos"
+          ],
+          "seed": 42,
+          "window": 1,
+          "target": "price_delta",
+          "loss": "reg:absoluteerror",
+          "params": {
+            "max_depth": 8,
+            "eta": 0.15,
+            "min_child_weight": 1,
+            "alpha": 0,
+            "lambda": 0.01
+          }
+        }
+      ],
+      "model_families": [
+        "xgboost"
+      ],
+      "kind": "synthetic_control:negative_block_shift",
+      "completed_fits": 1,
+      "sample_receipts": [
+        {
+          "path": "experiment/learning-control-ledger/completed/6c6007b927cb31c24c6a236034aab3ac4bd17bbf6c33cdc2e979f0f43baa8120.json",
+          "record_id": "b7add73201cd5321f3d059b93836419f7f197b1e6dcd1600022990b86985fe2f",
+          "experiment_id": "6c6007b927cb31c24c6a236034aab3ac4bd17bbf6c33cdc2e979f0f43baa8120"
+        }
+      ],
+      "roles": [
+        "synthetic_control_not_market_evidence"
+      ],
+      "coverage": "completed fit receipts; not experiment completion",
+      "payload_hashes_revalidated_by_index": false,
+      "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/paired-price-loss-result-20261010",
+      "payload_hashes_revalidated_separately": true
+    },
+    {
+      "id": "3b72216dd9be0e5157ce1c1e4b15f2adaa25e4e6db14f62cde8a36d217dfac93",
+      "scope": {
+        "identity_id": "cd9512fc07b0011d427265e0d75b85381e46a08c1eac96774606d4dba2a8c953",
+        "source_id": "d3ca00e498639dc266f34dafb60f2f24dbba5e66ee0deeda0d9c4c0e5b7f7313",
+        "data_id": "f46410d913d1dc7bf798a473cc7e37c7567d40a0e5ac2a83b42901f64089bb67",
+        "split_id": "eb1abf500bf77e10b5761586554240188e94c588ac915bd377864bdb89aff236",
+        "profile": "paired-price-loss-control-v1"
+      },
+      "scope_id": "50a19300ddcf4950bf821d3cfbd8476bca095853d46848f8434d89792b13b8af",
+      "profile": "paired-price-loss-control-v1",
+      "horizon": 1,
+      "recipes": [
+        {
+          "family": "xgboost",
+          "horizon": 1,
+          "task": "price",
+          "params": {
+            "max_depth": 2,
+            "eta": 0.05981591800837641,
+            "min_child_weight": 3.677460561634013,
+            "alpha": 0.0,
+            "lambda": 3.8040343167766677,
+            "subsample": 0.9034803140008089,
+            "colsample_bytree": 0.983860229648617
+          },
+          "seed": 42,
+          "target": "price_delta",
+          "loss": "reg:squarederror",
+          "window": 1,
+          "features": [
+            "cotton_ret_1",
+            "cotton_ret_5",
+            "cotton_ret_10",
+            "cotton_ret_20",
+            "cotton_momentum_5",
+            "cotton_momentum_20",
+            "cotton_sma_ratio_5_20",
+            "cotton_sma_ratio_20_50",
+            "cotton_volatility_5",
+            "cotton_volatility_20",
+            "cotton_range",
+            "cotton_volume_change",
+            "cotton_volume_z20",
+            "cotton_volatility_regime_20_60",
+            "dxy_ret_1",
+            "dxy_ret_5",
+            "dxy_ret_20",
+            "wti_ret_1",
+            "wti_ret_5",
+            "wti_ret_20",
+            "cotton_dxy_corr_60",
+            "cotton_wti_corr_60",
+            "month_sin",
+            "month_cos"
+          ],
+          "years": null,
+          "cadence": 126,
+          "hypothesis": "fixed price-delta loss contrast; no new selection",
+          "device": "cpu"
+        }
+      ],
+      "model_families": [
+        "xgboost"
+      ],
+      "kind": "market_fit_receipt",
+      "completed_fits": 1,
+      "sample_receipts": [
+        {
+          "path": "experiment/ledger/completed/44028e6bc5b0449308d8bcfa0ab9b469efc3d2a42ce11f0207c75299f1f3bb4b.json",
+          "record_id": "8708894433b73504dc7e7d2105d9d57b7eae3ce35a2422b8526bde9aaed40de3",
+          "experiment_id": "44028e6bc5b0449308d8bcfa0ab9b469efc3d2a42ce11f0207c75299f1f3bb4b"
+        }
+      ],
+      "roles": [
+        "paired"
+      ],
+      "coverage": "completed fit receipts; not experiment completion",
+      "payload_hashes_revalidated_by_index": false,
+      "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/paired-price-loss-result-20261010",
+      "payload_hashes_revalidated_separately": true
+    },
+    {
+      "id": "404c94731cf27b34cb24ce05abb81079c1ef7633387de3ac1cb00b9fa256bded",
+      "scope": {
+        "identity_id": "cd9512fc07b0011d427265e0d75b85381e46a08c1eac96774606d4dba2a8c953",
+        "source_id": "d3ca00e498639dc266f34dafb60f2f24dbba5e66ee0deeda0d9c4c0e5b7f7313",
+        "data_id": "f46410d913d1dc7bf798a473cc7e37c7567d40a0e5ac2a83b42901f64089bb67",
+        "split_id": "eb1abf500bf77e10b5761586554240188e94c588ac915bd377864bdb89aff236",
+        "profile": "paired-price-loss-control-v1"
+      },
+      "scope_id": "50a19300ddcf4950bf821d3cfbd8476bca095853d46848f8434d89792b13b8af",
+      "profile": "paired-price-loss-control-v1",
+      "horizon": 1,
+      "recipes": [
+        {
+          "family": "xgboost",
+          "horizon": 1,
+          "task": "price",
+          "params": {
+            "max_depth": 8,
+            "eta": 0.03351686226463305,
+            "min_child_weight": 19.18536727034489,
+            "alpha": 2.604553603014409e-06,
+            "lambda": 0.006738786749480815,
+            "subsample": 0.8483603138892994,
+            "colsample_bytree": 0.8610737197795277
+          },
+          "seed": 42,
+          "target": "price_delta",
+          "loss": "reg:absoluteerror",
+          "window": 1,
+          "features": [
+            "cotton_ret_1",
+            "cotton_ret_5",
+            "cotton_ret_10",
+            "cotton_ret_20",
+            "cotton_momentum_5",
+            "cotton_momentum_20",
+            "cotton_sma_ratio_5_20",
+            "cotton_sma_ratio_20_50",
+            "cotton_volatility_5",
+            "cotton_volatility_20",
+            "cotton_range",
+            "cotton_volume_change",
+            "cotton_volume_z20",
+            "cotton_volatility_regime_20_60",
+            "dxy_ret_1",
+            "dxy_ret_5",
+            "dxy_ret_20",
+            "wti_ret_1",
+            "wti_ret_5",
+            "wti_ret_20",
+            "cotton_dxy_corr_60",
+            "cotton_wti_corr_60",
+            "month_sin",
+            "month_cos"
+          ],
+          "years": null,
+          "cadence": 126,
+          "hypothesis": "fixed price-delta loss contrast; no new selection",
+          "device": "cpu"
+        }
+      ],
+      "model_families": [
+        "xgboost"
+      ],
+      "kind": "market_fit_receipt",
+      "completed_fits": 1,
+      "sample_receipts": [
+        {
+          "path": "experiment/ledger/completed/f4ca4518d7e65080a85d4297dafeb989e6322ab642beec9728a237a104f05c06.json",
+          "record_id": "ffd2cc68728241ff1e537f6ac19c317f0f0043b919525b51c8e899a905eaafe7",
+          "experiment_id": "f4ca4518d7e65080a85d4297dafeb989e6322ab642beec9728a237a104f05c06"
+        }
+      ],
+      "roles": [
+        "paired"
+      ],
+      "coverage": "completed fit receipts; not experiment completion",
+      "payload_hashes_revalidated_by_index": false,
+      "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/paired-price-loss-result-20261010",
+      "payload_hashes_revalidated_separately": true
+    },
+    {
+      "id": "4267a90300c33e42719afa1a291c68acfb41733af8cacd78be586b2065ed3169",
+      "scope": {
+        "identity_id": "cd9512fc07b0011d427265e0d75b85381e46a08c1eac96774606d4dba2a8c953",
+        "source_id": "d3ca00e498639dc266f34dafb60f2f24dbba5e66ee0deeda0d9c4c0e5b7f7313",
+        "data_id": "f46410d913d1dc7bf798a473cc7e37c7567d40a0e5ac2a83b42901f64089bb67",
+        "split_id": "eb1abf500bf77e10b5761586554240188e94c588ac915bd377864bdb89aff236",
+        "profile": "paired-price-loss-control-v1"
+      },
+      "scope_id": "50a19300ddcf4950bf821d3cfbd8476bca095853d46848f8434d89792b13b8af",
+      "profile": "paired-price-loss-control-v1",
+      "horizon": 1,
+      "recipes": [
+        {
+          "family": "xgboost",
+          "horizon": 1,
+          "task": "price",
+          "params": {
+            "max_depth": 2,
+            "eta": 0.05981591800837641,
+            "min_child_weight": 3.677460561634013,
+            "alpha": 0.0,
+            "lambda": 3.8040343167766677,
+            "subsample": 0.9034803140008089,
+            "colsample_bytree": 0.983860229648617
+          },
+          "seed": 101,
+          "target": "price_delta",
+          "loss": "reg:absoluteerror",
+          "window": 1,
+          "features": [
+            "cotton_ret_1",
+            "cotton_ret_5",
+            "cotton_ret_10",
+            "cotton_ret_20",
+            "cotton_momentum_5",
+            "cotton_momentum_20",
+            "cotton_sma_ratio_5_20",
+            "cotton_sma_ratio_20_50",
+            "cotton_volatility_5",
+            "cotton_volatility_20",
+            "cotton_range",
+            "cotton_volume_change",
+            "cotton_volume_z20",
+            "cotton_volatility_regime_20_60",
+            "dxy_ret_1",
+            "dxy_ret_5",
+            "dxy_ret_20",
+            "wti_ret_1",
+            "wti_ret_5",
+            "wti_ret_20",
+            "cotton_dxy_corr_60",
+            "cotton_wti_corr_60",
+            "month_sin",
+            "month_cos"
+          ],
+          "years": null,
+          "cadence": 126,
+          "hypothesis": "fixed price-delta loss contrast; no new selection",
+          "device": "cpu"
+        }
+      ],
+      "model_families": [
+        "xgboost"
+      ],
+      "kind": "market_fit_receipt",
+      "completed_fits": 1,
+      "sample_receipts": [
+        {
+          "path": "experiment/ledger/completed/8114a44342cccac7a96a92b47989bed59ce57b17761a9bcde0fac0eefa4c6802.json",
+          "record_id": "eae801b148850766371675401e24ac43f5343402a51afc1c461a619ff45647b9",
+          "experiment_id": "8114a44342cccac7a96a92b47989bed59ce57b17761a9bcde0fac0eefa4c6802"
+        }
+      ],
+      "roles": [
+        "paired"
+      ],
+      "coverage": "completed fit receipts; not experiment completion",
+      "payload_hashes_revalidated_by_index": false,
+      "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/paired-price-loss-result-20261010",
+      "payload_hashes_revalidated_separately": true
+    },
+    {
+      "id": "484e30c01b1994aeeb383525148678334953b9f0056ae07b1eff1c79c025d690",
+      "scope": {
+        "identity_id": "cd9512fc07b0011d427265e0d75b85381e46a08c1eac96774606d4dba2a8c953",
+        "source_id": "d3ca00e498639dc266f34dafb60f2f24dbba5e66ee0deeda0d9c4c0e5b7f7313",
+        "data_id": "f46410d913d1dc7bf798a473cc7e37c7567d40a0e5ac2a83b42901f64089bb67",
+        "split_id": "eb1abf500bf77e10b5761586554240188e94c588ac915bd377864bdb89aff236",
+        "profile": "paired-price-loss-control-v1"
+      },
+      "scope_id": "50a19300ddcf4950bf821d3cfbd8476bca095853d46848f8434d89792b13b8af",
+      "profile": "paired-price-loss-control-v1",
+      "horizon": 1,
+      "recipes": [
+        {
+          "family": "xgboost",
+          "horizon": 1,
+          "task": "price",
+          "params": {
+            "max_depth": 5,
+            "eta": 0.10721274316936504,
+            "min_child_weight": 23.844747440471615,
+            "alpha": 0.006891582069263771,
+            "lambda": 25.125740387070362,
+            "subsample": 0.9809339511388435,
+            "colsample_bytree": 0.9501216589766498
+          },
+          "seed": 101,
+          "target": "price_delta",
+          "loss": "reg:absoluteerror",
+          "window": 1,
+          "features": [
+            "cotton_ret_1",
+            "cotton_ret_5",
+            "cotton_ret_10",
+            "cotton_ret_20",
+            "cotton_momentum_5",
+            "cotton_momentum_20",
+            "cotton_sma_ratio_5_20",
+            "cotton_sma_ratio_20_50",
+            "cotton_volatility_5",
+            "cotton_volatility_20",
+            "cotton_range",
+            "cotton_volume_change",
+            "cotton_volume_z20",
+            "cotton_volatility_regime_20_60",
+            "dxy_ret_1",
+            "dxy_ret_5",
+            "dxy_ret_20",
+            "wti_ret_1",
+            "wti_ret_5",
+            "wti_ret_20",
+            "cotton_dxy_corr_60",
+            "cotton_wti_corr_60",
+            "month_sin",
+            "month_cos"
+          ],
+          "years": null,
+          "cadence": 126,
+          "hypothesis": "fixed price-delta loss contrast; no new selection",
+          "device": "cpu"
+        }
+      ],
+      "model_families": [
+        "xgboost"
+      ],
+      "kind": "market_fit_receipt",
+      "completed_fits": 1,
+      "sample_receipts": [
+        {
+          "path": "experiment/ledger/completed/26967ae5650ce9266b4c9d1cc2af56304dfc84c0c6b8780841ab7082c6a24ae3.json",
+          "record_id": "4c0c91dea18f371c37712a18bb0734ee1fa99b6f1704751893567d35b156a6bf",
+          "experiment_id": "26967ae5650ce9266b4c9d1cc2af56304dfc84c0c6b8780841ab7082c6a24ae3"
+        }
+      ],
+      "roles": [
+        "paired"
+      ],
+      "coverage": "completed fit receipts; not experiment completion",
+      "payload_hashes_revalidated_by_index": false,
+      "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/paired-price-loss-result-20261010",
+      "payload_hashes_revalidated_separately": true
+    },
+    {
+      "id": "4ad4d3bb85b8986065a497a7d94dd3578e14780c05e3f9d3e7f33e8bab88487d",
+      "scope": {
+        "identity_id": "cd9512fc07b0011d427265e0d75b85381e46a08c1eac96774606d4dba2a8c953",
+        "source_id": "d3ca00e498639dc266f34dafb60f2f24dbba5e66ee0deeda0d9c4c0e5b7f7313",
+        "data_id": "f46410d913d1dc7bf798a473cc7e37c7567d40a0e5ac2a83b42901f64089bb67",
+        "split_id": "eb1abf500bf77e10b5761586554240188e94c588ac915bd377864bdb89aff236",
+        "profile": "paired-price-loss-control-v1"
+      },
+      "scope_id": "50a19300ddcf4950bf821d3cfbd8476bca095853d46848f8434d89792b13b8af",
+      "profile": "paired-price-loss-control-v1",
+      "horizon": 1,
+      "recipes": [
+        {
+          "family": "xgboost",
+          "horizon": 1,
+          "task": "price",
+          "params": {
+            "max_depth": 8,
+            "eta": 0.016406280707971357,
+            "min_child_weight": 1.4313081449731246,
+            "alpha": 1.4785914585898694,
+            "lambda": 0.010373906271792813,
+            "subsample": 0.6213419652080218,
+            "colsample_bytree": 0.7325998884182489
+          },
+          "seed": 17,
+          "target": "price_delta",
+          "loss": "reg:squarederror",
+          "window": 1,
+          "features": [
+            "cotton_ret_1",
+            "cotton_ret_5",
+            "cotton_ret_10",
+            "cotton_ret_20",
+            "cotton_momentum_5",
+            "cotton_momentum_20",
+            "cotton_sma_ratio_5_20",
+            "cotton_sma_ratio_20_50",
+            "cotton_volatility_5",
+            "cotton_volatility_20",
+            "cotton_range",
+            "cotton_volume_change",
+            "cotton_volume_z20",
+            "cotton_volatility_regime_20_60",
+            "dxy_ret_1",
+            "dxy_ret_5",
+            "dxy_ret_20",
+            "wti_ret_1",
+            "wti_ret_5",
+            "wti_ret_20",
+            "cotton_dxy_corr_60",
+            "cotton_wti_corr_60",
+            "month_sin",
+            "month_cos"
+          ],
+          "years": null,
+          "cadence": 126,
+          "hypothesis": "fixed price-delta loss contrast; no new selection",
+          "device": "cpu"
+        }
+      ],
+      "model_families": [
+        "xgboost"
+      ],
+      "kind": "market_fit_receipt",
+      "completed_fits": 2,
+      "sample_receipts": [
+        {
+          "path": "experiment/ledger/completed/438764405be611b258e34e0463ad89f3cc3910ed21e60dc03312d5873331dc00.json",
+          "record_id": "87af56891f53e33c0f0e16e552e7b2f1317afcd87d3bbd1d894308c353a0e60a",
+          "experiment_id": "438764405be611b258e34e0463ad89f3cc3910ed21e60dc03312d5873331dc00"
+        },
+        {
+          "path": "experiment/ledger/completed/4c7ee8268e132c62f1396d4695a24a971b6386a6eddf4ce701731197f2c2dda7.json",
+          "record_id": "3747e3210be3e93a4a263ca4e555ffee20e1eb8f517cf2b7a8aa54ade4488539",
+          "experiment_id": "4c7ee8268e132c62f1396d4695a24a971b6386a6eddf4ce701731197f2c2dda7"
+        }
+      ],
+      "roles": [
+        "paired"
+      ],
+      "coverage": "completed fit receipts; not experiment completion",
+      "payload_hashes_revalidated_by_index": false,
+      "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/paired-price-loss-result-20261010",
+      "payload_hashes_revalidated_separately": true
+    },
+    {
+      "id": "4e839fd90f780b1868e16669ed0c6504da91ed2b603230c7098dbaec8e1c51fb",
+      "scope": {
+        "identity_id": "cd9512fc07b0011d427265e0d75b85381e46a08c1eac96774606d4dba2a8c953",
+        "source_id": "d3ca00e498639dc266f34dafb60f2f24dbba5e66ee0deeda0d9c4c0e5b7f7313",
+        "data_id": "f46410d913d1dc7bf798a473cc7e37c7567d40a0e5ac2a83b42901f64089bb67",
+        "split_id": "eb1abf500bf77e10b5761586554240188e94c588ac915bd377864bdb89aff236",
+        "profile": "paired-price-loss-control-v1"
+      },
+      "scope_id": "50a19300ddcf4950bf821d3cfbd8476bca095853d46848f8434d89792b13b8af",
+      "profile": "paired-price-loss-control-v1",
+      "horizon": 1,
+      "recipes": [
+        {
+          "family": "xgboost",
+          "horizon": 1,
+          "task": "price",
+          "params": {
+            "max_depth": 3,
+            "eta": 0.013940634523724502,
+            "min_child_weight": 9.893240098384746,
+            "alpha": 0.0001439522241517037,
+            "lambda": 0.0032325150847186974,
+            "subsample": 0.8136043840516958,
+            "colsample_bytree": 0.9395057813740026
+          },
+          "seed": 17,
+          "target": "price_delta",
+          "loss": "reg:absoluteerror",
+          "window": 1,
+          "features": [
+            "cotton_ret_1",
+            "cotton_ret_5",
+            "cotton_ret_10",
+            "cotton_ret_20",
+            "cotton_momentum_5",
+            "cotton_momentum_20",
+            "cotton_sma_ratio_5_20",
+            "cotton_sma_ratio_20_50",
+            "cotton_volatility_5",
+            "cotton_volatility_20",
+            "cotton_range",
+            "cotton_volume_change",
+            "cotton_volume_z20",
+            "cotton_volatility_regime_20_60",
+            "dxy_ret_1",
+            "dxy_ret_5",
+            "dxy_ret_20",
+            "wti_ret_1",
+            "wti_ret_5",
+            "wti_ret_20",
+            "cotton_dxy_corr_60",
+            "cotton_wti_corr_60",
+            "month_sin",
+            "month_cos"
+          ],
+          "years": null,
+          "cadence": 126,
+          "hypothesis": "fixed price-delta loss contrast; no new selection",
+          "device": "cpu"
+        }
+      ],
+      "model_families": [
+        "xgboost"
+      ],
+      "kind": "market_fit_receipt",
+      "completed_fits": 1,
+      "sample_receipts": [
+        {
+          "path": "experiment/ledger/completed/8ca5ee1596b161fe51eabde2d12be059be3787df3a3aeca0cf04f460e07ca847.json",
+          "record_id": "8999ef94fb5b0f198c065070b8b9f9a472ec8dcba4031b0406dd690a41d05340",
+          "experiment_id": "8ca5ee1596b161fe51eabde2d12be059be3787df3a3aeca0cf04f460e07ca847"
+        }
+      ],
+      "roles": [
+        "paired"
+      ],
+      "coverage": "completed fit receipts; not experiment completion",
+      "payload_hashes_revalidated_by_index": false,
+      "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/paired-price-loss-result-20261010",
+      "payload_hashes_revalidated_separately": true
+    },
+    {
+      "id": "5180f3f47cb825804ea7406282fb767b607bc278de8420f4583c189072532906",
+      "scope": {
+        "identity_id": "cd9512fc07b0011d427265e0d75b85381e46a08c1eac96774606d4dba2a8c953",
+        "source_id": "d3ca00e498639dc266f34dafb60f2f24dbba5e66ee0deeda0d9c4c0e5b7f7313",
+        "data_id": "f46410d913d1dc7bf798a473cc7e37c7567d40a0e5ac2a83b42901f64089bb67",
+        "split_id": "eb1abf500bf77e10b5761586554240188e94c588ac915bd377864bdb89aff236",
+        "profile": "paired-price-loss-control-v1"
+      },
+      "scope_id": "50a19300ddcf4950bf821d3cfbd8476bca095853d46848f8434d89792b13b8af",
+      "profile": "paired-price-loss-control-v1",
+      "horizon": 1,
+      "recipes": [
+        {
+          "family": "xgboost",
+          "horizon": 1,
+          "task": "price",
+          "params": {
+            "max_depth": 1,
+            "eta": 0.1071642092467754,
+            "min_child_weight": 28.473107497222667,
+            "alpha": 5.952400639752211,
+            "lambda": 33.39034462012904,
+            "subsample": 0.9058048416468771,
+            "colsample_bytree": 0.688076624429072
+          },
+          "seed": 42,
+          "target": "price_delta",
+          "loss": "reg:squarederror",
+          "window": 1,
+          "features": [
+            "cotton_ret_1",
+            "cotton_ret_5",
+            "cotton_ret_10",
+            "cotton_ret_20",
+            "cotton_momentum_5",
+            "cotton_momentum_20",
+            "cotton_sma_ratio_5_20",
+            "cotton_sma_ratio_20_50",
+            "cotton_volatility_5",
+            "cotton_volatility_20",
+            "cotton_range",
+            "cotton_volume_change",
+            "cotton_volume_z20",
+            "cotton_volatility_regime_20_60",
+            "dxy_ret_1",
+            "dxy_ret_5",
+            "dxy_ret_20",
+            "wti_ret_1",
+            "wti_ret_5",
+            "wti_ret_20",
+            "cotton_dxy_corr_60",
+            "cotton_wti_corr_60",
+            "month_sin",
+            "month_cos"
+          ],
+          "years": null,
+          "cadence": 126,
+          "hypothesis": "fixed price-delta loss contrast; no new selection",
+          "device": "cpu"
+        }
+      ],
+      "model_families": [
+        "xgboost"
+      ],
+      "kind": "market_fit_receipt",
+      "completed_fits": 1,
+      "sample_receipts": [
+        {
+          "path": "experiment/ledger/completed/0ed8a6f612ae19c8dcd3e4d6fe58f5bdf3002b96a0189dec89dccdee37e3c8da.json",
+          "record_id": "8fec01b62ea433b5c3f6dc31904e7326f64fecc603b8a54da9ff463cf4e908f5",
+          "experiment_id": "0ed8a6f612ae19c8dcd3e4d6fe58f5bdf3002b96a0189dec89dccdee37e3c8da"
+        }
+      ],
+      "roles": [
+        "paired"
+      ],
+      "coverage": "completed fit receipts; not experiment completion",
+      "payload_hashes_revalidated_by_index": false,
+      "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/paired-price-loss-result-20261010",
+      "payload_hashes_revalidated_separately": true
+    },
+    {
+      "id": "53c85a584cd27f660920836e3f65dc89900cbd8ea5576e329e4b9da47153adb6",
+      "scope": {
+        "identity_id": "cd9512fc07b0011d427265e0d75b85381e46a08c1eac96774606d4dba2a8c953",
+        "source_id": "d3ca00e498639dc266f34dafb60f2f24dbba5e66ee0deeda0d9c4c0e5b7f7313",
+        "data_id": "f46410d913d1dc7bf798a473cc7e37c7567d40a0e5ac2a83b42901f64089bb67",
+        "split_id": "eb1abf500bf77e10b5761586554240188e94c588ac915bd377864bdb89aff236",
+        "profile": "paired-price-loss-control-v1"
+      },
+      "scope_id": "50a19300ddcf4950bf821d3cfbd8476bca095853d46848f8434d89792b13b8af",
+      "profile": "paired-price-loss-control-v1",
+      "horizon": 1,
+      "recipes": [
+        {
+          "family": "xgboost",
+          "horizon": 1,
+          "task": "price",
+          "params": {
+            "max_depth": 2,
+            "eta": 0.05981591800837641,
+            "min_child_weight": 3.677460561634013,
+            "alpha": 0.0,
+            "lambda": 3.8040343167766677,
+            "subsample": 0.9034803140008089,
+            "colsample_bytree": 0.983860229648617
+          },
+          "seed": 101,
+          "target": "price_delta",
+          "loss": "reg:squarederror",
+          "window": 1,
+          "features": [
+            "cotton_ret_1",
+            "cotton_ret_5",
+            "cotton_ret_10",
+            "cotton_ret_20",
+            "cotton_momentum_5",
+            "cotton_momentum_20",
+            "cotton_sma_ratio_5_20",
+            "cotton_sma_ratio_20_50",
+            "cotton_volatility_5",
+            "cotton_volatility_20",
+            "cotton_range",
+            "cotton_volume_change",
+            "cotton_volume_z20",
+            "cotton_volatility_regime_20_60",
+            "dxy_ret_1",
+            "dxy_ret_5",
+            "dxy_ret_20",
+            "wti_ret_1",
+            "wti_ret_5",
+            "wti_ret_20",
+            "cotton_dxy_corr_60",
+            "cotton_wti_corr_60",
+            "month_sin",
+            "month_cos"
+          ],
+          "years": null,
+          "cadence": 126,
+          "hypothesis": "fixed price-delta loss contrast; no new selection",
+          "device": "cpu"
+        }
+      ],
+      "model_families": [
+        "xgboost"
+      ],
+      "kind": "market_fit_receipt",
+      "completed_fits": 1,
+      "sample_receipts": [
+        {
+          "path": "experiment/ledger/completed/57e43df71f3ba94a358903261653a8bcf75e29fc2136f8cc7d9ba2999aa18dce.json",
+          "record_id": "3fc07132424886acbabe7a29c8e082a2cf03caf4a60b8126451a7bde96365b43",
+          "experiment_id": "57e43df71f3ba94a358903261653a8bcf75e29fc2136f8cc7d9ba2999aa18dce"
+        }
+      ],
+      "roles": [
+        "paired"
+      ],
+      "coverage": "completed fit receipts; not experiment completion",
+      "payload_hashes_revalidated_by_index": false,
+      "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/paired-price-loss-result-20261010",
+      "payload_hashes_revalidated_separately": true
+    },
+    {
+      "id": "56d676450b5347d0e865705f99c51d961056f27a8ade1aac9b24030657c259e9",
+      "scope": {
+        "identity_id": "cd9512fc07b0011d427265e0d75b85381e46a08c1eac96774606d4dba2a8c953",
+        "source_id": "d3ca00e498639dc266f34dafb60f2f24dbba5e66ee0deeda0d9c4c0e5b7f7313",
+        "data_id": "f46410d913d1dc7bf798a473cc7e37c7567d40a0e5ac2a83b42901f64089bb67",
+        "split_id": "eb1abf500bf77e10b5761586554240188e94c588ac915bd377864bdb89aff236",
+        "profile": "paired-price-loss-control-v1"
+      },
+      "scope_id": "50a19300ddcf4950bf821d3cfbd8476bca095853d46848f8434d89792b13b8af",
+      "profile": "paired-price-loss-control-v1",
+      "horizon": 1,
+      "recipes": [
+        {
+          "family": "xgboost",
+          "horizon": 1,
+          "task": "price",
+          "params": {
+            "max_depth": 4,
+            "eta": 0.009863516889682346,
+            "min_child_weight": 8.96206611334584,
+            "alpha": 0.0,
+            "lambda": 0.06061131926647169,
+            "subsample": 0.9756727582126963,
+            "colsample_bytree": 0.6164659232295507
+          },
+          "seed": 101,
+          "target": "price_delta",
+          "loss": "reg:absoluteerror",
+          "window": 1,
+          "features": [
+            "cotton_ret_1",
+            "cotton_ret_5",
+            "cotton_ret_10",
+            "cotton_ret_20",
+            "cotton_momentum_5",
+            "cotton_momentum_20",
+            "cotton_sma_ratio_5_20",
+            "cotton_sma_ratio_20_50",
+            "cotton_volatility_5",
+            "cotton_volatility_20",
+            "cotton_range",
+            "cotton_volume_change",
+            "cotton_volume_z20",
+            "cotton_volatility_regime_20_60",
+            "dxy_ret_1",
+            "dxy_ret_5",
+            "dxy_ret_20",
+            "wti_ret_1",
+            "wti_ret_5",
+            "wti_ret_20",
+            "cotton_dxy_corr_60",
+            "cotton_wti_corr_60",
+            "month_sin",
+            "month_cos"
+          ],
+          "years": null,
+          "cadence": 126,
+          "hypothesis": "fixed price-delta loss contrast; no new selection",
+          "device": "cpu"
+        }
+      ],
+      "model_families": [
+        "xgboost"
+      ],
+      "kind": "market_fit_receipt",
+      "completed_fits": 1,
+      "sample_receipts": [
+        {
+          "path": "experiment/ledger/completed/cc525b654d3e8643e54e9fc7a1a5ddd0a829677c2de433c6e325f2cd00dd3eb5.json",
+          "record_id": "226c518f4d68557028a3e84d82a45041aa7b830613d060ab84420e1fe3a3fab7",
+          "experiment_id": "cc525b654d3e8643e54e9fc7a1a5ddd0a829677c2de433c6e325f2cd00dd3eb5"
+        }
+      ],
+      "roles": [
+        "paired"
+      ],
+      "coverage": "completed fit receipts; not experiment completion",
+      "payload_hashes_revalidated_by_index": false,
+      "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/paired-price-loss-result-20261010",
+      "payload_hashes_revalidated_separately": true
+    },
+    {
+      "id": "661b1c4fc0b7defe3a5223f2e2455b2c5639445a478bc79016d3b88b5481fb8c",
+      "scope": {
+        "identity_id": "cd9512fc07b0011d427265e0d75b85381e46a08c1eac96774606d4dba2a8c953",
+        "source_id": "d3ca00e498639dc266f34dafb60f2f24dbba5e66ee0deeda0d9c4c0e5b7f7313",
+        "data_id": "f46410d913d1dc7bf798a473cc7e37c7567d40a0e5ac2a83b42901f64089bb67",
+        "split_id": "eb1abf500bf77e10b5761586554240188e94c588ac915bd377864bdb89aff236",
+        "profile": "paired-price-loss-control-v1"
+      },
+      "scope_id": "50a19300ddcf4950bf821d3cfbd8476bca095853d46848f8434d89792b13b8af",
+      "profile": "paired-price-loss-control-v1",
+      "horizon": 1,
+      "recipes": [
+        {
+          "family": "xgboost",
+          "horizon": 1,
+          "task": "price",
+          "params": {
+            "max_depth": 5,
+            "eta": 0.10721274316936504,
+            "min_child_weight": 23.844747440471615,
+            "alpha": 0.006891582069263771,
+            "lambda": 25.125740387070362,
+            "subsample": 0.9809339511388435,
+            "colsample_bytree": 0.9501216589766498
+          },
+          "seed": 17,
+          "target": "price_delta",
+          "loss": "reg:squarederror",
+          "window": 1,
+          "features": [
+            "cotton_ret_1",
+            "cotton_ret_5",
+            "cotton_ret_10",
+            "cotton_ret_20",
+            "cotton_momentum_5",
+            "cotton_momentum_20",
+            "cotton_sma_ratio_5_20",
+            "cotton_sma_ratio_20_50",
+            "cotton_volatility_5",
+            "cotton_volatility_20",
+            "cotton_range",
+            "cotton_volume_change",
+            "cotton_volume_z20",
+            "cotton_volatility_regime_20_60",
+            "dxy_ret_1",
+            "dxy_ret_5",
+            "dxy_ret_20",
+            "wti_ret_1",
+            "wti_ret_5",
+            "wti_ret_20",
+            "cotton_dxy_corr_60",
+            "cotton_wti_corr_60",
+            "month_sin",
+            "month_cos"
+          ],
+          "years": null,
+          "cadence": 126,
+          "hypothesis": "fixed price-delta loss contrast; no new selection",
+          "device": "cpu"
+        }
+      ],
+      "model_families": [
+        "xgboost"
+      ],
+      "kind": "market_fit_receipt",
+      "completed_fits": 1,
+      "sample_receipts": [
+        {
+          "path": "experiment/ledger/completed/50ee033c3a0a4014e110bef762b58e79141e765466a153627f65dd66e9245906.json",
+          "record_id": "d483e42f3306f8975cd06edecd2c9cffb193fa87e5a26b396def791bfa7a47fe",
+          "experiment_id": "50ee033c3a0a4014e110bef762b58e79141e765466a153627f65dd66e9245906"
+        }
+      ],
+      "roles": [
+        "paired"
+      ],
+      "coverage": "completed fit receipts; not experiment completion",
+      "payload_hashes_revalidated_by_index": false,
+      "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/paired-price-loss-result-20261010",
+      "payload_hashes_revalidated_separately": true
+    },
+    {
+      "id": "712964eccd9b38343a09af4d20978678909423a9301819ca2a98acfee3d462b1",
+      "scope": {
+        "identity_id": "cd9512fc07b0011d427265e0d75b85381e46a08c1eac96774606d4dba2a8c953",
+        "source_id": "d3ca00e498639dc266f34dafb60f2f24dbba5e66ee0deeda0d9c4c0e5b7f7313",
+        "data_id": "f46410d913d1dc7bf798a473cc7e37c7567d40a0e5ac2a83b42901f64089bb67",
+        "split_id": "eb1abf500bf77e10b5761586554240188e94c588ac915bd377864bdb89aff236",
+        "profile": "paired-price-loss-control-v1"
+      },
+      "scope_id": "50a19300ddcf4950bf821d3cfbd8476bca095853d46848f8434d89792b13b8af",
+      "profile": "paired-price-loss-control-v1",
+      "horizon": 1,
+      "recipes": [
+        {
+          "family": "xgboost",
+          "horizon": 1,
+          "task": "price",
+          "params": {
+            "max_depth": 2,
+            "eta": 0.05981591800837641,
+            "min_child_weight": 3.677460561634013,
+            "alpha": 0.0,
+            "lambda": 3.8040343167766677,
+            "subsample": 0.9034803140008089,
+            "colsample_bytree": 0.983860229648617
+          },
+          "seed": 42,
+          "target": "price_delta",
+          "loss": "reg:absoluteerror",
+          "window": 1,
+          "features": [
+            "cotton_ret_1",
+            "cotton_ret_5",
+            "cotton_ret_10",
+            "cotton_ret_20",
+            "cotton_momentum_5",
+            "cotton_momentum_20",
+            "cotton_sma_ratio_5_20",
+            "cotton_sma_ratio_20_50",
+            "cotton_volatility_5",
+            "cotton_volatility_20",
+            "cotton_range",
+            "cotton_volume_change",
+            "cotton_volume_z20",
+            "cotton_volatility_regime_20_60",
+            "dxy_ret_1",
+            "dxy_ret_5",
+            "dxy_ret_20",
+            "wti_ret_1",
+            "wti_ret_5",
+            "wti_ret_20",
+            "cotton_dxy_corr_60",
+            "cotton_wti_corr_60",
+            "month_sin",
+            "month_cos"
+          ],
+          "years": null,
+          "cadence": 126,
+          "hypothesis": "fixed price-delta loss contrast; no new selection",
+          "device": "cpu"
+        }
+      ],
+      "model_families": [
+        "xgboost"
+      ],
+      "kind": "market_fit_receipt",
+      "completed_fits": 1,
+      "sample_receipts": [
+        {
+          "path": "experiment/ledger/completed/e99255f606be429ffd747de9f643c4102ea67fb117e33a055f4da60c6cf448e9.json",
+          "record_id": "6092b755907ab9f13b81e50f427feafe4756343be2534ac31e29e8f570835aed",
+          "experiment_id": "e99255f606be429ffd747de9f643c4102ea67fb117e33a055f4da60c6cf448e9"
+        }
+      ],
+      "roles": [
+        "paired"
+      ],
+      "coverage": "completed fit receipts; not experiment completion",
+      "payload_hashes_revalidated_by_index": false,
+      "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/paired-price-loss-result-20261010",
+      "payload_hashes_revalidated_separately": true
+    },
+    {
+      "id": "71b1135f7cbf7766048caf37d3c59d461a70b49d5d97163c9ed22d89ab202ce3",
+      "scope": {
+        "identity_id": "cd9512fc07b0011d427265e0d75b85381e46a08c1eac96774606d4dba2a8c953",
+        "source_id": "d3ca00e498639dc266f34dafb60f2f24dbba5e66ee0deeda0d9c4c0e5b7f7313",
+        "data_id": "f46410d913d1dc7bf798a473cc7e37c7567d40a0e5ac2a83b42901f64089bb67",
+        "split_id": "eb1abf500bf77e10b5761586554240188e94c588ac915bd377864bdb89aff236",
+        "profile": "paired-price-loss-control-v1"
+      },
+      "scope_id": "50a19300ddcf4950bf821d3cfbd8476bca095853d46848f8434d89792b13b8af",
+      "profile": "paired-price-loss-control-v1",
+      "horizon": 1,
+      "recipes": [
+        {
+          "family": "xgboost",
+          "horizon": 1,
+          "task": "price",
+          "params": {
+            "max_depth": 1,
+            "eta": 0.1071642092467754,
+            "min_child_weight": 28.473107497222667,
+            "alpha": 5.952400639752211,
+            "lambda": 33.39034462012904,
+            "subsample": 0.9058048416468771,
+            "colsample_bytree": 0.688076624429072
+          },
+          "seed": 101,
+          "target": "price_delta",
+          "loss": "reg:absoluteerror",
+          "window": 1,
+          "features": [
+            "cotton_ret_1",
+            "cotton_ret_5",
+            "cotton_ret_10",
+            "cotton_ret_20",
+            "cotton_momentum_5",
+            "cotton_momentum_20",
+            "cotton_sma_ratio_5_20",
+            "cotton_sma_ratio_20_50",
+            "cotton_volatility_5",
+            "cotton_volatility_20",
+            "cotton_range",
+            "cotton_volume_change",
+            "cotton_volume_z20",
+            "cotton_volatility_regime_20_60",
+            "dxy_ret_1",
+            "dxy_ret_5",
+            "dxy_ret_20",
+            "wti_ret_1",
+            "wti_ret_5",
+            "wti_ret_20",
+            "cotton_dxy_corr_60",
+            "cotton_wti_corr_60",
+            "month_sin",
+            "month_cos"
+          ],
+          "years": null,
+          "cadence": 126,
+          "hypothesis": "fixed price-delta loss contrast; no new selection",
+          "device": "cpu"
+        }
+      ],
+      "model_families": [
+        "xgboost"
+      ],
+      "kind": "market_fit_receipt",
+      "completed_fits": 1,
+      "sample_receipts": [
+        {
+          "path": "experiment/ledger/completed/34872bbf07f14290ed8786cb38bde6f10e9b30dca3684e0501e5046057a5da89.json",
+          "record_id": "24e12c4a0927eee7b3ff0600cb327b424174052c128db9859e4793a4c01d3983",
+          "experiment_id": "34872bbf07f14290ed8786cb38bde6f10e9b30dca3684e0501e5046057a5da89"
+        }
+      ],
+      "roles": [
+        "paired"
+      ],
+      "coverage": "completed fit receipts; not experiment completion",
+      "payload_hashes_revalidated_by_index": false,
+      "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/paired-price-loss-result-20261010",
+      "payload_hashes_revalidated_separately": true
+    },
+    {
+      "id": "79b19d7140e348c58888d112be23681aee98b9f03352ccd2a837d88da2dc778d",
+      "scope": {
+        "identity_id": "cd9512fc07b0011d427265e0d75b85381e46a08c1eac96774606d4dba2a8c953",
+        "source_id": "d3ca00e498639dc266f34dafb60f2f24dbba5e66ee0deeda0d9c4c0e5b7f7313",
+        "data_id": "f46410d913d1dc7bf798a473cc7e37c7567d40a0e5ac2a83b42901f64089bb67",
+        "split_id": "eb1abf500bf77e10b5761586554240188e94c588ac915bd377864bdb89aff236",
+        "profile": "paired-price-loss-control-v1"
+      },
+      "scope_id": "50a19300ddcf4950bf821d3cfbd8476bca095853d46848f8434d89792b13b8af",
+      "profile": "paired-price-loss-control-v1",
+      "horizon": 1,
+      "recipes": [
+        {
+          "family": "xgboost",
+          "horizon": 1,
+          "task": "price",
+          "params": {
+            "max_depth": 5,
+            "eta": 0.10721274316936504,
+            "min_child_weight": 23.844747440471615,
+            "alpha": 0.006891582069263771,
+            "lambda": 25.125740387070362,
+            "subsample": 0.9809339511388435,
+            "colsample_bytree": 0.9501216589766498
+          },
+          "seed": 42,
+          "target": "price_delta",
+          "loss": "reg:absoluteerror",
+          "window": 1,
+          "features": [
+            "cotton_ret_1",
+            "cotton_ret_5",
+            "cotton_ret_10",
+            "cotton_ret_20",
+            "cotton_momentum_5",
+            "cotton_momentum_20",
+            "cotton_sma_ratio_5_20",
+            "cotton_sma_ratio_20_50",
+            "cotton_volatility_5",
+            "cotton_volatility_20",
+            "cotton_range",
+            "cotton_volume_change",
+            "cotton_volume_z20",
+            "cotton_volatility_regime_20_60",
+            "dxy_ret_1",
+            "dxy_ret_5",
+            "dxy_ret_20",
+            "wti_ret_1",
+            "wti_ret_5",
+            "wti_ret_20",
+            "cotton_dxy_corr_60",
+            "cotton_wti_corr_60",
+            "month_sin",
+            "month_cos"
+          ],
+          "years": null,
+          "cadence": 126,
+          "hypothesis": "fixed price-delta loss contrast; no new selection",
+          "device": "cpu"
+        }
+      ],
+      "model_families": [
+        "xgboost"
+      ],
+      "kind": "market_fit_receipt",
+      "completed_fits": 1,
+      "sample_receipts": [
+        {
+          "path": "experiment/ledger/completed/b79c2de7f13ace025c4d9ed2e47b3235dd5af44a91173b56127a360efde4528f.json",
+          "record_id": "11aa23c193868a1ad113c188655287cc2481d43eb5c23cab14aac631774d3575",
+          "experiment_id": "b79c2de7f13ace025c4d9ed2e47b3235dd5af44a91173b56127a360efde4528f"
+        }
+      ],
+      "roles": [
+        "paired"
+      ],
+      "coverage": "completed fit receipts; not experiment completion",
+      "payload_hashes_revalidated_by_index": false,
+      "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/paired-price-loss-result-20261010",
+      "payload_hashes_revalidated_separately": true
+    },
+    {
+      "id": "8f5a87dfe2e05ad74d80d949a716f427fda23ab5c6cbcf9978621b1dfbc2c412",
+      "scope": {
+        "identity_id": "cd9512fc07b0011d427265e0d75b85381e46a08c1eac96774606d4dba2a8c953",
+        "source_id": "d3ca00e498639dc266f34dafb60f2f24dbba5e66ee0deeda0d9c4c0e5b7f7313",
+        "data_id": "f46410d913d1dc7bf798a473cc7e37c7567d40a0e5ac2a83b42901f64089bb67",
+        "split_id": "eb1abf500bf77e10b5761586554240188e94c588ac915bd377864bdb89aff236",
+        "profile": "paired-price-loss-control-v1"
+      },
+      "scope_id": "50a19300ddcf4950bf821d3cfbd8476bca095853d46848f8434d89792b13b8af",
+      "profile": "paired-price-loss-control-v1",
+      "horizon": 1,
+      "recipes": [
+        {
+          "family": "xgboost",
+          "horizon": 1,
+          "task": "price",
+          "params": {
+            "max_depth": 5,
+            "eta": 0.10721274316936504,
+            "min_child_weight": 23.844747440471615,
+            "alpha": 0.006891582069263771,
+            "lambda": 25.125740387070362,
+            "subsample": 0.9809339511388435,
+            "colsample_bytree": 0.9501216589766498
+          },
+          "seed": 101,
+          "target": "price_delta",
+          "loss": "reg:squarederror",
+          "window": 1,
+          "features": [
+            "cotton_ret_1",
+            "cotton_ret_5",
+            "cotton_ret_10",
+            "cotton_ret_20",
+            "cotton_momentum_5",
+            "cotton_momentum_20",
+            "cotton_sma_ratio_5_20",
+            "cotton_sma_ratio_20_50",
+            "cotton_volatility_5",
+            "cotton_volatility_20",
+            "cotton_range",
+            "cotton_volume_change",
+            "cotton_volume_z20",
+            "cotton_volatility_regime_20_60",
+            "dxy_ret_1",
+            "dxy_ret_5",
+            "dxy_ret_20",
+            "wti_ret_1",
+            "wti_ret_5",
+            "wti_ret_20",
+            "cotton_dxy_corr_60",
+            "cotton_wti_corr_60",
+            "month_sin",
+            "month_cos"
+          ],
+          "years": null,
+          "cadence": 126,
+          "hypothesis": "fixed price-delta loss contrast; no new selection",
+          "device": "cpu"
+        }
+      ],
+      "model_families": [
+        "xgboost"
+      ],
+      "kind": "market_fit_receipt",
+      "completed_fits": 1,
+      "sample_receipts": [
+        {
+          "path": "experiment/ledger/completed/63d3639b77c3a733999c095484d8a0bdc16a15b08bd3e3307152436fdb6955cf.json",
+          "record_id": "46977b1a9570cdb2eebc3ffb84d624f368b99e3d21fea0da5579a3a92222488c",
+          "experiment_id": "63d3639b77c3a733999c095484d8a0bdc16a15b08bd3e3307152436fdb6955cf"
+        }
+      ],
+      "roles": [
+        "paired"
+      ],
+      "coverage": "completed fit receipts; not experiment completion",
+      "payload_hashes_revalidated_by_index": false,
+      "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/paired-price-loss-result-20261010",
+      "payload_hashes_revalidated_separately": true
+    },
+    {
+      "id": "93208d644b40819dd678ea7fb5034a1bf68f86f2a3ae6e6d1948103978b577b4",
+      "scope": {
+        "identity_id": "cd9512fc07b0011d427265e0d75b85381e46a08c1eac96774606d4dba2a8c953",
+        "source_id": "d3ca00e498639dc266f34dafb60f2f24dbba5e66ee0deeda0d9c4c0e5b7f7313",
+        "data_id": "f46410d913d1dc7bf798a473cc7e37c7567d40a0e5ac2a83b42901f64089bb67",
+        "split_id": "eb1abf500bf77e10b5761586554240188e94c588ac915bd377864bdb89aff236",
+        "profile": "paired-price-loss-control-v1"
+      },
+      "scope_id": "50a19300ddcf4950bf821d3cfbd8476bca095853d46848f8434d89792b13b8af",
+      "profile": "paired-price-loss-control-v1",
+      "horizon": 1,
+      "recipes": [
+        {
+          "family": "xgboost",
+          "horizon": 1,
+          "task": "price",
+          "params": {
+            "max_depth": 3,
+            "eta": 0.013940634523724502,
+            "min_child_weight": 9.893240098384746,
+            "alpha": 0.0001439522241517037,
+            "lambda": 0.0032325150847186974,
+            "subsample": 0.8136043840516958,
+            "colsample_bytree": 0.9395057813740026
+          },
+          "seed": 17,
+          "target": "price_delta",
+          "loss": "reg:squarederror",
+          "window": 1,
+          "features": [
+            "cotton_ret_1",
+            "cotton_ret_5",
+            "cotton_ret_10",
+            "cotton_ret_20",
+            "cotton_momentum_5",
+            "cotton_momentum_20",
+            "cotton_sma_ratio_5_20",
+            "cotton_sma_ratio_20_50",
+            "cotton_volatility_5",
+            "cotton_volatility_20",
+            "cotton_range",
+            "cotton_volume_change",
+            "cotton_volume_z20",
+            "cotton_volatility_regime_20_60",
+            "dxy_ret_1",
+            "dxy_ret_5",
+            "dxy_ret_20",
+            "wti_ret_1",
+            "wti_ret_5",
+            "wti_ret_20",
+            "cotton_dxy_corr_60",
+            "cotton_wti_corr_60",
+            "month_sin",
+            "month_cos"
+          ],
+          "years": null,
+          "cadence": 126,
+          "hypothesis": "fixed price-delta loss contrast; no new selection",
+          "device": "cpu"
+        }
+      ],
+      "model_families": [
+        "xgboost"
+      ],
+      "kind": "market_fit_receipt",
+      "completed_fits": 1,
+      "sample_receipts": [
+        {
+          "path": "experiment/ledger/completed/6673a5b75cd0250efc024c3eee16ab5bdbcd24d69eff7b7fdcdae0f3330ec19e.json",
+          "record_id": "d86ff5e46ef6c6b8b3e4fc528a93624aa8c5032124325794abfa45990399c850",
+          "experiment_id": "6673a5b75cd0250efc024c3eee16ab5bdbcd24d69eff7b7fdcdae0f3330ec19e"
+        }
+      ],
+      "roles": [
+        "paired"
+      ],
+      "coverage": "completed fit receipts; not experiment completion",
+      "payload_hashes_revalidated_by_index": false,
+      "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/paired-price-loss-result-20261010",
+      "payload_hashes_revalidated_separately": true
+    },
+    {
+      "id": "94883e2759b52c21662cfe544c485bdf0c2f1d4491a3e58be2905799d9dc31dd",
+      "scope": {
+        "identity_id": "cd9512fc07b0011d427265e0d75b85381e46a08c1eac96774606d4dba2a8c953",
+        "source_id": "d3ca00e498639dc266f34dafb60f2f24dbba5e66ee0deeda0d9c4c0e5b7f7313",
+        "data_id": "f46410d913d1dc7bf798a473cc7e37c7567d40a0e5ac2a83b42901f64089bb67",
+        "split_id": "eb1abf500bf77e10b5761586554240188e94c588ac915bd377864bdb89aff236",
+        "profile": "paired-price-loss-control-v1"
+      },
+      "scope_id": "50a19300ddcf4950bf821d3cfbd8476bca095853d46848f8434d89792b13b8af",
+      "profile": "paired-price-loss-control-v1",
+      "horizon": 1,
+      "recipes": [
+        {
+          "family": "xgboost",
+          "horizon": 1,
+          "task": "price",
+          "params": {
+            "max_depth": 1,
+            "eta": 0.1071642092467754,
+            "min_child_weight": 28.473107497222667,
+            "alpha": 5.952400639752211,
+            "lambda": 33.39034462012904,
+            "subsample": 0.9058048416468771,
+            "colsample_bytree": 0.688076624429072
+          },
+          "seed": 17,
+          "target": "price_delta",
+          "loss": "reg:squarederror",
+          "window": 1,
+          "features": [
+            "cotton_ret_1",
+            "cotton_ret_5",
+            "cotton_ret_10",
+            "cotton_ret_20",
+            "cotton_momentum_5",
+            "cotton_momentum_20",
+            "cotton_sma_ratio_5_20",
+            "cotton_sma_ratio_20_50",
+            "cotton_volatility_5",
+            "cotton_volatility_20",
+            "cotton_range",
+            "cotton_volume_change",
+            "cotton_volume_z20",
+            "cotton_volatility_regime_20_60",
+            "dxy_ret_1",
+            "dxy_ret_5",
+            "dxy_ret_20",
+            "wti_ret_1",
+            "wti_ret_5",
+            "wti_ret_20",
+            "cotton_dxy_corr_60",
+            "cotton_wti_corr_60",
+            "month_sin",
+            "month_cos"
+          ],
+          "years": null,
+          "cadence": 126,
+          "hypothesis": "fixed price-delta loss contrast; no new selection",
+          "device": "cpu"
+        }
+      ],
+      "model_families": [
+        "xgboost"
+      ],
+      "kind": "market_fit_receipt",
+      "completed_fits": 1,
+      "sample_receipts": [
+        {
+          "path": "experiment/ledger/completed/a8356c398b8cf4416e5ce8c5787b87e61c318d5638513d6a29e47312011d180d.json",
+          "record_id": "52d97a43d1dda54d7374791e36c7786f92c49e9ae17ad7db9b4eaf439d26b831",
+          "experiment_id": "a8356c398b8cf4416e5ce8c5787b87e61c318d5638513d6a29e47312011d180d"
+        }
+      ],
+      "roles": [
+        "paired"
+      ],
+      "coverage": "completed fit receipts; not experiment completion",
+      "payload_hashes_revalidated_by_index": false,
+      "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/paired-price-loss-result-20261010",
+      "payload_hashes_revalidated_separately": true
+    },
+    {
+      "id": "9c95c5a3d30e87a3fd9c04ef489a84f43f410e53995a80b8caeb24395ba62dde",
+      "scope": {
+        "identity_id": "cd9512fc07b0011d427265e0d75b85381e46a08c1eac96774606d4dba2a8c953",
+        "source_id": "d3ca00e498639dc266f34dafb60f2f24dbba5e66ee0deeda0d9c4c0e5b7f7313",
+        "data_id": "f46410d913d1dc7bf798a473cc7e37c7567d40a0e5ac2a83b42901f64089bb67",
+        "split_id": "eb1abf500bf77e10b5761586554240188e94c588ac915bd377864bdb89aff236",
+        "profile": "paired-price-loss-control-v1"
+      },
+      "scope_id": "50a19300ddcf4950bf821d3cfbd8476bca095853d46848f8434d89792b13b8af",
+      "profile": "paired-price-loss-control-v1",
+      "horizon": 1,
+      "recipes": [
+        {
+          "family": "xgboost",
+          "horizon": 1,
+          "task": "price",
+          "params": {
+            "max_depth": 8,
+            "eta": 0.03351686226463305,
+            "min_child_weight": 19.18536727034489,
+            "alpha": 2.604553603014409e-06,
+            "lambda": 0.006738786749480815,
+            "subsample": 0.8483603138892994,
+            "colsample_bytree": 0.8610737197795277
+          },
+          "seed": 17,
+          "target": "price_delta",
+          "loss": "reg:absoluteerror",
+          "window": 1,
+          "features": [
+            "cotton_ret_1",
+            "cotton_ret_5",
+            "cotton_ret_10",
+            "cotton_ret_20",
+            "cotton_momentum_5",
+            "cotton_momentum_20",
+            "cotton_sma_ratio_5_20",
+            "cotton_sma_ratio_20_50",
+            "cotton_volatility_5",
+            "cotton_volatility_20",
+            "cotton_range",
+            "cotton_volume_change",
+            "cotton_volume_z20",
+            "cotton_volatility_regime_20_60",
+            "dxy_ret_1",
+            "dxy_ret_5",
+            "dxy_ret_20",
+            "wti_ret_1",
+            "wti_ret_5",
+            "wti_ret_20",
+            "cotton_dxy_corr_60",
+            "cotton_wti_corr_60",
+            "month_sin",
+            "month_cos"
+          ],
+          "years": null,
+          "cadence": 126,
+          "hypothesis": "fixed price-delta loss contrast; no new selection",
+          "device": "cpu"
+        }
+      ],
+      "model_families": [
+        "xgboost"
+      ],
+      "kind": "market_fit_receipt",
+      "completed_fits": 1,
+      "sample_receipts": [
+        {
+          "path": "experiment/ledger/completed/132999bf3fe6f4195155302e271dec054c087e1c11fa2e01a6d399b213e8757a.json",
+          "record_id": "451c5a59989ca3ba10a9d4eaebaa3be6206a1aff6c080f5476575206877012e0",
+          "experiment_id": "132999bf3fe6f4195155302e271dec054c087e1c11fa2e01a6d399b213e8757a"
+        }
+      ],
+      "roles": [
+        "paired"
+      ],
+      "coverage": "completed fit receipts; not experiment completion",
+      "payload_hashes_revalidated_by_index": false,
+      "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/paired-price-loss-result-20261010",
+      "payload_hashes_revalidated_separately": true
+    },
+    {
+      "id": "9f782fb3610825b07ae6adc362af06393e41eaaa150518b2a25538d289684ab0",
+      "scope": {
+        "identity_id": "cd9512fc07b0011d427265e0d75b85381e46a08c1eac96774606d4dba2a8c953",
+        "source_id": "d3ca00e498639dc266f34dafb60f2f24dbba5e66ee0deeda0d9c4c0e5b7f7313",
+        "data_id": "f46410d913d1dc7bf798a473cc7e37c7567d40a0e5ac2a83b42901f64089bb67",
+        "split_id": "eb1abf500bf77e10b5761586554240188e94c588ac915bd377864bdb89aff236",
+        "profile": "paired-price-loss-control-v1"
+      },
+      "scope_id": "50a19300ddcf4950bf821d3cfbd8476bca095853d46848f8434d89792b13b8af",
+      "profile": "paired-price-loss-control-v1",
+      "horizon": 1,
+      "recipes": [
+        {
+          "family": "xgboost",
+          "horizon": 1,
+          "task": "price",
+          "params": {
+            "max_depth": 4,
+            "eta": 0.009863516889682346,
+            "min_child_weight": 8.96206611334584,
+            "alpha": 0.0,
+            "lambda": 0.06061131926647169,
+            "subsample": 0.9756727582126963,
+            "colsample_bytree": 0.6164659232295507
+          },
+          "seed": 101,
+          "target": "price_delta",
+          "loss": "reg:squarederror",
+          "window": 1,
+          "features": [
+            "cotton_ret_1",
+            "cotton_ret_5",
+            "cotton_ret_10",
+            "cotton_ret_20",
+            "cotton_momentum_5",
+            "cotton_momentum_20",
+            "cotton_sma_ratio_5_20",
+            "cotton_sma_ratio_20_50",
+            "cotton_volatility_5",
+            "cotton_volatility_20",
+            "cotton_range",
+            "cotton_volume_change",
+            "cotton_volume_z20",
+            "cotton_volatility_regime_20_60",
+            "dxy_ret_1",
+            "dxy_ret_5",
+            "dxy_ret_20",
+            "wti_ret_1",
+            "wti_ret_5",
+            "wti_ret_20",
+            "cotton_dxy_corr_60",
+            "cotton_wti_corr_60",
+            "month_sin",
+            "month_cos"
+          ],
+          "years": null,
+          "cadence": 126,
+          "hypothesis": "fixed price-delta loss contrast; no new selection",
+          "device": "cpu"
+        }
+      ],
+      "model_families": [
+        "xgboost"
+      ],
+      "kind": "market_fit_receipt",
+      "completed_fits": 1,
+      "sample_receipts": [
+        {
+          "path": "experiment/ledger/completed/a25fa26df58acd0f55a302dc478d69fccdda8ec25f9095c6efc2714ced642597.json",
+          "record_id": "84ded5b030e7a8943f758088ece0970910cd103a346d77de1666cb6d77f8404c",
+          "experiment_id": "a25fa26df58acd0f55a302dc478d69fccdda8ec25f9095c6efc2714ced642597"
+        }
+      ],
+      "roles": [
+        "paired"
+      ],
+      "coverage": "completed fit receipts; not experiment completion",
+      "payload_hashes_revalidated_by_index": false,
+      "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/paired-price-loss-result-20261010",
+      "payload_hashes_revalidated_separately": true
+    },
+    {
+      "id": "aa2093fbb7a4f5bfd199b8af827cf1d1e73f98376688a48aa83d4f6fe0b70352",
+      "scope": {
+        "identity_id": "cd9512fc07b0011d427265e0d75b85381e46a08c1eac96774606d4dba2a8c953",
+        "source_id": "d3ca00e498639dc266f34dafb60f2f24dbba5e66ee0deeda0d9c4c0e5b7f7313",
+        "data_id": "f46410d913d1dc7bf798a473cc7e37c7567d40a0e5ac2a83b42901f64089bb67",
+        "split_id": "eb1abf500bf77e10b5761586554240188e94c588ac915bd377864bdb89aff236",
+        "profile": "paired-price-loss-control-v1"
+      },
+      "scope_id": "50a19300ddcf4950bf821d3cfbd8476bca095853d46848f8434d89792b13b8af",
+      "profile": "paired-price-loss-control-v1",
+      "horizon": 1,
+      "recipes": [
+        {
+          "family": "xgboost",
+          "horizon": 1,
+          "task": "price",
+          "params": {
+            "max_depth": 8,
+            "eta": 0.03351686226463305,
+            "min_child_weight": 19.18536727034489,
+            "alpha": 2.604553603014409e-06,
+            "lambda": 0.006738786749480815,
+            "subsample": 0.8483603138892994,
+            "colsample_bytree": 0.8610737197795277
+          },
+          "seed": 101,
+          "target": "price_delta",
+          "loss": "reg:absoluteerror",
+          "window": 1,
+          "features": [
+            "cotton_ret_1",
+            "cotton_ret_5",
+            "cotton_ret_10",
+            "cotton_ret_20",
+            "cotton_momentum_5",
+            "cotton_momentum_20",
+            "cotton_sma_ratio_5_20",
+            "cotton_sma_ratio_20_50",
+            "cotton_volatility_5",
+            "cotton_volatility_20",
+            "cotton_range",
+            "cotton_volume_change",
+            "cotton_volume_z20",
+            "cotton_volatility_regime_20_60",
+            "dxy_ret_1",
+            "dxy_ret_5",
+            "dxy_ret_20",
+            "wti_ret_1",
+            "wti_ret_5",
+            "wti_ret_20",
+            "cotton_dxy_corr_60",
+            "cotton_wti_corr_60",
+            "month_sin",
+            "month_cos"
+          ],
+          "years": null,
+          "cadence": 126,
+          "hypothesis": "fixed price-delta loss contrast; no new selection",
+          "device": "cpu"
+        }
+      ],
+      "model_families": [
+        "xgboost"
+      ],
+      "kind": "market_fit_receipt",
+      "completed_fits": 1,
+      "sample_receipts": [
+        {
+          "path": "experiment/ledger/completed/46e1f0dc289f005f5686e73d0f1f93192463228b3e0ec4842c5c20e174021bb1.json",
+          "record_id": "424c613865d2edc0d32f555e10e80a370d33c027f1c48ce904655843fe2aa7d4",
+          "experiment_id": "46e1f0dc289f005f5686e73d0f1f93192463228b3e0ec4842c5c20e174021bb1"
+        }
+      ],
+      "roles": [
+        "paired"
+      ],
+      "coverage": "completed fit receipts; not experiment completion",
+      "payload_hashes_revalidated_by_index": false,
+      "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/paired-price-loss-result-20261010",
+      "payload_hashes_revalidated_separately": true
+    },
+    {
+      "id": "aba01b7f25f28dc66e3cbe01fbdb220e97e30f7b5458514a90c8469c1e8ccc39",
+      "scope": {
+        "identity_id": "cd9512fc07b0011d427265e0d75b85381e46a08c1eac96774606d4dba2a8c953",
+        "source_id": "d3ca00e498639dc266f34dafb60f2f24dbba5e66ee0deeda0d9c4c0e5b7f7313",
+        "data_id": "f46410d913d1dc7bf798a473cc7e37c7567d40a0e5ac2a83b42901f64089bb67",
+        "split_id": "eb1abf500bf77e10b5761586554240188e94c588ac915bd377864bdb89aff236",
+        "profile": "paired-price-loss-control-v1"
+      },
+      "scope_id": "50a19300ddcf4950bf821d3cfbd8476bca095853d46848f8434d89792b13b8af",
+      "profile": "paired-price-loss-control-v1",
+      "horizon": 1,
+      "recipes": [
+        {
+          "family": "xgboost",
+          "horizon": 1,
+          "task": "price",
+          "params": {
+            "max_depth": 4,
+            "eta": 0.009863516889682346,
+            "min_child_weight": 8.96206611334584,
+            "alpha": 0.0,
+            "lambda": 0.06061131926647169,
+            "subsample": 0.9756727582126963,
+            "colsample_bytree": 0.6164659232295507
+          },
+          "seed": 17,
+          "target": "price_delta",
+          "loss": "reg:absoluteerror",
+          "window": 1,
+          "features": [
+            "cotton_ret_1",
+            "cotton_ret_5",
+            "cotton_ret_10",
+            "cotton_ret_20",
+            "cotton_momentum_5",
+            "cotton_momentum_20",
+            "cotton_sma_ratio_5_20",
+            "cotton_sma_ratio_20_50",
+            "cotton_volatility_5",
+            "cotton_volatility_20",
+            "cotton_range",
+            "cotton_volume_change",
+            "cotton_volume_z20",
+            "cotton_volatility_regime_20_60",
+            "dxy_ret_1",
+            "dxy_ret_5",
+            "dxy_ret_20",
+            "wti_ret_1",
+            "wti_ret_5",
+            "wti_ret_20",
+            "cotton_dxy_corr_60",
+            "cotton_wti_corr_60",
+            "month_sin",
+            "month_cos"
+          ],
+          "years": null,
+          "cadence": 126,
+          "hypothesis": "fixed price-delta loss contrast; no new selection",
+          "device": "cpu"
+        }
+      ],
+      "model_families": [
+        "xgboost"
+      ],
+      "kind": "market_fit_receipt",
+      "completed_fits": 1,
+      "sample_receipts": [
+        {
+          "path": "experiment/ledger/completed/4744c6eae4b04435701725174f38313f9b38e8eaf5110fa83b92d241bdeacd2e.json",
+          "record_id": "97fa6643015cd2e14c6fed038a51878a4fdceac25d11740504f2aa367fb84508",
+          "experiment_id": "4744c6eae4b04435701725174f38313f9b38e8eaf5110fa83b92d241bdeacd2e"
+        }
+      ],
+      "roles": [
+        "paired"
+      ],
+      "coverage": "completed fit receipts; not experiment completion",
+      "payload_hashes_revalidated_by_index": false,
+      "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/paired-price-loss-result-20261010",
+      "payload_hashes_revalidated_separately": true
+    },
+    {
+      "id": "b38d23e5995988d59e63835ebc8b2943b1ab5e95cfa0d107c6002217a32b4083",
+      "scope": {
+        "identity_id": "cd9512fc07b0011d427265e0d75b85381e46a08c1eac96774606d4dba2a8c953",
+        "source_id": "d3ca00e498639dc266f34dafb60f2f24dbba5e66ee0deeda0d9c4c0e5b7f7313",
+        "data_id": "f46410d913d1dc7bf798a473cc7e37c7567d40a0e5ac2a83b42901f64089bb67",
+        "split_id": "eb1abf500bf77e10b5761586554240188e94c588ac915bd377864bdb89aff236",
+        "profile": "paired-price-loss-control-v1"
+      },
+      "scope_id": "50a19300ddcf4950bf821d3cfbd8476bca095853d46848f8434d89792b13b8af",
+      "profile": "paired-price-loss-control-v1",
+      "horizon": 1,
+      "recipes": [
+        {
+          "family": "xgboost",
+          "horizon": 1,
+          "task": "price",
+          "params": {
+            "max_depth": 3,
+            "eta": 0.013940634523724502,
+            "min_child_weight": 9.893240098384746,
+            "alpha": 0.0001439522241517037,
+            "lambda": 0.0032325150847186974,
+            "subsample": 0.8136043840516958,
+            "colsample_bytree": 0.9395057813740026
+          },
+          "seed": 42,
+          "target": "price_delta",
+          "loss": "reg:squarederror",
+          "window": 1,
+          "features": [
+            "cotton_ret_1",
+            "cotton_ret_5",
+            "cotton_ret_10",
+            "cotton_ret_20",
+            "cotton_momentum_5",
+            "cotton_momentum_20",
+            "cotton_sma_ratio_5_20",
+            "cotton_sma_ratio_20_50",
+            "cotton_volatility_5",
+            "cotton_volatility_20",
+            "cotton_range",
+            "cotton_volume_change",
+            "cotton_volume_z20",
+            "cotton_volatility_regime_20_60",
+            "dxy_ret_1",
+            "dxy_ret_5",
+            "dxy_ret_20",
+            "wti_ret_1",
+            "wti_ret_5",
+            "wti_ret_20",
+            "cotton_dxy_corr_60",
+            "cotton_wti_corr_60",
+            "month_sin",
+            "month_cos"
+          ],
+          "years": null,
+          "cadence": 126,
+          "hypothesis": "fixed price-delta loss contrast; no new selection",
+          "device": "cpu"
+        }
+      ],
+      "model_families": [
+        "xgboost"
+      ],
+      "kind": "market_fit_receipt",
+      "completed_fits": 1,
+      "sample_receipts": [
+        {
+          "path": "experiment/ledger/completed/e975d35d7edb3ba9aae916ed6fd59dbc0a2c754b67d013469e8e8ef898cc6fcc.json",
+          "record_id": "6bf2283cc2dd6d837ad3c0717ba7697af8d68d05d8b61c3332f2e4ef4f34a54d",
+          "experiment_id": "e975d35d7edb3ba9aae916ed6fd59dbc0a2c754b67d013469e8e8ef898cc6fcc"
+        }
+      ],
+      "roles": [
+        "paired"
+      ],
+      "coverage": "completed fit receipts; not experiment completion",
+      "payload_hashes_revalidated_by_index": false,
+      "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/paired-price-loss-result-20261010",
+      "payload_hashes_revalidated_separately": true
+    },
+    {
+      "id": "b582b7623224c31e535fd060ffd634bc600c2c9d32e06be3b6009dd226213e74",
+      "scope": {
+        "identity_id": "fa52450ca807abcbdd4a5d5866518b1f9d13503e0923714d2a7c2a3e9fd96299",
+        "source_id": "d3ca00e498639dc266f34dafb60f2f24dbba5e66ee0deeda0d9c4c0e5b7f7313",
+        "data_id": "f46410d913d1dc7bf798a473cc7e37c7567d40a0e5ac2a83b42901f64089bb67",
+        "split_id": "eb1abf500bf77e10b5761586554240188e94c588ac915bd377864bdb89aff236",
+        "profile": "paired-price-loss-control-v1"
+      },
+      "scope_id": "d073301009388b73adb93fabaaf95c876efdf7d9308bd7d6dcac56d759ac52d6",
+      "profile": "paired-price-loss-control-v1",
+      "horizon": 1,
+      "recipes": [
+        {
+          "family": "xgboost",
+          "horizon": 1,
+          "task": "price",
+          "device": "cpu",
+          "features": [
+            "cotton_ret_1",
+            "cotton_ret_5",
+            "cotton_ret_10",
+            "cotton_ret_20",
+            "cotton_momentum_5",
+            "cotton_momentum_20",
+            "cotton_sma_ratio_5_20",
+            "cotton_sma_ratio_20_50",
+            "cotton_volatility_5",
+            "cotton_volatility_20",
+            "cotton_range",
+            "cotton_volume_change",
+            "cotton_volume_z20",
+            "cotton_volatility_regime_20_60",
+            "dxy_ret_1",
+            "dxy_ret_5",
+            "dxy_ret_20",
+            "wti_ret_1",
+            "wti_ret_5",
+            "wti_ret_20",
+            "cotton_dxy_corr_60",
+            "cotton_wti_corr_60",
+            "month_sin",
+            "month_cos"
+          ],
+          "seed": 42,
+          "window": 1,
+          "target": "price_delta",
+          "loss": "reg:squarederror",
+          "params": {
+            "max_depth": 8,
+            "eta": 0.15,
+            "min_child_weight": 1,
+            "alpha": 0,
+            "lambda": 0.01
+          }
+        }
+      ],
+      "model_families": [
+        "xgboost"
+      ],
+      "kind": "synthetic_control:known_signal",
+      "completed_fits": 1,
+      "sample_receipts": [
+        {
+          "path": "experiment/learning-control-ledger/completed/323e915d8a6ae60a1337ad1260bdcb2fcbd3616a4024bada12ab5b078a7c5e12.json",
+          "record_id": "0fd284243f8d1e6406fbe0189bf7ac7671a0a994a1e1f26c8549265c35cf8476",
+          "experiment_id": "323e915d8a6ae60a1337ad1260bdcb2fcbd3616a4024bada12ab5b078a7c5e12"
+        }
+      ],
+      "roles": [
+        "synthetic_control_not_market_evidence"
+      ],
+      "coverage": "completed fit receipts; not experiment completion",
+      "payload_hashes_revalidated_by_index": false,
+      "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/paired-price-loss-result-20261010",
+      "payload_hashes_revalidated_separately": true
+    },
+    {
+      "id": "b864b5cdfe755091669746ea81f7ad17bd155cc49d4b952fdeb2a3d15a6ae683",
+      "scope": {
+        "identity_id": "fa52450ca807abcbdd4a5d5866518b1f9d13503e0923714d2a7c2a3e9fd96299",
+        "source_id": "d3ca00e498639dc266f34dafb60f2f24dbba5e66ee0deeda0d9c4c0e5b7f7313",
+        "data_id": "f46410d913d1dc7bf798a473cc7e37c7567d40a0e5ac2a83b42901f64089bb67",
+        "split_id": "eb1abf500bf77e10b5761586554240188e94c588ac915bd377864bdb89aff236",
+        "profile": "paired-price-loss-control-v1"
+      },
+      "scope_id": "d073301009388b73adb93fabaaf95c876efdf7d9308bd7d6dcac56d759ac52d6",
+      "profile": "paired-price-loss-control-v1",
+      "horizon": 1,
+      "recipes": [
+        {
+          "family": "xgboost",
+          "horizon": 1,
+          "task": "price",
+          "device": "cpu",
+          "features": [
+            "cotton_ret_1",
+            "cotton_ret_5",
+            "cotton_ret_10",
+            "cotton_ret_20",
+            "cotton_momentum_5",
+            "cotton_momentum_20",
+            "cotton_sma_ratio_5_20",
+            "cotton_sma_ratio_20_50",
+            "cotton_volatility_5",
+            "cotton_volatility_20",
+            "cotton_range",
+            "cotton_volume_change",
+            "cotton_volume_z20",
+            "cotton_volatility_regime_20_60",
+            "dxy_ret_1",
+            "dxy_ret_5",
+            "dxy_ret_20",
+            "wti_ret_1",
+            "wti_ret_5",
+            "wti_ret_20",
+            "cotton_dxy_corr_60",
+            "cotton_wti_corr_60",
+            "month_sin",
+            "month_cos"
+          ],
+          "seed": 42,
+          "window": 1,
+          "target": "price_delta",
+          "loss": "reg:squarederror",
+          "params": {
+            "max_depth": 8,
+            "eta": 0.15,
+            "min_child_weight": 1,
+            "alpha": 0,
+            "lambda": 0.01
+          }
+        }
+      ],
+      "model_families": [
+        "xgboost"
+      ],
+      "kind": "synthetic_control:negative_block_shift",
+      "completed_fits": 1,
+      "sample_receipts": [
+        {
+          "path": "experiment/learning-control-ledger/completed/112212ed5d41bc8cd945052e7b9b8c7a4a90e1f2ada2a4fdf5583e847bad74d6.json",
+          "record_id": "78ff5422ecf5328af7196dc969fd65f5a232b17e526c5cef7da547baa4966485",
+          "experiment_id": "112212ed5d41bc8cd945052e7b9b8c7a4a90e1f2ada2a4fdf5583e847bad74d6"
+        }
+      ],
+      "roles": [
+        "synthetic_control_not_market_evidence"
+      ],
+      "coverage": "completed fit receipts; not experiment completion",
+      "payload_hashes_revalidated_by_index": false,
+      "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/paired-price-loss-result-20261010",
+      "payload_hashes_revalidated_separately": true
+    },
+    {
+      "id": "bb57a1d6206a931e7e21672099407892f3f12271891a0a01b0105ec0d483772c",
+      "scope": {
+        "identity_id": "cd9512fc07b0011d427265e0d75b85381e46a08c1eac96774606d4dba2a8c953",
+        "source_id": "d3ca00e498639dc266f34dafb60f2f24dbba5e66ee0deeda0d9c4c0e5b7f7313",
+        "data_id": "f46410d913d1dc7bf798a473cc7e37c7567d40a0e5ac2a83b42901f64089bb67",
+        "split_id": "eb1abf500bf77e10b5761586554240188e94c588ac915bd377864bdb89aff236",
+        "profile": "paired-price-loss-control-v1"
+      },
+      "scope_id": "50a19300ddcf4950bf821d3cfbd8476bca095853d46848f8434d89792b13b8af",
+      "profile": "paired-price-loss-control-v1",
+      "horizon": 1,
+      "recipes": [
+        {
+          "family": "xgboost",
+          "horizon": 1,
+          "task": "price",
+          "params": {
+            "max_depth": 2,
+            "eta": 0.05981591800837641,
+            "min_child_weight": 3.677460561634013,
+            "alpha": 0.0,
+            "lambda": 3.8040343167766677,
+            "subsample": 0.9034803140008089,
+            "colsample_bytree": 0.983860229648617
+          },
+          "seed": 17,
+          "target": "price_delta",
+          "loss": "reg:squarederror",
+          "window": 1,
+          "features": [
+            "cotton_ret_1",
+            "cotton_ret_5",
+            "cotton_ret_10",
+            "cotton_ret_20",
+            "cotton_momentum_5",
+            "cotton_momentum_20",
+            "cotton_sma_ratio_5_20",
+            "cotton_sma_ratio_20_50",
+            "cotton_volatility_5",
+            "cotton_volatility_20",
+            "cotton_range",
+            "cotton_volume_change",
+            "cotton_volume_z20",
+            "cotton_volatility_regime_20_60",
+            "dxy_ret_1",
+            "dxy_ret_5",
+            "dxy_ret_20",
+            "wti_ret_1",
+            "wti_ret_5",
+            "wti_ret_20",
+            "cotton_dxy_corr_60",
+            "cotton_wti_corr_60",
+            "month_sin",
+            "month_cos"
+          ],
+          "years": null,
+          "cadence": 126,
+          "hypothesis": "fixed price-delta loss contrast; no new selection",
+          "device": "cpu"
+        }
+      ],
+      "model_families": [
+        "xgboost"
+      ],
+      "kind": "market_fit_receipt",
+      "completed_fits": 1,
+      "sample_receipts": [
+        {
+          "path": "experiment/ledger/completed/0164c09eab4c2e32349e01536d3b9087076bd0e34779ace0d964bb1396056da7.json",
+          "record_id": "fda4b880eec2e4ee65834dbd8a6ae310eb33923beec856e73094ef52658c6903",
+          "experiment_id": "0164c09eab4c2e32349e01536d3b9087076bd0e34779ace0d964bb1396056da7"
+        }
+      ],
+      "roles": [
+        "paired"
+      ],
+      "coverage": "completed fit receipts; not experiment completion",
+      "payload_hashes_revalidated_by_index": false,
+      "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/paired-price-loss-result-20261010",
+      "payload_hashes_revalidated_separately": true
+    },
+    {
+      "id": "c0758740748146afa3f149a49c38bd3ec379ddf4e6b44ae9babc00a48578e44e",
+      "scope": {
+        "identity_id": "cd9512fc07b0011d427265e0d75b85381e46a08c1eac96774606d4dba2a8c953",
+        "source_id": "d3ca00e498639dc266f34dafb60f2f24dbba5e66ee0deeda0d9c4c0e5b7f7313",
+        "data_id": "f46410d913d1dc7bf798a473cc7e37c7567d40a0e5ac2a83b42901f64089bb67",
+        "split_id": "eb1abf500bf77e10b5761586554240188e94c588ac915bd377864bdb89aff236",
+        "profile": "paired-price-loss-control-v1"
+      },
+      "scope_id": "50a19300ddcf4950bf821d3cfbd8476bca095853d46848f8434d89792b13b8af",
+      "profile": "paired-price-loss-control-v1",
+      "horizon": 1,
+      "recipes": [
+        {
+          "family": "xgboost",
+          "horizon": 1,
+          "task": "price",
+          "params": {
+            "max_depth": 8,
+            "eta": 0.03351686226463305,
+            "min_child_weight": 19.18536727034489,
+            "alpha": 2.604553603014409e-06,
+            "lambda": 0.006738786749480815,
+            "subsample": 0.8483603138892994,
+            "colsample_bytree": 0.8610737197795277
+          },
+          "seed": 17,
+          "target": "price_delta",
+          "loss": "reg:squarederror",
+          "window": 1,
+          "features": [
+            "cotton_ret_1",
+            "cotton_ret_5",
+            "cotton_ret_10",
+            "cotton_ret_20",
+            "cotton_momentum_5",
+            "cotton_momentum_20",
+            "cotton_sma_ratio_5_20",
+            "cotton_sma_ratio_20_50",
+            "cotton_volatility_5",
+            "cotton_volatility_20",
+            "cotton_range",
+            "cotton_volume_change",
+            "cotton_volume_z20",
+            "cotton_volatility_regime_20_60",
+            "dxy_ret_1",
+            "dxy_ret_5",
+            "dxy_ret_20",
+            "wti_ret_1",
+            "wti_ret_5",
+            "wti_ret_20",
+            "cotton_dxy_corr_60",
+            "cotton_wti_corr_60",
+            "month_sin",
+            "month_cos"
+          ],
+          "years": null,
+          "cadence": 126,
+          "hypothesis": "fixed price-delta loss contrast; no new selection",
+          "device": "cpu"
+        }
+      ],
+      "model_families": [
+        "xgboost"
+      ],
+      "kind": "market_fit_receipt",
+      "completed_fits": 1,
+      "sample_receipts": [
+        {
+          "path": "experiment/ledger/completed/663b67eea6f032d53d85b5b3a861fb3a9ca0ebd7c936e4c0e03a661b7cabbdea.json",
+          "record_id": "7348e9c16381c07cfdd6682d96a62357a95312e9eff52ab8b306d3295f8566ec",
+          "experiment_id": "663b67eea6f032d53d85b5b3a861fb3a9ca0ebd7c936e4c0e03a661b7cabbdea"
+        }
+      ],
+      "roles": [
+        "paired"
+      ],
+      "coverage": "completed fit receipts; not experiment completion",
+      "payload_hashes_revalidated_by_index": false,
+      "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/paired-price-loss-result-20261010",
+      "payload_hashes_revalidated_separately": true
+    },
+    {
+      "id": "c13b6314172b222826c20a561f140bf1ccae07b94b570e2281b458b060a48d75",
+      "scope": {
+        "identity_id": "fa52450ca807abcbdd4a5d5866518b1f9d13503e0923714d2a7c2a3e9fd96299",
+        "source_id": "d3ca00e498639dc266f34dafb60f2f24dbba5e66ee0deeda0d9c4c0e5b7f7313",
+        "data_id": "f46410d913d1dc7bf798a473cc7e37c7567d40a0e5ac2a83b42901f64089bb67",
+        "split_id": "eb1abf500bf77e10b5761586554240188e94c588ac915bd377864bdb89aff236",
+        "profile": "paired-price-loss-control-v1"
+      },
+      "scope_id": "d073301009388b73adb93fabaaf95c876efdf7d9308bd7d6dcac56d759ac52d6",
+      "profile": "paired-price-loss-control-v1",
+      "horizon": 1,
+      "recipes": [
+        {
+          "family": "xgboost",
+          "horizon": 1,
+          "task": "price",
+          "device": "cpu",
+          "features": [
+            "cotton_ret_1",
+            "cotton_ret_5",
+            "cotton_ret_10",
+            "cotton_ret_20",
+            "cotton_momentum_5",
+            "cotton_momentum_20",
+            "cotton_sma_ratio_5_20",
+            "cotton_sma_ratio_20_50",
+            "cotton_volatility_5",
+            "cotton_volatility_20",
+            "cotton_range",
+            "cotton_volume_change",
+            "cotton_volume_z20",
+            "cotton_volatility_regime_20_60",
+            "dxy_ret_1",
+            "dxy_ret_5",
+            "dxy_ret_20",
+            "wti_ret_1",
+            "wti_ret_5",
+            "wti_ret_20",
+            "cotton_dxy_corr_60",
+            "cotton_wti_corr_60",
+            "month_sin",
+            "month_cos"
+          ],
+          "seed": 42,
+          "window": 1,
+          "target": "price_delta",
+          "loss": "reg:absoluteerror",
+          "params": {
+            "max_depth": 8,
+            "eta": 0.15,
+            "min_child_weight": 1,
+            "alpha": 0,
+            "lambda": 0.01
+          }
+        }
+      ],
+      "model_families": [
+        "xgboost"
+      ],
+      "kind": "synthetic_control:known_signal",
+      "completed_fits": 1,
+      "sample_receipts": [
+        {
+          "path": "experiment/learning-control-ledger/completed/5a5308bc8c5f0331b9839ed5675d6badd02541e84e0147b098fc879d60f86dfd.json",
+          "record_id": "fa89bfd8a9a724dab1d363560f0e7a3c30e247a0bca7a6f0911e9e9fcb5474b6",
+          "experiment_id": "5a5308bc8c5f0331b9839ed5675d6badd02541e84e0147b098fc879d60f86dfd"
+        }
+      ],
+      "roles": [
+        "synthetic_control_not_market_evidence"
+      ],
+      "coverage": "completed fit receipts; not experiment completion",
+      "payload_hashes_revalidated_by_index": false,
+      "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/paired-price-loss-result-20261010",
+      "payload_hashes_revalidated_separately": true
+    },
+    {
+      "id": "c908e4e8124c1ae176879147854bb557bd8be49b337eb27939d1580d8ea348fb",
+      "scope": {
+        "identity_id": "cd9512fc07b0011d427265e0d75b85381e46a08c1eac96774606d4dba2a8c953",
+        "source_id": "d3ca00e498639dc266f34dafb60f2f24dbba5e66ee0deeda0d9c4c0e5b7f7313",
+        "data_id": "f46410d913d1dc7bf798a473cc7e37c7567d40a0e5ac2a83b42901f64089bb67",
+        "split_id": "eb1abf500bf77e10b5761586554240188e94c588ac915bd377864bdb89aff236",
+        "profile": "paired-price-loss-control-v1"
+      },
+      "scope_id": "50a19300ddcf4950bf821d3cfbd8476bca095853d46848f8434d89792b13b8af",
+      "profile": "paired-price-loss-control-v1",
+      "horizon": 1,
+      "recipes": [
+        {
+          "family": "xgboost",
+          "horizon": 1,
+          "task": "price",
+          "params": {
+            "max_depth": 8,
+            "eta": 0.016406280707971357,
+            "min_child_weight": 1.4313081449731246,
+            "alpha": 1.4785914585898694,
+            "lambda": 0.010373906271792813,
+            "subsample": 0.6213419652080218,
+            "colsample_bytree": 0.7325998884182489
+          },
+          "seed": 17,
+          "target": "price_delta",
+          "loss": "reg:absoluteerror",
+          "window": 1,
+          "features": [
+            "cotton_ret_1",
+            "cotton_ret_5",
+            "cotton_ret_10",
+            "cotton_ret_20",
+            "cotton_momentum_5",
+            "cotton_momentum_20",
+            "cotton_sma_ratio_5_20",
+            "cotton_sma_ratio_20_50",
+            "cotton_volatility_5",
+            "cotton_volatility_20",
+            "cotton_range",
+            "cotton_volume_change",
+            "cotton_volume_z20",
+            "cotton_volatility_regime_20_60",
+            "dxy_ret_1",
+            "dxy_ret_5",
+            "dxy_ret_20",
+            "wti_ret_1",
+            "wti_ret_5",
+            "wti_ret_20",
+            "cotton_dxy_corr_60",
+            "cotton_wti_corr_60",
+            "month_sin",
+            "month_cos"
+          ],
+          "years": null,
+          "cadence": 126,
+          "hypothesis": "fixed price-delta loss contrast; no new selection",
+          "device": "cpu"
+        }
+      ],
+      "model_families": [
+        "xgboost"
+      ],
+      "kind": "market_fit_receipt",
+      "completed_fits": 2,
+      "sample_receipts": [
+        {
+          "path": "experiment/ledger/completed/3642c81f07e28588ae92fe1bcdc0a40153320191706f8bef922c2ab838e3d7e8.json",
+          "record_id": "830c7c927c840724492e442562c93beaa8197c75777ada610cbf2346b90a5b32",
+          "experiment_id": "3642c81f07e28588ae92fe1bcdc0a40153320191706f8bef922c2ab838e3d7e8"
+        },
+        {
+          "path": "experiment/ledger/completed/4b61641976533d91859919ef9ce1f64228cddc839924373452cbedb82b309941.json",
+          "record_id": "3febc21127be94d747896cb45c59f76e61b3b68189b9157456bf619bf896839d",
+          "experiment_id": "4b61641976533d91859919ef9ce1f64228cddc839924373452cbedb82b309941"
+        }
+      ],
+      "roles": [
+        "paired"
+      ],
+      "coverage": "completed fit receipts; not experiment completion",
+      "payload_hashes_revalidated_by_index": false,
+      "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/paired-price-loss-result-20261010",
+      "payload_hashes_revalidated_separately": true
+    },
+    {
+      "id": "c96fac4e07abefab9bfb906135010498e0e74065e551c1e520c5f3ea3efcb3d9",
+      "scope": {
+        "identity_id": "cd9512fc07b0011d427265e0d75b85381e46a08c1eac96774606d4dba2a8c953",
+        "source_id": "d3ca00e498639dc266f34dafb60f2f24dbba5e66ee0deeda0d9c4c0e5b7f7313",
+        "data_id": "f46410d913d1dc7bf798a473cc7e37c7567d40a0e5ac2a83b42901f64089bb67",
+        "split_id": "eb1abf500bf77e10b5761586554240188e94c588ac915bd377864bdb89aff236",
+        "profile": "paired-price-loss-control-v1"
+      },
+      "scope_id": "50a19300ddcf4950bf821d3cfbd8476bca095853d46848f8434d89792b13b8af",
+      "profile": "paired-price-loss-control-v1",
+      "horizon": 1,
+      "recipes": [
+        {
+          "family": "xgboost",
+          "horizon": 1,
+          "task": "price",
+          "params": {
+            "max_depth": 8,
+            "eta": 0.016406280707971357,
+            "min_child_weight": 1.4313081449731246,
+            "alpha": 1.4785914585898694,
+            "lambda": 0.010373906271792813,
+            "subsample": 0.6213419652080218,
+            "colsample_bytree": 0.7325998884182489
+          },
+          "seed": 101,
+          "target": "price_delta",
+          "loss": "reg:squarederror",
+          "window": 1,
+          "features": [
+            "cotton_ret_1",
+            "cotton_ret_5",
+            "cotton_ret_10",
+            "cotton_ret_20",
+            "cotton_momentum_5",
+            "cotton_momentum_20",
+            "cotton_sma_ratio_5_20",
+            "cotton_sma_ratio_20_50",
+            "cotton_volatility_5",
+            "cotton_volatility_20",
+            "cotton_range",
+            "cotton_volume_change",
+            "cotton_volume_z20",
+            "cotton_volatility_regime_20_60",
+            "dxy_ret_1",
+            "dxy_ret_5",
+            "dxy_ret_20",
+            "wti_ret_1",
+            "wti_ret_5",
+            "wti_ret_20",
+            "cotton_dxy_corr_60",
+            "cotton_wti_corr_60",
+            "month_sin",
+            "month_cos"
+          ],
+          "years": null,
+          "cadence": 126,
+          "hypothesis": "fixed price-delta loss contrast; no new selection",
+          "device": "cpu"
+        }
+      ],
+      "model_families": [
+        "xgboost"
+      ],
+      "kind": "market_fit_receipt",
+      "completed_fits": 2,
+      "sample_receipts": [
+        {
+          "path": "experiment/ledger/completed/12654c75617ab7e8ed5a5e4b95c381819210d5e609e80a347cdecf552621711c.json",
+          "record_id": "f8ec0db0559a5e85393b2001ed0d7472fb8bced2963f4c12d765c6b84e844c8c",
+          "experiment_id": "12654c75617ab7e8ed5a5e4b95c381819210d5e609e80a347cdecf552621711c"
+        },
+        {
+          "path": "experiment/ledger/completed/9bc026a65029204ac0d770309016f91089aa4cc416d4dc1df602324685fba15a.json",
+          "record_id": "96040e177215019d6df0764467ac56079b5d0f44085c19b4aac99fad37740f0c",
+          "experiment_id": "9bc026a65029204ac0d770309016f91089aa4cc416d4dc1df602324685fba15a"
+        }
+      ],
+      "roles": [
+        "paired"
+      ],
+      "coverage": "completed fit receipts; not experiment completion",
+      "payload_hashes_revalidated_by_index": false,
+      "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/paired-price-loss-result-20261010",
+      "payload_hashes_revalidated_separately": true
+    },
+    {
+      "id": "d11997c0544418b4b9af8a523e70fd92259fcf1fe7682183f86c436da8a555c8",
+      "scope": {
+        "identity_id": "cd9512fc07b0011d427265e0d75b85381e46a08c1eac96774606d4dba2a8c953",
+        "source_id": "d3ca00e498639dc266f34dafb60f2f24dbba5e66ee0deeda0d9c4c0e5b7f7313",
+        "data_id": "f46410d913d1dc7bf798a473cc7e37c7567d40a0e5ac2a83b42901f64089bb67",
+        "split_id": "eb1abf500bf77e10b5761586554240188e94c588ac915bd377864bdb89aff236",
+        "profile": "paired-price-loss-control-v1"
+      },
+      "scope_id": "50a19300ddcf4950bf821d3cfbd8476bca095853d46848f8434d89792b13b8af",
+      "profile": "paired-price-loss-control-v1",
+      "horizon": 1,
+      "recipes": [
+        {
+          "family": "xgboost",
+          "horizon": 1,
+          "task": "price",
+          "params": {
+            "max_depth": 2,
+            "eta": 0.05981591800837641,
+            "min_child_weight": 3.677460561634013,
+            "alpha": 0.0,
+            "lambda": 3.8040343167766677,
+            "subsample": 0.9034803140008089,
+            "colsample_bytree": 0.983860229648617
+          },
+          "seed": 17,
+          "target": "price_delta",
+          "loss": "reg:absoluteerror",
+          "window": 1,
+          "features": [
+            "cotton_ret_1",
+            "cotton_ret_5",
+            "cotton_ret_10",
+            "cotton_ret_20",
+            "cotton_momentum_5",
+            "cotton_momentum_20",
+            "cotton_sma_ratio_5_20",
+            "cotton_sma_ratio_20_50",
+            "cotton_volatility_5",
+            "cotton_volatility_20",
+            "cotton_range",
+            "cotton_volume_change",
+            "cotton_volume_z20",
+            "cotton_volatility_regime_20_60",
+            "dxy_ret_1",
+            "dxy_ret_5",
+            "dxy_ret_20",
+            "wti_ret_1",
+            "wti_ret_5",
+            "wti_ret_20",
+            "cotton_dxy_corr_60",
+            "cotton_wti_corr_60",
+            "month_sin",
+            "month_cos"
+          ],
+          "years": null,
+          "cadence": 126,
+          "hypothesis": "fixed price-delta loss contrast; no new selection",
+          "device": "cpu"
+        }
+      ],
+      "model_families": [
+        "xgboost"
+      ],
+      "kind": "market_fit_receipt",
+      "completed_fits": 1,
+      "sample_receipts": [
+        {
+          "path": "experiment/ledger/completed/4a9d4504813da50a2ad7530e8d95d3421b24af06611b26f2c05dce4baf5fb883.json",
+          "record_id": "2e2d92de111e4fd2ad26854ddc59877a27a43d37e71819ffc621b57a8b10f4d7",
+          "experiment_id": "4a9d4504813da50a2ad7530e8d95d3421b24af06611b26f2c05dce4baf5fb883"
+        }
+      ],
+      "roles": [
+        "paired"
+      ],
+      "coverage": "completed fit receipts; not experiment completion",
+      "payload_hashes_revalidated_by_index": false,
+      "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/paired-price-loss-result-20261010",
+      "payload_hashes_revalidated_separately": true
+    },
+    {
+      "id": "d867d105a88b2add74d87e8954e4047a67968ce3e13186d9ac56bb6518f7b3e6",
+      "scope": {
+        "identity_id": "cd9512fc07b0011d427265e0d75b85381e46a08c1eac96774606d4dba2a8c953",
+        "source_id": "d3ca00e498639dc266f34dafb60f2f24dbba5e66ee0deeda0d9c4c0e5b7f7313",
+        "data_id": "f46410d913d1dc7bf798a473cc7e37c7567d40a0e5ac2a83b42901f64089bb67",
+        "split_id": "eb1abf500bf77e10b5761586554240188e94c588ac915bd377864bdb89aff236",
+        "profile": "paired-price-loss-control-v1"
+      },
+      "scope_id": "50a19300ddcf4950bf821d3cfbd8476bca095853d46848f8434d89792b13b8af",
+      "profile": "paired-price-loss-control-v1",
+      "horizon": 1,
+      "recipes": [
+        {
+          "family": "xgboost",
+          "horizon": 1,
+          "task": "price",
+          "params": {
+            "max_depth": 4,
+            "eta": 0.009863516889682346,
+            "min_child_weight": 8.96206611334584,
+            "alpha": 0.0,
+            "lambda": 0.06061131926647169,
+            "subsample": 0.9756727582126963,
+            "colsample_bytree": 0.6164659232295507
+          },
+          "seed": 42,
+          "target": "price_delta",
+          "loss": "reg:absoluteerror",
+          "window": 1,
+          "features": [
+            "cotton_ret_1",
+            "cotton_ret_5",
+            "cotton_ret_10",
+            "cotton_ret_20",
+            "cotton_momentum_5",
+            "cotton_momentum_20",
+            "cotton_sma_ratio_5_20",
+            "cotton_sma_ratio_20_50",
+            "cotton_volatility_5",
+            "cotton_volatility_20",
+            "cotton_range",
+            "cotton_volume_change",
+            "cotton_volume_z20",
+            "cotton_volatility_regime_20_60",
+            "dxy_ret_1",
+            "dxy_ret_5",
+            "dxy_ret_20",
+            "wti_ret_1",
+            "wti_ret_5",
+            "wti_ret_20",
+            "cotton_dxy_corr_60",
+            "cotton_wti_corr_60",
+            "month_sin",
+            "month_cos"
+          ],
+          "years": null,
+          "cadence": 126,
+          "hypothesis": "fixed price-delta loss contrast; no new selection",
+          "device": "cpu"
+        }
+      ],
+      "model_families": [
+        "xgboost"
+      ],
+      "kind": "market_fit_receipt",
+      "completed_fits": 1,
+      "sample_receipts": [
+        {
+          "path": "experiment/ledger/completed/6cb0cb5bc8836c31c83a1c6913edeb464e76e18e8ecce31b52d45f9df938a6a6.json",
+          "record_id": "c6c1c9bbfa48230949430386c84ccf7ddef3dc6df5e6481ff9e7da26a687399b",
+          "experiment_id": "6cb0cb5bc8836c31c83a1c6913edeb464e76e18e8ecce31b52d45f9df938a6a6"
+        }
+      ],
+      "roles": [
+        "paired"
+      ],
+      "coverage": "completed fit receipts; not experiment completion",
+      "payload_hashes_revalidated_by_index": false,
+      "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/paired-price-loss-result-20261010",
+      "payload_hashes_revalidated_separately": true
+    },
+    {
+      "id": "da6aa918d47521606c313d7b55d2ae11b7d2bd7baea88f9b1e418dd1a32c2067",
+      "scope": {
+        "identity_id": "cd9512fc07b0011d427265e0d75b85381e46a08c1eac96774606d4dba2a8c953",
+        "source_id": "d3ca00e498639dc266f34dafb60f2f24dbba5e66ee0deeda0d9c4c0e5b7f7313",
+        "data_id": "f46410d913d1dc7bf798a473cc7e37c7567d40a0e5ac2a83b42901f64089bb67",
+        "split_id": "eb1abf500bf77e10b5761586554240188e94c588ac915bd377864bdb89aff236",
+        "profile": "paired-price-loss-control-v1"
+      },
+      "scope_id": "50a19300ddcf4950bf821d3cfbd8476bca095853d46848f8434d89792b13b8af",
+      "profile": "paired-price-loss-control-v1",
+      "horizon": 1,
+      "recipes": [
+        {
+          "family": "xgboost",
+          "horizon": 1,
+          "task": "price",
+          "params": {
+            "max_depth": 4,
+            "eta": 0.009863516889682346,
+            "min_child_weight": 8.96206611334584,
+            "alpha": 0.0,
+            "lambda": 0.06061131926647169,
+            "subsample": 0.9756727582126963,
+            "colsample_bytree": 0.6164659232295507
+          },
+          "seed": 42,
+          "target": "price_delta",
+          "loss": "reg:squarederror",
+          "window": 1,
+          "features": [
+            "cotton_ret_1",
+            "cotton_ret_5",
+            "cotton_ret_10",
+            "cotton_ret_20",
+            "cotton_momentum_5",
+            "cotton_momentum_20",
+            "cotton_sma_ratio_5_20",
+            "cotton_sma_ratio_20_50",
+            "cotton_volatility_5",
+            "cotton_volatility_20",
+            "cotton_range",
+            "cotton_volume_change",
+            "cotton_volume_z20",
+            "cotton_volatility_regime_20_60",
+            "dxy_ret_1",
+            "dxy_ret_5",
+            "dxy_ret_20",
+            "wti_ret_1",
+            "wti_ret_5",
+            "wti_ret_20",
+            "cotton_dxy_corr_60",
+            "cotton_wti_corr_60",
+            "month_sin",
+            "month_cos"
+          ],
+          "years": null,
+          "cadence": 126,
+          "hypothesis": "fixed price-delta loss contrast; no new selection",
+          "device": "cpu"
+        }
+      ],
+      "model_families": [
+        "xgboost"
+      ],
+      "kind": "market_fit_receipt",
+      "completed_fits": 1,
+      "sample_receipts": [
+        {
+          "path": "experiment/ledger/completed/5ee6d2eef7e22d4335da6a2442de08aa99c9061e7b0d813128e7211944c5c88c.json",
+          "record_id": "f396957fdf0594b76017265ff9c2a29d8e1a6953edab3e944c85787203543010",
+          "experiment_id": "5ee6d2eef7e22d4335da6a2442de08aa99c9061e7b0d813128e7211944c5c88c"
+        }
+      ],
+      "roles": [
+        "paired"
+      ],
+      "coverage": "completed fit receipts; not experiment completion",
+      "payload_hashes_revalidated_by_index": false,
+      "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/paired-price-loss-result-20261010",
+      "payload_hashes_revalidated_separately": true
+    },
+    {
+      "id": "de3ce3c7dd49e4b926cd68e5d3fd8ff6f2912e5f9ef28a3c4c07bf55c6266853",
+      "scope": {
+        "identity_id": "cd9512fc07b0011d427265e0d75b85381e46a08c1eac96774606d4dba2a8c953",
+        "source_id": "d3ca00e498639dc266f34dafb60f2f24dbba5e66ee0deeda0d9c4c0e5b7f7313",
+        "data_id": "f46410d913d1dc7bf798a473cc7e37c7567d40a0e5ac2a83b42901f64089bb67",
+        "split_id": "eb1abf500bf77e10b5761586554240188e94c588ac915bd377864bdb89aff236",
+        "profile": "paired-price-loss-control-v1"
+      },
+      "scope_id": "50a19300ddcf4950bf821d3cfbd8476bca095853d46848f8434d89792b13b8af",
+      "profile": "paired-price-loss-control-v1",
+      "horizon": 1,
+      "recipes": [
+        {
+          "family": "xgboost",
+          "horizon": 1,
+          "task": "price",
+          "params": {
+            "max_depth": 5,
+            "eta": 0.10721274316936504,
+            "min_child_weight": 23.844747440471615,
+            "alpha": 0.006891582069263771,
+            "lambda": 25.125740387070362,
+            "subsample": 0.9809339511388435,
+            "colsample_bytree": 0.9501216589766498
+          },
+          "seed": 42,
+          "target": "price_delta",
+          "loss": "reg:squarederror",
+          "window": 1,
+          "features": [
+            "cotton_ret_1",
+            "cotton_ret_5",
+            "cotton_ret_10",
+            "cotton_ret_20",
+            "cotton_momentum_5",
+            "cotton_momentum_20",
+            "cotton_sma_ratio_5_20",
+            "cotton_sma_ratio_20_50",
+            "cotton_volatility_5",
+            "cotton_volatility_20",
+            "cotton_range",
+            "cotton_volume_change",
+            "cotton_volume_z20",
+            "cotton_volatility_regime_20_60",
+            "dxy_ret_1",
+            "dxy_ret_5",
+            "dxy_ret_20",
+            "wti_ret_1",
+            "wti_ret_5",
+            "wti_ret_20",
+            "cotton_dxy_corr_60",
+            "cotton_wti_corr_60",
+            "month_sin",
+            "month_cos"
+          ],
+          "years": null,
+          "cadence": 126,
+          "hypothesis": "fixed price-delta loss contrast; no new selection",
+          "device": "cpu"
+        }
+      ],
+      "model_families": [
+        "xgboost"
+      ],
+      "kind": "market_fit_receipt",
+      "completed_fits": 1,
+      "sample_receipts": [
+        {
+          "path": "experiment/ledger/completed/0ce52597735f07705cfcbf54e91334afbd3f9deefbd56452246ba0bb8a7af435.json",
+          "record_id": "58c8cc9960c7f53c746dcce6d6a2c4dee5e1bc2632195b4eb38cdb68fa0400d9",
+          "experiment_id": "0ce52597735f07705cfcbf54e91334afbd3f9deefbd56452246ba0bb8a7af435"
+        }
+      ],
+      "roles": [
+        "paired"
+      ],
+      "coverage": "completed fit receipts; not experiment completion",
+      "payload_hashes_revalidated_by_index": false,
+      "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/paired-price-loss-result-20261010",
+      "payload_hashes_revalidated_separately": true
+    },
+    {
+      "id": "e2b1409d91e2d502c363f5cd52d4a1497650a44b08f873ccadcc6eb0008b8c21",
+      "scope": {
+        "identity_id": "cd9512fc07b0011d427265e0d75b85381e46a08c1eac96774606d4dba2a8c953",
+        "source_id": "d3ca00e498639dc266f34dafb60f2f24dbba5e66ee0deeda0d9c4c0e5b7f7313",
+        "data_id": "f46410d913d1dc7bf798a473cc7e37c7567d40a0e5ac2a83b42901f64089bb67",
+        "split_id": "eb1abf500bf77e10b5761586554240188e94c588ac915bd377864bdb89aff236",
+        "profile": "paired-price-loss-control-v1"
+      },
+      "scope_id": "50a19300ddcf4950bf821d3cfbd8476bca095853d46848f8434d89792b13b8af",
+      "profile": "paired-price-loss-control-v1",
+      "horizon": 1,
+      "recipes": [
+        {
+          "family": "xgboost",
+          "horizon": 1,
+          "task": "price",
+          "params": {
+            "max_depth": 8,
+            "eta": 0.03351686226463305,
+            "min_child_weight": 19.18536727034489,
+            "alpha": 2.604553603014409e-06,
+            "lambda": 0.006738786749480815,
+            "subsample": 0.8483603138892994,
+            "colsample_bytree": 0.8610737197795277
+          },
+          "seed": 42,
+          "target": "price_delta",
+          "loss": "reg:squarederror",
+          "window": 1,
+          "features": [
+            "cotton_ret_1",
+            "cotton_ret_5",
+            "cotton_ret_10",
+            "cotton_ret_20",
+            "cotton_momentum_5",
+            "cotton_momentum_20",
+            "cotton_sma_ratio_5_20",
+            "cotton_sma_ratio_20_50",
+            "cotton_volatility_5",
+            "cotton_volatility_20",
+            "cotton_range",
+            "cotton_volume_change",
+            "cotton_volume_z20",
+            "cotton_volatility_regime_20_60",
+            "dxy_ret_1",
+            "dxy_ret_5",
+            "dxy_ret_20",
+            "wti_ret_1",
+            "wti_ret_5",
+            "wti_ret_20",
+            "cotton_dxy_corr_60",
+            "cotton_wti_corr_60",
+            "month_sin",
+            "month_cos"
+          ],
+          "years": null,
+          "cadence": 126,
+          "hypothesis": "fixed price-delta loss contrast; no new selection",
+          "device": "cpu"
+        }
+      ],
+      "model_families": [
+        "xgboost"
+      ],
+      "kind": "market_fit_receipt",
+      "completed_fits": 1,
+      "sample_receipts": [
+        {
+          "path": "experiment/ledger/completed/1d9a44d6095fcd7253407871a39ab107d0dd264df257e55e3aa803a3975319bd.json",
+          "record_id": "05e5b396d0d7f37882e1578118e14398e0e1de418f7a432ffe2808afb4626c8a",
+          "experiment_id": "1d9a44d6095fcd7253407871a39ab107d0dd264df257e55e3aa803a3975319bd"
+        }
+      ],
+      "roles": [
+        "paired"
+      ],
+      "coverage": "completed fit receipts; not experiment completion",
+      "payload_hashes_revalidated_by_index": false,
+      "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/paired-price-loss-result-20261010",
+      "payload_hashes_revalidated_separately": true
+    },
+    {
+      "id": "e7fbcdea4a6080c4a2e8b80b646a38748aa915b5e887350fb9ad13c02661cfeb",
+      "scope": {
+        "identity_id": "cd9512fc07b0011d427265e0d75b85381e46a08c1eac96774606d4dba2a8c953",
+        "source_id": "d3ca00e498639dc266f34dafb60f2f24dbba5e66ee0deeda0d9c4c0e5b7f7313",
+        "data_id": "f46410d913d1dc7bf798a473cc7e37c7567d40a0e5ac2a83b42901f64089bb67",
+        "split_id": "eb1abf500bf77e10b5761586554240188e94c588ac915bd377864bdb89aff236",
+        "profile": "paired-price-loss-control-v1"
+      },
+      "scope_id": "50a19300ddcf4950bf821d3cfbd8476bca095853d46848f8434d89792b13b8af",
+      "profile": "paired-price-loss-control-v1",
+      "horizon": 1,
+      "recipes": [
+        {
+          "family": "xgboost",
+          "horizon": 1,
+          "task": "price",
+          "params": {
+            "max_depth": 8,
+            "eta": 0.016406280707971357,
+            "min_child_weight": 1.4313081449731246,
+            "alpha": 1.4785914585898694,
+            "lambda": 0.010373906271792813,
+            "subsample": 0.6213419652080218,
+            "colsample_bytree": 0.7325998884182489
+          },
+          "seed": 42,
+          "target": "price_delta",
+          "loss": "reg:absoluteerror",
+          "window": 1,
+          "features": [
+            "cotton_ret_1",
+            "cotton_ret_5",
+            "cotton_ret_10",
+            "cotton_ret_20",
+            "cotton_momentum_5",
+            "cotton_momentum_20",
+            "cotton_sma_ratio_5_20",
+            "cotton_sma_ratio_20_50",
+            "cotton_volatility_5",
+            "cotton_volatility_20",
+            "cotton_range",
+            "cotton_volume_change",
+            "cotton_volume_z20",
+            "cotton_volatility_regime_20_60",
+            "dxy_ret_1",
+            "dxy_ret_5",
+            "dxy_ret_20",
+            "wti_ret_1",
+            "wti_ret_5",
+            "wti_ret_20",
+            "cotton_dxy_corr_60",
+            "cotton_wti_corr_60",
+            "month_sin",
+            "month_cos"
+          ],
+          "years": null,
+          "cadence": 126,
+          "hypothesis": "fixed price-delta loss contrast; no new selection",
+          "device": "cpu"
+        }
+      ],
+      "model_families": [
+        "xgboost"
+      ],
+      "kind": "market_fit_receipt",
+      "completed_fits": 2,
+      "sample_receipts": [
+        {
+          "path": "experiment/ledger/completed/a1248a607daefe7a68f2682ce755a2825047c7e31f25134bf52cc181cb850dda.json",
+          "record_id": "3eab92ec66a4e38c07d989b41ef683c0422205841e571e13210be879cedea59e",
+          "experiment_id": "a1248a607daefe7a68f2682ce755a2825047c7e31f25134bf52cc181cb850dda"
+        },
+        {
+          "path": "experiment/ledger/completed/c7aa78b6610f356e33ccf0bca698d1cbdb1268ecbfac476120cd290ace610497.json",
+          "record_id": "dea91dd28a0d177e8daedb2148aca69a1381805f0ecb93929dd083e83ddfaac3",
+          "experiment_id": "c7aa78b6610f356e33ccf0bca698d1cbdb1268ecbfac476120cd290ace610497"
+        }
+      ],
+      "roles": [
+        "paired"
+      ],
+      "coverage": "completed fit receipts; not experiment completion",
+      "payload_hashes_revalidated_by_index": false,
+      "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/paired-price-loss-result-20261010",
+      "payload_hashes_revalidated_separately": true
+    },
+    {
+      "id": "eb9c92650e73e2f7e03a0826c7e986fe5b6f5424d6d9bc117fbc16bfe4b05526",
+      "scope": {
+        "identity_id": "cd9512fc07b0011d427265e0d75b85381e46a08c1eac96774606d4dba2a8c953",
+        "source_id": "d3ca00e498639dc266f34dafb60f2f24dbba5e66ee0deeda0d9c4c0e5b7f7313",
+        "data_id": "f46410d913d1dc7bf798a473cc7e37c7567d40a0e5ac2a83b42901f64089bb67",
+        "split_id": "eb1abf500bf77e10b5761586554240188e94c588ac915bd377864bdb89aff236",
+        "profile": "paired-price-loss-control-v1"
+      },
+      "scope_id": "50a19300ddcf4950bf821d3cfbd8476bca095853d46848f8434d89792b13b8af",
+      "profile": "paired-price-loss-control-v1",
+      "horizon": 1,
+      "recipes": [
+        {
+          "family": "xgboost",
+          "horizon": 1,
+          "task": "price",
+          "params": {
+            "max_depth": 1,
+            "eta": 0.1071642092467754,
+            "min_child_weight": 28.473107497222667,
+            "alpha": 5.952400639752211,
+            "lambda": 33.39034462012904,
+            "subsample": 0.9058048416468771,
+            "colsample_bytree": 0.688076624429072
+          },
+          "seed": 101,
+          "target": "price_delta",
+          "loss": "reg:squarederror",
+          "window": 1,
+          "features": [
+            "cotton_ret_1",
+            "cotton_ret_5",
+            "cotton_ret_10",
+            "cotton_ret_20",
+            "cotton_momentum_5",
+            "cotton_momentum_20",
+            "cotton_sma_ratio_5_20",
+            "cotton_sma_ratio_20_50",
+            "cotton_volatility_5",
+            "cotton_volatility_20",
+            "cotton_range",
+            "cotton_volume_change",
+            "cotton_volume_z20",
+            "cotton_volatility_regime_20_60",
+            "dxy_ret_1",
+            "dxy_ret_5",
+            "dxy_ret_20",
+            "wti_ret_1",
+            "wti_ret_5",
+            "wti_ret_20",
+            "cotton_dxy_corr_60",
+            "cotton_wti_corr_60",
+            "month_sin",
+            "month_cos"
+          ],
+          "years": null,
+          "cadence": 126,
+          "hypothesis": "fixed price-delta loss contrast; no new selection",
+          "device": "cpu"
+        }
+      ],
+      "model_families": [
+        "xgboost"
+      ],
+      "kind": "market_fit_receipt",
+      "completed_fits": 1,
+      "sample_receipts": [
+        {
+          "path": "experiment/ledger/completed/20f520cdf1b8fd77be4e8c9a48a0fe48a5b71f5d707228185500b82b43027427.json",
+          "record_id": "05423a6dc9a0860548624a733f18edd7557d20076ef0eb29bc1a1670b2e033e8",
+          "experiment_id": "20f520cdf1b8fd77be4e8c9a48a0fe48a5b71f5d707228185500b82b43027427"
+        }
+      ],
+      "roles": [
+        "paired"
+      ],
+      "coverage": "completed fit receipts; not experiment completion",
+      "payload_hashes_revalidated_by_index": false,
+      "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/paired-price-loss-result-20261010",
+      "payload_hashes_revalidated_separately": true
+    },
+    {
+      "id": "efe25500301dd4c1bc400dcc624821e72e781e050aed733e6e5579b0a4c01f22",
+      "scope": {
+        "identity_id": "cd9512fc07b0011d427265e0d75b85381e46a08c1eac96774606d4dba2a8c953",
+        "source_id": "d3ca00e498639dc266f34dafb60f2f24dbba5e66ee0deeda0d9c4c0e5b7f7313",
+        "data_id": "f46410d913d1dc7bf798a473cc7e37c7567d40a0e5ac2a83b42901f64089bb67",
+        "split_id": "eb1abf500bf77e10b5761586554240188e94c588ac915bd377864bdb89aff236",
+        "profile": "paired-price-loss-control-v1"
+      },
+      "scope_id": "50a19300ddcf4950bf821d3cfbd8476bca095853d46848f8434d89792b13b8af",
+      "profile": "paired-price-loss-control-v1",
+      "horizon": 1,
+      "recipes": [
+        {
+          "family": "xgboost",
+          "horizon": 1,
+          "task": "price",
+          "params": {
+            "max_depth": 1,
+            "eta": 0.1071642092467754,
+            "min_child_weight": 28.473107497222667,
+            "alpha": 5.952400639752211,
+            "lambda": 33.39034462012904,
+            "subsample": 0.9058048416468771,
+            "colsample_bytree": 0.688076624429072
+          },
+          "seed": 42,
+          "target": "price_delta",
+          "loss": "reg:absoluteerror",
+          "window": 1,
+          "features": [
+            "cotton_ret_1",
+            "cotton_ret_5",
+            "cotton_ret_10",
+            "cotton_ret_20",
+            "cotton_momentum_5",
+            "cotton_momentum_20",
+            "cotton_sma_ratio_5_20",
+            "cotton_sma_ratio_20_50",
+            "cotton_volatility_5",
+            "cotton_volatility_20",
+            "cotton_range",
+            "cotton_volume_change",
+            "cotton_volume_z20",
+            "cotton_volatility_regime_20_60",
+            "dxy_ret_1",
+            "dxy_ret_5",
+            "dxy_ret_20",
+            "wti_ret_1",
+            "wti_ret_5",
+            "wti_ret_20",
+            "cotton_dxy_corr_60",
+            "cotton_wti_corr_60",
+            "month_sin",
+            "month_cos"
+          ],
+          "years": null,
+          "cadence": 126,
+          "hypothesis": "fixed price-delta loss contrast; no new selection",
+          "device": "cpu"
+        }
+      ],
+      "model_families": [
+        "xgboost"
+      ],
+      "kind": "market_fit_receipt",
+      "completed_fits": 1,
+      "sample_receipts": [
+        {
+          "path": "experiment/ledger/completed/a01dac892861547dc14f7ce76c6bbfe12d2adde9e2ed0a5336cd138e74839d3e.json",
+          "record_id": "8d3e1e0f7a022caef768bb3d01ac720a30fe9e12ffd09b84150f9afbd80cbd80",
+          "experiment_id": "a01dac892861547dc14f7ce76c6bbfe12d2adde9e2ed0a5336cd138e74839d3e"
+        }
+      ],
+      "roles": [
+        "paired"
+      ],
+      "coverage": "completed fit receipts; not experiment completion",
+      "payload_hashes_revalidated_by_index": false,
+      "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/paired-price-loss-result-20261010",
+      "payload_hashes_revalidated_separately": true
+    },
+    {
+      "id": "f06be5c040e31545a51c0773a7b417e8974f44933acdf6cbecb16f524391dddc",
+      "scope": {
+        "identity_id": "cd9512fc07b0011d427265e0d75b85381e46a08c1eac96774606d4dba2a8c953",
+        "source_id": "d3ca00e498639dc266f34dafb60f2f24dbba5e66ee0deeda0d9c4c0e5b7f7313",
+        "data_id": "f46410d913d1dc7bf798a473cc7e37c7567d40a0e5ac2a83b42901f64089bb67",
+        "split_id": "eb1abf500bf77e10b5761586554240188e94c588ac915bd377864bdb89aff236",
+        "profile": "paired-price-loss-control-v1"
+      },
+      "scope_id": "50a19300ddcf4950bf821d3cfbd8476bca095853d46848f8434d89792b13b8af",
+      "profile": "paired-price-loss-control-v1",
+      "horizon": 1,
+      "recipes": [
+        {
+          "family": "xgboost",
+          "horizon": 1,
+          "task": "price",
+          "params": {
+            "max_depth": 8,
+            "eta": 0.03351686226463305,
+            "min_child_weight": 19.18536727034489,
+            "alpha": 2.604553603014409e-06,
+            "lambda": 0.006738786749480815,
+            "subsample": 0.8483603138892994,
+            "colsample_bytree": 0.8610737197795277
+          },
+          "seed": 101,
+          "target": "price_delta",
+          "loss": "reg:squarederror",
+          "window": 1,
+          "features": [
+            "cotton_ret_1",
+            "cotton_ret_5",
+            "cotton_ret_10",
+            "cotton_ret_20",
+            "cotton_momentum_5",
+            "cotton_momentum_20",
+            "cotton_sma_ratio_5_20",
+            "cotton_sma_ratio_20_50",
+            "cotton_volatility_5",
+            "cotton_volatility_20",
+            "cotton_range",
+            "cotton_volume_change",
+            "cotton_volume_z20",
+            "cotton_volatility_regime_20_60",
+            "dxy_ret_1",
+            "dxy_ret_5",
+            "dxy_ret_20",
+            "wti_ret_1",
+            "wti_ret_5",
+            "wti_ret_20",
+            "cotton_dxy_corr_60",
+            "cotton_wti_corr_60",
+            "month_sin",
+            "month_cos"
+          ],
+          "years": null,
+          "cadence": 126,
+          "hypothesis": "fixed price-delta loss contrast; no new selection",
+          "device": "cpu"
+        }
+      ],
+      "model_families": [
+        "xgboost"
+      ],
+      "kind": "market_fit_receipt",
+      "completed_fits": 1,
+      "sample_receipts": [
+        {
+          "path": "experiment/ledger/completed/7fa1e538fb876912920ea83bcce9eeb178cc8017aa3e70ff68be9be2c143cf8f.json",
+          "record_id": "4d913ed7d9d16c5de80e63b3f82c8606698d81eda4422f765ba6862d108da089",
+          "experiment_id": "7fa1e538fb876912920ea83bcce9eeb178cc8017aa3e70ff68be9be2c143cf8f"
+        }
+      ],
+      "roles": [
+        "paired"
+      ],
+      "coverage": "completed fit receipts; not experiment completion",
+      "payload_hashes_revalidated_by_index": false,
+      "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/paired-price-loss-result-20261010",
+      "payload_hashes_revalidated_separately": true
+    },
+    {
+      "id": "f4696ed701e7bcddf62490239e6e5cf4caf80c4ceebb69150eaf843d49106cd7",
+      "scope": {
+        "identity_id": "cd9512fc07b0011d427265e0d75b85381e46a08c1eac96774606d4dba2a8c953",
+        "source_id": "d3ca00e498639dc266f34dafb60f2f24dbba5e66ee0deeda0d9c4c0e5b7f7313",
+        "data_id": "f46410d913d1dc7bf798a473cc7e37c7567d40a0e5ac2a83b42901f64089bb67",
+        "split_id": "eb1abf500bf77e10b5761586554240188e94c588ac915bd377864bdb89aff236",
+        "profile": "paired-price-loss-control-v1"
+      },
+      "scope_id": "50a19300ddcf4950bf821d3cfbd8476bca095853d46848f8434d89792b13b8af",
+      "profile": "paired-price-loss-control-v1",
+      "horizon": 1,
+      "recipes": [
+        {
+          "family": "xgboost",
+          "horizon": 1,
+          "task": "price",
+          "params": {
+            "max_depth": 5,
+            "eta": 0.10721274316936504,
+            "min_child_weight": 23.844747440471615,
+            "alpha": 0.006891582069263771,
+            "lambda": 25.125740387070362,
+            "subsample": 0.9809339511388435,
+            "colsample_bytree": 0.9501216589766498
+          },
+          "seed": 17,
+          "target": "price_delta",
+          "loss": "reg:absoluteerror",
+          "window": 1,
+          "features": [
+            "cotton_ret_1",
+            "cotton_ret_5",
+            "cotton_ret_10",
+            "cotton_ret_20",
+            "cotton_momentum_5",
+            "cotton_momentum_20",
+            "cotton_sma_ratio_5_20",
+            "cotton_sma_ratio_20_50",
+            "cotton_volatility_5",
+            "cotton_volatility_20",
+            "cotton_range",
+            "cotton_volume_change",
+            "cotton_volume_z20",
+            "cotton_volatility_regime_20_60",
+            "dxy_ret_1",
+            "dxy_ret_5",
+            "dxy_ret_20",
+            "wti_ret_1",
+            "wti_ret_5",
+            "wti_ret_20",
+            "cotton_dxy_corr_60",
+            "cotton_wti_corr_60",
+            "month_sin",
+            "month_cos"
+          ],
+          "years": null,
+          "cadence": 126,
+          "hypothesis": "fixed price-delta loss contrast; no new selection",
+          "device": "cpu"
+        }
+      ],
+      "model_families": [
+        "xgboost"
+      ],
+      "kind": "market_fit_receipt",
+      "completed_fits": 1,
+      "sample_receipts": [
+        {
+          "path": "experiment/ledger/completed/4746e6177dcbfdb76c956000ea970c5d86f22dd849521cb54a528bc3e8df6412.json",
+          "record_id": "52724ad3009c07dd87f0b3bbec93d826ade473adba91e241e597ae8a89b8c8e5",
+          "experiment_id": "4746e6177dcbfdb76c956000ea970c5d86f22dd849521cb54a528bc3e8df6412"
+        }
+      ],
+      "roles": [
+        "paired"
+      ],
+      "coverage": "completed fit receipts; not experiment completion",
+      "payload_hashes_revalidated_by_index": false,
+      "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/paired-price-loss-result-20261010",
+      "payload_hashes_revalidated_separately": true
+    },
+    {
+      "id": "fbd949271ff0955014812437f152de2bd092f4bee4625fca2773c7f361c29bf4",
+      "scope": {
+        "identity_id": "fa52450ca807abcbdd4a5d5866518b1f9d13503e0923714d2a7c2a3e9fd96299",
+        "source_id": "d3ca00e498639dc266f34dafb60f2f24dbba5e66ee0deeda0d9c4c0e5b7f7313",
+        "data_id": "f46410d913d1dc7bf798a473cc7e37c7567d40a0e5ac2a83b42901f64089bb67",
+        "split_id": "eb1abf500bf77e10b5761586554240188e94c588ac915bd377864bdb89aff236",
+        "profile": "paired-price-loss-control-v1"
+      },
+      "scope_id": "d073301009388b73adb93fabaaf95c876efdf7d9308bd7d6dcac56d759ac52d6",
+      "profile": "paired-price-loss-control-v1",
+      "horizon": 1,
+      "recipes": [
+        {
+          "family": "xgboost",
+          "horizon": 1,
+          "task": "price",
+          "device": "cpu",
+          "features": [
+            "cotton_ret_1",
+            "cotton_ret_5",
+            "cotton_ret_10",
+            "cotton_ret_20",
+            "cotton_momentum_5",
+            "cotton_momentum_20",
+            "cotton_sma_ratio_5_20",
+            "cotton_sma_ratio_20_50",
+            "cotton_volatility_5",
+            "cotton_volatility_20",
+            "cotton_range",
+            "cotton_volume_change",
+            "cotton_volume_z20",
+            "cotton_volatility_regime_20_60",
+            "dxy_ret_1",
+            "dxy_ret_5",
+            "dxy_ret_20",
+            "wti_ret_1",
+            "wti_ret_5",
+            "wti_ret_20",
+            "cotton_dxy_corr_60",
+            "cotton_wti_corr_60",
+            "month_sin",
+            "month_cos"
+          ],
+          "seed": 42,
+          "window": 1,
+          "target": "price_delta",
+          "loss": "reg:absoluteerror",
+          "params": {
+            "max_depth": 8,
+            "eta": 0.15,
+            "min_child_weight": 1,
+            "alpha": 0,
+            "lambda": 0.01
+          }
+        }
+      ],
+      "model_families": [
+        "xgboost"
+      ],
+      "kind": "synthetic_control:small_subset_overfit",
+      "completed_fits": 1,
+      "sample_receipts": [
+        {
+          "path": "experiment/learning-control-ledger/completed/74adb8ede4970a4ca2267790b471bbe7214975cdcf0080f593a6e4b4f6380aaf.json",
+          "record_id": "f369e7f300f6a99e1183a8560802490c82c303615939d01e837082a1aa651da9",
+          "experiment_id": "74adb8ede4970a4ca2267790b471bbe7214975cdcf0080f593a6e4b4f6380aaf"
+        }
+      ],
+      "roles": [
+        "synthetic_control_not_market_evidence"
+      ],
+      "coverage": "completed fit receipts; not experiment completion",
+      "payload_hashes_revalidated_by_index": false,
+      "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/paired-price-loss-result-20261010",
+      "payload_hashes_revalidated_separately": true
     }
   ],
   "rejected_receipts": [],

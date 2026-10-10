@@ -58,6 +58,13 @@ bu bir piyasa negatifi değildir. [Kanıt ve çevrimdışı replay](../docs/NASS
 revizyon ayrı korunur; tam sezon ve tarihsel erişim kabulü yoktur.
 [Kanıt, komut ve devam sınırı](../docs/NASS_REGIONAL_AUDIT_20261009.md).
 
+`paired-price-loss-control-v1` tamamlandı: 48 piyasa + ayrı 6 sentetik fit,
+1.008 T+1 origin; 54 native çıkarım/6 aralık/exact rapor replay'i doğrulandı.
+MAE–MSE katkısı %1,458; MAE–Naive −%0,4883, yön %48,41, dönem 3/8.
+Birincil loss katkısı pozitif; pratik Naive hedefi negatif. Ön kayıt korunur,
+tamamlanmış makbuzlar ayrı market/synthetic türleriyle ek indekslenir.
+[Sonuç ve arşiv doğrulama komutu](../docs/PAIRED_PRICE_LOSS_RESULT_20261010.md).
+
 `forward-window-audit-v1`: **sıfır-fit, salt okunur gece denetimi**;
 00:05/00:20 UTC makbuzları yok, yayın 0; OS uyku aralığı pencereyi kapsıyor.
 Daha sonraki 07:05 görev isteği `0x800710E0`; kesin ret nedeni belirsiz.

@@ -1,6 +1,19 @@
 # Güncel kararlar — 10 Ekim 2026
 
-**Sonraki tek bilimsel iş:** [10 Ekim karar ekine](RESEARCH_PRIORITY_ADDENDUM_20261010.md)
+**Yeni sonuç doğrulandı:** [sabit price_delta loss karşılaştırması](PAIRED_PRICE_LOSS_RESULT_20261010.md).
+48 piyasa + ayrı 6 sentetik fit, 1.008 ortak T+1 origin. MAE–MSE katkısı
+%1,458009; blok20/60 alt sınırları +%0,636274/+%0,991865. Birincil katkı
+pozitif, fakat MAE Naive kazancı −%0,488298, yön %48,4127, dönem 3/8;
+pratik hedef karşılanmadı. 54 kayıtlı çıkarım, altı aralık ve rapor/CSV birebir
+replay doğrulandı; GitHub'dan yeni indirilen 579 üyeli sonuç arşivinde aynı
+54 çıkarım/altı aralık/exact replay tekrar geçti. [Teslimat makbuzu](../research/evidence/paired-price-loss-delivery-20261010.json).
+Naive korunur;
+bu sabit tarif genel MAE/grid veya yeni model aramasına dönüştürülmez.
+Sonraki bilimsel karar, teslimattan sonra en fazla 2–3 bilgi sorusunun mevcut
+sicil/kaynaklarla sıfır-fit kabul elemesi; yeni fit/veri kabul izni yoktur.
+
+**Karar eki aşamasındaki önceki iş sırası; yukarıdaki sonuç durumu günceldir:**
+[10 Ekim karar ekine](RESEARCH_PRIORITY_ADDENDUM_20261010.md)
 göre PR #27'nin mevcut kayıtlı deneyini **sıfır yeni fit ile sonuçlandırmak**.
 48 piyasa + ayrı 6 sentetik fit yerelde tamamlandı; bu incelemede 54 kaydedilmiş
 model çıkarımı, training-only dönüşümler/H5 olgunlaşması ve ortak-origin

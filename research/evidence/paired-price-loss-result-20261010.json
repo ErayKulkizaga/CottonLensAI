@@ -1,0 +1,499 @@
+{
+  "schema": 1,
+  "profile": "paired-price-loss-control-v1",
+  "status": "completed_paired_loss_experiment",
+  "source_commit": "c1a962b714fecca83a21e52667f573a8b8221236",
+  "source_id": "d3ca00e498639dc266f34dafb60f2f24dbba5e66ee0deeda0d9c4c0e5b7f7313",
+  "identity_id": "cd9512fc07b0011d427265e0d75b85381e46a08c1eac96774606d4dba2a8c953",
+  "ready_sha256": "d9318a00c6ce67d492c8c477822e4ffd8cb54675cbc14cf05266095b6bd11784",
+  "preregistered_sha256": "aff0c4cad95dd68f3d81a8d7b06ff03b9420ab82804af7ae5d07cb3262be5d91",
+  "report_sha256": "428645ef31940c3ac0ddc98cfa7e001f3122981243e80ef6ca897fce5850fe9e",
+  "predictions_sha256": "ffdc9c90f2a3da70ee1a110d9b123bfa3d763de392e463c7b80e7c890ad4aafe",
+  "seed_predictions_sha256": "96e6b511dc70ffd2e890f09e1212e3715cb0b7945924d7655e2f8c0c8b1998b7",
+  "release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/paired-price-loss-result-20261010",
+  "market_fits": 48,
+  "synthetic_fits": 6,
+  "verification_new_fits": 0,
+  "market_tree_budget": 2688,
+  "origin_count": 1008,
+  "ensemble_rows": 2016,
+  "seed_rows": 6048,
+  "horizon": 1,
+  "decision": "LIMITED_LOSS_CONTRIBUTION_PRACTICAL_GOAL_UNMET",
+  "classification": "DECISIVE_POSITIVE",
+  "classification_scope": "Positive absolute-vs-squared loss contribution in fixed existing price_delta recipes; not Naive superiority.",
+  "practical_goal_classification": "DECISIVE_NEGATIVE",
+  "practical_goal_scope": "5% Naive MAE improvement,53% direction,6/8 half-year periods for these two fixed recipes.",
+  "metrics": {
+    "squared": {
+      "price_mae": 1.0128110680195241,
+      "naive_mae": 0.9931944438389368,
+      "naive_gain_pct": -1.9751040999347769,
+      "direction_pct": 46.92460317460318,
+      "active_rate_pct": 100.0,
+      "periods": [
+        {
+          "year": 2016,
+          "price_mae": 0.7317427532881436,
+          "naive_mae": 0.73063471960643,
+          "naive_gain_pct": -0.15165357626454323,
+          "direction_pct": 50.0,
+          "active_rate_pct": 100.0
+        },
+        {
+          "year": 2017,
+          "price_mae": 0.7431024713943728,
+          "naive_mae": 0.6984922620985239,
+          "naive_gain_pct": -6.386643305370865,
+          "direction_pct": 43.65079365079365,
+          "active_rate_pct": 100.0
+        },
+        {
+          "year": 2018,
+          "price_mae": 0.8293382509771737,
+          "naive_mae": 0.8180954948304189,
+          "naive_gain_pct": -1.3742596332333212,
+          "direction_pct": 40.476190476190474,
+          "active_rate_pct": 100.0
+        },
+        {
+          "year": 2019,
+          "price_mae": 0.63409103799823,
+          "naive_mae": 0.6325395977686322,
+          "naive_gain_pct": -0.2452716375497488,
+          "direction_pct": 44.44444444444444,
+          "active_rate_pct": 100.0
+        },
+        {
+          "year": 2020,
+          "price_mae": 0.6499245547003423,
+          "naive_mae": 0.6425399780273439,
+          "naive_gain_pct": -1.1492789438051432,
+          "direction_pct": 51.587301587301596,
+          "active_rate_pct": 100.0
+        },
+        {
+          "year": 2021,
+          "price_mae": 1.3943308820073301,
+          "naive_mae": 1.3908727736700148,
+          "naive_gain_pct": -0.2486286598443188,
+          "direction_pct": 50.0,
+          "active_rate_pct": 100.0
+        },
+        {
+          "year": 2022,
+          "price_mae": 2.162600659881509,
+          "naive_mae": 2.072698260110522,
+          "naive_gain_pct": -4.337457192934258,
+          "direction_pct": 46.03174603174603,
+          "active_rate_pct": 100.0
+        },
+        {
+          "year": 2023,
+          "price_mae": 0.9573579339090914,
+          "naive_mae": 0.9596824645996095,
+          "naive_gain_pct": 0.24221873132671545,
+          "direction_pct": 49.2063492063492,
+          "active_rate_pct": 100.0
+        }
+      ],
+      "period_wins": 1,
+      "versus_naive": {
+        "20": {
+          "count": 1008,
+          "block_length": 20,
+          "replicates": 10000,
+          "paired_difference": -0.019616624180587183,
+          "difference_ci_95": [
+            -0.02910516708115419,
+            -0.009738371943669017
+          ],
+          "difference_ci_method": "fold-preserving moving-block, recentered basic interval",
+          "column_mean_ci_95": [
+            [
+              0.9169834088711512,
+              0.9332862014864786
+            ],
+            [
+              1.0487416479322644,
+              1.0625582266919014
+            ]
+          ],
+          "standard_error": 0.004951565437773878,
+          "centered_bootstrap_p_two_sided": 9.999000099990002e-05,
+          "normal_approx_mde_80pct_relative": 0.013959384601647246,
+          "power_at_relative_effect": {
+            "0.005": 0.1708,
+            "0.01": 0.5256,
+            "0.02": 0.9776,
+            "0.05": 1.0
+          },
+          "power_identifiable": true,
+          "power_limitation": null,
+          "power_assumptions": "post-hoc paired noise held fixed under additive alternatives; selection not adjusted",
+          "gate_changed": false,
+          "gain_ci_pct": [
+            -2.9304601190332558,
+            -0.9805101109937601
+          ]
+        },
+        "60": {
+          "count": 1008,
+          "block_length": 60,
+          "replicates": 10000,
+          "paired_difference": -0.019616624180587183,
+          "difference_ci_95": [
+            -0.02594807968765235,
+            -0.013095831328116257
+          ],
+          "difference_ci_method": "fold-preserving moving-block, recentered basic interval",
+          "column_mean_ci_95": [
+            [
+              0.9385861120526753,
+              0.9550108290202939
+            ],
+            [
+              1.0485247534418862,
+              1.060948518429771
+            ]
+          ],
+          "standard_error": 0.003355268927750128,
+          "centered_bootstrap_p_two_sided": 9.999000099990002e-05,
+          "normal_approx_mde_80pct_relative": 0.009459127621966313,
+          "power_at_relative_effect": {
+            "0.005": 0.3388,
+            "0.01": 0.8435,
+            "0.02": 0.9999,
+            "0.05": 1.0
+          },
+          "power_identifiable": true,
+          "power_limitation": null,
+          "power_assumptions": "post-hoc paired noise held fixed under additive alternatives; selection not adjusted",
+          "gate_changed": false,
+          "gain_ci_pct": [
+            -2.6125880836945425,
+            -1.3185566441046226
+          ]
+        }
+      },
+      "without_top_1pct_naive_errors": {
+        "price_mae": 0.9647352607012547,
+        "naive_mae": 0.9455065177221117,
+        "naive_gain_pct": -2.0336975598506113,
+        "direction_pct": 47.141424272818455,
+        "active_rate_pct": 100.0
+      }
+    },
+    "absolute": {
+      "price_mae": 0.9980441906267403,
+      "naive_mae": 0.9931944438389368,
+      "naive_gain_pct": -0.48829781699724073,
+      "direction_pct": 48.41269841269841,
+      "active_rate_pct": 100.0,
+      "periods": [
+        {
+          "year": 2016,
+          "price_mae": 0.7275508795693167,
+          "naive_mae": 0.73063471960643,
+          "naive_gain_pct": 0.4220768537764541,
+          "direction_pct": 54.761904761904766,
+          "active_rate_pct": 100.0
+        },
+        {
+          "year": 2017,
+          "price_mae": 0.7149876426580615,
+          "naive_mae": 0.6984922620985239,
+          "naive_gain_pct": -2.361569548384046,
+          "direction_pct": 46.82539682539682,
+          "active_rate_pct": 100.0
+        },
+        {
+          "year": 2018,
+          "price_mae": 0.8221260986879081,
+          "naive_mae": 0.8180954948304189,
+          "naive_gain_pct": -0.4926813413542508,
+          "direction_pct": 45.23809523809524,
+          "active_rate_pct": 100.0
+        },
+        {
+          "year": 2019,
+          "price_mae": 0.637865649581117,
+          "naive_mae": 0.6325395977686322,
+          "naive_gain_pct": -0.8420108134373105,
+          "direction_pct": 43.65079365079365,
+          "active_rate_pct": 100.0
+        },
+        {
+          "year": 2020,
+          "price_mae": 0.6414246009178877,
+          "naive_mae": 0.6425399780273439,
+          "naive_gain_pct": 0.17358874896477028,
+          "direction_pct": 55.55555555555556,
+          "active_rate_pct": 100.0
+        },
+        {
+          "year": 2021,
+          "price_mae": 1.3903687854382933,
+          "naive_mae": 1.3908727736700148,
+          "naive_gain_pct": 0.03623539415410493,
+          "direction_pct": 46.03174603174603,
+          "active_rate_pct": 100.0
+        },
+        {
+          "year": 2022,
+          "price_mae": 2.0887938757095803,
+          "naive_mae": 2.072698260110522,
+          "naive_gain_pct": -0.7765537275165268,
+          "direction_pct": 46.82539682539682,
+          "active_rate_pct": 100.0
+        },
+        {
+          "year": 2023,
+          "price_mae": 0.961235992451758,
+          "naive_mae": 0.9596824645996095,
+          "naive_gain_pct": -0.16187936212803677,
+          "direction_pct": 48.41269841269841,
+          "active_rate_pct": 100.0
+        }
+      ],
+      "period_wins": 3,
+      "versus_naive": {
+        "20": {
+          "count": 1008,
+          "block_length": 20,
+          "replicates": 10000,
+          "paired_difference": -0.004849746787803366,
+          "difference_ci_95": [
+            -0.009684297178221278,
+            -0.0001558353735386037
+          ],
+          "difference_ci_method": "fold-preserving moving-block, recentered basic interval",
+          "column_mean_ci_95": [
+            [
+              0.9169834088711512,
+              0.9213346327221882
+            ],
+            [
+              1.0487416479322644,
+              1.0518258966473395
+            ]
+          ],
+          "standard_error": 0.0024332151963189067,
+          "centered_bootstrap_p_two_sided": 0.045495450454954504,
+          "normal_approx_mde_80pct_relative": 0.006859686531631243,
+          "power_at_relative_effect": {
+            "0.005": 0.522,
+            "0.01": 0.9855,
+            "0.02": 1.0,
+            "0.05": 1.0
+          },
+          "power_identifiable": true,
+          "power_limitation": null,
+          "power_assumptions": "post-hoc paired noise held fixed under additive alternatives; selection not adjusted",
+          "gate_changed": false,
+          "gain_ci_pct": [
+            -0.975065581397045,
+            -0.015690318698951062
+          ]
+        },
+        "60": {
+          "count": 1008,
+          "block_length": 60,
+          "replicates": 10000,
+          "paired_difference": -0.004849746787803366,
+          "difference_ci_95": [
+            -0.008451853079309615,
+            -0.0012945615062708925
+          ],
+          "difference_ci_method": "fold-preserving moving-block, recentered basic interval",
+          "column_mean_ci_95": [
+            [
+              0.9385861120526753,
+              0.9445348037825971
+            ],
+            [
+              1.0485247534418862,
+              1.0510018157047956
+            ]
+          ],
+          "standard_error": 0.001860682868719642,
+          "centered_bootstrap_p_two_sided": 0.0064993500649935,
+          "normal_approx_mde_80pct_relative": 0.005245611334954137,
+          "power_at_relative_effect": {
+            "0.005": 0.7601,
+            "0.01": 0.9999,
+            "0.02": 1.0,
+            "0.05": 1.0
+          },
+          "power_identifiable": true,
+          "power_limitation": null,
+          "power_assumptions": "post-hoc paired noise held fixed under additive alternatives; selection not adjusted",
+          "gate_changed": false,
+          "gain_ci_pct": [
+            -0.8509766775014526,
+            -0.1303432086537958
+          ]
+        }
+      },
+      "without_top_1pct_naive_errors": {
+        "price_mae": 0.9499199520901813,
+        "naive_mae": 0.9455065177221117,
+        "naive_gain_pct": -0.4667798989585359,
+        "direction_pct": 48.74623871614844,
+        "active_rate_pct": 100.0
+      }
+    }
+  },
+  "absolute_vs_squared": {
+    "20": {
+      "count": 1008,
+      "block_length": 20,
+      "replicates": 10000,
+      "paired_difference": 0.014766877392783817,
+      "difference_ci_95": [
+        0.00644425394272807,
+        0.023365467343843982
+      ],
+      "difference_ci_method": "fold-preserving moving-block, recentered basic interval",
+      "column_mean_ci_95": [
+        [
+          0.9332862014864786,
+          0.9213346327221882
+        ],
+        [
+          1.0625582266919014,
+          1.0518258966473395
+        ]
+      ],
+      "standard_error": 0.004330813895547395,
+      "centered_bootstrap_p_two_sided": 0.0005999400059994001,
+      "normal_approx_mde_80pct_relative": 0.011972893356353946,
+      "power_at_relative_effect": {
+        "0.005": 0.2246,
+        "0.01": 0.6433,
+        "0.02": 0.9975,
+        "0.05": 1.0
+      },
+      "power_identifiable": true,
+      "power_limitation": null,
+      "power_assumptions": "post-hoc paired noise held fixed under additive alternatives; selection not adjusted",
+      "gate_changed": false,
+      "gain_ci_pct": [
+        0.6362740442133322,
+        2.3069917067092676
+      ]
+    },
+    "60": {
+      "count": 1008,
+      "block_length": 60,
+      "replicates": 10000,
+      "paired_difference": 0.014766877392783817,
+      "difference_ci_95": [
+        0.010045721851858421,
+        0.01964038359428048
+      ],
+      "difference_ci_method": "fold-preserving moving-block, recentered basic interval",
+      "column_mean_ci_95": [
+        [
+          0.9550108290202939,
+          0.9445348037825971
+        ],
+        [
+          1.060948518429771,
+          1.0510018157047956
+        ]
+      ],
+      "standard_error": 0.0025003105002849952,
+      "centered_bootstrap_p_two_sided": 9.999000099990002e-05,
+      "normal_approx_mde_80pct_relative": 0.006912315259831885,
+      "power_at_relative_effect": {
+        "0.005": 0.5407,
+        "0.01": 0.9846,
+        "0.02": 1.0,
+        "0.05": 1.0
+      },
+      "power_identifiable": true,
+      "power_limitation": null,
+      "power_assumptions": "post-hoc paired noise held fixed under additive alternatives; selection not adjusted",
+      "gate_changed": false,
+      "gain_ci_pct": [
+        0.9918653309646461,
+        1.939195197845317
+      ]
+    }
+  },
+  "loss_contribution_pct": 1.4580090857082895,
+  "independent_checks": {
+    "status": "verified_zero_fit_inference_statistics_and_exact_replay",
+    "source_id": "d3ca00e498639dc266f34dafb60f2f24dbba5e66ee0deeda0d9c4c0e5b7f7313",
+    "identity_id": "cd9512fc07b0011d427265e0d75b85381e46a08c1eac96774606d4dba2a8c953",
+    "models_replayed": {
+      "market": 48,
+      "synthetic": 6
+    },
+    "new_model_fits": 0,
+    "unique_origins": 1008,
+    "metrics": {
+      "squared": {
+        "price_mae": 1.0128110680195237,
+        "naive_mae": 0.9931944438389372,
+        "naive_gain_pct": -1.9751040999347103,
+        "direction_pct": 46.92460317460318
+      },
+      "absolute": {
+        "price_mae": 0.9980441906267405,
+        "naive_mae": 0.9931944438389372,
+        "naive_gain_pct": -0.48829781699724073,
+        "direction_pct": 48.41269841269841
+      }
+    },
+    "bootstrap_intervals": {
+      "squared_vs_naive": {
+        "20": [
+          -2.930460119033267,
+          -0.9805101109937713
+        ],
+        "60": [
+          -2.6125880836945536,
+          -1.3185566441046337
+        ]
+      },
+      "absolute_vs_naive": {
+        "20": [
+          -0.9750655813970562,
+          -0.015690318698962237
+        ],
+        "60": [
+          -0.8509766775014637,
+          -0.130343208653807
+        ]
+      },
+      "absolute_vs_squared": {
+        "20": [
+          0.6362740442133322,
+          2.3069917067092676
+        ],
+        "60": [
+          0.9918653309646461,
+          1.939195197845317
+        ]
+      }
+    },
+    "intervals_verified": 6,
+    "exact_report_and_csv_replay": true,
+    "protected_experiment_files": 830,
+    "experiment_files_changed": 0,
+    "decision": "LIMITED_LOSS_CONTRIBUTION_PRACTICAL_GOAL_UNMET",
+    "independent_holdout": false,
+    "historical_source_admitted": false
+  },
+  "old_registry_objects_preserved": 155,
+  "old_trial_objects_preserved": 460,
+  "old_proof_files_preserved": 58,
+  "market_skill_demonstrated": false,
+  "independent_holdout": false,
+  "historical_source_admitted": false,
+  "release_allowed": false,
+  "information_absence_identified": false,
+  "next": "Zero-fit information-hypothesis admission review; no repeated MAE/grid/calibration work or automatic fitting."
+}
