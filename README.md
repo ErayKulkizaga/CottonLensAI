@@ -1,5 +1,10 @@
 # CottonLensAI
 
+[Son sıfır-fit hedef denetimi](docs/CURVE_TARGET_INTEGRITY_20261010.md):
+T+5 kontrat geçişi74 origin/15 olay; sürekli-seri hedefi geçişte vade farkını
+da içeriyor. Ex-post %2,89 hata azalması tahmin başarısı değildir. Sonraki
+T+5 ön kaydı bu ayrımı koruyacak; eski veri/model/tahminler değişmedi.
+
 [Gerçek vade farkı T+1 sonucu](docs/CONTRACT_CURVE_RESULT_20261010.md) tamamlandı:
 252 piyasa +1 sentetik fit; 749 ortak origin/kol. Seçilmiş tahminler Naive'ye
 döndü; ham D0/D1 Naive kazancı −%2,7116/−%2,2827. 253 kayıtlı çıkarım ve

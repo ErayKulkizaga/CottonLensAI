@@ -1,0 +1,14 @@
+{
+  "schema": 1,
+  "release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/curve-target-integrity-20261010",
+  "archive": {
+    "name": "curve-target-integrity-20261010.zip",
+    "sha256": "31ab3e517a6acaf932b5de43cdfb4a421056dfc3cb19ec51d144fba701af1dee",
+    "bytes": 1967150
+  },
+  "members": 20,
+  "inventory_sha256": "a97fec19beb7fb6a766478103708511dc7e53a80739b2e29b1d4a454ab52ebde",
+  "new_fits": 0,
+  "source_id": "84d40007e33b75ecff9ca422958daab79d30d67f3adb59b7bb419bc873412d1a",
+  "scope": "Four frozen source inputs,1498 descriptive target rows,Decimal verifier,5 rejection controls. Future contract identity ex-post only; no market skill."
+}

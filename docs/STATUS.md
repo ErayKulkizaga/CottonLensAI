@@ -1,5 +1,14 @@
 # Güncel kararlar — 10 Ekim 2026
 
+**Son sıfır-fit kontrol:** [eğri/hedef ayrıştırması](CURVE_TARGET_INTEGRITY_20261010.md).
+Aynı749 origin;743 kaynak çifti/ufuk,6 bilinmeyen korunur. T+5'te74 origin
+15 basılı ilk-vade değişimine temas eder; geleceğin kontratını sonradan bilen
+cebirsel gap-only hata azalması %2,891947, **tahmin becerisi değil**.
+1.486 Decimal ayrıştırması/1.498 ufuk tarihi ve5 ret kontrolü doğrulandı.
+Roll ana başarısızlık nedeni olarak desteklenmiyor; küçük bir T+5 katkısında
+proxy mekanizması ayrıştırılmalı. Önceki planlar korunur. Tek sonraki iş bu
+sınırla T+5 ön kaydını dondurmak; yeni fit/grid/veri kabulü yok.
+
 **Gerçek eğri T+1 testi tamamlandı:** [kayıtlı sonuç](CONTRACT_CURVE_RESULT_20261010.md).
 252 piyasa +1 ayrı sentetik fit, 749 ortak origin/kol; 12/12 geçmiş ağırlık0,
 seçilmiş bütün kollar Naive. Ham numeric D0/D1 Naive kazancı −%2,711585/
