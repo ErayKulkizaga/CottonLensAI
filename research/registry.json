@@ -16590,6 +16590,27 @@
       "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/paired-price-loss-preregistration-20261010",
       "independent_holdout": false,
       "id": "a7447758481750ce936b13a290524ae7801993740942f0862f3a2a22950667f3"
+    },
+    {
+      "experiment": "forward-window-audit-20261010",
+      "profile": "forward-window-audit-v1",
+      "kind": "no_fit_read_only_operational_audit",
+      "horizon": null,
+      "code_id": "44f3d16f90af44d9ec0ecbc058055c89a2779e5b3e7ad2006eed19428c0ed965",
+      "data_id": "f3d66655114029183c8f0c4443331b451bdd6d0061866730cdafa8c919108e2c",
+      "classification": "INCONCLUSIVE",
+      "coverage": "6_missing_origins_0_publications_no_overnight_receipts",
+      "independent_holdout": false,
+      "market_fits": 0,
+      "model_families": [],
+      "recipes": [],
+      "metrics": {},
+      "prediction_payload_exists": false,
+      "reason": "Verified operational gap and later scheduler refusal; no predictive evidence or exact overnight trigger-failure attribution.",
+      "payloads": {
+        "research/evidence/forward-window-audit-20261010.json": "ba8ee925ef8bc8e243e2540702073c897528ca131a7a47af8f7ad5e10dadc5e5"
+      },
+      "id": "3ecf91688c36bde3067d7a07de82e73bb6e29c6935262358e133a896a514fc85"
     }
   ],
   "local_evidence": [
@@ -16824,6 +16845,10 @@
     {
       "path": "evidence/paired-price-loss-preregistration-release-20261010.json",
       "sha256": "f8ce32e056f6ba1a7d38e54692ac62bbe029d68e76115c4e45825c1936431df9"
+    },
+    {
+      "path": "evidence/forward-window-audit-20261010.json",
+      "sha256": "ba8ee925ef8bc8e243e2540702073c897528ca131a7a47af8f7ad5e10dadc5e5"
     }
   ]
 }

@@ -58,6 +58,12 @@ bu bir piyasa negatifi değildir. [Kanıt ve çevrimdışı replay](../docs/NASS
 revizyon ayrı korunur; tam sezon ve tarihsel erişim kabulü yoktur.
 [Kanıt, komut ve devam sınırı](../docs/NASS_REGIONAL_AUDIT_20261009.md).
 
+`forward-window-audit-v1`: **sıfır-fit, salt okunur gece denetimi**;
+00:05/00:20 UTC makbuzları yok, yayın 0; OS uyku aralığı pencereyi kapsıyor.
+Daha sonraki 07:05 görev isteği `0x800710E0`; kesin ret nedeni belirsiz.
+Altı missing/126-origin kilidi korunur; görev/otomasyon ayarları değişmez.
+[Yeni kanıt ve sınırlar](../docs/FORWARD_WINDOW_AUDIT_20261010.md).
+
 `forward-runtime-window-v1`: **sıfır-fit görev düzeltmesi ve gündüz gerçek
 çağrı doğrulaması**; ileri piyasa testi değildir. Kaynak kimliği sabit,
 yayın penceresi ağdan ayrıdır; altı missing kayıt korunur ve yeni yayın 0.
