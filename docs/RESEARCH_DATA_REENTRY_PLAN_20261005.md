@@ -2,6 +2,13 @@
 
 ## 10 Ekim karar eki
 
+**Aynı gün sonuç güncellemesi:** [kontrollü price_delta loss sonucu](PAIRED_PRICE_LOSS_RESULT_20261010.md)
+54 kayıtlı model çıkarımı, altı paired aralık ve rapor/CSV replay'i ile doğrulandı;
+yeni fit 0. MAE–MSE katkısı pozitif, Naive kapıları başarısız. Aşağıdaki karar
+ekinin sıradaki kapanış işi artık sonuç paketinin GitHub restore kontrolüdür;
+sonrasında yalnız sıfır-fit bilgi hipotezi kabul elemesi. Eski plan ve ön kayıt
+değiştirilmez; daha büyük MAE/grid başlatılmaz.
+
 [Yeni teknik inceleme ve karar eki](RESEARCH_PRIORITY_ADDENDUM_20261010.md)
 aşağıdaki tarihsel planı korur. PR #25 kalibrasyonu ve #26 eski loss kapsamı
 tamamlandı; tekrarlanmaz. **Sonraki tek bilimsel iş PR #27'nin mevcut 48 piyasa

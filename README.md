@@ -24,6 +24,12 @@ kuruldu: 1.008 T+1 origin'de −%0,6110 kazanç, 1/8 dönem. MAE denenmişti;
 loss/hedef/parametreler birlikte değiştiği için kontrollü loss etkisi ayrılmamıştı.
 İlk sıfır-fit kayıt ve r2 ön kaydı korunuyor.
 
+[Kontrollü fiyat-loss sonucu](docs/PAIRED_PRICE_LOSS_RESULT_20261010.md) doğrulandı:
+aynı 1.008 T+1 origin'de MAE, MSE hatasını %1,458 azaltıyor; MAE'nin Naive
+kazancı −%0,4883, yönü %48,41. Bu loss katkısıdır, başarılı model değildir.
+54 kayıtlı çıkarım, altı paired aralık ve rapor/CSV replay'i yeni fit olmadan
+geçti. Sonuç paketi ayrı Release'tedir; ön kayıt ve eski kanıtlar korunur.
+
 ## Nereden başlanır?
 
 1. [Güncel durum ve kararlar](docs/STATUS.md).

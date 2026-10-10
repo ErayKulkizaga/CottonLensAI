@@ -16611,6 +16611,40 @@
         "research/evidence/forward-window-audit-20261010.json": "ba8ee925ef8bc8e243e2540702073c897528ca131a7a47af8f7ad5e10dadc5e5"
       },
       "id": "3ecf91688c36bde3067d7a07de82e73bb6e29c6935262358e133a896a514fc85"
+    },
+    {
+      "experiment": "research-paired-price-loss-control-v1",
+      "profile": "paired-price-loss-control-v1",
+      "kind": "completed_paired_loss_market_experiment",
+      "horizon": 1,
+      "classification": "DECISIVE_POSITIVE",
+      "classification_scope": "Positive absolute-vs-squared loss contribution in fixed existing price_delta recipes; not Naive superiority.",
+      "practical_goal_classification": "DECISIVE_NEGATIVE",
+      "coverage": "2016_2023_1008_common_origins_8_half_year_periods_2016_ensemble_rows",
+      "code_id": "d3ca00e498639dc266f34dafb60f2f24dbba5e66ee0deeda0d9c4c0e5b7f7313",
+      "data_id": "f46410d913d1dc7bf798a473cc7e37c7567d40a0e5ac2a83b42901f64089bb67",
+      "market_fits": 48,
+      "synthetic_fits": 6,
+      "model_families": [
+        "xgboost"
+      ],
+      "recipes": [],
+      "metrics": {
+        "selected": {
+          "gain_pct": -0.48829781699724073,
+          "direction_pct": 48.41269841269841,
+          "period_wins": 3
+        },
+        "loss_contribution_pct": 1.4580090857082895
+      },
+      "evidence": "research/evidence/paired-price-loss-result-20261010.json",
+      "evidence_sha256": "8fab5b0bea5641c08a1d037939c66d9f9479b31027193e63de00200b9f8d3955",
+      "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/paired-price-loss-result-20261010",
+      "prediction_payload_exists": true,
+      "independent_holdout": false,
+      "information_absence_identified": false,
+      "market_skill_demonstrated": false,
+      "id": "f063fc8be71009af366dc3eb2af70ceb298214c9c7183324a8746fb0b371b2b0"
     }
   ],
   "local_evidence": [
@@ -16849,6 +16883,14 @@
     {
       "path": "evidence/forward-window-audit-20261010.json",
       "sha256": "ba8ee925ef8bc8e243e2540702073c897528ca131a7a47af8f7ad5e10dadc5e5"
+    },
+    {
+      "path": "evidence/paired-price-loss-result-20261010.json",
+      "sha256": "8fab5b0bea5641c08a1d037939c66d9f9479b31027193e63de00200b9f8d3955"
+    },
+    {
+      "path": "evidence/paired-price-loss-result-release-20261010.json",
+      "sha256": "8822bfad9e70bd7df5d494d208048383f05b1cb3ee91c1b658163a9bace1d401"
     }
   ]
 }
