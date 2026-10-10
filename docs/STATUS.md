@@ -1,5 +1,29 @@
 # Güncel kararlar — 10 Ekim 2026
 
+**Ortak T+5 eğitim-label kontrolü tamamlandı:** [sonuç](NAMED_LABEL_CONTROL_T5_20261010.md).
+44 piyasa+1 sentetik fit;246/242/4 origin-hedef-bilinmeyen korunur.
+Aynı train/28 özellik/Ridge ile CT ham Naive kazancı−%21,316950,
+named−%7,938310;label katkısı+%13,378639 Naive-MAE birimi. Blok20/60
+alt sınırları+%6,952223/+%8,685702. Birincil label etkisi bu geçmiş2023
+yılında pozitif;pratik hedef negatif. İki kolun geçmiş shrinkage'ı0,
+named ham yön%45,454545.44 native çıkarım,984 satır/972 fiyat,12 scalar
+aralık ve8 ret kontrolü doğrulandı;ek doğrulama fit'i0. Saat/vintage
+varsayımı,tek yıl ve6/8 sınırı sürer. Yeni model/grid yok;önce checksum
+Release ve taze GitHub replay teslimatı kapanır. Sonra aynı named hedefte
+nonlinear kontrol sicilde var mı salt okunur denetlenir;genel eski
+nonlinear deneyleri tekrarlanmaz.
+
+## Önceki ön kayıt — tarihsel karar korunur
+
+**Sonraki tek kontrol hazırlanıyor:** [ortak T+5 eğitim etiketi](NAMED_LABEL_CONTROL_T5_20261010.md).
+Yalnız geçmiş kaynak/etiket olgunluğuna göre 2023 destekleniyor; en erken
+train528,246 dış makbuz/242 hedef/4 açık eksik. Yeni geçmiş3×63 cohort,
+Cotton ordinalinde3/4/3 iç+12 dış refit:iki kol44 piyasa+en fazla1 sentetik.
+Mevcut Ridge/28 numericD0 özelliği sabit; yalnız CT–named train getirisi
+ayrılıyor. Ham fark birincil,geçmiş shrinkage ikincil. Saat/vintage varsayımlı,
+tek görülmüş yıl6/8 gate değildir. Kod/test/kimlik ve yayımlanmış ön kayıt
+kontrolleri bitmeden fit yok; şu anda yeni fit0. Eski kararlar aşağıda korunur.
+
 **Sabit tahminlerin aynı kontrata taşınması tamamlandı:** [sıfır-fit sonuç](ORIGIN_FIXED_FORECAST_TRANSPORT_20261010.md).
 Aynı749 makbuz/739 eşleşmiş fiyat/10 bilinmeyen korunur. Ham T+5 numeric
 D0 Naive kazancı−%8,664216;blok20/60 üst sınırları−%1,196524/−%0,875167,

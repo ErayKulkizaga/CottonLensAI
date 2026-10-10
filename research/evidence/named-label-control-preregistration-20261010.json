@@ -1,0 +1,61 @@
+{
+  "schema": 1,
+  "status": "frozen_matched_label_control_not_run",
+  "profile": "named-label-control-t5-v1",
+  "source_id": "cc7e6693a9662a1dc7a91d4ca322c129a6ff8583c4dc4010d376e7b41aa52b65",
+  "source_files": 254,
+  "ready_sha256": "1766d80dd46f2b2808d63cc8b97bbda6999571b5d2cd2e26db14ef59d545c811",
+  "decision_contract_sha256": "1f671918e0551dcda40b23a4413388a4c2dbb2876b7caa7115208449b585d9c2",
+  "design_id": "128d1e0bcc4e936b05bc58c17f2736d99a50f9b60c1af4002b4accec2f946b19",
+  "inputs_sha256": {
+    "history.parquet": "575c19cb25437a28ed6b1c1c3062eb48becead51571e3b57d76b7306e5e4f792",
+    "parent-ready.json": "c600c5b1984273f11e73cd49dba089c22cad59b54c69cda82e2a5ec7c5d1b5ad",
+    "labels.csv": "4dfcf6b19c811b9309f7ffc2ffa31e242d4467471b81efbe503dd6f677e336a1",
+    "quotes.json": "3cf19b853ce43978342427b915a22d5b11a7886e9db2018274e825bdecf1d91f",
+    "label-proof.json": "228ba10bc63c5e1afb2f24490b78bfacf63fed036bb7705407718b0b79d39e1a",
+    "label-report.json": "848f48c76432ff49f9fe54f3043e51c564d0b28bace348bd223e6ada9e81ae10",
+    "label-verification.json": "6464b66a29981af77d3c5effb6ab3cf2dd4870c982d244ea6f7951240a2a475d",
+    "label-delivery.json": "ddeb06251f1364d0c17a43e0a615498707947dcb82b970cc1ffc532b0117a5a0",
+    "label-complete.json": "b4d40ea16dbf5428891c4387d0568a4f7164f1a16ff2ad9eeff51c18661bcdb4"
+  },
+  "fit_budget": {
+    "market": 44,
+    "synthetic": 1,
+    "threads": 2,
+    "processes": 1,
+    "session_minutes": 30
+  },
+  "readiness": [
+    {
+      "year": 2021,
+      "supported": false,
+      "minimum_train_rows": 32
+    },
+    {
+      "year": 2022,
+      "supported": false,
+      "minimum_train_rows": 279
+    },
+    {
+      "year": 2023,
+      "supported": true,
+      "minimum_train_rows": 528
+    }
+  ],
+  "supported_years": [
+    2023
+  ],
+  "origins": 246,
+  "scoreable": 242,
+  "new_fits": 0,
+  "new_market_scores": 0,
+  "gate_evaluation_allowed": false,
+  "historical_availability_verified": false,
+  "first_vintage_verified": false,
+  "research_scope": "Previously reviewed2023 only,not independent holdout or8yeargate; no trading or release",
+  "independent_readiness_sha256": "be3519d66eda7562205825af1890a113843941b94765c4fee0aeda2861644ed5",
+  "initial_readiness_failure": "R1 unreset filtered CSV indexes misaligned history; preserved before any fits,regression-protected",
+  "protocol": "docs/NAMED_LABEL_CONTROL_T5_20261010.md",
+  "code_commit": "87210036405fa01a06602c1b9d8d3b7cf303a0fb",
+  "record_id": "a0d44e7968be2cc7586bcd08b573baa2669c0977249fcb8a6f6d27078c1dd191"
+}

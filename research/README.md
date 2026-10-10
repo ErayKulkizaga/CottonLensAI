@@ -1,5 +1,7 @@
 # Deney geçmişi ve tekrar kontrolü
 
+Güncel sonuç: [T+5 ortak eğitim etiketi kontrolü](../docs/NAMED_LABEL_CONTROL_T5_20261010.md);44+1 fit. Doğru kontrat etiketi ham hatayı azaltıyor; Naive hâlâ geçilmiyor. Birincil label etkisi yalnız geçmiş2023 için pozitif; üretim/bağımsız holdout başarısı değil.
+
 ## Sicil
 
 `origin-fixed-forecast-transport-v1-r2`: **sıfır-fit beta1 taşıma tamamlandı**.

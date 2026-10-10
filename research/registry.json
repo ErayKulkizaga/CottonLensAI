@@ -17498,6 +17498,148 @@
       "historical_source_admitted": false,
       "release_allowed": false,
       "id": "95ab6325588ffc106be36eec6f32e3d188ea03edc0c81c41b240514c9ff9a756"
+    },
+    {
+      "experiment": "named-label-control-preregistration-20261010",
+      "profile": "named-label-control-t5-v1",
+      "code_id": "cc7e6693a9662a1dc7a91d4ca322c129a6ff8583c4dc4010d376e7b41aa52b65",
+      "data_id": "aad637dbe0c0431a2d73357e42a572cb6642660f18523e5f9e2504cb29da1f4e",
+      "horizon": 5,
+      "model_families": [
+        "ridge"
+      ],
+      "recipes": [
+        {
+          "family": "ridge",
+          "horizon": 5,
+          "device": "cpu",
+          "seed": 42,
+          "task": "price",
+          "target": "scaled_log",
+          "loss": "reg:squarederror",
+          "params": {
+            "alpha": 1.0
+          },
+          "window": 1,
+          "cadence": 21,
+          "years": null,
+          "features": [
+            "cotton_ret_1",
+            "cotton_ret_5",
+            "cotton_ret_10",
+            "cotton_ret_20",
+            "cotton_momentum_5",
+            "cotton_momentum_20",
+            "cotton_sma_ratio_5_20",
+            "cotton_sma_ratio_20_50",
+            "cotton_volatility_5",
+            "cotton_volatility_20",
+            "cotton_range",
+            "cotton_volume_change",
+            "cotton_volume_z20",
+            "cotton_volatility_regime_20_60",
+            "dxy_ret_1",
+            "dxy_ret_5",
+            "dxy_ret_20",
+            "wti_ret_1",
+            "wti_ret_5",
+            "wti_ret_20",
+            "cotton_dxy_corr_60",
+            "cotton_wti_corr_60",
+            "month_sin",
+            "month_cos",
+            "curve_D0_age_sessions",
+            "curve_D0_unavailable",
+            "curve_D0_gap_months",
+            "numeric_D0_spread"
+          ]
+        }
+      ],
+      "classification": "INCONCLUSIVE",
+      "kind": "preregistration_not_completed_market_evidence",
+      "completed_fits": 0,
+      "coverage": "246 retained2023 receipts;242 named labels;500minimum train;changed past-only innercohort",
+      "evidence": "evidence/named-label-control-preregistration-20261010.json",
+      "metrics": null,
+      "limits": "Previously reviewed2023 only,not independent holdout or8yeargate; no trading or release",
+      "id": "2369e0a121f33970c1125489f9dde15b612ddb85117786c81c8cb51fc4c94a8f"
+    },
+    {
+      "experiment": "research-named-label-control-t5-v1",
+      "profile": "named-label-control-t5-v1",
+      "horizon": 5,
+      "kind": "completed_assumption_matched_training_label_control",
+      "classification": "DECISIVE_POSITIVE",
+      "classification_scope": "Paired historical2023 RAW label effect only; both20/60 lower bounds positive. NOT Naive superiority,independent holdout,8yeargate,PIT,allmodels or allinformation proof.",
+      "code_id": "cc7e6693a9662a1dc7a91d4ca322c129a6ff8583c4dc4010d376e7b41aa52b65",
+      "data_id": "aad637dbe0c0431a2d73357e42a572cb6642660f18523e5f9e2504cb29da1f4e",
+      "origin_count": 246,
+      "scored_origin_count": 242,
+      "model_families": [
+        "ridge"
+      ],
+      "recipes": [
+        {
+          "family": "ridge",
+          "horizon": 5,
+          "device": "cpu",
+          "seed": 42,
+          "task": "price",
+          "target": "scaled_log",
+          "loss": "reg:squarederror",
+          "params": {
+            "alpha": 1.0
+          },
+          "window": 1,
+          "cadence": 21,
+          "years": null,
+          "features": [
+            "cotton_ret_1",
+            "cotton_ret_5",
+            "cotton_ret_10",
+            "cotton_ret_20",
+            "cotton_momentum_5",
+            "cotton_momentum_20",
+            "cotton_sma_ratio_5_20",
+            "cotton_sma_ratio_20_50",
+            "cotton_volatility_5",
+            "cotton_volatility_20",
+            "cotton_range",
+            "cotton_volume_change",
+            "cotton_volume_z20",
+            "cotton_volatility_regime_20_60",
+            "dxy_ret_1",
+            "dxy_ret_5",
+            "dxy_ret_20",
+            "wti_ret_1",
+            "wti_ret_5",
+            "wti_ret_20",
+            "cotton_dxy_corr_60",
+            "cotton_wti_corr_60",
+            "month_sin",
+            "month_cos",
+            "curve_D0_age_sessions",
+            "curve_D0_unavailable",
+            "curve_D0_gap_months",
+            "numeric_D0_spread"
+          ]
+        }
+      ],
+      "prediction_payload_exists": true,
+      "metrics": {
+        "raw_ct_gain_pct": -21.316949850416304,
+        "raw_named_gain_pct": -7.93831043300516,
+        "raw_label_difference_pct_of_naive": 13.378639417411144,
+        "selected_gain_pct": 0.0,
+        "selected_active_pct": 0.0,
+        "decision": "FIXED_LABEL_CONTROL_BELOW_PRACTICAL_GOAL"
+      },
+      "evidence": "evidence/named-label-control-result-20261010.json",
+      "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/named-label-control-result-20261010",
+      "independent_holdout": false,
+      "historical_source_admitted": false,
+      "release_allowed": false,
+      "id": "f0dc9ef21f220e9f24a63e15fb95e74d407085a202aefc72c1bd4b2825d91c64"
     }
   ],
   "local_evidence": [
@@ -17860,6 +18002,26 @@
     {
       "path": "evidence/origin-fixed-forecast-transport-delivery-20261010.json",
       "sha256": "6e35753ccaf9326767ec75758b9f9977b4a6c22ad8e7eac18749293712a710b0"
+    },
+    {
+      "path": "evidence/named-label-control-preregistration-20261010.json",
+      "sha256": "300431206dbd6a7a526d8c720b71c7f08060eed7c83156f80deb1489f3922ccc"
+    },
+    {
+      "path": "evidence/named-label-control-preregistration-release-20261010.json",
+      "sha256": "370bb1821375d9e0623714bb8d6c3a1e639322feed13e549c4b5eed3146be291"
+    },
+    {
+      "path": "evidence/named-label-control-result-20261010.json",
+      "sha256": "da74f5dcda6e6c1375c4314c2db72e00f159e8cf264a6f63110a03d1722d0cf7"
+    },
+    {
+      "path": "evidence/named-label-control-result-release-20261010.json",
+      "sha256": "e38c8abd2181d5e07277e6a800b3b6946e800858c0c07c4415f3e4c15fddc3d6"
+    },
+    {
+      "path": "evidence/named-label-control-delivery-20261010.json",
+      "sha256": "5cbe9f5812d6b035df970179e482394f4b5d7ea2845da8bddbceb003fc0ac562"
     }
   ]
 }
