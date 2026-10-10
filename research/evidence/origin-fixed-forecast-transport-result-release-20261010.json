@@ -1,0 +1,14 @@
+{
+  "schema": 1,
+  "release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/origin-fixed-forecast-transport-result-20261010",
+  "archive": {
+    "name": "origin-fixed-forecast-transport-result-20261010.zip",
+    "bytes": 2749679,
+    "sha256": "4977ef9014b61a0205c2af4f2caf8af0a66968c0123d8239af2835f5f28afe0a"
+  },
+  "members": 35,
+  "inventory_sha256": "a48e6cc508d3a4cf439641da12ab09b49b621071178f17006bbd12093c370792",
+  "source_id": "20d0c1869afc35b9c83b34cfd3fc8de8ec90a56ebd64c1cf3dcb3b085685d7b3",
+  "new_fits": 0,
+  "scope": "14 frozen inputs,5992 derived forecast rows,739 pairs/10 unknown perhorizon; independent5936 Decimal forecasts/32 weighted CIs,9 rejection controls, original failed verifier preserved;no same-target-trained skill or PIT claim."
+}

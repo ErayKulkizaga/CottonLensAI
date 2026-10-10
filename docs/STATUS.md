@@ -1,5 +1,18 @@
 # Güncel kararlar — 10 Ekim 2026
 
+**Sabit tahminlerin aynı kontrata taşınması tamamlandı:** [sıfır-fit sonuç](ORIGIN_FIXED_FORECAST_TRANSPORT_20261010.md).
+Aynı749 makbuz/739 eşleşmiş fiyat/10 bilinmeyen korunur. Ham T+5 numeric
+D0 Naive kazancı−%8,664216;blok20/60 üst sınırları−%1,196524/−%0,875167,
+yıl0/3. Seçilmiş−%0,624857,ham T+1−%3,349412.5.936 Decimal fiyat hesabı,
+5.992 satır,32 ağırlıklı blok aralığı ve9 ret testi doğrulandı; yeni fit0.
+Yalnız proxy ölçümünü düzeltmek mevcut tahminleri kurtarmıyor; aynı
+kontrat label'ıyla yeniden eğitim henüz sınanmadı. Tek sonraki deney
+adayı ortak train/cohort/özellik/modelde CT–named eğitim-label kontrolü;
+önce500/3×63 readiness,ayrı bütçe/manifest,sonra onaylı CPU kapsamı.
+Hiçbir otomatik yeni model/grid/veri veya üretim kapısı değişikliği yok.
+
+## Önceki tamamlanmış sıfır-fit aşamalar — eski kararlar korunur
+
 **Origin'de sabit kontrat kurulabilirliği tamamlandı:** [sıfır-fit denetim](FIXED_CONTRACT_FEASIBILITY_20261010.md).
 3.520 kaynak seçimi/14.080 label adayı/96 olgunluk kesimi bağımsız
 doğrulandı; sekiz ret kontrolü geçti. Aynı 749 origin korunur; ikinci
