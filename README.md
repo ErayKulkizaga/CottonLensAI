@@ -1,5 +1,15 @@
 # CottonLensAI
 
+[Sabit tahminlerin aynı kontrat testi](docs/ORIGIN_FIXED_FORECAST_TRANSPORT_20261010.md)
+tamamlandı,fit0.739 eşleşmiş fiyat ve10 bilinmeyen makbuz korunur.
+Ham T+5 Naive kazancı−%8,6642,seçilmiş−%0,6249; ham T+1−%3,3494.
+Yalnız proxy ölçümünü değiştirmek mevcut tahminleri kurtarmıyor.
+Sonraki tek deney adayı aynı satır/özellik/modelde eğitim label'ının
+CT–named eşleştirilmiş kontrolü; önce veri/protokol kurulabilirliği ve
+ayrı ön kayıt gerekir. Naive/üretim kapıları ve eski kanıtlar korunur.
+
+## Önceki tamamlanmış sıfır-fit aşamalar
+
 [Sabit kontrat hedefi kurulabilirliği](docs/FIXED_CONTRACT_FEASIBILITY_20261010.md)
 tamamlandı, yeni fit0. Aynı749 origin korunur; ikinci kontratta739 uygun
 etiket var. Gerçek kontrat geçmişi2020'de başlıyor; eski 2010 proxy

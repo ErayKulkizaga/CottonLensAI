@@ -2,6 +2,16 @@
 
 ## Sicil
 
+`origin-fixed-forecast-transport-v1-r2`: **sıfır-fit beta1 taşıma tamamlandı**.
+Ön kayıt sonuçtan önce yayımlandı.749 origin/739 uygun fiyat/10 bilinmeyen,
+5.992 türetilmiş satır. Ham T+5 Naive kazancı−%8,664216,iki aralığın üst
+sınırı negatif,yıl0/3;bu sabit tarifin %5 hedefi için DECISIVE_NEGATIVE.
+Aynı hedefte yeniden eğitilmiş model testi değildir; tüm kaynak/family
+hakkında negatif çıkarılmaz.5.936 Decimal/32 interval/9 ret kontrolü.
+R1 yüzde-birim karşılaştırma hatası korundu,R2 mutlak birimde aynı bound
+ve ters normalizasyon;analiz/sayılar değişmedi. [Sonuç ve tek sonraki aday](../docs/ORIGIN_FIXED_FORECAST_TRANSPORT_20261010.md).
+Ön kayıt ayrı tarihsel record'dır; eski çalışma/fit/proof'lar değişmez.
+
 `fixed-contract-feasibility-v1`: **sıfır-fit kurulabilirlik doğrulandı**.
 749 origin/14.080 aday label korunur; ikinci contemporaneous T+1/T+5
 uygun739. 96 olgunluk kesimi ve 12 değişmeden aktarım kontrolü; 12'si

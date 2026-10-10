@@ -17458,6 +17458,46 @@
       "independent_holdout": false,
       "release_allowed": false,
       "id": "4e97431d928b312f449e91db52282bc036ada1bb3a0cba7ffaab28e607e627aa"
+    },
+    {
+      "experiment": "origin-fixed-forecast-transport-v1-r2-result",
+      "profile": "origin-fixed-forecast-transport-v1-r2",
+      "horizon": 5,
+      "kind": "zero_fit_frozen_return_named_target_transport",
+      "classification": "DECISIVE_NEGATIVE",
+      "classification_scope": "Fixed beta1 transport practical5% rescue only;both primary raw CI uppers negative. Not named-target retraining,all models/sources or independent holdout skill.",
+      "code_id": "20d0c1869afc35b9c83b34cfd3fc8de8ec90a56ebd64c1cf3dcb3b085685d7b3",
+      "analysis_code_id": "4578dae770a5963e54454b6fd79adec6bf488ef52bc6683a73e7a0acdc6fbe60",
+      "data_id": "8d8e27ad04f14c0bc198f525858a2358eeb593c9ab3f5223c2294a736f2709fb",
+      "model_families": [],
+      "completed_fits": 0,
+      "origin_count": 749,
+      "paired_eligible": 739,
+      "unknown": 10,
+      "prediction_payload_exists": true,
+      "derived_forecasts": true,
+      "newly_trained_prediction_payload_exists": false,
+      "diagnostic_payload_exists": true,
+      "metrics": {
+        "primary_raw_T5_naive_gain_pct": -8.664216309720606,
+        "primary_raw_T5_direction_pct": 46.9553450608931,
+        "primary_raw_T5_years_won": 0,
+        "primary_raw_T5_ci20_pct": [
+          -15.259974113615971,
+          -1.1965244641339594
+        ],
+        "primary_raw_T5_ci60_pct": [
+          -15.392809373633982,
+          -0.8751669449216601
+        ]
+      },
+      "evidence": "research/evidence/origin-fixed-forecast-transport-result-20261010.json",
+      "evidence_sha256": "ed87527a94112376e8a62352c07307304d7ad3a08fb47208cfba2ea6997ec141",
+      "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/origin-fixed-forecast-transport-result-20261010",
+      "independent_holdout": false,
+      "historical_source_admitted": false,
+      "release_allowed": false,
+      "id": "95ab6325588ffc106be36eec6f32e3d188ea03edc0c81c41b240514c9ff9a756"
     }
   ],
   "local_evidence": [
@@ -17808,6 +17848,14 @@
     {
       "path": "evidence/origin-fixed-forecast-transport-preregistration-release-20261010.json",
       "sha256": "1c851734d746fe1b0e4a00052b1f052ea414ed313ee9b1a5b8e090f6fd8b27fe"
+    },
+    {
+      "path": "evidence/origin-fixed-forecast-transport-result-20261010.json",
+      "sha256": "ed87527a94112376e8a62352c07307304d7ad3a08fb47208cfba2ea6997ec141"
+    },
+    {
+      "path": "evidence/origin-fixed-forecast-transport-result-release-20261010.json",
+      "sha256": "631a187fd1e0a98f5a54649712f030f3ca8ef89c2664b5f64e453c65848a9d95"
     }
   ]
 }
