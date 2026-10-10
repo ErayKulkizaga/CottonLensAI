@@ -1,5 +1,27 @@
 # Güncel kararlar — 10 Ekim 2026
 
+**Gerçek eğri T+1 testi tamamlandı:** [kayıtlı sonuç](CONTRACT_CURVE_RESULT_20261010.md).
+252 piyasa +1 ayrı sentetik fit, 749 ortak origin/kol; 12/12 geçmiş ağırlık0,
+seçilmiş bütün kollar Naive. Ham numeric D0/D1 Naive kazancı −%2,711585/
+−%2,282736; ham kaynak katkısı −%1,325738/−%1,011608 ve küçük pozitif
+etkiyi dışlamayan aralıklar. Sıfır paired aralığı kaynakta bilgi yokluğu değildir.
+253 native çıkarım, 12 seçim, 16 aralık ve exact rapor/CSV replay geçti.
+±5 vade-değişim gözleminden uzak584 origin'de de ham kollar negatif.
+Saat/vintage varsayımı ve 6/8 gate sınırı korunuyor; Naive değişmez.
+Tek sonraki iş ufuk farkını izole eden T+5 ön kayıt incelemesi; yeni fit/grid yok.
+
+## Önceki kararlar — değişmeyen kanıt zinciri
+
+Aşağıdaki ön kayıt ve araştırma kararları tarihsel aşamalardır; son durum üsttedir.
+
+**Tamamlanan deneyin ön kayıt kararı:** [gerçek vade farkı T+1](CONTRACT_CURVE_PROTOCOL_20261010.md).
+Kullanıcının devrettiği kararla saat/ilk vintage varsayımlı duyarlılık seçildi;
+tarihsel kaynak kabulü açılmadı. Geçmiş iç blok kaynak uygunluğu 2021–2023'te
+749 ortak origin bırakıyor; bütün Cotton history korunuyor. Dört eşleşmiş
+kol, sabit Ridge alpha1, 252 piyasa +en fazla1 ayrı sentetik fit; yeni grid
+yok. Üç yıl 6/8 kapısını ölçemez veya değiştiremez. Kod/test/veri/ortam ve
+karar sözleşmesi GitHub'da sıfır-fit ön kayda bağlandıktan sonra çalıştırılır.
+
 **Sıfır-fit bilgi elemesi tamamlandı:** [mevcut gerçek vade fiyatları](INFORMATION_ADMISSION_20261010.md).
 1.000 eski girdi rehash; 997 AMS tablosunda 9.970 gerçek kontrat fiyatı,
 2016–2019 kapsamı yok. Eski spot-basis deneyi bu farkı sınamadı. UTC/ilk sürüm

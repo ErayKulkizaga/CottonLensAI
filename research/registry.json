@@ -16665,6 +16665,251 @@
       "id": "09014dae98cb78ae49f097fb02c640645f8571efb1ab8f07aed78d98337198ab",
       "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/information-admission-20261010",
       "payload_manifest": "research/evidence/information-admission-release-20261010.json"
+    },
+    {
+      "experiment": "research-contract-curve-t1-pilot-v1-preregistration",
+      "profile": "contract-curve-t1-pilot-v1",
+      "kind": "zero_fit_registered_source_ablation",
+      "horizon": 1,
+      "classification": "INCONCLUSIVE",
+      "classification_scope": "Preregistered only, no market performance result",
+      "code_id": "84d40007e33b75ecff9ca422958daab79d30d67f3adb59b7bb419bc873412d1a",
+      "registration_id": "e2fac4fa52a20d48ba4a09346ca1b7b9ae32db88133f61dcc8080bcec5ac2698",
+      "origin_count_if_executed": 749,
+      "model_families": [
+        "ridge"
+      ],
+      "fit_budget": {
+        "inner": 108,
+        "outer": 144,
+        "total": 252,
+        "synthetic_guard": 1,
+        "maximum_all_fits": 253,
+        "annual_outputs": 12,
+        "prediction_rows": 2996,
+        "processes": 1,
+        "threads": 2,
+        "session_minutes": 30
+      },
+      "completed_fits": 0,
+      "evidence": "research/evidence/contract-curve-preregistration-20261010.json",
+      "evidence_sha256": "1c064966bd6e4a617f922aacb21936e77154fdc5aa4a8b72804e10a7fe3f4245",
+      "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/contract-curve-preregistration-20261010",
+      "prediction_payload_exists": false,
+      "independent_holdout": false,
+      "historical_source_admitted": false,
+      "release_allowed": false,
+      "id": "043fb7618195a94d6b0fff8f30243407051105e6b9e73cdf9e5a09575dbc4fb0"
+    },
+    {
+      "experiment": "research-contract-curve-t1-pilot-v1",
+      "profile": "contract-curve-t1-pilot-v1",
+      "horizon": 1,
+      "kind": "completed_assumption_source_ablation",
+      "classification": "INCONCLUSIVE",
+      "classification_scope": "Primary selected source contribution is flat; not proof of information absence. Fixed recipe does not meet practical goal.",
+      "code_id": "84d40007e33b75ecff9ca422958daab79d30d67f3adb59b7bb419bc873412d1a",
+      "data_id": "12edb245f7a465b0e3a99e17230095709c2870beb02b8ccc15f4f1f2babd19b5",
+      "origin_count": 749,
+      "model_families": [
+        "ridge"
+      ],
+      "recipes": [
+        {
+          "family": "ridge",
+          "params": {
+            "alpha": 1.0
+          },
+          "horizon": 1,
+          "task": "price",
+          "device": "cpu",
+          "seed": 42,
+          "target": "scaled_log",
+          "loss": "reg:squarederror",
+          "years": null,
+          "cadence": 21,
+          "window": 1,
+          "features": [
+            "cotton_ret_1",
+            "cotton_ret_5",
+            "cotton_ret_10",
+            "cotton_ret_20",
+            "cotton_momentum_5",
+            "cotton_momentum_20",
+            "cotton_sma_ratio_5_20",
+            "cotton_sma_ratio_20_50",
+            "cotton_volatility_5",
+            "cotton_volatility_20",
+            "cotton_range",
+            "cotton_volume_change",
+            "cotton_volume_z20",
+            "cotton_volatility_regime_20_60",
+            "dxy_ret_1",
+            "dxy_ret_5",
+            "dxy_ret_20",
+            "wti_ret_1",
+            "wti_ret_5",
+            "wti_ret_20",
+            "cotton_dxy_corr_60",
+            "cotton_wti_corr_60",
+            "month_sin",
+            "month_cos",
+            "curve_D0_age_sessions",
+            "curve_D0_unavailable",
+            "curve_D0_gap_months",
+            "mask_D0_spread"
+          ]
+        },
+        {
+          "family": "ridge",
+          "params": {
+            "alpha": 1.0
+          },
+          "horizon": 1,
+          "task": "price",
+          "device": "cpu",
+          "seed": 42,
+          "target": "scaled_log",
+          "loss": "reg:squarederror",
+          "years": null,
+          "cadence": 21,
+          "window": 1,
+          "features": [
+            "cotton_ret_1",
+            "cotton_ret_5",
+            "cotton_ret_10",
+            "cotton_ret_20",
+            "cotton_momentum_5",
+            "cotton_momentum_20",
+            "cotton_sma_ratio_5_20",
+            "cotton_sma_ratio_20_50",
+            "cotton_volatility_5",
+            "cotton_volatility_20",
+            "cotton_range",
+            "cotton_volume_change",
+            "cotton_volume_z20",
+            "cotton_volatility_regime_20_60",
+            "dxy_ret_1",
+            "dxy_ret_5",
+            "dxy_ret_20",
+            "wti_ret_1",
+            "wti_ret_5",
+            "wti_ret_20",
+            "cotton_dxy_corr_60",
+            "cotton_wti_corr_60",
+            "month_sin",
+            "month_cos",
+            "curve_D0_age_sessions",
+            "curve_D0_unavailable",
+            "curve_D0_gap_months",
+            "numeric_D0_spread"
+          ]
+        },
+        {
+          "family": "ridge",
+          "params": {
+            "alpha": 1.0
+          },
+          "horizon": 1,
+          "task": "price",
+          "device": "cpu",
+          "seed": 42,
+          "target": "scaled_log",
+          "loss": "reg:squarederror",
+          "years": null,
+          "cadence": 21,
+          "window": 1,
+          "features": [
+            "cotton_ret_1",
+            "cotton_ret_5",
+            "cotton_ret_10",
+            "cotton_ret_20",
+            "cotton_momentum_5",
+            "cotton_momentum_20",
+            "cotton_sma_ratio_5_20",
+            "cotton_sma_ratio_20_50",
+            "cotton_volatility_5",
+            "cotton_volatility_20",
+            "cotton_range",
+            "cotton_volume_change",
+            "cotton_volume_z20",
+            "cotton_volatility_regime_20_60",
+            "dxy_ret_1",
+            "dxy_ret_5",
+            "dxy_ret_20",
+            "wti_ret_1",
+            "wti_ret_5",
+            "wti_ret_20",
+            "cotton_dxy_corr_60",
+            "cotton_wti_corr_60",
+            "month_sin",
+            "month_cos",
+            "curve_D1_age_sessions",
+            "curve_D1_unavailable",
+            "curve_D1_gap_months",
+            "mask_D1_spread"
+          ]
+        },
+        {
+          "family": "ridge",
+          "params": {
+            "alpha": 1.0
+          },
+          "horizon": 1,
+          "task": "price",
+          "device": "cpu",
+          "seed": 42,
+          "target": "scaled_log",
+          "loss": "reg:squarederror",
+          "years": null,
+          "cadence": 21,
+          "window": 1,
+          "features": [
+            "cotton_ret_1",
+            "cotton_ret_5",
+            "cotton_ret_10",
+            "cotton_ret_20",
+            "cotton_momentum_5",
+            "cotton_momentum_20",
+            "cotton_sma_ratio_5_20",
+            "cotton_sma_ratio_20_50",
+            "cotton_volatility_5",
+            "cotton_volatility_20",
+            "cotton_range",
+            "cotton_volume_change",
+            "cotton_volume_z20",
+            "cotton_volatility_regime_20_60",
+            "dxy_ret_1",
+            "dxy_ret_5",
+            "dxy_ret_20",
+            "wti_ret_1",
+            "wti_ret_5",
+            "wti_ret_20",
+            "cotton_dxy_corr_60",
+            "cotton_wti_corr_60",
+            "month_sin",
+            "month_cos",
+            "curve_D1_age_sessions",
+            "curve_D1_unavailable",
+            "curve_D1_gap_months",
+            "numeric_D1_spread"
+          ]
+        }
+      ],
+      "metrics": {
+        "decision": "FIXED_RECIPE_BELOW_PRACTICAL_GOAL_SOURCE_INCONCLUSIVE",
+        "raw_D0_naive_gain_pct": -2.711585335959499,
+        "raw_D1_naive_gain_pct": -2.2827357018013528,
+        "selected_active_rate_pct": 0.0
+      },
+      "evidence": "research/evidence/contract-curve-result-20261010.json",
+      "evidence_sha256": "496cebd3e9c55de747118a81d608c0a2a2e9681419e8ed4bc1bfcc48b1349b7f",
+      "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/contract-curve-result-20261010",
+      "prediction_payload_exists": true,
+      "independent_holdout": false,
+      "historical_source_admitted": false,
+      "release_allowed": false,
+      "id": "a55e8ce84e240c7747c087c1e3d88d924972e7d759282fc59848053c47b79bab"
     }
   ],
   "local_evidence": [
@@ -16927,6 +17172,26 @@
     {
       "path": "evidence/information-admission-delivery-20261010.json",
       "sha256": "5d029c7bf2040a534d38bba00077ea1334d962a00d6c1fcc95a95d3de71d2fe9"
+    },
+    {
+      "path": "evidence/contract-curve-preregistration-20261010.json",
+      "sha256": "1c064966bd6e4a617f922aacb21936e77154fdc5aa4a8b72804e10a7fe3f4245"
+    },
+    {
+      "path": "evidence/contract-curve-preregistration-release-20261010.json",
+      "sha256": "0a5b61a357008f1dc026f086dbd47a31e9227c22a24f82d7500f7e5702c30612"
+    },
+    {
+      "path": "evidence/contract-curve-result-20261010.json",
+      "sha256": "496cebd3e9c55de747118a81d608c0a2a2e9681419e8ed4bc1bfcc48b1349b7f"
+    },
+    {
+      "path": "evidence/contract-curve-result-release-20261010.json",
+      "sha256": "025cce7b5899947687fd96a892c6ec0fb2713ae6fd9218b94aa4296de3023835"
+    },
+    {
+      "path": "evidence/contract-curve-delivery-20261010.json",
+      "sha256": "97fee5ec6ce791f1a47b30f794be544c4e7b97347bf4c275ce60d9ab18d4b55e"
     }
   ]
 }

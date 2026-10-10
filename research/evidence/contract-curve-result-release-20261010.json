@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/contract-curve-result-20261010",
+  "archive": {
+    "name": "contract-curve-result-20261010.zip",
+    "sha256": "197de751ff52afb4f0e86a66d9943ee7f51f5a213e786619796f71c784f5deba",
+    "bytes": 15432088
+  },
+  "members": 2834,
+  "inventory_member": "checksums.json",
+  "inventory_sha256": "191aab5f3a9a218deb1be54927e63f83a95c26777be21026a40c7c338f94a5a8",
+  "market_fits": 252,
+  "synthetic_fits": 1,
+  "verification_new_fits": 0,
+  "source_id": "84d40007e33b75ecff9ca422958daab79d30d67f3adb59b7bb419bc873412d1a",
+  "scope": "Frozen inputs/source/preregistration,253 native model payloads and receipts,12 decisions/outputs,2996 prediction rows,exact no-fit verifier. Source clock/vintage unverified."
+}

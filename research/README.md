@@ -2,6 +2,14 @@
 
 ## Sicil
 
+`contract-curve-t1-pilot-v1`: **tamamlandı, kaynak katkısı INCONCLUSIVE**;
+252 piyasa +1 ayrı sentetik fit, 749 ortak origin/kol, 12/12 ağırlık0.
+Ham numeric D0/D1 Naive kazancı −%2,711585/−%2,282736; seçilmiş `[0,0]`
+kaynakta bilgi yokluğu değildir. 253 çıkarım/12 seçim/16 aralık ve exact
+rapor/CSV replay doğrulandı. Saat/vintage varsayımı, geçmiş yılların reuse'u
+ve ölçülemeyen 6/8 gate'i korunur. [Sonuç ve tek sonraki ön kayıt incelemesi](../docs/CONTRACT_CURVE_RESULT_20261010.md).
+Ayrı sıfır-fit ön kayıt kaydı tarihseldir; bu sonuç eski kaydı silmez.
+
 `existing-information-admission-v1`: **sıfır-fit kaynak/kapsam elemesi**;
 1.000 eski girdi, 997 tablo /9.970 gerçek vade fiyatı. Eski spot-basis
 T+5 bunu sınamadı; 2016–2019 yok, UTC/ilk-vintage kabulü yok. Kaynak

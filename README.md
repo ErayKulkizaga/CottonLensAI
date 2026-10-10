@@ -1,5 +1,16 @@
 # CottonLensAI
 
+[Gerçek vade farkı T+1 sonucu](docs/CONTRACT_CURVE_RESULT_20261010.md) tamamlandı:
+252 piyasa +1 sentetik fit; 749 ortak origin/kol. Seçilmiş tahminler Naive'ye
+döndü; ham D0/D1 Naive kazancı −%2,7116/−%2,2827. 253 kayıtlı çıkarım ve
+rapor/CSV yeniden fit olmadan doğrulandı. Bu tek tarif hedefi kurtarmadı;
+saat/vintage varsayımı sürüyor, tüm eğride bilgi yokluğu sonucu çıkarılmaz.
+
+Tamamlanan sonucun ön kayıt tarifi: [gerçek vade farkı T+1 duyarlılığı](docs/CONTRACT_CURVE_PROTOCOL_20261010.md).
+2021–2023'te 749 ortak origin; saat/ilk sürüm varsayımı açık, gerçek zamanlı
+erişim ispatı yok. Sabit Ridge ve 252 piyasa fit'i bütçesi; üç yıllık kaynak
+katkısı sonucu 6/8 yıl başarı koşulunun yerine geçmez. Naive korunur.
+
 Pamuk piyasası için **araştırma/ispat projesi** ve açıklanabilir tahmin uygulaması.
 ICE Cotton No. 2 referansında tahmin katkısı ve yön/pozisyon simülasyonu incelenir;
 gerçek alım/satım yapılmaz. Mevcut T+1/T+5 fiyat tahmininde Naive korunuyor. Son
