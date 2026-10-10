@@ -1,5 +1,15 @@
 # Güncel kararlar — 10 Ekim 2026
 
+**Sonraki tek bilimsel iş:** [10 Ekim karar ekine](RESEARCH_PRIORITY_ADDENDUM_20261010.md)
+göre PR #27'nin mevcut kayıtlı deneyini **sıfır yeni fit ile sonuçlandırmak**.
+48 piyasa + ayrı 6 sentetik fit yerelde tamamlandı; bu incelemede 54 kaydedilmiş
+model çıkarımı, training-only dönüşümler/H5 olgunlaşması ve ortak-origin
+fiyat-MAE/yön hesabı doğrulandı. MAE kolu −%0,488298 Naive kazancı, %48,4127
+yön, 3/8 dönem; MSE −%1,975104. Loss katkısı pratik Naive üstünlüğü değildir.
+Bağımsız altı blok aralığı, portable rapor/CSV replay ve sonuç arşivi teslimatı
+henüz kapanmadı; yeni bilimsel sınıf/başarı ilan edilmiyor. #25 ve #26 tamamlandı;
+yeniden koşulmaz. Bu docs-only ek sicil/trials veya eski kanıtları değiştirmez.
+
 **Yeni operasyon engeli:** [gece yayın penceresi denetimi](FORWARD_WINDOW_AUDIT_20261010.md).
 00:05/00:20 UTC makbuzları yok; yayın 0, eski altı missing ve 126-origin kilidi
 korunuyor. Sabit 226 ML dosyası ve 115 store dosyası doğrulandı. OS uyku olayı
@@ -9,7 +19,8 @@ Operational günlük kapalı. Görev/otomasyon/güç ayarları değişmedi, yeni
 yok. Sonraki operasyon işi mevcut interactive görev reddini incelemek;
 zamanında yayın veya öğrenilmiş model becerisi iddia edilmez.
 
-**Ön kayıt tamamlandı; eğitim başlamadı:** [eşleştirilmiş fiyat-loss protokolü](PAIRED_PRICE_LOSS_PROTOCOL_20261010.md),
+**PR #27 ön kayıt aşamasındaki tarihsel durum; yukarıdaki yerel yürütme durumu günceldir:**
+[eşleştirilmiş fiyat-loss protokolü](PAIRED_PRICE_LOSS_PROTOCOL_20261010.md),
 [PR #27](https://github.com/ErayKulkizaga/CottonLensAI/pull/27).
 İki CPU XGBoost kolunda aynı price_delta, 24 özellik, olgun kohort ve eski
 seed/ağaç sayıları; yalnız MSE/MAE değişir. Bütçe 48 piyasa fit'i / 2.688 ağaç,

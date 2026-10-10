@@ -1,5 +1,15 @@
 # Veri bütünlüğü, kaynakların yeniden değerlendirilmesi ve sonraki araştırma planı
 
+## 10 Ekim karar eki
+
+[Yeni teknik inceleme ve karar eki](RESEARCH_PRIORITY_ADDENDUM_20261010.md)
+aşağıdaki tarihsel planı korur. PR #25 kalibrasyonu ve #26 eski loss kapsamı
+tamamlandı; tekrarlanmaz. **Sonraki tek bilimsel iş PR #27'nin mevcut 48 piyasa
+ve 6 sentetik model çıktısını sıfır yeni fit ile sonuçlandırmaktır.** Sonra yalnız
+eksik tutarlı MAE/MAPE raporu; ancak ardından sıfır-fit bilgi hipotezi elemesi.
+İleri Naive/EWMA yayın denetimi ve PR entegrasyonu ayrı hatlar; FAS'ın dış kanıt
+bekleyen kabul kapısı bu ekle açılmaz. Yeni grid/model/veri izni yoktur.
+
 5 Ekim 2026 — **inceleme sonucunda hazırlanmış uygulama taslağı**. Bu belge yeni
 eğitim veya veri kabulü yapıldığını göstermez. Ürün amacı ve mevcut kararlar
 [STATUS](STATUS.md) ve [işlem sözleşmesinde](TRADING_RESEARCH_CONTRACT_20261005.md)

@@ -27,6 +27,7 @@ loss/hedef/parametreler birlikte değiştiği için kontrollü loss etkisi ayrı
 ## Nereden başlanır?
 
 1. [Güncel durum ve kararlar](docs/STATUS.md).
+   [10 Ekim karar eki](docs/RESEARCH_PRIORITY_ADDENDUM_20261010.md): #25/#26 tamamlandı; tek bilimsel sonraki iş #27'nin kayıtlı çıktısını sıfır yeni fit ile sonuçlandırmak.
 2. [İspat amacı ve yardımcı simülasyonun sınırları](docs/TRADING_RESEARCH_CONTRACT_20261005.md).
 3. **Yeni deney önermeden önce** [deney sicilini](research/README.md) kontrol edin.
 
