@@ -138,3 +138,10 @@ Ridge alpha1, 252 piyasa +en fazla1 sentetik fit seçildi. Geçmiş fiyat
 history resetlenmez, kaynak eksikliği origin düşürmez. D0 birincil/D1 ikincil;
 üç yıl 6/8 koşulunu değiştirmez. Önce kod/test/input/ortam ve karar sözleşmesi
 sıfır-fit kimlikleriyle GitHub'da dondurulur. Yeni grid/model ailesi yok.
+
+P4'ün bu tek T+1 testi [sonuçlandırıldı](CONTRACT_CURVE_RESULT_20261010.md):
+252+1 fit, 749 ortak origin; 12 ağırlık0, ham D0/D1 Naive'den kötü.
+253 saved inference/12 seçim/16 aralık doğrulandı. Pratik hedef çözülmedi;
+eğrinin bütün temsillerde bilgisiz olduğu iddia edilmez. Aynı T+1 tarifi
+büyütülmez. Sıradaki yalnız ufku izole eden gerçek-eğri T+5 ön kayıt incelemesi;
+eski spot-basis T+5 tekrarı değildir, yeni fit otomatik başlamaz.

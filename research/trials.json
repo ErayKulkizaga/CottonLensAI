@@ -52631,6 +52631,445 @@
       "payload_hashes_revalidated_by_index": false,
       "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/paired-price-loss-result-20261010",
       "payload_hashes_revalidated_separately": true
+    },
+    {
+      "id": "0453e4a89c6486f0c4e38bcba0bcac306309cb1cf3735f003099f1636c07f4bc",
+      "scope": {
+        "identity_id": "c054d5ffef23dbeef3eed9fd5318125ae001651b603ca1867e301a37aaaceab7",
+        "source_id": "84d40007e33b75ecff9ca422958daab79d30d67f3adb59b7bb419bc873412d1a",
+        "data_id": "12edb245f7a465b0e3a99e17230095709c2870beb02b8ccc15f4f1f2babd19b5",
+        "split_id": "c5fe52b975b2b83ca16ef10a1ee2105a698eef8bd771984b8fc46cc29522c2df",
+        "profile": "contract-curve-t1-pilot-v1"
+      },
+      "scope_id": "90713c2380884352986fddae649a2ba12dd928dc7ab4279a63f0fbd7752c43b4",
+      "profile": "contract-curve-t1-pilot-v1",
+      "horizon": 1,
+      "recipes": [
+        {
+          "family": "ridge",
+          "params": {
+            "alpha": 1.0
+          },
+          "horizon": 1,
+          "task": "price",
+          "device": "cpu",
+          "seed": 42,
+          "target": "scaled_log",
+          "loss": "reg:squarederror",
+          "years": null,
+          "cadence": 21,
+          "window": 1,
+          "features": [
+            "cotton_ret_1",
+            "cotton_ret_5",
+            "cotton_ret_10",
+            "cotton_ret_20",
+            "cotton_momentum_5",
+            "cotton_momentum_20",
+            "cotton_sma_ratio_5_20",
+            "cotton_sma_ratio_20_50",
+            "cotton_volatility_5",
+            "cotton_volatility_20",
+            "cotton_range",
+            "cotton_volume_change",
+            "cotton_volume_z20",
+            "cotton_volatility_regime_20_60",
+            "dxy_ret_1",
+            "dxy_ret_5",
+            "dxy_ret_20",
+            "wti_ret_1",
+            "wti_ret_5",
+            "wti_ret_20",
+            "cotton_dxy_corr_60",
+            "cotton_wti_corr_60",
+            "month_sin",
+            "month_cos",
+            "curve_D1_age_sessions",
+            "curve_D1_unavailable",
+            "curve_D1_gap_months",
+            "numeric_D1_spread"
+          ]
+        }
+      ],
+      "model_families": [
+        "ridge"
+      ],
+      "kind": "market_fit_receipt",
+      "completed_fits": 63,
+      "sample_receipts": [
+        {
+          "path": "experiment/ledger/completed/0723e806f3f55d7957405a853dbcec736dcd09fb11fc7ecfb91e4007d5be8fe7.json",
+          "record_id": "53b096bcd34709a2a639e04fb745052f9e91684153ca0f88fa7bc2f0ae4b3a2c",
+          "experiment_id": "0723e806f3f55d7957405a853dbcec736dcd09fb11fc7ecfb91e4007d5be8fe7"
+        },
+        {
+          "path": "experiment/ledger/completed/0c997575363b3bcce0d78e86f9128cc6d14820f9eac7630bc1ec876ad08a5536.json",
+          "record_id": "0559ed6b965203d3c9eac194778e8a0193c7ec24f63a1ee509e49092f45ecfbf",
+          "experiment_id": "0c997575363b3bcce0d78e86f9128cc6d14820f9eac7630bc1ec876ad08a5536"
+        },
+        {
+          "path": "experiment/ledger/completed/0da9381ed6614e2703040fe87595ce8e0c01e90937a4806b65ff643dc2d33221.json",
+          "record_id": "d4cd88b93667122701fb9c7363127f17a33b8476c2abdd55a8b2d718eb552c02",
+          "experiment_id": "0da9381ed6614e2703040fe87595ce8e0c01e90937a4806b65ff643dc2d33221"
+        }
+      ],
+      "roles": [
+        "path",
+        "inner"
+      ],
+      "coverage": "completed fit receipts; not experiment completion",
+      "payload_hashes_revalidated_by_index": false,
+      "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/contract-curve-result-20261010",
+      "payload_hashes_revalidated_separately": true
+    },
+    {
+      "id": "68c8d57097d3ad067f5624b0ab4aaafea9722b8087fa29c0f4b05b7f68076206",
+      "scope": {
+        "identity_id": "c054d5ffef23dbeef3eed9fd5318125ae001651b603ca1867e301a37aaaceab7",
+        "source_id": "84d40007e33b75ecff9ca422958daab79d30d67f3adb59b7bb419bc873412d1a",
+        "data_id": "12edb245f7a465b0e3a99e17230095709c2870beb02b8ccc15f4f1f2babd19b5",
+        "split_id": "c5fe52b975b2b83ca16ef10a1ee2105a698eef8bd771984b8fc46cc29522c2df",
+        "profile": "contract-curve-t1-pilot-v1"
+      },
+      "scope_id": "90713c2380884352986fddae649a2ba12dd928dc7ab4279a63f0fbd7752c43b4",
+      "profile": "contract-curve-t1-pilot-v1",
+      "horizon": 1,
+      "recipes": [
+        {
+          "family": "ridge",
+          "params": {
+            "alpha": 1.0
+          },
+          "horizon": 1,
+          "task": "price",
+          "device": "cpu",
+          "seed": 42,
+          "target": "scaled_log",
+          "loss": "reg:squarederror",
+          "years": null,
+          "cadence": 21,
+          "window": 1,
+          "features": [
+            "cotton_ret_1",
+            "cotton_ret_5",
+            "cotton_ret_10",
+            "cotton_ret_20",
+            "cotton_momentum_5",
+            "cotton_momentum_20",
+            "cotton_sma_ratio_5_20",
+            "cotton_sma_ratio_20_50",
+            "cotton_volatility_5",
+            "cotton_volatility_20",
+            "cotton_range",
+            "cotton_volume_change",
+            "cotton_volume_z20",
+            "cotton_volatility_regime_20_60",
+            "dxy_ret_1",
+            "dxy_ret_5",
+            "dxy_ret_20",
+            "wti_ret_1",
+            "wti_ret_5",
+            "wti_ret_20",
+            "cotton_dxy_corr_60",
+            "cotton_wti_corr_60",
+            "month_sin",
+            "month_cos",
+            "curve_D1_age_sessions",
+            "curve_D1_unavailable",
+            "curve_D1_gap_months",
+            "mask_D1_spread"
+          ]
+        }
+      ],
+      "model_families": [
+        "ridge"
+      ],
+      "kind": "market_fit_receipt",
+      "completed_fits": 63,
+      "sample_receipts": [
+        {
+          "path": "experiment/ledger/completed/0063004d13b4f681a04e5e0530fe40b34f70c28e4df0171fb16a8cbfca2e1f7e.json",
+          "record_id": "88d3c0a85b4dd9563435bf7b4c75ab7cc2b88f9fc93bbebbabcd580ea76e840d",
+          "experiment_id": "0063004d13b4f681a04e5e0530fe40b34f70c28e4df0171fb16a8cbfca2e1f7e"
+        },
+        {
+          "path": "experiment/ledger/completed/0a46bcbfc03d42b8b7a5b7d9e5eea7a2e4e08be8b7f593ef5e6b260489e8f718.json",
+          "record_id": "0c1c168382a8886b2723dc3d3895a77fb23b1273045e66a1d130534649dbb665",
+          "experiment_id": "0a46bcbfc03d42b8b7a5b7d9e5eea7a2e4e08be8b7f593ef5e6b260489e8f718"
+        },
+        {
+          "path": "experiment/ledger/completed/0b3fd3534402eb30563cf786722f1c91c46eed01a6d2cb6e2c2ecd003764ed6b.json",
+          "record_id": "ae36bdfa8f43845e43df423d07cfda572d9b25c8c0f0c4805b546621b7d3e908",
+          "experiment_id": "0b3fd3534402eb30563cf786722f1c91c46eed01a6d2cb6e2c2ecd003764ed6b"
+        }
+      ],
+      "roles": [
+        "inner",
+        "path"
+      ],
+      "coverage": "completed fit receipts; not experiment completion",
+      "payload_hashes_revalidated_by_index": false,
+      "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/contract-curve-result-20261010",
+      "payload_hashes_revalidated_separately": true
+    },
+    {
+      "id": "79a4c98f5be0edad5f61a0bbbdfbac1bd340475dbcbbfd860059321d8b45a0c9",
+      "scope": {
+        "identity_id": "45f26a40bd8a79aeac6c19d42612ec8f0825acd76a4ce17a99648f3730b7bdbd",
+        "source_id": "84d40007e33b75ecff9ca422958daab79d30d67f3adb59b7bb419bc873412d1a",
+        "data_id": null,
+        "split_id": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+        "profile": null
+      },
+      "scope_id": "16455dc8efd0c75aa729e09f4b44193e8e16202f75da48e7ead3f46108beee06",
+      "profile": null,
+      "horizon": 1,
+      "recipes": [
+        {
+          "family": "ridge",
+          "params": {
+            "alpha": 1.0
+          },
+          "horizon": 1,
+          "task": "price",
+          "device": "cpu",
+          "seed": 42,
+          "target": "scaled_log",
+          "loss": "reg:squarederror",
+          "years": null,
+          "cadence": 21,
+          "window": 1,
+          "features": [
+            "cotton_ret_1",
+            "cotton_ret_5",
+            "cotton_ret_10",
+            "cotton_ret_20",
+            "cotton_momentum_5",
+            "cotton_momentum_20",
+            "cotton_sma_ratio_5_20",
+            "cotton_sma_ratio_20_50",
+            "cotton_volatility_5",
+            "cotton_volatility_20",
+            "cotton_range",
+            "cotton_volume_change",
+            "cotton_volume_z20",
+            "cotton_volatility_regime_20_60",
+            "dxy_ret_1",
+            "dxy_ret_5",
+            "dxy_ret_20",
+            "wti_ret_1",
+            "wti_ret_5",
+            "wti_ret_20",
+            "cotton_dxy_corr_60",
+            "cotton_wti_corr_60",
+            "month_sin",
+            "month_cos",
+            "curve_D0_age_sessions",
+            "curve_D0_unavailable",
+            "curve_D0_gap_months",
+            "numeric_D0_spread"
+          ]
+        }
+      ],
+      "model_families": [
+        "ridge"
+      ],
+      "kind": "synthetic_control:unspecified",
+      "completed_fits": 1,
+      "sample_receipts": [
+        {
+          "path": "experiment/learning-control-ledger/completed/ea4f57a5597461eb56864215aad2aab85466416ff2ce245cddc6ebe186e90acf.json",
+          "record_id": "c054b0ee1c1999f6a5e4e2bbc2db99ec83142ba5e80c6b991a57ed7932100391",
+          "experiment_id": "ea4f57a5597461eb56864215aad2aab85466416ff2ce245cddc6ebe186e90acf"
+        }
+      ],
+      "roles": [
+        "synthetic_known_signal_not_market_evidence"
+      ],
+      "coverage": "completed fit receipts; not experiment completion",
+      "payload_hashes_revalidated_by_index": false,
+      "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/contract-curve-result-20261010",
+      "payload_hashes_revalidated_separately": true
+    },
+    {
+      "id": "b72109d83f193274c62917f90ea062c30e48efd6837fd7037eb9c696addfed63",
+      "scope": {
+        "identity_id": "c054d5ffef23dbeef3eed9fd5318125ae001651b603ca1867e301a37aaaceab7",
+        "source_id": "84d40007e33b75ecff9ca422958daab79d30d67f3adb59b7bb419bc873412d1a",
+        "data_id": "12edb245f7a465b0e3a99e17230095709c2870beb02b8ccc15f4f1f2babd19b5",
+        "split_id": "c5fe52b975b2b83ca16ef10a1ee2105a698eef8bd771984b8fc46cc29522c2df",
+        "profile": "contract-curve-t1-pilot-v1"
+      },
+      "scope_id": "90713c2380884352986fddae649a2ba12dd928dc7ab4279a63f0fbd7752c43b4",
+      "profile": "contract-curve-t1-pilot-v1",
+      "horizon": 1,
+      "recipes": [
+        {
+          "family": "ridge",
+          "params": {
+            "alpha": 1.0
+          },
+          "horizon": 1,
+          "task": "price",
+          "device": "cpu",
+          "seed": 42,
+          "target": "scaled_log",
+          "loss": "reg:squarederror",
+          "years": null,
+          "cadence": 21,
+          "window": 1,
+          "features": [
+            "cotton_ret_1",
+            "cotton_ret_5",
+            "cotton_ret_10",
+            "cotton_ret_20",
+            "cotton_momentum_5",
+            "cotton_momentum_20",
+            "cotton_sma_ratio_5_20",
+            "cotton_sma_ratio_20_50",
+            "cotton_volatility_5",
+            "cotton_volatility_20",
+            "cotton_range",
+            "cotton_volume_change",
+            "cotton_volume_z20",
+            "cotton_volatility_regime_20_60",
+            "dxy_ret_1",
+            "dxy_ret_5",
+            "dxy_ret_20",
+            "wti_ret_1",
+            "wti_ret_5",
+            "wti_ret_20",
+            "cotton_dxy_corr_60",
+            "cotton_wti_corr_60",
+            "month_sin",
+            "month_cos",
+            "curve_D0_age_sessions",
+            "curve_D0_unavailable",
+            "curve_D0_gap_months",
+            "mask_D0_spread"
+          ]
+        }
+      ],
+      "model_families": [
+        "ridge"
+      ],
+      "kind": "market_fit_receipt",
+      "completed_fits": 63,
+      "sample_receipts": [
+        {
+          "path": "experiment/ledger/completed/12b0d26af685d358d78ecd9a7671e91692bd1fa5c060e05f7745726a533db40b.json",
+          "record_id": "50c90e8085db6c168c8a3764f3d8f4786286e5a43d7d08b1e8d1a13e4c60f9de",
+          "experiment_id": "12b0d26af685d358d78ecd9a7671e91692bd1fa5c060e05f7745726a533db40b"
+        },
+        {
+          "path": "experiment/ledger/completed/148a179d3e020aeefab59ddc8f4087f28fa865700ec7f658db5a1fabf107709f.json",
+          "record_id": "88569e01c89d11d60a945148252dc00a0f4b1be9e45ebaab5607325f03adbe77",
+          "experiment_id": "148a179d3e020aeefab59ddc8f4087f28fa865700ec7f658db5a1fabf107709f"
+        },
+        {
+          "path": "experiment/ledger/completed/16bd505783b09f1d463324062ea444e74837a4e815063c066942ea32f816f734.json",
+          "record_id": "7d8d1a03a17bb80ac4ad13ccf29c36ef6f88dc269e61b1479a5e9b8c8c31a159",
+          "experiment_id": "16bd505783b09f1d463324062ea444e74837a4e815063c066942ea32f816f734"
+        }
+      ],
+      "roles": [
+        "inner",
+        "path"
+      ],
+      "coverage": "completed fit receipts; not experiment completion",
+      "payload_hashes_revalidated_by_index": false,
+      "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/contract-curve-result-20261010",
+      "payload_hashes_revalidated_separately": true
+    },
+    {
+      "id": "ed5903a7adbad18c079b0d9335fadf30801e182710800f717db98b46eaeac6fc",
+      "scope": {
+        "identity_id": "c054d5ffef23dbeef3eed9fd5318125ae001651b603ca1867e301a37aaaceab7",
+        "source_id": "84d40007e33b75ecff9ca422958daab79d30d67f3adb59b7bb419bc873412d1a",
+        "data_id": "12edb245f7a465b0e3a99e17230095709c2870beb02b8ccc15f4f1f2babd19b5",
+        "split_id": "c5fe52b975b2b83ca16ef10a1ee2105a698eef8bd771984b8fc46cc29522c2df",
+        "profile": "contract-curve-t1-pilot-v1"
+      },
+      "scope_id": "90713c2380884352986fddae649a2ba12dd928dc7ab4279a63f0fbd7752c43b4",
+      "profile": "contract-curve-t1-pilot-v1",
+      "horizon": 1,
+      "recipes": [
+        {
+          "family": "ridge",
+          "params": {
+            "alpha": 1.0
+          },
+          "horizon": 1,
+          "task": "price",
+          "device": "cpu",
+          "seed": 42,
+          "target": "scaled_log",
+          "loss": "reg:squarederror",
+          "years": null,
+          "cadence": 21,
+          "window": 1,
+          "features": [
+            "cotton_ret_1",
+            "cotton_ret_5",
+            "cotton_ret_10",
+            "cotton_ret_20",
+            "cotton_momentum_5",
+            "cotton_momentum_20",
+            "cotton_sma_ratio_5_20",
+            "cotton_sma_ratio_20_50",
+            "cotton_volatility_5",
+            "cotton_volatility_20",
+            "cotton_range",
+            "cotton_volume_change",
+            "cotton_volume_z20",
+            "cotton_volatility_regime_20_60",
+            "dxy_ret_1",
+            "dxy_ret_5",
+            "dxy_ret_20",
+            "wti_ret_1",
+            "wti_ret_5",
+            "wti_ret_20",
+            "cotton_dxy_corr_60",
+            "cotton_wti_corr_60",
+            "month_sin",
+            "month_cos",
+            "curve_D0_age_sessions",
+            "curve_D0_unavailable",
+            "curve_D0_gap_months",
+            "numeric_D0_spread"
+          ]
+        }
+      ],
+      "model_families": [
+        "ridge"
+      ],
+      "kind": "market_fit_receipt",
+      "completed_fits": 63,
+      "sample_receipts": [
+        {
+          "path": "experiment/ledger/completed/00d5048556f385977da0609225bdb5f230f359d575250073bfdc9c2e058c44bd.json",
+          "record_id": "c802abf9f38121bb843f61664548abc369946e7818b497085a50fdf3cdea9842",
+          "experiment_id": "00d5048556f385977da0609225bdb5f230f359d575250073bfdc9c2e058c44bd"
+        },
+        {
+          "path": "experiment/ledger/completed/055287e71ecb428c8ae52916a926594c6ab515868fb38b38b0e31cc09afd043b.json",
+          "record_id": "b4e48ead96160ac113df19f161f46fef5d8ad98147cd44bdb4f90017c78f5bff",
+          "experiment_id": "055287e71ecb428c8ae52916a926594c6ab515868fb38b38b0e31cc09afd043b"
+        },
+        {
+          "path": "experiment/ledger/completed/09963ac048ccaa0c42e2994f341b8f17e5dac6bdd472c8e19f0953cf797fe68d.json",
+          "record_id": "989c787df34c60d7af8cb4e3f06aaf89241c8c76f2b87499086ee02e78e33340",
+          "experiment_id": "09963ac048ccaa0c42e2994f341b8f17e5dac6bdd472c8e19f0953cf797fe68d"
+        }
+      ],
+      "roles": [
+        "inner",
+        "path"
+      ],
+      "coverage": "completed fit receipts; not experiment completion",
+      "payload_hashes_revalidated_by_index": false,
+      "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/contract-curve-result-20261010",
+      "payload_hashes_revalidated_separately": true
     }
   ],
   "rejected_receipts": [],
