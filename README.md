@@ -33,7 +33,8 @@ geçti. Sonuç paketi ayrı Release'tedir; ön kayıt ve eski kanıtlar korunur.
 ## Nereden başlanır?
 
 1. [Güncel durum ve kararlar](docs/STATUS.md).
-   [10 Ekim karar eki](docs/RESEARCH_PRIORITY_ADDENDUM_20261010.md): #25/#26 tamamlandı; tek bilimsel sonraki iş #27'nin kayıtlı çıktısını sıfır yeni fit ile sonuçlandırmak.
+   [10 Ekim karar eki](docs/RESEARCH_PRIORITY_ADDENDUM_20261010.md): #25–#27 sonuçları doğrulandı.
+   [Sıfır-fit bilgi elemesi](docs/INFORMATION_ADMISSION_20261010.md): mevcut gerçek vade fiyatları için kaynak/clock/cohort kabul kararı; yeni fit veya grid yok.
 2. [İspat amacı ve yardımcı simülasyonun sınırları](docs/TRADING_RESEARCH_CONTRACT_20261005.md).
 3. **Yeni deney önermeden önce** [deney sicilini](research/README.md) kontrol edin.
 

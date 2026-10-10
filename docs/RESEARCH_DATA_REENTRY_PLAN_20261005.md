@@ -2,6 +2,14 @@
 
 ## 10 Ekim karar eki
 
+**Sıfır-fit bilgi elemesi:** [mevcut eğri envanteri](INFORMATION_ADMISSION_20261010.md)
+997 AMS raporunda 9.970 gerçek vade fiyatı buldu; aşağıdaki vadeli-yapı
+satırının “yeni sağlayıcı gerekebilir” aşamasından önce bu mevcut arşiv
+değerlendirilmelidir. Bu kaynak tüm yılları kapsamaz; saat/ilk-vintage kabulü
+yok, model-eligible 0. Eski spot-basis T+5 sonucu gerçek kontrat farkını
+elemez. Sonraki tek iş kaynak/clock/cohort kabul kararı ve tek eşleştirilmiş
+ablation ön kayıt önerisi; yeni fit/veri indirme 0. Tarihsel satırlar korunur.
+
 **Aynı gün sonuç güncellemesi:** [kontrollü price_delta loss sonucu](PAIRED_PRICE_LOSS_RESULT_20261010.md)
 54 kayıtlı model çıkarımı, altı paired aralık ve rapor/CSV replay'i ile doğrulandı;
 yeni fit 0. MAE–MSE katkısı pozitif, Naive kapıları başarısız. Aşağıdaki karar

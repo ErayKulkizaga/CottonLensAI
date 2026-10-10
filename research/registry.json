@@ -16645,6 +16645,26 @@
       "information_absence_identified": false,
       "market_skill_demonstrated": false,
       "id": "f063fc8be71009af366dc3eb2af70ceb298214c9c7183324a8746fb0b371b2b0"
+    },
+    {
+      "experiment": "existing-information-admission-v1",
+      "profile": "existing-information-admission-v1",
+      "kind": "no_fit_source_scope_inventory",
+      "horizon": null,
+      "coverage": "998_existing_documents_997_valid_tables_9970_named_contract_prices_2020_2023",
+      "classification": "INCONCLUSIVE",
+      "model_families": [],
+      "recipes": [],
+      "completed_new_fits": 0,
+      "independent_holdout": false,
+      "model_eligible": false,
+      "code_id": "d3ca00e498639dc266f34dafb60f2f24dbba5e66ee0deeda0d9c4c0e5b7f7313",
+      "evidence": "research/evidence/information-admission-20261010.json",
+      "evidence_sha256": "9356ed3fc7e41f8c6d6bc63e2060d69bc553171f67e55f9f22b0714ae58927cf",
+      "reason": "Verified existing genuine multi-contract quotes, distinct from prior spot basis test; no forecast performance evidence. Publication UTC/first vintage unaccepted; 2016-2019 absent. No complete model proposal or fit permission. Surprise requires expectation archive; regime already present as feature/diagnostic, conditional trading rule not thereby ruled out.",
+      "id": "09014dae98cb78ae49f097fb02c640645f8571efb1ab8f07aed78d98337198ab",
+      "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/information-admission-20261010",
+      "payload_manifest": "research/evidence/information-admission-release-20261010.json"
     }
   ],
   "local_evidence": [
@@ -16895,6 +16915,14 @@
     {
       "path": "evidence/paired-price-loss-delivery-20261010.json",
       "sha256": "48e81ee905942c80c8aa7fc05302ab4935cb19476a84eaa49ef8a6c06771a379"
+    },
+    {
+      "path": "evidence/information-admission-20261010.json",
+      "sha256": "9356ed3fc7e41f8c6d6bc63e2060d69bc553171f67e55f9f22b0714ae58927cf"
+    },
+    {
+      "path": "evidence/information-admission-release-20261010.json",
+      "sha256": "adc09f80f9444347241e133c624f77b6d8b6a36ff282a015880ab216498809e4"
     }
   ]
 }

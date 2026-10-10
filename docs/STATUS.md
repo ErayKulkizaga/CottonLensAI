@@ -1,5 +1,12 @@
 # Güncel kararlar — 10 Ekim 2026
 
+**Sıfır-fit bilgi elemesi tamamlandı:** [mevcut gerçek vade fiyatları](INFORMATION_ADMISSION_20261010.md).
+1.000 eski girdi rehash; 997 AMS tablosunda 9.970 gerçek kontrat fiyatı,
+2016–2019 kapsamı yok. Eski spot-basis deneyi bu farkı sınamadı. UTC/ilk sürüm
+kabulü hâlâ yok, model-eligible 0; yeni fit/veri edinimi 0. Sıradaki tek iş
+bu alan için kaynak/clock/cohort kabul kararı ve tek eşleştirilmiş ablation
+ön kayıt önerisi. Yeni model/grid veya FAS kabulü kendiliğinden başlamaz.
+
 **Yeni sonuç doğrulandı:** [sabit price_delta loss karşılaştırması](PAIRED_PRICE_LOSS_RESULT_20261010.md).
 48 piyasa + ayrı 6 sentetik fit, 1.008 ortak T+1 origin. MAE–MSE katkısı
 %1,458009; blok20/60 alt sınırları +%0,636274/+%0,991865. Birincil katkı

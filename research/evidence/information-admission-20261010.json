@@ -1,0 +1,362 @@
+{
+  "schema": "existing-information-admission-v1",
+  "as_of": "2026-10-10T08:42:56.397337+00:00",
+  "scope": "Source-only inventory; no target association, training, model selection, new dataset, source admission or market claim",
+  "base_commit": "e64b72c9d281c233d62f517e6073e3fa510e2c39",
+  "parent_evidence_sha256": "a387d3942a0c9cb82230f824b2130a5a8d5f40ad63961af97f7ea96c47576ea7",
+  "old_input_files_reverified": 1000,
+  "market_sha256": "23cfabb7ccb2553f0547bc3290ff4916ce91c788c98a94acdb2e5b9cd1f3151c",
+  "review_sha256": "29ad684ac310e5a594218392a37081cb19671015517c215febc3ad0c9870abcc",
+  "all_source_bytes_verified": true,
+  "old_model_fit_count": 0,
+  "new_model_fit_count": 0,
+  "reports": 997,
+  "raw_documents": 998,
+  "quote_values": 9970,
+  "date_min": "2020-01-02",
+  "date_max": "2023-12-29",
+  "rejected": [
+    {
+      "date": "2021-10-20",
+      "sha256": "09122041db271fd9a34d78b0cad88f6e4f896a469c788d997c7b5c74b4c38671",
+      "reason": "Unreadable printed reference date"
+    }
+  ],
+  "metadata_missing_reference_dates": [
+    "2020-01-17"
+  ],
+  "independent_parser_equal_reports": 997,
+  "contract_count_histogram": {
+    "10": 997
+  },
+  "audited_header_and_quote_table_strict_ascii": true,
+  "front_second_gap_months_histogram": {
+    "2": 665,
+    "3": 332
+  },
+  "first_quote_close_matches": 996,
+  "quote_close_rounding_tolerance": 1e-05,
+  "distinct_quote_vectors": 996,
+  "front_second_difference": {
+    "minimum": -28.659999999999997,
+    "maximum": 3.3900000000000006,
+    "positive_count": 489,
+    "zero_count": 4,
+    "negative_count": 504
+  },
+  "distinct_source_dates_are_not_independent_signal_events": true,
+  "historical_coverage": {
+    "2016": {
+      "cotton_history_rows": 250,
+      "both_targets_in_historical_years": 250,
+      "same_reference_date_quote_rows": 0
+    },
+    "2017": {
+      "cotton_history_rows": 251,
+      "both_targets_in_historical_years": 251,
+      "same_reference_date_quote_rows": 0
+    },
+    "2018": {
+      "cotton_history_rows": 251,
+      "both_targets_in_historical_years": 251,
+      "same_reference_date_quote_rows": 0
+    },
+    "2019": {
+      "cotton_history_rows": 252,
+      "both_targets_in_historical_years": 252,
+      "same_reference_date_quote_rows": 0
+    },
+    "2020": {
+      "cotton_history_rows": 253,
+      "both_targets_in_historical_years": 253,
+      "same_reference_date_quote_rows": 246
+    },
+    "2021": {
+      "cotton_history_rows": 252,
+      "both_targets_in_historical_years": 252,
+      "same_reference_date_quote_rows": 251
+    },
+    "2022": {
+      "cotton_history_rows": 251,
+      "both_targets_in_historical_years": 251,
+      "same_reference_date_quote_rows": 250
+    },
+    "2023": {
+      "cotton_history_rows": 251,
+      "both_targets_in_historical_years": 246,
+      "same_reference_date_quote_rows": 250
+    }
+  },
+  "same_reference_date_is_not_availability_alignment": true,
+  "published_at_present": 0,
+  "timezone_verified": 0,
+  "first_version_reviewed": false,
+  "model_eligible_rows": 0,
+  "local_display_date_differs_from_reference": [
+    "2023-06-26",
+    "2023-06-21",
+    "2021-11-11",
+    "2021-10-11",
+    "2020-12-24",
+    "2020-10-28",
+    "2020-10-27",
+    "2020-10-26",
+    "2020-10-23",
+    "2020-10-22",
+    "2020-10-21",
+    "2020-10-14",
+    "2020-08-05"
+  ],
+  "current_features_have_contract_quotes": false,
+  "current_features": [
+    "cotton_ret_1",
+    "cotton_ret_5",
+    "cotton_ret_10",
+    "cotton_ret_20",
+    "cotton_momentum_5",
+    "cotton_momentum_20",
+    "cotton_sma_ratio_5_20",
+    "cotton_sma_ratio_20_50",
+    "cotton_volatility_5",
+    "cotton_volatility_20",
+    "cotton_range",
+    "cotton_volume_change",
+    "cotton_volume_z20",
+    "cotton_volatility_regime_20_60",
+    "dxy_ret_1",
+    "dxy_ret_5",
+    "dxy_ret_20",
+    "wti_ret_1",
+    "wti_ret_5",
+    "wti_ret_20",
+    "cotton_dxy_corr_60",
+    "cotton_wti_corr_60",
+    "month_sin",
+    "month_cos"
+  ],
+  "matched_registered_curve_feature_recipes": 0,
+  "history_lookups": {
+    "curve": {
+      "status": "NO_REGISTERED_MATCH",
+      "study_count": 0,
+      "recipe_count": 0
+    },
+    "contract_curve": {
+      "status": "NO_REGISTERED_MATCH",
+      "study_count": 0,
+      "recipe_count": 0
+    },
+    "term_spread": {
+      "status": "NO_REGISTERED_MATCH",
+      "study_count": 0,
+      "recipe_count": 0
+    },
+    "surprise": {
+      "status": "NO_REGISTERED_MATCH",
+      "study_count": 0,
+      "recipe_count": 0
+    },
+    "ams-exploration": {
+      "status": "RELATED_EVIDENCE",
+      "study_count": 7,
+      "recipe_count": 14
+    },
+    "regime": {
+      "status": "RELATED_EVIDENCE",
+      "study_count": 94,
+      "recipe_count": 498
+    }
+  },
+  "prior_spot_study": [
+    {
+      "id": "0390fc42b58224c92363a9f8325f93a5a62dfa32b95c1b9dcf218e6b4f6bcc1e",
+      "group": "base",
+      "horizon": 5,
+      "metrics": {
+        "count": 246,
+        "start": "2023-01-03",
+        "end": "2023-12-21",
+        "naive_mae": 2.216300902327871,
+        "selected": {
+          "mae": 2.216300902327871,
+          "gain_pct": 0.0,
+          "all_origin_direction_pct": 0.40650406504065045,
+          "active_rate_pct": 0.0
+        },
+        "raw": {
+          "mae": 2.211597535013919,
+          "gain_pct": 0.21221700126601295,
+          "all_origin_direction_pct": 54.47154471544715,
+          "active_rate_pct": 100.0
+        }
+      },
+      "classification": "INCONCLUSIVE"
+    },
+    {
+      "id": "15f65494f62ddfb4fe93d6ed83a198e0da3dd2744659e1a10856674a4a1c1599",
+      "group": "missing_L1",
+      "horizon": 5,
+      "metrics": {
+        "count": 246,
+        "start": "2023-01-03",
+        "end": "2023-12-21",
+        "naive_mae": 2.216300902327871,
+        "selected": {
+          "mae": 2.216300902327871,
+          "gain_pct": 0.0,
+          "all_origin_direction_pct": 0.40650406504065045,
+          "active_rate_pct": 0.0
+        },
+        "raw": {
+          "mae": 2.2191065009706654,
+          "gain_pct": -0.1265892478700792,
+          "all_origin_direction_pct": 53.2520325203252,
+          "active_rate_pct": 100.0
+        }
+      },
+      "classification": "INCONCLUSIVE"
+    },
+    {
+      "id": "94511c3566d2ff01628c2378b3f24d4836ef69853ba0d95d852c8352c27cee2f",
+      "group": "missing_L2",
+      "horizon": 5,
+      "metrics": {
+        "count": 246,
+        "start": "2023-01-03",
+        "end": "2023-12-21",
+        "naive_mae": 2.216300902327871,
+        "selected": {
+          "mae": 2.216300902327871,
+          "gain_pct": 0.0,
+          "all_origin_direction_pct": 0.40650406504065045,
+          "active_rate_pct": 0.0
+        },
+        "raw": {
+          "mae": 2.2211695094270656,
+          "gain_pct": -0.21967265789950563,
+          "all_origin_direction_pct": 54.0650406504065,
+          "active_rate_pct": 100.0
+        }
+      },
+      "classification": "INCONCLUSIVE"
+    },
+    {
+      "id": "f008b5e36e39e83590d1aa88c84ac52e00f219d07509b98d32add8efb40982bd",
+      "group": "missing_L6",
+      "horizon": 5,
+      "metrics": {
+        "count": 246,
+        "start": "2023-01-03",
+        "end": "2023-12-21",
+        "naive_mae": 2.216300902327871,
+        "selected": {
+          "mae": 2.216300902327871,
+          "gain_pct": 0.0,
+          "all_origin_direction_pct": 0.40650406504065045,
+          "active_rate_pct": 0.0
+        },
+        "raw": {
+          "mae": 2.2249761557369125,
+          "gain_pct": -0.3914294038291244,
+          "all_origin_direction_pct": 54.87804878048781,
+          "active_rate_pct": 100.0
+        }
+      },
+      "classification": "INCONCLUSIVE"
+    },
+    {
+      "id": "3abeeffdb313263820aca0a024e210cfe7b084e0963485eb39f93d1386ebb52b",
+      "group": "quote_L1",
+      "horizon": 5,
+      "metrics": {
+        "count": 246,
+        "start": "2023-01-03",
+        "end": "2023-12-21",
+        "naive_mae": 2.216300902327871,
+        "selected": {
+          "mae": 2.216300902327871,
+          "gain_pct": 0.0,
+          "all_origin_direction_pct": 0.40650406504065045,
+          "active_rate_pct": 0.0
+        },
+        "raw": {
+          "mae": 2.248103107720296,
+          "gain_pct": -1.4349227290852973,
+          "all_origin_direction_pct": 55.6910569105691,
+          "active_rate_pct": 100.0
+        }
+      },
+      "classification": "INCONCLUSIVE"
+    },
+    {
+      "id": "0f1ec06983441084568d3269ecda628cd85b0d9a937a37106f48b7f759bc6bca",
+      "group": "quote_L2",
+      "horizon": 5,
+      "metrics": {
+        "count": 246,
+        "start": "2023-01-03",
+        "end": "2023-12-21",
+        "naive_mae": 2.216300902327871,
+        "selected": {
+          "mae": 2.216300902327871,
+          "gain_pct": 0.0,
+          "all_origin_direction_pct": 0.40650406504065045,
+          "active_rate_pct": 0.0
+        },
+        "raw": {
+          "mae": 2.243002552408591,
+          "gain_pct": -1.2047845151655245,
+          "all_origin_direction_pct": 54.87804878048781,
+          "active_rate_pct": 100.0
+        }
+      },
+      "classification": "INCONCLUSIVE"
+    },
+    {
+      "id": "302c00a55e00dc3df5883c35bb6be44d416d7c318c2386674f6816cc94aa0f6a",
+      "group": "quote_L6",
+      "horizon": 5,
+      "metrics": {
+        "count": 246,
+        "start": "2023-01-03",
+        "end": "2023-12-21",
+        "naive_mae": 2.216300902327871,
+        "selected": {
+          "mae": 2.216300902327871,
+          "gain_pct": 0.0,
+          "all_origin_direction_pct": 0.40650406504065045,
+          "active_rate_pct": 0.0
+        },
+        "raw": {
+          "mae": 2.21749896086304,
+          "gain_pct": -0.05405667316702445,
+          "all_origin_direction_pct": 55.28455284552846,
+          "active_rate_pct": 100.0
+        }
+      },
+      "classification": "INCONCLUSIVE"
+    }
+  ],
+  "novelty_limit": "Feature-name lookup and inspected modules do not prove no unindexed equivalent study exists; no complete fit proposal can be frozen until source/clock/cohort acceptance",
+  "curve_gate": "NOT_ADMITTED_CLOCK_VINTAGE_AND_FULL_YEAR_COVERAGE_UNRESOLVED",
+  "surprise_gate": "NOT_ADMITTED_NO_EXPECTATION_ARCHIVE_IDENTIFIED",
+  "regime_gate": "ALREADY_PRESENT_REPRESENTATION_AND_RETROSPECTIVE_DIAGNOSTICS_NOT_NEW_BY_NAME",
+  "registry_validate": {
+    "status": "valid",
+    "experiments": 156,
+    "fit_recipes": 508,
+    "completed_fit_copies": 29111
+  },
+  "protected_research_files_unchanged": 69,
+  "primary_checkout_unchanged": true,
+  "audit_script_sha256": "71159b705038ebe81f2965d52482f10ca7b590200edffca1096ddb05df49e69d",
+  "private_quote_payload_sha256": "3cf19b853ce43978342427b915a22d5b11a7886e9db2018274e825bdecf1d91f",
+  "non_utf8_document_count": 54,
+  "displayed_publication_day_is_not_first_version_proof": true,
+  "complete_fit_proposal_status": "NOT_DEFINED_SOURCE_CLOCK_COHORT_NOT_ACCEPTED; no recipe/grid frozen or fits permitted",
+  "remaining_competing_explanations": [
+    "Weak useful conditional information in currently used inputs",
+    "Existing representation/estimator fails to extract useful conditional information"
+  ],
+  "full_audit_private_sha256": "6cf06360d76df0905b61ac4d097d7646959eb1f7dcd06ebe2d52ee27d43f55fa"
+}
