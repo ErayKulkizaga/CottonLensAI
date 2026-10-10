@@ -1,5 +1,17 @@
 # Güncel kararlar — 10 Ekim 2026
 
+**T+5 tamamlandı:** [tek ufuk sonucu](CONTRACT_CURVE_T5_RESULT_20261010.md).
+252 piyasa +1 ayrı sentetik fit,749 origin/kol,12 çıktı/2.996 satır.
+Bütün kolların geçmiş ağırlıkları [0;0,25;0];numeric D0 seçilmiş Naive
+kazancı −%0,549260,ham −%7,242578,yıl0/3.253 native çıkarım,12 seçim,
+16 aralık,exact rapor/CSV/geçiş açıklaması ve bağımsız hata toplamları
+doğrulandı;yeni doğrulama fit'i0. Kaynak katkısı INCONCLUSIVE,bu sabit
+tarif pratik hedefi karşılamadı. Saat/vintage ve6/8 sınırı sürüyor.
+Tek sonraki bilimsel iş saklanan tahminlerde sıfır-fit proxy/carry
+ayrıştırması;geleceğin kontratı yalnız tanı metadatası,yeni grid/fit yok.
+
+## Önceki araştırma aşamaları — değiştirilmeden korunan kararlar
+
 **T+5 sıfır-fit ön kayıt:** [tek ufuk protokolü](CONTRACT_CURVE_T5_PROTOCOL_20261010.md).
 Tamamlanmış T+1 ile bütün history/özellikler/749 origin birebir; yalnız model
 ufku5. Ayrı source/namespace ve T+5 sentetik kontrol;252+en fazla1 fit tavanı,

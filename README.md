@@ -1,5 +1,15 @@
 # CottonLensAI
 
+[Gerçek eğri T+5 sonucu](docs/CONTRACT_CURVE_T5_RESULT_20261010.md) tamamlandı:
+252 piyasa +1 ayrı sentetik fit,749 ortak origin/kol. Seçilmiş D0 Naive
+kazancı −%0,549260;ham −%7,242578.253 native çıkarım/12 seçim/16 aralık
+ve rapor/CSV/geçiş açıklaması yeniden fit olmadan doğrulandı. Eğri katkısı
+74 geçiş origin'inde pozitif,669 aynı-kontrat origin'inde negatif:
+proxy/carry ile genel fiyat yönünü ayırmak gerekiyor. Naive korunur;
+sıradaki tek iş mevcut tahminlerde sıfır-fit bileşen denetimi,yeni grid yok.
+
+## Önceki araştırma aşamaları (korunan tarihsel kayıtlar)
+
 [Gerçek eğri T+5 ön kaydı](docs/CONTRACT_CURVE_T5_PROTOCOL_20261010.md) hazır:
 aynı749 origin/özellik, yalnız ufuk5;252 piyasa +en fazla1 sentetik fit
 tavanı, henüz0 fit. T+1 sonucu tekrarlanmaz. Geleceğin kontrat bilgisi model
