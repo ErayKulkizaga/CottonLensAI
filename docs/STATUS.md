@@ -5,8 +5,9 @@
 %1,458009; blok20/60 alt sınırları +%0,636274/+%0,991865. Birincil katkı
 pozitif, fakat MAE Naive kazancı −%0,488298, yön %48,4127, dönem 3/8;
 pratik hedef karşılanmadı. 54 kayıtlı çıkarım, altı aralık ve rapor/CSV birebir
-replay doğrulandı; yerel paket restore'u geçti. Sonuç Release'inin GitHub'dan
-geri indirilip doğrulanması teslimatın kalan kontrolüdür. Naive korunur;
+replay doğrulandı; GitHub'dan yeni indirilen 579 üyeli sonuç arşivinde aynı
+54 çıkarım/altı aralık/exact replay tekrar geçti. [Teslimat makbuzu](../research/evidence/paired-price-loss-delivery-20261010.json).
+Naive korunur;
 bu sabit tarif genel MAE/grid veya yeni model aramasına dönüştürülmez.
 Sonraki bilimsel karar, teslimattan sonra en fazla 2–3 bilgi sorusunun mevcut
 sicil/kaynaklarla sıfır-fit kabul elemesi; yeni fit/veri kabul izni yoktur.

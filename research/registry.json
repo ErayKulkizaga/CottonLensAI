@@ -16891,6 +16891,10 @@
     {
       "path": "evidence/paired-price-loss-result-release-20261010.json",
       "sha256": "8822bfad9e70bd7df5d494d208048383f05b1cb3ee91c1b658163a9bace1d401"
+    },
+    {
+      "path": "evidence/paired-price-loss-delivery-20261010.json",
+      "sha256": "48e81ee905942c80c8aa7fc05302ab4935cb19476a84eaa49ef8a6c06771a379"
     }
   ]
 }
