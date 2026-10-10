@@ -103,3 +103,59 @@ başarısı iddiası yok. Sonuçtan sonra otomatik ek grid/ufuk/yıl açılmaz.
 GPU/backend/UI değişmedi; yerel GPU/backend/UI build çalıştırılmadı. Kaynak/girdi/ortam kimliği, checksum-bound ön kayıt ve GitHub'dan
 taze geri okuma tamamlanmadan gerçek fit başlamaz. Henüz yeni fit0;
 bu belge eğitim sonucu değildir. Eski plan/veri/tahmin/ledger korunur.
+
+
+## Tamamlanmış sonuç — önceki ön kayıt yukarıda korunur
+
+44 piyasa+1 ayrı sentetik fit tamamlandı; ek doğrulama fit'i0.
+Her kol246 origin/242 eşleşmiş hedef/4 bilinmeyen;984 satır ve972
+origin fiyatı erişilebilir fiyat tahmini.44 native piyasa çıkarımı,
+984 scalar/Decimal fiyat satırı,12 bağımsız ordinal blok aralığı ve
+sekiz tutarlı bozulma kontrolü geçti. Ön kayıt GitHub'dan taze
+indirilip checksum/source/girdi kontrolü **fit'ten önce** yapıldı.
+
+| Sonuç | CT train etiketi | Named train etiketi |
+|---|---:|---:|
+| Aynı kontrat Naive MAE |1,976074|1,976074|
+| Ham model MAE |2,397313|2,132941|
+| Ham Naive kazancı |−%21,316950|−%7,938310|
+| Ham yön |%44,214876|%45,454545|
+| Geçmiş seçilmiş ağırlık |0|0|
+| Seçilmiş Naive kazancı/aktif oran |0/0|0/0|
+| En büyük3 Naive hatası çıkarılınca ham kazanç |−%20,943864|−%7,407091|
+
+**VERIFIED:** Birincil ham label katkısı CT−named MAE=0,264371866;
+Naive MAE'nin%13,378639'u. Blok20 aralığı[%6,952223;%20,070391],
+blok60[%8,685702;%17,255399]. Her ikisi pozitif. Üç uç hata çıkarılınca
+katkı%13,178441; yalnız birkaç uç değerlendirme hatasına dayanmıyor.
+Bu ortak2023 örnekleminde CT kolunun Naive üzerindeki fazladan
+hatasının%62,760571'i etiket değişikliğiyle kalktı. **Bütün proje
+başarısızlığının%62,76'sı açıklanmış değildir.**
+
+**VERIFIED:** Doğru kontrat ham tahmini hâlâ Naive'dan kötü. Naive
+kazanç aralıkları blok20[−%14,999883;−%0,402123],blok60
+[−%14,919184;%0,156033]; iki üst sınır da%5 altında. Seçilmiş iki
+çıktı Naive ile aynıdır. Bu[0,0] karşılaştırma bilgi kaynağında sinyal
+olmadığının kanıtı değildir. `FIXED_LABEL_CONTROL_BELOW_PRACTICAL_GOAL`.
+
+Sicilde **DECISIVE_POSITIVE yalnız birincil geçmiş label etkisi** için
+kullanılır. Bu Naive üstünlüğü veya genel model başarısı değildir;
+pratik karar negatiftir. Yön katkısının küçük olması ve geçmişte iki
+kolun da0 seçmesi, olumlu etkinin yanlış/amplitüdü yüksek tahmini
+azaltma olabileceğini destekler; yeni yararlı yön bilgisi göstermez.
+Etiket bozukluğunun tamamını roll'a yükleyemeyiz: CT ile daha uzak
+vadenin getiri farkı carry/beta/vade etkilerini de içerir.
+
+**STRONGLY SUPPORTED:** Karar verilen kontrat ile öğretilen CT proxy
+getirisini eşitlemek maddi bir hata; sadece değerlendirme fiyatını
+çevirmek eğitim ilişkisini düzeltmiyordu. Fakat bu hata tek başına
+Naive hedefini çözmüyor. Kalan küçük ayrım: mevcut bilgi/temsilde
+kullanışlı koşullu getiri azlığı ile Ridge'ın doğrusal sınırı. Kaynak
+saatinin/Final-vintage'ın gerçek tarihsel kanıtı hâlâ eksik.
+
+Yeni model/grid başlamaz: önce bütün native payload/ön kayıt/sonuç
+checksum-bound ayrı Release'te korunur ve GitHub'dan taze sıfır-fit
+replay ile teslimat kapanır. Sonraki tek bilimsel karar, mevcut sicilde
+**aynı named hedef/ortak cohort'ta** nonlinear kontrol gerçekten
+sınanmış mı denetlemek; genel eski nonlinear deneyi yeniden çalıştırmak
+değil. Bu denetim tamamlanmadan kapasite deneyi önermeyiz.

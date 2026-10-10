@@ -1,6 +1,6 @@
 # Deney geçmişi ve tekrar kontrolü
 
-Güncel tek takip: [T+5 ortak eğitim etiketi kontrolü](../docs/NAMED_LABEL_CONTROL_T5_20261010.md); yalnız2023 hazır,44 piyasa+en fazla1 sentetik fit tavanı. Ön kayıt tamamlanmadan eğitim yok; sonuç veya bağımsız holdout iddiası değil.
+Güncel sonuç: [T+5 ortak eğitim etiketi kontrolü](../docs/NAMED_LABEL_CONTROL_T5_20261010.md);44+1 fit. Doğru kontrat etiketi ham hatayı azaltıyor; Naive hâlâ geçilmiyor. Birincil label etkisi yalnız geçmiş2023 için pozitif; üretim/bağımsız holdout başarısı değil.
 
 ## Sicil
 

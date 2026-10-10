@@ -1,5 +1,20 @@
 # Güncel kararlar — 10 Ekim 2026
 
+**Ortak T+5 eğitim-label kontrolü tamamlandı:** [sonuç](NAMED_LABEL_CONTROL_T5_20261010.md).
+44 piyasa+1 sentetik fit;246/242/4 origin-hedef-bilinmeyen korunur.
+Aynı train/28 özellik/Ridge ile CT ham Naive kazancı−%21,316950,
+named−%7,938310;label katkısı+%13,378639 Naive-MAE birimi. Blok20/60
+alt sınırları+%6,952223/+%8,685702. Birincil label etkisi bu geçmiş2023
+yılında pozitif;pratik hedef negatif. İki kolun geçmiş shrinkage'ı0,
+named ham yön%45,454545.44 native çıkarım,984 satır/972 fiyat,12 scalar
+aralık ve8 ret kontrolü doğrulandı;ek doğrulama fit'i0. Saat/vintage
+varsayımı,tek yıl ve6/8 sınırı sürer. Yeni model/grid yok;önce checksum
+Release ve taze GitHub replay teslimatı kapanır. Sonra aynı named hedefte
+nonlinear kontrol sicilde var mı salt okunur denetlenir;genel eski
+nonlinear deneyleri tekrarlanmaz.
+
+## Önceki ön kayıt — tarihsel karar korunur
+
 **Sonraki tek kontrol hazırlanıyor:** [ortak T+5 eğitim etiketi](NAMED_LABEL_CONTROL_T5_20261010.md).
 Yalnız geçmiş kaynak/etiket olgunluğuna göre 2023 destekleniyor; en erken
 train528,246 dış makbuz/242 hedef/4 açık eksik. Yeni geçmiş3×63 cohort,
