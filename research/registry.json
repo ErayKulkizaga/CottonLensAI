@@ -17231,6 +17231,10 @@
     {
       "path": "evidence/curve-target-integrity-release-20261010.json",
       "sha256": "055ffc39a60b1856f398026c43be06b1d9e75e93562ea265b1c1368224d74b34"
+    },
+    {
+      "path": "evidence/curve-target-integrity-delivery-20261010.json",
+      "sha256": "4838d488882d0a5807e9ad023d84abe0c10d21d210398a2279736bd5d0f033d0"
     }
   ]
 }

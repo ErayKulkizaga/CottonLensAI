@@ -104,3 +104,12 @@ python controls.py --experiment inputs --audit replay --analyzer analysis.py --v
 ```
 
 `replay` yeni dizin olmalıdır; mevcut veya yarım kalmış kanıt üzerine yazılmaz.
+
+**Teslimat doğrulandı:** [makbuz](../research/evidence/curve-target-integrity-delivery-20261010.json).
+GitHub'dan yeniden indirilen20 üye doğrulandı; rapor/1.498 tanı satırı,
+completion, bağımsız Decimal makbuzu ve5 ret kontrolü byte olarak birebir
+replay edildi. Arşiv1.967.150 byte, SHA256
+`31ab3e517a6acaf932b5de43cdfb4a421056dfc3cb19ec51d144fba701af1dee`.
+8 history testi/ML Ruff başarılı; yeni fit0. Önceki69 proof/159 çalışma/
+513 tarif ve1.000 ham girdi korunur. PR #32 final-head sekiz CI başarılı;
+PR #33'ün CI anlık durumu makbuzda ayrıdır, çalışan job geçmiş sayılmaz.
