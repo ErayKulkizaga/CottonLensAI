@@ -13,12 +13,13 @@ from cottonlens_ml.cohort import content_id, frame_identity
 from cottonlens_ml.config import FEATURE_NAMES
 from cottonlens_ml.research.full_year import SHRINKAGE, chunks
 from cottonlens_ml.research.history import check, load_registry, validate
-from cottonlens_ml.research.ledger import freeze_record, writer
+from cottonlens_ml.research.ledger import freeze_record, read_record, writer
 from cottonlens_ml.research.protocol import full_year_manifest, rows_at
 from cottonlens_ml.research.recency import copy_immutable
 from cottonlens_ml.research.review import training_rows
 
 PROFILE = 'contract-curve-t1-pilot-v1'
+T5_PROFILE = 'contract-curve-t5-pilot-v1'
 RECIPE = {'family': 'ridge', 'params': {'alpha': 1.}, 'horizon': 1, 'task': 'price',
           'device': 'cpu', 'seed': 42, 'target': 'scaled_log', 'loss': 'reg:squarederror',
           'years': None, 'cadence': 21, 'window': 1}
@@ -36,6 +37,40 @@ RULES = {
     'gate_evaluated': False, 'automatic_release': False,
     'interpretation': 'Three repeatedly reviewed years, unverified UTC and first vintage; not independent holdout or real-time skill',
 }
+
+
+def definition(profile):
+    if profile == PROFILE:
+        return RECIPE, RULES
+    if profile != T5_PROFILE:
+        raise ValueError('Only frozen contract-curve T1 or T5 profiles supported')
+    return {**RECIPE, 'horizon': 5}, {
+        **RULES, 'practical_goal': {**RULES['practical_goal'], 'direction_pct': 55},
+        'transition_guard': 'Ex-post transition/unchanged/unknown error attribution only after full-cohort scoring; never features, cohort filters or selection',
+        'overlap': 'T5 labels overlap; preserve year blocks20/60;74 crossed origins are15 observed transitions, not independent events',
+        'interpretation': 'Same reviewed three years and UTC/first-vintage assumptions; continuous-target contribution is not same-contract or position skill',
+    }
+
+
+def bind_t5_parent(design, parent_ready, parent_proof, integrity):
+    """Pin the horizon comparison to a completed T1 result, never its OOS selections."""
+    if (design['profile'] != T5_PROFILE or parent_proof['profile'] != PROFILE
+            or parent_proof['status'] != 'completed_assumption_sensitivity'
+            or parent_ready['identity']['profile'] != PROFILE
+            or parent_ready['identity']['registration_id'] != parent_proof['registration_id']
+            or parent_ready['identity']['source_id'] != parent_proof['source_id']
+            or design['split'] != parent_ready['identity']['split']
+            or design['feature_data_id'] != parent_ready['identity']['research_data_id']
+            or design['groups'] != parent_ready['identity']['design']['groups']
+            or integrity['parent_registration_id'] != parent_proof['registration_id']
+            or integrity['inputs_sha256']['history'] != parent_ready['history_sha256']
+            or integrity['new_fits'] != 0 or integrity['market_skill_claimed'] is not False
+            or integrity['historical_source_admitted'] is not False):
+        raise ValueError('T5 must preserve completed T1 origins, values, groups and target-integrity boundary')
+    design.update(parent_t1_registration_id=parent_proof['registration_id'],
+                  parent_t1_result_evidence_id=content_id(parent_proof),
+                  target_integrity_evidence_id=content_id(integrity))
+    return design
 
 
 def groups():
@@ -123,10 +158,11 @@ def names(arm,delay):
     return [*FEATURE_NAMES,*[f'curve_D{delay}_{f}' for f in ('age_sessions','unavailable','gap_months')],f'{arm}_D{delay}_spread']
 
 
-def make_design(history, records):
+def make_design(history, records, *, profile=PROFILE):
     """Select years by past source feasibility, never outer performance or row completeness."""
     if history.date.max() >= pd.Timestamp('2024-01-01'):
         raise ValueError('Seen 2024+ audit cannot enter selection')
+    recipe, rules = definition(profile)
     expanded = align(history, records)
     reference = full_year_manifest(history)
     coverage, supported = [], []
@@ -135,7 +171,7 @@ def make_design(history, records):
         for role, origins in [('outer', fold['origins']), *[(f'inner_{i}', b['origins'])
                                                           for i, b in enumerate(fold['inner'])]]:
             test = rows_at(expanded, origins)
-            train = training_rows(expanded, test.date.min(), RECIPE, None)
+            train = training_rows(expanded, test.date.min(), recipe, None)
             for delay in DELAYS:
                 key = f'curve_D{delay}_document_sha256'
                 values = train[f'numeric_D{delay}_spread']
@@ -167,7 +203,7 @@ def make_design(history, records):
     for d in DELAYS:
         np.testing.assert_array_equal(expanded[f'mask_D{d}_spread'].isna(), expanded[f'numeric_D{d}_spread'].isna())
     pd.testing.assert_frame_equal(expanded[list(history)], history, check_exact=True)
-    design = {'profile': PROFILE, 'groups': groups(), 'recipe': RECIPE, 'split': split, 'rules': RULES,
+    design = {'profile': profile, 'groups': groups(), 'recipe': recipe, 'split': split, 'rules': rules,
               'shrinkage_weights': list(SHRINKAGE), 'mode': MODE,
               'clock': 'Cotton source date +1 calendar day 00:15 UTC',
               'assumed_source_clock': 'max(reference date, unverified displayed publication calendar day)+1 day 00:00 UTC; Final vintage assumed present',
@@ -182,10 +218,12 @@ def make_design(history, records):
               'reference_origins': sum(len(f['origins']) for f in reference['folds']),
               'release_allowed': False, 'historical_source_admitted': False,
               'deliberate_repeat_reason': 'Old AMS spot/Close T+5 is not actual intercontract curve T+1; fixed core re-used solely for matched source ablation'}
+    if profile == T5_PROFILE:
+        design['deliberate_repeat_reason'] = 'Completed real-curve T1 is below goal; change horizon only, no T1 OOS-weight transfer; old spot-basis T5 never tested actual intercontract values'
     return expanded, design, coverage
 
 
-def register(repo, output, history_path, quotes_path, proof_path, mode):
+def register(repo, output, history_path, quotes_path, proof_path, mode, *, profile=PROFILE, parent_root=None):
     """Freeze code, values, environment and rules before any synthetic or market fit."""
     repo, output, history_path, quotes_path, proof_path = map(Path, (repo, output, history_path, quotes_path, proof_path))
     if mode != MODE:
@@ -199,7 +237,7 @@ def register(repo, output, history_path, quotes_path, proof_path, mode):
             or panel['model_eligible'] is not False or len(panel['rows']) != proof['reports']):
         raise ValueError('Existing quarantined quotes changed or source admitted')
     history = pd.read_parquet(history_path)
-    expanded, design, coverage = make_design(history, panel['rows'])
+    expanded, design, coverage = make_design(history, panel['rows'], profile=profile)
     if (digest(history_path) != REFERENCE_HISTORY_SHA256
             or [f['year'] for f in design['split']['folds']] != [2021, 2022, 2023]
             or design['fit_budget']['total'] != 252 or design['fit_budget']['prediction_rows'] != 2996):
@@ -207,6 +245,21 @@ def register(repo, output, history_path, quotes_path, proof_path, mode):
     source = research_source_identity(repo)
     inputs = {'reference.parquet': history_path, 'quotes.json': quotes_path, 'source-proof.json': proof_path,
               'registry.json': repo / 'research/registry.json', 'trials.json': repo / 'research/trials.json'}
+    if profile == T5_PROFILE:
+        if parent_root is None:
+            raise ValueError('Explicit completed T1 parent required before T5 preregistration')
+        parent_root = Path(parent_root)
+        inputs.update({'parent-ready.json': parent_root / 'ready.json',
+                       'parent-history.parquet': parent_root / 'history.parquet',
+                       'parent-result-proof.json': repo / 'research/evidence/contract-curve-result-20261010.json',
+                       'target-integrity-proof.json': repo / 'research/evidence/curve-target-integrity-20261010.json'})
+        parent_ready = read_record(inputs['parent-ready.json'])
+        parent_proof = json.loads(inputs['parent-result-proof.json'].read_bytes())
+        if (digest(inputs['parent-ready.json']) != parent_proof['ready_sha256']
+                or digest(inputs['parent-history.parquet']) != parent_ready['history_sha256']):
+            raise ValueError('Completed T1 parent bytes changed')
+        pd.testing.assert_frame_equal(expanded, pd.read_parquet(inputs['parent-history.parquet']), check_exact=True)
+        bind_t5_parent(design, parent_ready, parent_proof, json.loads(inputs['target-integrity-proof.json'].read_bytes()))
     identity = {'source_id': source['source_id'], 'design': design,
                 'input_sha256': {n: digest(p) for n, p in inputs.items()},
                 'python': sys.version.split()[0], 'versions': {n: importlib.metadata.version(n) for n in VERSIONS},
@@ -214,10 +267,10 @@ def register(repo, output, history_path, quotes_path, proof_path, mode):
     registration_id = content_id(identity)
     registry, trials = load_registry(repo / 'research')
     scope = {'identity_id': registration_id, 'source_id': source['source_id'],
-             'data_id': design['feature_data_id'], 'split_id': design['split']['split_id'], 'profile': PROFILE}
+             'data_id': design['feature_data_id'], 'split_id': design['split']['split_id'], 'profile': profile}
     lookups = []
     for group, features in groups().items():
-        proposal = {'scope': scope, 'scope_id': content_id(scope), 'recipe': {**RECIPE, 'features': features}}
+        proposal = {'scope': scope, 'scope_id': content_id(scope), 'recipe': {**design['recipe'], 'features': features}}
         result = check(registry, trials, proposal=proposal)
         if result['exact_fit_recipes']:
             raise ValueError('Already fitted frozen recipe; deliberate repeat review required')
@@ -237,7 +290,7 @@ def register(repo, output, history_path, quotes_path, proof_path, mode):
                 raise ValueError('Code changed during registration')
         freeze_record(output / 'coverage.json', {'rows': coverage, 'fits': 0})
         freeze_record(output / 'history-check.json', {'lookups': lookups, 'no_match_is_novelty_proof': False})
-        reg = {'profile': PROFILE, 'identity': identity, 'registration_id': registration_id,
+        reg = {'profile': profile, 'identity': identity, 'registration_id': registration_id,
                'completed_experiment': False, 'fits': 0, 'availability_verified': False, 'model_eligible': False}
         freeze_record(output / 'preregistered.json', reg)
         freeze_record(output / 'decision-contract.json', {'registration_id': registration_id, 'rules': design['rules'],
@@ -256,8 +309,11 @@ def main():
     for name in ('repo', 'output', 'history', 'quotes', 'input-proof'):
         parser.add_argument('--' + name, type=Path, required=True)
     parser.add_argument('--mode', choices=(MODE,), required=True)
+    parser.add_argument('--profile', choices=(PROFILE, T5_PROFILE), default=PROFILE)
+    parser.add_argument('--parent-root', type=Path)
     args = parser.parse_args()
-    reg = register(args.repo, args.output, args.history, args.quotes, args.input_proof, args.mode)
+    reg = register(args.repo, args.output, args.history, args.quotes, args.input_proof, args.mode,
+                   profile=args.profile, parent_root=args.parent_root)
     print(json.dumps({'registration_id': reg['registration_id'], 'fits': 0,
                       'fit_budget': reg['identity']['design']['fit_budget']}, indent=2))
 

@@ -29,10 +29,22 @@ from cottonlens_ml.research.wasde_regional_pilot import completed_files
 PROFILE = pilot.PROFILE
 NAMESPACE = 'contract-curve'
 EVIDENCE = 'contract-curve-preregistration-20261010.json'
-recipe = shared.recipe
 
 
-def verify_registration(root, contract_path, evidence):
+def profile_settings(profile):
+    spec, _ = pilot.definition(profile)
+    return (spec['horizon'], NAMESPACE if profile == PROFILE else 'contract-curve-t5',
+            EVIDENCE if profile == PROFILE else 'contract-curve-t5-preregistration-20261010.json')
+
+
+def recipe(design, group, h):
+    expected, _ = pilot.definition(design['profile'])
+    if design['recipe'] != expected or h != expected['horizon'] or design['groups'] != pilot.groups():
+        raise ValueError('Only the exact preregistered profile/horizon/recipe/features are authorized')
+    return {**design['recipe'], 'features': design['groups'][group]}
+
+
+def verify_registration(root, contract_path, evidence, *, profile=PROFILE):
     root, contract_path = Path(root), Path(contract_path)
     complete = completed_files(root)
     reg, contract = read_record(root / 'preregistered.json'), read_record(contract_path)
@@ -42,7 +54,7 @@ def verify_registration(root, contract_path, evidence):
             or reg['registration_id'] != evidence['registration_id']
             or reg['registration_id'] != content_id(reg['identity'])
             or complete['registration_id'] != reg['registration_id']
-            or reg['profile'] != PROFILE or reg['fits'] != 0 or reg['completed_experiment'] is not False
+            or reg['profile'] != profile or reg['fits'] != 0 or reg['completed_experiment'] is not False
             or reg['availability_verified'] is not False or reg['model_eligible'] is not False
             or contract != {'registration_id': reg['registration_id'], 'rules': reg['identity']['design']['rules'],
                             'completed_experiment': False, 'fits': 0, 'automatic_release': False}):
@@ -62,23 +74,33 @@ def verify_registration(root, contract_path, evidence):
             or panel['model_eligible'] is not False or len(panel['rows']) != proof['reports']
             or proof['model_eligible_rows'] != 0):
         raise ValueError('Unadmitted source proof changed')
-    expanded, design, _ = pilot.make_design(parent, panel['rows'])
+    expanded, design, _ = pilot.make_design(parent, panel['rows'], profile=profile)
+    if profile == pilot.T5_PROFILE:
+        parent_ready = read_record(root / 'inputs/parent-ready.json')
+        parent_proof = json.loads((root / 'inputs/parent-result-proof.json').read_bytes())
+        integrity = json.loads((root / 'inputs/target-integrity-proof.json').read_bytes())
+        if (digest(root / 'inputs/parent-ready.json') != parent_proof['ready_sha256']
+                or digest(root / 'inputs/parent-history.parquet') != parent_ready['history_sha256']):
+            raise ValueError('Completed parent bytes differ')
+        pd.testing.assert_frame_equal(expanded, pd.read_parquet(root / 'inputs/parent-history.parquet'), check_exact=True)
+        pilot.bind_t5_parent(design, parent_ready, parent_proof, integrity)
     if design != reg['identity']['design'] or design['mode'] != pilot.MODE:
         raise ValueError('Frozen scientific design changed')
     pd.testing.assert_frame_equal(expanded, pd.read_parquet(root / 'history.parquet'), check_exact=True)
     return reg, expanded, contract
 
 
-def prepare(repo, folder, registration_root, contract_path):
+def prepare(repo, folder, registration_root, contract_path, *, profile=PROFILE):
     repo, folder, registration_root, contract_path = map(Path, (repo, folder, registration_root, contract_path))
     validate(repo / 'research')
-    evidence_path = repo / 'research/evidence' / EVIDENCE
+    horizon, _, evidence_name = profile_settings(profile)
+    evidence_path = repo / 'research/evidence' / evidence_name
     evidence = json.loads(evidence_path.read_bytes())
-    reg, _, _ = verify_registration(registration_root, contract_path, evidence)
+    reg, _, _ = verify_registration(registration_root, contract_path, evidence, profile=profile)
     design, source = reg['identity']['design'], research_source_identity(repo)
     if source['source_id'] != reg['identity']['source_id']:
         raise ValueError('Code changed after preregistration; choose new namespace')
-    identity = {'profile': PROFILE, 'source_id': source['source_id'], 'design': design,
+    identity = {'profile': profile, 'source_id': source['source_id'], 'design': design,
                 'design_id': content_id(design), 'split': design['split'], 'registration_id': reg['registration_id'],
                 'research_data_id': design['feature_data_id'], 'registered_evidence_sha256': digest(evidence_path),
                 'registration_complete_sha256': digest(registration_root / 'complete.json'),
@@ -92,10 +114,10 @@ def prepare(repo, folder, registration_root, contract_path):
         raise ValueError('Preregistered environment changed; no fitting')
     registry, trials = load_registry(repo / 'research')
     scope = {'identity_id': content_id(identity), 'source_id': identity['source_id'],
-             'data_id': identity['research_data_id'], 'split_id': content_id(identity['split']), 'profile': PROFILE}
+             'data_id': identity['research_data_id'], 'split_id': content_id(identity['split']), 'profile': profile}
     lookups = []
     for group in design['groups']:
-        result = check(registry, trials, proposal={'scope_id': content_id(scope), 'recipe': recipe(design, group, 1)})
+        result = check(registry, trials, proposal={'scope_id': content_id(scope), 'recipe': recipe(design, group, horizon)})
         if result['exact_fit_recipes']:
             raise ValueError('Exact frozen recipe already fitted')
         lookups.append({'group': group, 'status': result['status'], 'exact_matches': 0,
@@ -133,14 +155,16 @@ def verify_execution(folder):
     folder = Path(folder)
     ready, history = verify_history(folder)
     identity = ready['identity']
-    if (identity['profile'] != PROFILE or identity['availability_verified'] is not False
+    profile_settings(identity['profile'])
+    if (identity['availability_verified'] is not False
             or identity['historical_source_admitted'] is not False or identity['release_allowed'] is not False
             or digest(folder / 'registered-evidence.json') != identity['registered_evidence_sha256']
             or digest(folder / 'decision-contract.json') != identity['decision_contract_sha256']
             or digest(folder / 'preregistration/complete.json') != identity['registration_complete_sha256']):
         raise ValueError('Execution identity/proof changed')
     evidence = json.loads((folder / 'registered-evidence.json').read_bytes())
-    reg, expected, _ = verify_registration(folder / 'preregistration', folder / 'decision-contract.json', evidence)
+    reg, expected, _ = verify_registration(folder / 'preregistration', folder / 'decision-contract.json', evidence,
+                                         profile=identity['profile'])
     if (identity['registration_id'] != reg['registration_id'] or identity['design'] != reg['identity']['design']
             or identity['design_id'] != content_id(identity['design']) or identity['split'] != reg['identity']['design']['split']):
         raise ValueError('Execution design differs from registration')
@@ -152,8 +176,8 @@ def verify_execution(folder):
 
 def record_frame(test, payload, group, h, chosen):
     delay = int(group[-1])
-    payload['horizon'], payload['actual_return'], payload['selected_weight'] = h, test.target_return_1, chosen['weight']
-    payload['target_date'] = pd.to_datetime(test.target_date_1).dt.strftime('%Y-%m-%d')
+    payload['horizon'], payload['actual_return'], payload['selected_weight'] = h, test[f'target_return_{h}'], chosen['weight']
+    payload['target_date'] = pd.to_datetime(test[f'target_date_{h}']).dt.strftime('%Y-%m-%d')
     payload['decision_time'] = pd.to_datetime(test.curve_decision_time, utc=True).map(lambda t: t.isoformat())
     for field in ('report_date', 'assumed_available_at'):
         values = pd.to_datetime(test[f'curve_D{delay}_{field}'], utc=True)
@@ -187,7 +211,8 @@ def learning_control(experiment):
     consumed, reusable = fit_consumption(root)
     if consumed > 1 or (consumed == 1 and not reusable):
         raise ValueError('Synthetic fit attempt already consumed; no automatic extra fit')
-    shared.learning_control(experiment)
+    horizon, _, _ = profile_settings(experiment.identity['profile'])
+    shared.learning_control(experiment, horizon=horizon, recipe_fn=recipe)
 
 
 def fit_consumption(root):
@@ -203,6 +228,7 @@ def run(experiment, max_minutes):
     if not 0 < max_minutes <= 30:
         raise ValueError('Contract-curve CPU session must be positive and at most 30 minutes')
     verify_execution(experiment.root)
+    horizon, namespace, _ = profile_settings(experiment.identity['design']['profile'])
     learning_control(experiment)
     total = experiment.identity['design']['fit_budget']['total']
     consumed, _ = fit_consumption(experiment.root / 'ledger')
@@ -214,13 +240,14 @@ def run(experiment, max_minutes):
     def validate_design(reg):
         if reg['design_id'] != content_id(reg['design']) or reg['design'] != experiment.identity['design']:
             raise ValueError('Contract-curve design changed')
-    return path_pilot.run(experiment, max_minutes, group_names=tuple(pilot.groups()), namespace=NAMESPACE,
-                          horizons=(1,), recipe_fn=recipe, validate_fn=validate_design,
+    return path_pilot.run(experiment, max_minutes, group_names=tuple(pilot.groups()), namespace=namespace,
+                          horizons=(horizon,), recipe_fn=recipe, validate_fn=validate_design,
                           record_frame_fn=record_frame, output_fn=output, before_fit=before_fit)
 
 
 def verify_fit_payloads(folder, identity):
-    return shared.verify_fit_payloads(folder, identity, namespace=NAMESPACE)
+    horizon, namespace, _ = profile_settings(identity['profile'])
+    return shared.verify_fit_payloads(folder, identity, namespace=namespace, horizon=horizon, recipe_fn=recipe)
 
 
 def decision(arms, paired):
@@ -234,27 +261,37 @@ def decision(arms, paired):
 
 
 def compare(folder, repetitions=10000):
-    return shared.compare(folder, repetitions, namespace=NAMESPACE, profile=PROFILE,
-                          verify_fn=verify_execution, output_fn=output, decision_fn=decision,
-                          verify_fits_fn=verify_fit_payloads)
+    ready, _ = verify_execution(folder)
+    horizon, namespace, _ = profile_settings(ready['identity']['profile'])
+    result = shared.compare(folder, repetitions, namespace=namespace, profile=ready['identity']['profile'],
+                            verify_fn=verify_execution, output_fn=lambda *a: output(*a, namespace=namespace),
+                            decision_fn=decision, verify_fits_fn=verify_fit_payloads, horizon=horizon,
+                            verify_learning_fn=lambda root, identity: shared.verify_learning_evidence(root, identity, horizon=horizon))
+    if horizon == 5 and result['status'] == 'complete':
+        from cottonlens_ml.research.contract_curve_diagnostic import report
+        report(Path(folder), ready, result)
+    return result
 
 
 def dispatch(args):
     from cottonlens_ml.research.engine import Experiment, root_path
     folder = root_path(args.drive_root, args.experiment)
+    _, namespace, _ = profile_settings(args.profile)
+    if (folder / 'ready.json').exists() and read_record(folder / 'ready.json')['identity']['profile'] != args.profile:
+        raise ValueError('CLI profile differs from frozen execution; choose a new namespace')
     if args.mirror_root:
         raise ValueError('Contract-curve local pilot has no remote mirror')
     if args.stage == 'prepare':
         if not args.registration_root or not args.decision_contract:
             raise ValueError('Explicit registration-root and decision-contract required')
-        ready = prepare(args.repo, folder, args.registration_root, args.decision_contract)
+        ready = prepare(args.repo, folder, args.registration_root, args.decision_contract, profile=args.profile)
         result = {'status': 'prepared', 'source_id': ready['identity']['source_id'],
                   'registration_id': ready['identity']['registration_id'], 'fit_budget': ready['identity']['design']['fit_budget']}
     elif args.stage in ('status', 'pilot-plan'):
         ready, _ = verify_execution(folder)
         result = {'fit_budget': ready['identity']['design']['fit_budget'],
                   'completed_fits': len(list((folder / 'ledger/completed').glob('*.json'))),
-                  'saved_outputs': len(list((folder / f'{NAMESPACE}-outputs').glob('*.json')))}
+                  'saved_outputs': len(list((folder / f'{namespace}-outputs').glob('*.json')))}
     elif args.stage == 'pilot':
         with writer(folder):
             result = run(Experiment(folder, repo=args.repo), args.max_minutes)

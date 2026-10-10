@@ -1,5 +1,14 @@
 # Güncel kararlar — 10 Ekim 2026
 
+**T+5 sıfır-fit ön kayıt:** [tek ufuk protokolü](CONTRACT_CURVE_T5_PROTOCOL_20261010.md).
+Tamamlanmış T+1 ile bütün history/özellikler/749 origin birebir; yalnız model
+ufku5. Ayrı source/namespace ve T+5 sentetik kontrol;252+en fazla1 fit tavanı,
+henüz fit0.7.040 saat/749 hedef/63 olgun train kesimi bağımsız doğrulandı;
+1.031 ML testi/3 skip ve Ruff başarılı. Saat/vintage varsayımlı,6/8 gate
+ölçülemez; geleceğin kontrat adı yalnız birincil sonuçtan sonraki açıklamada.
+Tek sonraki iş bu kayıtlı deneyin kimlik/teslimat doğrulamasından sonra
+yürütülüp sonuçlandırılması; yeni model ailesi/grid/veri kabulü yok.
+
 **Son sıfır-fit kontrol:** [eğri/hedef ayrıştırması](CURVE_TARGET_INTEGRITY_20261010.md).
 Aynı749 origin;743 kaynak çifti/ufuk,6 bilinmeyen korunur. T+5'te74 origin
 15 basılı ilk-vade değişimine temas eder; geleceğin kontratını sonradan bilen

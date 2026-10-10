@@ -1,5 +1,10 @@
 # CottonLensAI
 
+[Gerçek eğri T+5 ön kaydı](docs/CONTRACT_CURVE_T5_PROTOCOL_20261010.md) hazır:
+aynı749 origin/özellik, yalnız ufuk5;252 piyasa +en fazla1 sentetik fit
+tavanı, henüz0 fit. T+1 sonucu tekrarlanmaz. Geleceğin kontrat bilgisi model
+girdisi olmaz; kaynak saati/ilk-vintage varsayımları açık kalır.
+
 [Son sıfır-fit hedef denetimi](docs/CURVE_TARGET_INTEGRITY_20261010.md):
 T+5 kontrat geçişi74 origin/15 olay; sürekli-seri hedefi geçişte vade farkını
 da içeriyor. Ex-post %2,89 hata azalması tahmin başarısı değildir. Sonraki

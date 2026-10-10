@@ -2,6 +2,12 @@
 
 ## Sicil
 
+`contract-curve-t5-pilot-v1`: **sıfır-fit ön kayıt, piyasa sonucu yok**.
+Tamamlanmış T+1 history/özellik/749 origin'i korunur; yalnız ufuk5.252
+piyasa +en fazla1 ayrı T+5 sentetik fit tavanı; yeni checkpoint namespace'i.
+Gelecek kontrat metadatası yalnız sonuç açıklamasında, seçimde değil.
+Saat/vintage varsayımlı;3 yıl6/8 gate'ini değerlendirmez. [Kayıt ve tek sonraki yürütme](../docs/CONTRACT_CURVE_T5_PROTOCOL_20261010.md).
+
 `curve-target-integrity-v1`: **sıfır-fit, sonuç-sonrası hedef/proxy denetimi**.
 749 origin/ufuk korunur;743 quote çifti/ufuk,6 bilinmeyen. T+5'te74 origin,
 15 gözlenen ilk-vade değişimi. Gelecek kontratını sonradan bilen gap-only

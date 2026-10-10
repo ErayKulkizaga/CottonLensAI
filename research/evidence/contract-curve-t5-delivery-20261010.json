@@ -1,0 +1,141 @@
+{
+  "schema": 1,
+  "status": "preregistration_delivered_no_market_result",
+  "profile": "contract-curve-t5-pilot-v1",
+  "pull_request": "https://github.com/ErayKulkizaga/CottonLensAI/pull/34",
+  "preregistered_commit": "a0e9f53bbc014ca2cf36e202ce07a4718221e55d",
+  "source_id": "20d0c1869afc35b9c83b34cfd3fc8de8ec90a56ebd64c1cf3dcb3b085685d7b3",
+  "registration_id": "aeed8a21350c322a34125f080a9c5adc77029ce4407e1d3e8356a2a2774ca8b6",
+  "release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/contract-curve-t5-preregistration-20261010",
+  "archive_sha256": "8ee6f537da740e6b18ce35b748265627d27c0dda5e066b212dbdb4ae37a816e1",
+  "fresh_github_restore": {
+    "verified": true,
+    "archive_sha256": "8ee6f537da740e6b18ce35b748265627d27c0dda5e066b212dbdb4ae37a816e1",
+    "members": 799,
+    "inventory_sha256": "c1d04c3a7479402eed687505eac1548637a46ac0f5efcb6dd4694c6494bab087",
+    "safe_members": true
+  },
+  "independent_verification": {
+    "status": "verified_zero_fit_preregistration",
+    "profile": "contract-curve-t5-pilot-v1",
+    "source_id": "20d0c1869afc35b9c83b34cfd3fc8de8ec90a56ebd64c1cf3dcb3b085685d7b3",
+    "registration_id": "aeed8a21350c322a34125f080a9c5adc77029ce4407e1d3e8356a2a2774ca8b6",
+    "same_t1_history_features_origins": true,
+    "original_history_rows": 3520,
+    "original_columns": 60,
+    "independent_source_clock_checks": 7040,
+    "original_t5_label_checks": 749,
+    "distinct_training_cutoffs_checked": 63,
+    "same_t1_h5_maturity_train_dates": true,
+    "fit_budget": {
+      "inner": 108,
+      "outer": 144,
+      "total": 252,
+      "synthetic_guard": 1,
+      "maximum_all_fits": 253,
+      "annual_outputs": 12,
+      "prediction_rows": 2996,
+      "processes": 1,
+      "threads": 2,
+      "session_minutes": 30
+    },
+    "new_market_fits": 0,
+    "new_synthetic_fits": 0,
+    "future_contract_feature_used": false,
+    "availability_verified": false,
+    "first_vintage_verified": false,
+    "historical_source_admitted": false,
+    "verifier_sha256": "91b7a8b53babd9c58619c37ae50e9905ae02d960fed22842e70a1ef6533b9aa7"
+  },
+  "local_and_github_verification_bytes_equal": true,
+  "new_market_fits": 0,
+  "new_synthetic_fits": 0,
+  "old_raw_inputs_preserved": 1000,
+  "old_studies_preserved": 160,
+  "old_recipes_preserved": 513,
+  "old_proofs_preserved": 72,
+  "actual_installed_environment_frozen": true,
+  "historical_source_admitted": false,
+  "goal_achieved": false,
+  "market_skill_claimed": false,
+  "automatic_extra_training_allowed": false,
+  "ci": {
+    "head": "a0e9f53bbc014ca2cf36e202ce07a4718221e55d",
+    "checks": [
+      {
+        "name": "backend",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "url": "https://github.com/ErayKulkizaga/CottonLensAI/actions/runs/38056874139/job/114227054564"
+      },
+      {
+        "name": "backend",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "url": "https://github.com/ErayKulkizaga/CottonLensAI/actions/runs/38056851148/job/114226987467"
+      },
+      {
+        "name": "backend",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "url": "https://github.com/ErayKulkizaga/CottonLensAI/actions/runs/38056870110/job/114227042653"
+      },
+      {
+        "name": "frontend",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "url": "https://github.com/ErayKulkizaga/CottonLensAI/actions/runs/38056874139/job/114227054623"
+      },
+      {
+        "name": "frontend",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "url": "https://github.com/ErayKulkizaga/CottonLensAI/actions/runs/38056851148/job/114226987488"
+      },
+      {
+        "name": "frontend",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "url": "https://github.com/ErayKulkizaga/CottonLensAI/actions/runs/38056870110/job/114227042824"
+      },
+      {
+        "name": "ml-data-contracts",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "url": "https://github.com/ErayKulkizaga/CottonLensAI/actions/runs/38056874139/job/114227054415"
+      },
+      {
+        "name": "ml-data-contracts",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "url": "https://github.com/ErayKulkizaga/CottonLensAI/actions/runs/38056851148/job/114226987291"
+      },
+      {
+        "name": "ml-data-contracts",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "url": "https://github.com/ErayKulkizaga/CottonLensAI/actions/runs/38056870110/job/114227042905"
+      },
+      {
+        "name": "compose-contract",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "url": "https://github.com/ErayKulkizaga/CottonLensAI/actions/runs/38056874139/job/114227054586"
+      },
+      {
+        "name": "compose-contract",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "url": "https://github.com/ErayKulkizaga/CottonLensAI/actions/runs/38056851148/job/114226987495"
+      },
+      {
+        "name": "compose-contract",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "url": "https://github.com/ErayKulkizaga/CottonLensAI/actions/runs/38056870110/job/114227042837"
+      }
+    ],
+    "limits": "Only this observed head: running jobs are not passed; later receipt commits have separate CI."
+  },
+  "next": "Execute and close only this frozen252 market+at most1 separate synthetic CPU fit study after source/CI/identity checks; never launch another model/grid/source program from its outcome."
+}
