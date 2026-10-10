@@ -1,5 +1,14 @@
 # Güncel kararlar — 10 Ekim 2026
 
+**Tek sonraki kontrol hazırlanıyor:** [sabit named T+5 kapasitesi](NAMED_CAPACITY_CONTROL_T5_20261010.md).
+PR39 sonuç teslimatı ve 8/8 CI doğrulandı. En yakın eski XGBoost native
+kaydı CT/24 özellikli; mevcut named/28 özellik/ortak2023 train kontrolü
+değil. Tek sabit depth2/100 ağaç, eski named Ridge tahminine karşı;
+aynı246/242/4, aynı iç/dış işler, yeni bütçe22+4. Kod/test/kimlik ve
+taze GitHub ön kayıt kontrolü bitmeden fit0. Ham karşılaştırma birincil,
+eski gate/saat/vintage sınırlamaları korunur. Aşağıdaki eski kararlar
+tarihsel kayıt olarak değiştirilmeden durur.
+
 **Ortak T+5 eğitim-label kontrolü tamamlandı:** [sonuç](NAMED_LABEL_CONTROL_T5_20261010.md).
 44 piyasa+1 sentetik fit;246/242/4 origin-hedef-bilinmeyen korunur.
 Aynı train/28 özellik/Ridge ile CT ham Naive kazancı−%21,316950,

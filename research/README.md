@@ -1,5 +1,12 @@
 # Deney geçmişi ve tekrar kontrolü
 
+Güncel tek iş: [sabit named T+5 kapasite kontrolü](../docs/NAMED_CAPACITY_CONTROL_T5_20261010.md).
+PR39 teslimatı kapandı. 55 ilgili XGBoost/T+5 kayıt ve 117 tarif tarandı;
+en yakın native kayıt CT/24 özellik kullanıyor. Aynı named label/28
+özellik/2023 ortak train kontrolü için tek sabit tarif ve ayrı kimlik
+hazırlanıyor. Eski Ridge native tahminleri referans; tekrar fit yok.
+22 piyasa+4 sentetik tavanı; yayımlanmış ön kayıt/taze restore öncesi fit0.
+
 Güncel sonuç: [T+5 ortak eğitim etiketi kontrolü](../docs/NAMED_LABEL_CONTROL_T5_20261010.md);44+1 fit. Doğru kontrat etiketi ham hatayı azaltıyor; Naive hâlâ geçilmiyor. Birincil label etkisi yalnız geçmiş2023 için pozitif; üretim/bağımsız holdout başarısı değil.
 
 ## Sicil
