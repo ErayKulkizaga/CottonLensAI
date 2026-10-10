@@ -2,6 +2,15 @@
 
 ## Sicil
 
+`contract-curve-t5-pilot-v1`: **tamamlandı,kaynak katkısı INCONCLUSIVE**.
+252 piyasa +1 ayrı sentetik fit;749 origin/kol,12 çıktı/2.996 satır.
+Seçilmiş D0 Naive kazancı −%0,549260,ham −%7,242578;253 çıkarım/12 seçim/
+16 aralık ve exact rapor/CSV/geçiş açıklaması doğrulandı. Saat/ilk vintage
+varsayımlı,üç yıl6/8 koşulunu değerlendirmez.74 geçiş origin'inde ham
+kaynak katkısı pozitif,669 aynı-kontrat origin'inde negatif;gelecek kontrat
+hiçbir feature/seçime girmedi. [Sonuç ve tek sıfır-fit sonraki adım](../docs/CONTRACT_CURVE_T5_RESULT_20261010.md).
+Aşağıdaki sıfır-fit ön kayıt kaydı bu sonucun tarihsel önceki aşamasıdır.
+
 `contract-curve-t5-pilot-v1`: **sıfır-fit ön kayıt, piyasa sonucu yok**.
 Tamamlanmış T+1 history/özellik/749 origin'i korunur; yalnız ufuk5.252
 piyasa +en fazla1 ayrı T+5 sentetik fit tavanı; yeni checkpoint namespace'i.
