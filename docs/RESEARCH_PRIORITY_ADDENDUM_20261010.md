@@ -1,5 +1,12 @@
 # 10 Ekim araştırma karar eki
 
+**Sonraki ek kanıt:** [gerçek eğri T+1](CONTRACT_CURVE_RESULT_20261010.md)
+tamamlandı; ardından [sıfır-fit hedef ayrıştırması](CURVE_TARGET_INTEGRITY_20261010.md)
+T+5'teki olası küçük kazancın kontrat değişimine bağlanabileceğini ölçtü.
+Bu ex-post cebirsel tanı model başarısı/ana roll teşhisi değildir. Gelecek
+kontrat adı yalnız tanıda kalır; tek sonraki T+5 ön kaydı bu sınırla hazırlanır.
+Eski plan/sonuç/eşikler korunur; yeni fit/grid/veri kabulü otomatik açılmaz.
+
 **Daha sonraki tamamlanma kaydı:** [PR #30 sonucu](PAIRED_PRICE_LOSS_RESULT_20261010.md)
 54 çıkarım/altı aralık/exact replay ve yeni GitHub restore ile kapandı; sekiz
 final-head CI kontrolü geçti. Aşağıdaki kapanış sırası tarihsel inceleme anıdır.

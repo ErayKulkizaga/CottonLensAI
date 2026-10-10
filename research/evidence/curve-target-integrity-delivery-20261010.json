@@ -1,0 +1,112 @@
+{
+  "schema": 1,
+  "status": "delivered_zero_fit_target_audit",
+  "profile": "curve-target-integrity-v1",
+  "pull_request": "https://github.com/ErayKulkizaga/CottonLensAI/pull/33",
+  "result_commit": "8fb81af4653edf165afcb62fe6ded0ed614a2d38",
+  "release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/curve-target-integrity-20261010",
+  "archive_sha256": "31ab3e517a6acaf932b5de43cdfb4a421056dfc3cb19ec51d144fba701af1dee",
+  "fresh_github_restore": {
+    "status": "verified",
+    "archive_sha256": "31ab3e517a6acaf932b5de43cdfb4a421056dfc3cb19ec51d144fba701af1dee",
+    "members_verified": 20,
+    "exact_report_rows_completion_replay": true,
+    "exact_independent_decimal_verification_replay": true,
+    "rejection_controls": 5,
+    "new_fits": 0
+  },
+  "verification_sha256": "37fa6010a8a8d9413cb8cb8a6f84c534bb010499beca0ac3dd186234042106f5",
+  "github_restoration_receipt_sha256": "8d33726f33d50de94b0edda55e420ea6228461a5fa482229b5cba4f3cf5ad078",
+  "verification_new_fits": 0,
+  "old_studies_preserved": 159,
+  "old_recipes_preserved": 513,
+  "old_proofs_preserved": 69,
+  "old_raw_inputs_preserved": 1000,
+  "source_changed": false,
+  "source_id": "84d40007e33b75ecff9ca422958daab79d30d67f3adb59b7bb419bc873412d1a",
+  "local_history_tests_passed": 8,
+  "local_rejection_controls_passed": 5,
+  "local_ml_ruff_passed": true,
+  "ci": {
+    "head": "8fb81af4653edf165afcb62fe6ded0ed614a2d38",
+    "checks": [
+      {
+        "name": "backend",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "url": "https://github.com/ErayKulkizaga/CottonLensAI/actions/runs/38045670050/job/114194581137"
+      },
+      {
+        "name": "backend",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "url": "https://github.com/ErayKulkizaga/CottonLensAI/actions/runs/38045640685/job/114194493844"
+      },
+      {
+        "name": "backend",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "url": "https://github.com/ErayKulkizaga/CottonLensAI/actions/runs/38045680789/job/114194613376"
+      },
+      {
+        "name": "frontend",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "url": "https://github.com/ErayKulkizaga/CottonLensAI/actions/runs/38045670050/job/114194581227"
+      },
+      {
+        "name": "frontend",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "url": "https://github.com/ErayKulkizaga/CottonLensAI/actions/runs/38045640685/job/114194493899"
+      },
+      {
+        "name": "frontend",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "url": "https://github.com/ErayKulkizaga/CottonLensAI/actions/runs/38045680789/job/114194613333"
+      },
+      {
+        "name": "ml-data-contracts",
+        "status": "IN_PROGRESS",
+        "conclusion": "",
+        "url": "https://github.com/ErayKulkizaga/CottonLensAI/actions/runs/38045670050/job/114194581204"
+      },
+      {
+        "name": "ml-data-contracts",
+        "status": "IN_PROGRESS",
+        "conclusion": "",
+        "url": "https://github.com/ErayKulkizaga/CottonLensAI/actions/runs/38045640685/job/114194493908"
+      },
+      {
+        "name": "ml-data-contracts",
+        "status": "IN_PROGRESS",
+        "conclusion": "",
+        "url": "https://github.com/ErayKulkizaga/CottonLensAI/actions/runs/38045680789/job/114194613334"
+      },
+      {
+        "name": "compose-contract",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "url": "https://github.com/ErayKulkizaga/CottonLensAI/actions/runs/38045670050/job/114194581214"
+      },
+      {
+        "name": "compose-contract",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "url": "https://github.com/ErayKulkizaga/CottonLensAI/actions/runs/38045640685/job/114194493743"
+      },
+      {
+        "name": "compose-contract",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "url": "https://github.com/ErayKulkizaga/CottonLensAI/actions/runs/38045680789/job/114194613197"
+      }
+    ],
+    "limits": "Snapshot only: running jobs are not passed; later documentation receipt commits have separate CI."
+  },
+  "goal_achieved": false,
+  "market_skill_claimed": false,
+  "automatic_training_allowed": false,
+  "next": "Freeze one T5 preregistration with origin-known features and post-result proxy interpretation guard; no automatic new fit/grid/data."
+}

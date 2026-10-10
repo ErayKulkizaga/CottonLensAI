@@ -2,6 +2,14 @@
 
 ## Sicil
 
+`curve-target-integrity-v1`: **sıfır-fit, sonuç-sonrası hedef/proxy denetimi**.
+749 origin/ufuk korunur;743 quote çifti/ufuk,6 bilinmeyen. T+5'te74 origin,
+15 gözlenen ilk-vade değişimi. Gelecek kontratını sonradan bilen gap-only
+azalma %2,891947 **OOS/model becerisi değildir**; tanı satırları tahmin değildir.
+1.486 Decimal ayrıştırması/1.498 hedef tarihi/5 ret kontrolü; kaynak/veri
+değişmez. Tahmin katkısı sınıfı INCONCLUSIVE; T+5 ön kayıt incelemesi henüz
+eğitim izni değil. [Sonuç ve tek sonraki karar](../docs/CURVE_TARGET_INTEGRITY_20261010.md).
+
 `contract-curve-t1-pilot-v1`: **tamamlandı, kaynak katkısı INCONCLUSIVE**;
 252 piyasa +1 ayrı sentetik fit, 749 ortak origin/kol, 12/12 ağırlık0.
 Ham numeric D0/D1 Naive kazancı −%2,711585/−%2,282736; seçilmiş `[0,0]`

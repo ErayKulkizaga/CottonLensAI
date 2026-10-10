@@ -16910,6 +16910,37 @@
       "historical_source_admitted": false,
       "release_allowed": false,
       "id": "a55e8ce84e240c7747c087c1e3d88d924972e7d759282fc59848053c47b79bab"
+    },
+    {
+      "experiment": "curve-target-integrity-v1",
+      "profile": "curve-target-integrity-v1",
+      "horizon": 5,
+      "kind": "zero_fit_post_result_target_audit",
+      "classification": "INCONCLUSIVE",
+      "classification_scope": "Verified algebraic proxy mechanism, not an OOS forecasting effect or market negative.",
+      "code_id": "84d40007e33b75ecff9ca422958daab79d30d67f3adb59b7bb419bc873412d1a",
+      "analysis_code_id": "478fd17ec1e85ff86af13eba15b1ecbf7dab55de85ba836a8f00bc959204f43f",
+      "data_id": "c3f2d2dfb486e7af5341538375753a1ac6c64e379e190d62311374cab1ed740e",
+      "model_families": [],
+      "completed_fits": 0,
+      "origin_count": 749,
+      "diagnostic_rows": 1498,
+      "prediction_payload_exists": false,
+      "diagnostic_payload_exists": true,
+      "metrics": {
+        "T1_crossing_origins": 15,
+        "T5_crossing_origins": 74,
+        "distinct_observed_front_transitions": 15,
+        "T5_ex_post_gap_reconstruction_error_reduction_pct_NOT_SKILL": 2.8919471314627687
+      },
+      "evidence": "research/evidence/curve-target-integrity-20261010.json",
+      "evidence_sha256": "ef19df6cdd2142dc9eb5acc5b0e89929cfc53e7e81d380d7bb66a81af13ee704",
+      "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/curve-target-integrity-20261010",
+      "independent_holdout": false,
+      "historical_source_admitted": false,
+      "future_contract_identity_feature_allowed": false,
+      "release_allowed": false,
+      "id": "f60282bcb2de0ce252524e495ecaa34b916f79538ed8d37d3fccb8a23d24d289"
     }
   ],
   "local_evidence": [
@@ -17192,6 +17223,18 @@
     {
       "path": "evidence/contract-curve-delivery-20261010.json",
       "sha256": "97fee5ec6ce791f1a47b30f794be544c4e7b97347bf4c275ce60d9ab18d4b55e"
+    },
+    {
+      "path": "evidence/curve-target-integrity-20261010.json",
+      "sha256": "ef19df6cdd2142dc9eb5acc5b0e89929cfc53e7e81d380d7bb66a81af13ee704"
+    },
+    {
+      "path": "evidence/curve-target-integrity-release-20261010.json",
+      "sha256": "055ffc39a60b1856f398026c43be06b1d9e75e93562ea265b1c1368224d74b34"
+    },
+    {
+      "path": "evidence/curve-target-integrity-delivery-20261010.json",
+      "sha256": "4838d488882d0a5807e9ad023d84abe0c10d21d210398a2279736bd5d0f033d0"
     }
   ]
 }
