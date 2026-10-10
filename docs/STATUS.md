@@ -1,5 +1,14 @@
 # Güncel kararlar — 10 Ekim 2026
 
+**Sonraki tek kontrol hazırlanıyor:** [ortak T+5 eğitim etiketi](NAMED_LABEL_CONTROL_T5_20261010.md).
+Yalnız geçmiş kaynak/etiket olgunluğuna göre 2023 destekleniyor; en erken
+train528,246 dış makbuz/242 hedef/4 açık eksik. Yeni geçmiş3×63 cohort,
+Cotton ordinalinde3/4/3 iç+12 dış refit:iki kol44 piyasa+en fazla1 sentetik.
+Mevcut Ridge/28 numericD0 özelliği sabit; yalnız CT–named train getirisi
+ayrılıyor. Ham fark birincil,geçmiş shrinkage ikincil. Saat/vintage varsayımlı,
+tek görülmüş yıl6/8 gate değildir. Kod/test/kimlik ve yayımlanmış ön kayıt
+kontrolleri bitmeden fit yok; şu anda yeni fit0. Eski kararlar aşağıda korunur.
+
 **Sabit tahminlerin aynı kontrata taşınması tamamlandı:** [sıfır-fit sonuç](ORIGIN_FIXED_FORECAST_TRANSPORT_20261010.md).
 Aynı749 makbuz/739 eşleşmiş fiyat/10 bilinmeyen korunur. Ham T+5 numeric
 D0 Naive kazancı−%8,664216;blok20/60 üst sınırları−%1,196524/−%0,875167,
