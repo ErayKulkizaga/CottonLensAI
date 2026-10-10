@@ -98,3 +98,25 @@ sonra tek252+1 tavanla; devam eden fit'te yalnız doğrulanmış checkpoint resu
 
 Sonraki tek iş bu kilitli ufuk karşılaştırmasını sonuçlandırmak; sonuç
 belirsiz/negatif diye otomatik ikinci model, grid veya dataset programı açılmaz.
+
+## Doğrulanmış sıfır-fit kayıt
+
+[Kimlik kanıtı](../research/evidence/contract-curve-t5-preregistration-20261010.json):
+252 dosyalı ML source
+`20d0c1869afc35b9c83b34cfd3fc8de8ec90a56ebd64c1cf3dcb3b085685d7b3`,
+registration
+`aeed8a21350c322a34125f080a9c5adc77029ce4407e1d3e8356a2a2774ca8b6`.
+Kod commit'i `c5322b2`; ön kayıt/prepare/pilot-plan tamamlandı, fit0/çıktı0.
+
+Bağımsız ve fit girişlerini reddeden verifier:7.040 kaynak-saat seçimi,
+749 beş-Cotton-gözlem hedefi,63 refit kesiminde T+1 ile eşit olgun train
+tarihleri ve bütün genişletilmiş history hücreleri doğrulandı. Orijinal3520
+satır/60 sütun değişmedi; ön kayıt ve execution history T+1 parent ile aynıdır.
+69 dar regresyon,8 yeni T+5 testi dahil geniş ML **1.031 passed/3 skipped**,
+Ruff başarılı. GPU doğrulaması çalıştırılmadı; backend/UI değişikliği yok.
+Mevcut pandas'ta eski all-NA concat için iki FutureWarning performans kanıtı
+veya veri bozulması değildir; bu pakette bağımlılık yükseltmesi yok.
+
+[Ön kayıt Release'i](https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/contract-curve-t5-preregistration-20261010)
+kaynak/input/ortam/karar ve yeni sıfır-fit execution snapshot'ını içerir;
+T+1 sonucu/ön kaydı ve hedef ayrıştırma Release'leri değiştirilmez.
