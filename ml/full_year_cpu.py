@@ -20,7 +20,7 @@ def main():
     parser.add_argument('--max-minutes', type=float, default=60.)
     parser.add_argument('--python', default='3.12.14')
     parser.add_argument('--experiment')
-    parser.add_argument('--profile', choices=('full-year-v1', 'ams-exploration-v1', 'fas-exploration-v1', 'nass-exploration-v1', 'wasde-exploration-v1', 'cftc-exploration-v1', 'fx-exploration-v1', 'crop-exploration-v1', 'weather-exploration-v1', 'oncall-exploration-v1', 'oncall-exploration-v2', 'recency-pilot-v1', 'availability-clock-pilot-v1', 'return-path-pilot-v1', 'agri-transfer-pilot-v1', 'wasde-regional-t1-pilot-v1', 'nass-regional-t1-pilot-v1', 'weak-signal-control-v1', 'paired-price-loss-control-v1', 'contract-curve-t1-pilot-v1', 'contract-curve-t5-pilot-v1'), default='full-year-v1')
+    parser.add_argument('--profile', choices=('full-year-v1', 'ams-exploration-v1', 'fas-exploration-v1', 'nass-exploration-v1', 'wasde-exploration-v1', 'cftc-exploration-v1', 'fx-exploration-v1', 'crop-exploration-v1', 'weather-exploration-v1', 'oncall-exploration-v1', 'oncall-exploration-v2', 'recency-pilot-v1', 'availability-clock-pilot-v1', 'return-path-pilot-v1', 'agri-transfer-pilot-v1', 'wasde-regional-t1-pilot-v1', 'nass-regional-t1-pilot-v1', 'weak-signal-control-v1', 'paired-price-loss-control-v1', 'contract-curve-t1-pilot-v1', 'contract-curve-t5-pilot-v1', 'named-label-control-t5-v1'), default='full-year-v1')
     parser.add_argument('--ams-table', type=Path)
     parser.add_argument('--ams-publications', type=Path)
     parser.add_argument('--fas-table', type=Path)
@@ -46,7 +46,8 @@ def main():
             'recency-pilot-v1':'research-recency-pilot-v1',
             'return-path-pilot-v1':'research-return-path-pilot-v1',
             'agri-transfer-pilot-v1':'research-agri-transfer-pilot-v1',
-            'oncall-exploration-v2':'research-oncall-exploration-v2'}.get(args.profile,'research-full-year-v1-r2')
+            'oncall-exploration-v2':'research-oncall-exploration-v2',
+            'named-label-control-t5-v1':'research-named-label-control-t5-v1'}.get(args.profile,'research-full-year-v1-r2')
     environment = args.cpu_environment or repo/'output/full-year-cpu-env'
     env = os.environ.copy()
     env.update({'PYTHONPATH': str(repo/'ml/src'), 'PYTHONNOUSERSITE': '1', 'PYTHONUNBUFFERED': '1',
@@ -61,7 +62,7 @@ def main():
             raise RuntimeError('Run setup first; CPU packages are separate from backend and GPU environments')
         command = [str(python), '-m', 'cottonlens_ml.research.engine', '--repo', str(repo),
                    '--drive-root', str(args.drive_root or repo/'output/full-year'), '--experiment', args.experiment,
-                   '--profile', args.profile, '--stage', args.stage, '--max-minutes', str(min(args.max_minutes, 30.) if args.profile in ('availability-clock-pilot-v1', 'wasde-regional-t1-pilot-v1', 'nass-regional-t1-pilot-v1', 'weak-signal-control-v1', 'paired-price-loss-control-v1', 'contract-curve-t1-pilot-v1', 'contract-curve-t5-pilot-v1') else args.max_minutes)]
+                   '--profile', args.profile, '--stage', args.stage, '--max-minutes', str(min(args.max_minutes, 30.) if args.profile in ('availability-clock-pilot-v1', 'wasde-regional-t1-pilot-v1', 'nass-regional-t1-pilot-v1', 'weak-signal-control-v1', 'paired-price-loss-control-v1', 'contract-curve-t1-pilot-v1', 'contract-curve-t5-pilot-v1', 'named-label-control-t5-v1') else args.max_minutes)]
         if args.registration_root:
             command += ['--registration-root', str(args.registration_root)]
         if args.decision_contract:
