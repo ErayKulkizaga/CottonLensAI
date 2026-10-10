@@ -1,5 +1,12 @@
 # CottonLensAI
 
+Güncel tek iş: [sabit named-kontrat T+5 kapasite kontrolü](docs/NAMED_CAPACITY_CONTROL_T5_20261010.md).
+PR39 label deneyi ve GitHub replay'i kapandı. Aynı 246/242/4 origin,
+train tarihi ve 28 özellikte tek sabit sığ XGBoost, dondurulmuş named
+Ridge'e karşı sınanacak; Ridge yeniden eğitilmez. Bütçe 22+4 fit,
+grid/early-stop yok. Kod/test/kimlik ve taze GitHub ön kayıt doğrulanmadan
+fit başlamaz. Saat/vintage varsayımı ve eski yayın kapıları korunur.
+
 Güncel sonuç: [T+5 ortak eğitim etiketi kontrolü](docs/NAMED_LABEL_CONTROL_T5_20261010.md);44+1 fit. Doğru kontrat etiketi ham hatayı azaltıyor; Naive hâlâ geçilmiyor. Birincil label etkisi yalnız geçmiş2023 için pozitif; üretim/bağımsız holdout başarısı değil.
 
 [Sabit tahminlerin aynı kontrat testi](docs/ORIGIN_FIXED_FORECAST_TRANSPORT_20261010.md)
