@@ -1,5 +1,12 @@
 # CottonLensAI
 
+[Eğri/carry tanısı](docs/CURVE_CARRY_ATTRIBUTION_20261010.md) tamamlandı, yeni fit0.
+74 geçiş origin'inde ham D0 katkısı +24,6573 hata toplamından gap çıkarılmış
+karşıolguda −3,3674'e dönüyor. Ekim2022'de proxy düşerken aynı Aralık
+kontratı yükselmiş; bunu fiyat yönü/pozisyon becerisi sayamayız. Eski tahminler
+ve karar değişmedi. Tek sonraki iş origin'de tanımlı sabit kontrat hedefinin
+mevcut quote'larla kurulabilirliğini sıfır-fit denetlemek; yeni eğitim yok.
+
 [Gerçek eğri T+5 sonucu](docs/CONTRACT_CURVE_T5_RESULT_20261010.md) tamamlandı:
 252 piyasa +1 ayrı sentetik fit,749 ortak origin/kol. Seçilmiş D0 Naive
 kazancı −%0,549260;ham −%7,242578.253 native çıkarım/12 seçim/16 aralık

@@ -17370,6 +17370,39 @@
       "historical_source_admitted": false,
       "release_allowed": false,
       "id": "29c5ed2392e21eea19cf20044ff52168feee66163c1967365ebe10b5893609b5"
+    },
+    {
+      "experiment": "curve-carry-attribution-v1",
+      "profile": "curve-carry-attribution-v1",
+      "horizon": 5,
+      "kind": "zero_fit_post_result_carry_counterfactual",
+      "classification": "INCONCLUSIVE",
+      "classification_scope": "Source forecast skill unresolved;fixed prior recipe fails practical goal. Counterfactual aggregate proxy-gap dependence verified,not a new forecasting effect or causal/position proof.",
+      "code_id": "20d0c1869afc35b9c83b34cfd3fc8de8ec90a56ebd64c1cf3dcb3b085685d7b3",
+      "analysis_code_id": "2d23ab651d6cb28b7ebaa6c6004cdc7422573fe6687f549abb18d7d928020940",
+      "data_id": "b13dbbb4507fc1538fc5fa60f482bda26e51f75f1388c444200a500df18e9d61",
+      "model_families": [],
+      "completed_fits": 0,
+      "origin_count": 749,
+      "diagnostic_rows": 2996,
+      "prediction_payload_exists": false,
+      "parent_prediction_payload_exists": true,
+      "diagnostic_payload_exists": true,
+      "metrics": {
+        "raw_D0_transition_original_error_reduction_sum": 24.657265209379318,
+        "raw_D0_transition_counterfactual_error_reduction_sum_NOT_SKILL": -3.367436440566337,
+        "unique_quote_pairs": 743,
+        "unknown_origins": 6,
+        "distinct_transition_events": 15
+      },
+      "evidence": "research/evidence/curve-carry-attribution-20261010.json",
+      "evidence_sha256": "70c67f77dc25145841fbb78c3c1a82c7d49e7f83a7b2f52fba87e311a542e6f1",
+      "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/curve-carry-attribution-20261010",
+      "independent_holdout": false,
+      "future_contract_identity_feature_allowed": false,
+      "historical_source_admitted": false,
+      "release_allowed": false,
+      "id": "5d4bff6c8d9a0f02f1427af0447a8c023a39611c3d6517edbed155b00332e478"
     }
   ],
   "local_evidence": [
@@ -17688,6 +17721,14 @@
     {
       "path": "evidence/contract-curve-t5-result-delivery-20261010.json",
       "sha256": "d737ed1edb18005950179e57c632d3da19c073e025ec06e60702c707e3f1031b"
+    },
+    {
+      "path": "evidence/curve-carry-attribution-20261010.json",
+      "sha256": "70c67f77dc25145841fbb78c3c1a82c7d49e7f83a7b2f52fba87e311a542e6f1"
+    },
+    {
+      "path": "evidence/curve-carry-attribution-release-20261010.json",
+      "sha256": "348d4edbd71de39792cf3e1562fa5e0b5156fbcb3eb48f77ddb67c7e287334a5"
     }
   ]
 }

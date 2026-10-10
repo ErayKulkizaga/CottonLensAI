@@ -2,6 +2,13 @@
 
 ## Sicil
 
+`curve-carry-attribution-v1`: **sıfır-fit karşıolgusal mekanizma doğrulandı**.
+T+5'in749 origin/2996 kayıtlı tahmini korunur;743 kaynak çifti,6 bilinmeyen.
+Ham D0'ın74 geçiş origin'indeki +24,657265 katkısı gap çıkarılınca
+−3,367436;669 aynı-kontrat katkısı değişmez.15 olay bağımsız74 olay
+değildir;karşıolgu yeni hedefte OOS beceri ölçmez. Kaynak performansı
+INCONCLUSIVE,özgün karar değişmez. [Tanı ve tek sonraki sıfır-fit adım](../docs/CURVE_CARRY_ATTRIBUTION_20261010.md).
+
 `contract-curve-t5-pilot-v1`: **tamamlandı,kaynak katkısı INCONCLUSIVE**.
 252 piyasa +1 ayrı sentetik fit;749 origin/kol,12 çıktı/2.996 satır.
 Seçilmiş D0 Naive kazancı −%0,549260,ham −%7,242578;253 çıkarım/12 seçim/
