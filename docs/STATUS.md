@@ -1,5 +1,18 @@
 # Güncel kararlar — 10 Ekim 2026
 
+**Origin'de sabit kontrat kurulabilirliği tamamlandı:** [sıfır-fit denetim](FIXED_CONTRACT_FEASIBILITY_20261010.md).
+3.520 kaynak seçimi/14.080 label adayı/96 olgunluk kesimi bağımsız
+doğrulandı; sekiz ret kontrolü geçti. Aynı 749 origin korunur; ikinci
+contemporaneous kontratta T+1/T+5 uygun739, fakat 2020'de başlayan gerçek
+kontrat geçmişi ve eksik iç/dış etiketler nedeniyle 12/12 değişmeden
+protokol aktarımı başarısız. Bu tahmin performansı deneyi değil, fit0.
+Saat/vintage varsayımı ve eski gate'ler korunur. Tek sonraki soru,
+dondurulmuş CT tahminlerinin origin'de bilinen ikinci kontrat hedefine
+sıfır-fit taşınması; önce ayrı ön kayıt, aynı hedefte Naive karşılaştırması
+ve on açık eksik kayıt. Yeni model/grid/veri veya otomatik eğitim yok.
+
+## Önceki tamamlanmış aşamalar — eski kararlar korunur
+
 **Sonuç-sonrası carry ayrımı tamamlandı:** [sıfır-fit tanı](CURVE_CARRY_ATTRIBUTION_20261010.md).
 Aynı749 origin/tahmin;743 kaynak çifti,6 bilinmeyen korunur.74 geçiş
 origin'inde dört karşılaştırmanın katkısı gap çıkarılınca tersine dönüyor:

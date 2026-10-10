@@ -1,0 +1,2051 @@
+{
+  "schema": 1,
+  "profile": "fixed-contract-feasibility-v1",
+  "status": "verified_zero_fit_label_feasibility",
+  "source_id": "20d0c1869afc35b9c83b34cfd3fc8de8ec90a56ebd64c1cf3dcb3b085685d7b3",
+  "parent_registration_id": "aeed8a21350c322a34125f080a9c5adc77029ce4407e1d3e8356a2a2774ca8b6",
+  "inputs_sha256": {
+    "curve-carry-attribution-20261010.json": "70c67f77dc25145841fbb78c3c1a82c7d49e7f83a7b2f52fba87e311a542e6f1",
+    "curve-carry-attribution-delivery-20261010.json": "f2f46ab55f116485bb2553d3c8d01f471b175c81c48d12d4210fe5e8d4fc5bdf",
+    "history.parquet": "575c19cb25437a28ed6b1c1c3062eb48becead51571e3b57d76b7306e5e4f792",
+    "quotes.json": "3cf19b853ce43978342427b915a22d5b11a7886e9db2018274e825bdecf1d91f",
+    "ready.json": "c600c5b1984273f11e73cd49dba089c22cad59b54c69cda82e2a5ec7c5d1b5ad",
+    "source-proof.json": "9356ed3fc7e41f8c6d6bc63e2060d69bc553171f67e55f9f22b0714ae58927cf",
+    "t5-result-proof.json": "d9ec547f37ee02708ee41534ed85d6eb4a4361c332827a98319d3b91f04e8524"
+  },
+  "contract_sha256": "58d5a2c2b575c19f1301c9e58a46acf34d247559eb3ddf9f83ee90f6d93d496c",
+  "analyzer_sha256": "9b3627478dcb1cde0605288f6713668d5494535b67970128cad00240c012f092",
+  "new_fits": 0,
+  "original_history_rows": 3520,
+  "source_choices_checked": 3520,
+  "original_cohort_origins": 749,
+  "label_candidate_rows": 14080,
+  "parent_cohort_rows": 2996,
+  "historically_admitted_rows": 0,
+  "source_first_reference": "2020-01-02",
+  "source_last_reference": "2023-12-29",
+  "summaries": {
+    "first_T1_contemporaneous": {
+      "all_history": {
+        "origins": 3520,
+        "eligible_under_assumption": 954,
+        "reasons": {
+          "no_available_source": 2513,
+          "eligible_under_assumption": 954,
+          "selected_contract_absent_at_target": 20,
+          "target_reference_quote_missing": 10,
+          "origin_reference_quote_missing": 10,
+          "origin_reference_quote_not_available_at_decision": 10,
+          "source_stale": 3
+        }
+      },
+      "parent_cohort": {
+        "origins": 749,
+        "eligible_under_assumption": 724,
+        "reasons": {
+          "eligible_under_assumption": 724,
+          "selected_contract_absent_at_target": 15,
+          "origin_reference_quote_not_available_at_decision": 4,
+          "target_reference_quote_missing": 3,
+          "origin_reference_quote_missing": 3
+        }
+      },
+      "parent_years": {
+        "2021": {
+          "origins": 252,
+          "eligible_under_assumption": 243,
+          "reasons": {
+            "eligible_under_assumption": 243,
+            "selected_contract_absent_at_target": 5,
+            "origin_reference_quote_not_available_at_decision": 2,
+            "target_reference_quote_missing": 1,
+            "origin_reference_quote_missing": 1
+          }
+        },
+        "2022": {
+          "origins": 251,
+          "eligible_under_assumption": 244,
+          "reasons": {
+            "eligible_under_assumption": 244,
+            "selected_contract_absent_at_target": 5,
+            "target_reference_quote_missing": 1,
+            "origin_reference_quote_missing": 1
+          }
+        },
+        "2023": {
+          "origins": 246,
+          "eligible_under_assumption": 237,
+          "reasons": {
+            "eligible_under_assumption": 237,
+            "selected_contract_absent_at_target": 5,
+            "origin_reference_quote_not_available_at_decision": 2,
+            "target_reference_quote_missing": 1,
+            "origin_reference_quote_missing": 1
+          }
+        }
+      },
+      "first_valid_date": "2020-01-02",
+      "retrospective_value_rows": 964
+    },
+    "first_T1_available_quote": {
+      "all_history": {
+        "origins": 3520,
+        "eligible_under_assumption": 973,
+        "reasons": {
+          "no_available_source": 2513,
+          "eligible_under_assumption": 973,
+          "selected_contract_absent_at_target": 20,
+          "target_reference_quote_missing": 11,
+          "source_stale": 3
+        }
+      },
+      "parent_cohort": {
+        "origins": 749,
+        "eligible_under_assumption": 731,
+        "reasons": {
+          "eligible_under_assumption": 731,
+          "selected_contract_absent_at_target": 15,
+          "target_reference_quote_missing": 3
+        }
+      },
+      "parent_years": {
+        "2021": {
+          "origins": 252,
+          "eligible_under_assumption": 246,
+          "reasons": {
+            "eligible_under_assumption": 246,
+            "selected_contract_absent_at_target": 5,
+            "target_reference_quote_missing": 1
+          }
+        },
+        "2022": {
+          "origins": 251,
+          "eligible_under_assumption": 245,
+          "reasons": {
+            "eligible_under_assumption": 245,
+            "selected_contract_absent_at_target": 5,
+            "target_reference_quote_missing": 1
+          }
+        },
+        "2023": {
+          "origins": 246,
+          "eligible_under_assumption": 240,
+          "reasons": {
+            "eligible_under_assumption": 240,
+            "selected_contract_absent_at_target": 5,
+            "target_reference_quote_missing": 1
+          }
+        }
+      },
+      "first_valid_date": "2020-01-02",
+      "retrospective_value_rows": null
+    },
+    "first_T5_contemporaneous": {
+      "all_history": {
+        "origins": 3520,
+        "eligible_under_assumption": 872,
+        "reasons": {
+          "no_available_source": 2513,
+          "eligible_under_assumption": 872,
+          "selected_contract_absent_at_target": 97,
+          "target_reference_quote_missing": 15,
+          "origin_reference_quote_missing": 10,
+          "origin_reference_quote_not_available_at_decision": 10,
+          "source_stale": 3
+        }
+      },
+      "parent_cohort": {
+        "origins": 749,
+        "eligible_under_assumption": 665,
+        "reasons": {
+          "eligible_under_assumption": 665,
+          "selected_contract_absent_at_target": 74,
+          "origin_reference_quote_not_available_at_decision": 4,
+          "target_reference_quote_missing": 3,
+          "origin_reference_quote_missing": 3
+        }
+      },
+      "parent_years": {
+        "2021": {
+          "origins": 252,
+          "eligible_under_assumption": 223,
+          "reasons": {
+            "eligible_under_assumption": 223,
+            "selected_contract_absent_at_target": 25,
+            "origin_reference_quote_not_available_at_decision": 2,
+            "target_reference_quote_missing": 1,
+            "origin_reference_quote_missing": 1
+          }
+        },
+        "2022": {
+          "origins": 251,
+          "eligible_under_assumption": 225,
+          "reasons": {
+            "eligible_under_assumption": 225,
+            "selected_contract_absent_at_target": 24,
+            "target_reference_quote_missing": 1,
+            "origin_reference_quote_missing": 1
+          }
+        },
+        "2023": {
+          "origins": 246,
+          "eligible_under_assumption": 217,
+          "reasons": {
+            "eligible_under_assumption": 217,
+            "selected_contract_absent_at_target": 25,
+            "origin_reference_quote_not_available_at_decision": 2,
+            "target_reference_quote_missing": 1,
+            "origin_reference_quote_missing": 1
+          }
+        }
+      },
+      "first_valid_date": "2020-01-02",
+      "retrospective_value_rows": 882
+    },
+    "first_T5_available_quote": {
+      "all_history": {
+        "origins": 3520,
+        "eligible_under_assumption": 891,
+        "reasons": {
+          "no_available_source": 2513,
+          "eligible_under_assumption": 891,
+          "selected_contract_absent_at_target": 98,
+          "target_reference_quote_missing": 15,
+          "source_stale": 3
+        }
+      },
+      "parent_cohort": {
+        "origins": 749,
+        "eligible_under_assumption": 672,
+        "reasons": {
+          "eligible_under_assumption": 672,
+          "selected_contract_absent_at_target": 74,
+          "target_reference_quote_missing": 3
+        }
+      },
+      "parent_years": {
+        "2021": {
+          "origins": 252,
+          "eligible_under_assumption": 226,
+          "reasons": {
+            "eligible_under_assumption": 226,
+            "selected_contract_absent_at_target": 25,
+            "target_reference_quote_missing": 1
+          }
+        },
+        "2022": {
+          "origins": 251,
+          "eligible_under_assumption": 226,
+          "reasons": {
+            "eligible_under_assumption": 226,
+            "selected_contract_absent_at_target": 24,
+            "target_reference_quote_missing": 1
+          }
+        },
+        "2023": {
+          "origins": 246,
+          "eligible_under_assumption": 220,
+          "reasons": {
+            "eligible_under_assumption": 220,
+            "selected_contract_absent_at_target": 25,
+            "target_reference_quote_missing": 1
+          }
+        }
+      },
+      "first_valid_date": "2020-01-02",
+      "retrospective_value_rows": null
+    },
+    "second_T1_contemporaneous": {
+      "all_history": {
+        "origins": 3520,
+        "eligible_under_assumption": 974,
+        "reasons": {
+          "no_available_source": 2513,
+          "eligible_under_assumption": 974,
+          "target_reference_quote_missing": 10,
+          "origin_reference_quote_missing": 10,
+          "origin_reference_quote_not_available_at_decision": 10,
+          "source_stale": 3
+        }
+      },
+      "parent_cohort": {
+        "origins": 749,
+        "eligible_under_assumption": 739,
+        "reasons": {
+          "eligible_under_assumption": 739,
+          "origin_reference_quote_not_available_at_decision": 4,
+          "target_reference_quote_missing": 3,
+          "origin_reference_quote_missing": 3
+        }
+      },
+      "parent_years": {
+        "2021": {
+          "origins": 252,
+          "eligible_under_assumption": 248,
+          "reasons": {
+            "eligible_under_assumption": 248,
+            "origin_reference_quote_not_available_at_decision": 2,
+            "target_reference_quote_missing": 1,
+            "origin_reference_quote_missing": 1
+          }
+        },
+        "2022": {
+          "origins": 251,
+          "eligible_under_assumption": 249,
+          "reasons": {
+            "eligible_under_assumption": 249,
+            "target_reference_quote_missing": 1,
+            "origin_reference_quote_missing": 1
+          }
+        },
+        "2023": {
+          "origins": 246,
+          "eligible_under_assumption": 242,
+          "reasons": {
+            "eligible_under_assumption": 242,
+            "origin_reference_quote_not_available_at_decision": 2,
+            "target_reference_quote_missing": 1,
+            "origin_reference_quote_missing": 1
+          }
+        }
+      },
+      "first_valid_date": "2020-01-02",
+      "retrospective_value_rows": 984
+    },
+    "second_T1_available_quote": {
+      "all_history": {
+        "origins": 3520,
+        "eligible_under_assumption": 993,
+        "reasons": {
+          "no_available_source": 2513,
+          "eligible_under_assumption": 993,
+          "target_reference_quote_missing": 11,
+          "source_stale": 3
+        }
+      },
+      "parent_cohort": {
+        "origins": 749,
+        "eligible_under_assumption": 746,
+        "reasons": {
+          "eligible_under_assumption": 746,
+          "target_reference_quote_missing": 3
+        }
+      },
+      "parent_years": {
+        "2021": {
+          "origins": 252,
+          "eligible_under_assumption": 251,
+          "reasons": {
+            "eligible_under_assumption": 251,
+            "target_reference_quote_missing": 1
+          }
+        },
+        "2022": {
+          "origins": 251,
+          "eligible_under_assumption": 250,
+          "reasons": {
+            "eligible_under_assumption": 250,
+            "target_reference_quote_missing": 1
+          }
+        },
+        "2023": {
+          "origins": 246,
+          "eligible_under_assumption": 245,
+          "reasons": {
+            "eligible_under_assumption": 245,
+            "target_reference_quote_missing": 1
+          }
+        }
+      },
+      "first_valid_date": "2020-01-02",
+      "retrospective_value_rows": null
+    },
+    "second_T5_contemporaneous": {
+      "all_history": {
+        "origins": 3520,
+        "eligible_under_assumption": 969,
+        "reasons": {
+          "no_available_source": 2513,
+          "eligible_under_assumption": 969,
+          "target_reference_quote_missing": 15,
+          "origin_reference_quote_missing": 10,
+          "origin_reference_quote_not_available_at_decision": 10,
+          "source_stale": 3
+        }
+      },
+      "parent_cohort": {
+        "origins": 749,
+        "eligible_under_assumption": 739,
+        "reasons": {
+          "eligible_under_assumption": 739,
+          "origin_reference_quote_not_available_at_decision": 4,
+          "target_reference_quote_missing": 3,
+          "origin_reference_quote_missing": 3
+        }
+      },
+      "parent_years": {
+        "2021": {
+          "origins": 252,
+          "eligible_under_assumption": 248,
+          "reasons": {
+            "eligible_under_assumption": 248,
+            "origin_reference_quote_not_available_at_decision": 2,
+            "target_reference_quote_missing": 1,
+            "origin_reference_quote_missing": 1
+          }
+        },
+        "2022": {
+          "origins": 251,
+          "eligible_under_assumption": 249,
+          "reasons": {
+            "eligible_under_assumption": 249,
+            "target_reference_quote_missing": 1,
+            "origin_reference_quote_missing": 1
+          }
+        },
+        "2023": {
+          "origins": 246,
+          "eligible_under_assumption": 242,
+          "reasons": {
+            "eligible_under_assumption": 242,
+            "origin_reference_quote_not_available_at_decision": 2,
+            "target_reference_quote_missing": 1,
+            "origin_reference_quote_missing": 1
+          }
+        }
+      },
+      "first_valid_date": "2020-01-02",
+      "retrospective_value_rows": 979
+    },
+    "second_T5_available_quote": {
+      "all_history": {
+        "origins": 3520,
+        "eligible_under_assumption": 989,
+        "reasons": {
+          "no_available_source": 2513,
+          "eligible_under_assumption": 989,
+          "target_reference_quote_missing": 15,
+          "source_stale": 3
+        }
+      },
+      "parent_cohort": {
+        "origins": 749,
+        "eligible_under_assumption": 746,
+        "reasons": {
+          "eligible_under_assumption": 746,
+          "target_reference_quote_missing": 3
+        }
+      },
+      "parent_years": {
+        "2021": {
+          "origins": 252,
+          "eligible_under_assumption": 251,
+          "reasons": {
+            "eligible_under_assumption": 251,
+            "target_reference_quote_missing": 1
+          }
+        },
+        "2022": {
+          "origins": 251,
+          "eligible_under_assumption": 250,
+          "reasons": {
+            "eligible_under_assumption": 250,
+            "target_reference_quote_missing": 1
+          }
+        },
+        "2023": {
+          "origins": 246,
+          "eligible_under_assumption": 245,
+          "reasons": {
+            "eligible_under_assumption": 245,
+            "target_reference_quote_missing": 1
+          }
+        }
+      },
+      "first_valid_date": "2020-01-02",
+      "retrospective_value_rows": null
+    }
+  },
+  "readiness": [
+    {
+      "rank": "first",
+      "horizon": 1,
+      "variant": "contemporaneous",
+      "year": 2021,
+      "role": "outer",
+      "cutoff": "2021-01-04",
+      "own_mature_train_labels": 222,
+      "joint_h1_h5_mature_train_labels": 197,
+      "minimum_train_labels": 500,
+      "joint_training_threshold_met": false,
+      "test_origins": 252,
+      "test_assumption_eligible": 243,
+      "test_labels_known_by_outer_selection": null
+    },
+    {
+      "rank": "first",
+      "horizon": 1,
+      "variant": "contemporaneous",
+      "year": 2021,
+      "role": "inner_0",
+      "cutoff": "2020-03-27",
+      "own_mature_train_labels": 48,
+      "joint_h1_h5_mature_train_labels": 41,
+      "minimum_train_labels": 500,
+      "joint_training_threshold_met": false,
+      "test_origins": 63,
+      "test_assumption_eligible": 62,
+      "test_labels_known_by_outer_selection": 62
+    },
+    {
+      "rank": "first",
+      "horizon": 1,
+      "variant": "contemporaneous",
+      "year": 2021,
+      "role": "inner_1",
+      "cutoff": "2020-06-26",
+      "own_mature_train_labels": 110,
+      "joint_h1_h5_mature_train_labels": 99,
+      "minimum_train_labels": 500,
+      "joint_training_threshold_met": false,
+      "test_origins": 63,
+      "test_assumption_eligible": 61,
+      "test_labels_known_by_outer_selection": 61
+    },
+    {
+      "rank": "first",
+      "horizon": 1,
+      "variant": "contemporaneous",
+      "year": 2021,
+      "role": "inner_2",
+      "cutoff": "2020-09-25",
+      "own_mature_train_labels": 171,
+      "joint_h1_h5_mature_train_labels": 156,
+      "minimum_train_labels": 500,
+      "joint_training_threshold_met": false,
+      "test_origins": 63,
+      "test_assumption_eligible": 46,
+      "test_labels_known_by_outer_selection": 46
+    },
+    {
+      "rank": "first",
+      "horizon": 1,
+      "variant": "contemporaneous",
+      "year": 2022,
+      "role": "outer",
+      "cutoff": "2022-01-03",
+      "own_mature_train_labels": 464,
+      "joint_h1_h5_mature_train_labels": 418,
+      "minimum_train_labels": 500,
+      "joint_training_threshold_met": false,
+      "test_origins": 251,
+      "test_assumption_eligible": 244,
+      "test_labels_known_by_outer_selection": null
+    },
+    {
+      "rank": "first",
+      "horizon": 1,
+      "variant": "contemporaneous",
+      "year": 2022,
+      "role": "inner_0",
+      "cutoff": "2021-03-29",
+      "own_mature_train_labels": 278,
+      "joint_h1_h5_mature_train_labels": 249,
+      "minimum_train_labels": 500,
+      "joint_training_threshold_met": false,
+      "test_origins": 63,
+      "test_assumption_eligible": 62,
+      "test_labels_known_by_outer_selection": 62
+    },
+    {
+      "rank": "first",
+      "horizon": 1,
+      "variant": "contemporaneous",
+      "year": 2022,
+      "role": "inner_1",
+      "cutoff": "2021-06-28",
+      "own_mature_train_labels": 340,
+      "joint_h1_h5_mature_train_labels": 307,
+      "minimum_train_labels": 500,
+      "joint_training_threshold_met": false,
+      "test_origins": 63,
+      "test_assumption_eligible": 62,
+      "test_labels_known_by_outer_selection": 62
+    },
+    {
+      "rank": "first",
+      "horizon": 1,
+      "variant": "contemporaneous",
+      "year": 2022,
+      "role": "inner_2",
+      "cutoff": "2021-09-27",
+      "own_mature_train_labels": 402,
+      "joint_h1_h5_mature_train_labels": 365,
+      "minimum_train_labels": 500,
+      "joint_training_threshold_met": false,
+      "test_origins": 63,
+      "test_assumption_eligible": 57,
+      "test_labels_known_by_outer_selection": 57
+    },
+    {
+      "rank": "first",
+      "horizon": 1,
+      "variant": "contemporaneous",
+      "year": 2023,
+      "role": "outer",
+      "cutoff": "2023-01-03",
+      "own_mature_train_labels": 708,
+      "joint_h1_h5_mature_train_labels": 642,
+      "minimum_train_labels": 500,
+      "joint_training_threshold_met": true,
+      "test_origins": 246,
+      "test_assumption_eligible": 237,
+      "test_labels_known_by_outer_selection": null
+    },
+    {
+      "rank": "first",
+      "horizon": 1,
+      "variant": "contemporaneous",
+      "year": 2023,
+      "role": "inner_0",
+      "cutoff": "2022-03-25",
+      "own_mature_train_labels": 520,
+      "joint_h1_h5_mature_train_labels": 470,
+      "minimum_train_labels": 500,
+      "joint_training_threshold_met": false,
+      "test_origins": 63,
+      "test_assumption_eligible": 62,
+      "test_labels_known_by_outer_selection": 62
+    },
+    {
+      "rank": "first",
+      "horizon": 1,
+      "variant": "contemporaneous",
+      "year": 2023,
+      "role": "inner_1",
+      "cutoff": "2022-06-27",
+      "own_mature_train_labels": 582,
+      "joint_h1_h5_mature_train_labels": 528,
+      "minimum_train_labels": 500,
+      "joint_training_threshold_met": true,
+      "test_origins": 63,
+      "test_assumption_eligible": 60,
+      "test_labels_known_by_outer_selection": 60
+    },
+    {
+      "rank": "first",
+      "horizon": 1,
+      "variant": "contemporaneous",
+      "year": 2023,
+      "role": "inner_2",
+      "cutoff": "2022-09-26",
+      "own_mature_train_labels": 642,
+      "joint_h1_h5_mature_train_labels": 584,
+      "minimum_train_labels": 500,
+      "joint_training_threshold_met": true,
+      "test_origins": 63,
+      "test_assumption_eligible": 61,
+      "test_labels_known_by_outer_selection": 61
+    },
+    {
+      "rank": "first",
+      "horizon": 1,
+      "variant": "available_quote",
+      "year": 2021,
+      "role": "outer",
+      "cutoff": "2021-01-04",
+      "own_mature_train_labels": 233,
+      "joint_h1_h5_mature_train_labels": 207,
+      "minimum_train_labels": 500,
+      "joint_training_threshold_met": false,
+      "test_origins": 252,
+      "test_assumption_eligible": 246,
+      "test_labels_known_by_outer_selection": null
+    },
+    {
+      "rank": "first",
+      "horizon": 1,
+      "variant": "available_quote",
+      "year": 2021,
+      "role": "inner_0",
+      "cutoff": "2020-03-27",
+      "own_mature_train_labels": 50,
+      "joint_h1_h5_mature_train_labels": 43,
+      "minimum_train_labels": 500,
+      "joint_training_threshold_met": false,
+      "test_origins": 63,
+      "test_assumption_eligible": 62,
+      "test_labels_known_by_outer_selection": 62
+    },
+    {
+      "rank": "first",
+      "horizon": 1,
+      "variant": "available_quote",
+      "year": 2021,
+      "role": "inner_1",
+      "cutoff": "2020-06-26",
+      "own_mature_train_labels": 112,
+      "joint_h1_h5_mature_train_labels": 101,
+      "minimum_train_labels": 500,
+      "joint_training_threshold_met": false,
+      "test_origins": 63,
+      "test_assumption_eligible": 62,
+      "test_labels_known_by_outer_selection": 62
+    },
+    {
+      "rank": "first",
+      "horizon": 1,
+      "variant": "available_quote",
+      "year": 2021,
+      "role": "inner_2",
+      "cutoff": "2020-09-25",
+      "own_mature_train_labels": 174,
+      "joint_h1_h5_mature_train_labels": 159,
+      "minimum_train_labels": 500,
+      "joint_training_threshold_met": false,
+      "test_origins": 63,
+      "test_assumption_eligible": 54,
+      "test_labels_known_by_outer_selection": 54
+    },
+    {
+      "rank": "first",
+      "horizon": 1,
+      "variant": "available_quote",
+      "year": 2022,
+      "role": "outer",
+      "cutoff": "2022-01-03",
+      "own_mature_train_labels": 479,
+      "joint_h1_h5_mature_train_labels": 432,
+      "minimum_train_labels": 500,
+      "joint_training_threshold_met": false,
+      "test_origins": 251,
+      "test_assumption_eligible": 245,
+      "test_labels_known_by_outer_selection": null
+    },
+    {
+      "rank": "first",
+      "horizon": 1,
+      "variant": "available_quote",
+      "year": 2022,
+      "role": "inner_0",
+      "cutoff": "2021-03-29",
+      "own_mature_train_labels": 290,
+      "joint_h1_h5_mature_train_labels": 260,
+      "minimum_train_labels": 500,
+      "joint_training_threshold_met": false,
+      "test_origins": 63,
+      "test_assumption_eligible": 62,
+      "test_labels_known_by_outer_selection": 62
+    },
+    {
+      "rank": "first",
+      "horizon": 1,
+      "variant": "available_quote",
+      "year": 2022,
+      "role": "inner_1",
+      "cutoff": "2021-06-28",
+      "own_mature_train_labels": 352,
+      "joint_h1_h5_mature_train_labels": 318,
+      "minimum_train_labels": 500,
+      "joint_training_threshold_met": false,
+      "test_origins": 63,
+      "test_assumption_eligible": 62,
+      "test_labels_known_by_outer_selection": 62
+    },
+    {
+      "rank": "first",
+      "horizon": 1,
+      "variant": "available_quote",
+      "year": 2022,
+      "role": "inner_2",
+      "cutoff": "2021-09-27",
+      "own_mature_train_labels": 414,
+      "joint_h1_h5_mature_train_labels": 376,
+      "minimum_train_labels": 500,
+      "joint_training_threshold_met": false,
+      "test_origins": 63,
+      "test_assumption_eligible": 60,
+      "test_labels_known_by_outer_selection": 60
+    },
+    {
+      "rank": "first",
+      "horizon": 1,
+      "variant": "available_quote",
+      "year": 2023,
+      "role": "outer",
+      "cutoff": "2023-01-03",
+      "own_mature_train_labels": 724,
+      "joint_h1_h5_mature_train_labels": 657,
+      "minimum_train_labels": 500,
+      "joint_training_threshold_met": true,
+      "test_origins": 246,
+      "test_assumption_eligible": 240,
+      "test_labels_known_by_outer_selection": null
+    },
+    {
+      "rank": "first",
+      "horizon": 1,
+      "variant": "available_quote",
+      "year": 2023,
+      "role": "inner_0",
+      "cutoff": "2022-03-25",
+      "own_mature_train_labels": 535,
+      "joint_h1_h5_mature_train_labels": 484,
+      "minimum_train_labels": 500,
+      "joint_training_threshold_met": false,
+      "test_origins": 63,
+      "test_assumption_eligible": 62,
+      "test_labels_known_by_outer_selection": 62
+    },
+    {
+      "rank": "first",
+      "horizon": 1,
+      "variant": "available_quote",
+      "year": 2023,
+      "role": "inner_1",
+      "cutoff": "2022-06-27",
+      "own_mature_train_labels": 597,
+      "joint_h1_h5_mature_train_labels": 542,
+      "minimum_train_labels": 500,
+      "joint_training_threshold_met": true,
+      "test_origins": 63,
+      "test_assumption_eligible": 61,
+      "test_labels_known_by_outer_selection": 61
+    },
+    {
+      "rank": "first",
+      "horizon": 1,
+      "variant": "available_quote",
+      "year": 2023,
+      "role": "inner_2",
+      "cutoff": "2022-09-26",
+      "own_mature_train_labels": 658,
+      "joint_h1_h5_mature_train_labels": 599,
+      "minimum_train_labels": 500,
+      "joint_training_threshold_met": true,
+      "test_origins": 63,
+      "test_assumption_eligible": 61,
+      "test_labels_known_by_outer_selection": 61
+    },
+    {
+      "rank": "first",
+      "horizon": 5,
+      "variant": "contemporaneous",
+      "year": 2021,
+      "role": "outer",
+      "cutoff": "2021-01-04",
+      "own_mature_train_labels": 203,
+      "joint_h1_h5_mature_train_labels": 197,
+      "minimum_train_labels": 500,
+      "joint_training_threshold_met": false,
+      "test_origins": 252,
+      "test_assumption_eligible": 223,
+      "test_labels_known_by_outer_selection": null
+    },
+    {
+      "rank": "first",
+      "horizon": 5,
+      "variant": "contemporaneous",
+      "year": 2021,
+      "role": "inner_0",
+      "cutoff": "2020-03-27",
+      "own_mature_train_labels": 43,
+      "joint_h1_h5_mature_train_labels": 41,
+      "minimum_train_labels": 500,
+      "joint_training_threshold_met": false,
+      "test_origins": 63,
+      "test_assumption_eligible": 58,
+      "test_labels_known_by_outer_selection": 58
+    },
+    {
+      "rank": "first",
+      "horizon": 5,
+      "variant": "contemporaneous",
+      "year": 2021,
+      "role": "inner_1",
+      "cutoff": "2020-06-26",
+      "own_mature_train_labels": 101,
+      "joint_h1_h5_mature_train_labels": 99,
+      "minimum_train_labels": 500,
+      "joint_training_threshold_met": false,
+      "test_origins": 63,
+      "test_assumption_eligible": 57,
+      "test_labels_known_by_outer_selection": 57
+    },
+    {
+      "rank": "first",
+      "horizon": 5,
+      "variant": "contemporaneous",
+      "year": 2021,
+      "role": "inner_2",
+      "cutoff": "2020-09-25",
+      "own_mature_train_labels": 158,
+      "joint_h1_h5_mature_train_labels": 156,
+      "minimum_train_labels": 500,
+      "joint_training_threshold_met": false,
+      "test_origins": 63,
+      "test_assumption_eligible": 40,
+      "test_labels_known_by_outer_selection": 40
+    },
+    {
+      "rank": "first",
+      "horizon": 5,
+      "variant": "contemporaneous",
+      "year": 2022,
+      "role": "outer",
+      "cutoff": "2022-01-03",
+      "own_mature_train_labels": 425,
+      "joint_h1_h5_mature_train_labels": 418,
+      "minimum_train_labels": 500,
+      "joint_training_threshold_met": false,
+      "test_origins": 251,
+      "test_assumption_eligible": 225,
+      "test_labels_known_by_outer_selection": null
+    },
+    {
+      "rank": "first",
+      "horizon": 5,
+      "variant": "contemporaneous",
+      "year": 2022,
+      "role": "inner_0",
+      "cutoff": "2021-03-29",
+      "own_mature_train_labels": 255,
+      "joint_h1_h5_mature_train_labels": 249,
+      "minimum_train_labels": 500,
+      "joint_training_threshold_met": false,
+      "test_origins": 63,
+      "test_assumption_eligible": 58,
+      "test_labels_known_by_outer_selection": 58
+    },
+    {
+      "rank": "first",
+      "horizon": 5,
+      "variant": "contemporaneous",
+      "year": 2022,
+      "role": "inner_1",
+      "cutoff": "2021-06-28",
+      "own_mature_train_labels": 313,
+      "joint_h1_h5_mature_train_labels": 307,
+      "minimum_train_labels": 500,
+      "joint_training_threshold_met": false,
+      "test_origins": 63,
+      "test_assumption_eligible": 58,
+      "test_labels_known_by_outer_selection": 58
+    },
+    {
+      "rank": "first",
+      "horizon": 5,
+      "variant": "contemporaneous",
+      "year": 2022,
+      "role": "inner_2",
+      "cutoff": "2021-09-27",
+      "own_mature_train_labels": 371,
+      "joint_h1_h5_mature_train_labels": 365,
+      "minimum_train_labels": 500,
+      "joint_training_threshold_met": false,
+      "test_origins": 63,
+      "test_assumption_eligible": 49,
+      "test_labels_known_by_outer_selection": 49
+    },
+    {
+      "rank": "first",
+      "horizon": 5,
+      "variant": "contemporaneous",
+      "year": 2023,
+      "role": "outer",
+      "cutoff": "2023-01-03",
+      "own_mature_train_labels": 650,
+      "joint_h1_h5_mature_train_labels": 642,
+      "minimum_train_labels": 500,
+      "joint_training_threshold_met": true,
+      "test_origins": 246,
+      "test_assumption_eligible": 217,
+      "test_labels_known_by_outer_selection": null
+    },
+    {
+      "rank": "first",
+      "horizon": 5,
+      "variant": "contemporaneous",
+      "year": 2023,
+      "role": "inner_0",
+      "cutoff": "2022-03-25",
+      "own_mature_train_labels": 477,
+      "joint_h1_h5_mature_train_labels": 470,
+      "minimum_train_labels": 500,
+      "joint_training_threshold_met": false,
+      "test_origins": 63,
+      "test_assumption_eligible": 58,
+      "test_labels_known_by_outer_selection": 58
+    },
+    {
+      "rank": "first",
+      "horizon": 5,
+      "variant": "contemporaneous",
+      "year": 2023,
+      "role": "inner_1",
+      "cutoff": "2022-06-27",
+      "own_mature_train_labels": 535,
+      "joint_h1_h5_mature_train_labels": 528,
+      "minimum_train_labels": 500,
+      "joint_training_threshold_met": true,
+      "test_origins": 63,
+      "test_assumption_eligible": 57,
+      "test_labels_known_by_outer_selection": 57
+    },
+    {
+      "rank": "first",
+      "horizon": 5,
+      "variant": "contemporaneous",
+      "year": 2023,
+      "role": "inner_2",
+      "cutoff": "2022-09-26",
+      "own_mature_train_labels": 592,
+      "joint_h1_h5_mature_train_labels": 584,
+      "minimum_train_labels": 500,
+      "joint_training_threshold_met": true,
+      "test_origins": 63,
+      "test_assumption_eligible": 53,
+      "test_labels_known_by_outer_selection": 53
+    },
+    {
+      "rank": "first",
+      "horizon": 5,
+      "variant": "available_quote",
+      "year": 2021,
+      "role": "outer",
+      "cutoff": "2021-01-04",
+      "own_mature_train_labels": 214,
+      "joint_h1_h5_mature_train_labels": 207,
+      "minimum_train_labels": 500,
+      "joint_training_threshold_met": false,
+      "test_origins": 252,
+      "test_assumption_eligible": 226,
+      "test_labels_known_by_outer_selection": null
+    },
+    {
+      "rank": "first",
+      "horizon": 5,
+      "variant": "available_quote",
+      "year": 2021,
+      "role": "inner_0",
+      "cutoff": "2020-03-27",
+      "own_mature_train_labels": 46,
+      "joint_h1_h5_mature_train_labels": 43,
+      "minimum_train_labels": 500,
+      "joint_training_threshold_met": false,
+      "test_origins": 63,
+      "test_assumption_eligible": 58,
+      "test_labels_known_by_outer_selection": 58
+    },
+    {
+      "rank": "first",
+      "horizon": 5,
+      "variant": "available_quote",
+      "year": 2021,
+      "role": "inner_1",
+      "cutoff": "2020-06-26",
+      "own_mature_train_labels": 104,
+      "joint_h1_h5_mature_train_labels": 101,
+      "minimum_train_labels": 500,
+      "joint_training_threshold_met": false,
+      "test_origins": 63,
+      "test_assumption_eligible": 58,
+      "test_labels_known_by_outer_selection": 58
+    },
+    {
+      "rank": "first",
+      "horizon": 5,
+      "variant": "available_quote",
+      "year": 2021,
+      "role": "inner_2",
+      "cutoff": "2020-09-25",
+      "own_mature_train_labels": 162,
+      "joint_h1_h5_mature_train_labels": 159,
+      "minimum_train_labels": 500,
+      "joint_training_threshold_met": false,
+      "test_origins": 63,
+      "test_assumption_eligible": 47,
+      "test_labels_known_by_outer_selection": 47
+    },
+    {
+      "rank": "first",
+      "horizon": 5,
+      "variant": "available_quote",
+      "year": 2022,
+      "role": "outer",
+      "cutoff": "2022-01-03",
+      "own_mature_train_labels": 440,
+      "joint_h1_h5_mature_train_labels": 432,
+      "minimum_train_labels": 500,
+      "joint_training_threshold_met": false,
+      "test_origins": 251,
+      "test_assumption_eligible": 226,
+      "test_labels_known_by_outer_selection": null
+    },
+    {
+      "rank": "first",
+      "horizon": 5,
+      "variant": "available_quote",
+      "year": 2022,
+      "role": "inner_0",
+      "cutoff": "2021-03-29",
+      "own_mature_train_labels": 267,
+      "joint_h1_h5_mature_train_labels": 260,
+      "minimum_train_labels": 500,
+      "joint_training_threshold_met": false,
+      "test_origins": 63,
+      "test_assumption_eligible": 58,
+      "test_labels_known_by_outer_selection": 58
+    },
+    {
+      "rank": "first",
+      "horizon": 5,
+      "variant": "available_quote",
+      "year": 2022,
+      "role": "inner_1",
+      "cutoff": "2021-06-28",
+      "own_mature_train_labels": 325,
+      "joint_h1_h5_mature_train_labels": 318,
+      "minimum_train_labels": 500,
+      "joint_training_threshold_met": false,
+      "test_origins": 63,
+      "test_assumption_eligible": 58,
+      "test_labels_known_by_outer_selection": 58
+    },
+    {
+      "rank": "first",
+      "horizon": 5,
+      "variant": "available_quote",
+      "year": 2022,
+      "role": "inner_2",
+      "cutoff": "2021-09-27",
+      "own_mature_train_labels": 383,
+      "joint_h1_h5_mature_train_labels": 376,
+      "minimum_train_labels": 500,
+      "joint_training_threshold_met": false,
+      "test_origins": 63,
+      "test_assumption_eligible": 52,
+      "test_labels_known_by_outer_selection": 52
+    },
+    {
+      "rank": "first",
+      "horizon": 5,
+      "variant": "available_quote",
+      "year": 2023,
+      "role": "outer",
+      "cutoff": "2023-01-03",
+      "own_mature_train_labels": 666,
+      "joint_h1_h5_mature_train_labels": 657,
+      "minimum_train_labels": 500,
+      "joint_training_threshold_met": true,
+      "test_origins": 246,
+      "test_assumption_eligible": 220,
+      "test_labels_known_by_outer_selection": null
+    },
+    {
+      "rank": "first",
+      "horizon": 5,
+      "variant": "available_quote",
+      "year": 2023,
+      "role": "inner_0",
+      "cutoff": "2022-03-25",
+      "own_mature_train_labels": 492,
+      "joint_h1_h5_mature_train_labels": 484,
+      "minimum_train_labels": 500,
+      "joint_training_threshold_met": false,
+      "test_origins": 63,
+      "test_assumption_eligible": 58,
+      "test_labels_known_by_outer_selection": 58
+    },
+    {
+      "rank": "first",
+      "horizon": 5,
+      "variant": "available_quote",
+      "year": 2023,
+      "role": "inner_1",
+      "cutoff": "2022-06-27",
+      "own_mature_train_labels": 550,
+      "joint_h1_h5_mature_train_labels": 542,
+      "minimum_train_labels": 500,
+      "joint_training_threshold_met": true,
+      "test_origins": 63,
+      "test_assumption_eligible": 58,
+      "test_labels_known_by_outer_selection": 58
+    },
+    {
+      "rank": "first",
+      "horizon": 5,
+      "variant": "available_quote",
+      "year": 2023,
+      "role": "inner_2",
+      "cutoff": "2022-09-26",
+      "own_mature_train_labels": 608,
+      "joint_h1_h5_mature_train_labels": 599,
+      "minimum_train_labels": 500,
+      "joint_training_threshold_met": true,
+      "test_origins": 63,
+      "test_assumption_eligible": 53,
+      "test_labels_known_by_outer_selection": 53
+    },
+    {
+      "rank": "second",
+      "horizon": 1,
+      "variant": "contemporaneous",
+      "year": 2021,
+      "role": "outer",
+      "cutoff": "2021-01-04",
+      "own_mature_train_labels": 227,
+      "joint_h1_h5_mature_train_labels": 220,
+      "minimum_train_labels": 500,
+      "joint_training_threshold_met": false,
+      "test_origins": 252,
+      "test_assumption_eligible": 248,
+      "test_labels_known_by_outer_selection": null
+    },
+    {
+      "rank": "second",
+      "horizon": 1,
+      "variant": "contemporaneous",
+      "year": 2021,
+      "role": "inner_0",
+      "cutoff": "2020-03-27",
+      "own_mature_train_labels": 49,
+      "joint_h1_h5_mature_train_labels": 46,
+      "minimum_train_labels": 500,
+      "joint_training_threshold_met": false,
+      "test_origins": 63,
+      "test_assumption_eligible": 63,
+      "test_labels_known_by_outer_selection": 63
+    },
+    {
+      "rank": "second",
+      "horizon": 1,
+      "variant": "contemporaneous",
+      "year": 2021,
+      "role": "inner_1",
+      "cutoff": "2020-06-26",
+      "own_mature_train_labels": 112,
+      "joint_h1_h5_mature_train_labels": 109,
+      "minimum_train_labels": 500,
+      "joint_training_threshold_met": false,
+      "test_origins": 63,
+      "test_assumption_eligible": 62,
+      "test_labels_known_by_outer_selection": 62
+    },
+    {
+      "rank": "second",
+      "horizon": 1,
+      "variant": "contemporaneous",
+      "year": 2021,
+      "role": "inner_2",
+      "cutoff": "2020-09-25",
+      "own_mature_train_labels": 174,
+      "joint_h1_h5_mature_train_labels": 171,
+      "minimum_train_labels": 500,
+      "joint_training_threshold_met": false,
+      "test_origins": 63,
+      "test_assumption_eligible": 48,
+      "test_labels_known_by_outer_selection": 48
+    },
+    {
+      "rank": "second",
+      "horizon": 1,
+      "variant": "contemporaneous",
+      "year": 2022,
+      "role": "outer",
+      "cutoff": "2022-01-03",
+      "own_mature_train_labels": 474,
+      "joint_h1_h5_mature_train_labels": 466,
+      "minimum_train_labels": 500,
+      "joint_training_threshold_met": false,
+      "test_origins": 251,
+      "test_assumption_eligible": 249,
+      "test_labels_known_by_outer_selection": null
+    },
+    {
+      "rank": "second",
+      "horizon": 1,
+      "variant": "contemporaneous",
+      "year": 2022,
+      "role": "inner_0",
+      "cutoff": "2021-03-29",
+      "own_mature_train_labels": 284,
+      "joint_h1_h5_mature_train_labels": 277,
+      "minimum_train_labels": 500,
+      "joint_training_threshold_met": false,
+      "test_origins": 63,
+      "test_assumption_eligible": 63,
+      "test_labels_known_by_outer_selection": 63
+    },
+    {
+      "rank": "second",
+      "horizon": 1,
+      "variant": "contemporaneous",
+      "year": 2022,
+      "role": "inner_1",
+      "cutoff": "2021-06-28",
+      "own_mature_train_labels": 347,
+      "joint_h1_h5_mature_train_labels": 340,
+      "minimum_train_labels": 500,
+      "joint_training_threshold_met": false,
+      "test_origins": 63,
+      "test_assumption_eligible": 63,
+      "test_labels_known_by_outer_selection": 63
+    },
+    {
+      "rank": "second",
+      "horizon": 1,
+      "variant": "contemporaneous",
+      "year": 2022,
+      "role": "inner_2",
+      "cutoff": "2021-09-27",
+      "own_mature_train_labels": 410,
+      "joint_h1_h5_mature_train_labels": 403,
+      "minimum_train_labels": 500,
+      "joint_training_threshold_met": false,
+      "test_origins": 63,
+      "test_assumption_eligible": 59,
+      "test_labels_known_by_outer_selection": 59
+    },
+    {
+      "rank": "second",
+      "horizon": 1,
+      "variant": "contemporaneous",
+      "year": 2023,
+      "role": "outer",
+      "cutoff": "2023-01-03",
+      "own_mature_train_labels": 723,
+      "joint_h1_h5_mature_train_labels": 714,
+      "minimum_train_labels": 500,
+      "joint_training_threshold_met": true,
+      "test_origins": 246,
+      "test_assumption_eligible": 242,
+      "test_labels_known_by_outer_selection": null
+    },
+    {
+      "rank": "second",
+      "horizon": 1,
+      "variant": "contemporaneous",
+      "year": 2023,
+      "role": "inner_0",
+      "cutoff": "2022-03-25",
+      "own_mature_train_labels": 531,
+      "joint_h1_h5_mature_train_labels": 523,
+      "minimum_train_labels": 500,
+      "joint_training_threshold_met": true,
+      "test_origins": 63,
+      "test_assumption_eligible": 63,
+      "test_labels_known_by_outer_selection": 63
+    },
+    {
+      "rank": "second",
+      "horizon": 1,
+      "variant": "contemporaneous",
+      "year": 2023,
+      "role": "inner_1",
+      "cutoff": "2022-06-27",
+      "own_mature_train_labels": 594,
+      "joint_h1_h5_mature_train_labels": 586,
+      "minimum_train_labels": 500,
+      "joint_training_threshold_met": true,
+      "test_origins": 63,
+      "test_assumption_eligible": 61,
+      "test_labels_known_by_outer_selection": 61
+    },
+    {
+      "rank": "second",
+      "horizon": 1,
+      "variant": "contemporaneous",
+      "year": 2023,
+      "role": "inner_2",
+      "cutoff": "2022-09-26",
+      "own_mature_train_labels": 655,
+      "joint_h1_h5_mature_train_labels": 646,
+      "minimum_train_labels": 500,
+      "joint_training_threshold_met": true,
+      "test_origins": 63,
+      "test_assumption_eligible": 63,
+      "test_labels_known_by_outer_selection": 63
+    },
+    {
+      "rank": "second",
+      "horizon": 1,
+      "variant": "available_quote",
+      "year": 2021,
+      "role": "outer",
+      "cutoff": "2021-01-04",
+      "own_mature_train_labels": 238,
+      "joint_h1_h5_mature_train_labels": 231,
+      "minimum_train_labels": 500,
+      "joint_training_threshold_met": false,
+      "test_origins": 252,
+      "test_assumption_eligible": 251,
+      "test_labels_known_by_outer_selection": null
+    },
+    {
+      "rank": "second",
+      "horizon": 1,
+      "variant": "available_quote",
+      "year": 2021,
+      "role": "inner_0",
+      "cutoff": "2020-03-27",
+      "own_mature_train_labels": 51,
+      "joint_h1_h5_mature_train_labels": 48,
+      "minimum_train_labels": 500,
+      "joint_training_threshold_met": false,
+      "test_origins": 63,
+      "test_assumption_eligible": 63,
+      "test_labels_known_by_outer_selection": 63
+    },
+    {
+      "rank": "second",
+      "horizon": 1,
+      "variant": "available_quote",
+      "year": 2021,
+      "role": "inner_1",
+      "cutoff": "2020-06-26",
+      "own_mature_train_labels": 114,
+      "joint_h1_h5_mature_train_labels": 111,
+      "minimum_train_labels": 500,
+      "joint_training_threshold_met": false,
+      "test_origins": 63,
+      "test_assumption_eligible": 63,
+      "test_labels_known_by_outer_selection": 63
+    },
+    {
+      "rank": "second",
+      "horizon": 1,
+      "variant": "available_quote",
+      "year": 2021,
+      "role": "inner_2",
+      "cutoff": "2020-09-25",
+      "own_mature_train_labels": 177,
+      "joint_h1_h5_mature_train_labels": 174,
+      "minimum_train_labels": 500,
+      "joint_training_threshold_met": false,
+      "test_origins": 63,
+      "test_assumption_eligible": 56,
+      "test_labels_known_by_outer_selection": 56
+    },
+    {
+      "rank": "second",
+      "horizon": 1,
+      "variant": "available_quote",
+      "year": 2022,
+      "role": "outer",
+      "cutoff": "2022-01-03",
+      "own_mature_train_labels": 489,
+      "joint_h1_h5_mature_train_labels": 481,
+      "minimum_train_labels": 500,
+      "joint_training_threshold_met": false,
+      "test_origins": 251,
+      "test_assumption_eligible": 250,
+      "test_labels_known_by_outer_selection": null
+    },
+    {
+      "rank": "second",
+      "horizon": 1,
+      "variant": "available_quote",
+      "year": 2022,
+      "role": "inner_0",
+      "cutoff": "2021-03-29",
+      "own_mature_train_labels": 296,
+      "joint_h1_h5_mature_train_labels": 289,
+      "minimum_train_labels": 500,
+      "joint_training_threshold_met": false,
+      "test_origins": 63,
+      "test_assumption_eligible": 63,
+      "test_labels_known_by_outer_selection": 63
+    },
+    {
+      "rank": "second",
+      "horizon": 1,
+      "variant": "available_quote",
+      "year": 2022,
+      "role": "inner_1",
+      "cutoff": "2021-06-28",
+      "own_mature_train_labels": 359,
+      "joint_h1_h5_mature_train_labels": 352,
+      "minimum_train_labels": 500,
+      "joint_training_threshold_met": false,
+      "test_origins": 63,
+      "test_assumption_eligible": 63,
+      "test_labels_known_by_outer_selection": 63
+    },
+    {
+      "rank": "second",
+      "horizon": 1,
+      "variant": "available_quote",
+      "year": 2022,
+      "role": "inner_2",
+      "cutoff": "2021-09-27",
+      "own_mature_train_labels": 422,
+      "joint_h1_h5_mature_train_labels": 415,
+      "minimum_train_labels": 500,
+      "joint_training_threshold_met": false,
+      "test_origins": 63,
+      "test_assumption_eligible": 62,
+      "test_labels_known_by_outer_selection": 62
+    },
+    {
+      "rank": "second",
+      "horizon": 1,
+      "variant": "available_quote",
+      "year": 2023,
+      "role": "outer",
+      "cutoff": "2023-01-03",
+      "own_mature_train_labels": 739,
+      "joint_h1_h5_mature_train_labels": 730,
+      "minimum_train_labels": 500,
+      "joint_training_threshold_met": true,
+      "test_origins": 246,
+      "test_assumption_eligible": 245,
+      "test_labels_known_by_outer_selection": null
+    },
+    {
+      "rank": "second",
+      "horizon": 1,
+      "variant": "available_quote",
+      "year": 2023,
+      "role": "inner_0",
+      "cutoff": "2022-03-25",
+      "own_mature_train_labels": 546,
+      "joint_h1_h5_mature_train_labels": 538,
+      "minimum_train_labels": 500,
+      "joint_training_threshold_met": true,
+      "test_origins": 63,
+      "test_assumption_eligible": 63,
+      "test_labels_known_by_outer_selection": 63
+    },
+    {
+      "rank": "second",
+      "horizon": 1,
+      "variant": "available_quote",
+      "year": 2023,
+      "role": "inner_1",
+      "cutoff": "2022-06-27",
+      "own_mature_train_labels": 609,
+      "joint_h1_h5_mature_train_labels": 601,
+      "minimum_train_labels": 500,
+      "joint_training_threshold_met": true,
+      "test_origins": 63,
+      "test_assumption_eligible": 62,
+      "test_labels_known_by_outer_selection": 62
+    },
+    {
+      "rank": "second",
+      "horizon": 1,
+      "variant": "available_quote",
+      "year": 2023,
+      "role": "inner_2",
+      "cutoff": "2022-09-26",
+      "own_mature_train_labels": 671,
+      "joint_h1_h5_mature_train_labels": 662,
+      "minimum_train_labels": 500,
+      "joint_training_threshold_met": true,
+      "test_origins": 63,
+      "test_assumption_eligible": 63,
+      "test_labels_known_by_outer_selection": 63
+    },
+    {
+      "rank": "second",
+      "horizon": 5,
+      "variant": "contemporaneous",
+      "year": 2021,
+      "role": "outer",
+      "cutoff": "2021-01-04",
+      "own_mature_train_labels": 226,
+      "joint_h1_h5_mature_train_labels": 220,
+      "minimum_train_labels": 500,
+      "joint_training_threshold_met": false,
+      "test_origins": 252,
+      "test_assumption_eligible": 248,
+      "test_labels_known_by_outer_selection": null
+    },
+    {
+      "rank": "second",
+      "horizon": 5,
+      "variant": "contemporaneous",
+      "year": 2021,
+      "role": "inner_0",
+      "cutoff": "2020-03-27",
+      "own_mature_train_labels": 48,
+      "joint_h1_h5_mature_train_labels": 46,
+      "minimum_train_labels": 500,
+      "joint_training_threshold_met": false,
+      "test_origins": 63,
+      "test_assumption_eligible": 63,
+      "test_labels_known_by_outer_selection": 63
+    },
+    {
+      "rank": "second",
+      "horizon": 5,
+      "variant": "contemporaneous",
+      "year": 2021,
+      "role": "inner_1",
+      "cutoff": "2020-06-26",
+      "own_mature_train_labels": 111,
+      "joint_h1_h5_mature_train_labels": 109,
+      "minimum_train_labels": 500,
+      "joint_training_threshold_met": false,
+      "test_origins": 63,
+      "test_assumption_eligible": 62,
+      "test_labels_known_by_outer_selection": 62
+    },
+    {
+      "rank": "second",
+      "horizon": 5,
+      "variant": "contemporaneous",
+      "year": 2021,
+      "role": "inner_2",
+      "cutoff": "2020-09-25",
+      "own_mature_train_labels": 173,
+      "joint_h1_h5_mature_train_labels": 171,
+      "minimum_train_labels": 500,
+      "joint_training_threshold_met": false,
+      "test_origins": 63,
+      "test_assumption_eligible": 48,
+      "test_labels_known_by_outer_selection": 48
+    },
+    {
+      "rank": "second",
+      "horizon": 5,
+      "variant": "contemporaneous",
+      "year": 2022,
+      "role": "outer",
+      "cutoff": "2022-01-03",
+      "own_mature_train_labels": 473,
+      "joint_h1_h5_mature_train_labels": 466,
+      "minimum_train_labels": 500,
+      "joint_training_threshold_met": false,
+      "test_origins": 251,
+      "test_assumption_eligible": 249,
+      "test_labels_known_by_outer_selection": null
+    },
+    {
+      "rank": "second",
+      "horizon": 5,
+      "variant": "contemporaneous",
+      "year": 2022,
+      "role": "inner_0",
+      "cutoff": "2021-03-29",
+      "own_mature_train_labels": 283,
+      "joint_h1_h5_mature_train_labels": 277,
+      "minimum_train_labels": 500,
+      "joint_training_threshold_met": false,
+      "test_origins": 63,
+      "test_assumption_eligible": 63,
+      "test_labels_known_by_outer_selection": 63
+    },
+    {
+      "rank": "second",
+      "horizon": 5,
+      "variant": "contemporaneous",
+      "year": 2022,
+      "role": "inner_1",
+      "cutoff": "2021-06-28",
+      "own_mature_train_labels": 346,
+      "joint_h1_h5_mature_train_labels": 340,
+      "minimum_train_labels": 500,
+      "joint_training_threshold_met": false,
+      "test_origins": 63,
+      "test_assumption_eligible": 63,
+      "test_labels_known_by_outer_selection": 63
+    },
+    {
+      "rank": "second",
+      "horizon": 5,
+      "variant": "contemporaneous",
+      "year": 2022,
+      "role": "inner_2",
+      "cutoff": "2021-09-27",
+      "own_mature_train_labels": 409,
+      "joint_h1_h5_mature_train_labels": 403,
+      "minimum_train_labels": 500,
+      "joint_training_threshold_met": false,
+      "test_origins": 63,
+      "test_assumption_eligible": 59,
+      "test_labels_known_by_outer_selection": 59
+    },
+    {
+      "rank": "second",
+      "horizon": 5,
+      "variant": "contemporaneous",
+      "year": 2023,
+      "role": "outer",
+      "cutoff": "2023-01-03",
+      "own_mature_train_labels": 722,
+      "joint_h1_h5_mature_train_labels": 714,
+      "minimum_train_labels": 500,
+      "joint_training_threshold_met": true,
+      "test_origins": 246,
+      "test_assumption_eligible": 242,
+      "test_labels_known_by_outer_selection": null
+    },
+    {
+      "rank": "second",
+      "horizon": 5,
+      "variant": "contemporaneous",
+      "year": 2023,
+      "role": "inner_0",
+      "cutoff": "2022-03-25",
+      "own_mature_train_labels": 530,
+      "joint_h1_h5_mature_train_labels": 523,
+      "minimum_train_labels": 500,
+      "joint_training_threshold_met": true,
+      "test_origins": 63,
+      "test_assumption_eligible": 63,
+      "test_labels_known_by_outer_selection": 63
+    },
+    {
+      "rank": "second",
+      "horizon": 5,
+      "variant": "contemporaneous",
+      "year": 2023,
+      "role": "inner_1",
+      "cutoff": "2022-06-27",
+      "own_mature_train_labels": 593,
+      "joint_h1_h5_mature_train_labels": 586,
+      "minimum_train_labels": 500,
+      "joint_training_threshold_met": true,
+      "test_origins": 63,
+      "test_assumption_eligible": 61,
+      "test_labels_known_by_outer_selection": 61
+    },
+    {
+      "rank": "second",
+      "horizon": 5,
+      "variant": "contemporaneous",
+      "year": 2023,
+      "role": "inner_2",
+      "cutoff": "2022-09-26",
+      "own_mature_train_labels": 654,
+      "joint_h1_h5_mature_train_labels": 646,
+      "minimum_train_labels": 500,
+      "joint_training_threshold_met": true,
+      "test_origins": 63,
+      "test_assumption_eligible": 63,
+      "test_labels_known_by_outer_selection": 63
+    },
+    {
+      "rank": "second",
+      "horizon": 5,
+      "variant": "available_quote",
+      "year": 2021,
+      "role": "outer",
+      "cutoff": "2021-01-04",
+      "own_mature_train_labels": 238,
+      "joint_h1_h5_mature_train_labels": 231,
+      "minimum_train_labels": 500,
+      "joint_training_threshold_met": false,
+      "test_origins": 252,
+      "test_assumption_eligible": 251,
+      "test_labels_known_by_outer_selection": null
+    },
+    {
+      "rank": "second",
+      "horizon": 5,
+      "variant": "available_quote",
+      "year": 2021,
+      "role": "inner_0",
+      "cutoff": "2020-03-27",
+      "own_mature_train_labels": 51,
+      "joint_h1_h5_mature_train_labels": 48,
+      "minimum_train_labels": 500,
+      "joint_training_threshold_met": false,
+      "test_origins": 63,
+      "test_assumption_eligible": 63,
+      "test_labels_known_by_outer_selection": 63
+    },
+    {
+      "rank": "second",
+      "horizon": 5,
+      "variant": "available_quote",
+      "year": 2021,
+      "role": "inner_1",
+      "cutoff": "2020-06-26",
+      "own_mature_train_labels": 114,
+      "joint_h1_h5_mature_train_labels": 111,
+      "minimum_train_labels": 500,
+      "joint_training_threshold_met": false,
+      "test_origins": 63,
+      "test_assumption_eligible": 63,
+      "test_labels_known_by_outer_selection": 63
+    },
+    {
+      "rank": "second",
+      "horizon": 5,
+      "variant": "available_quote",
+      "year": 2021,
+      "role": "inner_2",
+      "cutoff": "2020-09-25",
+      "own_mature_train_labels": 177,
+      "joint_h1_h5_mature_train_labels": 174,
+      "minimum_train_labels": 500,
+      "joint_training_threshold_met": false,
+      "test_origins": 63,
+      "test_assumption_eligible": 56,
+      "test_labels_known_by_outer_selection": 56
+    },
+    {
+      "rank": "second",
+      "horizon": 5,
+      "variant": "available_quote",
+      "year": 2022,
+      "role": "outer",
+      "cutoff": "2022-01-03",
+      "own_mature_train_labels": 489,
+      "joint_h1_h5_mature_train_labels": 481,
+      "minimum_train_labels": 500,
+      "joint_training_threshold_met": false,
+      "test_origins": 251,
+      "test_assumption_eligible": 250,
+      "test_labels_known_by_outer_selection": null
+    },
+    {
+      "rank": "second",
+      "horizon": 5,
+      "variant": "available_quote",
+      "year": 2022,
+      "role": "inner_0",
+      "cutoff": "2021-03-29",
+      "own_mature_train_labels": 296,
+      "joint_h1_h5_mature_train_labels": 289,
+      "minimum_train_labels": 500,
+      "joint_training_threshold_met": false,
+      "test_origins": 63,
+      "test_assumption_eligible": 63,
+      "test_labels_known_by_outer_selection": 63
+    },
+    {
+      "rank": "second",
+      "horizon": 5,
+      "variant": "available_quote",
+      "year": 2022,
+      "role": "inner_1",
+      "cutoff": "2021-06-28",
+      "own_mature_train_labels": 359,
+      "joint_h1_h5_mature_train_labels": 352,
+      "minimum_train_labels": 500,
+      "joint_training_threshold_met": false,
+      "test_origins": 63,
+      "test_assumption_eligible": 63,
+      "test_labels_known_by_outer_selection": 63
+    },
+    {
+      "rank": "second",
+      "horizon": 5,
+      "variant": "available_quote",
+      "year": 2022,
+      "role": "inner_2",
+      "cutoff": "2021-09-27",
+      "own_mature_train_labels": 422,
+      "joint_h1_h5_mature_train_labels": 415,
+      "minimum_train_labels": 500,
+      "joint_training_threshold_met": false,
+      "test_origins": 63,
+      "test_assumption_eligible": 62,
+      "test_labels_known_by_outer_selection": 62
+    },
+    {
+      "rank": "second",
+      "horizon": 5,
+      "variant": "available_quote",
+      "year": 2023,
+      "role": "outer",
+      "cutoff": "2023-01-03",
+      "own_mature_train_labels": 739,
+      "joint_h1_h5_mature_train_labels": 730,
+      "minimum_train_labels": 500,
+      "joint_training_threshold_met": true,
+      "test_origins": 246,
+      "test_assumption_eligible": 245,
+      "test_labels_known_by_outer_selection": null
+    },
+    {
+      "rank": "second",
+      "horizon": 5,
+      "variant": "available_quote",
+      "year": 2023,
+      "role": "inner_0",
+      "cutoff": "2022-03-25",
+      "own_mature_train_labels": 546,
+      "joint_h1_h5_mature_train_labels": 538,
+      "minimum_train_labels": 500,
+      "joint_training_threshold_met": true,
+      "test_origins": 63,
+      "test_assumption_eligible": 63,
+      "test_labels_known_by_outer_selection": 63
+    },
+    {
+      "rank": "second",
+      "horizon": 5,
+      "variant": "available_quote",
+      "year": 2023,
+      "role": "inner_1",
+      "cutoff": "2022-06-27",
+      "own_mature_train_labels": 609,
+      "joint_h1_h5_mature_train_labels": 601,
+      "minimum_train_labels": 500,
+      "joint_training_threshold_met": true,
+      "test_origins": 63,
+      "test_assumption_eligible": 62,
+      "test_labels_known_by_outer_selection": 62
+    },
+    {
+      "rank": "second",
+      "horizon": 5,
+      "variant": "available_quote",
+      "year": 2023,
+      "role": "inner_2",
+      "cutoff": "2022-09-26",
+      "own_mature_train_labels": 671,
+      "joint_h1_h5_mature_train_labels": 662,
+      "minimum_train_labels": 500,
+      "joint_training_threshold_met": true,
+      "test_origins": 63,
+      "test_assumption_eligible": 63,
+      "test_labels_known_by_outer_selection": 63
+    }
+  ],
+  "unchanged_protocol_transfer": [
+    {
+      "rank": "first",
+      "variant": "contemporaneous",
+      "year": 2021,
+      "all_inner_training_thresholds_met": false,
+      "all_inner_63_labels_known_by_selection": false,
+      "outer_cohort_fully_labeled": false,
+      "unchanged_protocol_transfer_supported": false
+    },
+    {
+      "rank": "first",
+      "variant": "contemporaneous",
+      "year": 2022,
+      "all_inner_training_thresholds_met": false,
+      "all_inner_63_labels_known_by_selection": false,
+      "outer_cohort_fully_labeled": false,
+      "unchanged_protocol_transfer_supported": false
+    },
+    {
+      "rank": "first",
+      "variant": "contemporaneous",
+      "year": 2023,
+      "all_inner_training_thresholds_met": false,
+      "all_inner_63_labels_known_by_selection": false,
+      "outer_cohort_fully_labeled": false,
+      "unchanged_protocol_transfer_supported": false
+    },
+    {
+      "rank": "first",
+      "variant": "available_quote",
+      "year": 2021,
+      "all_inner_training_thresholds_met": false,
+      "all_inner_63_labels_known_by_selection": false,
+      "outer_cohort_fully_labeled": false,
+      "unchanged_protocol_transfer_supported": false
+    },
+    {
+      "rank": "first",
+      "variant": "available_quote",
+      "year": 2022,
+      "all_inner_training_thresholds_met": false,
+      "all_inner_63_labels_known_by_selection": false,
+      "outer_cohort_fully_labeled": false,
+      "unchanged_protocol_transfer_supported": false
+    },
+    {
+      "rank": "first",
+      "variant": "available_quote",
+      "year": 2023,
+      "all_inner_training_thresholds_met": false,
+      "all_inner_63_labels_known_by_selection": false,
+      "outer_cohort_fully_labeled": false,
+      "unchanged_protocol_transfer_supported": false
+    },
+    {
+      "rank": "second",
+      "variant": "contemporaneous",
+      "year": 2021,
+      "all_inner_training_thresholds_met": false,
+      "all_inner_63_labels_known_by_selection": false,
+      "outer_cohort_fully_labeled": false,
+      "unchanged_protocol_transfer_supported": false
+    },
+    {
+      "rank": "second",
+      "variant": "contemporaneous",
+      "year": 2022,
+      "all_inner_training_thresholds_met": false,
+      "all_inner_63_labels_known_by_selection": false,
+      "outer_cohort_fully_labeled": false,
+      "unchanged_protocol_transfer_supported": false
+    },
+    {
+      "rank": "second",
+      "variant": "contemporaneous",
+      "year": 2023,
+      "all_inner_training_thresholds_met": true,
+      "all_inner_63_labels_known_by_selection": false,
+      "outer_cohort_fully_labeled": false,
+      "unchanged_protocol_transfer_supported": false
+    },
+    {
+      "rank": "second",
+      "variant": "available_quote",
+      "year": 2021,
+      "all_inner_training_thresholds_met": false,
+      "all_inner_63_labels_known_by_selection": false,
+      "outer_cohort_fully_labeled": false,
+      "unchanged_protocol_transfer_supported": false
+    },
+    {
+      "rank": "second",
+      "variant": "available_quote",
+      "year": 2022,
+      "all_inner_training_thresholds_met": false,
+      "all_inner_63_labels_known_by_selection": false,
+      "outer_cohort_fully_labeled": false,
+      "unchanged_protocol_transfer_supported": false
+    },
+    {
+      "rank": "second",
+      "variant": "available_quote",
+      "year": 2023,
+      "all_inner_training_thresholds_met": true,
+      "all_inner_63_labels_known_by_selection": false,
+      "outer_cohort_fully_labeled": false,
+      "unchanged_protocol_transfer_supported": false
+    }
+  ],
+  "future_contract_identity_used": false,
+  "targets_overwritten": false,
+  "origins_dropped": false,
+  "market_skill_claimed": false,
+  "historical_availability_verified": false,
+  "first_vintage_verified": false,
+  "training_allowed": false,
+  "performance_metrics": null,
+  "limits": "Hypotheticalclock/vintage only;historically admitted0. No proxylabel reuse,forwardfill,contract substitution,expiry assumption,performance score,promotion,threshold change,newdata or automatictraining.",
+  "kind": "zero_fit_origin_fixed_contract_label_feasibility",
+  "classification": "INCONCLUSIVE",
+  "classification_scope": "Forecast skill not tested. Label coverage/readiness verified; unchanged original protocol cannot transfer. No market negative.",
+  "report_sha256": "848f48c76432ff49f9fe54f3043e51c564d0b28bace348bd223e6ada9e81ae10",
+  "rows_sha256": "4dfcf6b19c811b9309f7ffc2ffa31e242d4467471b81efbe503dd6f677e336a1",
+  "verification_sha256": "6464b66a29981af77d3c5effb6ab3cf2dd4870c982d244ea6f7951240a2a475d",
+  "verification_script_sha256": "dec73956ad8cfdb2de7d0427bae2d028f2f51347df9e1fbaa6346fed9f170bac",
+  "controls_sha256": "cbd86bbfed57f6aab8e0783701e75bcc7dae16feddb7a4af8a647a5250cfb14e",
+  "controls_script_sha256": "cc8b7ad26e0eaf10b692d561dc732e543c986240a20f6c3239671b86e358951a",
+  "release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/fixed-contract-feasibility-20261010",
+  "prediction_payload_exists": false,
+  "diagnostic_payload_exists": true,
+  "old_registry_objects_preserved": 163,
+  "old_recipe_objects_preserved": 518,
+  "old_proof_files_preserved": 81,
+  "old_raw_input_hashes_preserved": 1000,
+  "training_source_changed": false,
+  "independent_holdout": false,
+  "historical_source_admitted": false,
+  "release_allowed": false,
+  "next": "Separate zero-fit preregistration: transport frozen CT return forecasts to the origin-known second contract; keep all749 receipts,10 explicit unknown/ineligible; compare candidate and Naive on same named target. Not same-target retraining or PIT proof. No automatic model/grid/download/refit."
+}

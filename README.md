@@ -1,5 +1,15 @@
 # CottonLensAI
 
+[Sabit kontrat hedefi kurulabilirliği](docs/FIXED_CONTRACT_FEASIBILITY_20261010.md)
+tamamlandı, yeni fit0. Aynı749 origin korunur; ikinci kontratta739 uygun
+etiket var. Gerçek kontrat geçmişi2020'de başlıyor; eski 2010 proxy
+etiketleri yeniden kullanılamaz, mevcut protokol doğrudan aktarılamıyor.
+Sonraki tek soru dondurulmuş tahminlerin origin'de bilinen ikinci kontrata
+sıfır-fit taşınması; ayrı ön kayıt ve aynı hedefte Naive gerekir.
+Bu gerçek zamanlı erişim veya tahmin başarısı ispatı değildir.
+
+## Önceki tamamlanmış aşamalar
+
 [Eğri/carry tanısı](docs/CURVE_CARRY_ATTRIBUTION_20261010.md) tamamlandı, yeni fit0.
 74 geçiş origin'inde ham D0 katkısı +24,6573 hata toplamından gap çıkarılmış
 karşıolguda −3,3674'e dönüyor. Ekim2022'de proxy düşerken aynı Aralık
