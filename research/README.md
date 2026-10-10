@@ -2,6 +2,16 @@
 
 ## Sicil
 
+`existing-information-admission-v1`: **sıfır-fit kaynak/kapsam elemesi**;
+1.000 eski girdi, 997 tablo /9.970 gerçek vade fiyatı. Eski spot-basis
+T+5 bunu sınamadı; 2016–2019 yok, UTC/ilk-vintage kabulü yok. Kaynak
+model-eligible 0; INCONCLUSIVE tahmin becerisi sorusuna ilişkindir, fiyat
+envanterinin doğrulanmadığı anlamına gelmez. Yeni model tarifi/fit yok.
+[Kabul matrisi ve sonraki tek karar](../docs/INFORMATION_ADMISSION_20261010.md).
+
+**Aşağıdaki ön kayıt aşaması tarihsel bilgidir; tamamlanmış sonuç kaydı bu
+sayfada aşağıdadır ve [sonuç raporuna](../docs/PAIRED_PRICE_LOSS_RESULT_20261010.md) bağlıdır.**
+
 `paired-price-loss-control-v1`: **sıfır-fit ön kayıt; piyasa sonucu yok**.
 48 sabit CPU XGBoost fit'i / 2.688 ağaç ve ayrı 6 öğrenme kontrolü;
 iki price_delta kolunda yalnız MSE/MAE değişir, 1.008 ortak origin.

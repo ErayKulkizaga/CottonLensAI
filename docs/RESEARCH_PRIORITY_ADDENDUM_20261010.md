@@ -1,5 +1,12 @@
 # 10 Ekim araştırma karar eki
 
+**Daha sonraki tamamlanma kaydı:** [PR #30 sonucu](PAIRED_PRICE_LOSS_RESULT_20261010.md)
+54 çıkarım/altı aralık/exact replay ve yeni GitHub restore ile kapandı; sekiz
+final-head CI kontrolü geçti. Aşağıdaki kapanış sırası tarihsel inceleme anıdır.
+P4 [sıfır-fit bilgi elemesi](INFORMATION_ADMISSION_20261010.md) de tamamlandı:
+mevcut AMS'de gerçek vade fiyatları var, ancak clock/vintage/kapsam kabulü yok.
+Yeni fit 0; eski belge, eşikler ve deneyler korunur.
+
 Bu ek [mevcut planı](RESEARCH_DATA_REENTRY_PLAN_20261005.md) değiştiren yeni bir
 araştırma programı değildir. Tarihsel adımlar, eşikler, sicil ve kaynak kabul
 kuralları korunur. Güncel sıra için [STATUS](STATUS.md), sınırlar için

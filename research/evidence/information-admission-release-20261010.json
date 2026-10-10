@@ -1,0 +1,19 @@
+{
+  "schema": "information-admission-release-v1",
+  "release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/information-admission-20261010",
+  "archive": {
+    "file": "information-admission-20261010.zip",
+    "sha256": "2ce54071c9677d9ec91475df535c1bf8282208de08d0a3263b534b9465a20ff8",
+    "bytes": 5555674
+  },
+  "members": 1318,
+  "inventory_sha256": "af02a715c5826f4a80417b7b832666a108af0fc540ec655c9f83d0ccf8bce13d",
+  "preserved_old_input_files": 1000,
+  "frozen_ml_source_id": "d3ca00e498639dc266f34dafb60f2f24dbba5e66ee0deeda0d9c4c0e5b7f7313",
+  "frozen_ml_files": 247,
+  "context_registry_records": 156,
+  "new_model_fits": 0,
+  "source_model_eligible": false,
+  "raw_inputs_are_existing_archive_not_new_download": true,
+  "purpose": "Reproduce source-only contract-quote inventory; no market performance claim or source admission"
+}

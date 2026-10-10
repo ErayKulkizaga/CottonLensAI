@@ -1,0 +1,23 @@
+{
+  "schema": "information-admission-delivery-v1",
+  "as_of": "2026-10-10T09:00:59.080812+00:00",
+  "release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/information-admission-20261010",
+  "archive_target_commit": "c86e8499fc19db560e40dbc0e9cba974fcf795d2",
+  "archive_sha256": "2ce54071c9677d9ec91475df535c1bf8282208de08d0a3263b534b9465a20ff8",
+  "members": 1318,
+  "bytes": 5555674,
+  "github_digest_size_target_verified": true,
+  "github_public_evidence_bytes_match": true,
+  "fresh_download_safe_restore": true,
+  "old_input_files_reverified": 1000,
+  "independent_quote_tables_replayed": 997,
+  "quote_and_input_payloads_byte_equal": true,
+  "source_summary_equal": true,
+  "new_market_fits": 0,
+  "new_synthetic_fits": 0,
+  "model_eligible_rows": 0,
+  "market_skill_demonstrated": false,
+  "old_registry_records_preserved": 156,
+  "old_trial_records_preserved": 508,
+  "old_evidence_files_preserved": 60
+}
