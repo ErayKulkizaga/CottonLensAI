@@ -120,3 +120,11 @@ veya veri bozulması değildir; bu pakette bağımlılık yükseltmesi yok.
 [Ön kayıt Release'i](https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/contract-curve-t5-preregistration-20261010)
 kaynak/input/ortam/karar ve yeni sıfır-fit execution snapshot'ını içerir;
 T+1 sonucu/ön kaydı ve hedef ayrıştırma Release'leri değiştirilmez.
+
+**GitHub teslimi doğrulandı:** [ayrı makbuz](../research/evidence/contract-curve-t5-delivery-20261010.json).
+799 üye/14.324.019 byte, SHA256
+`8ee6f537da740e6b18ce35b748265627d27c0dda5e066b212dbdb4ae37a816e1`.
+GitHub'dan yeni indirilen pakette aynı7.040/749/63 kontroller ve verifier
+makbuzu birebir tekrarlandı; bu aşamada piyasa/sentetik fit0. Ön kayıt
+commit'inin12 CI kontrolü başarılı; sonraki makbuz commit'inin CI'sı ayrıdır.
+Eski160 çalışma/513 tarif/72 proof ve1.000 ham girdi korunur.

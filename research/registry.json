@@ -17461,6 +17461,10 @@
     {
       "path": "evidence/contract-curve-t5-preregistration-release-20261010.json",
       "sha256": "ab048336db39fb1052d0de71eb31c09a86987c3ece84a6c88d04e62046dc67de"
+    },
+    {
+      "path": "evidence/contract-curve-t5-delivery-20261010.json",
+      "sha256": "686548236b01f266949d5e40df3cb9fb3dca06bae54fa53ee2ddc2eb5d6746b5"
     }
   ]
 }
