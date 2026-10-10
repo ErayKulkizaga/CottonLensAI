@@ -124,3 +124,11 @@ ve [sonuç Release'i](https://github.com/ErayKulkizaga/CottonLensAI/releases/tag
 Arşiv içindeki RESULT.md bilimsel raporun teslimat ekinden önce dondurulan
 sürümüdür. Sicile yalnız bu tamamlanmış deney ve dört piyasa/ayrı bir
 sentetik tarif eklendi: toplam 162 çalışma/518 tarif; önceki nesneler aynen kaldı.
+
+GitHub'dan yeniden indirilen 2.842 güvenli üye ve **253 çıkarım/12 seçim/16
+aralık/exact rapor+CSV+geçiş açıklaması** tekrar geçti. Yerel ve fresh makbuz
+byte olarak aynı; yeni fit0. [Teslimat kanıtı](../research/evidence/contract-curve-t5-result-delivery-20261010.json).
+Bu makbuzda sonuç commit'inin 12 CI kontrolünden dokuzu başarılı, üçü
+çalışıyor; sonraki teslimat commit'inin kontrolleri ayrı değerlendirilir.
+Obsidian proje notuna sonuç ve geleceğin kontratını yalnız tanıda tutma
+sınırı kaydedildi. Ana tahmin başarısı hedefi henüz sağlanmadı.

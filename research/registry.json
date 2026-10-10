@@ -17684,6 +17684,10 @@
     {
       "path": "evidence/contract-curve-t5-result-release-20261010.json",
       "sha256": "b46178fad3f1d7bc09cb7b5ee61087832105f242a8ca9a10d517c974c414ad56"
+    },
+    {
+      "path": "evidence/contract-curve-t5-result-delivery-20261010.json",
+      "sha256": "d737ed1edb18005950179e57c632d3da19c073e025ec06e60702c707e3f1031b"
     }
   ]
 }
