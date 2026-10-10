@@ -70,6 +70,13 @@ Fiyat farkları burada raporun kendi sayısal biriminde envanterlenir.
 Close eşleşmesi tüm kontratlar için resmi settlement/teslim saati veya
 uygulanabilir fiyat sözleşmesi değildir. **Model-eligible satır: 0.**
 
+Gelecek vade adı gelecek gerçekleşmiş fiyat değildir: 2023-12-29 tablosundaki
+Mar-24, o raporda fiyatlanan 2024 teslim kontratıdır. Bilginin tarihsel
+kullanılabilirliği ayrıca kanıtlanmalıdır. İleride bir katkı bulunursa
+CT=F'nin mekanik kontrat değişimlerini tahmin etmekle aynı kontratın fiyat
+hareketini tahmin etmek ayrılmalıdır; gelecekteki roll kimliği özellik
+yapılmaz, aynı-kontrat alt kapsamı yalnız önceden tanımlı ikincil tanı olur.
+
 ## Üç adayın elemesi; model seçimi değil
 
 | Soru / mekanizma hipotezi | Eldeki bilgi ve önceki kapsam | Kabul / aynı-origin kontrol / durma |
@@ -95,6 +102,14 @@ Bu testte shrinkage yok; küçük ham fark yalnız birkaç büyük hataya bağl�
 Sentetik geri kazanım yalnız enjekte edilen etkiyi, MAE kontrolü yalnız sabit
 eski iteration/parametreleri sınadı. Gerçek curve verisinin bulunması onun
 tahmin becerisi olduğu veya bütün eski başarısızlığı açıkladığı değildir.
+
+Kapasite karşı kanıtı, mevcut [loss sonuç arşivindeki](https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/paired-price-loss-result-20261010)
+48 makbuzdan: piyasa ağaç sayıları min **1**, medyan **40,5**, max **208**;
+2019 üç seed'de **1/2/3**. Bilinen-sinyal kontrolleri farklı depth8/eta0,15
+parametreleri ve **250** ağaçla, ezber kontrolü 700 ağaçla yapıldı. Bu motor/
+loss kontrolüdür; her sabit piyasa tarifinin küçük etkiyi geri kazandığı
+kanıtı değildir. Öte yandan 2022'nin 131/166/208 ağaçlı kolu da Naive'den
+kötü; yalnız az ağaç bütün başarısızlığı açıklamıyor. Grid açma gerekçesi yok.
 
 **Tek sonraki iş:** mevcut gerçek eğri için kaynak/clock/cohort kabul kararını
 ve yalnız bu alanın ek katkısını ayıran **tek eşleştirilmiş ablation ön kayıt
@@ -127,7 +142,8 @@ Mevcut 1.000 ham girdi, dondurulmuş 247 ML dosyası, inceleme anındaki 156
 çalışma sicili ve private yerel yol kullanmayan okuyucu korunur. Yeni kaynak
 indirmesi değildir; arşivleme tarihsel erişimi kanıtlamaz. ML kaynağı değişmedi.
 Yerel safe restore, 997 tablo ve karantina/input JSON byte replay'i geçti;
-GitHub'dan yeni indirme doğrulaması ayrı teslimat makbuzuna kaydedilir.
+GitHub'dan yeni indirme, 1.318 güvenli üye/997 bağımsız tablo ve aynı quote/
+input byte replay'i de geçti. [Teslimat makbuzu](../research/evidence/information-admission-delivery-20261010.json).
 
 Checksum/safe-member doğrulamasından sonra mevcut CPU Python ile:
 

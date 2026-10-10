@@ -16923,6 +16923,10 @@
     {
       "path": "evidence/information-admission-release-20261010.json",
       "sha256": "adc09f80f9444347241e133c624f77b6d8b6a36ff282a015880ab216498809e4"
+    },
+    {
+      "path": "evidence/information-admission-delivery-20261010.json",
+      "sha256": "5d029c7bf2040a534d38bba00077ea1334d962a00d6c1fcc95a95d3de71d2fe9"
     }
   ]
 }
