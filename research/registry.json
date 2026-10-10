@@ -16570,6 +16570,26 @@
       "loss_effect_isolated": false,
       "information_absence_identified": false,
       "id": "98dd3fd9e6a5db8c4d6f0e63e12e799fc5f1e668a9cea53d65bcd6dbebbfb4a8"
+    },
+    {
+      "profile": "paired-price-loss-control-v1",
+      "kind": "preregistered_market_experiment",
+      "horizon": 1,
+      "classification": "INCONCLUSIVE",
+      "coverage": "preregistered_not_trained",
+      "model_families": [
+        "xgboost"
+      ],
+      "code_id": "d3ca00e498639dc266f34dafb60f2f24dbba5e66ee0deeda0d9c4c0e5b7f7313",
+      "data_id": "f46410d913d1dc7bf798a473cc7e37c7567d40a0e5ac2a83b42901f64089bb67",
+      "market_fits": 0,
+      "fit_budget": 48,
+      "tree_budget": 2688,
+      "evidence": "research/evidence/paired-price-loss-preregistration-20261010.json",
+      "evidence_sha256": "22db07044e0a234c11c71675707b514993b8bfa0443f5aadcb552df9f59ac860",
+      "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/paired-price-loss-preregistration-20261010",
+      "independent_holdout": false,
+      "id": "a7447758481750ce936b13a290524ae7801993740942f0862f3a2a22950667f3"
     }
   ],
   "local_evidence": [
@@ -16796,6 +16816,14 @@
     {
       "path": "evidence/legacy-loss-lineage-release-20261010.json",
       "sha256": "80f81abb102974ef8c252bc490fd73664d62142d70ec09478cef8add2b9430fd"
+    },
+    {
+      "path": "evidence/paired-price-loss-preregistration-20261010.json",
+      "sha256": "22db07044e0a234c11c71675707b514993b8bfa0443f5aadcb552df9f59ac860"
+    },
+    {
+      "path": "evidence/paired-price-loss-preregistration-release-20261010.json",
+      "sha256": "f8ce32e056f6ba1a7d38e54692ac62bbe029d68e76115c4e45825c1936431df9"
     }
   ]
 }
