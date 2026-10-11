@@ -1,5 +1,12 @@
 # Deney geçmişi ve tekrar kontrolü
 
+11 Ekim: [named zayıf-sinyal readiness](../docs/NAMED_WEAK_SIGNAL_READINESS_20261011.md)
+yalnız veri/güç-kontrolü kurulabilirliği; yeni profil fit0 ve performans
+kanıtı yok. Aynı32 alan/sabit XGB için üç matched gürültü seed'i ve null/
+injected tasarımı,132 sentetik-fit tavanıyla hazırlanır. Öğretici oracle
+avantajını öğrenci/gerçek piyasa becerisi olarak sicile yazma. Eski Ridge
+T+1 zayıf-sinyal ve noiseless XGB kontrollerinin kapsam farkı korunur.
+
 11 Ekim: [named loss teşhisi](../docs/NAMED_LOSS_DIAGNOSIS_20261011.md)
 mevcut PR42 tahminleriyle sıfır-fit kapandı. Yeni fit sicili oluşmadı;
 `trials.json` değişmez. Standardized MSE'de her iki kolun iç/dış nokta

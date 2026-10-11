@@ -18097,6 +18097,30 @@
       "historical_source_admitted": false,
       "release_allowed": false,
       "id": "62f6efa8869cc48c453b4d1bdf1444a76cfa5d03773f194065c924065bb6e34d"
+    },
+    {
+      "experiment": "research-named-weak-signal-readiness-v1",
+      "profile": "named-weak-signal-control-t5-v1",
+      "horizon": 5,
+      "kind": "completed_synthetic_readiness_no_skill_test",
+      "classification": "INCONCLUSIVE",
+      "classification_scope": "Readiness verified, learner/market performance untested; oracle expectation is not fitted skill.",
+      "code_id": "46916bcb45e0408402a0e39f130b25d31997575e43b17358c8ec75fd6d0c13df",
+      "data_id": "da8a286df8e98b8a0932f088a9b384546d30a22ebac45db0bfe32a3a021d3465",
+      "origin_count": 246,
+      "scored_origin_count": 242,
+      "model_families": [
+        "xgboost"
+      ],
+      "new_profile_fits": 0,
+      "future_synthetic_fit_ceiling": 132,
+      "prediction_payload_exists": false,
+      "evidence": "evidence/named-weak-signal-readiness-20261011.json",
+      "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/named-weak-signal-readiness-20261011",
+      "historical_source_admitted": false,
+      "independent_holdout": false,
+      "release_allowed": false,
+      "id": "afdef5ddb54c1702208cdbcb946613b88c2ccde76a39e244a973a1464369ab70"
     }
   ],
   "local_evidence": [
@@ -18591,6 +18615,14 @@
     {
       "path": "evidence/named-loss-diagnosis-delivery-20261011.json",
       "sha256": "a0ba3d99b4f7aa334c53c015149409f3be2ac8566a8dfc286d56c99e150a4946"
+    },
+    {
+      "path": "evidence/named-weak-signal-readiness-20261011.json",
+      "sha256": "abc8276009e137ecb7f396059378b47df817fae11c34d175b05390f83f5eeb26"
+    },
+    {
+      "path": "evidence/named-weak-signal-readiness-release-20261011.json",
+      "sha256": "86c7ecc8d28277003fa446794ecc60a375534133a7bf403c4d7306f2ba9aec6c"
     }
   ]
 }

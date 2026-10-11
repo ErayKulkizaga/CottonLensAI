@@ -1,5 +1,14 @@
 # Güncel kararlar — 11 Ekim 2026
 
+11 Ekim: [named XGB zayıf-sinyal girdi hazırlığı](NAMED_WEAK_SIGNAL_READINESS_20261011.md)
+doğrulandı. İlk528 olgun satırdan kalibrasyon; üç sabit seed ve matched
+null/injected, beş günlük örtüşen noise, değişmeyen32 alan/246/242/4.
+21.120 scalar satır, bağımsız quadrature,60 ilgili test; yeni profil fit0.
+Oracle beklenen %10 kalibrasyonu piyasa/model başarısı değildir.132
+sentetik-fit tasarımı henüz eğitim ön kaydı değildir; engine/ledger
+bağlantısı/source/environment/rapor dondurulup taze teslimat doğrulanır.
+Gerçek piyasa fit/model/grid ve canlı126 skor başlamaz.
+
 11 Ekim: [son tahminlerde sıfır-fit MSE–MAE ayrımı](NAMED_LOSS_DIAGNOSIS_20261011.md)
 doğrulandı. Mask/numeric dış standardized MSE kazancı −%3,866798/−%6,359112;
 üç iç dönemin tamamı da negatif. Dört 20/60 blok aralığı sıfırı içerir;

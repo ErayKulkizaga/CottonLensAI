@@ -1,5 +1,12 @@
 # CottonLensAI
 
+11 Ekim: [aynı named T+5 düzeninde zayıf-sinyal girdileri](docs/NAMED_WEAK_SIGNAL_READINESS_20261011.md)
+hazır: eski32 alan/246origin korunur; üç seed'de eşleşmiş null/injected.
+21.120 scalar satır ve oracle kalibrasyonu doğrulandı, 60 ilgili test geçti.
+Yeni profil fit0; oracle %10 beklenen avantaj öğrenilmiş başarı değildir.
+Tek sonraki iş aynı132 sentetik fit tasarımının mevcut engine/ledger
+bağlantısı ve taze GitHub ön kaydı; yeni piyasa model/grid yok.
+
 11 Ekim: [sıfır-fit MSE–MAE teşhisi](docs/NAMED_LOSS_DIAGNOSIS_20261011.md)
 tamamlandı. Son deneyin iki kolu optimize edilen loss'ta da Naive'ın
 gerisinde; MAE'nin gizlediği pozitif MSE becerisi gösterilmedi. 44 native
