@@ -1,5 +1,17 @@
 # Güncel kararlar — 10 Ekim 2026
 
+11 Ekim — [sabit named T+5 kapasite sonucu](NAMED_CAPACITY_CONTROL_T5_20261010.md) doğrulandı.
+Aynı 242 hedefte ham XGBoost, Ridge'e karşı +%7,444570 Naive-MAE birimi
+katkı sağlıyor; blok20/60 alt sınırları pozitif. Ancak Naive kazancı
+−%0,493740, ham yön %54,958678; iki aralığın %5 kazanç üst sınırları
+%3,269655/%3,662587. Geçmiş shrinkage her iki kolu sıfıra indiriyor.
+Bu tek, daha önce görülmüş 2023 yılına ve saat/vintage varsayımına ait
+kapasite etkisi; pratik hedef veya bağımsız holdout başarısı değil.
+22 piyasa+4 sentetik fit tamamlandı; rapor doğrulaması ek fit gerektirmedi.
+Önce GitHub sonuç arşivinin taze replay'i kapanır; ardından tek sonraki iş,
+yeni eğitim yapmadan yön–tahmin büyüklüğü hata katkısını ayırmaktır.
+Aşağıdaki önceki aşamalar kronolojik kanıt olarak korunur.
+
 **11 Ekim güncellemesi:** [sabit named kapasite kontrolü](NAMED_CAPACITY_CONTROL_T5_20261010.md)
 22 piyasa+4 sentetik fit ile çalıştırıldı; 48 native çıkarım yeniden
 doğrulandı, Ridge tekrar fit edilmedi. Sentetik kontroller geçti; piyasa

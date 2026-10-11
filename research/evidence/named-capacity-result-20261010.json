@@ -1,0 +1,216 @@
+{
+  "schema": 1,
+  "status": "completed_fixed_capacity_control_verified",
+  "profile": "named-capacity-control-t5-v1",
+  "source_id": "4a2feff2817bf57db64970c94c8b6a7bbd55cbdc97c8c872225a0756a9dd15af",
+  "design_id": "d95eb9b95c321b57f21286a096d34377f72d5c20c8ba246d720cc68c7ca1af22",
+  "ready_sha256": "98b87771ba35a0df57062cfc17b76bea387bedfa50b516abde68b33328781bf7",
+  "report_sha256": "5589d195ba05d157d10103497314587be3295e18ac93e36e654a87c14151ac57",
+  "predictions_sha256": "aceba7e06811ae84ae5b5738c4b699935a48cb3f930ed895674c6a5fdeaf79ef",
+  "complete_sha256": "8846c1199d18173e5e6ac0416006777910d09893aacecb771b50e7c7518ba13f",
+  "verification_sha256": "11cfa595bf3ba44fe209ce0c293304c769854512d2ca461d87568fac8a15e51e",
+  "controls_sha256": "d94b469aa0a1b5a53bf55d183f2eda32af400bcf85c9968b8b50b5379889bef4",
+  "market_fits": 22,
+  "synthetic_fits": 4,
+  "reference_ridge_fits": 0,
+  "verification_fits": 0,
+  "native_market_replays": 22,
+  "native_reference_replays": 22,
+  "native_synthetic_replays": 4,
+  "prediction_rows": 984,
+  "price_forecasts": 972,
+  "origins_per_arm": 246,
+  "scored_per_arm": 242,
+  "unknown_per_arm": 4,
+  "classification": "DECISIVE_POSITIVE",
+  "classification_scope": "Paired RAW fixed100tree XGBoost vs frozen named Ridge on reviewed2023 only; practical Naive decision separately reported. NOT all nonlinear models,independent holdout,8yeargate,PIT or production proof.",
+  "practical_decision": "FIXED_SHALLOW_CAPACITY_BELOW_PRACTICAL_GOAL",
+  "summaries": {
+    "ridge_raw": {
+      "receipts": 246,
+      "scored": 242,
+      "unknown": 4,
+      "naive_mae": 1.9760743801652894,
+      "model_mae": 2.1329412988498926,
+      "gain_pct": -7.93831043300516,
+      "direction_pct": 45.45454545454545,
+      "active_pct": 100.0,
+      "trimmed_gain_pct": -7.407091015277735
+    },
+    "ridge_selected": {
+      "receipts": 246,
+      "scored": 242,
+      "unknown": 4,
+      "naive_mae": 1.9760743801652894,
+      "model_mae": 1.9760743801652894,
+      "gain_pct": 0.0,
+      "direction_pct": 0.0,
+      "active_pct": 0.0,
+      "trimmed_gain_pct": 0.0
+    },
+    "xgboost_raw": {
+      "receipts": 246,
+      "scored": 242,
+      "unknown": 4,
+      "naive_mae": 1.9760743801652894,
+      "model_mae": 1.9858310543394215,
+      "gain_pct": -0.49374022921728655,
+      "direction_pct": 54.958677685950406,
+      "active_pct": 100.0,
+      "trimmed_gain_pct": -0.41723944933159485
+    },
+    "xgboost_selected": {
+      "receipts": 246,
+      "scored": 242,
+      "unknown": 4,
+      "naive_mae": 1.9760743801652894,
+      "model_mae": 1.9760743801652894,
+      "gain_pct": 0.0,
+      "direction_pct": 0.0,
+      "active_pct": 0.0,
+      "trimmed_gain_pct": 0.0
+    }
+  },
+  "contrasts": {
+    "raw": {
+      "price_mae_difference_ridge_minus_xgboost": 0.14711024451047106,
+      "pct_of_named_naive_mae": 7.444570203787874,
+      "trimmed_pct_of_named_naive_mae": 6.804823117167968
+    },
+    "selected": {
+      "price_mae_difference_ridge_minus_xgboost": 0.0,
+      "pct_of_named_naive_mae": 0.0,
+      "trimmed_pct_of_named_naive_mae": 0.0
+    }
+  },
+  "primary_intervals": {
+    "xgboost_raw_vs_naive_20": {
+      "eligible": 242,
+      "ordinal_slots": 246,
+      "block": 20,
+      "replicates": 10000,
+      "paired_difference": -0.009756674174133506,
+      "difference_ci_95": [
+        -0.0817454352520309,
+        0.06461081677294206
+      ],
+      "gain_pct": -0.4937402292173543,
+      "gain_ci_95_pct": [
+        -4.136759024485371,
+        3.26965510111708
+      ],
+      "resampled_eligible_min_max": [
+        229,
+        246
+      ],
+      "method": "full-ordinal year-preserving weighted moving-block,recentered basic",
+      "selection_adjusted": false
+    },
+    "xgboost_raw_vs_naive_60": {
+      "eligible": 242,
+      "ordinal_slots": 246,
+      "block": 60,
+      "replicates": 10000,
+      "paired_difference": -0.009756674174133506,
+      "difference_ci_95": [
+        -0.09290128436069035,
+        0.07237544348351685
+      ],
+      "gain_pct": -0.4937402292173543,
+      "gain_ci_95_pct": [
+        -4.701305036550277,
+        3.6625870063384474
+      ],
+      "resampled_eligible_min_max": [
+        236,
+        246
+      ],
+      "method": "full-ordinal year-preserving weighted moving-block,recentered basic",
+      "selection_adjusted": false
+    },
+    "ridge_minus_xgboost_raw_20": {
+      "eligible": 242,
+      "ordinal_slots": 246,
+      "block": 20,
+      "replicates": 10000,
+      "paired_difference": 0.14711024451047194,
+      "difference_ci_95": [
+        0.011254341250429956,
+        0.2783705955500696
+      ],
+      "gain_pct": 6.897060157717209,
+      "gain_ci_95_pct": [
+        0.5276442092662572,
+        13.051020002293088
+      ],
+      "resampled_eligible_min_max": [
+        229,
+        246
+      ],
+      "method": "full-ordinal year-preserving weighted moving-block,recentered basic",
+      "selection_adjusted": false,
+      "difference_ci_pct_of_named_naive": [
+        0.5695302445795882,
+        14.087050484748717
+      ]
+    },
+    "ridge_minus_xgboost_raw_60": {
+      "eligible": 242,
+      "ordinal_slots": 246,
+      "block": 60,
+      "replicates": 10000,
+      "paired_difference": 0.14711024451047194,
+      "difference_ci_95": [
+        0.04449659262138286,
+        0.25283996081853416
+      ],
+      "gain_pct": 6.897060157717209,
+      "gain_ci_95_pct": [
+        2.0861611449586515,
+        11.854051536948925
+      ],
+      "resampled_eligible_min_max": [
+        236,
+        246
+      ],
+      "method": "full-ordinal year-preserving weighted moving-block,recentered basic",
+      "selection_adjusted": false,
+      "difference_ci_pct_of_named_naive": [
+        2.2517670927782047,
+        12.795062946840355
+      ]
+    }
+  },
+  "selected_weights": {
+    "ridge": 0.0,
+    "xgboost": 0.0
+  },
+  "synthetic_measurements": {
+    "xgboost/known_signal": {
+      "relative_mae_gain": 0.9246982415879538
+    },
+    "xgboost/known_nonlinear": {
+      "relative_mae_gain": 0.7763983345001201
+    },
+    "xgboost/negative_block_shift": {
+      "relative_mae_gain": -0.035106129329132596
+    },
+    "xgboost/small_subset_overfit": {
+      "relative_mae_gain": 0.9995343924354692
+    }
+  },
+  "historical_availability_verified": false,
+  "first_vintage_verified": false,
+  "independent_holdout": false,
+  "weak_signal_power_claimed": false,
+  "release_allowed": false,
+  "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/named-capacity-result-20261010",
+  "report_numeric_amendment": {
+    "evidence": "evidence/named-capacity-report-amendment-20261011.json",
+    "old_report_sha256": "430f146af488ad9c3068299bd062dd4258632b6a9f507442533a6ff4f07131aa",
+    "new_report_sha256": "3cd9b82818d5e73a6090039a197a4ab247194a8e9ff0dfba63774d4a77f23626",
+    "prediction_values_changed": false,
+    "new_fits": 0
+  },
+  "record_id": "fac4133f5f4cf589d0a8bd1fb4b611896e2a6a7fea2177209399e36ffeacacff"
+}

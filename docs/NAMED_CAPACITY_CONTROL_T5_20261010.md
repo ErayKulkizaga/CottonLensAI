@@ -140,3 +140,39 @@ ve checksum paketi herhangi bir yeni piyasa skorundan önce yayımlanır.
 ML kaynak4a2feff…, veri, tarif, cohort, hedef, birincil metrik, bootstrap
 ve karar eşikleri değişmez. Ön kayıttaki R1 hash'i değiştirilmez;
 final sonuç R2 hash'ini ve bu açık düzeltmeyi birlikte taşımak zorundadır.
+
+## 11 Ekim: kayıtlı deney sonuçlandırıldı
+
+**VERIFIED:** aynı 242 bilinen hedefte named Ridge ham MAE2,132941,
+XGBoost1,985831, Naive1,976074 cent/lb. Ham Naive kazançları sırasıyla
+−%7,938310 ve−%0,493740. XGB ham yön %54,958678, aktif oran%100;
+iki modelin geçmiş shrinkage ağırlığı0, seçilmiş sonuç birebir Naive.
+En büyük üç Naive hatası çıkarılınca XGB kazancı−%0,417239.
+
+Ham Ridge−XGB farkı0,147110 cent/lb, Naive-MAE biriminde+%7,444570.
+Blok20/60 %95 aralıkları aynı birimde [+%0,569530;+%14,087050] ve
+[+%2,251767;+%12,795063]. Dar birincil kapasite etkisi
+**DECISIVE_POSITIVE**: aynı doğru hedef/bilgi/cohortta bu sabit nonlinear
+tarif Ridge'den iyi. “Model kapasitesi hiç önemli değil / Ridge gürültü
+sınırında” anlatısı bu örneklemde desteklenmiyor.
+
+Pratik karar ayrı: XGB−Naive kazanç aralıkları blok20
+[−%4,136759;+%3,269655], blok60 [−%4,701305;+%3,662587]. İki üst sınır
+%5 altında: `FIXED_SHALLOW_CAPACITY_BELOW_PRACTICAL_GOAL`. Bu tarif eski
+yayın hedefini kurtarmadı. Bu, bütün modellerde/kaynaklarda sinyal yokluğu
+veya sıfır etkinin kanıtı değildir. %54,96 yön tek başına beceri kanıtı
+değildir; unweighted yön doğruluğu ile fiyat-MAE farklı niceliklerdir.
+
+984 tahmin satırı/972 bilinen-origin fiyatı,48 native replay,12 bağımsız
+scalar aralık ve8 tutarlı bozulma ret kontrolü doğrulandı; ek fit0.
+R1 rapor sayısal hatası korunur, R2 düzeltmesi ilk piyasa skorundan önce
+GitHub'a yayımlandı/taze restore edildi. Veri/kod/fit tarifi değişmedi.
+Kaynak saat/vintage varsayımları, görülmüş tek2023 yılı ve değerlendiremeyen
+6/8 gate sınırı sürer. Yeni model/grid/veri veya üretim yayını yok.
+
+İlk sonraki bilimsel adım **sıfır-fit tanı**: saklanan ham XGB tahminlerinde
+doğru/yanlış yön ve tahmin büyüklüğünün mutlak-hata farkına katkısını
+cebirsel ayırmak. %55'e yakın yönün niçin fiyat-MAE üstünlüğüne dönüşmediği
+açıklanacak; sonuca göre origin/işlem seçmek, threshold aramak veya yeni
+politikanın OOS başarısı varmış gibi karşıolgu sunmak yok. Önce checksum
+Release/taze replay teslimatı kapanır. Canlı126 cohort skorlanmaz.

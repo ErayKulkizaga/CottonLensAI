@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/named-capacity-result-20261010",
+  "archive": {
+    "name": "named-capacity-result-20261010.zip",
+    "sha256": "0ea96d465e87536a09df72ceaa3356c769dcc8a068d30c5470f6bd577cc3d52d",
+    "bytes": 9319946
+  },
+  "inventory_sha256": "dac6109e0bd4e5620526b319d2c7416a8931053f4413b2867bce5eb8350b1315",
+  "members": 912,
+  "source_id": "4a2feff2817bf57db64970c94c8b6a7bbd55cbdc97c8c872225a0756a9dd15af",
+  "native_market_fits": 22,
+  "native_synthetic_fits": 4,
+  "reference_ridge_fits": 0,
+  "verification_fits": 0,
+  "prediction_rows": 984,
+  "classification": "DECISIVE_POSITIVE",
+  "scope": "Paired RAW fixed100tree XGBoost vs frozen named Ridge on reviewed2023 only; practical Naive decision separately reported. NOT all nonlinear models,independent holdout,8yeargate,PIT or production proof.",
+  "record_id": "f574f10f8a2b1bc4358d4a812838452524a4987946650c739a914eeb19465b15"
+}
