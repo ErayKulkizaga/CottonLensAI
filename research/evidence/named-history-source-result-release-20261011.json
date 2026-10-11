@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/named-history-source-result-20261011",
+  "archive": {
+    "name": "named-history-source-result-20261011.zip",
+    "sha256": "61bf6a11f316a83d5d50c6e24240cb98187595056d169586b1e99cff3ed23a89",
+    "bytes": 13981793
+  },
+  "inventory_sha256": "37cc35c90f9dcf13c4d6a0412c8de4730f85d6f78c8ac39853797c22bce5d906",
+  "members": 1421,
+  "source_id": "466e4d3f756178561aca5e1706384d0be7398a7cf01757bef34677777c1ed155",
+  "native_market_fits": 44,
+  "native_synthetic_fits": 4,
+  "reference_fits": 0,
+  "verification_fits": 0,
+  "prediction_rows": 984,
+  "classification": "INCONCLUSIVE",
+  "scope": "Paired RAW same32-field numeric own-contract history vs identical-NaN mask; fixed100-tree XGB, reviewed2023 only. Effect sign uncertain; practical Naive decision separately frozen. NOT all representations/models,independent holdout,8yeargate,PIT or production proof.",
+  "record_id": "ec0f0f2322cdfe61ae32104ab04c2c23f2bec95b1456a548732a7d0d7444ff60"
+}

@@ -1,0 +1,212 @@
+{
+  "schema": 1,
+  "status": "completed_fixed_named_history_source_control_verified",
+  "profile": "named-history-source-control-t5-v1",
+  "source_id": "466e4d3f756178561aca5e1706384d0be7398a7cf01757bef34677777c1ed155",
+  "design_id": "dbcc9de865336922d4cb451a8641189363aac002c6d2ff635518123be7999f57",
+  "ready_sha256": "c62f94bb9495605702580da6f747bbce698397aed4c64cae771e50d15b533f20",
+  "report_sha256": "bfe198998b9d4c0b8b3a199e22c0bad281ca9008e1958fd159b8fc05439c6887",
+  "predictions_sha256": "4e7372705591386fb28cf17bfce996e3f5e24a2abe6e52ad29ae62ed1863f485",
+  "complete_sha256": "8bb60b4fc4a9dc828f3b9c4732e02ea8c777e29e47eba4f653fa395a987af0d5",
+  "verification_sha256": "19ac98a4931dbc3df6e9d7f329260575b93e6a2fdbd0e148052d575cb10f5678",
+  "controls_sha256": "47498015331f837f973d577ed987514ff5fde7b182872e89196ece3918fdc07d",
+  "market_fits": 44,
+  "synthetic_fits": 4,
+  "reference_fits": 0,
+  "verification_fits": 0,
+  "native_market_replays": 44,
+  "native_reference_replays": 0,
+  "native_synthetic_replays": 4,
+  "prediction_rows": 984,
+  "price_forecasts": 972,
+  "origins_per_arm": 246,
+  "scored_per_arm": 242,
+  "unknown_per_arm": 4,
+  "classification": "INCONCLUSIVE",
+  "classification_scope": "Paired RAW same32-field numeric own-contract history vs identical-NaN mask; fixed100-tree XGB, reviewed2023 only. Effect sign uncertain; practical Naive decision separately frozen. NOT all representations/models,independent holdout,8yeargate,PIT or production proof.",
+  "practical_decision": "FIXED_NAMED_HISTORY_BELOW_PRACTICAL_GOAL",
+  "summaries": {
+    "numeric_raw": {
+      "receipts": 246,
+      "scored": 242,
+      "unknown": 4,
+      "naive_mae": 1.9760743801652894,
+      "model_mae": 2.035470525109753,
+      "gain_pct": -3.005764638246844,
+      "direction_pct": 51.652892561983464,
+      "active_pct": 100.0,
+      "trimmed_gain_pct": -2.9363434110123343
+    },
+    "numeric_selected": {
+      "receipts": 246,
+      "scored": 242,
+      "unknown": 4,
+      "naive_mae": 1.9760743801652894,
+      "model_mae": 1.9760743801652894,
+      "gain_pct": 0.0,
+      "direction_pct": 0.0,
+      "active_pct": 0.0,
+      "trimmed_gain_pct": 0.0
+    },
+    "mask_raw": {
+      "receipts": 246,
+      "scored": 242,
+      "unknown": 4,
+      "naive_mae": 1.9760743801652894,
+      "model_mae": 1.9858310543394215,
+      "gain_pct": -0.49374022921728655,
+      "direction_pct": 54.958677685950406,
+      "active_pct": 100.0,
+      "trimmed_gain_pct": -0.41723944933159485
+    },
+    "mask_selected": {
+      "receipts": 246,
+      "scored": 242,
+      "unknown": 4,
+      "naive_mae": 1.9760743801652894,
+      "model_mae": 1.9760743801652894,
+      "gain_pct": 0.0,
+      "direction_pct": 0.0,
+      "active_pct": 0.0,
+      "trimmed_gain_pct": 0.0
+    }
+  },
+  "contrasts": {
+    "raw": {
+      "price_mae_difference_mask_minus_numeric": -0.049639470770331595,
+      "pct_of_named_naive_mae": -2.512024409029557,
+      "trimmed_pct_of_named_naive_mae": -2.4524207290050186
+    },
+    "selected": {
+      "price_mae_difference_mask_minus_numeric": 0.0,
+      "pct_of_named_naive_mae": 0.0,
+      "trimmed_pct_of_named_naive_mae": 0.0
+    }
+  },
+  "primary_intervals": {
+    "numeric_raw_vs_naive_20": {
+      "eligible": 242,
+      "ordinal_slots": 246,
+      "block": 20,
+      "replicates": 10000,
+      "paired_difference": -0.059396144944465545,
+      "difference_ci_95": [
+        -0.1641970863568944,
+        0.05496734226654998
+      ],
+      "gain_pct": -3.005764638246936,
+      "gain_ci_95_pct": [
+        -8.309256372382105,
+        2.7816433843928614
+      ],
+      "resampled_eligible_min_max": [
+        229,
+        246
+      ],
+      "method": "full-ordinal year-preserving weighted moving-block,recentered basic",
+      "selection_adjusted": false
+    },
+    "numeric_raw_vs_naive_60": {
+      "eligible": 242,
+      "ordinal_slots": 246,
+      "block": 60,
+      "replicates": 10000,
+      "paired_difference": -0.059396144944465545,
+      "difference_ci_95": [
+        -0.17871133005496204,
+        0.0752336701754514
+      ],
+      "gain_pct": -3.005764638246936,
+      "gain_ci_95_pct": [
+        -9.043755227473461,
+        3.807228661562755
+      ],
+      "resampled_eligible_min_max": [
+        236,
+        246
+      ],
+      "method": "full-ordinal year-preserving weighted moving-block,recentered basic",
+      "selection_adjusted": false
+    },
+    "mask_minus_numeric_raw_20": {
+      "eligible": 242,
+      "ordinal_slots": 246,
+      "block": 20,
+      "replicates": 10000,
+      "paired_difference": -0.04963947077033204,
+      "difference_ci_95": [
+        -0.1051929856866822,
+        0.012810815401958012
+      ],
+      "gain_pct": -2.499682471067228,
+      "gain_ci_95_pct": [
+        -5.297176990802685,
+        0.6451110417456674
+      ],
+      "resampled_eligible_min_max": [
+        229,
+        246
+      ],
+      "method": "full-ordinal year-preserving weighted moving-block,recentered basic",
+      "selection_adjusted": false,
+      "difference_ci_pct_of_named_naive": [
+        -5.323331284619119,
+        0.6482962144818885
+      ]
+    },
+    "mask_minus_numeric_raw_60": {
+      "eligible": 242,
+      "ordinal_slots": 246,
+      "block": 60,
+      "replicates": 10000,
+      "paired_difference": -0.04963947077033204,
+      "difference_ci_95": [
+        -0.09906369433741682,
+        0.012326788331618412
+      ],
+      "gain_pct": -2.499682471067228,
+      "gain_ci_95_pct": [
+        -4.988525792309656,
+        0.6207370110706053
+      ],
+      "resampled_eligible_min_max": [
+        236,
+        246
+      ],
+      "method": "full-ordinal year-preserving weighted moving-block,recentered basic",
+      "selection_adjusted": false,
+      "difference_ci_pct_of_named_naive": [
+        -5.013156150991169,
+        0.6238018394119018
+      ]
+    }
+  },
+  "source_contribution_supported": false,
+  "numeric_practical_effect_excluded": true,
+  "mask_exactly_reproduces_parent_inner_outer_435": true,
+  "selected_weights": {
+    "numeric": 0.0,
+    "mask": 0.0
+  },
+  "synthetic_measurements": {
+    "xgboost/known_signal": {
+      "relative_mae_gain": 0.908466646506159
+    },
+    "xgboost/known_nonlinear": {
+      "relative_mae_gain": 0.6994705228020793
+    },
+    "xgboost/negative_block_shift": {
+      "relative_mae_gain": -0.051317998504963214
+    },
+    "xgboost/small_subset_overfit": {
+      "relative_mae_gain": 0.999543402917882
+    }
+  },
+  "historical_availability_verified": false,
+  "first_vintage_verified": false,
+  "independent_holdout": false,
+  "weak_signal_power_claimed": false,
+  "release_allowed": false,
+  "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/named-history-source-result-20261011",
+  "record_id": "e396c00297833fb789fbdc14892545df868b120cd5107ed2a7d6a9ff6443ccfa"
+}
