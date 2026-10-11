@@ -1,7 +1,10 @@
 # CottonLensAI
 
-11 Ekim: depo private yapıldı. Drive taşıması sürüyor; 363 checkpoint dosyası
-GitHub'dan yeniden indirilip hash doğrulamasıyla açıldı. Henüz bütün Drive'ın
+11 Ekim: depo private yapıldı. Drive taşımasında 5.924 dosya/504.084.068 bayt
+GitHub'dan yeniden indirilip doğrulandı; bunların 363'ü checkpoint/scaler/geçmiş
+dosyasıdır ve özgün baytlarla geri açıldı. [Ek teslimat makbuzu](research/evidence/private-drive-additional-delivery-20261011.json).
+47 karantina dosyası Drive'da ve özel yerel yedekte tutuluyor; büyük deney
+ağacının aktarımı sürüyor, hiçbir özgün silinmedi. Henüz bütün Drive'ın
 taşındığı veya kota sorununun çözüldüğü söylenmiyor. Canlı görevin Drive'a yazması
 kapatıldı; frozen kaynak, karar saati ve ilk126 kilidi korundu.
 [Saklama ve geri kurma kuralları](research/README.md#private-github-ve-drive-taşıması).

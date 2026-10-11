@@ -2,8 +2,12 @@
 
 11 Ekim kullanıcı önceliği: PR44 girdi teslimatı tamamlandı ve sekiz CI kontrolü
 geçti. Depo private; Drive'daki özgün modeller/veriler/deneyler GitHub Releases'e
-doğrulanarak taşınıyor. İlk 363 checkpoint/40.728.390 bayt yeniden indirildi ve
-aynı dosyalara geri açıldı. Tam taşıma ve kota boşaltma henüz bitmedi.
+doğrulanarak taşınıyor. [Ek teslimat makbuzu](../research/evidence/private-drive-additional-delivery-20261011.json)
+5.924 dosya/504.084.068 bayt taze GitHub indirmesini doğrular; bunların 363'ü
+checkpoint/scaler/geçmiş dosyasıdır ve aynı baytlarla geri açılmıştır. 47
+credential benzeri dosya veya incelenmemiş veritabanı Drive'da/özel yerel
+karantinada tutulur. Büyük `experiments` yakalaması sürüyor; hiçbir özgün
+silinmedi. Tam taşıma ve kota boşaltma henüz bitmedi.
 Canlı task'ın yalnız DrivePath ayarı kaldırıldı; XML yedeği, frozen kaynak ve
 altı missing/ilk126 kilidi korundu. Yeni fit/grid/skor yok. Saklama tamamlanınca
 tek bilimsel adım önceki132 sentetik-fit tasarımının mevcut engine/ledger'a
