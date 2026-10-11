@@ -17842,6 +17842,30 @@
       "historical_source_admitted": false,
       "release_allowed": false,
       "id": "d8bc4028374fae249065feab9fe2ecfa12981ba8d5b16bf323a0d28c0058bbfd"
+    },
+    {
+      "experiment": "research-named-history-readiness-v1",
+      "profile": "named-history-readiness-v1",
+      "kind": "completed_data_readiness",
+      "classification": "INCONCLUSIVE",
+      "classification_scope": "Predictive contribution not tested; full finite-sample data readiness verified. No new market-skill result.",
+      "horizon": 5,
+      "code_id": "02aa961506960987771f89863821969038e5711217df9a2be1d17f3ce54cd956",
+      "data_id": "f2a6acc819bcf796315412e170a587d3cab4a601da02e7065f9f9e3c8524044c",
+      "model_families": [],
+      "recipes": [],
+      "completed_fits": 0,
+      "origin_count": 246,
+      "scored_origin_count": 242,
+      "prediction_payload_exists": false,
+      "performance_measured": false,
+      "metrics": null,
+      "evidence": "evidence/named-history-readiness-20261011.json",
+      "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/named-history-readiness-20261011",
+      "independent_holdout": false,
+      "historical_source_admitted": false,
+      "release_allowed": false,
+      "id": "1cedde1796fbd1e100437f7eb572d9fad0ba82e51d721dbde8f07cc9d8dc3c5b"
     }
   ],
   "local_evidence": [
@@ -18284,6 +18308,14 @@
     {
       "path": "evidence/named-history-lineage-delivery-20261011.json",
       "sha256": "340913df4baa872e5e37c980eae75f424ed3238953b31d1b2ecfee5e066892ef"
+    },
+    {
+      "path": "evidence/named-history-readiness-20261011.json",
+      "sha256": "4bf704482f0dc7fe592d0de5f83fec436d3f940b9b1b58dc627b594b01862b4d"
+    },
+    {
+      "path": "evidence/named-history-readiness-release-20261011.json",
+      "sha256": "f5b306dedc346afed6af1866e27b98bd2a52d7ed286f5f18113bbf6799452137"
     }
   ]
 }

@@ -1,0 +1,446 @@
+{
+  "schema": 1,
+  "status": "completed_named_history_readiness_no_skill_test",
+  "profile": "named-history-readiness-v1",
+  "source_id": "02aa961506960987771f89863821969038e5711217df9a2be1d17f3ce54cd956",
+  "source_files": 258,
+  "parent_source_id": "4a2feff2817bf57db64970c94c8b6a7bbd55cbdc97c8c872225a0756a9dd15af",
+  "parent_ready_sha256": "98b87771ba35a0df57062cfc17b76bea387bedfa50b516abde68b33328781bf7",
+  "input_hashes": {
+    "history.parquet": "5a9266059579351875608e58fdc8875797fbb3c39cd4c24fb51b1cef9eb0217b",
+    "ready.json": "98b87771ba35a0df57062cfc17b76bea387bedfa50b516abde68b33328781bf7",
+    "parent/inputs/quotes.json": "3cf19b853ce43978342427b915a22d5b11a7886e9db2018274e825bdecf1d91f",
+    "parent-files.json": "2158997851844cf30bd2c18450919e820bfbce11885d36c51cf0a2be5fac1df0"
+  },
+  "report_sha256": "64083c40879ac2bfeaecb9ca4a835c8ea23cf34889372b3d59f9438e8a9736b4",
+  "numeric_sha256": "69ded6e22bd619223e2c2711c4dee91223429c738830f55f99330607464ce57c",
+  "endpoints_sha256": "6821e34290ea0ea535c4a53115be7c67f63246996ed05b0f4923b0821d6517a7",
+  "policy": "named-contract-history-origin-asof-assumed-clock-v1",
+  "features": [
+    "named_contract_ret_1",
+    "named_contract_ret_5",
+    "named_contract_ret_10",
+    "named_contract_ret_20"
+  ],
+  "history_rows": 3520,
+  "endpoint_rows": 14080,
+  "fixed_training_jobs": 22,
+  "minimum_train": 528,
+  "minimum_all_four_finite_training_rows": 510,
+  "cohort_id": "dc537e1eb4eefcaa69f1d244c9267c9e3e784b7d5eb3d1f4c55b55c93fde6d80",
+  "origins": 246,
+  "scored_parent": 242,
+  "unknown_parent": 4,
+  "cohorts": {
+    "outer": {
+      "retained_origins": 246,
+      "finite_by_feature": {
+        "named_contract_ret_1": 246,
+        "named_contract_ret_5": 246,
+        "named_contract_ret_10": 246,
+        "named_contract_ret_20": 246
+      }
+    },
+    "inner_0": {
+      "retained_origins": 63,
+      "finite_by_feature": {
+        "named_contract_ret_1": 63,
+        "named_contract_ret_5": 63,
+        "named_contract_ret_10": 63,
+        "named_contract_ret_20": 63
+      }
+    },
+    "inner_1": {
+      "retained_origins": 63,
+      "finite_by_feature": {
+        "named_contract_ret_1": 63,
+        "named_contract_ret_5": 63,
+        "named_contract_ret_10": 63,
+        "named_contract_ret_20": 63
+      }
+    },
+    "inner_2": {
+      "retained_origins": 63,
+      "finite_by_feature": {
+        "named_contract_ret_1": 63,
+        "named_contract_ret_5": 63,
+        "named_contract_ret_10": 63,
+        "named_contract_ret_20": 63
+      }
+    }
+  },
+  "jobs": [
+    {
+      "role": "inner_0",
+      "bucket": 0,
+      "cutoff": "2022-03-23",
+      "train_rows": 528,
+      "train_dates_id": "f0fced969489db563feb3b2b4f4b79a05d3dc1866cdfb60b0aa3f3c9a5bab641",
+      "finite_training_by_feature": {
+        "named_contract_ret_1": 527,
+        "named_contract_ret_5": 523,
+        "named_contract_ret_10": 519,
+        "named_contract_ret_20": 510
+      },
+      "all_four_finite_training_rows": 510,
+      "origins": 21
+    },
+    {
+      "role": "inner_0",
+      "bucket": 1,
+      "cutoff": "2022-04-22",
+      "train_rows": 549,
+      "train_dates_id": "e0dec15cd348855951e2a441275d4d2eafade9f9f952d4d283c1f80b43b317d1",
+      "finite_training_by_feature": {
+        "named_contract_ret_1": 548,
+        "named_contract_ret_5": 544,
+        "named_contract_ret_10": 540,
+        "named_contract_ret_20": 531
+      },
+      "all_four_finite_training_rows": 531,
+      "origins": 21
+    },
+    {
+      "role": "inner_0",
+      "bucket": 2,
+      "cutoff": "2022-05-23",
+      "train_rows": 570,
+      "train_dates_id": "412f9f4db2edcc8546b7cad328913f4bda96c2ffcd5a49849a3bbe7f3e52d2a7",
+      "finite_training_by_feature": {
+        "named_contract_ret_1": 569,
+        "named_contract_ret_5": 565,
+        "named_contract_ret_10": 561,
+        "named_contract_ret_20": 552
+      },
+      "all_four_finite_training_rows": 552,
+      "origins": 21
+    },
+    {
+      "role": "inner_1",
+      "bucket": 0,
+      "cutoff": "2022-06-23",
+      "train_rows": 591,
+      "train_dates_id": "4451113e87e3598ddb9f3e80ddc0727aab5ec8845edcf40e0f43d3fa13947abd",
+      "finite_training_by_feature": {
+        "named_contract_ret_1": 590,
+        "named_contract_ret_5": 586,
+        "named_contract_ret_10": 582,
+        "named_contract_ret_20": 573
+      },
+      "all_four_finite_training_rows": 573,
+      "origins": 19
+    },
+    {
+      "role": "inner_1",
+      "bucket": 1,
+      "cutoff": "2022-07-25",
+      "train_rows": 610,
+      "train_dates_id": "a8fa0f605a0b341cd630cb04f1dfb47edb904dc3783bf02a73b33c8d9605a14c",
+      "finite_training_by_feature": {
+        "named_contract_ret_1": 609,
+        "named_contract_ret_5": 605,
+        "named_contract_ret_10": 601,
+        "named_contract_ret_20": 592
+      },
+      "all_four_finite_training_rows": 592,
+      "origins": 21
+    },
+    {
+      "role": "inner_1",
+      "bucket": 2,
+      "cutoff": "2022-08-23",
+      "train_rows": 631,
+      "train_dates_id": "d5c3619e7c263f49675edcdefec2e2d8c7079d6092995520f40f89afb97677ba",
+      "finite_training_by_feature": {
+        "named_contract_ret_1": 630,
+        "named_contract_ret_5": 626,
+        "named_contract_ret_10": 622,
+        "named_contract_ret_20": 613
+      },
+      "all_four_finite_training_rows": 613,
+      "origins": 21
+    },
+    {
+      "role": "inner_1",
+      "bucket": 3,
+      "cutoff": "2022-09-22",
+      "train_rows": 652,
+      "train_dates_id": "8dcfaf983392f2f608c86a5427e79b3f856d7a07e878192da8945c9dc4ebb19e",
+      "finite_training_by_feature": {
+        "named_contract_ret_1": 651,
+        "named_contract_ret_5": 647,
+        "named_contract_ret_10": 643,
+        "named_contract_ret_20": 634
+      },
+      "all_four_finite_training_rows": 634,
+      "origins": 2
+    },
+    {
+      "role": "inner_2",
+      "bucket": 0,
+      "cutoff": "2022-09-26",
+      "train_rows": 654,
+      "train_dates_id": "f097fae0003c6e996b34420e86c6643400bc54ce9238466accd4e5064a76ff46",
+      "finite_training_by_feature": {
+        "named_contract_ret_1": 653,
+        "named_contract_ret_5": 649,
+        "named_contract_ret_10": 645,
+        "named_contract_ret_20": 636
+      },
+      "all_four_finite_training_rows": 636,
+      "origins": 21
+    },
+    {
+      "role": "inner_2",
+      "bucket": 1,
+      "cutoff": "2022-10-25",
+      "train_rows": 675,
+      "train_dates_id": "52c3dbd1bd9a7b8a7a88e9e128b82ababdaa76a7aead9290e0e401554f835651",
+      "finite_training_by_feature": {
+        "named_contract_ret_1": 674,
+        "named_contract_ret_5": 670,
+        "named_contract_ret_10": 666,
+        "named_contract_ret_20": 657
+      },
+      "all_four_finite_training_rows": 657,
+      "origins": 21
+    },
+    {
+      "role": "inner_2",
+      "bucket": 2,
+      "cutoff": "2022-11-23",
+      "train_rows": 696,
+      "train_dates_id": "18742e0812a06f360347727efc04691ab2079440834024773f1ebec13a421ce9",
+      "finite_training_by_feature": {
+        "named_contract_ret_1": 695,
+        "named_contract_ret_5": 691,
+        "named_contract_ret_10": 687,
+        "named_contract_ret_20": 678
+      },
+      "all_four_finite_training_rows": 678,
+      "origins": 21
+    },
+    {
+      "role": "outer",
+      "bucket": 0,
+      "cutoff": "2023-01-03",
+      "train_rows": 722,
+      "train_dates_id": "82b912146b73a8efa7a6401de27387f85f5816ce90f4adaa8bd3f63bdde0f4cd",
+      "finite_training_by_feature": {
+        "named_contract_ret_1": 721,
+        "named_contract_ret_5": 717,
+        "named_contract_ret_10": 713,
+        "named_contract_ret_20": 704
+      },
+      "all_four_finite_training_rows": 704,
+      "origins": 21
+    },
+    {
+      "role": "outer",
+      "bucket": 1,
+      "cutoff": "2023-02-02",
+      "train_rows": 743,
+      "train_dates_id": "b5d3c303f34bef58392cfbee92c69322117ccb75281a18e00011da396538db96",
+      "finite_training_by_feature": {
+        "named_contract_ret_1": 742,
+        "named_contract_ret_5": 738,
+        "named_contract_ret_10": 734,
+        "named_contract_ret_20": 725
+      },
+      "all_four_finite_training_rows": 725,
+      "origins": 21
+    },
+    {
+      "role": "outer",
+      "bucket": 2,
+      "cutoff": "2023-03-06",
+      "train_rows": 764,
+      "train_dates_id": "f9d8892e08f227f8a2417536641d13e4b0947d800fd0631359d60c493618888c",
+      "finite_training_by_feature": {
+        "named_contract_ret_1": 763,
+        "named_contract_ret_5": 759,
+        "named_contract_ret_10": 755,
+        "named_contract_ret_20": 746
+      },
+      "all_four_finite_training_rows": 746,
+      "origins": 21
+    },
+    {
+      "role": "outer",
+      "bucket": 3,
+      "cutoff": "2023-04-04",
+      "train_rows": 785,
+      "train_dates_id": "a3b2de43d4b3425a6ac68399f912a73ad31987aa6113d159deb7996622fe55e2",
+      "finite_training_by_feature": {
+        "named_contract_ret_1": 784,
+        "named_contract_ret_5": 780,
+        "named_contract_ret_10": 776,
+        "named_contract_ret_20": 767
+      },
+      "all_four_finite_training_rows": 767,
+      "origins": 21
+    },
+    {
+      "role": "outer",
+      "bucket": 4,
+      "cutoff": "2023-05-04",
+      "train_rows": 806,
+      "train_dates_id": "b88ee58f9870e93c3e334a8128d23e6b57a2f1497e7e2ca78a7af011ea472bf0",
+      "finite_training_by_feature": {
+        "named_contract_ret_1": 805,
+        "named_contract_ret_5": 801,
+        "named_contract_ret_10": 797,
+        "named_contract_ret_20": 788
+      },
+      "all_four_finite_training_rows": 788,
+      "origins": 21
+    },
+    {
+      "role": "outer",
+      "bucket": 5,
+      "cutoff": "2023-06-05",
+      "train_rows": 827,
+      "train_dates_id": "58184fe98e51ca25ece28fdf5c7828bb5c1ba886a58623e4b34a93e3ad3694a0",
+      "finite_training_by_feature": {
+        "named_contract_ret_1": 826,
+        "named_contract_ret_5": 822,
+        "named_contract_ret_10": 818,
+        "named_contract_ret_20": 809
+      },
+      "all_four_finite_training_rows": 809,
+      "origins": 21
+    },
+    {
+      "role": "outer",
+      "bucket": 6,
+      "cutoff": "2023-07-06",
+      "train_rows": 846,
+      "train_dates_id": "9cf2da8d05682569a809b050242e7c5e7c2a810fae98607d935dcca74b2eb4e3",
+      "finite_training_by_feature": {
+        "named_contract_ret_1": 845,
+        "named_contract_ret_5": 841,
+        "named_contract_ret_10": 837,
+        "named_contract_ret_20": 828
+      },
+      "all_four_finite_training_rows": 828,
+      "origins": 21
+    },
+    {
+      "role": "outer",
+      "bucket": 7,
+      "cutoff": "2023-08-04",
+      "train_rows": 867,
+      "train_dates_id": "8c86a381a403c15c671320b0dbe08b73663a6d929e898df09666faa0c3c3a254",
+      "finite_training_by_feature": {
+        "named_contract_ret_1": 866,
+        "named_contract_ret_5": 862,
+        "named_contract_ret_10": 858,
+        "named_contract_ret_20": 849
+      },
+      "all_four_finite_training_rows": 849,
+      "origins": 21
+    },
+    {
+      "role": "outer",
+      "bucket": 8,
+      "cutoff": "2023-09-05",
+      "train_rows": 888,
+      "train_dates_id": "4767c6d0e2fde43cc598e46e9d025f22b917410e7de48cc82e2ca3205a26bc1c",
+      "finite_training_by_feature": {
+        "named_contract_ret_1": 887,
+        "named_contract_ret_5": 883,
+        "named_contract_ret_10": 879,
+        "named_contract_ret_20": 870
+      },
+      "all_four_finite_training_rows": 870,
+      "origins": 21
+    },
+    {
+      "role": "outer",
+      "bucket": 9,
+      "cutoff": "2023-10-04",
+      "train_rows": 909,
+      "train_dates_id": "0c37c997ca6f0c605b0c1b6a069aea8643d078ba8c114eafb7c42ab29bf55385",
+      "finite_training_by_feature": {
+        "named_contract_ret_1": 908,
+        "named_contract_ret_5": 904,
+        "named_contract_ret_10": 900,
+        "named_contract_ret_20": 891
+      },
+      "all_four_finite_training_rows": 891,
+      "origins": 21
+    },
+    {
+      "role": "outer",
+      "bucket": 10,
+      "cutoff": "2023-11-02",
+      "train_rows": 930,
+      "train_dates_id": "73481be5ec86ee194a67b5718ff8282bf8fe3fce88e3308d5caff661a0774422",
+      "finite_training_by_feature": {
+        "named_contract_ret_1": 929,
+        "named_contract_ret_5": 925,
+        "named_contract_ret_10": 921,
+        "named_contract_ret_20": 912
+      },
+      "all_four_finite_training_rows": 912,
+      "origins": 21
+    },
+    {
+      "role": "outer",
+      "bucket": 11,
+      "cutoff": "2023-12-01",
+      "train_rows": 949,
+      "train_dates_id": "391c75ccccfea9b6d161468fb56b378064aa37ab5d6a4bbf4f78ab578c17255f",
+      "finite_training_by_feature": {
+        "named_contract_ret_1": 948,
+        "named_contract_ret_5": 944,
+        "named_contract_ret_10": 940,
+        "named_contract_ret_20": 931
+      },
+      "all_four_finite_training_rows": 931,
+      "origins": 15
+    }
+  ],
+  "checks": {
+    "status": "passed",
+    "rows": 3520,
+    "endpoints": 14080,
+    "jobs": 22,
+    "model_fits": 0,
+    "method": "Brute origin-as-of maximum reference date at both endpoints, separate availability/reference ages and math.log; no named_history/contract_curve builder calls",
+    "report_sha256": "64083c40879ac2bfeaecb9ca4a835c8ea23cf34889372b3d59f9438e8a9736b4",
+    "numeric_sha256": "69ded6e22bd619223e2c2711c4dee91223429c738830f55f99330607464ce57c",
+    "endpoints_sha256": "6821e34290ea0ea535c4a53115be7c67f63246996ed05b0f4923b0821d6517a7"
+  },
+  "coherent_controls": {
+    "status": "passed",
+    "coherent_rejections": [
+      "numeric",
+      "contract",
+      "availability",
+      "mask_missing_zero"
+    ],
+    "model_fits": 0,
+    "original_report_sha256": "64083c40879ac2bfeaecb9ca4a835c8ea23cf34889372b3d59f9438e8a9736b4"
+  },
+  "regression_tests_passed": 91,
+  "new_synthetic_test_cases": 16,
+  "future_quote_invariance": true,
+  "target_metadata_isolation": true,
+  "numeric_mask_missingness_identical": true,
+  "classification": "INCONCLUSIVE",
+  "classification_scope": "Predictive contribution not tested; full finite-sample data readiness verified. No new market-skill result.",
+  "model_fits": 0,
+  "new_forecasts": 0,
+  "signal_or_performance_measured": false,
+  "historical_availability_verified": false,
+  "first_vintage_verified": false,
+  "independent_holdout": false,
+  "release_allowed": false,
+  "live126_scored": false,
+  "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/named-history-readiness-20261011",
+  "superseded_r1": "Past-endpoint decision constraint discarded before training/selection; files preserved. Current origin may use an already-available late historical bar.",
+  "final_format_change": "R2 and final numeric/mask/endpoints byte-equal; final canonical input paths use POSIX separators and output parent creation is explicit.",
+  "next_exact_step": "Preregister one same-cohort fixed-XGB32 numeric vs identical-NaN mask source contrast; no fit before new identity/controls/budget/fresh GitHub preparation verification.",
+  "record_id": "7915f2e7d646cdc5de10a6ca35f0373cccd303552ebc1d1786b8920410a5868e"
+}

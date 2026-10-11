@@ -1,4 +1,13 @@
-# Güncel kararlar — 10 Ekim 2026
+# Güncel kararlar — 11 Ekim 2026
+
+11 Ekim: [aynı-kontrat geçmişi hazırlığı](NAMED_HISTORY_READINESS_20261011.md)
+tamamlandı, model fit0. Dört geçmiş getiri mevcut origin karar saatine göre
+kuruluyor; 3.520 tarih/14.080 endpoint ve22 sabit eğitim işi doğrulandı.
+En küçük528 olgun etikette510 tam-feature satırı;3×63 iç ve246 dış origin
+korunur. Numeric/mask eksiklik desenleri aynı;91 regresyon testi geçti.
+Bu tahmin katkısı değildir. Tek sonraki iş aynı32 alan/sabit XGB ile
+numeric–mask kaynak katkısının ayrı ön kaydı; yeni eğitim henüz başlamaz.
+Saat/vintage varsayımı ve eski kararlar aşağıda korunur.
 
 11 Ekim: [sıfır-fit hata ayrımı](NAMED_CAPACITY_CONTROL_T5_20261010.md#11-ekim-yönbüyüklük-hata-mekanizması-sonuç-sonrası-sıfır-fit) doğrulandı.
 Ham XGB'nin yön/büyüklük katkısı +12,319829, doğru-yön aşım cezası

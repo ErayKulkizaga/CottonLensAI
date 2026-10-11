@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/named-history-readiness-20261011",
+  "archive": {
+    "name": "named-history-readiness-20261011.zip",
+    "sha256": "93b867b0653d8f68a44441fecb1d6508a231356336f1fc8810ba2b0bc8367b45",
+    "bytes": 10826445
+  },
+  "inventory_sha256": "917edc7bac7dced62a3fb6e77eb02911590f5175c16806f00a9ef87e5ce4c5a4",
+  "members": 1179,
+  "source_id": "02aa961506960987771f89863821969038e5711217df9a2be1d17f3ce54cd956",
+  "model_fits": 0,
+  "new_forecasts": 0,
+  "signal_or_performance_measured": false,
+  "record_id": "afa239754130f335b822adb088b835c82fe884dfd8c043096e0f0929b1cc7f73"
+}
