@@ -114,3 +114,12 @@ Tek sonraki iş, skor kapsamı izin verdiğinde zaten dondurulmuş
 `report.py → verify.py → controls.py` sıfır-fit zincirini çalıştırıp mevcut
 22+4 deneyi kapatmak. Yeni model/grid/tarif yok. Rapor/verifier checksum'ları
 ön kayıt Release'indedir; fit sonrası birincil metrik veya eşik seçilemez.
+
+[Native yürütme Release'i](https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/named-capacity-execution-20261011)
+taze GitHub indirmesinde 902 dosya/48 native çıkarımla doğrulandı; yeni fit0,
+piyasa skor raporu yok. [Teslimat kanıtı](../research/evidence/named-capacity-execution-delivery-20261011.json).
+Sicil 170 çalışma aşaması/523 tarif nesnesi içerir; 29.688 fit makbuzu
+kopyası bağımsız deney sayısı değildir. Eski 168 çalışma, 520 tarif ve94
+proof korunur. Paketleyicinin R1 son kontrolü append sonrası aynı nesnenin
+523 uzunluğunu donmuş520 ile yanlış karşılaştırdı; bağımsız R2 frozen-prefix
+kontrolü eski kayıtların değişmediğini doğruladı. Model/veri/analiz değişmedi.

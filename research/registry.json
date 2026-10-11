@@ -18133,6 +18133,10 @@
     {
       "path": "evidence/named-capacity-execution-release-20261011.json",
       "sha256": "3df2ce754650abbbd71eb7a0f9faf2af5bee89c61e3a2dc9a45308536daa2f4f"
+    },
+    {
+      "path": "evidence/named-capacity-execution-delivery-20261011.json",
+      "sha256": "0ce498863cc2d1bf8bbc4b033c1d830a68c3624cd2f00b9c8042395998b37b65"
     }
   ]
 }

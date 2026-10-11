@@ -1,0 +1,42 @@
+{
+  "schema": 1,
+  "status": "fresh_github_native_execution_verified_not_scored",
+  "source_id": "4a2feff2817bf57db64970c94c8b6a7bbd55cbdc97c8c872225a0756a9dd15af",
+  "payload_commit": "7034331ced6185c09b459a33aa502a26f50daf2d",
+  "fresh_github_restore": {
+    "status": "verified_native_execution_not_scored",
+    "checked_members": 902,
+    "source_id": "4a2feff2817bf57db64970c94c8b6a7bbd55cbdc97c8c872225a0756a9dd15af",
+    "archive_sha256": "430e517b69d50202a7f9239945fe896475b11960d3a3690c39bfb3806b0d792b",
+    "new_native_replays": 22,
+    "reference_native_replays": 22,
+    "synthetic_native_replays": 4,
+    "new_fits": 0,
+    "market_performance_computed": false
+  },
+  "preservation": {
+    "status": "verified",
+    "old_studies_preserved": 169,
+    "old_trial_recipe_objects_preserved": 520,
+    "old_proofs_preserved": 96,
+    "new_fit_recipe_objects": 3,
+    "new_native_fit_receipts": 26,
+    "r1_check_failure": "Post-append in-memory alias length523 compared with frozen520; independent frozen-prefix comparison passes. No prior records changed.",
+    "new_fits": 0
+  },
+  "old_initial_studies_preserved": 168,
+  "old_initial_proofs_preserved": 94,
+  "old_initial_trial_recipe_objects_preserved": 520,
+  "registry_records": 170,
+  "fit_recipe_objects": 523,
+  "market_fits": 22,
+  "synthetic_fits": 4,
+  "reference_ridge_fits": 0,
+  "verification_fits": 0,
+  "market_performance_computed": false,
+  "completed_market_decision": false,
+  "release_allowed": false,
+  "public_pr": "https://github.com/ErayKulkizaga/CottonLensAI/pull/40",
+  "next_exact_step": "Reuse existing22+4fits; when scoring scope permits run frozen report.py,verify.py,controls.py then final indexing with package-result-r2.py; no new fitting.",
+  "record_id": "6316ece5e0e8bb66ead07af2fa5de78d0f585c28b8c6aeee2733e39af357c38d"
+}
