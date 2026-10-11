@@ -1,5 +1,15 @@
 # Güncel kararlar — 11 Ekim 2026
 
+11 Ekim: [son tahminlerde sıfır-fit MSE–MAE ayrımı](NAMED_LOSS_DIAGNOSIS_20261011.md)
+doğrulandı. Mask/numeric dış standardized MSE kazancı −%3,866798/−%6,359112;
+üç iç dönemin tamamı da negatif. Dört 20/60 blok aralığı sıfırı içerir;
+küçük etki dışlanmaz, MAE'nin gizlediği pozitif optimize-loss becerisi yok.
+44 native replay/scaler, 870 satır/862 uygun kayıp, dört scalar aralık ve
+dört coherent-tamper reddi; yeni fit/tahmin sıfır. Eski kanıtlar değişmez.
+Tek sonraki soru aynı sabit XGBoost/named cohort'ta zayıf bilinen sinyal
+öğrenme gücü; önce sicil eşdeğerlik denetimi ve sınırlı sentetik ön kayıt.
+Yeni piyasa model/loss/grid başlamaz. Önceki aşamalar aşağıda korunur.
+
 11 Ekim: [aynı-kontrat kaynak kontrolü tamamlandı](NAMED_HISTORY_SOURCE_CONTROL_T5_20261011.md#tamamlanan-sonuç--444-fit-ek-doğrulama-fiti-sıfır).
 44 piyasa + dört sentetik fit; ham numeric Naive kazancı −%3,005765,
 mask −%0,493740. Kaynak katkısı −%2,512024 Naive-MAE birimi;

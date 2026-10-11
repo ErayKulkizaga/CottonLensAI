@@ -1,5 +1,13 @@
 # Deney geçmişi ve tekrar kontrolü
 
+11 Ekim: [named loss teşhisi](../docs/NAMED_LOSS_DIAGNOSIS_20261011.md)
+mevcut PR42 tahminleriyle sıfır-fit kapandı. Yeni fit sicili oluşmadı;
+`trials.json` değişmez. Standardized MSE'de her iki kolun iç/dış nokta
+kazancı negatif; pozitif MSE başarısını MAE'nin gizlediği gösterilmedi.
+Küçük etki aralıkları belirsizdir. Bir sonraki aday için önce sabit named
+XGBoost zayıf-sinyal güç kontrolünün geçmişte eşdeğeri aranır; eski Ridge
+zayıf-sinyal grid'i veya güçlü XGB sentetiği aynı test sayılmaz.
+
 11 Ekim: [named history kaynak kontrolü](../docs/NAMED_HISTORY_SOURCE_CONTROL_T5_20261011.md)
 44+4 fit ile kapandı; 48 native makbuz yeni üç tarif nesnesine eklendi,
 eski kayıtlar değişmedi. Ham numeric/mask karşılaştırmasında pratik

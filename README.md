@@ -1,5 +1,13 @@
 # CottonLensAI
 
+11 Ekim: [sıfır-fit MSE–MAE teşhisi](docs/NAMED_LOSS_DIAGNOSIS_20261011.md)
+tamamlandı. Son deneyin iki kolu optimize edilen loss'ta da Naive'ın
+gerisinde; MAE'nin gizlediği pozitif MSE becerisi gösterilmedi. 44 native
+replay/870 satır/dört bağımsız aralık ve dört bozulma kontrolü doğrulandı.
+Yeni fit/tahmin yok. Tek sonraki soru sabit tarifin zayıf bilinen sinyali
+bu örnek düzeninde öğrenme gücü; ön kayıt olmadan eğitim başlamaz.
+Aşağıdaki önceki aşamalar tarihsel kayıt olarak korunur.
+
 11 Ekim: [PR42 kaynak kontrolü](https://github.com/ErayKulkizaga/CottonLensAI/pull/42)
 44+4 fit ile tamamlandı. Aynı 32 alan/aynı kontrat hedefinde ham numeric
 Naive kazancı −%3,005765, mask −%0,493740; kaynak farkı belirsiz,

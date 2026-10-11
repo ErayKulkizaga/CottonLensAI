@@ -18026,6 +18026,77 @@
       "historical_source_admitted": false,
       "release_allowed": false,
       "id": "57ae6a2b02376976bb9650c9f8b31f9d9ed93b1ba34e60b02844ec8ffdded01b"
+    },
+    {
+      "experiment": "research-named-loss-diagnosis-v1",
+      "profile": "named-loss-diagnosis-v1",
+      "horizon": 5,
+      "kind": "completed_posthoc_zero_fit_loss_diagnosis",
+      "classification": "INCONCLUSIVE",
+      "classification_scope": "Intervals include zero; no universal no-signal or no-loss-improvement claim.",
+      "code_id": "466e4d3f756178561aca5e1706384d0be7398a7cf01757bef34677777c1ed155",
+      "data_id": "bcf5c1c41f322f77ff160eb8f4efff3491b716c4a6f58d426dcba1298906182c",
+      "origin_count": 246,
+      "scored_origin_count": 242,
+      "model_families": [
+        "xgboost"
+      ],
+      "new_fits": 0,
+      "new_forecasts": 0,
+      "prediction_payload_exists": true,
+      "metrics": {
+        "mask": {
+          "price_mae": {
+            "naive": 1.9760743801652894,
+            "model": 1.9858310543394215,
+            "gain_pct": -0.49374022921728766
+          },
+          "log_mse": {
+            "naive": 0.0008798014921043193,
+            "model": 0.000913363935120634,
+            "gain_pct": -3.814774505103391
+          },
+          "scaled_mse": {
+            "naive": 0.4699182363034479,
+            "model": 0.48808902541049726,
+            "gain_pct": -3.866798030650509
+          },
+          "native_mse": {
+            "naive": 0.4699182331877931,
+            "model": 0.48808902056432396,
+            "gain_pct": -3.866797688028689
+          }
+        },
+        "numeric": {
+          "price_mae": {
+            "naive": 1.9760743801652894,
+            "model": 2.035470525109753,
+            "gain_pct": -3.005764638246844
+          },
+          "log_mse": {
+            "naive": 0.0008798014921043193,
+            "model": 0.0009328783908224001,
+            "gain_pct": -6.0328266312814405
+          },
+          "scaled_mse": {
+            "naive": 0.4699182363034479,
+            "model": 0.49980086186859046,
+            "gain_pct": -6.359111704242504
+          },
+          "native_mse": {
+            "naive": 0.4699182331877931,
+            "model": 0.49980086002908386,
+            "gain_pct": -6.359112017972879
+          }
+        }
+      },
+      "verified_narrow_finding": "Both fixed RAW forecasts have negative optimized-objective OOS point gain; hidden positive MSE skill lost in MAE is not observed.",
+      "evidence": "evidence/named-loss-diagnosis-20261011.json",
+      "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/named-loss-diagnosis-20261011",
+      "independent_holdout": false,
+      "historical_source_admitted": false,
+      "release_allowed": false,
+      "id": "62f6efa8869cc48c453b4d1bdf1444a76cfa5d03773f194065c924065bb6e34d"
     }
   ],
   "local_evidence": [
@@ -18508,6 +18579,14 @@
     {
       "path": "evidence/named-history-source-result-delivery-20261011.json",
       "sha256": "64d5e184ba1b52fc10f1cb59ca553d1f386ae1319cc7df1b4b789e0293ccf634"
+    },
+    {
+      "path": "evidence/named-loss-diagnosis-20261011.json",
+      "sha256": "ca81c3a9c0d0da77631fe4f3841128791749a0c6e18cc0833fac41f917efc0e4"
+    },
+    {
+      "path": "evidence/named-loss-diagnosis-release-20261011.json",
+      "sha256": "04e1226133da3fa2c725bf1f1a947c6c183c199c0bf12db937678ea360bd2073"
     }
   ]
 }

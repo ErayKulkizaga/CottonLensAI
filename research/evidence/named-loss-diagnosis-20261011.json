@@ -1,0 +1,340 @@
+{
+  "schema": 1,
+  "status": "completed_posthoc_named_loss_diagnosis_verified",
+  "profile": "named-loss-diagnosis-v1",
+  "source_id": "466e4d3f756178561aca5e1706384d0be7398a7cf01757bef34677777c1ed155",
+  "parent_ready_sha256": "c62f94bb9495605702580da6f747bbce698397aed4c64cae771e50d15b533f20",
+  "parent_release": "named-history-source-result-20261011",
+  "parent_archive_sha256": "61bf6a11f316a83d5d50c6e24240cb98187595056d169586b1e99cff3ed23a89",
+  "protocol_sha256": "22c7d47e8cc6f85e4cc014f64ed174f4a887cd95048edb71bb6760307cb2259f",
+  "report_sha256": "81cb12c1c3ea0221b0a4a19b5804ffdc421165809bdfb2f7c80a66a26df71894",
+  "losses_sha256": "3fcf641d571d12af1b1705d4ed6094a7fe689fd755cc753da5e51c7b79f008e3",
+  "verification_sha256": "8bdc3f9a3bf34c258781a3787f381658cfecd16a5a529a7ffd01e2d38dc9851a",
+  "controls_sha256": "2906fcdf8ee3cfa5e6c3e800a90f03679ae5126ed209dfd27c78f2cf6ea298b7",
+  "new_fits": 0,
+  "new_forecasts": 0,
+  "native_replays": 44,
+  "rows": 870,
+  "scalar_origin_loss_checks": 862,
+  "scalar_intervals": 4,
+  "tamper_controls": 4,
+  "groups": {
+    "mask_inner_0": {
+      "slots": 63,
+      "scored": 63,
+      "losses": {
+        "price_mae": {
+          "naive": 6.156666666666665,
+          "model": 6.969021033607072,
+          "gain_pct": -13.194710886958427
+        },
+        "log_mse": {
+          "naive": 0.004012393036481189,
+          "model": 0.00469926891767199,
+          "gain_pct": -17.118858370693935
+        },
+        "scaled_mse": {
+          "naive": 3.0559071208962707,
+          "model": 3.5748717649591475,
+          "gain_pct": -16.98234349186205
+        },
+        "native_mse": {
+          "naive": 3.0559071089566663,
+          "model": 3.5748717311113123,
+          "gain_pct": -16.98234284129887
+        }
+      }
+    },
+    "mask_inner_1": {
+      "slots": 63,
+      "scored": 63,
+      "losses": {
+        "price_mae": {
+          "naive": 5.159841269841269,
+          "model": 5.875491381402609,
+          "gain_pct": -13.869614860911339
+        },
+        "log_mse": {
+          "naive": 0.0043285019369698596,
+          "model": 0.005151067452123364,
+          "gain_pct": -19.003468801248523
+        },
+        "scaled_mse": {
+          "naive": 2.6802107182928014,
+          "model": 3.158712469333221,
+          "gain_pct": -17.853139224262506
+        },
+        "native_mse": {
+          "naive": 2.680210722787715,
+          "model": 3.158712479756603,
+          "gain_pct": -17.85313941551554
+        }
+      }
+    },
+    "mask_inner_2": {
+      "slots": 63,
+      "scored": 63,
+      "losses": {
+        "price_mae": {
+          "naive": 3.6344444444444433,
+          "model": 3.8660244803045813,
+          "gain_pct": -6.3718138879279795
+        },
+        "log_mse": {
+          "naive": 0.003244277535667232,
+          "model": 0.0035126222544193987,
+          "gain_pct": -8.271324379681278
+        },
+        "scaled_mse": {
+          "naive": 1.7394272309159056,
+          "model": 1.890082676966571,
+          "gain_pct": -8.661210045063905
+        },
+        "native_mse": {
+          "naive": 1.7394272599083103,
+          "model": 1.8900827211715274,
+          "gain_pct": -8.661210775273155
+        }
+      }
+    },
+    "mask_outer": {
+      "slots": 246,
+      "scored": 242,
+      "losses": {
+        "price_mae": {
+          "naive": 1.9760743801652894,
+          "model": 1.9858310543394215,
+          "gain_pct": -0.49374022921728766
+        },
+        "log_mse": {
+          "naive": 0.0008798014921043193,
+          "model": 0.000913363935120634,
+          "gain_pct": -3.814774505103391
+        },
+        "scaled_mse": {
+          "naive": 0.4699182363034479,
+          "model": 0.48808902541049726,
+          "gain_pct": -3.866798030650509
+        },
+        "native_mse": {
+          "naive": 0.4699182331877931,
+          "model": 0.48808902056432396,
+          "gain_pct": -3.866797688028689
+        }
+      }
+    },
+    "numeric_inner_0": {
+      "slots": 63,
+      "scored": 63,
+      "losses": {
+        "price_mae": {
+          "naive": 6.156666666666665,
+          "model": 6.991450381903683,
+          "gain_pct": -13.559020821391732
+        },
+        "log_mse": {
+          "naive": 0.004012393036481189,
+          "model": 0.0047364487391378845,
+          "gain_pct": -18.045482984181472
+        },
+        "scaled_mse": {
+          "naive": 3.0559071208962707,
+          "model": 3.604140851000265,
+          "gain_pct": -17.940130652374098
+        },
+        "native_mse": {
+          "naive": 3.0559071089566663,
+          "model": 3.6041408266652346,
+          "gain_pct": -17.940130316845384
+        }
+      }
+    },
+    "numeric_inner_1": {
+      "slots": 63,
+      "scored": 63,
+      "losses": {
+        "price_mae": {
+          "naive": 5.159841269841269,
+          "model": 5.652261906144467,
+          "gain_pct": -9.543329155905344
+        },
+        "log_mse": {
+          "naive": 0.0043285019369698596,
+          "model": 0.004814447259936138,
+          "gain_pct": -11.226639840814334
+        },
+        "scaled_mse": {
+          "naive": 2.6802107182928014,
+          "model": 2.962163044233399,
+          "gain_pct": -10.51978204609938
+        },
+        "native_mse": {
+          "naive": 2.680210722787715,
+          "model": 2.962163070267499,
+          "gain_pct": -10.519782832094716
+        }
+      }
+    },
+    "numeric_inner_2": {
+      "slots": 63,
+      "scored": 63,
+      "losses": {
+        "price_mae": {
+          "naive": 3.6344444444444433,
+          "model": 3.8436579578446395,
+          "gain_pct": -5.756409723637312
+        },
+        "log_mse": {
+          "naive": 0.003244277535667232,
+          "model": 0.0035873929591037513,
+          "gain_pct": -10.576019457778996
+        },
+        "scaled_mse": {
+          "naive": 1.7394272309159056,
+          "model": 1.9284397579557195,
+          "gain_pct": -10.866365874948869
+        },
+        "native_mse": {
+          "naive": 1.7394272599083103,
+          "model": 1.9284398001924348,
+          "gain_pct": -10.866366455248478
+        }
+      }
+    },
+    "numeric_outer": {
+      "slots": 246,
+      "scored": 242,
+      "losses": {
+        "price_mae": {
+          "naive": 1.9760743801652894,
+          "model": 2.035470525109753,
+          "gain_pct": -3.005764638246844
+        },
+        "log_mse": {
+          "naive": 0.0008798014921043193,
+          "model": 0.0009328783908224001,
+          "gain_pct": -6.0328266312814405
+        },
+        "scaled_mse": {
+          "naive": 0.4699182363034479,
+          "model": 0.49980086186859046,
+          "gain_pct": -6.359111704242504
+        },
+        "native_mse": {
+          "naive": 0.4699182331877931,
+          "model": 0.49980086002908386,
+          "gain_pct": -6.359112017972879
+        }
+      }
+    }
+  },
+  "intervals": {
+    "mask_20": {
+      "eligible": 242,
+      "ordinal_slots": 246,
+      "block": 20,
+      "replicates": 10000,
+      "paired_difference": -0.01817078910705,
+      "difference_ci_95": [
+        -0.045566207633615935,
+        0.010211449569670919
+      ],
+      "gain_pct": -3.8667980306506524,
+      "gain_ci_95_pct": [
+        -9.696624670720745,
+        2.1730268759088793
+      ],
+      "resampled_eligible_min_max": [
+        229,
+        246
+      ],
+      "method": "full-ordinal year-preserving weighted moving-block,recentered basic",
+      "selection_adjusted": false
+    },
+    "mask_60": {
+      "eligible": 242,
+      "ordinal_slots": 246,
+      "block": 60,
+      "replicates": 10000,
+      "paired_difference": -0.01817078910705,
+      "difference_ci_95": [
+        -0.04402846491202121,
+        0.005316490928183447
+      ],
+      "gain_pct": -3.8667980306506524,
+      "gain_ci_95_pct": [
+        -9.369388440500956,
+        1.131365100874771
+      ],
+      "resampled_eligible_min_max": [
+        236,
+        246
+      ],
+      "method": "full-ordinal year-preserving weighted moving-block,recentered basic",
+      "selection_adjusted": false
+    },
+    "numeric_20": {
+      "eligible": 242,
+      "ordinal_slots": 246,
+      "block": 20,
+      "replicates": 10000,
+      "paired_difference": -0.029882625565142096,
+      "difference_ci_95": [
+        -0.07426156784031651,
+        0.02067728698116817
+      ],
+      "gain_pct": -6.359111704242418,
+      "gain_ci_95_pct": [
+        -15.803082771267977,
+        4.400188242070242
+      ],
+      "resampled_eligible_min_max": [
+        229,
+        246
+      ],
+      "method": "full-ordinal year-preserving weighted moving-block,recentered basic",
+      "selection_adjusted": false
+    },
+    "numeric_60": {
+      "eligible": 242,
+      "ordinal_slots": 246,
+      "block": 60,
+      "replicates": 10000,
+      "paired_difference": -0.029882625565142096,
+      "difference_ci_95": [
+        -0.07192526114262918,
+        0.02215151935007003
+      ],
+      "gain_pct": -6.359111704242418,
+      "gain_ci_95_pct": [
+        -15.305909748985293,
+        4.71390928011693
+      ],
+      "resampled_eligible_min_max": [
+        236,
+        246
+      ],
+      "method": "full-ordinal year-preserving weighted moving-block,recentered basic",
+      "selection_adjusted": false
+    }
+  },
+  "optimized_loss_oos_point_positive": {
+    "mask": false,
+    "numeric": false
+  },
+  "optimized_loss_oos_supported": {
+    "mask": false,
+    "numeric": false
+  },
+  "classification": "INCONCLUSIVE",
+  "verified_narrow_finding": "Both fixed RAW forecasts have negative optimized-objective OOS point gain; hidden positive MSE skill lost in MAE is not observed.",
+  "classification_scope": "Intervals include zero; no universal no-signal or no-loss-improvement claim.",
+  "posthoc": true,
+  "independent_holdout": false,
+  "historical_availability_verified": false,
+  "first_vintage_verified": false,
+  "release_allowed": false,
+  "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/named-loss-diagnosis-20261011",
+  "next_exact_step": "First inspect registry for equivalent same-recipe named-cohort weak-signal power control. If absent, freeze one bounded synthetic power protocol; no automatic market fit/grid/loss change.",
+  "record_id": "de994263e42ccbea450acb33170eaeff648731083332b4ce42fbc58a15cb46bf"
+}
