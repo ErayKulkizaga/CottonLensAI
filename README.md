@@ -1,5 +1,13 @@
 # CottonLensAI
 
+11 Ekim: [PR42 kaynak kontrolü](https://github.com/ErayKulkizaga/CottonLensAI/pull/42)
+44+4 fit ile tamamlandı. Aynı 32 alan/aynı kontrat hedefinde ham numeric
+Naive kazancı −%3,005765, mask −%0,493740; kaynak farkı belirsiz,
+numeric %5 pratik hedefi kurtarmıyor. Modeller ve tahminler
+[sonuç arşivinde](https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/named-history-source-result-20261011)
+korunur. Tek sonraki iş frozen tahminlerde sıfır-fit MSE–MAE ayrımı;
+yeni model/grid açılmaz. [Güncel kararlar](docs/STATUS.md).
+
 [PR42: aynı kontrat geçmişinin kaynak katkısı](https://github.com/ErayKulkizaga/CottonLensAI/pull/42)
 tek sabit numeric–mask deneyi için ön kayda alındı: aynı 32 alan, aynı
 named T+5 cohort ve XGBoost; bütçe 44+4 fit. Taze arşiv restore ve 111

@@ -1,5 +1,12 @@
 # Deney geçmişi ve tekrar kontrolü
 
+11 Ekim: [named history kaynak kontrolü](../docs/NAMED_HISTORY_SOURCE_CONTROL_T5_20261011.md)
+44+4 fit ile kapandı; 48 native makbuz yeni üç tarif nesnesine eklendi,
+eski kayıtlar değişmedi. Ham numeric/mask karşılaştırmasında pratik
+Naive üstünlüğü yok; işaret belirsiz. Sonuç ve modeli tekrar fit etmek
+yerine `named-history-source-result-20261011` Release'ini checksum ile
+geri kur. Tek sonraki iş mevcut tahminlerde sıfır-fit MSE–MAE ayrımı.
+
 11 Ekim: [aynı-kontrat geçmişi hazırlığı](../docs/NAMED_HISTORY_READINESS_20261011.md)
 tamamlandı, model fit0. Dört geçmiş getiri mevcut origin karar saatine göre
 kuruluyor; 3.520 tarih/14.080 endpoint ve22 sabit eğitim işi doğrulandı.

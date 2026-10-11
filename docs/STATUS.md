@@ -1,5 +1,17 @@
 # Güncel kararlar — 11 Ekim 2026
 
+11 Ekim: [aynı-kontrat kaynak kontrolü tamamlandı](NAMED_HISTORY_SOURCE_CONTROL_T5_20261011.md#tamamlanan-sonuç--444-fit-ek-doğrulama-fiti-sıfır).
+44 piyasa + dört sentetik fit; ham numeric Naive kazancı −%3,005765,
+mask −%0,493740. Kaynak katkısı −%2,512024 Naive-MAE birimi;
+blok20/60 aralıkları sıfırı içerir. Numeric pratik kazanç üst sınırları
+%2,781643/%3,807229, %5 hedefinin altında. İki geçmiş shrinkage sıfır.
+Mask, eski XGB'nin 435 iç/dış tahminini yeni fit'lerden tam aynı üretir.
+984 satır/44+4 native replay/12 scalar aralık/sekiz bozulma kontrolü geçti.
+Bu sabit temsil hedefi kurtarmadı; kaynakta bütün modeller için sıfır
+sinyal veya Cotton'un öngörülemezliği ispatı değildir. Sonuç arşivinin
+taze teslimatı kapanır; ardından tek sıfır-fit MSE–MAE loss ayrımı.
+Yeni model, loss, grid veya benzer lag araması otomatik başlamaz.
+
 11 Ekim: [aynı kontrat geçmişi kaynak kontrolü](NAMED_HISTORY_SOURCE_CONTROL_T5_20261011.md)
 PR42'de kodlandı ve 44 piyasa + dört sentetik fit bütçesiyle ön kayıt
 yayımlandı. Taze GitHub restore 1.174 payload'u frozen source ile

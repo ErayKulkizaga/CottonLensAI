@@ -106,3 +106,59 @@ kontrolü geçti; bu yeni piyasa kanıtı değildir. 173 eski sicil aşaması,
 `research/evidence/named-history-source-preregistration-delivery-20261011.json`.
 Sonraki işlem taze ön kayıttan prepare/pilot-plan; ardından yalnız kilitli
 44+4 fit bütçesi. Kontrol başarısızsa piyasa fit veya yeni tarif başlamaz.
+
+### Tamamlanan sonuç — 44+4 fit, ek doğrulama fit'i sıfır
+
+| Ham kol | Fiyat-MAE (cent/lb) | Naive kazancı | Yön |
+|---|---:|---:|---:|
+| Naive | 1,976074 | — | — |
+| Mask | 1,985831 | −%0,493740 | %54,958678 |
+| Numeric | 2,035471 | −%3,005765 | %51,652893 |
+
+Ham kaynak katkısı mask-MAE−numeric-MAE = −0,049639 cent/lb,
+Naive-MAE biriminde −%2,512024. Blok20/60 aralıkları
+[−%5,323331, +%0,648296] / [−%5,013156, +%0,623802]: işaret belirsiz,
+faydalı katkı gösterilmedi. **INCONCLUSIVE**, yalnız bu kaynak katkısının
+işareti için. “Bütün modellerde kaynakta sıfır sinyal” sonucu değildir.
+
+Numeric–Naive kazanç aralıklarının üst sınırları %2,781643/%3,807229,
+kilitli %5 hedefinden küçük. Pratik karar
+`FIXED_NAMED_HISTORY_BELOW_PRACTICAL_GOAL`. En büyük üç Naive hatasını
+çıkarınca numeric kazancı −%2,936343; ana sonuç birkaç aşırı gözleme
+bağlı görünmüyor. Geçmiş shrinkage iki kolda sıfır: seçilmiş tahmin
+Naive ile aynı, tüm-origin yön ve aktiflik sıfır. Bu kaynak yokluğu
+kanıtı sayılmaz.
+
+Mask kolunun yeni 22 fit'i, PR40'ın 435 iç/dış ham tahminini **tam aynı**
+üretti; eski modeller yeniden kullanılarak bu sonuç oluşturulmadı.
+Böylece dört alanın boyutu veya missing bitleri pratik başarısızlığı
+açıklamıyor. Numeric farkı gerçek girdi değerlerinin kontrollü etkisi.
+44 piyasa ve dört sentetik native replay, 984 tahmin satırı, 12 bağımsız
+scalar aralık ve sekiz yeniden hash'lenmiş bozulma kontrolü geçti.
+
+Sonuç kanıtı `research/evidence/named-history-source-result-20261011.json`;
+modeller/tahminler [sonuç Release'inde](https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/named-history-source-result-20261011).
+ZIP SHA256 `61bf6a11f316a83d5d50c6e24240cb98187595056d169586b1e99cff3ed23a89`.
+Eski 174 aşama, 523 fit tarifi ve 115 proof korunur; yalnız yeni 48
+native fit üç tarif nesnesiyle sicile eklenir.
+
+Tüm parent ve yeni native payload'lar 152.680.879 byte açılır. İlk restore
+yardımcısının 150 MB kotası bunu reddetti; R1 korunur. Ayrı checksum bağlı
+R2 helper, 160 MB üst sınırını ve signed inventory'nin **tam** açılmış
+byte toplamını denetler. Bilimsel rapor/model/tahmin/source byte'ları
+değişmedi. Yerel cold restore aynı rapor/CSV/complete ve bağımsız
+verifier makbuzunu sıfır-fit yeniden üretti. Eski index guard'ın mutable
+liste boyutunu kullanması da immutable before-index'e karşı bağımsız
+prefix kontrolüyle doğrulandı; eski kayıt veya sonuç değiştirilmedi.
+
+Tek sonraki bilimsel adım: bu frozen tahminlerin iç/dış kayıplarını
+standardized log-MSE ve fiyat-MAE açısından sıfır-fit ayırmak. Amaç,
+optimize edilen loss'ta beceri varken fiyat-MAE'de kaybolup kaybolmadığını
+tespit etmek; yeni loss/model/grid seçmek değildir. Bu tamamlanmadan
+benzer lag/feature aramaları veya yeni piyasa fit başlamaz.
+
+Taze GitHub sonuç ZIP'i ve ayrı R2 helper asset'i `a52f8aefea9abc18a0b9fdbe3e4f98ec365d1393`
+manifestlerine karşı doğrulandı. 1.420 sonuç payload'u, 44+4 native
+çıkarım, aynı rapor/CSV/complete byte'ları, 12 scalar aralık ve sekiz
+bozulma reddi yeniden üretildi; ek fit sıfır. Teslim kanıtı
+`research/evidence/named-history-source-result-delivery-20261011.json`.
