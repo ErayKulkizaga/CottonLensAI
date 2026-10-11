@@ -448,6 +448,16 @@ deponun sabit `storage.py` hash'ini ister; aynı namespace'e tekrar çalışmaz.
 Kısmi geri kurma makbuzu silme izni, tüm native'lerin bağ doğrulaması veya
 tam Drive taşıması değildir. Büyük yakalama ve güncel kaynak kontrolleri sürer.
 
+11 Ekim sonraki saklama kaydı: [ikinci](evidence/private-drive-closed-receipts-v2-delivery-20261011.json)
+ve [üçüncü](evidence/private-drive-closed-receipts-v3-delivery-20261011.json) gruplar
+14.816 ayrı özgün makbuzu daha private Release'den taze indirme/geri açmayla doğruladı.
+[Geri alınabilir temizleme](evidence/private-drive-recoverable-cleanup-20261011.json)
+32.476 özgün dosyanın güncel hash'e bağlı DriveFS silme işlemini kaydeder;
+bulutun toplu sayımı, kalıcı silme ve gerçek kota düşüşü ayrı, henüz açık kontrollerdir.
+Üç okunamayan/kilitli özgün korunur; önceden kaybolmuş beş küçük run ZIP'i zaten
+GitHub/yerel yedektedir. Eski makbuzların `source_files_deleted=0` alanı değiştirilmez;
+yeni işlem ek kayıttır. Bu, yeni fit veya tüm native payload'ların kurtarıldığı anlamına gelmez.
+
 [GitHub evidence-20261005](https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/evidence-20261005), bilimsel dosyaları içerik hash'iyle tekilleştirir. Manifest her orijinal göreli yolu, orijinal/public SHA-256 değerini ve varlık/iç yolunu korur. Parçalar bağımsız ZIP'tir; büyük veri Git ağacına eklenmez.
 
 Mevcut ham kaynaklar, model/checkpoint'ler, ledger'lar, tahminler, raporlar, kaynak snapshot'ları ve kesintiye uğramış çalıştırmalar korunur. Yazılım ortamı/cache, kişisel ayarlar, UI ekran görüntüleri ve içeriği güvenle yayınlanamayan veritabanları dışlanır; dışlamalar indekste görünür. Geçmişte kaybolmuş LSTM tahminleri oluşturulmaz. Yerel orijinaller silinmez/değişmez. Ayıklanmış dosya eski hash doğrulamasını geçmez ve eski deney cache'i olarak kullanılmamalıdır.

@@ -18667,6 +18667,18 @@
     {
       "path": "evidence/private-drive-coherent-delivery-20261011.json",
       "sha256": "9388eaa0a0205a9fcb4bc863c98c7635a05ee58d763db58b7505277bb599e36c"
+    },
+    {
+      "path": "evidence/private-drive-closed-receipts-v2-delivery-20261011.json",
+      "sha256": "51d93c4787719079bb9a3be520a28c845daa6d3a414cd8021e1325118bf5fd02"
+    },
+    {
+      "path": "evidence/private-drive-closed-receipts-v3-delivery-20261011.json",
+      "sha256": "8bab106ddd7cae72d54b859a3d5823e5b8279b76c10a7138883d97ac13b9ea90"
+    },
+    {
+      "path": "evidence/private-drive-recoverable-cleanup-20261011.json",
+      "sha256": "e63f01364c5923e596c02e58b53466eac0cd30c1be14d176437c70b9f98a6273"
     }
   ]
 }

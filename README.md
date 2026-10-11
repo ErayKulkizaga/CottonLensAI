@@ -1,6 +1,6 @@
 # CottonLensAI
 
-11 Ekim: depo private yapıldı. Drive taşımasında 17.668 dosya/2.095.998.283 bayt
+11 Ekim: depo private yapıldı. Drive taşımasında 32.484 dosya/4.108.647.287 bayt
 GitHub'dan yeniden indirilip doğrulandı; bunların 363'ü checkpoint/scaler/geçmiş
 dosyasıdır ve özgün baytlarla geri açıldı. [Ek teslimat makbuzu](research/evidence/private-drive-additional-delivery-20261011.json).
 Başlangıçta karantinaya alınan dört MLflow veritabanı da salt okunur inceleme
@@ -22,9 +22,17 @@ Bu ek bölüm model ağırlığı içermez; dosya sayısı bağımsız deney say
 aynı 17.668 dosyayı tek ağaçta doğruladı; [tarif ve envanter](research/evidence/private-drive-coherent-delivery-20261011.json)
 private Release'den tekrar indirildi. Bu, tam taşıma veya model inference sonucu değildir.
 Genel hassas içerik filtresi değişmedi; kaynakların modele uygunluğu artmadı.
-47 özgün karantina dosyasının tamamı Drive'da ve özel yerel yedekte de tutuluyor. Büyük deney
-ağacının aktarımı sürüyor, hiçbir özgün silinmedi. Henüz bütün Drive'ın
-taşındığı veya kota sorununun çözüldüğü söylenmiyor. Canlı görevin Drive'a yazması
+Sonraki iki [makbuz grubu](research/evidence/private-drive-closed-receipts-v2-delivery-20261011.json)
+ve [ek grup](research/evidence/private-drive-closed-receipts-v3-delivery-20261011.json)
+14.816 ayrı özgün kaydı daha korudu; bunlar yeni fit veya model ağırlığı değildir.
+47 özgün inceleme istisnasının private GitHub ve yerel kopyaları korunuyor.
+[Temizleme kaydı](research/evidence/private-drive-recoverable-cleanup-20261011.json):
+32.476 dosya/4.108.244.956 bayt, güncel hash ve taze geri kurma kontrolünden sonra
+DriveFS üzerinden geri alınabilir silme kuyruğuna alındı. Toplu bulut sayımı ve
+kalıcı silme onayı bekliyor; kota henüz boşalmadı. Üç erişim/kilit hatası olan
+özgün silinmedi. Önceden kaybolmuş beş küçük makbuz ZIP'i yedekte mevcut.
+Büyük deney ağacının aktarımı sürüyor; bütün Drive taşıması tamamlanmadı.
+Canlı görevin Drive'a yazması
 kapatıldı; frozen kaynak, karar saati ve ilk126 kilidi korundu.
 [Saklama ve geri kurma kuralları](research/README.md#private-github-ve-drive-taşıması).
 Bu koruma işi tamamlanmadan yeni sentetik/piyasa fit'i başlamaz.
