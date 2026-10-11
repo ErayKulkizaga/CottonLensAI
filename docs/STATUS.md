@@ -4,9 +4,20 @@
 geçti. Depo private; Drive'daki özgün modeller/veriler/deneyler GitHub Releases'e
 doğrulanarak taşınıyor. [Ek teslimat makbuzu](../research/evidence/private-drive-additional-delivery-20261011.json)
 5.924 dosya/504.084.068 bayt taze GitHub indirmesini doğrular; bunların 363'ü
-checkpoint/scaler/geçmiş dosyasıdır ve aynı baytlarla geri açılmıştır. 47
-credential benzeri dosya veya incelenmemiş veritabanı Drive'da/özel yerel
-karantinada tutulur. Büyük `experiments` yakalaması sürüyor; hiçbir özgün
+checkpoint/scaler/geçmiş dosyasıdır ve aynı baytlarla geri açılmıştır.
+[Sonraki salt okunur veritabanı makbuzu](../research/evidence/private-drive-databases-delivery-20261011.json)
+dört özgün MLflow SQLite dosyasını private Release'den yeniden indirme,
+aynı hash, `integrity_check` ve bütün tablo satır sayılarıyla doğrular:
+toplam 5.928 dosya/509.187.684 bayt.
+[43 özgün USDA HTML makbuzu](../research/evidence/private-drive-html-delivery-20261011.json)
+ortak `window.BOOMR_API_key` eşleşmesini Boomerang telemetri tanımlayıcısı
+olarak ayırır; başka credential eklenmiş kontrol ve yanlış kaynak kontrolü
+reddedilir. Özgün HTML taze private indirmede aynı hash'lerle doğrulandı:
+toplam 5.971 dosya/513.539.817 bayt. Genel filtre ve eski dışlama kaydı değişmedi;
+HTML'in `publication_timestamp_verified=false`/`model_eligible=false` durumu
+korundu. Başlangıçtaki 47 karantina özgününün tamamı ayrıca Drive'da/özel
+yerel yedekte korunur. Sayımlar bağımsız deney sayısı veya model becerisi değildir.
+Büyük `experiments` yakalaması sürüyor; hiçbir özgün
 silinmedi. Tam taşıma ve kota boşaltma henüz bitmedi.
 Canlı task'ın yalnız DrivePath ayarı kaldırıldı; XML yedeği, frozen kaynak ve
 altı missing/ilk126 kilidi korundu. Yeni fit/grid/skor yok. Saklama tamamlanınca

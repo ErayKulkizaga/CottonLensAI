@@ -1,9 +1,16 @@
 # CottonLensAI
 
-11 Ekim: depo private yapıldı. Drive taşımasında 5.924 dosya/504.084.068 bayt
+11 Ekim: depo private yapıldı. Drive taşımasında 5.971 dosya/513.539.817 bayt
 GitHub'dan yeniden indirilip doğrulandı; bunların 363'ü checkpoint/scaler/geçmiş
 dosyasıdır ve özgün baytlarla geri açıldı. [Ek teslimat makbuzu](research/evidence/private-drive-additional-delivery-20261011.json).
-47 karantina dosyası Drive'da ve özel yerel yedekte tutuluyor; büyük deney
+Başlangıçta karantinaya alınan dört MLflow veritabanı da salt okunur inceleme
+sonrası private Release'den geri indirilip bütünlük kontrolüyle doğrulandı.
+[Veritabanı makbuzu](research/evidence/private-drive-databases-delivery-20261011.json).
+43 USDA HTML dosyasının tek ortak tarayıcı eşleşmesi, sayfalara gömülü Boomerang
+telemetri tanımlayıcısı olarak incelendi; özgün baytlar ayrı private arşivde
+doğrulandı. [HTML makbuzu](research/evidence/private-drive-html-delivery-20261011.json).
+Genel hassas içerik filtresi değişmedi; kaynakların modele uygunluğu artmadı.
+47 özgün karantina dosyasının tamamı Drive'da ve özel yerel yedekte de tutuluyor. Büyük deney
 ağacının aktarımı sürüyor, hiçbir özgün silinmedi. Henüz bütün Drive'ın
 taşındığı veya kota sorununun çözüldüğü söylenmiyor. Canlı görevin Drive'a yazması
 kapatıldı; frozen kaynak, karar saati ve ilk126 kilidi korundu.

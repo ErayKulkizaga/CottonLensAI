@@ -390,6 +390,30 @@ hemen önce Drive'ın **güncel** hash'i yeniden eşleşmelidir. Boş olmayan re
 hedefi ve bozuk kimlik reddedilir. Çöp kutusuna taşıma tek başına kotayı açmaz;
 yalnız doğrulanan proje dosyalarının kalıcı silme aşaması ayrıca yürütülür.
 
+Genel saklama aracı incelenmemiş SQLite dosyalarını reddetmeye devam eder.
+Dört tarihsel MLflow dosyası için ayrı salt okunur inceleme yapılmıştır:
+ham baytlar/hücre metinleri credential kalıplarıyla taranmış, özel Release'e
+özgün dosyalar yüklenmiş ve taze indirmede SHA-256, SQLite `integrity_check`
+ile bütün tablo satır sayıları eşleşmiştir. Bu sınırlı inceleme her türlü
+gizli bilginin yokluğunun ispatı değildir; dosyalar herkese açık yayımlanamaz.
+`reviewed-databases-manifest.json` ve `database-review-v1.py` Release'dedir;
+bu manifest genel `storage.py` ZIP şeması değildir.
+[Ek makbuz](evidence/private-drive-databases-delivery-20261011.json) eski
+karantina kayıtlarını değiştirmez. Smoke-tracking kayıtları piyasa başarısı
+değildir; current/previous kopyaları yeni bağımsız deneyler sayılmaz.
+
+43 USDA HTML dışlaması ayrıca incelenmiştir: aynı `window.BOOMR_API_key`
+alanı, [Akamai'nin sayfaya eklenen Boomerang kodundaki uygulama tanımlayıcısıdır](https://techdocs.akamai.com/mpulse-boomerang/docs/implementation).
+[Yönetim API'si ayrıca kimlik doğrulama token'ı gerektirir](https://techdocs.akamai.com/mpulse/reference/api).
+Yalnız bu tek alanın sınıflandırılması tarama kopyasında ayrılmış; özgün
+dosyalar değişmeden `reviewed-ams-html-originals.zip` içinde korunmuştur.
+Diğer credential kontrolü sürer; başka credential eklenmiş ve yanlış kaynak
+kontrolleri reddedilmiştir. `reviewed-ams-html-manifest.json` ile
+`ams-html-review-v1.py` ayrı private Release varlıklarıdır ve genel ZIP şeması
+değildir. [Ek makbuz](evidence/private-drive-html-delivery-20261011.json)
+43 taze indirmeyi doğrular; tarihsel saat/vintage veya model uygunluğu kanıtı
+üretmez. Genel saklama politikasında bir anahtar izin listesi açılmamıştır.
+
 [GitHub evidence-20261005](https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/evidence-20261005), bilimsel dosyaları içerik hash'iyle tekilleştirir. Manifest her orijinal göreli yolu, orijinal/public SHA-256 değerini ve varlık/iç yolunu korur. Parçalar bağımsız ZIP'tir; büyük veri Git ağacına eklenmez.
 
 Mevcut ham kaynaklar, model/checkpoint'ler, ledger'lar, tahminler, raporlar, kaynak snapshot'ları ve kesintiye uğramış çalıştırmalar korunur. Yazılım ortamı/cache, kişisel ayarlar, UI ekran görüntüleri ve içeriği güvenle yayınlanamayan veritabanları dışlanır; dışlamalar indekste görünür. Geçmişte kaybolmuş LSTM tahminleri oluşturulmaz. Yerel orijinaller silinmez/değişmez. Ayıklanmış dosya eski hash doğrulamasını geçmez ve eski deney cache'i olarak kullanılmamalıdır.

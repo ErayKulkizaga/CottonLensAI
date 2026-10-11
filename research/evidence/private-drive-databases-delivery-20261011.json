@@ -1,0 +1,197 @@
+{
+  "schema": 1,
+  "status": "reviewed_private_databases_fresh_recovery_verified",
+  "release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/drive-preservation-20261011",
+  "parent_record_id": "46651f232a19b5d7f24fb2300124c27a137605948324531ef2d387dc6755312c",
+  "review_manifest_sha256": "5ba8264752ab713d49a48f1d06de7964762f6cb7f50c335355e7282587092ffe",
+  "review_helper_sha256": "911a1f4055f4f70404f4760d4b0a0dceef7386b3d3f647da04b343e04cdcc297",
+  "files": [
+    {
+      "source_path": "reports/smoke-tracking/tracking/mlflow.previous.sqlite",
+      "asset": "smoke-tracking-mlflow.previous-2a2ae2bc2d57.sqlite",
+      "sha256": "2a2ae2bc2d5757153ae586dcb5ee36211b4f4b8b3256aadb72cd6293c489cefd",
+      "bytes": 880640,
+      "remote_bytes_identical": true,
+      "read_only_integrity_check": "ok",
+      "all_table_row_counts_match": true,
+      "nonempty_tables": [
+        {
+          "name": "alembic_version",
+          "rows": 1
+        },
+        {
+          "name": "experiments",
+          "rows": 2
+        },
+        {
+          "name": "latest_metrics",
+          "rows": 6
+        },
+        {
+          "name": "metrics",
+          "rows": 6
+        },
+        {
+          "name": "runs",
+          "rows": 12
+        },
+        {
+          "name": "tags",
+          "rows": 72
+        },
+        {
+          "name": "workspaces",
+          "rows": 1
+        }
+      ],
+      "original_retained": true,
+      "restore_may_not_execute_models": true
+    },
+    {
+      "source_path": "reports/smoke-tracking/tracking/mlflow.sqlite",
+      "asset": "smoke-tracking-mlflow-d57d22918845.sqlite",
+      "sha256": "d57d2291884597579a62c9ad096600a547144a083aacee09ddd011d738e33dd4",
+      "bytes": 880640,
+      "remote_bytes_identical": true,
+      "read_only_integrity_check": "ok",
+      "all_table_row_counts_match": true,
+      "nonempty_tables": [
+        {
+          "name": "alembic_version",
+          "rows": 1
+        },
+        {
+          "name": "experiments",
+          "rows": 2
+        },
+        {
+          "name": "latest_metrics",
+          "rows": 6
+        },
+        {
+          "name": "metrics",
+          "rows": 6
+        },
+        {
+          "name": "runs",
+          "rows": 12
+        },
+        {
+          "name": "tags",
+          "rows": 72
+        },
+        {
+          "name": "workspaces",
+          "rows": 1
+        }
+      ],
+      "original_retained": true,
+      "restore_may_not_execute_models": true
+    },
+    {
+      "source_path": "tracking/mlflow.sqlite",
+      "asset": "tracking-mlflow-5a859009902c.sqlite",
+      "sha256": "5a859009902c41b338327a4dd11c201628c906e0b502d2861502cd298c3b7c28",
+      "bytes": 1671168,
+      "remote_bytes_identical": true,
+      "read_only_integrity_check": "ok",
+      "all_table_row_counts_match": true,
+      "nonempty_tables": [
+        {
+          "name": "alembic_version",
+          "rows": 1
+        },
+        {
+          "name": "experiments",
+          "rows": 2
+        },
+        {
+          "name": "latest_metrics",
+          "rows": 370
+        },
+        {
+          "name": "metrics",
+          "rows": 370
+        },
+        {
+          "name": "params",
+          "rows": 1676
+        },
+        {
+          "name": "runs",
+          "rows": 205
+        },
+        {
+          "name": "tags",
+          "rows": 1394
+        },
+        {
+          "name": "workspaces",
+          "rows": 1
+        }
+      ],
+      "original_retained": true,
+      "restore_may_not_execute_models": true
+    },
+    {
+      "source_path": "tracking/mlflow.previous.sqlite",
+      "asset": "tracking-mlflow.previous-9da2a185f8c7.sqlite",
+      "sha256": "9da2a185f8c7458014daf5908d85833496eef7239dfe76d4fdca9e3be964bf53",
+      "bytes": 1671168,
+      "remote_bytes_identical": true,
+      "read_only_integrity_check": "ok",
+      "all_table_row_counts_match": true,
+      "nonempty_tables": [
+        {
+          "name": "alembic_version",
+          "rows": 1
+        },
+        {
+          "name": "experiments",
+          "rows": 2
+        },
+        {
+          "name": "latest_metrics",
+          "rows": 370
+        },
+        {
+          "name": "metrics",
+          "rows": 370
+        },
+        {
+          "name": "params",
+          "rows": 1676
+        },
+        {
+          "name": "runs",
+          "rows": 205
+        },
+        {
+          "name": "tags",
+          "rows": 1394
+        },
+        {
+          "name": "workspaces",
+          "rows": 1
+        }
+      ],
+      "original_retained": true,
+      "restore_may_not_execute_models": true
+    }
+  ],
+  "additional_logical_files": 4,
+  "additional_logical_bytes": 5103616,
+  "combined_verified_logical_files": 5928,
+  "combined_verified_logical_bytes": 509187684,
+  "remaining_unuploaded_credential_like_files": 43,
+  "all_47_previously_quarantined_originals_retained_on_drive_and_offline": true,
+  "preservation_is_not_independent_experiment_count": true,
+  "smoke_tracking_is_not_market_performance": true,
+  "privacy_review_limit": "Pattern review is not proof of absence of every possible secret; originals are permitted only in this private repository, not for public republication.",
+  "new_fits": 0,
+  "source_files_deleted": 0,
+  "full_project_migration_complete": false,
+  "quota_recovery_verified": false,
+  "next_exact_step": "Finish active experiment capture/fresh remote recovery, then current-source closure and hash check before any authorized removal.",
+  "record_id": "3364259bd4ae40f6c59a4c8267e5e4b05ec9da787b9aa88c9f24ea234586f609"
+}
