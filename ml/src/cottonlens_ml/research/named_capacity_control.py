@@ -149,13 +149,13 @@ def synthetic(kind):
     return frame, train, test, recipe, iterations
 
 
-def learning(experiment, *, deadline=None, repo=None):
+def learning(experiment, *, deadline=None, repo=None, synthetic_fn=None, profile=PROFILE):
     root = experiment.root / 'capacity-learning-ledger'
     used, _ = fit_consumption(root)
     if used > 4:
         raise ValueError('Synthetic budget exceeded')
     identity = {k: experiment.identity[k] for k in ('source_id', 'versions', 'python')}
-    identity.update(kind='synthetic_learning_only', policy=VALIDATION_POLICY, profile=PROFILE)
+    identity.update(kind='synthetic_learning_only', policy=VALIDATION_POLICY, profile=profile)
     ledger, measurements, keys = Ledger(root, identity), {}, {}
     count = [used]
     def before():
@@ -167,7 +167,7 @@ def learning(experiment, *, deadline=None, repo=None):
             raise ValueError('Source changed during learning controls')
         count[0] += 1
     for kind in KINDS:
-        frame, train, test, recipe, iterations = synthetic(kind)
+        frame, train, test, recipe, iterations = (synthetic_fn or synthetic)(kind)
         record = ledger.run({'role': kind, 'recipe': recipe, 'iterations': iterations, 'seed': 703},
                             lambda work, frame=frame, train=train, test=test, recipe=recipe, iterations=iterations:
                                 fit_predict(frame, train, None, test, recipe, work, iterations=iterations), before_compute=before)
