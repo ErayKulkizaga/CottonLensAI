@@ -76,3 +76,16 @@ Sicil kontrolü, yeni profil/bütçe, fail-closed öğrenme kontrolleri ve
 source/data/environment kimliği hazırlanıp taze GitHub restore
 doğrulanmadan eğitim başlamaz. Başarı veya source'ta sinyal yokluğu
 bu readiness sonucundan çıkarılmaz; eski gate'ler değiştirilmez.
+
+## GitHub teslimatı
+
+[PR41](https://github.com/ErayKulkizaga/CottonLensAI/pull/41) ve
+[checksum arşivi](https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/named-history-readiness-20261011)
+yayımlandı. `90014633df5925aba41240a9fca4928729bd432a` commit'indeki
+manifest ve Release ZIP'i GitHub'dan yeniden indirildi. Taze restore,
+1.178 payload'u doğrulayıp hazırlığın beş çıktı dosyasını byte eşitliğiyle,
+ayrı endpoint denetimini ve dört bozulma kontrolünü sıfır-fit yeniden üretti.
+Arşiv SHA256: `93b867b0653d8f68a44441fecb1d6508a231356336f1fc8810ba2b0bc8367b45`.
+172 eski sicil kaydı, 109 eski kanıt dosyası (108 sicil referansı) ve
+tüm trials içeriği korunur.
+Teslim kanıtı: `research/evidence/named-history-readiness-delivery-20261011.json`.

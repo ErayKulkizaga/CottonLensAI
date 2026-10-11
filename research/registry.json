@@ -18316,6 +18316,10 @@
     {
       "path": "evidence/named-history-readiness-release-20261011.json",
       "sha256": "f5b306dedc346afed6af1866e27b98bd2a52d7ed286f5f18113bbf6799452137"
+    },
+    {
+      "path": "evidence/named-history-readiness-delivery-20261011.json",
+      "sha256": "c5aa7a1a80eb101edf5f527922ba4608d6f246bad4415c1c4ea9bd27aec664f9"
     }
   ]
 }
