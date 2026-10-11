@@ -1,5 +1,11 @@
 # CottonLensAI
 
+[PR42: aynı kontrat geçmişinin kaynak katkısı](https://github.com/ErayKulkizaga/CottonLensAI/pull/42)
+tek sabit numeric–mask deneyi için ön kayda alındı: aynı 32 alan, aynı
+named T+5 cohort ve XGBoost; bütçe 44+4 fit. Taze arşiv restore ve 111
+ilgili test geçti; henüz yeni piyasa fit/skoru yok. Geçmiş saat/vintage
+varsayımı ve eski başarı kapıları korunur. [Güncel kararlar](docs/STATUS.md).
+
 11 Ekim: [aynı-kontrat geçmişi hazırlığı](docs/NAMED_HISTORY_READINESS_20261011.md)
 tamamlandı, model fit0. Dört geçmiş getiri mevcut origin karar saatine göre
 kuruluyor; 3.520 tarih/14.080 endpoint ve22 sabit eğitim işi doğrulandı.

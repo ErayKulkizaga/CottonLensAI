@@ -1,0 +1,25 @@
+{
+  "schema": 1,
+  "status": "fresh_github_named_history_source_preregistration_verified",
+  "source_id": "466e4d3f756178561aca5e1706384d0be7398a7cf01757bef34677777c1ed155",
+  "payload_commit": "0489b4427aa0eac89f429d8121bd8f7fa895018b",
+  "fresh_github_restore": {
+    "status": "verified",
+    "checked_members": 1174,
+    "archive_sha256": "0c9569b6cf5ab3bfe5045035712848a6222f32edcba127d3ab886348e95ec14a",
+    "source_id": "466e4d3f756178561aca5e1706384d0be7398a7cf01757bef34677777c1ed155",
+    "new_fits": 0,
+    "new_market_scores": 0,
+    "market_fit_budget": 44,
+    "synthetic_fit_budget": 4
+  },
+  "old_studies_preserved": 173,
+  "old_proof_files_preserved": 112,
+  "trials_entirely_unchanged": true,
+  "new_model_fits": 0,
+  "new_market_scores": 0,
+  "public_pr": "https://github.com/ErayKulkizaga/CottonLensAI/pull/42",
+  "release_allowed": false,
+  "next_exact_step": "Prepare and pilot-plan from freshly restored registration, then same frozen 44+4 budget; no additional search.",
+  "record_id": "b17a7225e741681e13612f5d3662f484467d4c60165e06a12d6b498c6b348d05"
+}

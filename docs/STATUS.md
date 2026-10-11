@@ -1,5 +1,15 @@
 # Güncel kararlar — 11 Ekim 2026
 
+11 Ekim: [aynı kontrat geçmişi kaynak kontrolü](NAMED_HISTORY_SOURCE_CONTROL_T5_20261011.md)
+PR42'de kodlandı ve 44 piyasa + dört sentetik fit bütçesiyle ön kayıt
+yayımlandı. Taze GitHub restore 1.174 payload'u frozen source ile
+doğruladı; 111 ilgili test/Ruff geçti. Eğitim ve yeni piyasa skoru sıfır.
+Tek sonraki iş taze ön kayıttan prepare/pilot-plan ve kilitli numeric–mask
+deneyidir. İki kol aynı 32 alan, hedef, missing bit ve cohort kullanır.
+Mask tam engine history'sine uygulanır; yalnız projection'a değil.
+PR41 veri teslimatı 8/8 CI ile kapandı; veri hazır olmak beceri değildir.
+Eski aşamalar aşağıda kronolojik kanıt olarak korunur.
+
 11 Ekim: [aynı-kontrat geçmişi hazırlığı](NAMED_HISTORY_READINESS_20261011.md)
 tamamlandı, model fit0. Dört geçmiş getiri mevcut origin karar saatine göre
 kuruluyor; 3.520 tarih/14.080 endpoint ve22 sabit eğitim işi doğrulandı.

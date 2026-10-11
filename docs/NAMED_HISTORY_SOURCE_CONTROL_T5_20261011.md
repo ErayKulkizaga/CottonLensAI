@@ -84,3 +84,25 @@ false kalır; canlı126, üretim modeli ve eski kararlar değişmez.
 Yürütme kodu ve kontroller hazırlanıyor. Henüz frozen ön kayıt,
 piyasa fit veya yeni performans sonucu yok. Ön kayıt hash'leri ve
 teslim doğrulaması oluştuğunda ayrı ek kayıtla korunacak.
+
+### Dondurulmuş ön kayıt ve teslim
+
+Yukarıdaki hazırlık durumu öncesine aittir. Kod `a0892eb543b79d1c6d95e3abf9fc2afd644345de`
+ile, ön kayıt `0489b4427aa0eac89f429d8121bd8f7fa895018b` ile yayımlandı.
+[PR42](https://github.com/ErayKulkizaga/CottonLensAI/pull/42) ve
+[Release](https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/named-history-source-preregistration-20261011)
+mevcuttur; ZIP ve manifest GitHub'dan taze indirilip frozen source ile
+1.174 payload doğrulandı. Eğitim/skor hâlâ sıfırdır.
+
+- ML source: `466e4d3f756178561aca5e1706384d0be7398a7cf01757bef34677777c1ed155`
+- Ready: `c62f94bb9495605702580da6f747bbce698397aed4c64cae771e50d15b533f20`
+- Design: `dbcc9de865336922d4cb451a8641189363aac002c6d2ff635518123be7999f57`
+- ZIP: `0c9569b6cf5ab3bfe5045035712848a6222f32edcba127d3ab886348e95ec14a`
+
+111 ilgili sentetik/mock test ve Ruff geçti. Eski sonuçlardan ayrı
+işaretlenmiş rapor test fixture'ında 12 scalar aralık ve sekiz bozulma
+kontrolü geçti; bu yeni piyasa kanıtı değildir. 173 eski sicil aşaması,
+112 eski kanıt dosyası ve tüm trials içeriği korunur. Teslim kaydı:
+`research/evidence/named-history-source-preregistration-delivery-20261011.json`.
+Sonraki işlem taze ön kayıttan prepare/pilot-plan; ardından yalnız kilitli
+44+4 fit bütçesi. Kontrol başarısızsa piyasa fit veya yeni tarif başlamaz.

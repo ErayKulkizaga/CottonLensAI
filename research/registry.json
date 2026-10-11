@@ -18402,6 +18402,10 @@
     {
       "path": "evidence/named-history-source-preregistration-release-20261011.json",
       "sha256": "8f21f9d4cae1ef110046b78917604c4e079c1e633ef65ddad2a53e4531921976"
+    },
+    {
+      "path": "evidence/named-history-source-preregistration-delivery-20261011.json",
+      "sha256": "19bdc8bc3d50c3f5d901e5cc927dfaf3325cbf2b8b6fbe7b91c2b3e645c9ab1f"
     }
   ]
 }
