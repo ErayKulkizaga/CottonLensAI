@@ -176,3 +176,17 @@ cebirsel ayırmak. %55'e yakın yönün niçin fiyat-MAE üstünlüğüne dönü
 açıklanacak; sonuca göre origin/işlem seçmek, threshold aramak veya yeni
 politikanın OOS başarısı varmış gibi karşıolgu sunmak yok. Önce checksum
 Release/taze replay teslimatı kapanır. Canlı126 cohort skorlanmaz.
+
+## 11 Ekim: GitHub sonuç teslimi doğrulandı
+
+[Sonuç Release'i](https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/named-capacity-result-20261010)
+GitHub'dan taze indirildi; 911 payload checksum'ı, 48 native replay,12
+aralık ve8 bozulma ret kontrolü yeniden doğrulandı. Rapor/CSV/complete
+ve bağımsız makbuz birebir aynı. Yeni fit0. Arşiv SHA256
+`0ea96d465e87536a09df72ceaa3356c769dcc8a068d30c5470f6bd577cc3d52d`,
+9.319.946 byte. [Teslimat kanıtı](../research/evidence/named-capacity-result-delivery-20261011.json).
+Önceki170 aşama/101 proof ve trials dosyasının tamamı korunur; sicil171
+aşama/523 tarif. Release'in ilk oluşturma isteği kısa commit kimliğiyle
+reddedildi; tam commit kimliğiyle aynı arşiv yayımlandı, kanıt değişmedi.
+Kayıtlı deney kapanmıştır; pratik Naive hedefi ve genel proje hedefi
+tamamlanmadı. Tek sonraki iş yukarıdaki sıfır-fit hata katkısı tanısıdır.

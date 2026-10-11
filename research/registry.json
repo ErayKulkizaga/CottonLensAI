@@ -18235,6 +18235,10 @@
     {
       "path": "evidence/named-capacity-result-release-20261010.json",
       "sha256": "6073c1ecbbd946f22c13585a721617d1706904ae3e50571dba09f3e6f9c368d6"
+    },
+    {
+      "path": "evidence/named-capacity-result-delivery-20261011.json",
+      "sha256": "e7e19bb5cead95c603bf58a8708301f6a0a634831261d187a2975d2988223521"
     }
   ]
 }
