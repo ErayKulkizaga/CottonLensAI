@@ -18631,6 +18631,10 @@
     {
       "path": "evidence/private-drive-preservation-start-20261011.json",
       "sha256": "00ac8ecdb68c9cac96b51009384597f672ba0019cf0b2469620cbb8b4b854fbb"
+    },
+    {
+      "path": "evidence/private-drive-companions-delivery-20261011.json",
+      "sha256": "397d56d782dd3246140023f3dcb690bf859b1f3fbfb81df91ed1a5ef1b767a8a"
     }
   ]
 }
