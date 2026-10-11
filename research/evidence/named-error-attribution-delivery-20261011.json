@@ -1,0 +1,31 @@
+{
+  "schema": 1,
+  "status": "fresh_github_posthoc_diagnosis_verified",
+  "fresh_restore": {
+    "status": "verified",
+    "archive_sha256": "86518df36478dc363f0f5763f3905a3186b66fc905c76d4558fce1e4518a9d42",
+    "inventory_members": 13,
+    "new_fits": 0,
+    "rows": 984,
+    "arithmetic_boundaries": 11,
+    "coherent_tamper_controls": 4,
+    "exact_report_decomposition_complete": true,
+    "exact_verification_receipt": true
+  },
+  "old_studies_preserved": 171,
+  "old_proofs_preserved": 104,
+  "trials_entirely_unchanged": true,
+  "restore_adapter_note": "First local restore used signed-ledger reader for ordinary JSON receipts and failed. Partial restore preserved; R2 uses json parsing for those receipts, same archive/analyzer/verifier/result bytes. Fresh replay succeeds.",
+  "restore_adapter_sha256": "b6aa56ebdf2743e2952e6bede954084a3cb71f1b92219a9e769d393e8bb7bccb",
+  "source_id_unchanged": "4a2feff2817bf57db64970c94c8b6a7bbd55cbdc97c8c872225a0756a9dd15af",
+  "payload_commit": "106342ab1e18bb79661d9230484a89255f4bdf43",
+  "public_pr": "https://github.com/ErayKulkizaga/CottonLensAI/pull/40",
+  "new_fits": 0,
+  "new_forecasts": 0,
+  "live126_scored": false,
+  "posthoc": true,
+  "independent_holdout": false,
+  "release_allowed": false,
+  "next_exact_step": "Read-only existing quote and feature lineage audit for same origin-selected named-contract history; no fitting/grid/data download.",
+  "record_id": "cff9eb9900378c17311f1aa0c75e5c5a6278a536a685b045bb7dbd3af9e21ce8"
+}

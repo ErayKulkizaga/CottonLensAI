@@ -18272,6 +18272,10 @@
     {
       "path": "evidence/named-error-attribution-release-20261011.json",
       "sha256": "f83a0103cec244cd28ecdc0c83ef9f54946afce75eeb1baa9c8b2674196ad611"
+    },
+    {
+      "path": "evidence/named-error-attribution-delivery-20261011.json",
+      "sha256": "fb5f3e6242d6edaba83cff0c7d02b96b1ebdc3e342c3a3b19a3902610d6bd8c6"
     }
   ]
 }

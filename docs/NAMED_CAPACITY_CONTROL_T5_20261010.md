@@ -240,3 +240,10 @@ origin'de seçilen **aynı kontratın** geçmişi nedensel/eksiksiz yeniden
 kurulabiliyor mu, sıfır-fit denetlenecek. Bu olası temsil sorunudur;
 ana başarısızlık nedeni olduğu henüz kanıtlanmadı. Önce bu sınır
 açıklığa kavuşmadan yeni MAE/alpha/depth veya veri deneyi başlatılmaz.
+
+[Hata tanısı Release'i](https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/named-error-attribution-20261011)
+taze GitHub indirmesinde13payload/984satır ve bütün kontrollerle birebir
+yeniden üretildi; yeni fit/tahmin0. [Teslimat kaydı](../research/evidence/named-error-attribution-delivery-20261011.json).
+İlk yerel restore yardımcı kodu ordinaryJSON makbuzunu signed-ledger
+okuyucusuna verdiği için durdu; partial klasör korunur. R2 yalnız bu
+makbuzuJSON olarak okuyor; aynı arşiv/analiz/tahmin/verifier değişmedi.
