@@ -18659,6 +18659,14 @@
     {
       "path": "evidence/private-drive-priority-source-binding-20261011.json",
       "sha256": "b65db67ab2cee26aae819a5fa52b0c8238299b11494208be1a3b12bd5bff1e07"
+    },
+    {
+      "path": "evidence/private-drive-coherent-partial-restore-20261011.json",
+      "sha256": "25ab179ea145c0c0b097bcc38ca553f8afd3d349592d486f1aea1aeedc19b30c"
+    },
+    {
+      "path": "evidence/private-drive-coherent-delivery-20261011.json",
+      "sha256": "9388eaa0a0205a9fcb4bc863c98c7635a05ee58d763db58b7505277bb599e36c"
     }
   ]
 }

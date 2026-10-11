@@ -1,0 +1,213 @@
+{
+  "schema": 1,
+  "status": "coherent_partial_restore_verified",
+  "parent_record_id": "ef48105d6454bbb2589387775193f52da8321a3eb4b157133ea5574aca3bc600",
+  "release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/drive-preservation-20261011",
+  "logical_files": 17668,
+  "logical_bytes": 2095998283,
+  "new_remote_logical_files": 0,
+  "inventory_sha256": "89a714ac7fec5c4ca4c217d33370e1c4408291096a4e498c6c8f7160f818eef4",
+  "ordinary_archives": [
+    {
+      "archive": "checkpoints-evidence.zip",
+      "archive_sha256": "a54b189d8cfe8038e09086f2861bc95d5b35c0f15e14197afe70381535ed3e45",
+      "manifest": "checkpoints-manifest.json",
+      "manifest_sha256": "e5b5cb0f3416fda0508280ff57a75c34b1ff0b3f2d245c2a5791cca8aa36b2a6",
+      "files": 363
+    },
+    {
+      "archive": "bundles-evidence.zip",
+      "archive_sha256": "8882f0bd687d8087a587aa6b68fc66528851eaee0ef0429bd58647350079e230",
+      "manifest": "bundles-manifest.json",
+      "manifest_sha256": "439a01c1932765a0c7e2cce088bd70149d4dba9030cc3b6ce0c287dcd14b11be",
+      "files": 52
+    },
+    {
+      "archive": "artifacts-evidence.zip",
+      "archive_sha256": "dcddf32dde3e2956c7ea7cee66f0976380ffe748c1f26c6891db282fc143ae34",
+      "manifest": "artifacts-manifest.json",
+      "manifest_sha256": "e5bee456f4669ef08e505d2f7c54419b3c437c2c3f5d7c6fd8d110453e789e69",
+      "files": 11
+    },
+    {
+      "archive": "data-evidence.zip",
+      "archive_sha256": "3fee70ede8ed909195c1148c96c5b9aabbebd06a5b0358f4236e250b6e612b01",
+      "manifest": "data-manifest.json",
+      "manifest_sha256": "f6c648c57f449fe3554a6bfacf4c8ad44cdd1c2605cc7b70388708e18c60a19d",
+      "files": 289
+    },
+    {
+      "archive": "reports-evidence.zip",
+      "archive_sha256": "64fa7724da251a96e69ad3d5b0cb1626fb8671773252c00e059bd4991827d086",
+      "manifest": "reports-manifest.json",
+      "manifest_sha256": "c52133f951df813be923bc3beaeeb64e6b41863b35c8964b3ef6864d6bcdeaa7",
+      "files": 4994
+    },
+    {
+      "archive": "sources-evidence.zip",
+      "archive_sha256": "eb89e2241fd2d1a1329e7bc3f805411b1912e83f4baf5ec0aa3ca405c070355b",
+      "manifest": "sources-manifest.json",
+      "manifest_sha256": "365d0d6e4b1293976c3111080fed176fbb9fd3140b9efe7c922c11e5b4be990e",
+      "files": 25
+    },
+    {
+      "archive": "notebooks-evidence.zip",
+      "archive_sha256": "90d19ba07bb31549c5e3782256b4bb0504b48c4f9dc501146bea88fe64ffef28",
+      "manifest": "notebooks-manifest.json",
+      "manifest_sha256": "3d1b1babe33d54e302f7edea0397453fc7f38265421ea7842f9c1561ea4c9a3c",
+      "files": 1
+    },
+    {
+      "archive": "workbenches-evidence.zip",
+      "archive_sha256": "5ce8881a547b07f108134c9354e57aafd1a4db7f59fba554984160bacd9af6ea",
+      "manifest": "workbenches-manifest.json",
+      "manifest_sha256": "8dea91cd0436127a5be18f09ed67cd9f49d9d0713d5f03f839c30636a7500463",
+      "files": 78
+    },
+    {
+      "archive": "archive-evidence.zip",
+      "archive_sha256": "53eb83f3c50de7d2cc4421c65713b2230bc05b8279c595826610c22ef68b6393",
+      "manifest": "archive-manifest.json",
+      "manifest_sha256": "0335cf369eb41c2b8478571abee237f4544e0e44c0a0c208e0b007034bd73a1a",
+      "files": 42
+    },
+    {
+      "archive": "entrypoints-evidence.zip",
+      "archive_sha256": "88fad6f2e1c750c76f866c3351e5424b1f02d6f20dcbe3054ee818543e2d5906",
+      "manifest": "entrypoints-manifest.json",
+      "manifest_sha256": "98aebe910d2bdd3eb846c37461fdbd7445e16b8af79f06b32b33fae0da99e5eb",
+      "files": 3
+    },
+    {
+      "archive": "live-baselines-v2-evidence.zip",
+      "archive_sha256": "d4363b4d15567136dc6577b4a440744eb7b376ca1c485c3216bfab37d7ab2206",
+      "manifest": "live-baselines-v2-manifest.json",
+      "manifest_sha256": "69a2736e7001dddf9d9a7c72a985b8cacf97cff632e3af69676efd4055294429",
+      "files": 64
+    },
+    {
+      "archive": "tracking-evidence.zip",
+      "archive_sha256": "39b268d4dc1994c9bfca0b047d6952dc319d8b70e178f3d9d40c44abfa6270bb",
+      "manifest": "tracking-manifest.json",
+      "manifest_sha256": "30158e187f9cf8f415bb7e657e39f75f9ca3709a1a42c0b796aa09a6b0d7dd79",
+      "files": 0
+    },
+    {
+      "archive": "mlruns-evidence.zip",
+      "archive_sha256": "c7920087accaf808085de27bb70f45eade2dc5f67f83f57001b2839dec1cf2a3",
+      "manifest": "mlruns-manifest.json",
+      "manifest_sha256": "53b9431ec838909ba585e9f87df68dda968b1cbedbfc601050d6aa3d7d1f8dac",
+      "files": 2
+    },
+    {
+      "archive": "priority-native-b93f-evidence.zip",
+      "archive_sha256": "e302a46c07052118fba1830b23c8fa1a0518e0590388f79ade7287d8be176a1b",
+      "manifest": "priority-native-b93f-manifest.json",
+      "manifest_sha256": "12d8a5f57d0d9c98c6dc196a74dffaf70a3e533a3688b830935c59fa0ee97b89",
+      "files": 3
+    },
+    {
+      "archive": "experiments-closed-receipts-v1-001.zip",
+      "archive_sha256": "783c1d3f59f5e2e8cc8bbe935807065b696539c87ee563c0aab1587faab9d98e",
+      "manifest": "experiments-closed-receipts-v1-001-manifest.json",
+      "manifest_sha256": "d06f120bf32c64dc6f7046eeeae66421c23c7e2316b8a1ef685d7219ff7aa1db",
+      "files": 1117
+    },
+    {
+      "archive": "experiments-closed-receipts-v1-002.zip",
+      "archive_sha256": "346eca63aeab912d746dfb12c24ba4e5e1065a51ae87d8289760b612848b7558",
+      "manifest": "experiments-closed-receipts-v1-002-manifest.json",
+      "manifest_sha256": "2309ed9d4d61998fa4c84b71907470bb1f9a1b9e8c154a5fd2b51b17e045edf9",
+      "files": 1062
+    },
+    {
+      "archive": "experiments-closed-receipts-v1-003.zip",
+      "archive_sha256": "c54495f5ef7a8d483a5c5b87545ce6e74937017b0242bcc5d0e031b8a5d78054",
+      "manifest": "experiments-closed-receipts-v1-003-manifest.json",
+      "manifest_sha256": "5104020eb8879ea2b3d99c9d06f743963496d7f85ffeedf68a639f6fbeef7058",
+      "files": 1000
+    },
+    {
+      "archive": "experiments-closed-receipts-v1-004.zip",
+      "archive_sha256": "b340aea55985b7e736a9a4d6770ed6245a43d8de9f7428d6b21c92cf95b55eeb",
+      "manifest": "experiments-closed-receipts-v1-004-manifest.json",
+      "manifest_sha256": "76650b455834abca3881907daf3db6f607e3333a7976f8f30a4d48737bde8672",
+      "files": 972
+    },
+    {
+      "archive": "experiments-closed-receipts-v1-005.zip",
+      "archive_sha256": "4374c0b31500d10458f95f56fec4dc5b0fe9de3c1b6e25f9f9bbc705a99217a7",
+      "manifest": "experiments-closed-receipts-v1-005-manifest.json",
+      "manifest_sha256": "60782a0155861f6914e32c568e97d41bc669be9d409b16120ccbd0fe01f5d9b7",
+      "files": 927
+    },
+    {
+      "archive": "experiments-closed-receipts-v1-006.zip",
+      "archive_sha256": "8aa789cc228670a208d0219d68bb6700a0804bc5d7f730153c58296c45cf2bf2",
+      "manifest": "experiments-closed-receipts-v1-006-manifest.json",
+      "manifest_sha256": "7d42ae28c49b9c8a7921a28439841116be1343a54bae5dce290cb4e32ac7f57e",
+      "files": 894
+    },
+    {
+      "archive": "experiments-closed-receipts-v1-007.zip",
+      "archive_sha256": "8d4b3a44a46dbcf209ca8f7dd7403e94672a135a4e4623a6e86b49601bb2dec1",
+      "manifest": "experiments-closed-receipts-v1-007-manifest.json",
+      "manifest_sha256": "a20ce969b12eb2999fded7f5358320ea3ded0626b6398f04780b8092235958b0",
+      "files": 1023
+    },
+    {
+      "archive": "experiments-closed-receipts-v1-008.zip",
+      "archive_sha256": "d0b61be1208c28f67e768a81d0bf45c09649640790d86c9980d82f5db26a2bdd",
+      "manifest": "experiments-closed-receipts-v1-008-manifest.json",
+      "manifest_sha256": "bbe9a12d1e1348c03024b32b1a41866a22a0072c478a1f98f8119c0b232ae9ea",
+      "files": 1094
+    },
+    {
+      "archive": "experiments-closed-receipts-v1-009.zip",
+      "archive_sha256": "4a6f733ddc9a72604bc22b475ffbb683997d3327fcf141ec5c658684748d7a34",
+      "manifest": "experiments-closed-receipts-v1-009-manifest.json",
+      "manifest_sha256": "de3be70503f569274a43aefcd0b41a6032fabd26899c1083fa85f7114d1fe71f",
+      "files": 1037
+    },
+    {
+      "archive": "experiments-closed-receipts-v1-010.zip",
+      "archive_sha256": "16856e91f3c17a5c9bed518dcfef303a15c8444bbf1def38d28df0a2b1a03110",
+      "manifest": "experiments-closed-receipts-v1-010-manifest.json",
+      "manifest_sha256": "a486bd1e68f880426abe3b2da2ce368315a077d32aea35e57ff4c638c188f139",
+      "files": 991
+    },
+    {
+      "archive": "experiments-closed-receipts-v1-011.zip",
+      "archive_sha256": "4323e738b2f094af7ea35d01e516c547aaeedab57c8c9e76f504ff84783f41ca",
+      "manifest": "experiments-closed-receipts-v1-011-manifest.json",
+      "manifest_sha256": "759f199ae9a48a1c8b27172b1105a8bde7d8de1c3f6a9feb19b2dfa586f65e7c",
+      "files": 950
+    },
+    {
+      "archive": "experiments-closed-receipts-v1-012.zip",
+      "archive_sha256": "1281f9b33b97c6774023e9f64bba4e2bd31c57dfde83796451a91e9f429fafee",
+      "manifest": "experiments-closed-receipts-v1-012-manifest.json",
+      "manifest_sha256": "b1e39e6948325fbd928a16d09688bff8ef2de5eec426e2d9fe9cef2be13eb388",
+      "files": 626
+    }
+  ],
+  "reviewed_exceptions_bound_to_original_exclusion_hashes": 47,
+  "same_root_priority_native_receipt_data_source_closure_verified": true,
+  "priority_context_identity": "b93f672d94413693301b14fff11e1d35c549661b69e15205324b13c64eabd670",
+  "source_files_checked": 123,
+  "assembly_negative_controls": {
+    "negative_controls": 5,
+    "exact_duplicate_deduplicated": true,
+    "no_hardlinks_to_inputs": true
+  },
+  "hardlinks_to_download_inputs": false,
+  "inputs_from_previous_fresh_github_verified_downloads": true,
+  "source_or_models_executed": false,
+  "new_fits": 0,
+  "source_files_deleted": 0,
+  "full_project_migration_complete": false,
+  "quota_recovery_verified": false,
+  "drive_originals_current_hash_rechecked": false,
+  "scope_note": "Coherent assembly of preserved partial inventory only. Main experiment capture remains pending; this is not permission to delete originals or claim inference/skill.",
+  "record_id": "92413a61a644f02d54d911a30407dba669bf67b9edd4495e8be09cd1d424ecfd"
+}

@@ -433,6 +433,21 @@ değişmez. Parça manifestleri genel `storage.py` şemasıyla doğrulanabilir.
 Bu bölüm native model ağırlığı, tam envanter veya silme hazırlığı değildir.
 Tam yakalama ile birleşiminde aynı özgün yol/hash çifti tekrar sayılmaz.
 
+[Birleşik kısmi geri kurma](evidence/private-drive-coherent-partial-restore-20261011.json)
+26 genel arşivi, hash'i önceden incelenmiş 47 özel aslı ve tek completed
+makbuzunu özgün göreli yollarında birleştirir: 17.668 dosya/2.095.998.283 bayt.
+Son ağaçta her hash ve öncelikli native–makbuz–veri–kaynak bağı eşleşir.
+Beş ret kontrolü geçti; eşit yol/hash tekilleşir, farklı içerik veya yalnız
+harf büyüklüğü farkı reddedilir. Mevcut hedefin üzerine yazılmaz, indirilen
+yedeğe hardlink kurulmaz. Model veya tarihsel kaynak kodu çalıştırılmaz.
+[Tarif teslimatı](evidence/private-drive-coherent-delivery-20261011.json)
+`coherent-restore-helper-v1.py`, `coherent-drive-v1-inventory.json` ve
+`coherent-restore-delivery-v1.json` kimliklerini bağlar; taze private indirme
+kontrol edilmiştir. Tarif önceki makbuzlardaki `fresh-*` girdilerini ve
+deponun sabit `storage.py` hash'ini ister; aynı namespace'e tekrar çalışmaz.
+Kısmi geri kurma makbuzu silme izni, tüm native'lerin bağ doğrulaması veya
+tam Drive taşıması değildir. Büyük yakalama ve güncel kaynak kontrolleri sürer.
+
 [GitHub evidence-20261005](https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/evidence-20261005), bilimsel dosyaları içerik hash'iyle tekilleştirir. Manifest her orijinal göreli yolu, orijinal/public SHA-256 değerini ve varlık/iç yolunu korur. Parçalar bağımsız ZIP'tir; büyük veri Git ağacına eklenmez.
 
 Mevcut ham kaynaklar, model/checkpoint'ler, ledger'lar, tahminler, raporlar, kaynak snapshot'ları ve kesintiye uğramış çalıştırmalar korunur. Yazılım ortamı/cache, kişisel ayarlar, UI ekran görüntüleri ve içeriği güvenle yayınlanamayan veritabanları dışlanır; dışlamalar indekste görünür. Geçmişte kaybolmuş LSTM tahminleri oluşturulmaz. Yerel orijinaller silinmez/değişmez. Ayıklanmış dosya eski hash doğrulamasını geçmez ve eski deney cache'i olarak kullanılmamalıdır.

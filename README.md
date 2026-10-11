@@ -18,6 +18,9 @@ Inference/beceri sonucu yok; tam yakalamada bu dört dosya tekrar sayılmaz.
 Son [ara yedek](research/evidence/private-drive-closed-receipts-delivery-20261011.json)
 11.693 ek fit makbuzunu 12 parçadan taze indirme ve geri açmayla korudu.
 Bu ek bölüm model ağırlığı içermez; dosya sayısı bağımsız deney sayısı değildir.
+[Birleşik geri kurma](research/evidence/private-drive-coherent-partial-restore-20261011.json)
+aynı 17.668 dosyayı tek ağaçta doğruladı; [tarif ve envanter](research/evidence/private-drive-coherent-delivery-20261011.json)
+private Release'den tekrar indirildi. Bu, tam taşıma veya model inference sonucu değildir.
 Genel hassas içerik filtresi değişmedi; kaynakların modele uygunluğu artmadı.
 47 özgün karantina dosyasının tamamı Drive'da ve özel yerel yedekte de tutuluyor. Büyük deney
 ağacının aktarımı sürüyor, hiçbir özgün silinmedi. Henüz bütün Drive'ın
