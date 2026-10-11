@@ -1,5 +1,14 @@
 # Güncel kararlar — 11 Ekim 2026
 
+11 Ekim kullanıcı önceliği: PR44 girdi teslimatı tamamlandı ve sekiz CI kontrolü
+geçti. Depo private; Drive'daki özgün modeller/veriler/deneyler GitHub Releases'e
+doğrulanarak taşınıyor. İlk 363 checkpoint/40.728.390 bayt yeniden indirildi ve
+aynı dosyalara geri açıldı. Tam taşıma ve kota boşaltma henüz bitmedi.
+Canlı task'ın yalnız DrivePath ayarı kaldırıldı; XML yedeği, frozen kaynak ve
+altı missing/ilk126 kilidi korundu. Yeni fit/grid/skor yok. Saklama tamamlanınca
+tek bilimsel adım önceki132 sentetik-fit tasarımının mevcut engine/ledger'a
+bağlanıp yeni nihai kaynak/ortam kimliğiyle ön kayda alınmasıdır.
+
 11 Ekim: [named XGB zayıf-sinyal girdi hazırlığı](NAMED_WEAK_SIGNAL_READINESS_20261011.md)
 doğrulandı. İlk528 olgun satırdan kalibrasyon; üç sabit seed ve matched
 null/injected, beş günlük örtüşen noise, değişmeyen32 alan/246/242/4.

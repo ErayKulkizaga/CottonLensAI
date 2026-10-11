@@ -347,6 +347,49 @@ python -m cottonlens_ml.research.history_index --source-root output/recovered --
 
 ## Release yedeği
 
+### Private GitHub ve Drive taşıması
+
+11 Ekim kullanıcı kararı: kalıcı bilimsel dosyalar private GitHub Releases'te,
+Drive yalnız geçici çalışma alanı. Depo private olarak doğrulandı. İlk363
+checkpoint/40.728.390 bayt taze GitHub indirmesinden hash kontrolüyle geri açıldı;
+bütün Drive taşıması ve kota boşaltma henüz tamamlanmadı. Eski arşivler/deney
+kayıtları değişmez. Canlı task'ın DrivePath argümanı kaldırıldı; kaynak snapshot'ı,
+karar saati, altı missing ve ilk126 kilidi değişmedi.
+
+`storage.py` standart kütüphane kullanır; model/pickle çalıştırmaz, kaynak silmez.
+Paket her özgün göreli yolu, okunan gerçek bayt sayısını ve SHA-256'yı saklar;
+aynı içeriği tekilleştirir. Drive placeholder boyutu kanıt sayılmaz. Credential
+benzeri içerik/veritabanı yüklenmez; dışlama manifestte, özgün kopya private
+yerel quarantine'de korunur ve Drive'dan silinmez. Bunlar modelin gereksiz
+olduğu anlamına gelmez. Klasör yakalaması atomik piyasa/vintage kaydı değildir.
+
+```bash
+python research/storage.py pack --root output/experiments --scope EXPERIMENT --target output/evidence-staging/NEW-CAPTURE
+# Yalnız aynı kaynak ve tamamlanmamış capture için açık devam:
+python research/storage.py pack --root output/experiments --scope EXPERIMENT --target output/evidence-staging/NEW-CAPTURE --resume
+python research/storage.py verify --archive output/evidence-staging/NEW-CAPTURE/evidence.zip --manifest output/evidence-staging/NEW-CAPTURE/manifest.json
+python research/storage.py split --archive output/evidence-staging/NEW-CAPTURE/evidence.zip --manifest output/evidence-staging/NEW-CAPTURE/manifest.json --target output/evidence-staging/NEW-PARTS
+```
+
+GitHub yüklemesinden **önce** `gh repo view --json isPrivate` kontrolü yapılır.
+Kaynak klasörün tamamı yüklenmez: yalnız güvenli ZIP ve manifest, helper'ın
+dondurulmuş sürümü ve doğrulama makbuzu Release'e eklenir; quarantine/capture-root
+yüklenmez. Aynı isimli yayımlanmış asset üzerine yazılmaz. Sonra farklı, boş bir
+dizine `gh release download TAG --dir output/FRESH-DOWNLOAD` ile indirin.
+İndirilen manifest/helper'ın beklenen kimliğini ve her payload'ı doğrulayın:
+
+```bash
+python research/storage.py restore --archive output/FRESH-DOWNLOAD/evidence.zip --manifest output/FRESH-DOWNLOAD/manifest.json --target output/FRESH-RESTORE
+python -m unittest discover -s research/tests -v
+```
+
+Bir checkpoint'in kayıpsız taşınması beceri veya mevcut ortamda GPU inference
+kanıtı değildir. Veri, scaler, source/config ve ledger bağını da koruyun. Resume
+yakalanmış eski baytları kullanır; kaynak değişmediği varsayılmaz. Her silmeden
+hemen önce Drive'ın **güncel** hash'i yeniden eşleşmelidir. Boş olmayan restore
+hedefi ve bozuk kimlik reddedilir. Çöp kutusuna taşıma tek başına kotayı açmaz;
+yalnız doğrulanan proje dosyalarının kalıcı silme aşaması ayrıca yürütülür.
+
 [GitHub evidence-20261005](https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/evidence-20261005), bilimsel dosyaları içerik hash'iyle tekilleştirir. Manifest her orijinal göreli yolu, orijinal/public SHA-256 değerini ve varlık/iç yolunu korur. Parçalar bağımsız ZIP'tir; büyük veri Git ağacına eklenmez.
 
 Mevcut ham kaynaklar, model/checkpoint'ler, ledger'lar, tahminler, raporlar, kaynak snapshot'ları ve kesintiye uğramış çalıştırmalar korunur. Yazılım ortamı/cache, kişisel ayarlar, UI ekran görüntüleri ve içeriği güvenle yayınlanamayan veritabanları dışlanır; dışlamalar indekste görünür. Geçmişte kaybolmuş LSTM tahminleri oluşturulmaz. Yerel orijinaller silinmez/değişmez. Ayıklanmış dosya eski hash doğrulamasını geçmez ve eski deney cache'i olarak kullanılmamalıdır.

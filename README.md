@@ -1,5 +1,12 @@
 # CottonLensAI
 
+11 Ekim: depo private yapıldı. Drive taşıması sürüyor; 363 checkpoint dosyası
+GitHub'dan yeniden indirilip hash doğrulamasıyla açıldı. Henüz bütün Drive'ın
+taşındığı veya kota sorununun çözüldüğü söylenmiyor. Canlı görevin Drive'a yazması
+kapatıldı; frozen kaynak, karar saati ve ilk126 kilidi korundu.
+[Saklama ve geri kurma kuralları](research/README.md#private-github-ve-drive-taşıması).
+Bu koruma işi tamamlanmadan yeni sentetik/piyasa fit'i başlamaz.
+
 11 Ekim: [aynı named T+5 düzeninde zayıf-sinyal girdileri](docs/NAMED_WEAK_SIGNAL_READINESS_20261011.md)
 hazır: eski32 alan/246origin korunur; üç seed'de eşleşmiş null/injected.
 21.120 scalar satır ve oracle kalibrasyonu doğrulandı, 60 ilgili test geçti.

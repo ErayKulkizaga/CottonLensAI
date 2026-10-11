@@ -1,0 +1,43 @@
+{
+  "schema": 1,
+  "status": "private_drive_preservation_started_not_complete",
+  "repository_visibility_verified": {
+    "isPrivate": true,
+    "visibility": "PRIVATE"
+  },
+  "release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/drive-preservation-20261011",
+  "checkpoint_fresh_restore": {
+    "status": "verified",
+    "files": 363,
+    "logical_bytes": 40728390,
+    "excluded": 0,
+    "archive_sha256": "a54b189d8cfe8038e09086f2861bc95d5b35c0f15e14197afe70381535ed3e45",
+    "model_deserialization_performed": false,
+    "deleted_files": 0,
+    "restored_files": 363,
+    "source_files_deleted": 0
+  },
+  "checkpoint_manifest_sha256": "e5b5cb0f3416fda0508280ff57a75c34b1ff0b3f2d245c2a5791cca8aa36b2a6",
+  "checkpoint_downloaded_helper_sha256": "95252660098f6c33298c049fa9532235c05b7eb464e134d84481393dd2fbaa25",
+  "warned_live_package_recovered_sha256": "ded7144ede2092cdd2e2e1a1b7256a0e5f2ac9e26ab0a9347b79880aab0feceb",
+  "warned_live_package_fresh_github_verified": true,
+  "warned_live_package_bytes": 1220,
+  "warned_live_package_is_training_model": false,
+  "drive_writer_removed_from_existing_task": true,
+  "task_xml_backup_sha256": "bbb2877d927e37921d02a3fd8f4bf00534f88c99f41aebf2fa1dd9903b47b5b2",
+  "live_status_after_task_change": {
+    "lock_id": "29cb4f5dbc89afe5bed39d0c55ee333f6b96ddf2be1bd4a664974468655dbb18",
+    "missing_origins": 6,
+    "published_origins": 0,
+    "required_origins": 126
+  },
+  "frozen_live_source_id": "44f3d16f90af44d9ec0ecbc058055c89a2779e5b3e7ad2006eed19428c0ed965",
+  "old_studies_and_trials_unchanged": true,
+  "new_fits": 0,
+  "drive_files_deleted": 0,
+  "quota_problem_resolved": false,
+  "full_drive_migration_complete": false,
+  "model_inference_validated": false,
+  "next_exact_step": "Complete/checksum archive and fresh GitHub restore of remaining experiment payloads and contexts; exclude/quarantine credentials/databases; only then recheck current source hashes and remove verified Drive copies.",
+  "record_id": "12b575dc26e468d010bbc4be4f684a8a363ef95a8d9f04df48f4a2459805b8c9"
+}
