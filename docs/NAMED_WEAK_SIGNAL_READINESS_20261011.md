@@ -76,3 +76,7 @@ indirilmez; FAS kabulü, canlı 126-origin skor veya model yayını yapılmaz.
 Saat/final-vintage varsayımları korunur. Tek sonraki adım, aynı 132-fit
 tasarımını mevcut Experiment/ledger yoluna bağlayıp source/data/environment
 kimliği ve rapor kurallarını taze GitHub ön kaydıyla doğrulamaktır.
+# Delivery verification
+
+Fresh GitHub download and archived-source replay reproduced the frozen readiness inputs, 21,120 independently checked scalar rows and all four tamper controls. The 176 earlier stages, 122 earlier proof files and trial bytes remain unchanged. This verifies inputs only: the new profile has zero fits and no market-skill result. The authorized private-repository/Drive preservation work precedes connecting the 132-fit synthetic control to the existing engine under a new final source identity.
+

@@ -18623,6 +18623,10 @@
     {
       "path": "evidence/named-weak-signal-readiness-release-20261011.json",
       "sha256": "86c7ecc8d28277003fa446794ecc60a375534133a7bf403c4d7306f2ba9aec6c"
+    },
+    {
+      "path": "evidence/named-weak-signal-readiness-delivery-20261011.json",
+      "sha256": "0df5e1310543c868963830beeefcad4c0a4343511af4fd12d8ca452e88140529"
     }
   ]
 }
