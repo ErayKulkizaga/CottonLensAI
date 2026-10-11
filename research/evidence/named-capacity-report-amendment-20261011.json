@@ -1,0 +1,21 @@
+{
+  "status": "numeric_report_correction_before_any_market_score",
+  "old_report_sha256": "430f146af488ad9c3068299bd062dd4258632b6a9f507442533a6ff4f07131aa",
+  "new_report_sha256": "3cd9b82818d5e73a6090039a197a4ab247194a8e9ff0dfba63774d4a77f23626",
+  "diff_sha256": "96cb8a61dc22cc3aebc87ef8c3a5e987be048892339c20b5c9b48a6480bc3065",
+  "source_id_unchanged": "4a2feff2817bf57db64970c94c8b6a7bbd55cbdc97c8c872225a0756a9dd15af",
+  "change": "Cast replayed synthetic log returns to float64 before exp, matching existing evaluate and frozen learning() measurements.",
+  "old_known_signal_gain_gap": 3.1339628e-07,
+  "tolerance_unchanged": 1e-13,
+  "market_result_exists": false,
+  "new_fits": 0,
+  "prediction_values_changed": false,
+  "target_cohort_recipe_threshold_bootstrap_changed": false,
+  "schema": 1,
+  "regression_controls_passed": 4,
+  "regression_scope": "All four saved synthetic native predictions replayed,unchanged prediction values,float64 matches frozen evaluate measurements at same1e-13 tolerance; no fits",
+  "prior_report_preserved": true,
+  "new_market_scores": 0,
+  "preregistration_reference": "evidence/named-capacity-preregistration-20261010.json",
+  "record_id": "0596d11b272669354a379457bdb0b09dbb6ae9cd2e54c4ab5065b5005bc14548"
+}

@@ -18137,6 +18137,14 @@
     {
       "path": "evidence/named-capacity-execution-delivery-20261011.json",
       "sha256": "0ce498863cc2d1bf8bbc4b033c1d830a68c3624cd2f00b9c8042395998b37b65"
+    },
+    {
+      "path": "evidence/named-capacity-report-amendment-20261011.json",
+      "sha256": "e91e2b830a420083b94999f8710d3951cccf6e4ecbfc496ddaf83f909a7e6139"
+    },
+    {
+      "path": "evidence/named-capacity-report-amendment-release-20261011.json",
+      "sha256": "c437e3fa23e1aa414b40ea6d87f5c19fd4f62bedf4e9d27a1210b6443b5c4e91"
     }
   ]
 }

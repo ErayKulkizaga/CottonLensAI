@@ -123,3 +123,20 @@ kopyası bağımsız deney sayısı değildir. Eski 168 çalışma, 520 tarif ve
 proof korunur. Paketleyicinin R1 son kontrolü append sonrası aynı nesnenin
 523 uzunluğunu donmuş520 ile yanlış karşılaştırdı; bağımsız R2 frozen-prefix
 kontrolü eski kayıtların değişmediğini doğruladı. Model/veri/analiz değişmedi.
+
+## 11 Ekim: sıfır-fit raporun sayısal düzeltmesi
+
+Hedefin devam talimatıyla aynı tarihsel deney raporu sonuçlandırılıyor;
+canlı126 cohort performansı kapalı kalır. R1 rapor, piyasa sonuçları
+hesaplanmadan önce sentetik native replay ölçümünde durdu: `np.exp`
+float32 log tahmininde çalışırken kayıtlı `evaluate` float64'e çevirir.
+Bilinen-sinyal gain farkı 3,1339628×10⁻⁷ idi; bu başarısız öğrenme veya
+farklı native tahmin değildir. R2 yalnız bu replay log dizisini exp'ten
+önce float64'e çevirir. Dört kayıtlı sentetik native veriyle regresyon
+geçti; aynı1e−13 tolerans ve tüm tahmin değerleri korunur, yeni fit0.
+
+R1/hash/başarısız log korunur. [Ek sayısal kayıt](../research/evidence/named-capacity-report-amendment-20261011.json)
+ve checksum paketi herhangi bir yeni piyasa skorundan önce yayımlanır.
+ML kaynak4a2feff…, veri, tarif, cohort, hedef, birincil metrik, bootstrap
+ve karar eşikleri değişmez. Ön kayıttaki R1 hash'i değiştirilmez;
+final sonuç R2 hash'ini ve bu açık düzeltmeyi birlikte taşımak zorundadır.
