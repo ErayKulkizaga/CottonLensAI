@@ -17,6 +17,20 @@ toplam 5.971 dosya/513.539.817 bayt. Genel filtre ve eski dışlama kaydı deği
 HTML'in `publication_timestamp_verified=false`/`model_eligible=false` durumu
 korundu. Başlangıçtaki 47 karantina özgününün tamamı ayrıca Drive'da/özel
 yerel yedekte korunur. Sayımlar bağımsız deney sayısı veya model becerisi değildir.
+Bir öncelikli CatBoost bağlamının üç özgün native dosyası ve completed makbuzu
+ayrıca private Release'den geri açılıp hash'lerle eşleşti. Veri snapshot
+bağları doğrulandı. İlk makbuzdaki kaynak kodu boşluğu sonraki
+[bağlama makbuzunda](../research/evidence/private-drive-priority-source-binding-20261011.json)
+`cottonlens-research-source-v2.zip` ve 123 dosya hash'iyle kapandı.
+[Native makbuz](../research/evidence/private-drive-priority-native-delivery-20261011.json):
+toplam 5.975 dosya/529.026.140 bayt. Bu bağlam tam yakalamada tekrar sayılmaz;
+model çalıştırılmadı ve inference/beceri sonucu çıkarılmadı.
+Son [ara teslimat](../research/evidence/private-drive-closed-receipts-delivery-20261011.json)
+önceki ayıklanmamış envanterde bulunmayan 11.693 ek completed makbuzunu
+12 private parçadan taze indirip özgün baytlarla geri açtı. Toplam koruma
+17.668 dosya/2.095.998.283 bayt oldu; ek bölüm native ağırlık içermez ve
+bağımsız deney veya bütün model koleksiyonu olarak sayılmaz. Tam yakalamada
+örtüşen yol/hash çiftleri tekrar sayılmaz; bu makbuz silme izni üretmez.
 Büyük `experiments` yakalaması sürüyor; hiçbir özgün
 silinmedi. Tam taşıma ve kota boşaltma henüz bitmedi.
 Canlı task'ın yalnız DrivePath ayarı kaldırıldı; XML yedeği, frozen kaynak ve

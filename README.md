@@ -1,6 +1,6 @@
 # CottonLensAI
 
-11 Ekim: depo private yapıldı. Drive taşımasında 5.971 dosya/513.539.817 bayt
+11 Ekim: depo private yapıldı. Drive taşımasında 17.668 dosya/2.095.998.283 bayt
 GitHub'dan yeniden indirilip doğrulandı; bunların 363'ü checkpoint/scaler/geçmiş
 dosyasıdır ve özgün baytlarla geri açıldı. [Ek teslimat makbuzu](research/evidence/private-drive-additional-delivery-20261011.json).
 Başlangıçta karantinaya alınan dört MLflow veritabanı da salt okunur inceleme
@@ -9,6 +9,15 @@ sonrası private Release'den geri indirilip bütünlük kontrolüyle doğruland�
 43 USDA HTML dosyasının tek ortak tarayıcı eşleşmesi, sayfalara gömülü Boomerang
 telemetri tanımlayıcısı olarak incelendi; özgün baytlar ayrı private arşivde
 doğrulandı. [HTML makbuzu](research/evidence/private-drive-html-delivery-20261011.json).
+Bir CatBoost native model/adapter/eğri bağlamı ve özgün fit makbuzu da ayrı
+paketten geri açıldı; üç dosyanın hash'i makbuzla, veri bağları korunan
+snapshot'larla eşleşti. [Native makbuz](research/evidence/private-drive-priority-native-delivery-20261011.json).
+Sonraki [kaynak bağlama makbuzu](research/evidence/private-drive-priority-source-binding-20261011.json)
+aynı fit'in kaynak kimliğini korunan ZIP ve 123 dosya hash'iyle eşleştirdi.
+Inference/beceri sonucu yok; tam yakalamada bu dört dosya tekrar sayılmaz.
+Son [ara yedek](research/evidence/private-drive-closed-receipts-delivery-20261011.json)
+11.693 ek fit makbuzunu 12 parçadan taze indirme ve geri açmayla korudu.
+Bu ek bölüm model ağırlığı içermez; dosya sayısı bağımsız deney sayısı değildir.
 Genel hassas içerik filtresi değişmedi; kaynakların modele uygunluğu artmadı.
 47 özgün karantina dosyasının tamamı Drive'da ve özel yerel yedekte de tutuluyor. Büyük deney
 ağacının aktarımı sürüyor, hiçbir özgün silinmedi. Henüz bütün Drive'ın

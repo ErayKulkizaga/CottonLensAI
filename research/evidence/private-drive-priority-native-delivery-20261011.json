@@ -1,0 +1,69 @@
+{
+  "schema": 1,
+  "status": "priority_native_context_fresh_recovery_verified_broad_capture_pending",
+  "release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/drive-preservation-20261011",
+  "parent_record_id": "d57a17b7f0d51199fb9f79fd80a3c8f890c4b25c55538b0509c5bb1f7cdcdca1",
+  "context_identity": "b93f672d94413693301b14fff11e1d35c549661b69e15205324b13c64eabd670",
+  "historical_source_id_recorded": "73a92265cbdeb2ecae26f589193086fbfac1367673d8985ae02a97a12741b6a1",
+  "historical_source_code_binding_verified": false,
+  "source_code_binding_note": "Identifier retained in unchanged full receipt; code identity not yet independently matched to a protected source snapshot. No reproducibility or skill claim.",
+  "receipt_source_path": "experiments/research-v2-tf-placement/ledger/completed/b93f672d94413693301b14fff11e1d35c549661b69e15205324b13c64eabd670.json",
+  "receipt_asset": "priority-native-b93f-completed.json",
+  "receipt_sha256": "82a19e2c836d8f86d8735750ed2bf9171bd26cc0551ab50cbe7b24179a7bb2b1",
+  "archive_asset": "priority-native-b93f-evidence.zip",
+  "manifest_asset": "priority-native-b93f-manifest.json",
+  "manifest_sha256": "12d8a5f57d0d9c98c6dc196a74dffaf70a3e533a3688b830935c59fa0ee97b89",
+  "fresh_remote_verification": {
+    "status": "verified",
+    "files": 3,
+    "logical_bytes": 15362286,
+    "excluded": 0,
+    "archive_sha256": "e302a46c07052118fba1830b23c8fa1a0518e0590388f79ade7287d8be176a1b",
+    "model_deserialization_performed": false,
+    "deleted_files": 0,
+    "restored_files": 3,
+    "source_files_deleted": 0
+  },
+  "all_native_files_match_original_completed_receipt": true,
+  "already_preserved_data_bindings": [
+    {
+      "file": "feature_history.parquet",
+      "expected_sha256": "87613c253ca25c286d7a1e7371757080ccdc75515d8cd39e82c29a6030d8e3aa",
+      "verified_remote_source_paths": [
+        "data/processed/snapshots/b7aecc5c96a240069a3251e3e88b5f1c0c448fac5c8eb2f02782a16b4a0c03ca/feature_history.parquet"
+      ]
+    },
+    {
+      "file": "cftc.parquet",
+      "expected_sha256": "e7e66357d0c4cb7a9c7b85fad84004a2535f44ccb6483da288727ab422450a48",
+      "verified_remote_source_paths": [
+        "data/raw/cftc.parquet",
+        "data/raw/snapshots/072c262cf1aace427300e08fee2b42cc386c92ef34370480a8903f6cefd14e0e/cftc.parquet"
+      ]
+    },
+    {
+      "file": "market.parquet",
+      "expected_sha256": "23cfabb7ccb2553f0547bc3290ff4916ce91c788c98a94acdb2e5b9cd1f3151c",
+      "verified_remote_source_paths": [
+        "data/raw/market.parquet",
+        "data/raw/snapshots/072c262cf1aace427300e08fee2b42cc386c92ef34370480a8903f6cefd14e0e/market.parquet"
+      ]
+    }
+  ],
+  "native_family": "catboost",
+  "horizon": 5,
+  "target_kind_recorded": "scaled_log",
+  "new_preserved_source_files": 4,
+  "new_preserved_source_bytes": 15486323,
+  "combined_verified_logical_files_before_broad_capture": 5975,
+  "combined_verified_logical_bytes_before_broad_capture": 529026140,
+  "overlap_with_final_broad_capture_expected": true,
+  "counting_rule": "Deduplicate final inventories by original relative path and content SHA; do not sum priority context again when broad capture includes it.",
+  "model_loaded_or_deserialized": false,
+  "new_fits": 0,
+  "source_files_deleted": 0,
+  "full_project_migration_complete": false,
+  "quota_recovery_verified": false,
+  "next_exact_step": "Continue original capture and finish private full recovery; bind all native contexts to their receipts/data/source before cleanup.",
+  "record_id": "e6cf596d1fe1a416f018279d8611c72de95b951d6bcb7de8fe60baa13ee8b604"
+}

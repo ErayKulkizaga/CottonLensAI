@@ -414,6 +414,25 @@ değildir. [Ek makbuz](evidence/private-drive-html-delivery-20261011.json)
 43 taze indirmeyi doğrular; tarihsel saat/vintage veya model uygunluğu kanıtı
 üretmez. Genel saklama politikasında bir anahtar izin listesi açılmamıştır.
 
+Bir öncelikli CatBoost bağlamının üç native dosyası completed makbuzundaki
+hash'lerle, veri dosyaları korunan snapshot'larla eşleşmiştir.
+[İlk makbuz](evidence/private-drive-priority-native-delivery-20261011.json)
+kaynak kodu bağını açık bıraktı; sonraki
+[bağlama makbuzu](evidence/private-drive-priority-source-binding-20261011.json)
+aynı `source_id`'yi `sources/cottonlens-research-source-v2.zip` içindeki
+123 kaynak hash'iyle doğruladı. Eski makbuz değiştirilmedi. Kaynak kodu veya
+model çalıştırılmadı; bu bir inference/beceri sonucu ya da bütün eski kayıp
+payload'ların kurtarıldığı iddiası değildir. Tam envanterde aynı yol/hash
+çifti ikinci kez sayılmaz.
+
+[Ara completed-makbuz yedeği](evidence/private-drive-closed-receipts-delivery-20261011.json)
+yalnız devam eden yakalamanın kapanmış günlük satırlarındaki, önceki
+ayıklanmamış envanterde bulunmayan 11.693 kaydı korur. 12 parça taze
+GitHub indirmesiyle doğrulanıp geri açılmıştır; kaynak veya capture günlüğü
+değişmez. Parça manifestleri genel `storage.py` şemasıyla doğrulanabilir.
+Bu bölüm native model ağırlığı, tam envanter veya silme hazırlığı değildir.
+Tam yakalama ile birleşiminde aynı özgün yol/hash çifti tekrar sayılmaz.
+
 [GitHub evidence-20261005](https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/evidence-20261005), bilimsel dosyaları içerik hash'iyle tekilleştirir. Manifest her orijinal göreli yolu, orijinal/public SHA-256 değerini ve varlık/iç yolunu korur. Parçalar bağımsız ZIP'tir; büyük veri Git ağacına eklenmez.
 
 Mevcut ham kaynaklar, model/checkpoint'ler, ledger'lar, tahminler, raporlar, kaynak snapshot'ları ve kesintiye uğramış çalıştırmalar korunur. Yazılım ortamı/cache, kişisel ayarlar, UI ekran görüntüleri ve içeriği güvenle yayınlanamayan veritabanları dışlanır; dışlamalar indekste görünür. Geçmişte kaybolmuş LSTM tahminleri oluşturulmaz. Yerel orijinaller silinmez/değişmez. Ayıklanmış dosya eski hash doğrulamasını geçmez ve eski deney cache'i olarak kullanılmamalıdır.
