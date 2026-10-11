@@ -1,0 +1,75 @@
+{
+  "schema": 1,
+  "status": "additional_fresh_github_recovery_verified",
+  "release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/drive-preservation-20261011",
+  "parent_record_id": "fb4424604f11380621d9cb0718184df502a9b9ed68bca74f7934a8957d47e498",
+  "groups": [
+    {
+      "group": "entrypoints",
+      "status": "verified",
+      "files": 3,
+      "logical_bytes": 169244,
+      "excluded": 0,
+      "archive_sha256": "88fad6f2e1c750c76f866c3351e5424b1f02d6f20dcbe3054ee818543e2d5906",
+      "model_deserialization_performed": false,
+      "deleted_files": 0,
+      "restored_files": 3
+    },
+    {
+      "group": "live-baselines-v2",
+      "status": "verified",
+      "files": 64,
+      "logical_bytes": 7696540,
+      "excluded": 0,
+      "archive_sha256": "d4363b4d15567136dc6577b4a440744eb7b376ca1c485c3216bfab37d7ab2206",
+      "model_deserialization_performed": false,
+      "deleted_files": 0,
+      "restored_files": 64
+    },
+    {
+      "group": "tracking",
+      "status": "verified",
+      "files": 0,
+      "logical_bytes": 0,
+      "excluded": 2,
+      "archive_sha256": "39b268d4dc1994c9bfca0b047d6952dc319d8b70e178f3d9d40c44abfa6270bb",
+      "model_deserialization_performed": false,
+      "deleted_files": 0,
+      "restored_files": 0
+    },
+    {
+      "group": "mlruns",
+      "status": "verified",
+      "files": 2,
+      "logical_bytes": 110470,
+      "excluded": 0,
+      "archive_sha256": "c7920087accaf808085de27bb70f45eade2dc5f67f83f57001b2839dec1cf2a3",
+      "model_deserialization_performed": false,
+      "deleted_files": 0,
+      "restored_files": 2
+    }
+  ],
+  "additional_verified_logical_files": 69,
+  "additional_verified_logical_bytes": 7976254,
+  "combined_verified_logical_files": 5924,
+  "combined_verified_logical_bytes": 504084068,
+  "additional_excluded_tracking_databases_retained": 2,
+  "combined_excluded_files_retained": 47,
+  "external_colab_notebooks_review": {
+    "files_inspected": 16,
+    "cotton_source_mentions_found": false,
+    "files_changed_or_deleted": 0,
+    "private_review_sha256": "a526e3f619119549a4ae337413505b078f6d78188d863368e141159b137be4c2",
+    "conclusion": "No CottonLens source identifier found; other project notebooks remain untouched. This is scoped source inspection, not proof of absence in all output cells."
+  },
+  "new_fits": 0,
+  "source_files_deleted": 0,
+  "quota_recovery_verified": false,
+  "full_project_migration_complete": false,
+  "remaining_scopes": [
+    "experiments",
+    "excluded credential-like content and databases"
+  ],
+  "next_exact_step": "Finish active experiment capture and fresh remote restore. Independently check current source hashes and scope closure before any removal.",
+  "record_id": "46651f232a19b5d7f24fb2300124c27a137605948324531ef2d387dc6755312c"
+}
