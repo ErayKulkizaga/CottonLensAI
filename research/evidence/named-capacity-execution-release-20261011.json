@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/named-capacity-execution-20261011",
+  "archive": {
+    "name": "named-capacity-execution-20261011.zip",
+    "sha256": "430e517b69d50202a7f9239945fe896475b11960d3a3690c39bfb3806b0d792b",
+    "bytes": 9274124
+  },
+  "members": 903,
+  "inventory_sha256": "5d5b1fadf5b9a029b1b01f1d38f8fd03292c798c690d332d0cae64fd2f76467f",
+  "source_id": "4a2feff2817bf57db64970c94c8b6a7bbd55cbdc97c8c872225a0756a9dd15af",
+  "native_market_fits": 22,
+  "native_synthetic_fits": 4,
+  "reference_ridge_fits": 0,
+  "verification_fits": 0,
+  "market_performance_computed": false,
+  "completed_market_decision": false,
+  "classification": "INCONCLUSIVE",
+  "record_id": "eb396f36380bc85a41616d7da0bc9e018ca390942d3ad3f907a6730e9330ac68"
+}

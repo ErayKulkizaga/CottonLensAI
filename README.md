@@ -1,5 +1,11 @@
 # CottonLensAI
 
+11 Ekim: [tek sabit kapasite çalıştırması](docs/NAMED_CAPACITY_CONTROL_T5_20261010.md)
+22 piyasa+4 sentetik fit ile tamamlandı; 48 native çıkarım doğrulandı.
+Piyasa karar raporu henüz açık; fit tamamlanması Naive üstünlüğü değildir.
+Tek sonraki iş dondurulmuş sıfır-fit rapor/doğrulama zinciridir; yeniden
+eğitim veya yeni grid başlatılmaz. Önceki kararlar aşağıda korunur.
+
 Güncel tek iş: [sabit named-kontrat T+5 kapasite kontrolü](docs/NAMED_CAPACITY_CONTROL_T5_20261010.md).
 PR39 label deneyi ve GitHub replay'i kapandı. Aynı 246/242/4 origin,
 train tarihi ve 28 özellikte tek sabit sığ XGBoost, dondurulmuş named

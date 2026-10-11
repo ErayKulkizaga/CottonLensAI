@@ -17710,6 +17710,31 @@
       "metrics": null,
       "limits": "One previously reviewed year; clock/final vintage assumed; no independent holdout,8yeargate or production proof",
       "id": "a19faef598ddc92777cf52c906c9c7897b6ee867bfbff9bd18c3d9bae0adac81"
+    },
+    {
+      "experiment": "research-named-capacity-control-t5-v1-execution",
+      "profile": "named-capacity-control-t5-v1",
+      "horizon": 5,
+      "model_families": [
+        "xgboost"
+      ],
+      "code_id": "4a2feff2817bf57db64970c94c8b6a7bbd55cbdc97c8c872225a0756a9dd15af",
+      "data_id": "aad637dbe0c0431a2d73357e42a572cb6642660f18523e5f9e2504cb29da1f4e",
+      "classification": "INCONCLUSIVE",
+      "kind": "verified_fit_execution_not_scored",
+      "performance_evidence": false,
+      "completed_market_decision": false,
+      "market_fits": 22,
+      "synthetic_fits": 4,
+      "reference_ridge_fits": 0,
+      "verification_fits": 0,
+      "origin_count": 246,
+      "known_target_count_frozen_before_fits": 242,
+      "metrics": null,
+      "evidence": "evidence/named-capacity-execution-20261011.json",
+      "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/named-capacity-execution-20261011",
+      "limits": "Execution evidence only,not completed performance experiment; clock/final vintage assumed,2023 reused,no gate or promotion",
+      "id": "0e317bf58b383d3ca9671de0fed476fd7e5575de83c7e58842c5e796a25a593d"
     }
   ],
   "local_evidence": [
@@ -18100,6 +18125,14 @@
     {
       "path": "evidence/named-capacity-preregistration-release-20261010.json",
       "sha256": "8d970db3ce39cd620e873af047f3bbfdeb647ed358a6fbf31425192c11b9511d"
+    },
+    {
+      "path": "evidence/named-capacity-execution-20261011.json",
+      "sha256": "b2f62fdebdd115a96296d6c90c23ebfe60b6ef3d3ec5707bd72599e6873d4c3e"
+    },
+    {
+      "path": "evidence/named-capacity-execution-release-20261011.json",
+      "sha256": "3df2ce754650abbbd71eb7a0f9faf2af5bee89c61e3a2dc9a45308536daa2f4f"
     }
   ]
 }

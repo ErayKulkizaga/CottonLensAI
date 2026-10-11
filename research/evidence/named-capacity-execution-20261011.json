@@ -1,0 +1,46 @@
+{
+  "status": "verified_fit_execution_not_scored",
+  "source_id": "4a2feff2817bf57db64970c94c8b6a7bbd55cbdc97c8c872225a0756a9dd15af",
+  "ready_sha256": "98b87771ba35a0df57062cfc17b76bea387bedfa50b516abde68b33328781bf7",
+  "design_id": "d95eb9b95c321b57f21286a096d34377f72d5c20c8ba246d720cc68c7ca1af22",
+  "market_fits": 22,
+  "synthetic_fits": 4,
+  "reference_ridge_fits": 0,
+  "verification_fits": 0,
+  "new_native_replays": 22,
+  "reference_native_replays": 22,
+  "synthetic_native_replays": 4,
+  "origins_preserved": 246,
+  "previously_frozen_scoreable": 242,
+  "unknown_preserved": 4,
+  "market_performance_computed": false,
+  "completed_market_decision": false,
+  "learning_controls": {
+    "xgboost/known_signal": {
+      "relative_mae_gain": 0.9246982415879542
+    },
+    "xgboost/known_nonlinear": {
+      "relative_mae_gain": 0.7763983345001196
+    },
+    "xgboost/negative_block_shift": {
+      "relative_mae_gain": -0.03510612932913282
+    },
+    "xgboost/small_subset_overfit": {
+      "relative_mae_gain": 0.9995343924354694
+    }
+  },
+  "historical_availability_verified": false,
+  "first_vintage_verified": false,
+  "independent_holdout": false,
+  "release_allowed": false,
+  "paused_scope": "20261011 heartbeat forbids starting performance scoring; retain completed fits, do not rerun training",
+  "next_exact_step": "When scope permits, run already-preregistered report.py, then verify.py and controls.py; no additional fit",
+  "verifier_sha256": "2535cb2ce5cc92acd703c215c224b93b0cd42d93c41cf030e161ab6522ef58b4",
+  "schema": 1,
+  "kind": "verified_fit_execution_not_scored",
+  "classification": "INCONCLUSIVE",
+  "performance_evidence": false,
+  "execution_verification_sha256": "a0a6b7ce1b64bb09e910945140fae9ecf44c6b4023dd578ee92a95c5de5b2ded",
+  "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/named-capacity-execution-20261011",
+  "record_id": "b06409e72a6a5971e4a8bcb8322919180bffcd0c20d12006caaef59c4b55a465"
+}

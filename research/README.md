@@ -1,5 +1,10 @@
 # Deney geçmişi ve tekrar kontrolü
 
+11 Ekim: `named-capacity-control-t5-v1` **fit yürütmesi doğrulandı,
+piyasa sonucu açık**. 22 piyasa+4 sentetik, referans Ridge yeni fit0,
+48 native çıkarım; 246/242/4 korunur. Yürütme kaydı performans deneyi
+tamamlandı diye kullanılamaz. [Durum ve aynı deneyin tek sonraki sıfır-fit raporu](../docs/NAMED_CAPACITY_CONTROL_T5_20261010.md).
+
 Güncel tek iş: [sabit named T+5 kapasite kontrolü](../docs/NAMED_CAPACITY_CONTROL_T5_20261010.md).
 PR39 teslimatı kapandı. 55 ilgili XGBoost/T+5 kayıt ve 117 tarif tarandı;
 en yakın native kayıt CT/24 özellik kullanıyor. Aynı named label/28

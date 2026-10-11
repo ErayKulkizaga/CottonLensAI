@@ -53678,6 +53678,280 @@
       "payload_hashes_revalidated_by_index": false,
       "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/named-label-control-result-20261010",
       "payload_hashes_revalidated_separately": true
+    },
+    {
+      "id": "0d9cab49b64d60c026c477702faedb487c79d6187922666d1485987deb89ca57",
+      "scope": {
+        "identity_id": "f0d33fe92ec75766c0262756c289f5e05379e277f3d8ae591092efa2c952b7a7",
+        "source_id": "4a2feff2817bf57db64970c94c8b6a7bbd55cbdc97c8c872225a0756a9dd15af",
+        "data_id": null,
+        "split_id": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+        "profile": "named-capacity-control-t5-v1"
+      },
+      "scope_id": "3d55adac42fc82f9ea773b73b9cea61f4e1b77d6a9ee4561d0b0fd27d54f17bc",
+      "profile": "named-capacity-control-t5-v1",
+      "horizon": 5,
+      "recipes": [
+        {
+          "family": "xgboost",
+          "horizon": 5,
+          "device": "cpu",
+          "seed": 42,
+          "task": "price",
+          "target": "scaled_log",
+          "loss": "reg:squarederror",
+          "params": {
+            "max_depth": 8,
+            "eta": 0.15,
+            "min_child_weight": 1,
+            "alpha": 0,
+            "lambda": 0.01
+          },
+          "window": 1,
+          "cadence": 21,
+          "years": null,
+          "features": [
+            "cotton_ret_1",
+            "cotton_ret_5",
+            "cotton_ret_10",
+            "cotton_ret_20",
+            "cotton_momentum_5",
+            "cotton_momentum_20",
+            "cotton_sma_ratio_5_20",
+            "cotton_sma_ratio_20_50",
+            "cotton_volatility_5",
+            "cotton_volatility_20",
+            "cotton_range",
+            "cotton_volume_change",
+            "cotton_volume_z20",
+            "cotton_volatility_regime_20_60",
+            "dxy_ret_1",
+            "dxy_ret_5",
+            "dxy_ret_20",
+            "wti_ret_1",
+            "wti_ret_5",
+            "wti_ret_20",
+            "cotton_dxy_corr_60",
+            "cotton_wti_corr_60",
+            "month_sin",
+            "month_cos",
+            "curve_D0_age_sessions",
+            "curve_D0_unavailable",
+            "curve_D0_gap_months",
+            "numeric_D0_spread"
+          ],
+          "max_iterations": 400
+        }
+      ],
+      "model_families": [
+        "xgboost"
+      ],
+      "kind": "synthetic_control:unspecified",
+      "completed_fits": 1,
+      "sample_receipts": [
+        {
+          "path": "experiment/capacity-learning-ledger/completed/cebb32f2d6de20bde86494a41112e75aa92138ede9eb10a507b37dee1e560c17.json",
+          "record_id": "cb4b81696d937960ef7c7b2958bda42ccf789aa6cc466ccbff5e3277b43b5d63",
+          "experiment_id": "cebb32f2d6de20bde86494a41112e75aa92138ede9eb10a507b37dee1e560c17"
+        }
+      ],
+      "roles": [
+        "small_subset_overfit"
+      ],
+      "coverage": "completed fit receipts; not experiment completion",
+      "payload_hashes_revalidated_by_index": false,
+      "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/named-capacity-execution-20261011",
+      "payload_hashes_revalidated_separately": true
+    },
+    {
+      "id": "870210844ceae7c5102c562a927d01d51392709e4cefce605f558e97581fd0d5",
+      "scope": {
+        "identity_id": "595f8c4a8001772809d10ebf50ed1a3c4193c3686bd1ffbcf24a3839b9465d9e",
+        "source_id": "4a2feff2817bf57db64970c94c8b6a7bbd55cbdc97c8c872225a0756a9dd15af",
+        "data_id": "aad637dbe0c0431a2d73357e42a572cb6642660f18523e5f9e2504cb29da1f4e",
+        "split_id": "d342b71ca86207ccbc3a01c3c3b81771d68757cf1ff1d0129050fc606e8e3b12",
+        "profile": "named-capacity-control-t5-v1"
+      },
+      "scope_id": "8411d1189c0b786d789a1e14d74285669233e734b08b2d24e0893ca2a5e4e85a",
+      "profile": "named-capacity-control-t5-v1",
+      "horizon": 5,
+      "recipes": [
+        {
+          "family": "xgboost",
+          "horizon": 5,
+          "device": "cpu",
+          "seed": 42,
+          "task": "price",
+          "target": "scaled_log",
+          "loss": "reg:squarederror",
+          "params": {
+            "max_depth": 2,
+            "eta": 0.03,
+            "min_child_weight": 20,
+            "alpha": 0,
+            "lambda": 1
+          },
+          "window": 1,
+          "cadence": 21,
+          "years": null,
+          "features": [
+            "cotton_ret_1",
+            "cotton_ret_5",
+            "cotton_ret_10",
+            "cotton_ret_20",
+            "cotton_momentum_5",
+            "cotton_momentum_20",
+            "cotton_sma_ratio_5_20",
+            "cotton_sma_ratio_20_50",
+            "cotton_volatility_5",
+            "cotton_volatility_20",
+            "cotton_range",
+            "cotton_volume_change",
+            "cotton_volume_z20",
+            "cotton_volatility_regime_20_60",
+            "dxy_ret_1",
+            "dxy_ret_5",
+            "dxy_ret_20",
+            "wti_ret_1",
+            "wti_ret_5",
+            "wti_ret_20",
+            "cotton_dxy_corr_60",
+            "cotton_wti_corr_60",
+            "month_sin",
+            "month_cos",
+            "curve_D0_age_sessions",
+            "curve_D0_unavailable",
+            "curve_D0_gap_months",
+            "numeric_D0_spread"
+          ],
+          "max_iterations": 100
+        }
+      ],
+      "model_families": [
+        "xgboost"
+      ],
+      "kind": "market_fit_receipt",
+      "completed_fits": 22,
+      "sample_receipts": [
+        {
+          "path": "experiment/ledger/completed/07233d7f908675fb46960d94f7ec4709dc7bc378d2f386acfcbb72a0b9a50640.json",
+          "record_id": "29fa8be181d50822eb6706766f96f2d97195c50e2e2cba77850fea533ef17c96",
+          "experiment_id": "07233d7f908675fb46960d94f7ec4709dc7bc378d2f386acfcbb72a0b9a50640"
+        },
+        {
+          "path": "experiment/ledger/completed/18028912b4ec10f6916ee0b7ef81e1d10b74e82cbd821ea3fc220d3a6e98678d.json",
+          "record_id": "2d3e8ddfd379a479bb2f98be0cf3e4e3552702f2adb35d1a9e90d40dcb3306b6",
+          "experiment_id": "18028912b4ec10f6916ee0b7ef81e1d10b74e82cbd821ea3fc220d3a6e98678d"
+        },
+        {
+          "path": "experiment/ledger/completed/1828f4c0023ca3021df91a40eb9de35c898cce1b7ec8b5042b8afde42522c600.json",
+          "record_id": "5d694bd82216fdb82f54dad254f653f5b81934c6cf81daa9d5db654301542001",
+          "experiment_id": "1828f4c0023ca3021df91a40eb9de35c898cce1b7ec8b5042b8afde42522c600"
+        }
+      ],
+      "roles": [
+        "xgboost"
+      ],
+      "coverage": "completed fit receipts; not experiment completion",
+      "payload_hashes_revalidated_by_index": false,
+      "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/named-capacity-execution-20261011",
+      "payload_hashes_revalidated_separately": true
+    },
+    {
+      "id": "e67353fc49e55c5d276bb86959089bced1a7922527627ff3bd1aa94fbc674d3c",
+      "scope": {
+        "identity_id": "f0d33fe92ec75766c0262756c289f5e05379e277f3d8ae591092efa2c952b7a7",
+        "source_id": "4a2feff2817bf57db64970c94c8b6a7bbd55cbdc97c8c872225a0756a9dd15af",
+        "data_id": null,
+        "split_id": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+        "profile": "named-capacity-control-t5-v1"
+      },
+      "scope_id": "3d55adac42fc82f9ea773b73b9cea61f4e1b77d6a9ee4561d0b0fd27d54f17bc",
+      "profile": "named-capacity-control-t5-v1",
+      "horizon": 5,
+      "recipes": [
+        {
+          "family": "xgboost",
+          "horizon": 5,
+          "device": "cpu",
+          "seed": 42,
+          "task": "price",
+          "target": "scaled_log",
+          "loss": "reg:squarederror",
+          "params": {
+            "max_depth": 2,
+            "eta": 0.03,
+            "min_child_weight": 20,
+            "alpha": 0,
+            "lambda": 1
+          },
+          "window": 1,
+          "cadence": 21,
+          "years": null,
+          "features": [
+            "cotton_ret_1",
+            "cotton_ret_5",
+            "cotton_ret_10",
+            "cotton_ret_20",
+            "cotton_momentum_5",
+            "cotton_momentum_20",
+            "cotton_sma_ratio_5_20",
+            "cotton_sma_ratio_20_50",
+            "cotton_volatility_5",
+            "cotton_volatility_20",
+            "cotton_range",
+            "cotton_volume_change",
+            "cotton_volume_z20",
+            "cotton_volatility_regime_20_60",
+            "dxy_ret_1",
+            "dxy_ret_5",
+            "dxy_ret_20",
+            "wti_ret_1",
+            "wti_ret_5",
+            "wti_ret_20",
+            "cotton_dxy_corr_60",
+            "cotton_wti_corr_60",
+            "month_sin",
+            "month_cos",
+            "curve_D0_age_sessions",
+            "curve_D0_unavailable",
+            "curve_D0_gap_months",
+            "numeric_D0_spread"
+          ],
+          "max_iterations": 100
+        }
+      ],
+      "model_families": [
+        "xgboost"
+      ],
+      "kind": "market_fit_receipt",
+      "completed_fits": 3,
+      "sample_receipts": [
+        {
+          "path": "experiment/capacity-learning-ledger/completed/391282f6ec4a7fd1914100b878666e13d6cb11efd7a49d8ac92b62ca22d86019.json",
+          "record_id": "22b64325ca5a3b6d9334ce00a4b5f80aab65041ad17dd77c6b1426c7f5bec502",
+          "experiment_id": "391282f6ec4a7fd1914100b878666e13d6cb11efd7a49d8ac92b62ca22d86019"
+        },
+        {
+          "path": "experiment/capacity-learning-ledger/completed/4e11350ef461489ab52bf875e2df62432c9ba885fea34dbb683b7d85866c747c.json",
+          "record_id": "ad7c9920d0e6120bbf09d45b7b336bf71f282abc1c3586393e565bc78d7fb5c8",
+          "experiment_id": "4e11350ef461489ab52bf875e2df62432c9ba885fea34dbb683b7d85866c747c"
+        },
+        {
+          "path": "experiment/capacity-learning-ledger/completed/c5dc8c93ddeae103413b04801c4052aed5dc7130a0e63c9ea2d0da4d94128a0a.json",
+          "record_id": "6262ff39b3187cc357dab8f9ff899b972ee24ebdde3c596f560c6250f749518a",
+          "experiment_id": "c5dc8c93ddeae103413b04801c4052aed5dc7130a0e63c9ea2d0da4d94128a0a"
+        }
+      ],
+      "roles": [
+        "known_signal",
+        "negative_block_shift",
+        "known_nonlinear"
+      ],
+      "coverage": "completed fit receipts; not experiment completion",
+      "payload_hashes_revalidated_by_index": false,
+      "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/named-capacity-execution-20261011",
+      "payload_hashes_revalidated_separately": true
     }
   ],
   "rejected_receipts": [],

@@ -1,5 +1,12 @@
 # Güncel kararlar — 10 Ekim 2026
 
+**11 Ekim güncellemesi:** [sabit named kapasite kontrolü](NAMED_CAPACITY_CONTROL_T5_20261010.md)
+22 piyasa+4 sentetik fit ile çalıştırıldı; 48 native çıkarım yeniden
+doğrulandı, Ridge tekrar fit edilmedi. Sentetik kontroller geçti; piyasa
+becerisi/kararı henüz hesaplanmadı. Heartbeat'in skor kısıtında yalnız
+yürütme bütünlüğü korundu. Sonraki tek iş aynı dondurulmuş rapor/verifier/
+bozulma kontrolleriyle deneyi sıfır-fit kapatmak; eğitim tekrarı yok.
+
 **Tek sonraki kontrol hazırlanıyor:** [sabit named T+5 kapasitesi](NAMED_CAPACITY_CONTROL_T5_20261010.md).
 PR39 sonuç teslimatı ve 8/8 CI doğrulandı. En yakın eski XGBoost native
 kaydı CT/24 özellikli; mevcut named/28 özellik/ortak2023 train kontrolü

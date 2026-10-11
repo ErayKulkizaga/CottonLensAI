@@ -87,3 +87,30 @@ profil kontrolleri dahil yeni fit yok**. Ardından tek kayıtlı deney
 sonuçlandırılır; native tahmin, bağımsız Decimal fiyat hesabı, scalar
 bootstrap ve tutarlı bozulma kontrolleriyle denetlenir. Eski kanıtlar
 silinmez/değiştirilmez; sonuç sicile ayrı ek kayıt olarak girer.
+
+## 11 Ekim: çalıştırma tamamlandı, piyasa kararı açık
+
+PR40 ve sıfır-fit ön kayıt GitHub'da yayımlandı; taze indirmede 768 dosya
+doğrulandı. Kaynak `4a2feff2817bf57db64970c94c8b6a7bbd55cbdc97c8c872225a0756a9dd15af`,
+256 ML dosyası. 22 piyasa+4 sentetik fit tamamlandı; eski Ridge yeniden
+eğitilmedi. Bilinen doğrusal/nonlinear sentetik MAE kazançları %92,469824/
+%77,639833; negatif kontrol −%3,510613, aile ezberleme %99,953439.
+Bunlar **piyasa becerisi değildir**.
+
+22 yeni, 22 referans ve 4 sentetik native tahmin çıkarımı tekrar doğrulandı;
+veri/recipe/train kimliği, label olgunluğu ve 246/242/4 örneklem korunuyor.
+Ek doğrulama fit'i0. Genel ML suite 1064 geçti/3 skip/2 eski uyarı; son
+kaynak dar regresyon suite 34 geçti (17 yeni kapasite testi). Son kaynak
+koruması geniş test collection'ından sonra eklendi ve dar çalıştırmada
+sınandı. Ruff geçti. GPU kontrolü çalıştırılmadı.
+
+11 Ekim heartbeat'i “Performans skoru ... başlatma” kısıtı içerdiğinden bu
+tetiklemede yeni piyasa skor raporu başlatılmadı. Bu ek kayıt yalnız
+**VERIFIED fit yürütme/native bütünlük** kanıtıdır; çalışma performans
+sınıfı INCONCLUSIVE ve pratik karar henüz verilmedi. Ön kayıt ve eski
+kanıtlar değişmez. Model eğitimi tekrarlanmayacak.
+
+Tek sonraki iş, skor kapsamı izin verdiğinde zaten dondurulmuş
+`report.py → verify.py → controls.py` sıfır-fit zincirini çalıştırıp mevcut
+22+4 deneyi kapatmak. Yeni model/grid/tarif yok. Rapor/verifier checksum'ları
+ön kayıt Release'indedir; fit sonrası birincil metrik veya eşik seçilemez.
