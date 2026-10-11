@@ -1,6 +1,6 @@
 # CottonLensAI
 
-11 Ekim: depo private yapıldı. Drive taşımasında 32.484 dosya/4.108.647.287 bayt
+11 Ekim: depo private yapıldı. Drive taşımasında önceki 32.484 dosya/4.108.647.287 bayt
 GitHub'dan yeniden indirilip doğrulandı; bunların 363'ü checkpoint/scaler/geçmiş
 dosyasıdır ve özgün baytlarla geri açıldı. [Ek teslimat makbuzu](research/evidence/private-drive-additional-delivery-20261011.json).
 Başlangıçta karantinaya alınan dört MLflow veritabanı da salt okunur inceleme
@@ -35,6 +35,16 @@ Kayıp Öğeler'deki 42 eski kaynak/makbuz ZIP'i private GitHub'dan tekrar indir
 doğrulandı; özgünleri korunuyor. İki ilgisiz Colab defteri kalıcı silinmedi.
 Üç erişim/kilit hatası olan
 özgün silinmedi. Önceden kaybolmuş beş küçük makbuz ZIP'i yedekte mevcut.
+Yerelde önceden yakalanmış [2.997 ek makbuz/403.631.234 bayt](research/evidence/private-drive-closed-receipts-v4-delivery-20261011.json)
+dört private paketten yeniden indirilip doğrulandı; önceki grup ile toplam
+35.481 dosya/4.512.278.521 bayttır. Ayrı Kayıp Öğeler yedeği bu toplama eklenmez.
+Bu yeni grubun güncel hash kontrolü ve geri alınabilir silmesi hatasız tamamlandı;
+[temizleme denetimi](research/evidence/private-drive-v4-recoverable-cleanup-20261011.json)
+private Release'den yeniden açıldı. Yeni grup insan onayıyla kalıcı temizlendi;
+[sonuç kaydı](research/evidence/private-drive-v4-terminal-cleanup-20261011.json)
+kotanın **14,51/15 GB** olduğunu doğrular: yaklaşık 0,49 GB boşluk vardır.
+İki eski defter aynı kimliklerle önceki geri alınabilir çöp kutusuna döndürüldü.
+Ek makbuzlar yeni eğitim veya native model ağırlığı değildir.
 Büyük deney ağacının yakalama ve aktarım süreçleri senkronizasyon şikâyeti sonrası
 durduruldu; 30.013 yakalama kaydı yerelde korunuyor. Bütün Drive taşıması tamamlanmadı;
 Drive'dan otomatik indirme yeniden başlamaz. Sonraki saklama işlemi önceden yerelde

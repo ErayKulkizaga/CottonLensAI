@@ -466,6 +466,19 @@ yazmadan ve yeni Drive indirmesi başlatmadan korunmalıdır.
 GitHub/yerel yedektedir. Eski makbuzların `source_files_deleted=0` alanı değiştirilmez;
 yeni işlem ek kayıttır. Bu, yeni fit veya tüm native payload'ların kurtarıldığı anlamına gelmez.
 
+Sonraki [dördüncü makbuz grubu](evidence/private-drive-closed-receipts-v4-delivery-20261011.json)
+2.997 ayrı özgün dosya/403.631.234 baytı yalnız mevcut yerel yakalama journal'ından
+korur; yeni Drive toplu indirmesi veya fit yoktur. Önceki korumayla toplam
+35.481 dosya/4.512.278.521 bayt; ayrıca korunan Kayıp Öğeler yedeği tekrar sayılmaz.
+[Yeni temizleme kaydı](evidence/private-drive-v4-recoverable-cleanup-20261011.json)
+2.997 güncel kaynak hash'ini ve aynı taze geri kurulmuş baytları kontrol edip
+geri alınabilir silmeyi hatasız tamamladı. Sonraki [terminal kayıt](evidence/private-drive-v4-terminal-cleanup-20261011.json)
+işlem anında insan onayını, boş bulut çöp kutusunu ve 14,88 → 14,51/15 GB
+kota düşüşünü doğrular. Eski iki defter aynı kimliklerle önceki geri alınabilir
+çöp kutusuna döndürüldü; son görünümde yalnız bu iki defter vardır. Önceki
+bekleyen statüler tarihsel kayıtlardır ve değiştirilmez. Büyük model koleksiyonunun
+taşınması tamamlanmadı; eski toplu yakalama/finisher otomatik yeniden başlamaz.
+
 [GitHub evidence-20261005](https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/evidence-20261005), bilimsel dosyaları içerik hash'iyle tekilleştirir. Manifest her orijinal göreli yolu, orijinal/public SHA-256 değerini ve varlık/iç yolunu korur. Parçalar bağımsız ZIP'tir; büyük veri Git ağacına eklenmez.
 
 Mevcut ham kaynaklar, model/checkpoint'ler, ledger'lar, tahminler, raporlar, kaynak snapshot'ları ve kesintiye uğramış çalıştırmalar korunur. Yazılım ortamı/cache, kişisel ayarlar, UI ekran görüntüleri ve içeriği güvenle yayınlanamayan veritabanları dışlanır; dışlamalar indekste görünür. Geçmişte kaybolmuş LSTM tahminleri oluşturulmaz. Yerel orijinaller silinmez/değişmez. Ayıklanmış dosya eski hash doğrulamasını geçmez ve eski deney cache'i olarak kullanılmamalıdır.

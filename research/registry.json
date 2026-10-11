@@ -18683,6 +18683,18 @@
     {
       "path": "evidence/private-drive-cleanup-incident-20261011.json",
       "sha256": "ebb0c3b1a698a6628d91a95692b2e62b0ac91188a71905984728a989200f35b7"
+    },
+    {
+      "path": "evidence/private-drive-closed-receipts-v4-delivery-20261011.json",
+      "sha256": "fe68071ea8adac782ad3f246526ae6076db0d7259b91d915b1ecd49835c1d090"
+    },
+    {
+      "path": "evidence/private-drive-v4-recoverable-cleanup-20261011.json",
+      "sha256": "5d4a5e8ba825b568f97db09f42dc229dc033b7c9e719d105dd6efa7a116d531b"
+    },
+    {
+      "path": "evidence/private-drive-v4-terminal-cleanup-20261011.json",
+      "sha256": "8c74bb6a40e346a93f266231ee60f2bf0529bce4c69896574d766980aae395e3"
     }
   ]
 }

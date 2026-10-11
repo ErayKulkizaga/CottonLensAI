@@ -1,15 +1,23 @@
 # Güncel kararlar — 11 Ekim 2026
 
 11 Ekim kullanıcı önceliği: PR44 girdi teslimatı tamamlandı ve sekiz CI kontrolü
-geçti. Depo private. Son durum: 32.484 dosya/4.108.647.287 bayt private Release'den
+geçti. Depo private. Son durum: 35.481 dosya/4.512.278.521 bayt private Release'den
 taze indirilip doğrulandı; tam model/deney taşıması tamamlanmadı. İnsan onaylı
-temizleme kota kullanımını 18,72'den **14,88/15 GB**'ye indirdi; 0,12 GB boşluk
-yeterli değildir. [Temizleme ve senkronizasyon hatası kaydı](../research/evidence/private-drive-cleanup-incident-20261011.json).
+temizleme ve sonraki sınırlı grubun temizliği kota kullanımını 18,72'den
+**14,51/15 GB**'ye indirdi; yaklaşık 0,49 GB boşluk vardır. Bu, tam taşıma değildir.
+[Son terminal kayıt](../research/evidence/private-drive-v4-terminal-cleanup-20261011.json).
 Kayıp Öğeler'deki 42 kaynak/makbuz ZIP'i (5,87 MB) aynı baytlarla yeniden
 GitHub'dan geri açıldı; özgünleri silinmedi. Drive yakalama ve finisher süreçleri
 durduruldu; otomatik indirme yeniden başlamaz. Sonraki koruma işlemi mevcut
 yerel yakalama journal'ındaki kapanmış baytların Drive'a yazmadan doğrudan
-private GitHub'a taşınmasıdır. Senkronizasyonun sağlıklı olduğu iddia edilmiyor.
+private GitHub'a taşınmasıdır. Sonraki sınırlı işlem tamamlandı: [2.997 ek
+makbuz/403.631.234 bayt](../research/evidence/private-drive-closed-receipts-v4-delivery-20261011.json)
+yalnız mevcut yerel baytlardan dört pakete alınarak taze GitHub geri kurmasıyla
+doğrulandı. [Güncel hash ve geri alınabilir silme](../research/evidence/private-drive-v4-recoverable-cleanup-20261011.json)
+2.997/2.997 dosyada hatasızdır; yeni grup insanın işlem anında onayıyla kalıcı
+temizlendi. Önceki gruplarla toplam 35.481 dosya/4.512.278.521 bayt;
+Kayıp Öğeler yedeği tekrar sayılmaz. Makbuzlar native ağırlık veya bağımsız
+deney sayısı değildir; yeni fit yoktur. Tam taşıma hâlâ tamamlanmadı.
 Aşağıdaki makbuzlar önceki koruma aşamalarını açıklar.
 [Ek teslimat makbuzu](../research/evidence/private-drive-additional-delivery-20261011.json)
 5.924 dosya/504.084.068 bayt taze GitHub indirmesini doğrular; bunların 363'ü
