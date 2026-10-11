@@ -274,3 +274,9 @@ train/inner/outer satırlarında aynı kontrat geçmişi için tüm endpoint,
 eskilik, missingness ve gelecekteki quote değişmezliği kontrolleri;
 cohort düşürmeden kurulabilirlik. Ancak bundan sonra ayrı source-effect
 ön kaydı düşünülebilir; şu anda yeni model/grid başlamaz.
+
+Aynı Release'e ayrı checksum'lı3-member lineage paketi eklenmiştir;
+önceki arşivler değiştirilmedi. Taze GitHub paketindeki denetim kodu,
+taze capacity-result input'larında birebir aynıJSON'u verdi. [Makbuz](../research/evidence/named-history-lineage-delivery-20261011.json).
+Bu yalnız ön origin endpoint denetimi; tüm train/inner readiness veya
+yeni özelliğin katkı sonucu değildir.
