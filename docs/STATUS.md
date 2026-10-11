@@ -1,5 +1,76 @@
 # Güncel kararlar — 11 Ekim 2026
 
+## Aktif araştırma önceliği: veri mi, öğrenme düzeni mi?
+
+11 Ekim kullanıcı talebiyle karar sırası güncellendi; aşağıdaki eski aşamalar
+ve deney kanıtları değiştirilmedi. Yeni eğitim veya veri indirme başlamadı.
+
+**ROOT CAUSE NOT YET IDENTIFIABLE:** mevcut bilgi/temsilin pratik sinyali
+zayıf olabilir; sabit öğrenici/protokol de gürültülü zayıf sinyali yeterince
+çıkaramıyor olabilir. Bu iki açıklama henüz ayrılmış değildir. Veri yanlışlığına
+sayısal olasılık atanmaz; dosya sayısı bağımsız gözlem sayısı değildir.
+
+- **VERIFIED — dosya bütünlüğü:** hash/restore kontrolleri yalnız incelenen
+  dosyaların aynı baytlarla korunduğunu gösterir. Ekonomik doğruluk, ilk vintage
+  veya tarihsel yayın saatini kanıtlamaz; tam native arşiv taşıması bitmedi.
+- **VERIFIED — kaynak/etiket uygunluğu:** [ortak etiket kontrolü](NAMED_LABEL_CONTROL_T5_20261010.md)
+  incelenen 2023 örneğinde kaybı azalttı, pratik hedefi sağlamadı. Tarihsel
+  erişim ve vintage varsayımları sürer. Bu, bütün datasetin bozuk olduğu sonucu değildir.
+- **STRONGLY SUPPORTED — mevcut tarifte yararlı üstünlük yok:**
+  [numeric–mask kontrolü](NAMED_HISTORY_SOURCE_CONTROL_T5_20261011.md)
+  ham Naive kazancını −%3,005765/−%0,493740 buldu; kaynak katkısının iki
+  blok aralığı sıfırı içerir. [Loss kontrolü](NAMED_LOSS_DIAGNOSIS_20261011.md)
+  aynı tahminlerin standardized MSE'de de geride olduğunu gösterdi.
+  Bunlar kaynakta veya bütün modellerde sinyal yokluğu ispatı değildir;
+  T+5 sonucu T+1'e taşınmaz.
+
+### Tek sonraki bilimsel adım ve karar
+
+[Mevcut zayıf-sinyal hazırlığını](NAMED_WEAK_SIGNAL_READINESS_20261011.md)
+sonuçlandır: `named-weak-signal-control-t5-v1`, seed703/1703/2703,
+matched null/injected, aynı32 alan/246 origin/242 uygun/4 bilinmeyen,
+aynı XGB ve label olgunluğu, en fazla132 sentetik fit; piyasa fit0.
+Oracle beklenen yaklaşık%10 etki öğrenilmiş başarı değildir.
+`python ml/history.py check --family xgboost --horizon 5 --query weak`
+mevcut hazırlığı bulur; eşdeğer tamamlanmış fit göstermemesi tek başına
+araştırmanın yeni olduğunu kanıtlamaz. PR39/40/42/43 tekrarlanmaz.
+
+Önce mevcut Experiment/ledger bağlantısı, geçmişe fit edilmiş preprocessing,
+label maturity, null/injected ortak noise ve gelecekteki noise'un feature'a
+sızmaması doğrulanır. Nihai source/data/environment ve rapor kimliği ile
+ön kayıt dondurulur; taze GitHub restore geçmeden fit başlamaz. Bir süreç,
+en fazla iki thread,30 dakika/checkpoint ve132-fit tavanı korunur. Bütçe
+veya bütünlük kontrolü başarısızsa bilimsel sonuç verilmez.
+
+1. Üç seed'de ham öğrencinin bilinen dağılımdaki beklenen dış fiyat-MAE
+   kazancı ≥%5 ve null beklenen kazancı pozitif değilse: bu basit öğretici
+   için öğrenme yeterliği desteklenir. Bilgi/temsil eksikliği daha güçlü aday
+   olur; piyasa sinyalsizliği kanıtlanmaz. Sonraki karar, yeni fit açmadan
+   mevcut kaynakların güncellik/eksiklik/bağımsız yenilik kapsamını incelemektir.
+2. Üç seed'de kazanç <%5 ve null kontrolü sağlamsa: sabit öğrenme düzeni
+   bilinen etkiyi yeterince çıkaramıyor. Piyasa kaynaklarını reddetme veya yeni
+   dataset ekleme kararı durur; ham öğrenim ile geçmiş shrinkage ayrı incelenir.
+3. Karışık seed, başarısız null veya belirsiz sonuç: tek mekanizma seçilmez;
+   sonuç ve eksik kanıt kaydedilir. Otomatik reseed/grid/model büyütme yok.
+
+Ham öğrenici birincil; shrinkage ve gerçekleşmiş gürültülü kayıp ayrıca
+raporlanır. Üç seed kalibre edilmiş güç tahmini veya bağımsız piyasa holdout'u
+sayılmaz. %5, T+1%53/T+5%55 ve sekiz-yıl6/8 ürün kapıları değişmez; tek2023
+sentetik kontrol bu kapılardan geçmiş piyasa modeli olarak sunulamaz.
+
+### Süreyi kısaltma sınırı
+
+Saklama ve araştırma iki ayrı iş akışıdır: tam Drive göçü bilimsel çalışmanın
+süresiz ön koşulu değildir; yalnız deney için gereken girdilerin ve native
+kanıtların checksum bağlı güvenli geri kurması ön koşuldur. Drive yeniden
+üretim/yükleme veya silme otomasyonu deney yoluna eklenmez. Mevcut altyapıda
+ön kayıt → sınırlı yürütme → bağımsız rapor tek checkpoint zinciriyle ilerler;
+zaman ölçülür, darboğaz gösterilmeden GPU geçişi yapılmaz. Daha çok model,
+veri veya compute başarı yerine konmaz. Bu güncelleme yalnız plandır;
+132-fit kontrol henüz çalıştırılmadı.
+
+---
+
 11 Ekim kullanıcı önceliği: PR44 girdi teslimatı tamamlandı ve sekiz CI kontrolü
 geçti. Depo private. Son durum: 35.481 dosya/4.512.278.521 bayt private Release'den
 taze indirilip doğrulandı; tam model/deney taşıması tamamlanmadı. İnsan onaylı
