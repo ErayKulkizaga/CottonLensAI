@@ -247,3 +247,30 @@ yeniden üretildi; yeni fit/tahmin0. [Teslimat kaydı](../research/evidence/name
 İlk yerel restore yardımcı kodu ordinaryJSON makbuzunu signed-ledger
 okuyucusuna verdiği için durdu; partial klasör korunur. R2 yalnız bu
 makbuzuJSON olarak okuyor; aynı arşiv/analiz/tahmin/verifier değişmedi.
+
+## 11 Ekim: mevcut girdinin kontrat geçmişi denetimi
+
+[Ön veri/temsil kanıtı](../research/evidence/named-history-lineage-audit-20261011.json).
+**VERIFIED:** dört `cotton_ret_*` alanı CT close geçmişinden aynen
+hesaplanıyor;28 özellikte named-kontrat geçmişi yok. Mevcut997 raporda
+aynı origin'de seçilen kontratı geriye izleyerek1/5/10/20 as-of endpoint
+246/246 origin'de mevcut (saat/vintage varsayımı altında). Ortalama
+mutlak CT-log-getiri farkları sırasıyla0,003524/0,009557/0,012737/0,015295;
+bunlar sinyal, korelasyon veya performans ölçüsü değildir.
+
+Geriye dönük ikinci sıra ile aynı kontrat1/5/10/20 lags'te5/25/50/95
+origin'de farklı. `second_price.shift(k)` aynı kontrat geçmişi değildir.
+243 karar-anında bilinen origin fiyatı kaynaklardan yeniden kuruldu.
+21/26 Haziran2023 geç yayım varsayımı taşıyan güncel quote'lar tamamlanan
+pipeline'da eligible sayılmamış; ilk keşif kontrolünde bunları current
+quote diye kullanma girişimi durdu. Bu tamamlanmış deneye leakage
+atfetmez; önceden korunan4 bilinmeyen ve246 cohort aynen durur.
+
+Bu feature eksikliğinin başarısızlığa neden olduğu **PLAUSIBLE**, henüz
+test edilmedi. Kodun etiket kontrolü için özellikleri sabit tutması
+bilimsel olarak doğruydu; kontrolün yanıtlamadığı soru şimdi açıkça
+tanımlıdır. Yeni fit/feature/veri0. **Tek sonraki iş:** mevcut donmuş
+train/inner/outer satırlarında aynı kontrat geçmişi için tüm endpoint,
+eskilik, missingness ve gelecekteki quote değişmezliği kontrolleri;
+cohort düşürmeden kurulabilirlik. Ancak bundan sonra ayrı source-effect
+ön kaydı düşünülebilir; şu anda yeni model/grid başlamaz.
