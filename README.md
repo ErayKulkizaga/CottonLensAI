@@ -28,10 +28,17 @@ ve [ek grup](research/evidence/private-drive-closed-receipts-v3-delivery-2026101
 47 özgün inceleme istisnasının private GitHub ve yerel kopyaları korunuyor.
 [Temizleme kaydı](research/evidence/private-drive-recoverable-cleanup-20261011.json):
 32.476 dosya/4.108.244.956 bayt, güncel hash ve taze geri kurma kontrolünden sonra
-DriveFS üzerinden geri alınabilir silme kuyruğuna alındı. Toplu bulut sayımı ve
-kalıcı silme onayı bekliyor; kota henüz boşalmadı. Üç erişim/kilit hatası olan
+DriveFS üzerinden geri alınabilir silme kuyruğuna alındı. İnsan onaylı kalıcı
+temizleme sonrası kota 18,72'den **14,88/15 GB**'ye indi; yalnız 0,12 GB boşluk
+kaldığı için depolama sorunu çözülmüş sayılmıyor. [Son işlem ve hata kaydı](research/evidence/private-drive-cleanup-incident-20261011.json).
+Kayıp Öğeler'deki 42 eski kaynak/makbuz ZIP'i private GitHub'dan tekrar indirilip
+doğrulandı; özgünleri korunuyor. İki ilgisiz Colab defteri kalıcı silinmedi.
+Üç erişim/kilit hatası olan
 özgün silinmedi. Önceden kaybolmuş beş küçük makbuz ZIP'i yedekte mevcut.
-Büyük deney ağacının aktarımı sürüyor; bütün Drive taşıması tamamlanmadı.
+Büyük deney ağacının yakalama ve aktarım süreçleri senkronizasyon şikâyeti sonrası
+durduruldu; 30.013 yakalama kaydı yerelde korunuyor. Bütün Drive taşıması tamamlanmadı;
+Drive'dan otomatik indirme yeniden başlamaz. Sonraki saklama işlemi önceden yerelde
+yakalanmış baytları doğrudan private GitHub'a taşımaktır.
 Canlı görevin Drive'a yazması
 kapatıldı; frozen kaynak, karar saati ve ilk126 kilidi korundu.
 [Saklama ve geri kurma kuralları](research/README.md#private-github-ve-drive-taşıması).

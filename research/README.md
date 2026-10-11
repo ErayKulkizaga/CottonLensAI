@@ -453,7 +453,15 @@ ve [üçüncü](evidence/private-drive-closed-receipts-v3-delivery-20261011.json
 14.816 ayrı özgün makbuzu daha private Release'den taze indirme/geri açmayla doğruladı.
 [Geri alınabilir temizleme](evidence/private-drive-recoverable-cleanup-20261011.json)
 32.476 özgün dosyanın güncel hash'e bağlı DriveFS silme işlemini kaydeder;
-bulutun toplu sayımı, kalıcı silme ve gerçek kota düşüşü ayrı, henüz açık kontrollerdir.
+bulutun tam öğe sayımı bağımsız ölçülmedi. Sonraki [kalıcı temizleme/hata kaydı](evidence/private-drive-cleanup-incident-20261011.json)
+insan onayı, boş çöp kutusu gözlemi, gecikmeli sekiz makbuzun ayrı temizlenmesi ve
+18,72 → 14,88/15 GB kota düşüşünü kaydeder. Yalnız 0,12 GB boşluk kalmıştır;
+senkronizasyon sağlığı veya yeterli alan iddiası yoktur. İki eski ilgisiz defter
+aynı kimliklerle geri alınabilir çöp kutusunda tutulur; yeniden tümünü boşaltma yapılmaz.
+42 başarısız Drive paketinin özgün baytları private Release'den taze geri açıldı;
+bunlar kaynak/makbuz paketleridir, native eğitim ağırlığı değildir. Yakalama ve
+finisher durduruldu; devam etmek için önce yereldeki kapanmış baytlar Drive'a
+yazmadan ve yeni Drive indirmesi başlatmadan korunmalıdır.
 Üç okunamayan/kilitli özgün korunur; önceden kaybolmuş beş küçük run ZIP'i zaten
 GitHub/yerel yedektedir. Eski makbuzların `source_files_deleted=0` alanı değiştirilmez;
 yeni işlem ek kayıttır. Bu, yeni fit veya tüm native payload'ların kurtarıldığı anlamına gelmez.

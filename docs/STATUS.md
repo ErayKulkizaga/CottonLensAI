@@ -1,8 +1,17 @@
 # Güncel kararlar — 11 Ekim 2026
 
 11 Ekim kullanıcı önceliği: PR44 girdi teslimatı tamamlandı ve sekiz CI kontrolü
-geçti. Depo private; Drive'daki özgün modeller/veriler/deneyler GitHub Releases'e
-doğrulanarak taşınıyor. [Ek teslimat makbuzu](../research/evidence/private-drive-additional-delivery-20261011.json)
+geçti. Depo private. Son durum: 32.484 dosya/4.108.647.287 bayt private Release'den
+taze indirilip doğrulandı; tam model/deney taşıması tamamlanmadı. İnsan onaylı
+temizleme kota kullanımını 18,72'den **14,88/15 GB**'ye indirdi; 0,12 GB boşluk
+yeterli değildir. [Temizleme ve senkronizasyon hatası kaydı](../research/evidence/private-drive-cleanup-incident-20261011.json).
+Kayıp Öğeler'deki 42 kaynak/makbuz ZIP'i (5,87 MB) aynı baytlarla yeniden
+GitHub'dan geri açıldı; özgünleri silinmedi. Drive yakalama ve finisher süreçleri
+durduruldu; otomatik indirme yeniden başlamaz. Sonraki koruma işlemi mevcut
+yerel yakalama journal'ındaki kapanmış baytların Drive'a yazmadan doğrudan
+private GitHub'a taşınmasıdır. Senkronizasyonun sağlıklı olduğu iddia edilmiyor.
+Aşağıdaki makbuzlar önceki koruma aşamalarını açıklar.
+[Ek teslimat makbuzu](../research/evidence/private-drive-additional-delivery-20261011.json)
 5.924 dosya/504.084.068 bayt taze GitHub indirmesini doğrular; bunların 363'ü
 checkpoint/scaler/geçmiş dosyasıdır ve aynı baytlarla geri açılmıştır.
 [Sonraki salt okunur veritabanı makbuzu](../research/evidence/private-drive-databases-delivery-20261011.json)
@@ -15,7 +24,7 @@ olarak ayırır; başka credential eklenmiş kontrol ve yanlış kaynak kontrol�
 reddedilir. Özgün HTML taze private indirmede aynı hash'lerle doğrulandı:
 toplam 5.971 dosya/513.539.817 bayt. Genel filtre ve eski dışlama kaydı değişmedi;
 HTML'in `publication_timestamp_verified=false`/`model_eligible=false` durumu
-korundu. Başlangıçtaki 47 karantina özgününün tamamı ayrıca Drive'da/özel
+korundu. Başlangıçtaki 47 karantina özgününün tamamı ayrıca private GitHub/özel
 yerel yedekte korunur. Sayımlar bağımsız deney sayısı veya model becerisi değildir.
 Bir öncelikli CatBoost bağlamının üç özgün native dosyası ve completed makbuzu
 ayrıca private Release'den geri açılıp hash'lerle eşleşti. Veri snapshot
@@ -31,8 +40,9 @@ Son [ara teslimat](../research/evidence/private-drive-closed-receipts-delivery-2
 17.668 dosya/2.095.998.283 bayt oldu; ek bölüm native ağırlık içermez ve
 bağımsız deney veya bütün model koleksiyonu olarak sayılmaz. Tam yakalamada
 örtüşen yol/hash çiftleri tekrar sayılmaz; bu makbuz silme izni üretmez.
-Büyük `experiments` yakalaması sürüyor; hiçbir özgün
-silinmedi. Tam taşıma ve kota boşaltma henüz bitmedi.
+Büyük `experiments` yakalaması durduruldu; 30.013 kapanmış yerel yakalama kaydı
+korunur. Eski makbuzlardaki silinmedi alanları tarihsel aşamayı anlatır; sonraki
+temizleme ayrı ek kayıttır. Yeterli kota boşluğu ve tam taşıma henüz sağlanmadı.
 Canlı task'ın yalnız DrivePath ayarı kaldırıldı; XML yedeği, frozen kaynak ve
 altı missing/ilk126 kilidi korundu. Yeni fit/grid/skor yok. Saklama tamamlanınca
 tek bilimsel adım önceki132 sentetik-fit tasarımının mevcut engine/ledger'a
