@@ -1,0 +1,179 @@
+{
+  "schema": 1,
+  "profile": "named-error-attribution-v1",
+  "status": "verified_posthoc_loss_mechanism",
+  "input_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/named-capacity-result-20261010",
+  "input_hashes": {
+    "predictions.csv": "aceba7e06811ae84ae5b5738c4b699935a48cb3f930ed895674c6a5fdeaf79ef",
+    "report.json": "5589d195ba05d157d10103497314587be3295e18ac93e36e654a87c14151ac57"
+  },
+  "report_sha256": "afcbed3366f1b0bc94046e7be5b9bfa39402ea8aa3bad3a97e30e6c00dd01803",
+  "decomposition_sha256": "a5c3e1c4d79a00563fcd7c92d18f83be7d12fedfa2d5d9991a8e171c9c902a06",
+  "analyzer_sha256": "bc8828a9ebd4e7a6612db7cc530feea6ebaa0822098b54a292c8fe0ef079e28d",
+  "verification": {
+    "status": "passed",
+    "rows_checked": 984,
+    "groups_checked": 4,
+    "method": "exact rational distances and interval membership; separate analyzer Decimal formulas",
+    "new_fits": 0,
+    "report_sha256": "afcbed3366f1b0bc94046e7be5b9bfa39402ea8aa3bad3a97e30e6c00dd01803",
+    "decomposition_sha256": "a5c3e1c4d79a00563fcd7c92d18f83be7d12fedfa2d5d9991a8e171c9c902a06"
+  },
+  "controls": {
+    "status": "passed",
+    "synthetic_arithmetic_boundaries": 11,
+    "coherent_semantic_rejections": 4,
+    "new_fits": 0
+  },
+  "summaries": {
+    "ridge_raw": {
+      "known": 242,
+      "unknown": 4,
+      "direction_hits": 110,
+      "actual_up": 109,
+      "actual_down": 133,
+      "forecast_up": 191,
+      "groups": {
+        "correct_no_overshoot": {
+          "count": 83,
+          "gain_sum": "78.86316607693224",
+          "forecast_abs_sum": "78.86316607693224",
+          "actual_abs_sum": "216.79"
+        },
+        "wrong_direction": {
+          "count": 132,
+          "gain_sum": "-111.06670200625746",
+          "forecast_abs_sum": "111.06670200625746",
+          "actual_abs_sum": "247.44"
+        },
+        "correct_overshoot": {
+          "count": 27,
+          "gain_sum": "-5.75825839234889",
+          "forecast_abs_sum": "33.71825839234889",
+          "actual_abs_sum": "13.98"
+        }
+      },
+      "total_gain_sum": "-37.96179432167411",
+      "signed_forecast_size_sum_before_overshoot": "1.51472246302367",
+      "overshoot_penalty_sum": "39.47651678469778",
+      "correct_direction_size_share_pct": 50.33863964945607,
+      "mean_abs_forecast_movement": 0.9241658118823909,
+      "mean_abs_actual_movement": 1.9760743801652894,
+      "gain_pct": -7.938310433005188,
+      "hindsight_majority_hits": 133,
+      "hindsight_majority_is_not_exante_baseline": true
+    },
+    "ridge_selected": {
+      "known": 242,
+      "unknown": 4,
+      "direction_hits": 0,
+      "actual_up": 109,
+      "actual_down": 133,
+      "forecast_up": 0,
+      "groups": {
+        "flat_prediction": {
+          "count": 242,
+          "gain_sum": "0.00",
+          "forecast_abs_sum": "0.00",
+          "actual_abs_sum": "478.21"
+        }
+      },
+      "total_gain_sum": "0.00",
+      "signed_forecast_size_sum_before_overshoot": "0.00",
+      "overshoot_penalty_sum": "0",
+      "correct_direction_size_share_pct": null,
+      "mean_abs_forecast_movement": 0.0,
+      "mean_abs_actual_movement": 1.9760743801652894,
+      "gain_pct": 0.0,
+      "hindsight_majority_hits": 133,
+      "hindsight_majority_is_not_exante_baseline": true
+    },
+    "xgboost_raw": {
+      "known": 242,
+      "unknown": 4,
+      "direction_hits": 133,
+      "actual_up": 109,
+      "actual_down": 133,
+      "forecast_up": 174,
+      "groups": {
+        "correct_no_overshoot": {
+          "count": 110,
+          "gain_sum": "39.10024504437290",
+          "forecast_abs_sum": "39.10024504437290",
+          "actual_abs_sum": "238.47"
+        },
+        "wrong_direction": {
+          "count": 109,
+          "gain_sum": "-43.60088817701450",
+          "forecast_abs_sum": "43.60088817701450",
+          "actual_abs_sum": "230.26"
+        },
+        "correct_overshoot": {
+          "count": 23,
+          "gain_sum": "2.13952798250158",
+          "forecast_abs_sum": "16.82047201749842",
+          "actual_abs_sum": "9.48"
+        }
+      },
+      "total_gain_sum": "-2.36111515014002",
+      "signed_forecast_size_sum_before_overshoot": "12.31982888485682",
+      "overshoot_penalty_sum": "14.68094403499684",
+      "correct_direction_size_share_pct": 56.189524804832594,
+      "mean_abs_forecast_movement": 0.41124630264002404,
+      "mean_abs_actual_movement": 1.9760743801652894,
+      "gain_pct": -0.49374022921729366,
+      "hindsight_majority_hits": 133,
+      "hindsight_majority_is_not_exante_baseline": true
+    },
+    "xgboost_selected": {
+      "known": 242,
+      "unknown": 4,
+      "direction_hits": 0,
+      "actual_up": 109,
+      "actual_down": 133,
+      "forecast_up": 0,
+      "groups": {
+        "flat_prediction": {
+          "count": 242,
+          "gain_sum": "0.00",
+          "forecast_abs_sum": "0.00",
+          "actual_abs_sum": "478.21"
+        }
+      },
+      "total_gain_sum": "0.00",
+      "signed_forecast_size_sum_before_overshoot": "0.00",
+      "overshoot_penalty_sum": "0",
+      "correct_direction_size_share_pct": null,
+      "mean_abs_forecast_movement": 0.0,
+      "mean_abs_actual_movement": 1.9760743801652894,
+      "gain_pct": 0.0,
+      "hindsight_majority_hits": 133,
+      "hindsight_majority_is_not_exante_baseline": true
+    }
+  },
+  "oracle_only_correct_overshoot_repair": {
+    "price_mae_gain_pct": 1.041249005114573,
+    "negative_gain_overshoot_origins": 9,
+    "definition": "Hindsight algebraic ceiling: replace ONLY already-correct-sign overshoot predictions by exact actual; all other existing predictions unchanged. Not an evaluated or feasible policy, global calibration bound, or all-model limit.",
+    "future_outcome_used_for_explanation_only": true,
+    "original_forecasts_changed": false
+  },
+  "classification": "INCONCLUSIVE",
+  "classification_scope": "No new predictive-skill experiment; verified finite-sample arithmetic explains original result, which retains its original capacity-positive/practical-negative classification.",
+  "new_fits": 0,
+  "new_forecasts": 0,
+  "rows": 984,
+  "retained_origins_per_group": 246,
+  "known_per_group": 242,
+  "unknown_per_group": 4,
+  "posthoc": true,
+  "independent_holdout": false,
+  "historical_availability_verified": false,
+  "first_vintage_verified": false,
+  "live126_scored": false,
+  "release_allowed": false,
+  "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/named-error-attribution-20261011",
+  "main_interpretation": "Positive weighted sign-size contribution is smaller than correct-sign overshoot penalty. Perfect repair of these overshoots alone still does not reach5%. Does not identify a training-loss causal effect or prove absence of information.",
+  "next_single_scientific_question": "Audit whether current 28 features contain historical prices of the actual origin-selected named contract; assess causal reconstructability on existing quotes before any new fit/loss/model proposal.",
+  "record_id": "47da3053c62e348356255b47e127c0625eb4a0774a1da91f1688d233dd84fe36"
+}

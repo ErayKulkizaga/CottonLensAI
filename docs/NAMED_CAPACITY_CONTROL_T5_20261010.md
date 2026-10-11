@@ -190,3 +190,53 @@ aşama/523 tarif. Release'in ilk oluşturma isteği kısa commit kimliğiyle
 reddedildi; tam commit kimliğiyle aynı arşiv yayımlandı, kanıt değişmedi.
 Kayıtlı deney kapanmıştır; pratik Naive hedefi ve genel proje hedefi
 tamamlanmadı. Tek sonraki iş yukarıdaki sıfır-fit hata katkısı tanısıdır.
+
+## 11 Ekim: yön–büyüklük hata mekanizması (sonuç-sonrası, sıfır-fit)
+
+**VERIFIED**, yalnız bu 242 hedef için: `n=actual−origin`,
+`q=forecast−origin` olduğunda Naive katkısı `|n|−|n−q|`.
+Doğru yönde hedefi aşmayan tahmin `+|q|`, yanlış yön `−|q|`,
+doğru yönde aşım `2|n|−|q|` katkı yapar. Bu tanı yeni politika veya
+gelecekten özellik üretmez; gerçekleşen sonuç yalnız hata açıklamasıdır.
+
+| Ham XGB grubu | Origin | Katkı toplamı (cent/lb) |
+|---|---:|---:|
+| Doğru yön, aşım yok |110|+39,100245|
+| Yanlış yön |109|−43,600888|
+| Doğru yön, aşım var |23|+2,139528|
+| Bütün bilinen hedefler |242|−2,361115|
+
+Yön ve tahmin büyüklüğünün işaretli toplamı +12,319829; doğru yöndeki
+aşım cezası14,680944: net−2,361115. Naive hata toplamında sırasıyla
++%2,576238 ve−%3,069978; net−%0,493740. Aşım grubunun bütün katkısı
+negatif değildir;23 origin'in9'u tek başına negatif katkı verir. Ortalama
+mutlak tahmin hareketi0,411246, gerçekleşen1,976074 cent/lb: ortalamada
+küçük tahminler bile küçük gerçekleşen hareketlerde aşım yaratabilir.
+
+**VERIFIED sınırlı karşıolgu:** yalnız doğru yönlü aşım tahminlerini
+gerçekleşen fiyatı bilerek kusursuz düzeltsek, bütün diğer tahminleri
+aynen bıraksak, kazanç +%1,041249 olur. Bu geleceği kullanan **tanısal
+cebirsel sınırdır**; uygulanabilir kalibrasyon, OOS politika veya bütün
+modeller için sınır değildir. Aşım düzeltmesi tek başına5% hedefini
+kurtaramaz. Eğitim kaybının bu hataya neden olduğu henüz gösterilmedi.
+
+Yön hit133/242=%54,958678; gerçekleşen düşüş de133/242. Sonradan
+seçilen sürekli-düşüş tahmini aynı hit sayısını verir; bu ex-ante baseline
+değildir ve XGB sürekli-düşüş üretmiyor (174/242 yükseliş tahmini).
+Yuvarlanmış “%55” başarı iddiası yapılamaz; eski gate ve tek-yıl
+sınırları aynen kalır. Önceki kapasite-pozitif/pratik-negatif sınıf değişmez.
+
+[Kanıt](../research/evidence/named-error-attribution-20261011.json):984
+satır/4 grup, Decimal formüllerden bağımsız exact-rational fiyat mesafesi
+kontrolü;11 cebir sınırı ve4 checksum'ı yeniden yazılmış bozulma ret
+kontrolü geçti. İlgili58 çalışma/120 tarif incelendi. Yeni fit/tahmin0,
+eski171 aşama/trials/kanıt değişmedi. Saat/vintage varsayımları ve canlı126
+skor yasağı korunur.
+
+**Tek sonraki bilimsel soru:** named hedefe geçtiğimiz halde28 girdide
+hâlâ CT proxy fiyat geçmişini mi kullanıyoruz? `named_label_control.projection`
+etiketi değiştiriyor; features listesini değiştirmiyor. Mevcut quote'larda
+origin'de seçilen **aynı kontratın** geçmişi nedensel/eksiksiz yeniden
+kurulabiliyor mu, sıfır-fit denetlenecek. Bu olası temsil sorunudur;
+ana başarısızlık nedeni olduğu henüz kanıtlanmadı. Önce bu sınır
+açıklığa kavuşmadan yeni MAE/alpha/depth veya veri deneyi başlatılmaz.

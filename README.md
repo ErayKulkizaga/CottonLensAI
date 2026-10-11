@@ -1,5 +1,13 @@
 # CottonLensAI
 
+11 Ekim: [sıfır-fit hata ayrımı](docs/NAMED_CAPACITY_CONTROL_T5_20261010.md#11-ekim-yönbüyüklük-hata-mekanizması-sonuç-sonrası-sıfır-fit) doğrulandı.
+Ham XGB'nin yön/büyüklük katkısı +12,319829, doğru-yön aşım cezası
+14,680944; net−2,361115 cent/lb toplamı. Yalnız aşım hatalarını geleceği
+bilerek kusursuz düzeltmek bile +%1,041249 kazanç sağlar; bu bir politika
+veya gerçek başarı değildir. Yeni fit/tahmin0; eski sonuç değişmez.
+Tek sonraki iş aynı kontrat geçmişinin mevcut28 özellikte ve saklanan
+quote'larda temsil/erişilebilirlik denetimi; yeni model/grid başlamaz.
+
 11 Ekim — [sabit named T+5 kapasite sonucu](docs/NAMED_CAPACITY_CONTROL_T5_20261010.md) doğrulandı.
 Aynı 242 hedefte ham XGBoost, Ridge'e karşı +%7,444570 Naive-MAE birimi
 katkı sağlıyor; blok20/60 alt sınırları pozitif. Ancak Naive kazancı

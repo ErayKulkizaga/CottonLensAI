@@ -17817,6 +17817,31 @@
       "historical_source_admitted": false,
       "release_allowed": false,
       "id": "d4064b808dd8ea96a43ab040564ae13e427d0b22efc7748d419bc605ecb477dd"
+    },
+    {
+      "profile": "named-error-attribution-v1",
+      "experiment": "research-named-error-attribution-v1",
+      "horizon": 5,
+      "kind": "posthoc_algebraic_diagnosis",
+      "classification": "INCONCLUSIVE",
+      "classification_scope": "No new predictive-skill experiment; verified finite-sample arithmetic explains original result, which retains its original capacity-positive/practical-negative classification.",
+      "model_families": [
+        "xgboost",
+        "ridge"
+      ],
+      "recipes": [],
+      "origin_count": 246,
+      "scored_origin_count": 242,
+      "prediction_payload_exists": true,
+      "new_fits": 0,
+      "new_forecasts": 0,
+      "posthoc": true,
+      "evidence": "evidence/named-error-attribution-20261011.json",
+      "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/named-error-attribution-20261011",
+      "independent_holdout": false,
+      "historical_source_admitted": false,
+      "release_allowed": false,
+      "id": "d8bc4028374fae249065feab9fe2ecfa12981ba8d5b16bf323a0d28c0058bbfd"
     }
   ],
   "local_evidence": [
@@ -18239,6 +18264,14 @@
     {
       "path": "evidence/named-capacity-result-delivery-20261011.json",
       "sha256": "e7e19bb5cead95c603bf58a8708301f6a0a634831261d187a2975d2988223521"
+    },
+    {
+      "path": "evidence/named-error-attribution-20261011.json",
+      "sha256": "8f1a067c76edf5db14603f60d8183826b25b3d0e2209715c67bf96fb20c3dbe5"
+    },
+    {
+      "path": "evidence/named-error-attribution-release-20261011.json",
+      "sha256": "f83a0103cec244cd28ecdc0c83ef9f54946afce75eeb1baa9c8b2674196ad611"
     }
   ]
 }
