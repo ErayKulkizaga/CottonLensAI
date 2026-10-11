@@ -76,6 +76,12 @@ Kanıt: `research/evidence/named-loss-diagnosis-20261011.json`.
 [Checksum bağlı analiz arşivi](https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/named-loss-diagnosis-20261011)
 ayrı PR42 parent restore'una bağlıdır; modelleri ikinci kez fit etmez.
 
+Taze GitHub ZIP'i, `89a69ad1875488a2de5e931184c6d9625aebe35b` commit'inin
+manifestine karşı doğrulandı. 28 payload'dan aynı rapor/CSV/complete,
+bağımsız verifier ve dört bozulma makbuzu sıfır-fit yeniden üretildi.
+Teslim kanıtı `research/evidence/named-loss-diagnosis-delivery-20261011.json`.
+Eski 175 araştırma aşaması, 119 proof ve fit sicili byte'ları korunur.
+
 ## Tek sonraki bilimsel soru
 
 Mevcut sabit XGBoost düzeni, bu named cohort'un örnek sayısı ve eksiklik

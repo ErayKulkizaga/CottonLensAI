@@ -18587,6 +18587,10 @@
     {
       "path": "evidence/named-loss-diagnosis-release-20261011.json",
       "sha256": "04e1226133da3fa2c725bf1f1a947c6c183c199c0bf12db937678ea360bd2073"
+    },
+    {
+      "path": "evidence/named-loss-diagnosis-delivery-20261011.json",
+      "sha256": "a0ba3d99b4f7aa334c53c015149409f3be2ac8566a8dfc286d56c99e150a4946"
     }
   ]
 }
