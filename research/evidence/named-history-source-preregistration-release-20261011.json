@@ -1,0 +1,30 @@
+{
+  "schema": 1,
+  "release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/named-history-source-preregistration-20261011",
+  "archive": {
+    "name": "named-history-source-preregistration-20261011.zip",
+    "sha256": "0c9569b6cf5ab3bfe5045035712848a6222f32edcba127d3ab886348e95ec14a",
+    "bytes": 11869162
+  },
+  "inventory_sha256": "32eba1b4061a02a692c1d6e74d96aafcb24b12ea8b0bcf0a96227990eca26499",
+  "members": 1175,
+  "source_id": "466e4d3f756178561aca5e1706384d0be7398a7cf01757bef34677777c1ed155",
+  "market_fit_budget": 44,
+  "synthetic_fit_budget": 4,
+  "new_market_fits": 0,
+  "new_synthetic_fits": 0,
+  "new_market_scores": 0,
+  "report_script_sha256": "3ec9f5b6631cd154dfccccc768e52800eb8f9fe82409430dd1fd62599b43feb8",
+  "verifier_script_sha256": "54696be5c1653ab2f9d2be79b1b3a4a3385127bf9197bc69b8a541e21322d7ac",
+  "ml_tests": {
+    "status": "passed",
+    "synthetic_or_mock_tests": 111,
+    "tests_log_sha256": "ee515040050b589d368855cd23c9522737bf9eac82fca238eb5d703a65e18a1b",
+    "ruff_ml": "passed",
+    "new_market_fits": 0,
+    "new_synthetic_model_fits": 0,
+    "new_market_scores": 0,
+    "prototype_failed_test": "Immutable cached pass remains unchanged when remeasurement conflicts; test now separately asserts abort and fresh failed evidence."
+  },
+  "record_id": "2dc847b760102e6661c749348278ee9653acf1aa983d22a8909c570c2639412e"
+}
