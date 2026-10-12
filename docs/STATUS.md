@@ -1,5 +1,17 @@
 # Güncel kararlar — 12 Ekim 2026
 
+12 Ekim: [korumalı CFTC namedT+5 kontrolü](NAMED_CFTC_SOURCE_CONTROL_T5_20261012.md#tamamlanan-sonuç--44-piyasa--dört-mekanik-sentetik-fit)
+44piyasa+dörtmekanik sentetik fit ile kapandı. Ham numeric Naive kazancı
+−%1,124208/yön%52,892562; mask−%2,933479. Kaynak katkısı+1,809270Naive-MAE
+puanı fakat iki aralık da sıfırı içeriyor. Numeric kazanç üst sınırları
+%2,589670/%2,105044 <%5: sabit tarif pratik hedefi sağlamadı. İki geçmiş
+weight0. Kaynak sinyali yokluğu veya yeni model gerekliliği kanıtlanmadı.
+Private GitHub542üye taze geri kurması/native44+4/scalar12/tamper8 geçti;
+eski181aşama/527tarif değişmez. [Teslimat](../research/evidence/named-cftc-source-result-delivery-20261012.json).
+Sıradaki tek iş yeni eğitim değil: tamamlanan named kontrollerin bilgi/temsil
+ve zamanlama kapsamını aynı kohortta sıfır-fit sentezle daraltmak; sonra
+tek ayırt edici test seçilir. Başarı henüz yok; live/üretim/Drive değişmedi.
+
 12 Ekim: korumalı CFTC kaynak karşılaştırması mevcut motor/ledger'a bağlandı.
 Aynı named T+5/sabit XGB, iki37alanlı numeric-mask kolu,44piyasa+dört
 mekanik sentetik fit tavanı. [Tarif](NAMED_CFTC_SOURCE_CONTROL_T5_20261012.md).

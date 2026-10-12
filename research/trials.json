@@ -54339,6 +54339,308 @@
       "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/named-weak-execution-result-20261012",
       "payload_hashes_revalidated_separately": true,
       "classification_scope": "Only recovery of this fixed simple known noisy teacher, not market skill or power calibration; three same-cohort seeds are not independent market years."
+    },
+    {
+      "id": "fbd5347c072b1f3615886e8a7a2ec50137519f9739d2dff8c0f0c7d4c5609dfb",
+      "scope": {
+        "identity_id": "eb3cc00011a88fcb7685262544a94b882d9acc6fdaaaaabd9f765ab45e4c9091",
+        "source_id": "8eca71445366d207b74393acad43968ab5f8f5f6c6954ee21ce22dda24c3af38",
+        "data_id": null,
+        "split_id": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+        "profile": "named-cftc-source-control-t5-v1"
+      },
+      "scope_id": "73ca960e911ee3f15f59bc3ec1fb479ad8964a9a26c74cb7d1d160a24f2f3891",
+      "profile": "named-cftc-source-control-t5-v1",
+      "horizon": 5,
+      "recipes": [
+        {
+          "family": "xgboost",
+          "horizon": 5,
+          "device": "cpu",
+          "seed": 42,
+          "task": "price",
+          "target": "scaled_log",
+          "loss": "reg:squarederror",
+          "params": {
+            "max_depth": 8,
+            "eta": 0.15,
+            "min_child_weight": 1,
+            "alpha": 0,
+            "lambda": 0.01
+          },
+          "window": 1,
+          "cadence": 21,
+          "years": null,
+          "features": [
+            "cotton_ret_1",
+            "cotton_ret_5",
+            "cotton_ret_10",
+            "cotton_ret_20",
+            "cotton_momentum_5",
+            "cotton_momentum_20",
+            "cotton_sma_ratio_5_20",
+            "cotton_sma_ratio_20_50",
+            "cotton_volatility_5",
+            "cotton_volatility_20",
+            "cotton_range",
+            "cotton_volume_change",
+            "cotton_volume_z20",
+            "cotton_volatility_regime_20_60",
+            "dxy_ret_1",
+            "dxy_ret_5",
+            "dxy_ret_20",
+            "wti_ret_1",
+            "wti_ret_5",
+            "wti_ret_20",
+            "cotton_dxy_corr_60",
+            "cotton_wti_corr_60",
+            "month_sin",
+            "month_cos",
+            "curve_D0_age_sessions",
+            "curve_D0_unavailable",
+            "curve_D0_gap_months",
+            "numeric_D0_spread",
+            "named_contract_ret_1",
+            "named_contract_ret_5",
+            "named_contract_ret_10",
+            "named_contract_ret_20",
+            "cftc_age_L1",
+            "cftc_missing_L1",
+            "cftc_managed_net_share_L1",
+            "cftc_producer_net_share_L1",
+            "cftc_managed_share_change_L1"
+          ],
+          "max_iterations": 400
+        }
+      ],
+      "model_families": [
+        "xgboost"
+      ],
+      "kind": "synthetic_learning_control_not_market_evidence",
+      "completed_fits": 1,
+      "sample_receipts": [
+        {
+          "path": "experiment/capacity-learning-ledger/completed/d5c60abff2bc75aeb13eb1761f446f81908b1646ef667495f5dd51c1c733015d.json",
+          "record_id": "f5767251a327c2a33c24f256958eda50bbd32fb524e17a3f591e71add1367448",
+          "experiment_id": "d5c60abff2bc75aeb13eb1761f446f81908b1646ef667495f5dd51c1c733015d"
+        }
+      ],
+      "roles": [
+        "small_subset_overfit"
+      ],
+      "coverage": "completed fit receipts; not experiment completion",
+      "payload_hashes_revalidated_by_index": false,
+      "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/named-cftc-source-result-20261012",
+      "payload_hashes_revalidated_separately": true
+    },
+    {
+      "id": "b01a3d528cedcf6f0dd26ebbc7c29536d0bec4dae369f267db97703e995e2e83",
+      "scope": {
+        "identity_id": "4966a9fe44b306fe7864e342910683a160545bb1582d541fa44567efe9a34661",
+        "source_id": "8eca71445366d207b74393acad43968ab5f8f5f6c6954ee21ce22dda24c3af38",
+        "data_id": "5a14da3d6ba3e14dd6b625eb5d40df2ee0b9c0aa2729468b0326b938b19b6dc5",
+        "split_id": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+        "profile": "named-cftc-source-control-t5-v1"
+      },
+      "scope_id": "105f1106c9bae0cdad3f5b66e494e8241c459ebbc58526b90e3b34a2d0e411a7",
+      "profile": "named-cftc-source-control-t5-v1",
+      "horizon": 5,
+      "recipes": [
+        {
+          "family": "xgboost",
+          "horizon": 5,
+          "device": "cpu",
+          "seed": 42,
+          "task": "price",
+          "target": "scaled_log",
+          "loss": "reg:squarederror",
+          "params": {
+            "max_depth": 2,
+            "eta": 0.03,
+            "min_child_weight": 20,
+            "alpha": 0,
+            "lambda": 1
+          },
+          "window": 1,
+          "cadence": 21,
+          "years": null,
+          "features": [
+            "cotton_ret_1",
+            "cotton_ret_5",
+            "cotton_ret_10",
+            "cotton_ret_20",
+            "cotton_momentum_5",
+            "cotton_momentum_20",
+            "cotton_sma_ratio_5_20",
+            "cotton_sma_ratio_20_50",
+            "cotton_volatility_5",
+            "cotton_volatility_20",
+            "cotton_range",
+            "cotton_volume_change",
+            "cotton_volume_z20",
+            "cotton_volatility_regime_20_60",
+            "dxy_ret_1",
+            "dxy_ret_5",
+            "dxy_ret_20",
+            "wti_ret_1",
+            "wti_ret_5",
+            "wti_ret_20",
+            "cotton_dxy_corr_60",
+            "cotton_wti_corr_60",
+            "month_sin",
+            "month_cos",
+            "curve_D0_age_sessions",
+            "curve_D0_unavailable",
+            "curve_D0_gap_months",
+            "numeric_D0_spread",
+            "named_contract_ret_1",
+            "named_contract_ret_5",
+            "named_contract_ret_10",
+            "named_contract_ret_20",
+            "cftc_age_L1",
+            "cftc_missing_L1",
+            "cftc_managed_net_share_L1",
+            "cftc_producer_net_share_L1",
+            "cftc_managed_share_change_L1"
+          ],
+          "max_iterations": 100
+        }
+      ],
+      "model_families": [
+        "xgboost"
+      ],
+      "kind": "market_fit_receipt",
+      "completed_fits": 44,
+      "sample_receipts": [
+        {
+          "path": "experiment/ledger/completed/05218134b9c08c01109d0de3772d9cebc386ba1bdcb47780ee272f95c6dc6150.json",
+          "record_id": "932066548bc769a52478075069eac0dcf95b780b9aa659fb4b5e392b7993bb27",
+          "experiment_id": "05218134b9c08c01109d0de3772d9cebc386ba1bdcb47780ee272f95c6dc6150"
+        },
+        {
+          "path": "experiment/ledger/completed/0571edea24dc1bdea51cdee2f52cefcccf1e5817487ee33a29f950bff0747b69.json",
+          "record_id": "44fefebdc44e0caf855440fd0d3714b5063e29ed65c399bc4590a4a5a37fdc1e",
+          "experiment_id": "0571edea24dc1bdea51cdee2f52cefcccf1e5817487ee33a29f950bff0747b69"
+        },
+        {
+          "path": "experiment/ledger/completed/05a9ad855be00935c94398dd8d4661620e65a35494511d705cad615c11bdc6ab.json",
+          "record_id": "da4c5be9116a6d9744da473d80d3446969002c386699a25de6eb8446aa39f5b7",
+          "experiment_id": "05a9ad855be00935c94398dd8d4661620e65a35494511d705cad615c11bdc6ab"
+        }
+      ],
+      "roles": [
+        "mask",
+        "numeric"
+      ],
+      "coverage": "completed fit receipts; not experiment completion",
+      "payload_hashes_revalidated_by_index": false,
+      "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/named-cftc-source-result-20261012",
+      "payload_hashes_revalidated_separately": true
+    },
+    {
+      "id": "f309adafa6adaba36b4336af89215e49b4a14496a670c7f3c82e925fde79daab",
+      "scope": {
+        "identity_id": "eb3cc00011a88fcb7685262544a94b882d9acc6fdaaaaabd9f765ab45e4c9091",
+        "source_id": "8eca71445366d207b74393acad43968ab5f8f5f6c6954ee21ce22dda24c3af38",
+        "data_id": null,
+        "split_id": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+        "profile": "named-cftc-source-control-t5-v1"
+      },
+      "scope_id": "73ca960e911ee3f15f59bc3ec1fb479ad8964a9a26c74cb7d1d160a24f2f3891",
+      "profile": "named-cftc-source-control-t5-v1",
+      "horizon": 5,
+      "recipes": [
+        {
+          "family": "xgboost",
+          "horizon": 5,
+          "device": "cpu",
+          "seed": 42,
+          "task": "price",
+          "target": "scaled_log",
+          "loss": "reg:squarederror",
+          "params": {
+            "max_depth": 2,
+            "eta": 0.03,
+            "min_child_weight": 20,
+            "alpha": 0,
+            "lambda": 1
+          },
+          "window": 1,
+          "cadence": 21,
+          "years": null,
+          "features": [
+            "cotton_ret_1",
+            "cotton_ret_5",
+            "cotton_ret_10",
+            "cotton_ret_20",
+            "cotton_momentum_5",
+            "cotton_momentum_20",
+            "cotton_sma_ratio_5_20",
+            "cotton_sma_ratio_20_50",
+            "cotton_volatility_5",
+            "cotton_volatility_20",
+            "cotton_range",
+            "cotton_volume_change",
+            "cotton_volume_z20",
+            "cotton_volatility_regime_20_60",
+            "dxy_ret_1",
+            "dxy_ret_5",
+            "dxy_ret_20",
+            "wti_ret_1",
+            "wti_ret_5",
+            "wti_ret_20",
+            "cotton_dxy_corr_60",
+            "cotton_wti_corr_60",
+            "month_sin",
+            "month_cos",
+            "curve_D0_age_sessions",
+            "curve_D0_unavailable",
+            "curve_D0_gap_months",
+            "numeric_D0_spread",
+            "named_contract_ret_1",
+            "named_contract_ret_5",
+            "named_contract_ret_10",
+            "named_contract_ret_20",
+            "cftc_age_L1",
+            "cftc_missing_L1",
+            "cftc_managed_net_share_L1",
+            "cftc_producer_net_share_L1",
+            "cftc_managed_share_change_L1"
+          ],
+          "max_iterations": 100
+        }
+      ],
+      "model_families": [
+        "xgboost"
+      ],
+      "kind": "synthetic_learning_control_not_market_evidence",
+      "completed_fits": 3,
+      "sample_receipts": [
+        {
+          "path": "experiment/capacity-learning-ledger/completed/25f3c1b2f2eec1dcc96bb3ac64c159e329cee1ca0078a17e03d4767ae238ec6d.json",
+          "record_id": "38bad26c4a1c82c5abd4e447ae4fc4427dbf4acfe7d990774902fdde9e306673",
+          "experiment_id": "25f3c1b2f2eec1dcc96bb3ac64c159e329cee1ca0078a17e03d4767ae238ec6d"
+        },
+        {
+          "path": "experiment/capacity-learning-ledger/completed/3e1d42df07cc30c83bc7c03e0a819740e08e903065ee38c6a6e4160470fe67dc.json",
+          "record_id": "4c3a56cef633089ebe939382a6ca64e1066f029bc6dc694dbfa97a88ad0a1d13",
+          "experiment_id": "3e1d42df07cc30c83bc7c03e0a819740e08e903065ee38c6a6e4160470fe67dc"
+        },
+        {
+          "path": "experiment/capacity-learning-ledger/completed/77e32742a0c5ff0719a770c16c680ac3d178791a6d895edfeabd13f3837a0030.json",
+          "record_id": "56e10f4869e0adbc445799b60542befdb895ffa402f3e065d0cb5bb0a84f17ca",
+          "experiment_id": "77e32742a0c5ff0719a770c16c680ac3d178791a6d895edfeabd13f3837a0030"
+        }
+      ],
+      "roles": [
+        "negative_block_shift",
+        "known_signal",
+        "known_nonlinear"
+      ],
+      "coverage": "completed fit receipts; not experiment completion",
+      "payload_hashes_revalidated_by_index": false,
+      "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/named-cftc-source-result-20261012",
+      "payload_hashes_revalidated_separately": true
     }
   ],
   "rejected_receipts": [],

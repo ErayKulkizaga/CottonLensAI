@@ -96,3 +96,64 @@ yeni ek aşamadır; eski181aşama ve527fit tarifi değişmez. Kayıtlı bütçe4
 paket hazırlanırken fit0. Tam tarifi kontrol eden `ml/history.py check`
 RELATED_EVIDENCE verdi, aynı scope'ta tamamlanmış fit tarifi bulunmadı.
 Bu sonuç tek başına yenilik kanıtı değildir; eski CFTC/hedef farkı yukarıda gerekçelidir.
+
+## Tamamlanan sonuç — 44 piyasa + dört mekanik sentetik fit
+
+Native44+4 model replay geçti. Bağımsız Decimal fiyat hesabı984satırı,
+242eşleştirilmiş hedefi ve12tam-takvim bootstrap aralığını doğruladı;
+doğrulama yeni fit üretmedi. Kaynak/devam cache kimliği değişmedi.
+
+| Kol | Ham fiyat-MAE | Naive kazancı | Ham yön | Geçmiş shrinkage |
+|---|---:|---:|---:|---:|
+| Numeric CFTC | 1,998289576 | −%1,124208 | %52,892562 | 0 |
+| Mask kontrol | 2,034042103 | −%2,933479 | %51,239669 | 0 |
+| Named Naive | 1,976074380 | %0 | — | — |
+
+Ham kaynak katkısı mask−numeric **+0,035752527cent/lb**, Naive-MAE'nin
+**+1,809270yüzde puanı**. Blok20 aralığı **[−3,378239,+6,853990]**, blok60
+**[−2,400693,+5,793537]** Naive-MAE yüzde puanıdır. Sıfır ikisinin içinde:
+**INCONCLUSIVE** yalnız kaynak-katkısı işareti için.
+
+Numeric ham Naive kazancı aralıkları blok20 **[−%4,773761,+%2,589670]**,
+blok60 **[−%3,847223,+%2,105044]**. İki üst sınır da önceden belirlenen
+%5'ten küçük: tarif kararı **FIXED_NAMED_CFTC_BELOW_PRACTICAL_GOAL**.
+Bu, incelenmiş tek-yıl/final-vintage/saat-varsayımı içindeki sabit tarif
+hakkındadır; bütün CFTC bilgisi veya bütün modeller için sinyal yokluğu değildir.
+
+En büyük%1Naive hatası çıkarıldığında numeric kazancı −%1,052135, mask
+−%2,860879; kaynak katkısı +1,760864Naive-MAE yüzde puanı. Başarısızlık
+sadece birkaç aşırı hata ile açıklanmadı. İki kolun geçmiş seçimi0, küçültülmüş
+kazanç0/aktiforan0. Bu `[0,0]` farkları kaynakta sinyal yokluğunu göstermez;
+ham karşılaştırma ayrıca korunur.
+
+Mekanik kontroller: lineer%92,479218, nonlinear%78,332078, ezberleme%99,959889
+MAE iyileşmesi; negatif kontrol%2,197706. Bunlar yeni37alanın güçlü öğreticiyi
+öğrenebildiğini gösterir; piyasa becerisi veya zayıf/karmaşık kaynak gücü değildir.
+
+**Bir sonraki tek adım:** sonuç paketini private GitHub'dan taze geri kurup
+native/tahmin/bağımsız aralıkları tekrar doğrulamak; sonra tamamlanan named
+kontrollerin ortak kohortundaki hangi bilgi kaybını gerçekten ayırabildiğini
+sıfır-fit sentezle kapatmak. Yeni model, lag, horizon veya kaynak grid'i yok.
+Mevcut kanıtla daha erken CFTC saatini ya da yeni modelleri otomatik açmak
+bilimsel olarak gerekçelendirilmedi. Tahmin başarısı henüz sağlanmadı.
+
+## Kanıt teslimatı ve tekrar kapısı
+
+Private sonuç Release'inden **542üye** taze geri indirildi;44+4native replay,
+12scalar aralık ve sekiz coherent tamper reddi tekrar geçti. Yeni doğrulama
+fit'i0. [Teslimat](../research/evidence/named-cftc-source-result-delivery-20261012.json).
+48 modelin adapter/native/curve/ledger/veri/kod/tahmin bağları korunur;
+tam Drive/model arşiv taşıması bitmiş sayılmaz. Eski181aşama/527tarif ve
+eski kanıt dosyaları değişmedi. Kaynak-katkısı sınıfı INCONCLUSIVE, pratik
+karar yukarıdaki eşiklere göre negatiftir; bu iki sonuç ayrı tutulur.
+
+Ön kayıt helper'ındaki exact-repeat scope projection, `history_index`'in
+identity_id/split_id içeren projection'ıyla eş değildi. İlgili geçmiş sorgusu
+eski deneyleri gösteriyordu; no-match zaten yenilik kanıtı sayılmamıştı.
+Dondurulmuş eski proposal değiştirilmedi. [Ek düzeltme](../research/evidence/named-cftc-source-history-scope-correction-20261012.json)
+aynı hazır identity'den canonical scope üretir; yeniden fit/etiket/metrik
+uyarlaması yok. Yeni canonical proposal ile komut artık **REPEAT_FIT_RECIPE**,
+44tamamlanmış piyasa fit'i bulur. Gelecek tam-scope aramasında `history_index`
+projection'ını kullan; model tarifi eşitliği ve partial-source araması birlikte
+incelenir. Sentetik kontrol rollerinin yeni sicil projeksiyonu açıkça sentetiktir;
+eski kayıtlar yeniden yazılmaz.

@@ -1,0 +1,212 @@
+{
+  "schema": 1,
+  "status": "completed_fixed_named_cftc_source_control_verified",
+  "profile": "named-cftc-source-control-t5-v1",
+  "source_id": "8eca71445366d207b74393acad43968ab5f8f5f6c6954ee21ce22dda24c3af38",
+  "design_id": "b07ad81d9476d6599640fb7f7e2fc26db830d944560b7482660ba751c5d1ef26",
+  "ready_sha256": "28189753d35ea4d3dca3ca8a50e8ec2c66d4bffa041585cd162aa49de889d7bd",
+  "report_sha256": "1c5c43f5f3d0d47c062fd08b4e3267d545560817d9d219fad7311f11807d7416",
+  "predictions_sha256": "a3cb6efbb1f8e5d331512f18bcdaaed78b2d1b24871e7743c8cf3787e568c753",
+  "complete_sha256": "76a867e3d3507f629a4717f896d1a5e1df7ffd12d348099be15749ac7fc349f4",
+  "verification_sha256": "b14b7b886f8475df5dd3c4a2477fa6c0f6ad1347a225c04c09feb377199f9869",
+  "controls_sha256": "eac61e226acdc037a3a90cd9e9b8e9d92ec376ca40da7e0c05b545e6dabc8d8e",
+  "market_fits": 44,
+  "synthetic_fits": 4,
+  "reference_fits": 0,
+  "verification_fits": 0,
+  "native_market_replays": 44,
+  "native_reference_replays": 0,
+  "native_synthetic_replays": 4,
+  "prediction_rows": 984,
+  "price_forecasts": 972,
+  "origins_per_arm": 246,
+  "scored_per_arm": 242,
+  "unknown_per_arm": 4,
+  "classification": "INCONCLUSIVE",
+  "classification_scope": "Paired RAW same37-field protectedL1 numeric CFTC content vs identical-NaN mask; fixed100-tree XGB, reviewed2023 only. Effect sign uncertain; practical Naive decision separately frozen. NOT all representations/models,independent holdout,8yeargate,PIT or production proof.",
+  "practical_decision": "FIXED_NAMED_CFTC_BELOW_PRACTICAL_GOAL",
+  "summaries": {
+    "numeric_raw": {
+      "receipts": 246,
+      "scored": 242,
+      "unknown": 4,
+      "naive_mae": 1.9760743801652894,
+      "model_mae": 1.9982895760605874,
+      "gain_pct": -1.1242084872048126,
+      "direction_pct": 52.892561983471076,
+      "active_pct": 100.0,
+      "trimmed_gain_pct": -1.0521350569486614
+    },
+    "numeric_selected": {
+      "receipts": 246,
+      "scored": 242,
+      "unknown": 4,
+      "naive_mae": 1.9760743801652894,
+      "model_mae": 1.9760743801652894,
+      "gain_pct": 0.0,
+      "direction_pct": 0.0,
+      "active_pct": 0.0,
+      "trimmed_gain_pct": 0.0
+    },
+    "mask_raw": {
+      "receipts": 246,
+      "scored": 242,
+      "unknown": 4,
+      "naive_mae": 1.9760743801652894,
+      "model_mae": 2.0340421026219078,
+      "gain_pct": -2.933478771774253,
+      "direction_pct": 51.2396694214876,
+      "active_pct": 100.0,
+      "trimmed_gain_pct": -2.8608785971334862
+    },
+    "mask_selected": {
+      "receipts": 246,
+      "scored": 242,
+      "unknown": 4,
+      "naive_mae": 1.9760743801652894,
+      "model_mae": 1.9760743801652894,
+      "gain_pct": 0.0,
+      "direction_pct": 0.0,
+      "active_pct": 0.0,
+      "trimmed_gain_pct": 0.0
+    }
+  },
+  "contrasts": {
+    "raw": {
+      "price_mae_difference_mask_minus_numeric": 0.03575252656132033,
+      "pct_of_named_naive_mae": 1.8092702845694402,
+      "trimmed_pct_of_named_naive_mae": 1.7608642671672956
+    },
+    "selected": {
+      "price_mae_difference_mask_minus_numeric": 0.0,
+      "pct_of_named_naive_mae": 0.0,
+      "trimmed_pct_of_named_naive_mae": 0.0
+    }
+  },
+  "primary_intervals": {
+    "numeric_raw_vs_naive_20": {
+      "eligible": 242,
+      "ordinal_slots": 246,
+      "block": 20,
+      "replicates": 10000,
+      "paired_difference": -0.02221519589530052,
+      "difference_ci_95": [
+        -0.09433307210584738,
+        0.05117380409413236
+      ],
+      "gain_pct": -1.1242084872049372,
+      "gain_ci_95_pct": [
+        -4.77376120315658,
+        2.589669933874247
+      ],
+      "resampled_eligible_min_max": [
+        229,
+        246
+      ],
+      "method": "full-ordinal year-preserving weighted moving-block,recentered basic",
+      "selection_adjusted": false
+    },
+    "numeric_raw_vs_naive_60": {
+      "eligible": 242,
+      "ordinal_slots": 246,
+      "block": 60,
+      "replicates": 10000,
+      "paired_difference": -0.02221519589530052,
+      "difference_ci_95": [
+        -0.07602398980963815,
+        0.04159723730079533
+      ],
+      "gain_pct": -1.1242084872049372,
+      "gain_ci_95_pct": [
+        -3.8472230890053414,
+        2.1050441075662314
+      ],
+      "resampled_eligible_min_max": [
+        236,
+        246
+      ],
+      "method": "full-ordinal year-preserving weighted moving-block,recentered basic",
+      "selection_adjusted": false
+    },
+    "mask_minus_numeric_raw_20": {
+      "eligible": 242,
+      "ordinal_slots": 246,
+      "block": 20,
+      "replicates": 10000,
+      "paired_difference": 0.03575252656132055,
+      "difference_ci_95": [
+        -0.06675650816758912,
+        0.13543993600107845
+      ],
+      "gain_pct": 1.7577082851547192,
+      "gain_ci_95_pct": [
+        -3.28196294863017,
+        6.658659416464116
+      ],
+      "resampled_eligible_min_max": [
+        229,
+        246
+      ],
+      "method": "full-ordinal year-preserving weighted moving-block,recentered basic",
+      "selection_adjusted": false,
+      "difference_ci_pct_of_named_naive": [
+        -3.3782386350257343,
+        6.853989776930843
+      ]
+    },
+    "mask_minus_numeric_raw_60": {
+      "eligible": 242,
+      "ordinal_slots": 246,
+      "block": 60,
+      "replicates": 10000,
+      "paired_difference": 0.03575252656132055,
+      "difference_ci_95": [
+        -0.0474394720804847,
+        0.11448459999346648
+      ],
+      "gain_pct": 1.7577082851547192,
+      "gain_ci_95_pct": [
+        -2.3322758176605363,
+        5.628428233904018
+      ],
+      "resampled_eligible_min_max": [
+        236,
+        246
+      ],
+      "method": "full-ordinal year-preserving weighted moving-block,recentered basic",
+      "selection_adjusted": false,
+      "difference_ci_pct_of_named_naive": [
+        -2.400692633670834,
+        5.793536981330145
+      ]
+    }
+  },
+  "source_contribution_supported": false,
+  "numeric_practical_effect_excluded": true,
+  "identical_37_field_nan_age_missing_control": true,
+  "selected_weights": {
+    "numeric": 0.0,
+    "mask": 0.0
+  },
+  "synthetic_measurements": {
+    "xgboost/known_signal": {
+      "relative_mae_gain": 0.9247921806811084
+    },
+    "xgboost/known_nonlinear": {
+      "relative_mae_gain": 0.7833207778976252
+    },
+    "xgboost/negative_block_shift": {
+      "relative_mae_gain": 0.02197705725691057
+    },
+    "xgboost/small_subset_overfit": {
+      "relative_mae_gain": 0.9995988948156705
+    }
+  },
+  "historical_availability_verified": false,
+  "first_vintage_verified": false,
+  "independent_holdout": false,
+  "weak_signal_power_claimed": false,
+  "release_allowed": false,
+  "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/named-cftc-source-result-20261012",
+  "record_id": "45d90f90f76fe10e4d836a362f9b3e426f08d033c99e0638f62633616b207af1"
+}
