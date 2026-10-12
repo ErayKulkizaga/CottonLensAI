@@ -1,5 +1,26 @@
 # Güncel kararlar — 12 Ekim 2026
 
+## Aktif öncelik: referansı geçen risk tahmini
+
+Sıfır-fit risk raporu tamamlandı:482 eski native varyans/selection makbuzu,
+her ufuk2.006 origin. T+1 deltaQLIKE+0,01043669/yıl6/8 fakat CI20/60
+[-0,00996089;0,03091330]/[-0,00673236;0,02722237]; **INCONCLUSIVE**.
+Top1% duyarlılığında T+1−0,00718121. Risk başarısı da henüz kanıtlanmadı;
+EWMA korunur. Tek eksik kanıt kilitli tarifin bağımsız ileri eşlenmiş
+tahminleridir; otomatik fit/yayın veya yeni grid yoktur.
+
+Kullanıcı [risk planını](RISK_EVIDENCE_AUDIT_20261012.md) onayladı. Birincil
+T+1 kare log-getiri/EWMA lambda0,94; T+5 ikincil. Eski fiyat/yön kapıları
+değişmez. Mevcut HAR/GARCH makbuzlarıyla sıfır-fit kontrol, aynı2016–2023/
+2.006 origin korunur. T+1 tercihi tarihsel sonuçtan sonra, bağımsız holdout
+değildir. İki CI20/60 altı pozitif ve6/8 yıl yalnız tarihsel takip adayıdır.
+
+[Sentez teslimatı](../research/evidence/named-information-synthesis-delivery-20261012.json)
+734 private GitHub payload hash'ini kapattı; JSON key-order byte farkı açık
+kaydedildi.52 eski tablo/39 aday etiket henüz eğitime kabul edilmedi.
+22-fit CFTC saat önerisi **ertelendi, çalışmadı**. Aşağıdaki eski sıralar
+tarihsel kayıttır; aktif sırayı bu bölüm belirler. Yeni model/ufuk/grid yok.
+
 12 Ekim: [korumalı CFTC namedT+5 kontrolü](NAMED_CFTC_SOURCE_CONTROL_T5_20261012.md#tamamlanan-sonuç--44-piyasa--dört-mekanik-sentetik-fit)
 44piyasa+dörtmekanik sentetik fit ile kapandı. Ham numeric Naive kazancı
 −%1,124208/yön%52,892562; mask−%2,933479. Kaynak katkısı+1,809270Naive-MAE

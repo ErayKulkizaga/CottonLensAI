@@ -1,5 +1,14 @@
 # Deney geçmişi ve tekrar kontrolü
 
+12 Ekim aktif sıra: [risk kanıt denetimi](../docs/RISK_EVIDENCE_AUDIT_20261012.md).
+T+1 risk/EWMA karşılaştırması mevcut `research-full-year-v1-r2` tahminlerinden
+raporlanır; yeni fit0. `python ml/history.py check --family har --horizon 1 --json`
+ve aynı GARCH sorgusu ilgili tamamlanmış makbuzları buldu; tekrar fit yok.
+`python -m cottonlens_ml.research.risk_audit` açık `--experiment-root`,
+`--corrected-root`, `--output` ister; fit stage'i yoktur.22-fit CFTC saat
+önerisi ertelenmiş/çalışmamış kayıttır. Risk sonucu fiyat kapısını geçirmez.
+Aşağıdaki bölümler kronolojik eski kanıttır.
+
 12 Ekim: [CFTC named37 kaynak kontrolü](../docs/NAMED_CFTC_SOURCE_CONTROL_T5_20261012.md)
 48fit kapandı/taze GitHub native geri kurması geçti. Ham kaynak katkısı
 +1,809270puan ama belirsiz; numeric Naive−%1,124208 ve iki gain-CI üstü<%5.

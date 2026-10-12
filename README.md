@@ -1,5 +1,12 @@
 # CottonLensAI
 
+12 Ekim bilimsel öncelik: [EWMA referansını geçen risk tahmini](docs/RISK_EVIDENCE_AUDIT_20261012.md).
+Mevcut HAR/GARCH tahminleri yeni eğitim olmadan denetlendi: 482 native makbuz,
+4.012 eşlenmiş kayıp satırı. T+1 küçük pozitif katkısının iki güven aralığı
+sıfırı içeriyor; **risk üstünlüğü henüz doğrulanmadı**. EWMA korunur; yeni
+model/grid/ufuk taraması başlamaz. Eski fiyat/yön hedefleri ve kanıtları değişmez.
+Güncel sıra [STATUS](docs/STATUS.md), aşağıdaki depolama kayıtları tarihçedir.
+
 11 Ekim: depo private yapıldı. Drive taşımasında önceki 32.484 dosya/4.108.647.287 bayt
 GitHub'dan yeniden indirilip doğrulandı; bunların 363'ü checkpoint/scaler/geçmiş
 dosyasıdır ve özgün baytlarla geri açıldı. [Ek teslimat makbuzu](research/evidence/private-drive-additional-delivery-20261011.json).

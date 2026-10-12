@@ -1,0 +1,632 @@
+{
+  "schema": 1,
+  "profile": "risk-evidence-audit-v1",
+  "classification": "INCONCLUSIVE",
+  "classification_scope": "Existing inner-selected HAR/GARCH versus EWMA on reviewed CT daily variance proxies; not independent holdout or source-wide no-signal proof",
+  "analysis_source_id": "fbc7cae00ca00a6f71d95a8c4cbf165010450ced22d2bbcd281f43d6a0eee85d",
+  "training_source_id": "4108d071a7494db155a8f5c6677d57ecc1252831ddca3d65e517f2a5b95420b9",
+  "data_id": "48c0417469acfe7e04eafdd0e76041a79dcd35de3e19f9c2b956db22fe912856",
+  "split_id": "9d964b2c88a6d36b7e1fc8421efa1a3c86a3b0531b6cbcb072856918d014aa1d",
+  "report_record_id": "92a5af0650694f039fb349b7780528781bace5be0bff782414bab70cfd77a9ab",
+  "report_sha256": "2f936dfc128cdef44372bdb9f823d93da6b34b420bd4542843bc78734ddd7358",
+  "paired_losses_sha256": "1ac807ae11e11bdd870fbb0ac5e2cdabeb52cd71b9331a8d70d642ac7bed58e8",
+  "verification": {
+    "status": "passed",
+    "new_fits": 0,
+    "scalar_loss_rows": 4012,
+    "independent_bootstrap_intervals": 8,
+    "source_files_unchanged": 1016,
+    "report_record_id": "92a5af0650694f039fb349b7780528781bace5be0bff782414bab70cfd77a9ab",
+    "verifier_sha256": "5e36299b594e726a8fe45b0ede42cc960263c155cb7f4bb0f9a5695262a08b02"
+  },
+  "primary_horizon": 1,
+  "origin_count_per_horizon": 2006,
+  "reused_native_variance_fits": 482,
+  "new_fits": 0,
+  "tests_passed": 33,
+  "ruff_passed": true,
+  "archive": {
+    "name": "evidence.zip",
+    "sha256": "ccea7995147e6eb0aa19b188bdade985fc9a1d5814ba2710dadbdb5722b8be3a",
+    "bytes": 14288674
+  },
+  "payload_members": 1300,
+  "release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/risk-evidence-audit-20261012",
+  "decision": "INCONCLUSIVE",
+  "horizons": {
+    "1": {
+      "count": 2006,
+      "mean_difference": 0.010436691371286173,
+      "year_wins": 6,
+      "years": [
+        {
+          "year": 2016,
+          "count": 250,
+          "mean_difference": -0.005873275175285411
+        },
+        {
+          "year": 2017,
+          "count": 251,
+          "mean_difference": 0.03644907583241089
+        },
+        {
+          "year": 2018,
+          "count": 251,
+          "mean_difference": 0.015398867901942578
+        },
+        {
+          "year": 2019,
+          "count": 252,
+          "mean_difference": 0.002820630170578283
+        },
+        {
+          "year": 2020,
+          "count": 253,
+          "mean_difference": 0.024773558759871004
+        },
+        {
+          "year": 2021,
+          "count": 252,
+          "mean_difference": 0.026366194373310812
+        },
+        {
+          "year": 2022,
+          "count": 251,
+          "mean_difference": -0.02362014113315061
+        },
+        {
+          "year": 2023,
+          "count": 246,
+          "mean_difference": 0.00689574422931743
+        }
+      ],
+      "bootstrap": {
+        "20": {
+          "count": 2006,
+          "block_length": 20,
+          "replicates": 10000,
+          "paired_difference": 0.010436691371286777,
+          "difference_ci_95": [
+            -0.009960893971819231,
+            0.030913300652663844
+          ],
+          "difference_ci_method": "fold-preserving moving-block, recentered basic interval",
+          "column_mean_ci_95": [
+            [
+              -7.317392206921278,
+              -7.328010924631845
+            ],
+            [
+              -6.914616371521746,
+              -6.921474928519836
+            ]
+          ],
+          "standard_error": 0.010519021961553278,
+          "centered_bootstrap_p_two_sided": 0.32166783321667836,
+          "normal_approx_mde_80pct_relative": 0.029453261492349177,
+          "power_at_relative_effect": {
+            "0.005": 0.0825,
+            "0.01": 0.1615,
+            "0.02": 0.4837,
+            "0.05": 0.9972
+          },
+          "power_identifiable": true,
+          "power_limitation": null,
+          "power_assumptions": "post-hoc paired noise held fixed under additive alternatives; selection not adjusted",
+          "gate_changed": false
+        },
+        "60": {
+          "count": 2006,
+          "block_length": 60,
+          "replicates": 10000,
+          "paired_difference": 0.010436691371286777,
+          "difference_ci_95": [
+            -0.006732355418821025,
+            0.02722237466902893
+          ],
+          "difference_ci_method": "fold-preserving moving-block, recentered basic interval",
+          "column_mean_ci_95": [
+            [
+              -7.272409569320895,
+              -7.286572974807421
+            ],
+            [
+              -6.858426830236445,
+              -6.867229941099124
+            ]
+          ],
+          "standard_error": 0.008682858137203672,
+          "centered_bootstrap_p_two_sided": 0.23317668233176683,
+          "normal_approx_mde_80pct_relative": 0.02431200278417028,
+          "power_at_relative_effect": {
+            "0.005": 0.0908,
+            "0.01": 0.2103,
+            "0.02": 0.6361,
+            "0.05": 1.0
+          },
+          "power_identifiable": true,
+          "power_limitation": null,
+          "power_assumptions": "post-hoc paired noise held fixed under additive alternatives; selection not adjusted",
+          "gate_changed": false
+        }
+      },
+      "top1pct_sensitivity": {
+        "removed_count": 21,
+        "retained_count": 1985,
+        "mean_difference": -0.007181212971504533,
+        "removed_origins": [
+          "2022-06-23",
+          "2017-07-07",
+          "2020-02-26",
+          "2021-02-03",
+          "2019-09-11",
+          "2016-02-19",
+          "2021-09-17",
+          "2023-12-06",
+          "2017-10-20",
+          "2020-12-08",
+          "2019-10-10",
+          "2018-05-25",
+          "2017-05-05",
+          "2019-05-10",
+          "2019-07-09",
+          "2023-03-09",
+          "2017-01-03",
+          "2016-04-15",
+          "2019-06-06",
+          "2023-04-19",
+          "2021-02-24"
+        ],
+        "removed_contribution_sum": 35.19071063923656,
+        "role": "posthoc diagnostic, not primary population or selection"
+      },
+      "ohlc_sensitivity": {
+        "count": 1738,
+        "mean_difference": -0.009308297169116467,
+        "year_wins": 2,
+        "years": [
+          {
+            "year": 2016,
+            "count": 221,
+            "mean_difference": 0.004630788602438813
+          },
+          {
+            "year": 2017,
+            "count": 230,
+            "mean_difference": -0.04998239571159556
+          },
+          {
+            "year": 2018,
+            "count": 211,
+            "mean_difference": -0.024192353452692925
+          },
+          {
+            "year": 2019,
+            "count": 210,
+            "mean_difference": -0.03165139473968612
+          },
+          {
+            "year": 2020,
+            "count": 215,
+            "mean_difference": -0.019923148071410643
+          },
+          {
+            "year": 2021,
+            "count": 221,
+            "mean_difference": -0.013480732834631859
+          },
+          {
+            "year": 2022,
+            "count": 218,
+            "mean_difference": 0.0631123194330571
+          },
+          {
+            "year": 2023,
+            "count": 212,
+            "mean_difference": -0.002121043010111537
+          }
+        ],
+        "bootstrap": {
+          "20": {
+            "count": 1738,
+            "block_length": 20,
+            "replicates": 10000,
+            "paired_difference": -0.009308297169115853,
+            "difference_ci_95": [
+              -0.023646466106142516,
+              0.004078123414376763
+            ],
+            "difference_ci_method": "fold-preserving moving-block, recentered basic interval",
+            "column_mean_ci_95": [
+              [
+                -7.657191087591393,
+                -7.644255569690796
+              ],
+              [
+                -7.443995597191628,
+                -7.442676001772784
+              ]
+            ],
+            "standard_error": 0.007071864089479858,
+            "centered_bootstrap_p_two_sided": 0.1897810218978102,
+            "normal_approx_mde_80pct_relative": 0.0198012194505436,
+            "power_at_relative_effect": {
+              "0.005": 0.1097,
+              "0.01": 0.2827,
+              "0.02": 0.8095,
+              "0.05": 1.0
+            },
+            "power_identifiable": true,
+            "power_limitation": null,
+            "power_assumptions": "post-hoc paired noise held fixed under additive alternatives; selection not adjusted",
+            "gate_changed": false
+          },
+          "60": {
+            "count": 1738,
+            "block_length": 60,
+            "replicates": 10000,
+            "paired_difference": -0.009308297169115853,
+            "difference_ci_95": [
+              -0.024826757577835312,
+              0.005617610137899215
+            ],
+            "difference_ci_method": "fold-preserving moving-block, recentered basic interval",
+            "column_mean_ci_95": [
+              [
+                -7.650148804523336,
+                -7.63649763536985
+              ],
+              [
+                -7.389915106246268,
+                -7.395993963524525
+              ]
+            ],
+            "standard_error": 0.0077569206006347854,
+            "centered_bootstrap_p_two_sided": 0.23317668233176683,
+            "normal_approx_mde_80pct_relative": 0.021719377681777396,
+            "power_at_relative_effect": {
+              "0.005": 0.1027,
+              "0.01": 0.2442,
+              "0.02": 0.7282,
+              "0.05": 1.0
+            },
+            "power_identifiable": true,
+            "power_limitation": null,
+            "power_assumptions": "post-hoc paired noise held fixed under additive alternatives; selection not adjusted",
+            "gate_changed": false
+          }
+        },
+        "top1pct_sensitivity": {
+          "removed_count": 18,
+          "retained_count": 1720,
+          "mean_difference": -0.015537738217517406,
+          "removed_origins": [
+            "2022-06-23",
+            "2016-02-19",
+            "2017-07-07",
+            "2020-04-03",
+            "2020-03-23",
+            "2018-01-11",
+            "2019-10-11",
+            "2023-09-28",
+            "2020-03-18",
+            "2018-05-29",
+            "2020-03-12",
+            "2019-06-20",
+            "2022-02-28",
+            "2021-10-11",
+            "2016-04-22",
+            "2018-04-03",
+            "2019-06-19",
+            "2021-02-03"
+          ],
+          "removed_contribution_sum": 10.547089254205519,
+          "role": "posthoc diagnostic, not primary population or selection"
+        },
+        "decision": "INCONCLUSIVE",
+        "role": "Common-origin OHLC proxy sensitivity; not primary or intraday variance",
+        "primary_target_on_same_origins_mean_difference": 0.006680572600470633
+      },
+      "decision": "INCONCLUSIVE"
+    },
+    "5": {
+      "count": 2006,
+      "mean_difference": 0.0034141231852837088,
+      "year_wins": 5,
+      "years": [
+        {
+          "year": 2016,
+          "count": 250,
+          "mean_difference": -0.0011351779258460576
+        },
+        {
+          "year": 2017,
+          "count": 251,
+          "mean_difference": 0.04702277188849848
+        },
+        {
+          "year": 2018,
+          "count": 251,
+          "mean_difference": 0.009451563466180844
+        },
+        {
+          "year": 2019,
+          "count": 252,
+          "mean_difference": -0.009087418422179569
+        },
+        {
+          "year": 2020,
+          "count": 253,
+          "mean_difference": 0.04993791606152206
+        },
+        {
+          "year": 2021,
+          "count": 252,
+          "mean_difference": 0.041689964609603385
+        },
+        {
+          "year": 2022,
+          "count": 251,
+          "mean_difference": -0.11914029963485522
+        },
+        {
+          "year": 2023,
+          "count": 246,
+          "mean_difference": 0.00817702529540205
+        }
+      ],
+      "bootstrap": {
+        "20": {
+          "count": 2006,
+          "block_length": 20,
+          "replicates": 10000,
+          "paired_difference": 0.0034141231852835574,
+          "difference_ci_95": [
+            -0.030578044453694726,
+            0.04750343457552094
+          ],
+          "difference_ci_method": "fold-preserving moving-block, recentered basic interval",
+          "column_mean_ci_95": [
+            [
+              -5.684976839569348,
+              -5.699669355508503
+            ],
+            [
+              -5.24774450253262,
+              -5.2189064308858075
+            ]
+          ],
+          "standard_error": 0.020080491629667505,
+          "centered_bootstrap_p_two_sided": 0.8657134286571343,
+          "normal_approx_mde_80pct_relative": 0.05622537656306901,
+          "power_at_relative_effect": {
+            "0.005": 0.0509,
+            "0.01": 0.0722,
+            "0.02": 0.1766,
+            "0.05": 0.7277
+          },
+          "power_identifiable": true,
+          "power_limitation": null,
+          "power_assumptions": "post-hoc paired noise held fixed under additive alternatives; selection not adjusted",
+          "gate_changed": false
+        },
+        "60": {
+          "count": 2006,
+          "block_length": 60,
+          "replicates": 10000,
+          "paired_difference": 0.0034141231852835574,
+          "difference_ci_95": [
+            -0.029163417431960992,
+            0.04076665841484267
+          ],
+          "difference_ci_method": "fold-preserving moving-block, recentered basic interval",
+          "column_mean_ci_95": [
+            [
+              -5.643672830697006,
+              -5.661477987456487
+            ],
+            [
+              -5.188971907231515,
+              -5.170737293124323
+            ]
+          ],
+          "standard_error": 0.01811318364703529,
+          "centered_bootstrap_p_two_sided": 0.8509149085091491,
+          "normal_approx_mde_80pct_relative": 0.05071691421169881,
+          "power_at_relative_effect": {
+            "0.005": 0.0616,
+            "0.01": 0.0936,
+            "0.02": 0.2265,
+            "0.05": 0.7989
+          },
+          "power_identifiable": true,
+          "power_limitation": null,
+          "power_assumptions": "post-hoc paired noise held fixed under additive alternatives; selection not adjusted",
+          "gate_changed": false
+        }
+      },
+      "top1pct_sensitivity": {
+        "removed_count": 21,
+        "retained_count": 1985,
+        "mean_difference": 0.008942158153826946,
+        "removed_origins": [
+          "2022-06-22",
+          "2022-06-21",
+          "2022-06-17",
+          "2022-06-16",
+          "2022-06-23",
+          "2017-06-30",
+          "2017-07-07",
+          "2017-07-06",
+          "2017-07-05",
+          "2017-07-03",
+          "2021-02-03",
+          "2017-05-10",
+          "2017-05-09",
+          "2021-09-17",
+          "2020-02-21",
+          "2017-05-05",
+          "2020-02-24",
+          "2016-07-07",
+          "2021-02-02",
+          "2020-02-20",
+          "2020-02-25"
+        ],
+        "removed_contribution_sum": -10.90145282566737,
+        "role": "posthoc diagnostic, not primary population or selection"
+      },
+      "ohlc_sensitivity": {
+        "count": 1314,
+        "mean_difference": -0.014569466520653773,
+        "year_wins": 4,
+        "years": [
+          {
+            "year": 2016,
+            "count": 170,
+            "mean_difference": 0.016257176435886714
+          },
+          {
+            "year": 2017,
+            "count": 190,
+            "mean_difference": -0.06840127032271717
+          },
+          {
+            "year": 2018,
+            "count": 151,
+            "mean_difference": -0.013422306241651472
+          },
+          {
+            "year": 2019,
+            "count": 158,
+            "mean_difference": -0.061504589505075244
+          },
+          {
+            "year": 2020,
+            "count": 163,
+            "mean_difference": -0.024985517144940527
+          },
+          {
+            "year": 2021,
+            "count": 168,
+            "mean_difference": 0.004615409166446306
+          },
+          {
+            "year": 2022,
+            "count": 163,
+            "mean_difference": 0.035236438892490556
+          },
+          {
+            "year": 2023,
+            "count": 151,
+            "mean_difference": 0.002559250056649614
+          }
+        ],
+        "bootstrap": {
+          "20": {
+            "count": 1314,
+            "block_length": 20,
+            "replicates": 10000,
+            "paired_difference": -0.014569466520653052,
+            "difference_ci_95": [
+              -0.030130547528878268,
+              0.00010879886202034943
+            ],
+            "difference_ci_method": "fold-preserving moving-block, recentered basic interval",
+            "column_mean_ci_95": [
+              [
+                -5.966080557273718,
+                -5.9441829458363005
+              ],
+              [
+                -5.745755919585948,
+                -5.742526340570241
+              ]
+            ],
+            "standard_error": 0.0077144934874512,
+            "centered_bootstrap_p_two_sided": 0.0575942405759424,
+            "normal_approx_mde_80pct_relative": 0.02160058176486336,
+            "power_at_relative_effect": {
+              "0.005": 0.101,
+              "0.01": 0.2545,
+              "0.02": 0.7392,
+              "0.05": 1.0
+            },
+            "power_identifiable": true,
+            "power_limitation": null,
+            "power_assumptions": "post-hoc paired noise held fixed under additive alternatives; selection not adjusted",
+            "gate_changed": false
+          },
+          "60": {
+            "count": 1314,
+            "block_length": 60,
+            "replicates": 10000,
+            "paired_difference": -0.014569466520653052,
+            "difference_ci_95": [
+              -0.02799436881269562,
+              -0.000380247094179529
+            ],
+            "difference_ci_method": "fold-preserving moving-block, recentered basic interval",
+            "column_mean_ci_95": [
+              [
+                -5.921990834030475,
+                -5.909318523791599
+              ],
+              [
+                -5.681377637326008,
+                -5.68655217032385
+              ]
+            ],
+            "standard_error": 0.007058426700640699,
+            "centered_bootstrap_p_two_sided": 0.0403959604039596,
+            "normal_approx_mde_80pct_relative": 0.019763594761793957,
+            "power_at_relative_effect": {
+              "0.005": 0.1069,
+              "0.01": 0.2968,
+              "0.02": 0.8064,
+              "0.05": 1.0
+            },
+            "power_identifiable": true,
+            "power_limitation": null,
+            "power_assumptions": "post-hoc paired noise held fixed under additive alternatives; selection not adjusted",
+            "gate_changed": false
+          }
+        },
+        "top1pct_sensitivity": {
+          "removed_count": 14,
+          "retained_count": 1300,
+          "mean_difference": -0.014649941526415227,
+          "removed_origins": [
+            "2022-06-16",
+            "2020-03-17",
+            "2020-03-18",
+            "2020-03-30",
+            "2020-03-31",
+            "2020-03-16",
+            "2020-03-12",
+            "2020-03-13",
+            "2020-03-19",
+            "2020-03-20",
+            "2020-03-26",
+            "2020-03-23",
+            "2020-04-01",
+            "2020-03-11"
+          ],
+          "removed_contribution_sum": -0.09935502379926134,
+          "role": "posthoc diagnostic, not primary population or selection"
+        },
+        "decision": "INCONCLUSIVE",
+        "role": "Common-origin OHLC proxy sensitivity; not primary or intraday variance",
+        "primary_target_on_same_origins_mean_difference": 0.008224689879681328
+      },
+      "decision": "INCONCLUSIVE"
+    }
+  },
+  "deferred_experiment": {
+    "profile": "named-cftc-guarded-clock-candidate",
+    "planned_market_fits": 22,
+    "status": "DEFERRED_NOT_RUN"
+  },
+  "release_allowed": false,
+  "next_missing_evidence": "Independent prospective paired forecasts of the locked existing recipe versus EWMA; no historical retuning",
+  "record_id": "a70f657ecae8af19bc0049ae9cc2e6af08f1d86dcbdd57155e7ed5a4ea6d6d64"
+}

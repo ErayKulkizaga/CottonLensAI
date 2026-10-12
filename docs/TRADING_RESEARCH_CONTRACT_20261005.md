@@ -4,6 +4,11 @@ Kullanıcı kararı: vadeli piyasa yön/pozisyon fikrini inceleyen **araştırma
 5 Ekim 2026 açıklaması: gerçek alım/satım yapılmayacak; aracı kurum seçimi gerekmiyor.
 ICE Cotton No. 2 (CT), araştırma referansı olarak belirlenmiştir.
 
+12 Ekim ek karar: ilk bilimsel başarı adayı [EWMA referansını geçen risk
+tahmini](RISK_EVIDENCE_AUDIT_20261012.md). Bu, aşağıdaki yön/pozisyon hedefini
+başarılmış saymaz. Önce eski HAR/GARCH/EWMA tahminlerinin sıfır-fit denetimi
+yapılır; yeni eğitim, işlem/maliyet iddiası veya yayın onayı yoktur.
+
 ## Amaç
 
 Geçmişte kullanılabilir bilgiyle **ölçülebilir tahmin katkısı** göstermek. Birincil

@@ -18550,6 +18550,37 @@
       "historical_source_admitted": false,
       "release_allowed": false,
       "id": "c8ea6efdbb468e431629737d63bdd607feb48d359de6cb60dafc7af0d87457bf"
+    },
+    {
+      "experiment": "research-risk-evidence-audit-v1",
+      "profile": "risk-evidence-audit-v1",
+      "kind": "completed_zero_fit_variance_evidence_audit",
+      "classification": "INCONCLUSIVE",
+      "classification_scope": "Existing inner-selected HAR/GARCH versus EWMA on reviewed CT daily variance proxies; not independent holdout or source-wide no-signal proof",
+      "code_id": "fbc7cae00ca00a6f71d95a8c4cbf165010450ced22d2bbcd281f43d6a0eee85d",
+      "training_source_id": "4108d071a7494db155a8f5c6677d57ecc1252831ddca3d65e517f2a5b95420b9",
+      "data_id": "48c0417469acfe7e04eafdd0e76041a79dcd35de3e19f9c2b956db22fe912856",
+      "horizon": 1,
+      "secondary_horizon": 5,
+      "model_families": [
+        "har",
+        "garch"
+      ],
+      "recipes": [],
+      "completed_fits": 0,
+      "reused_fit_receipts": 482,
+      "origin_count": 2006,
+      "prediction_payload_exists": true,
+      "metrics": {
+        "paired_qlike_difference": 0.010436691371286173,
+        "year_wins": 6,
+        "decision": "INCONCLUSIVE"
+      },
+      "independent_holdout": false,
+      "evidence": "evidence/risk-evidence-audit-20261012.json",
+      "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/risk-evidence-audit-20261012",
+      "release_allowed": false,
+      "id": "81164eb054097968eb893002e6cd56c1bd5b3be3cba77320550ba244bd18a451"
     }
   ],
   "local_evidence": [
@@ -19212,6 +19243,10 @@
     {
       "path": "evidence/named-information-synthesis-delivery-20261012.json",
       "sha256": "e35471e343945e10c82704221129b5392d4fb892e9916f094a1a0f0f7f6ff611"
+    },
+    {
+      "path": "evidence/risk-evidence-audit-20261012.json",
+      "sha256": "e9a86c3d6a9a712f32679f831562e006402749aca48cbbd1f397b2eae46b2194"
     }
   ]
 }
