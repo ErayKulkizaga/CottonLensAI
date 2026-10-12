@@ -18121,6 +18121,29 @@
       "independent_holdout": false,
       "release_allowed": false,
       "id": "afdef5ddb54c1702208cdbcb946613b88c2ccde76a39e244a973a1464369ab70"
+    },
+    {
+      "experiment": "research-named-weak-signal-control-t5-v1",
+      "profile": "named-weak-signal-control-t5-v1",
+      "horizon": 5,
+      "kind": "registered_synthetic_execution_no_fit",
+      "classification": "INCONCLUSIVE",
+      "classification_scope": "Frozen execution only; learner and market skill not yet measured",
+      "code_id": "5cfaabfd4e35737f625ebf19acbeb357bfde701b8e605438c85449de5c55f80c",
+      "data_id": "da8a286df8e98b8a0932f088a9b384546d30a22ebac45db0bfe32a3a021d3465",
+      "origin_count": 246,
+      "scored_origin_count": 242,
+      "model_families": [
+        "xgboost"
+      ],
+      "new_profile_fits": 0,
+      "future_synthetic_fit_ceiling": 132,
+      "prediction_payload_exists": false,
+      "evidence": "evidence/named-weak-execution-preregistration-20261012.json",
+      "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/named-weak-execution-preregistration-20261012",
+      "independent_holdout": false,
+      "release_allowed": false,
+      "id": "8e1e6c211202cbdddc80139f761d1f933a1288e3f1b517ea63406106ae994139"
     }
   ],
   "local_evidence": [
@@ -18695,6 +18718,14 @@
     {
       "path": "evidence/private-drive-v4-terminal-cleanup-20261011.json",
       "sha256": "8c74bb6a40e346a93f266231ee60f2bf0529bce4c69896574d766980aae395e3"
+    },
+    {
+      "path": "evidence/named-weak-execution-preregistration-20261012.json",
+      "sha256": "e0616d4ef23d0326c9d2c4f358f86bc6057ce228a332b290348e1222169cbc8d"
+    },
+    {
+      "path": "evidence/named-weak-execution-preregistration-release-20261012.json",
+      "sha256": "197443cf1521eea4da8622b3b5a289db99e1ad05a50441915be97a7d6543344b"
     }
   ]
 }

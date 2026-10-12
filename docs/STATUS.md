@@ -1,4 +1,13 @@
-# Güncel kararlar — 11 Ekim 2026
+# Güncel kararlar — 12 Ekim 2026
+
+12 Ekim: [aynı zayıf-sinyal tasarımının yürütme ön kaydı](NAMED_WEAK_SIGNAL_EXECUTION_20261012.md)
+mevcut Experiment/ledger'a bağlandı; henüz fit0.132 sentetik/piyasa0 tavanı,
+aynı seed/özellik/cohort ve bağımsız quadrature rapor sınırı donduruldu.
+70 ilgili test, Ruff ve dört veri/kimlik/coherent-tamper reddi geçti.
+Kaynak5cfaabfd4e35737f625ebf19acbeb357bfde701b8e605438c85449de5c55f80c.
+Ön kayıt GitHub'a teslim edilip taze restore doğrulanmadan pilot başlamaz.
+Tam Drive taşıması sürerken gerekli deney girdilerinin güvenli geri kurması
+bilimsel ön koşuldur; tam taşıma beklemek gerekmez. Eski aşamalar korunur.
 
 ## Aktif araştırma önceliği: veri mi, öğrenme düzeni mi?
 

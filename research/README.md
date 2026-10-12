@@ -1,5 +1,9 @@
 # Deney geçmişi ve tekrar kontrolü
 
+12 Ekim: [named zayıf-sinyal yürütme ön kaydı](../docs/NAMED_WEAK_SIGNAL_EXECUTION_20261012.md)
+ayrı ek aşamadır;132 sentetik fit henüz çalışmadı. Readiness ve eski piyasa
+sonuçları yeniden yazılmaz; taze kaynak/ön kayıt geri kurması eğitim kapısıdır.
+
 11 Ekim: [named zayıf-sinyal readiness](../docs/NAMED_WEAK_SIGNAL_READINESS_20261011.md)
 yalnız veri/güç-kontrolü kurulabilirliği; yeni profil fit0 ve performans
 kanıtı yok. Aynı32 alan/sabit XGB için üç matched gürültü seed'i ve null/
