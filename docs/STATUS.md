@@ -1,5 +1,11 @@
 # Güncel kararlar — 12 Ekim 2026
 
+12 Ekim: korumalı CFTC kaynak karşılaştırması mevcut motor/ledger'a bağlandı.
+Aynı named T+5/sabit XGB, iki37alanlı numeric-mask kolu,44piyasa+dört
+mekanik sentetik fit tavanı. [Tarif](NAMED_CFTC_SOURCE_CONTROL_T5_20261012.md).
+57 ilgili regresyon/Ruff geçti; henüz yeni fit0. Son kaynak/ön kayıt
+GitHub taze geri kurması eğitim kapısıdır. Eski veri/deneyler değişmez.
+
 12 Ekim CFTC teslimatı kapandı: 7.831üye/1.855eski native model private
 GitHub geri kurmasında eşleşti; 1.855past-only adapter ve ek duyuru-tarih
 kontrolü geçti. Yeni fit0; eski fit sicili değişmedi.

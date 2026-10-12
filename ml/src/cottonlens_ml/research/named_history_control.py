@@ -174,19 +174,20 @@ def synthetic(kind):
     return frame, train, test, recipe, trees
 
 
-def verify_output(experiment, history, fold, arm):
-    h = arm_history(history, arm)
+def verify_output(experiment, history, fold, arm, *, control=None):
+    policy = control or sys.modules[__name__]
+    h = policy.arm_history(history, arm)
     records = []
     for job in fold['jobs']:
         train = labels.projection(h, job['train_dates'], 'named')
-        expected = {'recipe': RECIPE, 'role': f'{arm}-{fold["year"]}-{job["role"]}-{job["bucket"]}',
-                    'iterations': TREES, 'train_dates': job['train_dates'], 'validation_dates': [],
+        expected = {'recipe': policy.RECIPE, 'role': f'{arm}-{fold["year"]}-{job["role"]}-{job["bucket"]}',
+                    'iterations': policy.TREES, 'train_dates': job['train_dates'], 'validation_dates': [],
                     'test_dates': job['origins'], 'train_identity': frame_identity(train, list(train)), 'repeat_reason': None}
         key = experiment.ledger.key(expected)
         record = read_record(experiment.ledger.root / 'completed' / f'{key}.json')
         if record['identity'] != experiment.identity or record['specification'] != expected or record['experiment_id'] != key:
             raise ValueError('Unexpected source-arm fit identity/recipe/cutoff')
-        if not record['files'] or record['result']['iterations'] != TREES:
+        if not record['files'] or record['result']['iterations'] != policy.TREES:
             raise ValueError('Native payload missing or tree count changed')
         for name, checksum in record['files'].items():
             if not safe_member(name) or digest(experiment.ledger.root / name) != checksum:
@@ -198,13 +199,14 @@ def verify_output(experiment, history, fold, arm):
     return expected
 
 
-def run(experiment, repo, max_minutes):
+def run(experiment, repo, max_minutes, *, control=None):
     if not 0 < max_minutes <= 30:
         raise ValueError('CPU session must be <=30 minutes')
-    ready, history = verify(experiment.root, repo)
+    policy = control or sys.modules[__name__]
+    ready, history = policy.verify(experiment.root, repo)
     deadline = time.monotonic() + max_minutes * 60
     try:
-        capacity.learning(experiment, deadline=deadline, repo=repo, synthetic_fn=synthetic, profile=PROFILE)
+        capacity.learning(experiment, deadline=deadline, repo=repo, synthetic_fn=policy.synthetic, profile=policy.PROFILE)
     except FitBudgetReached:
         return {'status': 'planned_pause', 'phase': 'learning', 'market_fits': 0}
     used, _ = fit_consumption(experiment.root / 'ledger')
@@ -222,12 +224,12 @@ def run(experiment, repo, max_minutes):
     original = experiment.history
     try:
         for fold in ready['identity']['design']['folds']:
-            for arm in ARMS:
+            for arm in policy.ARMS:
                 path = experiment.root / 'history-outputs' / f'{arm}-{fold["year"]}.json'
                 if path.exists():
-                    verify_output(experiment, history, fold, arm)
+                    policy.verify_output(experiment, history, fold, arm)
                     continue
-                h = arm_history(history, arm)
+                h = policy.arm_history(history, arm)
                 # inputs() reads Experiment.history, even for window1. Mask the full
                 # input calendar, not just the projected train/test DataFrames.
                 experiment.history = h
@@ -235,17 +237,17 @@ def run(experiment, repo, max_minutes):
                 for job in fold['jobs']:
                     train = labels.projection(h, job['train_dates'], 'named')
                     test = labels.projection(h, job['origins'], 'named', test=True)
-                    records.append(experiment.fit(RECIPE, train, None, test,
-                                   f'{arm}-{fold["year"]}-{job["role"]}-{job["bucket"]}', iterations=TREES))
+                    records.append(experiment.fit(policy.RECIPE, train, None, test,
+                                   f'{arm}-{fold["year"]}-{job["role"]}-{job["bucket"]}', iterations=policy.TREES))
                 freeze_record(path, labels.make_output(h, fold, arm, ready['identity']['design'], records))
-                verify_output(experiment, history, fold, arm)
+                policy.verify_output(experiment, history, fold, arm)
     except FitBudgetReached:
         return {'status': 'planned_pause', 'completed_market_fits': len(experiment.ledger.results())}
     finally:
         experiment.history = original
     if len(experiment.ledger.results()) != budget:
         raise ValueError('Exact fit count required')
-    verify(experiment.root, repo)
+    policy.verify(experiment.root, repo)
     return {'status': 'complete', 'market_fits': budget, 'synthetic_fits': 4, 'skill_claimed': False}
 
 

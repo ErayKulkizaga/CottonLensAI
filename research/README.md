@@ -1,5 +1,10 @@
 # Deney geçmişi ve tekrar kontrolü
 
+12 Ekim: [korumalı CFTC kaynak kontrolü](../docs/NAMED_CFTC_SOURCE_CONTROL_T5_20261012.md)
+yeni37alanlı numeric-mask karşılaştırmasıdır; eski CT CFTC lag grid'i veya
+132-fit öğretici kontrol tekrar edilmez. Ön kayıt/taze GitHub geri kurması
+olmadan fit kapalı; tarihi UTC/vintage varsayımı ve named kohort sabit.
+
 12 Ekim: [CFTC bilgi kapsamı](../docs/NAMED_CFTC_INFORMATION_AUDIT_20261012.md)
 eski CT pilotu ile named hedefin farklılığını sıfır-fit doğruladı. Eski
 1.855 fit yeniden sayılmaz/çalıştırılmaz; kaynak etkisi named hedefte
