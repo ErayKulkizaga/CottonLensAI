@@ -54641,6 +54641,172 @@
       "payload_hashes_revalidated_by_index": false,
       "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/named-cftc-source-result-20261012",
       "payload_hashes_revalidated_separately": true
+    },
+    {
+      "id": "1c4aea7a60915cde12a9c8fb4cb0cb76db781ced79228f9cc2795ec715032d45",
+      "scope": {
+        "identity_id": "b670b81196e50fae43269ef9f1f377fe6e650f2f9589b23f6e9aef36e839e063",
+        "source_id": "42221c6e9b71a39588f2299fddd1325a1c047bb933387deda7aea565d79df203",
+        "data_id": "e5b80675a4c1cd44dd77915146a0cc4482dfd388b6e10c037b0966da2946a182",
+        "split_id": "a5af28d192577cf1e1ebf7944b4d4060032876c061190cea66f7c5cb02edf5a5",
+        "profile": "named-risk-label-control-t1-v1"
+      },
+      "scope_id": "532f2993b80c40c652283c1c0c6941818e47eb0f946a4ecebf3868d1224fc2d1",
+      "profile": "named-risk-label-control-t1-v1",
+      "horizon": 1,
+      "recipes": [
+        {
+          "family": "har",
+          "horizon": 1,
+          "device": "cpu",
+          "seed": 42,
+          "cadence": 21,
+          "task": "variance",
+          "features": [
+            "har_1",
+            "har_5",
+            "har_22"
+          ],
+          "years": null,
+          "label_control": "named-risk-label-control-t1-v1",
+          "label_arm": "named"
+        }
+      ],
+      "model_families": [
+        "har"
+      ],
+      "kind": "market_fit_receipt",
+      "completed_fits": 22,
+      "sample_receipts": [
+        {
+          "path": "market/ledger/completed/0a4ee1610ed1266c92e0965c254ea587fd6c57a475d82cbbb840740b851c2c97.json",
+          "record_id": "9010c3f899b32fef41027b645b891cde0c8bba871dddd39baac21425e8dae5e1",
+          "experiment_id": "0a4ee1610ed1266c92e0965c254ea587fd6c57a475d82cbbb840740b851c2c97"
+        },
+        {
+          "path": "market/ledger/completed/0bf7ec562c0ee3920de5812e4bc5a635befd6014712fe3ed61f01354ca461955.json",
+          "record_id": "3a489284f57d81973b5e4de1d68880a71501e86bb507f9f1b1ad385a2293268f",
+          "experiment_id": "0bf7ec562c0ee3920de5812e4bc5a635befd6014712fe3ed61f01354ca461955"
+        },
+        {
+          "path": "market/ledger/completed/2cbb41c3a6a32eaba28afb2ab7fd132ec713a00d6efa0ef7809bcea35fcf62ea.json",
+          "record_id": "d98a70c48cb94bf849cbb903aac8b1ff8f6b875b576a9da3bcaac02847ea9952",
+          "experiment_id": "2cbb41c3a6a32eaba28afb2ab7fd132ec713a00d6efa0ef7809bcea35fcf62ea"
+        }
+      ],
+      "roles": [
+        "risk"
+      ],
+      "coverage": "completed fit receipts; not experiment completion",
+      "payload_hashes_revalidated_by_index": false,
+      "sample_receipt_archive_context": "bundle/index-input; actual native payloads preserved under bundle/execution ledgers"
+    },
+    {
+      "id": "8c6d11262b967938ea33c339ce3f9b843606b14c71b1904398deac2515c2de42",
+      "scope": {
+        "identity_id": "ddebb339b6b2f3330b9425866f15076f9feaefd5fed0baeda4a609cbb39385a3",
+        "source_id": "42221c6e9b71a39588f2299fddd1325a1c047bb933387deda7aea565d79df203",
+        "data_id": "e5b80675a4c1cd44dd77915146a0cc4482dfd388b6e10c037b0966da2946a182",
+        "split_id": "a5af28d192577cf1e1ebf7944b4d4060032876c061190cea66f7c5cb02edf5a5",
+        "profile": "named-risk-label-control-t1-v1"
+      },
+      "scope_id": "0c762007a0746ee6810420f4dc83b824020e41ae1922e6065cca771f87a87f71",
+      "profile": "named-risk-label-control-t1-v1",
+      "horizon": 1,
+      "recipes": [
+        {
+          "family": "har",
+          "horizon": 1,
+          "device": "cpu",
+          "seed": 42,
+          "cadence": 21,
+          "task": "variance",
+          "features": [
+            "har_1",
+            "har_5",
+            "har_22"
+          ],
+          "years": null,
+          "label_control": "named-risk-label-control-t1-v1"
+        }
+      ],
+      "model_families": [
+        "har"
+      ],
+      "kind": "synthetic_control:known_log_har_signal",
+      "completed_fits": 1,
+      "sample_receipts": [
+        {
+          "path": "synthetic/ledger/completed/aa7467273242703798161a847b088d636ce58214a6f56066dfb1ce9344aabba9.json",
+          "record_id": "1664d080b4c20eacfee30f58271aae2dd1038e56deb962fd26ff1710832c3a97",
+          "experiment_id": "aa7467273242703798161a847b088d636ce58214a6f56066dfb1ce9344aabba9"
+        }
+      ],
+      "roles": [
+        "synthetic_noiseless_log_har_control"
+      ],
+      "coverage": "completed fit receipts; not experiment completion",
+      "payload_hashes_revalidated_by_index": false,
+      "sample_receipt_archive_context": "bundle/index-input; actual native payloads preserved under bundle/execution ledgers"
+    },
+    {
+      "id": "afe0c1cdc2eba0d5532979aa93e8bcf7090336de97c135828475a7c04d8ab678",
+      "scope": {
+        "identity_id": "b670b81196e50fae43269ef9f1f377fe6e650f2f9589b23f6e9aef36e839e063",
+        "source_id": "42221c6e9b71a39588f2299fddd1325a1c047bb933387deda7aea565d79df203",
+        "data_id": "e5b80675a4c1cd44dd77915146a0cc4482dfd388b6e10c037b0966da2946a182",
+        "split_id": "a5af28d192577cf1e1ebf7944b4d4060032876c061190cea66f7c5cb02edf5a5",
+        "profile": "named-risk-label-control-t1-v1"
+      },
+      "scope_id": "532f2993b80c40c652283c1c0c6941818e47eb0f946a4ecebf3868d1224fc2d1",
+      "profile": "named-risk-label-control-t1-v1",
+      "horizon": 1,
+      "recipes": [
+        {
+          "family": "har",
+          "horizon": 1,
+          "device": "cpu",
+          "seed": 42,
+          "cadence": 21,
+          "task": "variance",
+          "features": [
+            "har_1",
+            "har_5",
+            "har_22"
+          ],
+          "years": null,
+          "label_control": "named-risk-label-control-t1-v1",
+          "label_arm": "ct"
+        }
+      ],
+      "model_families": [
+        "har"
+      ],
+      "kind": "market_fit_receipt",
+      "completed_fits": 22,
+      "sample_receipts": [
+        {
+          "path": "market/ledger/completed/0422fe79e85e8a324083cf7f62bac9b0deace5b228613a195693304555cf756b.json",
+          "record_id": "c4b0ee84ecef11bdbab26823f3e7cbbf9fa383880c99918978108a1c6fdde048",
+          "experiment_id": "0422fe79e85e8a324083cf7f62bac9b0deace5b228613a195693304555cf756b"
+        },
+        {
+          "path": "market/ledger/completed/0df9377e4bc8406f97a080747da22a5df4907f6258ba6353c6557e0c04d6e321.json",
+          "record_id": "a8ade703294460f0d00448a3102279162a9027cc7c86cc1c0f0c627a73f72187",
+          "experiment_id": "0df9377e4bc8406f97a080747da22a5df4907f6258ba6353c6557e0c04d6e321"
+        },
+        {
+          "path": "market/ledger/completed/1e304b1a9f746a46e9f80bb0b0b9a7ebd5ccdf2e9edc7d33722881e8da46434f.json",
+          "record_id": "03ddb9c7b165019b3c43350de5258065a463cfdca4cb153ca7eb438a93855852",
+          "experiment_id": "1e304b1a9f746a46e9f80bb0b0b9a7ebd5ccdf2e9edc7d33722881e8da46434f"
+        }
+      ],
+      "roles": [
+        "risk"
+      ],
+      "coverage": "completed fit receipts; not experiment completion",
+      "payload_hashes_revalidated_by_index": false,
+      "sample_receipt_archive_context": "bundle/index-input; actual native payloads preserved under bundle/execution ledgers"
     }
   ],
   "rejected_receipts": [],

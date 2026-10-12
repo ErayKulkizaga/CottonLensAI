@@ -18613,6 +18613,168 @@
       "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/risk-measurement-readiness-20261012",
       "release_allowed": false,
       "id": "426735e861495fc14161a9a343c8461cad9352f20cc1bd37a838145fac04d2c7"
+    },
+    {
+      "experiment": "research-named-risk-label-control-t1-v1-preregistration",
+      "profile": "named-risk-label-control-t1-v1",
+      "horizon": 1,
+      "kind": "completed_preregistration_NOT_market_result",
+      "classification": "INCONCLUSIVE",
+      "model_families": [
+        "har"
+      ],
+      "recipes": [],
+      "completed_fits": 0,
+      "source_id": "42221c6e9b71a39588f2299fddd1325a1c047bb933387deda7aea565d79df203",
+      "design_id": "26affe826ae596e2e8aafa4aab931b279543642dc55cbb68da8045a68ccc65b7",
+      "origin_count": 246,
+      "fit_budget": {
+        "market": 44,
+        "synthetic": 1,
+        "threads": 2,
+        "processes": 1,
+        "session_minutes": 30
+      },
+      "evidence": "evidence/named-risk-label-preregistration-20261012.json",
+      "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/named-risk-label-preregistration-r2-20261012",
+      "release_allowed": false,
+      "id": "811d23ad75aa7fd63500d09d478e89e97e74d445a77f668034c74ce2807ee8c5"
+    },
+    {
+      "experiment": "research-named-risk-label-control-t1-v1",
+      "profile": "named-risk-label-control-t1-v1",
+      "horizon": 1,
+      "kind": "completed_conditional_one_year_market_label_control",
+      "classification": "DECISIVE_POSITIVE",
+      "classification_scope": "Conditional one-year label mechanism ONLY; not market-wide source/model absence",
+      "model_families": [
+        "har"
+      ],
+      "recipes": [],
+      "completed_market_fits": 44,
+      "completed_synthetic_fits": 1,
+      "origin_count": 246,
+      "eligible_origins": 242,
+      "source_id": "42221c6e9b71a39588f2299fddd1325a1c047bb933387deda7aea565d79df203",
+      "metrics": {
+        "label_mechanism": {
+          "delta": 0.07117630596098276,
+          "bootstrap": {
+            "20": {
+              "eligible": 242,
+              "ordinal_slots": 246,
+              "block": 20,
+              "replicates": 10000,
+              "paired_difference": 0.07117630596098312,
+              "difference_ci_95": [
+                0.024920006652160404,
+                0.12265009929523109
+              ]
+            },
+            "60": {
+              "eligible": 242,
+              "ordinal_slots": 246,
+              "block": 60,
+              "replicates": 10000,
+              "paired_difference": 0.07117630596098312,
+              "difference_ci_95": [
+                0.022735162689647037,
+                0.11680117419607734
+              ]
+            }
+          },
+          "trim_top1pct_ewma_loss_delta": 0.0944721982526942
+        },
+        "named_raw_vs_ewma": {
+          "delta": -0.033638832779638174,
+          "bootstrap": {
+            "20": {
+              "eligible": 242,
+              "ordinal_slots": 246,
+              "block": 20,
+              "replicates": 10000,
+              "paired_difference": -0.03363883277963753,
+              "difference_ci_95": [
+                -0.0766899837378468,
+                0.011750327396550894
+              ]
+            },
+            "60": {
+              "eligible": 242,
+              "ordinal_slots": 246,
+              "block": 60,
+              "replicates": 10000,
+              "paired_difference": -0.03363883277963753,
+              "difference_ci_95": [
+                -0.06755746600014925,
+                -0.0007703027960175787
+              ]
+            }
+          },
+          "trim_top1pct_ewma_loss_delta": -0.058272748141382454
+        },
+        "ct_raw_vs_ewma": {
+          "delta": -0.10481513874062093,
+          "bootstrap": {
+            "20": {
+              "eligible": 242,
+              "ordinal_slots": 246,
+              "block": 20,
+              "replicates": 10000,
+              "paired_difference": -0.10481513874062065,
+              "difference_ci_95": [
+                -0.18344977267541773,
+                -0.024083927022621326
+              ]
+            },
+            "60": {
+              "eligible": 242,
+              "ordinal_slots": 246,
+              "block": 60,
+              "replicates": 10000,
+              "paired_difference": -0.10481513874062065,
+              "difference_ci_95": [
+                -0.17523324048604566,
+                -0.028200741207257476
+              ]
+            }
+          },
+          "trim_top1pct_ewma_loss_delta": -0.15274494639407668
+        },
+        "named_selected_vs_ewma": {
+          "delta": 0.0,
+          "bootstrap": {
+            "20": {
+              "eligible": 242,
+              "ordinal_slots": 246,
+              "block": 20,
+              "replicates": 10000,
+              "paired_difference": 0.0,
+              "difference_ci_95": [
+                0.0,
+                0.0
+              ]
+            },
+            "60": {
+              "eligible": 242,
+              "ordinal_slots": 246,
+              "block": 60,
+              "replicates": 10000,
+              "paired_difference": 0.0,
+              "difference_ci_95": [
+                0.0,
+                0.0
+              ]
+            }
+          },
+          "trim_top1pct_ewma_loss_delta": 0.0
+        }
+      },
+      "independent_holdout": false,
+      "evidence": "evidence/named-risk-label-result-20261012.json",
+      "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/named-risk-label-result-20261012",
+      "release_allowed": false,
+      "id": "0826aee3f456830155e1f545c4f12e5ab1bb2846250bfa6ab83a4ef8fde2764a"
     }
   ],
   "local_evidence": [
@@ -19291,6 +19453,14 @@
     {
       "path": "evidence/risk-measurement-readiness-delivery-20261012.json",
       "sha256": "2512d15e20dbd1b30dfc8852c7681bc54d10b47c44eda441ebcd667d9eb54f2a"
+    },
+    {
+      "path": "evidence/named-risk-label-preregistration-20261012.json",
+      "sha256": "b03af0eaf19a523d667279bc57b4f2958e53733c6b6ab736f28c6ff63b5ed787"
+    },
+    {
+      "path": "evidence/named-risk-label-result-20261012.json",
+      "sha256": "5f512607c21b4b13b00067f6b69be0293c6efbf1a7d85f381dc1ee0a38188126"
     }
   ]
 }

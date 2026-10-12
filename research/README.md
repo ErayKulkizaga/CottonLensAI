@@ -1,5 +1,15 @@
 # Deney geçmişi ve tekrar kontrolü
 
+Son eğitim: [named T+1 risk label control](../docs/NAMED_RISK_LABEL_CONTROL_20261012.md).
+`python -m cottonlens_ml.research.named_risk_control prepare|verify|pilot|compare`
+doğrudan mevcut Experiment/Ledger ve Log-HAR'ı kullanır. `prepare` frozen
+evidence/parent-ready, `pilot` hazır source/data/design/budget ve taze
+GitHub geri kurmasına bağlı `--authorization` ister. Ortam/source değişirse
+cache reddedilir; eski snapshot ile zero-fit `compare` korunur.
+44+1 fit kapandı; etiket iyileşmesi EWMA üstünlüğü değildir. Bu deney
+tekrar edilmez. Sonraki named-HAR feature sorusu farklı hipotezdir; önce
+`ml/history.py check` ve aynı güçlü referanslı kurulabilirlik gerekir.
+
 12 Ekim son sıfır-fit iş: [risk ölçüm kurulabilirliği](../docs/RISK_MEASUREMENT_READINESS_20261012.md).
 `python research/risk_readiness.py --inputs INPUTS --contract CONTRACT --output NEW_NAMESPACE`
 yalnız dondurulmuş eski forecast/hedef ölçümü yapar.2.006 origin tüm kayıtlarda

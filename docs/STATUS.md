@@ -1,5 +1,23 @@
 # Güncel kararlar — 12 Ekim 2026
 
+## Son tamamlanan kontrollü eğitim
+
+[Named T+1 risk etiket kontrolü](NAMED_RISK_LABEL_CONTROL_20261012.md) kapandı:
+44 piyasa +1 sentetik fit, 2023'te246 origin/242 paired. Aynı CT HAR
+özelliklerinde named-label eğitimi CT-label eğitiminden QLIKE0,07117631
+daha iyi; CI20/60 pozitif. Bu **etiket mekanizması** bulgusudur; risk başarısı
+değildir. Named ham HAR doğru named EWMA'ya karşı−0,03363883; iki kolda
+geçmiş weight0. Aynı kontratın geçmişini bilen referansa karşı model hâlâ
+CT geçmişini kullanıyor. Sonraki tek soru, aynı named etiket/model/tarih
+korunarak üç HAR özelliğinin de aynı kontrata bağlanmasıdır; önce kurulabilirlik.
+Yeni grid/ufuk/Colab-GPU gerekçesi yok; tarihsel UTC/vintage varsayımı sürer.
+
+[Sonuç ve geri kurma kanıtı](../research/evidence/named-risk-label-result-20261012.json)
+573 private GitHub dosyası ve result/CSV/bağımsız makbuz byte-identical
+replay'i doğruladı. Eski186aşama/167kanıt hash'i korunur; sicil188aşama,
+533tarif/29.961tamamlanmış fit kopyasıdır. Aşağıdaki eski plan ve bulgular
+tarihsel olarak korunur; son tamamlanan eğitim bu bölümdür.
+
 ## Son veri/ölçüm kararı
 
 [Risk kurulabilirliği](RISK_MEASUREMENT_READINESS_20261012.md) sıfır-fit kapandı.

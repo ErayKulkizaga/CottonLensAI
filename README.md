@@ -1,5 +1,10 @@
 # CottonLensAI
 
+Son [kontrollü risk eğitimi](docs/NAMED_RISK_LABEL_CONTROL_20261012.md):
+aynı-kontrat etiketleri HAR'ın hatasını azalttı, fakat güçlü EWMA referansını
+geçmedi. 44+1 fit ve private GitHub geri kurması doğrulandı. Tahmin başarısı
+henüz kanıtlanmış değildir; sonraki soru aynı-kontrat geçmiş özellikleridir.
+
 Son [risk veri/ölçüm kontrolü](docs/RISK_MEASUREMENT_READINESS_20261012.md)
 aynı-kontrat günlük risk etiketlerini kurdu; mevcut eğitim kuralıyla yalnız2023
 destekleniyor. Eski risk tahminlerini bu hedefe taşımak da sağlam üstünlük

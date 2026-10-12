@@ -1,0 +1,31 @@
+{
+  "schema": 1,
+  "profile": "named-risk-label-control-t1-v1",
+  "kind": "conditional_risk_label_preregistration_NOT_result",
+  "source_id": "42221c6e9b71a39588f2299fddd1325a1c047bb933387deda7aea565d79df203",
+  "design_id": "26affe826ae596e2e8aafa4aab931b279543642dc55cbb68da8045a68ccc65b7",
+  "ready_sha256": "201ca0dd02f31413af2c161bb8159d6794a0c63edac3e1dcd3d2df47d2e2d924",
+  "source_files": 271,
+  "fresh_restore_verified": true,
+  "restored_members": 291,
+  "excluded": 0,
+  "new_fits": 0,
+  "archive_sha256": "ee7cd364709621e103cb85724127146b46de53c9bffce888c387fc0cc6a06f2f",
+  "manifest_sha256": "f6906cc0f76288f1cac7d8749a4c6d418c961c28fe5688ff160422643870781a",
+  "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/named-risk-label-preregistration-r2-20261012",
+  "fit_budget": {
+    "market": 44,
+    "synthetic": 1,
+    "threads": 2,
+    "processes": 1,
+    "session_minutes": 30
+  },
+  "origin_count": 246,
+  "eligible_outer": 242,
+  "training_minimum": 576,
+  "conditional_year": 2023,
+  "historical_availability_verified": false,
+  "release_allowed": false,
+  "human_authorization_scope": "Active human goal: continue bounded evidence-grounded work toward training/signal; no grid or automatic learned-model publication",
+  "record_id": "ceb96d2c9801d071e93e14f368c806ab8730c8615c50dfefa404ae7bb7d52841"
+}
