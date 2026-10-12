@@ -103,3 +103,27 @@ Eski training source_id9bff893f… makbuzlarda korunur; bu aşama orijinal
 eski ML snapshot'ını bulmuş veya eğitimini yeniden üretmiş sayılmaz.
 Paket güncel audit kaynağını ayrıca taşır; restore modeli çalıştırmadan
 native byte hash'lerini, scalar sonuçları ve projection'ı yeniden doğrular.
+
+## Tamamlanan taze teslimat ve ek kontroller
+
+7.831 payload üyesi/422.154.747 özgün bayt private GitHub'dan geri kuruldu;
+1.855 makbuz/5.565 native hash/14.042 scalar satır ve candidate projection
+frozen audit kaynağında yeniden eşleşti. Model çalıştırma/eğitim0. Ayrıca
+1.855 adapter'ın processor/target scaler'ı yalnız kayıtlı geçmiş eğitim
+satırlarıyla aynı; bütün target_date5 değerleri ilk test tarihinden önce.
+Bu, gerçek kaynak UTC/ilk-vintage doğrulaması yerine geçmez.
+
+[CFTC özel duyuruları](https://www.cftc.gov/MarketReports/CommitmentsofTraders/HistoricalSpecialAnnouncements/index.htm)
+10 Mart2023 için planlanan raporun16 Mart'ta çıkarıldığını ve26 Mart2019
+Cotton pozisyonlarının29 Mart raporuna3 Nisan'da eklendiğini doğruluyor.
+Bu yüzden reference-date+3'ü erişim kanıtı kabul etmek somut risk taşır;
+mevcut protected maskeler ve legacy alan reddi korunur. Normal haftalarda
+[CFTC genel takvimi](https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm)
+Cuma15:30 Eastern'dır; genel takvim her eski raporun timestamp/vintage kanıtı değildir.
+Mevcut [ICE ürün saatleri](https://www.ice.com/products/254) New York14:20
+kapanışını gösterir; bu güncel kural bütün eski seanslara otomatik taşınmaz.
+Yayın-reaction penceresinin gecikmeyle kaybolması bir hipotezdir, ölçülmüş beceri değildir.
+
+[Dönüş makbuzu](../research/evidence/named-cftc-information-audit-delivery-20261012.json).
+Arşiv SHA782b0b355f3ac82a0e9a756928d2ec5395c5d36f566e3a9dfaac45f8412542d5;
+86.612.746 sıkıştırılmış bayt. Eski kayıt/fit sicili değişmez; kaynak kabulü kapalı.

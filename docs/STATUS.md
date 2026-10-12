@@ -1,5 +1,12 @@
 # Güncel kararlar — 12 Ekim 2026
 
+12 Ekim CFTC teslimatı kapandı: 7.831üye/1.855eski native model private
+GitHub geri kurmasında eşleşti; 1.855past-only adapter ve ek duyuru-tarih
+kontrolü geçti. Yeni fit0; eski fit sicili değişmedi.
+[Makbuz](../research/evidence/named-cftc-information-audit-delivery-20261012.json).
+Bir sonraki aday henüz ön kayıt değil: aynı named T+5/sabit XGB, protected
+L1 numeric-mask karşılaştırması; kaynak/vintage/UTC belirsizliği korunur.
+
 12 Ekim: [CFTC kaynak/hedef kapsamı denetimi](NAMED_CFTC_INFORMATION_AUDIT_20261012.md)
 sıfır-fit kapandı. Eski56çıktı/14.042satır/1.855makbuz/5.565payload hash
 doğrulandı; eski CT hedefi named T+5 ile eşdeğer değil. Ham legacy+3gün

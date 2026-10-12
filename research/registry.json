@@ -18905,6 +18905,10 @@
     {
       "path": "evidence/named-cftc-information-audit-release-20261012.json",
       "sha256": "7874f0298b2e1412c80cb4919b0b0d133e518e784ed109f01c3db3f07a3e4460"
+    },
+    {
+      "path": "evidence/named-cftc-information-audit-delivery-20261012.json",
+      "sha256": "be0927481ce9db0cfb00646ed9e703b4121a02a2e1e176264ad4ed935e2e47b9"
     }
   ]
 }

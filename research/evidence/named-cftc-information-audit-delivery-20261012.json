@@ -1,0 +1,54 @@
+{
+  "schema": 1,
+  "status": "fresh_github_cftc_audit_native_and_scalar_recovery_verified",
+  "fresh_restore": {
+    "status": "verified",
+    "archive_sha256": "782b0b355f3ac82a0e9a756928d2ec5395c5d36f566e3a9dfaac45f8412542d5",
+    "members": 7831,
+    "audit_source_id": "b8420a30f9f433880e96237c6cafe25613092e1b8b69f7fd42e5f69bd202e760",
+    "exact_members": true,
+    "exact_audit_candidate_controls": true,
+    "legacy_fit_receipts_rechecked": 1855,
+    "legacy_payload_hashes_rechecked": 5565,
+    "legacy_prediction_rows_recomputed": 14042,
+    "new_fits": 0,
+    "models_executed": 0,
+    "legacy_original_source_snapshot_recovered": false,
+    "historical_source_admitted": false
+  },
+  "new_fits": 0,
+  "models_executed": 0,
+  "legacy_native_models_preserved": 1855,
+  "source_bytes": 422154747,
+  "old_trials_bytes_unchanged": true,
+  "old_registry_records_preserved": 180,
+  "old_evidence_files_preserved": 151,
+  "past_only_adapter_checks": 1855,
+  "adapter_receipt_sha256": "83348fc84b6b6f1b3aef618ac1957ce25be5b9c7013acb689c98fa6731e8d7a4",
+  "clock_case_sha256": "1808fc53fb12391e09c3bb80e27a9ca940757a3111e988d0a9fa497248204259",
+  "supplement_manifest": {
+    "status": "immutable_supplement",
+    "new_fits": 0,
+    "files": {
+      "adapter-safety.py": {
+        "sha256": "def47b4266a17a437e6a87edd90ded3b2f8ae67511bfb5de50d5021cafd3db09",
+        "bytes": 1768
+      },
+      "adapter-safety.json": {
+        "sha256": "83348fc84b6b6f1b3aef618ac1957ce25be5b9c7013acb689c98fa6731e8d7a4",
+        "bytes": 276
+      },
+      "announcement-clock-cases.json": {
+        "sha256": "1808fc53fb12391e09c3bb80e27a9ca940757a3111e988d0a9fa497248204259",
+        "bytes": 1353
+      }
+    }
+  },
+  "fresh_supplement_exact": true,
+  "legacy_original_code_recovered": false,
+  "historical_source_admitted": false,
+  "first_vintage_verified": false,
+  "goal_achieved": false,
+  "next_exact_step": "Preregister fixed named T5 XGB protected L1 numeric-vs-missingness control, same37fields/cohort; no legacy3day field or lag/model grid.",
+  "record_id": "8ec660789fb41019440c4e87149352b5ed7a087ab65b318356f9fc28725350cb"
+}
