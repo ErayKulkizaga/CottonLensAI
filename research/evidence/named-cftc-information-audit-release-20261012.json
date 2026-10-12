@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/named-cftc-information-audit-20261012",
+  "audit_source_id": "b8420a30f9f433880e96237c6cafe25613092e1b8b69f7fd42e5f69bd202e760",
+  "archive": {
+    "name": "named-cftc-information-audit-20261012.zip",
+    "sha256": "782b0b355f3ac82a0e9a756928d2ec5395c5d36f566e3a9dfaac45f8412542d5",
+    "bytes": 86612746
+  },
+  "inventory_sha256": "0f3c8d840c440cbc48b1aa71f7c7dd1262d0cfd3e97c8d08105a83c37785a399",
+  "members": 7832,
+  "uncompressed_bytes": 422154747,
+  "existing_native_models": 1855,
+  "new_fits": 0,
+  "legacy_source_snapshot_recovered": false,
+  "publication_vintage_verified": false,
+  "record_id": "510a6f05e8082855fe07e794716e557c360bc23a9262a644ad4e15548d558c47"
+}

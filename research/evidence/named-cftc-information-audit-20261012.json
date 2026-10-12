@@ -1,0 +1,80 @@
+{
+  "schema": 1,
+  "status": "completed_zero_fit_cftc_scope_and_readiness_audit",
+  "audit_source_id": "b8420a30f9f433880e96237c6cafe25613092e1b8b69f7fd42e5f69bd202e760",
+  "legacy_fit_source_id": "9bff893f0bcd034a8c53e527b01b61aa7911a299ced771740f85ff0576141762",
+  "audit_sha256": "e6b70a76fe47f87e0cb7d79ed0c2e8373eba1647f64afd4a225da2da1d15c6c8",
+  "candidate_sha256": "f58da04cf72550e8735fc3a6f93068b732cac0ceca874501d130c9e30060b70e",
+  "controls_sha256": "9a510db21afe0c42c1c0806d4cf7eeea325cdcf18bb6882f9270723c1fe63151",
+  "new_fits": 0,
+  "native_models_executed": 0,
+  "existing_fit_receipts_verified": 1855,
+  "existing_payload_hashes_verified": 5565,
+  "existing_prediction_outputs_verified": 56,
+  "existing_scalar_rows_verified": 14042,
+  "source_rows": 730,
+  "source_annual_archives": 14,
+  "source_masked_reports": 29,
+  "legacy_clock": "report+7days,next Cotton observation,lag1/2/6; not historical UTC/vintage proof",
+  "legacy_unsafe_3day_fields_used": false,
+  "named_origins": 246,
+  "named_scoreable": 242,
+  "named_footprint": {
+    "1": {
+      "checked_origins": 246,
+      "missing_any_value": 44,
+      "unique_report_periods": 45,
+      "reference_age_calendar_days_at_decision": {
+        "min": 9,
+        "median": 11.0,
+        "max": 23
+      }
+    },
+    "2": {
+      "checked_origins": 246,
+      "missing_any_value": 44,
+      "unique_report_periods": 45,
+      "reference_age_calendar_days_at_decision": {
+        "min": 10,
+        "median": 14.0,
+        "max": 24
+      }
+    },
+    "6": {
+      "checked_origins": 246,
+      "missing_any_value": 44,
+      "unique_report_periods": 45,
+      "reference_age_calendar_days_at_decision": {
+        "min": 16,
+        "median": 18.0,
+        "max": 31
+      }
+    }
+  },
+  "legacy_contrasts": {
+    "1": {
+      "raw_contribution_pct_of_naive": 0.11208473283796927,
+      "selected_contribution_pct_of_naive": 0.15949575529410343
+    },
+    "2": {
+      "raw_contribution_pct_of_naive": 0.2277063787842204,
+      "selected_contribution_pct_of_naive": 0.24489930593043496
+    },
+    "6": {
+      "raw_contribution_pct_of_naive": -0.5811105330246757,
+      "selected_contribution_pct_of_naive": -0.7714512627595482
+    }
+  },
+  "named_source_effect_previously_tested": false,
+  "legacy_current_target_equivalent": false,
+  "classification": "INCONCLUSIVE",
+  "classification_scope": "Content and as-assumed alignment verified; named-target incremental effect untested. Old CT source pilot not repeated.",
+  "historical_publication_verified": false,
+  "first_vintage_verified": false,
+  "original_legacy_source_snapshot_recovered_by_this_stage": false,
+  "original_legacy_native_training_reproduced": false,
+  "historical_source_admitted": false,
+  "release_allowed": false,
+  "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/named-cftc-information-audit-20261012",
+  "record_id": "9937b91a37a29f5f223e5023818635caa89958a5640680b89814a3588e701fd9"
+}

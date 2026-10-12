@@ -18263,6 +18263,30 @@
       "independent_holdout": false,
       "release_allowed": false,
       "id": "8bec37b7164e7d81d898e9c14c572f5cb4ec9ad28ddb9789e40d050f3f804202"
+    },
+    {
+      "experiment": "research-named-cftc-information-audit-v1",
+      "profile": "named-cftc-information-audit-v1",
+      "horizon": 5,
+      "kind": "completed_zero_fit_source_scope_audit",
+      "classification": "INCONCLUSIVE",
+      "classification_scope": "Content and as-assumed alignment verified; named-target incremental effect untested. Old CT source pilot not repeated.",
+      "code_id": "b8420a30f9f433880e96237c6cafe25613092e1b8b69f7fd42e5f69bd202e760",
+      "data_id": "f58da04cf72550e8735fc3a6f93068b732cac0ceca874501d130c9e30060b70e",
+      "origin_count": 246,
+      "scored_origin_count": 242,
+      "new_fits": 0,
+      "old_fits_repeated": false,
+      "model_families": [
+        "ridge",
+        "xgboost"
+      ],
+      "evidence": "evidence/named-cftc-information-audit-20261012.json",
+      "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/named-cftc-information-audit-20261012",
+      "independent_holdout": false,
+      "historical_source_admitted": false,
+      "release_allowed": false,
+      "id": "1a118c525cccd520ad241bcafd7b4a3d8cefa06f4015559c3703727971c91fd5"
     }
   ],
   "local_evidence": [
@@ -18873,6 +18897,14 @@
     {
       "path": "evidence/named-weak-execution-result-delivery-20261012.json",
       "sha256": "9e8e76025377841c967f7c7a45acda0c838171cf9b9997f253f60717e4538bc0"
+    },
+    {
+      "path": "evidence/named-cftc-information-audit-20261012.json",
+      "sha256": "c03a9b273358fafc821eedf9fecf073015499eea35e762b9aff1440ade107d84"
+    },
+    {
+      "path": "evidence/named-cftc-information-audit-release-20261012.json",
+      "sha256": "7874f0298b2e1412c80cb4919b0b0d133e518e784ed109f01c3db3f07a3e4460"
     }
   ]
 }

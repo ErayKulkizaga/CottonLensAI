@@ -1,5 +1,10 @@
 # Deney geçmişi ve tekrar kontrolü
 
+12 Ekim: [CFTC bilgi kapsamı](../docs/NAMED_CFTC_INFORMATION_AUDIT_20261012.md)
+eski CT pilotu ile named hedefin farklılığını sıfır-fit doğruladı. Eski
+1.855 fit yeniden sayılmaz/çalıştırılmaz; kaynak etkisi named hedefte
+sınanmış sayılmaz. Legacy+3gün audit-only sütunları korumayı atlayarak açma.
+
 12 Ekim: [named weak-teacher sonucu](../docs/NAMED_WEAK_SIGNAL_EXECUTION_20261012.md)
 132 sentetik fit ile aynı tarifin basit yararlı etkiyi öğrenebildiğini gösterdi.
 DECISIVE_POSITIVE yalnız bu öğretici içindir; piyasa skill/güç kanıtı değildir.

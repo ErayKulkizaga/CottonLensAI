@@ -1,5 +1,15 @@
 # Güncel kararlar — 12 Ekim 2026
 
+12 Ekim: [CFTC kaynak/hedef kapsamı denetimi](NAMED_CFTC_INFORMATION_AUDIT_20261012.md)
+sıfır-fit kapandı. Eski56çıktı/14.042satır/1.855makbuz/5.565payload hash
+doğrulandı; eski CT hedefi named T+5 ile eşdeğer değil. Ham legacy+3gün
+alanları hem eski1.855 fitte hem mevcut32alanda dışarıda; doğrudan açılmaz.
+Korumalı L1 named cohortunda44/246 missing,45taşınan rapor dönemi,
+reference-to-decision medyan11gün. İlk vintage/gerçek UTC erişim doğrulanmadı;
+kaynak kabulü/release kapalı. Tek aday aynı named hedef/sabit XGB/korumalı
+L1 ile aynı37alanlı numeric-mask kaynak katkısıdır; henüz eğitim ön kaydı
+veya yeni piyasa fit yok. Eski CFTC lag grid'i tekrarlanmaz.
+
 12 Ekim sonuç teslimatı kapandı: private Release1.760 payload üyesi taze
 indirme ile hash eşleşti; frozen source132native/1.452scalar replay yeniden
 geçti, yeni fit0.179 önceki aşama/526tarif/148kanıt değişmedi.
