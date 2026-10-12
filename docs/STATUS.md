@@ -1,5 +1,34 @@
 # Güncel kararlar — 12 Ekim 2026
 
+## Son input-history ve veri sürekliliği kararı
+
+[Named risk history](NAMED_RISK_HISTORY_CONTROL_20261012.md)44market/0newsynthetic
+fit ile kapandı;246slot/243tahmin/242paired. Gözlenen-pair own history,
+CT-history'ye göre deltaQLIKE+0,02603470 ve pozitif20/60CIs üretir.
+Bu temsil müdahalesi bulgusudur; strict calendar-22 source-only testi değildir.
+Ham model EWMA−0,00938885; past weight0,25 sonrası+0,00266572 ama iki CI0
+içerir ve top1% trim−0,00483630. Sağlam referans üstünlüğü veya Colab/GPU
+gerekçesi yok. Eski44+1label/44history fit tekrar edilmez.
+
+Independent kontrol996featureorigin/2.988scalar/1.210loss/8CI doğruladı.
+Train'de22gözlenen çift236seansa yayılabilir; son çift192seans eski.
+Bu gerçek train girdisidir. Strict calendar22/age0 ilk train436; tanımlayıcı
+span25/age3 filtresi498 verir;500 kuralı düşürülmez.554 label satırı554
+güncel günlük state değildir. Fiyat/veri bozulması veya future leakage
+gösterilmedi; tarihsel UTC/vintage hâlâ varsayım. Dış2023span≤24/age≤2.
+
+Zero-fit tanı: latent log-MSE'de past-calibrated log-EWMA katkısı−0,03714097
+ve sıfır içerenCIs; sadece yanlış release metriği başarıyı saklıyor denemez.
+QLIKE intercept train'de zaten kalibre, slope gradient'leri sıfır değil.
+Bir sonraki kontrollü fit gerekçesi varsa yalnız **aynı bilgi/parametre/
+cohort/reference ile eğitim loss'u** farkını sınamalı; calendar süreklilik
+eksikliği ayrıca korunur. Henüz yeni loss-fit/Colab/grid açılmadı.
+
+[Teslimat](../research/evidence/named-risk-history-result-20261012.json)
+577private dosya/frozen report+CSV+independent receipt byte-identical replay,
+40MLtests/Ruff geçti. Sicil190aşama/535tarif/30.005fit kopyası; eski188aşama/
+169kanıt ve533tarif değişmez. Aşağıdaki daha eski kararlar korunur.
+
 ## Son tamamlanan kontrollü eğitim
 
 [Named T+1 risk etiket kontrolü](NAMED_RISK_LABEL_CONTROL_20261012.md) kapandı:

@@ -1,0 +1,44 @@
+{
+  "schema": 1,
+  "profile": "named-risk-history-control-t1-v1",
+  "source_id": "b2210ea149ee3d7c1daabfef1bbadb067a970a9baeff3e84720f7449e939a7e3",
+  "design_id": "ee406f908005caa7277bb7b63b3a1c260fb9194831cd7ad30898b89ee57f3427",
+  "ready_sha256": "73691afc674bde3b3b3097f3b8f3acb996d7b0bdfba0ba9b0d8ce906e5f5c41a",
+  "new_fits": 0,
+  "fresh_restore_verified": true,
+  "restored_members": 301,
+  "source_files": 273,
+  "archive_sha256": "e5c8c69b5961ade30ce596aa0dd600ab719952e62b19b5ac8237fafd2ba03643",
+  "manifest_sha256": "494983ca769ba706394f7d2c850ed2432c96f96998dac0d694bb1184dc72429f",
+  "fit_budget": {
+    "market": 44,
+    "synthetic": 0,
+    "processes": 1,
+    "threads": 2,
+    "session_minutes": 30
+  },
+  "conditional_year": 2023,
+  "minimum_train": 554,
+  "ordinal_origins": 246,
+  "forecast_origins": 243,
+  "paired_origins": 242,
+  "historical_availability_verified": false,
+  "independent_holdout": false,
+  "release_allowed": false,
+  "new_synthetic_fits": 0,
+  "learner_control_reverified": {
+    "status": "passed_reverified_native",
+    "prior_fit_id": "aa7467273242703798161a847b088d636ce58214a6f56066dfb1ce9344aabba9",
+    "new_synthetic_fits": 0,
+    "maximum_relative_error": 3.3306690738754696e-15,
+    "learner_files": [
+      "ml/src/cottonlens_ml/research/models.py",
+      "ml/src/cottonlens_ml/research/volatility.py",
+      "ml/src/cottonlens_ml/runtime_guard.py"
+    ],
+    "market_skill": false
+  },
+  "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/named-risk-history-preregistration-20261012",
+  "human_authorization_scope": "Active human goal; one bounded fixed-HAR history mechanism test, no grid/production model",
+  "record_id": "0509ea6c544fe38757629896b3209142abe662b2f715d75f6055772b72e0d2ba"
+}

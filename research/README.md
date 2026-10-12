@@ -1,5 +1,14 @@
 # Deney geçmişi ve tekrar kontrolü
 
+Son tamamlanan: [named risk history control](../docs/NAMED_RISK_HISTORY_CONTROL_20261012.md).
+`python -m cottonlens_ml.research.named_risk_history prepare|verify|pilot|compare`
+aynı HAR/Experiment/Ledger yolunda iki named-label kolunun yalnız history
+özelliklerini değiştirir.44market/0newsynthetic fit; eski HAR kontrolü native/
+learner bytes/env eşliğiyle reverified, genel passed cache değil.
+246slot korunur;243forecast/242paired, üç unavailable açık. Gözlenen22pair
+calendar22 değildir; train span236/age192 saptandı. Same-profile tam recipe/
+scope lookup tamamlanan22fitperarm bulmalı. Yeni grid veya blind rerun yok.
+
 Son eğitim: [named T+1 risk label control](../docs/NAMED_RISK_LABEL_CONTROL_20261012.md).
 `python -m cottonlens_ml.research.named_risk_control prepare|verify|pilot|compare`
 doğrudan mevcut Experiment/Ledger ve Log-HAR'ı kullanır. `prepare` frozen

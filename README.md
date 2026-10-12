@@ -1,5 +1,11 @@
 # CottonLensAI
 
+[Son risk history kontrolü](docs/NAMED_RISK_HISTORY_CONTROL_20261012.md):
+aynı-kontrat geçmişi de hata azaltıyor; güçlü EWMA üstünlüğü hâlâ sağlam
+değil. Veri sürekliliği denetimi bazı train history'lerinin çok eski olduğunu
+gösterdi; ham örnek sayısı güncel günlük bilgi sayısı değildir.577private
+GitHub dosyası/zero-fit replay doğrulandı; yeni loss-fit veya GPU yok.
+
 Son [kontrollü risk eğitimi](docs/NAMED_RISK_LABEL_CONTROL_20261012.md):
 aynı-kontrat etiketleri HAR'ın hatasını azalttı, fakat güçlü EWMA referansını
 geçmedi. 44+1 fit ve private GitHub geri kurması doğrulandı. Tahmin başarısı

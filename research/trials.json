@@ -54807,6 +54807,126 @@
       "coverage": "completed fit receipts; not experiment completion",
       "payload_hashes_revalidated_by_index": false,
       "sample_receipt_archive_context": "bundle/index-input; actual native payloads preserved under bundle/execution ledgers"
+    },
+    {
+      "id": "078dbef6f6b805daeb788acd7b0b8a8d9541971b76fd7442f4ad050d1c714eab",
+      "scope": {
+        "identity_id": "b69a12721e34dda5888a16ede45a762e322728f03f014d5b7dc0b0d3c1ecbcfa",
+        "source_id": "b2210ea149ee3d7c1daabfef1bbadb067a970a9baeff3e84720f7449e939a7e3",
+        "data_id": "a2d02bbefefcdd77d89b67b515e6eb553cef2439223406a99c78736f943e423d",
+        "split_id": "a5af28d192577cf1e1ebf7944b4d4060032876c061190cea66f7c5cb02edf5a5",
+        "profile": "named-risk-history-control-t1-v1"
+      },
+      "scope_id": "509b9f9b0a4e782db4d47f45da61cc3f610ccb16f410a19dc6a62c7c33464ed8",
+      "profile": "named-risk-history-control-t1-v1",
+      "horizon": 1,
+      "recipes": [
+        {
+          "family": "har",
+          "horizon": 1,
+          "device": "cpu",
+          "seed": 42,
+          "cadence": 21,
+          "task": "variance",
+          "features": [
+            "har_1",
+            "har_5",
+            "har_22"
+          ],
+          "years": null,
+          "feature_control": "named-risk-history-control-t1-v1",
+          "label_arm": "named",
+          "feature_arm": "ct"
+        }
+      ],
+      "model_families": [
+        "har"
+      ],
+      "kind": "market_fit_receipt",
+      "completed_fits": 22,
+      "sample_receipts": [
+        {
+          "path": "market/ledger/completed/00e34ad670986e7cd19fb50d245ef4edc4c4d2f7dada8f8c76685437bfe88b90.json",
+          "record_id": "57efe1cb84f26bbe1e775633ea4e4d2cb59471f3da19248d95dca9bbe0b73cde",
+          "experiment_id": "00e34ad670986e7cd19fb50d245ef4edc4c4d2f7dada8f8c76685437bfe88b90"
+        },
+        {
+          "path": "market/ledger/completed/071755ec9e208af1345e140beffa2fb07763a43f086a4da96eec14710c1d6b88.json",
+          "record_id": "526590cb3af35188cc36a8ba32e29c4498258efe5060f6374567825f2fa35f10",
+          "experiment_id": "071755ec9e208af1345e140beffa2fb07763a43f086a4da96eec14710c1d6b88"
+        },
+        {
+          "path": "market/ledger/completed/192bdcd919005ad0c901b5f0bd6164e319b2eb917d9f7dc765149888d3d261cd.json",
+          "record_id": "6da856533c36db0e67ab444ca69c29f72378578539ff8ff56b8ad54172c0c2fb",
+          "experiment_id": "192bdcd919005ad0c901b5f0bd6164e319b2eb917d9f7dc765149888d3d261cd"
+        }
+      ],
+      "roles": [
+        "history"
+      ],
+      "coverage": "completed fit receipts; not experiment completion",
+      "payload_hashes_revalidated_by_index": false,
+      "sample_receipt_archive_context": "bundle/index-input; actual native payloads preserved under bundle/execution ledgers"
+    },
+    {
+      "id": "4faf0872d600599aecbfb0627fa828c5f70fd533895c34c7ca9c6a649371cf58",
+      "scope": {
+        "identity_id": "b69a12721e34dda5888a16ede45a762e322728f03f014d5b7dc0b0d3c1ecbcfa",
+        "source_id": "b2210ea149ee3d7c1daabfef1bbadb067a970a9baeff3e84720f7449e939a7e3",
+        "data_id": "a2d02bbefefcdd77d89b67b515e6eb553cef2439223406a99c78736f943e423d",
+        "split_id": "a5af28d192577cf1e1ebf7944b4d4060032876c061190cea66f7c5cb02edf5a5",
+        "profile": "named-risk-history-control-t1-v1"
+      },
+      "scope_id": "509b9f9b0a4e782db4d47f45da61cc3f610ccb16f410a19dc6a62c7c33464ed8",
+      "profile": "named-risk-history-control-t1-v1",
+      "horizon": 1,
+      "recipes": [
+        {
+          "family": "har",
+          "horizon": 1,
+          "device": "cpu",
+          "seed": 42,
+          "cadence": 21,
+          "task": "variance",
+          "features": [
+            "har_1",
+            "har_5",
+            "har_22"
+          ],
+          "years": null,
+          "feature_control": "named-risk-history-control-t1-v1",
+          "label_arm": "named",
+          "feature_arm": "named"
+        }
+      ],
+      "model_families": [
+        "har"
+      ],
+      "kind": "market_fit_receipt",
+      "completed_fits": 22,
+      "sample_receipts": [
+        {
+          "path": "market/ledger/completed/010ad077c7a6e3e95cd2483fdf35c089ff9c646b987944fa9a3e9dc2e03dfded.json",
+          "record_id": "8920ff6d763fdd8c63e04363235378a134aff3f2e16d51d3bea6ed2bf104154f",
+          "experiment_id": "010ad077c7a6e3e95cd2483fdf35c089ff9c646b987944fa9a3e9dc2e03dfded"
+        },
+        {
+          "path": "market/ledger/completed/084156fefab453773feb3fcfc71c6c58045f4f19c3ab73949f30628de40afad1.json",
+          "record_id": "9b4adc503f7bba76509d9c6eabfc43ec8c2dd054ae11e2b66f655b824f5148c5",
+          "experiment_id": "084156fefab453773feb3fcfc71c6c58045f4f19c3ab73949f30628de40afad1"
+        },
+        {
+          "path": "market/ledger/completed/0878b17c3be084258a740d25066448a1a2fe3473822a1a9bd66f4dd03f8d0567.json",
+          "record_id": "733e116c65693c4e6614044deb82ee4c2dd5c4a336128f295ce2030f4923daa5",
+          "experiment_id": "0878b17c3be084258a740d25066448a1a2fe3473822a1a9bd66f4dd03f8d0567"
+        }
+      ],
+      "roles": [
+        "history"
+      ],
+      "coverage": "completed fit receipts; not experiment completion",
+      "payload_hashes_revalidated_by_index": false,
+      "sample_receipt_archive_context": "bundle/index-input; actual native payloads preserved under bundle/execution ledgers"
     }
   ],
   "rejected_receipts": [],

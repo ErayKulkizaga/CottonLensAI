@@ -18775,6 +18775,167 @@
       "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/named-risk-label-result-20261012",
       "release_allowed": false,
       "id": "0826aee3f456830155e1f545c4f12e5ab1bb2846250bfa6ab83a4ef8fde2764a"
+    },
+    {
+      "experiment": "research-named-risk-history-control-t1-v1-preregistration",
+      "profile": "named-risk-history-control-t1-v1",
+      "horizon": 1,
+      "kind": "completed_preregistration_NOT_market_result",
+      "classification": "INCONCLUSIVE",
+      "model_families": [
+        "har"
+      ],
+      "recipes": [],
+      "completed_fits": 0,
+      "source_id": "b2210ea149ee3d7c1daabfef1bbadb067a970a9baeff3e84720f7449e939a7e3",
+      "fit_budget": {
+        "market": 44,
+        "synthetic": 0,
+        "processes": 1,
+        "threads": 2,
+        "session_minutes": 30
+      },
+      "evidence": "evidence/named-risk-history-preregistration-20261012.json",
+      "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/named-risk-history-preregistration-20261012",
+      "release_allowed": false,
+      "id": "1df17633bc582a8c0de89200dae3ca5c90a108c7c25bed2df9d709457e1e043f"
+    },
+    {
+      "experiment": "research-named-risk-history-control-t1-v1",
+      "profile": "named-risk-history-control-t1-v1",
+      "horizon": 1,
+      "kind": "completed_conditional_one_year_market_history_control",
+      "classification": "DECISIVE_POSITIVE",
+      "classification_scope": "Conditional one-year input-process mechanism only",
+      "model_families": [
+        "har"
+      ],
+      "recipes": [],
+      "completed_market_fits": 44,
+      "completed_synthetic_fits": 0,
+      "origin_count": 246,
+      "forecast_origins": 243,
+      "eligible_origins": 242,
+      "source_id": "b2210ea149ee3d7c1daabfef1bbadb067a970a9baeff3e84720f7449e939a7e3",
+      "metrics": {
+        "feature_mechanism": {
+          "delta": 0.026034699759923407,
+          "bootstrap": {
+            "20": {
+              "eligible": 242,
+              "ordinal_slots": 246,
+              "block": 20,
+              "replicates": 10000,
+              "paired_difference": 0.026034699759923452,
+              "difference_ci_95": [
+                0.0022110264579528645,
+                0.04763267705424102
+              ]
+            },
+            "60": {
+              "eligible": 242,
+              "ordinal_slots": 246,
+              "block": 60,
+              "replicates": 10000,
+              "paired_difference": 0.026034699759923452,
+              "difference_ci_95": [
+                0.01053968708971814,
+                0.04268158654338476
+              ]
+            }
+          },
+          "trim_top1pct_ewma_loss_delta": 0.027394423297716464
+        },
+        "named_raw_vs_ewma": {
+          "delta": -0.009388847997450591,
+          "bootstrap": {
+            "20": {
+              "eligible": 242,
+              "ordinal_slots": 246,
+              "block": 20,
+              "replicates": 10000,
+              "paired_difference": -0.00938884799744999,
+              "difference_ci_95": [
+                -0.03881293620184918,
+                0.021570829128689132
+              ]
+            },
+            "60": {
+              "eligible": 242,
+              "ordinal_slots": 246,
+              "block": 60,
+              "replicates": 10000,
+              "paired_difference": -0.00938884799744999,
+              "difference_ci_95": [
+                -0.03215086765798898,
+                0.01650196637496584
+              ]
+            }
+          },
+          "trim_top1pct_ewma_loss_delta": -0.033283915234039264
+        },
+        "ct_raw_vs_ewma": {
+          "delta": -0.035423547757373997,
+          "bootstrap": {
+            "20": {
+              "eligible": 242,
+              "ordinal_slots": 246,
+              "block": 20,
+              "replicates": 10000,
+              "paired_difference": -0.03542354775737433,
+              "difference_ci_95": [
+                -0.07906114913784233,
+                0.010631989248275651
+              ]
+            },
+            "60": {
+              "eligible": 242,
+              "ordinal_slots": 246,
+              "block": 60,
+              "replicates": 10000,
+              "paired_difference": -0.03542354775737433,
+              "difference_ci_95": [
+                -0.0682417798767011,
+                -0.0010259356739833816
+              ]
+            }
+          },
+          "trim_top1pct_ewma_loss_delta": -0.06067833853175572
+        },
+        "named_selected_vs_ewma": {
+          "delta": 0.0026657156741008176,
+          "bootstrap": {
+            "20": {
+              "eligible": 242,
+              "ordinal_slots": 246,
+              "block": 20,
+              "replicates": 10000,
+              "paired_difference": 0.0026657156741016763,
+              "difference_ci_95": [
+                -0.006410586846763166,
+                0.011869800954548284
+              ]
+            },
+            "60": {
+              "eligible": 242,
+              "ordinal_slots": 246,
+              "block": 60,
+              "replicates": 10000,
+              "paired_difference": 0.0026657156741016763,
+              "difference_ci_95": [
+                -0.003934183066564073,
+                0.010231911551017978
+              ]
+            }
+          },
+          "trim_top1pct_ewma_loss_delta": -0.004836296458523998
+        }
+      },
+      "independent_holdout": false,
+      "evidence": "evidence/named-risk-history-result-20261012.json",
+      "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/named-risk-history-result-20261012",
+      "release_allowed": false,
+      "id": "a6ed1177ea28650bf1cdb7e60714585f50fc5a465d65126dbe38f3e3a0e1b0e5"
     }
   ],
   "local_evidence": [
@@ -19461,6 +19622,14 @@
     {
       "path": "evidence/named-risk-label-result-20261012.json",
       "sha256": "5f512607c21b4b13b00067f6b69be0293c6efbf1a7d85f381dc1ee0a38188126"
+    },
+    {
+      "path": "evidence/named-risk-history-preregistration-20261012.json",
+      "sha256": "ecb3fa4119e8d5af47ded43909f8a5f47d95ad5753aa326ec25665c92cdf0df8"
+    },
+    {
+      "path": "evidence/named-risk-history-result-20261012.json",
+      "sha256": "90cde91a2a6ec479608a034eaa4c2e6330edc10418dfbf54edfc678ef7354b6a"
     }
   ]
 }
