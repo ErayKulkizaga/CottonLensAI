@@ -1,5 +1,23 @@
 # Güncel kararlar — 12 Ekim 2026
 
+## Son veri/ölçüm kararı
+
+[Risk kurulabilirliği](RISK_MEASUREMENT_READINESS_20261012.md) sıfır-fit kapandı.
+2.006 T+1 origin korunur; 20 gözlenen ön-vade değişimi CT pozitif QLIKE
+katkısının %32,82'sini taşır, 976 origin'in kontrat eşlemesi bilinmiyor.
+İkinci aynı-kontrat hedefinde 1.017 uygun origin: eski CT-trained modelin
+deltaQLIKE+0,00704728 ve CI20/60 sıfırı içerir. Hedef düzeltmesi tek başına
+üstünlüğü sağlamadı; named-trained model testi yapılmış değildir.
+
+Mevcut500train/189validation koşulunu named günlük riskte yalnız2023 sağlar.
+126-origin bekleyiş küçük katkı için yeterli güç garantisi değildir;11–16bin
+ölçeği yalnız sabit-noise sqrt(N) projeksiyonu, gerçek zorunlu süre değildir.
+İleri kanıt gerekir fakat aynı tarifi aylarca bekletmek tek sonraki iş değildir.
+Önce sabit Log-HAR CT-label/named-label kontrolünün aynı hedefe ait causal
+named EWMA referansıyla **ön kayıt kurulabilirliği** hazırlanır; henüz yeni
+fit, profil/fit sayısı dondurma veya eğitim onayı yoktur. Grid/ufuk taraması
+ve dataset indirme açılmaz. Eski aşağıdaki risk kararı/tahminler korunur.
+
 ## Aktif öncelik: referansı geçen risk tahmini
 
 Sıfır-fit risk raporu tamamlandı:482 eski native varyans/selection makbuzu,

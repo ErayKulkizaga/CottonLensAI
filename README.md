@@ -1,5 +1,11 @@
 # CottonLensAI
 
+Son [risk veri/ölçüm kontrolü](docs/RISK_MEASUREMENT_READINESS_20261012.md)
+aynı-kontrat günlük risk etiketlerini kurdu; mevcut eğitim kuralıyla yalnız2023
+destekleniyor. Eski risk tahminlerini bu hedefe taşımak da sağlam üstünlük
+üretmedi.126 gün beklemek küçük mevcut katkıyı kanıtlama garantisi değildir.
+Önce hedef/etiket mekanizmasının sınırlı kontrolü hazırlanır; yeni fit yoktur.
+
 12 Ekim bilimsel öncelik: [EWMA referansını geçen risk tahmini](docs/RISK_EVIDENCE_AUDIT_20261012.md).
 Mevcut HAR/GARCH tahminleri yeni eğitim olmadan denetlendi: 482 native makbuz,
 4.012 eşlenmiş kayıp satırı. T+1 küçük pozitif katkısının iki güven aralığı

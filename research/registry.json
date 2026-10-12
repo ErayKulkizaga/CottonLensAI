@@ -18581,6 +18581,38 @@
       "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/risk-evidence-audit-20261012",
       "release_allowed": false,
       "id": "81164eb054097968eb893002e6cd56c1bd5b3be3cba77320550ba244bd18a451"
+    },
+    {
+      "experiment": "research-risk-measurement-readiness-v1",
+      "profile": "risk-measurement-readiness-v1",
+      "horizon": 1,
+      "kind": "completed_zero_fit_risk_measurement_readiness",
+      "classification": "INCONCLUSIVE",
+      "classification_scope": "Descriptive measurement and fixed-forecast target sensitivity only",
+      "code_id": "c138ae36bdfbff8599b14c0f7a6690c2159f749630c3481c6ef93aaea24e8e3e",
+      "ml_source_id": "fbc7cae00ca00a6f71d95a8c4cbf165010450ced22d2bbcd281f43d6a0eee85d",
+      "model_families": [
+        "har",
+        "garch"
+      ],
+      "recipes": [],
+      "completed_fits": 0,
+      "origin_count": 2006,
+      "prediction_payload_exists": true,
+      "metrics": {
+        "readiness_decision": "NO_GO_CURRENT_126_ORIGIN_CONFIRMATORY_DESIGN",
+        "named_second_delta": 0.007047282234901271,
+        "named_second_eligible": 1017,
+        "observed_front_transitions": 20,
+        "conditional_supported_years": [
+          2023
+        ]
+      },
+      "independent_holdout": false,
+      "evidence": "evidence/risk-measurement-readiness-20261012.json",
+      "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/risk-measurement-readiness-20261012",
+      "release_allowed": false,
+      "id": "426735e861495fc14161a9a343c8461cad9352f20cc1bd37a838145fac04d2c7"
     }
   ],
   "local_evidence": [
@@ -19251,6 +19283,14 @@
     {
       "path": "evidence/risk-evidence-audit-delivery-20261012.json",
       "sha256": "8ace25d1294802217585c36da2d6dd4ef8344e57b8fbf58d1fed5010c6d28fad"
+    },
+    {
+      "path": "evidence/risk-measurement-readiness-20261012.json",
+      "sha256": "e71fb4a8cd42a804c5688d9389c11313ef87a8774dfaaa7a9ef044583efe1fb0"
+    },
+    {
+      "path": "evidence/risk-measurement-readiness-delivery-20261012.json",
+      "sha256": "2512d15e20dbd1b30dfc8852c7681bc54d10b47c44eda441ebcd667d9eb54f2a"
     }
   ]
 }

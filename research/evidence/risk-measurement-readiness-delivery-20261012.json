@@ -1,0 +1,30 @@
+{
+  "schema": 1,
+  "release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/risk-measurement-readiness-20261012",
+  "archive_sha256": "2584ca67c224bab090ce9e4ea92417fdd07187f6310fe0a1ffbcb48fa5fc0ea2",
+  "fresh_manifest_sha256": "54bad8e71b4d8f0089f2b74b7043b1fc919115a4a160b82a68fb66a79bc84327",
+  "fresh_download_verified_members": 28,
+  "excluded_members": 0,
+  "replay_receipt": {
+    "status": "verified",
+    "new_fits": 0,
+    "exact_three_result_payloads": true,
+    "exact_independent_verification": true,
+    "component_origins": 2006,
+    "label_receipts": 4012,
+    "transition_identities": 20,
+    "weighted_intervals": 4
+  },
+  "replay_receipt_sha256": "e5de71f3f52f4f10329c49c18ff256ff0712ab764ad21a57ed417401dcaefecc",
+  "new_fits": 0,
+  "old_registry_records_preserved": 185,
+  "old_evidence_hashes_preserved": 165,
+  "ml_source_id_unchanged": "fbc7cae00ca00a6f71d95a8c4cbf165010450ced22d2bbcd281f43d6a0eee85d",
+  "ml_source_files_unchanged": 269,
+  "fit_recipes_unchanged": 530,
+  "completed_fit_copies_unchanged": 29916,
+  "trials_sha256": "9e31b21899bf1c73bf09ce3c4a09513ef8ea7f5e25d5cae03a19c005bcf08467",
+  "drive_changed": false,
+  "live_changed": false,
+  "record_id": "9b44b9e9613461ce305b1126b816c3401f7a25c99e3198cc24e9a42a43c3b5a7"
+}

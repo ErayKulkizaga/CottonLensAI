@@ -1,5 +1,13 @@
 # Deney geçmişi ve tekrar kontrolü
 
+12 Ekim son sıfır-fit iş: [risk ölçüm kurulabilirliği](../docs/RISK_MEASUREMENT_READINESS_20261012.md).
+`python research/risk_readiness.py --inputs INPUTS --contract CONTRACT --output NEW_NAMESPACE`
+yalnız dondurulmuş eski forecast/hedef ölçümü yapar.2.006 origin tüm kayıtlarda
+korunur; tam tarihli same-contract label, unknown gerekçeleri ve full-ordinal
+bootstrap vardır. CT-trained forecast'un named hedefine transport'u named
+öğrenme testi değildir. Yeni fit0. Sonraki yalnız Log-HAR etiket kontrolü
+kurulabilirliği; aynı risk hedefli baseline ön kaydı olmadan eğitim yoktur.
+
 12 Ekim aktif sıra: [risk kanıt denetimi](../docs/RISK_EVIDENCE_AUDIT_20261012.md).
 T+1 risk/EWMA karşılaştırması mevcut `research-full-year-v1-r2` tahminlerinden
 raporlanır; yeni fit0. `python ml/history.py check --family har --horizon 1 --json`
