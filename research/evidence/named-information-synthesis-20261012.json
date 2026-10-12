@@ -1,0 +1,187 @@
+{
+  "schema": 1,
+  "status": "completed_zero_fit_named_information_synthesis_and_older_source_candidate",
+  "source_id": "8eca71445366d207b74393acad43968ab5f8f5f6c6954ee21ce22dda24c3af38",
+  "report_sha256": "776186ea9bfbe9bf3075ba6a812c12caeb92d975d31a742d45a106b89ecd7332",
+  "verification_sha256": "d12e6e888f0f13168ea764f0df1174821c5627ba7c4495ed7bacc3de6673995a",
+  "older_source_report_sha256": "c3d3c152bda213ae3e1f6e8e0068364002948f55a90e97cd0d97b35caa8e6617",
+  "candidate_panel_sha256": "a0a54bd3ae1ec4d8175d3250616f152f51315b0c9434617b6a58cf22e413e755",
+  "candidate_readiness_sha256": "a19a5074cda6b79e481500012620c6d72a25dee31cc460c480b255aafdebc74b",
+  "candidate_labels_sha256": "9cb806dbf3e6b31e468e598e621ab87668deac06d102268cf70e7b8b12c8127b",
+  "helpers": {
+    "audit.py": "27af467cb184aa41c07812eacc9b4f9185f0969da371575230860d84cf91e4f5",
+    "audit-r1.py": "dccf9de59de9b97dc9ee4b82ecd580fc07471183eac066f2231a5b6b8cbbc8bb",
+    "audit-r2.py": "747c7a76f23638ebd49f5c1ec098009b8e00c1470929ef047792ac842b9a5041",
+    "audit-r3.py": "27af467cb184aa41c07812eacc9b4f9185f0969da371575230860d84cf91e4f5",
+    "verify.py": "7a850382882badddf3476d0619a4e0f2addd27a2e03932454d0320500a906527",
+    "bootstrap.py": "4578dae770a5963e54454b6fd79adec6bf488ef52bc6683a73e7a0acdc6fbe60",
+    "scalar-bootstrap.py": "7029f14eb2d40ea40079ced2b99346dff1af3e0c1aa6fc9989244e2b8bb189e4",
+    "older-quotes.py": "0338ca0fabc93ab7e2dba039a1b28bbb8a47a82eab96554a876bde06cbd6f7ca",
+    "build-labels.py": "f11ca6a0ff39c0a41131c80d40e0a90debff39fc922b49e10bc0c296da8189fb",
+    "supplement-readiness.py": "a3266586045b349ac26fe268be72a779ea425c1218a037d5ff9bbbb7d5574802",
+    "position-usage.py": "bbdfed936dfb044b213600d9e825a5f08dfe7443a2e942e6f7b2e8c8a0af0d3b"
+  },
+  "new_fits": 0,
+  "new_downloads": 0,
+  "source_pairs": [
+    {
+      "window": 1,
+      "finite_pairs": 242,
+      "equal_at_1e12": 0,
+      "correlation_not_oos_r2": 0.9439891862024805,
+      "median_absolute_gap_bps": 15.762986223892021,
+      "sign_agreement_pct": 92.56198347107438
+    },
+    {
+      "window": 5,
+      "finite_pairs": 242,
+      "equal_at_1e12": 0,
+      "correlation_not_oos_r2": 0.9146037895326198,
+      "median_absolute_gap_bps": 51.34890592771989,
+      "sign_agreement_pct": 90.9090909090909
+    },
+    {
+      "window": 10,
+      "finite_pairs": 242,
+      "equal_at_1e12": 0,
+      "correlation_not_oos_r2": 0.9052174043034852,
+      "median_absolute_gap_bps": 89.23603690222652,
+      "sign_agreement_pct": 86.36363636363636
+    },
+    {
+      "window": 20,
+      "finite_pairs": 242,
+      "equal_at_1e12": 0,
+      "correlation_not_oos_r2": 0.9031528850632831,
+      "median_absolute_gap_bps": 107.99836255242157,
+      "sign_agreement_pct": 88.42975206611571
+    }
+  ],
+  "oracle_bias_bounds": {
+    "history-mask": {
+      "raw_gain_pct": -0.49374022921728766,
+      "oracle_log_offset": -0.005543963712944126,
+      "oracle_offset_gain_pct": 2.445597227007612,
+      "future_actuals_used": true,
+      "feasible_policy": false,
+      "fit_count": 0
+    },
+    "history-numeric": {
+      "raw_gain_pct": -3.005764638246844,
+      "oracle_log_offset": -0.006966232671487316,
+      "oracle_offset_gain_pct": 0.5953108062742407,
+      "future_actuals_used": true,
+      "feasible_policy": false,
+      "fit_count": 0
+    },
+    "cftc-mask": {
+      "raw_gain_pct": -2.933478771774256,
+      "oracle_log_offset": -0.0069630158833146796,
+      "oracle_offset_gain_pct": 0.6478733569878714,
+      "future_actuals_used": true,
+      "feasible_policy": false,
+      "fit_count": 0
+    },
+    "cftc-numeric": {
+      "raw_gain_pct": -1.124208487204803,
+      "oracle_log_offset": -0.004390926913162907,
+      "oracle_offset_gain_pct": -0.05972421321449595,
+      "future_actuals_used": true,
+      "feasible_policy": false,
+      "fit_count": 0
+    }
+  },
+  "native_position_values": {
+    "models_using_numeric_positions": 12,
+    "numeric_position_splits": 1032,
+    "new_fits": 0,
+    "split_count_is_not_predictive_gain": true
+  },
+  "known_teacher_both_block_false_below_goal": 0,
+  "current_label_count": 969,
+  "candidate_label_count": 1008,
+  "source_quote_dates_recovered": 52,
+  "source_prices_recovered": 520,
+  "candidate_first_date": "2018-11-21",
+  "candidate_last_date": "2019-06-03",
+  "supported_years": [
+    2023
+  ],
+  "candidate_min_train_by_year": [
+    {
+      "year": 2016,
+      "supported": false,
+      "minimum_train_rows": 0
+    },
+    {
+      "year": 2017,
+      "supported": false,
+      "minimum_train_rows": 0
+    },
+    {
+      "year": 2018,
+      "supported": false,
+      "minimum_train_rows": 0
+    },
+    {
+      "year": 2019,
+      "supported": false,
+      "minimum_train_rows": 0
+    },
+    {
+      "year": 2020,
+      "supported": false,
+      "minimum_train_rows": 0
+    },
+    {
+      "year": 2021,
+      "supported": false,
+      "minimum_train_rows": 71
+    },
+    {
+      "year": 2022,
+      "supported": false,
+      "minimum_train_rows": 318
+    },
+    {
+      "year": 2023,
+      "supported": true,
+      "minimum_train_rows": 567
+    }
+  ],
+  "old_2020_2023_labels_exact": true,
+  "clock_distance": {
+    "scope": "246retainedorigins;source table/ratios/masks/carry10 unchanged",
+    "assumption": "First Friday on/after reference date15:30America/New_York; holiday/catch-up publication and first vintage not certified",
+    "contrasts": {
+      "normal_friday_assumed": {
+        "changed_selected_report": 126,
+        "both_have_unexpired_report": 215,
+        "newer_reference_when_both": 120,
+        "no_unexpired_report": 28
+      },
+      "guarded_normal_friday_assumed": {
+        "changed_selected_report": 97,
+        "both_have_unexpired_report": 215,
+        "newer_reference_when_both": 91,
+        "no_unexpired_report": 28
+      }
+    },
+    "protected_no_unexpired_report": 28,
+    "guard": "Keep protected clock in federal/GoodFriday/ThanksgivingFriday/Dec24/Dec31 holiday weeks or non-Tuesday references. Proxy guard does not certify real historical first publication.",
+    "historical_availability_verified": false,
+    "first_vintage_verified": false,
+    "source_or_market_effect_measured": false,
+    "new_fits": 0
+  },
+  "historical_source_admitted": false,
+  "first_vintage_verified": false,
+  "eight_year_gate_feasible": false,
+  "primary_failure_identified": false,
+  "goal_achieved": false,
+  "classification": "INCONCLUSIVE",
+  "scope": "Mechanics/data-source coverage and posthoc bounds,not new market skill or historical PIT",
+  "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/named-information-synthesis-20261012",
+  "next_single_test": "Preregister one ordinary-week CFTC clock sensitivity on unchanged997panel/current37fields;reuse completed benchmark/4mechanical controls,22market fits only. Candidate52oldquotes not mixed into this contrast.",
+  "record_id": "39e5d91dbee75a5dde8c7e8ea67db51682373eff441f026f428fb9ea36a39a2b"
+}

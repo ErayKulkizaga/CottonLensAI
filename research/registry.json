@@ -18457,6 +18457,99 @@
       "historical_source_admitted": false,
       "release_allowed": false,
       "id": "cc9c4354a0fa37a86413a0a7af288d860ef3697df363075e3ab16dc2644a84c1"
+    },
+    {
+      "experiment": "research-named-information-synthesis-v1",
+      "profile": "named-information-synthesis-v1",
+      "code_id": "8eca71445366d207b74393acad43968ab5f8f5f6c6954ee21ce22dda24c3af38",
+      "data_id": "5a14da3d6ba3e14dd6b625eb5d40df2ee0b9c0aa2729468b0326b938b19b6dc5",
+      "horizon": 5,
+      "model_families": [
+        "xgboost"
+      ],
+      "recipes": [
+        {
+          "family": "xgboost",
+          "horizon": 5,
+          "device": "cpu",
+          "seed": 42,
+          "task": "price",
+          "target": "scaled_log",
+          "loss": "reg:squarederror",
+          "params": {
+            "max_depth": 2,
+            "eta": 0.03,
+            "min_child_weight": 20,
+            "alpha": 0,
+            "lambda": 1
+          },
+          "window": 1,
+          "cadence": 21,
+          "years": null,
+          "features": [
+            "cotton_ret_1",
+            "cotton_ret_5",
+            "cotton_ret_10",
+            "cotton_ret_20",
+            "cotton_momentum_5",
+            "cotton_momentum_20",
+            "cotton_sma_ratio_5_20",
+            "cotton_sma_ratio_20_50",
+            "cotton_volatility_5",
+            "cotton_volatility_20",
+            "cotton_range",
+            "cotton_volume_change",
+            "cotton_volume_z20",
+            "cotton_volatility_regime_20_60",
+            "dxy_ret_1",
+            "dxy_ret_5",
+            "dxy_ret_20",
+            "wti_ret_1",
+            "wti_ret_5",
+            "wti_ret_20",
+            "cotton_dxy_corr_60",
+            "cotton_wti_corr_60",
+            "month_sin",
+            "month_cos",
+            "curve_D0_age_sessions",
+            "curve_D0_unavailable",
+            "curve_D0_gap_months",
+            "numeric_D0_spread",
+            "named_contract_ret_1",
+            "named_contract_ret_5",
+            "named_contract_ret_10",
+            "named_contract_ret_20",
+            "cftc_age_L1",
+            "cftc_missing_L1",
+            "cftc_managed_net_share_L1",
+            "cftc_producer_net_share_L1",
+            "cftc_managed_share_change_L1"
+          ],
+          "max_iterations": 100
+        }
+      ],
+      "classification": "INCONCLUSIVE",
+      "classification_scope": "Mechanics/data-source coverage and posthoc bounds,not new market skill or historical PIT",
+      "kind": "completed_zero_fit_information_source_scope_audit",
+      "completed_fits": 0,
+      "origin_count": 246,
+      "scored_origin_count": 242,
+      "independent_holdout": false,
+      "evidence": "evidence/named-information-synthesis-20261012.json",
+      "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/named-information-synthesis-20261012",
+      "metrics": {
+        "new_fits": 0,
+        "old_quotes_recovered": 52,
+        "old_prices_recovered": 520,
+        "extra_candidate_labels": 39,
+        "supported_years": [
+          2023
+        ],
+        "guarded_clock_changed_origins": 97
+      },
+      "historical_source_admitted": false,
+      "release_allowed": false,
+      "id": "c8ea6efdbb468e431629737d63bdd607feb48d359de6cb60dafc7af0d87457bf"
     }
   ],
   "local_evidence": [
@@ -19107,6 +19200,18 @@
     {
       "path": "evidence/named-cftc-source-history-scope-correction-20261012.json",
       "sha256": "8caabaf43f8c53f035448fdb68a4f7488d1c0402866d5a4e228e9a67bd40612a"
+    },
+    {
+      "path": "evidence/named-information-synthesis-20261012.json",
+      "sha256": "cbabb3c3d08e899520a086aba28a06b98cc5502452991a04479e7e9bd410632f"
+    },
+    {
+      "path": "evidence/named-information-synthesis-release-20261012.json",
+      "sha256": "174ccfd54e33e32b4226a82d3e30be815726a76d39e79bbb33b807ca4d17b015"
+    },
+    {
+      "path": "evidence/named-information-synthesis-delivery-20261012.json",
+      "sha256": "e35471e343945e10c82704221129b5392d4fb892e9916f094a1a0f0f7f6ff611"
     }
   ]
 }
