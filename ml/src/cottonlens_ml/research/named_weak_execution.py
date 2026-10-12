@@ -183,8 +183,8 @@ def verify(folder, repo):
 def prepare(repo, folder, registration_root, decision_contract):
     repo, folder, registration_root, decision_contract = map(Path, (repo, folder, registration_root, decision_contract))
     ready, _ = verify(registration_root, repo)
-    proof = read_record(repo / 'research/evidence/named-weak-execution-preregistration-20261012.json')
-    delivery = read_record(repo / 'research/evidence/named-weak-execution-preregistration-delivery-20261012.json')
+    proof = read_record(repo / 'research/evidence/named-weak-execution-preregistration-r2-20261012.json')
+    delivery = read_record(repo / 'research/evidence/named-weak-execution-preregistration-r2-delivery-20261012.json')
     if (proof['ready_sha256'] != digest(registration_root / 'ready.json')
             or proof['decision_contract_sha256'] != digest(decision_contract)
             or read_record(decision_contract) != ready['identity']['design']

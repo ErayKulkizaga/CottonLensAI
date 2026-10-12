@@ -7,6 +7,7 @@ import pandas as pd
 import pytest
 from cottonlens_ml.research import named_label_control as labels
 from cottonlens_ml.research import named_weak_execution as pilot
+from cottonlens_ml.research import named_weak_review as review
 from cottonlens_ml.research import named_weak_signal as weak
 from cottonlens_ml.research.ledger import (
     FitBudgetReached,
@@ -165,3 +166,61 @@ def test_incomplete_payload_cannot_be_reported(tmp_path, monkeypatch):
     assert read_record(tmp_path / 'ledger/attempts/failed.json')['experiment_id'] == 'failed'
     with pytest.raises(ValueError, match='Incomplete'):
         pilot.report(exp, tmp_path)
+
+
+def test_scalar_review_preserves_unknown_price_and_rejects_actual_imputation(tmp_path, monkeypatch):
+    n = 260
+    dates = pd.bdate_range('2020-01-01', periods=n)
+    history = pd.DataFrame({'date': dates, 'target_date_5': pd.bdate_range('2020-01-08', periods=n),
+                            'named_price': 80., 'named_eligible': True, 'named_return': .01,
+                            'named_target_price': 81., 'target_return_5': .01,
+                            weak.SOURCE: np.linspace(-.03, .03, n)})
+    history.loc[14:17, 'named_eligible'] = False
+    history.loc[14, 'named_price'] = np.nan
+    text = dates.strftime('%Y-%m-%d').tolist()
+    fold = {'year': 2020, 'inner': [text[4:14]], 'origins': text[14:],
+            'jobs': [{'origins': text[4:14], 'role': 'inner_0', 'bucket': 0},
+                     {'origins': text[14:], 'role': 'outer', 'bucket': 0}]}
+    c = {'source': weak.SOURCE, 'threshold': 0., 'beta': .017, 'sigma': .035}
+    fixed = {'folds': [fold], 'calibration': c}
+    ready = {'identity': {'design': fixed, 'source_id': 'frozen'}}
+    monkeypatch.setattr(pilot, 'verify', lambda folder, repo: (ready, history))
+    rows, summaries = [], {}
+    for condition, seed in pilot.scenarios():
+        name = f'{condition}-{seed}'
+        h, mean, noise = weak.build(history, c, condition, seed)
+        records = [{'result': {'origins': job['origins'],
+                               'predictions': mean[pd.Index(dates).get_indexer(pd.to_datetime(job['origins']))].tolist()},
+                    'experiment_id': str(index)} for index, job in enumerate(fold['jobs'])]
+        output = labels.make_output(h, fold, name, fixed, records)
+        freeze_record(tmp_path/'weak-outputs'/f'{name}-2020.json', output)
+        outer = h.iloc[14:]
+        summaries[name] = {label: weak.expected(outer, pred, mean[14:], c['sigma'])
+                           for label, pred in [('raw', output['raw_predictions']),
+                                               ('selected', output['selected_predictions']), ('oracle', mean[14:])]}
+        for index, row in enumerate(outer.itertuples()):
+            rows.append({'scenario': name, 'condition': condition, 'noise_seed': seed,
+                         'origin': text[index+14], 'target_date': row.target_date_5.strftime('%Y-%m-%d'),
+                         'eligible': row.named_eligible, 'origin_price': row.named_price,
+                         'actual_price': row.named_target_price if row.named_eligible else None,
+                         'actual_log_return': row.named_return if row.named_eligible else None,
+                         'oracle_mean': mean[index+14], 'unit_overlap_noise': noise[index+14],
+                         'raw_log_return': output['raw_predictions'][index],
+                         'selected_log_return': output['selected_predictions'][index], 'weight': output['weight']})
+    path = tmp_path/'reports/outer-predictions.csv'
+    path.parent.mkdir()
+    pd.DataFrame(rows).to_csv(path, index=False)
+    result = {'predictions_sha256': pilot.digest(path), 'metrics': summaries,
+              'unknown_rows': 24, 'synthetic_fits': 132, 'market_fits': 0, 'native_replays': 132,
+              'source_id': 'frozen', 'market_skill_claimed': False, 'decision': pilot.classify(summaries)}
+    freeze_record(tmp_path/'reports/result.json', result)
+    assert review.verify(tmp_path, tmp_path)['scalar_scored_rows'] == 1452
+    frame = pd.read_csv(path, float_precision='round_trip', keep_default_na=False, na_values=[''])
+    frame.loc[0, 'actual_price'] = 80.
+    frame.to_csv(path, index=False)
+    # Rehash the changed CSV/result to prove rejection is semantic, not just checksum.
+    result['predictions_sha256'] = pilot.digest(path)
+    import json
+    (tmp_path/'reports/result.json').write_text(json.dumps({**result, 'record_id': pilot.content_id(result)}))
+    with pytest.raises(ValueError, match='Unknown actuals'):
+        review.verify(tmp_path, tmp_path)

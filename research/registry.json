@@ -18144,6 +18144,29 @@
       "independent_holdout": false,
       "release_allowed": false,
       "id": "8e1e6c211202cbdddc80139f761d1f933a1288e3f1b517ea63406106ae994139"
+    },
+    {
+      "experiment": "research-named-weak-signal-control-t5-v1",
+      "profile": "named-weak-signal-control-t5-v1",
+      "horizon": 5,
+      "kind": "registered_synthetic_execution_no_fit",
+      "classification": "INCONCLUSIVE",
+      "classification_scope": "Frozen execution only; learner and market skill not yet measured",
+      "code_id": "b8420a30f9f433880e96237c6cafe25613092e1b8b69f7fd42e5f69bd202e760",
+      "data_id": "da8a286df8e98b8a0932f088a9b384546d30a22ebac45db0bfe32a3a021d3465",
+      "origin_count": 246,
+      "scored_origin_count": 242,
+      "model_families": [
+        "xgboost"
+      ],
+      "new_profile_fits": 0,
+      "future_synthetic_fit_ceiling": 132,
+      "prediction_payload_exists": false,
+      "evidence": "evidence/named-weak-execution-preregistration-r2-20261012.json",
+      "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/named-weak-execution-preregistration-r2-20261012",
+      "independent_holdout": false,
+      "release_allowed": false,
+      "id": "f18d168b9696745cabc54a9e5c471c36bda1c6207190377d88df874fbdb0174d"
     }
   ],
   "local_evidence": [
@@ -18726,6 +18749,18 @@
     {
       "path": "evidence/named-weak-execution-preregistration-release-20261012.json",
       "sha256": "197443cf1521eea4da8622b3b5a289db99e1ad05a50441915be97a7d6543344b"
+    },
+    {
+      "path": "evidence/named-weak-execution-preregistration-r2-20261012.json",
+      "sha256": "b9b20fd1b4bd18d8ef229853dc32c1cea320346ad6225c2dce7142af31c355cc"
+    },
+    {
+      "path": "evidence/named-weak-execution-preregistration-r2-release-20261012.json",
+      "sha256": "bed8bc728cf6673a2eb21749d89a94610785da35953b16844e5a111aa4f283d4"
+    },
+    {
+      "path": "evidence/named-weak-execution-preregistration-delivery-20261012.json",
+      "sha256": "7de8bfb34cdb5aaf0536c505341c3685fda0190eb22c0b1c65eeec418edefd46"
     }
   ]
 }

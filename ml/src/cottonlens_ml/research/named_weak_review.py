@@ -32,7 +32,7 @@ def verify(folder, repo):
     prediction_path = folder / 'reports/outer-predictions.csv'
     if result['predictions_sha256'] != digest(prediction_path):
         raise ValueError('Prediction checksum changed')
-    predictions = pd.read_csv(prediction_path, float_precision='round_trip')
+    predictions = pd.read_csv(prediction_path, float_precision='round_trip', keep_default_na=False, na_values=[''])
     fixed = ready['identity']['design']
     c, fold = fixed['calibration'], fixed['folds'][0]
     verified = 0
@@ -47,11 +47,11 @@ def verify(folder, repo):
         output = read_record(folder / 'weak-outputs' / f'{name}-{fold["year"]}.json')
         if (rows.target_date.tolist() != original.target_date_5.dt.strftime('%Y-%m-%d').tolist()
                 or rows.eligible.tolist() != original.named_eligible.tolist()
-                or rows.origin_price.tolist() != original.named_price.tolist()
                 or rows.raw_log_return.tolist() != output['raw_predictions']
                 or rows.selected_log_return.tolist() != output['selected_predictions']
                 or not rows.weight.eq(output['weight']).all()):
             raise ValueError('Output/origin/target/price/eligibility mismatch')
+        np.testing.assert_array_equal(rows.origin_price.to_numpy(), original.named_price.to_numpy())
         # Independent past-only shrinkage reconstruction from all three blocks.
         scores = []
         for weight in (0., .25, .5, .75, 1.):
