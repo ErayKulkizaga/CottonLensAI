@@ -18761,6 +18761,10 @@
     {
       "path": "evidence/named-weak-execution-preregistration-delivery-20261012.json",
       "sha256": "7de8bfb34cdb5aaf0536c505341c3685fda0190eb22c0b1c65eeec418edefd46"
+    },
+    {
+      "path": "evidence/named-weak-execution-preregistration-r2-delivery-20261012.json",
+      "sha256": "d90635d1513cfbb97580ebf5368abef33b724dd70088c2183c46c4996a823b5f"
     }
   ]
 }

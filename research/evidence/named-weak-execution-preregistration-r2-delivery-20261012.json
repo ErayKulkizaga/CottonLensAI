@@ -1,0 +1,22 @@
+{
+  "status": "fresh_github_preregistration_verified",
+  "source_id": "b8420a30f9f433880e96237c6cafe25613092e1b8b69f7fd42e5f69bd202e760",
+  "ready_sha256": "592beb1a02fdfecc895fb4e489945fb581dc8cfef72b45e14287b142dfbe69a4",
+  "new_fits": 0,
+  "fresh_restore": {
+    "status": "verified",
+    "mode": "registration",
+    "archive_sha256": "df7e095f555be0787b9ddd738e737c6b293cd7ea399e8fbdd953b58600194ab1",
+    "source_id": "b8420a30f9f433880e96237c6cafe25613092e1b8b69f7fd42e5f69bd202e760",
+    "members": 561,
+    "new_fits": 0,
+    "exact_member_hashes": true,
+    "frozen_source_replay": true,
+    "market_skill_claimed": false
+  },
+  "execution_started": false,
+  "code_snapshot_exact": true,
+  "design_id": "a89337cadb88a99bca24d20c7750bb0ba5389a1c87cbcf522c10c987bd1b7fcc",
+  "r1_preserved_unexecuted": true,
+  "record_id": "aea4a0b87320011077650e00a8f2173f296fc8a02123218aa85eee3285a1743a"
+}

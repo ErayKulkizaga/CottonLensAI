@@ -1,5 +1,11 @@
 # Güncel kararlar — 12 Ekim 2026
 
+12 Ekim R2: fit öncesi rapor sınırında NaN–NaN fiyat karşılaştırması ve
+literal `null` CSV kol adı düzeltildi.71 ilgili test/Ruff geçti; eski R1
+ön kayıt/taze geri kurması korunur, fit0. Aynı design ve bütçe; yeni kaynak
+b8420a30f9f433880e96237c6cafe25613092e1b8b69f7fd42e5f69bd202e760.
+R2 taze GitHub geri kurması tamamlanmadan eğitim başlamaz.
+
 12 Ekim: [aynı zayıf-sinyal tasarımının yürütme ön kaydı](NAMED_WEAK_SIGNAL_EXECUTION_20261012.md)
 mevcut Experiment/ledger'a bağlandı; henüz fit0.132 sentetik/piyasa0 tavanı,
 aynı seed/özellik/cohort ve bağımsız quadrature rapor sınırı donduruldu.
