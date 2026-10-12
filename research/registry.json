@@ -18996,6 +18996,10 @@
     {
       "path": "evidence/named-cftc-source-preregistration-release-20261012.json",
       "sha256": "ba022587210f325d6b337482354bad27282267317d0ddcd160f2cc361f2a0263"
+    },
+    {
+      "path": "evidence/named-cftc-source-preregistration-delivery-20261012.json",
+      "sha256": "e93f83b8078b284ed84e40b7f5d67714855feb9430a47ea446a363b23b4fb009"
     }
   ]
 }

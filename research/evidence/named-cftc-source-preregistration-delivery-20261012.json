@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "status": "fresh_github_named_cftc_preregistration_verified",
+  "preregistration_sha256": "814084b607a5bf0eefde40f231a70495212aeee025c690dea9900bb7da3e5fd1",
+  "ready_sha256": "28189753d35ea4d3dca3ca8a50e8ec2c66d4bffa041585cd162aa49de889d7bd",
+  "source_id": "8eca71445366d207b74393acad43968ab5f8f5f6c6954ee21ce22dda24c3af38",
+  "design_id": "b07ad81d9476d6599640fb7f7e2fc26db830d944560b7482660ba751c5d1ef26",
+  "archive_sha256": "3d685c596762d6d252171f60e59db907a8750928ea17d93ededeed368264a042",
+  "members": 294,
+  "exact_members": true,
+  "frozen_source_validation": true,
+  "new_fits": 0,
+  "historical_source_admitted": false,
+  "first_vintage_verified": false,
+  "independent_holdout": false,
+  "record_id": "a991717f9b73ef12a81d96f3d2856e41b0b03b1a0b0ea716a49291b3e8373273"
+}
