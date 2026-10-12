@@ -1,0 +1,29 @@
+{
+  "schema": 1,
+  "mode": "registration",
+  "release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/named-cftc-source-preregistration-20261012",
+  "archive": {
+    "name": "named-cftc-source-preregistration-20261012.zip",
+    "sha256": "3d685c596762d6d252171f60e59db907a8750928ea17d93ededeed368264a042",
+    "bytes": 6288243
+  },
+  "inventory_sha256": "ebedd3c93ec227fd27585d48caf9b0e066d803d2eef583939f93ca870d475686",
+  "members": 295,
+  "source_id": "8eca71445366d207b74393acad43968ab5f8f5f6c6954ee21ce22dda24c3af38",
+  "market_fit_budget": 44,
+  "synthetic_fit_budget": 4,
+  "new_market_fits": 0,
+  "new_synthetic_fits": 0,
+  "report_script_sha256": "429e42bd1b3aec7d3d121c43c30dabb9baf0189c4094f4d5247ffdc6fd18eba5",
+  "verifier_script_sha256": "7029f14eb2d40ea40079ced2b99346dff1af3e0c1aa6fc9989244e2b8bb189e4",
+  "ml_tests": {
+    "status": "passed",
+    "tests": 57,
+    "market_fits": 0,
+    "synthetic_model_fits": 0,
+    "command": "pytest -q ml/tests/test_named_cftc_control.py ml/tests/test_named_history_control.py ml/tests/test_cftc_exploration.py ml/tests/test_named_weak_execution.py",
+    "ruff": "changed ML code, CPU launcher and new regression tests passed using existing Python313 Ruff0.16.8",
+    "backend_frontend_gpu": "not run; no runtime API/UI/schema changes; GPU not used"
+  },
+  "record_id": "ea4336b1e55fe70eae21e79941cf66b1793b3fb4b21b9a8d5362e8a7da3c9805"
+}

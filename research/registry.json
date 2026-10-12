@@ -18287,6 +18287,85 @@
       "historical_source_admitted": false,
       "release_allowed": false,
       "id": "1a118c525cccd520ad241bcafd7b4a3d8cefa06f4015559c3703727971c91fd5"
+    },
+    {
+      "experiment": "named-cftc-source-preregistration-20261012",
+      "profile": "named-cftc-source-control-t5-v1",
+      "code_id": "8eca71445366d207b74393acad43968ab5f8f5f6c6954ee21ce22dda24c3af38",
+      "data_id": "5a14da3d6ba3e14dd6b625eb5d40df2ee0b9c0aa2729468b0326b938b19b6dc5",
+      "horizon": 5,
+      "model_families": [
+        "xgboost"
+      ],
+      "recipes": [
+        {
+          "family": "xgboost",
+          "horizon": 5,
+          "device": "cpu",
+          "seed": 42,
+          "task": "price",
+          "target": "scaled_log",
+          "loss": "reg:squarederror",
+          "params": {
+            "max_depth": 2,
+            "eta": 0.03,
+            "min_child_weight": 20,
+            "alpha": 0,
+            "lambda": 1
+          },
+          "window": 1,
+          "cadence": 21,
+          "years": null,
+          "features": [
+            "cotton_ret_1",
+            "cotton_ret_5",
+            "cotton_ret_10",
+            "cotton_ret_20",
+            "cotton_momentum_5",
+            "cotton_momentum_20",
+            "cotton_sma_ratio_5_20",
+            "cotton_sma_ratio_20_50",
+            "cotton_volatility_5",
+            "cotton_volatility_20",
+            "cotton_range",
+            "cotton_volume_change",
+            "cotton_volume_z20",
+            "cotton_volatility_regime_20_60",
+            "dxy_ret_1",
+            "dxy_ret_5",
+            "dxy_ret_20",
+            "wti_ret_1",
+            "wti_ret_5",
+            "wti_ret_20",
+            "cotton_dxy_corr_60",
+            "cotton_wti_corr_60",
+            "month_sin",
+            "month_cos",
+            "curve_D0_age_sessions",
+            "curve_D0_unavailable",
+            "curve_D0_gap_months",
+            "numeric_D0_spread",
+            "named_contract_ret_1",
+            "named_contract_ret_5",
+            "named_contract_ret_10",
+            "named_contract_ret_20",
+            "cftc_age_L1",
+            "cftc_missing_L1",
+            "cftc_managed_net_share_L1",
+            "cftc_producer_net_share_L1",
+            "cftc_managed_share_change_L1"
+          ],
+          "max_iterations": 100
+        }
+      ],
+      "classification": "INCONCLUSIVE",
+      "kind": "preregistration_not_completed_market_evidence",
+      "completed_fits": 0,
+      "coverage": "246 retained2023 origins;242 named labels;matched37-field numeric-mask protectedL1",
+      "evidence": "evidence/named-cftc-source-preregistration-20261012.json",
+      "metrics": null,
+      "limits": "Reviewed single year; protected clock/final vintage assumed; no independent holdout,8yeargate or production proof",
+      "id": "5036328b1ef9401e51b30c90011620270b04747079e72b503f064d9c08a5386a"
     }
   ],
   "local_evidence": [
@@ -18909,6 +18988,14 @@
     {
       "path": "evidence/named-cftc-information-audit-delivery-20261012.json",
       "sha256": "be0927481ce9db0cfb00646ed9e703b4121a02a2e1e176264ad4ed935e2e47b9"
+    },
+    {
+      "path": "evidence/named-cftc-source-preregistration-20261012.json",
+      "sha256": "814084b607a5bf0eefde40f231a70495212aeee025c690dea9900bb7da3e5fd1"
+    },
+    {
+      "path": "evidence/named-cftc-source-preregistration-release-20261012.json",
+      "sha256": "ba022587210f325d6b337482354bad27282267317d0ddcd160f2cc361f2a0263"
     }
   ]
 }

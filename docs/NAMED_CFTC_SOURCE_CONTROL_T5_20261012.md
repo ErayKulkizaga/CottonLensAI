@@ -83,3 +83,16 @@ model/insan seçiminin çoklu karşılaştırma yükünü kapsamaz.
 
 Sonuç ilk karar tablosuna yerleştirilmeden yeni model/grid açılmaz. Üretim
 modeli, live kayıtları, Drive özgünleri veya PR merge bu teslimata dahil değildir.
+
+## Dondurulan ön kayıt
+
+Kod commit'i `b9ea09c`; son ML source_id
+`8eca71445366d207b74393acad43968ab5f8f5f6c6954ee21ce22dda24c3af38`
+(267 ML dosyası), design_id
+`b07ad81d9476d6599640fb7f7e2fc26db830d944560b7482660ba751c5d1ef26`.
+Ready SHA `28189753d35ea4d3dca3ca8a50e8ec2c66d4bffa041585cd162aa49de889d7bd`.
+[Ön kayıt makbuzu](../research/evidence/named-cftc-source-preregistration-20261012.json)
+yeni ek aşamadır; eski181aşama ve527fit tarifi değişmez. Kayıtlı bütçe44+4;
+paket hazırlanırken fit0. Tam tarifi kontrol eden `ml/history.py check`
+RELATED_EVIDENCE verdi, aynı scope'ta tamamlanmış fit tarifi bulunmadı.
+Bu sonuç tek başına yenilik kanıtı değildir; eski CFTC/hedef farkı yukarıda gerekçelidir.
