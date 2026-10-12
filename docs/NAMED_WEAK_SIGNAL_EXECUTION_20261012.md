@@ -115,3 +115,12 @@ kanıt dosyası ve526 fit-tarifi kaydı değiştirilmedi; yeni132 fit sicilde ya
 sentetik olarak sınıflandırıldı. Genel legacy role indeksinin null/injected
 adlarını market sayması bu yeni indeks projeksiyonunda düzeltildi; özgün
 makbuzlar ve eski sicil değişmedi.
+
+## Taze GitHub sonuç teslimatı
+
+[Sonuç Release](https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/named-weak-execution-result-20261012)
+14.012.064 bayt; SHA256`3c72d56735b00e1b40c027eb4b1310e2b00e605f1db770004d4886fc15f2b9fc`.
+1.760 payload üyesi taze indirmede eşleşti; frozen source132 native replay ve
+1.452 scalar/quadrature kontrolünü ek fit olmadan yeniden üretti. Tahmin,
+ready ve rapor baytları özgünlerle aynı.179 önceki aşama/526 tarif/148 eski
+kanıt değişmedi. PR46; merge/model yayını/Drive silme yapılmadı.

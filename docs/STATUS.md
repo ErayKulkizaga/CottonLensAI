@@ -1,5 +1,11 @@
 # Güncel kararlar — 12 Ekim 2026
 
+12 Ekim sonuç teslimatı kapandı: private Release1.760 payload üyesi taze
+indirme ile hash eşleşti; frozen source132native/1.452scalar replay yeniden
+geçti, yeni fit0.179 önceki aşama/526tarif/148kanıt değişmedi.
+[Makbuz](../research/evidence/named-weak-execution-result-delivery-20261012.json).
+Piyasa hedefi sağlanmadı; sıradaki tek iş aşağıdaki sıfır-fit bilgi denetimidir.
+
 12 Ekim: [named zayıf-sinyal kontrolü](NAMED_WEAK_SIGNAL_EXECUTION_20261012.md#tamamlanan-sonuç-132-sentetik-fit-piyasa-fit0)
 132 sentetik/piyasa0 fit ile kapandı. Ham beklenen kazançlar
 %8,376338/%8,644082/%8,500825; null üçünde negatif. Basit yararlı öğretici

@@ -18869,6 +18869,10 @@
     {
       "path": "evidence/named-weak-execution-result-release-20261012.json",
       "sha256": "a889e5cda4baf05a543a3b3ac2511c72a52a06f7a65dafba4224933d4a3fc8aa"
+    },
+    {
+      "path": "evidence/named-weak-execution-result-delivery-20261012.json",
+      "sha256": "9e8e76025377841c967f7c7a45acda0c838171cf9b9997f253f60717e4538bc0"
     }
   ]
 }
