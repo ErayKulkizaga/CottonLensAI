@@ -19247,6 +19247,10 @@
     {
       "path": "evidence/risk-evidence-audit-20261012.json",
       "sha256": "e9a86c3d6a9a712f32679f831562e006402749aca48cbbd1f397b2eae46b2194"
+    },
+    {
+      "path": "evidence/risk-evidence-audit-delivery-20261012.json",
+      "sha256": "8ace25d1294802217585c36da2d6dd4ef8344e57b8fbf58d1fed5010c6d28fad"
     }
   ]
 }

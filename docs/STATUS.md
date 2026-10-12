@@ -9,6 +9,11 @@ Top1% duyarlılığında T+1−0,00718121. Risk başarısı da henüz kanıtlanm
 EWMA korunur. Tek eksik kanıt kilitli tarifin bağımsız ileri eşlenmiş
 tahminleridir; otomatik fit/yayın veya yeni grid yoktur.
 
+[Risk teslimatı](../research/evidence/risk-evidence-audit-delivery-20261012.json)
+private GitHub1.300 dosyayı taze indirmeyle, report/CSV ve bağımsız scalar/CI
+replay'i byte-identical doğruladı.33 ML+11 araştırma testi/Ruff geçti;
+eski fit sicili ve kanıtlar değişmedi. Öğrenilmiş risk üstünlüğü kanıtı değildir.
+
 Kullanıcı [risk planını](RISK_EVIDENCE_AUDIT_20261012.md) onayladı. Birincil
 T+1 kare log-getiri/EWMA lambda0,94; T+5 ikincil. Eski fiyat/yön kapıları
 değişmez. Mevcut HAR/GARCH makbuzlarıyla sıfır-fit kontrol, aynı2016–2023/

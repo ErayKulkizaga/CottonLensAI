@@ -100,3 +100,14 @@ iptal etmez, veri bozulmasını veya intraday risk üstünlüğünü kanıtlamaz
 Bir sonraki eksik kanıt, tarif sabitken EWMA ile eşlenmiş bağımsız ileri dönem
 risk tahminleridir. Bu paket yeni fit veya ileri model yayını başlatmaz.
 Geçmişte aynı tarifi yeniden eğitmek belirsizliği bağımsız kanıta dönüştürmez.
+
+## Teslimat doğrulandı
+
+[Private Release](https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/risk-evidence-audit-20261012)
+1.300 mantıksal dosya/0 istisna içerir. Taze GitHub indirmesinde bütün hash'ler,
+269 frozen ML dosyası ve report/paired-loss CSV'nin byte-identical yeniden
+üretimi geçti. Bağımsız4.012 scalar kayıp/sekiz CI tekrar eşleşti; yeni fit0.
+184 önceki sicil kaydı,163 kanıt hash'i,1.016 girdi hash'i ve fit sicili korunur.
+33 ML +11 araştırma testi/Ruff geçti. [Sonuç](../research/evidence/risk-evidence-audit-20261012.json)
+ve [teslimat makbuzu](../research/evidence/risk-evidence-audit-delivery-20261012.json),
+[PR50](https://github.com/ErayKulkizaga/CottonLensAI/pull/50) içinde incelenebilir.
