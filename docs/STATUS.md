@@ -1,5 +1,16 @@
 # Güncel kararlar — 12 Ekim 2026
 
+12 Ekim: [named zayıf-sinyal kontrolü](NAMED_WEAK_SIGNAL_EXECUTION_20261012.md#tamamlanan-sonuç-132-sentetik-fit-piyasa-fit0)
+132 sentetik/piyasa0 fit ile kapandı. Ham beklenen kazançlar
+%8,376338/%8,644082/%8,500825; null üçünde negatif. Basit yararlı öğretici
+öğrenilebilir; gerçek piyasa becerisi gösterilmedi. Seed2703'te beklenen
+%8,50 karşısında gerçekleşmiş ham yalnız%1,02; geçmiş weight.25 beklenen
+kazancı%3,77'ye indirir. Küçük tek-yıl kaybı kaynakta sinyal yokluğu kanıtı değildir.
+132 native replay,1.452 scalar uygun satır/dört coherent ret geçti.
+Önce taze GitHub sonuç geri kurması kapanır; sonra tek sıfır-fit iş mevcut
+named bilgi kaynaklarının güncellik/eksiklik/önceki ablation kapsamını eşlemektir.
+Yeni piyasa fit/model/grid yok. Önceki aşamalar aşağıda korunur.
+
 12 Ekim R2: fit öncesi rapor sınırında NaN–NaN fiyat karşılaştırması ve
 literal `null` CSV kol adı düzeltildi.71 ilgili test/Ruff geçti; eski R1
 ön kayıt/taze geri kurması korunur, fit0. Aynı design ve bütçe; yeni kaynak

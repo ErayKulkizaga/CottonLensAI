@@ -1,5 +1,10 @@
 # Deney geçmişi ve tekrar kontrolü
 
+12 Ekim: [named weak-teacher sonucu](../docs/NAMED_WEAK_SIGNAL_EXECUTION_20261012.md)
+132 sentetik fit ile aynı tarifin basit yararlı etkiyi öğrenebildiğini gösterdi.
+DECISIVE_POSITIVE yalnız bu öğretici içindir; piyasa skill/güç kanıtı değildir.
+Beklenen ve gerçekleşmiş kazanç ayrıdır; seed2703 farkı saklanır.
+
 12 Ekim: [named zayıf-sinyal yürütme ön kaydı](../docs/NAMED_WEAK_SIGNAL_EXECUTION_20261012.md)
 ayrı ek aşamadır;132 sentetik fit henüz çalışmadı. Readiness ve eski piyasa
 sonuçları yeniden yazılmaz; taze kaynak/ön kayıt geri kurması eğitim kapısıdır.

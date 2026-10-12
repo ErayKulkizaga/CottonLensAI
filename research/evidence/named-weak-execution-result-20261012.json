@@ -1,0 +1,275 @@
+{
+  "schema": 1,
+  "status": "completed_synthetic_weak_teacher_control",
+  "profile": "named-weak-signal-control-t5-v1",
+  "source_id": "b8420a30f9f433880e96237c6cafe25613092e1b8b69f7fd42e5f69bd202e760",
+  "design_id": "a89337cadb88a99bca24d20c7750bb0ba5389a1c87cbcf522c10c987bd1b7fcc",
+  "synthetic_fits": 132,
+  "market_fits": 0,
+  "native_replays": 132,
+  "prediction_rows": 1476,
+  "scored_rows": 1452,
+  "unknown_rows": 24,
+  "predictions_sha256": "2d8b1bb1d94fb9e7dd619b2df2ea5714bd3fd293600e9d7d5c3977c366264736",
+  "result_sha256": "3cb1a4db994dde67be42860010a875a800ef0230cdda0d71e3d18ca23c9aaf8e",
+  "verification_sha256": "cc693e420726d4d655a2aeb369922f32a1161f974b8d2e2da27ede745a11c447",
+  "report_controls_sha256": "e0f940907147be918850410133c2cfcfd39242d3022af4cabe09329e31027c1e",
+  "decision": "SIMPLE_WEAK_TEACHER_RECOVERY_SUPPORTED",
+  "classification": "DECISIVE_POSITIVE",
+  "classification_scope": "Only recovery of this fixed simple known noisy teacher, not market skill or power calibration; three same-cohort seeds are not independent market years.",
+  "metrics": {
+    "null-703": {
+      "raw": {
+        "eligible": 242,
+        "naive": 2.348760849915809,
+        "model": 2.412263394691355,
+        "gain_pct": -2.703661582992689
+      },
+      "selected": {
+        "eligible": 242,
+        "naive": 2.348760849915809,
+        "model": 2.348760849915809,
+        "gain_pct": 0.0
+      },
+      "oracle": {
+        "eligible": 242,
+        "naive": 2.348760849915809,
+        "model": 2.348760849915809,
+        "gain_pct": 0.0
+      },
+      "weight": 0.0,
+      "realized": {
+        "raw": {
+          "naive": 2.3598698106418237,
+          "model": 2.4377359825937033,
+          "gain_pct": -3.2995960879173225,
+          "direction_pct": 49.17355371900827,
+          "active_pct": 100.0,
+          "log_mse_gain_pct": -3.8301527172761807,
+          "standardized_mse_gain_pct": -3.9348391602451516
+        },
+        "selected": {
+          "naive": 2.3598698106418237,
+          "model": 2.3598698106418237,
+          "gain_pct": 0.0,
+          "direction_pct": 0.0,
+          "active_pct": 0.0,
+          "log_mse_gain_pct": 0.0,
+          "standardized_mse_gain_pct": 0.0
+        }
+      }
+    },
+    "null-1703": {
+      "raw": {
+        "eligible": 242,
+        "naive": 2.348760849915809,
+        "model": 2.3891372858336895,
+        "gain_pct": -1.7190526621442936
+      },
+      "selected": {
+        "eligible": 242,
+        "naive": 2.348760849915809,
+        "model": 2.348760849915809,
+        "gain_pct": 0.0
+      },
+      "oracle": {
+        "eligible": 242,
+        "naive": 2.348760849915809,
+        "model": 2.348760849915809,
+        "gain_pct": 0.0
+      },
+      "weight": 0.0,
+      "realized": {
+        "raw": {
+          "naive": 2.2660681827005864,
+          "model": 2.3463094002482277,
+          "gain_pct": -3.5409886675172197,
+          "direction_pct": 45.45454545454545,
+          "active_pct": 100.0,
+          "log_mse_gain_pct": -5.143031222588879,
+          "standardized_mse_gain_pct": -5.097039231499378
+        },
+        "selected": {
+          "naive": 2.2660681827005864,
+          "model": 2.2660681827005864,
+          "gain_pct": 0.0,
+          "direction_pct": 0.0,
+          "active_pct": 0.0,
+          "log_mse_gain_pct": 0.0,
+          "standardized_mse_gain_pct": 0.0
+        }
+      }
+    },
+    "null-2703": {
+      "raw": {
+        "eligible": 242,
+        "naive": 2.348760849915809,
+        "model": 2.397705513892232,
+        "gain_pct": -2.083850468564208
+      },
+      "selected": {
+        "eligible": 242,
+        "naive": 2.348760849915809,
+        "model": 2.348760849915809,
+        "gain_pct": 0.0
+      },
+      "oracle": {
+        "eligible": 242,
+        "naive": 2.348760849915809,
+        "model": 2.348760849915809,
+        "gain_pct": 0.0
+      },
+      "weight": 0.0,
+      "realized": {
+        "raw": {
+          "naive": 2.6351359919542645,
+          "model": 2.7176837592392538,
+          "gain_pct": -3.132580919429895,
+          "direction_pct": 46.28099173553719,
+          "active_pct": 100.0,
+          "log_mse_gain_pct": -9.07110369060533,
+          "standardized_mse_gain_pct": -9.120207169760498
+        },
+        "selected": {
+          "naive": 2.6351359919542645,
+          "model": 2.6351359919542645,
+          "gain_pct": 0.0,
+          "direction_pct": 0.0,
+          "active_pct": 0.0,
+          "log_mse_gain_pct": 0.0,
+          "standardized_mse_gain_pct": 0.0
+        }
+      }
+    },
+    "injected-703": {
+      "raw": {
+        "eligible": 242,
+        "naive": 2.605054412173096,
+        "model": 2.3868462568241626,
+        "gain_pct": 8.37633771982934
+      },
+      "selected": {
+        "eligible": 242,
+        "naive": 2.605054412173096,
+        "model": 2.394555560505892,
+        "gain_pct": 8.080401341467924
+      },
+      "oracle": {
+        "eligible": 242,
+        "naive": 2.605054412173096,
+        "model": 2.343784831518157,
+        "gain_pct": 10.029332954968574
+      },
+      "weight": 0.75,
+      "realized": {
+        "raw": {
+          "naive": 2.6354584856227543,
+          "model": 2.410427717448701,
+          "gain_pct": 8.538581404399492,
+          "direction_pct": 69.42148760330579,
+          "active_pct": 100.0,
+          "log_mse_gain_pct": 13.587225628793876,
+          "standardized_mse_gain_pct": 13.505460937922342
+        },
+        "selected": {
+          "naive": 2.6354584856227543,
+          "model": 2.420660382571836,
+          "gain_pct": 8.150312525228875,
+          "direction_pct": 69.42148760330579,
+          "active_pct": 100.0,
+          "log_mse_gain_pct": 13.41950785587147,
+          "standardized_mse_gain_pct": 13.346739808456265
+        }
+      }
+    },
+    "injected-1703": {
+      "raw": {
+        "eligible": 242,
+        "naive": 2.605054412173096,
+        "model": 2.3798713719240947,
+        "gain_pct": 8.644082027490441
+      },
+      "selected": {
+        "eligible": 242,
+        "naive": 2.605054412173096,
+        "model": 2.3801638960755427,
+        "gain_pct": 8.632852928010559
+      },
+      "oracle": {
+        "eligible": 242,
+        "naive": 2.605054412173096,
+        "model": 2.343784831518157,
+        "gain_pct": 10.029332954968574
+      },
+      "weight": 0.75,
+      "realized": {
+        "raw": {
+          "naive": 2.4988843446558437,
+          "model": 2.3365118537271776,
+          "gain_pct": 6.497799358978684,
+          "direction_pct": 69.00826446280992,
+          "active_pct": 100.0,
+          "log_mse_gain_pct": 14.001559408472675,
+          "standardized_mse_gain_pct": 14.029094033803036
+        },
+        "selected": {
+          "naive": 2.4988843446558437,
+          "model": 2.299151155885852,
+          "gain_pct": 7.992894476975076,
+          "direction_pct": 69.00826446280992,
+          "active_pct": 100.0,
+          "log_mse_gain_pct": 14.711722919396063,
+          "standardized_mse_gain_pct": 14.70769225931523
+        }
+      }
+    },
+    "injected-2703": {
+      "raw": {
+        "eligible": 242,
+        "naive": 2.605054412173096,
+        "model": 2.383603290534944,
+        "gain_pct": 8.5008251882701
+      },
+      "selected": {
+        "eligible": 242,
+        "naive": 2.605054412173096,
+        "model": 2.506854622941343,
+        "gain_pct": 3.7695868759161977
+      },
+      "oracle": {
+        "eligible": 242,
+        "naive": 2.605054412173096,
+        "model": 2.343784831518157,
+        "gain_pct": 10.029332954968574
+      },
+      "weight": 0.25,
+      "realized": {
+        "raw": {
+          "naive": 2.743117218213835,
+          "model": 2.7151067898076624,
+          "gain_pct": 1.0211167142325506,
+          "direction_pct": 61.57024793388429,
+          "active_pct": 100.0,
+          "log_mse_gain_pct": 3.1093315423856405,
+          "standardized_mse_gain_pct": 3.009469071133386
+        },
+        "selected": {
+          "naive": 2.743117218213835,
+          "model": 2.6959971818832105,
+          "gain_pct": 1.717755115157138,
+          "direction_pct": 61.57024793388429,
+          "active_pct": 100.0,
+          "log_mse_gain_pct": 3.7522584603326026,
+          "standardized_mse_gain_pct": 3.727537755401733
+        }
+      }
+    }
+  },
+  "preregistration_release": "named-weak-execution-preregistration-r2-20261012",
+  "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/named-weak-execution-result-20261012",
+  "market_skill_claimed": false,
+  "statistical_power_estimated": false,
+  "release_allowed": false,
+  "verification_fits": 0,
+  "record_id": "14d445171c67200947dc6d92267800613245f9da23edbb7fb8efb7e81905615f"
+}
