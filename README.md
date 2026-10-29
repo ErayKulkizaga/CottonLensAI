@@ -1,5 +1,12 @@
 # CottonLensAI
 
+[Son tamamlanan CT risk deneyi](docs/CT_SHOCK_FORECAST_CONTROL_20261029.md):
+338 piyasa + 1 native öğrenme fit'i, iki eşit kapasitede işaretli/işaretsiz
+kol. Birincil EWMA QLIKE katkısı +0,00273; güven aralıkları sıfırı içeriyor,
+uç-kayıp duyarlılığı negatif. **Sağlam tahmin üstünlüğü henüz yok.**
+4.184 private arşiv dosyası taze geri kuruldu; rapor ve tahmin kayıpları
+birebir yeniden üretildi. Eski veriler/modeller korundu, saatlik görev kapalı.
+
 29 Ekim 2026 son karar: **named risk kaynağının kabulü henüz tamamlanmadı;
 EWMA üstünlüğü gösterilmedi.** Annual Futures dosyalarındaki kontrat kimliği
 ve sıra hataları gerçek HAR girdilerini etkiliyor. Son düzeltme kanıtı

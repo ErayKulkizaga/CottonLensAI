@@ -1,3 +1,30 @@
+# Şok tahmin deneyi sonucu — 29 Ekim 2026
+
+[İşaretli/işaretsiz CT kontrolü](CT_SHOCK_FORECAST_CONTROL_20261029.md#sonuç--338-piyasa-fiti-tamamlandı)
+338 piyasa + 1 native öğrenme fit'iyle tamamlandı; başarısız deneme yok.
+Birincil seçilmiş işaretli kolun EWMA QLIKE katkısı +0,00272560; iki CI sıfırı
+içeriyor, 4/8 pozitif yıl ve top%1 trim −0,00304148. Ham işaretli 6/8 yılı
+kazansa da iki CI kapısını geçmedi; trim duyarlılığı da negatif. İşaret katkısı
+da belirsiz. **INCONCLUSIVE; sağlam EWMA üstünlüğü ve ileri başarı yok.**
+
+30 Ekim protokol eki: kullanıcı risk planındaki trim yalnız hassasiyettir;
+frozen profil bunu ek kapı olarak kopyalamıştı. [Ek kayıt](../research/evidence/ct-shock-gate-qualification-20261029.json)
+özgün üç koşulu dört EWMA karşılaştırmasına yeniden uyguladı; yine 0/4 geçer,
+birincil sonuç değişmez. Gelecek risk ön kayıtları özgün üç koşulu kullanır;
+trim ve hata yoğunlaşması ayrıca raporlanır. Eski sözleşme/çıktılar korunur.
+
+7.036 native tahmin, 10.030 Decimal loss, 16 geçmiş seçim ve 12 CI bağımsız
+doğrulandı. Private sonuç arşivi 4.184 dosyayla taze geri kuruldu; frozen
+report/CSV/verification byte eşit replay geçti, yeni fit yok. Eski 169 kontrol
+yeniden eğitilmedi; 557 tarif/32.151 fit kopyasında eski 554 tarif korunur.
+40 ilgili test/Ruff geçti. Saatlik görev ve üç trigger kapalı kalır.
+
+Tek sonraki bilimsel soru, eldeki raw DXY risk state'inin serbest own-EWMA
+level kontrolüne karşı aynı kapasitedeki CT katkısıdır. Önceki named DXY
+deneyi kaynak kusurundan etkilenir; temiz CT testi sayılmaz. Yeni source/
+ön kayıt veya fit henüz açılmadı; grid/GPU yok. Aşağıdaki ön kayıt ve eski
+deneyler tarihçedir, tekrar çalışma talimatı değildir.
+
 # Sabit şok tahmin deneyi ön kaydı — 29 Ekim 2026
 
 [Eşit kapasitede işaretli/işaretsiz kontrol](CT_SHOCK_FORECAST_CONTROL_20261029.md)

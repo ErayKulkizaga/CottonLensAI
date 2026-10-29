@@ -1,5 +1,13 @@
 # Deney geçmişi ve tekrar kontrolü
 
+Son eğitim:[CT işaretli/işaretsiz risk kontrolü](../docs/CT_SHOCK_FORECAST_CONTROL_20261029.md).
+338 market + 1 native öğrenme fit'i kapandı; 4.184 private dosya taze restore
+ve byte-equal sıfır-fit replay ile doğrulandı. Birincil QLIKE +0,00272560,
+iki CI sıfırı içerir, trim negatif; INCONCLUSIVE. Eski 169 kontrol tekrar
+eğitilmedi. `--profile ct-signed-unsigned-shock-forecast-t1-v1` ön kayıt,
+sonuç ve üç native tarifi bulur. Tam scope+recipe önerisi her piyasa kolunda
+169 tamamlanmış fit'i `REPEAT_FIT_RECIPE` bulmalı; aynı eğitim tekrarlanmaz.
+
 Son sıfır-fit [CT signed QLIKE denetimi](../docs/CT_SIGNED_RISK_SCORE_20261029.md):
 2.006 origin/97 dış native fit; score iki CI'da belirsiz, 5/8 negatif yıl.
 Eski pozitif hipotezin reddi işaret bilgisinin yokluğunu göstermez; yeni
