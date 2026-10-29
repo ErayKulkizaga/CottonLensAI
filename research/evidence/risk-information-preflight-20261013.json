@@ -1,0 +1,27 @@
+{
+  "schema": 1,
+  "profile": "risk-information-preflight-v1",
+  "kind": "completed_zero_fit_information_screens",
+  "classification": "NO_SCREEN_PASSED",
+  "predictive_skill_claim": false,
+  "new_fits": 0,
+  "screen_count": 3,
+  "ordinal_origins_per_screen": 2006,
+  "independent_verification": {
+    "status": "verified",
+    "new_fits": 0,
+    "decimal_checked_rows": 6018,
+    "independent_covariance_intervals": 6,
+    "public_pdf_hashes": 3,
+    "no_screen_passed": true,
+    "no_causal_feature_admission": true
+  },
+  "exact_fresh_verification_replay": true,
+  "archive_sha256": "81880514e135e7d4d00650d95190e8fdf58f1722b797ea81c8146b04786e76f2",
+  "archive_members": 25,
+  "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/risk-information-preflight-20261013",
+  "no_training_admission": true,
+  "independent_holdout": false,
+  "old_records_preserved": 196,
+  "record_id": "683dd89244e5bee9b7fcb2505ed7f2406d823e3efa82cd7a80ef0525b3451902"
+}

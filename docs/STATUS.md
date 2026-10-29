@@ -1,3 +1,79 @@
+# Güncel kapanış — 29 Ekim 2026
+
+[Vade eğrisi tanısı](AMS_CURVE_RISK_MOMENT_20261029.md) sıfır-fit kapandı:
+2.006slot/1.987uygun, covariance+0,00227684, CI20 sıfırı içerir, CI60 pozitif;
+5/8pozitif yıl. Sabit ekran geçmedi; INCONCLUSIVE. Bütün vade bilgisinin
+yararsızlığı veya model başarısı sonucunu çıkarma. Private10dosya taze
+restore/5.961Decimal scalar/ikiCI ve makbuz byte-identical replay geçti.
+Eski204aşama/185kanıt ve trials bytes korunarak sicil205aşamaya çıktı.
+Yeni fit0; loss/scale/HAR/günlük named eğitimleri tekrarlanmaz.
+
+21 Ekim kullanıcı talebi: `CottonLens-Observed-Archive-v2` Windows görevi
+devre dışı; Codex ileri yayın otomasyonu silindi. Otomatik toplama/yayın
+beklenmez ve bu mekanizmalar yeniden etkinleştirilmez. Eski126cohort kilidi
+ve arşiv kayıtları korunur; eksik origins geriye dönük doldurulmaz.
+
+Hedef hâlâ referansı geçen doğrulanmış risk tahminidir; başarı/Colab geçişi
+yoktur. Sekiz yıllık named geçmiş ve sabit loss/scale/state kontrolleri,
+yalnız veri kapsamını veya optimizer'ı düzeltmenin yeterli olmadığını gösterir.
+Tarihsel UTC/vintage belirsizliği ve görülmüş yılların geliştirme niteliği
+korunur. Aşağıdaki daha eski sonraki-adım ifadeleri tarihsel kayıttır.
+
+# USDA günlük named T+1 risk kontrolü — 14 Ekim 2026
+
+[Resmî günlük settlement arşivi](AMS_NAMED_EWMA_HAR_20261014.md) sekiz yılın
+tamamında aynı-kontrat risk ön kontrolünü geçirdi: 2.006 slot/1.989 paired,
+en dar olgun train619. Yeni kaynağın 2023 örtüşmesinde 244 kontrat/etiket
+eşleşti. Ön kayıtlı174 piyasa+1 sentetik EWMA-relative HAR fit'i tamamlandı.
+Seçilmiş QLIKE kazancı+0,003735; blok20/60 güven aralıkları sıfırı içerir,
+pozitif yıl4/8, üst%1 referans-kaybı trim−0,008363. Sabit EWMA üstünlüğü
+kapısı geçmedi; publication UTC/ilk vintage belirsiz ve Colab geçişi yok.
+Özel sonuç sürümü 1.249 dosya olarak taze doğrulandı; 12 ham kaynak asset'i
+uzak SHA-256 ile eşleşti. Sicil204 aşama/545 tarif/30.419 fit kopyasıdır.
+
+# Sabit pamuk sezonu risk tanısı — 14 Ekim 2026
+
+[USDA 2010 takvimine bağlı tek sezon göstergesi](SEASONAL_RISK_MOMENT_20261014.md)
+2.006 T+1 CT origininde sıfır-fit sınandı. Yıl içi EWMA-relative risk hatası
+covariance+0,01411943;20/60 CI sıfırı içerir, pozitif yıl5/8, uç kayıp trim
+−0,01017329. Ekran geçmedi; yeni eğitim veya Colab gerekçesi yok.8 özel
+dosya taze doğrulandı ve bağımsız makbuz eşleşti. Sicil203 aşama/543 tarif/
+30.244 fit kopyasıdır.
+
+# CT sekiz yıllık EWMA-relative HAR — 14 Ekim 2026
+
+[Ön kayıtlı QLIKE kontrolü](CT_EWMA_HAR_CONTROL_20261014.md)169 piyasa+1 sentetik
+fit ile kapandı.2.006 T+1 CT risk origininde geçmiş validation seçiminin EWMA'ya
+göre QLIKE kazancı+0,00136570; iki20/60 güven aralığı sıfırı içerir, pozitif
+yıl4/8 ve uç kayıp trim sonucu−0,00499849. Sabit risk kapısı geçmedi.1.499
+dosyalı özel sürüm taze geri kuruldu; bağımsız zero-fit denetim169 native
+model/3.518 tahmin/4 CI ile byte-identical geçti. Sicil202 aşama/543 tarif/
+30.244 fit kopyasıdır. Ölçülmüş EWMA üstünlüğü yok; Colab geçişi yapılmaz.
+
+# Asimetri tanısı — 13 Ekim 2026
+
+[Büyüklük kontrollü signed shock](ASYMMETRIC_RISK_MOMENT_20261013.md)2.006slot üzerinde pozitif inverse-leverage hipotezini geçmedi. Partialcov−0,367892;20/60CIsnegatif,pozitif/negatif yıl3/5,trim−0,039225. Bu ters association QLIKE kazancı değildir; signflip başarı sayılmaz.10private dosya taze restore/6.018Decimal scalar veiki residual-CI replay geçti. Yeni fit0; ölçülmüş EWMA üstünlüğü henüz yok ve hedef aktif.
+
+# CFTC risk tanısı — 13 Ekim 2026
+
+[Mutlak pozisyon değişimi](CFTC_RISK_TURNOVER_MOMENT_20261013.md), sabit report+7/L1 içinde2.006slot/1.875eligible ile sıfır-fit sınandı. Covariance−0,0002501;20/60CI0içerir,pozitif yıl2/8,trimnegatif. Bağımsız2.006sourceclock/Decimalerror veikiCI doğrulandı. Pozitif screen geçmedi; signflip/laggrid/learner açılmaz. Ölçülmüş EWMA üstünlüğü hâlâ bulunmadı; hedef aktif.
+
+# Named geçmiş kaynak denetimi — 13 Ekim 2026
+
+[Haftalık USDA settlement arşivi](WEEKLY_NAMED_SOURCE_PREFLIGHT_20261013.md)305 PDF/143,8MB ile toplandı, yeni fit0. Ayrı parser250 rapor/1.196 tarih çıkardı; Cotton takviminde1.100 yeni tarih.2014-06-04 orijinal/Correction uyuşmazlığı unknown korunur. Haftalık yayın saati günlük origin erişimi değildir; varsayılan report-clock bile yalnız5yeni currentquote verir.2016–2019 kapsam boşlukları ve eski kapılar korunur. Ölçülmüş EWMA üstünlüğü henüz yok; hedef aktif.
+
+# Son EWMA-state kontrolü — 13 Ekim 2026
+
+[EWMA offset HAR](NAMED_EWMA_HAR_CONTROL_20261013.md)22market+1synthetic fit ile kapandı. Aynı dört parametreyle EWMA’ya relatif QLIKE öğrenme raw−0,01980127/selected−0,00308231delta; raw60CInegatif,selected20/60CI0içerir,trimnegatif.548private GitHub üyesi taze geri kurma ve native/report/CSV/verifier zero-fit replay geçti. Mevcut EWMA korunur; Colab/büyük model üstünlüğü gerekçesi yok. [Üç sıfır-fit bilgi tanısı](RISK_INFORMATION_PREFLIGHT_20261013.md)da pozitif screen’i geçmedi; WAPfuturecalendar üç örnek erişimi kaynak kurulabilirliğidir, skill değildir. Eski fitler/fiyatlar/live126kilidi korunur.
+
+# Son scale kontrolü — 13 Ekim 2026
+
+[Named EWMA scale](NAMED_EWMA_SCALE_CONTROL_20261013.md)22market+1synthetic fit ile kapandı. Raw/selected deltaQLIKE−0,00544751/−0,00183714;20/60CIs sıfırı içerir, trim negatif.500private GitHub üyesi taze restore ve native/report/CSV/verifier zero-fit replay geçti.8yeni+15ilgili test/Ruff,726Decimal loss/dörtCI doğrulandı. Scale/recency/λ grid açılmaz; mevcut EWMA korunur. Sonraki sıfır-fit OHLC bilgi kapsamı tanısıdır. Henüz risk üstünlüğü veya Colab geçişi yok.
+
+# Son loss kontrolü — 13 Ekim 2026
+
+[NAMED risk loss kontrolü](NAMED_RISK_LOSS_CONTROL_20261013.md)22yeni piyasa+1sentetik fit ile kapandı. Aynı dört parametre/veri/reference içinde doğrudan QLIKE eski OLS’ye delta−0,00923334; ham EWMA’ya−0,01862219, iki20/60CI sıfırı içerir. Geçmiş weight0; referans üstünlüğü/Colab gerekçesi yok. Eski22OLS fit tekrar edilmedi.42 ilgili test ve bağımsız1.210loss/2.988feature/sekizCI geçti. Takvim/vintage/tek görülmüş yıl sınırları aynı. Sonraki yalnız EWMA’nın past-only ölçek koşulunun kurulabilirliği; henüz yeni fit/score yok.
+
 # Güncel kararlar — 12 Ekim 2026
 
 ## Son input-history ve veri sürekliliği kararı

@@ -1,0 +1,24 @@
+{
+  "schema": 1,
+  "profile": "named-ewma-har-control-t1-v1",
+  "source_id": "58dda49660cbc2942a665d60cedf3dafd4a3dfbae7282dbd897a0bf435386094",
+  "design_id": "50f0d66ee28b11546b508a73256f0119ba583512e9f8385c65a002e34f0f01e6",
+  "ready_sha256": "c81da2370a9a3b60edb6ee4b9718483803964b40b6c080bdad2ba30dec1598d6",
+  "new_fits": 0,
+  "fresh_restore_verified": true,
+  "archive_sha256": "033dd26d83cef26041d0b337f34fe87005ebf2c744ba440dd46e1a6a984a967c",
+  "archive_members": 354,
+  "fit_budget": {
+    "market": 22,
+    "synthetic": 1,
+    "processes": 1,
+    "threads": 2,
+    "session_minutes": 30
+  },
+  "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/named-ewma-har-preregistration-20261013",
+  "release_allowed": false,
+  "independent_holdout": false,
+  "historical_availability_verified": false,
+  "human_authorization_scope": "Active human goal; one bounded same-capacity CPU residual-HAR information-state control, no grid/production model",
+  "record_id": "072e46668a39e585f4ac6674d246770ced1b77bc1d4c6a6102e4c63d3ef7febe"
+}

@@ -1,0 +1,93 @@
+{
+  "schema": 1,
+  "profile": "cotton-season-ewma-error-moment-t1-v1",
+  "classification": "NEGATIVE_ZERO_FIT_INFORMATION_SCREEN",
+  "new_fits": 0,
+  "source": "https://www.nass.usda.gov/Publications/Todays_Reports/reports/fcdate10.pdf",
+  "origin_count": 2006,
+  "yearly": [
+    {
+      "year": 2016,
+      "count": 250,
+      "covariance": 0.009821320192000507
+    },
+    {
+      "year": 2017,
+      "count": 251,
+      "covariance": 0.05292543515646884
+    },
+    {
+      "year": 2018,
+      "count": 251,
+      "covariance": 0.02326354614022942
+    },
+    {
+      "year": 2019,
+      "count": 252,
+      "covariance": 0.03516372304391153
+    },
+    {
+      "year": 2020,
+      "count": 253,
+      "covariance": -0.13805383327402646
+    },
+    {
+      "year": 2021,
+      "count": 252,
+      "covariance": -0.047884551053598616
+    },
+    {
+      "year": 2022,
+      "count": 251,
+      "covariance": 0.18700494366628004
+    },
+    {
+      "year": 2023,
+      "count": 246,
+      "covariance": -0.00837466107826643
+    }
+  ],
+  "bootstrap": {
+    "20": {
+      "covariance": 0.014119426775515602,
+      "ci_95": [
+        -0.0471916912769769,
+        0.06188183408040596
+      ],
+      "block": 20,
+      "replicates": 10000
+    },
+    "60": {
+      "covariance": 0.014119426775515602,
+      "ci_95": [
+        -0.02804097395317824,
+        0.04924608361195339
+      ],
+      "block": 60,
+      "replicates": 10000
+    }
+  },
+  "top1pct_trim_covariance": -0.01017329457111477,
+  "screen_passed": false,
+  "model_skill_established": false,
+  "training_allowed": false,
+  "independent_holdout": false,
+  "multiplicity_adjusted": false,
+  "result_sha256": "85149ec0823139578527fd39d4d0c9852191f5f0f24c1ff9d3062cbd15729589",
+  "input_sha256": "e4904a3aaa3d7fb1065f6013f9b470eb8e9751e2b475b0f1b2d5a87ed5783d74",
+  "fresh_replay": {
+    "status": "verified",
+    "new_fits": 0,
+    "decimal_original_origins": 2006,
+    "independent_year_covariances": 8,
+    "independent_bootstrap_intervals": 2,
+    "trimmed_origins": 1985,
+    "screen_passed": false
+  },
+  "archive_sha256": "2cf06c0d54ccd2f6765804bbfa374efdb00c59b80315e0376f3addc1e2b50830",
+  "archive_members": 8,
+  "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/cotton-season-risk-moment-20261014",
+  "old_records_preserved": 202,
+  "old_evidence_preserved": 183,
+  "record_id": "2909c818c29d4dc3cd2de5996bcbb36de012a207ca94d6fac4d1e86150e0c84c"
+}

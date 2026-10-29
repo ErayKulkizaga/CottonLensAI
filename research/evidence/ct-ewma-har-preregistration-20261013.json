@@ -1,0 +1,27 @@
+{
+  "schema": 1,
+  "profile": "ct-ewma-har-full-year-t1-v1",
+  "classification": "PREREGISTERED_NOT_EXECUTED",
+  "new_fits": 0,
+  "source_id": "6ccd84e5e81a451b90702bf6c69e99c8154bab5420aac56ec859c08c3f07e777",
+  "design_id": "000d435ba76a99943d52ee8a5fd4a2d121f39b802338f313f32111c6505d508a",
+  "data_id": "013f58e5804b29435f32161ba1cf42ac2fc56046f646f4993294bf267079e4f7",
+  "ready_sha256": "fcd2db4faf9a92a18509dad24664f3a6fb09a4c1d45ab6b542afbd781f347e23",
+  "fit_budget": {
+    "market": 169,
+    "synthetic": 1,
+    "processes": 1,
+    "threads": 2,
+    "session_minutes": 30
+  },
+  "fresh_restore_verified": true,
+  "fresh_source_data_environment_verify": true,
+  "archive_sha256": "401553fd56bd1819043cdd9fa61f0c7bbe4870a93e4dc6e175e1eac8634f251b",
+  "archive_members": 298,
+  "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/ct-ewma-har-preregistration-20261013",
+  "original_records_preserved": 200,
+  "source_clock_verified": false,
+  "independent_holdout": false,
+  "release_allowed": false,
+  "record_id": "d6115b3e771810f1db1797ef69aa327b206a10712cf84d8e16d0c48351ac341d"
+}

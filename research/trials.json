@@ -54927,6 +54927,562 @@
       "coverage": "completed fit receipts; not experiment completion",
       "payload_hashes_revalidated_by_index": false,
       "sample_receipt_archive_context": "bundle/index-input; actual native payloads preserved under bundle/execution ledgers"
+    },
+    {
+      "id": "5774a352acd3a217faf86498ae6b8da6f65195c02677c40cb418c2c215cca838",
+      "scope": {
+        "identity_id": "6706301e39ebc98b6dc4823a59f6fbbcfe92f35bc08a80456d23d63df6b09ce0",
+        "source_id": "1b71befe6e12fc83efda83a0d6bac2c72e781f7add137cf9cdf203e9c48cb7e9",
+        "data_id": "a2d02bbefefcdd77d89b67b515e6eb553cef2439223406a99c78736f943e423d",
+        "split_id": "a5af28d192577cf1e1ebf7944b4d4060032876c061190cea66f7c5cb02edf5a5",
+        "profile": "named-risk-loss-control-t1-v1"
+      },
+      "scope_id": "0f3c6fa56a6301ea405a3601ddd0c0a6a0a5d3ca3704b0039fc3dd3e9ccdeb44",
+      "profile": "named-risk-loss-control-t1-v1",
+      "horizon": 1,
+      "recipes": [
+        {
+          "family": "har",
+          "horizon": 1,
+          "device": "cpu",
+          "seed": 42,
+          "cadence": 21,
+          "task": "variance",
+          "features": [
+            "har_1",
+            "har_5",
+            "har_22"
+          ],
+          "years": null,
+          "feature_control": "named-risk-history-control-t1-v1",
+          "label_arm": "named",
+          "feature_arm": "named",
+          "training_loss": "qlike",
+          "loss_control": "named-risk-loss-control-t1-v1"
+        }
+      ],
+      "model_families": [
+        "har"
+      ],
+      "kind": "market_fit_receipt",
+      "completed_fits": 22,
+      "sample_receipts": [
+        {
+          "path": "market/ledger/completed/0a2aa5fd96329c32a4724e031829ad4875786bac70d077e87f642a4cff4c4018.json",
+          "record_id": "f1feaf1d8ce584e6054540fbc6cfd9ac32b3e9dd82b722da5c4561e15a1b2cdd",
+          "experiment_id": "0a2aa5fd96329c32a4724e031829ad4875786bac70d077e87f642a4cff4c4018"
+        },
+        {
+          "path": "market/ledger/completed/1c614e74b58122568edcfa8b96aca80b52061e5d8882c7f9e8911c6ce3eeb56d.json",
+          "record_id": "a359f92aec822bc9ba32c0c72253a07d1ebaf81431804c0ef2779a4ba1c6f232",
+          "experiment_id": "1c614e74b58122568edcfa8b96aca80b52061e5d8882c7f9e8911c6ce3eeb56d"
+        },
+        {
+          "path": "market/ledger/completed/24367ee86fc395935a2724d4713414d51df6f0b34638b9a0fafe4aa5c30190d8.json",
+          "record_id": "00b29399266ceeb3fa0a00ec26877c3c1bc684d9db98d52895b723d9180f548f",
+          "experiment_id": "24367ee86fc395935a2724d4713414d51df6f0b34638b9a0fafe4aa5c30190d8"
+        }
+      ],
+      "roles": [
+        "loss"
+      ],
+      "coverage": "completed fit receipts; not experiment completion",
+      "payload_hashes_revalidated_by_index": false,
+      "sample_receipt_archive_context": "bundle/index-input; native payloads under bundle/execution"
+    },
+    {
+      "id": "8b2d12bf6e703ec151b0c46bcafea06e0b8b2e348ba4c7655e18ff833e41623a",
+      "scope": {
+        "identity_id": "d64fa35e3074a034af39fb7f538226ba2d611f301f27c528262cd3f04c4cf649",
+        "source_id": "1b71befe6e12fc83efda83a0d6bac2c72e781f7add137cf9cdf203e9c48cb7e9",
+        "data_id": "a2d02bbefefcdd77d89b67b515e6eb553cef2439223406a99c78736f943e423d",
+        "split_id": "a5af28d192577cf1e1ebf7944b4d4060032876c061190cea66f7c5cb02edf5a5",
+        "profile": "named-risk-loss-control-t1-v1"
+      },
+      "scope_id": "e00d46801ecbb6f07771a38acaa0d80b07caeedc2f21d5717b12765d73e0b7ac",
+      "profile": "named-risk-loss-control-t1-v1",
+      "horizon": 1,
+      "recipes": [
+        {
+          "family": "har",
+          "horizon": 1,
+          "device": "cpu",
+          "seed": 42,
+          "cadence": 21,
+          "task": "variance",
+          "features": [
+            "har_1",
+            "har_5",
+            "har_22"
+          ],
+          "years": null,
+          "feature_control": "named-risk-history-control-t1-v1",
+          "label_arm": "named",
+          "feature_arm": "named",
+          "training_loss": "qlike",
+          "loss_control": "named-risk-loss-control-t1-v1"
+        }
+      ],
+      "model_families": [
+        "har"
+      ],
+      "kind": "synthetic_control:known_signal",
+      "completed_fits": 1,
+      "sample_receipts": [
+        {
+          "path": "synthetic/ledger/completed/72bd17e0febe3eec434771592637bc86205069efc326cba8227f40bebf0ff171.json",
+          "record_id": "778789ef9e5fa74819b7541c33cfa75dc09cd31377e088dbf16026726f16cc59",
+          "experiment_id": "72bd17e0febe3eec434771592637bc86205069efc326cba8227f40bebf0ff171"
+        }
+      ],
+      "roles": [
+        "synthetic_known_qlike_har"
+      ],
+      "coverage": "completed fit receipts; not experiment completion",
+      "payload_hashes_revalidated_by_index": false,
+      "sample_receipt_archive_context": "bundle/index-input; native payloads under bundle/execution"
+    },
+    {
+      "id": "33ac2c848458a2316793e882977c74264af047953c33c955c6aabd07528a6e32",
+      "scope": {
+        "identity_id": "b9910d917b626ea383a66131614a4c29f51ca402dfc6e7cc5c46fd98d268f4a8",
+        "source_id": "443102eccde8acc51bf2de6b882088ee69f4da9ff1f5ceeed07aea77412cdbcd",
+        "data_id": "a2d02bbefefcdd77d89b67b515e6eb553cef2439223406a99c78736f943e423d",
+        "split_id": "a5af28d192577cf1e1ebf7944b4d4060032876c061190cea66f7c5cb02edf5a5",
+        "profile": "named-ewma-scale-control-t1-v1"
+      },
+      "scope_id": "15aa7bcf74e53984cf6b464c6847799689561c22657a865b003504da4ea3d434",
+      "profile": "named-ewma-scale-control-t1-v1",
+      "horizon": 1,
+      "recipes": [
+        {
+          "family": "ewma",
+          "horizon": 1,
+          "device": "cpu",
+          "window": 1,
+          "features": [
+            "named_ewma"
+          ],
+          "training_loss": "qlike_scale",
+          "scale_formula": "mean(mature_named_actual/origin_named_ewma)",
+          "lambda": 0.94,
+          "seed": 42,
+          "profile": "named-ewma-scale-control-t1-v1"
+        }
+      ],
+      "model_families": [
+        "ewma"
+      ],
+      "kind": "synthetic_control:known_signal",
+      "completed_fits": 1,
+      "sample_receipts": [
+        {
+          "path": "synthetic/ledger/completed/c454e301d21d251d58324a0f27d489b25fce5461984c9e358394c9b52cc02e0d.json",
+          "record_id": "5ab21f6335fce54a70b29e21e148770aeaf9eb8de950c65b6e1e3a0e3b71eafb",
+          "experiment_id": "c454e301d21d251d58324a0f27d489b25fce5461984c9e358394c9b52cc02e0d"
+        }
+      ],
+      "roles": [
+        "synthetic_scale"
+      ],
+      "coverage": "completed fit receipts; not experiment completion",
+      "payload_hashes_revalidated_by_index": false,
+      "sample_receipt_archive_context": "bundle/index-input; native payloads in bundle/execution"
+    },
+    {
+      "id": "7bdddf5004b13dcb87c02bacb382f38896fe03b33723f7d5c47b4407727d470c",
+      "scope": {
+        "identity_id": "c5ccb3992ae896091f349cf3cc03eac5fb407ba31c46597dca65584166bfbef9",
+        "source_id": "443102eccde8acc51bf2de6b882088ee69f4da9ff1f5ceeed07aea77412cdbcd",
+        "data_id": "a2d02bbefefcdd77d89b67b515e6eb553cef2439223406a99c78736f943e423d",
+        "split_id": "a5af28d192577cf1e1ebf7944b4d4060032876c061190cea66f7c5cb02edf5a5",
+        "profile": "named-ewma-scale-control-t1-v1"
+      },
+      "scope_id": "f12e436d51847f3d3c51b1bc5c03594b3eb7fa08e434f0fddd405dff2eabf56c",
+      "profile": "named-ewma-scale-control-t1-v1",
+      "horizon": 1,
+      "recipes": [
+        {
+          "family": "ewma",
+          "horizon": 1,
+          "device": "cpu",
+          "window": 1,
+          "features": [
+            "named_ewma"
+          ],
+          "training_loss": "qlike_scale",
+          "scale_formula": "mean(mature_named_actual/origin_named_ewma)",
+          "lambda": 0.94,
+          "seed": 42,
+          "profile": "named-ewma-scale-control-t1-v1"
+        }
+      ],
+      "model_families": [
+        "ewma"
+      ],
+      "kind": "market_fit_receipt",
+      "completed_fits": 22,
+      "sample_receipts": [
+        {
+          "path": "market/ledger/completed/0c01bc49787da867e7465d1266e36ec6b7282f8aa7a65bd36973c966e45e718d.json",
+          "record_id": "bb189a697b75a108b6207da04f5957d28abe444e4e4ac3b412a49717477eafa3",
+          "experiment_id": "0c01bc49787da867e7465d1266e36ec6b7282f8aa7a65bd36973c966e45e718d"
+        },
+        {
+          "path": "market/ledger/completed/1a867a9299c9d6ea2e3e1f34f4f9d41a1f85e61350ef998dce32bda73e65c340.json",
+          "record_id": "d4ca0eecc8674e823fc79b04f25cc57e2082afd346a11cb5b57a531237b8117a",
+          "experiment_id": "1a867a9299c9d6ea2e3e1f34f4f9d41a1f85e61350ef998dce32bda73e65c340"
+        },
+        {
+          "path": "market/ledger/completed/1e2dd67ce62cee43cbda5be8594d05d769f462ebcd6835c6fa6c3e4554456323.json",
+          "record_id": "0f6fbb7e92645f3c589f6e4d68af03e576565709f8402ac304ea06788eda58ad",
+          "experiment_id": "1e2dd67ce62cee43cbda5be8594d05d769f462ebcd6835c6fa6c3e4554456323"
+        }
+      ],
+      "roles": [
+        "scale"
+      ],
+      "coverage": "completed fit receipts; not experiment completion",
+      "payload_hashes_revalidated_by_index": false,
+      "sample_receipt_archive_context": "bundle/index-input; native payloads in bundle/execution"
+    },
+    {
+      "id": "adc98f5693f0b3afa0ed6a8eb73fd259e465f7a1df06654c746122812dd17fc1",
+      "scope": {
+        "identity_id": "a1a9bd28294e67ede1a307f92faacf0be58b793bd5b24036a39b16efbec6761e",
+        "source_id": "58dda49660cbc2942a665d60cedf3dafd4a3dfbae7282dbd897a0bf435386094",
+        "data_id": "a2d02bbefefcdd77d89b67b515e6eb553cef2439223406a99c78736f943e423d",
+        "split_id": "a5af28d192577cf1e1ebf7944b4d4060032876c061190cea66f7c5cb02edf5a5",
+        "profile": "named-ewma-har-control-t1-v1"
+      },
+      "scope_id": "3ec1650660d70f175b4bb94e98dd048f1345a412b6ba6edc6f5422cf7dd08441",
+      "profile": "named-ewma-har-control-t1-v1",
+      "horizon": 1,
+      "recipes": [
+        {
+          "family": "har",
+          "horizon": 1,
+          "device": "cpu",
+          "window": 1,
+          "features": [
+            "har_1",
+            "har_5",
+            "har_22"
+          ],
+          "training_loss": "qlike",
+          "feature_formula": "own_har_k-log(named_ewma)",
+          "target_formula": "mature_named_actual/origin_named_ewma",
+          "forecast_formula": "origin_named_ewma*exp(intercept+relative_har@coef)",
+          "parameters": 4,
+          "seed": 42,
+          "profile": "named-ewma-har-control-t1-v1"
+        }
+      ],
+      "model_families": [
+        "har"
+      ],
+      "kind": "synthetic_control:known_signal",
+      "completed_fits": 1,
+      "sample_receipts": [
+        {
+          "path": "synthetic/ledger/completed/98f64f0cbb93d926e84c622aee4e6de0c9576a1ebcd60f5ce410088afe0d3327.json",
+          "record_id": "41367e59b016d98ce226884f1a8a1cdd83f29968b2260ea8418dfd48acd2ad92",
+          "experiment_id": "98f64f0cbb93d926e84c622aee4e6de0c9576a1ebcd60f5ce410088afe0d3327"
+        }
+      ],
+      "roles": [
+        "synthetic_ewma_offset_har"
+      ],
+      "coverage": "completed fit receipts; not experiment completion",
+      "payload_hashes_revalidated_by_index": false,
+      "sample_receipt_archive_context": "bundle/index-input; native payloads in bundle/execution"
+    },
+    {
+      "id": "db587d1b27bfaa868d76d4508c441c2730d3f61192d0c108fb86c19044667f23",
+      "scope": {
+        "identity_id": "54b9d8388297136f8d66e0957b4ac64e4ec26dc6e3189c411688b465212f4fd3",
+        "source_id": "58dda49660cbc2942a665d60cedf3dafd4a3dfbae7282dbd897a0bf435386094",
+        "data_id": "a2d02bbefefcdd77d89b67b515e6eb553cef2439223406a99c78736f943e423d",
+        "split_id": "a5af28d192577cf1e1ebf7944b4d4060032876c061190cea66f7c5cb02edf5a5",
+        "profile": "named-ewma-har-control-t1-v1"
+      },
+      "scope_id": "7b352438c5459f8b8d0e5b8f0f62110cba91a9ff6f31bea755ba031b8d493b3f",
+      "profile": "named-ewma-har-control-t1-v1",
+      "horizon": 1,
+      "recipes": [
+        {
+          "family": "har",
+          "horizon": 1,
+          "device": "cpu",
+          "window": 1,
+          "features": [
+            "har_1",
+            "har_5",
+            "har_22"
+          ],
+          "training_loss": "qlike",
+          "feature_formula": "own_har_k-log(named_ewma)",
+          "target_formula": "mature_named_actual/origin_named_ewma",
+          "forecast_formula": "origin_named_ewma*exp(intercept+relative_har@coef)",
+          "parameters": 4,
+          "seed": 42,
+          "profile": "named-ewma-har-control-t1-v1"
+        }
+      ],
+      "model_families": [
+        "har"
+      ],
+      "kind": "market_fit_receipt",
+      "completed_fits": 22,
+      "sample_receipts": [
+        {
+          "path": "market/ledger/completed/0bbf48565a5a1b944c7619535b9ef0c0554681a923ad8cd0d7e1f390afacc994.json",
+          "record_id": "16b30eace4d5083d80fb8c83eb063bb9a0f2301809d2b8f506ee7f77a037fc02",
+          "experiment_id": "0bbf48565a5a1b944c7619535b9ef0c0554681a923ad8cd0d7e1f390afacc994"
+        },
+        {
+          "path": "market/ledger/completed/0f4f49e50721bec67d58346197000d365fcd14c7fea56f70fac2a726b8aee108.json",
+          "record_id": "b8463914f3c940240bf735d93c323c8e198981da573a4bd2688d8ee9cfc430a9",
+          "experiment_id": "0f4f49e50721bec67d58346197000d365fcd14c7fea56f70fac2a726b8aee108"
+        },
+        {
+          "path": "market/ledger/completed/2469b073b066a936478ad377cdfc1c6412a7e3f007e11db67c1fa4a0c64f600b.json",
+          "record_id": "5fef3bf1c479dbcdfc81e6e56ae59d13079e0be0e291a331174937f2c854c99d",
+          "experiment_id": "2469b073b066a936478ad377cdfc1c6412a7e3f007e11db67c1fa4a0c64f600b"
+        }
+      ],
+      "roles": [
+        "offset"
+      ],
+      "coverage": "completed fit receipts; not experiment completion",
+      "payload_hashes_revalidated_by_index": false,
+      "sample_receipt_archive_context": "bundle/index-input; native payloads in bundle/execution"
+    },
+    {
+      "id": "724607d62b15d9544544668f4639776355ae5a725ded2d545cea54737bd0fb0d",
+      "scope": {
+        "identity_id": "35b3d97f65b8478418af01a7ad960ffa770e9288589f289cd482d6b488c52e1d",
+        "source_id": "6ccd84e5e81a451b90702bf6c69e99c8154bab5420aac56ec859c08c3f07e777",
+        "data_id": "013f58e5804b29435f32161ba1cf42ac2fc56046f646f4993294bf267079e4f7",
+        "split_id": "a5af28d192577cf1e1ebf7944b4d4060032876c061190cea66f7c5cb02edf5a5",
+        "profile": "ct-ewma-har-full-year-t1-v1"
+      },
+      "scope_id": "a7a9f1811e827f2278183d9a675eebe97ff4a6f0a18a1c47d50e0104cc60883e",
+      "profile": "ct-ewma-har-full-year-t1-v1",
+      "horizon": 1,
+      "recipes": [
+        {
+          "family": "har",
+          "horizon": 1,
+          "device": "cpu",
+          "window": 1,
+          "features": [
+            "har_1",
+            "har_5",
+            "har_22"
+          ],
+          "training_loss": "qlike",
+          "parameters": 4,
+          "feature_formula": "har_k-log(ct_ewma)",
+          "target_formula": "variance_target_1/ct_ewma",
+          "forecast_formula": "ct_ewma*exp(intercept+relative_har@coef)",
+          "seed": 42,
+          "profile": "ct-ewma-har-full-year-t1-v1"
+        }
+      ],
+      "model_families": [
+        "har"
+      ],
+      "kind": "market_fit_receipt",
+      "completed_fits": 169,
+      "sample_receipts": [
+        {
+          "path": "ledger/completed/02c13395118dfff48199def37174e41ba3a68914cda7a44859c91bcade442f2e.json",
+          "record_id": "276af7aecf608ea201d7e01289645e7771b18e0d796d89b856d3694227e0c09a",
+          "experiment_id": "02c13395118dfff48199def37174e41ba3a68914cda7a44859c91bcade442f2e"
+        },
+        {
+          "path": "ledger/completed/03becc9c0900136148dd511d0d8b5bc35ea07f163899faae9f985efc2dbdc823.json",
+          "record_id": "d600f9be76c6c961adfd46f61d8604c0f347c79e57004bed1974dfe663e94bbb",
+          "experiment_id": "03becc9c0900136148dd511d0d8b5bc35ea07f163899faae9f985efc2dbdc823"
+        },
+        {
+          "path": "ledger/completed/045b761f12b63357acff3076342b41b4d0cf07865bf6e9ac926326a4f7e4eef5.json",
+          "record_id": "c63c55273d709a90f089bbb9bc915c45f85b4a408792d603b78a0d0d7c345d3f",
+          "experiment_id": "045b761f12b63357acff3076342b41b4d0cf07865bf6e9ac926326a4f7e4eef5"
+        }
+      ],
+      "roles": [
+        "ct-offset annual outer/recent validation; see native receipts"
+      ],
+      "coverage": "completed fit receipts; experiment conclusion is separate",
+      "payload_hashes_revalidated_by_index": false,
+      "sample_receipt_archive_context": "private release execution scope; native payloads restored separately"
+    },
+    {
+      "id": "4d124c00c2ed1c5cd83a43069d3de849a9344b9ebf4ee84cc5dbdebed69b06ac",
+      "scope": {
+        "identity_id": "a049e92883889dfd5b1e3c71825e5177445b1bea8e8874b221cca7b4e1751955",
+        "source_id": "6ccd84e5e81a451b90702bf6c69e99c8154bab5420aac56ec859c08c3f07e777",
+        "data_id": "013f58e5804b29435f32161ba1cf42ac2fc56046f646f4993294bf267079e4f7",
+        "split_id": "a5af28d192577cf1e1ebf7944b4d4060032876c061190cea66f7c5cb02edf5a5",
+        "profile": "ct-ewma-har-full-year-t1-v1"
+      },
+      "scope_id": "f740ef33e300fdb150e6ee3d3df2cf1e243b40a7d10c83e462a6131582e2f129",
+      "profile": "ct-ewma-har-full-year-t1-v1",
+      "horizon": 1,
+      "recipes": [
+        {
+          "family": "har",
+          "horizon": 1,
+          "device": "cpu",
+          "window": 1,
+          "features": [
+            "har_1",
+            "har_5",
+            "har_22"
+          ],
+          "training_loss": "qlike",
+          "parameters": 4,
+          "feature_formula": "har_k-log(ct_ewma)",
+          "target_formula": "variance_target_1/ct_ewma",
+          "forecast_formula": "ct_ewma*exp(intercept+relative_har@coef)",
+          "seed": 42,
+          "profile": "ct-ewma-har-full-year-t1-v1"
+        }
+      ],
+      "model_families": [
+        "har"
+      ],
+      "kind": "synthetic_control:known_signal",
+      "completed_fits": 1,
+      "sample_receipts": [
+        {
+          "path": "learning/ledger/completed/c013dfb368daf8296efdb26ffbcb421b684eefc42542ed40a77b49faff9ce8b5.json",
+          "record_id": "0308622a4be63f0900e92c8ac5e18f20af5fc7d271a70fb2cfc95a35b9d39140",
+          "experiment_id": "c013dfb368daf8296efdb26ffbcb421b684eefc42542ed40a77b49faff9ce8b5"
+        }
+      ],
+      "roles": [
+        "synthetic_ct_offset_har"
+      ],
+      "coverage": "completed fit receipts; experiment conclusion is separate",
+      "payload_hashes_revalidated_by_index": false,
+      "sample_receipt_archive_context": "private release execution scope; native payloads restored separately"
+    },
+    {
+      "id": "d7318685a010909c8288514f235d5d5feeed4cc67fcf68e83784dfa111efbf59",
+      "scope": {
+        "identity_id": "7687598892e5f3e0a2cb421576a21976cbd5fb09d1b0393353a44aacfccdd287",
+        "source_id": "a0cce2f8191749363e350489a93f823cc1e90a3354e55787c58147a01c692e62",
+        "data_id": "e0e5aecb37f57bde98fd23c0d7d7501bebd34dfe8feff86a534e7019f709cef1",
+        "design_id": "1e0d2e45d7c4539932d4ed1be14c4127269f8ce227bf2f944ef7ecce07dd942a",
+        "profile": "ams-named-ewma-har-full-year-t1-v1",
+        "role": "market"
+      },
+      "scope_id": "09339344e519fe9ea5774214e10d7734e986f05e6514d7ab8c7ae27dd43ba24d",
+      "profile": "ams-named-ewma-har-full-year-t1-v1",
+      "horizon": 1,
+      "recipes": [
+        {
+          "family": "har",
+          "horizon": 1,
+          "device": "cpu",
+          "window": 1,
+          "features": [
+            "har_1",
+            "har_5",
+            "har_22"
+          ],
+          "training_loss": "qlike",
+          "feature_formula": "own_har_k-log(named_ewma)",
+          "target_formula": "mature_named_actual/origin_named_ewma",
+          "forecast_formula": "origin_named_ewma*exp(intercept+relative_har@coef)",
+          "parameters": 4,
+          "seed": 42,
+          "profile": "named-ewma-har-control-t1-v1"
+        }
+      ],
+      "model_families": [
+        "har"
+      ],
+      "kind": "market_fit_receipt",
+      "completed_fits": 174,
+      "sample_receipts": [
+        {
+          "path": "ledger/completed/01959fbd6e3eb03da88e30f9a84e5c93496228a3928e5f0aa2dc741d9f0f8443.json",
+          "record_id": "10bc617b9d97246f94f052905522fe66b6be3c040e1ae33c68b3887c0672d68e",
+          "experiment_id": "01959fbd6e3eb03da88e30f9a84e5c93496228a3928e5f0aa2dc741d9f0f8443"
+        },
+        {
+          "path": "ledger/completed/01e3d2520a6233e720e02ecfd4dabc602e161b44f5fe7bf89541c99cf1eb149d.json",
+          "record_id": "536120c800bea539f2875c6799aee6f4949e9273c068102f8fca9afb94d37078",
+          "experiment_id": "01e3d2520a6233e720e02ecfd4dabc602e161b44f5fe7bf89541c99cf1eb149d"
+        },
+        {
+          "path": "ledger/completed/01f94baba47fac756df0c7cef098d3fdfaa8c14ccc33d383204599bb289d6665.json",
+          "record_id": "78d697c9a2ab1ae15bb5a8924d452514f2c3f810f99fe9b115386fb88bcf9a89",
+          "experiment_id": "01f94baba47fac756df0c7cef098d3fdfaa8c14ccc33d383204599bb289d6665"
+        }
+      ],
+      "roles": [
+        "AMS named full-year EWMA-offset HAR; see native receipts"
+      ],
+      "coverage": "completed fit receipts; experiment conclusion separate",
+      "payload_hashes_revalidated_by_index": false,
+      "sample_receipt_archive_context": "private Release, fresh restored native ledger"
+    },
+    {
+      "id": "b451c46a9348026ba57bee45e17a2256fed25db314381e2c673b0712f8370d03",
+      "scope": {
+        "identity_id": "a0ea33555a479d3ceee7d5c7a3818cc39b8cee053482a50f0d42da6cfc6ee7b6",
+        "source_id": "a0cce2f8191749363e350489a93f823cc1e90a3354e55787c58147a01c692e62",
+        "data_id": "e0e5aecb37f57bde98fd23c0d7d7501bebd34dfe8feff86a534e7019f709cef1",
+        "design_id": "1e0d2e45d7c4539932d4ed1be14c4127269f8ce227bf2f944ef7ecce07dd942a",
+        "profile": "ams-named-ewma-har-full-year-t1-v1",
+        "role": "synthetic_not_market"
+      },
+      "scope_id": "5ad115404648d2a78c6ff8893d8a7952b910bd8ddd9869b8a465c49d07603bb1",
+      "profile": "ams-named-ewma-har-full-year-t1-v1",
+      "horizon": 1,
+      "recipes": [
+        {
+          "family": "har",
+          "horizon": 1,
+          "device": "cpu",
+          "window": 1,
+          "features": [
+            "har_1",
+            "har_5",
+            "har_22"
+          ],
+          "training_loss": "qlike",
+          "feature_formula": "own_har_k-log(named_ewma)",
+          "target_formula": "mature_named_actual/origin_named_ewma",
+          "forecast_formula": "origin_named_ewma*exp(intercept+relative_har@coef)",
+          "parameters": 4,
+          "seed": 42,
+          "profile": "named-ewma-har-control-t1-v1"
+        }
+      ],
+      "model_families": [
+        "har"
+      ],
+      "kind": "synthetic_control:known_signal",
+      "completed_fits": 1,
+      "sample_receipts": [
+        {
+          "path": "learning/ledger/completed/983b4b71c2a541d2de4faa1b20d462bee77bfb1d0e191e8144581c7f1e6c3a37.json",
+          "record_id": "d86875dcf3b9e4ce88d04e41e4cb9d8523bd56df1660c45fe1649facd2d48232",
+          "experiment_id": "983b4b71c2a541d2de4faa1b20d462bee77bfb1d0e191e8144581c7f1e6c3a37"
+        }
+      ],
+      "roles": [
+        "AMS named full-year EWMA-offset HAR; see native receipts"
+      ],
+      "coverage": "completed fit receipts; experiment conclusion separate",
+      "payload_hashes_revalidated_by_index": false,
+      "sample_receipt_archive_context": "private Release, fresh restored native ledger"
     }
   ],
   "rejected_receipts": [],

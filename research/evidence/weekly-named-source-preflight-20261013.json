@@ -1,0 +1,35 @@
+{
+  "schema": 1,
+  "profile": "weekly-named-settlement-source-preflight-v1",
+  "classification": "SOURCE_FOUND_DAILY_CLOCK_NOT_ADMITTED",
+  "new_fits": 0,
+  "captured_reports": 305,
+  "captured_pdf_bytes": 143785872,
+  "parsed_v1_reports": 153,
+  "parsed_v2_reports": 250,
+  "new_weekly_calendar_dates": 1100,
+  "conflicting_vintage_dates": [
+    "2014-06-04"
+  ],
+  "independent_verification": {
+    "status": "verified",
+    "new_fits": 0,
+    "raw_pdf_hashes": 305,
+    "independent_pdfplumber_settlement_cells": 1500,
+    "retained_calendar_slots": 3520,
+    "new_weekly_calendar_dates": 1100,
+    "assumed_report_clock_current_observations": 5,
+    "conflicting_vintage_dates_preserved_unknown": [
+      "2014-06-04"
+    ],
+    "training_admitted": false
+  },
+  "exact_fresh_replay": true,
+  "archive_sha256": "aa40afda3ad9cd5f45dea706064afb5b65ab1a5363892863fc711e6c808c780f",
+  "archive_members": 831,
+  "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/weekly-named-source-preflight-20261013",
+  "training_admitted": false,
+  "predictive_skill_claim": false,
+  "old_records_preserved": 197,
+  "record_id": "d8776a2e54469e450c35bd66ee50106367cf2664dfb3d62894539729bf4f3b70"
+}

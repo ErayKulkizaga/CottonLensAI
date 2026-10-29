@@ -1,0 +1,39 @@
+{
+  "schema": 1,
+  "profile": "named-risk-loss-control-t1-v1",
+  "source_id": "1b71befe6e12fc83efda83a0d6bac2c72e781f7add137cf9cdf203e9c48cb7e9",
+  "design_id": "247ef55d895240e2be11a733034b2f33403ceb1d811f9b098f939bf81c34e8d7",
+  "ready_sha256": "25bb19e7762f713a57e3f7974a7373c6a1ab766a149e17bec3efac2305addd64",
+  "new_fits": 0,
+  "fresh_restore_verified": true,
+  "restored_members": 352,
+  "source_files": 276,
+  "archive_sha256": "6f1cf4f378f7bc5cbd8eb8175a6d76e15b9075e857f3abfcf1591c59612a2349",
+  "manifest_sha256": "72151dbc52bbd2b90c171206742a4a0b90c91a3ac5e1e2f44f29fedfd251b3b1",
+  "fit_budget": {
+    "market": 22,
+    "synthetic": 1,
+    "threads": 2,
+    "processes": 1,
+    "session_minutes": 30
+  },
+  "conditional_year": 2023,
+  "minimum_train": 554,
+  "ordinal_origins": 246,
+  "forecast_origins": 243,
+  "paired_origins": 242,
+  "historical_availability_verified": false,
+  "independent_holdout": false,
+  "release_allowed": false,
+  "planned_synthetic_fits": 1,
+  "ols_reference_validation": {
+    "status": "verified",
+    "old_source_id": "b2210ea149ee3d7c1daabfef1bbadb067a970a9baeff3e84720f7449e939a7e3",
+    "native_ols_fits": 22,
+    "new_fits": 0,
+    "ols_branch_ast_unchanged": true
+  },
+  "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/named-risk-loss-preregistration-20261012",
+  "human_authorization_scope": "Active human goal; one bounded fixed-HAR history mechanism test, no grid/production model",
+  "record_id": "e3fe949b4734ce9fd48a980130d5814e4810f08dc743582572d3d3f6e0859393"
+}
