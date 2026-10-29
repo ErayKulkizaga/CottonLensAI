@@ -1,5 +1,7 @@
 # CottonLens AI contributor notes
 
+- 2026-10-29 source-admission failure: official AMS annual Futures sheets contain stale contract-month labels. The current named history selects a past delivery month at218 dates, including217 evaluation origins in2019/2020. Before any further named-market fit, require contract-lifecycle validation and independent dated contract/price evidence; do not repair by guessing years or dropping expired rows. Old native outputs remain immutable but are not clean same-contract skill/no-signal evidence. See `docs/RISK_LEVEL_SOURCE_20261029.md` and latest `docs/STATUS.md`.
+
 - User disabled `CottonLens-Observed-Archive-v2` and removed the Codex forward monitor on 2026-10-21. Do not reinstall or enable automatic collection/publication tasks without a new explicit user request. Preserve the locked cohort and historical records; never backfill missing forward forecasts.
 
 - GPU/sequence training and `cottonlens-train` remain Colab-only; CI never trains real models. The approved full-year pilot may run small CPU tabular/HAR/GARCH fits locally with explicit `COTTONLENS_ALLOW_LOCAL_CPU_TABULAR=1`, one process and at most two threads. Use the same ledger and a separate CPU dependency group; no TensorFlow/CUDA installation locally.

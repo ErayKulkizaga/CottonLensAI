@@ -78,6 +78,17 @@ def test_kernel_recovers_fifth_coefficient_and_never_uses_test_labels(tmp_path):
         changed = pilot.fit(train, test, second, 'own_level')
     assert result == changed
     np.testing.assert_allclose(result['variance_predictions'], rows.variance_target_1.iloc[1000:], rtol=1e-5)
+    # Models are plain JSON protected by the enclosing ledger hash, not freeze_record JSON.
+    job = {'role': 'outer', 'bucket': 0, 'train_dates': train.date.dt.strftime('%Y-%m-%d').tolist(),
+           'origins': test.date.dt.strftime('%Y-%m-%d').tolist()}
+    ledger = pilot.Ledger(tmp_path, {'fixture': True})
+    specification = pilot.spec(job, train, 'own_level'); key = ledger.key(specification)
+    pilot.freeze_record(tmp_path/'completed'/f'{key}.json', {
+        'identity': ledger.identity, 'specification': specification, 'experiment_id': key,
+        'files': {'first/variance-model.json': pilot.digest(first/'variance-model.json')},
+        'payload_root': 'first', 'result': result})
+    native = pilot.native(ledger, job, train, test, 'own_level')
+    assert native['result'] == result
 
 
 def test_invalid_training_labels_fail_without_fallback(tmp_path):
@@ -90,3 +101,14 @@ def test_no_silent_dropped_origins_when_source_unready():
     rows = fixture(); states = pd.DataFrame({'date': rows.date, 'dxy_rv5': np.nan})
     with patch.object(pilot.parent, 'projection', return_value=rows.iloc[:2].copy()), pytest.raises(ValueError, match='drop/impute'):
         pilot.project(rows, states, rows.date.iloc[:2], False)
+
+
+def test_expired_contract_month_is_rejected_without_guessing_true_identity():
+    h = pd.DataFrame({'date': pd.to_datetime(['2020-02-26']), 'named_contract': ['2019-07-01']})
+    with pytest.raises(ValueError, match='past contract month'):
+        pilot.require_contract_lifecycle(h)
+    h['named_contract'] = '2020-03-01'
+    pilot.require_contract_lifecycle(h)
+    # Same-month validity needs the actual expiry calendar; this necessary gate makes no claim about it.
+    h['named_contract'] = '2020-02-01'
+    pilot.require_contract_lifecycle(h)

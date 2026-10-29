@@ -103,6 +103,17 @@ def features(rows, arm):
     return x
 
 
+def require_contract_lifecycle(history):
+    """Necessary admission invariant, not an exact exchange-expiry calendar."""
+    contracts = pd.to_datetime(history.named_contract)
+    origins = pd.to_datetime(history.date)
+    past = contracts.dt.to_period('M') < origins.dt.to_period('M')
+    if past.any():
+        first = history.loc[past, ['date', 'named_contract']].iloc[0]
+        raise ValueError(f'Unadmitted source: {int(past.sum())} origins use a past contract month; '
+                         f'first {first.date} / {first.named_contract}. No automatic year shift or rank repair.')
+
+
 def fit(train, test, workspace, arm):
     """Same log-link QLIKE solver/initialization; exactly one additional coefficient."""
     from scipy.optimize import minimize
@@ -161,6 +172,7 @@ def prepare(repo, root, reference, market):
         raise ValueError('Preserve existing namespace')
     validate(repo/'research')
     old, h = parent.verify(reference, repo)
+    require_contract_lifecycle(h)
     related = check(*load_registry(repo/'research'), family='har', horizon=1, query='qlike')
     folds = old['identity']['design']['folds']
     states = dxy_state(pd.read_parquet(market), h.date)
@@ -234,6 +246,7 @@ def verify(root, repo):
 def run(root, repo, authorization, minutes):
     require_training('har', 'cpu')
     ready, design, h, states = verify(root, repo)
+    require_contract_lifecycle(h)
     auth = read_record(authorization)
     if (auth.get('ready_sha256') != digest(root/'ready.json') or auth.get('source_id') != ready['identity']['source_id']
             or auth.get('design_id') != ready['identity']['design_id'] or auth.get('fresh_restore_verified') is not True
@@ -293,7 +306,7 @@ def native(ledger, job, train, test, arm):
     for name, checksum in r['files'].items():
         if not safe_member(name) or digest(ledger.root/name) != checksum:
             raise ValueError('Native model hash mismatch')
-    m = read_record(ledger.root/r['payload_root']/'variance-model.json'); o = m['optimization']
+    m = json.loads((ledger.root/r['payload_root']/'variance-model.json').read_text()); o = m['optimization']
     if m['recipe'] != recipe(arm) or m['effective_parameters'] != 5 or m['kind'] != PROFILE:
         raise ValueError('Wrong five-parameter recipe')
     x = features(train, arm); eta = np.column_stack([np.ones(len(train)), x])@m['coef']
@@ -325,7 +338,8 @@ def statistics(frame, a, b, bootstrap):
 
 
 def compare(root, repo):
-    ready, design, h, states = verify(root, repo)
+    # The post-fit JSON reader repair must not relabel/retrain the immutable fitted source.
+    ready, design, h, states = verify(root, root/'source-snapshot')
     ledger = Ledger(root/'ledger', ready['identity']); outputs = {}
     used, keys = fit_consumption(ledger.root)
     if used != 348 or len(keys) != 348 or not (root/'learning-control.json').is_file():
@@ -377,6 +391,8 @@ def compare(root, repo):
     comparisons['dxy_raw_vs_own_raw'] = statistics(frame, 'own_level_raw_loss', 'dxy_state_raw_loss', bootstrap)
     comparisons['dxy_selected_vs_own_selected'] = statistics(frame, 'own_level_selected_loss', 'dxy_state_selected_loss', bootstrap)
     report = {'profile': PROFILE, 'new_fits_during_report': 0, 'native_market_fits': 348, 'synthetic_fits': 1,
+              'fitted_source_id': ready['identity']['source_id'], 'reporting_source_id': source(repo)['source_id'],
+              'reporting_only_correction': 'Read checksum-verified plain model JSON as JSON, not as a ledger record',
               'reused_four_parameter_fits': 174, 'retained_origins': 2006, 'paired_origins': 1989,
               'comparisons': comparisons, 'selections': {a: outputs[a][1] for a in outputs},
               'independent_holdout': False, 'historical_availability_verified': False, 'first_vintage_verified': False,

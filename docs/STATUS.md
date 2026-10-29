@@ -1,3 +1,31 @@
+# Kaynak kabulü başarısız — 29 Ekim 2026
+
+[Aynı kapasitede risk kontrolü](RISK_LEVEL_SOURCE_20261029.md)348piyasa+1sentetik
+fit ile kapandı. İki kol da sabit üstünlük kapısını geçmedi. Ancak hata
+tarihlerini incelerken daha temel bir sorun doğrulandı: ham AMS yıllık
+Futures workbook'unda2020-02-26 için kontrat2019-07-01 yazıyor.
+Bu parser'ın yıl uydurması değildir; özgün XML C1433=43647, B1433=43887,
+fiyat65,47 ve Source.Name=20200226Futures.xlsx. Kaynak SHA03d7347b… korunur.
+
+Tam geçmişte218, değerlendirmede217 origin geçmiş vade ayına bağlıdır
+(2019:106,2020:111).2018–2019/2019–2020 yıllık dosyalarının sözleşme
+kimlikleri ayrıca yeniden doğrulanmalı. Bu bulgu, geçerli görünen vadelerin
+tamamının doğru olduğunu veya hatanın yalnız217satırla sınırlı kaldığını
+göstermez; sonraki train pencereleri de etkilenebilir. **Yeni named fit yok.**
+Current prepare/run geçmiş vade ayını reddeder;19ilgili test/Ruff geçti.
+Yılı otomatik artırmak veya eski vadeleri silip başka sırayı seçmek yasak:
+gerçek daily quote kimliği henüz bilinmiyor. Eski fiyat/veri/model/kanıt
+değişmez; bu yıllık dosyaları kullanan AMS full-year named-market hükümleri
+ek kaynak düzeltmesiyle METHODOLOGICALLY_COMPROMISED sayılır. Önceki yalnız
+2023 named veya CT deneyleri bu bulguyla otomatik geçersizleşmez;
+“piyasada sinyal yok” sonucu çıkarılmaz.
+
+Tek sonraki bilimsel iş, sorunlu tarihin bağımsız tarihli günlük kontrat/
+fiyat kanıtıyla eşleştirilmesi ve doğru kimliklerin kurulabilirliğidir.
+Yeni model/grid veya349fit tekrarı açılmaz. Saatlik görev ve üç trigger
+kapalı kalır. Aşağıdaki açıklamalar bu yeni kaynak bulgusundan önceki
+araştırma tarihçesidir.
+
 # Eğrilik ve mevcut dış-piyasa kaynağı — 29 Ekim 2026
 
 [Tek karesel yönün QLIKE score'u](RISK_CURVATURE_SCORE_20261029.md) sıfır yeni

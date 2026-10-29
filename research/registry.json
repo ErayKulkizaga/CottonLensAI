@@ -19712,6 +19712,51 @@
       "release_allowed": false,
       "independent_holdout": false,
       "id": "e49d5a063e9789631f68df2118c2d6ec1bf6e73c06c49c029aca4bc46354d7e7"
+    },
+    {
+      "experiment": "research-risk-level-source-t1-v1",
+      "profile": "risk-level-source-t1-v1",
+      "horizon": 1,
+      "kind": "completed_capacity_matched_risk_control",
+      "classification": "METHODOLOGICALLY_COMPROMISED",
+      "model_families": [
+        "har"
+      ],
+      "recipes": [],
+      "completed_market_fits": 348,
+      "completed_synthetic_fits": 1,
+      "origin_count": 2006,
+      "evidence": "evidence/risk-level-source-result-20261029.json",
+      "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/risk-level-source-result-20261029",
+      "market_skill": false,
+      "release_allowed": false,
+      "independent_holdout": false,
+      "id": "36a8c66f42a0cc54ac1e0294d3d45a072c1946812f42ed8be9fe60692457db38"
+    },
+    {
+      "experiment": "research-ams-contract-lifecycle-correction-v1",
+      "profile": "ams-contract-lifecycle-correction-v1",
+      "horizon": 1,
+      "kind": "completed_zero_fit_source_admission_correction",
+      "classification": "METHODOLOGICALLY_COMPROMISED",
+      "model_families": [
+        "har"
+      ],
+      "recipes": [],
+      "completed_market_fits": 0,
+      "completed_synthetic_fits": 0,
+      "origin_count": 2006,
+      "evidence": "evidence/ams-contract-lifecycle-correction-20261029.json",
+      "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/risk-level-source-result-20261029",
+      "market_skill": false,
+      "release_allowed": false,
+      "independent_holdout": false,
+      "affected_profiles": [
+        "ams-named-ewma-har-full-year-t1-v1",
+        "ams-risk-curvature-score-t1-v1",
+        "risk-level-source-t1-v1"
+      ],
+      "id": "754c2b4fd1bb3a02885b91510c51d1743be307501ed4898c3e20a2435f51bd74"
     }
   ],
   "local_evidence": [
@@ -20486,6 +20531,14 @@
     {
       "path": "evidence/risk-level-source-prereg-20261029.json",
       "sha256": "fc147cff61afc3ec0bec4d6b7e7ba5ce80e176a2a47a1021d89ec3c556994cf2"
+    },
+    {
+      "path": "evidence/risk-level-source-result-20261029.json",
+      "sha256": "01ced6b06e3197bd8a60f4761308b5d7e1b711c8e6179ffdad461686b94a0eab"
+    },
+    {
+      "path": "evidence/ams-contract-lifecycle-correction-20261029.json",
+      "sha256": "3e477532e8f30d4da79828c02c956eb6349a7542382d030cc87b7b4d339510f8"
     }
   ]
 }

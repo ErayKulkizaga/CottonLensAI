@@ -48,7 +48,7 @@ def verify(root):
         for name, checksum in rec['files'].items():
             if sha(root/'ledger'/name) != checksum:
                 raise ValueError('Native payload mismatch')
-        m = read(root/'ledger'/rec['payload_root']/'variance-model.json')
+        m = json.loads((root/'ledger'/rec['payload_root']/'variance-model.json').read_text())
         if m['effective_parameters'] != 5 or m['recipe'] != design['recipes'][arm]:
             raise ValueError('Native recipe mismatch')
 

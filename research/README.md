@@ -1,5 +1,13 @@
 # Deney geçmişi ve tekrar kontrolü
 
+29Ekim **kaynak kabulü başarısız**: AMS yıllık Futures tablolarında geçmiş
+kontrat kimlikleri bulundu;218history/217OOS origin. Son349fit ve eski named
+AMS full-year kontroller clean same-contract skill/no-signal kanıtı değildir; native
+dosyalar ve eski kayıtlar korunur, ek düzeltme kaydı önceliklidir.
+`docs/RISK_LEVEL_SOURCE_20261029.md` ve güncelSTATUS esas alınır. Yeni
+prepare/run geçmiş kontrat ayını reddeder. Bağımsız günlük kontrat/fiyat
+kanıtı olmadan yıl/rank tahminiyle onarım veya yeni fit yapılmaz.
+
 29 Ekim son sıfır-forecast-fit kayıtlar: [tek risk curvature score](../docs/RISK_CURVATURE_SCORE_20261029.md)
 ve [ham DXY yeniden kurma](../docs/DXY_RISK_SOURCE_AUDIT_20261029.md).
 Curvature INCONCLUSIVE; yeni nonlinear model gerekçesi değildir. DXY yalnız
