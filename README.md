@@ -1,5 +1,25 @@
 # CottonLensAI
 
+29 Ekim 2026 son karar: **named risk kaynağının kabulü henüz tamamlanmadı;
+EWMA üstünlüğü gösterilmedi.** Annual Futures dosyalarındaki kontrat kimliği
+ve sıra hataları gerçek HAR girdilerini etkiliyor. Son düzeltme kanıtı
+139değerlendirme tarihi/106ortak train işi gösteriyor; bu sayılar performans
+kaybı ölçümü değildir. Önceki AMS full-year sonuçları temiz aynı-kontrat
+becerisi veya sinyal yokluğu kanıtı sayılmaz; native dosyalar korunur.
+
+[Tam günlük kaynak denetimi](docs/AMS_REQUIRED_CELL_READINESS_20261029.md)
+dört tarihin on-kontrat tablosunu ikiPDFokuyucusuyla doğruladı; şüpheli
+bloklarda22gün açık. Görünmeyen uzak vade fiyatları doldurulmaz veya EWMA
+sessizce sıfırlanmaz. Son iş sırası [STATUS](docs/STATUS.md), geçmiş deney
+kontrolü `python ml/history.py check`; yeni model/grid yoktur. Saatlik görev
+ve üç tetikleyici kapalıdır. Private Release taze401dosya ile geri kuruldu;
+11çıktı byte eşit yeniden üretildi.36ilgili test/Ruff geçti; yeni fit0.
+
+## Korunan araştırma tarihçesi
+
+Aşağıdaki önceki hükümler tarihli araştırma kayıtlarıdır; kaynak kabulü ve
+sonraki adımlar için yukarıdaki son düzeltme ve STATUS esas alınır.
+
 Son [eğrilik denetimi](docs/RISK_CURVATURE_SCORE_20261029.md), yalnız pamuk
 geçmişinden yeni karesel modele geçişi desteklemedi. [Mevcut DXY verisi](docs/DXY_RISK_SOURCE_AUDIT_20261029.md)
 ham kaynaktan doğrulandı; bu alan mevcut risk modeline henüz gitmiyor ve

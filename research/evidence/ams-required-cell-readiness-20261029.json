@@ -1,0 +1,381 @@
+{
+  "schema": 1,
+  "profile": "ams-required-cell-readiness-v1",
+  "classification": "INCONCLUSIVE",
+  "classification_scope": "Verified literal full-daily source/feature defects; conservative dependency analysis is not full source admission or market skill",
+  "source_id": "ebe694c943e2fa109e25c05b9a4e151495e87ef407a5db163b5f7a91c200c6eb",
+  "completed_market_fits": 0,
+  "completed_synthetic_fits": 0,
+  "original_ordinal_origins": 2006,
+  "required_unique_origins": 2824,
+  "common_jobs": 174,
+  "full_daily_verified_days": 4,
+  "verified_price_scalars": 120,
+  "field_comparisons": [
+    {
+      "date": "2019-08-05",
+      "annual_contracts": [
+        "2019-05-01",
+        "2019-07-01",
+        "2019-10-01",
+        "2019-12-01",
+        "2020-03-01",
+        "2020-05-01",
+        "2020-07-01",
+        "2020-10-01",
+        "2020-12-01",
+        "2021-03-01"
+      ],
+      "full_daily_contracts": [
+        "2019-10-01",
+        "2019-12-01",
+        "2020-03-01",
+        "2020-05-01",
+        "2020-07-01",
+        "2020-10-01",
+        "2020-12-01",
+        "2021-03-01",
+        "2021-05-01",
+        "2021-07-01"
+      ],
+      "annual_second": "2019-07-01",
+      "full_daily_second": "2019-12-01",
+      "annual_missing_contracts": [
+        "2021-05-01",
+        "2021-07-01"
+      ],
+      "annual_extra_contracts": [
+        "2019-05-01",
+        "2019-07-01"
+      ],
+      "annual_common_value_differences": [
+        {
+          "contract": "2019-10-01",
+          "annual": "59.72",
+          "daily": "57.91"
+        },
+        {
+          "contract": "2019-12-01",
+          "annual": "61.13",
+          "daily": "58.48"
+        },
+        {
+          "contract": "2020-03-01",
+          "annual": "62.49",
+          "daily": "59.72"
+        },
+        {
+          "contract": "2020-05-01",
+          "annual": "62.19",
+          "daily": "61.13"
+        },
+        {
+          "contract": "2020-07-01",
+          "annual": "63.09",
+          "daily": "62.49"
+        },
+        {
+          "contract": "2020-10-01",
+          "annual": "64.35",
+          "daily": "62.19"
+        },
+        {
+          "contract": "2020-12-01",
+          "annual": "65.60",
+          "daily": "63.09"
+        },
+        {
+          "contract": "2021-03-01",
+          "annual": "66.90",
+          "daily": "64.35"
+        }
+      ],
+      "excerpt_present": false,
+      "excerpt_same_ten_values_and_names": null
+    },
+    {
+      "date": "2019-11-18",
+      "annual_contracts": [
+        "2019-05-01",
+        "2019-07-01",
+        "2019-10-01",
+        "2019-12-01",
+        "2020-03-01",
+        "2020-05-01",
+        "2020-07-01",
+        "2020-10-01",
+        "2020-12-01",
+        "2021-03-01"
+      ],
+      "full_daily_contracts": [
+        "2019-12-01",
+        "2020-03-01",
+        "2020-05-01",
+        "2020-07-01",
+        "2020-10-01",
+        "2020-12-01",
+        "2021-03-01",
+        "2021-05-01",
+        "2021-07-01",
+        "2021-10-01"
+      ],
+      "annual_second": "2019-07-01",
+      "full_daily_second": "2020-03-01",
+      "annual_missing_contracts": [
+        "2021-05-01",
+        "2021-07-01",
+        "2021-10-01"
+      ],
+      "annual_extra_contracts": [
+        "2019-05-01",
+        "2019-07-01",
+        "2019-10-01"
+      ],
+      "annual_common_value_differences": [
+        {
+          "contract": "2019-12-01",
+          "annual": "68.32",
+          "daily": "64.21"
+        },
+        {
+          "contract": "2020-03-01",
+          "annual": "68.61",
+          "daily": "65.97"
+        },
+        {
+          "contract": "2020-05-01",
+          "annual": "68.26",
+          "daily": "67.24"
+        },
+        {
+          "contract": "2020-07-01",
+          "annual": "68.56",
+          "daily": "68.32"
+        },
+        {
+          "contract": "2020-10-01",
+          "annual": "68.76",
+          "daily": "68.61"
+        },
+        {
+          "contract": "2020-12-01",
+          "annual": "68.96",
+          "daily": "68.26"
+        },
+        {
+          "contract": "2021-03-01",
+          "annual": "67.71",
+          "daily": "68.56"
+        }
+      ],
+      "excerpt_present": false,
+      "excerpt_same_ten_values_and_names": null
+    },
+    {
+      "date": "2020-12-04",
+      "annual_contracts": [
+        "2020-12-01",
+        "2021-03-01",
+        "2021-05-01",
+        "2021-07-01",
+        "2021-10-01",
+        "2021-12-01",
+        "2022-03-01",
+        "2022-05-01",
+        "2022-07-01",
+        "2022-10-01"
+      ],
+      "full_daily_contracts": [
+        "2020-12-01",
+        "2021-03-01",
+        "2021-05-01",
+        "2021-07-01",
+        "2021-10-01",
+        "2021-12-01",
+        "2022-03-01",
+        "2022-05-01",
+        "2022-07-01",
+        "2022-10-01"
+      ],
+      "annual_second": "2021-03-01",
+      "full_daily_second": "2021-03-01",
+      "annual_missing_contracts": [],
+      "annual_extra_contracts": [],
+      "annual_common_value_differences": [
+        {
+          "contract": "2021-12-01",
+          "annual": "70.70",
+          "daily": "70.69"
+        },
+        {
+          "contract": "2022-03-01",
+          "annual": "71.59",
+          "daily": "71.58"
+        },
+        {
+          "contract": "2022-05-01",
+          "annual": "72.12",
+          "daily": "72.11"
+        },
+        {
+          "contract": "2022-07-01",
+          "annual": "72.41",
+          "daily": "72.40"
+        },
+        {
+          "contract": "2022-10-01",
+          "annual": "70.27",
+          "daily": "70.26"
+        }
+      ],
+      "excerpt_present": true,
+      "excerpt_same_ten_values_and_names": true
+    },
+    {
+      "date": "2021-02-09",
+      "annual_contracts": [
+        "2021-05-01",
+        "2021-07-01",
+        "2021-10-01",
+        "2021-12-01",
+        "2022-03-01",
+        "2022-05-01",
+        "2022-07-01",
+        "2022-10-01",
+        "2022-12-01",
+        "2023-03-01"
+      ],
+      "full_daily_contracts": [
+        "2021-03-01",
+        "2021-05-01",
+        "2021-07-01",
+        "2021-10-01",
+        "2021-12-01",
+        "2022-03-01",
+        "2022-05-01",
+        "2022-07-01",
+        "2022-10-01",
+        "2022-12-01"
+      ],
+      "annual_second": "2021-07-01",
+      "full_daily_second": "2021-05-01",
+      "annual_missing_contracts": [
+        "2021-03-01"
+      ],
+      "annual_extra_contracts": [
+        "2023-03-01"
+      ],
+      "annual_common_value_differences": [],
+      "excerpt_present": true,
+      "excerpt_same_ten_values_and_names": true
+    }
+  ],
+  "remaining_unresolved_suspect_days": [
+    "2018-09-05",
+    "2018-09-14",
+    "2018-09-17",
+    "2018-09-18",
+    "2018-09-19",
+    "2018-09-20",
+    "2018-11-14",
+    "2018-11-16",
+    "2018-11-19",
+    "2018-11-20",
+    "2018-11-26",
+    "2018-12-24",
+    "2018-12-26",
+    "2019-08-02",
+    "2019-10-14",
+    "2019-10-22",
+    "2019-10-25",
+    "2019-11-11",
+    "2019-12-03",
+    "2019-12-24",
+    "2020-02-13",
+    "2020-02-14"
+  ],
+  "witness_quote_days": 1335,
+  "verified_contiguous_har_windows": 943,
+  "independent_decimal_feature_scalars": 2829,
+  "verified_changed_evaluation_origins": 139,
+  "native_jobs_with_changed_train": 106,
+  "native_jobs_with_changed_test": 28,
+  "conditional_evaluation_target_pairs_ready": 1955,
+  "conditional_evaluation_har_ready": 1794,
+  "conditional_evaluation_ewma_ready": 667,
+  "conditional_all_required_ready": 662,
+  "potential_unknown_ewma_cells_upper_bound": 2053,
+  "upper_bound_is_not_actual_error_count": true,
+  "source_report_sha256": "d7eb9fdd807f0bea50925808ff6f4d43d2fb4444bd6e81ffe84ecce209ef33cf",
+  "readiness_report_sha256": "92b0e66f637ceeebf6efd3bf299c63662127d700912d7dea1ad5e869323020dc",
+  "feature_report_sha256": "43fe86e3e4885484834ea0c9e36836dc75a3029ee35ceb14d25e82a93dedd645",
+  "independent_readiness": {
+    "status": "independently_verified_conditional_dependencies",
+    "new_fits": 0,
+    "original_ordinal_origins": 2006,
+    "required_origins_checked": 2824,
+    "known_rank_origins_checked": 2794,
+    "common_jobs_checked": 174,
+    "potential_unknown_cells_upper_bound_checked": 2053,
+    "report_sha256": "92b0e66f637ceeebf6efd3bf299c63662127d700912d7dea1ad5e869323020dc",
+    "verifier_sha256": "9d763d4006c1742f962816f24b24fb1dc8f781ad06e0fb698166769829a63992",
+    "training_allowed": false,
+    "market_skill": false,
+    "scope": "Same explicit conservative source scopes, independent set/bisect dependency calculation; does not prove far contracts were listed or calibrate market error."
+  },
+  "independent_feature": {
+    "status": "independently_verified_feature_inputs",
+    "new_fits": 0,
+    "decimal_feature_scalars": 2829,
+    "verified_changed_history_origins": 139,
+    "native_jobs_with_changed_train": 106,
+    "result_sha256": "43fe86e3e4885484834ea0c9e36836dc75a3029ee35ceb14d25e82a93dedd645",
+    "verifier_sha256": "fadb84b4fb9ece7fb6c11766a8d8d8b47ed625680c81036b237a63cad08d38cb"
+  },
+  "capture": {
+    "status": "completed_source_capture",
+    "dates": 16,
+    "receipts": 16,
+    "parsed": 4,
+    "requests": 14,
+    "response_bytes": 2563195,
+    "new_fits": 0,
+    "training_allowed": false
+  },
+  "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/ams-required-cell-readiness-20261029",
+  "archive_sha256": "07eaca18da1b617a8ddf823ef614be8013da12889aac517a65e1cabe61719025",
+  "archive_bytes": 10481417,
+  "fresh_restored_members": 401,
+  "fresh_replay": {
+    "status": "fresh_frozen_replay_byte_identical",
+    "source_id": "ebe694c943e2fa109e25c05b9a4e151495e87ef407a5db163b5f7a91c200c6eb",
+    "new_fits": 0,
+    "network_requests_during_replay": 0,
+    "equal_outputs": {
+      "full-daily/result.json": "d7eb9fdd807f0bea50925808ff6f4d43d2fb4444bd6e81ffe84ecce209ef33cf",
+      "full-daily/verified-full-daily-overlay.json": "78b0d74705525045cd82da8c559df27722b19c90b221453b0f541de298b7db86",
+      "execution/result.json": "92b0e66f637ceeebf6efd3bf299c63662127d700912d7dea1ad5e869323020dc",
+      "execution/origin-readiness.csv": "5a6fbab9521618b60e8d4162224cbf29b0f162fd05db4a21d6bea4ae7e1b2422",
+      "execution/unknown-ewma-cells.csv": "f9eefb37a2a49de9e5d7b0575f0afd0694e5b62d402851c018f2403e88e25d53",
+      "execution/job-readiness.csv": "7b51028614e72afea2871b7f2bbedb3b789084b2df780d721f942dbc9b576edc",
+      "execution/witness-overlay.json": "1d6124234aa0453537aa732626039adbf81c1c9c54c190936edc8b048fc37bd0",
+      "feature-impact/result.json": "43fe86e3e4885484834ea0c9e36836dc75a3029ee35ceb14d25e82a93dedd645",
+      "feature-impact/feature-impact.csv": "0cc1e6c1edeed6ba9d31252ee9912fa8bc3f207885f92904203e951cb7a7d5e7",
+      "independent-readiness.json": "20943ecfe265aa04ace2ada949abb1b21d4ffb7914beaa91a6be5ca28593d8c3",
+      "independent-feature.json": "bf541c032f08614915b651501999621c8ed24e417ce5b8cbb6b9d96abfab3ec5"
+    },
+    "replay_script_sha256": "9125f3131f63f323194a6403396038f900428dc18aadf30951bea9b7cd77e3a2"
+  },
+  "normalized_dependency_view": true,
+  "upstream_release": "ams-weekly-contract-recovery-20261029",
+  "old_registry_stages_preserved": 214,
+  "old_evidence_hashes_preserved": 195,
+  "old_trials_sha256": "99004d234a71eab55b7e0f5d38e06c18bd83a60c56de55cd52f4cddb33d77051",
+  "market_skill": false,
+  "training_allowed": false,
+  "release_allowed": false,
+  "historical_availability_verified": false,
+  "first_vintage_verified": false,
+  "next_exact_step": "Obtain one original early2018 ten-contract daily witness, starting2018-08-01, or dated listing evidence before treating unseen far quotes as absent. Do not expand six-column collection or refit unadmitted named history.",
+  "record_id": "00248096dac66258f8346d874cee651bb84553a7ac5eb617b0114474b094713e"
+}

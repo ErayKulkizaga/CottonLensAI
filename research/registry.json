@@ -19811,6 +19811,33 @@
       "release_allowed": false,
       "independent_holdout": false,
       "id": "2c5ed996e6bedbf9b984998067ce1dc0621c39ae07ca37d5f7ab5589e3607b36"
+    },
+    {
+      "experiment": "research-ams-required-cell-readiness-v1",
+      "profile": "ams-required-cell-readiness-v1",
+      "horizon": 1,
+      "kind": "completed_zero_fit_required_source_dependencies_and_full_daily_witnesses",
+      "classification": "INCONCLUSIVE",
+      "classification_scope": "Verified literal full-daily source/feature defects; conservative dependency analysis is not full source admission or market skill",
+      "model_families": [
+        "har"
+      ],
+      "recipes": [],
+      "completed_market_fits": 0,
+      "completed_synthetic_fits": 0,
+      "origin_count": 2006,
+      "source_id": "ebe694c943e2fa109e25c05b9a4e151495e87ef407a5db163b5f7a91c200c6eb",
+      "evidence": "evidence/ams-required-cell-readiness-20261029.json",
+      "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/ams-required-cell-readiness-20261029",
+      "market_skill": false,
+      "training_allowed": false,
+      "release_allowed": false,
+      "independent_holdout": false,
+      "affected_profiles": [
+        "ams-named-ewma-har-full-year-t1-v1",
+        "risk-level-source-t1-v1"
+      ],
+      "id": "fb963c8264f1e4e0de202fecf26f4577b7c05f3943ea46185c21ad782487f0e7"
     }
   ],
   "local_evidence": [
@@ -20601,6 +20628,10 @@
     {
       "path": "evidence/ams-weekly-contract-recovery-20261029.json",
       "sha256": "00b502d3c8d79b9f79f3490ab5a6c9a3ab8f962274636fc11ae2de7c8c60269e"
+    },
+    {
+      "path": "evidence/ams-required-cell-readiness-20261029.json",
+      "sha256": "c6e2ae11e23c57959c88adaf6b20dd11debdc2e85df67f1b9f2087aaa3bf388b"
     }
   ]
 }

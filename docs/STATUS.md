@@ -1,3 +1,21 @@
+# Tam günlük tanık ve gerekli hücre sınırı — 29 Ekim 2026
+
+[Gerekli hücre denetimi](AMS_REQUIRED_CELL_READINESS_20261029.md) dört tam
+CNDDSQgününü/120fiyat scalar'ını ikiPDFokuyucusuyla doğruladı.2019Aug5/Nov18
+kurtarıldı; şüpheli bloklarda22gün açık.2021Feb9annual ilkMay/ikinciJul,
+iki günlük rapor ilkMar/ikinciMay gösteriyor; kusur iki eski blokla sınırlı
+değil.2020Dec4iki günlük rapor aynı; farkı intraday diye açıklamak desteklenmedi.
+1.335tanıklı gün/943tam pencere/2.829Decimal HAR kontrolü;139eski OOSgirdi,
+106ortak train/28test işi etkilenmiş. Yeni fit0, piyasa üstünlüğü yok.
+
+2.006slot/2.824gerekli origin/174iş bağımsız kontrol edildi. Bilinmeyen uzak
+quote yok sayılmadığında tam kaynak kabulü hâlâ yoktur.2.053potansiyel EWMA
+hücresi muhafazakâr üst sınırdır; gerçek hata sayısı/listing kanıtı değildir.
+Tek sonraki kaynak sorusu2018Aug1özgün on-kontrat tanığı veya gerekli tarihli
+listing kanıtıdır. Sessiz EWMAreset/yıl tahmini/ek altı-kolon toplama/grid yok.
+36test/Ruff geçti. PR59f1e8d66CI8/8SUCCESS; saatlik görev kapalı kalır.
+Aşağıdaki kayıtlar tarihçedir; eski ham/model/kanıt dosyaları değişmez.
+
 # Haftalık kontrat kimliği kurtarma — 29 Ekim 2026
 
 [Haftalık kaynak doğrulaması](AMS_WEEKLY_CONTRACT_RECOVERY_20261029.md)

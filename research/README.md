@@ -1,5 +1,10 @@
 # Deney geçmişi ve tekrar kontrolü
 
+Son kaynak kararı:[tam günlük tanık/gerekli hücre sınırı](../docs/AMS_REQUIRED_CELL_READINESS_20261029.md).
+DörtCNDDSQ/120scalar,139gerçek HAR farkı;22şüpheli gün açık. Uzak quote
+bilinmiyor diye EWMAreset yapılmaz.2.053potansiyel hücre üst sınırdır,
+gerçek hata sayısı değildir. Yeni fit0;36test/Ruff geçti; STATUS günceldir.
+
 Son kaynak eki:[haftalık kontrat kimliği kurtarma](../docs/AMS_WEEKLY_CONTRACT_RECOVERY_20261029.md).
 Sıfır-fit kayıt73şüpheli güne yalnız görünen kontrat/fiyat prefix'ini ekler;
 24gün çözümsüzdür.138eski HAR origin'i farklıdır. Tam source admission veya
