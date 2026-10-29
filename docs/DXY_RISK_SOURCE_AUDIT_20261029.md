@@ -42,11 +42,25 @@ kullanır. DXY alanının feature tablosunda bulunması, risk modelinin onu
 kullandığı anlamına gelmez. Önceki DXY fiyat-MAE/zamanlama deneylerinden bu
 yeni risk girdisinin faydalı veya faydasız olduğu çıkarılamaz.
 
-**PLAUSIBLE, henüz sınanmadı:** bu farklı piyasa durumu pamuk riskine ek
-bilgi sağlayabilir. Tek sonraki test, aynı native risk tahminlerinde bu sabit
-DXY beş-gözlem risk state'inin geçmişte normalize edilmiş QLIKE score'udur.
-Lag, hedef, cohort, model, refit ve referans aynı kalmalı; sonra sonuçtan
-yeni bir lag/window/işaret araması türetilmemelidir. Yeni eğitim başlatılmadı.
+**PLAUSIBLE, henüz sınanmadı:** farklı piyasa durumu pamuk riskine ek bilgi
+sağlayabilir. Bu denetim eski, bir Cotton gözlemi gecikmeli alanların doğru
+yeniden kurulduğunu gösterir; yeni girdiyi aynı fazladan gecikmeyle kullanma
+talimatı değildir. Aynı varsayımsal clock altında origin gününün DXY barı da
+karar anında tamamlanmış olabilir. Mevcut risk modelleri DXY kullanmadığı
+için bu lag onların geçmiş başarısızlığını açıklamaz.
+
+Tek sonraki test için önce **raw DXY gözlem takviminde** beş günlük kare-getiri
+ortalaması oluşturulmalı; sonra kaynak barı+1gün00:00UTC≤aynı00:15kararı
+koşuluyla son tamamlanmış state seçilmelidir. Böylece başka kaynağın takvimi
+Cotton satırlarına sıkıştırılmadan ve keyfi ek lag taşınmadan tek yeni bilgi
+state'i sınanır. Bu, eski eşlenmiş-beş-gözlem alanından farklı bir adaydır;
+etkisi henüz ölçülmedi. Hedef/cohort/native model/refit/referans korunur.
+Yeni tasarım, availability varsayımına bağlı **tek** kaynak katkısı sorusudur;
+timing etkisini ayrı izole ettiğini iddia edemez. Lag/window/işaret grid'i
+veya yeni eğitim başlatılmadı. [Tek kontrollü forecast deneyi](RISK_CURVATURE_SCORE_20261029.md)
+aynı kapasitedeki serbest-own-EWMA-level ve DXY-state kollarını karşılaştıracak;
+kurallar veri QA ve source kilidiyle fit'ten önce dondurulmalıdır. Salt OOS
+score elemesiyle küçük etkiyi yanlışlıkla yok sayan yeni bir program açılmaz.
 
 ## Saklama ve yeniden oynatma
 

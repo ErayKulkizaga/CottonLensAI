@@ -17,9 +17,17 @@ Bu ek alan mevcut3HAR risk learner'ına gitmiyor; source effect henüz
 indirme veya forecast model fit'i yoktur. Saat/ilk-vintage varsayımı sürer.
 
 Sicil209aşama/551tarif/31.463fit kopyası; eski207aşama/188kanıt ve trials
-bytes korunur. Tek sonraki iş **aynı gerçek risk tahminlerinde sabit DXY
-risk-state QLIKE score'u**; aynı lag/cohort/target/reference, geçmiş-only
-normalization ve yıl/blok/top1% kontrolleriyle. Yeni model/lag/window grid'i
+bytes korunur. Kaynak incelemesi ayrıca native4param sınıfında log(EWMA)
+katsayısının diğer üç katsayıya bağlı olduğunu doğrular; bu kısıtın gerçek
+piyasada doğru olduğu sentetik başarıdan çıkmaz. **Tek sonraki deney:**
+aynı üçrelative-HAR'a A'da serbestlogEWMA, B'de raw DXY gözlem takviminden
+5return risk state'i ekleyen iki5parametreli kol. Raw DX state aynı00:15
+kararına assumed availability as-of ile seçilir; legacy ek Cotton lag'i
+taşınmaz. Aynı cohort/target/reference/normalization/selection/refit korunur.
+348market+1synthetic=349CPUfit tavanı; kod/source/ön kayıt henüz hazırlanmadı,
+fit yok. Mevcut4param174native kontrol tekrar eğitilmez. OOS score anlamlılık
+elemesi yeni eğitimin ön koşulu yapılmaz; QA/frozen-source taze restore ve
+değişmeyen model üstünlük kapıları korunur. Model/lag/window grid'i
 veya otomatik dataset/collector açılmaz. MevcutEWMA korunur; piyasa başarısı
 hâlâ doğrulanmadı. Aşağıdaki eski sonraki-adım ifadeleri tarihsel kayıttır.
 

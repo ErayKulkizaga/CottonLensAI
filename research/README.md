@@ -5,7 +5,9 @@ ve [ham DXY yeniden kurma](../docs/DXY_RISK_SOURCE_AUDIT_20261029.md).
 Curvature INCONCLUSIVE; yeni nonlinear model gerekçesi değildir. DXY yalnız
 kaynak/coverage kontrolüdür, risk etkisi sonucu yoktur. Eski fiyat-DXY
 deneyleriyle risk katkısını eşitleme. Sicil209aşama/551tarif/31.463fit kopyası;
-trials bytes değişmedi. Sonraki tek iş sabit DXY risk-state score analizidir.
+trials bytes değişmedi. Sonraki tek kontrollü deney aynı5param kapasitede
+own-EWMA-level ve DXY-risk-state karşılaştırmasıdır;349CPUfit tavanı önerildi,
+henüz yeni source/recipe kilidi veya fit yok. Ayrıntı docs/STATUS.md'dedir.
 
 29 Ekim son kontrol: [noisy risk weak teacher](../docs/RISK_WEAK_TEACHER_20261029.md),
 1.044sentetik/0piyasa fit ile tamamlandı. Aynı modelde bilinen zayıf ortalama

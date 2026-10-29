@@ -50,7 +50,7 @@ Decimal ile hesaplar ve iki paired-difference bootstrap aralığını tekrarlar.
 En büyük basis farkı5,33e−15; score farkı3,55e−15. Dört yeni regresyon testi
 ve Ruff geçti. Raporlar ve model payload'ları eski halleriyle korunur.
 
-## Bir sonraki veri sorusunu daraltan bulgu
+## Bilgi kapsamı ve bir sonraki karşılaştırma
 
 Risk modeli yalnız `har_1/har_5/har_22` kullanıyor; bu aynı pamuk geçmişinin
 başka bir sıkıştırmasıdır. Dondurulmuş veri tablosunda DXY/WTI getirileri,
@@ -69,10 +69,37 @@ gerçek publication UTC veya model kabulü değildir.
 Bu getirilerin ham kaynaktan yeniden kurulması [ek kaynak denetimiyle](DXY_RISK_SOURCE_AUDIT_20261029.md)
 tamamlandı: 3.520 Cotton fiyatı/10.531 DXY return scalar'ı eşleşir; aynı
 girdi2.787benzersiz train origin'inde de kurulabiliyor. Saat/vintage varsayımı
-korunur; katkı henüz ölçülmedi. Tek sonraki iş sabit DXY-risk katkısı için
-sıfır-forecast-fit QLIKE score tasarımıdır. Yeni dataset/model/grid açılmaz.
+korunur; katkı henüz ölçülmedi. Eski ekstra Cotton lag'i yeni girdiye
+otomatik taşınmaz; raw DXY gözlem takviminde kurulup aynı karar anına
+as-of bağlanan state, eski eşlenmiş state ile eşitlenmez.
 Mevcut pamuk bilgisinin dönüşümlerini tekrar tekrar büyütmek yerine,
 gerçekten farklı bilginin erişip erişmediği sınanmalıdır.
+
+**VERIFIED — model sınıfının bir kısıtı:** native recipe
+`log(p)=log(b)+beta0+sum(beta_k*(log(H_k)-log(b)))` kullanır. Dolayısıyla
+mutlak log-HAR biçiminde `log(b)` katsayısı `1-sum(beta_k)` olmak zorundadır;
+bağımsız öğrenilmez. Bu tek başına hata veya başarısızlığın nedeni değildir.
+Fakat zayıf öğretici de aynı kısıtlı sınıfta üretildiği için onun başarısı
+bu kısıtın gerçek piyasada doğru olduğunu doğrulamaz. Bu, basit “bilgi yok”
+yorumuna karşı açık kalan bir alternatiftir.
+
+Tek sonraki deney iki **beş parametreli** kolu karşılaştırmalıdır: aynı üç
+relative-HAR'a ek olarak A'da serbest `log(origin_EWMA)`, B'de karar anına
+bağlanmış `log(DXY_RV5)` bulunur. Böylece yalnız parametre sayısını artırmak
+ile farklı kaynak state'ini kullanmak karıştırılmaz. Mevcut dört parametreli
+kontrolün174native fit'i yeniden eğitilmez. Aynı174iş/kol ve bir ortak yeni
+kernel sentetiği: **348piyasa+1sentetik=349fit** tavanı, tek CPU süreç/iki
+thread/30dakikalık checkpoint oturumu. Bu henüz öneridir; yeni recipe/source
+ön kaydı ve eğitim başlamadı.
+
+Yeni model seçmeden önce OOS score'un anlamlı olmasını zorunlu tutan bir
+eleme zinciri açılmaz: önceki bilinen-sinyal kontrolü, gerçek bir etki varken
+gerçekleşmiş aralığın sıfırı içerebildiğini gösterdi. Bunun yerine bu tek,
+kısıtlı ve önceden kilitlenecek forecast karşılaştırması yapılır. Veri/clock
+QA ve yeni source/preregistration taze geri kurması fit ön koşuludur;
+modelin üstünlük kapıları gevşetilmez. Bu iki kolun kıyası belirli bir
+representation/source seçimini sınar; bütün modelleri veya kaynakta causal
+bilgi yokluğunu karara bağlamaz.
 
 [Private curvature sürümü](https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/risk-curvature-score-20261029)
 1.548 dosya/44.065.505 mantıksal baytı taze geri kurdu; exclusion0.
