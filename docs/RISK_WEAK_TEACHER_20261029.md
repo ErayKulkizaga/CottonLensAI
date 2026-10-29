@@ -61,3 +61,39 @@ modeller, kanıtlar ve kullanıcı tarafından kapatılmış collector korunur.
 CLI: `python -B -m research.risk_weak_teacher prepare|verify|pilot|compare`.
 Pilot yalnız source/ready/design/budget ve taze geri kurmaya bağlı authorization
 ile çalışır. Başarısız native fit otomatik tekrarlanmaz. Raporlama fit çağırmaz.
+
+## Sonuç: kontrol geçti, piyasa üstünlüğü gösterilmedi
+
+1.044 sentetik fit tamamlandı; başarısız attempt0, yeni piyasa fit0.
+Bilinen ortalamanın oracle katkısı her seed için0,01043714'tür.
+
+| Seed | Ham beklenen katkı | Oracle kurtarma | Seçilmiş beklenen katkı | Ham gerçekleşen katkı |
+|---|---:|---:|---:|---:|
+| 42 | +0,00907474 | %86,95 | +0,00722190 | +0,01233628 |
+| 1701 | +0,00802447 | %76,88 | +0,00650367 | +0,01587172 |
+| 2703 | +0,00682121 | %65,36 | +0,00579039 | +0,01301907 |
+
+Ortalama kurtarma%76,40; üç seed'in her birinde pozitif ham beklenen katkı
+vardır. Beklenen pozitif yıllar hamda8/8, seçilmişte7/8,6/8,6/8'dir.
+Null koşulunda her seed'in ham ve seçilmiş beklenen katkısı negatiftir.
+Geçmiş shrinkage pozitif etkiyi azaltır; kontrolün tamamını sıfıra indirmez.
+
+Seed1701'de ham gerçekleşen katkı pozitif olsa da CI20
+[−0,00005753;+0,03264990] ve CI60[−0,00068626;+0,03219981] sıfırı içerir.
+Bu senaryoda etki tasarımdan bilinmektedir: aralıkta sıfır bulunması, etkinin
+olmadığını veya modelin öğrenemediğini göstermez. Buna karşılık diğer seed'ler
+ve bu bağımsız inovasyon varsayımı, gerçek piyasanın güç garantisi değildir.
+
+**VERIFIED:** mevcut risk learner/selection düzeni bu küçük, tam temsil
+edilebilir etkiyi bu üç sabit tasarımda öğrenebiliyor. “Küçük bir ilişkiyi bile
+öğrenemeyen bozuk model” genel açıklaması bu kapsamda desteklenmiyor.
+**NOT SUPPORTED:** buradan gerçek girdilerde sinyal yokluğu, bütün nonlinear
+temsillerin yetersizliği veya piyasa tahmin başarısı çıkarılamaz. Gerçek piyasa
+çalışmalarının EWMA üstünlüğü hâlâ doğrulanmış değildir.
+
+Bağımsız denetim1.044native model,71.604Decimal kayıp scalar'ı,72blok aralığı
+ve48geçmiş ağırlık seçimini doğruladı. İlk bağımsız CSV okumasında literal
+`null` koşulu pandas'ın varsayılan NA listesine takıldı; okuyucu artık yalnız
+boş alanı missing kabul eder. Yeni regresyon testi var; CSV/model/fitler
+değiştirilmedi veya yeniden çalıştırılmadı. 22ilişkili+3verifier testi ve Ruff
+geçti. Sonuç modeli canlıya yayımlamaz; kapalı collector kapalı kalır.
