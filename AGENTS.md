@@ -1,6 +1,7 @@
 # CottonLens AI contributor notes
 
 - 2026-10-29 source-admission failure: official AMS annual Futures sheets contain stale contract-month labels. The current named history selects a past delivery month at218 dates, including217 evaluation origins in2019/2020. Before any further named-market fit, require contract-lifecycle validation and independent dated contract/price evidence; do not repair by guessing years or dropping expired rows. Old native outputs remain immutable but are not clean same-contract skill/no-signal evidence. See `docs/RISK_LEVEL_SOURCE_20261029.md` and latest `docs/STATUS.md`.
+- A future delivery month can also be mislabeled: lifecycle checks alone do not admit a named dataset. Daily-source reconciliation now proves actual HAR input errors; partial overlays with unknown dates remain unadmitted. Preserve all ordinal slots and source conflicts, and never infer historical daily availability from a later weekly report.
 
 - User disabled `CottonLens-Observed-Archive-v2` and removed the Codex forward monitor on 2026-10-21. Do not reinstall or enable automatic collection/publication tasks without a new explicit user request. Preserve the locked cohort and historical records; never backfill missing forward forecasts.
 

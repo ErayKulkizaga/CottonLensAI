@@ -1,3 +1,27 @@
+# Kaynak kimliği ve gerçek feature etkisi — 29 Ekim 2026
+
+[Günlük kaynak mutabakatı](AMS_CONTRACT_RECONCILIATION_20261029.md) sıfır-fit
+olarak1.262ham raporu kontrol etti;332gün/3.320kontrat kimliği için fiyat
+vektörü aynı kalırken doğru etiket bağımsız olarak gösterildi.1.225bilinen
+hedef çiftinde8sayısal hata var. Tam23Cotton gözlemiyle kontrol edilebilen
+863pencerenin110'unda eski HAR girdisi farklı;174ortak işin96train/20test
+girdisi doğrudan etkilenmiş. Bu, yalnız görüntü etiketi kusuru değildir.
+Onarımın performansa toplam etkisi henüz ölçülmedi.
+
+230tarih/447istek/5,25MB sınırlı manuel toplama213raporu doğruladı;17tarih
+başarısız/uyuşmazlık olarak kaldı. İki şüpheli yıllık blokta97gün hâlâ
+çözümsüzdür; üç fiyat çatışması ve eksik günlük kayıtlar gizlenmedi.
+Özgün2.006slot, eski raw/model/tahmin ve sicil korunur; yalnız ayrı,
+henüz training-admitted olmayan veri overlay'i vardır. Yeni fit0.
+10yeni test/Ruff ve bağımsız12.620quote/1.225target/2.589HAR scalar doğrulaması
+geçti. PR57son head14c79b9CI8/8SUCCESS; model başarısı anlamına gelmez.
+
+Tek sonraki iş kalan kontrat/fiyat kanıtlarını tamamlayıp HAR/EWMA state'ini
+yeniden kurmaktır. Yeni model/grid açılmaz. Yaşam döngüsü filtresi tek başına
+yeterli değildir; gelecekte görünen yanlış teslim ayı da bağımsız kaynakla
+doğrulanmalıdır. Eski CT/2023-onlynamed ve saf sentetik kontroller bu yeni
+kaynak hatasıyla otomatik geçersizleşmez. Görev/üç trigger kapalı kalır.
+
 # Kaynak kabulü başarısız — 29 Ekim 2026
 
 [Aynı kapasitede risk kontrolü](RISK_LEVEL_SOURCE_20261029.md)348piyasa+1sentetik

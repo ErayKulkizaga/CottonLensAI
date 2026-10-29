@@ -1,5 +1,11 @@
 # Deney geçmişi ve tekrar kontrolü
 
+Sonraki kaynak kaydı:[günlük kontrat mutabakatı ve feature etkisi](../docs/AMS_CONTRACT_RECONCILIATION_20261029.md).
+Yeni fit0;1.262ham rapor/3.320düzeltilmiş kimlik;110originin gerçek HAR
+girdisi farklı ve96native train işi etkilenmiş.97şüpheli kaynak günü hâlâ
+çözümsüz; ayrı overlay model girdisi olarak kabul edilmedi. Yeni eğitimden
+önce bu kaynak kabulü tamamlanmalı; eski deneyler tekrar açılmamalı.
+
 29Ekim **kaynak kabulü başarısız**: AMS yıllık Futures tablolarında geçmiş
 kontrat kimlikleri bulundu;218history/217OOS origin. Son349fit ve eski named
 AMS full-year kontroller clean same-contract skill/no-signal kanıtı değildir; native
