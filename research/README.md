@@ -1,5 +1,10 @@
 # Deney geçmişi ve tekrar kontrolü
 
+Son kaynak eki:[haftalık kontrat kimliği kurtarma](../docs/AMS_WEEKLY_CONTRACT_RECOVERY_20261029.md).
+Sıfır-fit kayıt73şüpheli güne yalnız görünen kontrat/fiyat prefix'ini ekler;
+24gün çözümsüzdür.138eski HAR origin'i farklıdır. Tam source admission veya
+piyasa başarısı değildir. Güncel karar `docs/STATUS.md`; eski fitler tekrarlanmaz.
+
 Sonraki kaynak kaydı:[günlük kontrat mutabakatı ve feature etkisi](../docs/AMS_CONTRACT_RECONCILIATION_20261029.md).
 Yeni fit0;1.262ham rapor/3.320düzeltilmiş kimlik;110originin gerçek HAR
 girdisi farklı ve96native train işi etkilenmiş.97şüpheli kaynak günü hâlâ

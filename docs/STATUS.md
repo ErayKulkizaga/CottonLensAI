@@ -1,3 +1,21 @@
+# Haftalık kontrat kimliği kurtarma — 29 Ekim 2026
+
+[Haftalık kaynak doğrulaması](AMS_WEEKLY_CONTRACT_RECOVERY_20261029.md)
+19tarihli PDF/562hücreyi denetledi.97çözümsüz şüpheli günün73'ünde yalnız
+görünen5/6kontrat prefix'i doğrulandı;24gün açık. Diğer kontratlar uydurulmadı.
+1.331günlük birleşik katmanda917tam23-Cotton pencere/2.751Decimal scalar
+doğrulandı;138eski değerlendirme HAR girdisi,106/174ortak train işi ve27test
+girdisi farklı. Yeni fit0; bu sayı model performans kaybı veya başarı değildir.
+9/5,11/14,11/26(2018) fiyat çatışmaları saklandı; reddedilmiş daily raw da
+karşılaştırmaya girer.8/15'te uzak bozuk hücre nedeniyle doğru ilk6fiyat
+atılmadı; sıra sıkıştırılmadı.22test/Ruff geçti; eski kanıtlar değişmez.
+
+Tek sonraki iş aynı2.006slot/174iş için hedef/HAR/EWMA'nın gerçekten gereken
+hücrelerini ve eksik kanıtlarını çıkarmaktır; yeni model/grid yoktur.
+Kısmi katman training-admitted değildir; weekly yayın tarihi günlük erişim
+saati değildir. Gerçek piyasa EWMA üstünlüğü hâlâ gösterilmedi. Saatlik görev
+ve üç trigger kapalı kalır. Aşağıdaki kayıtlar araştırma tarihçesidir.
+
 # Kaynak kimliği ve gerçek feature etkisi — 29 Ekim 2026
 
 [Günlük kaynak mutabakatı](AMS_CONTRACT_RECONCILIATION_20261029.md) sıfır-fit

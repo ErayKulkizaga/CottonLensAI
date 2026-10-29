@@ -19784,6 +19784,33 @@
       "release_allowed": false,
       "independent_holdout": false,
       "id": "5f3bd3b91d2b23f22c23f47cc248b4d3fbffdd36859d5cbf129786bc6f7a4e5b"
+    },
+    {
+      "experiment": "research-ams-weekly-contract-recovery-v1",
+      "profile": "ams-weekly-contract-recovery-v1",
+      "horizon": 1,
+      "kind": "completed_zero_fit_partial_weekly_source_recovery_and_feature_impact",
+      "classification": "INCONCLUSIVE",
+      "classification_scope": "Verified source/feature defects and partial quote repair; predictive performance and full source admission unproven",
+      "model_families": [
+        "har"
+      ],
+      "recipes": [],
+      "completed_market_fits": 0,
+      "completed_synthetic_fits": 0,
+      "origin_count": 2006,
+      "affected_profiles": [
+        "ams-named-ewma-har-full-year-t1-v1",
+        "risk-level-source-t1-v1"
+      ],
+      "source_id": "06bd0ad326e6667b2440d2d7d1790d6c7d830cb9e7ca3dbe2ed361aacb6437e7",
+      "evidence": "evidence/ams-weekly-contract-recovery-20261029.json",
+      "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/ams-weekly-contract-recovery-20261029",
+      "market_skill": false,
+      "training_allowed": false,
+      "release_allowed": false,
+      "independent_holdout": false,
+      "id": "2c5ed996e6bedbf9b984998067ce1dc0621c39ae07ca37d5f7ab5589e3607b36"
     }
   ],
   "local_evidence": [
@@ -20570,6 +20597,10 @@
     {
       "path": "evidence/ams-contract-reconciliation-20261029.json",
       "sha256": "46746efce0e029ed4151bdc2a7321f0e5852276bcd536523b5e3044e87b0053b"
+    },
+    {
+      "path": "evidence/ams-weekly-contract-recovery-20261029.json",
+      "sha256": "00b502d3c8d79b9f79f3490ab5a6c9a3ab8f962274636fc11ae2de7c8c60269e"
     }
   ]
 }
