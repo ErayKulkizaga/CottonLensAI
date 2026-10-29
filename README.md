@@ -1,5 +1,10 @@
 # CottonLensAI
 
+Son [eğrilik denetimi](docs/RISK_CURVATURE_SCORE_20261029.md), yalnız pamuk
+geçmişinden yeni karesel modele geçişi desteklemedi. [Mevcut DXY verisi](docs/DXY_RISK_SOURCE_AUDIT_20261029.md)
+ham kaynaktan doğrulandı; bu alan mevcut risk modeline henüz gitmiyor ve
+tahmin katkısı sınanmadı. Yeni eğitim yok; EWMA üstünlüğü hâlâ gösterilmedi.
+
 [Zayıf risk öğretici kontrolü](docs/RISK_WEAK_TEACHER_20261029.md) tamamlandı:
 mevcut model küçük, bilinen ve gürültülü katkının üç sabit senaryoda%65–87'sini
 öğrenebildi. Bu bir **sentetik öğrenme sonucu**, piyasa üstünlüğü değildir.

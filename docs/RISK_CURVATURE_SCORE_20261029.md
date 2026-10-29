@@ -66,9 +66,18 @@ originin tamamında kurulabiliyor. Kayıtlı varsayımsal availability saatleri
 karar sonrasında değil; azami kaynak yaşı2gözlem. Bu sonuç DXY sinyali,
 gerçek publication UTC veya model kabulü değildir.
 
-Sıradaki tek iş, bu DXY getirilerini mevcut checksum'lı raw market kaynağından
-bağımsız yeniden kurup aynı karar anındaki bilgi kapsamını doğrulamaktır.
-Ardından ancak tek sabit DXY-risk katkısı için sıfır-fit QLIKE score tasarımı
-gerekçelendirilebilir. Yeni dataset/model/grid henüz açılmaz. Mevcut pamuk
-bilgisinin dönüşümlerini tekrar tekrar büyütmek yerine, gerçekten farklı
-bilginin erişip erişmediği sınanmalıdır.
+Bu getirilerin ham kaynaktan yeniden kurulması [ek kaynak denetimiyle](DXY_RISK_SOURCE_AUDIT_20261029.md)
+tamamlandı: 3.520 Cotton fiyatı/10.531 DXY return scalar'ı eşleşir; aynı
+girdi2.787benzersiz train origin'inde de kurulabiliyor. Saat/vintage varsayımı
+korunur; katkı henüz ölçülmedi. Tek sonraki iş sabit DXY-risk katkısı için
+sıfır-forecast-fit QLIKE score tasarımıdır. Yeni dataset/model/grid açılmaz.
+Mevcut pamuk bilgisinin dönüşümlerini tekrar tekrar büyütmek yerine,
+gerçekten farklı bilginin erişip erişmediği sınanmalıdır.
+
+[Private curvature sürümü](https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/risk-curvature-score-20261029)
+1.548 dosya/44.065.505 mantıksal baytı taze geri kurdu; exclusion0.
+ZIP SHA-256:`1f202822d76aba4f6f4dfc45afe656a599e271769eed70f392db9bd5d861b2ad`.
+Geri kurulmuş standalone bağımsız verifier, geri kurulmuş girdilerle aynı
+makbuzu bayt eşit yeniden üretti. Eski207sicil aşaması/188kanıt dosyası ve
+fit sicilinin bytes'ı korunur; bu iki yeni sıfır-forecast-fit kayıtla sicil
+209aşama/551tarif/31.463fit kopyasıdır. Mevcut modeller yeniden eğitilmedi.

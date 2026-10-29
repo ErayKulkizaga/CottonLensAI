@@ -1,3 +1,28 @@
+# Eğrilik ve mevcut dış-piyasa kaynağı — 29 Ekim 2026
+
+[Tek karesel yönün QLIKE score'u](RISK_CURVATURE_SCORE_20261029.md) sıfır yeni
+forecast-fit ile kapandı.2.006ordinal/1.989paired; ortalama−0,02157805,
+CI20/60[-0,09117358;+0,04454094]/[-0,08773870;+0,04402773], yıllar3pozitif/
+5negatif,trim+0,00968581. INCONCLUSIVE; karesel terim/daha büyük model bu
+sonuçla gerekçelenmez. Bütün nonlinear bilgi yok sayılmaz.97native dışmodel,
+97label-free geçmiş feature projeksiyonu,1.989Decimal score/ikiCI bağımsız
+doğrulandı; private1.548üye taze restore/receipt byte-equal replay geçti.
+
+[Ham DXY kaynak denetimi](DXY_RISK_SOURCE_AUDIT_20261029.md) mevcut held raw
+market23cfabb7… kaynağından3.520Cottonclose/10.531DXYreturn scalar'ını yeniden
+kurdu; missing desenleri ve kaynak tarih/saat/age alanları aynı. Beş eşlenmiş
+kare-getiri ortalaması2.006eval ve2.787benzersiztrain origin'inde hazır.
+Bu ek alan mevcut3HAR risk learner'ına gitmiyor; source effect henüz
+ölçülmedi.9private üye taze restore/script result+CSV bytes eşit; yeni veri
+indirme veya forecast model fit'i yoktur. Saat/ilk-vintage varsayımı sürer.
+
+Sicil209aşama/551tarif/31.463fit kopyası; eski207aşama/188kanıt ve trials
+bytes korunur. Tek sonraki iş **aynı gerçek risk tahminlerinde sabit DXY
+risk-state QLIKE score'u**; aynı lag/cohort/target/reference, geçmiş-only
+normalization ve yıl/blok/top1% kontrolleriyle. Yeni model/lag/window grid'i
+veya otomatik dataset/collector açılmaz. MevcutEWMA korunur; piyasa başarısı
+hâlâ doğrulanmadı. Aşağıdaki eski sonraki-adım ifadeleri tarihsel kayıttır.
+
 # Zayıf risk öğretici kontrolü — 29 Ekim 2026
 
 [Aynı risk learner'ı ile gürültülü bilinen ilişki](RISK_WEAK_TEACHER_20261029.md)

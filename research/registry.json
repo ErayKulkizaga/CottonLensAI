@@ -19605,6 +19605,49 @@
       "release_allowed": false,
       "independent_holdout": false,
       "id": "81d88aab6c500e31ccd2df1550d2a4db94f5ed27a41db6523b81247dc49e1a6a"
+    },
+    {
+      "experiment": "research-ams-risk-curvature-score-t1-v1",
+      "profile": "ams-risk-curvature-score-t1-v1",
+      "horizon": 1,
+      "kind": "completed_zero_forecast_fit_curvature_score",
+      "classification": "INCONCLUSIVE",
+      "classification_scope": "one conditional curvature score only; not forecast gain or all-nonlinearity test",
+      "model_families": [
+        "har"
+      ],
+      "recipes": [],
+      "completed_market_fits": 0,
+      "completed_synthetic_fits": 0,
+      "origin_count": 2006,
+      "eligible_origins": 1989,
+      "source_id": "ce7e8ee2408d6f8e0972cd374569038b61878618a6d5b57d620089205cfc45d2",
+      "evidence": "evidence/risk-curvature-score-20261029.json",
+      "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/risk-curvature-score-20261029",
+      "market_skill": false,
+      "release_allowed": false,
+      "independent_holdout": false,
+      "id": "ae4a4caf7711395f8898f446d1fc8ff68c9a96ee6a26e1bfb25d54975827febe"
+    },
+    {
+      "experiment": "research-dxy-risk-source-readiness-t1-v1",
+      "profile": "dxy-risk-source-readiness-t1-v1",
+      "horizon": 1,
+      "kind": "completed_zero_forecast_fit_source_reconstruction",
+      "classification": "INCONCLUSIVE",
+      "classification_scope": "Source reconstruction only; no DXY effect screen or risk-model training",
+      "model_families": [],
+      "recipes": [],
+      "completed_market_fits": 0,
+      "completed_synthetic_fits": 0,
+      "origin_count": 2006,
+      "information_source": "DXY five mapped return variance candidate",
+      "evidence": "evidence/dxy-risk-source-audit-20261029.json",
+      "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/dxy-risk-source-audit-20261029",
+      "market_skill": false,
+      "release_allowed": false,
+      "independent_holdout": false,
+      "id": "88d80f80f555a6a99ad9e9cbd9f0aa3d0e659de331ed23fb1f78632354d15c15"
     }
   ],
   "local_evidence": [
@@ -20367,6 +20410,14 @@
     {
       "path": "evidence/risk-weak-teacher-result-20261029.json",
       "sha256": "1da9ce80011c2a35f1044a9a7c6194bbdea66b4cbae16df9d2801d58e5a8ff26"
+    },
+    {
+      "path": "evidence/risk-curvature-score-20261029.json",
+      "sha256": "b21ce64a3e4a42d1ba7278e67ca7911aad224cf74355e8054c4bb6b5096078d8"
+    },
+    {
+      "path": "evidence/dxy-risk-source-audit-20261029.json",
+      "sha256": "fc5e472cd9a406426bd1acdcec24349f216fe4d6e41809c7486c76b63c8b3180"
     }
   ]
 }
