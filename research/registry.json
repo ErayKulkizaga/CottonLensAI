@@ -19648,6 +19648,70 @@
       "release_allowed": false,
       "independent_holdout": false,
       "id": "88d80f80f555a6a99ad9e9cbd9f0aa3d0e659de331ed23fb1f78632354d15c15"
+    },
+    {
+      "experiment": "research-risk-level-source-t1-v1",
+      "profile": "risk-level-source-t1-v1",
+      "horizon": 1,
+      "kind": "preregistered_capacity_matched_risk_control",
+      "classification": "INCONCLUSIVE",
+      "model_families": [
+        "har"
+      ],
+      "recipes": [
+        {
+          "family": "har",
+          "horizon": 1,
+          "device": "cpu",
+          "window": 1,
+          "features": [
+            "relative_har_1",
+            "relative_har_5",
+            "relative_har_22",
+            "log_named_ewma"
+          ],
+          "training_loss": "qlike",
+          "feature_formula": "3relativeHAR plus one declared log-state",
+          "target_formula": "mature_named_actual/origin_named_ewma",
+          "forecast_formula": "named_ewma*exp(intercept+4features@coef)",
+          "parameters": 5,
+          "seed": 42,
+          "profile": "risk-level-source-t1-v1",
+          "arm": "own_level",
+          "extra_feature": "free log origin named EWMA"
+        },
+        {
+          "family": "har",
+          "horizon": 1,
+          "device": "cpu",
+          "window": 1,
+          "features": [
+            "relative_har_1",
+            "relative_har_5",
+            "relative_har_22",
+            "log_dxy_rv5"
+          ],
+          "training_loss": "qlike",
+          "feature_formula": "3relativeHAR plus one declared log-state",
+          "target_formula": "mature_named_actual/origin_named_ewma",
+          "forecast_formula": "named_ewma*exp(intercept+4features@coef)",
+          "parameters": 5,
+          "seed": 42,
+          "profile": "risk-level-source-t1-v1",
+          "arm": "dxy_state",
+          "extra_feature": "log mean last5 raw DXY observation squared returns; assumed-clock asof"
+        }
+      ],
+      "source_id": "5d2863df0bf85dc399eb640ac254e4a21b14635dd1e3d649027cad8dbdf89c70",
+      "completed_market_fits": 0,
+      "completed_synthetic_fits": 0,
+      "origin_count": 2006,
+      "evidence": "evidence/risk-level-source-prereg-20261029.json",
+      "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/risk-level-source-prereg-20261029",
+      "market_skill": false,
+      "release_allowed": false,
+      "independent_holdout": false,
+      "id": "e49d5a063e9789631f68df2118c2d6ec1bf6e73c06c49c029aca4bc46354d7e7"
     }
   ],
   "local_evidence": [
@@ -20418,6 +20482,10 @@
     {
       "path": "evidence/dxy-risk-source-audit-20261029.json",
       "sha256": "fc5e472cd9a406426bd1acdcec24349f216fe4d6e41809c7486c76b63c8b3180"
+    },
+    {
+      "path": "evidence/risk-level-source-prereg-20261029.json",
+      "sha256": "fc147cff61afc3ec0bec4d6b7e7ba5ce80e176a2a47a1021d89ec3c556994cf2"
     }
   ]
 }
