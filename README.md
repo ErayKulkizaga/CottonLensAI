@@ -1,5 +1,15 @@
 # CottonLensAI
 
+29 Ekim güncel durum: **güçlü EWMA referansını geçen risk tahmini henüz
+doğrulanmadı.** [Resmî günlük aynı-kontrat arşiviyle sekiz yıllık kontrol](docs/AMS_NAMED_EWMA_HAR_20261014.md)
+geçmiş kapsama sorununu giderdi; seçilmiş katkının aralıkları yine sıfırı
+içeriyor. [Vade eğrisi tanısı](docs/AMS_CURVE_RISK_MOMENT_20261029.md) da sabit
+koşulları geçmedi. Tamamlanan loss/scale/HAR eğitimleri tekrar edilmez.
+Güncel kararlar [STATUS](docs/STATUS.md), tekrar kontrolü `python ml/history.py check`.
+Saatlik Windows toplama görevi kullanıcı talebiyle kapalıdır; ilişkili Codex
+otomasyonu kaldırılmıştır. Otomatik veri toplama aktifmiş gibi değerlendirme.
+Aşağıdaki tarihli kayıtlar geçmişi korur; güncel devam talimatı değildir.
+
 [Son risk history kontrolü](docs/NAMED_RISK_HISTORY_CONTROL_20261012.md):
 aynı-kontrat geçmişi de hata azaltıyor; güçlü EWMA üstünlüğü hâlâ sağlam
 değil. Veri sürekliliği denetimi bazı train history'lerinin çok eski olduğunu

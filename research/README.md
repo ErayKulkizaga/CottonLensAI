@@ -1,5 +1,15 @@
 # Deney geçmişi ve tekrar kontrolü
 
+29 Ekim: [vade eğrisi sıfır-fit denetimi](../docs/AMS_CURVE_RISK_MOMENT_20261029.md)
+kapandı; 2.006 slot/1.987 uygun origin, 5.961 kaynak scalar ve iki bağımsız
+blok aralığı doğrulandı. Sabit ekran geçmedi; INCONCLUSIVE, kaynakta sinyal
+yok veya model başarılı sonucu çıkarılmaz. Sicil205 aşama/545 tarif/30.419
+fit kopyasıdır. Sonradan tamamlanan loss/scale/EWMA-relative HAR ve resmî
+günlük named kontrolünü eski aşağıdaki ön kayıt ifadelerinden tekrar başlatma.
+Araştırma testleri: `python -m pytest -q research/tests`; bu komut hem pytest
+fonksiyonlarını hem mevcut unittest sınıflarını toplar.
+Aşağıdaki tarihli bölümler araştırma tarihçesidir; güncel sıra docs/STATUS.md'dir.
+
 Son tamamlanan: [named risk history control](../docs/NAMED_RISK_HISTORY_CONTROL_20261012.md).
 `python -m cottonlens_ml.research.named_risk_history prepare|verify|pilot|compare`
 aynı HAR/Experiment/Ledger yolunda iki named-label kolunun yalnız history
