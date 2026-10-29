@@ -19437,6 +19437,31 @@
       "release_allowed": false,
       "independent_holdout": false,
       "id": "e0c10a0820fbd9c35456dd029277581b033f6aea4dcb6df210aaa31ca21c76ff"
+    },
+    {
+      "experiment": "research-risk-weak-teacher-t1-v1-preregistration",
+      "profile": "risk-weak-teacher-t1-v1",
+      "kind": "zero_fit_synthetic_recovery_preregistration",
+      "horizon": 1,
+      "classification": "INCONCLUSIVE",
+      "model_families": [
+        "har"
+      ],
+      "recipes": [],
+      "completed_market_fits": 0,
+      "completed_synthetic_fits": 0,
+      "fit_budget": {
+        "market": 0,
+        "synthetic": 1044,
+        "processes": 1,
+        "threads": 2,
+        "session_minutes": 30
+      },
+      "evidence": "evidence/risk-weak-teacher-prereg-20261029.json",
+      "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/risk-weak-teacher-prereg-r3-20261029",
+      "release_allowed": false,
+      "independent_holdout": false,
+      "id": "8a091b6960fe0aff9d9d8ac32bddc0cedc5ebf74f62f287c2292d10ffb5b1e71"
     }
   ],
   "local_evidence": [
@@ -20191,6 +20216,10 @@
     {
       "path": "evidence/ams-curve-risk-moment-20261029.json",
       "sha256": "c1870891acee24840ea79e838768f5012e256ef8e929f8de073cbc4e34af183e"
+    },
+    {
+      "path": "evidence/risk-weak-teacher-prereg-20261029.json",
+      "sha256": "aeb2ada8493aa91be41823c1568b46bd52060a50bc435a0460dfd4ca3237635d"
     }
   ]
 }
