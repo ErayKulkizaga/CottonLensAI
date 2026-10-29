@@ -1,3 +1,21 @@
+# Koşullu işaret bilgisi ve uç gün — 29 Ekim 2026
+
+[CT işaret tanısı](CT_SIGNED_RISK_SCORE_20261029.md) sıfır-fit tamamlandı.
+2.006 origin/97 native dış modelde geçmiş HAR ve unsigned büyüklük kontrolü
+sonrası QLIKE score −0,24122132; iki blok aralığı sıfırı içerir, 5/8 negatif
+yıl, top%1 trim −0,01573317. INCONCLUSIVE; eski negatif covariance tahmin
+başarısı sayılmaz. Ham CT-HAR net kazancının %91,5524'ü tek 2022-06-24
+hedefine bağlı. İki tarihli AMS raporu da Jul-22 fiyatını yazıyor; bu olay
+için otomatik continuous-roll açıklaması kurulmadı. İkinci kontrat/hacim
+farkı ve kaynak sınırı raporda korunur. 16 test/Ruff, private 1.800+10 dosya
+taze restore ve offline byte-equal replay geçti; eski sicil/kanıt değişmez.
+
+Bir sonraki ayrım yalnız geçmişte öğrenilen signed/unsigned şokun aynı
+beş-parametre kapasitesinde gerçek tahmin katkısıdır; tarif/ön kayıt henüz
+kilitlenmedi ve yeni fit yok. Score belirsizliği bütün işaret bilgisini
+çürütmez. Named-source kabulü ayrıca bekler; aşağıdaki kaynak bulguları
+geçerlidir. Yeni grid/GPU yok; görev/üç trigger kapalı, EWMA üstünlüğü yok.
+
 # Tam günlük tanık ve gerekli hücre sınırı — 29 Ekim 2026
 
 [Gerekli hücre denetimi](AMS_REQUIRED_CELL_READINESS_20261029.md) dört tam

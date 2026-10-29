@@ -19838,6 +19838,29 @@
         "risk-level-source-t1-v1"
       ],
       "id": "fb963c8264f1e4e0de202fecf26f4577b7c05f3943ea46185c21ad782487f0e7"
+    },
+    {
+      "experiment": "research-ct-signed-shock-conditional-qlike-score-t1-v1",
+      "profile": "ct-signed-shock-conditional-qlike-score-t1-v1",
+      "horizon": 1,
+      "kind": "completed_zero_fit_conditional_signed_shock_score_and_extreme_attribution",
+      "classification": "INCONCLUSIVE",
+      "classification_scope": "one local conditional QLIKE direction; no forecast improvement established",
+      "model_families": [
+        "har"
+      ],
+      "recipes": [],
+      "completed_market_fits": 0,
+      "completed_synthetic_fits": 0,
+      "origin_count": 2006,
+      "source_id": "c6e8021d9fc07d222465f604cacb0a8ec8d83a56a56244f3510f69f73fc4e0c0",
+      "evidence": "evidence/ct-signed-risk-score-20261029.json",
+      "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/ct-signed-risk-score-20261029",
+      "market_skill": false,
+      "training_allowed": false,
+      "independent_holdout": false,
+      "release_allowed": false,
+      "id": "bccc0dfb2ca237649f70b0a85fbf424bb2cfeb2adfff909298b70ee13a8998d5"
     }
   ],
   "local_evidence": [
@@ -20632,6 +20655,10 @@
     {
       "path": "evidence/ams-required-cell-readiness-20261029.json",
       "sha256": "c6e2ae11e23c57959c88adaf6b20dd11debdc2e85df67f1b9f2087aaa3bf388b"
+    },
+    {
+      "path": "evidence/ct-signed-risk-score-20261029.json",
+      "sha256": "9f41c549d22451a0903f71c179b24c5aea500778d1d8aeaf27647c7bdfca7992"
     }
   ]
 }

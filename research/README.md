@@ -1,5 +1,13 @@
 # Deney geçmişi ve tekrar kontrolü
 
+Son sıfır-fit [CT signed QLIKE denetimi](../docs/CT_SIGNED_RISK_SCORE_20261029.md):
+2.006 origin/97 dış native fit; score iki CI'da belirsiz, 5/8 negatif yıl.
+Eski pozitif hipotezin reddi işaret bilgisinin yokluğunu göstermez; yeni
+koşullu tanı da forecast gain değildir. Ham CT-HAR net kazancının %91,55'i
+tek 2022-06-24 hedefine bağlı; literal iki kaynak aynı Jul-22 yazıyor.
+`--profile ct-signed-shock-conditional-qlike-score-t1-v1` tamamlanmış bu
+analizi bulmalıdır. Aynı tanıyı/169 eski fit'i tekrar etme. Güncel sıra STATUS.
+
 Son kaynak kararı:[tam günlük tanık/gerekli hücre sınırı](../docs/AMS_REQUIRED_CELL_READINESS_20261029.md).
 DörtCNDDSQ/120scalar,139gerçek HAR farkı;22şüpheli gün açık. Uzak quote
 bilinmiyor diye EWMAreset yapılmaz.2.053potansiyel hücre üst sınırdır,

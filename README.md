@@ -15,6 +15,13 @@ kontrolü `python ml/history.py check`; yeni model/grid yoktur. Saatlik görev
 ve üç tetikleyici kapalıdır. Private Release taze401dosya ile geri kuruldu;
 11çıktı byte eşit yeniden üretildi.36ilgili test/Ruff geçti; yeni fit0.
 
+[Son CT işaret denetimi](docs/CT_SIGNED_RISK_SCORE_20261029.md) de sıfır-fit
+belirsiz sonuçlandı. Önceki ham risk modelinin net kazancının %91,55'i tek
+güne bağlı; o günün iki tarihli kaynağı aynı Jul-22 kontratını gösteriyor.
+Bu, genel işaret becerisi veya otomatik roll-hatası kanıtı değildir.
+Eski 2.006 origin/tahmin/kanıt korunarak 1.800+10 private dosya taze geri
+kuruldu ve hesaplar birebir tekrarlandı. Yeni model eğitimi açılmadı.
+
 ## Korunan araştırma tarihçesi
 
 Aşağıdaki önceki hükümler tarihli araştırma kayıtlarıdır; kaynak kabulü ve
