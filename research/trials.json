@@ -55483,6 +55483,396 @@
       "coverage": "completed fit receipts; experiment conclusion separate",
       "payload_hashes_revalidated_by_index": false,
       "sample_receipt_archive_context": "private Release, fresh restored native ledger"
+    },
+    {
+      "id": "1c2dbbb18da2bf4d62e0e0ed40465e7e09e13f390cb328a57751be69adfc338f",
+      "scope": {
+        "identity_id": "155284029669c86a69c604b6e45d3f2bf6cdeff7ff9ae0419af2102e23fbceb3",
+        "source_id": "dd95399ca9cd5b3c64ffcfc0c37b5ec9c648e612dbe53834fc85cb9c46232833",
+        "data_id": "96f8996896157e8bc1189711fb31e365bc464dd7c1b990b2258ded5600639fd8",
+        "split_id": "00a659fa08584071b462f8c56bad2053fc3db6f2f0f564bf2417af4664dd3912",
+        "profile": "risk-weak-teacher-t1-v1"
+      },
+      "scope_id": "2af084fca04f4cb503ba8ad55337a1f99d855b02d4a698e2855d4c7b9690bcba",
+      "profile": "risk-weak-teacher-t1-v1",
+      "horizon": 1,
+      "recipes": [
+        {
+          "family": "har",
+          "horizon": 1,
+          "device": "cpu",
+          "window": 1,
+          "features": [
+            "har_1",
+            "har_5",
+            "har_22"
+          ],
+          "training_loss": "qlike",
+          "feature_formula": "own_har_k-log(named_ewma)",
+          "target_formula": "mature_named_actual/origin_named_ewma",
+          "forecast_formula": "origin_named_ewma*exp(intercept+relative_har@coef)",
+          "parameters": 4,
+          "seed": 42,
+          "profile": "named-ewma-har-control-t1-v1",
+          "synthetic_condition": "null",
+          "synthetic_seed": 2703
+        }
+      ],
+      "model_families": [
+        "har"
+      ],
+      "kind": "synthetic_control:synthetic_risk_weak_teacher",
+      "completed_fits": 174,
+      "sample_receipts": [
+        {
+          "path": "ledger/completed/0129c73e25124c1985aa7be8a151cce2252b27aa96506d64dc98b18641a3b7e8.json",
+          "record_id": "73f6bbe6fef60ad47a28a313b5d77bd269b1724605fab591f220c4771376e997",
+          "experiment_id": "0129c73e25124c1985aa7be8a151cce2252b27aa96506d64dc98b18641a3b7e8"
+        },
+        {
+          "path": "ledger/completed/03eb9dbe1c3f373c3e9c36d22c1c12f8ee339ce8ed9dd6b677953f60b682cd58.json",
+          "record_id": "bab12d3322229e83ed5afe6b32254797785c9b0b15d11153f46806bc43cdbaff",
+          "experiment_id": "03eb9dbe1c3f373c3e9c36d22c1c12f8ee339ce8ed9dd6b677953f60b682cd58"
+        },
+        {
+          "path": "ledger/completed/04303620b5eb6c122445cb2ab2da2e6e97866caa9d50c63e700c03c953a126d4.json",
+          "record_id": "5e1c3f2997912f314a0c23af9e275f40c209aece686edf8db392523aeda21d56",
+          "experiment_id": "04303620b5eb6c122445cb2ab2da2e6e97866caa9d50c63e700c03c953a126d4"
+        }
+      ],
+      "roles": [
+        "synthetic"
+      ],
+      "coverage": "completed fit receipts; not experiment completion",
+      "payload_hashes_revalidated_by_index": false,
+      "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/risk-weak-teacher-result-20261029",
+      "payload_prefix": "bundle/execution",
+      "payload_hashes_revalidated_separately": true
+    },
+    {
+      "id": "42c349afcea63675aad8902b5491e5951a2215205840e4649b57b04a27832729",
+      "scope": {
+        "identity_id": "155284029669c86a69c604b6e45d3f2bf6cdeff7ff9ae0419af2102e23fbceb3",
+        "source_id": "dd95399ca9cd5b3c64ffcfc0c37b5ec9c648e612dbe53834fc85cb9c46232833",
+        "data_id": "96f8996896157e8bc1189711fb31e365bc464dd7c1b990b2258ded5600639fd8",
+        "split_id": "00a659fa08584071b462f8c56bad2053fc3db6f2f0f564bf2417af4664dd3912",
+        "profile": "risk-weak-teacher-t1-v1"
+      },
+      "scope_id": "2af084fca04f4cb503ba8ad55337a1f99d855b02d4a698e2855d4c7b9690bcba",
+      "profile": "risk-weak-teacher-t1-v1",
+      "horizon": 1,
+      "recipes": [
+        {
+          "family": "har",
+          "horizon": 1,
+          "device": "cpu",
+          "window": 1,
+          "features": [
+            "har_1",
+            "har_5",
+            "har_22"
+          ],
+          "training_loss": "qlike",
+          "feature_formula": "own_har_k-log(named_ewma)",
+          "target_formula": "mature_named_actual/origin_named_ewma",
+          "forecast_formula": "origin_named_ewma*exp(intercept+relative_har@coef)",
+          "parameters": 4,
+          "seed": 42,
+          "profile": "named-ewma-har-control-t1-v1",
+          "synthetic_condition": "weak",
+          "synthetic_seed": 2703
+        }
+      ],
+      "model_families": [
+        "har"
+      ],
+      "kind": "synthetic_control:synthetic_risk_weak_teacher",
+      "completed_fits": 174,
+      "sample_receipts": [
+        {
+          "path": "ledger/completed/02b1fa1288ff84c7dbdf30e6266cec0dfd472ff8a15fef01f83d809d1f95406c.json",
+          "record_id": "7f8a0c1389feeee7b37ad566f600d98d95b7ef9d8b76e3b8ad11e9e06b02aa8c",
+          "experiment_id": "02b1fa1288ff84c7dbdf30e6266cec0dfd472ff8a15fef01f83d809d1f95406c"
+        },
+        {
+          "path": "ledger/completed/054711fc59778a019961287f423eff09302c72bd27e553fecc4db023e2eae733.json",
+          "record_id": "f58265bc280be462e1120f4526ce8ebf638abeed456beeb37a9cdd47a7eea559",
+          "experiment_id": "054711fc59778a019961287f423eff09302c72bd27e553fecc4db023e2eae733"
+        },
+        {
+          "path": "ledger/completed/0991156c6627a3085b0a67bc4f67feb974516bf2ef8a03ad21f48d6d57a72d81.json",
+          "record_id": "b9102b0a64e7f1c499616fdde508d06e34a50496cc0ecadb62dc80ec36b85f91",
+          "experiment_id": "0991156c6627a3085b0a67bc4f67feb974516bf2ef8a03ad21f48d6d57a72d81"
+        }
+      ],
+      "roles": [
+        "synthetic"
+      ],
+      "coverage": "completed fit receipts; not experiment completion",
+      "payload_hashes_revalidated_by_index": false,
+      "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/risk-weak-teacher-result-20261029",
+      "payload_prefix": "bundle/execution",
+      "payload_hashes_revalidated_separately": true
+    },
+    {
+      "id": "45c9d887804f2d527842b34ed53196e9aa3be6e38a48dcdb9fd6af145c966665",
+      "scope": {
+        "identity_id": "155284029669c86a69c604b6e45d3f2bf6cdeff7ff9ae0419af2102e23fbceb3",
+        "source_id": "dd95399ca9cd5b3c64ffcfc0c37b5ec9c648e612dbe53834fc85cb9c46232833",
+        "data_id": "96f8996896157e8bc1189711fb31e365bc464dd7c1b990b2258ded5600639fd8",
+        "split_id": "00a659fa08584071b462f8c56bad2053fc3db6f2f0f564bf2417af4664dd3912",
+        "profile": "risk-weak-teacher-t1-v1"
+      },
+      "scope_id": "2af084fca04f4cb503ba8ad55337a1f99d855b02d4a698e2855d4c7b9690bcba",
+      "profile": "risk-weak-teacher-t1-v1",
+      "horizon": 1,
+      "recipes": [
+        {
+          "family": "har",
+          "horizon": 1,
+          "device": "cpu",
+          "window": 1,
+          "features": [
+            "har_1",
+            "har_5",
+            "har_22"
+          ],
+          "training_loss": "qlike",
+          "feature_formula": "own_har_k-log(named_ewma)",
+          "target_formula": "mature_named_actual/origin_named_ewma",
+          "forecast_formula": "origin_named_ewma*exp(intercept+relative_har@coef)",
+          "parameters": 4,
+          "seed": 42,
+          "profile": "named-ewma-har-control-t1-v1",
+          "synthetic_condition": "null",
+          "synthetic_seed": 1701
+        }
+      ],
+      "model_families": [
+        "har"
+      ],
+      "kind": "synthetic_control:synthetic_risk_weak_teacher",
+      "completed_fits": 174,
+      "sample_receipts": [
+        {
+          "path": "ledger/completed/013b381b4e11661696ea1ca42d34bf8003b710cde712680f709f6e7028759c7d.json",
+          "record_id": "facc453c175ef5a130b599cc97f3c775408ec830b490ba15de779c2d1f8b5d56",
+          "experiment_id": "013b381b4e11661696ea1ca42d34bf8003b710cde712680f709f6e7028759c7d"
+        },
+        {
+          "path": "ledger/completed/01cb244b56ef17f42c729f3af0e97ef2469a92e672b37a7edc48ea00cdcb8eda.json",
+          "record_id": "60555f0f978681b251b4a73a30ccf397aeae22ae9ef1db83a2d049968c5e62f7",
+          "experiment_id": "01cb244b56ef17f42c729f3af0e97ef2469a92e672b37a7edc48ea00cdcb8eda"
+        },
+        {
+          "path": "ledger/completed/037a2ad145c70375fd2b19f546bb62c5f4a1e2cef2cab1d0c6af3a137d4ba115.json",
+          "record_id": "23d56435357b213fc7ecf1e84bcf2d4ed4fd5c64e4df031635c56e53bfdd8e99",
+          "experiment_id": "037a2ad145c70375fd2b19f546bb62c5f4a1e2cef2cab1d0c6af3a137d4ba115"
+        }
+      ],
+      "roles": [
+        "synthetic"
+      ],
+      "coverage": "completed fit receipts; not experiment completion",
+      "payload_hashes_revalidated_by_index": false,
+      "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/risk-weak-teacher-result-20261029",
+      "payload_prefix": "bundle/execution",
+      "payload_hashes_revalidated_separately": true
+    },
+    {
+      "id": "7bc25ac8da617f74eb4ca99bd314a9193edc4504854b2b605fb94c81e59f1319",
+      "scope": {
+        "identity_id": "155284029669c86a69c604b6e45d3f2bf6cdeff7ff9ae0419af2102e23fbceb3",
+        "source_id": "dd95399ca9cd5b3c64ffcfc0c37b5ec9c648e612dbe53834fc85cb9c46232833",
+        "data_id": "96f8996896157e8bc1189711fb31e365bc464dd7c1b990b2258ded5600639fd8",
+        "split_id": "00a659fa08584071b462f8c56bad2053fc3db6f2f0f564bf2417af4664dd3912",
+        "profile": "risk-weak-teacher-t1-v1"
+      },
+      "scope_id": "2af084fca04f4cb503ba8ad55337a1f99d855b02d4a698e2855d4c7b9690bcba",
+      "profile": "risk-weak-teacher-t1-v1",
+      "horizon": 1,
+      "recipes": [
+        {
+          "family": "har",
+          "horizon": 1,
+          "device": "cpu",
+          "window": 1,
+          "features": [
+            "har_1",
+            "har_5",
+            "har_22"
+          ],
+          "training_loss": "qlike",
+          "feature_formula": "own_har_k-log(named_ewma)",
+          "target_formula": "mature_named_actual/origin_named_ewma",
+          "forecast_formula": "origin_named_ewma*exp(intercept+relative_har@coef)",
+          "parameters": 4,
+          "seed": 42,
+          "profile": "named-ewma-har-control-t1-v1",
+          "synthetic_condition": "weak",
+          "synthetic_seed": 1701
+        }
+      ],
+      "model_families": [
+        "har"
+      ],
+      "kind": "synthetic_control:synthetic_risk_weak_teacher",
+      "completed_fits": 174,
+      "sample_receipts": [
+        {
+          "path": "ledger/completed/03442fe6b4b40b8b7dbe7edb1f9d6b52be4910a089c069fcea0b4327dd62aa28.json",
+          "record_id": "0db52046cc26bc28a58fef4d3df02bc4a5079c32a37e2d5d090052c2133b8413",
+          "experiment_id": "03442fe6b4b40b8b7dbe7edb1f9d6b52be4910a089c069fcea0b4327dd62aa28"
+        },
+        {
+          "path": "ledger/completed/06c4532c70cd45e0761e20a0f2a9c70f9272a196d936df10c32d39e0056b4e3d.json",
+          "record_id": "970ca379e9191accfc3f425ba366ffb9a8b47a2098018556b72a0a6d571e9f03",
+          "experiment_id": "06c4532c70cd45e0761e20a0f2a9c70f9272a196d936df10c32d39e0056b4e3d"
+        },
+        {
+          "path": "ledger/completed/07c44b2f5cf570eb3823bff65b18d9c26892f4655d6c07a716df147f8be36ebd.json",
+          "record_id": "38c31571d732f2202b6460bfbd6ce406a1ca53e888e1807f2c41ed5aee3c8a7c",
+          "experiment_id": "07c44b2f5cf570eb3823bff65b18d9c26892f4655d6c07a716df147f8be36ebd"
+        }
+      ],
+      "roles": [
+        "synthetic"
+      ],
+      "coverage": "completed fit receipts; not experiment completion",
+      "payload_hashes_revalidated_by_index": false,
+      "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/risk-weak-teacher-result-20261029",
+      "payload_prefix": "bundle/execution",
+      "payload_hashes_revalidated_separately": true
+    },
+    {
+      "id": "7fbb0450ada0609c3d0dbe8c6ae9c083990bc695e5e04b4eb192d4fd7649288d",
+      "scope": {
+        "identity_id": "155284029669c86a69c604b6e45d3f2bf6cdeff7ff9ae0419af2102e23fbceb3",
+        "source_id": "dd95399ca9cd5b3c64ffcfc0c37b5ec9c648e612dbe53834fc85cb9c46232833",
+        "data_id": "96f8996896157e8bc1189711fb31e365bc464dd7c1b990b2258ded5600639fd8",
+        "split_id": "00a659fa08584071b462f8c56bad2053fc3db6f2f0f564bf2417af4664dd3912",
+        "profile": "risk-weak-teacher-t1-v1"
+      },
+      "scope_id": "2af084fca04f4cb503ba8ad55337a1f99d855b02d4a698e2855d4c7b9690bcba",
+      "profile": "risk-weak-teacher-t1-v1",
+      "horizon": 1,
+      "recipes": [
+        {
+          "family": "har",
+          "horizon": 1,
+          "device": "cpu",
+          "window": 1,
+          "features": [
+            "har_1",
+            "har_5",
+            "har_22"
+          ],
+          "training_loss": "qlike",
+          "feature_formula": "own_har_k-log(named_ewma)",
+          "target_formula": "mature_named_actual/origin_named_ewma",
+          "forecast_formula": "origin_named_ewma*exp(intercept+relative_har@coef)",
+          "parameters": 4,
+          "seed": 42,
+          "profile": "named-ewma-har-control-t1-v1",
+          "synthetic_condition": "null",
+          "synthetic_seed": 42
+        }
+      ],
+      "model_families": [
+        "har"
+      ],
+      "kind": "synthetic_control:synthetic_risk_weak_teacher",
+      "completed_fits": 174,
+      "sample_receipts": [
+        {
+          "path": "ledger/completed/05260d66fc07c23a76774463071c063bd495ff4e3492fa19497b43644343329a.json",
+          "record_id": "91974ba8d5c4d566b6b20ae66f7e41cba6049db663978f5bddc3747b16c7ec98",
+          "experiment_id": "05260d66fc07c23a76774463071c063bd495ff4e3492fa19497b43644343329a"
+        },
+        {
+          "path": "ledger/completed/08f5c7b2667e391bf5a88e901b3421c2ee0d4505d85258e8651355fcdba2d10a.json",
+          "record_id": "ee4c8adda5626f868127f7ab4dac4cfb5db9c2328b4ef7ff37801b879e06965f",
+          "experiment_id": "08f5c7b2667e391bf5a88e901b3421c2ee0d4505d85258e8651355fcdba2d10a"
+        },
+        {
+          "path": "ledger/completed/0a32a40a0cd0beef6f6ebb9465c25f07256018274c998f400880039fb865846d.json",
+          "record_id": "fe93c92af9393fe724e1f7e5d13c8a985decfd5b124d00cdb6fde8f6eba45b30",
+          "experiment_id": "0a32a40a0cd0beef6f6ebb9465c25f07256018274c998f400880039fb865846d"
+        }
+      ],
+      "roles": [
+        "synthetic"
+      ],
+      "coverage": "completed fit receipts; not experiment completion",
+      "payload_hashes_revalidated_by_index": false,
+      "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/risk-weak-teacher-result-20261029",
+      "payload_prefix": "bundle/execution",
+      "payload_hashes_revalidated_separately": true
+    },
+    {
+      "id": "be9dc363fe6f177907bd7fd49b627f8ca62932aa53c036904da6ce0bd074a58b",
+      "scope": {
+        "identity_id": "155284029669c86a69c604b6e45d3f2bf6cdeff7ff9ae0419af2102e23fbceb3",
+        "source_id": "dd95399ca9cd5b3c64ffcfc0c37b5ec9c648e612dbe53834fc85cb9c46232833",
+        "data_id": "96f8996896157e8bc1189711fb31e365bc464dd7c1b990b2258ded5600639fd8",
+        "split_id": "00a659fa08584071b462f8c56bad2053fc3db6f2f0f564bf2417af4664dd3912",
+        "profile": "risk-weak-teacher-t1-v1"
+      },
+      "scope_id": "2af084fca04f4cb503ba8ad55337a1f99d855b02d4a698e2855d4c7b9690bcba",
+      "profile": "risk-weak-teacher-t1-v1",
+      "horizon": 1,
+      "recipes": [
+        {
+          "family": "har",
+          "horizon": 1,
+          "device": "cpu",
+          "window": 1,
+          "features": [
+            "har_1",
+            "har_5",
+            "har_22"
+          ],
+          "training_loss": "qlike",
+          "feature_formula": "own_har_k-log(named_ewma)",
+          "target_formula": "mature_named_actual/origin_named_ewma",
+          "forecast_formula": "origin_named_ewma*exp(intercept+relative_har@coef)",
+          "parameters": 4,
+          "seed": 42,
+          "profile": "named-ewma-har-control-t1-v1",
+          "synthetic_condition": "weak",
+          "synthetic_seed": 42
+        }
+      ],
+      "model_families": [
+        "har"
+      ],
+      "kind": "synthetic_control:synthetic_risk_weak_teacher",
+      "completed_fits": 174,
+      "sample_receipts": [
+        {
+          "path": "ledger/completed/01603c8433b4e366ecb6e13fcf9436b01c5750af172727cee7999796b3648d2f.json",
+          "record_id": "334b8f3b6b4b4853be612c24107225f01bc9a5cfb6d6fcefc74302c0f8e2ebed",
+          "experiment_id": "01603c8433b4e366ecb6e13fcf9436b01c5750af172727cee7999796b3648d2f"
+        },
+        {
+          "path": "ledger/completed/06a12aa4dd78c19b1ae33ec3a7f0e7538f2acc6af10f500a910d63c09d7dc301.json",
+          "record_id": "58ee29ff92d0b70c88f4f1345157d2780f186a30be68d9d5df7969330a67c6f2",
+          "experiment_id": "06a12aa4dd78c19b1ae33ec3a7f0e7538f2acc6af10f500a910d63c09d7dc301"
+        },
+        {
+          "path": "ledger/completed/073b96b07b30f36853693f4644e8f00f4f4576d21ca9e861eb5f08f8381007dd.json",
+          "record_id": "4a6d79e43a8cd76e0ded97b3940d6ac32edeb3a5d0cb28f30cd214ace8521d07",
+          "experiment_id": "073b96b07b30f36853693f4644e8f00f4f4576d21ca9e861eb5f08f8381007dd"
+        }
+      ],
+      "roles": [
+        "synthetic"
+      ],
+      "coverage": "completed fit receipts; not experiment completion",
+      "payload_hashes_revalidated_by_index": false,
+      "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/risk-weak-teacher-result-20261029",
+      "payload_prefix": "bundle/execution",
+      "payload_hashes_revalidated_separately": true
     }
   ],
   "rejected_receipts": [],

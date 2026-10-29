@@ -1,3 +1,29 @@
+# Zayıf risk öğretici kontrolü — 29 Ekim 2026
+
+[Aynı risk learner'ı ile gürültülü bilinen ilişki](RISK_WEAK_TEACHER_20261029.md)
+1.044sentetik/0piyasa fit ile kapandı. Aynı dört parametre,8yıl ve
+2.006slot/1.989paired korunur. Oracle beklenen katkı0,01043714; üç seed'in
+ham beklenen katkısı0,00907474/0,00802447/0,00682121, kurtarma%86,95/%76,88/
+%65,36. Geçmiş seçim katkıyı azaltır ama silmez; null beklenen katkılar
+negatif. Seed1701'in gerçekleşen pozitif katkısında iki CI yine0içerir.
+DECISIVE_POSITIVE yalnız bu fixed-design/IID kontrol içindir; piyasa
+becerisi veya gerçek piyasa için kalibre güç değildir. Mevcut risk gate'i geçmedi.
+
+Private7.618dosya taze restore ve frozen bağımsız verifier replay'i
+1.044native/71.604Decimal-loss scalar/72CI/48past-selection doğruladı;
+makbuz bytes eşit. Eski205aşama/186kanıt ve545tarif korunur; yeni ön kayıt
+ve sonuçla sicil207aşama/551tarif/31.463fit kopyasıdır. Kontrol tekrarlanmaz.
+Raw kaynaklar ve eski modeller değişmez; collector kapalı kalır.
+
+Sıradaki tek bilimsel kontrol yeni eğitim değildir: gerçek AMS risk
+tahminlerinin QLIKE hatasında, geçmişte normalize edilmiş relative-HAR5'in
+tek karesel terimi için sıfır-fit score/kurulabilirlik denetimi. Bu, mevcut
+log-lineer biçimin kaçırdığı eğrilik hipotezini sınar; her iki işaret baştan
+kabul edilir, OOS sonuçtan sonra sign/grid seçilmez. Tarihler, referans ve
+native tahminler korunmalı; geçmiş normalization, yıl kararlılığı ve
+uç-gözlem duyarlılığı denetlenmeli. Yeni model/fit ön kaydı henüz yoktur.
+Bu kontrol de görülmüş tarihsel araştırmadır; forward başarı yerine geçmez.
+
 # Güncel kapanış — 29 Ekim 2026
 
 [Vade eğrisi tanısı](AMS_CURVE_RISK_MOMENT_20261029.md) sıfır-fit kapandı:

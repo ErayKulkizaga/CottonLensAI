@@ -1,5 +1,12 @@
 # Deney geçmişi ve tekrar kontrolü
 
+29 Ekim son kontrol: [noisy risk weak teacher](../docs/RISK_WEAK_TEACHER_20261029.md),
+1.044sentetik/0piyasa fit ile tamamlandı. Aynı modelde bilinen zayıf ortalama
+kurtarma koşulu geçti; gerçek piyasa başarısı değildir. `--profile
+risk-weak-teacher-t1-v1` sorgusu ön kayıt/sonuç ve altı sentetik tarifi bulur.
+Tam scope+recipe proposal'ı her koşul/seed için174fit'i tekrar bulmalıdır.
+Sicil207aşama/551tarif/31.463fit kopyasıdır; eski kayıtlar korunur.
+
 29 Ekim: [vade eğrisi sıfır-fit denetimi](../docs/AMS_CURVE_RISK_MOMENT_20261029.md)
 kapandı; 2.006 slot/1.987 uygun origin, 5.961 kaynak scalar ve iki bağımsız
 blok aralığı doğrulandı. Sabit ekran geçmedi; INCONCLUSIVE, kaynakta sinyal

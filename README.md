@@ -1,5 +1,11 @@
 # CottonLensAI
 
+[Zayıf risk öğretici kontrolü](docs/RISK_WEAK_TEACHER_20261029.md) tamamlandı:
+mevcut model küçük, bilinen ve gürültülü katkının üç sabit senaryoda%65–87'sini
+öğrenebildi. Bu bir **sentetik öğrenme sonucu**, piyasa üstünlüğü değildir.
+Private native dosyalar ve bağımsız yeniden hesaplama doğrulandı; kontrol
+yeniden çalıştırılmayacak. Güncel karar [STATUS](docs/STATUS.md).
+
 29 Ekim güncel durum: **güçlü EWMA referansını geçen risk tahmini henüz
 doğrulanmadı.** [Resmî günlük aynı-kontrat arşiviyle sekiz yıllık kontrol](docs/AMS_NAMED_EWMA_HAR_20261014.md)
 geçmiş kapsama sorununu giderdi; seçilmiş katkının aralıkları yine sıfırı

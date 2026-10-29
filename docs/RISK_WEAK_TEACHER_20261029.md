@@ -97,3 +97,13 @@ ve48geçmiş ağırlık seçimini doğruladı. İlk bağımsız CSV okumasında 
 boş alanı missing kabul eder. Yeni regresyon testi var; CSV/model/fitler
 değiştirilmedi veya yeniden çalıştırılmadı. 22ilişkili+3verifier testi ve Ruff
 geçti. Sonuç modeli canlıya yayımlamaz; kapalı collector kapalı kalır.
+
+[Özel sonuç sürümü](https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/risk-weak-teacher-result-20261029)
+7.618 dosya/88.078.413 mantıksal baytı taze geri kurdu; exclusion0.
+ZIP SHA-256:`af753356dfa995a77d03fe29319415e7f3cbbed08c76fb151183c8967a632299`.
+Geri kurulmuş bağımsız verifier, geri kurulmuş girdilerden bütün native
+modelleri, kayıpları, aralıkları ve seçimleri yeniden doğruladı. Makbuz bytes
+eşit; özgün report/CSV hash'leri korunur. Bu, modellerin yeniden eğitimi değildir.
+Ana compare'ı tekrar çalıştırmadan, sayısal sonuçlar ayrı Decimal/paired-difference
+yordamlarıyla denetlendi. Sicil207aşama/551tarif/31.463fit kopyasıdır;
+altı yeni tarifin tamamı mevcut indexer tarafından sentetik sınıflandırılır.

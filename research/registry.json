@@ -19462,6 +19462,149 @@
       "release_allowed": false,
       "independent_holdout": false,
       "id": "8a091b6960fe0aff9d9d8ac32bddc0cedc5ebf74f62f287c2292d10ffb5b1e71"
+    },
+    {
+      "experiment": "research-risk-weak-teacher-t1-v1-result",
+      "profile": "risk-weak-teacher-t1-v1",
+      "horizon": 1,
+      "kind": "completed_fixed_synthetic_risk_recovery",
+      "classification": "DECISIVE_POSITIVE",
+      "classification_scope": "Fixed-design noisy structural-mean recovery only; no market skill or calibrated real-market power",
+      "model_families": [
+        "har"
+      ],
+      "recipes": [
+        {
+          "family": "har",
+          "horizon": 1,
+          "device": "cpu",
+          "window": 1,
+          "features": [
+            "har_1",
+            "har_5",
+            "har_22"
+          ],
+          "training_loss": "qlike",
+          "feature_formula": "own_har_k-log(named_ewma)",
+          "target_formula": "mature_named_actual/origin_named_ewma",
+          "forecast_formula": "origin_named_ewma*exp(intercept+relative_har@coef)",
+          "parameters": 4,
+          "seed": 42,
+          "profile": "named-ewma-har-control-t1-v1",
+          "synthetic_condition": "null",
+          "synthetic_seed": 2703
+        },
+        {
+          "family": "har",
+          "horizon": 1,
+          "device": "cpu",
+          "window": 1,
+          "features": [
+            "har_1",
+            "har_5",
+            "har_22"
+          ],
+          "training_loss": "qlike",
+          "feature_formula": "own_har_k-log(named_ewma)",
+          "target_formula": "mature_named_actual/origin_named_ewma",
+          "forecast_formula": "origin_named_ewma*exp(intercept+relative_har@coef)",
+          "parameters": 4,
+          "seed": 42,
+          "profile": "named-ewma-har-control-t1-v1",
+          "synthetic_condition": "weak",
+          "synthetic_seed": 2703
+        },
+        {
+          "family": "har",
+          "horizon": 1,
+          "device": "cpu",
+          "window": 1,
+          "features": [
+            "har_1",
+            "har_5",
+            "har_22"
+          ],
+          "training_loss": "qlike",
+          "feature_formula": "own_har_k-log(named_ewma)",
+          "target_formula": "mature_named_actual/origin_named_ewma",
+          "forecast_formula": "origin_named_ewma*exp(intercept+relative_har@coef)",
+          "parameters": 4,
+          "seed": 42,
+          "profile": "named-ewma-har-control-t1-v1",
+          "synthetic_condition": "null",
+          "synthetic_seed": 1701
+        },
+        {
+          "family": "har",
+          "horizon": 1,
+          "device": "cpu",
+          "window": 1,
+          "features": [
+            "har_1",
+            "har_5",
+            "har_22"
+          ],
+          "training_loss": "qlike",
+          "feature_formula": "own_har_k-log(named_ewma)",
+          "target_formula": "mature_named_actual/origin_named_ewma",
+          "forecast_formula": "origin_named_ewma*exp(intercept+relative_har@coef)",
+          "parameters": 4,
+          "seed": 42,
+          "profile": "named-ewma-har-control-t1-v1",
+          "synthetic_condition": "weak",
+          "synthetic_seed": 1701
+        },
+        {
+          "family": "har",
+          "horizon": 1,
+          "device": "cpu",
+          "window": 1,
+          "features": [
+            "har_1",
+            "har_5",
+            "har_22"
+          ],
+          "training_loss": "qlike",
+          "feature_formula": "own_har_k-log(named_ewma)",
+          "target_formula": "mature_named_actual/origin_named_ewma",
+          "forecast_formula": "origin_named_ewma*exp(intercept+relative_har@coef)",
+          "parameters": 4,
+          "seed": 42,
+          "profile": "named-ewma-har-control-t1-v1",
+          "synthetic_condition": "null",
+          "synthetic_seed": 42
+        },
+        {
+          "family": "har",
+          "horizon": 1,
+          "device": "cpu",
+          "window": 1,
+          "features": [
+            "har_1",
+            "har_5",
+            "har_22"
+          ],
+          "training_loss": "qlike",
+          "feature_formula": "own_har_k-log(named_ewma)",
+          "target_formula": "mature_named_actual/origin_named_ewma",
+          "forecast_formula": "origin_named_ewma*exp(intercept+relative_har@coef)",
+          "parameters": 4,
+          "seed": 42,
+          "profile": "named-ewma-har-control-t1-v1",
+          "synthetic_condition": "weak",
+          "synthetic_seed": 42
+        }
+      ],
+      "completed_market_fits": 0,
+      "completed_synthetic_fits": 1044,
+      "origin_count": 2006,
+      "source_id": "dd95399ca9cd5b3c64ffcfc0c37b5ec9c648e612dbe53834fc85cb9c46232833",
+      "evidence": "evidence/risk-weak-teacher-result-20261029.json",
+      "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/risk-weak-teacher-result-20261029",
+      "market_skill": false,
+      "release_allowed": false,
+      "independent_holdout": false,
+      "id": "81d88aab6c500e31ccd2df1550d2a4db94f5ed27a41db6523b81247dc49e1a6a"
     }
   ],
   "local_evidence": [
@@ -20220,6 +20363,10 @@
     {
       "path": "evidence/risk-weak-teacher-prereg-20261029.json",
       "sha256": "aeb2ada8493aa91be41823c1568b46bd52060a50bc435a0460dfd4ca3237635d"
+    },
+    {
+      "path": "evidence/risk-weak-teacher-result-20261029.json",
+      "sha256": "1da9ce80011c2a35f1044a9a7c6194bbdea66b4cbae16df9d2801d58e5a8ff26"
     }
   ]
 }
