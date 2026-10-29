@@ -19861,6 +19861,90 @@
       "independent_holdout": false,
       "release_allowed": false,
       "id": "bccc0dfb2ca237649f70b0a85fbf424bb2cfeb2adfff909298b70ee13a8998d5"
+    },
+    {
+      "experiment": "research-ct-signed-unsigned-shock-forecast-t1-v1-prereg",
+      "profile": "ct-signed-unsigned-shock-forecast-t1-v1",
+      "horizon": 1,
+      "kind": "preregistered_fixed_capacity_CPU_forecast_contrast",
+      "classification": "PREREGISTERED_NOT_RUN",
+      "model_families": [
+        "har"
+      ],
+      "recipes": [
+        {
+          "family": "har",
+          "horizon": 1,
+          "device": "cpu",
+          "window": 1,
+          "features": [
+            "har_1",
+            "har_5",
+            "har_22",
+            "origin_shock"
+          ],
+          "training_loss": "qlike",
+          "parameters": 5,
+          "feature_formula": "3relativeHAR plus one declared origin shock",
+          "target_formula": "variance_target_1/ct_ewma",
+          "forecast_formula": "origin_EWMA*exp(intercept+4features@coef)",
+          "seed": 42,
+          "profile": "ct-signed-unsigned-shock-forecast-t1-v1",
+          "arm": "unsigned",
+          "variance_features": [
+            "har_1",
+            "har_5",
+            "har_22",
+            "origin_shock"
+          ],
+          "extra_feature": "r_t^2/origin_EWMA"
+        },
+        {
+          "family": "har",
+          "horizon": 1,
+          "device": "cpu",
+          "window": 1,
+          "features": [
+            "har_1",
+            "har_5",
+            "har_22",
+            "origin_shock"
+          ],
+          "training_loss": "qlike",
+          "parameters": 5,
+          "feature_formula": "3relativeHAR plus one declared origin shock",
+          "target_formula": "variance_target_1/ct_ewma",
+          "forecast_formula": "origin_EWMA*exp(intercept+4features@coef)",
+          "seed": 42,
+          "profile": "ct-signed-unsigned-shock-forecast-t1-v1",
+          "arm": "signed",
+          "variance_features": [
+            "har_1",
+            "har_5",
+            "har_22",
+            "origin_shock"
+          ],
+          "extra_feature": "sign(r_t)*r_t^2/origin_EWMA"
+        }
+      ],
+      "completed_market_fits": 0,
+      "completed_synthetic_fits": 0,
+      "fit_budget": {
+        "market": 338,
+        "synthetic": 1,
+        "processes": 1,
+        "threads": 2,
+        "session_minutes": 30
+      },
+      "origin_count": 2006,
+      "source_id": "e47bf678aff38bb6809c4c13ba8411ce0053396f3c31ea9ca5a320ff215b1cd6",
+      "data_id": "7b74a3cb90834deecd4121c4e1698a6b582ed7f60eadb8eb9a911192bb1cc53c",
+      "evidence": "evidence/ct-shock-forecast-prereg-20261029.json",
+      "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/ct-shock-forecast-prereg-20261029",
+      "market_skill": false,
+      "release_allowed": false,
+      "independent_holdout": false,
+      "id": "2514b5fbac487d5c9066d0d571d0bdb2ea1ae5659131810151469ce93d1dc0f0"
     }
   ],
   "local_evidence": [
@@ -20659,6 +20743,10 @@
     {
       "path": "evidence/ct-signed-risk-score-20261029.json",
       "sha256": "9f41c549d22451a0903f71c179b24c5aea500778d1d8aeaf27647c7bdfca7992"
+    },
+    {
+      "path": "evidence/ct-shock-forecast-prereg-20261029.json",
+      "sha256": "c5e73ef7891a3cfe953758a42156fe4d1fe7c99df9a35946f146336b0f6d24f4"
     }
   ]
 }

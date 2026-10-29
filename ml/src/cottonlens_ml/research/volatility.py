@@ -54,10 +54,21 @@ def qlike_value_gradient(theta, design, actual):
     return float(np.mean(eta + ratio)), design.T @ (1-ratio) / len(actual)
 
 
-def qlike_har(train, horizon):
-    """Same four effective HAR parameters, no search, past-only conditioning."""
+def qlike_features(names=None):
+    """Explicit opt-in for a declared design; legacy callers retain three HARs."""
+    if names is None:
+        return ['har_1', 'har_5', 'har_22']
+    if (not isinstance(names, (list, tuple)) or not names
+            or any(not isinstance(n, str) or not n or n.startswith(('target_', 'variance_target_')) for n in names)
+            or len(set(names)) != len(names)):
+        raise ValueError('Unique declared QLIKE feature names required; targets cannot be features')
+    return list(names)
+
+
+def qlike_har(train, horizon, *, feature_names=None):
+    """One declared log-link design, unchanged optimizer and past-only conditioning."""
     from scipy.optimize import minimize
-    names = ['har_1', 'har_5', 'har_22']
+    names = qlike_features(feature_names)
     raw = train[names].to_numpy(dtype=float)
     actual = train[f'variance_target_{horizon}'].to_numpy(dtype=float)
     if (not np.isfinite(raw).all() or not np.isfinite(actual).all()
@@ -92,9 +103,11 @@ def fit_predict(history, train, test, spec, workspace):
     h = spec['horizon']
     if spec['family'] == 'har' and spec.get('training_loss', 'log_mse') not in ('log_mse', 'qlike'):
         raise ValueError('Explicit supported HAR training loss required')
+    if spec.get('variance_features') is not None and (spec['family'] != 'har' or spec.get('training_loss') != 'qlike'):
+        raise ValueError('Explicit variance features require the QLIKE HAR path')
     if spec['family'] == 'har' and spec.get('training_loss', 'log_mse') == 'qlike':
-        names = ['har_1', 'har_5', 'har_22']
-        coefficients, optimization = qlike_har(train, h)
+        names = qlike_features(spec.get('variance_features'))
+        coefficients, optimization = qlike_har(train, h, feature_names=names)
         predicted = np.maximum(np.exp(np.column_stack([np.ones(len(test)), test[names]]) @ coefficients), FLOOR)
         model = {'kind': 'log_har', 'features': names, 'coef': coefficients.tolist(), 'smearing': 1.,
                  'training_loss': 'qlike', 'optimization': optimization}

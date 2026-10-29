@@ -82,3 +82,38 @@ def test_unknown_loss_rejected(tmp_path):
     f = data()
     with patch.object(v, 'require_training'), pytest.raises(ValueError, match='supported HAR'):
         v.fit_predict(f, f.iloc[:500], f.iloc[500:], {'family':'har','horizon':1,'training_loss':'unknown'}, tmp_path)
+
+
+def test_declared_fourth_feature_reaches_fit_and_heldout_prediction(tmp_path):
+    f = data(); f['origin_shock'] = np.random.default_rng(7).uniform(-2, 2, len(f))
+    f['variance_target_1'] *= np.exp(.35*f.origin_shock)
+    names = ['har_1', 'har_5', 'har_22', 'origin_shock']
+    spec = {'family': 'har', 'horizon': 1, 'training_loss': 'qlike', 'variance_features': names}
+    with patch.object(v, 'require_training'):
+        result = v.fit_predict(f, f.iloc[:500], f.iloc[500:], spec, tmp_path)
+    import json
+    model = json.loads((tmp_path/'variance-model.json').read_bytes())
+    assert model['features'] == names
+    assert len(model['coef']) == 5
+    assert model['coef'][-1] == pytest.approx(.35, abs=1e-6)
+    np.testing.assert_allclose(result['variance_predictions'], f.variance_target_1.iloc[500:], rtol=1e-6)
+
+
+def test_legacy_default_matches_explicit_three_features_exactly():
+    f = data()
+    default, info = v.qlike_har(f, 1)
+    explicit, second_info = v.qlike_har(f, 1, feature_names=['har_1', 'har_5', 'har_22'])
+    np.testing.assert_array_equal(default, explicit)
+    assert info == second_info
+
+
+@pytest.mark.parametrize('names', [[], ['har_1', 'har_1'], ['variance_target_1'], 'har_1'])
+def test_invalid_declared_feature_list_is_not_silently_ignored(names):
+    with pytest.raises(ValueError, match='Unique declared'):
+        v.qlike_har(data(), 1, feature_names=names)
+
+
+def test_declared_features_cannot_silently_enter_another_loss(tmp_path):
+    with patch.object(v, 'require_training'), pytest.raises(ValueError, match='QLIKE HAR path'):
+        v.fit_predict(data(), data(), data(), {'family': 'har', 'horizon': 1,
+                      'variance_features': ['har_1'], 'training_loss': 'log_mse'}, tmp_path)

@@ -1,3 +1,16 @@
+# Sabit şok tahmin deneyi ön kaydı — 29 Ekim 2026
+
+[Eşit kapasitede işaretli/işaretsiz kontrol](CT_SHOCK_FORECAST_CONTROL_20261029.md)
+hazırlandı: aynı 2.006 CT origin, iki beş-parametreli kol, 338 piyasa + en
+fazla 1 kayıtlı sentetik fit tavanı. Henüz piyasa fit'i yok. Ortak QLIKE
+learner'ı yeni açık özellik listesinde dördüncü alanı gerçekten kullanıyor;
+varsayılan üç özellik korunur. 40 ilgili test/Ruff ve 169 geçmiş iş/minimum
+1.191 olgun train/3.520 close bağımsız kontrolü geçti. Private ön kayıt
+1.793 dosya taze geri kurularak byte eşit preflight ile doğrulandı.
+Eski 169 model tekrar eğitilmeyecek. Kaynak/veri/ortam kimliği kilitli;
+başarı kapıları, güçlü EWMA ve saatlik görevin kapalı durumu değişmedi.
+Bu ön kayıt performans sonucu değildir; önceki kayıtlar aşağıda korunur.
+
 # Koşullu işaret bilgisi ve uç gün — 29 Ekim 2026
 
 [CT işaret tanısı](CT_SIGNED_RISK_SCORE_20261029.md) sıfır-fit tamamlandı.
