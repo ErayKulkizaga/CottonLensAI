@@ -1,4 +1,4 @@
-# İlk10risk eğitimi tamamlandı; konsolsuz günlük kayıt onaylandı — 30 Ekim 2026
+# İlk 10 risk eğitimi korundu; konsolsuz günlük görev kuruldu — 30 Ekim 2026
 
 [Güncel çalışma](CT_FORWARD_DAILY_20261030.md) kullanıcıdan açık günlük
 görev onayını aldı. Ayrı kohort gerçek14:19:03UTC saatinde kilitlendi;
@@ -7,11 +7,27 @@ tamamlandı; bağımsız native hash/gradient/189geçmiş tahmin ve bir
 IN_SAMPLE durum kontrolü geçti. **İleri tahmin ve başarı skoru hâlâ yok.**
 
 Modelcore `a173df8e…`/design `2950ca5a…`,31fit üst sınırı değişmedi;10kullanıldı.
-Yeni execution runner `cc9c32dd…` directPythonW kullanır. Task Scheduler
-kurulumu yalnız günlük03:05/03:20TR için hazırlanıyor; eski saatlik görev
-kapalı kalır. Private native yedek/geri kurma ve gerçek görev testi
-doğrulanmadan operasyon teslimatı tamamlanmış sayılmaz. Aşağıdaki
+Etkin çalıştırıcı `2747450f…` doğrudan PythonW kullanır. Windows görevinde
+yalnız iki günlük 03:05/03:20 TR tetikleyicisi vardır; eski saatlik görev
+kapalıdır. Gerçek gündüz görev testi `SKIPPED_OUTSIDE_WINDOW`, sonuç 0,
+yeni fit/tahmin 0 ile geçti. 92 native dosya hash'i değişmedi. İlk planlanan
+pencere 31 Ekim 03:05 TR; bilgisayar uyanık ve kullanıcı oturumu açık olmalıdır.
+
+Private ilk model arşivi 436 dosya; etkin çalıştırıcıyla ek 419 dosya taze geri
+kuruldu, 10 native modelin denetimi byte eşit tekrarlandı. Günlük parçalar private
+`ct-forward-records-2026-q4` Release'ine eklenir, taze indirme ve bütün üye
+hash'leri geçmeden yedek journal ilerlemez. Kaynak/Drive silme yoktur.
+XML dışa aktarma kodlama uyuşmazlığı doğru UTF-16 ek kayıtla düzeltildi;
+eski dosya ve ilk makbuz korundu, gerçek görev ayarları değişmedi. Aşağıdaki
 hazırlık/izin-bekleniyor ifadeleri tarihsel kayıttır.
+
+[Ek teslimat kanıtı](../research/evidence/ct-forward-daily-activation-20261030.json):
+419+15+13 üyeli üç taze private parça birleşince 429 çalışma dosyası birebir
+geri kuruldu; aynı 10 native model tekrar doğrulandı. Sicil 226 aşama /
+561 tarif / 32.500 fit kopyasıdır; eski 225 aşama / 206 kanıt değişmedi. Tam kapsamlı
+geçmiş kontrolü bu 10 fit için `REPEAT_FIT_RECIPE` döndürür; yeniden eğitilmez.
+Sonraki tek iş 31 Ekim gerçek 00:05/00:20 UTC kaynak/yayın makbuzlarını
+incelemektir. Dönem ortası performans skoru veya geçmişe doldurma yoktur.
 
 # Manuel own-level ileri protokol hazırlandı — 30 Ekim 2026
 

@@ -51,6 +51,16 @@ dondurulur. Görev mevcut sınırlı kullanıcı/interactive oturumuyla çalış
 oturum kapatma değildir. Kapalı/uyuyan makineden çalışma garantisi yoktur.
 Geç kalan çalıştırma araştırma saatini kaydırmaz.
 
+Kurulum tamamlandı. Gerçek Windows görev testi `SKIPPED_OUTSIDE_WINDOW`
+ve sonuç kodu 0 ile veri alma/eğitim/tahmin yapmadan bitti. Etkin execution
+kimliği `2747450f…`, model çekirdeği `a173df8e…` olarak ayrıdır. İlk planlanan
+tetikleme 31 Ekim 03:05 TR'dir. Üç private parça 419+15+13 üyeden 429 çalışma
+dosyasını birebir geri kurdu; aynı 10 native model yeni fit olmadan denetlendi.
+Kodlama bildirimi uyuşmayan ilk XML dışa aktarımı korunur; doğru UTF-16
+ek dosya ve düzeltme makbuzu gerçek görev ayarlarının değişmediğini gösterir.
+[Sicil kanıtı](../research/evidence/ct-forward-daily-activation-20261030.json)
+bu operasyon sonucunu ileri tahmin başarısından ayrı tutar.
+
 İki günlük aşamanın ardından yeni çalışma dosyaları private GitHub
 Releases'e eklenir. `research/ct_forward_backup.py` önce deponun private
 olduğunu ve sabit CLI/kod hash'lerini doğrular; her parçayı taze indirip

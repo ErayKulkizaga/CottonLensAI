@@ -1,5 +1,16 @@
 # CottonLensAI
 
+30 Ekim 2026 güncel durum: [ileri risk doğrulaması](docs/CT_FORWARD_DAILY_20261030.md)
+için ilk 10 model durumu tamamlandı ve private GitHub'dan geri kurularak
+doğrulandı. **Bağımsız ileri tahmin üstünlüğü henüz gösterilmedi.**
+Kullanıcının onayladığı ayrı günlük görev, konsol açmadan yalnız 03:05 ve
+03:20 Türkiye saatiyle çalışır; ilk planlanan pencere 31 Ekim'dir. Eski
+saatlik görev kapalıdır. Bilgisayar uyanık ve kullanıcı oturumu açık olmalıdır.
+Yeni kayıtlar checksum doğrulanmış private Release parçalarında korunur;
+Drive'a yazılmaz. Güncel karar ve kanıt sınırları [STATUS](docs/STATUS.md)'tadır.
+
+Aşağıdaki 29 Ekim kayıtları araştırma tarihçesidir.
+
 [Son tamamlanan CT risk deneyi](docs/CT_SHOCK_FORECAST_CONTROL_20261029.md):
 338 piyasa + 1 native öğrenme fit'i, iki eşit kapasitede işaretli/işaretsiz
 kol. Birincil EWMA QLIKE katkısı +0,00273; güven aralıkları sıfırı içeriyor,

@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "as_of": "2026-10-29",
+  "as_of": "2026-10-30",
   "release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/evidence-20261005",
   "limits": [
     "Only available files are inventoried; missing past predictions are not reconstructed.",
@@ -20294,6 +20294,31 @@
       "evidence": "evidence/ct-manual-forward-targetdate-prereg-20261030.json",
       "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/ct-manual-forward-targetdate-prereg-20261030",
       "id": "ec133422d8478b19f0ae8515b74e86c3cde01bf6c9ba6dcf586e153dda1207e0"
+    },
+    {
+      "experiment": "research-ct-own-level-forward-daily-activation-v1",
+      "profile": "ct-own-level-manual-forward-t1-v1",
+      "horizon": 1,
+      "kind": "initial_training_states_and_approved_daily_forward_operations",
+      "classification": "INCONCLUSIVE",
+      "classification_scope": "Initial native model states and approved daily operations verified; forward performance not evaluated",
+      "model_families": [
+        "har"
+      ],
+      "completed_market_fits": 10,
+      "completed_synthetic_fits": 0,
+      "source_id": "a173df8e65b42460931018e53ab11778b248698383920231af1f31bb6cb16d41",
+      "design_id": "2950ca5a0792022c1cea2f584b1599936c94221de3f27aff46af50233e795134",
+      "execution_source_id": "2747450ff4d46b022493cc604c565aa941e0378c5c3bd741179d962cff04a644",
+      "cohort_lock_id": "71421358ac97bd1c9d331e8d30a413d1c78c689743413e369a39d366b1847fb6",
+      "cohort_locked": true,
+      "required_origins": 252,
+      "forward_forecasts": 0,
+      "market_skill": false,
+      "task_installed": true,
+      "evidence": "evidence/ct-forward-daily-activation-20261030.json",
+      "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/ct-forward-records-2026-q4",
+      "id": "7166d81c1722d7ac578be342a04365587f7c968a63ce067fc6a3eacbd2b7c772"
     }
   ],
   "local_evidence": [
@@ -21128,6 +21153,14 @@
     {
       "path": "evidence/ct-manual-forward-targetdate-prereg-20261030.json",
       "sha256": "927f6f7daeff826203ebe2ad230c3a4783a502271e63dd5841610e0b1403a754"
+    },
+    {
+      "path": "evidence/ct-forward-daily-activation-20261030.json",
+      "sha256": "7997dc3477907586c7c4a45371f8110630fdc3933a5948050dc59aeb18a8a860"
+    },
+    {
+      "path": "evidence/ct-forward-daily-delivery-20261030.json",
+      "sha256": "90a65420a85f404c054777039eafb9027a3acc66a1defd56f4503716a9c4f4e4"
     }
   ]
 }

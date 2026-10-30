@@ -56449,6 +56449,81 @@
       ],
       "coverage": "completed fit receipts; not experiment completion",
       "payload_hashes_revalidated_by_index": false
+    },
+    {
+      "id": "ab8697a23c1fb54a7ccd428ee5bb66b184f19cab9768911040fab29206e63908",
+      "scope": {
+        "identity_id": "b8e0f4c75ed2d1519982685074bd582e51b47d2d4fc36a59da4695bbc591433e",
+        "source_id": "a173df8e65b42460931018e53ab11778b248698383920231af1f31bb6cb16d41",
+        "data_id": null,
+        "split_id": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+        "profile": "ct-own-level-manual-forward-t1-v1"
+      },
+      "scope_id": "ee20b91f2dd52cdca80f0932711aa1a89051ce7bbcace4e2501d4cfbb90b6ba8",
+      "profile": "ct-own-level-manual-forward-t1-v1",
+      "horizon": 1,
+      "recipes": [
+        {
+          "family": "har",
+          "horizon": 1,
+          "device": "cpu",
+          "window": 1,
+          "features": [
+            "har_1",
+            "har_5",
+            "har_22",
+            "origin_state"
+          ],
+          "training_loss": "qlike",
+          "parameters": 5,
+          "feature_formula": "3relativeHAR plus one declared origin state",
+          "target_formula": "variance_target_1/ct_ewma",
+          "forecast_formula": "origin_EWMA*exp(intercept+4features@coef)",
+          "seed": 42,
+          "profile": "ct-risk-level-dxy-control-t1-v1",
+          "arm": "own_level",
+          "variance_features": [
+            "har_1",
+            "har_5",
+            "har_22",
+            "origin_state"
+          ],
+          "extra_feature": "free log origin CT EWMA"
+        }
+      ],
+      "model_families": [
+        "har"
+      ],
+      "kind": "market_fit_receipt",
+      "completed_fits": 10,
+      "sample_receipts": [
+        {
+          "path": "ledger/completed/0cbebb098272cb4bcc500f82068b210197afa4bbee69695882a0a97084d6e7d6.json",
+          "record_id": "2c45ff8e00bfdfdabcb1a013985c5efb4254d995ff5c17cfc9f5a71eee757e3f",
+          "experiment_id": "0cbebb098272cb4bcc500f82068b210197afa4bbee69695882a0a97084d6e7d6"
+        },
+        {
+          "path": "ledger/completed/541884f17c5fd5f05fdfc1dad33f30a7ea5edbbb6b804e1f39cc8d33bf3624fb.json",
+          "record_id": "399de76bc06e6fc927a9e060338f065a5fd866867997f2178023532ad225f182",
+          "experiment_id": "541884f17c5fd5f05fdfc1dad33f30a7ea5edbbb6b804e1f39cc8d33bf3624fb"
+        },
+        {
+          "path": "ledger/completed/89bcdd168821230b8585cce136b164dcec14ff9b3f09381f4695b87f611f786d.json",
+          "record_id": "bf4ab691f912c2917f688535b0d5f3333063218aebcafaffa4c5d19345140bd4",
+          "experiment_id": "89bcdd168821230b8585cce136b164dcec14ff9b3f09381f4695b87f611f786d"
+        }
+      ],
+      "roles": [
+        "2026"
+      ],
+      "coverage": "completed fit receipts; not experiment completion",
+      "payload_hashes_revalidated_by_index": false,
+      "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/ct-forward-initial-state-daily-20261030",
+      "payload_base": "bundle/study",
+      "seed_sha256": "b4f16662a5a717bf999fdcec511f4c3b7bb916749c415915a46e7dbf7464fa90",
+      "cohort_lock_id": "71421358ac97bd1c9d331e8d30a413d1c78c689743413e369a39d366b1847fb6",
+      "delivery_evidence": "evidence/ct-forward-daily-activation-20261030.json",
+      "native_payloads_reverified_by_delivery": true
     }
   ],
   "rejected_receipts": [],
