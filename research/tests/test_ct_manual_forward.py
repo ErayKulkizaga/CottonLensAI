@@ -66,6 +66,9 @@ def test_first_origin_uses_real_lock_not_already_started_publication():
     assert study.first_origin(cal, study.utc('2026-10-31T00:14:59Z')) == '2026-10-30'
     assert study.first_origin(cal, study.utc('2026-10-31T00:15:00Z')) == '2026-11-02'
     assert study.decision('2026-11-02').isoformat() == '2026-11-03T00:15:00+00:00'
+    assert study.target_date(cal, '2026-10-30') == '2026-11-02'
+    with pytest.raises(ValueError, match='Next target session'):
+        study.target_date(cal, '2026-12-31')
 
 
 def test_missing_slots_are_not_removed_from_twenty_one_bucket_counter():
@@ -208,6 +211,7 @@ def test_manual_publication_records_real_links_and_preserves_missing_slots(tmp_p
         assert read_record(tmp_path/'events/001.json')['previous_event_id'] == study.content_id(event)
     forecast = read_record(tmp_path/'forecasts/2026-10-30/forecast.json')
     assert forecast['observation_id'] == 'capture' and forecast['fit_id'] == 'fixture'
+    assert forecast['target_date'] == '2026-11-02' and forecast['horizon'] == 1
     assert forecast['selected_variance'] == .5*(forecast['raw_variance']+forecast['baseline_variance'])
 
 

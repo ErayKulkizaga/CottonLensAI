@@ -20252,6 +20252,27 @@
       "evidence": "evidence/ct-manual-source-admission-20261030.json",
       "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/ct-manual-source-admission-20261030",
       "id": "d08e034d2fb9618b255234c8d3b998d58defc83593c7f26018699b1e1d5d0cbb"
+    },
+    {
+      "experiment": "research-ct-own-level-manual-forward-t1-v1-prereg",
+      "profile": "ct-own-level-manual-forward-t1-v1",
+      "horizon": 1,
+      "kind": "preregistered_manual_prospective_unchanged_risk_candidate",
+      "classification": "PREREGISTERED_NOT_RUN",
+      "classification_scope": "Frozen manual prospective recipe and native replay only; no new market fit or forecast",
+      "model_families": [
+        "har"
+      ],
+      "completed_market_fits": 0,
+      "completed_synthetic_fits": 0,
+      "source_id": "6da145e74051eb2032269f5f1df689d9a5ce256ce44e7c4172896465b86a3470",
+      "design_id": "ba17e2c608f2a96dbe4c6296bbec5dab0f08e3f9d009097dd4a4ae478cbf25fc",
+      "required_origins": 252,
+      "cohort_locked": false,
+      "market_skill": false,
+      "evidence": "evidence/ct-manual-forward-prereg-20261030.json",
+      "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/ct-manual-forward-prereg-20261030",
+      "id": "84f1e790f88ee034fdb704443774b861df7a3a0a909d20f1d6f956eae37aa9ca"
     }
   ],
   "local_evidence": [
@@ -21078,6 +21099,10 @@
     {
       "path": "evidence/ct-manual-source-admission-20261030.json",
       "sha256": "95ddc94e68d938971b80388e297ff3d55149ca0fb96fb58a467ed58a7411195d"
+    },
+    {
+      "path": "evidence/ct-manual-forward-prereg-20261030.json",
+      "sha256": "42aebeb27db27badcb5871d91a73497a025cdf69c79d513259a87b7068c2ba15"
     }
   ]
 }

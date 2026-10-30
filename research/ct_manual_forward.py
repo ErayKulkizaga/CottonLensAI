@@ -53,6 +53,13 @@ def decision(day):
     return pd.Timestamp(day, tz='UTC')+pd.Timedelta(days=1, minutes=15)
 
 
+def target_date(cal, origin):
+    for d in pd.date_range(pd.Timestamp(origin)+pd.Timedelta(days=1), cal.end):
+        if cal.session(d.date()):
+            return str(d.date())
+    raise ValueError('Next target session is outside reviewed calendar; extend it before publication')
+
+
 def history(seed):
     h = candidate_history(seed)
     for horizon in (1, 5):
@@ -153,6 +160,7 @@ def prepare(repo, root, admission, parent):
     control = native_learning(parent, repo)
     design = {'profile': PROFILE, 'recipe': learner.recipe('own_level', learner.STATE_PROFILE),
               'target': 'next Cotton session squared log return', 'baseline': {'family': 'ewma', 'lambda': .94},
+              'target_record': 'Persist horizon1 and next official Cotton target_date before any target price is observed',
               'required_origins': 252, 'maximum_calendar_years': 2, 'last_allowed_year': 2027,
               'decision_utc': '00:15', 'publication_end_utc': '00:30',
               'warmup_index': 119, 'maturity': 'target_date_5 strictly before origin-date cutoff',
@@ -531,7 +539,8 @@ def publish(root, repo):
         raise ValueError('Model or shrinkage was not available at decision time')
     rows = projection(h, [origin]); rows['variance_target_1'] = np.nan
     raw = float(predict_model(ledger, record, rows)[0]); baseline = float(rows.ct_ewma.iloc[0]); w = selection['weight']
-    body = {'origin': origin, 'ordinal_slot': dates.index(origin), 'decision_at': cutoff.isoformat(),
+    body = {'origin': origin, 'target_date': target_date(calendar(root), origin), 'horizon': 1,
+            'ordinal_slot': dates.index(origin), 'decision_at': cutoff.isoformat(),
             'generated_at': stamp.isoformat(), 'observation_id': observation['observation_id'],
             'history_sha256': frame_identity(seed, list(seed)), 'fit_id': record['experiment_id'],
             'selection_id': content_id(selection), 'cohort_lock_id': content_id(locked),
@@ -595,7 +604,8 @@ def status(root, repo):
             if day not in event_forecasts:
                 raise ValueError('Partial publication lacks its completed forward event')
             receipt = read_record(p); forecast = read_record(p.parent/'forecast.json')
-            if receipt['forecast_sha256'] != digest(p.parent/'forecast.json') or forecast['origin'] != day:
+            if (receipt['forecast_sha256'] != digest(p.parent/'forecast.json') or forecast['origin'] != day
+                    or forecast['target_date'] != target_date(calendar(root), day) or forecast['horizon'] != 1):
                 raise ValueError('Published forecast chain changed')
             if receipt['status'] == 'TIMELY':
                 cutoff = decision(day)
