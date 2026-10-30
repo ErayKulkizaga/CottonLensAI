@@ -1,3 +1,20 @@
+# Manuel risk kaydı: kaynak sürümü ayrıldı — 30 Ekim 2026
+
+[Sıfır-fit kaynak denetimi](CT_MANUAL_SOURCE_20261030.md) yeni ham Yahoo
+yanıtını korur: 610 satır / 503 tamamlanmış bar / 106 boş yer tutucu / bir
+açık bar. 208 resmi Cotton seansı eksiksiz; 476 ortak fiyatta tek fark eski
+seed'in 22 Eylül 2026 terminal close'udur (82,88 → 79,69). Neden kanıtlanmadı;
+eski seed/raw/2016–2023 sonuçları değiştirilmedi. Varsayılan birleştirme
+reddeder. Ayrı hash-bağlı başlangıç kararı yalnız yeni 4.232 satırlık seed
+**önerisi** üretir; eğitim, kohort kilidi veya ileri yayın yetkisi vermez.
+
+Sessiz eski/yeni vintage birleşimi son EWMA'yı %17,162964 yükseltir; bu bir
+piyasa performans sonucu değildir. 41 test/Ruff ve bağımsız 610 raw / 476
+overlap / 4.231 scalar EWMA denetimi geçti. Saatlik görev, üç tetikleyici ve
+Codex otomasyonu kapalı kalır; yeni fit/tahmin yok. Sonraki tek iş taze
+GitHub kaynak/seed geri kurması ardından değişmeyen adayın manuel ileri
+protokolünü kilitlemektir. Aşağıdaki tarihsel aday ve güç sınırları korunur.
+
 # İleri risk doğrulaması kurulabilirliği — 30 Ekim 2026
 
 [Sıfır-fit denetim](CT_PROSPECTIVE_READINESS_20261030.md) mevcut 126-origin

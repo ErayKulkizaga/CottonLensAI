@@ -1,0 +1,11 @@
+{
+  "purpose": "PROPOSED_PRE_COHORT_SEED_VERSION",
+  "original_seed_sha256": "b3d6f01b9d8a7383d9e64b1d44bbad764fd65b5d54f67ed4aee23b91debe1fef",
+  "snapshot_sha256": "e49099e9df95713d45f44e75b4f014cde648dfd235b3989139bbe438787191b1",
+  "changed_date": "2026-09-22",
+  "old_close": 82.87999725341797,
+  "new_close": 79.69000244140625,
+  "cohort_locked": false,
+  "forward_forecasts": 0,
+  "reason": "Explicit new as-observed provider-proxy vintage for a proposed future seed. Sole terminal change, old source preserved. Cause and historically correct settlement are unknown; this is not a historical data correction or forward authorization. No live/cohort state is changed."
+}

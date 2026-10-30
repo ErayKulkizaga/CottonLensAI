@@ -1,5 +1,11 @@
 # Deney geçmişi ve tekrar kontrolü
 
+Son kaynak [kabul denetimi](../docs/CT_MANUAL_SOURCE_20261030.md) sıfır fit:
+eski seed'in tek terminal fiyat farkını varsayılan yol reddeder. Ayrı,
+hash-bağlı 4.232 satırlık sürüm yalnız ileri seed önerisidir; eski kanıtlar
+değişmez. 610 raw satır ve resmi Cotton takvimi kontrol edildi. Bu çalışma
+piyasa başarısı veya yeni ileri protokol kilidi değildir; saatlik görev kapalı.
+
 Son eğitim:[CT own-level / DXY risk kontrolü](../docs/CT_LEVEL_DXY_CONTROL_20261030.md).
 338 piyasa + 1 native kontrol tamamlandı; iki kolun tam-scope araması
 169'ar completed fit bulur, tekrar çalıştırılmaz. Birincil DXY belirsiz;
