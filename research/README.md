@@ -1,5 +1,11 @@
 # Deney geçmişi ve tekrar kontrolü
 
+[Manuel ileri protokol](../docs/CT_MANUAL_FORWARD_20261030.md) hazırlandı;
+kohort/eğitim/yayın başlamadı. Aynı own-level learner, yıllık3x63 seçim ve
+21slot refit korunur; iki yıllık252slot için düzeltilmiş sınır31piyasa/
+0yeni sentetik fit'tir. Native200tahmin ve bağımsız plan doğrulaması piyasa
+başarısı değildir. Saatlik görev kapalı; güncel sıra STATUS içindedir.
+
 Son kaynak [kabul denetimi](../docs/CT_MANUAL_SOURCE_20261030.md) sıfır fit:
 eski seed'in tek terminal fiyat farkını varsayılan yol reddeder. Ayrı,
 hash-bağlı 4.232 satırlık sürüm yalnız ileri seed önerisidir; eski kanıtlar

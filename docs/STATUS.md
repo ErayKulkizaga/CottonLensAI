@@ -1,3 +1,17 @@
+# Manuel own-level ileri protokol hazırlandı — 30 Ekim 2026
+
+[Sabit protokol](CT_MANUAL_FORWARD_20261030.md) mevcut beş-parametre QLIKE
+learner/Ledger ile manuel kaynak kabulü, gerçek-saat kilidi, eğitim durumu,
+yıllık seçim, 21-slot refit ve hash-bağlı yayın yolunu kurar. **Kohort kilitli
+değil, yeni fit/tahmin yok.** Günlük zamanında kaydın sürdürülebilirliği
+belirlenmeden kilit açılmaz; saatlik görev ve bütün tetikleyiciler kapalı kalır.
+
+Önceki21fit taslağı yıllık yeniden seçimi atlıyordu: 252 slot/iki yıl için
+en fazla18iç+13dış=31piyasa/0sentetik fit. Bu bütçe eğitim açıldığı anlamına
+gelmez. 77 ilgili test/Ruff, mevcut200native öğrenme tahmini ve bağımsız
+9iç/1dış plan doğrulandı (min3914/4108olgun train). Dönem ortası skor veya
+başarı iddiası yoktur. 2027 takvimi ayrıca kanıtlanmadan kapsam dışına geçilmez.
+
 # Manuel risk kaydı: kaynak sürümü ayrıldı — 30 Ekim 2026
 
 [Sıfır-fit kaynak denetimi](CT_MANUAL_SOURCE_20261030.md) yeni ham Yahoo
