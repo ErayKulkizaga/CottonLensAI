@@ -20209,6 +20209,28 @@
       "release_allowed": false,
       "independent_holdout": false,
       "id": "863b27bed333210a6087708a614c82be38b57c5bca5cd0b41716f7c8640602b0"
+    },
+    {
+      "experiment": "research-ct-own-level-prospective-readiness-v1",
+      "profile": "ct-own-level-prospective-readiness-v1",
+      "horizon": 1,
+      "kind": "zero_fit_conditional_planning_and_history_readiness",
+      "classification": "INCONCLUSIVE",
+      "classification_scope": "Conditional sample-size/history readiness only, not a new market performance or calibrated-power verdict",
+      "model_families": [
+        "har"
+      ],
+      "completed_market_fits": 0,
+      "completed_synthetic_fits": 0,
+      "origin_count": 2006,
+      "source_id": "b80e097158cd06104648ecac96f21ee0278313935b9904ccdc496d05ea238fdd",
+      "parent_fitted_source_id": "5846f9cbb0f360731e84f251ed311f5f665510590594645204daa95c6438ab26",
+      "forward_preregistration_locked": false,
+      "calibrated_power": false,
+      "market_skill": false,
+      "evidence": "evidence/ct-risk-prospective-readiness-20261030.json",
+      "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/ct-risk-prospective-readiness-20261030",
+      "id": "146626ac727d7b709eb864a103747c59f5440224ad4aae470f7e2eea90f6cb8e"
     }
   ],
   "local_evidence": [
@@ -21027,6 +21049,10 @@
     {
       "path": "evidence/ct-level-dxy-result-20261030.json",
       "sha256": "83a1e7cec414d17d005831d537307113d06f2ceed225bedd7059c93c231bb9c7"
+    },
+    {
+      "path": "evidence/ct-risk-prospective-readiness-20261030.json",
+      "sha256": "d33820134300af5ff673ed7aa9cc557ad9b664eb2e6a17506755f1e7a13c0417"
     }
   ]
 }

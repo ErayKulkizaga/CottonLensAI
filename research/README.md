@@ -1,6 +1,19 @@
 # Deney geçmişi ve tekrar kontrolü
 
-Son eğitim:[CT işaretli/işaretsiz risk kontrolü](../docs/CT_SHOCK_FORECAST_CONTROL_20261029.md).
+Son eğitim:[CT own-level / DXY risk kontrolü](../docs/CT_LEVEL_DXY_CONTROL_20261030.md).
+338 piyasa + 1 native kontrol tamamlandı; iki kolun tam-scope araması
+169'ar completed fit bulur, tekrar çalıştırılmaz. Birincil DXY belirsiz;
+ön kayıtlı ikincil own-level tarihsel koşulları geçti (+0,01770104, iki
+pozitif CI, 7/8 yıl). Bağımsız ileri başarı değildir. 4.193 private dosya
+taze restore ve sıfır-fit byte eşit replay ile doğrulandı.
+
+İleri [kurulabilirlik denetimi](../docs/CT_PROSPECTIVE_READINESS_20261030.md)
+yeni eğitim açmaz: 126-origin eski baseline akışı bu risk adayının testi
+değildir. Koşullu örneklem hesabı güç garantisi vermez. Tam 2010 seed'i,
+örtüşme/revizyon kontrolü ve karar-saat makbuzu olmadan ileri kayıt yok;
+saatlik görev kapalı kalır. Güncel karar `docs/STATUS.md` içindedir.
+
+Önceki eğitim:[CT işaretli/işaretsiz risk kontrolü](../docs/CT_SHOCK_FORECAST_CONTROL_20261029.md).
 338 market + 1 native öğrenme fit'i kapandı; 4.184 private dosya taze restore
 ve byte-equal sıfır-fit replay ile doğrulandı. Birincil QLIKE +0,00272560,
 iki CI sıfırı içerir, trim negatif; INCONCLUSIVE. Eski 169 kontrol tekrar

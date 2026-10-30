@@ -1,0 +1,102 @@
+{
+  "schema": 1,
+  "profile": "ct-own-level-prospective-readiness-v1",
+  "classification": "INCONCLUSIVE",
+  "classification_scope": "Conditional sample-size/history readiness only, not a new market performance or calibrated-power verdict",
+  "source_id": "b80e097158cd06104648ecac96f21ee0278313935b9904ccdc496d05ea238fdd",
+  "parent_fitted_source_id": "5846f9cbb0f360731e84f251ed311f5f665510590594645204daa95c6438ab26",
+  "new_fits": 0,
+  "new_data_downloads": 0,
+  "new_forward_forecasts": 0,
+  "forward_preregistration_locked": false,
+  "completed_market_fits": 0,
+  "completed_synthetic_fits": 0,
+  "market_skill": false,
+  "calibrated_power": false,
+  "historical_parent_candidate_unchanged": true,
+  "normal_point_scenarios": {
+    "20": {
+      "long_run_variance": 0.08882733521700197,
+      "N126": {
+        "effect": 0.01770104344442714,
+        "origins": 126,
+        "single_interval_positive_lci_probability": 0.09795467665860486,
+        "origins_for_80pct_single_interval_probability": 2226
+      }
+    },
+    "60": {
+      "long_run_variance": 0.10373231319897513,
+      "N126": {
+        "effect": 0.01770104344442714,
+        "origins": 126,
+        "single_interval_positive_lci_probability": 0.08962846563644095,
+        "origins_for_80pct_single_interval_probability": 2599
+      }
+    }
+  },
+  "planning_limits": "Historical covariance/effect stationarity and a normal mean approximation; conditional planning only. Neither tail/regime change nor research selection is corrected. No promised duration, joint-gate power, or future skill.",
+  "verified_price_prefix_rows": 3520,
+  "seed_rows": 4205,
+  "seed_first_date": "2010-01-04",
+  "seed_last_date": "2026-09-22",
+  "known_overlap_only_not_future_calendar_admission": true,
+  "result_sha256": "3eaf570eccc05490bdb66758ece9b551000ce0773f8fb098972c9c3357f7f61c",
+  "planning_losses_sha256": "9b78c406988cff82f5cc48c252c320872f47840fe898bdeeddc20aa2b9992c52",
+  "seed_sha256": "b3d6f01b9d8a7383d9e64b1d44bbad764fd65b5d54f67ed4aee23b91debe1fef",
+  "independent_verification": {
+    "status": "independently_verified_conditional_readiness",
+    "new_fits": 0,
+    "forward_skill": false,
+    "calibrated_power": false,
+    "source_id": "b80e097158cd06104648ecac96f21ee0278313935b9904ccdc496d05ea238fdd",
+    "decimal_loss_differences": 2006,
+    "independent_covariance_method": "sum of squared zero-padded block sums per year",
+    "long_run_variances": {
+      "20": 0.08882733521700203,
+      "60": 0.1037323131989751
+    },
+    "normal_scenarios_checked": 20,
+    "overlapping_descriptive_windows_checked": 6139,
+    "seed_rows": 4205,
+    "historical_price_prefix_rows": 3520
+  },
+  "fresh_replay": {
+    "status": "fresh_private_github_restore_offline_zero_fit_readiness_replay_byte_identical",
+    "source_id": "b80e097158cd06104648ecac96f21ee0278313935b9904ccdc496d05ea238fdd",
+    "new_fits": 0,
+    "new_forward_forecasts": 0,
+    "network_entrypoints_disabled": true,
+    "calibrated_power": false,
+    "market_skill": false,
+    "equal_outputs": {
+      "result.json": "3eaf570eccc05490bdb66758ece9b551000ce0773f8fb098972c9c3357f7f61c",
+      "ready.json": "d4238c1e1621764821738f3bfb384edba42d1a3ae3d7c78ac2ac0b73910f144e",
+      "planning-losses.csv": "9b78c406988cff82f5cc48c252c320872f47840fe898bdeeddc20aa2b9992c52",
+      "seed-history.parquet": "b3d6f01b9d8a7383d9e64b1d44bbad764fd65b5d54f67ed4aee23b91debe1fef",
+      "independent.json": "c099ab359c551c862f10906deff7a08da48438f28f8418496c0a168a68395be8"
+    },
+    "replay_sha256": "f63a60ad9db23b1cbfa60997c0faf61f903cca64053271ad62299e6b9b4c0de5"
+  },
+  "failed_first_revision": {
+    "status": "VERIFIER_FAILED_NOT_ACCEPTED",
+    "new_fits": 0,
+    "source_id": "1dcc528bcd081dce0e30570df4e05176761ea6bedde3f52b896154edb6372db9",
+    "reason": "Independent separate-term Decimal subtraction created signed numerical residue for identical forecasts; positive-window fraction check failed. Stable paired identity corrected in v2.",
+    "observed_assertion_actual": "0.784689",
+    "observed_assertion_desired": "0.717703",
+    "forensic_note_written_after_failure": true,
+    "original_inputs_equal": true,
+    "planning_values_unchanged": true
+  },
+  "failed_v1_preserved_in_payload": true,
+  "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/ct-risk-prospective-readiness-20261030",
+  "archive_sha256": "6bf1743c532dc1d71d8c30f7949c8e1153526d44c726ed2ccaf1339311bf3806",
+  "archive_bytes": 3486510,
+  "fresh_restored_members": 601,
+  "old_stages_preserved": 221,
+  "old_proofs_preserved": 202,
+  "old_fit_recipes_preserved": 560,
+  "old_trials_sha256": "aada0eb15abe857b573e2234c38d702add9081b6969ae545a9c5fc792a0065e6",
+  "next_exact_step": "Manual risk-recording protocol for the unchanged candidate, with explicit sample-size limits, full seed/overlap and receipt/calendar admission; no hourly task, grid, fit or future cohort started.",
+  "record_id": "0ddd3a6ad79d59ff99d56c51230568141c57fd2611dbac7574dcb890722916a6"
+}

@@ -1,3 +1,29 @@
+# İleri risk doğrulaması kurulabilirliği — 30 Ekim 2026
+
+[Sıfır-fit denetim](CT_PROSPECTIVE_READINESS_20261030.md) mevcut 126-origin
+baseline akışının öğrenilmiş risk doğrulaması olmadığını kaydeder. Yeni
+adayın tarihsel etkisi/kovaryansı sabit varsayılırsa, basit normal tek-CI
+hesabı 126 origin'de yaklaşık %9–10 saptama olasılığı verir. Bu kalibre güç,
+ortak iki-CI kapısı veya bekleme süresi değildir. İleri kohort **kilitlenmedi**;
+own-level tarihsel aday korunur, başarı eşiği veya hedef değiştirilmez.
+
+2010'dan başlayan 4.205 barlık seed'in ilk 3.520 fiyatı ve risk özellikleri
+eski geçmişle eşleşti. Yalnız iki yıllık snapshot ile expanding geçmiş/EWMA
+yeniden başlatılamaz. Bilinen örtüşmede revizyon veya tarih eksilmesi/eklenmesi
+reddedilir; gelecekteki takvim eksiksizliği ayrıca kanıtlanmalıdır.
+
+14 test/Ruff; 2.006 Decimal fark, 20 koşullu senaryo ve 6.139 örtüşen pencere
+bağımsız denetimi geçti. İlk doğrulayıcıda sıfır farkın işaretini bozan
+Decimal işlem sırası v1'de korundu; v2 eşlenmiş kimlikle geçti. Eski model/
+sonuç ve ana planlama değerleri değişmedi. Private 601 dosya taze restore;
+beş çıktı sıfır-fit/ağ kapalı byte eşit replay geçti. Sicil 222 aşama,
+560 tarif/32.490 fit kopyası; fit sicilinin byte hash'i değişmedi.
+
+Sonraki tek uygulama işi manuel risk kayıt protokolünü açık örneklem/güç,
+tam geçmiş ve makbuz/takvim sınırlarıyla kilitlemektir. Yeni fit, model,
+grid, veri indirme veya otomatik görev açılmadı. Saatlik görev kapalı kalır.
+Aşağıdaki model sonuçları ve kararlar korunur.
+
 # CT own-level tarihsel aday; DXY birincil sonuç belirsiz — 30 Ekim 2026
 
 [Sonuç](CT_LEVEL_DXY_CONTROL_20261030.md#sonuç--338-piyasa--1-native-öğrenme-fiti-tamamlandı)
