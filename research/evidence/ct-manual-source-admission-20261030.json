@@ -1,0 +1,94 @@
+{
+  "schema": 1,
+  "profile": "ct-manual-source-admission-v1",
+  "classification": "INCONCLUSIVE",
+  "classification_scope": "Source/version readiness only; revision cause and market superiority unproved",
+  "source_id": "fa5e9f3fa07ea673e5eedbee184ad53a41410575dc97ddc075799716936b4d06",
+  "parent_fitted_source_id": "5846f9cbb0f360731e84f251ed311f5f665510590594645204daa95c6438ab26",
+  "new_fits": 0,
+  "new_forecasts": 0,
+  "completed_market_fits": 0,
+  "completed_synthetic_fits": 0,
+  "market_skill": false,
+  "forward_authorized": false,
+  "cohort_locked": false,
+  "source_qualification": "Yahoo CT=F provider proxy; named ICE contract, settlement interpretation, first historical publication and first vintage are unverified. A current snapshot is not a historical availability certificate.",
+  "revision_cause_verified": false,
+  "classification_counts": {
+    "completed_quote": 503,
+    "empty_placeholder": 106,
+    "incomplete_quote": 1
+  },
+  "observed_available_at": "2026-10-30T09:58:30.126827+00:00",
+  "strict_append_rejection": "Overlapping price revision; preserve both sources and review, never overwrite seed",
+  "changed_close_dates": [
+    "2026-09-22"
+  ],
+  "diagnostic_only_ewma": {
+    "unsafe_mixed_vintage": 0.00029615055206318565,
+    "proposed_vintage": 0.00025276806068175173,
+    "relative_difference_pct": 17.162964048711338
+  },
+  "original_seed_rows": 4205,
+  "proposed_seed_rows": 4232,
+  "original_seed_sha256": "b3d6f01b9d8a7383d9e64b1d44bbad764fd65b5d54f67ed4aee23b91debe1fef",
+  "proposed_seed_sha256": "b4f16662a5a717bf999fdcec511f4c3b7bb916749c415915a46e7dbf7464fa90",
+  "result_sha256": "db8ba3b039a6ef4c951870910f98b70503af92a2cce231cd63464c4fbd9647fc",
+  "strict_result_sha256": "545667fbd00f43cb6dda5f0a5e2e9e1751a21c6952855b0dfabadb4356929e6b",
+  "initial_version_decision_sha256": "03d081d13ae20ebdf3e6eaa7f7139ed9e3aa756cd16d88ef53de3ad37d217cf5",
+  "independent_verification": {
+    "status": "independently_verified_manual_source_proposal",
+    "source_id": "fa5e9f3fa07ea673e5eedbee184ad53a41410575dc97ddc075799716936b4d06",
+    "new_fits": 0,
+    "new_forecasts": 0,
+    "forward_authorized": false,
+    "raw_rows_checked": 610,
+    "completed_quotes_checked": 503,
+    "calendar_sessions_checked": 208,
+    "overlapping_quotes_checked": 476,
+    "changed_close_dates": [
+      "2026-09-22"
+    ],
+    "scalar_ewma_updates_checked": 4231,
+    "historical_prefix_unchanged": true
+  },
+  "fresh_replay": {
+    "status": "fresh_private_github_offline_source_replay_byte_identical",
+    "source_id": "fa5e9f3fa07ea673e5eedbee184ad53a41410575dc97ddc075799716936b4d06",
+    "new_fits": 0,
+    "new_forecasts": 0,
+    "forward_authorized": false,
+    "network_entrypoints_disabled": true,
+    "equal_outputs": {
+      "strict-v3/ready.json": "402bb0ed963bcc57b84dc373faba53f281097956e013d8ed587c6ef275c6a34e",
+      "strict-v3/result.json": "545667fbd00f43cb6dda5f0a5e2e9e1751a21c6952855b0dfabadb4356929e6b",
+      "strict-v3/classified-bars.csv": "63ce9fdf4716d3a30701eafaee92572bbfb374d7cd7836afd6e62ba2ad978997",
+      "strict-v3/completed-quotes.parquet": "04575e3cd62a0086cea589bb17c6e0ccd714102cd4cdcb75554d02361cc7d02a",
+      "strict-v3-independent.json": "798f95902e8120021e70d3837e2d0635d26755c732c590644704349cbdc51deb",
+      "proposed-v3/ready.json": "ca31563f776b77c21a745354d0960de35901c8db27cf12ea2d9a43d1419c7ad4",
+      "proposed-v3/result.json": "db8ba3b039a6ef4c951870910f98b70503af92a2cce231cd63464c4fbd9647fc",
+      "proposed-v3/classified-bars.csv": "63ce9fdf4716d3a30701eafaee92572bbfb374d7cd7836afd6e62ba2ad978997",
+      "proposed-v3/completed-quotes.parquet": "04575e3cd62a0086cea589bb17c6e0ccd714102cd4cdcb75554d02361cc7d02a",
+      "proposed-v3/proposed-seed.parquet": "b4f16662a5a717bf999fdcec511f4c3b7bb916749c415915a46e7dbf7464fa90",
+      "proposed-v3-independent.json": "5dfb0fd3a5b670672af3eb4b264bee21ed5b1d5310b57e4df7a5963c1f392df7"
+    },
+    "replay_sha256": "fe37771818a489ee93b3ead081205783d1be215f2c5b3630285bd134aaf13563"
+  },
+  "failed_first_revision": {
+    "status": "INDEPENDENT_VERIFIER_FAILED_NOT_ACCEPTED",
+    "source_id": "59eb24b48f55158ef3413de795fd5f6506f24e136b0cce6061548c4a8039aec2",
+    "new_fits": 0,
+    "reason": "CSV empty placeholder closes caused object/string dtype with keep_default_na=False; independent exact numeric comparison rejected correct serialized quotes. Explicit blank NA parsing and audit/replay regression added; retain old full snapshot."
+  },
+  "v2_local_verified_but_superseded": "v3 additionally freezes the imported independent hash helper and analysis environment; v2 snapshots/results are preserved",
+  "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/ct-manual-source-admission-20261030",
+  "archive_sha256": "fbeeff0e13f99eed611f21bf500dda769093a4bde15953303df3cab6e7affb64",
+  "archive_bytes": 1516253,
+  "fresh_restored_members": 1522,
+  "excluded_members": 0,
+  "old_stages_preserved": 222,
+  "old_proofs_preserved": 203,
+  "old_trials_sha256": "aada0eb15abe857b573e2234c38d702add9081b6969ae545a9c5fc792a0065e6",
+  "next_exact_step": "Freeze the unchanged own-level manual forward protocol after fresh source/seed restoration; no automatic job, retrospective origin, new historical grid or training before preregistration.",
+  "record_id": "b9deee24b1a68e8323931bd4994856985de0fcbda33c5358a2b067d1b0573837"
+}

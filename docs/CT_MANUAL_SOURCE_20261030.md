@@ -63,6 +63,8 @@ girişleri kapalı çalıştırıldı; eski seed/raw/trials byte hash'leri deği
 için doğru quote eşitliği kontrolünü geçemedi. Başarısız `strict-v1` kaynak/
 çıktısı korunur; boş hücreleri açık NA olarak okuyan v2 ve gerçek rapor
 regresyonu geçti. Bu başarısız ilk sürüm kabul edilmiş kanıt sayılmaz.
+Son v3 ayrıca bağımsız okuyucunun hash yardımcısını ve analiz ortamını frozen
+kimliğe alır; v2 yerel doğrulaması ve snapshot'ları ayrıca korunur.
 
 ```powershell
 python -m research.ct_manual_source --repo . --seed SEED.parquet --source-dir SOURCES --output NEW_STRICT
@@ -76,3 +78,20 @@ ilk uygun origin, makbuz/cut-off, olgun etiket, refit ve eksik kayıt kuralları
 kilitlemek. 00:15 UTC kesimi / 00:30 öncesi yayın penceresi kaydırılmaz;
 eski 126-baseline kohortu kullanılmaz, kaçan origin'e tahmin doldurulmaz.
 Yeni model/grid veya gerçekleşmemiş ileri başarı ilan edilmez.
+
+## Private GitHub teslimatı
+
+[Taslak PR65](https://github.com/ErayKulkizaga/CottonLensAI/pull/65) ve
+[kanıt Release'i](https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/ct-manual-source-admission-20261030)
+hazırdır; merge yapılmadı. 1.522 dosya/sıfır dışlama taze indirildi, tüm
+üyeler checksum ile geri kuruldu. İndirilen frozen kodla strict/proposed
+raporları, sınıflandırma CSV'leri, Parquet'ler ve bağımsız makbuzlar dahil
+11 çıktı fit/optimizer/ağ kapalıyken byte eşit yeniden üretildi.
+
+Analiz source `fa5e9f3fa07ea673e5eedbee184ad53a41410575dc97ddc075799716936b4d06`.
+ZIP SHA-256 `fbeeff0e13f99eed611f21bf500dda769093a4bde15953303df3cab6e7affb64`.
+Yeni seed SHA-256 `b4f16662a5a717bf999fdcec511f4c3b7bb916749c415915a46e7dbf7464fa90`.
+Ek [sicil kanıtı](../research/evidence/ct-manual-source-admission-20261030.json)
+eski 222 aşama/203 kanıt ve fit sicili byte hash'ini korur. Güncel sicil
+223 aşama/560 tarif/32.490 fit kopyasıdır; yeni fit sayısı **sıfırdır**.
+Sicil doğrulaması ve sekiz geçmiş-komutu regresyonu da geçti.

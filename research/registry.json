@@ -20231,6 +20231,27 @@
       "evidence": "evidence/ct-risk-prospective-readiness-20261030.json",
       "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/ct-risk-prospective-readiness-20261030",
       "id": "146626ac727d7b709eb864a103747c59f5440224ad4aae470f7e2eea90f6cb8e"
+    },
+    {
+      "experiment": "research-ct-manual-source-admission-v1",
+      "profile": "ct-manual-source-admission-v1",
+      "horizon": 1,
+      "kind": "zero_fit_manual_source_admission_and_proposed_seed_version",
+      "classification": "INCONCLUSIVE",
+      "classification_scope": "Source/version readiness only; revision cause and market superiority unproved",
+      "model_families": [
+        "har"
+      ],
+      "completed_market_fits": 0,
+      "completed_synthetic_fits": 0,
+      "origin_count": 0,
+      "source_id": "fa5e9f3fa07ea673e5eedbee184ad53a41410575dc97ddc075799716936b4d06",
+      "market_skill": false,
+      "forward_authorized": false,
+      "cohort_locked": false,
+      "evidence": "evidence/ct-manual-source-admission-20261030.json",
+      "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/ct-manual-source-admission-20261030",
+      "id": "d08e034d2fb9618b255234c8d3b998d58defc83593c7f26018699b1e1d5d0cbb"
     }
   ],
   "local_evidence": [
@@ -21053,6 +21074,10 @@
     {
       "path": "evidence/ct-risk-prospective-readiness-20261030.json",
       "sha256": "d33820134300af5ff673ed7aa9cc557ad9b664eb2e6a17506755f1e7a13c0417"
+    },
+    {
+      "path": "evidence/ct-manual-source-admission-20261030.json",
+      "sha256": "95ddc94e68d938971b80388e297ff3d55149ca0fb96fb58a467ed58a7411195d"
     }
   ]
 }

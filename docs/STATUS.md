@@ -15,6 +15,11 @@ Codex otomasyonu kapalı kalır; yeni fit/tahmin yok. Sonraki tek iş taze
 GitHub kaynak/seed geri kurması ardından değişmeyen adayın manuel ileri
 protokolünü kilitlemektir. Aşağıdaki tarihsel aday ve güç sınırları korunur.
 
+Private Release 1.522 dosya/sıfır dışlamayla taze restore edildi; 11 çıktı
+fit/ağ kapalı byte eşit replay geçti. Sicil 223 aşama/560 tarif/32.490 fit
+kopyasıdır, eski trials hash'i değişmedi. Analiz source `fa5e9f3f…`; adayın
+eğitilmiş `5846f9cb…` ve kapalı live `44f3…` kaynakları değiştirilmedi.
+
 # İleri risk doğrulaması kurulabilirliği — 30 Ekim 2026
 
 [Sıfır-fit denetim](CT_PROSPECTIVE_READINESS_20261030.md) mevcut 126-origin
