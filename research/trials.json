@@ -56252,6 +56252,203 @@
       ],
       "coverage": "completed fit receipts; not experiment completion",
       "payload_hashes_revalidated_by_index": false
+    },
+    {
+      "id": "6ef3ab26e0b0cddfb51acd210e5f44ff0302700b226751f5727a8626cbce6343",
+      "scope": {
+        "identity_id": "783bcba17c52f3382424556bb1d901ae7fe393ca9c3fb62a18c8dda4d6a08cbc",
+        "source_id": "5846f9cbb0f360731e84f251ed311f5f665510590594645204daa95c6438ab26",
+        "data_id": "5ad179ef26e95bcc8b8fad8252275b717c377aef09c77cc2e89dd1391aa1dfb3",
+        "split_id": "33e5df65bfc274439806eef57ac9415dd86b8b40fe7a0828984391364fb89a74",
+        "profile": "ct-risk-level-dxy-control-t1-v1"
+      },
+      "scope_id": "80d2a0d3aee9cf2640d00260229fc0eb1a52b7c5b09ed19e368cc8e438cddc1b",
+      "profile": "ct-risk-level-dxy-control-t1-v1",
+      "horizon": 1,
+      "recipes": [
+        {
+          "family": "har",
+          "horizon": 1,
+          "device": "cpu",
+          "window": 1,
+          "features": [
+            "har_1",
+            "har_5",
+            "har_22",
+            "origin_state"
+          ],
+          "training_loss": "qlike",
+          "parameters": 5,
+          "feature_formula": "3relativeHAR plus one declared origin state",
+          "target_formula": "variance_target_1/ct_ewma",
+          "forecast_formula": "origin_EWMA*exp(intercept+4features@coef)",
+          "seed": 42,
+          "profile": "ct-risk-level-dxy-control-t1-v1",
+          "arm": "dxy_state",
+          "variance_features": [
+            "har_1",
+            "har_5",
+            "har_22",
+            "origin_state"
+          ],
+          "extra_feature": "log max(mean5 squared log returns on raw DXY observation calendar,1e-12); assumed-clock asof"
+        }
+      ],
+      "model_families": [
+        "har"
+      ],
+      "kind": "market_fit_receipt",
+      "completed_fits": 169,
+      "sample_receipts": [
+        {
+          "path": "ledger/completed/00a755ae4bf6e65a0b09e05056cc18379816f2609c17e8091b369887fb5c36c7.json",
+          "record_id": "0d308474fe33ff15f2786400661f6ef6e19b5cf58dbc5891491b84875b2461dd",
+          "experiment_id": "00a755ae4bf6e65a0b09e05056cc18379816f2609c17e8091b369887fb5c36c7"
+        },
+        {
+          "path": "ledger/completed/00ce7f6062e623147c54af5e10d178058238965e23abc26c2f9086525359f06d.json",
+          "record_id": "29419d31884cce5ac69e263be5594346dbdee5390289dd97366122538b8c705b",
+          "experiment_id": "00ce7f6062e623147c54af5e10d178058238965e23abc26c2f9086525359f06d"
+        },
+        {
+          "path": "ledger/completed/01c6b3a307b62d5cb921a02bdbb02f59ae4b3ebe4f695761ecd440e758aff964.json",
+          "record_id": "bdee8ff7fe3f870574886929bfa6337cede031fca1fa9e4d89046fb476600063",
+          "experiment_id": "01c6b3a307b62d5cb921a02bdbb02f59ae4b3ebe4f695761ecd440e758aff964"
+        }
+      ],
+      "roles": [
+        "dxy_state"
+      ],
+      "coverage": "completed fit receipts; not experiment completion",
+      "payload_hashes_revalidated_by_index": false
+    },
+    {
+      "id": "80e632045acbdb4178864b715beaa31774ae959f22e48b1fcc8a1ee0cc3d2dc6",
+      "scope": {
+        "identity_id": "99ce858b46d72ad4214812972288857167e2a86d450b4030446a0f6bffa195d1",
+        "source_id": "5846f9cbb0f360731e84f251ed311f5f665510590594645204daa95c6438ab26",
+        "data_id": "5ad179ef26e95bcc8b8fad8252275b717c377aef09c77cc2e89dd1391aa1dfb3",
+        "split_id": "33e5df65bfc274439806eef57ac9415dd86b8b40fe7a0828984391364fb89a74",
+        "profile": "ct-risk-level-dxy-control-t1-v1"
+      },
+      "scope_id": "2cd67c31f84e83adad86642d9bd2af35c6df0505cc5c16faee83dba12e9b9e26",
+      "profile": "ct-risk-level-dxy-control-t1-v1",
+      "horizon": 1,
+      "recipes": [
+        {
+          "family": "har",
+          "horizon": 1,
+          "device": "cpu",
+          "window": 1,
+          "features": [
+            "har_1",
+            "har_5",
+            "har_22",
+            "origin_state"
+          ],
+          "training_loss": "qlike",
+          "parameters": 5,
+          "feature_formula": "3relativeHAR plus one declared origin state",
+          "target_formula": "variance_target_1/ct_ewma",
+          "forecast_formula": "origin_EWMA*exp(intercept+4features@coef)",
+          "seed": 42,
+          "profile": "ct-risk-level-dxy-control-t1-v1",
+          "arm": "dxy_state",
+          "variance_features": [
+            "har_1",
+            "har_5",
+            "har_22",
+            "origin_state"
+          ],
+          "extra_feature": "log max(mean5 squared log returns on raw DXY observation calendar,1e-12); assumed-clock asof"
+        }
+      ],
+      "model_families": [
+        "har"
+      ],
+      "kind": "synthetic_control:known_signal",
+      "completed_fits": 1,
+      "sample_receipts": [
+        {
+          "path": "learning/ledger/completed/de0d8026901e66feaa5818c50805ef412e1545973e0ba19ec085d7d247e7626b.json",
+          "record_id": "10c572f68d136c573a4c4c8b232eb8ff1a7f116eb41808ee6372e9b03817457f",
+          "experiment_id": "de0d8026901e66feaa5818c50805ef412e1545973e0ba19ec085d7d247e7626b"
+        }
+      ],
+      "roles": [
+        "synthetic_five_parameter_state"
+      ],
+      "coverage": "completed fit receipts; not experiment completion",
+      "payload_hashes_revalidated_by_index": false
+    },
+    {
+      "id": "cdc83901b75fe1da074315ed9b2d26f62d466467d11fcb927de11a9851a8f267",
+      "scope": {
+        "identity_id": "783bcba17c52f3382424556bb1d901ae7fe393ca9c3fb62a18c8dda4d6a08cbc",
+        "source_id": "5846f9cbb0f360731e84f251ed311f5f665510590594645204daa95c6438ab26",
+        "data_id": "5ad179ef26e95bcc8b8fad8252275b717c377aef09c77cc2e89dd1391aa1dfb3",
+        "split_id": "33e5df65bfc274439806eef57ac9415dd86b8b40fe7a0828984391364fb89a74",
+        "profile": "ct-risk-level-dxy-control-t1-v1"
+      },
+      "scope_id": "80d2a0d3aee9cf2640d00260229fc0eb1a52b7c5b09ed19e368cc8e438cddc1b",
+      "profile": "ct-risk-level-dxy-control-t1-v1",
+      "horizon": 1,
+      "recipes": [
+        {
+          "family": "har",
+          "horizon": 1,
+          "device": "cpu",
+          "window": 1,
+          "features": [
+            "har_1",
+            "har_5",
+            "har_22",
+            "origin_state"
+          ],
+          "training_loss": "qlike",
+          "parameters": 5,
+          "feature_formula": "3relativeHAR plus one declared origin state",
+          "target_formula": "variance_target_1/ct_ewma",
+          "forecast_formula": "origin_EWMA*exp(intercept+4features@coef)",
+          "seed": 42,
+          "profile": "ct-risk-level-dxy-control-t1-v1",
+          "arm": "own_level",
+          "variance_features": [
+            "har_1",
+            "har_5",
+            "har_22",
+            "origin_state"
+          ],
+          "extra_feature": "free log origin CT EWMA"
+        }
+      ],
+      "model_families": [
+        "har"
+      ],
+      "kind": "market_fit_receipt",
+      "completed_fits": 169,
+      "sample_receipts": [
+        {
+          "path": "ledger/completed/001ccaf2a5d15ced64f3e6abdaa3a39e8ecc71798476df8f782f801677d5369c.json",
+          "record_id": "ecd17c201d25cb49ed8dc6ce7c8ed042631a97a43381562bd1197d92df7f82ea",
+          "experiment_id": "001ccaf2a5d15ced64f3e6abdaa3a39e8ecc71798476df8f782f801677d5369c"
+        },
+        {
+          "path": "ledger/completed/004cb65b754e8556c3b288c675063064dfad96fcfa6da6bf5dd3bc26a2cc9201.json",
+          "record_id": "8154dc160e955a8bbc7fcaa2ac77407dbb73b60dd410f801b6d60b193f44fc71",
+          "experiment_id": "004cb65b754e8556c3b288c675063064dfad96fcfa6da6bf5dd3bc26a2cc9201"
+        },
+        {
+          "path": "ledger/completed/00616395a04ce5eb9769e5d6c0b48deda439139fff5dbbdb1ee331d78ec3bcfb.json",
+          "record_id": "8d221137d726d70251e23d5d18618735d285bae5595ee8f4bd8054e847cbc7e5",
+          "experiment_id": "00616395a04ce5eb9769e5d6c0b48deda439139fff5dbbdb1ee331d78ec3bcfb"
+        }
+      ],
+      "roles": [
+        "own_level"
+      ],
+      "coverage": "completed fit receipts; not experiment completion",
+      "payload_hashes_revalidated_by_index": false
     }
   ],
   "rejected_receipts": [],

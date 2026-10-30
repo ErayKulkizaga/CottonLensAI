@@ -1,3 +1,28 @@
+# CT own-level tarihsel aday; DXY birincil sonuç belirsiz — 30 Ekim 2026
+
+[Sonuç](CT_LEVEL_DXY_CONTROL_20261030.md#sonuç--338-piyasa--1-native-öğrenme-fiti-tamamlandı)
+338 piyasa + 1 native fixture ile kapandı. Birincil seçilmiş DXY−EWMA
++0,00177679; iki CI sıfırı içeriyor, 2/8 pozitif yıl: **INCONCLUSIVE**.
+Ön kayıtlı ikincil own-level seçilmiş kol +0,01770104; CI20
+[+0,00428236; +0,02989275], CI60 [+0,00470139; +0,02957616], 7/8 pozitif
+yıl, trim +0,00073073: **tarihsel takip adayı**, bağımsız ileri başarı değil.
+İkincil bulgu birincilin yerine geçirilmedi; özgün üç risk koşulu korundu.
+
+169 modelin tamamında ek log(EWMA) katsayısı negatif. Eski relative-HAR'ın
+zorunlu birim risk-seviyesi elastisitesini serbest bırakmak ve geçmiş seçimle
+etkileşimi somut mekanizma adayıdır. Ham dört-parametre artış CI'ları sıfırı
+içerir; tek katsayı bütün başarısızlıkları açıklıyor denemez. Net kazancın
+%95,915'i 21 büyük EWMA kaybında; bu yoğunlaşma ve görülmüş tarih sınırı korunur.
+
+7.036 native tahmin, 10.030 Decimal loss, 16 geçmiş seçim ve 12 CI bağımsız
+doğrulandı; raporlama sıfır-fit, 3.871 native dosya hash'i aynı. Private
+sonuç arşivi 4.193 dosyayla taze geri kuruldu; report/CSV/bağımsız makbuz ve
+mekanizma denetimi ağ ve fit kapalıyken byte eşit yeniden üretildi. Sicil
+221 aşama/560 tarif/32.490 fit kopyası; eski 557 tarif ve kanıtlar korundu.
+Sonraki tek bilimsel iş bu own-level adayının bağımsız ileri doğrulama
+tarifini kilitlemektir; yeni model/grid veya DXY araması değildir.
+Saatlik görev ve üç trigger kapalı kalır; bu 338+1 fit tekrarlanmaz.
+
 # CT own-level / DXY risk ön kaydı — 30 Ekim 2026
 
 [Sabit karşılaştırma](CT_LEVEL_DXY_CONTROL_20261030.md) aynı 2.006 CT origin

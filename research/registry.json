@@ -20129,6 +20129,86 @@
       "release_allowed": false,
       "independent_holdout": false,
       "id": "b671c2339ee7583267a2ec689b421beea60c97c6e93d92cf8c0e4380620eab7a"
+    },
+    {
+      "experiment": "research-ct-risk-level-dxy-control-t1-v1-result",
+      "profile": "ct-risk-level-dxy-control-t1-v1",
+      "horizon": 1,
+      "kind": "completed_fixed_capacity_CPU_forecast_contrast",
+      "classification": "INCONCLUSIVE",
+      "classification_scope": "Primary DXY is inconclusive; preregistered own-level secondary passes historical risk gate, no independent-forward success",
+      "secondary_own_level_historical_gate_passed": true,
+      "secondary_finding_not_new_primary": true,
+      "model_families": [
+        "har"
+      ],
+      "recipes": [
+        {
+          "family": "har",
+          "horizon": 1,
+          "device": "cpu",
+          "window": 1,
+          "features": [
+            "har_1",
+            "har_5",
+            "har_22",
+            "origin_state"
+          ],
+          "training_loss": "qlike",
+          "parameters": 5,
+          "feature_formula": "3relativeHAR plus one declared origin state",
+          "target_formula": "variance_target_1/ct_ewma",
+          "forecast_formula": "origin_EWMA*exp(intercept+4features@coef)",
+          "seed": 42,
+          "profile": "ct-risk-level-dxy-control-t1-v1",
+          "arm": "dxy_state",
+          "variance_features": [
+            "har_1",
+            "har_5",
+            "har_22",
+            "origin_state"
+          ],
+          "extra_feature": "log max(mean5 squared log returns on raw DXY observation calendar,1e-12); assumed-clock asof"
+        },
+        {
+          "family": "har",
+          "horizon": 1,
+          "device": "cpu",
+          "window": 1,
+          "features": [
+            "har_1",
+            "har_5",
+            "har_22",
+            "origin_state"
+          ],
+          "training_loss": "qlike",
+          "parameters": 5,
+          "feature_formula": "3relativeHAR plus one declared origin state",
+          "target_formula": "variance_target_1/ct_ewma",
+          "forecast_formula": "origin_EWMA*exp(intercept+4features@coef)",
+          "seed": 42,
+          "profile": "ct-risk-level-dxy-control-t1-v1",
+          "arm": "own_level",
+          "variance_features": [
+            "har_1",
+            "har_5",
+            "har_22",
+            "origin_state"
+          ],
+          "extra_feature": "free log origin CT EWMA"
+        }
+      ],
+      "completed_market_fits": 338,
+      "completed_synthetic_fits": 1,
+      "origin_count": 2006,
+      "source_id": "5846f9cbb0f360731e84f251ed311f5f665510590594645204daa95c6438ab26",
+      "data_id": "5ad179ef26e95bcc8b8fad8252275b717c377aef09c77cc2e89dd1391aa1dfb3",
+      "evidence": "evidence/ct-level-dxy-result-20261030.json",
+      "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/ct-level-dxy-result-20261030",
+      "market_skill": false,
+      "release_allowed": false,
+      "independent_holdout": false,
+      "id": "863b27bed333210a6087708a614c82be38b57c5bca5cd0b41716f7c8640602b0"
     }
   ],
   "local_evidence": [
@@ -20943,6 +21023,10 @@
     {
       "path": "evidence/ct-level-dxy-prereg-20261030.json",
       "sha256": "de506b06f0c64d935f9b09fc4b5abb5d79fb845bf30a9a7372ea1d85458b140b"
+    },
+    {
+      "path": "evidence/ct-level-dxy-result-20261030.json",
+      "sha256": "83a1e7cec414d17d005831d537307113d06f2ceed225bedd7059c93c231bb9c7"
     }
   ]
 }
