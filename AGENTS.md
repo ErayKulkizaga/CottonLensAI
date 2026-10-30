@@ -1,6 +1,7 @@
 # CottonLens AI contributor notes
 
 - `docs/CT_MANUAL_FORWARD_20261030.md` defines the unchanged candidate's manual prospective path. Cohort/real fits are not started. Annual reselection must remain annual: the old21fit sketch was wrong;252slots across two years permits at most31market/0newsynthetic fits. Preserve the actual clock,5-session maturity,warmup119,21slot counter including missing slots and no partial scores. Fresh preregistration restore and sustainable timely recording precede cohort lock; do not infer permission to enable a task from this implementation. The old hourly task stays off.
+- Active manual preregistration is the v4 target-date amendment (sourcea173df8e,design2950ca5a), not unrun source6da145e7. Preserve both. A forecast must persist horizon1 and next official Cotton target_date; fail closed if that target is beyond calendar coverage. Daily task consent is pending; no lock/fit/task has been started.
 
 - Manual source admission: read `docs/CT_MANUAL_SOURCE_20261030.md`. Preserve the old seed and the rejected September22 terminal revision. The explicit hash-bound 4,232-row new-vintage proposal is pre-cohort initialization only, not a historical settlement correction or forward authorization. Never use it as a post-lock revision bypass. Null Yahoo placeholders and an unfinished current bar cannot enter Cotton rolling history. Reviewed IFUS Cotton calendar coverage ends2027-01-01; fail closed beyond it. The hourly task and all triggers stay disabled.
 

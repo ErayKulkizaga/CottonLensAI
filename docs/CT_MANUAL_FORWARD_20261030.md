@@ -109,3 +109,28 @@ tek başına bu yetkiyi vermez. Komutları otomatik çalıştırma izni bu
 teslimata dahil değildir. Günlük gerçek kaydın nasıl sürdürüleceği net
 olmadan 252-origin kohortunu başlatmak eksik yayınları peşinen üretir;
 bu yüzden mevcut hazırlık, kilit/eğitim/yayından ayrıdır.
+
+## Teslimat ve etkin sürüm
+
+[Taslak PR66](https://github.com/ErayKulkizaga/CottonLensAI/pull/66) merge
+edilmedi. İlk private ön kayıt 1.161 dosyayla taze geri kuruldu, altı çıktı
+byte eşit replay geçti. Kilit açılmadan yapılan son iz sürmede tahmin
+payload'ına açık `horizon=1` ve resmi sonraki Cotton `target_date` yazılması
+tamamlandı; kapsam dışındaki hedef tarihi de artık yayını durdurur. Cuma
+30 Ekim → Pazartesi 2 Kasım örneği testte doğrulandı. Eski sürümlerde hiçbir
+kohort, fit veya tahmin üretilmedi; veri/tarif/kayıp değişmedi.
+
+**Etkin ön kayıt v4**:
+[private hedef-tarih eki](https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/ct-manual-forward-targetdate-prereg-20261030).
+530 dosya/sıfır dışlama taze restore; indirilen frozen kodla ready, sözleşme,
+kaynak manifesti, öğrenme makbuzu, geçmiş sorgusu ve bağımsız plan çıktısı
+ağ/fit/optimizer kapalıyken altı byte eşit çıktı verdi.
+
+Source `a173df8e65b42460931018e53ab11778b248698383920231af1f31bb6cb16d41`;
+design `2950ca5a0792022c1cea2f584b1599936c94221de3f27aff46af50233e795134`.
+ZIP `3ded0d730ff9becc28e3c2724a05784f01ba8a443e2530f44018593310498631`.
+Eski ön kayıt ve [ilk kanıt](../research/evidence/ct-manual-forward-prereg-20261030.json)
+değişmez; [etkin ek kayıt](../research/evidence/ct-manual-forward-targetdate-prereg-20261030.json)
+ayrı tutulur. Sicil 225 aşama/560 tarif/32.490 fit kopyası; eski trials
+byte hash'i değişmedi. Günlük kayıt izni için kullanıcıya açık soru
+gönderildi; yanıt beklenirken kilit, fit, yayın veya yeni görev açılmadı.

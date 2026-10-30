@@ -12,6 +12,13 @@ gelmez. 77 ilgili test/Ruff, mevcut200native öğrenme tahmini ve bağımsız
 9iç/1dış plan doğrulandı (min3914/4108olgun train). Dönem ortası skor veya
 başarı iddiası yoktur. 2027 takvimi ayrıca kanıtlanmadan kapsam dışına geçilmez.
 
+Etkin v4 ön kayıt source `a173df8e…`, design `2950ca5a…`: hedef tarihi ve
+ufuk payload'da açık tutulur, takvim dışı hedef reddedilir. Private530dosya
+taze restore/6byte-eşit çıktı geçti. İlk v3 ön kayıt ve eski kanıtlar ayrı
+korundu; hiçbir sürümde kohort/fit açılmadı. Sicil225/560tarif/32490fit
+kopyası, trials hash'i aynı. Günlük konsolsuz kayıt sorusunun yanıtı
+bekleniyor; kullanıcı onayı olmadan yeni otomatik görev açılmaz.
+
 # Manuel risk kaydı: kaynak sürümü ayrıldı — 30 Ekim 2026
 
 [Sıfır-fit kaynak denetimi](CT_MANUAL_SOURCE_20261030.md) yeni ham Yahoo
