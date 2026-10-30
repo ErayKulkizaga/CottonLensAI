@@ -1,3 +1,18 @@
+# İlk10risk eğitimi tamamlandı; konsolsuz günlük kayıt onaylandı — 30 Ekim 2026
+
+[Güncel çalışma](CT_FORWARD_DAILY_20261030.md) kullanıcıdan açık günlük
+görev onayını aldı. Ayrı kohort gerçek14:19:03UTC saatinde kilitlendi;
+ilk origin30Ekim, hedef2Kasım. Dokuz geçmiş seçim modeli + bir dış durum
+tamamlandı; bağımsız native hash/gradient/189geçmiş tahmin ve bir
+IN_SAMPLE durum kontrolü geçti. **İleri tahmin ve başarı skoru hâlâ yok.**
+
+Modelcore `a173df8e…`/design `2950ca5a…`,31fit üst sınırı değişmedi;10kullanıldı.
+Yeni execution runner `cc9c32dd…` directPythonW kullanır. Task Scheduler
+kurulumu yalnız günlük03:05/03:20TR için hazırlanıyor; eski saatlik görev
+kapalı kalır. Private native yedek/geri kurma ve gerçek görev testi
+doğrulanmadan operasyon teslimatı tamamlanmış sayılmaz. Aşağıdaki
+hazırlık/izin-bekleniyor ifadeleri tarihsel kayıttır.
+
 # Manuel own-level ileri protokol hazırlandı — 30 Ekim 2026
 
 [Sabit protokol](CT_MANUAL_FORWARD_20261030.md) mevcut beş-parametre QLIKE

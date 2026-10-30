@@ -1,5 +1,12 @@
 # Deney geçmişi ve tekrar kontrolü
 
+[İlk ileri durumlar](../docs/CT_FORWARD_DAILY_20261030.md): yeni gerçek
+kohort kilitlendi;9geçmiş seçim+1dış state fit tamamlandı,0yeni sentetik.
+Bu10fit tekrar edilmez; 189geçmiş tahmin ve IN_SAMPLE kontrol ileri başarı
+değildir. Günlük konsolsuz görev insan tarafından açıkça onaylandı;
+eski saatlik görev kapalı kalır. Modelsourcea173 değişmez; execution ayrı
+kimlikte. Güncel operasyon teslimatı ve sicil kanıtı STATUS'ta tutulur.
+
 [Manuel ileri protokol](../docs/CT_MANUAL_FORWARD_20261030.md) hazırlandı;
 kohort/eğitim/yayın başlamadı. Aynı own-level learner, yıllık3x63 seçim ve
 21slot refit korunur; iki yıllık252slot için düzeltilmiş sınır31piyasa/
