@@ -51,6 +51,15 @@ dondurulur. Görev mevcut sınırlı kullanıcı/interactive oturumuyla çalış
 oturum kapatma değildir. Kapalı/uyuyan makineden çalışma garantisi yoktur.
 Geç kalan çalıştırma araştırma saatini kaydırmaz.
 
+İki günlük aşamanın ardından yeni çalışma dosyaları private GitHub
+Releases'e eklenir. `research/ct_forward_backup.py` önce deponun private
+olduğunu ve sabit CLI/kod hash'lerini doğrular; her parçayı taze indirip
+tüm üyelerin checksum'larını kontrol etmeden yedek sicilini ilerletmez.
+Önceki bulut nesneleri ve kaynak dosyalar silinmez. Drive'a yazılmaz.
+Yedekleme yayın makbuzundan sonra yapılır; bilimsel yayın saatini geriye
+çekmez. Hata ayrı makbuz ve sıfır olmayan süreç sonucuyla korunur.
+GitHub CLI alt süreci de `CREATE_NO_WINDOW` ile konsolsuz çalışır.
+
 Resmi takvim şu an 1 Ocak 2027'ye kadar kanıtlıdır; kapsam dışındaki
 origin veya sonraki hedef için kaynak alma/eğitim/yayın durur. 2027 uzatması
 ayrı kaynak makbuzu ve Cotton-sütunu incelemesiyle eklenmelidir. Model

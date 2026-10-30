@@ -109,3 +109,34 @@ def test_installer_uses_pythonw_two_daily_triggers_and_no_hourly_or_logon_trigge
     assert "-ne 'pythonw.exe'" in text
     assert 'powershell.exe' not in text
     assert "'CottonLens-Observed-Archive-v2'" in text
+
+
+@pytest.mark.parametrize('name', ['injected.py', 'injected.DLL', 'injected.cmd'])
+def test_runtime_rejects_additional_executable_code(tmp_path, name):
+    p = tmp_path/'ct_forward_daily.py'; p.write_bytes(b'synthetic runner')
+    body = {'files': {p.name: runner.sha(p)}, 'core_source_id': 'core'}
+    expected = runner.fingerprint(body)
+    (tmp_path/'execution-manifest.json').write_text(json.dumps({**body, 'execution_source_id': expected}))
+    (tmp_path/name).write_bytes(b'not executable: fixture')
+    with pytest.raises(ValueError, match='Unmanifested'):
+        runner.verify_execution(tmp_path, expected)
+
+
+@pytest.mark.parametrize('failure', ['changed_code', 'extra_code', 'manifest'])
+def test_core_is_verified_before_import(tmp_path, failure):
+    study = tmp_path/'study'; study.mkdir(); source = study/'source-snapshot'; source.mkdir()
+    p = source/'model.py'; p.write_bytes(b'not imported: fixture')
+    body = {'ml': {'files': {p.name: runner.sha(p)}}, 'helpers': {}}
+    identity = runner.fingerprint(body); body['source_id'] = identity
+    manifest = {**body, 'record_id': runner.fingerprint(body)}
+    (study/'source-manifest.json').write_text(json.dumps(manifest))
+    runner.verify_core_before_import(study, source, identity)
+    if failure == 'changed_code':
+        p.write_bytes(b'changed')
+    elif failure == 'extra_code':
+        (source/'injected.DLL').write_bytes(b'not executable: fixture')
+    else:
+        manifest['source_id'] = 'changed'
+        (study/'source-manifest.json').write_text(json.dumps(manifest))
+    with pytest.raises(ValueError, match='Core|core'):
+        runner.verify_core_before_import(study, source, identity)
