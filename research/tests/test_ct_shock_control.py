@@ -81,7 +81,7 @@ def test_expired_session_stops_before_first_market_fit(tmp_path, monkeypatch):
     monkeypatch.setattr(study, 'verify', lambda *a: ({'identity': identity}, {'fit_budget': budget}, old, fixture()))
     monkeypatch.setattr(study, 'read_record', lambda *a: authorization)
     monkeypatch.setattr(study, 'digest', lambda *a: 'digest')
-    monkeypatch.setattr(study, 'project', lambda h, d, a: fixture().iloc[:1])
+    monkeypatch.setattr(study, 'project', lambda h, d, a, profile: fixture().iloc[:1])
     with patch.object(study, 'require_training'), patch('cottonlens_ml.research.volatility.require_training'):
         result = study.run(tmp_path/'run', tmp_path, tmp_path/'authorization.json')
     assert result == {'status': 'planned_pause', 'market_fits': 0, 'synthetic_fits': 1}

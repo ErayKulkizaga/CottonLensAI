@@ -3,6 +3,7 @@
 import argparse
 import json
 import math
+from bisect import bisect_right
 from decimal import Decimal, localcontext
 from pathlib import Path
 
@@ -18,13 +19,49 @@ from research.verify_risk_weak_teacher import (
 )
 
 
+def profile_definition(profile):
+    # Deliberately independent of the engine's mapping and feature assembly.
+    if profile == 'ct-signed-unsigned-shock-forecast-t1-v1':
+        return ('unsigned', 'signed'), 'signed', 'unsigned', 'origin_shock', True
+    if profile == 'ct-risk-level-dxy-control-t1-v1':
+        return ('own_level', 'dxy_state'), 'dxy_state', 'own_level', 'origin_state', False
+    raise ValueError('Unknown frozen profile')
+
+
+def independent_dxy(market, dates):
+    """Raw log-difference rolling window and merge_asof, not engine searchsorted."""
+    dates = pd.DatetimeIndex(dates)
+    quotes = market.loc[market.series.eq('dxy'), ['date', 'close']].copy().sort_values('date')
+    quotes['date'] = pd.to_datetime(quotes.date)
+    if (not len(quotes) or quotes.date.isna().any() or quotes.date.duplicated().any()
+            or not quotes.date.eq(quotes.date.dt.normalize()).all()
+            or dates.hasnans or not dates.is_unique or not dates.is_monotonic_increasing):
+        raise ValueError('Unique chronological source/origin dates required')
+    price = quotes.close.where(np.isfinite(quotes.close) & quotes.close.gt(0))
+    quotes['dxy_rv5'] = np.log(price).diff().pow(2).rolling(5, min_periods=5).mean()
+    quotes['dxy_state_window_start'] = quotes.date.shift(5)
+    quotes['dxy_state_available_at'] = pd.to_datetime(quotes.date, utc=True)+pd.Timedelta(days=1)
+    quotes = quotes.rename(columns={'date': 'dxy_state_source_date'})
+    origins = pd.DataFrame({'date': dates, 'decision_at': pd.to_datetime(dates, utc=True)+pd.Timedelta(days=1, minutes=15)})
+    joined = pd.merge_asof(origins, quotes.drop(columns='close'), left_on='decision_at',
+                           right_on='dxy_state_available_at', direction='backward', allow_exact_matches=True)
+    joined['dxy_state_age'] = [np.nan if pd.isna(day) else i-(bisect_right(dates, day)-1)
+                               for i, day in enumerate(joined.dxy_state_source_date)]
+    joined['dxy_rv5'] = joined.dxy_rv5.where(joined.dxy_state_age.between(0, 3))
+    return joined
+
+
 def preflight(root):
     ready = read(root/'ready.json'); design = read(root/'decision-contract.json')
     identity = ready['identity']; manifest = read(root/'source-manifest.json')
+    arms, primary, _control, extra_name, require_trim = profile_definition(identity['profile'])
     source_body = {k: v for k, v in manifest.items() if k != 'source_id'}
     if (fingerprint(source_body) != identity['source_id'] or fingerprint(design) != identity['design_id']
             or design['fit_budget'] != {'market': 338, 'synthetic': 1, 'processes': 1, 'threads': 2, 'session_minutes': 30}
-            or design['primary_candidate'] != 'signed selected variance versus unchanged EWMA0.94'):
+            or design['profile'] != identity['profile']
+            or set(design['recipes']) != set(arms)
+            or design['primary_candidate'] != primary+' selected variance versus unchanged EWMA0.94'
+            or design['trim_is_sensitivity'] != (not require_trim)):
         raise ValueError('Frozen source/design/budget mismatch')
     for name, checksum in {**manifest['ml']['files'], **manifest['helpers']}.items():
         if sha(root/'source-snapshot'/name) != checksum:
@@ -37,8 +74,24 @@ def preflight(root):
         raise ValueError('Native parent design differs')
     history = independent_history(pd.read_parquet(root/'reference/history.parquet'))
     augmented = pd.read_parquet(root/'history.parquet')
-    np.testing.assert_allclose(augmented.signed_shock, history.checked_shock, rtol=1e-10, atol=1e-12, equal_nan=True)
-    np.testing.assert_allclose(augmented.unsigned_shock, np.abs(history.checked_shock), rtol=1e-10, atol=1e-12, equal_nan=True)
+    np.testing.assert_array_equal(augmented.date, history.date)
+    if extra_name == 'origin_shock':
+        np.testing.assert_allclose(augmented.signed_shock, history.checked_shock, rtol=1e-10, atol=1e-12, equal_nan=True)
+        np.testing.assert_allclose(augmented.unsigned_shock, np.abs(history.checked_shock), rtol=1e-10, atol=1e-12, equal_nan=True)
+    else:
+        if sha(root/'inputs/market.parquet') != '23cfabb7ccb2553f0547bc3290ff4916ce91c788c98a94acdb2e5b9cd1f3151c':
+            raise ValueError('Declared held raw source changed')
+        states = independent_dxy(pd.read_parquet(root/'inputs/market.parquet'), history.date)
+        np.testing.assert_allclose(states.dxy_rv5, augmented.dxy_rv5, rtol=1e-10, atol=1e-14, equal_nan=True)
+        np.testing.assert_allclose(states.dxy_state_age, augmented.dxy_state_age, rtol=0, atol=0, equal_nan=True)
+        for name in ('dxy_state_source_date', 'dxy_state_available_at', 'dxy_state_window_start', 'decision_at'):
+            pd.testing.assert_series_equal(states[name].reset_index(drop=True), augmented[name].reset_index(drop=True), check_names=False)
+        for name in states.columns.drop('date'):
+            history[name] = states[name].to_numpy()
+        history['checked_state_own_level'] = np.log(history.checked_ewma)
+        history['checked_state_dxy_state'] = np.log(np.maximum(history.dxy_rv5, 1e-12))
+        for arm in arms:
+            np.testing.assert_allclose(history['checked_state_'+arm], augmented['state_'+arm], rtol=1e-10, atol=1e-12, equal_nan=True)
     jobs = parent_identity['design']['jobs']; dates = [d for f in parent_identity['design']['split']['folds'] for d in f['origins']]
     if len(jobs) != 169 or len(dates) != 2006 or len(set(dates)) != 2006:
         raise ValueError('Original job/origin population changed')
@@ -50,6 +103,9 @@ def preflight(root):
                 or pd.Timestamp(job['origins'][0]) < pd.Timestamp(job['cutoff'])):
             raise ValueError('Unavailable or compressed training history')
         counts.append(len(train))
+        if (extra_name == 'origin_state'
+                and not np.isfinite(history.loc[job['train_dates']+job['origins'], ['checked_state_'+a for a in arms]]).all().all()):
+            raise ValueError('No source-unready train or forecast origin may be dropped')
     return ready, design, parent, history, {'status': 'independently_verified_readiness', 'new_fits': 0,
         'ordinal_origins': len(dates), 'past_only_jobs': len(jobs), 'minimum_mature_train': min(counts),
         'decimal_close_rows': len(history), 'declared_market_fit_ceiling': 338,
@@ -58,19 +114,26 @@ def preflight(root):
 
 def verify(root):
     ready, design, parent, h, receipt = preflight(root)
+    arms, primary, control, extra_name, require_trim = profile_definition(ready['identity']['profile'])
     report = read(root/'reports/result.json')
     frame = pd.read_csv(root/'reports/paired-losses.csv', float_precision='round_trip')
     original = pd.read_csv(root/'reference/reports/paired-losses.csv', float_precision='round_trip')
     pd.testing.assert_frame_equal(frame[list(original)], original, check_exact=True)
     if sha(root/'reports/paired-losses.csv') != report['paired_losses_sha256'] or len(frame) != 2006:
         raise ValueError('Forecast payload or population differs')
+    if extra_name == 'origin_state':
+        rows = h.loc[frame.date]
+        for name in ('dxy_rv5', 'dxy_state_age'):
+            np.testing.assert_allclose(frame[name], rows[name], rtol=1e-10, atol=1e-14)
+        for name in ('dxy_state_source_date', 'dxy_state_available_at', 'dxy_state_window_start', 'decision_at'):
+            np.testing.assert_array_equal(pd.to_datetime(frame[name], utc=True), pd.to_datetime(rows[name], utc=True))
     learning_paths = list((root/'learning/ledger/completed').glob('*.json'))
     if len(learning_paths) != 1 or list((root/'learning/ledger/attempts').glob('*.json')):
         raise ValueError('Missing/failed native learning control')
     learning = read(learning_paths[0])
     if (learning['identity'] != {**ready['identity'], 'role': 'synthetic_not_market'}
             or fingerprint({'identity': learning['identity'], 'specification': learning['specification']}) != learning['experiment_id']
-            or learning['specification']['recipe'] != design['recipes']['signed']):
+            or learning['specification']['recipe'] != design['recipes'][primary]):
         raise ValueError('Native learning control identity differs')
     for name, checksum in learning['files'].items():
         if sha(root/'learning/ledger'/name) != checksum:
@@ -83,7 +146,7 @@ def verify(root):
     np.testing.assert_allclose(replay, expected, rtol=1e-5)
     np.testing.assert_allclose(replay, learning['result']['variance_predictions'], rtol=1e-12, atol=1e-14)
     jobs = {(tuple(j['train_dates']), tuple(j['origins'])): j for j in parent['identity']['design']['jobs']}
-    forecasts = {'unsigned': {}, 'signed': {}}; seen = set(); prediction_count = 0; gradient_max = 0.
+    forecasts = {a: {} for a in arms}; seen = set(); prediction_count = 0; gradient_max = 0.
     paths = sorted((root/'ledger/completed').glob('*.json'))
     if len(paths) != 338 or list((root/'ledger/attempts').glob('*.json')):
         raise ValueError('Missing/failed native market fit')
@@ -99,15 +162,19 @@ def verify(root):
             if sha(root/'ledger'/name) != checksum:
                 raise ValueError('Native payload changed')
         model = json.loads((root/'ledger'/record['payload_root']/'variance-model.json').read_bytes())
-        names = ['har_1', 'har_5', 'har_22', 'origin_shock']
+        names = ['har_1', 'har_5', 'har_22', extra_name]
         if model['features'] != names or len(model['coef']) != 5 or model['effective_parameters'] != 5:
             raise ValueError('Declared feature was not fitted')
         train, test = h.loc[list(key[0])], h.loc[list(key[1])]
 
         def features(rows, representation=arm):
             common = rows[['checked_har_1', 'checked_har_5', 'checked_har_22']].to_numpy()-np.log(rows.checked_ewma.to_numpy())[:, None]
-            shock = rows.checked_shock.to_numpy()
-            return np.column_stack([common, shock if representation == 'signed' else np.abs(shock)])
+            if extra_name == 'origin_state':
+                extra = rows['checked_state_'+representation].to_numpy()
+            else:
+                shock = rows.checked_shock.to_numpy()
+                extra = shock if representation == 'signed' else np.abs(shock)
+            return np.column_stack([common, extra])
 
         x, xt = features(train), features(test); o = model['optimization']
         np.testing.assert_allclose(x.mean(axis=0), o['training_feature_mean'], rtol=1e-10, atol=1e-11)
@@ -167,7 +234,7 @@ def verify(root):
             np.testing.assert_allclose(loss[name], frame[name], rtol=1e-10, atol=1e-12)
             count += len(frame)
     contrasts = {f'{a}_{k}_vs_EWMA': ('baseline_loss', f'{a}_{k}_loss') for a in forecasts for k in ('raw', 'selected')}
-    contrasts.update({f'signed_{k}_vs_unsigned': (f'unsigned_{k}_loss', f'signed_{k}_loss') for k in ('raw', 'selected')})
+    contrasts.update({f'{primary}_{k}_vs_{control}': (f'{control}_{k}_loss', f'{primary}_{k}_loss') for k in ('raw', 'selected')})
     interval_count = 0
     for name, (a, b) in contrasts.items():
         delta = loss[a]-loss[b]
@@ -182,9 +249,13 @@ def verify(root):
         for block, interval in ci.items():
             np.testing.assert_allclose(interval, claimed['gain_ci'][block], atol=1e-11, rtol=0)
             interval_count += 1
-        passed = bool(delta.mean() > 0 and all(v[0] > 0 for v in ci.values()) and sum(v > 0 for v in yearly.values()) >= 6 and trimmed > 0)
+        passed = bool(delta.mean() > 0 and all(v[0] > 0 for v in ci.values()) and sum(v > 0 for v in yearly.values()) >= 6
+                      and (not require_trim or trimmed > 0))
         if passed != claimed['fixed_risk_gate_passed']:
             raise ValueError('Fixed risk gate differs')
+    if (report['primary_gate_passed'] != report['comparisons'][primary+'_selected_vs_EWMA']['fixed_risk_gate_passed']
+            or report['trim_is_sensitivity'] != (not require_trim)):
+        raise ValueError('Primary gate or sensitivity scope differs')
     receipt.update(status='independently_verified_completed_forecasts', native_market_fits=338,
                    native_learning_fits=1, native_learning_predictions_reverified=200,
                    native_forecast_scalars=prediction_count, decimal_loss_scalars=count,

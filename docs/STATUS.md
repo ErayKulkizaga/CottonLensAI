@@ -1,3 +1,19 @@
+# CT own-level / DXY risk ön kaydı — 30 Ekim 2026
+
+[Sabit karşılaştırma](CT_LEVEL_DXY_CONTROL_20261030.md) aynı 2.006 CT origin
+ve güçlü EWMA üzerinde iki beş-parametre kolu kilitler. Eski 169 native
+kontrol ve tamamlanmış şok fit'leri tekrar edilmez. 49 ilgili test/Ruff,
+3.520 close / 169 olgun iş bağımsız preflight ve private ön kaydın 1.799
+dosyalık taze restore/byte eşit preflight'ı geçti. Source `5846f9cb…`.
+Henüz yeni piyasa performansı yok; 338+1 fit tavanı kayıtlıdır.
+
+Birincil geçmişte seçilmiş DXY−EWMA; ham DXY−own-level yalnız eşit-kapasite
+mekanizma karşılaştırmasıdır. Özgün üç risk koşulu korunur; trim hassasiyettir.
+Raw DXY rolling önce kendi gözlem takviminde, sonra varsayımsal availability
+clock ile hizalanır. Bu tarihsel teslim/vintage veya ileri başarı kanıtı
+değildir. Named AMS kaynak kabulü kapalı; saatlik görev/üç trigger kapalı
+kalır. Aşağıdaki tamamlanmış deneyler tarihçedir.
+
 # Şok tahmin deneyi sonucu — 29 Ekim 2026
 
 [İşaretli/işaretsiz CT kontrolü](CT_SHOCK_FORECAST_CONTROL_20261029.md#sonuç--338-piyasa-fiti-tamamlandı)
