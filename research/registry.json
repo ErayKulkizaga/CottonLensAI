@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "as_of": "2026-10-30",
+  "as_of": "2026-10-31",
   "release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/evidence-20261005",
   "limits": [
     "Only available files are inventoried; missing past predictions are not reconstructed.",
@@ -20319,6 +20319,31 @@
       "evidence": "evidence/ct-forward-daily-activation-20261030.json",
       "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/ct-forward-records-2026-q4",
       "id": "7166d81c1722d7ac578be342a04365587f7c968a63ce067fc6a3eacbd2b7c772"
+    },
+    {
+      "experiment": "research-ct-first-publication-audit-v1",
+      "profile": "ct-own-level-manual-forward-t1-v1",
+      "horizon": 1,
+      "kind": "zero_fit_first_actual_forward_publication_provenance_and_math_audit",
+      "classification": "INCONCLUSIVE",
+      "classification_scope": "Forward risk superiority remains untested; first actual source/model/forecast publication and independent replay are VERIFIED",
+      "publication_verified": true,
+      "model_families": [
+        "har"
+      ],
+      "completed_market_fits": 0,
+      "completed_synthetic_fits": 0,
+      "reused_market_fit_states": 10,
+      "source_id": "a173df8e65b42460931018e53ab11778b248698383920231af1f31bb6cb16d41",
+      "analysis_source_id": "9aacd67acecd4a890766667daed208a4aabb2cd438cbade051de1c7113057576",
+      "design_id": "2950ca5a0792022c1cea2f584b1599936c94221de3f27aff46af50233e795134",
+      "execution_source_id": "2747450ff4d46b022493cc604c565aa941e0378c5c3bd741179d962cff04a644",
+      "verified_forward_forecasts": 1,
+      "market_skill": false,
+      "performance_scored": false,
+      "evidence": "evidence/ct-first-publication-audit-20261031.json",
+      "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/ct-first-publication-audit-20261031",
+      "id": "90f6ad784fa6d9fec1d60aa456db2c5aafd0ecd1afe1cff9a52e0482fbd3c68f"
     }
   ],
   "local_evidence": [
@@ -21161,6 +21186,10 @@
     {
       "path": "evidence/ct-forward-daily-delivery-20261030.json",
       "sha256": "90a65420a85f404c054777039eafb9027a3acc66a1defd56f4503716a9c4f4e4"
+    },
+    {
+      "path": "evidence/ct-first-publication-audit-20261031.json",
+      "sha256": "cb06712939ba5ff962e765001c6abf997843b06742fe281ac06c4b65497ec82a"
     }
   ]
 }

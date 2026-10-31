@@ -1,3 +1,22 @@
+# İlk gerçek ileri risk yayını bağımsız doğrulandı — 31 Ekim 2026
+
+[Sıfır-fit denetim](CT_FIRST_PUBLICATION_20261031.md), 30 Ekim origin'inden
+2 Kasım hedefine kaydedilen ilk tahmini ham kaynak ve native katsayılardan
+yeniden kurdu. GitHub sunucu kaydı kaynak/model paketini 00:05:31 UTC,
+tahmin paketini 00:20:10 UTC olarak doğrular; sabit karar 00:15, yayın sonu
+00:30 korunur. Yerel ve taze private geri kurma aynı sonucu byte eşit üretti.
+
+Beş mevcut parçadan 446 çalışma dosyası ve yeni private denetim paketinden
+466 dosya geri kuruldu; ilk 10 modelin 92 dosya hash'i değişmedi.
+Denetim kaynağı `9aacd67a…`, aktif model `a173df8e…` ve günlük çalıştırıcı
+`2747450f…` ayrıdır. Yeni fit/tahmin/ileri kayıp skoru yoktur. **Henüz
+bağımsız risk üstünlüğü yoktur; gerçekleşmiş ilk hedef bile mevcut değildir.**
+
+Sicil 227 aşama / 561 tarif / 32.500 fit kopyasıdır; eski 226 aşama,
+208 kanıt ve trials dosyası korundu. Sonraki tek iş, resmi 2027 Cotton
+takvimini kaynak kanıtıyla hazırlamaktır; takvim uzatması henüz kabul
+edilmedi. Aşağıdaki 30 Ekim hazırlık durumu tarihsel kayıttır.
+
 # İlk 10 risk eğitimi korundu; konsolsuz günlük görev kuruldu — 30 Ekim 2026
 
 [Güncel çalışma](CT_FORWARD_DAILY_20261030.md) kullanıcıdan açık günlük

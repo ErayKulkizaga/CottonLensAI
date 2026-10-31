@@ -1,5 +1,12 @@
 # Deney geçmişi ve tekrar kontrolü
 
+[İlk gerçek yayın denetimi](../docs/CT_FIRST_PUBLICATION_20261031.md) sıfır
+fit ile kapandı: 446 dosyalık zincir ve 466 dosyalık denetim paketi taze
+private geri kuruldu; ham veri/native tahmin byte eşit tekrarlandı.
+GitHub kaynak/model yüklemesi karar öncesi, tahmin yüklemesi yayın sonu
+öncesidir. İleri kayıp skoru ve beceri iddiası yoktur. Sicil 227 aşama;
+561 tarif/32.500 fit kopyası değişmedi. İlk 10 fit yeniden çalıştırılmaz.
+
 [İlk ileri durumlar](../docs/CT_FORWARD_DAILY_20261030.md): yeni gerçek
 kohort kilitlendi;9geçmiş seçim+1dış state fit tamamlandı,0yeni sentetik.
 Bu10fit tekrar edilmez; 189geçmiş tahmin ve IN_SAMPLE kontrol ileri başarı

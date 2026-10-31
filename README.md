@@ -1,10 +1,11 @@
 # CottonLensAI
 
-30 Ekim 2026 güncel durum: [ileri risk doğrulaması](docs/CT_FORWARD_DAILY_20261030.md)
-için ilk 10 model durumu tamamlandı ve private GitHub'dan geri kurularak
-doğrulandı. **Bağımsız ileri tahmin üstünlüğü henüz gösterilmedi.**
+31 Ekim 2026 güncel durum: [ilk gerçek risk yayını](docs/CT_FIRST_PUBLICATION_20261031.md)
+ham veriden bağımsız yeniden hesaplandı; kaynak/model ve tahmin paketlerinin
+zamanında arşivlendiği GitHub sunucu kaydıyla doğrulandı. **Bağımsız ileri
+tahmin üstünlüğü henüz gösterilmedi; ilk hedef 2 Kasım'dır.**
 Kullanıcının onayladığı ayrı günlük görev, konsol açmadan yalnız 03:05 ve
-03:20 Türkiye saatiyle çalışır; ilk planlanan pencere 31 Ekim'dir. Eski
+03:20 Türkiye saatiyle çalışır; ilk gerçek yayın tamamlandı. Eski
 saatlik görev kapalıdır. Bilgisayar uyanık ve kullanıcı oturumu açık olmalıdır.
 Yeni kayıtlar checksum doğrulanmış private Release parçalarında korunur;
 Drive'a yazılmaz. Güncel karar ve kanıt sınırları [STATUS](docs/STATUS.md)'tadır.
