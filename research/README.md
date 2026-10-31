@@ -1,5 +1,11 @@
 # Deney geçmişi ve tekrar kontrolü
 
+[Resmi Cotton takvimi uzatması](../docs/CT_CALENDAR_2027_20261031.md)
+sıfır-fit ek kayıtla kabul edildi. Eski 448 bilimsel dosya ve ilk tahmin
+korundu; 252 origin / son hedef 2 Kasım 2027 / 31 fit üst sınırı sabittir.
+İstatistiksel güç veya tahmin başarısı iddiası yoktur. Sicil 228 aşama;
+561 tarif / 32.500 fit kopyası değişmedi.
+
 [İlk gerçek yayın denetimi](../docs/CT_FIRST_PUBLICATION_20261031.md) sıfır
 fit ile kapandı: 446 dosyalık zincir ve 466 dosyalık denetim paketi taze
 private geri kuruldu; ham veri/native tahmin byte eşit tekrarlandı.

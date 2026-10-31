@@ -20344,6 +20344,28 @@
       "evidence": "evidence/ct-first-publication-audit-20261031.json",
       "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/ct-first-publication-audit-20261031",
       "id": "90f6ad784fa6d9fec1d60aa456db2c5aafd0ecd1afe1cff9a52e0482fbd3c68f"
+    },
+    {
+      "experiment": "research-ct-calendar-2027-extension-v1",
+      "profile": "ct-own-level-manual-forward-t1-v1",
+      "horizon": 1,
+      "kind": "zero_fit_literal_official_calendar_extension_with_preserved_origin_prefix",
+      "classification": "INCONCLUSIVE",
+      "classification_scope": "Forecast superiority untested; literal official calendar source/admission and preserved historical state VERIFIED",
+      "calendar_admitted": true,
+      "source_id": "a173df8e65b42460931018e53ab11778b248698383920231af1f31bb6cb16d41",
+      "new_calendar_id": "ef86ed3df1dffad8bc58b2f1d106405fb2efa923d932231e1389b668b065dbab",
+      "model_families": [
+        "har"
+      ],
+      "completed_market_fits": 0,
+      "completed_synthetic_fits": 0,
+      "reused_market_fit_states": 10,
+      "new_forecasts": 0,
+      "market_skill": false,
+      "evidence": "evidence/ct-calendar-2027-extension-20261031.json",
+      "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/ct-calendar-2027-review-20261031",
+      "id": "8f78c9b3dd8b73b15e9996a3513261ec5b9fe7dce32945f73d50eb8fb1b2f29e"
     }
   ],
   "local_evidence": [
@@ -21190,6 +21212,14 @@
     {
       "path": "evidence/ct-first-publication-audit-20261031.json",
       "sha256": "cb06712939ba5ff962e765001c6abf997843b06742fe281ac06c4b65497ec82a"
+    },
+    {
+      "path": "evidence/ct-calendar-2027-reviewed-source-20261031.json",
+      "sha256": "195ab2fd848f0660e2a8c0a85fdb3ad96f3ffda95fb61dabe8468cfb3cfc9aa0"
+    },
+    {
+      "path": "evidence/ct-calendar-2027-extension-20261031.json",
+      "sha256": "24e53415e2b0c1dcec222df0a1c207224e25a19a60cd774d11c823c456912399"
     }
   ]
 }

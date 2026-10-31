@@ -1,3 +1,20 @@
+# Resmi 2027 Cotton takvimi kabul edildi — 31 Ekim 2026
+
+[Takvim uzatması](CT_CALENDAR_2027_20261031.md) mevcut motora dört ek kanıt
+dosyasıyla kabul edildi. 448 önceki bilimsel dosya ve ilk tahmin değişmedi;
+taze private geri kurma ve donmuş kodla denetim geçti. Aktif kapsam
+3 Ocak 2028'e uzandı; ilk 43 origin ve 366 eski takvim günü korundu.
+
+Kilitli 252 origin'in son hedefi **2 Kasım 2027**'dir. Bu, yaklaşık bir yıl
+süren ileri testtir; 2 Kasım 2026 yalnız ilk gerçekleşmedir. Model/çalıştırıcı,
+31 fit üst sınırı, eşikler, karar anı ve ara skor yasağı değişmedi.
+Bu çalışmada yeni fit/tahmin/performans skoru yoktur. Risk üstünlüğü henüz
+kanıtlanmadı. Sicil 228 aşama / 561 tarif / 32.500 fit kopyasıdır.
+
+Sonraki gerçek kaynak kontrolü 3 Kasım 2026 03:05 TR'dir; hafta sonu
+origin'leri atlanır. Sonraki adım bu kaynak ve ilk hedefin makbuz zincirini
+doğrulamaktır. Aşağıdaki takvim-hazırlık ifadeleri tarihsel kayıttır.
+
 # İlk gerçek ileri risk yayını bağımsız doğrulandı — 31 Ekim 2026
 
 [Sıfır-fit denetim](CT_FIRST_PUBLICATION_20261031.md), 30 Ekim origin'inden

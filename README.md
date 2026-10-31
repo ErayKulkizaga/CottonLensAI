@@ -10,6 +10,10 @@ saatlik görev kapalıdır. Bilgisayar uyanık ve kullanıcı oturumu açık olm
 Yeni kayıtlar checksum doğrulanmış private Release parçalarında korunur;
 Drive'a yazılmaz. Güncel karar ve kanıt sınırları [STATUS](docs/STATUS.md)'tadır.
 
+[Resmi takvim uzatması](docs/CT_CALENDAR_2027_20261031.md) kabul edildi;
+eski veriler ve ilk tahmin korundu. Kilitli 252 seanslık testin son hedefi
+**2 Kasım 2027**'dir; 2 Kasım 2026 yalnız ilk gerçekleşmedir.
+
 Aşağıdaki 29 Ekim kayıtları araştırma tarihçesidir.
 
 [Son tamamlanan CT risk deneyi](docs/CT_SHOCK_FORECAST_CONTROL_20261029.md):
