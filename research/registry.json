@@ -20366,6 +20366,25 @@
       "evidence": "evidence/ct-calendar-2027-extension-20261031.json",
       "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/ct-calendar-2027-review-20261031",
       "id": "8f78c9b3dd8b73b15e9996a3513261ec5b9fe7dce32945f73d50eb8fb1b2f29e"
+    },
+    {
+      "experiment": "research-ct-forward-inference-calibration-v1-prereg",
+      "profile": "ct-forward-inference-calibration-v1",
+      "horizon": 1,
+      "kind": "preregistered_zero_fit_known_mean_inference_calibration",
+      "classification": "INCONCLUSIVE",
+      "classification_scope": "Not run; synthetic inference control only, no forecast superiority",
+      "source_id": "7a2e2018579ec767e56f503cc5256a97f48d95fe38148ea7b1871193545fa2e4",
+      "model_families": [
+        "har"
+      ],
+      "completed_market_fits": 0,
+      "completed_synthetic_fits": 0,
+      "new_forecasts": 0,
+      "market_skill": false,
+      "evidence": "evidence/ct-forward-inference-calibration-prereg-20261031.json",
+      "active_protocol_changed": false,
+      "id": "11cdee07a266641f528c4326de0c154565341d6b33d74b978c8aa9281ec30331"
     }
   ],
   "local_evidence": [
@@ -21220,6 +21239,10 @@
     {
       "path": "evidence/ct-calendar-2027-extension-20261031.json",
       "sha256": "24e53415e2b0c1dcec222df0a1c207224e25a19a60cd774d11c823c456912399"
+    },
+    {
+      "path": "evidence/ct-forward-inference-calibration-prereg-20261031.json",
+      "sha256": "ace0e0271a0c13e744c1b3f2448737a116b657e6be7a1b10befeb69a8b1f5a54"
     }
   ]
 }
