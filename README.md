@@ -14,6 +14,10 @@ Drive'a yazılmaz. Güncel karar ve kanıt sınırları [STATUS](docs/STATUS.md)
 eski veriler ve ilk tahmin korundu. Kilitli 252 seanslık testin son hedefi
 **2 Kasım 2027**'dir; 2 Kasım 2026 yalnız ilk gerçekleşmedir.
 
+[Sıfır-fit karar kontrolü](docs/CT_INFERENCE_CALIBRATION_20261031.md),
+252 seansın güç garantisi olmadığını somut sentetik koşullarda gösterir.
+Piyasa üstünlüğü sonucu üretmez; kilitli tarif ve eski kanıtlar değişmedi.
+
 Aşağıdaki 29 Ekim kayıtları araştırma tarihçesidir.
 
 [Son tamamlanan CT risk deneyi](docs/CT_SHOCK_FORECAST_CONTROL_20261029.md):

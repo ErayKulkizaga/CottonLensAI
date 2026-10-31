@@ -1,3 +1,26 @@
+# İleri risk kararının sentetik kontrolü kapandı — 31 Ekim 2026
+
+[Sıfır-fit kontrol](CT_INFERENCE_CALIBRATION_20261031.md), gerçek 43+209
+takvim bölünmesinde mevcut iki-CI kararını sınadı. Sıfır etkide ortak
+yanlış üstünlük 21/1.024 (%2,05); ön kayıtlı ölçüte göre aşırı yanlış-pozitif
+gösterilmedi. Bu, tüm dağılımlarda kalibrasyon kanıtı değildir.
+
+Tarihsel +0,01770104 büyüklüğündeki etkinin sentetik saptaması bağımsız
+gözlemlerde %11,52, AR0,8 koşulunda %4,69'dur. Bunlar gerçek piyasa
+gücü/başarı olasılığı değildir. 252 seans başarı veya %80 güç garantisi vermez.
+43-gün bölümünün60blokta sabit kalması doğrulandı; tek başına aktif ortak
+kararın bozukluğunu veya model başarısızlığını açıklamaz.
+
+12 test/Ruff, 24 mevcut yardımcı-aralık karşılaştırması, ayrı 2.097.152
+scalar kontrolü geçti. Private 294 ön kayıt +322 sonuç +8 replay dosyası
+taze geri kuruldu; rapor/girdi/sekiz NPZ ve bağımsız makbuz byte eşit
+yeniden üretildi. Model/çalıştırıcı, çalışma dosyaları ve trials hash'leri
+korundu. Sicil230aşama/561tarif/32.500fit kopyası; yeni fit0.
+
+**Bağımsız risk üstünlüğü hâlâ yoktur.** Aktif ileri tarif aynen sürer;
+sonraki tek gerçek girdi3Kasım03:05TR kaynak/ilk-hedef makbuzudur. Yeni
+model/grid, ara skor, süre/eşik değişikliği veya Drive işlemi yoktur.
+
 # Resmi 2027 Cotton takvimi kabul edildi — 31 Ekim 2026
 
 [Takvim uzatması](CT_CALENDAR_2027_20261031.md) mevcut motora dört ek kanıt

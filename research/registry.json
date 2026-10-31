@@ -20385,6 +20385,26 @@
       "evidence": "evidence/ct-forward-inference-calibration-prereg-20261031.json",
       "active_protocol_changed": false,
       "id": "11cdee07a266641f528c4326de0c154565341d6b33d74b978c8aa9281ec30331"
+    },
+    {
+      "experiment": "research-ct-forward-inference-calibration-v1-result",
+      "profile": "ct-forward-inference-calibration-v1",
+      "horizon": 1,
+      "kind": "completed_zero_fit_synthetic_joint_inference_calibration",
+      "classification": "INCONCLUSIVE",
+      "classification_scope": "Known-mean synthetic inference calibration verified, not actual market power or forecast superiority",
+      "source_id": "7a2e2018579ec767e56f503cc5256a97f48d95fe38148ea7b1871193545fa2e4",
+      "model_families": [
+        "har"
+      ],
+      "completed_market_fits": 0,
+      "completed_synthetic_fits": 0,
+      "market_skill": false,
+      "actual_market_power_estimated": false,
+      "active_protocol_changed": false,
+      "evidence": "evidence/ct-forward-inference-calibration-result-20261031.json",
+      "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/ct-inference-calibration-20261031",
+      "id": "db01aa6be80b3d0ccdf86770014d05ccd7873c926be35fcf1f9cc0c8528e8ad9"
     }
   ],
   "local_evidence": [
@@ -21243,6 +21263,10 @@
     {
       "path": "evidence/ct-forward-inference-calibration-prereg-20261031.json",
       "sha256": "ace0e0271a0c13e744c1b3f2448737a116b657e6be7a1b10befeb69a8b1f5a54"
+    },
+    {
+      "path": "evidence/ct-forward-inference-calibration-result-20261031.json",
+      "sha256": "bf3c761ce58e51a6ce0c0d54d97573603fe16a56848de81adf6942cb66bebbe9"
     }
   ]
 }

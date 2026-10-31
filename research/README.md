@@ -1,5 +1,10 @@
 # Deney geçmişi ve tekrar kontrolü
 
+[Sentetik ortak-karar kontrolü](../docs/CT_INFERENCE_CALIBRATION_20261031.md)
+`ct-forward-inference-calibration-v1` sıfır-fit tamamlandı; tekrar çalıştırma.
+Bu bir piyasa güç/başarı hesabı değildir. Sicil230aşama;561tarif/32.500fit
+kopyası değişmedi. Aktif ileri model ve no-partial-score kuralı korunur.
+
 [Resmi Cotton takvimi uzatması](../docs/CT_CALENDAR_2027_20261031.md)
 sıfır-fit ek kayıtla kabul edildi. Eski 448 bilimsel dosya ve ilk tahmin
 korundu; 252 origin / son hedef 2 Kasım 2027 / 31 fit üst sınırı sabittir.
