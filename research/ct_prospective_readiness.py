@@ -42,7 +42,7 @@ def prices(frame):
     return rows
 
 
-def append_snapshot(seed, snapshot):
+def append_snapshot(seed, snapshot, *, retain_first_observed=False):
     """No guessed sessions, overlapping revisions, or hidden history truncation."""
     old, new = prices(seed), prices(snapshot)
     last = old.date.iloc[-1]
@@ -52,9 +52,16 @@ def append_snapshot(seed, snapshot):
     b = new.loc[new.date.le(last)].reset_index(drop=True)
     if not a.date.equals(b.date):
         raise ValueError('Overlapping source calendar changed; do not compress or insert past sessions')
-    if not np.array_equal(a.cotton_close, b.cotton_close):
+    if not retain_first_observed and not np.array_equal(a.cotton_close, b.cotton_close):
         raise ValueError('Overlapping price revision; preserve both sources and review, never overwrite seed')
     return pd.concat([old, new.loc[new.date.gt(last)]], ignore_index=True)
+
+
+def overlap_revisions(history, snapshot):
+    matched = history.merge(snapshot, on='date', suffixes=('_first', '_later'), validate='one_to_one')
+    changed = matched[matched.cotton_close_first.ne(matched.cotton_close_later)]
+    return [{'date': str(row.date.date()), 'first_observed': row.cotton_close_first,
+             'later_quote': row.cotton_close_later} for row in changed.itertuples(index=False)]
 
 
 def candidate_history(frame):

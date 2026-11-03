@@ -141,6 +141,7 @@ def test_study_hashes_expose_input_mutations(tmp_path):
 
 
 def analytic_study(root):
+    freeze_record(root/'decision-contract.json', {'no_partial_score': True})
     """Analytic mock records, NOT fitted models, Yahoo data or a real cohort.
 
     The real source-verifier is deliberately not satisfiable by this fixture;

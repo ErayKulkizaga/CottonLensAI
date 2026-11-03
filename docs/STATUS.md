@@ -1,3 +1,25 @@
+# Yahoo fiyat revizyonu ve yeni ileri kohort — 4 Kasım 2026
+
+3 Kasım 03:05 çalışması, Yahoo'nun 30 Ekim kapanışını 78,13 yerine
+77,83 göndermesi üzerine veriyi reddetti. İlk kohortta 2 Kasım
+origin'i kaçtı ve 252/252 doğrulama koşulu karşılanamaz hale geldi.
+Ham yanıt, hata ve eski tahminler ayrı GitHub kanıtı olarak duruyor.
+
+Yeni `ct-own-level-first-observed-forward-t1-v2` kohortu, her tarih
+için ilk kabul edilen fiyatı kullanır. Sonraki yanıtlardaki farklı
+fiyatları ve ham yanıtları saklar. Tam seans ve örtüşme kontrolleri
+sürer. Yeni kohort 3 Kasım origin'iyle kilitlendi. Aynı model tarifi
+ve EWMA karşılaştırması için yeni kohorta özgü 10 ilk fit tamamlandı.
+
+Windows görevi 4 Kasım 03:05 veri alımı ve 03:20 yayın için yeni
+kohorta yönlendirildi. Uyandırma ayarı açık. Gerçek Yahoo yanıtıyla
+izole provada iki revizyon kaydedildi ve her iki görev aşaması geçti.
+Provanın saati simüle edildi. Gerçek ileri yayın kendi saatinde
+doğrulanacak. 84 ilgili test geçti ve yeni çalışma alanının private
+GitHub yedeği taze indirilerek doğrulandı.
+
+[Çalışma kanıtları](https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/ct-forward-records-2026-q4)
+
 # İleri risk kararının sentetik kontrolü kapandı — 31 Ekim 2026
 
 [Sıfır-fit kontrol](CT_INFERENCE_CALIBRATION_20261031.md), gerçek 43+209

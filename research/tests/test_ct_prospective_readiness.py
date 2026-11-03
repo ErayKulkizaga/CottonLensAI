@@ -101,3 +101,15 @@ def test_unregistered_parent_proof_fails_before_any_output_or_fit(tmp_path):
     with pytest.raises(ValueError, match='registered immutable'):
         study.audit(tmp_path, tmp_path/'missing', tmp_path/'missing-market', p, tmp_path/'new-output')
     assert not (tmp_path/'new-output').exists()
+def test_first_observed_append_audits_revision_without_rewriting_prices():
+    dates = pd.date_range('2026-10-29', periods=3)
+    old = pd.DataFrame({'date': dates[:2], 'cotton_close': [79., 78.13]})
+    new = pd.DataFrame({'date': dates[1:], 'cotton_close': [77.83, 76.]})
+    with pytest.raises(ValueError, match='price revision'):
+        study.append_snapshot(old, new)
+    merged = study.append_snapshot(old, new, retain_first_observed=True)
+    assert merged.cotton_close.tolist() == [79., 78.13, 76.]
+    assert study.overlap_revisions(old, new) == [
+        {'date': '2026-10-30', 'first_observed': 78.13, 'later_quote': 77.83}]
+    with pytest.raises(ValueError, match='final seed session'):
+        study.append_snapshot(old, new.iloc[1:], retain_first_observed=True)

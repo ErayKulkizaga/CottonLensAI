@@ -16,7 +16,7 @@ from cottonlens_ml.research.volatility import qlike
 
 from research import ct_manual_forward as forward
 from research.ct_manual_source import CottonCalendar, classify_chart, verified_response
-from research.ct_prospective_readiness import append_snapshot
+from research.ct_prospective_readiness import append_snapshot, overlap_revisions
 from research.verify_ct_prospective_readiness import decimal_difference
 from research.verify_ct_signed_risk_score import independent_history
 from research.verify_risk_weak_teacher import difference_interval
@@ -120,6 +120,12 @@ def observation_history(root):
     if latest is None or forward.utc(latest['observed_available_at']) > forward.now():
         raise ValueError('A real final source observation is required')
     initial = pd.read_parquet(root/'inputs/seed.parquet'); combined = initial
+    retain_first = read_record(root/'decision-contract.json').get('overlap_price_policy') == 'retain-first-observed-v1'
+    if retain_first:
+        rebuilt, revisions = forward.replay_first_observed_seed(root)
+        pd.testing.assert_frame_equal(initial, rebuilt, check_exact=True)
+        if read_record(root/'inputs/bootstrap-revisions.json')['transitions'] != revisions:
+            raise ValueError('Bootstrap revision audit differs')
     calendars = {content_id(json.loads((root/'inputs/calendar.json').read_bytes())):
                  json.loads((root/'inputs/calendar.json').read_bytes())}
     for p in (root/'calendar-extensions').glob('*/extension.json'):
@@ -136,7 +142,11 @@ def observation_history(root):
                                                      'receipt_sha256': digest(base/'http-receipt.json')})):
             raise ValueError('Source receipt/calendar identity changed')
         _, quotes = classify_chart(json.loads((base/'chart.json').read_bytes()), http, CottonCalendar(calendars[r['calendar_id']]))
-        combined = append_snapshot(combined, quotes)
+        if retain_first and read_record(base/'overlap-revisions.json') != {
+                'observation_id': r['observation_id'], 'policy': 'retain-first-observed-v1',
+                'revisions': overlap_revisions(combined, quotes)}:
+            raise ValueError('Source revision audit differs')
+        combined = append_snapshot(combined, quotes, retain_first_observed=retain_first)
         stored = pd.read_parquet(base/'history.parquet')
         pd.testing.assert_frame_equal(combined, stored, check_exact=True)
         pd.testing.assert_frame_equal(final.iloc[:len(stored)].reset_index(drop=True), stored, check_exact=True)

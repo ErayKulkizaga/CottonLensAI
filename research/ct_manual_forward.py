@@ -32,7 +32,11 @@ from research.ct_manual_source import (
     utc,
     verified_response,
 )
-from research.ct_prospective_readiness import append_snapshot, candidate_history
+from research.ct_prospective_readiness import (
+    append_snapshot,
+    candidate_history,
+    overlap_revisions,
+)
 
 PROFILE = 'ct-own-level-manual-forward-t1-v1'
 VERSIONS = ('numpy', 'pandas', 'scipy', 'pyarrow')
@@ -306,7 +310,7 @@ def lock(root, repo, auth):
     timestamp = now(); first = first_origin(calendar(root), timestamp)
     if pd.Timestamp(first).year != 2026:
         raise ValueError('This bounded two-year protocol must start in2026; no silent postponement')
-    body = {'profile': PROFILE, 'identity': ready['identity'], 'locked_at': timestamp.isoformat(),
+    body = {'profile': ready['identity']['profile'], 'identity': ready['identity'], 'locked_at': timestamp.isoformat(),
             'first_origin': first, 'required_origins': 252, 'old_baseline_cohort_modified': False,
             'authorization_sha256': digest(auth), 'automatic_tasks': False}
     with writer(root):
@@ -336,8 +340,33 @@ def current_history(root):
     return pd.read_parquet(root/'observations'/previous/'history.parquet'), items[-1]
 
 
+def replay_first_observed_seed(root):
+    inputs = root/'inputs'
+    initial = inputs/'bootstrap'
+    history = pd.read_parquet(initial/'parent-seed.parquet')
+    cal = CottonCalendar(json.loads((inputs/'calendar.json').read_bytes()))
+    revision_log = []
+    previous = None
+    for stem, directory in [('first', initial), ('initial', inputs)]:
+        raw, receipt_path = directory/f'{stem}-chart.json', directory/f'{stem}-receipt.json'
+        receipt = verified_response(raw, receipt_path)
+        stamp = utc(receipt['observed_available_at'])
+        if previous is not None and stamp <= previous:
+            raise ValueError('Bootstrap receipts must advance chronologically')
+        _, completed = classify_chart(json.loads(raw.read_bytes()), receipt, cal)
+        latest = str(completed.date.iloc[-1].date())
+        if stamp > decision(latest) or completed.date.iloc[-1] <= history.date.iloc[-1]:
+            raise ValueError('Bootstrap capture must be timely and advance the history')
+        revision_log.append({'source_sha256': digest(raw), 'receipt_sha256': digest(receipt_path),
+                             'revisions': overlap_revisions(history, completed)})
+        history = append_snapshot(history, completed, retain_first_observed=True)
+        previous = stamp
+    return history, revision_log
+
+
 def admit(root, repo, raw, receipt_path):
-    verify(root, repo); read_record(root/'cohort-lock.json')
+    _, design = verify(root, repo); read_record(root/'cohort-lock.json')
+    retain_first = design.get('overlap_price_policy') == 'retain-first-observed-v1'
     receipt = verified_response(raw, receipt_path)
     raw_bytes, receipt_bytes = raw.read_bytes(), receipt_path.read_bytes()
     if (hashlib.sha256(raw_bytes).hexdigest() != receipt['response_sha256']
@@ -349,14 +378,20 @@ def admit(root, repo, raw, receipt_path):
     directory = root/'observations'/oid
     with writer(root):
         _, completed = classify_chart(json.loads(raw_bytes), receipt, calendar(root))
-        old, previous = current_history(root); combined = append_snapshot(old, completed)
-        if previous and utc(receipt['observed_available_at']) <= utc(previous['observed_available_at']):
+        old, previous = current_history(root)
+        combined = append_snapshot(old, completed, retain_first_observed=retain_first)
+        prior_stamp = previous['observed_available_at'] if previous else (
+            json.loads((root/'inputs/initial-receipt.json').read_bytes())['observed_available_at'] if retain_first else None)
+        if prior_stamp is not None and utc(receipt['observed_available_at']) <= utc(prior_stamp):
             raise ValueError('Source observations must advance chronologically')
         if directory.exists():
             raise ValueError('Preserve existing source observation')
         directory.mkdir(parents=True)
         (directory/'chart.json').write_bytes(raw_bytes); (directory/'http-receipt.json').write_bytes(receipt_bytes)
         combined.to_parquet(directory/'history.parquet', index=False)
+        if retain_first:
+            freeze_record(directory/'overlap-revisions.json', {'observation_id': oid,
+                          'policy': 'retain-first-observed-v1', 'revisions': overlap_revisions(old, completed)})
         body = {'observation_id': oid, 'previous_observation_id': previous['observation_id'] if previous else None,
                 'observed_available_at': receipt['observed_available_at'], 'latest_completed_date': str(combined.date.iloc[-1].date()),
                 'calendar_id': content_id(calendar_body(root)),
