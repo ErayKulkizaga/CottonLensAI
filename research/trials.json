@@ -56573,6 +56573,57 @@
       "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/ct-recent-risk-audit-result-20261104",
       "payload_root": "audit",
       "native_payloads_reverified_by_delivery": true
+    },
+    {
+      "id": "eff2054468f2c62d11a3400b1e38d6e69be535c59e3e514430962f0985791fc4",
+      "scope": {
+        "profile": "ct-pre2010-same-contract-risk-t1-r2",
+        "source_id": "7dd7415ae8ac05e092656bbe3e13c91b6ad70df96fe44cf6e929a4f67a920ca2",
+        "data_id": "60f3b70ea432a3137117f43da43712a4f1423172da3b2ce92c268a1fa5a7cca0",
+        "design_id": "a60350c00cf45609c18d982e27f56c6f63f7127fd822caa660a97aef0c7d7251",
+        "contract_id": "b3c5893b5c2ee9f829610cabb8d1950fcce606889aa393a0a4303944f7f67096",
+        "outcome_id": "48e61a8a4b75bafb420186e18080419adbe1e0f39fb49aa2d76ebac066445164"
+      },
+      "scope_id": "41dfe076e2c601ccecfdacc498deead9848370698ba0fbd6eea38a57ef1b91f7",
+      "profile": "ct-pre2010-same-contract-risk-t1-r2",
+      "kind": "archival_replication_same_contract_risk",
+      "recipes": [
+        {
+          "family": "har",
+          "horizon": 1,
+          "device": "cpu",
+          "window": 1,
+          "features": [
+            "har_1",
+            "har_5",
+            "har_22",
+            "origin_state"
+          ],
+          "training_loss": "qlike",
+          "parameters": 5,
+          "feature_formula": "3relativeHAR plus one declared origin state",
+          "target_formula": "variance_target_1/ct_ewma",
+          "forecast_formula": "origin_EWMA*exp(intercept+4features@coef)",
+          "seed": 42,
+          "profile": "ct-risk-level-dxy-control-t1-v1",
+          "arm": "own_level",
+          "variance_features": [
+            "har_1",
+            "har_5",
+            "har_22",
+            "origin_state"
+          ],
+          "extra_feature": "free log origin CT EWMA"
+        }
+      ],
+      "horizon": 1,
+      "model_families": [
+        "har"
+      ],
+      "completed_fits": 31,
+      "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/ct-pre2010-risk-prereg-20261104",
+      "payload_root": "prepared-r2b",
+      "native_payloads_reverified_by_delivery": true
     }
   ],
   "rejected_receipts": [],

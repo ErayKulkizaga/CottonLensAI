@@ -1,3 +1,31 @@
+# Aynı kontratla 2008–2009 risk karşılaştırması tamamlandı — 4 Kasım 2026
+
+24 Kasım 2008–23 Kasım 2009 arasındaki 252 origin ve 31 sabit CPU fit
+tamamlandı. 253 fiyat tarihinin tamamı doğrulandı. Takvim ayı değişirken
+hedef getiri origin'de belirlenen aynı kontratın iki uzlaşma fiyatından
+kuruldu. Model ve EWMA aynı etiketleri kullandı. Eski bilinen-sinyal
+kontrolünün 200 tahmini yeniden doğrulandı. Yeni sentetik fit sıfır.
+
+9 Nisan ve 22 Mayıs 2009 günlük PDF ve XLS dosyalarının iç tarihleri
+sonraki işlem gününe aitti. İlk sürüm bu yüzden skor üretmeden durdu.
+Sabit tarihli iki haftalık fiyat tanığı, sonraki günlük rapordaki Previous
+değeriyle eşleşti. Altı origin'de iki kol da son tamamlanmış EWMA durumunu
+kullandı. Haftalık düzeltmelerin fiyatları, basılı tarih geçmeden
+özelliklere girmedi. Kaynak ve ayrıştırıcı değişiklikleri ilk skor ve
+fitten önce ayrı checksum'larla saklandı.
+
+**Sonuç:** Geçmiş doğrulama 2008 ve 2009 için model ağırlığını sıfır seçti.
+252 son tahmin yuvarlama hassasiyetinde EWMA ile aynı. Ham tahminin
+ortalama QLIKE katkısı −0,001869. Altı gecikmeli seans hariç
+−0,001915. 2008'in 26 seansında ham +0,020864, 2009'un 226 seansında
+−0,004484. Birleşik ön kayıt ölçütü geçilmedi. Arşiv ilk sürümü ve
+gerçek UTC erişim saati doğrulanmış kabul edilmez. Sonuç, güncel piyasa
+üstünlüğü göstermiyor. Bu sabit tarifi tekrar eğitmek için gerekçe yok.
+
+31 native çıktı, 252 eşlenmiş tarih ve sıfır-fit bağımsız replay doğrulandı.
+Sonuç arşivi 529 dosya ile private GitHub'dan taze geri kuruldu.
+[Ön kayıt ve sonuç paketi](https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/ct-pre2010-risk-prereg-20261104)
+
 # Gece görevi kapatıldı ve yakın dönem risk denetimi tamamlandı — 4 Kasım 2026
 
 İki Windows görevi (`CottonLens-Risk-Daily-v1` ve

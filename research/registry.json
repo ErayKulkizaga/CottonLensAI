@@ -20468,6 +20468,74 @@
       "market_skill": false,
       "synthetic": false,
       "id": "b5b76d765bffe52dcae5ddb076fbef203e036c1633c5dd66624b9a0a5dc51900"
+    },
+    {
+      "experiment": "ct-pre2010-same-contract-risk-t1-r2",
+      "profile": "ct-pre2010-same-contract-risk-t1-r2",
+      "horizon": 1,
+      "model_families": [
+        "har"
+      ],
+      "target": "r[t+1]^2 for the nearest scheduled delivery month strictly after the origin month; hold it across both prices",
+      "baseline": "EWMA lambda .94 using same held-contract log returns",
+      "classification": "INCONCLUSIVE",
+      "classification_scope": "252 origins, older regime, unchanged selected EWMA forecast verified",
+      "source_id": "7dd7415ae8ac05e092656bbe3e13c91b6ad70df96fe44cf6e929a4f67a920ca2",
+      "data_id": "60f3b70ea432a3137117f43da43712a4f1423172da3b2ce92c268a1fa5a7cca0",
+      "design_id": "a60350c00cf45609c18d982e27f56c6f63f7127fd822caa660a97aef0c7d7251",
+      "completed_market_fits": 31,
+      "metrics": {
+        "origins": 252,
+        "fits": 31,
+        "mean_gain": 3.984466528626913e-17,
+        "intervals": {
+          "20": [
+            -9.030940095669714e-17,
+            1.6286442573641348e-16
+          ],
+          "60": [
+            -6.672705380612739e-17,
+            1.431165708482245e-16
+          ]
+        },
+        "years": {
+          "2008": {
+            "origins": 26,
+            "gain": 5.888486191128256e-16
+          },
+          "2009": {
+            "origins": 226,
+            "gain": -2.331508161413117e-17
+          }
+        },
+        "weights": {
+          "2008": 0.0,
+          "2009": 0.0
+        },
+        "raw_mean_gain": -0.001869013595706928,
+        "trimmed_gain": 9.291664638638402e-17,
+        "fallback_origins": 252,
+        "stale_evaluation_origins": {
+          "2009-04-09": "2009-04-08",
+          "2009-05-22": "2009-05-21",
+          "2009-05-26": "2009-05-21",
+          "2009-05-27": "2009-05-21",
+          "2009-05-28": "2009-05-21",
+          "2009-05-29": "2009-05-21"
+        },
+        "archival_replication_gate": false,
+        "first_vintage_verified": false,
+        "forward_publication": false,
+        "current_market_skill": false,
+        "record_id": "dfd3d6accf2a93c86fbb5ccac2c43c7083cc0c45a89de227661aad2939a5b04e"
+      },
+      "current_market_skill": false,
+      "independent_holdout": false,
+      "evidence": "research/evidence/ct-pre2010-risk-result-20261104.json",
+      "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/ct-pre2010-risk-prereg-20261104",
+      "prediction_payload": "prepared-r2b/paired-losses.csv",
+      "historical_vintage_verified": false,
+      "id": "225f144608f67def6880070a8ed78ffc8138f62627c60c40a874baf95b201744"
     }
   ],
   "local_evidence": [
@@ -21334,6 +21402,10 @@
     {
       "path": "evidence/ct-recent-risk-audit-result-20261104.json",
       "sha256": "801dd51046e63d99775935a0f156cad4b5794b27103ab4734bb971b96c7dd02e"
+    },
+    {
+      "path": "evidence/ct-pre2010-risk-result-20261104.json",
+      "sha256": "9a7b3a64c1b4d08ba2e65d26591333e77169ea8620aceb55e49f3c5488494785"
     }
   ]
 }
