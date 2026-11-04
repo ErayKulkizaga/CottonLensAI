@@ -58,10 +58,7 @@ def _payload_path(root: Path, relative: str) -> Path:
     return target
 
 
-def verify_directory(root: Path) -> dict:
-    missing = sorted(name for name in REQUIRED_FILES if not (root / name).is_file())
-    if missing:
-        raise ArtifactVerificationError(f"artifact is missing required files: {', '.join(missing)}")
+def _checksum_inventory(root: Path) -> dict[str, str]:
     expected: dict[str, str] = {}
     for line in (root / "checksums.sha256").read_text(encoding="utf-8").splitlines():
         if not line.strip():
@@ -76,6 +73,29 @@ def verify_directory(root: Path) -> dict:
         expected[relative] = digest.lower()
     if not expected:
         raise ArtifactVerificationError("checksums.sha256 is empty")
+    return expected
+
+
+def _inventory_identity(expected: dict[str, str]) -> str:
+    inventory = json.dumps(expected, sort_keys=True, separators=(",", ":")).encode("utf-8")
+    return hashlib.sha256(b"cottonlens-artifact-payload-v1\0" + inventory).hexdigest()
+
+
+def payload_identity(root: Path) -> str:
+    """Read the declared identity, after the caller has verified the directory."""
+    return _inventory_identity(_checksum_inventory(root))
+
+
+def verify_directory(root: Path) -> dict:
+    manifest, _ = verify_directory_with_identity(root)
+    return manifest
+
+
+def verify_directory_with_identity(root: Path) -> tuple[dict, str]:
+    missing = sorted(name for name in REQUIRED_FILES if not (root / name).is_file())
+    if missing:
+        raise ArtifactVerificationError(f"artifact is missing required files: {', '.join(missing)}")
+    expected = _checksum_inventory(root)
     for relative, digest in expected.items():
         target = _payload_path(root, relative)
         if not target.is_file():
@@ -149,7 +169,7 @@ def verify_directory(root: Path) -> dict:
             if (receipt.get('status') != 'passed' or receipt.get('fresh_fits') is not True
                     or not isinstance(difference, (float, int)) or not 0 <= difference <= 1e-6):
                 raise ArtifactVerificationError('Research release requires fresh reproduction')
-    return manifest
+    return manifest, _inventory_identity(expected)
 
 
 def install_bundle(bundle_path: Path, destination: Path) -> dict:

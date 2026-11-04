@@ -427,6 +427,12 @@ Uygulama: <http://localhost:8080>. API: <http://localhost:8080/api/v1/openapi.js
 
 `Development fixture` banner'ı sentetik gösterim verisi anlamına gelir. Gerçek artifact `runtime/artifacts/current` içinde checksum doğrulamasıyla yüklenir; eski artifact'in metrikleri güncel araştırma performansı gibi sunulmaz. `live` ve `backtest` kayıtları ayrıdır. Backend'e TensorFlow, MLflow, Jupyter veya CUDA kurulmaz.
 
+Canlı senaryo ve readiness, yüklenen paketin dosya checksum envanteriyle
+veritabanı içe aktarım makbuzunun eşleşmesini gerektirir. Sadece manifest
+hash'i taşıyan eski makbuzlar geçmiş sorgular için korunur. Aynı eski sürümün
+tekrar canlı kullanımı gerekirse özgün ZIP'i bağımsız arşiv checksum'ıyla
+doğrulayıp ayrı bir servis veritabanına içe aktarın.
+
 ```bash
 docker compose down
 ```

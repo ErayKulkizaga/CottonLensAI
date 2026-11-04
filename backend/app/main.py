@@ -22,7 +22,9 @@ async def lifespan(_: FastAPI):
     with SessionLocal() as db:
         if runtime.ready:
             try:
-                import_artifact_directory(db, Path(settings.artifact_dir))
+                import_artifact_directory(
+                    db, Path(settings.artifact_dir), expected_payload_checksum=runtime.payload_checksum,
+                )
             except Exception:
                 logging.exception("Validated runtime model loaded, but database artifact import failed")
                 db.rollback()

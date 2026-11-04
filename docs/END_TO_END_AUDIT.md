@@ -37,6 +37,15 @@ Ana çalışma klasörünün içeriği korundu.
   Yeniden yükleme sonrası geçerli tahmin ve model yokken reddetme de
   sınandı. Başarılı kontroller backend Ruff ve 30 pytest.
 
+- Aynı manifest korunurken bir Parquet özellik değeri değiştirilip
+  paket yeniden checksum'lanınca eski içe aktarım makbuzu kullanılabiliyordu.
+  İçe aktarım, readiness ve senaryo bu durumu kabul ediyordu.
+  Makbuz artık doğrulanan dosya yolları ve hash'lerinin tamamına bağlı.
+  Başlangıçta DB içe aktarımı belleğe yüklenen paket kimliğini de gerektiriyor.
+  Eski manifest makbuzları geçmiş sorgular için korunur ve canlı
+  kimliğe otomatik yükseltilmez. Test, üç yüzeyde reddi, değişmeyen
+  pakette idempotansı ve önceki tahmin kayıtlarının korunmasını doğruladı.
+
 Bunlar API çıkarım hataları. Tarihsel piyasa performansı üzerindeki
 etkileri bu testlerle ölçülmedi.
 
@@ -44,7 +53,7 @@ etkileri bu testlerle ölçülmedi.
 
 | Alan | Sonraki doğrulama |
 | --- | --- |
-| Yayın kimliği ve içe aktarım | Aynı sürüm ve manifest altında değişen payload, atomik aktivasyon, revize fiyatlar ve tekrar içe aktarım |
+| Yayın kimliği ve içe aktarım | Kesilen veya eşzamanlı paket aktivasyonu ve revize fiyatların dashboard kapsamı |
 | Yerel ve GitHub eşlemesi | PR bağımlılıkları, birleştirme planı ve main eşitliği |
 | Veri girişi | Kaynak semantiği, vintage, seans ve saat, bozuk/yarım cache, eksiklik |
 | Araştırma hattı | Hedef olgunluğu, geçmişe ait özellikler, split/purge, model seçimi ve native çıktılar |

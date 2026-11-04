@@ -173,6 +173,100 @@ def test_simulation_rejects_loaded_runtime_from_an_older_import(release, tmp_pat
         assert missing_scenario.value.status_code == 503
 
 
+@pytest.mark.parametrize("surface", ["import", "readiness", "simulation"])
+def test_same_manifest_cannot_reuse_receipt_after_payload_changes(release, tmp_path, monkeypatch, surface):
+    root = tmp_path / "current"
+    manifest = install_bundle(release[0], root)
+    original_manifest_sha = sha256_file(root / "manifest.json")
+    engine = create_engine("sqlite://")
+    Base.metadata.create_all(engine)
+    with Session(engine) as db:
+        import_artifact_directory(db, root)
+        receipt = db.scalar(select(ArtifactImport))
+        original_checksum = receipt.checksum
+        live = db.scalar(select(Forecast).where(Forecast.origin_type == "live"))
+        request = SimulationRequest(as_of_date=live.as_of_date, adjustments={})
+
+        snapshots_path = root / "feature_snapshots.parquet"
+        snapshots = pd.read_parquet(snapshots_path)
+        snapshots.loc[snapshots.index[-1], "dxy_ret_1"] = 0.5
+        snapshots.to_parquet(snapshots_path, index=False)
+        _rehash(root)
+        assert sha256_file(root / "manifest.json") == original_manifest_sha
+        assert verify_directory(root) == manifest
+
+        runtime = ArtifactRuntime(str(root))
+        runtime.load(with_snapshots=True)
+        monkeypatch.setattr(api, "runtime", runtime)
+        if surface == "import":
+            with pytest.raises(ArtifactVerificationError, match="different payload"):
+                import_artifact_directory(db, root)
+        else:
+            with pytest.raises(HTTPException, match="active database artifact") as mismatch:
+                if surface == "readiness":
+                    api.ready(db)
+                else:
+                    api.create_simulation(request, db)
+            assert mismatch.value.status_code == 503
+        assert receipt.checksum == original_checksum
+
+
+def test_manifest_only_receipt_cannot_be_promoted_from_current_files(release, tmp_path, monkeypatch):
+    root = tmp_path / "current"
+    manifest = install_bundle(release[0], root)
+    legacy_checksum = sha256_file(root / "manifest.json")
+    runtime = ArtifactRuntime(str(root))
+    runtime.load(with_snapshots=True)
+    monkeypatch.setattr(api, "runtime", runtime)
+    engine = create_engine("sqlite://")
+    Base.metadata.create_all(engine)
+    with Session(engine) as db:
+        import_artifact_directory(db, root)
+        receipt = db.scalar(select(ArtifactImport))
+        receipt.checksum = legacy_checksum
+        db.commit()
+        with pytest.raises(ArtifactVerificationError, match="legacy manifest-only receipt"):
+            import_artifact_directory(db, root, expected_payload_checksum=runtime.payload_checksum)
+        with pytest.raises(HTTPException) as readiness:
+            api.ready(db)
+        assert readiness.value.status_code == 503
+        assert receipt.checksum == legacy_checksum
+        assert api.model_evaluation(db).artifact_version == manifest["artifact_version"]
+        assert db.scalar(select(func.count()).select_from(Forecast)) == 8
+
+
+def test_startup_rejects_install_swap_before_database_writes(release, tmp_path):
+    root = tmp_path / "current"
+    install_bundle(release[0], root)
+    runtime = ArtifactRuntime(str(root))
+    runtime.load(with_snapshots=True)
+    assert runtime.payload_checksum is not None
+    metrics_path = root / "metrics.json"
+    metrics_path.write_text(metrics_path.read_text(encoding="utf-8") + "\n", encoding="utf-8")
+    _rehash(root)
+    engine = create_engine("sqlite://")
+    Base.metadata.create_all(engine)
+    with Session(engine) as db:
+        with pytest.raises(ArtifactVerificationError, match="changed since the runtime was loaded"):
+            import_artifact_directory(db, root, expected_payload_checksum=runtime.payload_checksum)
+        assert db.scalar(select(func.count()).select_from(ArtifactImport)) == 0
+        assert db.scalar(select(func.count()).select_from(Forecast)) == 0
+
+
+def test_import_identity_is_independent_of_inventory_order(release, tmp_path):
+    root = tmp_path / "current"
+    manifest = install_bundle(release[0], root)
+    engine = create_engine("sqlite://")
+    Base.metadata.create_all(engine)
+    with Session(engine) as db:
+        import_artifact_directory(db, root)
+        inventory = root / "checksums.sha256"
+        entries = inventory.read_text(encoding="utf-8").splitlines()
+        inventory.write_text("\n".join(reversed(entries)) + "\n", encoding="utf-8")
+        assert import_artifact_directory(db, root) == manifest["artifact_version"]
+        assert db.scalar(select(func.count()).select_from(ArtifactImport)) == 1
+
+
 def test_experimental_sensitivity_uses_its_own_zero_change_baseline(release, tmp_path, monkeypatch):
     root = tmp_path / "current"
     install_bundle(release[0], root)

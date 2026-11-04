@@ -66,7 +66,12 @@ def _require_active_runtime(imported: ArtifactImport | None) -> None:
             status_code=503,
             detail="artifact files are valid but their database import has not completed",
         )
-    if runtime.manifest.get("artifact_version") != imported.artifact_version or runtime.manifest != imported.manifest:
+    if (
+        runtime.manifest.get("artifact_version") != imported.artifact_version
+        or runtime.manifest != imported.manifest
+        or runtime.payload_checksum is None
+        or runtime.payload_checksum != imported.checksum
+    ):
         raise HTTPException(status_code=503, detail="runtime does not match the active database artifact")
 
 

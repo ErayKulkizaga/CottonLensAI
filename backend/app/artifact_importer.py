@@ -6,7 +6,12 @@ from pathlib import Path
 from sqlalchemy import delete, select
 from sqlalchemy.orm import Session
 
-from app.artifacts import ArtifactVerificationError, sha256_file, verify_directory
+from app.artifacts import (
+    ArtifactVerificationError,
+    payload_identity,
+    sha256_file,
+    verify_directory_with_identity,
+)
 from app.models import (
     ArtifactImport,
     FeatureSnapshot,
@@ -25,17 +30,25 @@ def _as_date(value: object) -> date:
     return date.fromisoformat(str(value)[:10])
 
 
-def import_artifact_directory(db: Session, root: Path) -> str:
+def import_artifact_directory(
+    db: Session, root: Path, *, expected_payload_checksum: str | None = None,
+) -> str:
     import pyarrow.parquet as pq
 
-    manifest = verify_directory(root)
+    manifest, payload_checksum = verify_directory_with_identity(root)
+    if expected_payload_checksum is not None and payload_checksum != expected_payload_checksum:
+        raise ArtifactVerificationError("artifact payload changed since the runtime was loaded")
     version = manifest["artifact_version"]
     prior = db.scalar(select(ArtifactImport).where(ArtifactImport.artifact_version == version))
-    manifest_checksum = sha256_file(root / "manifest.json")
     if prior:
-        if prior.checksum != manifest_checksum:
-            raise ArtifactVerificationError("artifact version already exists with a different identity")
-        return version
+        if prior.checksum == payload_checksum:
+            return version
+        if prior.checksum == sha256_file(root / "manifest.json"):
+            raise ArtifactVerificationError(
+                "existing import has a legacy manifest-only receipt; "
+                "restore the independently verified original bundle into a fresh serving database"
+            )
+        raise ArtifactVerificationError("artifact version already exists with a different payload")
     metrics = json.loads((root / "metrics.json").read_text(encoding="utf-8"))
     forecasts = pq.read_table(root / "forecasts.parquet").to_pylist()
     snapshot_rows = pq.read_table(root / "feature_snapshots.parquet").to_pylist()
@@ -75,6 +88,11 @@ def import_artifact_directory(db: Session, root: Path) -> str:
                     raise ArtifactVerificationError("future observation date and actual price must be unknown")
             elif row.get("target_date") is None or _as_date(row["target_date"]) <= _as_date(row["as_of_date"]):
                 raise ArtifactVerificationError("historical forecast requires a later observed target date")
+    market_rows = pq.read_table(root / "market_history.parquet").to_pylist()
+    explanation_rows = pq.read_table(root / "explanations.parquet").to_pylist()
+    if payload_identity(root) != payload_checksum:
+        raise ArtifactVerificationError("artifact payload changed while reading the import")
+
     _remove_development_fixture(db)
     model_versions: dict[tuple[int, str], ModelVersion] = {}
     for metric in metrics:
@@ -94,7 +112,7 @@ def import_artifact_directory(db: Session, root: Path) -> str:
         model_versions[(model.horizon, model.model_name)] = model
     db.flush()
 
-    for row in pq.read_table(root / "market_history.parquet").to_pylist():
+    for row in market_rows:
         observed_on = _as_date(row.get("observed_on") or row.get("date"))
         series = str(row["series"])
         existing = db.scalar(
@@ -157,7 +175,7 @@ def import_artifact_directory(db: Session, root: Path) -> str:
         forecast_lookup[forecast.id] = forecast
     db.flush()
 
-    for row in pq.read_table(root / "explanations.parquet").to_pylist():
+    for row in explanation_rows:
         forecast_id = str(row["forecast_id"])
         if forecast_id not in forecast_lookup:
             continue
@@ -176,7 +194,7 @@ def import_artifact_directory(db: Session, root: Path) -> str:
         ArtifactImport(
             artifact_version=version,
             manifest=manifest,
-            checksum=manifest_checksum,
+            checksum=payload_checksum,
         )
     )
     db.commit()
