@@ -36,6 +36,31 @@ tahmini EWMA ile aynı olduğundan bu örnek kayıp farkını açıklamıyor.
 Rapor sürümü, neden ve yaygınlık belirsiz. Üç PDF ve makbuz sonuç
 Release'ine ayrı asset olarak eklendi ve taze geri kuruldu.
 
+**2024 kayıp farkı denetimi (sıfır fit):** Mutlak QLIKE farkı en büyük
+12 origin önceden belirlendi. Bu origin'ler 2024 mutlak kayıp farkının
+%30,04'ünü taşıyor. 24 tarihli USDA PDF'sinde her iki günün fiyatı
+CT=F ile 0,005 sent içinde eşleşti. Her çiftte ön kontrat aynıydı ve
+ikinci raporun Previous alanı ilk raporun Today alanıyla eşleşti.
+Yalnız bu 12 gerçekleşen etiket değiştirilince 711 origin ortalama
+kazancı +0,0000899193'ten +0,0000899363'e geldi. Bu etkili örneklemde
+kapanış farkı veya kontrat değişimi gözlenen başa baş sonucu açıklamıyor.
+Diğer origin'ler, eğitim girdileri ve tarihsel ilk sürüm hakkında
+genelleme yapılmaz. 103 dosyalık özel GitHub ek arşivi taze geri kuruldu
+ve sabit tahminlerle çevrimdışı yeniden hesaplandı.
+
+**2010 öncesi kaynak adayı (sıfır fit):** Beş USDA arşivinin ZIP dizininde
+2005 Ağustos–2009 Aralık arasında 1.109 benzersiz tarih adı var. 2005-08-01
+ve 2007-08-01 örneklerinde on vade satırı ve New York Cotton Exchange
+uzlaşma dipnotu doğrulandı. Tahmin dönemi fiyatları açılmadı. Mevcut 119
+ısınma, 500 olgun etiket, 3×63 doğrulama ve beş seanslık olgunlaşma altında
+2008-11-05 teorik ilk origin, 290 ise teorik üst sınırdır. Bu sayılar
+takvim ya da fiyat kapsamı doğrulaması içermez. Metadata ve eğitim
+örnekleri 15 dosya ile private GitHub'dan taze geri kuruldu.
+Sonraki adım eski seans takvimini ve fiyat tablosunu eğitim örneklerinde
+doğrulayıp sonuçları açmadan değerlendirme tarifini kilitlemek.
+Erken dönem testi geçmiş başka bir rejimde tekrar kanıtı verebilir.
+Bugünkü piyasada ileri doğrulama sonucu ayrı kalır.
+
 # Yahoo fiyat revizyonu ve yeni ileri kohort — 4 Kasım 2026
 
 3 Kasım 03:05 çalışması, Yahoo'nun 30 Ekim kapanışını 78,13 yerine
