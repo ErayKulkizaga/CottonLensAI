@@ -146,6 +146,8 @@ class Preprocessor:
 
     @classmethod
     def fit(cls, train, names):
+        if any(name.startswith(('target_', 'variance_target_', 'gk_target_')) for name in names):
+            raise ValueError('Future target columns cannot be model features')
         matrix = train[names].to_numpy(dtype=float)
         finite = np.isfinite(matrix)
         medians = [float(np.median(matrix[finite[:, i], i])) if finite[:, i].any() else 0.
@@ -175,6 +177,8 @@ class Target:
         raw = train[f'target_return_{horizon}'].to_numpy(dtype=float)
         if kind == 'price_delta':
             raw = train.cotton_close.to_numpy() * np.expm1(raw)
+        if not len(raw) or not np.isfinite(raw).all():
+            raise ValueError('Finite nonempty training targets required')
         if kind == 'raw_log':
             return cls(kind)
         if kind not in ('scaled_log', 'price_delta'):
@@ -203,13 +207,28 @@ class Target:
 
 
 def inputs(history, origins, processor, window=1):
-    indexes = history.set_index('date').index.get_indexer(pd.DatetimeIndex(origins.date))
+    if not isinstance(window, (int, np.integer)) or window < 1:
+        raise ValueError('Feature window must be a positive integer')
+    dates = pd.DatetimeIndex(history.date)
+    if dates.hasnans or dates.has_duplicates:
+        raise ValueError('Unique valid feature dates required')
+    indexes = dates.get_indexer(pd.DatetimeIndex(origins.date))
     if (indexes < window - 1).any():
         raise ValueError('Insufficient recorded-observation sequence context')
-    transformed = processor.transform(history)
     if window == 1:
-        return transformed[indexes]
-    return np.stack([transformed[i - window + 1:i + 1] for i in indexes])
+        return processor.transform(history.iloc[indexes])
+
+    if not dates.is_monotonic_increasing:
+        raise ValueError('Sequence history must be chronological')
+    if not len(indexes):
+        raise ValueError('Sequence requires at least one origin')
+    slices = [slice(i - window + 1, i + 1) for i in indexes]
+    if 'cotton_session_index' in history:
+        ordinals = history.cotton_session_index.to_numpy(dtype=float)
+        if any((np.diff(ordinals[segment]) != 1).any() for segment in slices):
+            raise ValueError('Sequence requires consecutive recorded Cotton observations')
+    transformed = processor.transform(history.iloc[:indexes.max() + 1])
+    return np.stack([transformed[segment] for segment in slices])
 
 
 DECISION_CLOCKS = {
@@ -220,6 +239,8 @@ DECISION_CLOCKS = {
 
 def attach_releases(history, records, features, *, decision_clock='legacy-midnight-v1'):
     """Point-in-time integration requires explicit publication and vintage evidence."""
+    from cottonlens_ml.sources.public import utc_timestamp
+
     if decision_clock not in DECISION_CLOCKS:
         raise ValueError('Unknown decision clock; an explicit versioned policy is required')
     offset, exact_matches = DECISION_CLOCKS[decision_clock]
@@ -238,18 +259,19 @@ def attach_releases(history, records, features, *, decision_clock='legacy-midnig
                 or not records.loc[~exact, 'timestamp_verified'].eq(False).all()
                 or not records.loc[~exact, 'published_at'].isna().all()):
             raise ValueError('Upper bounds must not claim exact publication')
-        if not (pd.to_datetime(records.loc[exact, 'published_at'], utc=True)
-                == pd.to_datetime(records.loc[exact, 'available_at'], utc=True)).all():
-            raise ValueError('Exact publication and availability clocks disagree')
         clock = 'available_at'
     elif not records.timestamp_verified.eq(True).all():
         raise ValueError('Actual verified publication/vintage evidence required')
     if records[['vintage_id', 'source_url', 'source_sha256']].isna().any().any():
         raise ValueError('Missing source evidence')
     release = records.copy()
-    release['published_at'] = pd.to_datetime(release.published_at, utc=True)
-    release[clock] = pd.to_datetime(release[clock], utc=True)
-    if release[clock].isna().any() or release[clock].duplicated().any():
+    release[clock] = pd.to_datetime([utc_timestamp(value) for value in release[clock]], utc=True)
+    if clock == 'available_at':
+        published = [utc_timestamp(value) if pd.notna(value) else pd.NaT for value in release.published_at]
+        release['published_at'] = pd.to_datetime(published, utc=True)
+        if not release.loc[exact, 'published_at'].eq(release.loc[exact, 'available_at']).all():
+            raise ValueError('Exact publication and availability clocks disagree')
+    if release[clock].duplicated().any():
         raise ValueError('Unique publication timestamps required')
     left = history.copy()
     left['decision_at'] = pd.to_datetime(left.date, utc=True) + offset

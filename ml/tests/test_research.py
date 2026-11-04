@@ -65,6 +65,45 @@ def test_missingness_is_train_fitted_and_sequences_preserve_observations():
     assert matrix[0, 30:51, 2].sum() == 21
 
 
+@pytest.mark.parametrize(
+    ('rows', 'window', 'message'),
+    [([0, 2, 1], 2, 'chronological'), ([0, 2, 3], 2, 'consecutive'), ([0, 1, 2], 0, 'positive integer')],
+)
+def test_inputs_refuses_noncausal_or_compressed_sequence(rows, window, message):
+    frame = pd.DataFrame({
+        'date': pd.bdate_range('2023-01-01', periods=4),
+        'cotton_session_index': np.arange(4),
+        'value': np.arange(4, dtype=float),
+    })
+    processor = Preprocessor.fit(frame.head(1), ['value'])
+    origin = frame.iloc[[1 if message == 'chronological' else 2]]
+    with pytest.raises(ValueError, match=message):
+        inputs(frame.iloc[rows], origin, processor, window)
+
+
+def test_inputs_uses_only_the_requested_prefix_and_preserves_order():
+    frame = pd.DataFrame({
+        'date': pd.bdate_range('2023-01-01', periods=5),
+        'cotton_session_index': np.arange(5),
+        'value': np.arange(5, dtype=float),
+    })
+    processor = Preprocessor.fit(frame.head(1), ['value'])
+    visited = []
+
+    class TracingProcessor:
+        def transform(self, rows):
+            visited.extend(rows['value'])
+            return processor.transform(rows)
+
+    values = inputs(frame, frame.iloc[[2, 1]], TracingProcessor(), 2)
+    np.testing.assert_array_equal(values[..., 0], [[1., 2.], [0., 1.]])
+    assert visited == [0., 1., 2.]
+    visited.clear()
+    single = inputs(frame, frame.iloc[[2, 1]], TracingProcessor())
+    np.testing.assert_array_equal(single[:, 0], [2., 1.])
+    assert visited == [2., 1.]
+
+
 @pytest.mark.parametrize('kind', ['raw_log', 'scaled_log', 'price_delta'])
 def test_target_roundtrip_uses_training_only(kind):
     frame = history().head(300)
@@ -76,11 +115,55 @@ def test_target_roundtrip_uses_training_only(kind):
     assert Target.fit(frame.head(150), 5, kind) == transform
 
 
+@pytest.mark.parametrize('field', ['target_return_1', 'variance_target_1', 'gk_target_5'])
+def test_preprocessor_refuses_future_outcome_columns(field):
+    frame = pd.DataFrame({'past_value': [1., 2.], field: [.01, .02]})
+    with pytest.raises(ValueError, match='Future target columns'):
+        Preprocessor.fit(frame, ['past_value', field])
+
+
+@pytest.mark.parametrize('kind', ['raw_log', 'scaled_log', 'price_delta'])
+def test_target_transform_refuses_invalid_training_labels(kind):
+    frame = pd.DataFrame({'cotton_close': [80.], 'target_return_1': [np.nan]})
+    with pytest.raises(ValueError, match='Finite nonempty training targets'):
+        Target.fit(frame, 1, kind)
+
+
 def test_causal_feature_extension_is_unchanged_by_future():
     frame = history().head(350)
     earlier = feature_history(frame).iloc[:200]
     frame.loc[200:, 'cotton_close'] *= 5
     pd.testing.assert_frame_equal(earlier, feature_history(frame).iloc[:200])
+
+
+@pytest.mark.parametrize('clock', ['published_at', 'exact_available_at', 'upper_bound'])
+def test_publication_join_does_not_assume_naive_timestamps_are_utc(clock):
+    frame = history().head(5)
+    release = pd.DataFrame({
+        'published_at': ['2010-01-05T12:00:00'],
+        'vintage_id': ['original'], 'source_url': ['https://example.test/a'],
+        'source_sha256': ['a'*64], 'timestamp_verified': [True], 'signal': [1.],
+    })
+    if clock != 'published_at':
+        release['available_at'] = '2010-01-05T12:00:00'
+        release['availability_verified'] = True
+        release['availability_basis'] = 'exact_publication' if clock == 'exact_available_at' else 'verified_upper_bound'
+        if clock == 'upper_bound':
+            release['published_at'] = None
+            release['timestamp_verified'] = False
+    with pytest.raises(ValueError, match='Explicit timezone'):
+        attach_releases(frame, release, ['signal'])
+
+
+def test_publication_join_normalizes_offsets_before_cutoff_comparison():
+    frame = pd.DataFrame({'date': pd.to_datetime(['2010-01-05'])})
+    release = pd.DataFrame({
+        'published_at': ['2010-01-06T00:30:00+02:00', '2010-01-06T00:15:00Z'],
+        'vintage_id': ['earlier', 'later'], 'source_url': ['https://example.test/a']*2,
+        'source_sha256': ['a'*64]*2, 'timestamp_verified': [True, True], 'signal': [1., 2.],
+    })
+    assert attach_releases(frame, release, ['signal']).signal.tolist() == [1.]
+    assert attach_releases(frame, release, ['signal'], decision_clock='cotton-next-day-0015-v1').signal.tolist() == [2.]
 
 
 def test_publication_timestamp_and_vintage_fail_closed():

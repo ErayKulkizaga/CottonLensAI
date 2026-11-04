@@ -154,14 +154,68 @@ düzeltilmiş 16'şar dosya kontrolden geçti. Geçici kopyada 10.000
 tekrarla eski raporun bütün sayısal alanları yeniden üretildi. Yeni
 istatistik kodu iki ek güç açıklaması alanı yayımlıyor.
 
+### Sıra penceresi ve yayın saatinin ayrıştırılması
+
+Araştırma modelinin sıra girdisi konuma göre dilimleniyordu.
+Karışık bir tarihçe gelecekteki gözlemi pencereye alabiliyor,
+silinmiş bir seans ise pencereyi sessizce sıkıştırabiliyordu.
+Pencere artık pozitif tam sayı, tarihleri geçerli ve tekil,
+sıra tarihçesi kronolojik olmalı. Kaynak seans numarası varsa
+pencere ardışık kayıtları gerektiriyor. Tek adımda yalnız istenen
+origin'ler dönüştürülür. Sıra dönüşümü son istenen origin'i aşmaz.
+Eksik özellik içeren seansların sıra konumu korunuyor.
+
+`research-v1` ve `research-v2-tf-placement` aynı hash'li 3.520
+satırlık tarihçeyi kullanıyordu. Tarihler sıralı ve tekildi,
+3.519 seans geçişinin tamamı ardışıktı. Bu iki tarihçede bulunan
+sınır koşulu gerçekleşmedi. Ortak ön işleyici gelecek hedef
+sütunlarını özellik olarak reddediyor. Hedef ölçekleyicisi boş
+veya sonlu olmayan eğitim etiketiyle kurulamaz.
+
+Genel yayın birleştirmesi, saat dilimsiz damgayı UTC kabul
+edebiliyordu. Kesin yayın, kesin erişilebilirlik ve doğrulanmış
+üst sınır için açık saat dilimi gerekiyor. Farklı ofsetlerin
+UTC'ye çevrilmesi ve 00:15 sınırının mevcut eşitlik davranışı
+regresyon testinde korundu. Dondurulmuş piyasa bazlı fiyat
+deneyinde bu yayın birleştirme yolu kullanılmadı.
+
+### Saklı fiyat modellerinden yeniden tahmin
+
+`research-full-year-v1-r2` içindeki 1.300 fiyat kaydının tamamında
+ledger ve model dosyalarının hash'leri, eğitim tablosunun kimliği,
+origin sırası ve kesim tarihleri doğrulandı. Eksik model dosyası
+çıkmadı. Medyan, ortalama, ölçek ve hedef dönüşümü yalnız kayıttaki
+eğitim satırlarından bağımsız yeniden hesaplandı ve adaptörle
+eşleşti. Yeniden eğitim yapmadan 29.192 tahmin tekrar üretildi.
+Bu sayı doğrulama, erken durdurma ve tekrar origin kullanımlarını
+da içerir.
+
+| Aile | Model kaydı | En büyük mutlak log-getiri farkı |
+| --- | ---: | ---: |
+| Ridge | 626 | 8,196 × 10⁻⁸ |
+| ElasticNet | 338 | 3,353 × 10⁻⁸ |
+| XGBoost | 336 | 0 |
+
+Örnek kayıtlar aile sırasıyla `00b6c42f…`, `006c7f6f…` ve
+`00bf05bf…`. XGBoost dosyalarındaki ağaç sayısı kayıtlı iterasyon
+sayısıyla aynıydı. Bu fiyat deneyinde ölçekleyici, model dosyası
+ve dönüşüm hattı Naive farkını açıklamıyor. Kapsam üç CPU ailesidir.
+
+### GitHub kapsamı
+
+Bu kontrolde PR #75 dışındaki 65 açık PR'ın head commit'lerinin
+tamamı denetim dalının atasıydı. Bu, dal kapsamını doğrular.
+`main` birleştirmesi ve PR'ların son durumunun düzenlenmesi
+ayrı teslimat adımlarıdır.
+
 ## Kalan denetim kapsamı
 
 | Alan | Sonraki doğrulama |
 | --- | --- |
 | Yayın kimliği ve içe aktarım | Kayıt ile yayın arasındaki geçiş ve PostgreSQL üzerinde şema uygulaması |
-| Yerel ve GitHub eşlemesi | PR bağımlılıkları, birleştirme planı ve main eşitliği |
+| Yerel ve GitHub eşlemesi | CI, birleştirme kararı ve main eşitliği |
 | Veri girişi | Kaynak semantiği, vintage, seans ve saat, yarım cache ve eksiklik |
-| Araştırma hattı | Diğer profillerin zaman ve seçim kapsamı, öğrenilmiş fiyat ölçekleyicileri ve native çıktılar |
+| Araştırma hattı | Diğer profillerin zaman, seçim ve native çıktı kapsamı |
 | Metrikler ve karar | Diğer karşılaştırma yollarında eşleştirme, QLIKE, belirsizlik ve release kriteri |
 | Canlı kayıt ve operasyon | Saat, kimlik zinciri, kilitli kohort, iş tekrarı ve geri kurma |
 | Uygulama ve CI | Backend, frontend, temiz ortam ve release geri yükleme |
