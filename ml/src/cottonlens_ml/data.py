@@ -7,10 +7,12 @@ import zipfile
 from datetime import UTC, datetime
 from pathlib import Path
 
+import numpy as np
 import pandas as pd
 import requests
 
 TICKERS = {"cotton": "CT=F", "dxy": "DX-Y.NYB", "wti": "CL=F"}
+MARKET_BAR_FIELDS = ["open", "high", "low", "close", "volume"]
 CFTC_MARKET_CODE = "033661"
 YAHOO_ATTEMPTS = 4
 YAHOO_RETRY_DELAYS_SECONDS = (10, 30, 60)
@@ -18,6 +20,33 @@ YAHOO_RETRY_DELAYS_SECONDS = (10, 30, 60)
 
 class MarketDownloadError(RuntimeError):
     """A source failed after visible, bounded retries; no partial dataset is returned."""
+
+
+def _normalize_market_bars(raw: pd.DataFrame, ticker: str) -> pd.DataFrame:
+    if isinstance(raw.columns, pd.MultiIndex):
+        if raw.columns.nlevels != 2 or set(raw.columns.get_level_values(1)) != {ticker}:
+            raise ValueError("response ticker does not match the requested ticker")
+        raw = raw.droplevel(1, axis="columns")
+    bars = raw.rename(columns=str.lower)
+    missing = set(MARKET_BAR_FIELDS) - set(bars.columns)
+    if missing or not bars.columns.is_unique:
+        raise ValueError(f"response has missing or duplicate bar fields (missing: {sorted(missing)})")
+    if not isinstance(bars.index, pd.DatetimeIndex):
+        raise ValueError("daily bars require a date index")
+    dates = bars.index.tz_localize(None)
+    if dates.hasnans or dates.has_duplicates or not dates.equals(dates.normalize()):
+        raise ValueError("daily bar dates must be valid, unique and normalized")
+
+    close = pd.to_numeric(bars["close"], errors="coerce")
+    usable_close = np.isfinite(close)
+    if ticker != TICKERS["wti"]:
+        usable_close &= close > 0
+    if not usable_close.any():
+        raise ValueError("response has no usable close prices")
+
+    bars = bars[MARKET_BAR_FIELDS].copy()
+    bars.insert(0, "date", dates)
+    return bars.reset_index(drop=True)
 
 
 def _download_ticker_with_retry(
@@ -36,7 +65,7 @@ def _download_ticker_with_retry(
         try:
             raw = download(ticker, start=start, auto_adjust=False, progress=False, threads=False)
             if not raw.empty:
-                return raw
+                return _normalize_market_bars(raw, ticker)
             failures.append("empty response (Yahoo may have rate-limited this request)")
         except Exception as exc:  # noqa: BLE001 - preserve provider failure for bounded retry
             failures.append(f"{type(exc).__name__}: {exc}")
@@ -50,7 +79,7 @@ def _download_ticker_with_retry(
             sleep(delay)
     raise MarketDownloadError(
         f"Yahoo returned no usable data for {ticker} after {YAHOO_ATTEMPTS} attempts. "
-        "It is temporarily rate-limited; wait 5–10 minutes and rerun only the data cell. "
+        "If rate-limited, wait 5–10 minutes and rerun only the data cell. "
         f"Details: {' | '.join(failures)}"
     )
 
@@ -58,15 +87,9 @@ def _download_ticker_with_retry(
 def download_market_data(start: str = "2010-01-01") -> pd.DataFrame:
     frames: list[pd.DataFrame] = []
     for series, ticker in TICKERS.items():
-        raw = _download_ticker_with_retry(ticker, start)
-        if isinstance(raw.columns, pd.MultiIndex):
-            raw.columns = raw.columns.get_level_values(0)
-        normalized = raw.rename(columns=str.lower).reset_index()
-        date_column = "Date" if "Date" in normalized.columns else "date"
-        normalized = normalized.rename(columns={date_column: "date"})
-        normalized["date"] = pd.to_datetime(normalized["date"]).dt.tz_localize(None)
-        normalized["series"] = series
-        frames.append(normalized[["date", "series", "open", "high", "low", "close", "volume"]])
+        bars = _download_ticker_with_retry(ticker, start)
+        bars.insert(1, "series", series)
+        frames.append(bars)
     return pd.concat(frames, ignore_index=True).sort_values(["date", "series"])
 
 

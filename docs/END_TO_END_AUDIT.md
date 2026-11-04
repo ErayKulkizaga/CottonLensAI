@@ -49,13 +49,27 @@ Ana çalışma klasörünün içeriği korundu.
 Bunlar API çıkarım hataları. Tarihsel piyasa performansı üzerindeki
 etkileri bu testlerle ölçülmedi.
 
+### Piyasa verisi girişi
+
+Yahoo yanıtının boş olmaması yeterli sayılıyordu. Tamamı eksik DXY
+kapanışları ve DXY isteğine dönen CT=F etiketi, geçerli eski piyasa
+önbelleğini değiştirebiliyordu. Her seri artık tarih, alan, mevcut
+sembol etiketi ve kullanılabilir kapanış kontrollerini yazmadan önce
+geçiyor. Sonlu negatif WTI geçmişi korunuyor. Testler, dört bozuk
+yanıtın eski Parquet dosyasını bayt düzeyinde koruduğunu ve geçerli
+yanıtın aynı veri şemasını ürettiğini doğruladı.
+
+Bu testler sağlayıcının olası yanıtlarını sentetik olarak yeniden
+üretti. Eski frozen deney verilerinde bu kusurların gerçekleştiği
+henüz gösterilmedi.
+
 ## Kalan denetim kapsamı
 
 | Alan | Sonraki doğrulama |
 | --- | --- |
 | Yayın kimliği ve içe aktarım | Kesilen veya eşzamanlı paket aktivasyonu ve revize fiyatların dashboard kapsamı |
 | Yerel ve GitHub eşlemesi | PR bağımlılıkları, birleştirme planı ve main eşitliği |
-| Veri girişi | Kaynak semantiği, vintage, seans ve saat, bozuk/yarım cache, eksiklik |
+| Veri girişi | Kaynak semantiği, vintage, seans ve saat, yarım cache ve eksiklik |
 | Araştırma hattı | Hedef olgunluğu, geçmişe ait özellikler, split/purge, model seçimi ve native çıktılar |
 | Metrikler ve karar | Ortak origin, referanslar, QLIKE, belirsizlik, release kriteri |
 | Canlı kayıt ve operasyon | Saat, kimlik zinciri, kilitli kohort, iş tekrarı ve geri kurma |
