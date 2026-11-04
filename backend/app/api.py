@@ -1,15 +1,14 @@
 import math
 import uuid
 from datetime import date
-from pathlib import Path
 
 from fastapi import APIRouter, Depends, HTTPException, Query, status
 from sqlalchemy import and_, desc, func, select, text
 from sqlalchemy.orm import Session, joinedload
 
-from app.artifacts import verify_directory
 from app.config import get_settings
 from app.database import get_db
+from app.demo import DEMO_SCHEMA_HASH, DEMO_VERSION
 from app.models import (
     ArtifactImport,
     FeatureSnapshot,
@@ -18,7 +17,7 @@ from app.models import (
     ModelVersion,
     Simulation,
 )
-from app.runtime import ArtifactRuntime
+from app.runtime import ArtifactRuntime, ArtifactRuntimeError
 from app.schemas import (
     ExplanationResponse,
     ForecastResponse,
@@ -42,8 +41,7 @@ runtime_error: str | None = None
 def load_runtime() -> None:
     global runtime_error
     try:
-        verify_directory(Path(get_settings().artifact_dir))
-        runtime.load()
+        runtime.load(with_snapshots=True)
         runtime_error = None
     except Exception as exc:  # readiness reports the precise artifact issue
         runtime.manifest = {}
@@ -51,9 +49,25 @@ def load_runtime() -> None:
         runtime_error = str(exc)
 
 
+def _active_artifact_import(db: Session) -> ArtifactImport | None:
+    return db.scalar(select(ArtifactImport).order_by(desc(ArtifactImport.imported_at), ArtifactImport.id.desc()))
+
+
 def _active_artifact_version(db: Session) -> str | None:
-    imported = db.scalar(select(ArtifactImport).order_by(desc(ArtifactImport.imported_at)))
+    imported = _active_artifact_import(db)
     return imported.artifact_version if imported else None
+
+
+def _require_active_runtime(imported: ArtifactImport | None) -> None:
+    if not runtime.ready:
+        raise HTTPException(status_code=503, detail=runtime_error or "artifact runtime is not ready")
+    if imported is None:
+        raise HTTPException(
+            status_code=503,
+            detail="artifact files are valid but their database import has not completed",
+        )
+    if runtime.manifest.get("artifact_version") != imported.artifact_version or runtime.manifest != imported.manifest:
+        raise HTTPException(status_code=503, detail="runtime does not match the active database artifact")
 
 
 @router.get("/health/live", response_model=HealthResponse)
@@ -67,31 +81,24 @@ def ready(db: Session = Depends(get_db)) -> HealthResponse:
         db.execute(text("SELECT 1"))
     except Exception as exc:
         raise HTTPException(status_code=503, detail=f"database unavailable: {exc}") from exc
-    has_imported_model = bool(db.scalar(select(func.count()).select_from(ModelVersion)))
-    runtime_version = runtime.manifest.get("artifact_version") if runtime.ready else None
-    matching_import = (
-        db.scalar(select(ArtifactImport).where(ArtifactImport.artifact_version == runtime_version))
-        if runtime_version
-        else None
-    )
-    if runtime.ready:
-        if matching_import:
+    imported = _active_artifact_import(db)
+    if not runtime.ready and imported is None and get_settings().demo_mode:
+        demo_exists = db.scalar(select(ModelVersion.id).where(
+            ModelVersion.artifact_version == DEMO_VERSION,
+            ModelVersion.data_quality == "illustrative",
+        ).limit(1))
+        if demo_exists:
             return HealthResponse(
                 status="ok",
-                detail="database and artifact runtime are ready",
-                artifact_version=runtime_version,
+                detail="development fixture mode; no validated Colab artifact loaded",
+                artifact_version=DEMO_VERSION,
             )
-        raise HTTPException(
-            status_code=503,
-            detail="artifact files are valid but their database import has not completed",
-        )
-    if get_settings().demo_mode and has_imported_model:
-        return HealthResponse(
-            status="ok",
-            detail="development fixture mode; no validated Colab artifact loaded",
-            artifact_version="demo-fixture-v1",
-        )
-    raise HTTPException(status_code=503, detail=runtime_error or "artifact runtime is not ready")
+    _require_active_runtime(imported)
+    return HealthResponse(
+        status="ok",
+        detail="database and artifact runtime are ready",
+        artifact_version=runtime.manifest["artifact_version"],
+    )
 
 
 @router.get("/market/history", response_model=MarketHistoryResponse)
@@ -203,7 +210,7 @@ def forecast_explanation(forecast_id: str, db: Session = Depends(get_db)) -> Exp
 
 @router.get("/models/metrics", response_model=list[ModelMetric])
 def model_metrics(db: Session = Depends(get_db)) -> list[ModelMetric]:
-    imported = db.scalar(select(ArtifactImport).order_by(desc(ArtifactImport.imported_at)))
+    imported = _active_artifact_import(db)
     query = select(ModelVersion).order_by(ModelVersion.horizon, ModelVersion.model_name)
     if imported:
         query = query.where(ModelVersion.artifact_version == imported.artifact_version)
@@ -222,7 +229,7 @@ def model_metrics(db: Session = Depends(get_db)) -> list[ModelMetric]:
 
 @router.get("/models/evaluation", response_model=ModelEvaluationResponse)
 def model_evaluation(db: Session = Depends(get_db)) -> ModelEvaluationResponse:
-    imported = db.scalar(select(ArtifactImport).order_by(desc(ArtifactImport.imported_at)))
+    imported = _active_artifact_import(db)
     if imported is None:
         return ModelEvaluationResponse(note="Development fixture; no measured evaluation available")
     report = imported.manifest.get("walkforward_report")
@@ -266,42 +273,39 @@ def create_simulation(payload: SimulationRequest, db: Session = Depends(get_db))
         .where(Forecast.as_of_date == payload.as_of_date, Forecast.origin_type == "live")
         .order_by(Forecast.horizon)
     )
-    active_version = _active_artifact_version(db)
-    if active_version:
-        query = query.where(ModelVersion.artifact_version == active_version)
+    imported = _active_artifact_import(db)
+    use_runtime = runtime.ready or imported is not None or not get_settings().demo_mode
+    if use_runtime:
+        _require_active_runtime(imported)
+        query = query.where(ModelVersion.artifact_version == runtime.manifest["artifact_version"])
+    else:
+        query = query.where(
+            ModelVersion.artifact_version == DEMO_VERSION,
+            ModelVersion.data_quality == "illustrative",
+        )
     forecasts = db.scalars(query).all()
     if not forecasts:
         raise HTTPException(status_code=404, detail="no live baseline exists for the requested date")
-    snapshot = db.scalar(select(FeatureSnapshot).where(FeatureSnapshot.as_of_date == payload.as_of_date))
-    if snapshot is None:
+    if not use_runtime and db.scalar(select(FeatureSnapshot.id).where(
+        FeatureSnapshot.as_of_date == payload.as_of_date,
+        FeatureSnapshot.schema_hash == DEMO_SCHEMA_HASH,
+    )) is None:
         raise HTTPException(status_code=409, detail="baseline feature snapshot is unavailable")
 
     adjustments = payload.adjustments.model_dump()
     results: list[SimulationHorizonResult] = []
     for forecast in forecasts:
         experimental = False
-        if runtime.ready:
+        if use_runtime:
             window = runtime.required_window(forecast.horizon)
-            if window > 1:
-                snapshots = list(
-                    db.scalars(
-                        select(FeatureSnapshot)
-                        .where(FeatureSnapshot.as_of_date <= payload.as_of_date)
-                        .order_by(desc(FeatureSnapshot.as_of_date))
-                        .limit(window)
-                    ).all()
-                )
-                if len(snapshots) != window:
-                    raise HTTPException(status_code=409, detail=f"{window} feature snapshots are required for inference")
-                features: dict[str, float] | list[dict[str, float]] = [
-                    dict(item.values) for item in reversed(snapshots)
-                ]
-                baseline_features = [dict(row) for row in features]
-                _apply_adjustments(features[-1], adjustments)
-            else:
-                features = dict(snapshot.values)
-                baseline_features = dict(features)
-                _apply_adjustments(features, adjustments)
+            try:
+                baseline_window = runtime.feature_window(payload.as_of_date, window)
+            except ArtifactRuntimeError as exc:
+                raise HTTPException(status_code=409, detail=str(exc)) from exc
+            scenario_features = dict(baseline_window[-1])
+            _apply_adjustments(scenario_features, adjustments)
+            baseline_features = baseline_window if window > 1 else baseline_window[-1]
+            features = [*baseline_window[:-1], scenario_features] if window > 1 else scenario_features
             experimental = runtime.model_name(forecast.horizon).startswith("XGBoost experimental")
             baseline_log_return = runtime.predict_return(forecast.horizon, baseline_features)
             baseline_price = runtime.price_from_log_return(forecast.current_price, baseline_log_return)
@@ -320,7 +324,7 @@ def create_simulation(payload: SimulationRequest, db: Session = Depends(get_db))
                 delta_pct=round(delta / baseline_price * 100, 4),
                 model_name=(
                     runtime.model_name(forecast.horizon)
-                    if runtime.ready
+                    if use_runtime
                     else forecast.model_version.model_name
                 ),
                 baseline_kind="experimental" if experimental else "production",

@@ -97,32 +97,6 @@ def test_simulation_validates_bounds_and_preserves_snapshot(client: TestClient) 
     assert after == before
 
 
-def test_experimental_sensitivity_uses_its_own_zero_change_baseline(
-    client: TestClient, monkeypatch: pytest.MonkeyPatch
-) -> None:
-    latest = client.get("/api/v1/forecasts/latest").json()
-    monkeypatch.setattr(api.runtime, "manifest", {
-        "production_models": [
-            {"horizon": horizon, "name": "XGBoost experimental sensitivity model"}
-            for horizon in (1, 5)
-        ],
-    })
-    monkeypatch.setattr(api.runtime, "models", {horizon: ("xgboost_json", object()) for horizon in (1, 5)})
-    monkeypatch.setattr(
-        api.runtime, "predict_return",
-        lambda horizon, features: float(features["dxy_ret_1"]),
-    )
-    response = client.post(
-        "/api/v1/simulations",
-        json={"as_of_date": latest["data_as_of"], "adjustments": {}},
-    )
-    assert response.status_code == 201
-    for result in response.json()["results"]:
-        assert result["baseline_kind"] == "experimental"
-        assert result["delta_cents_per_lb"] == 0
-        assert result["delta_pct"] == 0
-
-
 def test_replay_only_returns_backtest_rows(client: TestClient) -> None:
     history = client.get("/api/v1/forecasts/history?horizon=1&origin_type=backtest").json()
     response = client.get(f"/api/v1/replay/{history[0]['as_of_date']}")

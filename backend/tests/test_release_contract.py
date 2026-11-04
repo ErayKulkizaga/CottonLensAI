@@ -9,15 +9,18 @@ import numpy as np
 import pandas as pd
 import pytest
 import xgboost as xgb
+from fastapi import HTTPException
 from sqlalchemy import create_engine, func, select
 from sqlalchemy.orm import Session
 
+from app import api
 from app.api import _forecast_response
 from app.artifact_importer import import_artifact_directory
 from app.artifacts import ArtifactVerificationError, install_bundle, sha256_file, verify_directory
 from app.database import Base
 from app.models import ArtifactImport, Forecast
 from app.runtime import ArtifactRuntime
+from app.schemas import SimulationRequest
 
 REPO = Path(__file__).resolve().parents[2]
 
@@ -117,6 +120,77 @@ def test_export_import_runtime_preserves_evaluation_and_deployment(release, tmp_
     names = json.loads((root / "feature_schema.json").read_text())["features"]
     assert runtime.predict_return(1, dict.fromkeys(names, 0.1)) == pytest.approx(0.02)
     assert runtime.predict_return(5, dict.fromkeys(names, 0.1)) == pytest.approx(0.02)
+
+
+def test_simulation_rejects_loaded_runtime_from_an_older_import(release, tmp_path, monkeypatch):
+    root = tmp_path / "current"
+    manifest = install_bundle(release[0], root)
+    runtime = ArtifactRuntime(str(root))
+    runtime.load(with_snapshots=True)
+    monkeypatch.setattr(api, "runtime", runtime)
+    engine = create_engine("sqlite://")
+    Base.metadata.create_all(engine)
+    with Session(engine) as db:
+        import_artifact_directory(db, root)
+        live = db.scalar(select(Forecast).where(Forecast.origin_type == "live"))
+        request = SimulationRequest(as_of_date=live.as_of_date, adjustments={})
+        assert api.ready(db).artifact_version == manifest["artifact_version"]
+        assert api.create_simulation(request, db).model_version == manifest["artifact_version"]
+
+        manifest["artifact_version"] = "replacement-v2"
+        (root / "manifest.json").write_text(json.dumps(manifest), encoding="utf-8")
+        forecasts = pd.read_parquet(root / "forecasts.parquet")
+        forecasts["id"] = "replacement-" + forecasts.index.astype(str)
+        forecasts.to_parquet(root / "forecasts.parquet", index=False)
+        snapshots = pd.read_parquet(root / "feature_snapshots.parquet")
+        snapshots.tail(1).to_parquet(root / "feature_snapshots.parquet", index=False)
+        _rehash(root)
+        import_artifact_directory(db, root)
+
+        with pytest.raises(HTTPException, match="active database artifact") as readiness:
+            api.ready(db)
+        assert readiness.value.status_code == 503
+        with pytest.raises(HTTPException, match="active database artifact") as scenario:
+            api.create_simulation(request, db)
+        assert scenario.value.status_code == 503
+
+        runtime.load(with_snapshots=True)
+        assert api.ready(db).artifact_version == "replacement-v2"
+        assert api.create_simulation(request, db).model_version == "replacement-v2"
+        with monkeypatch.context() as sequence:
+            sequence.setattr(runtime, "required_window", lambda _: 2)
+            sequence.setattr(runtime, "predict_return", lambda *_: pytest.fail("incomplete release window was used"))
+            with pytest.raises(HTTPException, match="2 feature snapshots") as incomplete:
+                api.create_simulation(request, db)
+            assert incomplete.value.status_code == 409
+
+        monkeypatch.setattr(api, "runtime", ArtifactRuntime(str(tmp_path / "missing")))
+        with pytest.raises(HTTPException) as missing_runtime:
+            api.ready(db)
+        assert missing_runtime.value.status_code == 503
+        with pytest.raises(HTTPException) as missing_scenario:
+            api.create_simulation(request, db)
+        assert missing_scenario.value.status_code == 503
+
+
+def test_experimental_sensitivity_uses_its_own_zero_change_baseline(release, tmp_path, monkeypatch):
+    root = tmp_path / "current"
+    install_bundle(release[0], root)
+    runtime = ArtifactRuntime(str(root))
+    runtime.load(with_snapshots=True)
+    monkeypatch.setattr(api, "runtime", runtime)
+    monkeypatch.setattr(runtime, "model_name", lambda _: "XGBoost experimental sensitivity model")
+    monkeypatch.setattr(runtime, "predict_return", lambda _, features: float(features["dxy_ret_1"]))
+    engine = create_engine("sqlite://")
+    Base.metadata.create_all(engine)
+    with Session(engine) as db:
+        import_artifact_directory(db, root)
+        live = db.scalar(select(Forecast).where(Forecast.origin_type == "live"))
+        request = SimulationRequest(as_of_date=live.as_of_date, adjustments={})
+        for result in api.create_simulation(request, db).results:
+            assert result.baseline_kind == "experimental"
+            assert result.delta_cents_per_lb == 0
+            assert result.delta_pct == 0
 
 
 def test_unchecked_payload_and_model_identity_mismatch_are_rejected(release, tmp_path):
