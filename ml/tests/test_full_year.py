@@ -1,3 +1,5 @@
+import json
+
 import numpy as np
 import pandas as pd
 import pytest
@@ -204,6 +206,93 @@ def test_report_refuses_rehashed_outputs_that_disagree_with_frozen_history(tmp_p
     with pytest.raises(ValueError, match='Frozen (origin|value|target date) mismatch'):
         report(tmp_path, repetitions=20)
     assert not (tmp_path/'reports').exists()
+
+
+def test_cpu_reproduction_cannot_pass_on_identical_json_without_native_fits(tmp_path):
+    from cottonlens_ml.research.full_year import verify_reproduction
+
+    for year in range(2016, 2024):
+        for h in (1, 5):
+            body = {'year': year, 'horizon': h, 'records': [{
+                'date': f'{year}-01-04', 'predicted_return': 0., 'variance': .01,
+                'normalized_90_lo': -.02, 'normalized_90_hi': .02,
+            }]}
+            for directory in ('pilot-full-year', 'reproduction/pilot-full-year'):
+                freeze_record(tmp_path/directory/f't{h}-year{year}.json', body)
+    with pytest.raises(ValueError, match='Frozen reproduction inputs are missing'):
+        verify_reproduction(tmp_path)
+    assert not (tmp_path/'reproduction/verification.json').exists()
+
+
+def test_cpu_reproduction_binds_original_and_repeat_ledger(tmp_path):
+    from cottonlens_ml.cohort import content_id
+    from cottonlens_ml.research.engine import Experiment
+    from cottonlens_ml.research.full_year import verify_reproduction
+    from cottonlens_ml.research.review import training_rows
+
+    rows = features(history()).loc[lambda f: f.date < '2024-01-01']
+    history_path = tmp_path/'history.parquet'
+    rows.to_parquet(history_path, index=False)
+    rows = pd.read_parquet(history_path)
+    folds = [{'year': year, 'origins': rows.loc[rows.date.dt.year.eq(year), 'date']
+              .head(1).dt.strftime('%Y-%m-%d').tolist()} for year in range(2016, 2024)]
+    identity = {'split': {'folds': folds}}
+    freeze_record(tmp_path/'ready.json', {'history_sha256': digest(history_path), 'identity': identity})
+    ledger = Ledger(tmp_path/'ledger', identity)
+    model_paths = []
+    for fold in folds:
+        year, origins = fold['year'], fold['origins']
+        test = rows.loc[rows.date.isin(pd.to_datetime(origins))]
+        current = test.iloc[0]
+        train = training_rows(rows, current.date, {}, None)
+        for h in (1, 5):
+            chosen = {'year': year, 'horizon': h, 'price': {
+                'recipe': {'family': 'ridge', 'task': 'price', 'horizon': h}, 'weight': .5, 'iterations': 1,
+            }, 'variance': {'recipe': {'family': 'har', 'task': 'variance', 'horizon': h}}}
+            name = f't{h}-year{year}.json'
+            freeze_record(tmp_path/'decisions/full-year'/name, chosen)
+            body = {'year': year, 'horizon': h, 'decision_id': content_id(chosen),
+                    'price_family': 'ridge', 'volatility_family': 'har', 'records': [{
+                        'date': origins[0], 'cotton_close': current.cotton_close,
+                        f'target_return_{h}': current[f'target_return_{h}'],
+                        f'variance_target_{h}': current[f'variance_target_{h}'],
+                        'predicted_return': .01, 'variance': .001,
+                        'ewma_variance': ewma(rows, test.date, h)[0],
+                        'normalized_90_lo': -.02, 'normalized_90_hi': .02,
+                    }]}
+            for repeat, directory in ((None, 'pilot-full-year'), ('reproduction', 'reproduction/pilot-full-year')):
+                for task, role in (('price', 'price'), ('variance', 'vol')):
+                    recipe = chosen[task]['recipe']
+                    spec = Experiment.fit_specification(recipe, train, None, test, f'{role}-outer-{year}-0', 1)
+
+                    def synthetic_native(work, task=task, recipe=recipe, origins=origins):
+                        if task == 'price':
+                            (work/'adapter.json').write_text(json.dumps({'spec': recipe, 'model_file': 'model.json'}))
+                            (work/'model.json').write_text('{}')
+                            return {'predictions': [.02], 'origins': origins}
+                        (work/'variance-model.json').write_text(json.dumps({'kind': 'log_har'}))
+                        return {'variance_predictions': [.001], 'origins': origins}
+
+                    fit = ledger.run(spec, synthetic_native, repeat=repeat)
+                    if task == 'variance' and repeat:
+                        model_paths.append(ledger.root/fit['payload_root']/'variance-model.json')
+                freeze_record(tmp_path/directory/name, body)
+    legacy = tmp_path/'reproduction/verification.json'
+    freeze_record(legacy, {'status': 'passed', 'fresh_fits': True})
+    bound_path = tmp_path/'reproduction/verification-bound-v1.json'
+    result = verify_reproduction(tmp_path, persist=False)
+    assert result['status'] == 'passed'
+    assert len(result['comparisons']) == 16
+    assert len(result['original_fits']) == len(result['repeated_fits']) == 32
+    assert set(result['original_fits']).isdisjoint(result['repeated_fits'])
+    assert not bound_path.exists()
+    assert verify_reproduction(tmp_path) == read_record(bound_path) == result
+
+    model_paths[0].unlink()
+    with pytest.raises(ValueError, match='native payload checksum'):
+        verify_reproduction(tmp_path)
+    assert read_record(legacy) == {'status': 'passed', 'fresh_fits': True}
+    assert read_record(bound_path) == result
 
 
 def test_causal_interval_replay_ignores_future_prices_and_annual_model_selection():

@@ -64,7 +64,7 @@ def plan(experiment, locked):
     return plans
 
 
-def _native_predictions(ledger, fit_id, expected):
+def verified_native_predictions(ledger, fit_id, expected):
     path = ledger.root / 'completed' / f'{fit_id}.json'
     fit, fit_sha = _record_with_sha(path)
     if (fit['identity'] != ledger.identity or fit['experiment_id'] != fit_id
@@ -82,16 +82,28 @@ def _native_predictions(ledger, fit_id, expected):
                 or not member.resolve().is_relative_to(payload_path)
                 or not member.is_file() or digest(member) != checksum):
             raise ValueError('Reproduction native payload checksum mismatch')
-    adapter_path = f'{payload}/adapter.json'
-    if adapter_path not in files:
-        raise ValueError('Reproduction native adapter is missing')
-    adapter = json.loads((ledger.root / adapter_path).read_bytes())
-    model_file = adapter['model_file']
-    if (adapter['spec'] != expected['recipe'] or Path(model_file).name != model_file
-            or model_file == 'adapter.json' or f'{payload}/{model_file}' not in files):
-        raise ValueError('Reproduction native model or adapter identity mismatch')
+    recipe = expected['recipe']
+    if recipe.get('task') == 'variance':
+        model_path = f'{payload}/variance-model.json'
+        if model_path not in files:
+            raise ValueError('Reproduction native variance model is missing')
+        model = json.loads((ledger.root / model_path).read_bytes())
+        expected_kind = {'har': 'log_har', 'garch': 'garch'}[recipe['family']]
+        if model['kind'] != expected_kind:
+            raise ValueError('Reproduction native variance model identity mismatch')
+        field = 'variance_predictions'
+    else:
+        adapter_path = f'{payload}/adapter.json'
+        if adapter_path not in files:
+            raise ValueError('Reproduction native adapter is missing')
+        adapter = json.loads((ledger.root / adapter_path).read_bytes())
+        model_file = adapter['model_file']
+        if (adapter['spec'] != recipe or Path(model_file).name != model_file
+                or model_file == 'adapter.json' or f'{payload}/{model_file}' not in files):
+            raise ValueError('Reproduction native model or adapter identity mismatch')
+        field = 'predictions'
     result = fit['result']
-    prediction = np.asarray(result['predictions'], dtype=float)
+    prediction = np.asarray(result[field], dtype=float)
     if (result['origins'] != expected['test_dates'] or prediction.shape != (len(expected['test_dates']),)
             or not np.isfinite(prediction).all()):
         raise ValueError('Reproduction native predictions are misaligned')
@@ -129,7 +141,7 @@ def _repeat_predictions(experiment, fold, namespace, chosen, receipts):
                 expected_ids.append(fit_id)
                 if fit_id not in fresh.get('records', ()):
                     raise ValueError('Reproduction is missing an expected fresh fit record')
-                chunk, receipts[fit_id] = _native_predictions(experiment.ledger, fit_id, spec)
+                chunk, receipts[fit_id] = verified_native_predictions(experiment.ledger, fit_id, spec)
                 chunks.append(chunk)
             predictions.append(np.concatenate(chunks))
         if fresh.get('records') != expected_ids or len(set(expected_ids)) != len(expected_ids):

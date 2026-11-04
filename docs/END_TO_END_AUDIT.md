@@ -262,6 +262,38 @@ eşleşti. 16 özgün–tekrar çıktı çifti aynı origin'lerdeydi.
 Kayıtlı fiyat ve varyans farkının en büyüğü sıfırdı. Bu
 tarihsel tekrar sonucu ileri dönem tahmin başarısı ölçmez.
 
+### CPU tekrar makbuzu ve risk karşılaştırmaları
+
+CPU tekrar raporu, aynı 16 çıktı çiftiyle model kaydı olmadan
+`fresh_fits: true` üretebiliyordu. Yeni doğrulama checksum bağlı
+tarihçeyi, yıl kararlarını, hedefleri ve EWMA referansını kontrol ediyor.
+Her dönem fiyat ve risk tahmini, iki ayrı ledger anahtarı kümesindeki
+native dosyaların hash'leri ve kayıtlı tahminlerden yeniden kuruluyor.
+Yeni makbuz `reproduction/verification-bound-v1.json` ayrı yazılır.
+Kayıtlı aralıkların eşleşmesi yalnız çıktı paritesidir.
+
+Gerçek `research-full-year-v1-r2` arşivinde 16 çıktı çifti için
+388 özgün ve 388 tekrar fit anahtarı eşleşti. Eski makbuz
+`810dbfde78ebcb1df32b5a0c57abe3f4ef2a280b4ae8eefe215cf1d102eac978`
+korundu. 8.024 özgün ve tekrar EWMA değeri yeniden hesaplandı ve
+birebir eşleşti. Testte tek native dosya eksilince yeni doğrulama
+durdu. Tarihsel kanıtlar veya canlı çalışma değiştirilmedi.
+
+Üç saklı risk karşılaştırmasında aynı origin ve hedefler üzerinde
+`log(v) + gerçek_varyans/v` kayıpları yeniden hesaplandı. Tabloda
+pozitif fark EWMA'ya karşı aday lehinedir.
+
+| Arşiv | Origin | Ortalama ham / seçilmiş QLIKE farkı |
+| --- | ---: | ---: |
+| `ct-ewma-har-control`, 2016–2023 | 2.006 | +0,01747463 / +0,00136570 |
+| `ct-pre2010-risk-replication`, 2008–2009 aynı kontrat | 252 | −0,00186901 / yuvarlama düzeyinde sıfır |
+| `ct-recent-risk-audit`, 2024–2026 incelenmiş dönem | 711 | Bu CSV'de ham yok / +0,00008992 |
+
+Sekiz yıllık seçilmiş sonuç, en büyük %1 EWMA kaybı çıkarılınca
+−0,00499849 oldu. Aynı-kontrat deneyinde 2008 ve 2009 ham katkıları
+farklı işaretliydi. Yakın dönem seçilmiş küçük fark 2024'ten geldi.
+Bu kapsamda vade geçişi tek başına başarısızlığı açıklamıyor.
+
 ## Kalan denetim kapsamı
 
 | Alan | Sonraki doğrulama |
@@ -270,7 +302,7 @@ tarihsel tekrar sonucu ileri dönem tahmin başarısı ölçmez.
 | Yerel ve GitHub eşlemesi | CI, birleştirme kararı ve main eşitliği |
 | Veri girişi | Kaynak semantiği, vintage, seans ve saat, yarım cache ve eksiklik |
 | Araştırma hattı | Diğer profillerin zaman, seçim ve native çıktı kapsamı |
-| Metrikler ve karar | CPU tekrar raporunun ledger kapsamı, kalan risk karşılaştırmaları ve ileri doğrulama sınırı |
+| Metrikler ve karar | Diğer risk karşılaştırmaları, kaynak kanıtı ve ileri doğrulama sınırı |
 | Canlı kayıt ve operasyon | Saat, kimlik zinciri, kilitli kohort, iş tekrarı ve geri kurma |
 | Uygulama ve CI | Backend, frontend, temiz ortam ve release geri yükleme |
 

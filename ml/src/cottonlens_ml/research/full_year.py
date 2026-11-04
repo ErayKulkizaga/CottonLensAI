@@ -22,7 +22,8 @@ from cottonlens_ml.research.ledger import (
     writer,
 )
 from cottonlens_ml.research.protocol import full_year_manifest, rows_at
-from cottonlens_ml.research.review import audit_market, verify_history
+from cottonlens_ml.research.reproduction import verified_native_predictions
+from cottonlens_ml.research.review import audit_market, training_rows, verify_history
 from cottonlens_ml.research.statistics import (
     bh_adjust,
     correlation,
@@ -379,27 +380,100 @@ def run(experiment, *, max_minutes=60):
     return {'status': 'complete', 'saved_year_horizon_outputs': 16}
 
 
-def verify_reproduction(folder):
-    comparisons = []
-    for original in sorted((folder/'pilot-full-year').glob('*.json')):
-        repeated = folder/'reproduction/pilot-full-year'/original.name
-        if not repeated.exists():
-            return {'status': 'pending', 'reason': 'fresh_selected_fits_not_all_complete'}
-        a, b = (pd.DataFrame(read_record(p)['records']) for p in (original, repeated))
-        if a.date.tolist() != b.date.tolist():
-            raise ValueError('Reproduction changed frozen origins')
+def _verified_yearly_fits(ledger, history, fold, chosen, first, second):
+    from cottonlens_ml.research.engine import Experiment
+
+    h, year = first['horizon'], first['year']
+    decision = content_id(chosen)
+    for record in (first, second):
+        if (chosen['year'] != year or chosen['horizon'] != h or record['decision_id'] != decision
+                or record['price_family'] != chosen['price']['recipe']['family']
+                or record['volatility_family'] != chosen['variance']['recipe']['family']):
+            raise ValueError('CPU reproduction changed the frozen yearly decision')
+    frames = [pd.DataFrame(record['records']) for record in (first, second)]
+    reference = ewma(history, pd.to_datetime(fold['origins']), h)
+    if chosen['price']['weight'] not in SHRINKAGE or any(
+        not np.allclose(frame.ewma_variance, reference, rtol=0, atol=1e-13) for frame in frames
+    ):
+        raise ValueError('CPU reproduction changed the frozen price weight or EWMA reference')
+    repeats = (None, 'reproduction')
+    receipts = ({}, {})
+    for task, column, role in (('price', 'predicted_return', 'price'), ('variance', 'variance', 'vol')):
+        selected = chosen[task]
+        recipe = selected['recipe']
+        if recipe['horizon'] != h or recipe['task'] != task:
+            raise ValueError('CPU reproduction recipe horizon or task mismatch')
+        parts = ([], [])
+        for i, test in enumerate(chunks(history, fold['origins'])):
+            train = training_rows(history, test.date.min(), recipe, ledger.identity['split'].get('coverage_start'))
+            specification = Experiment.fit_specification(recipe, train, None, test, f'{role}-outer-{year}-{i}',
+                                                        selected['iterations'] if task == 'price' else 1)
+            for repeat, bucket, receipt in zip(repeats, parts, receipts, strict=True):
+                expected = {**specification, 'repeat_reason': repeat}
+                key = ledger.key(expected)
+                if not (ledger.root/'completed'/f'{key}.json').is_file():
+                    raise ValueError('Frozen reproduction inputs are missing an expected native fit')
+                values, receipt[key] = verified_native_predictions(ledger, key, expected)
+                bucket.append(values)
+        for frame, bucket in zip(frames, parts, strict=True):
+            prediction = np.concatenate(bucket)
+            if task == 'price':
+                prediction *= selected['weight']
+            elif (prediction <= 0).any():
+                raise ValueError('CPU reproduction contains nonpositive variance')
+            if not np.allclose(frame[column], prediction, rtol=0, atol=1e-13):
+                raise ValueError('CPU yearly output disagrees with its native fit predictions')
+    return receipts
+
+
+def verify_reproduction(folder, *, persist=True):
+    paths = sorted((folder/'pilot-full-year').glob('*.json'))
+    if len(paths) < 16:
+        return {'status': 'pending', 'reason': 'original_pilot_incomplete'}
+    repeated_paths = sorted((folder/'reproduction/pilot-full-year').glob('*.json'))
+    if len(repeated_paths) < 16:
+        return {'status': 'pending', 'reason': 'fresh_selected_fits_not_all_complete'}
+    ready_path, history_path = folder/'ready.json', folder/'history.parquet'
+    decisions = [folder/'decisions/full-year'/p.name for p in paths]
+    inputs = [ready_path, history_path, *paths, *repeated_paths, *decisions]
+    if not all(path.is_file() for path in inputs):
+        raise ValueError('Frozen reproduction inputs are missing')
+    checksums = {path: digest(path) for path in inputs}
+    ready, history, original = _verified_yearly_outputs(folder, paths)
+    _, _, repeated = _verified_yearly_outputs(folder, repeated_paths)
+    ledger = Ledger(folder/'ledger', ready['identity'])
+    by_year = {f['year']: f for f in ready['identity']['split']['folds']}
+    comparisons, original_fits, repeated_fits = [], {}, {}
+    for path, repeat_path, decision_path, first, second in zip(
+        paths, repeated_paths, decisions, original, repeated, strict=True,
+    ):
+        chosen = read_record(decision_path)
+        fold = by_year[first['year']]
+        selected, repeats = _verified_yearly_fits(ledger, history, fold, chosen, first, second)
+        original_fits.update(selected)
+        repeated_fits.update(repeats)
+        a, b = (pd.DataFrame(r['records']) for r in (first, second))
+        fields = sorted(c for c in a if c.endswith(('_lo', '_hi')))
+        if (not fields or set(fields) != {c for c in b if c.endswith(('_lo', '_hi'))}
+                or not np.isfinite(a[fields]).all().all() or not np.isfinite(b[fields]).all().all()):
+            raise ValueError('CPU reproduction interval outputs are missing or incompatible')
         price = float(np.max(np.abs(a.predicted_return-b.predicted_return)))
         variance = bool(np.allclose(a.variance, b.variance, rtol=1e-6, atol=1e-10))
-        interval = max(float(np.max(np.abs(a[c]-b[c]))) for c in a if c.endswith(('_lo','_hi')))
-        comparisons.append({'output': original.name, 'max_log_return_difference': price,
-            'variance_parity': variance, 'max_interval_return_difference': interval,
-            'passed': bool(price<=1e-6 and variance and interval<=1e-6)})
-    if len(comparisons)!=16:
-        return {'status': 'pending', 'reason': 'original_pilot_incomplete'}
-    body = {'status': 'passed' if all(c['passed'] for c in comparisons) else 'failed',
-            'fresh_fits': True, 'price_atol': 1e-6, 'variance_atol': 1e-10, 'variance_rtol': 1e-6,
-            'interval_return_atol': 1e-6, 'comparisons': comparisons}
-    freeze_record(folder/'reproduction/verification.json', body)
+        interval = float(np.max(np.abs(a[fields].to_numpy()-b[fields].to_numpy())))
+        comparisons.append({'output': path.name, 'original_sha256': checksums[path],
+            'repeated_sha256': checksums[repeat_path], 'decision_sha256': checksums[decision_path],
+            'max_log_return_difference': price, 'variance_parity': variance, 'max_interval_return_difference': interval,
+            'passed': bool(price <= 1e-6 and variance and interval <= 1e-6)})
+    if any(digest(path) != checksum for path, checksum in checksums.items()):
+        raise ValueError('Frozen CPU reproduction inputs changed during verification')
+    body = {'version': 'cpu-bound-reproduction-v1',
+            'status': 'passed' if all(c['passed'] for c in comparisons) else 'failed',
+            'ready_sha256': checksums[ready_path], 'original_fits': original_fits,
+            'repeated_fits': repeated_fits, 'fresh_fits': True, 'price_atol': 1e-6,
+            'variance_atol': 1e-10, 'variance_rtol': 1e-6, 'interval_return_atol': 1e-6,
+            'interval_evidence': 'stored_output_parity_only', 'comparisons': comparisons}
+    if persist:
+        freeze_record(folder/'reproduction/verification-bound-v1.json', body)
     return body
 
 
@@ -554,6 +628,11 @@ def dispatch(args):
             project(Experiment(folder, repo=args.repo))
     elif args.stage in ('pilot', 'reproduce'):
         with writer(folder):
+            if args.stage == 'reproduce' and any((folder/'reproduction'/name).exists() for name in (
+                'verification.json', 'verification-bound-v1.json',
+            )):
+                print(json.dumps(verify_reproduction(folder)))
+                return
             experiment = Experiment(folder, repo=args.repo)
             if args.stage == 'reproduce':
                 if report(folder)['status'] != 'complete':
