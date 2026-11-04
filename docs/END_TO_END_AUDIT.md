@@ -11,9 +11,15 @@ kanıtı tamamlanmalı ve yığılmış değişiklikler incelenmeli.
 Yerel ana çalışma klasörü `470f1e5` tabanında. Git tarafından listelenen
 31 değişmiş veya izlenmeyen yoldan 19'u, satır sonları eşitlendikten
 sonra denetim dalındaki karşılığıyla aynıydı. İki eski belge
-`docs/archive/` altında aynı içerikle bulunuyor. Dokuz yolun farkı
-içerik düzeyinde incelenecek. Bir yerel yapılandırma dosyası inceleme ve
-yayın kapsamı dışında. Ana çalışma klasörünün içeriği korundu.
+`docs/archive/` altında aynı içerikle bulunuyor. Dokuz farklı yolun farkı incelendi.
+Backend API ve testi ilk denetim düzeltmesinden önce birebir eşleşiyordu.
+CPU başlatıcısı, engine, ledger ve path pilot farkları yeni araştırma
+profillerini ve ufuk kapsamını taşıyor. İki workbench testi arşiv yolu
+ve gecikmeli Colab log kopyasını kapsıyor. Araştırma sözleşmesinin güncel
+sürümü kullanıcının ispat projesi ve risk önceliği kararlarını içeriyor.
+Bu karşılaştırmada aktarılması gereken ek bir yerel değişiklik saptanmadı.
+Bir yerel yapılandırma dosyası inceleme ve yayın kapsamı dışında.
+Ana çalışma klasörünün içeriği korundu.
 
 ## Doğrulanmış düzeltmeler
 
@@ -26,7 +32,7 @@ yayın kapsamı dışında. Ana çalışma klasörünün içeriği korundu.
   kaldığında eksik sırayı dolduruyordu. Senaryo penceresi artık çalışan
   modelle birlikte yüklenen paketten okunuyor. Eksik pencere 409 ile
   reddediliyor.
-- Otomatik regresyon testi iki farklı ZIP yayın kimliği, gerçek Parquet
+- Otomatik regresyon testi iki farklı yayın kimliği, gerçek Parquet
   içe aktarımı ve SQLite üzerinde bu iki hatayı yeniden üretti.
   Yeniden yükleme sonrası geçerli tahmin ve model yokken reddetme de
   sınandı. Başarılı kontroller backend Ruff ve 30 pytest.
@@ -39,7 +45,7 @@ etkileri bu testlerle ölçülmedi.
 | Alan | Sonraki doğrulama |
 | --- | --- |
 | Yayın kimliği ve içe aktarım | Aynı sürüm ve manifest altında değişen payload, atomik aktivasyon, revize fiyatlar ve tekrar içe aktarım |
-| Yerel ve GitHub eşlemesi | Dokuz farklı yerel yolun anlamsal farkı, PR bağımlılıkları ve birleştirme planı |
+| Yerel ve GitHub eşlemesi | PR bağımlılıkları, birleştirme planı ve main eşitliği |
 | Veri girişi | Kaynak semantiği, vintage, seans ve saat, bozuk/yarım cache, eksiklik |
 | Araştırma hattı | Hedef olgunluğu, geçmişe ait özellikler, split/purge, model seçimi ve native çıktılar |
 | Metrikler ve karar | Ortak origin, referanslar, QLIKE, belirsizlik, release kriteri |
