@@ -111,5 +111,72 @@
     "powerWakeTimersDC": 0,
     "capturedAtUtc": "2026-11-04T08:48:49.3020698+00:00",
     "oldStudy": "own-level-forward-v2-first-observed"
+  },
+  "settlement_value_witness": {
+    "archive_asset": "settlement-witness-202509-v1.zip",
+    "archive_sha256": "9612ef8fe7eec99e8b403c9f6e1498a72a66b2b06b860328caf64a0a9b799bed",
+    "fresh_restore_files": 4,
+    "excluded": 0,
+    "scope": "Three dated official USDA PDFs, observed 2025-09-26/29/30. Value-only witness, manual transcription from page one.",
+    "source_field": "ICE Futures US No. 2 settlement table; Today and Previous fields compared separately.",
+    "sources": {
+      "2025-09-26": {
+        "url": "https://esmis.nal.usda.gov/sites/default/release-files/gb19f580q/dz012p858/j0991c94f/CNDDSQ.PDF",
+        "sha256": "6c070abbbb6ebceb7176495e97ec473dec6d72a63326701d613bc3d5c85996f7",
+        "observed_at_utc": "2026-11-04T08:55:19.477954+00:00",
+        "2025-10": {
+          "today": "63.83",
+          "previous": "64.04",
+          "change": "-0.21"
+        },
+        "2025-12": {
+          "today": "66.28",
+          "previous": "66.17",
+          "change": "0.11"
+        }
+      },
+      "2025-09-29": {
+        "url": "https://esmis.nal.usda.gov/sites/default/release-files/gb19f580q/ww72db43m/m613pz187/CNDDSQ.PDF",
+        "sha256": "b91ea6d3a023d2b9564d1d7266e50185960a3328420e0e7f556cc084b658edd1",
+        "observed_at_utc": "2026-11-04T08:55:21.793303+00:00",
+        "2025-10": {
+          "today": "63.05",
+          "previous": "63.95",
+          "change": "-0.90"
+        },
+        "2025-12": {
+          "today": "65.50",
+          "previous": "66.40",
+          "change": "-0.90"
+        }
+      },
+      "2025-09-30": {
+        "url": "https://esmis.nal.usda.gov/sites/default/release-files/gb19f580q/zp38zd65w/4m90gw10b/CNDDSQ.PDF",
+        "sha256": "e14109f6ae932dc51a6f4e464c5c78470cc3493014759e7b5ac4433e3bf812c8",
+        "observed_at_utc": "2026-11-04T08:55:24.185305+00:00",
+        "2025-10": {
+          "today": "63.32",
+          "previous": "63.05",
+          "change": "0.27"
+        },
+        "2025-12": {
+          "today": "65.77",
+          "previous": "65.50",
+          "change": "0.27"
+        }
+      }
+    },
+    "ct_close_rounded": {
+      "2025-09-26": 63.95,
+      "2025-09-29": 63.05,
+      "2025-09-30": 63.32
+    },
+    "finding": "The 29 Sep Previous cells exceed the 26 Sep Today cells by 0.12 for both contracts. 26 Sep CT=F matches the 29 Sep October Previous cell. Cause and original vintage not established.",
+    "ct_2025_09_29_target_r_squared": 0.00020088712750906281,
+    "today_to_today_october_target_r_squared": 0.00015117284937064978,
+    "relative_label_difference": -0.24747368711402495,
+    "audit_candidate_equals_ewma_for_this_origin": true,
+    "limits": "No vintage or historical UTC admission. Neither vendor error nor roll cause assigned. This date cannot explain the near-zero model-minus-EWMA result, because both forecasts were identical at the affected origin. No estimate of prevalence or benchmark superiority.",
+    "market_fits": 0
   }
 }

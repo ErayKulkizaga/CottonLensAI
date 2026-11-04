@@ -27,6 +27,15 @@ kuruldu. Sıfır fitli replay tüm 61 native çıktıyı, eşlenmiş kayıpları
 raporu doğruladı. [Ön kayıt](https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/ct-recent-risk-audit-prereg-20261104) ·
 [Sonuç paketi](https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/ct-recent-risk-audit-result-20261104)
 
+**İlk fiyat tanığı (sıfır fit):** 26 Eylül 2025 USDA raporunun Ekim
+kontratı kapanışı 63,83. 29 Eylül raporunun aynı kontrat için önceki
+kapanışı 63,95 ve CT=F de 63,95. Aralık kontratında da iki rapor arasındaki
+fark 0,12. Ekim kontratında iki günün Today hücresini kullanmak 29 Eylül
+karesel getiri etiketini yaklaşık %24,7 düşürüyor. İlgili origin'de HAR
+tahmini EWMA ile aynı olduğundan bu örnek kayıp farkını açıklamıyor.
+Rapor sürümü, neden ve yaygınlık belirsiz. Üç PDF ve makbuz sonuç
+Release'ine ayrı asset olarak eklendi ve taze geri kuruldu.
+
 # Yahoo fiyat revizyonu ve yeni ileri kohort — 4 Kasım 2026
 
 3 Kasım 03:05 çalışması, Yahoo'nun 30 Ekim kapanışını 78,13 yerine
