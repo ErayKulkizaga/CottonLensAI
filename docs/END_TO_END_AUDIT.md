@@ -49,6 +49,18 @@ Ana çalışma klasörünün içeriği korundu.
 Bunlar API çıkarım hataları. Tarihsel piyasa performansı üzerindeki
 etkileri bu testlerle ölçülmedi.
 
+### Yayın kurulumu ve geri alma
+
+Kurulum `current` dizinini `.previous` konumuna taşıdıktan sonra
+kesilirse, eski kod bir sonraki denemede elde kalan geçerli kopyayı
+silebiliyordu. Ayrı bir süreç de ortak hazırlık dizinini devralabiliyordu.
+Kurucu şimdi hedef başına işletim sistemi kilidi alıyor, elde kalan
+yedeği checksum ile doğrulayıp önce geri getiriyor ve yeni hazırlık
+kopyasını etkinleştirmeden önce yeniden doğruluyor. Başarısız ikinci
+deneme, bozuk paket, bozuk hazırlık kopyası ve iki ayrı süreçle çakışma
+otomatik test edildi. Windows backend paketinde 40 test ve Ruff geçti.
+Bu doğrulama süreç kesintisi ve yeniden denemeyi kapsıyor.
+
 ### Piyasa verisi girişi
 
 Yahoo yanıtının boş olmaması yeterli sayılıyordu. Tamamı eksik DXY
@@ -67,7 +79,7 @@ henüz gösterilmedi.
 
 | Alan | Sonraki doğrulama |
 | --- | --- |
-| Yayın kimliği ve içe aktarım | Kesilen veya eşzamanlı paket aktivasyonu ve revize fiyatların dashboard kapsamı |
+| Yayın kimliği ve içe aktarım | Revize fiyatların dashboard kapsamı ve kayıt ile yayın arasındaki geçiş |
 | Yerel ve GitHub eşlemesi | PR bağımlılıkları, birleştirme planı ve main eşitliği |
 | Veri girişi | Kaynak semantiği, vintage, seans ve saat, yarım cache ve eksiklik |
 | Araştırma hattı | Hedef olgunluğu, geçmişe ait özellikler, split/purge, model seçimi ve native çıktılar |
