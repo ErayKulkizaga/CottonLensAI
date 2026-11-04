@@ -24,11 +24,19 @@ from research import ct_shock_control as learner
 from research.verify_ct_prospective_readiness import decimal_difference
 from research.verify_risk_weak_teacher import difference_interval
 
-PROFILE = 'ct-pre2010-same-contract-risk-t1-v1'
+PROFILE = 'ct-pre2010-same-contract-risk-t1-r2'
 ARM = 'own_level'
 FIRST = '2008-11-24'
 LAST_TARGET = '2009-11-24'
 FIT_BUDGET = 31
+WEEKLY = ('https://apps.ams.usda.gov/Cotton/Historical%20Weekly%20Reports/'
+          'MY%202008-2009/mp_cn812%20Weekly%20Cot%20Mkt%20Rev/')
+LATE = {
+    '2009-04-09': {'published': '2009-04-10', 'witness_day': '2009-04-13',
+                   'report': 'CN20090410WWWCMR.pdf'},
+    '2009-05-22': {'published': '2009-05-29', 'witness_day': '2009-05-26',
+                   'report': 'CN20090529WWCMR.pdf'},
+}
 HELPERS = ('research/ct_pre2010_risk.py', 'research/ct_pre2010_risk_source.py',
            'research/ams_full_daily_source.py', 'research/verify_ct_prospective_readiness.py',
            'research/tests/test_ct_pre2010_risk.py')
@@ -143,7 +151,7 @@ def prepare(repo, audit, root, parent):
     for day, row in training.items():
         if not set(required[day]) <= set(row['quotes']):
             raise ValueError(f'Required training price missing at {day}')
-    releases = timing['weekly_repairs_printed_date']
+    releases = {**timing['weekly_repairs_printed_date'], **{d: x['published'] for d,x in LATE.items()}}
     design = job_plan(dates, origins, releases)
     if len(design['jobs']) != FIT_BUDGET:
         raise ValueError('Changed fixed 31-fit budget')
@@ -156,14 +164,16 @@ def prepare(repo, audit, root, parent):
     contract = {
         'profile': PROFILE, 'recipe': learner.recipe(ARM, learner.STATE_PROFILE),
         'origins': origins, 'sessions': dates, 'required': required, 'archives': plan,
-        'release_proxy': releases, 'fits': FIT_BUDGET, 'synthetic_fits': 0,
+        'release_proxy': releases, 'late_evaluation_sources': LATE, 'weekly_base': WEEKLY,
+        'fits': FIT_BUDGET, 'synthetic_fits': 0,
         'baseline': 'EWMA lambda .94 using same held-contract log returns',
         'target': 'r[t+1]^2 for the nearest scheduled delivery month strictly after the origin month; hold it across both prices',
-        'source_policy': 'Dated daily PDF first; same date workbook fallback only on structural failure; require every scheduled origin/target',
-        'timing': 'Treat normal daily archived settlements as known after that session. Four weekly repairs enter only after their printed week issue date; require target maturity strictly before cutoff.',
+        'source_policy': 'Dated PDF then same-date workbook. Two known misdated pairs require official dated weekly quote and exact match to following dated daily Previous; all 252 slots retained.',
+        'timing': 'Treat normal daily archived settlements as known after that session. Weekly repairs enter only after their printed week issue date. Exclude affected fit feature rows; both forecasts use the last complete EWMA on affected evaluation origins. Require target maturity strictly before cutoff.',
         'selection': 'Fixed annual 3x63 past-only selection on .00/.25/.50/.75/1.00; ties use the smaller weight; refit every 21 origins',
         'statistic': 'Mean paired EWMA QLIKE minus selected candidate QLIKE. Both year-stratified moving-block 20/60 95% lower bounds and mean must be >0. 10000 draws seed42. Trim is descriptive.',
-        'outcomes_opened_at_prepare': 0, 'current_market_skill': False, 'first_vintage_verified': False,
+        'amendment': 'R1 structurally preflighted archived quote coverage before any fit or score. Two evaluation documents are misdated; no R1 outcome admission. R2 keeps the same target, 252 origins, learner, EWMA and inference gate.',
+        'fits_or_scores_before_amendment': 0, 'current_market_skill': False, 'first_vintage_verified': False,
         'forward_publication': False,
     }
     with writer(root):
@@ -211,6 +221,7 @@ def outcomes(root, contract, capture):
         source.capture(folder, contract['archives'])
     data = {}
     hashes = {}
+    previous = {}
     for plan in contract['archives']:
         path = folder/(plan['season']+'.bin')
         receipt = read_record(folder/(plan['season']+'-receipt.json'))
@@ -218,10 +229,29 @@ def outcomes(root, contract, capture):
                 or receipt['range'] != [plan['start'], plan['stop']]):
             raise ValueError('Outcome capture receipt differs')
         hashes[path.name] = receipt['sha256']
-        data.update(source.normalize(plan,path.read_bytes(),contract['required']))
+        raw = path.read_bytes()
+        data.update(source.normalize(plan,raw,contract['required'],contract['late_evaluation_sources']))
+        for day,witness in contract['late_evaluation_sources'].items():
+            after = witness['witness_day']
+            if after in plan['members']:
+                pdf = source.archive_member(raw,plan,plan['members'][after]['pdf'])
+                previous[day] = source.pdf_quotes(pdf,after,previous=True)
+    for day,witness in contract['late_evaluation_sources'].items():
+        path = folder/witness['report']
+        raw = source.weekly_payload(path,contract['weekly_base']+path.name,capture)
+        hashes[path.name] = digest(path)
+        quotes = source.weekly_quotes(raw,day,witness['published'],contract['required'][day])
+        if {m:previous[day][m] for m in quotes} != quotes:
+            raise ValueError(f'Weekly named quotes differ from subsequent explicit Previous on {day}')
+        data[day] = {'quotes':quotes,'member':path.name,'late_release':witness['published']}
     if sorted(data) != contract['origins']+[LAST_TARGET]:
         raise ValueError('Exact paired evaluation dates required')
     return data, hashes
+
+
+def stale_origins(sessions, origins, late):
+    prior = dict(zip(sessions[1:],sessions[:-1],strict=True))
+    return {t: prior[day] for day,x in late.items() for t in origins if day<=t<=x['published']}
 
 
 def paired(h, contract, forecasts, weights, actual, ewma):
@@ -249,6 +279,7 @@ def paired(h, contract, forecasts, weights, actual, ewma):
         'years':{str(k):{'origins':len(v),'gain':float(v.gain.mean())} for k,v in groups},
         'weights':weights, 'raw_mean_gain':float((frame.ewma_loss-qlike(y,values[:,0])).mean()),
         'trimmed_gain':float(trim.gain.mean()), 'fallback_origins':int(frame.weight.eq(0).sum()),
+        'stale_evaluation_origins':stale_origins(contract['sessions'], days, contract['late_evaluation_sources']),
         'archival_replication_gate':bool(mean > 0 and all(v[0]>0 for v in intervals.values())),
         'first_vintage_verified':False,'forward_publication':False,'current_market_skill':False,
     }
@@ -266,6 +297,13 @@ def run(root, phase):
         if read_record(root/'outcome-admission.json') != receipt:
             raise ValueError('Outcome identity changed after admission')
         h, actual, ewma = history(contract['sessions'], {**training, **data})
+        stale = stale_origins(contract['sessions'],contract['origins'],contract['late_evaluation_sources'])
+        by_date = h.set_index(h.date.dt.strftime('%Y-%m-%d')).copy()
+        columns = ['ct_ewma', *forward.NAMES]
+        for day, past in stale.items():
+            by_date.loc[day,columns] = by_date.loc[past,columns].to_numpy()
+            ewma.loc[day] = ewma.loc[past]
+        h = by_date.reset_index(drop=True)
         ledger = Ledger(root/'ledger',{**identity, 'outcome_id':receipt['input_id']})
         deadline = time.monotonic()+30*60
 
@@ -281,6 +319,8 @@ def run(root, phase):
             return learner.native(ledger,job,train,test,ARM,learner.STATE_PROFILE)
 
         forecasts, weights = learner.folded_output(h,design,predict)
+        for day in stale:
+            forecasts[day] = (float(ewma.loc[day]),float(ewma.loc[day]),0.)
         if ledger.summary()['durably_saved'] != FIT_BUDGET:
             raise ValueError('Require exactly 31 saved native fits')
         frame, result = paired(h,contract,forecasts,weights,actual,ewma)

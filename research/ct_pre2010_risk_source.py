@@ -6,7 +6,7 @@ import re
 import struct
 import zipfile
 import zlib
-from datetime import datetime
+from datetime import date, datetime
 from decimal import Decimal
 
 from cottonlens_ml.code_identity import digest
@@ -98,7 +98,7 @@ def archive_member(data, source, member):
     return raw
 
 
-def pdf_quotes(raw, day):
+def pdf_quotes(raw, day, *, previous=False):
     from pypdf import PdfReader
 
     page = PdfReader(io.BytesIO(raw)).pages[0].extract_text()
@@ -113,7 +113,7 @@ def pdf_quotes(raw, day):
         (f'20{y}-{MONTHS[m]:02}-01', Decimal(p), Decimal(b), Decimal(delta))
         for m, y, p, b, delta in re.findall(
             r'^(Mar|May|Jul|Oct|Dec)-(\d{2})\s+(\d+\.\d{2})\s+(\d+\.\d{2})\s+(-?\d+\.\d{2})(?:\s|$)',
-            page, re.MULTILINE)], day)
+            page, re.MULTILINE)], day, previous=previous)
 
 
 def xls_quotes(raw, day):
@@ -152,19 +152,21 @@ def xls_quotes(raw, day):
     return validated_quotes(rows, day)
 
 
-def validated_quotes(rows, day):
+def validated_quotes(rows, day, *, previous=False):
     months = [m for m, *_ in rows]
     if months != sorted(set(months)):
         raise ValueError('Duplicate or unsorted contract months')
-    return {m: str(p) for m, p, b, delta in rows
+    return {m: str(b if previous else p) for m, p, b, delta in rows
             if m[:7] >= day[:7] and min(p, b) > 0 and p-b == delta}
 
 
-def normalize(source, data, required):
+def normalize(source, data, required, late):
     if len(data) != source['stop']-source['start']:
         raise ValueError('Archive span byte count differs')
     rows = {}
     for day, members in source['members'].items():
+        if day in late:
+            continue
         errors = {}
         for suffix, parser in (('pdf', pdf_quotes), ('xls', xls_quotes)):
             if suffix not in members:
@@ -211,3 +213,54 @@ def capture(root, sources):
             raise ValueError('An existing partial archive lacks its capture receipt')
         receipts.append(read_record(receipt_path))
     return receipts
+
+
+def weekly_quotes(raw, observation, publication, required):
+    from pypdf import PdfReader
+
+    observed = date.fromisoformat(observation)
+    published = date.fromisoformat(publication)
+    if not 0 < (published-observed).days <= 8:
+        raise ValueError('Weekly dated price is outside the printed publication week')
+    pages = [page.extract_text() for page in PdfReader(io.BytesIO(raw)).pages]
+    if not re.search(rf'{published:%B}\s+{published.day},\s*{published.year}', pages[0]):
+        raise ValueError('Weekly printed publication date differs')
+    matches = []
+    for page in pages:
+        if not re.search(r'Futures\s+(?:Contract\s+)?Settlement',page,re.IGNORECASE):
+            continue
+        header = re.findall(
+            r'((?:(?:Mar|May|Jul|Oct|Dec)[ -]+\d\s*\d\s+){5,6})(?:Average|7 Market)',
+            page,re.IGNORECASE)
+        values = re.findall(rf'^{observed:%b}[\s-]+0?{observed.day}\s+(.+)$',page,re.MULTILINE)
+        if len(header)!=1 or len(values)!=1:
+            continue
+        months = [f"20{y.replace(' ', '')}-{MONTHS[m.title()]:02}-01"
+                  for m,y in re.findall(r'(Mar|May|Jul|Oct|Dec)[ -]+(\d\s*\d)',
+                                        header[0],re.IGNORECASE)]
+        compact = re.sub(r'(?<![\d.])(\d)\s+(\d\.\d{2})(?=\s|$)',r'\1\2',values[0])
+        tokens = compact.split()[:len(months)]
+        if len(tokens)!=len(months) or months!=sorted(set(months)):
+            continue
+        quotes = {m:p for m,p in zip(months,tokens,strict=True)
+                  if re.fullmatch(r'\d+\.\d{2}',p) and Decimal(p)>0}
+        if set(required)<=set(quotes):
+            matches.append({m:quotes[m] for m in required})
+    if len(matches)!=1:
+        raise ValueError(f'One dated named weekly price row required: {observation}')
+    return matches[0]
+
+
+def weekly_payload(path, url, acquire):
+    if acquire and not path.exists():
+        import requests
+
+        with requests.get(url,stream=True,timeout=15,allow_redirects=False) as response:
+            if response.status_code!=200:
+                raise ValueError('Exact official weekly source is unavailable')
+            raw = response.raw.read(250_001)
+        if not raw.startswith(b'%PDF-') or len(raw)>250_000:
+            raise ValueError('Unexpected bounded weekly document')
+        with path.open('xb') as file:
+            file.write(raw)
+    return path.read_bytes()

@@ -42,3 +42,11 @@ def test_invalid_far_quote_does_not_substitute_a_missing_near_quote():
     assert source.validated_quotes(rows, '2009-01-02') == {'2009-03-01': '61.0'}
     with pytest.raises(ValueError, match='Duplicate'):
         source.validated_quotes(rows+rows, '2009-01-02')
+
+
+def test_stale_origins_use_last_complete_state_until_weekly_release():
+    dates = ['2009-05-21', '2009-05-22', '2009-05-26', '2009-05-29', '2009-06-01']
+    late = {'2009-05-22': {'published': '2009-05-29'}}
+    assert risk.stale_origins(dates, dates[1:], late) == {
+        '2009-05-22': '2009-05-21', '2009-05-26': '2009-05-21', '2009-05-29': '2009-05-21',
+    }
