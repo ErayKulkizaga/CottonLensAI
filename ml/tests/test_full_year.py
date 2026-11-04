@@ -9,7 +9,7 @@ from cottonlens_ml.research.full_year import (
 )
 from cottonlens_ml.research.ledger import Ledger, read_record
 from cottonlens_ml.research.mirror import Mirror
-from cottonlens_ml.research.protocol import full_year_manifest, mature
+from cottonlens_ml.research.protocol import eligible, full_year_manifest, mature
 from cottonlens_ml.research.statistics import bh_adjust, oos_r2, paired_bootstrap
 from cottonlens_ml.research.volatility import ewma, features, qlike
 from cottonlens_ml.runtime_guard import require_training
@@ -52,6 +52,26 @@ def test_full_year_cohort_keeps_missing_features_and_purges():
     changed = rows.copy()
     changed.loc[changed.date >= '2024-01-01', 'cotton_close'] = 900
     assert full_year_manifest(changed) == frozen
+
+
+def test_common_horizons_require_t1_and_t5_on_the_same_origin():
+    rows = history()
+    origin = pd.Timestamp("2016-05-02")
+    broken = rows.date.eq(origin)
+    rows.loc[broken, "target_return_1"] = np.nan
+    rows.loc[broken, "cotton_ret_1"] = np.nan
+    assert origin in set(eligible(rows, 5).date)
+    assert origin not in set(eligible(rows).date)
+    assert origin not in set(mature(rows, "2016-07-01").date)
+    assert origin.strftime("%Y-%m-%d") not in full_year_manifest(rows)["folds"][0]["origins"]
+
+
+@pytest.mark.parametrize("target_date", ["2016-05-02", "2016-05-10"])
+def test_research_cohort_rejects_misordered_target_dates(target_date):
+    rows = history()
+    rows.loc[rows.date.eq("2016-05-02"), "target_date_1"] = pd.Timestamp(target_date)
+    with pytest.raises(ValueError, match="target dates"):
+        full_year_manifest(rows)
 
 
 def test_past_variance_features_are_future_invariant():

@@ -93,6 +93,38 @@ Bu testler sağlayıcının olası yanıtlarını sentetik olarak yeniden
 üretti. Eski frozen deney verilerinde bu kusurların gerçekleştiği
 henüz gösterilmedi.
 
+### Hedef tarihleri ve eğitimde etiket olgunluğu
+
+Ortak T+1/T+5 kohortu yalnız T+5 etiketini denetliyordu. Sonraki
+kapanış eksik ama beşinci kapanış geçerliyse, T+1 hedefi eksik bir origin
+ortak eğitim veya değerlendirmeye girebiliyordu. Ayrıca ters hedef
+tarihleri reddedilmiyordu. Yeni ortak kohort iki sonlu getiriyi ve
+`origin < T+1 < T+5` sırasını gerektiriyor. Açıkça tek ufuk isteyen
+çağrı kendi ufkunu doğruluyor. Eksik özellik satırları korunuyor.
+
+`research-full-year-v1-r2` için checksum'ı eşleşen ham Cotton
+kapanışlarından 3.520 fiyat hedefi her ufukta yeniden kuruldu. Ham sıra
+farkı hep bir seanstı. Kaydedilmiş risk hedefleri T+1'de 3.519 ve
+T+5'te 3.515 satırda aynıydı. 16 yıllık/ufuk dosyası frozen origin
+listeleriyle ve 4.012 saklı fiyat/risk hedefiyle eşleşti. 2.360
+checksum-doğrulanmış ledger kaydının 5.244.446 eğitim etiketi kullanımı
+tekrarlar dahil sayıldı. Her kayıtta son T+5 hedef tarihi ilk validation
+veya tahmin tarihinden önceydi. En küçük aralık bir takvim günüydü.
+48 XGBoost erken durdurma kaydının validation etiketleri de ilgili
+iç skor bloğu başlamadan olgunlaşmıştı.
+
+Yeni kontrol aynı 8 dönemi ve 2.006 origin'i, aynı split kimliğiyle
+üretti. Bulunan sınır hatası bu tamamlanmış ana deneyin sonucunu
+açıklamıyor. Bu denetim etiket ve fiyat dizisinin nedenselliğini
+kapsar. Kaynakların gerçek tarihsel teslim saatleri ayrıca doğrulanmalı.
+
+| Kanıt | SHA-256 / kimlik |
+| --- | --- |
+| Ham `market.parquet` | `23cfabb7ccb2553f0547bc3290ff4916ce91c788c98a94acdb2e5b9cd1f3151c` |
+| Donmuş `history.parquet` | `2132162a410b4e12655d36a2ac3e9efd62a3fc0e49fdb08cb038d4cc328836d7` |
+| `ready.json` | `7716394157e844073834afdfc0629b38b1febaf1fc8c2fef971945fa2e8bbf05` |
+| `split_id` | `9d964b2c88a6d36b7e1fc8421efa1a3c86a3b0531b6cbcb072856918d014aa1d` |
+
 ## Kalan denetim kapsamı
 
 | Alan | Sonraki doğrulama |
@@ -100,7 +132,7 @@ henüz gösterilmedi.
 | Yayın kimliği ve içe aktarım | Kayıt ile yayın arasındaki geçiş ve PostgreSQL üzerinde şema uygulaması |
 | Yerel ve GitHub eşlemesi | PR bağımlılıkları, birleştirme planı ve main eşitliği |
 | Veri girişi | Kaynak semantiği, vintage, seans ve saat, yarım cache ve eksiklik |
-| Araştırma hattı | Hedef olgunluğu, geçmişe ait özellikler, split/purge, model seçimi ve native çıktılar |
+| Araştırma hattı | Geçmişe ait özellikler, diğer profillerin split/purge kapsamı, seçim ve native çıktılar |
 | Metrikler ve karar | Ortak origin, referanslar, QLIKE, belirsizlik, release kriteri |
 | Canlı kayıt ve operasyon | Saat, kimlik zinciri, kilitli kohort, iş tekrarı ve geri kurma |
 | Uygulama ve CI | Backend, frontend, temiz ortam ve release geri yükleme |

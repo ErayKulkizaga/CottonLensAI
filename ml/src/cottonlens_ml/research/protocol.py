@@ -9,10 +9,19 @@ from cottonlens_ml.config import FEATURE_NAMES
 from cottonlens_ml.research import VERSION
 
 
-def eligible(history, horizon=5):
-    names = ['cotton_close', f'target_return_{horizon}']
-    return history.loc[(history.cotton_close > 0) & np.isfinite(history[names]).all(axis=1)
-                       & history[f'target_date_{horizon}'].notna()].copy()
+def eligible(history, horizon=None):
+    """Select complete label pairs for the shared cohort, or one explicit horizon."""
+    horizons = (1, 5) if horizon is None else (horizon,)
+    names = ['cotton_close', *[f'target_return_{h}' for h in horizons]]
+    keep = (history.cotton_close > 0) & np.isfinite(history[names]).all(axis=1)
+    for h in horizons:
+        target_date = history[f'target_date_{h}']
+        if (target_date.notna() & target_date.le(history.date)).any():
+            raise ValueError('Research target dates must follow their origin')
+        keep &= target_date.notna()
+    if horizon is None and history.target_date_5.le(history.target_date_1).any():
+        raise ValueError('Research target dates must put T+5 after T+1')
+    return history.loc[keep].copy()
 
 
 def mature(history, cutoff, years=None):
