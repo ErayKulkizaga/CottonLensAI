@@ -237,8 +237,30 @@ kayıplarından yayın kararını dağıtım fitinden önce yeniden doğruluyor.
 Yeni kilit eksik katları kabul etmiyor. Yeniden üretim, ilk refitten
 önce ilgili ufkun özgün sonuç vektörlerini ve sonrasında yeni
 vektörlerin aynı origin'lere ait olduğunu denetliyor. Eşikler aynı.
-Bu turda piyasa fiti veya paket yayını yapılmadı. Taze tekrar
-makbuzunun native ledger kapsamına bağlanması ayrı kontrol olarak açık.
+Bu turda piyasa fiti veya paket yayını yapılmadı.
+
+### Taze tekrar ve yayın makbuzu
+
+Genel schema-3 ihracı üç alanlı eski makbuzdan `passed` ve
+`fresh_fits` işaretlerini okuyarak dağıtım hazırlığına geçebiliyordu.
+Yeni `reproduction-t{h}-bound-v1.json` makbuzu kilitli kararın,
+özgün ve tekrar tahminlerinin, kat kararının ve model dosyalarına
+bağlı fit kayıtlarının kimliğini saklıyor. Tekrar tahmini, aynı
+reçete, refit takvimi ve origin'lerdeki tekrar kayıtlarından
+yeniden birleştiriliyor. Ensemble üyeleri ayrı doğrulanıyor.
+İhraç makbuzu dağıtım verisi yüklenmeden önce yeniden denetliyor.
+
+Eski makbuz ve yayınlar arşivde okunabilir. Bir eski tekrar
+makbuzunu bağlamak, eksik bir fitin sessizce yeniden çalışmasına
+yol açmıyor. Bozuk model baytı, yanlış fit anahtarı, değişmiş
+tahmin, yanlış karar ve başka kilit otomatik testlerde reddedildi.
+
+Ayrı CPU ana deneyinde mevcut `research-full-year-v1-r2`
+tekrar kanıtı salt okunur kontrol edildi. 194 fiyat, 194 risk ve
+192 eski kalibrasyon fit kaydı ile 968 native dosya checksum'la
+eşleşti. 16 özgün–tekrar çıktı çifti aynı origin'lerdeydi.
+Kayıtlı fiyat ve varyans farkının en büyüğü sıfırdı. Bu
+tarihsel tekrar sonucu ileri dönem tahmin başarısı ölçmez.
 
 ## Kalan denetim kapsamı
 
@@ -248,7 +270,7 @@ makbuzunun native ledger kapsamına bağlanması ayrı kontrol olarak açık.
 | Yerel ve GitHub eşlemesi | CI, birleştirme kararı ve main eşitliği |
 | Veri girişi | Kaynak semantiği, vintage, seans ve saat, yarım cache ve eksiklik |
 | Araştırma hattı | Diğer profillerin zaman, seçim ve native çıktı kapsamı |
-| Metrikler ve karar | Taze tekrar makbuzu, kalan risk karşılaştırmaları ve ileri doğrulama sınırı |
+| Metrikler ve karar | CPU tekrar raporunun ledger kapsamı, kalan risk karşılaştırmaları ve ileri doğrulama sınırı |
 | Canlı kayıt ve operasyon | Saat, kimlik zinciri, kilitli kohort, iş tekrarı ve geri kurma |
 | Uygulama ve CI | Backend, frontend, temiz ortam ve release geri yükleme |
 

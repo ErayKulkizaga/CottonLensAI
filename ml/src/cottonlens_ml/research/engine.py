@@ -167,12 +167,25 @@ class Experiment:
         # Common 120-observation warmup across all families. Never remove feature-missing rows.
         return rows.loc[rows.date >= self.history.date.iloc[119]].copy()
 
+    @staticmethod
+    def fit_specification(spec, train, validation, test, role, iterations):
+        return {'recipe': spec, 'role': role, 'iterations': iterations,
+                'train_dates': train.date.dt.strftime('%Y-%m-%d').tolist(),
+                'validation_dates': [] if validation is None else validation.date.dt.strftime('%Y-%m-%d').tolist(),
+                'test_dates': test.date.dt.strftime('%Y-%m-%d').tolist(),
+                'train_identity': frame_identity(train, list(train.columns))}
+
+    def outer_chunks(self, test, spec):
+        cadence = spec.get('cadence', 126)
+        if cadence == 126:
+            return [(test.date.min(), test)]
+        start = int(test.cotton_session_index.iloc[0])
+        buckets = (test.cotton_session_index - start) // cadence
+        dates = self.history.set_index('cotton_session_index').date
+        return [(dates.loc[start + int(b) * cadence], test.loc[buckets.eq(b)]) for b in sorted(buckets.unique())]
+
     def fit(self, spec, train, validation, test, role, *, iterations=None, repeat=None):
-        specification = {'recipe': spec, 'role': role, 'iterations': iterations,
-                         'train_dates': train.date.dt.strftime('%Y-%m-%d').tolist(),
-                         'validation_dates': [] if validation is None else validation.date.dt.strftime('%Y-%m-%d').tolist(),
-                         'test_dates': test.date.dt.strftime('%Y-%m-%d').tolist(),
-                         'train_identity': frame_identity(train, list(train.columns))}
+        specification = self.fit_specification(spec, train, validation, test, role, iterations)
         record = self.ledger.run(specification, lambda workspace: fit_predict(
             self.history, train, validation, test, spec, workspace, iterations=iterations), repeat=repeat,
             before_compute=getattr(self, 'before_compute', None))
@@ -273,16 +286,8 @@ class Experiment:
         members, records = [], []
         for seed in chosen['seeds']:
             spec = seed['recipe']
-            cadence = spec.get('cadence', 126)
-            if cadence == 126:
-                chunks = [(test.date.min(), test)]
-            else:
-                start = int(test.cotton_session_index.iloc[0])
-                buckets = (test.cotton_session_index - start) // cadence
-                dates = self.history.set_index('cotton_session_index').date
-                chunks = [(dates.loc[start + int(b) * cadence], test.loc[buckets.eq(b)]) for b in sorted(buckets.unique())]
             predicted = []
-            for cutoff, chunk in chunks:
+            for cutoff, chunk in self.outer_chunks(test, spec):
                 train = self.train_rows(cutoff, spec)
                 record = self.fit(spec, train, None, chunk, f'outer-{namespace}-{fold["fold"]}-{cutoff}',
                                   iterations=seed['iterations'], repeat=repeat)
@@ -486,29 +491,26 @@ def lock(experiment):
 
 
 def reproduce(experiment):
+    from cottonlens_ml.research.reproduction import (
+        plan,
+        receipt_path,
+        verified_receipt,
+    )
+
     locked = read_record(experiment.root / 'locked.json')
-    if locked['identity'] != content_id(experiment.identity):
-        raise ValueError('Locked research identity changed')
-    for h, candidate in locked['horizons'].items():
-        differences = []
-        family, namespace, horizon = candidate['family'], candidate['namespace'], int(h)
-        folds = experiment.identity['split']['folds']
-        originals = []
-        for fold in folds:
-            name = f'{family}-t{h}-fold{fold["fold"]}.json'
-            original = read_record(experiment.root / 'outer' / namespace / name)
-            _, predictions = verified_outer(experiment.history, fold, original, family, horizon)
-            decision = read_record(experiment.root / 'decisions' / namespace / name)
-            originals.append((fold, predictions, decision['chosen']))
-        for fold, predictions, chosen in originals:
-            fresh = experiment.outer(chosen, fold, namespace, repeat='reproduction')
-            _, replayed = verified_outer(experiment.history, fold, fresh, family, horizon)
-            differences.append(float(np.max(np.abs(replayed - predictions))))
-        receipt = {'max_abs_log_return_difference': max(differences), 'fresh_fits': True,
-                   'status': 'passed' if max(differences) <= 1e-6 else 'failed'}
-        freeze_record(experiment.root / f'reproduction-t{h}.json', receipt)
+    plans = plan(experiment, locked)
+    for h, folds in plans.items():
+        target = receipt_path(experiment, h)
+        legacy = experiment.root / f'reproduction-t{h}.json'
+        if not target.exists() and not legacy.exists():
+            for item in folds:
+                experiment.outer(item.chosen, item.fold, item.namespace, repeat='reproduction')
+        receipt = verified_receipt(experiment, locked, h, folds)
+        if target.exists() and read_record(target) != receipt:
+            raise ValueError('Bound reproduction receipt disagrees with verified native evidence')
+        freeze_record(target, receipt)
         if receipt['status'] != 'passed':
-            raise ValueError('Fresh GPU reproduction exceeds 1e-6; release verification blocked')
+            raise ValueError('Fresh reproduction exceeds 1e-6; release verification blocked')
 
 
 def refinement_search(experiment, round_name):

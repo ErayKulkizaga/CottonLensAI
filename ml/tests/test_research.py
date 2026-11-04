@@ -386,6 +386,25 @@ def test_release_rechecks_locked_gate_from_paired_outputs(tmp_path):
         _checked_price_lock(experiment, locked)
 
 
+def test_export_rejects_unbound_pass_markers_before_loading_deployment_data(tmp_path, monkeypatch):
+    from types import SimpleNamespace
+
+    from cottonlens_ml.research import release
+
+    identity = {'source_data': {}, 'split': {'folds': []}}
+    freeze_record(tmp_path/'locked.json', {'identity': content_id(identity), 'horizons': {}})
+    freeze_record(tmp_path/'diagnosis.json', {'status': 'passed'})
+    for h in (1, 5):
+        freeze_record(tmp_path/f'reproduction-t{h}.json', {
+            'status': 'passed', 'fresh_fits': True, 'max_abs_log_return_difference': 0.,
+        })
+    monkeypatch.setattr(release, 'require_colab_training', lambda: None)
+    monkeypatch.setattr(release, '_checked_price_lock', lambda *_: {})
+    monkeypatch.setattr(release, 'load_frozen_data', lambda *_: pytest.fail('Unbound receipt reached deployment'))
+    with pytest.raises(ValueError, match='Bound reproduction receipt'):
+        release.export(SimpleNamespace(root=tmp_path, identity=identity), tmp_path)
+
+
 def test_reproduction_rejects_misaligned_original_before_fitting(tmp_path):
     from types import SimpleNamespace
 

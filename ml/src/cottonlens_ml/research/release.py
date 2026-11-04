@@ -24,6 +24,7 @@ from cottonlens_ml.research.protocol import (
     frozen_outer_folds,
     verified_outer,
 )
+from cottonlens_ml.research.reproduction import verify_for_export
 from cottonlens_ml.research.search import historical_gate
 from cottonlens_ml.runtime_guard import require_colab_training
 from cottonlens_ml.walkforward import summarize
@@ -116,9 +117,6 @@ def export(experiment, repo):
     locked = read_record(experiment.root / 'locked.json')
     if read_record(experiment.root / 'diagnosis.json')['status'] != 'passed':
         raise ValueError('Diagnosis must pass before export')
-    receipts = {str(h): read_record(experiment.root / f'reproduction-t{h}.json') for h in (1, 5)}
-    if any(r['status'] != 'passed' or r['fresh_fits'] is not True for r in receipts.values()):
-        raise ValueError('Fresh reproduction must pass before export')
     pending = experiment.root / 'release.json'
     if pending.exists():
         prior = read_record(pending)
@@ -126,6 +124,7 @@ def export(experiment, repo):
             raise ValueError('Frozen release changed')
         print('Validated release:', prior['path'], flush=True)
         return
+    receipts = verify_for_export(experiment, locked)
     verified = _checked_price_lock(experiment, locked)
     market, full = load_frozen_data(experiment.identity['source_data'])
     full = feature_history(full, market)
