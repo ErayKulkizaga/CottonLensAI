@@ -61,6 +61,23 @@ doğrulayıp sonuçları açmadan değerlendirme tarifini kilitlemek.
 Erken dönem testi geçmiş başka bir rejimde tekrar kanıtı verebilir.
 Bugünkü piyasada ileri doğrulama sonucu ayrı kalır.
 
+**2010 öncesi takvim ve eğitim kaynağı devamı:** CFTC’deki NYBOT
+bildirimleri ve ICE takvimleriyle 1.110 seansın tarih kapsamı kuruldu.
+İki eksik günlük rapor (7 Kasım 2005, 21 Mayıs 2007) için haftalık
+rapordaki beşer kontrat, çevredeki günlük raporlarla birebir eşleşti.
+20, 23 ve 24 Ocak 2006 raporları yanlış dosya sonekiyle arşivlenmiş.
+İç tarih ve başlık doğrulandı. Ocak zincirindeki 40 Today/Previous
+karşılaştırması eşleşti. Üç eğitim XLS dosyası doğrulandı. Değerlendirme
+dönemindeki 4 Ağustos 2009 XLS henüz açılmadı.
+
+Takvim taslağı 818 geçmiş seans ve 4 Kasım 2008–3 Kasım 2009 arasında
+252 origin içerir (son hedef 4 Kasım 2009). Dosya varlığı fiyat
+serisinin kabulü için yeterli değildir. Eksik fiyat, yanlış kontrat
+ve arşiv sürümü kontrolleri tam veri üzerinde sürer. Deney tasarımı
+ve fiyat kuralı, değerlendirme fiyatları açılmadan kilitlenecek.
+40 dosya taze geri kuruldu ve çevrimdışı denetim eşleşti. Yeni fit ve
+değerlendirme fiyatı erişimi sıfır.
+
 # Yahoo fiyat revizyonu ve yeni ileri kohort — 4 Kasım 2026
 
 3 Kasım 03:05 çalışması, Yahoo'nun 30 Ekim kapanışını 78,13 yerine
