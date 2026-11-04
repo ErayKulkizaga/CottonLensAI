@@ -125,6 +125,35 @@ kapsar. Kaynakların gerçek tarihsel teslim saatleri ayrıca doğrulanmalı.
 | `ready.json` | `7716394157e844073834afdfc0629b38b1febaf1fc8c2fef971945fa2e8bbf05` |
 | `split_id` | `9d964b2c88a6d36b7e1fc8421efa1a3c86a3b0531b6cbcb072856918d014aa1d` |
 
+### Özellikler, seçim ve rapor eşleşmesi
+
+Aynı ana deneyin 24 özellik sütunu, checksum'ı doğrulanmış ham
+seriden 3.520 origin üzerinde yeniden üretildi. 84.480 hücre
+eksiklik deseni dahil eşleşti. DXY ve WTI için 3.519 kaynak tarihi
+vardı ve tamamı önceki Cotton gözlemiyle sınırlıydı. İki seans
+geciken DXY kaydı bir, WTI kaydı ikiydi. Bu ölçüm kodun kullandığı
+bar tarihlerini doğrular. Gerçek tarihsel Yahoo teslim saati bu
+bar tarihlerinden çıkarılamaz.
+
+1.780 özgün ledger kaydından 16 yıl/ufuk seçimi ve OOS tahminleri
+yeniden kuruldu. 96 fiyat adayı için üç geçmiş bloktaki MAE ve
+küçültme seçimi, risk adayları için geçmiş QLIKE ve seçilen
+tahminler saklı kayıtlarla eşleşti. T+1 ham fiyat-MAE farkı
+Naive'a göre −%1,70065, küçültme sonrası −%0,26195. T+5 sırasıyla
+−%1,97452 ve −%0,99644. Ağırlık T+1'de 4/8 ve T+5'te 3/8 yılda
+sıfırdı. Küçültme ham tahminlerin kaybını azalttı. Bu tarife
+referans üstünlüğü sağlamadı.
+
+Genel full-year raporu 16 geçerli JSON kaydını yeterli sayıyordu.
+Yeniden hash'lenen hatalı origin, fiyat, hedef tarihi veya gerçekleşen
+hedefle rapor oluşturulabiliyordu. Rapor ve aralık düzeltmesi artık
+kanonik yıl/ufuk dosyalarını ve checksum bağlı tarihçeyi doğruluyor.
+Türetilen aralıklar özgün manifest ve çıktı hash'lerine bağlanıyor,
+nokta tahminleri ve hedefler ayrıca karşılaştırılıyor. Özgün ve
+düzeltilmiş 16'şar dosya kontrolden geçti. Geçici kopyada 10.000
+tekrarla eski raporun bütün sayısal alanları yeniden üretildi. Yeni
+istatistik kodu iki ek güç açıklaması alanı yayımlıyor.
+
 ## Kalan denetim kapsamı
 
 | Alan | Sonraki doğrulama |
@@ -132,8 +161,8 @@ kapsar. Kaynakların gerçek tarihsel teslim saatleri ayrıca doğrulanmalı.
 | Yayın kimliği ve içe aktarım | Kayıt ile yayın arasındaki geçiş ve PostgreSQL üzerinde şema uygulaması |
 | Yerel ve GitHub eşlemesi | PR bağımlılıkları, birleştirme planı ve main eşitliği |
 | Veri girişi | Kaynak semantiği, vintage, seans ve saat, yarım cache ve eksiklik |
-| Araştırma hattı | Geçmişe ait özellikler, diğer profillerin split/purge kapsamı, seçim ve native çıktılar |
-| Metrikler ve karar | Ortak origin, referanslar, QLIKE, belirsizlik, release kriteri |
+| Araştırma hattı | Diğer profillerin zaman ve seçim kapsamı, öğrenilmiş fiyat ölçekleyicileri ve native çıktılar |
+| Metrikler ve karar | Diğer karşılaştırma yollarında eşleştirme, QLIKE, belirsizlik ve release kriteri |
 | Canlı kayıt ve operasyon | Saat, kimlik zinciri, kilitli kohort, iş tekrarı ve geri kurma |
 | Uygulama ve CI | Backend, frontend, temiz ortam ve release geri yükleme |
 

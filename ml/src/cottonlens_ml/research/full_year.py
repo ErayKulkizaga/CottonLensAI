@@ -191,18 +191,76 @@ def causal_intervals(history, origins, h):
     return interval_rows(history, current, current.ewma_variance.to_numpy(), past, h)
 
 
+def _verified_yearly_outputs(folder, paths):
+    ready = read_record(folder/'ready.json')
+    folds = ready['identity']['split']['folds']
+    by_year = {f['year']: f['origins'] for f in folds}
+    years = set(range(2016, 2024))
+    if len(folds) != len(years) or set(by_year) != years:
+        raise ValueError('Eight unique frozen years required')
+    keys = {f't{h}-year{year}.json': (year, h) for year in years for h in (1, 5)}
+    if {p.name for p in paths} != set(keys):
+        raise ValueError('Sixteen unique frozen year/horizon outputs required')
+
+    derived = ready.get('derived_analysis')
+    parent = folder.parent if derived else folder
+    if derived:
+        parent_ready = parent/'ready.json'
+        if digest(parent_ready) != derived['parent_ready_sha256']:
+            raise ValueError('Corrected outputs require their exact parent manifest')
+        if read_record(parent_ready) != {k: v for k, v in ready.items() if k != 'derived_analysis'}:
+            raise ValueError('Corrected outputs changed their frozen history identity')
+    history_path = parent/'history.parquet'
+    if digest(history_path) != ready['history_sha256']:
+        raise ValueError('Yearly outputs require verified frozen history')
+    history = pd.read_parquet(history_path)
+    if history.date.duplicated().any() or not history.date.is_monotonic_increasing:
+        raise ValueError('Unique sorted frozen Cotton origins required')
+
+    records = []
+    for path in paths:
+        year, h = keys[path.name]
+        record = read_record(path)
+        if (record['year'], record['horizon']) != (year, h):
+            raise ValueError('Frozen year/horizon mismatch')
+        origins = by_year[year]
+        frame = pd.DataFrame(record['records'])
+        if (not origins or sorted(set(origins)) != origins or 'date' not in frame
+                or frame.date.tolist() != origins):
+            raise ValueError('Frozen origin mismatch')
+        reference = rows_at(history, origins)
+        targets = reference[f'target_date_{h}']
+        if targets.isna().any() or targets.le(reference.date).any() or targets.ge(pd.Timestamp('2024-01-01')).any():
+            raise ValueError('Frozen target dates must mature within the research period')
+        if 'target_date' in frame and frame.target_date.tolist() != targets.dt.strftime('%Y-%m-%d').tolist():
+            raise ValueError('Frozen target date mismatch')
+        fields = ('cotton_close', f'target_return_{h}', f'variance_target_{h}')
+        for name in fields:
+            if name not in frame or not np.array_equal(frame[name], reference[name]):
+                raise ValueError(f'Frozen value mismatch for {name}')
+        if derived:
+            source_path = parent/'pilot-full-year'/path.name
+            parent_sha = derived['parent_outputs_sha256'][path.name]
+            if digest(source_path) != parent_sha or record.get('parent_output_sha256') != parent_sha:
+                raise ValueError('Corrected output parent checksum mismatch')
+            original = read_record(source_path)
+            def point_values(row):
+                return {k: v for k, v in row.items() if k != 'status' and not k.endswith(('_lo', '_hi'))}
+
+            if (record.get('decision_id') != original.get('decision_id') or
+                any(point_values(a) != point_values(b)
+                    for a, b in zip(original['records'], record['records'], strict=True))):
+                raise ValueError('Corrected output changed frozen targets or point forecasts')
+        records.append(record)
+    return ready, history, records
+
+
 def correct_intervals(folder):
     """Separate analysis identity: preserve all fitted prices/variances and old records."""
     originals = sorted((folder/'pilot-full-year').glob('*.json'))
-    if len(originals) != 16:
+    if len(originals) < 16:
         return folder
-    expected_keys = {(year, h) for year in range(2016, 2024) for h in (1, 5)}
-    if {(read_record(p)['year'], read_record(p)['horizon']) for p in originals} != expected_keys:
-        raise ValueError('Sixteen unique frozen year/horizon outputs required')
-    ready = read_record(folder/'ready.json')
-    history = pd.read_parquet(folder/'history.parquet')
-    if digest(folder/'history.parquet') != ready['history_sha256']:
-        raise ValueError('Correction requires verified frozen history')
+    ready, history, records = _verified_yearly_outputs(folder, originals)
     source = {p.name: digest(p) for p in originals}
     policy = {**INTERVAL_POLICY, 'parent_ready_sha256': digest(folder/'ready.json'),
               'parent_outputs_sha256': source, 'correction_code_sha256': digest(Path(__file__)),
@@ -210,14 +268,10 @@ def correct_intervals(folder):
               'model_training': False, 'price_and_variance_predictions_unchanged': True}
     target = folder/('interval-correction-'+content_id(policy)[:16])
     freeze_record(target/'ready.json', {**ready, 'derived_analysis': policy})
-    for path in originals:
-        original = read_record(path)
+    for path, original in zip(originals, records, strict=True):
         h = original['horizon']
         frame = pd.DataFrame(original['records'])
         frame['date'] = pd.to_datetime(frame.date)
-        expected = next(f['origins'] for f in ready['identity']['split']['folds'] if f['year'] == original['year'])
-        if frame.date.dt.strftime('%Y-%m-%d').tolist() != expected:
-            raise ValueError('Correction cannot change frozen origins')
         intervals = causal_intervals(history, frame, h)
         if not intervals.status.eq('available').all():
             raise ValueError('Incomplete causal interval replay; decision pending')
@@ -350,9 +404,10 @@ def verify_reproduction(folder):
 
 
 def report(folder, *, repetitions=10000):
-    records = [read_record(p) for p in sorted((folder / 'pilot-full-year').glob('*.json'))]
-    if len(records) != 16:
-        return {'status': 'pending', 'complete_outputs': len(records), 'required_outputs': 16, 'decision': 'pending_not_negative'}
+    paths = sorted((folder / 'pilot-full-year').glob('*.json'))
+    if len(paths) < 16:
+        return {'status': 'pending', 'complete_outputs': len(paths), 'required_outputs': 16, 'decision': 'pending_not_negative'}
+    ready, _, records = _verified_yearly_outputs(folder, paths)
     hypotheses, horizons = {}, {}
     for h in (1, 5):
         parts, interval_parts, vol_parts, hit_parts = [], [], [], []
@@ -439,10 +494,10 @@ def report(folder, *, repetitions=10000):
     body = {'status': 'complete', 'evidence': 'reused_historical_research_not_independent_holdout',
             'horizons': horizons, 'hypotheses': hypotheses, 'wide_search_started': False,
             'interval_policy': records[0].get('interval_policy', {'status': 'invalid_annual_selection_calibration'}),
-            'analysis_identity': read_record(folder/'ready.json').get('derived_analysis'),
+            'analysis_identity': ready.get('derived_analysis'),
             'reports_only_no_runtime_import': True,
             'ready_sha256': digest(folder / 'ready.json'),
-            'input_outputs_sha256': {p.name: digest(p) for p in sorted((folder/'pilot-full-year').glob('*.json'))},
+            'input_outputs_sha256': {p.name: digest(p) for p in paths},
             'repetitions': repetitions, 'report_code_sha256': digest(Path(__file__))}
     from cottonlens_ml.research import statistics
     body['statistics_code_sha256'] = digest(Path(statistics.__file__))
