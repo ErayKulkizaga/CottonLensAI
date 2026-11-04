@@ -1,3 +1,32 @@
+# Gece görevi kapatıldı ve yakın dönem risk denetimi tamamlandı — 4 Kasım 2026
+
+İki Windows görevi (`CottonLens-Risk-Daily-v1` ve
+`CottonLens-Observed-Archive-v2`) devre dışı. Uyandırma zamanlayıcıları
+önceki güç ayarlarına döndürüldü. v2'nin 4 Kasım 03:20 TSİ'deki zamanında
+yayını ve eski kohort kayıtları korunur. Tek zamanında yayın çalışma
+kanıtıdır. Bu pakette ileri performans skoru hesaplanmadı.
+
+`ct-own-level-recent-history-audit-v1`, sabit HAR risk tarifini mevcut
+CT=F serisinde 2024–29 Ekim 2026 hedefleriyle denetledi. 711 tahmin ve 61
+CPU fit; yıllık seçim yalnız geçmiş doğrulamada, beşinci hedef tarihi refit
+kesiminden kesin olarak önce. Ortalama eşlenmiş QLIKE kazancı
+(EWMA−model) +0,000090; %95 blok20 [−0,014207, +0,012492] ve blok60
+[−0,011810, +0,009883]. Geçmiş doğrulama 2025 ve 2026'da model ağırlığını
+sıfır seçti (459/711 tahmin EWMA). Sıfır ek fitli, sonradan yapılan ham
+tahmin kontrolünde ortalama kazanç −0,003884 ve iki aralık da sıfırı
+içeriyor. 2024–2026 dönemi daha önce incelendi ve bu CT=F serisinin
+tarihsel vintage bilgisi doğrulanmış değil.
+
+**Karar:** Belirsiz. Yakın geçmişte üstünlük gösterilmedi. EWMA korunur
+ve bu tarif için bilgisayara bağlı ileri toplama kaldırıldı. Yeni bir
+model aramadan önce tarihli ve kontrat kimliği belli uzlaşma fiyatıyla
+CT=F hedefindeki farkın ölçülebilir olup olmadığını denetle.
+
+Ön kayıt 297, sonuç paketi 730 dosya ile private GitHub'dan taze geri
+kuruldu. Sıfır fitli replay tüm 61 native çıktıyı, eşlenmiş kayıpları ve
+raporu doğruladı. [Ön kayıt](https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/ct-recent-risk-audit-prereg-20261104) ·
+[Sonuç paketi](https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/ct-recent-risk-audit-result-20261104)
+
 # Yahoo fiyat revizyonu ve yeni ileri kohort — 4 Kasım 2026
 
 3 Kasım 03:05 çalışması, Yahoo'nun 30 Ekim kapanışını 78,13 yerine

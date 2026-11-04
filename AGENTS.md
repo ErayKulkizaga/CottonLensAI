@@ -1,5 +1,7 @@
 # CottonLens AI contributor notes
 
+- Current as of 2026-11-04: both CottonLens Windows collection tasks are disabled. The earlier daily configuration and cohort entries below are historical. Preserve the actual first-observed publication. The 61-fit `ct-own-level-recent-history-audit-v1` is complete and inconclusive on 711 reviewed origins; see `docs/STATUS.md`. Keep EWMA and consult the fit registry before further work.
+
 - The 2026-11-04 successor study `own-level-forward-v2-first-observed` is separately locked. Its first-admitted-price rule records later conflicts and requires complete session overlap. The v1 study remains strict and preserves the missed 2026-11-02 origin. The existing consoleless daily task points to v2 and has user-approved wake enabled. See the latest `docs/STATUS.md` entry. Earlier entries describe v1.
 
 - `ct-forward-inference-calibration-v1` is completed ZERO FIT; see `docs/CT_INFERENCE_CALIBRATION_20261031.md`. Source7a2e is analysis only, not a new model. Known-null joint20/60 oversize was not demonstrated; this is not universal calibration proof. Synthetic small-effect recovery11.5%/4.7% is not actual market power. Do not rerun this fixed control, weaken gates or change the active forward study. Next evidence remains the Nov3 source/clock receipt; no partial score.

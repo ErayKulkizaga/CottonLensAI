@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "as_of": "2026-10-31",
+  "as_of": "2026-11-04",
   "release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/evidence-20261005",
   "limits": [
     "Only available files are inventoried; missing past predictions are not reconstructed.",
@@ -20405,6 +20405,69 @@
       "evidence": "evidence/ct-forward-inference-calibration-result-20261031.json",
       "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/ct-inference-calibration-20261031",
       "id": "db01aa6be80b3d0ccdf86770014d05ccd7873c926be35fcf1f9cc0c8528e8ad9"
+    },
+    {
+      "experiment": "ct-own-level-recent-history-audit-v1",
+      "profile": "ct-own-level-recent-history-audit-v1",
+      "horizon": 1,
+      "model_families": [
+        "har"
+      ],
+      "target": "next observed CT=F squared log return",
+      "baseline": "EWMA 0.94",
+      "classification": "INCONCLUSIVE",
+      "classification_scope": "Already reviewed 2024–2026 CT=F proxy history, no independent holdout.",
+      "source_id": "97a97c2cb15443d2b4c318ca2be0f415462ab2effe30b1151e1e6e97cb4d29b3",
+      "data_id": "b4f16662a5a717bf999fdcec511f4c3b7bb916749c415915a46e7dbf7464fa90",
+      "design_id": "2de6f981f165e022b069082f74e0d1fa0a32f20dd856ac6cfeeeed661ecbd916",
+      "completed_market_fits": 61,
+      "prediction_payload": "audit/paired-losses.csv",
+      "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/ct-recent-risk-audit-result-20261104",
+      "evidence": "research/evidence/ct-recent-risk-audit-result-20261104.json",
+      "metrics": {
+        "origins": 711,
+        "fits": 61,
+        "mean_gain": 8.991927980429348e-05,
+        "intervals": {
+          "20": [
+            -0.014206673410282646,
+            0.012492448759155509
+          ],
+          "60": [
+            -0.011810309540064996,
+            0.009883483015385183
+          ]
+        },
+        "years": {
+          "2024": {
+            "origins": 252,
+            "gain": 0.00025370082516327325
+          },
+          "2025": {
+            "origins": 252,
+            "gain": -4.939690539404939e-16
+          },
+          "2026": {
+            "origins": 207,
+            "gain": -8.127776752293136e-16
+          }
+        },
+        "weights": {
+          "2024": 0.75,
+          "2025": 0.0,
+          "2026": 0.0
+        },
+        "trimmed_gain": 9.094254330167836e-05,
+        "historical_support": false,
+        "independent_holdout": false,
+        "forward_publication": false,
+        "market_skill": false,
+        "record_id": "37725eff47dea234b90dd4d743ee22f78f8bffba3cc84045487d522ea0a03980"
+      },
+      "independent_holdout": false,
+      "market_skill": false,
+      "synthetic": false,
+      "id": "b5b76d765bffe52dcae5ddb076fbef203e036c1633c5dd66624b9a0a5dc51900"
     }
   ],
   "local_evidence": [
@@ -21267,6 +21330,10 @@
     {
       "path": "evidence/ct-forward-inference-calibration-result-20261031.json",
       "sha256": "bf3c761ce58e51a6ce0c0d54d97573603fe16a56848de81adf6942cb66bebbe9"
+    },
+    {
+      "path": "evidence/ct-recent-risk-audit-result-20261104.json",
+      "sha256": "bcec87c4ddb8942b10a0e1efe7b7205bb35ffc3d141197e0b8f74db3f01ddea1"
     }
   ]
 }

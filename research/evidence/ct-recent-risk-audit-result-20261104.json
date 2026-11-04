@@ -1,0 +1,115 @@
+{
+  "profile": "ct-own-level-recent-history-audit-v1",
+  "frozen_identity": {
+    "profile": "ct-own-level-recent-history-audit-v1",
+    "design_id": "2de6f981f165e022b069082f74e0d1fa0a32f20dd856ac6cfeeeed661ecbd916",
+    "contract_id": "2aa6aa7a9c380e31544e2ead4ae068a50d60546b11f61b8db288a104b8d2124e",
+    "source_id": "97a97c2cb15443d2b4c318ca2be0f415462ab2effe30b1151e1e6e97cb4d29b3",
+    "python": "3.12.14",
+    "versions": {
+      "numpy": "2.1.3",
+      "pandas": "2.2.3",
+      "scipy": "1.18.1",
+      "pyarrow": "21.0.0"
+    },
+    "record_id": "bf104295c05d8c8df4700b6e383bf98abdeadb17c835130c52f705ce10b7de17"
+  },
+  "seed_sha256": "b4f16662a5a717bf999fdcec511f4c3b7bb916749c415915a46e7dbf7464fa90",
+  "preregistration": {
+    "release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/ct-recent-risk-audit-prereg-20261104",
+    "archive_sha256": "bb081f7adbbe5dc06781f4b2929a782c906c77d8e3ca9fab28a57ab746fcb402",
+    "fresh_restore_files": 297
+  },
+  "delivery": {
+    "release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/ct-recent-risk-audit-result-20261104",
+    "archive_sha256": "d0ca28c22047fbf465050fc8ad988f1639c629b27b12b54c5a5f3b8162e48307",
+    "fresh_restore_files": 730,
+    "excluded": 0,
+    "replay_fits": 0,
+    "native_fit_payloads_replayed": 61,
+    "verified_artifacts_sha256": {
+      "result.json": "87e7c5d8a30d6f3983c8be3f1f347acf287571db0e33b269c78853e04e6b1c6a",
+      "paired-losses.csv": "d2b596f226363abd36d324aa47fee2884d8db33ab5732a136345b5fc79e72296",
+      "raw-diagnostic.json": "b2cade75149c5851e4eb24418bc623f89857818fe5683933199bdaf4c86f67b4",
+      "task-retirement-readback.json": "e9975ddbfc44c449aac8eec8676fdd377d0f49021e0b4dcde356e9fc28b462d8"
+    }
+  },
+  "selection": "Fixed annual 3x63 past-only selection, weights 0/.25/.5/.75/1, smallest tie",
+  "target": "next observed CT=F squared log return",
+  "baseline": "EWMA 0.94",
+  "metrics": {
+    "origins": 711,
+    "fits": 61,
+    "mean_gain": 8.991927980429348e-05,
+    "intervals": {
+      "20": [
+        -0.014206673410282646,
+        0.012492448759155509
+      ],
+      "60": [
+        -0.011810309540064996,
+        0.009883483015385183
+      ]
+    },
+    "years": {
+      "2024": {
+        "origins": 252,
+        "gain": 0.00025370082516327325
+      },
+      "2025": {
+        "origins": 252,
+        "gain": -4.939690539404939e-16
+      },
+      "2026": {
+        "origins": 207,
+        "gain": -8.127776752293136e-16
+      }
+    },
+    "weights": {
+      "2024": 0.75,
+      "2025": 0.0,
+      "2026": 0.0
+    },
+    "trimmed_gain": 9.094254330167836e-05,
+    "historical_support": false,
+    "independent_holdout": false,
+    "forward_publication": false,
+    "market_skill": false,
+    "record_id": "37725eff47dea234b90dd4d743ee22f78f8bffba3cc84045487d522ea0a03980"
+  },
+  "post_hoc_unblended": {
+    "audit_result_verified": true,
+    "scope": "post-hoc unblended diagnostic; zero fits, no model selection",
+    "raw_mean_gain": -0.003884364912496207,
+    "yearly_raw_gain": {
+      "2024": -0.0048374808825398675,
+      "2025": -0.028552433716045517,
+      "2026": 0.02730664263796479
+    },
+    "raw_gain_ci": {
+      "20": [
+        -0.03586490955464631,
+        0.02646129641782063
+      ],
+      "60": [
+        -0.030918834178903225,
+        0.022553262026122598
+      ]
+    },
+    "first_target": "2024-01-03",
+    "last_target": "2026-10-29",
+    "record_id": "dfe229dab67c807d7c7f925e3d08e4d88754399a35ee2b22d0819db4fc9ee4c6"
+  },
+  "fallback_origins": 459,
+  "classification": "INCONCLUSIVE",
+  "classification_scope": "Already reviewed 2024–2026 CT=F proxy history, no independent holdout.",
+  "operations": {
+    "dailyTask": "CottonLens-Risk-Daily-v1",
+    "dailyState": "Disabled",
+    "hourlyState": "Disabled",
+    "powerWakeTimersAC": 2,
+    "powerWakeTimersDC": 0,
+    "capturedAtUtc": "2026-11-04T08:48:49.3020698+00:00",
+    "oldStudy": "own-level-forward-v2-first-observed"
+  }
+}

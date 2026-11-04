@@ -56524,6 +56524,55 @@
       "cohort_lock_id": "71421358ac97bd1c9d331e8d30a413d1c78c689743413e369a39d366b1847fb6",
       "delivery_evidence": "evidence/ct-forward-daily-activation-20261030.json",
       "native_payloads_reverified_by_delivery": true
+    },
+    {
+      "id": "c32d326eafda55f38b181596ae267d531ce171ae68c702db0bb26a938ef19074",
+      "scope": {
+        "profile": "ct-own-level-recent-history-audit-v1",
+        "source_id": "97a97c2cb15443d2b4c318ca2be0f415462ab2effe30b1151e1e6e97cb4d29b3",
+        "design_id": "2de6f981f165e022b069082f74e0d1fa0a32f20dd856ac6cfeeeed661ecbd916",
+        "seed_sha256": "b4f16662a5a717bf999fdcec511f4c3b7bb916749c415915a46e7dbf7464fa90"
+      },
+      "scope_id": "ab6e670fa7e3521c3160a3e07d0bbbeaa2a5bf152150735121b20fc81c7fce45",
+      "profile": "ct-own-level-recent-history-audit-v1",
+      "horizon": 1,
+      "recipes": [
+        {
+          "family": "har",
+          "horizon": 1,
+          "device": "cpu",
+          "window": 1,
+          "features": [
+            "har_1",
+            "har_5",
+            "har_22",
+            "origin_state"
+          ],
+          "training_loss": "qlike",
+          "parameters": 5,
+          "feature_formula": "3relativeHAR plus one declared origin state",
+          "target_formula": "variance_target_1/ct_ewma",
+          "forecast_formula": "origin_EWMA*exp(intercept+4features@coef)",
+          "seed": 42,
+          "profile": "ct-risk-level-dxy-control-t1-v1",
+          "arm": "own_level",
+          "variance_features": [
+            "har_1",
+            "har_5",
+            "har_22",
+            "origin_state"
+          ],
+          "extra_feature": "free log origin CT EWMA"
+        }
+      ],
+      "model_families": [
+        "har"
+      ],
+      "kind": "historical_walk_forward_audit",
+      "completed_fits": 61,
+      "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/ct-recent-risk-audit-result-20261104",
+      "payload_root": "audit",
+      "native_payloads_reverified_by_delivery": true
     }
   ],
   "rejected_receipts": [],
