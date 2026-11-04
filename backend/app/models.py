@@ -116,3 +116,12 @@ class ArtifactImport(Base):
     manifest: Mapped[dict] = mapped_column(JSON)
     checksum: Mapped[str] = mapped_column(String(64))
     imported_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
+
+
+class ArtifactMarketObservation(Base):
+    __tablename__ = "artifact_market_observations"
+
+    artifact_import_id: Mapped[str] = mapped_column(ForeignKey("artifact_imports.id"), primary_key=True)
+    observed_on: Mapped[date] = mapped_column(Date, primary_key=True)
+    series: Mapped[str] = mapped_column(String(32), primary_key=True)
+    close: Mapped[float] = mapped_column(Float)

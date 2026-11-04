@@ -10,7 +10,7 @@ import pandas as pd
 import pytest
 import xgboost as xgb
 from fastapi import HTTPException
-from sqlalchemy import create_engine, func, select
+from sqlalchemy import create_engine, delete, func, select
 from sqlalchemy.orm import Session
 
 from app import api
@@ -18,7 +18,7 @@ from app.api import _forecast_response
 from app.artifact_importer import import_artifact_directory
 from app.artifacts import ArtifactVerificationError, install_bundle, sha256_file, verify_directory
 from app.database import Base
-from app.models import ArtifactImport, Forecast
+from app.models import ArtifactImport, ArtifactMarketObservation, Forecast, MarketObservation
 from app.runtime import ArtifactRuntime
 from app.schemas import SimulationRequest
 
@@ -120,6 +120,119 @@ def test_export_import_runtime_preserves_evaluation_and_deployment(release, tmp_
     names = json.loads((root / "feature_schema.json").read_text())["features"]
     assert runtime.predict_return(1, dict.fromkeys(names, 0.1)) == pytest.approx(0.02)
     assert runtime.predict_return(5, dict.fromkeys(names, 0.1)) == pytest.approx(0.02)
+
+
+def test_chart_switches_to_new_release_without_rewriting_previous_forecasts(release, tmp_path):
+    original = tmp_path / "original"
+    revised = tmp_path / "revised"
+    install_bundle(release[0], original)
+    manifest = install_bundle(release[0], revised)
+    manifest["artifact_version"] = "revised-market-v2"
+    (revised / "manifest.json").write_text(json.dumps(manifest), encoding="utf-8")
+    market_path = revised / "market_history.parquet"
+    market = pd.read_parquet(market_path)
+    earliest = market.observed_on.min().date()
+    market = market.iloc[1:].copy()
+    market.loc[market.index[-1], "close"] = 84.0
+    market.to_parquet(market_path, index=False)
+    forecast_path = revised / "forecasts.parquet"
+    forecasts = pd.read_parquet(forecast_path)
+    forecasts["id"] = "revised-" + forecasts.index.astype(str)
+    forecasts.loc[forecasts.origin_type == "live", "current_price"] = 84.0
+    forecasts.loc[forecasts.origin_type == "live", "predicted_price"] = 84.0 * np.exp(.02)
+    forecasts.to_parquet(forecast_path, index=False)
+    _rehash(revised)
+
+    engine = create_engine("sqlite://")
+    Base.metadata.create_all(engine)
+    with Session(engine) as db:
+        import_artifact_directory(db, original)
+        first_forecast = api.latest_forecasts(db).forecasts[0]
+        date = first_forecast.as_of_date
+        assert api.market_history(date, date, ["cotton"], db).points[0].close == 80.0
+
+        import_artifact_directory(db, revised)
+        latest = api.latest_forecasts(db).forecasts[0]
+        chart = api.market_history(date, date, ["cotton"], db)
+        assert chart.points[0].close == latest.current_price_cents_per_lb == 84.0
+        assert db.get(Forecast, first_forecast.id).current_price == 80.0
+        rows = db.execute(
+            select(ArtifactImport.artifact_version, ArtifactMarketObservation.close)
+            .join(ArtifactMarketObservation)
+            .where(ArtifactMarketObservation.observed_on == date, ArtifactMarketObservation.series == "cotton"),
+        ).all()
+        assert sorted(close for _, close in rows) == [80.0, 84.0]
+        with pytest.raises(HTTPException) as missing_date:
+            api.market_history(earliest, earliest, ["cotton"], db)
+        assert missing_date.value.status_code == 404
+
+
+def test_exact_existing_receipt_backfills_only_its_market_history(release, tmp_path):
+    root = tmp_path / "current"
+    install_bundle(release[0], root)
+    engine = create_engine("sqlite://")
+    Base.metadata.create_all(engine)
+    with Session(engine) as db:
+        import_artifact_directory(db, root)
+        imported = db.scalar(select(ArtifactImport))
+        original = db.scalar(select(Forecast).where(Forecast.origin_type == "live"))
+        db.execute(delete(ArtifactMarketObservation))  # Shape of a pre-0003 database.
+        db.add(MarketObservation(observed_on=original.as_of_date, series="cotton", close=76.0, source="colab-artifact"))
+        db.commit()
+        date = original.as_of_date
+        legacy = api.market_history(date, date, ["cotton"], db)
+        assert legacy.data_quality == "legacy"
+        assert legacy.points[0].close == 76.0
+
+        assert import_artifact_directory(db, root) == imported.artifact_version
+        scoped = api.market_history(date, date, ["cotton"], db)
+        assert scoped.data_quality == "historical_audit"
+        assert scoped.points[0].close == original.current_price == 80.0
+        assert db.scalar(select(MarketObservation.close)) == 76.0
+        assert db.scalar(select(func.count()).select_from(ArtifactImport)) == 1
+        assert db.scalar(select(func.count()).select_from(Forecast)) == 8
+
+
+@pytest.mark.parametrize("corruption", ["duplicate", "wrong_live_close", "nonfinite"])
+def test_import_rejects_invalid_market_payload_before_persisting_forecasts(release, tmp_path, corruption):
+    root = tmp_path / "current"
+    install_bundle(release[0], root)
+    market_path = root / "market_history.parquet"
+    market = pd.read_parquet(market_path)
+    if corruption == "duplicate":
+        market = pd.concat([market, market.tail(1)], ignore_index=True)
+        message = "duplicate release market observation"
+    elif corruption == "nonfinite":
+        market.loc[market.index[0], "close"] = np.inf
+        message = "invalid release market observation"
+    else:
+        market.loc[market.index[-1], "close"] = 84.0
+        message = "disagrees with the live forecast origin price"
+    market.to_parquet(market_path, index=False)
+    _rehash(root)
+
+    engine = create_engine("sqlite://")
+    Base.metadata.create_all(engine)
+    with Session(engine) as db:
+        with pytest.raises(ArtifactVerificationError, match=message):
+            import_artifact_directory(db, root)
+        for table in (ArtifactImport, Forecast, ArtifactMarketObservation):
+            assert db.scalar(select(func.count()).select_from(table)) == 0
+
+
+def test_chart_does_not_promote_claims_from_legacy_manifest(release, tmp_path):
+    root = tmp_path / "current"
+    manifest = install_bundle(release[0], root)
+    manifest.update(artifact_schema_version=1, data_quality="validated_holdout")
+    (root / "manifest.json").write_text(json.dumps(manifest), encoding="utf-8")
+    _rehash(root)
+    engine = create_engine("sqlite://")
+    Base.metadata.create_all(engine)
+    with Session(engine) as db:
+        import_artifact_directory(db, root)
+        result = api.market_history(None, None, ["cotton"], db)
+        assert result.data_quality == "legacy"
+        assert len(result.points) == 80
 
 
 def test_simulation_rejects_loaded_runtime_from_an_older_import(release, tmp_path, monkeypatch):

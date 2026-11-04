@@ -61,6 +61,24 @@ deneme, bozuk paket, bozuk hazırlık kopyası ve iki ayrı süreçle çakışma
 otomatik test edildi. Windows backend paketinde 40 test ve Ruff geçti.
 Bu doğrulama süreç kesintisi ve yeniden denemeyi kapsıyor.
 
+### Grafik verisi ve paket sahipliği
+
+İki paket aynı gün için 80 ve 84 bildirdiğinde, yeni tahmin 84 üzerinden
+gösterilirken grafik ilk içe aktarımın 80 değerini kullanıyordu. Şema
+0003, yeni piyasa gözlemlerini kendi doğrulanmış içe aktarım kimliğiyle
+saklıyor. Grafik etkin paketin gözlemlerini okuyor ve eksik günlerini
+önceki paketten doldurmuyor. Eski fiyat tablosu ve tahmin kayıtları
+korunuyor. Tam içerik makbuzu olan eski içe aktarımlarda yalnız özgün
+paket yeniden doğrulanarak ilgili grafik verisi tamamlanabiliyor.
+
+Paket içinde yinelenen veya sonlu olmayan fiyatlar ve kanıt sözleşmesi
+olan paketlerde canlı tahminin başlangıç fiyatıyla uyuşmayan Cotton
+kapanışı içe aktarımı durduruyor. Eski manifestin `validated_holdout`
+etiketi grafiğe taşınmıyor. SQLite şema geçişi, veri varken geri alma
+reddi ve önceki tahminlerin korunması otomatik test edildi. Mevcut yerel
+v1 paketinin 12.616 fiyatı ve 998 tahmini yalıtılmış bir veritabanında
+iki içe aktarım çağrısıyla doğrulandı. Kaynak paket kimliği aynı kaldı.
+
 ### Piyasa verisi girişi
 
 Yahoo yanıtının boş olmaması yeterli sayılıyordu. Tamamı eksik DXY
@@ -79,7 +97,7 @@ henüz gösterilmedi.
 
 | Alan | Sonraki doğrulama |
 | --- | --- |
-| Yayın kimliği ve içe aktarım | Revize fiyatların dashboard kapsamı ve kayıt ile yayın arasındaki geçiş |
+| Yayın kimliği ve içe aktarım | Kayıt ile yayın arasındaki geçiş ve PostgreSQL üzerinde şema uygulaması |
 | Yerel ve GitHub eşlemesi | PR bağımlılıkları, birleştirme planı ve main eşitliği |
 | Veri girişi | Kaynak semantiği, vintage, seans ve saat, yarım cache ve eksiklik |
 | Araştırma hattı | Hedef olgunluğu, geçmişe ait özellikler, split/purge, model seçimi ve native çıktılar |

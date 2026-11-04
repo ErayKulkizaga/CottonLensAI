@@ -3,7 +3,7 @@ import uuid
 from datetime import date
 
 from fastapi import APIRouter, Depends, HTTPException, Query, status
-from sqlalchemy import and_, desc, func, select, text
+from sqlalchemy import desc, func, select, text
 from sqlalchemy.orm import Session, joinedload
 
 from app.config import get_settings
@@ -11,6 +11,7 @@ from app.database import get_db
 from app.demo import DEMO_SCHEMA_HASH, DEMO_VERSION
 from app.models import (
     ArtifactImport,
+    ArtifactMarketObservation,
     FeatureSnapshot,
     Forecast,
     MarketObservation,
@@ -113,26 +114,47 @@ def market_history(
     series: list[str] = Query(default=["cotton"]),
     db: Session = Depends(get_db),
 ) -> MarketHistoryResponse:
-    conditions = [MarketObservation.series.in_(series)]
+    imported = _active_artifact_import(db)
+    if imported is not None and db.scalar(select(ArtifactMarketObservation.artifact_import_id).where(
+        ArtifactMarketObservation.artifact_import_id == imported.id,
+    ).limit(1)) is not None:
+        observation = ArtifactMarketObservation
+        conditions = [observation.artifact_import_id == imported.id]
+        data_quality = (
+            imported.manifest["data_quality"] if imported.manifest.get("artifact_schema_version") in (2, 3)
+            else "legacy"
+        )
+        source_note = "Market prices from the active release. Cotton prices use a continuous futures proxy."
+    else:
+        observation = MarketObservation
+        demo = imported is None and get_settings().demo_mode and db.scalar(select(ModelVersion.id).where(
+            ModelVersion.artifact_version == DEMO_VERSION,
+            ModelVersion.data_quality == "illustrative",
+        ).limit(1)) is not None
+        if demo:
+            conditions = [observation.source == "development-fixture"]
+            data_quality = "illustrative"
+            source_note = "Synthetic development fixture."
+        else:
+            conditions = [observation.source != "development-fixture"]
+            data_quality = "legacy"
+            source_note = "Archived market observations with unverified release ownership."
+
+    conditions.append(observation.series.in_(series))
     if start:
-        conditions.append(MarketObservation.observed_on >= start)
+        conditions.append(observation.observed_on >= start)
     if end:
-        conditions.append(MarketObservation.observed_on <= end)
+        conditions.append(observation.observed_on <= end)
     observations = db.scalars(
-        select(MarketObservation)
-        .where(and_(*conditions))
-        .order_by(MarketObservation.observed_on, MarketObservation.series)
+        select(observation).where(*conditions).order_by(observation.observed_on, observation.series)
     ).all()
     if not observations:
         raise HTTPException(status_code=404, detail="no market observations match the request")
-    model = db.scalar(select(ModelVersion).order_by(desc(ModelVersion.created_at)))
     return MarketHistoryResponse(
         points=[MarketPoint(date=row.observed_on, series=row.series, close=row.close) for row in observations],
-        data_as_of=max(row.observed_on for row in observations),
-        source_note=(
-            "Yahoo Finance continuous futures proxy; not an official ICE settlement feed."
-        ),
-        data_quality=model.data_quality if model else "unknown",
+        data_as_of=observations[-1].observed_on,
+        source_note=source_note,
+        data_quality=data_quality,
     )
 
 
