@@ -20536,6 +20536,21 @@
       "prediction_payload": "prepared-r2b/paired-losses.csv",
       "historical_vintage_verified": false,
       "id": "225f144608f67def6880070a8ed78ffc8138f62627c60c40a874baf95b201744"
+    },
+    {
+      "experiment": "ct-limit-expansion-readiness-v1",
+      "profile": "ct-limit-expansion-readiness-v1",
+      "horizon": 1,
+      "classification": "INCONCLUSIVE",
+      "classification_scope": "31 dated multi-contract widening notices; no forecast or independent holdout",
+      "matched_event_mean": 0.060119978934659285,
+      "matched_event_median": -0.3070174538348125,
+      "matched_event_mean_without_largest": -0.13786636246905465,
+      "evidence": "research/evidence/ct-limit-readiness-20261104.json",
+      "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/ct-limit-readiness-20261104",
+      "completed_market_fits": 0,
+      "market_skill": false,
+      "id": "1891e78efad33553087e02c73c35deaf2677c4104ab811c78a4ed24ef751b1d5"
     }
   ],
   "local_evidence": [
@@ -21406,6 +21421,10 @@
     {
       "path": "evidence/ct-pre2010-risk-result-20261104.json",
       "sha256": "9a7b3a64c1b4d08ba2e65d26591333e77169ea8620aceb55e49f3c5488494785"
+    },
+    {
+      "path": "evidence/ct-limit-readiness-20261104.json",
+      "sha256": "2e0bdcb7ea16d308fb78b9693acb785cbadd70bbcaead9c272d171be3cd6ab1d"
     }
   ]
 }

@@ -1,3 +1,31 @@
+# ICE fiyat limiti duyurusu denetimi — 4 Kasım 2026
+
+CFTC'nin Mart 2008 vakasındaki altı Mayıs kontratı kapanışı USDA ile
+eşleşti. 5 Mart'ta kontrat gün içinde 92,86 limite değdi, 89,28'de
+uzlaştı. Kapanış değişimi +0,42 sentti. Bu, kapanıştan limit temasının
+çıkarılamadığı doğrudan bir örnek. 3 Mart'ta ayrı opsiyon bazlı takas
+değeri 93,90 iken vadeli uzlaşma 84,86 idi.
+
+75 katalog adayından 36'sında duyuru gövdesi doğrulandı. 32 istek HTTP
+429 aldı, dört katalog tarihi PDF'de doğrulanamadı, üç belge farklı
+limit tetikleyicisi açıklıyordu. Tek aralıklı tekrar da 429 alınca
+indirme durdu. Bildirim bulunmayan günler olay dışı olarak etiketlenmedi.
+2016–2023 CT=F paneline 31, 2008–2009 aynı-kontrat paneline iki
+doğrulanmış duyuru eşleşti. Tam seans kapsamı ve tarihsel yayın UTC'si
+kanıtlanmış sayılmaz.
+
+Önceden sabit 20 benzer, olgun hedefli geçmiş seansla karşılaştırılan
+31 modern olayda, ertesi gün gerçekleşen varyans / EWMA oranı farkı
+ortalama +0,0601, medyan −0,3070, pozitif olay 12/31. En büyük mutlak
+farklı seans (22 Haziran 2022) çıkarılınca ortalama −0,1379. İki eski
+aynı-kontrat vakasında oranlar 1,775 ve 0,053. Bu duyuru işareti
+tanısal eşiği geçmedi. Yeni tahmin ve fit sıfır. Bu bulgu, tüm limit
+durumlarının veya opsiyon bilgisinin değeri hakkında genellenmez.
+
+31 olay ve 620 geçmiş eşleşme bağımsız Decimal hesapla doğrulandı.
+Private GitHub'dan 92 dosya taze geri kuruldu ve raporlar çevrimdışı
+yeniden üretildi. [Kanıt paketi](https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/ct-limit-readiness-20261104)
+
 # Aynı kontratla 2008–2009 risk karşılaştırması tamamlandı — 4 Kasım 2026
 
 24 Kasım 2008–23 Kasım 2009 arasındaki 252 origin ve 31 sabit CPU fit
