@@ -78,6 +78,45 @@ def rows_at(history, dates):
     return history.set_index('date', drop=False).loc[pd.to_datetime(dates)].reset_index(drop=True)
 
 
+def frozen_outer_folds(folds):
+    by_number = {f['fold']: f for f in folds}
+    dates = [date for f in folds for date in f['origins']]
+    if (len(by_number) != len(folds) or list(by_number) != sorted(by_number)
+            or not folds or any(not f['origins'] for f in folds) or dates != sorted(set(dates))):
+        raise ValueError('Nonempty, chronological, disjoint frozen fold origins required')
+    return by_number
+
+
+def verified_outer(history, fold, record, family, horizon, task='price'):
+    """Resolve one saved prediction vector against its immutable evaluation origins."""
+    if horizon not in (1, 5) or task not in ('price', 'direction'):
+        raise ValueError('Unsupported historical comparison horizon or task')
+    recipe = record['recipe']
+    if (record['fold'] != fold['fold'] or recipe['family'] != family
+            or recipe['horizon'] != horizon or recipe.get('task', 'price') != task):
+        raise ValueError('Saved result disagrees with its frozen fold or recipe')
+    origins = fold['origins']
+    if not origins or origins != sorted(set(origins)) or record['origins'] != origins:
+        raise ValueError('Saved predictions disagree with frozen outer origins')
+    rows = rows_at(history, origins)
+    if len(rows) != len(origins):
+        raise ValueError('Frozen outer origins resolve to duplicate history rows')
+    targets = rows[f'target_date_{horizon}']
+    if (targets.isna().any() or targets.le(rows.date).any()
+            or targets.ge(pd.Timestamp('2024-01-01')).any()
+            or not np.isfinite(rows[['cotton_close', f'target_return_{horizon}']]).all().all()
+            or rows.cotton_close.le(0).any()):
+        raise ValueError('Invalid frozen outer targets')
+    prediction = np.asarray(record['predictions'], dtype=float)
+    expected = (len(rows), 3) if task == 'direction' else (len(rows),)
+    if prediction.shape != expected or not np.isfinite(prediction).all():
+        raise ValueError('Saved predictions do not have one finite output per frozen origin')
+    if task == 'direction' and ((prediction < 0).any() or (prediction > 1).any()
+                                or not np.allclose(prediction.sum(axis=1), 1., rtol=0, atol=1e-6)):
+        raise ValueError('Invalid frozen direction probabilities')
+    return rows, prediction
+
+
 def full_year_manifest(history):
     """New identity only: all eligible pre-2024 dates, never alter legacy splits."""
     if history.date.duplicated().any() or not history.date.is_monotonic_increasing:

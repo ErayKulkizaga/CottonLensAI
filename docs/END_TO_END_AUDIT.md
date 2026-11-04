@@ -208,6 +208,38 @@ tamamı denetim dalının atasıydı. Bu, dal kapsamını doğrular.
 `main` birleştirmesi ve PR'ların son durumunun düzenlenmesi
 ayrı teslimat adımlarıdır.
 
+### Diğer fiyat deneyleri ve yayın öncesi fiyat kapısı
+
+`research-availability-clock-pilot-v1` ve
+`research-return-path-pilot-v1` için 32'şer yıllık çıktı,
+aynı `research-full-year-v1-r2` hedefleriyle yeniden eşleştirildi.
+Her çalışmada 8.024 satır vardı. Kaydedilen ham tahmin ve ağırlıktan
+son tahmin tekrar üretildi. Naive MAE T+1 için 1,020952 ve T+5 için
+2,357184 sent/lb. Hiçbir kol hiçbir yılda Naive'dan düşük MAE üretmedi.
+
+| Deney ve kol | T+1 ham / seçilmiş Naive kazancı | T+5 ham / seçilmiş Naive kazancı |
+| --- | ---: | ---: |
+| Saat kontrolü | −%1,846 / −%0,328 | −%4,510 / −%0,800 |
+| Saat müdahalesi | −%2,031 / −%0,154 | −%4,916 / −%1,340 |
+| Yol kontrolü | −%1,746 / −%0,323 | −%4,233 / −%1,087 |
+| Getiri yolu | −%4,424 / −%0,043 | −%5,971 / −%0,952 |
+
+Genel nested karşılaştırma dondurulmuş origin sırasını
+doğrulamıyordu. Yıl kazanımlarını tahmin vektöründen hesaplamak
+yerine eski dosyanın MAE alanını kullanıyordu. Sentetik regresyonda
+Naive ile eşit tahmin 8/8 kazanmış sayıldı. Yeni yol sıralı ve
+örtüşmeyen katları, her origin için sonlu çıktıyı ve hedef
+kronolojisini zorunlu tutuyor. Yıllar aynı hedeflere karşı
+yeniden hesaplanıyor. Testte eşit tahmin 0/8 kazandı.
+
+Schema-3 hazırlığı, iki ufukta sekiz katın eşlenmiş tahmin ve
+kayıplarından yayın kararını dağıtım fitinden önce yeniden doğruluyor.
+Yeni kilit eksik katları kabul etmiyor. Yeniden üretim, ilk refitten
+önce ilgili ufkun özgün sonuç vektörlerini ve sonrasında yeni
+vektörlerin aynı origin'lere ait olduğunu denetliyor. Eşikler aynı.
+Bu turda piyasa fiti veya paket yayını yapılmadı. Taze tekrar
+makbuzunun native ledger kapsamına bağlanması ayrı kontrol olarak açık.
+
 ## Kalan denetim kapsamı
 
 | Alan | Sonraki doğrulama |
@@ -216,7 +248,7 @@ ayrı teslimat adımlarıdır.
 | Yerel ve GitHub eşlemesi | CI, birleştirme kararı ve main eşitliği |
 | Veri girişi | Kaynak semantiği, vintage, seans ve saat, yarım cache ve eksiklik |
 | Araştırma hattı | Diğer profillerin zaman, seçim ve native çıktı kapsamı |
-| Metrikler ve karar | Diğer karşılaştırma yollarında eşleştirme, QLIKE, belirsizlik ve release kriteri |
+| Metrikler ve karar | Taze tekrar makbuzu, kalan risk karşılaştırmaları ve ileri doğrulama sınırı |
 | Canlı kayıt ve operasyon | Saat, kimlik zinciri, kilitli kohort, iş tekrarı ve geri kurma |
 | Uygulama ve CI | Backend, frontend, temiz ortam ve release geri yükleme |
 

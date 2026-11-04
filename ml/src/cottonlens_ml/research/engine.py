@@ -32,9 +32,11 @@ from cottonlens_ml.research.models import (
 from cottonlens_ml.research.protocol import (
     feature_groups,
     feature_history,
+    frozen_outer_folds,
     mature,
     rows_at,
     split_manifest,
+    verified_outer,
 )
 from cottonlens_ml.research.search import (
     BUDGETS,
@@ -402,6 +404,8 @@ def reference_report(experiment):
 def compare(experiment):
     print('STAGE reporting: reading outer predictions and compact timing receipts; no fits', flush=True)
     candidates = []
+    frozen = experiment.identity['split']['folds']
+    by_number = frozen_outer_folds(frozen)
     for namespace in sorted((experiment.root / 'outer').glob('*')):
         grouped = {}
         for file in namespace.glob('*.json'):
@@ -411,24 +415,28 @@ def compare(experiment):
             key = (row['recipe']['family'], row['recipe']['horizon'], row['recipe'].get('task', 'price'))
             grouped.setdefault(key, []).append(row)
         for (family, h, task), folds in grouped.items():
-            if len(folds) != len(experiment.identity['split']['folds']):
-                continue
+            numbers = [f['fold'] for f in folds]
+            if len(numbers) != len(set(numbers)) or not set(numbers).issubset(by_number):
+                raise ValueError('Saved results contain duplicate or unknown frozen fold numbers')
             folds.sort(key=lambda f: f['fold'])
+            resolved = [verified_outer(experiment.history, by_number[f['fold']], f, family, h, task) for f in folds]
+            if len(folds) != len(frozen):
+                continue
             if task == 'price':
                 paired, wins = [], 0
-                for fold in folds:
-                    rows = rows_at(experiment.history, fold['origins'])
-                    naive = evaluate(rows.cotton_close.to_numpy(), rows[f'target_return_{h}'].to_numpy(), np.zeros(len(rows)))
-                    wins += fold['metrics']['mae'] < naive['mae']
-                    paired.append((rows, SimpleNamespace(name=family, horizon=h, predictions=np.asarray(fold['predictions']), parameters={})))
+                for rows, prediction in resolved:
+                    prices = rows.cotton_close.to_numpy()
+                    actual = rows[f'target_return_{h}'].to_numpy()
+                    wins += evaluate(prices, actual, prediction)['mae'] < evaluate(prices, actual, np.zeros(len(rows)))['mae']
+                    paired.append((rows, SimpleNamespace(name=family, horizon=h, predictions=prediction, parameters={})))
                 metrics = summarize(paired, bootstrap_replicates=10000
                                     if experiment.identity.get('profile') == 'free-data-v1' else 1000)
                 gate = historical_gate(metrics, wins, h)
                 if len(folds) != 8:
                     gate.update(passes=False, reason='shorter_source_cohort_research_only', total_folds=len(folds))
             else:
-                rows = rows_at(experiment.history, [d for fold in folds for d in fold['origins']])
-                metrics = class_metrics(class_labels(rows, h), np.concatenate([fold['predictions'] for fold in folds]))
+                rows = pd.concat([frame for frame, _ in resolved], ignore_index=True)
+                metrics = class_metrics(class_labels(rows, h), np.concatenate([p for _, p in resolved]))
                 gate = {'role': 'separate_direction_model_not_price_gate_substitute'}
             candidates.append({'family': family, 'horizon': h, 'task': task, 'namespace': namespace.name,
                                'inner_score': float(np.mean([f['inner_score'] for f in folds])),
@@ -463,6 +471,8 @@ def lock(experiment):
         if existing['identity'] != content_id(experiment.identity):
             raise ValueError('Locked research identity changed')
         return existing
+    if sorted(f['fold'] for f in experiment.identity['split']['folds']) != list(range(1, 9)):
+        raise ValueError('Both horizons need complete eight-fold evidence')
     report = compare(experiment)
     chosen = {}
     for h in (1, 5):
@@ -477,14 +487,23 @@ def lock(experiment):
 
 def reproduce(experiment):
     locked = read_record(experiment.root / 'locked.json')
+    if locked['identity'] != content_id(experiment.identity):
+        raise ValueError('Locked research identity changed')
     for h, candidate in locked['horizons'].items():
         differences = []
-        for fold in experiment.identity['split']['folds']:
-            path = experiment.root / 'decisions' / candidate['namespace'] / f'{candidate["family"]}-t{h}-fold{fold["fold"]}.json'
-            decision = read_record(path)
-            fresh = experiment.outer(decision['chosen'], fold, candidate['namespace'], repeat='reproduction')
-            original = read_record(experiment.root / 'outer' / candidate['namespace'] / path.name)
-            differences.append(float(np.max(np.abs(np.asarray(fresh['predictions']) - original['predictions']))))
+        family, namespace, horizon = candidate['family'], candidate['namespace'], int(h)
+        folds = experiment.identity['split']['folds']
+        originals = []
+        for fold in folds:
+            name = f'{family}-t{h}-fold{fold["fold"]}.json'
+            original = read_record(experiment.root / 'outer' / namespace / name)
+            _, predictions = verified_outer(experiment.history, fold, original, family, horizon)
+            decision = read_record(experiment.root / 'decisions' / namespace / name)
+            originals.append((fold, predictions, decision['chosen']))
+        for fold, predictions, chosen in originals:
+            fresh = experiment.outer(chosen, fold, namespace, repeat='reproduction')
+            _, replayed = verified_outer(experiment.history, fold, fresh, family, horizon)
+            differences.append(float(np.max(np.abs(replayed - predictions))))
         receipt = {'max_abs_log_return_difference': max(differences), 'fresh_fits': True,
                    'status': 'passed' if max(differences) <= 1e-6 else 'failed'}
         freeze_record(experiment.root / f'reproduction-t{h}.json', receipt)
