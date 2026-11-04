@@ -455,5 +455,78 @@
     "evaluation_outcomes_opened": 0,
     "new_fits": 0,
     "classification": "Calendar and format evidence. No admitted price series or locked research protocol."
+  },
+  "pre2010_training_readiness": {
+    "archive_assets": [
+      {
+        "name": "pre2010-training-readiness-v2.zip",
+        "sha256": "74c51c6d143ba622a9bc8d7ed73b9178baa71a53ad89ad57f6c215955049d311",
+        "fresh_restore_files": 22,
+        "replay_exact_outputs": 3
+      },
+      {
+        "name": "pre2010-timing-prefix-extension-v1.zip",
+        "sha256": "6e39a21c5a9a9634b768d19f554b5ae8bd46074374e8232a9a05e400b36781b1",
+        "fresh_restore_files": 5
+      }
+    ],
+    "training_only_schedule_count": 832,
+    "captured_source_bytes": 101703602,
+    "initial_prefix": {
+      "training_dates": 818,
+      "first_candidate_origin": "2008-11-04",
+      "nominal_date_coverage": 818,
+      "source_kinds": {
+        "daily_pdf": 810,
+        "weekly_price_witness": 4,
+        "validated_daily_biff": 4
+      },
+      "unresolved": [],
+      "error_counts": {},
+      "required_near_quote_missing": [],
+      "candidate_hold_rule": "Nearest delivery month strictly after origin calendar month; fixed March May July October December. Both endpoints required.",
+      "normalized_for_readiness_only": true,
+      "prices_admitted": false,
+      "evaluation_outcomes_opened": 0,
+      "fits": 0
+    },
+    "timing_extension": {
+      "training_dates": 14,
+      "parsed": 14,
+      "required_near_quote_missing": [],
+      "archive_range_sha256": "7f709ab33e6dfcf9abc1dd37cfe10a6fe5e354b58353f88736288621d20a31bd",
+      "archive_range_bytes": 1854871,
+      "evaluation_outcomes_opened": 0,
+      "fits": 0
+    },
+    "timing_feasibility_sha256": "9e3e152f68ae3fa1babe1e6cb1be4228b1c1638ce16086062b3e86cc3d5d12c1",
+    "proposed_evaluation_origin_count": 252,
+    "proposed_first_origin": "2008-11-24",
+    "proposed_final_origin": "2009-11-23",
+    "proposed_final_target": "2009-11-24",
+    "proposed_origins_per_year": {
+      "2008": 26,
+      "2009": 226
+    },
+    "late_source_feature_rows_excluded_in_projection": [
+      "2006-08-11",
+      "2006-08-14",
+      "2006-08-15",
+      "2006-08-16",
+      "2006-08-17",
+      "2006-08-18",
+      "2007-05-21",
+      "2007-05-22",
+      "2007-05-23",
+      "2007-05-24",
+      "2007-05-25",
+      "2008-03-18",
+      "2008-03-19",
+      "2008-03-20"
+    ],
+    "date_only_max_market_fits_if_preregistered": 31,
+    "classification": "Training near-quote readiness. Decision rule, outcome-source admission and point-in-time scope pending.",
+    "evaluation_outcomes_opened": 0,
+    "new_fits": 0
   }
 }

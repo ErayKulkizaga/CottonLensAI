@@ -78,6 +78,26 @@ ve fiyat kuralı, değerlendirme fiyatları açılmadan kilitlenecek.
 40 dosya taze geri kuruldu ve çevrimdışı denetim eşleşti. Yeni fit ve
 değerlendirme fiyatı erişimi sıfır.
 
+**Eğitim fiyat kapsamı ve zamanlama:** Yalnız aday değerlendirme
+döneminin öncesindeki arşiv byte'ları alındı. İlk 818 seansın 740'ında
+tam tablo denetimi geçti. Önceden seçilen yakın vade kuralı için
+818 seansın tamamında gerekli kontrat hücreleri doğrulandı. Dört
+haftalık fiyat tanığının basılı yayın tarihine kadar ısınma sonrası
+14 eğitim origin'i hariç tutulduğunda, 500 olgun satır ve 3×63 iç
+doğrulama korunarak ilk aday tarih 24 Kasım 2008 oluyor. Ek 14
+eğitim seansı da doğrulandı. Son aday origin 23 Kasım 2009,
+son hedef 24 Kasım 2009. 252 seans ve taslak 31 fit bütçesi için
+yer var. Başlangıçtaki 4 Kasım 2008 tarihi salt takvim hesabıdır.
+
+Arşiv koşulu tarihsel günlük UTC veya ilk sürüm ispatı vermez.
+İki tahmin için de aynı, takvimle önceden belirlenen vadenin
+ardışık seans uzlaşma getirisini kullanmak öneriliyor. Sıradaki iş
+aynı EWMA ve sabit öğreniciyi, eğitimde geç yayımlanan kayıtların
+koruma kuralını ve değerlendirme kararını tek deney kimliğinde
+kilitlemek. Sonuç fiyatları açılmadı ve fit sayısı sıfır. Eğitim
+paketi 22 dosya ve üç byte-eşit replay çıktısıyla, 14 günlük ek
+ise beş dosyayla GitHub'dan taze doğrulandı.
+
 # Yahoo fiyat revizyonu ve yeni ileri kohort — 4 Kasım 2026
 
 3 Kasım 03:05 çalışması, Yahoo'nun 30 Ekim kapanışını 78,13 yerine
