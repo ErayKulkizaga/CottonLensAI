@@ -229,15 +229,24 @@ def weekly_quotes(raw, observation, publication, required):
     for page in pages:
         if not re.search(r'Futures\s+(?:Contract\s+)?Settlement',page,re.IGNORECASE):
             continue
-        header = re.findall(
-            r'((?:(?:Mar|May|Jul|Oct|Dec)[ -]+\d\s*\d\s+){5,6})(?:Average|7 Market)',
-            page,re.IGNORECASE)
-        values = re.findall(rf'^{observed:%b}[\s-]+0?{observed.day}\s+(.+)$',page,re.MULTILINE)
-        if len(header)!=1 or len(values)!=1:
+        header = list(re.finditer(
+            r'((?:(?:Mar|May|Jul|Oct|Dec)[ -]+\d\s*\d\s+){5,6})(?:Average|7 Market)[^\n]*\n',
+            page,re.IGNORECASE))
+        if len(header)!=1:
+            continue
+        block = []
+        for line in page[header[0].end():].splitlines():
+            if re.match(r'^\s*[A-Za-z]+[\s-]+\d{1,2}\s+',line):
+                block.append(line.strip())
+            elif block or (line.strip() and not re.fullmatch(r'(?:\s*Current\s*)+',line)):
+                break
+        target = re.compile(rf'^(?:{observed:%B}|{observed:%b})[\s-]+0?{observed.day}\s+(.+)$')
+        values = [m[1] for line in block if (m := target.fullmatch(line))]
+        if len(values)!=1:
             continue
         months = [f"20{y.replace(' ', '')}-{MONTHS[m.title()]:02}-01"
                   for m,y in re.findall(r'(Mar|May|Jul|Oct|Dec)[ -]+(\d\s*\d)',
-                                        header[0],re.IGNORECASE)]
+                                        header[0][1],re.IGNORECASE)]
         compact = re.sub(r'(?<![\d.])(\d)\s+(\d\.\d{2})(?=\s|$)',r'\1\2',values[0])
         tokens = compact.split()[:len(months)]
         if len(tokens)!=len(months) or months!=sorted(set(months)):

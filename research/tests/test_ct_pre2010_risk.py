@@ -1,4 +1,6 @@
+import sys
 from decimal import Decimal
+from types import SimpleNamespace
 
 import pandas as pd
 import pytest
@@ -49,4 +51,20 @@ def test_stale_origins_use_last_complete_state_until_weekly_release():
     late = {'2009-05-22': {'published': '2009-05-29'}}
     assert risk.stale_origins(dates, dates[1:], late) == {
         '2009-05-22': '2009-05-21', '2009-05-26': '2009-05-21', '2009-05-29': '2009-05-21',
+    }
+
+
+def test_weekly_parser_ignores_the_dated_spot_table(monkeypatch):
+    page = """April 10, 2009
+    May-09 Jul-09 Oct-09 Dec-09 Mar-10 May-10 Average
+    Current
+    April 9 60.50 61.50 62.50 63.50 64.50 65.50 51.22
+    7-Market Spot
+    April 9 50.50 51.50 52.50 53.50 54.50 55.50 56.50
+    Futures Settlement
+"""
+    monkeypatch.setitem(sys.modules, 'pypdf', SimpleNamespace(
+        PdfReader=lambda _: SimpleNamespace(pages=[SimpleNamespace(extract_text=lambda:page)])))
+    assert source.weekly_quotes(b'fake PDF', '2009-04-09', '2009-04-10', ['2009-05-01']) == {
+        '2009-05-01':'60.50',
     }

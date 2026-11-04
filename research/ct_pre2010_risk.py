@@ -173,7 +173,8 @@ def prepare(repo, audit, root, parent):
         'selection': 'Fixed annual 3x63 past-only selection on .00/.25/.50/.75/1.00; ties use the smaller weight; refit every 21 origins',
         'statistic': 'Mean paired EWMA QLIKE minus selected candidate QLIKE. Both year-stratified moving-block 20/60 95% lower bounds and mean must be >0. 10000 draws seed42. Trim is descriptive.',
         'amendment': 'R1 structurally preflighted archived quote coverage before any fit or score. Two evaluation documents are misdated; no R1 outcome admission. R2 keeps the same target, 252 origins, learner, EWMA and inference gate.',
-        'fits_or_scores_before_amendment': 0, 'current_market_skill': False, 'first_vintage_verified': False,
+        'fits_or_scores_before_amendment': 0,
+        'parser_amendment': 'Select named futures table block, then verify both weekly values against subsequent dated daily Previous; no model or inference change.', 'current_market_skill': False, 'first_vintage_verified': False,
         'forward_publication': False,
     }
     with writer(root):
