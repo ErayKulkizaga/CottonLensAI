@@ -8,7 +8,7 @@ olan Release tag'lerinde eksik yok. Bu bütün arşivlerin yeniden indirildiği
 iddiası değildir. Önceki hash-bağlı teslimat kayıtları korunur.
 
 Ana eski çalışma kopyasında kişisel opencode.json dışındaki32yol karşılaştırıldı:
-22eşdeğer,10sonraki düzeltmelerle superseded. Sonraki değişiklikler API paket
+23eşdeğer,9sonraki düzeltmelerle superseded. Sonraki değişiklikler API paket
 kimliği ve kaynak sahipliği, ek araştırma profilleri, olgun hedef/rapor/native
 makbuz korumaları ve notebook testlerini kapsar. Eski yerel dosyalar korunur.
 Provenance dalındaki iki unique commit'in bilimsel kod/test/kanıtları aynıdır;
