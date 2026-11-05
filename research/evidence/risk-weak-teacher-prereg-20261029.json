@@ -1,0 +1,34 @@
+{
+  "schema": 1,
+  "profile": "risk-weak-teacher-t1-v1",
+  "classification": "INCONCLUSIVE",
+  "classification_scope": "preregistered synthetic recovery only; no fit or market performance result",
+  "source_id": "dd95399ca9cd5b3c64ffcfc0c37b5ec9c648e612dbe53834fc85cb9c46232833",
+  "design_id": "baec563d2d52ef143cc4ed619dd6493d4d5c0cc062a05bf3c1dbddbfb064d40b",
+  "ready_sha256": "e95ebae4ac16f55b99a7a80ee3e4958c236522b017785e26e6ee6aab53d1871f",
+  "fit_budget": {
+    "market": 0,
+    "synthetic": 1044,
+    "processes": 1,
+    "threads": 2,
+    "session_minutes": 30
+  },
+  "origin_count": 2006,
+  "eligible_origins": 1989,
+  "calibration_origins": 619,
+  "calibration_cutoff": "2015-03-26",
+  "completed_fits": 0,
+  "market_skill": false,
+  "release_allowed": false,
+  "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/risk-weak-teacher-prereg-r3-20261029",
+  "archive_sha256": "956462e46d37697d9b5372eeea7ff527bf6038bf54a5975c58462926096d9542",
+  "fresh_restored_members": 304,
+  "fresh_source_verify_passed": true,
+  "superseded_before_any_fit": [
+    "prereg-v1 transient writer-lock hash",
+    "prereg-v2 role would be misclassified by existing indexer"
+  ],
+  "historical_availability_verified": false,
+  "independent_holdout": false,
+  "record_id": "a3c1d61aefdc50a21d9ca609fb55adfb92ecd900e40b02a8e86e9c596b34188f"
+}

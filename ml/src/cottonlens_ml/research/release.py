@@ -8,16 +8,24 @@ import uuid
 import zipfile
 from datetime import UTC, datetime
 from pathlib import Path
+from types import SimpleNamespace
 
 import numpy as np
 import pandas as pd
 
 from cottonlens_ml.code_identity import digest
 from cottonlens_ml.cohort import content_id
+from cottonlens_ml.evaluation import evaluate
 from cottonlens_ml.preflight import load_frozen_data
 from cottonlens_ml.research import VERSION
 from cottonlens_ml.research.ledger import freeze_record, read_record
-from cottonlens_ml.research.protocol import feature_history, rows_at
+from cottonlens_ml.research.protocol import (
+    feature_history,
+    frozen_outer_folds,
+    verified_outer,
+)
+from cottonlens_ml.research.reproduction import verify_for_export
+from cottonlens_ml.research.search import historical_gate
 from cottonlens_ml.runtime_guard import require_colab_training
 from cottonlens_ml.walkforward import summarize
 
@@ -66,14 +74,49 @@ def component_seeds(chosen, weight=1.):
     return [(seed, weight / len(chosen['seeds'])) for seed in chosen['seeds']]
 
 
+def _checked_price_lock(experiment, locked):
+    """Rebuild release gates from paired forecasts before any deployment fit."""
+    if locked['identity'] != content_id(experiment.identity):
+        raise ValueError('Locked research identity changed')
+    by_number = frozen_outer_folds(experiment.identity['split']['folds'])
+    if list(by_number) != list(range(1, 9)) or set(locked['horizons']) != {'1', '5'}:
+        raise ValueError('Release requires both horizons and eight frozen folds')
+    verified = {}
+    for h in (1, 5):
+        candidate = locked['horizons'][str(h)]
+        family, namespace = candidate['family'], candidate['namespace']
+        paired, wins = [], 0
+        for fold in by_number.values():
+            path = experiment.root / 'outer' / namespace / f'{family}-t{h}-fold{fold["fold"]}.json'
+            rows, prediction = verified_outer(experiment.history, fold, read_record(path), family, h)
+            prices, actual = rows.cotton_close.to_numpy(), rows[f'target_return_{h}'].to_numpy()
+            model = evaluate(prices, actual, prediction)
+            naive = evaluate(prices, actual, np.zeros(len(rows)))
+            wins += model['mae'] < naive['mae']
+            paired.append((rows, prediction, model, naive))
+        prices = np.concatenate([r.cotton_close for r, *_ in paired])
+        actual = np.concatenate([r[f'target_return_{h}'] for r, *_ in paired])
+        prediction = np.concatenate([p for _, p, *_ in paired])
+        measured = evaluate(prices, actual, prediction)
+        baseline = evaluate(prices, actual, np.zeros(len(prices)))['mae']
+        measured['relative_mae_improvement_pct'] = 100 * (1 - measured['mae'] / baseline) if baseline else None
+        gate = historical_gate(measured, wins, h)
+        expected = family if gate['passes'] else 'Naive'
+        if (candidate['primary_forecast'] != expected or candidate['gate']['passes'] is not gate['passes']
+                or candidate['gate']['fold_wins'] != wins):
+            raise ValueError('Locked release decision disagrees with paired price gate')
+        for key in ('mae', 'rmse', 'mape', 'directional_accuracy'):
+            if not np.isclose(candidate['metrics'][key], measured[key], rtol=0, atol=1e-12):
+                raise ValueError(f'Locked release metric disagrees with paired forecasts: {key}')
+        verified[h] = paired
+    return verified
+
+
 def export(experiment, repo):
     require_colab_training()
     locked = read_record(experiment.root / 'locked.json')
     if read_record(experiment.root / 'diagnosis.json')['status'] != 'passed':
         raise ValueError('Diagnosis must pass before export')
-    receipts = {str(h): read_record(experiment.root / f'reproduction-t{h}.json') for h in (1, 5)}
-    if any(r['status'] != 'passed' or r['fresh_fits'] is not True for r in receipts.values()):
-        raise ValueError('Fresh reproduction must pass before export')
     pending = experiment.root / 'release.json'
     if pending.exists():
         prior = read_record(pending)
@@ -81,6 +124,8 @@ def export(experiment, repo):
             raise ValueError('Frozen release changed')
         print('Validated release:', prior['path'], flush=True)
         return
+    receipts = verify_for_export(experiment, locked)
+    verified = _checked_price_lock(experiment, locked)
     market, full = load_frozen_data(experiment.identity['source_data'])
     full = feature_history(full, market)
     if experiment.identity.get('profile') == 'free-data-v1':
@@ -158,21 +203,21 @@ def export(experiment, repo):
                 'model_identity': content_id({'candidate': candidate, 'role': 'historical_nested'}),
                 'recipe_identity': content_id(decision), 'fit_cutoff': experiment.identity['split']['folds'][-1]['origins'][0],
                 'fit_label_cutoff': str(experiment.train_rows(pd.Timestamp(experiment.identity['split']['folds'][-1]['origins'][0]), decision['recipe'] if family != 'ensemble' else component_seeds(decision)[0][0]['recipe']).target_date_5.max())})
-            pairs = []
-            for fold in experiment.identity['split']['folds']:
-                data = rows_at(original_history, fold['origins'])
-                result = read_record(experiment.root / 'outer' / namespace / f'{family}-t{h}-fold{fold["fold"]}.json')
-                from cottonlens_ml.evaluation import evaluate
-                fold_reports[fold['fold']]['metrics'][f'{family}-T+{h}'] = result['metrics']
-                fold_reports[fold['fold']]['metrics'][f'Naive-T+{h}'] = evaluate(
-                    data.cotton_close.to_numpy(), data[f'target_return_{h}'].to_numpy(), np.zeros(len(data)))
-                from types import SimpleNamespace
+            pairs, model_pairs = [], []
+            for fold, (data, forecast, model_metrics, naive_metrics) in zip(
+                experiment.identity['split']['folds'], verified[h], strict=True,
+            ):
+                fold_reports[fold['fold']]['metrics'][f'{family}-T+{h}'] = model_metrics
+                fold_reports[fold['fold']]['metrics'][f'Naive-T+{h}'] = naive_metrics
                 pairs.append((data, SimpleNamespace(name='Naive', horizon=h, predictions=np.zeros(len(data)), parameters={})))
-                for row, value in zip(data.itertuples(), result['predictions'], strict=True):
+                model_pairs.append((data, SimpleNamespace(name=family, horizon=h, predictions=forecast, parameters={})))
+                for row, value in zip(data.itertuples(), forecast, strict=True):
                     log_return = 0. if selected == 'Naive' else value
                     forecasts.append(forecast_row(version, h, row, log_return, 'backtest'))
+            repetitions = 10000 if experiment.identity.get('profile') == 'free-data-v1' else 1000
             naive = summarize(pairs)
-            for name, evidence in (('Naive', naive), (family, candidate['metrics'])):
+            model = summarize(model_pairs, bootstrap_replicates=repetitions)
+            for name, evidence in (('Naive', naive), (family, model)):
                 metrics.append({'model': name, 'horizon': h, 'selected': selected == name,
                     **{k: evidence[k] for k in ('mae', 'rmse', 'mape', 'directional_accuracy')},
                     'walkforward': evidence, 'parameters': {'role': 'seen_historical_research', 'namespace': namespace}})

@@ -1,0 +1,14 @@
+{
+  "market": "ICE Futures US Cotton No. 2",
+  "timezone": "America/New_York",
+  "coverage_start": "2026-01-01",
+  "coverage_end": "2027-01-01",
+  "cotton_closed_dates": ["2026-01-01", "2026-01-19", "2026-02-16", "2026-04-03", "2026-05-25", "2026-06-19", "2026-07-03", "2026-09-07", "2026-11-26", "2026-12-25", "2027-01-01"],
+  "completion_time_local": "14:20",
+  "completion_qualification": "Conservative regular close bound; special holiday hours may end earlier. This is not a publication timestamp or an exchange settlement timestamp.",
+  "review": "Visually reviewed Cotton column, page 1. Holiday notice header June 9, 2025; hours document header September 2026. URL date is not publication evidence. Other markets and federal calendars must not substitute for Cotton.",
+  "evidence": [
+    {"file": "ice-2026-cotton-holidays.pdf", "sha256": "b9723d9afa1c20a0792b628de36c7d3726add58ea3d94972a1e7cefd3e50bf4e", "url": "https://www.ice.com/publicdocs/futures_us/exchange_notices/ICE_Futures_US_Exchange_Notice_2026_Holiday_Calendar_20260609.pdf"},
+    {"file": "ice-regular-hours.pdf", "sha256": "381c04fcb4d5b4093f72463246652ac8e24c3ca7b89283dfe86f736497c13ed2", "url": "https://status.ice.com/publicdocs/futures_us/ICE_Futures_US_Regular_Trading_Hours.pdf"}
+  ]
+}

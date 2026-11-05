@@ -1,0 +1,255 @@
+{
+  "schema": 1,
+  "profile": "ct-signed-unsigned-shock-forecast-t1-v1",
+  "classification": "INCONCLUSIVE",
+  "classification_scope": "Fixed equal-capacity signed/unsigned CT proxy forecasts; no robust EWMA or forward superiority",
+  "source_id": "e47bf678aff38bb6809c4c13ba8411ce0053396f3c31ea9ca5a320ff215b1cd6",
+  "design_id": "82b3e70dc37ba84234c91efb9ce42eaf2e3ce54b450e3ce7dc4e9b583772306f",
+  "data_id": "7b74a3cb90834deecd4121c4e1698a6b582ed7f60eadb8eb9a911192bb1cc53c",
+  "native_market_fits": 338,
+  "native_learning_fits": 1,
+  "reused_four_parameter_fits": 169,
+  "origin_count": 2006,
+  "comparisons": {
+    "unsigned_raw_vs_EWMA": {
+      "gain": 0.028281445847457842,
+      "gain_ci": {
+        "20": [
+          -0.035504159677078345,
+          0.06700474929058026
+        ],
+        "60": [
+          -0.025947147398290724,
+          0.0711938680447805
+        ]
+      },
+      "yearly_gain": {
+        "2016": -0.01470513589262929,
+        "2017": 0.01940790886851151,
+        "2018": 0.023201735216061236,
+        "2019": 0.005217935159539677,
+        "2020": -0.005021372038030387,
+        "2021": -0.0033276831754019223,
+        "2022": 0.20935580975696158,
+        "2023": -0.008294312786375536
+      },
+      "positive_years": 4,
+      "trim_top1pct_gain": -0.010535485102901664,
+      "fixed_risk_gate_passed": false
+    },
+    "unsigned_selected_vs_EWMA": {
+      "gain": 0.0019081491168321532,
+      "gain_ci": {
+        "20": [
+          -0.0058363206821487315,
+          0.008577914076791766
+        ],
+        "60": [
+          -0.005975840888996699,
+          0.008631882149072165
+        ]
+      },
+      "yearly_gain": {
+        "2016": 0.0,
+        "2017": 0.0,
+        "2018": 0.023201735216061236,
+        "2019": 0.005217935159539677,
+        "2020": -0.005021372038030387,
+        "2021": 0.0,
+        "2022": 0.0,
+        "2023": -0.008294312786375536
+      },
+      "positive_years": 2,
+      "trim_top1pct_gain": -0.003129581582709438,
+      "fixed_risk_gate_passed": false
+    },
+    "signed_raw_vs_EWMA": {
+      "gain": 0.026018052374984155,
+      "gain_ci": {
+        "20": [
+          -0.026211953991068716,
+          0.059145883334560174
+        ],
+        "60": [
+          -0.01844974178243034,
+          0.06166277818617455
+        ]
+      },
+      "yearly_gain": {
+        "2016": -0.003187029095223739,
+        "2017": 0.035074646909525393,
+        "2018": 0.012331001947267368,
+        "2019": 0.00027107223627573186,
+        "2020": 0.004696316995389276,
+        "2021": -0.002266644333245389,
+        "2022": 0.1573825934250587,
+        "2023": 0.003666006072692305
+      },
+      "positive_years": 6,
+      "trim_top1pct_gain": -0.01112990340059004,
+      "fixed_risk_gate_passed": false
+    },
+    "signed_selected_vs_EWMA": {
+      "gain": 0.0027255952316724234,
+      "gain_ci": {
+        "20": [
+          -0.00433904656765352,
+          0.0091827698189419
+        ],
+        "60": [
+          -0.004680411299311736,
+          0.009171293305064228
+        ]
+      },
+      "yearly_gain": {
+        "2016": 0.0,
+        "2017": 0.0,
+        "2018": 0.012331001947267368,
+        "2019": 0.00027107223627573186,
+        "2020": 0.005542746436944584,
+        "2021": 0.0,
+        "2022": 0.0,
+        "2023": 0.003666006072692305
+      },
+      "positive_years": 4,
+      "trim_top1pct_gain": -0.0030414832946646887,
+      "fixed_risk_gate_passed": false
+    },
+    "signed_raw_vs_unsigned": {
+      "gain": -0.0022633934724736833,
+      "gain_ci": {
+        "20": [
+          -0.014712859044137045,
+          0.013254622481081045
+        ],
+        "60": [
+          -0.014363016347306476,
+          0.011504714826603889
+        ]
+      },
+      "yearly_gain": {
+        "2016": 0.011518106797405551,
+        "2017": 0.015666738041013883,
+        "2018": -0.010870733268793866,
+        "2019": -0.004946862923263946,
+        "2020": 0.009717689033419663,
+        "2021": 0.0010610388421565334,
+        "2022": -0.05197321633190285,
+        "2023": 0.01196031885906784
+      },
+      "positive_years": 5,
+      "trim_top1pct_gain": -0.0005944182976883769,
+      "fixed_risk_gate_passed": false
+    },
+    "signed_selected_vs_unsigned": {
+      "gain": 0.00081744611484027,
+      "gain_ci": {
+        "20": [
+          -0.0029046035265635137,
+          0.004700869561206291
+        ],
+        "60": [
+          -0.002296772837563072,
+          0.0038010193959278973
+        ]
+      },
+      "yearly_gain": {
+        "2016": 0.0,
+        "2017": 0.0,
+        "2018": -0.010870733268793866,
+        "2019": -0.004946862923263946,
+        "2020": 0.010564118474974972,
+        "2021": 0.0,
+        "2022": 0.0,
+        "2023": 0.01196031885906784
+      },
+      "positive_years": 2,
+      "trim_top1pct_gain": 8.809828804474925e-05,
+      "fixed_risk_gate_passed": false
+    }
+  },
+  "past_selected_weights": {
+    "unsigned": {
+      "2016": 0.0,
+      "2017": 0.0,
+      "2018": 1.0,
+      "2019": 1.0,
+      "2020": 1.0,
+      "2021": 0.0,
+      "2022": 0.0,
+      "2023": 1.0
+    },
+    "signed": {
+      "2016": 0.0,
+      "2017": 0.0,
+      "2018": 1.0,
+      "2019": 1.0,
+      "2020": 0.75,
+      "2021": 0.0,
+      "2022": 0.0,
+      "2023": 1.0
+    }
+  },
+  "primary_gate_passed": false,
+  "result_sha256": "6618f167b6a554bb813652ac8a3fa358b74f86525cf47de0fb03592cd9997d9e",
+  "paired_losses_sha256": "56ff32669eba59ce036e5e5e99a15b3b5e86a7055718eee3c3d1928ee7810f0f",
+  "independent_verification": {
+    "status": "independently_verified_completed_forecasts",
+    "new_fits": 0,
+    "ordinal_origins": 2006,
+    "past_only_jobs": 169,
+    "minimum_mature_train": 1191,
+    "decimal_close_rows": 3520,
+    "declared_market_fit_ceiling": 338,
+    "market_skill": false,
+    "source_id": "e47bf678aff38bb6809c4c13ba8411ce0053396f3c31ea9ca5a320ff215b1cd6",
+    "design_id": "82b3e70dc37ba84234c91efb9ce42eaf2e3ce54b450e3ce7dc4e9b583772306f",
+    "native_market_fits": 338,
+    "native_learning_fits": 1,
+    "native_learning_predictions_reverified": 200,
+    "native_forecast_scalars": 7036,
+    "decimal_loss_scalars": 10030,
+    "independent_loss_intervals": 12,
+    "past_only_year_selections": 16,
+    "optimizer_gradient_inf_max": 9.717683984197723e-07,
+    "primary_gate_passed": false
+  },
+  "fresh_replay": {
+    "status": "fresh_private_github_restore_offline_compare_and_verifier_byte_identical",
+    "source_id": "e47bf678aff38bb6809c4c13ba8411ce0053396f3c31ea9ca5a320ff215b1cd6",
+    "new_fits": 0,
+    "network_requests_during_replay": 0,
+    "native_market_fits": 338,
+    "native_learning_fits": 1,
+    "reused_control_fits": 169,
+    "ordinal_origins": 2006,
+    "equal_outputs": {
+      "reports/result.json": "6618f167b6a554bb813652ac8a3fa358b74f86525cf47de0fb03592cd9997d9e",
+      "reports/paired-losses.csv": "56ff32669eba59ce036e5e5e99a15b3b5e86a7055718eee3c3d1928ee7810f0f",
+      "independent-result.json": "a61ee73a90ec83e7d97c87ab5a7237f4ebe6bb4fd1054dc054e4896373e555f2"
+    },
+    "market_skill": false,
+    "primary_gate_passed": false,
+    "replay_sha256": "a7442f781e2d28801576aea81760d001e0d8d9eafc6a1210c654d4322d787137"
+  },
+  "archive_sha256": "dcfb003a8dea74b37ba2e04aeaa3e41ee103d346aa33cf4ed062c821bafeb5c2",
+  "archive_bytes": 15875551,
+  "fresh_restored_members": 4184,
+  "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/ct-shock-forecast-result-20261029",
+  "native_recipe_ids": [
+    "432f36021d5b75dbb98440a1c09ed4e9ad85368b7332c5ec83bc9d090a3e9bb5",
+    "8c29f1767a0da5f99d549edf7b4cb5cfc13706c60524981b8cd7b809f46bc739",
+    "9a0cbc85942da54ff3ea3db4f77e38508695acdd23cd1290b5ec4186ebd5e722"
+  ],
+  "old_fit_recipes_preserved": 554,
+  "old_stages_preserved": 217,
+  "old_proofs_preserved": 198,
+  "old_trials_sha256": "99004d234a71eab55b7e0f5d38e06c18bd83a60c56de55cd52f4cddb33d77051",
+  "market_skill": false,
+  "release_allowed": false,
+  "independent_holdout": false,
+  "historical_availability_verified": false,
+  "first_vintage_verified": false,
+  "next_exact_question": "Held raw DXY risk state versus free own logEWMA level at equal capacity on the existing CT cohort; old named DXY result is source-compromised, not a clean CT negative. No next fit started.",
+  "record_id": "75a87febe3193918aa7a118c7de6f2eab6410d05acedc1583d91169123b94838"
+}

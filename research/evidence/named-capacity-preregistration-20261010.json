@@ -1,0 +1,42 @@
+{
+  "schema": 1,
+  "status": "frozen_single_capacity_control_not_run",
+  "profile": "named-capacity-control-t5-v1",
+  "source_id": "4a2feff2817bf57db64970c94c8b6a7bbd55cbdc97c8c872225a0756a9dd15af",
+  "source_files": 256,
+  "code_commit": "ff075294fb518cba2e91d4cf09f218963b7c8525",
+  "ready_sha256": "98b87771ba35a0df57062cfc17b76bea387bedfa50b516abde68b33328781bf7",
+  "decision_contract_sha256": "885d4b00e0c344a383a57a6a526cafd728392249774ec273f829598211012ea2",
+  "design_id": "d95eb9b95c321b57f21286a096d34377f72d5c20c8ba246d720cc68c7ca1af22",
+  "parent_ready_sha256": "1766d80dd46f2b2808d63cc8b97bbda6999571b5d2cd2e26db14ef59d545c811",
+  "parent_files_sha256": "2158997851844cf30bd2c18450919e820bfbce11885d36c51cf0a2be5fac1df0",
+  "fit_budget": {
+    "market": 22,
+    "synthetic": 4,
+    "threads": 2,
+    "processes": 1,
+    "session_minutes": 30
+  },
+  "origins": 246,
+  "scored": 242,
+  "unknown": 4,
+  "new_fits": 0,
+  "new_market_scores": 0,
+  "report_script_sha256": "430f146af488ad9c3068299bd062dd4258632b6a9f507442533a6ff4f07131aa",
+  "verifier_script_sha256": "40e5cce72f0d960e94a4c73aadd29c5906b94237281a7e6622bc70323e0314ca",
+  "bootstrap_sha256": "4578dae770a5963e54454b6fd79adec6bf488ef52bc6683a73e7a0acdc6fbe60",
+  "synthetic_checks": [
+    "known_signal",
+    "known_nonlinear",
+    "negative_block_shift",
+    "small_subset_overfit"
+  ],
+  "nearest_native_scope_sha256": "ad7083253cd03c8230c004cf181e44c7a0932239a0674fcec6ad68bc4d255785",
+  "gate_evaluation_allowed": false,
+  "historical_availability_verified": false,
+  "first_vintage_verified": false,
+  "independent_holdout": false,
+  "protocol": "docs/NAMED_CAPACITY_CONTROL_T5_20261010.md",
+  "deliberate_repeat_reason": "Old native XGBoost uses CT label/core24; matched named label/core28 capacity untested. Isolate family,not another CT grid.",
+  "record_id": "d44f715baed800103f114df4cc87e8877e1ae397b8ad6a973afad681ad511d00"
+}

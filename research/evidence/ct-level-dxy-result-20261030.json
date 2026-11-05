@@ -1,0 +1,318 @@
+{
+  "schema": 1,
+  "profile": "ct-risk-level-dxy-control-t1-v1",
+  "classification": "INCONCLUSIVE",
+  "classification_scope": "Primary DXY is inconclusive; preregistered own-level secondary passes historical risk gate, no independent-forward success",
+  "source_id": "5846f9cbb0f360731e84f251ed311f5f665510590594645204daa95c6438ab26",
+  "design_id": "5dd87b3d117daac2e3bac87fae9ae4b7151f339b55cb7bbc5344e347ceef7df8",
+  "data_id": "5ad179ef26e95bcc8b8fad8252275b717c377aef09c77cc2e89dd1391aa1dfb3",
+  "native_market_fits": 338,
+  "native_learning_fits": 1,
+  "reused_four_parameter_fits": 169,
+  "origin_count": 2006,
+  "comparisons": {
+    "own_level_raw_vs_EWMA": {
+      "gain": 0.024723987540525422,
+      "gain_ci": {
+        "20": [
+          0.006190312237429826,
+          0.04182102394325369
+        ],
+        "60": [
+          0.006945616690432026,
+          0.04127647112206383
+        ]
+      },
+      "yearly_gain": {
+        "2016": 0.004670525980602768,
+        "2017": 0.07534882114382782,
+        "2018": 0.022927403411409017,
+        "2019": 0.0016107408911535163,
+        "2020": 0.015738350937930905,
+        "2021": 0.015243339644629135,
+        "2022": 0.058066409367847974,
+        "2023": 0.0038929077810377034
+      },
+      "positive_years": 8,
+      "trim_top1pct_gain": -0.001243139060885917,
+      "fixed_risk_gate_passed": true
+    },
+    "own_level_selected_vs_EWMA": {
+      "gain": 0.01770104344442714,
+      "gain_ci": {
+        "20": [
+          0.004282359805110159,
+          0.029892753727075335
+        ],
+        "60": [
+          0.004701386507572174,
+          0.029576160295402377
+        ]
+      },
+      "yearly_gain": {
+        "2016": 0.006805388094357127,
+        "2017": 0.04560657429286318,
+        "2018": 0.022927403411409017,
+        "2019": 0.0016107408911535163,
+        "2020": 0.015738350937930905,
+        "2021": 0.0,
+        "2022": 0.044858776558393466,
+        "2023": 0.0038929077810377034
+      },
+      "positive_years": 7,
+      "trim_top1pct_gain": 0.0007307262458297253,
+      "fixed_risk_gate_passed": true
+    },
+    "dxy_state_raw_vs_EWMA": {
+      "gain": 0.019099366796024492,
+      "gain_ci": {
+        "20": [
+          -0.026298376970275823,
+          0.04865903490803736
+        ],
+        "60": [
+          -0.01911088055845156,
+          0.050093864258305185
+        ]
+      },
+      "yearly_gain": {
+        "2016": 0.003850238415579554,
+        "2017": 0.03650840029408731,
+        "2018": 0.011225808777454382,
+        "2019": -0.009605106131400608,
+        "2020": -0.0010389863143150913,
+        "2021": 0.0006866870473956666,
+        "2022": 0.11950671691929927,
+        "2023": -0.008603240195446633
+      },
+      "positive_years": 5,
+      "trim_top1pct_gain": -0.0119081259003699,
+      "fixed_risk_gate_passed": false
+    },
+    "dxy_state_selected_vs_EWMA": {
+      "gain": 0.0017767929790725267,
+      "gain_ci": {
+        "20": [
+          -0.004032469280374547,
+          0.007118625446111946
+        ],
+        "60": [
+          -0.0033340430841344217,
+          0.0067125514698976605
+        ]
+      },
+      "yearly_gain": {
+        "2016": 0.0,
+        "2017": 0.02104961173733571,
+        "2018": 0.011225808777454382,
+        "2019": -0.009605106131400608,
+        "2020": 0.0,
+        "2021": 0.0,
+        "2022": 0.0,
+        "2023": -0.008603240195446633
+      },
+      "positive_years": 2,
+      "trim_top1pct_gain": -0.003967797900842402,
+      "fixed_risk_gate_passed": false
+    },
+    "dxy_state_raw_vs_own_level": {
+      "gain": -0.005624620744500932,
+      "gain_ci": {
+        "20": [
+          -0.0430804244953249,
+          0.019969772415567022
+        ],
+        "60": [
+          -0.03603194552448555,
+          0.01866650063374126
+        ]
+      },
+      "yearly_gain": {
+        "2016": -0.0008202875650232145,
+        "2017": -0.0388404208497405,
+        "2018": -0.011701594633954636,
+        "2019": -0.011215847022554123,
+        "2020": -0.016777337252245995,
+        "2021": -0.014556652597233469,
+        "2022": 0.06144030755145132,
+        "2023": -0.012496147976484335
+      },
+      "positive_years": 1,
+      "trim_top1pct_gain": -0.01066498683948398,
+      "fixed_risk_gate_passed": false
+    },
+    "dxy_state_selected_vs_own_level": {
+      "gain": -0.015924250465354613,
+      "gain_ci": {
+        "20": [
+          -0.02626809471142767,
+          -0.0047992227100028435
+        ],
+        "60": [
+          -0.026133791473624168,
+          -0.004698220429662418
+        ]
+      },
+      "yearly_gain": {
+        "2016": -0.006805388094357127,
+        "2017": -0.024556962555527466,
+        "2018": -0.011701594633954636,
+        "2019": -0.011215847022554123,
+        "2020": -0.015738350937930905,
+        "2021": 0.0,
+        "2022": -0.044858776558393466,
+        "2023": -0.012496147976484335
+      },
+      "positive_years": 0,
+      "trim_top1pct_gain": -0.0046985241466721275,
+      "fixed_risk_gate_passed": false
+    }
+  },
+  "past_selected_weights": {
+    "own_level": {
+      "2016": 0.5,
+      "2017": 0.5,
+      "2018": 1.0,
+      "2019": 1.0,
+      "2020": 1.0,
+      "2021": 0.0,
+      "2022": 0.75,
+      "2023": 1.0
+    },
+    "dxy_state": {
+      "2016": 0.0,
+      "2017": 0.5,
+      "2018": 1.0,
+      "2019": 1.0,
+      "2020": 0.0,
+      "2021": 0.0,
+      "2022": 0.0,
+      "2023": 1.0
+    }
+  },
+  "primary_gate_passed": false,
+  "secondary_own_level_historical_gate_passed": true,
+  "secondary_finding_not_new_primary": true,
+  "mechanism_audit": {
+    "scope": "post-result descriptive mechanism/secondary audit; not a new primary or independent confirmation",
+    "source_id": "5846f9cbb0f360731e84f251ed311f5f665510590594645204daa95c6438ab26",
+    "new_fits": 0,
+    "new_data": false,
+    "primary_dxy_gate_passed": false,
+    "secondary_own_level_historical_gate_passed": true,
+    "own_level_model_count": 169,
+    "negative_extra_level_coefficients": 169,
+    "extra_level_coefficient_min_median_max": [
+      -0.25387054127408265,
+      -0.22710735863081805,
+      -0.17269384259331028
+    ],
+    "elasticity_holding_relative_har_fixed": "old1; new1+extra_level_coefficient, not holding absolute HAR fixed",
+    "own_level_vs_original_four_parameter": {
+      "raw": {
+        "mean": 0.007249354689690767,
+        "ci": {
+          "20": [
+            -0.013337220396762554,
+            0.037141857924062646
+          ],
+          "60": [
+            -0.011968885737800406,
+            0.030959569191216892
+          ]
+        },
+        "positive_years": 7
+      },
+      "selected": {
+        "mean": 0.01633534463215948,
+        "ci": {
+          "20": [
+            0.006332680909006802,
+            0.02540026806306323
+          ],
+          "60": [
+            0.006342827909275636,
+            0.025243758217049814
+          ]
+        },
+        "positive_years": 7
+      }
+    },
+    "top_ewma_loss_observations": 21,
+    "top1pct_share_of_selected_own_net_gain": 0.9591506245635583,
+    "largest_single_own_gain_origin": "2017-07-07",
+    "largest_single_share_of_selected_own_net_gain": 0.14162856738570886,
+    "trimmed_selected_own_gain": 0.0007307262458297253,
+    "historical_secondary_candidate_only": true,
+    "multiplicity_adjusted": false,
+    "market_skill": false,
+    "paired_losses_sha256": "cdc1be850dc2cea7aa49ad9b5420f1def52db2304c574a9fa82ce8421385a7df",
+    "helper_sha256": "b8f9ad27383bf0bbe31f43d92febf1bcfa55a34a859b7ae5a5eefeee85f9e1ab"
+  },
+  "mechanism_audit_sha256": "495604746432c81984f9364747a087aab8d52f731e469732f99d2583734ded31",
+  "result_sha256": "2fbab7184cb8399da017b0bc5294c42c0f6fbc2706c634bc0507ce037fb571e7",
+  "paired_losses_sha256": "cdc1be850dc2cea7aa49ad9b5420f1def52db2304c574a9fa82ce8421385a7df",
+  "independent_verification": {
+    "status": "independently_verified_completed_forecasts",
+    "new_fits": 0,
+    "ordinal_origins": 2006,
+    "past_only_jobs": 169,
+    "minimum_mature_train": 1191,
+    "decimal_close_rows": 3520,
+    "declared_market_fit_ceiling": 338,
+    "market_skill": false,
+    "source_id": "5846f9cbb0f360731e84f251ed311f5f665510590594645204daa95c6438ab26",
+    "design_id": "5dd87b3d117daac2e3bac87fae9ae4b7151f339b55cb7bbc5344e347ceef7df8",
+    "native_market_fits": 338,
+    "native_learning_fits": 1,
+    "native_learning_predictions_reverified": 200,
+    "native_forecast_scalars": 7036,
+    "decimal_loss_scalars": 10030,
+    "independent_loss_intervals": 12,
+    "past_only_year_selections": 16,
+    "optimizer_gradient_inf_max": 9.90456342949349e-07,
+    "primary_gate_passed": false
+  },
+  "fresh_replay": {
+    "status": "fresh_private_github_restore_offline_compare_and_verifier_byte_identical",
+    "source_id": "5846f9cbb0f360731e84f251ed311f5f665510590594645204daa95c6438ab26",
+    "new_fits": 0,
+    "network_requests_during_replay": 0,
+    "native_market_fits": 338,
+    "native_learning_fits": 1,
+    "reused_control_fits": 169,
+    "ordinal_origins": 2006,
+    "equal_outputs": {
+      "reports/result.json": "2fbab7184cb8399da017b0bc5294c42c0f6fbc2706c634bc0507ce037fb571e7",
+      "reports/paired-losses.csv": "cdc1be850dc2cea7aa49ad9b5420f1def52db2304c574a9fa82ce8421385a7df",
+      "independent-result.json": "d7243c16e9a5d2a469d92a7b86ca60ea994363cbfe8e2e03de752afd0d3ca570",
+      "mechanism-audit.json": "495604746432c81984f9364747a087aab8d52f731e469732f99d2583734ded31"
+    },
+    "market_skill": false,
+    "primary_gate_passed": false,
+    "secondary_own_level_historical_gate_passed": true,
+    "secondary_finding_not_new_primary": true,
+    "network_entrypoints_disabled": true,
+    "replay_sha256": "7ad5ae2d7d62e7b5aa69f5a07904e78ed81fdcae9e461c36843f79fc63816b28"
+  },
+  "archive_sha256": "a98604a5f123cef16e566bf0e7a0432369db5838a8f259308bff4ee5d355cae8",
+  "archive_bytes": 16326008,
+  "fresh_restored_members": 4193,
+  "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/ct-level-dxy-result-20261030",
+  "native_recipe_ids": [
+    "6ef3ab26e0b0cddfb51acd210e5f44ff0302700b226751f5727a8626cbce6343",
+    "80e632045acbdb4178864b715beaa31774ae959f22e48b1fcc8a1ee0cc3d2dc6",
+    "cdc83901b75fe1da074315ed9b2d26f62d466467d11fcb927de11a9851a8f267"
+  ],
+  "old_fit_recipes_preserved": 557,
+  "old_stages_preserved": 220,
+  "old_proofs_preserved": 201,
+  "old_trials_sha256": "af4baf3926b631ea7217204b31fb7110ada148c0b3cba2e85b451785c19dca08",
+  "market_skill": false,
+  "release_allowed": false,
+  "independent_holdout": false,
+  "historical_availability_verified": false,
+  "first_vintage_verified": false,
+  "next_exact_question": "Freeze the own-level secondary candidate for a separately preregistered independent prospective evaluation; no next fit or automatic task started.",
+  "record_id": "acfdd14c3dffe29aaf71b5b80126f540f3805516c99bb73ec9ac7e09c22c8081"
+}

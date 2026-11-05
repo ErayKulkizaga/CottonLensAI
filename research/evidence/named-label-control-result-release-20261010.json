@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/named-label-control-result-20261010",
+  "archive": {
+    "name": "named-label-control-result-20261010.zip",
+    "sha256": "07fcbcd9bb99d23c9e2aeea5172a122d52afb23fbdb343038888f28264e6ed70",
+    "bytes": 5793715
+  },
+  "inventory_sha256": "338d536a9537fa40f40d4a67efcb7261bc415e04e64508ce8f1c71a093c31b11",
+  "members": 513,
+  "source_id": "cc7e6693a9662a1dc7a91d4ca322c129a6ff8583c4dc4010d376e7b41aa52b65",
+  "native_market_fits": 44,
+  "native_synthetic_fits": 1,
+  "verification_fits": 0,
+  "prediction_rows": 984,
+  "classification": "DECISIVE_POSITIVE",
+  "scope": "Paired historical2023 RAW label effect only; both20/60 lower bounds positive. NOT Naive superiority,independent holdout,8yeargate,PIT,allmodels or allinformation proof.",
+  "record_id": "6d709afd93e07c4feb846b3047f52fbe4117eedeb62925dcf62c97627e9e2b7c"
+}

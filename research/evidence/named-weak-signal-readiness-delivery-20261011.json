@@ -1,0 +1,27 @@
+{
+  "schema": 1,
+  "status": "fresh_github_weak_signal_readiness_verified",
+  "payload_commit": "e74cb1dc7ad5fa9831da99ab5291a0b7d3dcb3a5",
+  "fresh_github_restore": {
+    "status": "verified",
+    "archive_sha256": "d52b6d2a7738af224127f12794efc8648cb0943bde24f8826807d04091a1ab58",
+    "inventory_members": 282,
+    "source_id": "46916bcb45e0408402a0e39f130b25d31997575e43b17358c8ec75fd6d0c13df",
+    "new_profile_fits": 0,
+    "scalar_rows": 21120,
+    "tamper_controls": 4,
+    "exact_ready_history_source_scenarios": true,
+    "exact_verification_receipt": true,
+    "exact_controls_receipt": true,
+    "market_skill_claimed": false
+  },
+  "fresh_commit_manifest_exact": true,
+  "old_studies_preserved": 176,
+  "old_proofs_preserved": 122,
+  "old_trials_bytes_unchanged": true,
+  "new_profile_fits": 0,
+  "goal_achieved": false,
+  "market_skill_claimed": false,
+  "next_exact_step": "Finish evidence storage migration after making repository private; then preregister existing-engine synthetic control under new final source identity, no market grid.",
+  "record_id": "be98466c579280b3bae40fe67ea5258db2d926f1dbba7939edef5f54aac32cdd"
+}

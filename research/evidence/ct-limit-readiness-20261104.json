@@ -1,0 +1,285 @@
+{
+  "profile": "ct-limit-expansion-readiness-v1",
+  "classification": "INCONCLUSIVE",
+  "classification_scope": "Published exchange widening notice subset. Descriptive screen failed, no forecast fit and no proof against actual contract-specific locks.",
+  "catalog_and_quote_coverage": {
+    "scope": "Coverage and market semantics only. Missing bodies are unknown; this is not a forecast experiment.",
+    "counts_by_status": {
+      "dated_expansion_body_verified": 36,
+      "source_unretrieved": 32,
+      "catalog_and_pdf_date_conflict": 4,
+      "multi_contract_trigger_missing": 3
+    },
+    "catalog_candidates": 75,
+    "cohort_origin_counts": {
+      "ct_historical": 2006,
+      "old_named": 252
+    },
+    "verified_event_origins": {
+      "ct_historical": [
+        "2017-05-12",
+        "2017-05-16",
+        "2017-09-12",
+        "2018-01-11",
+        "2018-02-21",
+        "2018-02-23",
+        "2018-04-05",
+        "2018-05-29",
+        "2018-06-19",
+        "2018-07-12",
+        "2018-10-22",
+        "2018-11-08",
+        "2018-12-07",
+        "2018-12-11",
+        "2019-05-13",
+        "2019-06-07",
+        "2020-04-01",
+        "2021-01-05",
+        "2021-01-11",
+        "2021-01-29",
+        "2021-03-09",
+        "2021-04-08",
+        "2021-10-05",
+        "2021-10-20",
+        "2021-10-27",
+        "2021-12-27",
+        "2022-03-25",
+        "2022-06-22",
+        "2022-08-15",
+        "2023-05-12",
+        "2023-12-07"
+      ],
+      "old_named": [
+        "2008-12-04",
+        "2009-07-01"
+      ]
+    },
+    "verified_event_year_counts": {
+      "ct_historical": {
+        "2017": 3,
+        "2018": 11,
+        "2019": 2,
+        "2020": 1,
+        "2021": 9,
+        "2022": 3,
+        "2023": 2
+      },
+      "old_named": {
+        "2008": 1,
+        "2009": 1
+      }
+    },
+    "catalog_candidate_origins": {
+      "ct_historical": [
+        "2016-07-12",
+        "2016-08-09",
+        "2017-04-20",
+        "2017-05-12",
+        "2017-05-16",
+        "2017-09-12",
+        "2018-01-11",
+        "2018-02-21",
+        "2018-02-23",
+        "2018-04-05",
+        "2018-05-29",
+        "2018-06-19",
+        "2018-07-12",
+        "2018-10-22",
+        "2018-11-08",
+        "2018-12-07",
+        "2018-12-11",
+        "2019-05-13",
+        "2019-06-07",
+        "2020-04-01",
+        "2021-01-05",
+        "2021-01-11",
+        "2021-01-29",
+        "2021-03-09",
+        "2021-04-08",
+        "2021-10-05",
+        "2021-10-20",
+        "2021-10-27",
+        "2021-12-27",
+        "2022-03-25",
+        "2022-04-13",
+        "2022-04-20",
+        "2022-04-27",
+        "2022-05-05",
+        "2022-06-08",
+        "2022-06-22",
+        "2022-06-27",
+        "2022-06-29",
+        "2022-07-05",
+        "2022-07-12",
+        "2022-07-14",
+        "2022-08-12",
+        "2022-08-15",
+        "2022-09-16",
+        "2022-09-23",
+        "2022-10-04",
+        "2022-10-10",
+        "2022-11-01",
+        "2022-11-03",
+        "2022-11-21",
+        "2022-11-29",
+        "2022-11-30",
+        "2022-12-13",
+        "2023-03-13",
+        "2023-03-28",
+        "2023-04-27",
+        "2023-05-04",
+        "2023-05-12",
+        "2023-07-07",
+        "2023-07-11",
+        "2023-11-14",
+        "2023-11-30",
+        "2023-12-07"
+      ],
+      "old_named": [
+        "2008-11-24",
+        "2008-12-04",
+        "2009-06-15",
+        "2009-07-01"
+      ]
+    },
+    "historical_utc_availability_proven": false,
+    "no_notice_is_confirmed_non_event": false,
+    "sample_march_2008": {
+      "delivery_month": "2008-05-01",
+      "closed_prices": {
+        "2008-02-29": "81.86",
+        "2008-03-03": "84.86",
+        "2008-03-04": "88.86",
+        "2008-03-05": "89.28",
+        "2008-03-06": "85.28",
+        "2008-03-07": "81.28"
+      },
+      "march5_intraday_limit": "92.86",
+      "march5_futures_daily_change_cents": "0.42",
+      "march5_intraday_limit_minus_close": "3.58",
+      "march3_separate_options_derived_margin_mark": "93.90",
+      "march3_margin_mark_minus_futures_price_cents": "9.04",
+      "marks_are_not_same_target": true,
+      "source": "CFTC March 2008 staff report executive summary and note 6; dated USDA May 2008 settlement quotes"
+    },
+    "market_fits": 0,
+    "forecast_scores": 0
+  },
+  "modern_summary": {
+    "observed_expansion_risk_ratio": {
+      "n": 31,
+      "mean": 1.2564308717254606,
+      "median": 0.6777523011797074,
+      "positive": 31
+    },
+    "matched_difference": {
+      "n": 31,
+      "mean": 0.060119978934659285,
+      "median": -0.3070174538348125,
+      "positive": 12
+    },
+    "minus_largest_abs_contrast": {
+      "n": 30,
+      "mean": -0.13786636246905465,
+      "median": -0.33723059970442326,
+      "positive": 11
+    },
+    "omitted_origin": "2022-06-22",
+    "years": {
+      "2017": {
+        "n": 3,
+        "mean": 0.22851096841458896,
+        "median": -1.0304615077343457,
+        "positive": 1
+      },
+      "2018": {
+        "n": 11,
+        "mean": -0.8620133524108682,
+        "median": -0.9037651790452268,
+        "positive": 1
+      },
+      "2019": {
+        "n": 2,
+        "mean": -0.44516548478143225,
+        "median": -0.44516548478143225,
+        "positive": 1
+      },
+      "2020": {
+        "n": 1,
+        "mean": -0.3070174538348125,
+        "median": -0.3070174538348125,
+        "positive": 0
+      },
+      "2021": {
+        "n": 9,
+        "mean": 0.6767018988441402,
+        "median": 0.1964109535946017,
+        "positive": 6
+      },
+      "2022": {
+        "n": 3,
+        "mean": 1.6935127091380924,
+        "median": 0.48213391272123984,
+        "positive": 2
+      },
+      "2023": {
+        "n": 2,
+        "mean": 0.34341326231817904,
+        "median": 0.34341326231817904,
+        "positive": 1
+      }
+    },
+    "descriptive_gate": false
+  },
+  "old_same_contract_cases": {
+    "2008-12-04": {
+      "target_held_month": "2009-03-01",
+      "previous_session": "2008-12-03",
+      "prior_named_settlement_cents": "46.60",
+      "origin_named_settlement_cents": "43.60",
+      "held_month_change_cents": "-3.00",
+      "verified_mark_changes_exact_3_cents": [
+        "2009-03-01",
+        "2009-05-01",
+        "2009-07-01",
+        "2009-10-01",
+        "2009-12-01"
+      ],
+      "next_risk_over_ewma": 1.7752688901708609
+    },
+    "2009-07-01": {
+      "target_held_month": "2009-10-01",
+      "previous_session": "2009-06-30",
+      "prior_named_settlement_cents": "55.63",
+      "origin_named_settlement_cents": "58.63",
+      "held_month_change_cents": "3.00",
+      "verified_mark_changes_exact_3_cents": [
+        "2009-10-01",
+        "2009-12-01",
+        "2010-03-01",
+        "2010-05-01",
+        "2010-07-01",
+        "2010-10-01",
+        "2011-03-01",
+        "2011-05-01"
+      ],
+      "next_risk_over_ewma": 0.05251653608359292
+    }
+  },
+  "independent_replay": {
+    "verified_events": 31,
+    "prior_controls": 620,
+    "above_ewma_count": 13,
+    "forecast_fits": 0,
+    "study_gate": false,
+    "frozen_result_sha256": "fcbc7f63b2cb78b91586bffd51a833f4d9aa4f59695ed7c8a37e5a65edf8085b"
+  },
+  "analysis_plan_sha256": "8955fdf167b3f8e7f1950ea9e8b61e36abd03d23c30fb8740baabb5e2a14f10f",
+  "result_sha256": "fcbc7f63b2cb78b91586bffd51a833f4d9aa4f59695ed7c8a37e5a65edf8085b",
+  "release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/ct-limit-readiness-20261104",
+  "archive_sha256": "4ebab0f1d76b00bc8043d091255e172615d50b86ac121a9dde46f9ab591e923c",
+  "fresh_restored_files": 92,
+  "offline_replay_outputs": 4,
+  "point_in_time_verified": false,
+  "new_fits": 0
+}

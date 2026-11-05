@@ -9,15 +9,18 @@ import numpy as np
 import pandas as pd
 import pytest
 import xgboost as xgb
-from sqlalchemy import create_engine, func, select
+from fastapi import HTTPException
+from sqlalchemy import create_engine, delete, func, select
 from sqlalchemy.orm import Session
 
+from app import api
 from app.api import _forecast_response
 from app.artifact_importer import import_artifact_directory
 from app.artifacts import ArtifactVerificationError, install_bundle, sha256_file, verify_directory
 from app.database import Base
-from app.models import ArtifactImport, Forecast
+from app.models import ArtifactImport, ArtifactMarketObservation, Forecast, MarketObservation
 from app.runtime import ArtifactRuntime
+from app.schemas import SimulationRequest
 
 REPO = Path(__file__).resolve().parents[2]
 
@@ -117,6 +120,284 @@ def test_export_import_runtime_preserves_evaluation_and_deployment(release, tmp_
     names = json.loads((root / "feature_schema.json").read_text())["features"]
     assert runtime.predict_return(1, dict.fromkeys(names, 0.1)) == pytest.approx(0.02)
     assert runtime.predict_return(5, dict.fromkeys(names, 0.1)) == pytest.approx(0.02)
+
+
+def test_chart_switches_to_new_release_without_rewriting_previous_forecasts(release, tmp_path):
+    original = tmp_path / "original"
+    revised = tmp_path / "revised"
+    install_bundle(release[0], original)
+    manifest = install_bundle(release[0], revised)
+    manifest["artifact_version"] = "revised-market-v2"
+    (revised / "manifest.json").write_text(json.dumps(manifest), encoding="utf-8")
+    market_path = revised / "market_history.parquet"
+    market = pd.read_parquet(market_path)
+    earliest = market.observed_on.min().date()
+    market = market.iloc[1:].copy()
+    market.loc[market.index[-1], "close"] = 84.0
+    market.to_parquet(market_path, index=False)
+    forecast_path = revised / "forecasts.parquet"
+    forecasts = pd.read_parquet(forecast_path)
+    forecasts["id"] = "revised-" + forecasts.index.astype(str)
+    forecasts.loc[forecasts.origin_type == "live", "current_price"] = 84.0
+    forecasts.loc[forecasts.origin_type == "live", "predicted_price"] = 84.0 * np.exp(.02)
+    forecasts.to_parquet(forecast_path, index=False)
+    _rehash(revised)
+
+    engine = create_engine("sqlite://")
+    Base.metadata.create_all(engine)
+    with Session(engine) as db:
+        import_artifact_directory(db, original)
+        first_forecast = api.latest_forecasts(db).forecasts[0]
+        date = first_forecast.as_of_date
+        assert api.market_history(date, date, ["cotton"], db).points[0].close == 80.0
+
+        import_artifact_directory(db, revised)
+        latest = api.latest_forecasts(db).forecasts[0]
+        chart = api.market_history(date, date, ["cotton"], db)
+        assert chart.points[0].close == latest.current_price_cents_per_lb == 84.0
+        assert db.get(Forecast, first_forecast.id).current_price == 80.0
+        rows = db.execute(
+            select(ArtifactImport.artifact_version, ArtifactMarketObservation.close)
+            .join(ArtifactMarketObservation)
+            .where(ArtifactMarketObservation.observed_on == date, ArtifactMarketObservation.series == "cotton"),
+        ).all()
+        assert sorted(close for _, close in rows) == [80.0, 84.0]
+        with pytest.raises(HTTPException) as missing_date:
+            api.market_history(earliest, earliest, ["cotton"], db)
+        assert missing_date.value.status_code == 404
+
+
+def test_exact_existing_receipt_backfills_only_its_market_history(release, tmp_path):
+    root = tmp_path / "current"
+    install_bundle(release[0], root)
+    engine = create_engine("sqlite://")
+    Base.metadata.create_all(engine)
+    with Session(engine) as db:
+        import_artifact_directory(db, root)
+        imported = db.scalar(select(ArtifactImport))
+        original = db.scalar(select(Forecast).where(Forecast.origin_type == "live"))
+        db.execute(delete(ArtifactMarketObservation))  # Shape of a pre-0003 database.
+        db.add(MarketObservation(observed_on=original.as_of_date, series="cotton", close=76.0, source="colab-artifact"))
+        db.commit()
+        date = original.as_of_date
+        legacy = api.market_history(date, date, ["cotton"], db)
+        assert legacy.data_quality == "legacy"
+        assert legacy.points[0].close == 76.0
+
+        assert import_artifact_directory(db, root) == imported.artifact_version
+        scoped = api.market_history(date, date, ["cotton"], db)
+        assert scoped.data_quality == "historical_audit"
+        assert scoped.points[0].close == original.current_price == 80.0
+        assert db.scalar(select(MarketObservation.close)) == 76.0
+        assert db.scalar(select(func.count()).select_from(ArtifactImport)) == 1
+        assert db.scalar(select(func.count()).select_from(Forecast)) == 8
+
+
+@pytest.mark.parametrize("corruption", ["duplicate", "wrong_live_close", "nonfinite"])
+def test_import_rejects_invalid_market_payload_before_persisting_forecasts(release, tmp_path, corruption):
+    root = tmp_path / "current"
+    install_bundle(release[0], root)
+    market_path = root / "market_history.parquet"
+    market = pd.read_parquet(market_path)
+    if corruption == "duplicate":
+        market = pd.concat([market, market.tail(1)], ignore_index=True)
+        message = "duplicate release market observation"
+    elif corruption == "nonfinite":
+        market.loc[market.index[0], "close"] = np.inf
+        message = "invalid release market observation"
+    else:
+        market.loc[market.index[-1], "close"] = 84.0
+        message = "disagrees with the live forecast origin price"
+    market.to_parquet(market_path, index=False)
+    _rehash(root)
+
+    engine = create_engine("sqlite://")
+    Base.metadata.create_all(engine)
+    with Session(engine) as db:
+        with pytest.raises(ArtifactVerificationError, match=message):
+            import_artifact_directory(db, root)
+        for table in (ArtifactImport, Forecast, ArtifactMarketObservation):
+            assert db.scalar(select(func.count()).select_from(table)) == 0
+
+
+def test_chart_does_not_promote_claims_from_legacy_manifest(release, tmp_path):
+    root = tmp_path / "current"
+    manifest = install_bundle(release[0], root)
+    manifest.update(artifact_schema_version=1, data_quality="validated_holdout")
+    (root / "manifest.json").write_text(json.dumps(manifest), encoding="utf-8")
+    _rehash(root)
+    engine = create_engine("sqlite://")
+    Base.metadata.create_all(engine)
+    with Session(engine) as db:
+        import_artifact_directory(db, root)
+        result = api.market_history(None, None, ["cotton"], db)
+        assert result.data_quality == "legacy"
+        assert len(result.points) == 80
+
+
+def test_simulation_rejects_loaded_runtime_from_an_older_import(release, tmp_path, monkeypatch):
+    root = tmp_path / "current"
+    manifest = install_bundle(release[0], root)
+    runtime = ArtifactRuntime(str(root))
+    runtime.load(with_snapshots=True)
+    monkeypatch.setattr(api, "runtime", runtime)
+    engine = create_engine("sqlite://")
+    Base.metadata.create_all(engine)
+    with Session(engine) as db:
+        import_artifact_directory(db, root)
+        live = db.scalar(select(Forecast).where(Forecast.origin_type == "live"))
+        request = SimulationRequest(as_of_date=live.as_of_date, adjustments={})
+        assert api.ready(db).artifact_version == manifest["artifact_version"]
+        assert api.create_simulation(request, db).model_version == manifest["artifact_version"]
+
+        manifest["artifact_version"] = "replacement-v2"
+        (root / "manifest.json").write_text(json.dumps(manifest), encoding="utf-8")
+        forecasts = pd.read_parquet(root / "forecasts.parquet")
+        forecasts["id"] = "replacement-" + forecasts.index.astype(str)
+        forecasts.to_parquet(root / "forecasts.parquet", index=False)
+        snapshots = pd.read_parquet(root / "feature_snapshots.parquet")
+        snapshots.tail(1).to_parquet(root / "feature_snapshots.parquet", index=False)
+        _rehash(root)
+        import_artifact_directory(db, root)
+
+        with pytest.raises(HTTPException, match="active database artifact") as readiness:
+            api.ready(db)
+        assert readiness.value.status_code == 503
+        with pytest.raises(HTTPException, match="active database artifact") as scenario:
+            api.create_simulation(request, db)
+        assert scenario.value.status_code == 503
+
+        runtime.load(with_snapshots=True)
+        assert api.ready(db).artifact_version == "replacement-v2"
+        assert api.create_simulation(request, db).model_version == "replacement-v2"
+        with monkeypatch.context() as sequence:
+            sequence.setattr(runtime, "required_window", lambda _: 2)
+            sequence.setattr(runtime, "predict_return", lambda *_: pytest.fail("incomplete release window was used"))
+            with pytest.raises(HTTPException, match="2 feature snapshots") as incomplete:
+                api.create_simulation(request, db)
+            assert incomplete.value.status_code == 409
+
+        monkeypatch.setattr(api, "runtime", ArtifactRuntime(str(tmp_path / "missing")))
+        with pytest.raises(HTTPException) as missing_runtime:
+            api.ready(db)
+        assert missing_runtime.value.status_code == 503
+        with pytest.raises(HTTPException) as missing_scenario:
+            api.create_simulation(request, db)
+        assert missing_scenario.value.status_code == 503
+
+
+@pytest.mark.parametrize("surface", ["import", "readiness", "simulation"])
+def test_same_manifest_cannot_reuse_receipt_after_payload_changes(release, tmp_path, monkeypatch, surface):
+    root = tmp_path / "current"
+    manifest = install_bundle(release[0], root)
+    original_manifest_sha = sha256_file(root / "manifest.json")
+    engine = create_engine("sqlite://")
+    Base.metadata.create_all(engine)
+    with Session(engine) as db:
+        import_artifact_directory(db, root)
+        receipt = db.scalar(select(ArtifactImport))
+        original_checksum = receipt.checksum
+        live = db.scalar(select(Forecast).where(Forecast.origin_type == "live"))
+        request = SimulationRequest(as_of_date=live.as_of_date, adjustments={})
+
+        snapshots_path = root / "feature_snapshots.parquet"
+        snapshots = pd.read_parquet(snapshots_path)
+        snapshots.loc[snapshots.index[-1], "dxy_ret_1"] = 0.5
+        snapshots.to_parquet(snapshots_path, index=False)
+        _rehash(root)
+        assert sha256_file(root / "manifest.json") == original_manifest_sha
+        assert verify_directory(root) == manifest
+
+        runtime = ArtifactRuntime(str(root))
+        runtime.load(with_snapshots=True)
+        monkeypatch.setattr(api, "runtime", runtime)
+        if surface == "import":
+            with pytest.raises(ArtifactVerificationError, match="different payload"):
+                import_artifact_directory(db, root)
+        else:
+            with pytest.raises(HTTPException, match="active database artifact") as mismatch:
+                if surface == "readiness":
+                    api.ready(db)
+                else:
+                    api.create_simulation(request, db)
+            assert mismatch.value.status_code == 503
+        assert receipt.checksum == original_checksum
+
+
+def test_manifest_only_receipt_cannot_be_promoted_from_current_files(release, tmp_path, monkeypatch):
+    root = tmp_path / "current"
+    manifest = install_bundle(release[0], root)
+    legacy_checksum = sha256_file(root / "manifest.json")
+    runtime = ArtifactRuntime(str(root))
+    runtime.load(with_snapshots=True)
+    monkeypatch.setattr(api, "runtime", runtime)
+    engine = create_engine("sqlite://")
+    Base.metadata.create_all(engine)
+    with Session(engine) as db:
+        import_artifact_directory(db, root)
+        receipt = db.scalar(select(ArtifactImport))
+        receipt.checksum = legacy_checksum
+        db.commit()
+        with pytest.raises(ArtifactVerificationError, match="legacy manifest-only receipt"):
+            import_artifact_directory(db, root, expected_payload_checksum=runtime.payload_checksum)
+        with pytest.raises(HTTPException) as readiness:
+            api.ready(db)
+        assert readiness.value.status_code == 503
+        assert receipt.checksum == legacy_checksum
+        assert api.model_evaluation(db).artifact_version == manifest["artifact_version"]
+        assert db.scalar(select(func.count()).select_from(Forecast)) == 8
+
+
+def test_startup_rejects_install_swap_before_database_writes(release, tmp_path):
+    root = tmp_path / "current"
+    install_bundle(release[0], root)
+    runtime = ArtifactRuntime(str(root))
+    runtime.load(with_snapshots=True)
+    assert runtime.payload_checksum is not None
+    metrics_path = root / "metrics.json"
+    metrics_path.write_text(metrics_path.read_text(encoding="utf-8") + "\n", encoding="utf-8")
+    _rehash(root)
+    engine = create_engine("sqlite://")
+    Base.metadata.create_all(engine)
+    with Session(engine) as db:
+        with pytest.raises(ArtifactVerificationError, match="changed since the runtime was loaded"):
+            import_artifact_directory(db, root, expected_payload_checksum=runtime.payload_checksum)
+        assert db.scalar(select(func.count()).select_from(ArtifactImport)) == 0
+        assert db.scalar(select(func.count()).select_from(Forecast)) == 0
+
+
+def test_import_identity_is_independent_of_inventory_order(release, tmp_path):
+    root = tmp_path / "current"
+    manifest = install_bundle(release[0], root)
+    engine = create_engine("sqlite://")
+    Base.metadata.create_all(engine)
+    with Session(engine) as db:
+        import_artifact_directory(db, root)
+        inventory = root / "checksums.sha256"
+        entries = inventory.read_text(encoding="utf-8").splitlines()
+        inventory.write_text("\n".join(reversed(entries)) + "\n", encoding="utf-8")
+        assert import_artifact_directory(db, root) == manifest["artifact_version"]
+        assert db.scalar(select(func.count()).select_from(ArtifactImport)) == 1
+
+
+def test_experimental_sensitivity_uses_its_own_zero_change_baseline(release, tmp_path, monkeypatch):
+    root = tmp_path / "current"
+    install_bundle(release[0], root)
+    runtime = ArtifactRuntime(str(root))
+    runtime.load(with_snapshots=True)
+    monkeypatch.setattr(api, "runtime", runtime)
+    monkeypatch.setattr(runtime, "model_name", lambda _: "XGBoost experimental sensitivity model")
+    monkeypatch.setattr(runtime, "predict_return", lambda _, features: float(features["dxy_ret_1"]))
+    engine = create_engine("sqlite://")
+    Base.metadata.create_all(engine)
+    with Session(engine) as db:
+        import_artifact_directory(db, root)
+        live = db.scalar(select(Forecast).where(Forecast.origin_type == "live"))
+        request = SimulationRequest(as_of_date=live.as_of_date, adjustments={})
+        for result in api.create_simulation(request, db).results:
+            assert result.baseline_kind == "experimental"
+            assert result.delta_cents_per_lb == 0
+            assert result.delta_pct == 0
 
 
 def test_unchecked_payload_and_model_identity_mismatch_are_rejected(release, tmp_path):

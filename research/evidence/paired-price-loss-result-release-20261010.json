@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/paired-price-loss-result-20261010",
+  "archive": {
+    "name": "paired-price-loss-result-20261010.zip",
+    "sha256": "8585dae1b1bf63affeb263f97c1d46ee6772246330fa68d30cb3d34ef917ed7c",
+    "bytes": 18839627
+  },
+  "members": 579,
+  "inventory_member": "checksums.json",
+  "inventory_sha256": "bf9eb0e23daa15f9cab2d8102536c3ec36718159df0075aaf7a0d45774ee0259",
+  "market_fits": 48,
+  "synthetic_fits": 6,
+  "verification_new_fits": 0,
+  "scope": "Authoritative frozen inputs/source,54 fitted payloads and completed receipts,16 ensembles,original preregistration,result and portable zero-fit verifier; duplicate local-work/cache excluded."
+}

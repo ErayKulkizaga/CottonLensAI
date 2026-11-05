@@ -1,0 +1,112 @@
+{
+  "schema": 1,
+  "profile": "ams-named-ewma-har-full-year-t1-v1",
+  "classification": "INCONCLUSIVE",
+  "classification_scope": "Seen eight-year named T+1 QLIKE; EWMA superiority gate failed",
+  "new_market_fits": 174,
+  "new_synthetic_fits": 1,
+  "source_id": "a0cce2f8191749363e350489a93f823cc1e90a3354e55787c58147a01c692e62",
+  "design_id": "1e0d2e45d7c4539932d4ed1be14c4127269f8ce227bf2f944ef7ecce07dd942a",
+  "data_id": "e0e5aecb37f57bde98fd23c0d7d7501bebd34dfe8feff86a534e7019f709cef1",
+  "result_sha256": "bc8101cb0d573a72a1bd6c1e0e0adf06d2cd71e98e9a98910e3c2359b95d6146",
+  "result_record_id": "69dc5a9a3ce8db8c9303738555c926b63bfb01288225abd7af018cc9147089a3",
+  "paired_losses_sha256": "7ce8c5a66c31e22af599244593540b085d8ea01b5cc13d67f008856e033ac252",
+  "origin_count": 2006,
+  "eligible_origins": 1989,
+  "comparisons": {
+    "raw": {
+      "baseline_minus_candidate_gain": 0.006774885939882261,
+      "gain_ci": {
+        "20": [
+          -0.007987051069910654,
+          0.02179497777708371
+        ],
+        "60": [
+          -0.0061281901013528935,
+          0.019889693516699766
+        ]
+      },
+      "yearly_gain": {
+        "2016": -0.0019962925836276065,
+        "2017": 0.0267361742937705,
+        "2018": 0.03947685408184216,
+        "2019": -0.03353536857177935,
+        "2020": 0.0019477946265828254,
+        "2021": 0.014182002337337036,
+        "2022": 0.007555590732232058,
+        "2023": 0.0004972197840184962
+      },
+      "positive_years": 6,
+      "trim_top1pct_gain": -0.012700579309303892,
+      "fixed_risk_gate_passed": false
+    },
+    "selected": {
+      "baseline_minus_candidate_gain": 0.0037349989529193066,
+      "gain_ci": {
+        "20": [
+          -0.007085744196376521,
+          0.014693411641835456
+        ],
+        "60": [
+          -0.005257702180122628,
+          0.01371555955654707
+        ]
+      },
+      "yearly_gain": {
+        "2016": -0.0019962925836276065,
+        "2017": 0.018884383663662754,
+        "2018": 0.03947685408184216,
+        "2019": -0.03353536857177935,
+        "2020": 0.0,
+        "2021": 0.0,
+        "2022": 0.0073368874655413896,
+        "2023": 0.0004972197840184962
+      },
+      "positive_years": 4,
+      "trim_top1pct_gain": -0.008362549907201824,
+      "fixed_risk_gate_passed": false
+    }
+  },
+  "independent_verification": {
+    "profile": "ams-named-ewma-har-independent-v1",
+    "status": "verified",
+    "new_fits": 0,
+    "source_label_pairs": 1989,
+    "decimal_qlike_losses": 5967,
+    "bootstrap_intervals": 4,
+    "native_fit_copies_from_report": 174,
+    "source_clock_verified": false,
+    "independent_holdout": false,
+    "report_sha256": "bc8101cb0d573a72a1bd6c1e0e0adf06d2cd71e98e9a98910e3c2359b95d6146",
+    "paired_losses_sha256": "7ce8c5a66c31e22af599244593540b085d8ea01b5cc13d67f008856e033ac252",
+    "analysis_sha256": "b31cdbf309ac11efbf9d3fc4cd1119de58636aff7d928bd2a8cd5a841f744a33"
+  },
+  "fresh_replay": {
+    "status": "verified",
+    "new_fits": 0,
+    "restored_files": 1249,
+    "verification_byte_identical": true
+  },
+  "archive_sha256": "2d579dd27d7936dc9323adcaba58e8073d8ee2b59732861ee329b386539645cc",
+  "raw_source_asset_sha256": [
+    "03d7347b7a0a5c9b5c277cd39666cb9336deb00d9723d1ff17d8513115311ea6",
+    "075c46959189756c82d25a07a89a084dcdf840ba8314c83b82688ea5351487b3",
+    "0f0d51e3a62de1178b9c70656da8772b0164496edf9f6cb7de5391c3a9bc486a",
+    "13b70fd27440cd8ca420fb211498d8fa8da57d1291ce0095c7d61538128dcc32",
+    "48339f6a1ec1fab71ebbd54040d15b3705f7e425e67da08e961fb69ca9a34fbf",
+    "49c0e131f7db9b6388aa59a3a24e2a608af7e398c1dfd2c04d055269f007b055",
+    "5f65d41165f7724fbed316e8a3e7059b3a0e37fb94fc9655e434c54b37b7232a",
+    "737fceaf26afb86708ad135bbec31ff292d6c1b1b5816c1f9277246b1dcfc9c6",
+    "b6d1494cc185aea57f3a25ac73f4c888b5582300112355b588195c22baf5edac",
+    "c0191df83c638c417f75156dc8b43e748675fa89a06b6293cc9388d163047312",
+    "f2a1ec3fbedc161e59d2ff8087d9f08c98251239e38fff7bb65e421823846708",
+    "fb994af5d6ef3514f23815cc4c028ddf9ab769c262d7d7fc63a25ef3fb68973b"
+  ],
+  "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/ams-named-ewma-har-result-20261014",
+  "release_allowed": false,
+  "independent_holdout": false,
+  "historical_availability_verified": false,
+  "old_records_preserved": 203,
+  "old_evidence_preserved": 184,
+  "record_id": "74f1591581852a5d6855287cc0403d4ae0872ed4a9d196e2fec2860de4c62a97"
+}

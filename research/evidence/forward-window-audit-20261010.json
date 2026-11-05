@@ -1,0 +1,188 @@
+{
+  "schema": "forward-window-audit-v1",
+  "kind": "no_fit_read_only_operational_audit",
+  "verified_at": "2026-10-10T07:37:14.492121+00:00",
+  "code_id": "44f3d16f90af44d9ec0ecbc058055c89a2779e5b3e7ad2006eed19428c0ed965",
+  "frozen_ml_files": 226,
+  "market_fits": 0,
+  "synthetic_fits": 0,
+  "window": {
+    "start": "2026-10-10T00:00:00+00:00",
+    "capture": "2026-10-10T00:05:00+00:00",
+    "input_cutoff": "2026-10-10T00:15:00+00:00",
+    "publication": "2026-10-10T00:20:00+00:00",
+    "end_exclusive": "2026-10-10T00:30:00+00:00"
+  },
+  "forward_audit": {
+    "status": "awaiting_forward_predictions",
+    "audit_schema": "prospective-baseline-status-v1",
+    "audited_at": "2026-10-10T07:37:14.492121+00:00",
+    "baseline_lock_present": true,
+    "lock_id": "29cb4f5dbc89afe5bed39d0c55ee333f6b96ddf2be1bd4a664974468655dbb18",
+    "registered_origins": 6,
+    "published_origins": 0,
+    "missing_origins": 6,
+    "required_origins": 126,
+    "remaining_origin_slots": 120,
+    "recorded_coverage": 0.0,
+    "unregistered_origins": [],
+    "pending_publication_origins": [],
+    "origins": [
+      {
+        "origin": "2026-10-01",
+        "state": "missing",
+        "diagnosis": "no_archived_pre_cutoff_input",
+        "decision_at": "2026-10-02T00:15:00+00:00",
+        "recorded_at": "2026-10-02T17:36:19.881676+00:00",
+        "pre_cutoff_snapshots": 0,
+        "first_archived_input_at": "2026-10-02T17:36:12.306058+00:00",
+        "source_receipt_id": "71646ddb1613a4ebdec3f36a6bdbd7446961168e596e8a1ba34f3b11552e5c44",
+        "input_sha256": "a6cc89a6670640fbbe3e85cda612d2b8d1a13f5c4146ab2b5a44641fae613303"
+      },
+      {
+        "origin": "2026-10-02",
+        "state": "missing",
+        "diagnosis": "no_archived_pre_cutoff_input",
+        "decision_at": "2026-10-03T00:15:00+00:00",
+        "recorded_at": "2026-10-03T09:05:08.056238+00:00",
+        "pre_cutoff_snapshots": 0,
+        "first_archived_input_at": "2026-10-03T09:05:07.455659+00:00",
+        "source_receipt_id": "31f25be3fe872b58b7c25d14d3cda38a04527aa4d5abeaffccddfce7b2181b00",
+        "input_sha256": "7050fa84edfc01abb3ee87ddc6eb6006ea7271be67aa7ad2ac0fde3125b0444a"
+      },
+      {
+        "origin": "2026-10-05",
+        "state": "missing",
+        "diagnosis": "no_archived_pre_cutoff_input",
+        "decision_at": "2026-10-06T00:15:00+00:00",
+        "recorded_at": "2026-10-08T11:05:08.094540+00:00",
+        "pre_cutoff_snapshots": 0,
+        "first_archived_input_at": "2026-10-08T11:05:08.000788+00:00",
+        "source_receipt_id": "324ac066d202f95c1411948bca63904acd0c0b6ea33694c8dff0aa5bf863d9bf",
+        "input_sha256": "c36456749b545b58c83c95b2c2b68e255c053bb6ccef24ad2f4c4e1c0cefc9d6"
+      },
+      {
+        "origin": "2026-10-06",
+        "state": "missing",
+        "diagnosis": "no_archived_pre_cutoff_input",
+        "decision_at": "2026-10-07T00:15:00+00:00",
+        "recorded_at": "2026-10-08T11:05:08.094540+00:00",
+        "pre_cutoff_snapshots": 0,
+        "first_archived_input_at": "2026-10-08T11:05:08.000788+00:00",
+        "source_receipt_id": "324ac066d202f95c1411948bca63904acd0c0b6ea33694c8dff0aa5bf863d9bf",
+        "input_sha256": "85a6e1aa86f9bc460506d09c0a5b33930bd3ca028bd628ee22e3ef36f870c42d"
+      },
+      {
+        "origin": "2026-10-07",
+        "state": "missing",
+        "diagnosis": "no_archived_pre_cutoff_input",
+        "decision_at": "2026-10-08T00:15:00+00:00",
+        "recorded_at": "2026-10-08T11:05:08.094540+00:00",
+        "pre_cutoff_snapshots": 0,
+        "first_archived_input_at": "2026-10-08T11:05:08.000788+00:00",
+        "source_receipt_id": "324ac066d202f95c1411948bca63904acd0c0b6ea33694c8dff0aa5bf863d9bf",
+        "input_sha256": "f8b0a0d46c3909c3a9a6f17c269e0b04239136f31a11beab2244060cef4d2992"
+      },
+      {
+        "origin": "2026-10-08",
+        "state": "missing",
+        "diagnosis": "no_archived_pre_cutoff_input",
+        "decision_at": "2026-10-09T00:15:00+00:00",
+        "recorded_at": "2026-10-09T08:05:12.346205+00:00",
+        "pre_cutoff_snapshots": 0,
+        "first_archived_input_at": "2026-10-09T08:05:05.564367+00:00",
+        "source_receipt_id": "3d0e2ea675a098f0ce0dc04bbc407800ab78947aef954a900f0e6d0cbf8fbd6e",
+        "input_sha256": "91889b53d65ebca15a164ddfa233fc256c37fb69d45cf10e45a43e46dc7bc809"
+      }
+    ],
+    "performance_feedback": "not_computed; separate score requires all 126 origins mature",
+    "limits": "Local archive evidence only; no external attestation, provider latency proof or independent model skill."
+  },
+  "window_run_receipt_ids": [],
+  "window_pre_cutoff_quote_receipt_ids": [],
+  "latest_run": {
+    "record_id": "c6ddd00c79287ae42e465d28aa6b1a60a0fb07fe7c06f180ac8c61bdbe192fa9",
+    "file_sha256": "2e0c11c350c7936411c11617f73828128038a38ab1a7934a4e5ea884fcec26b5",
+    "observed_at": "2026-10-09T22:05:04.511213+00:00",
+    "execution_source_id": "44f3d16f90af44d9ec0ecbc058055c89a2779e5b3e7ad2006eed19428c0ed965",
+    "phase": "collection",
+    "training": false,
+    "forward_record_ids": [
+      "dac2a4880f654eeea11395f0f3fa2831f87e5f95b3c36a2bbe68fb4fddb11de6",
+      "0515b9d507e1bc393f675831ff25b62eb05e2d4b4852dced9112b709dce2ae05",
+      "da8568ae869d394d09e5d4dfbcfe5b12a585d37e6ad4daf40cd1e9938010d8a1",
+      "82ec665714a9f06740847b76580a179714ead95aca6c346b7381d23d1d74c96b",
+      "99d6347c841877aaa77510c36d799b0351a82f0e5c7e96a67724ff78b25b075e",
+      "6d8b332b7eed720a18d929600c5d01d157d914442930818559f417f1620f304e"
+    ]
+  },
+  "latest_quote": {
+    "record_id": "1604afdb190b7a1db13730b445842af78eb0b5bb6014dd7892bc0866c05f6c37",
+    "observed_available_at": "2026-10-09T19:05:06.910699+00:00",
+    "source_sha256": "4c9305fbf907008168fa9fae9bfc1e6fcba3fa8d511af16dbd86f43f5b262b49",
+    "first_publication_verified": false
+  },
+  "scheduler_observation": {
+    "observed_at": "2026-10-10T07:35:50.0554273Z",
+    "task_name": "CottonLens-Observed-Archive-v2",
+    "state": "Ready",
+    "last_run_at_utc": "2026-10-10T07:05:05.0000000Z",
+    "last_result": 2147946720,
+    "hresult": "0x800710E0",
+    "win32_code": 4320,
+    "next_run_at_utc": "2026-10-10T08:05:05.0000000Z",
+    "number_of_missed_runs": 0,
+    "logon_type": "Interactive",
+    "wake_to_run": true,
+    "start_when_available": false,
+    "multiple_instances": "IgnoreNew",
+    "task_operational_log_enabled": false,
+    "power_event": {
+      "event_id": 1,
+      "event_at_utc": "2026-10-10T06:59:29.1246987Z",
+      "provider": "Microsoft-Windows-Power-Troubleshooter",
+      "event_xml_sha256": "4abd334d3d52364f7a2db534fde679824e92c3cff85f84b9de3a7a6c1cb65f60",
+      "times": {
+        "WakeTime": "2026-10-10T06:59:28.0714338Z",
+        "SleepTime": "2026-10-09T22:51:28.0572644Z"
+      }
+    }
+  },
+  "preservation": {
+    "original_forward_files": {
+      "forward/baseline-lock.json": "f2061381316b5410717265a472ad42e94161d8da4f105f69945e75b601235237",
+      "forward/baseline-inputs/2026-10-01.parquet": "a6cc89a6670640fbbe3e85cda612d2b8d1a13f5c4146ab2b5a44641fae613303",
+      "forward/baseline-inputs/2026-10-02.parquet": "7050fa84edfc01abb3ee87ddc6eb6006ea7271be67aa7ad2ac0fde3125b0444a",
+      "forward/baseline-inputs/2026-10-05.parquet": "c36456749b545b58c83c95b2c2b68e255c053bb6ccef24ad2f4c4e1c0cefc9d6",
+      "forward/baseline-inputs/2026-10-06.parquet": "85a6e1aa86f9bc460506d09c0a5b33930bd3ca028bd628ee22e3ef36f870c42d",
+      "forward/baseline-inputs/2026-10-07.parquet": "f8b0a0d46c3909c3a9a6f17c269e0b04239136f31a11beab2244060cef4d2992",
+      "forward/baseline-inputs/2026-10-08.parquet": "91889b53d65ebca15a164ddfa233fc256c37fb69d45cf10e45a43e46dc7bc809",
+      "forward/baseline-origins/2026-10-01.json": "dc5ed1c2217cb69075a3343a0ea665a5c83acf87bbdfb67668e424acc9581354",
+      "forward/baseline-origins/2026-10-02.json": "57a19ee658ebcf1f15abb1396d8fcc393a903b47fe3e03167f4fdac0017ddbd2",
+      "forward/baseline-origins/2026-10-05.json": "f71d7f38fa9f46ab3dc3f4f9c4996162b75b739ba39e6ee2e17bdd13f889321b",
+      "forward/baseline-origins/2026-10-06.json": "27b9679b00c50d45d67a0e007c745365636cd01e8a42a8a2743aa0597af1e9fe",
+      "forward/baseline-origins/2026-10-07.json": "dc6d3f942416d9967e9bab8da50f0855be404b96efdf8b7ccfa4d5d0a79edf8b",
+      "forward/baseline-origins/2026-10-08.json": "36a2a309bb26cae3d45877b42dfc2e13d8a16cadf43758accf0834a70c46a322"
+    },
+    "old_registry_records": 154,
+    "old_evidence_files": 56,
+    "trials_sha256": "3df64c4b21c62c96d68f3d61e554d16891e921df44fc36291b07e991af4f272f",
+    "read_only_store_files_verified": 115,
+    "store_inventory_id": "9eb7aa81debca3f2d446d52e23a2776a57861cd14943c3f2df0d99fa836e4413",
+    "primary_checkout_unchanged": true,
+    "writer_lock_present": false,
+    "baseline_policy_changed": false,
+    "task_changed": false
+  },
+  "finding": "No overnight capture/publication receipt exists; OS sleep event spans the window. The later 07:05 UTC scheduler request was refused.",
+  "limits": [
+    "The 07:05 HRESULT does not prove the error of the earlier overnight triggers.",
+    "Task operational logging was disabled; the precise scheduler refusal cause is unresolved.",
+    "No October 9 origin was present in archived completed-bar inputs; it was not backfilled or counted as a seventh missing record.",
+    "No forecast was published, so no Naive/EWMA inference or skill is claimed.",
+    "Local timestamps and sanitized OS projections are not external attestations.",
+    "Raw OS XML, user/account/machine details, raw quote data and full run bodies are excluded from public evidence.",
+    "No task, power policy, clock, cohort, threshold, source admission or automation setting was changed."
+  ],
+  "next_action": "Inspect the existing interactive session/task execution refusal before expecting another overnight publication; do not backfill or silently change scheduling/security policy."
+}

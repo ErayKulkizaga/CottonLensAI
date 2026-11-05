@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/named-weak-execution-result-20261012",
+  "source_id": "b8420a30f9f433880e96237c6cafe25613092e1b8b69f7fd42e5f69bd202e760",
+  "archive": {
+    "name": "named-weak-execution-result-20261012.zip",
+    "sha256": "3c72d56735b00e1b40c027eb4b1310e2b00e605f1db770004d4886fc15f2b9fc",
+    "bytes": 14012064
+  },
+  "inventory_sha256": "81f62cb6ebd01f772895f61c790c57cb89910ca0de22b11c8106b5538ee753f9",
+  "members": 1761,
+  "mode": "result",
+  "synthetic_fits": 132,
+  "market_fits": 0,
+  "market_skill_claimed": false,
+  "record_id": "67a8dbb5b56778fbd1cace0f3bd4a03f07beef97a1e0e55dddedd087cdd14c89"
+}

@@ -2,7 +2,8 @@ param([Parameter(Mandatory=$true)][string]$PythonPath,
       [Parameter(Mandatory=$true)][string]$RepoPath,
       [Parameter(Mandatory=$true)][string]$StorePath,
       [string]$DrivePath,
-      [string]$SecretsPath)
+      [string]$SecretsPath,
+      [string]$ExpectedSourceId)
 $ErrorActionPreference = 'Stop'
 $env:PYTHONPATH = Join-Path $RepoPath 'ml/src'
 $env:PYTHONNOUSERSITE = '1'
@@ -11,6 +12,12 @@ $env:OPENBLAS_NUM_THREADS = '2'
 $env:MKL_NUM_THREADS = '2'
 # This task only collects observations. It never enables local training.
 Remove-Item Env:COTTONLENS_ALLOW_LOCAL_CPU_TABULAR -ErrorAction SilentlyContinue
+if ($ExpectedSourceId) {
+    if ($ExpectedSourceId -notmatch '^[a-f0-9]{64}$') { throw 'Invalid frozen source identity' }
+    $verification = "import json,sys; from pathlib import Path; from cottonlens_ml.code_identity import research_source_identity; r=Path(sys.argv[1]); actual=research_source_identity(r); frozen=json.loads((r/'.source-manifest.json').read_text(encoding='utf-8')); assert actual == frozen and actual['source_id'] == sys.argv[2], 'Frozen collector source changed'"
+    & $PythonPath -c $verification $RepoPath $ExpectedSourceId
+    if ($LASTEXITCODE -ne 0) { throw 'Frozen collector validation failed; no collection performed' }
+}
 New-Item -ItemType Directory -Path $StorePath -Force | Out-Null
 $arguments = @('-m','cottonlens_ml.research.live','--store',$StorePath)
 if ($DrivePath) { $arguments += @('--mirror-root',$DrivePath) }

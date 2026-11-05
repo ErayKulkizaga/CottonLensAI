@@ -1,6 +1,7 @@
 import importlib.util
 import json
 import math
+from datetime import date
 from pathlib import Path
 
 import numpy as np
@@ -16,26 +17,31 @@ class ArtifactRuntime:
     def __init__(self, artifact_dir: str) -> None:
         self.root = Path(artifact_dir)
         self.manifest: dict = {}
+        self.payload_checksum: str | None = None
         self.feature_names: list[str] = []
         self.models: dict[int, tuple[str, object]] = {}
+        self._feature_snapshots: dict[date, dict[str, float]] = {}
 
     @property
     def ready(self) -> bool:
         return bool(self.manifest and self.models)
 
-    def load(self) -> None:
+    def load(self, *, with_snapshots: bool = False) -> None:
         self.manifest = {}
+        self.payload_checksum = None
         self.models = {}
+        self._feature_snapshots = {}
         manifest_path = self.root / "manifest.json"
         schema_path = self.root / "feature_schema.json"
         if not manifest_path.exists() or not schema_path.exists():
             raise ArtifactRuntimeError("manifest.json or feature_schema.json is missing")
         manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
-        if manifest.get("artifact_schema_version") in (2, 3) or (self.root / "checksums.sha256").exists():
+        payload_checksum = None
+        if with_snapshots or manifest.get("artifact_schema_version") in (2, 3) or (self.root / "checksums.sha256").exists():
             spec = importlib.util.spec_from_file_location("cottonlens_artifact_verifier", Path(__file__).with_name("artifacts.py"))
             verifier = importlib.util.module_from_spec(spec)
             spec.loader.exec_module(verifier)
-            verifier.verify_directory(self.root)
+            manifest, payload_checksum = verifier.verify_directory_with_identity(self.root)
         schema = json.loads(schema_path.read_text(encoding="utf-8"))
         self.feature_names = schema["features"]
         if not self.feature_names or len(set(self.feature_names)) != len(self.feature_names):
@@ -67,8 +73,32 @@ class ArtifactRuntime:
             models[horizon] = (model_format, model)
         if not models:
             raise ArtifactRuntimeError("manifest does not define a production model")
+        if with_snapshots:
+            self._feature_snapshots = self._read_feature_snapshots()
+        if payload_checksum is not None and verifier.payload_identity(self.root) != payload_checksum:
+            raise ArtifactRuntimeError("artifact payload changed while loading the runtime")
         self.models = models
+        self.payload_checksum = payload_checksum
         self.manifest = manifest
+
+    def _read_feature_snapshots(self) -> dict[date, dict[str, float]]:
+        import pyarrow.parquet as pq
+
+        snapshots = {}
+        for row in pq.read_table(self.root / "feature_snapshots.parquet").to_pylist():
+            observed = date.fromisoformat(str(row.pop("date"))[:10])
+            if observed in snapshots:
+                raise ArtifactRuntimeError("duplicate release feature snapshot date")
+            snapshots[observed] = {name: float(value) for name, value in row.items() if value is not None}
+        return dict(sorted(snapshots.items()))
+
+    def feature_window(self, origin: date, window: int) -> list[dict[str, float]]:
+        if origin not in self._feature_snapshots:
+            raise ArtifactRuntimeError("baseline feature snapshot is unavailable in the loaded release")
+        dates = [observed for observed in self._feature_snapshots if observed <= origin]
+        if len(dates) < window:
+            raise ArtifactRuntimeError(f"{window} feature snapshots are required in the loaded release")
+        return [dict(self._feature_snapshots[observed]) for observed in dates[-window:]]
 
     def model_format(self, horizon: int) -> str:
         if horizon not in self.models:

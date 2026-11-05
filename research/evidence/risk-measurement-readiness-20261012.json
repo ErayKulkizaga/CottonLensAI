@@ -1,0 +1,180 @@
+{
+  "schema": 1,
+  "profile": "risk-measurement-readiness-v1",
+  "analysis_code_sha256": "c138ae36bdfbff8599b14c0f7a6690c2159f749630c3481c6ef93aaea24e8e3e",
+  "ml_source_id_unchanged": "fbc7cae00ca00a6f71d95a8c4cbf165010450ced22d2bbcd281f43d6a0eee85d",
+  "new_fits": 0,
+  "new_dataset_downloads": 0,
+  "classification": "INCONCLUSIVE",
+  "classification_scope": "Descriptive measurement and fixed-forecast target sensitivity only",
+  "readiness_decision": "NO_GO_CURRENT_126_ORIGIN_CONFIRMATORY_DESIGN",
+  "report_sha256": "89f39f4d7f2b785b06508d80875c3cc57302d0f52f209c207ed6795e25b8c9ff",
+  "report_record_id": "b66c8bec64b936b2de050f4cf33111fbb5b06a4ab81a21c2ee1df527a759843e",
+  "output_hashes": {
+    "origin-components.csv": "18905722cb2055b6ac687782616d56df7d58fe12eb103b3d218d8ce375d7fe16",
+    "named-target-sensitivity.csv": "8c06ce34169fd0d9a3cfe454b6c93f90da2c914352fbd7f6e0a461a47ba4ca5b"
+  },
+  "verification": {
+    "status": "passed",
+    "new_fits": 0,
+    "decimal_component_origins": 2006,
+    "label_receipts": 4012,
+    "independent_weighted_intervals": 4,
+    "decimal_transition_identities": 20,
+    "independent_year_training_feasibility_checks": 8,
+    "source_hashes_unchanged": 9,
+    "report_record_id": "b66c8bec64b936b2de050f4cf33111fbb5b06a4ab81a21c2ee1df527a759843e",
+    "verifier_sha256": "77bb024118212131af9647308903feab716d14287a6d3b55f4df3b1ccf4a3575"
+  },
+  "origin_count": 2006,
+  "source_dates": 1049,
+  "paired_same_contract_counts": {
+    "first": 997,
+    "second": 1017
+  },
+  "named_second_delta": 0.007047282234901271,
+  "named_second_bootstrap": {
+    "20": {
+      "eligible": 1017,
+      "ordinal_slots": 2006,
+      "block": 20,
+      "replicates": 10000,
+      "paired_difference": 0.007047282234901253,
+      "difference_ci_95": [
+        -0.014115643513673937,
+        0.026345725863970878
+      ]
+    },
+    "60": {
+      "eligible": 1017,
+      "ordinal_slots": 2006,
+      "block": 60,
+      "replicates": 10000,
+      "paired_difference": 0.007047282234901253,
+      "difference_ci_95": [
+        -0.011802517126111935,
+        0.025041346972075895
+      ]
+    }
+  },
+  "front_transition": {
+    "changed_origins": 20,
+    "matched_ct_and_curve_transition_origins": 20,
+    "contributions": [
+      {
+        "front_status": "observed_changed",
+        "origins": 20,
+        "risk_sum": 0.01907843364431052,
+        "qlike_difference_sum": 6.871362286434127
+      },
+      {
+        "front_status": "observed_unchanged",
+        "origins": 1010,
+        "risk_sum": 0.4047648202526893,
+        "qlike_difference_sum": -1.8438818998268012
+      },
+      {
+        "front_status": "unknown",
+        "origins": 976,
+        "risk_sum": 0.20003017370607706,
+        "qlike_difference_sum": 15.90852250419274
+      }
+    ],
+    "positive_total_contribution_fraction": 0.32820793550107974,
+    "scope": "Observed report front-name changes, NOT verified exchange roll dates; future front used only expost identity"
+  },
+  "training_feasibility": [
+    {
+      "year": 2016,
+      "validation_labels": 0,
+      "inner_train_counts": [],
+      "supports_existing_500_train_189_validation_rule": false
+    },
+    {
+      "year": 2017,
+      "validation_labels": 0,
+      "inner_train_counts": [],
+      "supports_existing_500_train_189_validation_rule": false
+    },
+    {
+      "year": 2018,
+      "validation_labels": 0,
+      "inner_train_counts": [],
+      "supports_existing_500_train_189_validation_rule": false
+    },
+    {
+      "year": 2019,
+      "validation_labels": 4,
+      "inner_train_counts": [],
+      "supports_existing_500_train_189_validation_rule": false
+    },
+    {
+      "year": 2020,
+      "validation_labels": 47,
+      "inner_train_counts": [],
+      "supports_existing_500_train_189_validation_rule": false
+    },
+    {
+      "year": 2021,
+      "validation_labels": 189,
+      "inner_train_counts": [
+        80,
+        143,
+        206
+      ],
+      "supports_existing_500_train_189_validation_rule": false
+    },
+    {
+      "year": 2022,
+      "validation_labels": 189,
+      "inner_train_counts": [
+        327,
+        390,
+        453
+      ],
+      "supports_existing_500_train_189_validation_rule": false
+    },
+    {
+      "year": 2023,
+      "validation_labels": 189,
+      "inner_train_counts": [
+        576,
+        639,
+        702
+      ],
+      "supports_existing_500_train_189_validation_rule": true
+    }
+  ],
+  "power_scale_diagnostic": {
+    "20": {
+      "reference_origins": 2006,
+      "observed_effect": 0.010436691371286173,
+      "conditional_origins_at_observed_effect": 15977,
+      "forward_origins": 126,
+      "conditional_forward_mde_80pct": 0.11752048766838244,
+      "status": "fixed-noise scaling diagnostic, NOT calibrated power or a time guarantee",
+      "assumptions": "same effect/noise/dependence; square-root sample scaling; no selection adjustment"
+    },
+    "60": {
+      "reference_origins": 2006,
+      "observed_effect": 0.010436691371286173,
+      "conditional_origins_at_observed_effect": 10886,
+      "forward_origins": 126,
+      "conditional_forward_mde_80pct": 0.09700652079339134,
+      "status": "fixed-noise scaling diagnostic, NOT calibrated power or a time guarantee",
+      "assumptions": "same effect/noise/dependence; square-root sample scaling; no selection adjustment"
+    }
+  },
+  "conditional_daily_close_label_ready": true,
+  "eight_year_named_training_protocol_ready": false,
+  "archive": {
+    "name": "evidence.zip",
+    "sha256": "2584ca67c224bab090ce9e4ea92417fdd07187f6310fe0a1ffbcb48fa5fc0ea2",
+    "bytes": 2613502
+  },
+  "archive_files": 28,
+  "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/risk-measurement-readiness-20261012",
+  "release_allowed": false,
+  "next_single_task": "Preregistration feasibility only: fixed Log-HAR matched CT/named risk labels and causal named-target EWMA; no automatic fits or grid",
+  "record_id": "9c8fe7c7d096cd5ccf754277d42e55674800ec31d14583fad3e8a077e79d33c9"
+}

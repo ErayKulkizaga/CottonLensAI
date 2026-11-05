@@ -1,0 +1,76 @@
+{
+  "schema": 1,
+  "profile": "named-ewma-scale-control-t1-v1",
+  "classification": "INCONCLUSIVE",
+  "classification_scope": "One-year past-only fixed-scale EWMA; no positive OOS improvement",
+  "new_market_fits": 22,
+  "new_synthetic_fits": 1,
+  "source_id": "443102eccde8acc51bf2de6b882088ee69f4da9ff1f5ceeed07aea77412cdbcd",
+  "result_sha256": "be14af793b5100c0f099eab8b01aa46ddade35797c41259efcdeac70da9b5d43",
+  "paired_losses_sha256": "26d3fc77167e45b8bb2b6581e7c4d5436e8375fd3739e5c2d1d6132db83915d9",
+  "origin_count": 246,
+  "eligible_origins": 242,
+  "comparisons": {
+    "raw": {
+      "delta": -0.005447513046892742,
+      "ci": {
+        "20": [
+          -0.030753599488876796,
+          0.019216653952340436
+        ],
+        "60": [
+          -0.02249733396038229,
+          0.011043043105675585
+        ]
+      },
+      "trim_top1pct": -0.02192978711223085
+    },
+    "selected": {
+      "delta": -0.001837137108970488,
+      "ci": {
+        "20": [
+          -0.021555016622740404,
+          0.017367002907552855
+        ],
+        "60": [
+          -0.015187309261902846,
+          0.011042220013920478
+        ]
+      },
+      "trim_top1pct": -0.014670066288718819
+    }
+  },
+  "independent_verification": {
+    "status": "passed",
+    "new_fits": 0,
+    "eligible_scalar_origins": 242,
+    "retained_origins": 246,
+    "independent_decimal_losses": 726,
+    "independent_same_contract_ewma_origins": 242,
+    "independent_intervals": 4,
+    "past_only_job_cutoffs": 22,
+    "checked_train_rows": 16764,
+    "own_feature_origins": 996,
+    "decimal_feature_scalars": 2988,
+    "maximum_22_observation_session_span": 236,
+    "maximum_latest_pair_age": 192,
+    "input_hashes_unchanged": 65,
+    "result_sha256": "be14af793b5100c0f099eab8b01aa46ddade35797c41259efcdeac70da9b5d43"
+  },
+  "fresh_replay": {
+    "status": "verified",
+    "native_market_fits": 22,
+    "native_synthetic_fits": 1,
+    "new_fits": 0,
+    "exact_report_csv_verification": true
+  },
+  "archive_sha256": "10fa4333966b8524350c9d1c218106919831bc7dbd0392acc264135df34b2136",
+  "archive_members": 500,
+  "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/named-ewma-scale-result-20261013",
+  "release_allowed": false,
+  "independent_holdout": false,
+  "historical_availability_verified": false,
+  "old_records_preserved": 192,
+  "old_evidence_preserved": 173,
+  "record_id": "a317724014aaa581ad7a142cb5710eb08e9107dcc21ede898192720c2374355d"
+}

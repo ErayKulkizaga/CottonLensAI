@@ -1,0 +1,29 @@
+{
+  "schema": 1,
+  "release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/risk-evidence-audit-20261012",
+  "archive_sha256": "ccea7995147e6eb0aa19b188bdade985fc9a1d5814ba2710dadbdb5722b8be3a",
+  "fresh_manifest_sha256": "dee3a23408f35334ba8cc343f2e681c7b11ad09d4ad6c38d28a10eb216452029",
+  "fresh_download_verified_members": 1300,
+  "excluded_members": 0,
+  "exact_report_and_csv_replay": true,
+  "replay_receipt": {
+    "status": "verified",
+    "source_id": "fbc7cae00ca00a6f71d95a8c4cbf165010450ced22d2bbcd281f43d6a0eee85d",
+    "exact_report_and_csv_replay": true,
+    "scalar_rows": 4012,
+    "independent_intervals": 8,
+    "native_variance_receipts": 482,
+    "new_fits": 0
+  },
+  "replay_receipt_sha256": "02ff311bdf3d319b9fe2a18e31e6fd61d23184d16627eca0cf6b086b4a20633e",
+  "new_fits": 0,
+  "old_registry_records_preserved": 184,
+  "old_evidence_hashes_preserved": 163,
+  "old_scientific_input_hashes_preserved": 1016,
+  "fit_recipes_unchanged": 530,
+  "completed_fit_copies_unchanged": 29916,
+  "trials_sha256": "9e31b21899bf1c73bf09ce3c4a09513ef8ea7f5e25d5cae03a19c005bcf08467",
+  "drive_changed": false,
+  "live_changed": false,
+  "record_id": "c287cc55d63adab5639a5e8537f709775a6c6450834078fb545b431c5aa88e06"
+}

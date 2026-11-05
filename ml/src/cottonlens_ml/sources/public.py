@@ -185,6 +185,11 @@ def compile_review(review_file, output):
         raise ValueError('Supported free source and unique features required')
     if any(not name.startswith(kind + '_') or not name.isidentifier() for name in features):
         raise ValueError('Features must use the source namespace')
+    if kind == 'export_sales':
+        from cottonlens_ml.sources.fas_admission import DECISION_CLOCK
+        if (review.get('decision_clock') != DECISION_CLOCK
+                or type(review.get('max_age_days')) is not int or not 1 <= review['max_age_days'] <= 366):
+            raise ValueError('FAS explicit decision clock and bounded freshness policy required')
     usage = review['usage']
     if usage.get('cost_tl') != 0 or usage.get('research_allowed') is not True or not usage.get('terms_url'):
         raise ValueError('Reviewed zero-cost research usage required')
@@ -206,7 +211,8 @@ def compile_review(review_file, output):
         observed = utc_timestamp(release['observed_through'])
         if observed > stamp:
             raise ValueError('Observed period extends beyond publication')
-        if set(release['values']) != set(features) or not np.isfinite(list(release['values'].values())).all():
+        if (set(release['values']) != set(features) or
+                (kind != 'export_sales' and not np.isfinite(list(release['values'].values())).all())):
             raise ValueError('Complete finite feature snapshot required for each release')
         for name in ('source_file', 'publication_evidence_file', 'vintage_evidence_file'):
             if release[name] not in review['files']:
@@ -214,7 +220,15 @@ def compile_review(review_file, output):
         if kind == 'wasde':
             from cottonlens_ml.sources.wasde_admission import require_review
             require_review(release, review['files'], root, features, stamp)
-        rows.append({**release['values'], 'published_at': pd.NaT if bounded else stamp,
+        values = release['values']
+        if kind == 'export_sales':
+            from cottonlens_ml.sources.fas_admission import (
+                require_review,
+                reviewed_values,
+            )
+            require_review(release, review['files'], root, features, stamp)
+            values = reviewed_values(values)
+        rows.append({**values, 'published_at': pd.NaT if bounded else stamp,
                      'available_at': stamp, 'availability_verified': True,
                      'availability_basis': 'verified_upper_bound' if bounded else 'exact_publication',
                      'observed_through': observed, 'vintage_id': release['vintage_id'],
@@ -224,6 +238,8 @@ def compile_review(review_file, output):
                      'publication_evidence_file': release['publication_evidence_file'],
                      'vintage_evidence_file': release['vintage_evidence_file']})
     frame = pd.DataFrame(rows)
+    if kind == 'export_sales' and not frame.empty:
+        frame[features] = frame[features].astype('float64')
     if frame.empty or frame.available_at.duplicated().any():
         raise ValueError('Nonempty unique publication snapshots required')
     has_bounds = frame.availability_basis.eq('verified_upper_bound').any()
@@ -249,6 +265,8 @@ def compile_review(review_file, output):
                 'review_sha256': digest(review_file), 'max_age_days': review['max_age_days']}
     if has_bounds:
         manifest['availability_schema'] = 'verified-availability-v1'
+    if kind == 'export_sales':
+        manifest['decision_clock'] = review['decision_clock']
     if not isinstance(manifest['max_age_days'], int) or not 1 <= manifest['max_age_days'] <= 366:
         raise ValueError('Explicit bounded source freshness policy required')
     (staging / 'publication-manifest.json').write_text(json.dumps(manifest, indent=2), encoding='utf-8')

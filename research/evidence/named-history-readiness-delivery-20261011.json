@@ -1,0 +1,30 @@
+{
+  "schema": 1,
+  "status": "fresh_github_named_history_readiness_verified",
+  "source_id": "02aa961506960987771f89863821969038e5711217df9a2be1d17f3ce54cd956",
+  "payload_commit": "90014633df5925aba41240a9fca4928729bd432a",
+  "fresh_github_restore": {
+    "status": "verified",
+    "archive_sha256": "93b867b0653d8f68a44441fecb1d6508a231356336f1fc8810ba2b0bc8367b45",
+    "inventory_members": 1178,
+    "source_id": "02aa961506960987771f89863821969038e5711217df9a2be1d17f3ce54cd956",
+    "verification_fits": 0,
+    "history_rows": 3520,
+    "endpoints": 14080,
+    "cohort_jobs": 22,
+    "coherent_tamper_controls": 4,
+    "exact_report_features_complete": true,
+    "exact_verification_receipt": true
+  },
+  "old_studies_preserved": 172,
+  "old_proofs_preserved": 108,
+  "trials_entirely_unchanged": true,
+  "model_fits": 0,
+  "new_forecasts": 0,
+  "historical_performance_computed": false,
+  "live126_performance_computed": false,
+  "public_pr": "https://github.com/ErayKulkizaga/CottonLensAI/pull/41",
+  "release_allowed": false,
+  "next_exact_step": "One separately preregistered source-effect contrast: same 32 fields and fixed XGB, numeric named-contract returns vs identical-NaN zero mask; frozen named cohorts, no grid.",
+  "record_id": "f17e3bc0277dc82fbc9880559ab5c13acefde2ed963cbc45c5cfd0107401cfde"
+}

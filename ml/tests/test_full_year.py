@@ -1,15 +1,18 @@
+import json
+
 import numpy as np
 import pandas as pd
 import pytest
+from cottonlens_ml.code_identity import digest
 from cottonlens_ml.research.full_year import (
     interval_metrics,
     interval_rows,
     price_recipes,
     report,
 )
-from cottonlens_ml.research.ledger import Ledger, read_record
+from cottonlens_ml.research.ledger import Ledger, freeze_record, read_record
 from cottonlens_ml.research.mirror import Mirror
-from cottonlens_ml.research.protocol import full_year_manifest, mature
+from cottonlens_ml.research.protocol import eligible, full_year_manifest, mature
 from cottonlens_ml.research.statistics import bh_adjust, oos_r2, paired_bootstrap
 from cottonlens_ml.research.volatility import ewma, features, qlike
 from cottonlens_ml.runtime_guard import require_training
@@ -52,6 +55,26 @@ def test_full_year_cohort_keeps_missing_features_and_purges():
     changed = rows.copy()
     changed.loc[changed.date >= '2024-01-01', 'cotton_close'] = 900
     assert full_year_manifest(changed) == frozen
+
+
+def test_common_horizons_require_t1_and_t5_on_the_same_origin():
+    rows = history()
+    origin = pd.Timestamp("2016-05-02")
+    broken = rows.date.eq(origin)
+    rows.loc[broken, "target_return_1"] = np.nan
+    rows.loc[broken, "cotton_ret_1"] = np.nan
+    assert origin in set(eligible(rows, 5).date)
+    assert origin not in set(eligible(rows).date)
+    assert origin not in set(mature(rows, "2016-07-01").date)
+    assert origin.strftime("%Y-%m-%d") not in full_year_manifest(rows)["folds"][0]["origins"]
+
+
+@pytest.mark.parametrize("target_date", ["2016-05-02", "2016-05-10"])
+def test_research_cohort_rejects_misordered_target_dates(target_date):
+    rows = history()
+    rows.loc[rows.date.eq("2016-05-02"), "target_date_1"] = pd.Timestamp(target_date)
+    with pytest.raises(ValueError, match="target dates"):
+        full_year_manifest(rows)
 
 
 def test_past_variance_features_are_future_invariant():
@@ -145,6 +168,133 @@ def test_small_fixed_budget_and_pending_is_not_failure(tmp_path):
     assert report(tmp_path)['decision'] == 'pending_not_negative'
 
 
+@pytest.mark.parametrize('corruption', ['origin', 'price', 'target', 'target_date'])
+def test_report_refuses_rehashed_outputs_that_disagree_with_frozen_history(tmp_path, corruption):
+    rows = features(history())
+    rows = rows.loc[rows.date < '2024-01-01']
+    rows.to_parquet(tmp_path/'history.parquet', index=False)
+    folds = []
+    for year in range(2016, 2024):
+        period = rows.loc[rows.date.dt.year.eq(year)].head(2)
+        dates = period.date.dt.strftime('%Y-%m-%d').tolist()
+        folds.append({'year': year, 'origins': dates})
+        for h in (1, 5):
+            frame = period[['cotton_close', f'target_return_{h}', f'variance_target_{h}']].assign(
+                date=dates, predicted_return=.001, variance=.01, ewma_variance=.02, status='available',
+                past_majority_sign=1, median_return=.001,
+            )
+            for coverage in (80, 90):
+                for name in ('normalized', 'normal_ewma', 'empirical'):
+                    frame[f'{name}_{coverage}_lo'] = -.02
+                    frame[f'{name}_{coverage}_hi'] = .02
+            if year == 2016 and h == 1:
+                if corruption == 'origin':
+                    frame.loc[frame.index[0], 'date'] = dates[1]
+                elif corruption == 'price':
+                    frame.loc[frame.index[0], 'cotton_close'] = 100.
+                elif corruption == 'target':
+                    frame.loc[frame.index[0], 'target_return_1'] = .05
+                else:
+                    frame['target_date'] = dates
+            freeze_record(tmp_path/'pilot-full-year'/f't{h}-year{year}.json', {
+                'year': year, 'horizon': h, 'inner_score': 1., 'records': frame.to_dict('records'),
+            })
+    freeze_record(tmp_path/'ready.json', {
+        'identity': {'split': {'folds': folds}},
+        'history_sha256': digest(tmp_path/'history.parquet'),
+    })
+    with pytest.raises(ValueError, match='Frozen (origin|value|target date) mismatch'):
+        report(tmp_path, repetitions=20)
+    assert not (tmp_path/'reports').exists()
+
+
+def test_cpu_reproduction_cannot_pass_on_identical_json_without_native_fits(tmp_path):
+    from cottonlens_ml.research.full_year import verify_reproduction
+
+    for year in range(2016, 2024):
+        for h in (1, 5):
+            body = {'year': year, 'horizon': h, 'records': [{
+                'date': f'{year}-01-04', 'predicted_return': 0., 'variance': .01,
+                'normalized_90_lo': -.02, 'normalized_90_hi': .02,
+            }]}
+            for directory in ('pilot-full-year', 'reproduction/pilot-full-year'):
+                freeze_record(tmp_path/directory/f't{h}-year{year}.json', body)
+    with pytest.raises(ValueError, match='Frozen reproduction inputs are missing'):
+        verify_reproduction(tmp_path)
+    assert not (tmp_path/'reproduction/verification.json').exists()
+
+
+def test_cpu_reproduction_binds_original_and_repeat_ledger(tmp_path):
+    from cottonlens_ml.cohort import content_id
+    from cottonlens_ml.research.engine import Experiment
+    from cottonlens_ml.research.full_year import verify_reproduction
+    from cottonlens_ml.research.review import training_rows
+
+    rows = features(history()).loc[lambda f: f.date < '2024-01-01']
+    history_path = tmp_path/'history.parquet'
+    rows.to_parquet(history_path, index=False)
+    rows = pd.read_parquet(history_path)
+    folds = [{'year': year, 'origins': rows.loc[rows.date.dt.year.eq(year), 'date']
+              .head(1).dt.strftime('%Y-%m-%d').tolist()} for year in range(2016, 2024)]
+    identity = {'split': {'folds': folds}}
+    freeze_record(tmp_path/'ready.json', {'history_sha256': digest(history_path), 'identity': identity})
+    ledger = Ledger(tmp_path/'ledger', identity)
+    model_paths = []
+    for fold in folds:
+        year, origins = fold['year'], fold['origins']
+        test = rows.loc[rows.date.isin(pd.to_datetime(origins))]
+        current = test.iloc[0]
+        train = training_rows(rows, current.date, {}, None)
+        for h in (1, 5):
+            chosen = {'year': year, 'horizon': h, 'price': {
+                'recipe': {'family': 'ridge', 'task': 'price', 'horizon': h}, 'weight': .5, 'iterations': 1,
+            }, 'variance': {'recipe': {'family': 'har', 'task': 'variance', 'horizon': h}}}
+            name = f't{h}-year{year}.json'
+            freeze_record(tmp_path/'decisions/full-year'/name, chosen)
+            body = {'year': year, 'horizon': h, 'decision_id': content_id(chosen),
+                    'price_family': 'ridge', 'volatility_family': 'har', 'records': [{
+                        'date': origins[0], 'cotton_close': current.cotton_close,
+                        f'target_return_{h}': current[f'target_return_{h}'],
+                        f'variance_target_{h}': current[f'variance_target_{h}'],
+                        'predicted_return': .01, 'variance': .001,
+                        'ewma_variance': ewma(rows, test.date, h)[0],
+                        'normalized_90_lo': -.02, 'normalized_90_hi': .02,
+                    }]}
+            for repeat, directory in ((None, 'pilot-full-year'), ('reproduction', 'reproduction/pilot-full-year')):
+                for task, role in (('price', 'price'), ('variance', 'vol')):
+                    recipe = chosen[task]['recipe']
+                    spec = Experiment.fit_specification(recipe, train, None, test, f'{role}-outer-{year}-0', 1)
+
+                    def synthetic_native(work, task=task, recipe=recipe, origins=origins):
+                        if task == 'price':
+                            (work/'adapter.json').write_text(json.dumps({'spec': recipe, 'model_file': 'model.json'}))
+                            (work/'model.json').write_text('{}')
+                            return {'predictions': [.02], 'origins': origins}
+                        (work/'variance-model.json').write_text(json.dumps({'kind': 'log_har'}))
+                        return {'variance_predictions': [.001], 'origins': origins}
+
+                    fit = ledger.run(spec, synthetic_native, repeat=repeat)
+                    if task == 'variance' and repeat:
+                        model_paths.append(ledger.root/fit['payload_root']/'variance-model.json')
+                freeze_record(tmp_path/directory/name, body)
+    legacy = tmp_path/'reproduction/verification.json'
+    freeze_record(legacy, {'status': 'passed', 'fresh_fits': True})
+    bound_path = tmp_path/'reproduction/verification-bound-v1.json'
+    result = verify_reproduction(tmp_path, persist=False)
+    assert result['status'] == 'passed'
+    assert len(result['comparisons']) == 16
+    assert len(result['original_fits']) == len(result['repeated_fits']) == 32
+    assert set(result['original_fits']).isdisjoint(result['repeated_fits'])
+    assert not bound_path.exists()
+    assert verify_reproduction(tmp_path) == read_record(bound_path) == result
+
+    model_paths[0].unlink()
+    with pytest.raises(ValueError, match='native payload checksum'):
+        verify_reproduction(tmp_path)
+    assert read_record(legacy) == {'status': 'passed', 'fresh_fits': True}
+    assert read_record(bound_path) == result
+
+
 def test_causal_interval_replay_ignores_future_prices_and_annual_model_selection():
     from cottonlens_ml.research.full_year import causal_intervals
     raw = history()
@@ -162,7 +312,11 @@ def test_causal_interval_replay_ignores_future_prices_and_annual_model_selection
 
 def test_interval_correction_preserves_prices_and_old_evidence_without_fit(tmp_path):
     from cottonlens_ml.code_identity import digest
-    from cottonlens_ml.research.full_year import correct_intervals, json_predictions
+    from cottonlens_ml.research.full_year import (
+        _verified_yearly_outputs,
+        correct_intervals,
+        json_predictions,
+    )
     from cottonlens_ml.research.ledger import freeze_record
     rows = features(history())
     rows.to_parquet(tmp_path/'history.parquet', index=False)
@@ -173,7 +327,7 @@ def test_interval_correction_preserves_prices_and_old_evidence_without_fit(tmp_p
         date = origin.date.dt.strftime('%Y-%m-%d').iloc[0]
         folds.append({'year':year, 'origins':[date]})
         for h in (1, 5):
-            frame = origin[['date','cotton_close',f'target_return_{h}']].copy()
+            frame = origin[['date','cotton_close',f'target_return_{h}',f'variance_target_{h}']].copy()
             frame['date'] = date
             frame['predicted_return'] = .001
             frame['variance'] = .0003
@@ -193,6 +347,14 @@ def test_interval_correction_preserves_prices_and_old_evidence_without_fit(tmp_p
         for field in ('date','cotton_close','predicted_return','variance'):
             assert before[field] == after[field]
         assert after['status'] == 'available'
+    paths = sorted((derived/'pilot-full-year').glob('*.json'))
+    assert len(_verified_yearly_outputs(derived, paths)[2]) == 16
+    changed = read_record(paths[0])
+    changed['records'][0]['predicted_return'] *= 2
+    paths[0].unlink()
+    freeze_record(paths[0], changed)
+    with pytest.raises(ValueError, match='changed frozen targets or point forecasts'):
+        report(derived, repetitions=20)
     rows.loc[0,'cotton_close'] *= 2
     rows.to_parquet(tmp_path/'history.parquet', index=False)
     with pytest.raises(ValueError,match='verified frozen history'):

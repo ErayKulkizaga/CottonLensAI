@@ -1,0 +1,158 @@
+{
+  "schema": 1,
+  "status": "zero_fit_forecast_transport_delivered",
+  "profile": "origin-fixed-forecast-transport-v1-r2",
+  "pull_request": "https://github.com/ErayKulkizaga/CottonLensAI/pull/38",
+  "result_commit": "e1749f4c340ef9d49661433f7033e7a13cb01077",
+  "source_id": "20d0c1869afc35b9c83b34cfd3fc8de8ec90a56ebd64c1cf3dcb3b085685d7b3",
+  "release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/origin-fixed-forecast-transport-result-20261010",
+  "archive_sha256": "4977ef9014b61a0205c2af4f2caf8af0a66968c0123d8239af2835f5f28afe0a",
+  "fresh_github_restore": {
+    "status": "verified_result_replay",
+    "archive_sha256": "4977ef9014b61a0205c2af4f2caf8af0a66968c0123d8239af2835f5f28afe0a",
+    "members_verified": 35,
+    "new_fits": 0,
+    "exact_report_rows_completion_replay": true,
+    "exact_independent_decimal_and_weighted_intervals": true,
+    "rejection_controls": 9
+  },
+  "independent_verification": {
+    "status": "passed",
+    "new_fits": 0,
+    "inputs_sha256": {
+      "history.parquet": "575c19cb25437a28ed6b1c1c3062eb48becead51571e3b57d76b7306e5e4f792",
+      "label-complete.json": "b4d40ea16dbf5428891c4387d0568a4f7164f1a16ff2ad9eeff51c18661bcdb4",
+      "label-delivery.json": "ddeb06251f1364d0c17a43e0a615498707947dcb82b970cc1ffc532b0117a5a0",
+      "label-proof.json": "228ba10bc63c5e1afb2f24490b78bfacf63fed036bb7705407718b0b79d39e1a",
+      "label-report.json": "848f48c76432ff49f9fe54f3043e51c564d0b28bace348bd223e6ada9e81ae10",
+      "label-verification.json": "6464b66a29981af77d3c5effb6ab3cf2dd4870c982d244ea6f7951240a2a475d",
+      "labels.csv": "4dfcf6b19c811b9309f7ffc2ffa31e242d4467471b81efbe503dd6f677e336a1",
+      "quotes.json": "3cf19b853ce43978342427b915a22d5b11a7886e9db2018274e825bdecf1d91f",
+      "t1-predictions.csv": "681e66d4a57f478ee5790e4742d1531436df234d40a158818e040a6592099532",
+      "t1-proof.json": "496cebd3e9c55de747118a81d608c0a2a2e9681419e8ed4bc1bfcc48b1349b7f",
+      "t1-ready.json": "6865dd1d8f1a5afef10a7397b6eba94d9e0d57a56290f425f1fca0a971fe8693",
+      "t5-predictions.csv": "43e44ed429d0d1bee2270355b4811f749dfd49bb9b68417f44184ece541a4305",
+      "t5-proof.json": "d9ec547f37ee02708ee41534ed85d6eb4a4361c332827a98319d3b91f04e8524",
+      "t5-ready.json": "c600c5b1984273f11e73cd49dba089c22cad59b54c69cda82e2a5ec7c5d1b5ad"
+    },
+    "analyzer_sha256": "4578dae770a5963e54454b6fd79adec6bf488ef52bc6683a73e7a0acdc6fbe60",
+    "verifier_sha256": "ef5c33946b1cf318a53356bbcc465e9880aaeb40dd86c93944c4d395112b0d18",
+    "contract_sha256": "750b2de1652ce16b523b190b2020b367f241d4eec9ba9f3072ed7a27c5b5a44f",
+    "scalar_rows_verified": 5992,
+    "decimal_forecasts_checked": 5936,
+    "weighted_intervals_checked": 32,
+    "ordinal_origins_retained": 749,
+    "eligible_per_horizon": 739,
+    "unknown_per_horizon": 10,
+    "decision": "FIXED_FROZEN_RETURN_TRANSPORT_BELOW_PRACTICAL_GOAL",
+    "same_target_trained_model_test": false
+  },
+  "rejection_controls": [
+    "contract-rejected",
+    "clock-rejected",
+    "price-scaling-rejected",
+    "target-date-rejected",
+    "missing-fill-rejected",
+    "drop-origin-rejected",
+    "bootstrap-interval-rejected",
+    "input-prediction-rejected",
+    "existing-output-overwrite-rejected"
+  ],
+  "local_and_github_report_rows_verification_controls_bytes_equal": true,
+  "new_fits": 0,
+  "old_studies_preserved": 164,
+  "old_recipes_preserved": 518,
+  "old_proofs_preserved": 84,
+  "old_raw_inputs_preserved": 1000,
+  "preregistration_preserved": true,
+  "original_verifier_and_failure_preserved": true,
+  "training_source_changed": false,
+  "goal_achieved": false,
+  "classification": "DECISIVE_NEGATIVE",
+  "classification_scope": "Fixed beta1 transport practical5% rescue only;both primary raw CI uppers negative. Not named-target retraining,all models/sources or independent holdout skill.",
+  "historical_availability_verified": false,
+  "first_vintage_verified": false,
+  "same_target_trained_model_test": false,
+  "production_skill_claimed": false,
+  "independent_holdout": false,
+  "release_allowed": false,
+  "ci": {
+    "head": "e1749f4c340ef9d49661433f7033e7a13cb01077",
+    "checks": [
+      {
+        "name": "backend",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "url": "https://github.com/ErayKulkizaga/CottonLensAI/actions/runs/38065942704/job/114253483530"
+      },
+      {
+        "name": "backend",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "url": "https://github.com/ErayKulkizaga/CottonLensAI/actions/runs/38065938436/job/114253471902"
+      },
+      {
+        "name": "backend",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "url": "https://github.com/ErayKulkizaga/CottonLensAI/actions/runs/38065944239/job/114253488455"
+      },
+      {
+        "name": "frontend",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "url": "https://github.com/ErayKulkizaga/CottonLensAI/actions/runs/38065942704/job/114253483491"
+      },
+      {
+        "name": "frontend",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "url": "https://github.com/ErayKulkizaga/CottonLensAI/actions/runs/38065938436/job/114253471983"
+      },
+      {
+        "name": "frontend",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "url": "https://github.com/ErayKulkizaga/CottonLensAI/actions/runs/38065944239/job/114253488437"
+      },
+      {
+        "name": "ml-data-contracts",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "url": "https://github.com/ErayKulkizaga/CottonLensAI/actions/runs/38065942704/job/114253483548"
+      },
+      {
+        "name": "ml-data-contracts",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "url": "https://github.com/ErayKulkizaga/CottonLensAI/actions/runs/38065938436/job/114253471914"
+      },
+      {
+        "name": "ml-data-contracts",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "url": "https://github.com/ErayKulkizaga/CottonLensAI/actions/runs/38065944239/job/114253488447"
+      },
+      {
+        "name": "compose-contract",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "url": "https://github.com/ErayKulkizaga/CottonLensAI/actions/runs/38065942704/job/114253483374"
+      },
+      {
+        "name": "compose-contract",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "url": "https://github.com/ErayKulkizaga/CottonLensAI/actions/runs/38065938436/job/114253471733"
+      },
+      {
+        "name": "compose-contract",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "url": "https://github.com/ErayKulkizaga/CottonLensAI/actions/runs/38065944239/job/114253488202"
+      }
+    ],
+    "limits": "Only the observed result head;running checks are not passed. Later delivery head separate."
+  },
+  "next": "One paired T5 CT-vs-origin-fixed-named TRAINING-label control, holding mature train rows/features/Ridge/selection/evaluation target fixed. First inspect existing engine and500-train/3x63 known inner origin readiness; named history2020 cannot reuse2010 proxy labels. Freeze separate budget/manifest before any CPU fitting. One-year2023 cannot satisfy unchanged6/8 gate. No automatic new family/grid/data."
+}

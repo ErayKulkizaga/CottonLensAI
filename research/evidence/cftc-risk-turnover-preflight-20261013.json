@@ -1,0 +1,50 @@
+{
+  "schema": 1,
+  "profile": "cftc-risk-turnover-moment-t1-v1",
+  "classification": "NO_SCREEN_PASSED",
+  "new_fits": 0,
+  "ordinal_origins": 2006,
+  "eligible_origins": 1875,
+  "bootstrap": {
+    "20": {
+      "covariance": -0.00025010549009425964,
+      "ci_95": [
+        -0.004027594450600545,
+        0.0027691750188702322
+      ],
+      "block": 20,
+      "replicates": 10000,
+      "eligible": 1875
+    },
+    "60": {
+      "covariance": -0.00025010549009425964,
+      "ci_95": [
+        -0.0035496406566400554,
+        0.002782424732309856
+      ],
+      "block": 60,
+      "replicates": 10000,
+      "eligible": 1875
+    }
+  },
+  "positive_years": 2,
+  "trim_top1pct_covariance": -0.0013914897009836508,
+  "independent_verification": {
+    "status": "verified",
+    "new_fits": 0,
+    "independent_position_clocks_and_features": 2006,
+    "decimal_actual_error_rows": 2006,
+    "independent_covariance_intervals": 2,
+    "eligible_origins": 1875,
+    "screen_passed": false,
+    "training_allowed": false
+  },
+  "exact_fresh_verification_replay": true,
+  "archive_sha256": "0ffb509da30e2a0074ce1c1aa2fca90abde10966343e90ed72cfd690ccc95604",
+  "archive_members": 15,
+  "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/cftc-risk-turnover-preflight-20261013",
+  "training_admitted": false,
+  "predictive_skill_claim": false,
+  "old_records_preserved": 198,
+  "record_id": "5f524da0410c31f3e66df2ddfc69f79fb3cb7c14bc6783eebe3eee64d34eda99"
+}

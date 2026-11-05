@@ -1,0 +1,51 @@
+{
+  "schema": 1,
+  "status": "frozen_single_named_cftc_source_control_not_run",
+  "profile": "named-cftc-source-control-t5-v1",
+  "source_id": "8eca71445366d207b74393acad43968ab5f8f5f6c6954ee21ce22dda24c3af38",
+  "source_files": 267,
+  "code_commit": "b9ea09cfd81a97772b6c83d9c3e0a1df35ab3f7b",
+  "ready_sha256": "28189753d35ea4d3dca3ca8a50e8ec2c66d4bffa041585cd162aa49de889d7bd",
+  "decision_contract_sha256": "fedfa0ee5519d69fd5422227ba9d40ba2f9820cd37349e6632425db4cbf1cc50",
+  "design_id": "b07ad81d9476d6599640fb7f7e2fc26db830d944560b7482660ba751c5d1ef26",
+  "input_hashes": {
+    "inputs-inventory.json": "0f3c8d840c440cbc48b1aa71f7c7dd1262d0cfd3e97c8d08105a83c37785a399",
+    "inputs/named/ready.json": "592beb1a02fdfecc895fb4e489945fb581dc8cfef72b45e14287b142dfbe69a4",
+    "inputs/named/history.parquet": "da8a286df8e98b8a0932f088a9b384546d30a22ebac45db0bfe32a3a021d3465",
+    "inputs/inputs/positions-2010-2023.csv": "07c0426ef82985d757a6268be8978aa1e40d0952161ade11cd23d124a0f6f6ab",
+    "inputs/inputs/positions-2010-2023.manifest.json": "ca86efd5ad79743941df6a73f527bea0b3746707acd313338693e8620d9c9028",
+    "inputs/result/candidate.json": "a8bf31e3c7e2c97b7714b1ac7a78753e074fd0ca0d6dfe485e9d7b23c19da30c",
+    "inputs/result/candidate-history.parquet": "f58da04cf72550e8735fc3a6f93068b732cac0ceca874501d130c9e30060b70e",
+    "inputs/result/audit.json": "e6b70a76fe47f87e0cb7d79ed0c2e8373eba1647f64afd4a225da2da1d15c6c8",
+    "inputs/controls.json": "9a510db21afe0c42c1c0806d4cf7eeea325cdcf18bb6882f9270723c1fe63151"
+  },
+  "evidence_hashes": {
+    "research/evidence/named-cftc-information-audit-20261012.json": "c03a9b273358fafc821eedf9fecf073015499eea35e762b9aff1440ade107d84",
+    "research/evidence/named-cftc-information-audit-release-20261012.json": "7874f0298b2e1412c80cb4919b0b0d133e518e784ed109f01c3db3f07a3e4460",
+    "research/evidence/named-cftc-information-audit-delivery-20261012.json": "be0927481ce9db0cfb00646ed9e703b4121a02a2e1e176264ad4ed935e2e47b9"
+  },
+  "fit_budget": {
+    "market": 44,
+    "synthetic": 4,
+    "threads": 2,
+    "processes": 1,
+    "session_minutes": 30
+  },
+  "origins": 246,
+  "scored": 242,
+  "unknown": 4,
+  "new_fits": 0,
+  "report_script_sha256": "429e42bd1b3aec7d3d121c43c30dabb9baf0189c4094f4d5247ffdc6fd18eba5",
+  "verifier_script_sha256": "7029f14eb2d40ea40079ced2b99346dff1af3e0c1aa6fc9989244e2b8bb189e4",
+  "bootstrap_sha256": "4578dae770a5963e54454b6fd79adec6bf488ef52bc6683a73e7a0acdc6fbe60",
+  "history_check_sha256": "11b0e145ea774a17c1be5afb19e545383538db7d2e6582d4a4c8a841996bd837",
+  "historical_availability_verified": false,
+  "first_vintage_verified": false,
+  "independent_holdout": false,
+  "gate_evaluation_allowed": false,
+  "historical_source_admitted": false,
+  "release_allowed": false,
+  "protocol": "docs/NAMED_CFTC_SOURCE_CONTROL_T5_20261012.md",
+  "deliberate_repeat_reason": "Old CFTC tested CT=F labels/core24 with Ridge-XGB selection. Completed named core32 excludes CFTC. Test protected L1 content at fixed named target/model; no lag/model grid or clock optimization.",
+  "record_id": "3d71a59930888661e6da37301ccf400ebf53b360d58017f50ff712649d65acd5"
+}

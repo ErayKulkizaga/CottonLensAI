@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "kind": "zero_fit_preregistration_supersession",
+  "old_registration_id": "62cdc32cffdcda8edab9425d13a4731a87cef56d403e1f68f4df965d8d20c40b",
+  "new_registration_id": "359a4c58ddb76d5fc79df23c2e8c7a47ab3d7cd45a8ea2e908ee14864f4fcb95",
+  "old_source_id": "2beaea0d3922606c448a6e1514e6e1508c8cc3eba02cd1020239abe250389467",
+  "new_source_id": "f6028315cc38ff61ad81c9e9bc8b89bf9d11dd1070dd091b276aef33ed04192f",
+  "old_market_fits": 0,
+  "old_synthetic_fits": 0,
+  "unchanged_synthetic_histories": 20,
+  "scientific_recipe_unchanged": true,
+  "ci_failure": "Windows-only dummy Python interpreter path in test_cpu_launcher_profile_default_threads_and_session_limit",
+  "ci_run": "https://github.com/ErayKulkizaga/CottonLensAI/actions/runs/37955033994",
+  "reason": "Preserve v1 zero-fit evidence; correct portable fixture and proof identity lookup; use distinct r2 execution namespace. This is not a market or learning negative.",
+  "record_id": "73c4cd07b741e18a2b0dd99cdc83361752693b65962782d9cc0383c0df5b5bb4"
+}

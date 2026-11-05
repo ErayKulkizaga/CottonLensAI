@@ -1,0 +1,742 @@
+{
+  "schema": 1,
+  "as_of": "2026-11-05",
+  "base_commit": "463cff91a4537672c2cb2c14df2d63fac5b510f9",
+  "original_readme_sha256": "c3b191eac11517c898f83aed83c90dfbdaadd4c6ce10a5f74687464474e11b34",
+  "local_files": [
+    {
+      "path": "backend/app/api.py",
+      "sha256": "81cd6024a136bb1257617679d606ca9226c9ca41e61bd18a7cd4037ee37a437b",
+      "status": "superseded_by_reviewed_consolidation",
+      "target": "backend/app/api.py",
+      "resolution": "Reviewed current delta: later research profiles and contract/runtime/receipt regression fixes preserve the earlier intent; prior local source remains intact."
+    },
+    {
+      "path": "backend/tests/test_api.py",
+      "sha256": "515ee425e900d52d9056c3fb02493352329db58a9b14e853329adb485d251a93",
+      "status": "superseded_by_reviewed_consolidation",
+      "target": "backend/tests/test_api.py",
+      "resolution": "Reviewed current delta: later research profiles and contract/runtime/receipt regression fixes preserve the earlier intent; prior local source remains intact."
+    },
+    {
+      "path": "docs/MASTER_PLAN_20261001.md",
+      "sha256": "d186bd4a51f9d1fcea89ba14c86917af88190aab918cd7c7208488a7b7b3aea1",
+      "status": "equivalent_in_consolidation",
+      "target": "docs/archive/MASTER_PLAN_20261001.md"
+    },
+    {
+      "path": "docs/RESEARCH_STATUS_20261003.md",
+      "sha256": "9c34f1dccdf014e5bb9d3de429ca9edfe33fb2674e015d9f02ae5bfc2e43c1e7",
+      "status": "equivalent_in_consolidation",
+      "target": "docs/archive/RESEARCH_STATUS_20261003.md"
+    },
+    {
+      "path": "frontend/src/app/pages/model-lab.page.ts",
+      "sha256": "c097d522b997fac61487fa7b66800d1a675604f26ccd1745dcbc471701fd9058",
+      "status": "equivalent_in_consolidation",
+      "target": "frontend/src/app/pages/model-lab.page.ts"
+    },
+    {
+      "path": "ml/full_year_cpu.py",
+      "sha256": "e8bf5c4a9d783af5672e6610809e4473b105f31b8951ebc51f66fffa1c9c80ad",
+      "status": "superseded_by_reviewed_consolidation",
+      "target": "ml/full_year_cpu.py",
+      "resolution": "Reviewed current delta: later research profiles and contract/runtime/receipt regression fixes preserve the earlier intent; prior local source remains intact."
+    },
+    {
+      "path": "ml/notebooks/cottonlens_research_workbench.ipynb",
+      "sha256": "0562497e0853798e9860566c571560514fc4ebf33c8aaa0c99852f7ef9fc10d8",
+      "status": "equivalent_in_consolidation",
+      "target": "ml/notebooks/cottonlens_research_workbench.ipynb"
+    },
+    {
+      "path": "ml/src/cottonlens_ml/features.py",
+      "sha256": "5daad25038c89c085a952fd712bf124e266076b0bcd3926261bca6535cd72e4a",
+      "status": "equivalent_in_consolidation",
+      "target": "ml/src/cottonlens_ml/features.py"
+    },
+    {
+      "path": "ml/src/cottonlens_ml/research/ams_exploration.py",
+      "sha256": "2886466b21dc4ec80a92b23ac0d31d2dca23d5702202932719ada1674482d130",
+      "status": "equivalent_in_consolidation",
+      "target": "ml/src/cottonlens_ml/research/ams_exploration.py"
+    },
+    {
+      "path": "ml/src/cottonlens_ml/research/diagnostics.py",
+      "sha256": "6c1537b721179d2c99bfc872d1c265fa5eb0e624276daeba69dde5015dfabb12",
+      "status": "equivalent_in_consolidation",
+      "target": "ml/src/cottonlens_ml/research/diagnostics.py"
+    },
+    {
+      "path": "ml/src/cottonlens_ml/research/engine.py",
+      "sha256": "45964d63a5f37054a2fe93bb8547c131e7108711e0fee8ca8cacd02f97291511",
+      "status": "superseded_by_reviewed_consolidation",
+      "target": "ml/src/cottonlens_ml/research/engine.py",
+      "resolution": "Reviewed current delta: later research profiles and contract/runtime/receipt regression fixes preserve the earlier intent; prior local source remains intact."
+    },
+    {
+      "path": "ml/src/cottonlens_ml/research/ledger.py",
+      "sha256": "157c08ec3740052c3ba3cfb8d6f162a08d5a656928df730d5100b172624f1f52",
+      "status": "superseded_by_reviewed_consolidation",
+      "target": "ml/src/cottonlens_ml/research/ledger.py",
+      "resolution": "Reviewed current delta: later research profiles and contract/runtime/receipt regression fixes preserve the earlier intent; prior local source remains intact."
+    },
+    {
+      "path": "ml/src/cottonlens_ml/research/models.py",
+      "sha256": "3538077310a6baa516476554e2477de7fa211c57c8d0c679c3e27ff65a57f8cd",
+      "status": "equivalent_in_consolidation",
+      "target": "ml/src/cottonlens_ml/research/models.py"
+    },
+    {
+      "path": "ml/src/cottonlens_ml/research/path_pilot.py",
+      "sha256": "d62a45e3398f46ef1f021b9cff50f8d3c698561439132f21fb6bccfa0fd13e4b",
+      "status": "superseded_by_reviewed_consolidation",
+      "target": "ml/src/cottonlens_ml/research/path_pilot.py",
+      "resolution": "Reviewed current delta: later research profiles and contract/runtime/receipt regression fixes preserve the earlier intent; prior local source remains intact."
+    },
+    {
+      "path": "ml/tests/test_workbench_notebooks.py",
+      "sha256": "39fbf52ddc2bf6584aec562231e6881290baa7315bc80d8b317cefa2167b5d5b",
+      "status": "superseded_by_reviewed_consolidation",
+      "target": "ml/tests/test_workbench_notebooks.py",
+      "resolution": "Reviewed current delta: later research profiles and contract/runtime/receipt regression fixes preserve the earlier intent; prior local source remains intact."
+    },
+    {
+      "path": "docs/AVAILABILITY_CLOCK_RESULT_20261005.md",
+      "sha256": "8006d2163dc92718270eb60f5bfdbf7af420692b0a9a53243032a0a560140d93",
+      "status": "equivalent_in_consolidation",
+      "target": "docs/AVAILABILITY_CLOCK_RESULT_20261005.md"
+    },
+    {
+      "path": "docs/TRADING_RESEARCH_CONTRACT_20261005.md",
+      "sha256": "7f78f4538a1017340e6c957456cb8c824a01b7425b1294268a6adb41de8a0313",
+      "status": "superseded_by_reviewed_consolidation",
+      "target": "docs/TRADING_RESEARCH_CONTRACT_20261005.md",
+      "resolution": "Reviewed current delta: later research profiles and contract/runtime/receipt regression fixes preserve the earlier intent; prior local source remains intact."
+    },
+    {
+      "path": "ml/src/cottonlens_ml/research/availability_clock.py",
+      "sha256": "5f7897493e1eb5273e0a231e07b7e6b8de8997bacf7077d867cd5f58e2fe7ce3",
+      "status": "equivalent_in_consolidation",
+      "target": "ml/src/cottonlens_ml/research/availability_clock.py"
+    },
+    {
+      "path": "ml/src/cottonlens_ml/research/evidence_corrections.py",
+      "sha256": "f0bd291d7359e983025d9a7559940f07be7c8b8561d0c00a4c41afee5ce37271",
+      "status": "equivalent_in_consolidation",
+      "target": "ml/src/cottonlens_ml/research/evidence_corrections.py"
+    },
+    {
+      "path": "ml/src/cottonlens_ml/research/fixed_information.py",
+      "sha256": "26ab74ee9dd0330f41724fb38dff77c2320cbf92749d170594267326fe1ee8d0",
+      "status": "equivalent_in_consolidation",
+      "target": "ml/src/cottonlens_ml/research/fixed_information.py"
+    },
+    {
+      "path": "ml/src/cottonlens_ml/research/fundamental_joint.py",
+      "sha256": "bafe8cc4afbfbdf1306d3e129ac83735f2c3e9fc1e513c95a0f555683b90c6fe",
+      "status": "equivalent_in_consolidation",
+      "target": "ml/src/cottonlens_ml/research/fundamental_joint.py"
+    },
+    {
+      "path": "ml/src/cottonlens_ml/research/nonlinear_path.py",
+      "sha256": "97304d153b2f45d1781b95ff8461796a69d2f5bf5916af7c205d0aa371162b40",
+      "status": "equivalent_in_consolidation",
+      "target": "ml/src/cottonlens_ml/research/nonlinear_path.py"
+    },
+    {
+      "path": "ml/src/cottonlens_ml/research/text_adapter.py",
+      "sha256": "273a406eeb740881217efab1ddcc1f50a6465a5e3dc105dc0db474b79873b80e",
+      "status": "equivalent_in_consolidation",
+      "target": "ml/src/cottonlens_ml/research/text_adapter.py"
+    },
+    {
+      "path": "ml/src/cottonlens_ml/research/wasde_narrative.py",
+      "sha256": "3ca3c1b9ac5630f9e896d535c45e058ca177b5454286e8049faf7aa02d7b0d30",
+      "status": "equivalent_in_consolidation",
+      "target": "ml/src/cottonlens_ml/research/wasde_narrative.py"
+    },
+    {
+      "path": "ml/src/cottonlens_ml/sources/wasde_text.py",
+      "sha256": "ac202ceaa7c5fa94bd2c8690d3e68e4d4777a036bbd668a0e9ff2dea928528ba",
+      "status": "equivalent_in_consolidation",
+      "target": "ml/src/cottonlens_ml/sources/wasde_text.py"
+    },
+    {
+      "path": "ml/tests/test_availability_clock.py",
+      "sha256": "ff7d1b43a9238153791ec916bd55db096c4682afc3fb9b96361e7599996b2f3f",
+      "status": "equivalent_in_consolidation",
+      "target": "ml/tests/test_availability_clock.py"
+    },
+    {
+      "path": "ml/tests/test_fundamental_joint.py",
+      "sha256": "65c782a98c1a1c0dd991d4eb2abcd96b3561ab84c78ee96c7a7cb2ce626adb96",
+      "status": "equivalent_in_consolidation",
+      "target": "ml/tests/test_fundamental_joint.py"
+    },
+    {
+      "path": "ml/tests/test_nonlinear_path.py",
+      "sha256": "d43057b5fceb0c074589ba0073621bc11481e99a72659799a59d6d34484e0ba9",
+      "status": "equivalent_in_consolidation",
+      "target": "ml/tests/test_nonlinear_path.py"
+    },
+    {
+      "path": "ml/tests/test_text_adapter.py",
+      "sha256": "635310313b9dbb6ee497d24aaf56409063f6796812f7049346b7a7eceed5b358",
+      "status": "equivalent_in_consolidation",
+      "target": "ml/tests/test_text_adapter.py"
+    },
+    {
+      "path": "ml/tests/test_wasde_narrative.py",
+      "sha256": "8f90ec86b11a6e51554eadaedd662cac7f2dc758b436bdaa8929bda85e8e5afb",
+      "status": "equivalent_in_consolidation",
+      "target": "ml/tests/test_wasde_narrative.py"
+    },
+    {
+      "path": "ml/tests/test_wasde_text.py",
+      "sha256": "c35b56fb5b0359d1ff1723a65806ad64e6728a1b5a02f7a484b34a3c863dd1a1",
+      "status": "equivalent_in_consolidation",
+      "target": "ml/tests/test_wasde_text.py"
+    },
+    {
+      "path": "ml/tests/test_workbench_session.py",
+      "sha256": "ba8dcb496c6b3f96af02aefe10ae8f80ce1fccc566e1aad7b44f9156c352887b",
+      "status": "superseded_by_reviewed_consolidation",
+      "target": "ml/tests/test_workbench_session.py",
+      "resolution": "Reviewed current delta: later research profiles and contract/runtime/receipt regression fixes preserve the earlier intent; prior local source remains intact."
+    },
+    {
+      "path": "opencode.json",
+      "status": "excluded_personal_configuration"
+    }
+  ],
+  "branches": [
+    {
+      "branch": "codex/ams-contract-reconciliation",
+      "ancestor_of_consolidation": true
+    },
+    {
+      "branch": "codex/ams-required-cell-readiness",
+      "ancestor_of_consolidation": true
+    },
+    {
+      "branch": "codex/ams-weekly-contract-recovery",
+      "ancestor_of_consolidation": true
+    },
+    {
+      "branch": "codex/contract-curve-t1-pilot",
+      "ancestor_of_consolidation": true
+    },
+    {
+      "branch": "codex/contract-curve-t5-preregistration",
+      "ancestor_of_consolidation": true
+    },
+    {
+      "branch": "codex/contract-curve-t5-result",
+      "ancestor_of_consolidation": true
+    },
+    {
+      "branch": "codex/ct-calendar-2027",
+      "ancestor_of_consolidation": true
+    },
+    {
+      "branch": "codex/ct-first-observed-forward",
+      "ancestor_of_consolidation": true
+    },
+    {
+      "branch": "codex/ct-first-publication-audit",
+      "ancestor_of_consolidation": true
+    },
+    {
+      "branch": "codex/ct-forward-end-report",
+      "ancestor_of_consolidation": true
+    },
+    {
+      "branch": "codex/ct-inference-calibration",
+      "ancestor_of_consolidation": true
+    },
+    {
+      "branch": "codex/ct-level-dxy-risk-control",
+      "ancestor_of_consolidation": true
+    },
+    {
+      "branch": "codex/ct-limit-readiness",
+      "ancestor_of_consolidation": true
+    },
+    {
+      "branch": "codex/ct-manual-forward-t1",
+      "ancestor_of_consolidation": true
+    },
+    {
+      "branch": "codex/ct-manual-risk-protocol",
+      "ancestor_of_consolidation": true
+    },
+    {
+      "branch": "codex/ct-pre2010-risk-replication",
+      "ancestor_of_consolidation": true
+    },
+    {
+      "branch": "codex/ct-recent-risk-audit",
+      "ancestor_of_consolidation": true
+    },
+    {
+      "branch": "codex/ct-risk-prospective-readiness",
+      "ancestor_of_consolidation": true
+    },
+    {
+      "branch": "codex/ct-shock-forecast-control",
+      "ancestor_of_consolidation": true
+    },
+    {
+      "branch": "codex/ct-signed-risk-score",
+      "ancestor_of_consolidation": true
+    },
+    {
+      "branch": "codex/curve-carry-attribution",
+      "ancestor_of_consolidation": true
+    },
+    {
+      "branch": "codex/curve-target-integrity",
+      "ancestor_of_consolidation": true
+    },
+    {
+      "branch": "codex/end-to-end-audit",
+      "ancestor_of_consolidation": true
+    },
+    {
+      "branch": "codex/execution-provenance-audit",
+      "ancestor_of_consolidation": false
+    },
+    {
+      "branch": "codex/existing-information-admission",
+      "ancestor_of_consolidation": true
+    },
+    {
+      "branch": "codex/fas-country-quarantine-panel",
+      "ancestor_of_consolidation": true
+    },
+    {
+      "branch": "codex/fas-country-readiness",
+      "ancestor_of_consolidation": true
+    },
+    {
+      "branch": "codex/fas-country-report-verification",
+      "ancestor_of_consolidation": true
+    },
+    {
+      "branch": "codex/fas-historical-reference-witness",
+      "ancestor_of_consolidation": true
+    },
+    {
+      "branch": "codex/fas-may28-version-audit",
+      "ancestor_of_consolidation": true
+    },
+    {
+      "branch": "codex/fas-reviewed-alignment",
+      "ancestor_of_consolidation": true
+    },
+    {
+      "branch": "codex/fixed-contract-feasibility",
+      "ancestor_of_consolidation": true
+    },
+    {
+      "branch": "codex/forward-evidence-audit",
+      "ancestor_of_consolidation": true
+    },
+    {
+      "branch": "codex/forward-runtime-window",
+      "ancestor_of_consolidation": true
+    },
+    {
+      "branch": "codex/forward-window-audit-20261010",
+      "ancestor_of_consolidation": true
+    },
+    {
+      "branch": "codex/free-data-research-workbench-20261001",
+      "ancestor_of_consolidation": true
+    },
+    {
+      "branch": "codex/legacy-loss-lineage",
+      "ancestor_of_consolidation": true
+    },
+    {
+      "branch": "codex/named-capacity-control",
+      "ancestor_of_consolidation": true
+    },
+    {
+      "branch": "codex/named-cftc-information-audit",
+      "ancestor_of_consolidation": true
+    },
+    {
+      "branch": "codex/named-cftc-source-control",
+      "ancestor_of_consolidation": true
+    },
+    {
+      "branch": "codex/named-history-readiness",
+      "ancestor_of_consolidation": true
+    },
+    {
+      "branch": "codex/named-history-source-control",
+      "ancestor_of_consolidation": true
+    },
+    {
+      "branch": "codex/named-information-synthesis",
+      "ancestor_of_consolidation": true
+    },
+    {
+      "branch": "codex/named-label-control",
+      "ancestor_of_consolidation": true
+    },
+    {
+      "branch": "codex/named-loss-diagnosis",
+      "ancestor_of_consolidation": true
+    },
+    {
+      "branch": "codex/named-risk-history-control",
+      "ancestor_of_consolidation": true
+    },
+    {
+      "branch": "codex/named-risk-label-control",
+      "ancestor_of_consolidation": true
+    },
+    {
+      "branch": "codex/named-risk-loss-control",
+      "ancestor_of_consolidation": true
+    },
+    {
+      "branch": "codex/named-weak-signal-execution",
+      "ancestor_of_consolidation": true
+    },
+    {
+      "branch": "codex/named-weak-signal-readiness",
+      "ancestor_of_consolidation": true
+    },
+    {
+      "branch": "codex/nass-regional-audit",
+      "ancestor_of_consolidation": true
+    },
+    {
+      "branch": "codex/nass-regional-t1-preregistration",
+      "ancestor_of_consolidation": true
+    },
+    {
+      "branch": "codex/nass-regional-t1-result",
+      "ancestor_of_consolidation": true
+    },
+    {
+      "branch": "codex/nass-version-clock-case",
+      "ancestor_of_consolidation": true
+    },
+    {
+      "branch": "codex/origin-fixed-forecast-transport",
+      "ancestor_of_consolidation": true
+    },
+    {
+      "branch": "codex/paired-price-loss-control",
+      "ancestor_of_consolidation": true
+    },
+    {
+      "branch": "codex/paired-price-loss-result",
+      "ancestor_of_consolidation": true
+    },
+    {
+      "branch": "codex/price-mae-calibration",
+      "ancestor_of_consolidation": true
+    },
+    {
+      "branch": "codex/private-evidence-migration",
+      "ancestor_of_consolidation": true
+    },
+    {
+      "branch": "codex/repository-curation-20261005",
+      "ancestor_of_consolidation": true
+    },
+    {
+      "branch": "codex/research-data-reentry-plan",
+      "ancestor_of_consolidation": true
+    },
+    {
+      "branch": "codex/research-priority-addendum-20261010",
+      "ancestor_of_consolidation": true
+    },
+    {
+      "branch": "codex/risk-curvature-score",
+      "ancestor_of_consolidation": true
+    },
+    {
+      "branch": "codex/risk-evidence-audit",
+      "ancestor_of_consolidation": true
+    },
+    {
+      "branch": "codex/risk-evidence-consolidation",
+      "ancestor_of_consolidation": true
+    },
+    {
+      "branch": "codex/risk-level-source",
+      "ancestor_of_consolidation": true
+    },
+    {
+      "branch": "codex/risk-measurement-readiness",
+      "ancestor_of_consolidation": true
+    },
+    {
+      "branch": "codex/risk-weak-teacher",
+      "ancestor_of_consolidation": true
+    },
+    {
+      "branch": "codex/selection-stability",
+      "ancestor_of_consolidation": true
+    },
+    {
+      "branch": "codex/trading-diagnostic-wasde-regional",
+      "ancestor_of_consolidation": true
+    },
+    {
+      "branch": "codex/wasde-20181211-availability",
+      "ancestor_of_consolidation": true
+    },
+    {
+      "branch": "codex/wasde-as-reported-verification",
+      "ancestor_of_consolidation": true
+    },
+    {
+      "branch": "codex/wasde-regional-execution",
+      "ancestor_of_consolidation": true
+    },
+    {
+      "branch": "codex/wasde-regional-preregistration",
+      "ancestor_of_consolidation": true
+    },
+    {
+      "branch": "codex/wasde-regional-verification",
+      "ancestor_of_consolidation": true
+    },
+    {
+      "branch": "codex/weak-signal-calibration",
+      "ancestor_of_consolidation": true
+    },
+    {
+      "branch": "codex/weak-signal-result",
+      "ancestor_of_consolidation": true
+    },
+    {
+      "branch": "main",
+      "ancestor_of_consolidation": true
+    }
+  ],
+  "provenance_files": [
+    {
+      "path": "AGENTS.md",
+      "same_content": false,
+      "historical_sha256": "dd85940904bb0f2f84735b26aff85cee4238b2d842e5ff76e599c2861c41e9bd",
+      "current_sha256": "2675ffd612151d4821f90b8ee2cdafdd9f0a2ba414569a27ce7b71e72059b1a2"
+    },
+    {
+      "path": "README.md",
+      "same_content": false,
+      "historical_sha256": "f5c9dbb508f9b6e95786d33450e1283fb4c631b3c56aeb7cced9f2c5a633c818",
+      "current_sha256": "d84b2e55f70f4c7c4c4674b7bca287e09e5142c3f89a8dd89316b0cc33cd3256"
+    },
+    {
+      "path": "docs/PRICE_SEMANTICS_AUDIT_20261005.md",
+      "same_content": true,
+      "historical_sha256": "5a1ef88a104e8e6a280bc7bb8f7ea320ed590dcc83771348ba21a3b11f87a2d0",
+      "current_sha256": "5a1ef88a104e8e6a280bc7bb8f7ea320ed590dcc83771348ba21a3b11f87a2d0"
+    },
+    {
+      "path": "docs/README.md",
+      "same_content": false,
+      "historical_sha256": "46f591d01862c08ea2a34dfe3e14eee23a669db59faf435723d4ee0c67fd6d79",
+      "current_sha256": "7a52b1e549a288d1f00003ef8bef8d6e4d2d637ca840cc9672c0b9631d513b4f"
+    },
+    {
+      "path": "docs/RESEARCH_DATA_REENTRY_PLAN_20261005.md",
+      "same_content": false,
+      "historical_sha256": "d641a9d6ad70f40bf16f1563a4a4d800bbb35d2702ebf131b21b91dafd5c3f99",
+      "current_sha256": "c7b88bd8dc19a6c4a8f3bfd2a683ffbca4dc54524ee132c0d848ccbe5d289d18"
+    },
+    {
+      "path": "docs/STATUS.md",
+      "same_content": false,
+      "historical_sha256": "d6f9ebf57684bfb55ffc92c1ef1f7dd0e16c92b53b98972360d0b379e1a4f197",
+      "current_sha256": "0236cebd5d7172ef1c93f9698aee811aaaaa56707ded9662e92772f6c9a46f2b"
+    },
+    {
+      "path": "docs/TRADING_RESEARCH_CONTRACT_20261005.md",
+      "same_content": false,
+      "historical_sha256": "b88addf92ab91aedb28c70dc4c819ecf78f61c009300055cf1494ed13f0284a1",
+      "current_sha256": "d6ac570bee2a5368ace531a94f29794863708433291ad814bb3ca5365e64b279"
+    },
+    {
+      "path": "docs/TRADING_WASDE_DELIVERY_20261005.md",
+      "same_content": true,
+      "historical_sha256": "952c25e8a3d408d5d769977a9cd1f5925b6f1421f6676948a0605658f7a47aaf",
+      "current_sha256": "952c25e8a3d408d5d769977a9cd1f5925b6f1421f6676948a0605658f7a47aaf"
+    },
+    {
+      "path": "ml/src/cottonlens_ml/research/execution_audit.py",
+      "same_content": true,
+      "historical_sha256": "e2e6a70aca308a300648148187faaba545016ca15fa992c515f2de6bb7044705",
+      "current_sha256": "e2e6a70aca308a300648148187faaba545016ca15fa992c515f2de6bb7044705"
+    },
+    {
+      "path": "ml/src/cottonlens_ml/research/price_reconciliation.py",
+      "same_content": true,
+      "historical_sha256": "2e05184d7710848cc8015f90d777244f0d511780b8b9e788a014c980233a1258",
+      "current_sha256": "2e05184d7710848cc8015f90d777244f0d511780b8b9e788a014c980233a1258"
+    },
+    {
+      "path": "ml/tests/test_execution_audit.py",
+      "same_content": true,
+      "historical_sha256": "ae5a48d02017f75c7bf7b7d692b67013dd2727f4c08b278594d85b3681c070e1",
+      "current_sha256": "ae5a48d02017f75c7bf7b7d692b67013dd2727f4c08b278594d85b3681c070e1"
+    },
+    {
+      "path": "ml/tests/test_price_reconciliation.py",
+      "same_content": true,
+      "historical_sha256": "2b096da9e651e0acb34bceb5e1f5bc800c4fca1605c9689aaab3f2f83f3026a1",
+      "current_sha256": "2b096da9e651e0acb34bceb5e1f5bc800c4fca1605c9689aaab3f2f83f3026a1"
+    },
+    {
+      "path": "research/README.md",
+      "same_content": false,
+      "historical_sha256": "ab113dfc5bd32a2465e17f45ebbfbf109eb7b1207a65cdd1c1f638ade56c60ac",
+      "current_sha256": "68a272e23eab61454a1ecfd003b9b473373912c8517ec36970ab09acaaf27562"
+    },
+    {
+      "path": "research/evidence/price-semantics-20261005.json",
+      "same_content": true,
+      "historical_sha256": "a387d3942a0c9cb82230f824b2130a5a8d5f40ad63961af97f7ea96c47576ea7",
+      "current_sha256": "a387d3942a0c9cb82230f824b2130a5a8d5f40ad63961af97f7ea96c47576ea7"
+    },
+    {
+      "path": "research/evidence/price-semantics-release-20261005.json",
+      "same_content": true,
+      "historical_sha256": "314164a2badf836f9be3825415fde4c91d60070473358e0a7dbb2219dc0d0b59",
+      "current_sha256": "314164a2badf836f9be3825415fde4c91d60070473358e0a7dbb2219dc0d0b59"
+    },
+    {
+      "path": "research/registry.json",
+      "same_content": false,
+      "historical_sha256": "3e7272f65cac70dbe733024e8782fd083451fbbc0fd8ea99f4418faaec2d7b0b",
+      "current_sha256": "e16c5af114757ef24795f9f3b9283c7883e71406a5fc9901a421ec9ffe12ebeb"
+    }
+  ],
+  "remote_releases": 108,
+  "remote_assets": 465,
+  "referenced_release_tags": [
+    "ams-contract-reconciliation-20261029",
+    "ams-curve-risk-moment-20261029",
+    "ams-named-ewma-har-prereg-20261014",
+    "ams-named-ewma-har-result-20261014",
+    "ams-required-cell-readiness-20261029",
+    "ams-weekly-contract-recovery-20261029",
+    "asymmetric-risk-preflight-20261013",
+    "cftc-risk-turnover-preflight-20261013",
+    "contract-curve-preregistration-20261010",
+    "contract-curve-result-20261010",
+    "contract-curve-t5-preregistration-20261010",
+    "contract-curve-t5-result-20261010",
+    "cotton-season-risk-moment-20261014",
+    "ct-calendar-2027-review-20261031",
+    "ct-ewma-har-preregistration-20261013",
+    "ct-ewma-har-result-20261014",
+    "ct-first-publication-audit-20261031",
+    "ct-forward-initial-state-daily-20261030",
+    "ct-forward-records-2026-q4",
+    "ct-inference-calibration-20261031",
+    "ct-level-dxy-prereg-20261030",
+    "ct-level-dxy-result-20261030",
+    "ct-limit-readiness-20261104",
+    "ct-manual-forward-prereg-20261030",
+    "ct-manual-forward-targetdate-prereg-20261030",
+    "ct-manual-source-admission-20261030",
+    "ct-pre2010-risk-prereg-20261104",
+    "ct-recent-risk-audit-prereg-20261104",
+    "ct-recent-risk-audit-result-20261104",
+    "ct-risk-prospective-readiness-20261030",
+    "ct-shock-forecast-prereg-20261029",
+    "ct-shock-forecast-result-20261029",
+    "ct-signed-risk-score-20261029",
+    "curve-carry-attribution-20261010",
+    "curve-target-integrity-20261010",
+    "drive-preservation-20261011",
+    "dxy-risk-source-audit-20261029",
+    "evidence-20261005",
+    "fas-country-preparation-20261008",
+    "fas-country-report-20261008",
+    "fas-historical-reference-20261008",
+    "fas-may28-version-20261008",
+    "fas-reviewed-alignment-20261009",
+    "fixed-contract-feasibility-20261010",
+    "information-admission-20261010",
+    "legacy-loss-lineage-20261010",
+    "named-capacity-execution-20261011",
+    "named-capacity-preregistration-20261010",
+    "named-capacity-report-amendment-20261011",
+    "named-capacity-result-20261010",
+    "named-cftc-information-audit-20261012",
+    "named-cftc-source-preregistration-20261012",
+    "named-cftc-source-result-20261012",
+    "named-error-attribution-20261011",
+    "named-ewma-har-preregistration-20261013",
+    "named-ewma-har-result-20261013",
+    "named-ewma-scale-preregistration-20261013",
+    "named-ewma-scale-result-20261013",
+    "named-history-readiness-20261011",
+    "named-history-source-preregistration-20261011",
+    "named-history-source-result-20261011",
+    "named-information-synthesis-20261012",
+    "named-label-control-preregistration-20261010",
+    "named-label-control-result-20261010",
+    "named-loss-diagnosis-20261011",
+    "named-risk-history-preregistration-20261012",
+    "named-risk-history-result-20261012",
+    "named-risk-label-preregistration-r2-20261012",
+    "named-risk-label-result-20261012",
+    "named-risk-loss-preregistration-20261012",
+    "named-risk-loss-result-20261013",
+    "named-weak-execution-preregistration-20261012",
+    "named-weak-execution-preregistration-r2-20261012",
+    "named-weak-execution-result-20261012",
+    "named-weak-signal-readiness-20261011",
+    "nass-clock-case-20261009",
+    "nass-regional-audit-20261009",
+    "nass-regional-preregistration-20261009",
+    "nass-regional-result-20261009",
+    "origin-fixed-forecast-transport-preregistration-20261010",
+    "origin-fixed-forecast-transport-result-20261010",
+    "paired-price-loss-preregistration-20261010",
+    "paired-price-loss-result-20261010",
+    "price-mae-calibration-20261010",
+    "research-delivery-20261005",
+    "research-semantics-20261005",
+    "risk-curvature-score-20261029",
+    "risk-evidence-audit-20261012",
+    "risk-information-preflight-20261013",
+    "risk-level-source-prereg-20261029",
+    "risk-level-source-result-20261029",
+    "risk-measurement-readiness-20261012",
+    "risk-weak-teacher-prereg-r3-20261029",
+    "risk-weak-teacher-result-20261029",
+    "selection-stability-20261010",
+    "wasde-as-reported-20261008",
+    "wasde-clock-case-20261008",
+    "wasde-regional-preregistration-20261008",
+    "wasde-regional-result-20261008",
+    "wasde-verification-20261008",
+    "weak-signal-preregistration-20261009",
+    "weak-signal-preregistration-r2-20261009",
+    "weak-signal-result-20261009",
+    "weekly-named-source-preflight-20261013"
+  ],
+  "missing_referenced_release_tags": [],
+  "scope_limit": "Remote asset metadata and prior hash-bound delivery receipts inspected; not a fresh byte-download of all historic releases. Modified/new delivery packages separately freshly verified. Ignored caches and unrelated private files are not a blanket publication scope.",
+  "known_legacy_missing_payload_references": 22299,
+  "provenance_resolution": "Both unique commits have identical current scientific implementation, tests and immutable price-semantics receipts. Later documentation and registry additions supersede older snapshots. Original commits remain in the preserved remote branch.",
+  "fresh_existing_release_check": {
+    "tag": "research-semantics-20261005",
+    "archive_sha256": "c72c42d268464be0d8f06a42224c650f6ca1f94802a03d4ebca5a3588549c55d",
+    "members_verified": 211
+  }
+}

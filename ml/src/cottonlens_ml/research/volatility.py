@@ -43,10 +43,75 @@ def qlike(actual, predicted):
     return np.log(p) + a / p
 
 
+def qlike_value_gradient(theta, design, actual):
+    """Convex log-link criterion; actual zero is valid, not log-clipped."""
+    eta = design @ theta
+    with np.errstate(over='raise', invalid='raise'):
+        try:
+            ratio = actual * np.exp(-eta)
+        except FloatingPointError as exc:
+            raise InvalidVarianceFit('QLIKE optimizer left finite numeric domain') from exc
+    return float(np.mean(eta + ratio)), design.T @ (1-ratio) / len(actual)
+
+
+def qlike_features(names=None):
+    """Explicit opt-in for a declared design; legacy callers retain three HARs."""
+    if names is None:
+        return ['har_1', 'har_5', 'har_22']
+    if (not isinstance(names, (list, tuple)) or not names
+            or any(not isinstance(n, str) or not n or n.startswith(('target_', 'variance_target_')) for n in names)
+            or len(set(names)) != len(names)):
+        raise ValueError('Unique declared QLIKE feature names required; targets cannot be features')
+    return list(names)
+
+
+def qlike_har(train, horizon, *, feature_names=None):
+    """One declared log-link design, unchanged optimizer and past-only conditioning."""
+    from scipy.optimize import minimize
+    names = qlike_features(feature_names)
+    raw = train[names].to_numpy(dtype=float)
+    actual = train[f'variance_target_{horizon}'].to_numpy(dtype=float)
+    if (not np.isfinite(raw).all() or not np.isfinite(actual).all()
+            or (actual < 0).any() or not (actual > 0).any()):
+        raise InvalidVarianceFit('Finite nonnegative variance labels with positive mass required')
+    mean, scale = raw.mean(axis=0), raw.std(axis=0)
+    scale = np.where(scale > 1e-12, scale, 1.)
+    design = np.column_stack([np.ones(len(train)), (raw-mean)/scale])
+    # OLS+smearing is initialization only. It adds no parameters or trials.
+    y = np.log(np.maximum(actual, FLOOR))
+    initial = np.linalg.lstsq(design, y, rcond=None)[0]
+    initial[0] += np.log(np.exp(y-design @ initial).mean())
+    initial_loss, _ = qlike_value_gradient(initial, design, actual)
+    fitted = minimize(qlike_value_gradient, initial, args=(design, actual), jac=True,
+                      method='BFGS', options={'maxiter': 500, 'gtol': 1e-6})
+    loss, gradient = qlike_value_gradient(fitted.x, design, actual)
+    if (not fitted.success or not np.isfinite(fitted.x).all()
+            or np.max(np.abs(gradient)) > 1e-6 or loss > initial_loss + 1e-10
+            or (design @ fitted.x < np.log(FLOOR)).any()):
+        raise InvalidVarianceFit('QLIKE optimization not certified; no OLS fallback')
+    coefficients = fitted.x.copy()
+    coefficients[1:] /= scale
+    coefficients[0] -= mean @ coefficients[1:]
+    return coefficients, {'method': 'BFGS', 'success': bool(fitted.success), 'iterations': int(fitted.nit),
+                          'gradient_inf_norm': float(np.max(np.abs(gradient))),
+                          'initial_training_qlike': initial_loss, 'final_training_qlike': loss,
+                          'training_feature_mean': mean.tolist(), 'training_feature_scale': scale.tolist()}
+
+
 def fit_predict(history, train, test, spec, workspace):
     require_training(spec['family'], spec.get('device', 'cpu'))
     h = spec['horizon']
-    if spec['family'] == 'har':
+    if spec['family'] == 'har' and spec.get('training_loss', 'log_mse') not in ('log_mse', 'qlike'):
+        raise ValueError('Explicit supported HAR training loss required')
+    if spec.get('variance_features') is not None and (spec['family'] != 'har' or spec.get('training_loss') != 'qlike'):
+        raise ValueError('Explicit variance features require the QLIKE HAR path')
+    if spec['family'] == 'har' and spec.get('training_loss', 'log_mse') == 'qlike':
+        names = qlike_features(spec.get('variance_features'))
+        coefficients, optimization = qlike_har(train, h, feature_names=names)
+        predicted = np.maximum(np.exp(np.column_stack([np.ones(len(test)), test[names]]) @ coefficients), FLOOR)
+        model = {'kind': 'log_har', 'features': names, 'coef': coefficients.tolist(), 'smearing': 1.,
+                 'training_loss': 'qlike', 'optimization': optimization}
+    elif spec['family'] == 'har':
         names = ['har_1', 'har_5', 'har_22']
         x = np.column_stack([np.ones(len(train)), train[names]])
         y = np.log(np.maximum(train[f'variance_target_{h}'].to_numpy(), FLOOR))

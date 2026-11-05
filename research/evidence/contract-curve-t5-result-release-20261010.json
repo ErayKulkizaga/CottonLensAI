@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/contract-curve-t5-result-20261010",
+  "archive": {
+    "name": "contract-curve-t5-result-20261010.zip",
+    "sha256": "0f8c4a78946e115d847564d2a5f806147a0b1dbfd55978b4ef367824fca87919",
+    "bytes": 16987796
+  },
+  "members": 2842,
+  "inventory_member": "checksums.json",
+  "inventory_sha256": "0bfd78575e091f00a8750fa1bf151cdca865b17a53c2ceac1e9f2a9da737f591",
+  "market_fits": 252,
+  "synthetic_fits": 1,
+  "verification_new_fits": 0,
+  "source_id": "20d0c1869afc35b9c83b34cfd3fc8de8ec90a56ebd64c1cf3dcb3b085685d7b3",
+  "scope": "Frozen T5 inputs/source/preregistration,253 native payloads and receipts,12 decisions/outputs,2996 prediction rows,exact no-fit verifier and independent ex-post transition sums. Source clock/vintage unverified."
+}

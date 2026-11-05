@@ -1,0 +1,101 @@
+{
+  "schema": 1,
+  "profile": "ct-ewma-har-full-year-t1-v1",
+  "classification": "INCONCLUSIVE",
+  "classification_scope": "Eight-year CT proxy QLIKE control; selected EWMA superiority not shown",
+  "new_market_fits": 169,
+  "new_synthetic_fits": 1,
+  "source_id": "6ccd84e5e81a451b90702bf6c69e99c8154bab5420aac56ec859c08c3f07e777",
+  "design_id": "000d435ba76a99943d52ee8a5fd4a2d121f39b802338f313f32111c6505d508a",
+  "data_id": "013f58e5804b29435f32161ba1cf42ac2fc56046f646f4993294bf267079e4f7",
+  "result_sha256": "8621191acc974e603a9ebae0fadd54791b3d51015911c0a0ff66efc920974e65",
+  "result_record_id": "3066e74622d93d49a088a8378e07ccd0cbe1907059d2dbcddf24774a73662500",
+  "paired_losses_sha256": "e4904a3aaa3d7fb1065f6013f9b470eb8e9751e2b475b0f1b2d5a87ed5783d74",
+  "origin_count": 2006,
+  "comparisons": {
+    "raw": {
+      "baseline_minus_candidate_gain": 0.017474632850834657,
+      "gain_ci": {
+        "20": [
+          -0.02077932190383812,
+          0.04345457285982429
+        ],
+        "60": [
+          -0.014662817353112818,
+          0.04386210669139476
+        ]
+      },
+      "yearly_gain": {
+        "2016": -0.0008269710213412224,
+        "2017": 0.039481667473587,
+        "2018": 0.010780989797360415,
+        "2019": -0.006335663385354347,
+        "2020": -0.000691154851570126,
+        "2021": 0.0013449237698027873,
+        "2022": 0.10457347711419353,
+        "2023": -0.008823109414611853
+      },
+      "positive_years": 4,
+      "trim_top1pct_gain": -0.011835094002439862,
+      "fixed_risk_gate_passed": false
+    },
+    "selected": {
+      "baseline_minus_candidate_gain": 0.0013656988122676633,
+      "gain_ci": {
+        "20": [
+          -0.004582873716915313,
+          0.0069981444641572434
+        ],
+        "60": [
+          -0.004533742376950306,
+          0.006705735285187675
+        ]
+      },
+      "yearly_gain": {
+        "2016": 0.0007592972014285202,
+        "2017": 0.012425420777771555,
+        "2018": 0.010780989797360415,
+        "2019": -0.006335663385354347,
+        "2020": 0.0019447847897133962,
+        "2021": 0.0,
+        "2022": 0.0,
+        "2023": -0.008823109414611853
+      },
+      "positive_years": 4,
+      "trim_top1pct_gain": -0.004998486189522554,
+      "fixed_risk_gate_passed": false
+    }
+  },
+  "independent_verification": {
+    "status": "verified",
+    "new_fits": 0,
+    "native_market_fits": 169,
+    "native_synthetic_fits": 1,
+    "native_forecasts_replayed": 3518,
+    "past_only_jobs": 169,
+    "independent_train_rows_checked": 386182,
+    "decimal_har_feature_scalars": 10532,
+    "decimal_actual_ewma_origins": 2006,
+    "decimal_qlike_losses": 6018,
+    "independent_loss_intervals": 4,
+    "past_only_selected_years": 8,
+    "optimizer_gradient_inf_max": 9.948182711018378e-07,
+    "selected_risk_gate_passed": false
+  },
+  "fresh_replay": {
+    "status": "verified",
+    "new_fits": 0,
+    "native_market_fits": 169,
+    "native_synthetic_fits": 1,
+    "verification_byte_identical": true
+  },
+  "archive_sha256": "34df6cd4f114364164e3c1dac4ac6f218c56d25d79355bb42cd5dc7cb29b2aef",
+  "archive_members": 1499,
+  "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/ct-ewma-har-result-20261014",
+  "release_allowed": false,
+  "independent_holdout": false,
+  "historical_availability_verified": false,
+  "old_records_preserved": 201,
+  "old_evidence_preserved": 182,
+  "record_id": "d3350d91b5b5ba58671922e63bbec34868c40b4c3da075f3e2c27c169d396b61"
+}

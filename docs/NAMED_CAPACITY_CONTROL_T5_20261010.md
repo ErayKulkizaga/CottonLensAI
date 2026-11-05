@@ -1,0 +1,282 @@
+# Sabit T+5 named-kontrat kapasite kontrolü — 10 Ekim 2026
+
+## Soru ve kapsam
+
+PR39 tamamlandı: aynı örneklemde doğru kontrat etiketi CT etiketiyle
+eğitime göre ham fiyat-MAE'yi azaltıyor; named Ridge yine Naive'den
+%7,938310 kötü. Bu fark bütün proje başarısızlığının roll kaynaklı
+olduğunu kanıtlamıyor. Kalan dar soru: aynı bilgilerde doğrusal Ridge'in
+çıkaramadığı doğrusal olmayan bir koşullu ortalama mevcut mu?
+
+Sicil tarandı (55 ilgili XGBoost/T+5 çalışma, 117 tarif nesnesi). En yakın
+eski native kayıt `0324c461bf69df913453f420278baa41fa6a44e74e92ca2a8c48e5c3f78818c6`
+eski `research-full-year-v1-r2`, `price-outer-2018-8`: CT etiketi, 24 özellik,
+76 ağaç. Kaynak/adapter/model checksum'ları doğrulandı. Bu, mevcut named
+etiket/28 özellik/2023 ortak train karşılaştırmasını sınamıyor. Sicilde
+eşleşme bulunmaması tek başına yenilik kanıtı değildir. Eski CT grid'i,
+3380-fit Ridge zayıf-sinyal kontrolü veya tamamlanmış 44+1 label deneyi
+tekrarlanmayacak.
+
+## Dondurulacak tek tarif
+
+Profil `named-capacity-control-t5-v1`, deney
+`research-named-capacity-control-t5-v1`. Mevcut Experiment/Ledger/CPU
+başlatıcı kullanılır; ayrı namespace ve kaynak kimliği gerekir.
+
+| Unsur | Sabit tasarım |
+|---|---|
+| Referans | PR39 tamamlanmış named Ridge native kayıtları; yeniden fit yok |
+| Veri/hedef | Aynı ikinci, origin'de seçilmiş kontrat; aynı derived history ve standardized log-return T+5 |
+| Örneklem | Aynı 2023 yılının 246 dış origin'i, 242 eşleşmiş hedef, 4 açık bilinmeyen |
+| İç doğrulama | Aynı geçmiş kaynak-olgun 3×63 origin ve 3/4/3 iç refit |
+| Dış refit | Aynı 12 iş, aynı 21 Cotton gözlemlik takvim ve train tarihleri |
+| Bilgi | Aynı 28 numeric D0 özellik; gelecek kontratı/hedef metadata özellik değildir |
+| Ön işleme | Aynı train-only median/scaler; window1, seed42; aynı hedef dönüşümü |
+| Tek değişiklik | Ridge alpha1 yerine sabit XGBoost depth2, eta0,03, min_child_weight20, alpha0, lambda1, 100 ağaç |
+| Seçim | Ağaç/grid/early-stop seçimi yok; geçmiş shrinkage [0;0,25;0,5;0,75;1] aynı, eşit skorda en küçük ağırlık |
+| Birincil | Ham Ridge−XGBoost eşleştirilmiş aynı-kontrat fiyat-MAE farkı |
+| İkincil | Naive kazancı, ham/seçilmiş yön ve aktif oran; shrinkage sonucu birincili değiştiremez |
+| Bütçe | 22 piyasa+en fazla 4 sentetik fit; tek süreç, en fazla 2 thread, 30 dakika/oturum |
+
+100 ağaç sonuç görülmeden kilitlenen tek ihtiyatlı boosting bütçesidir;
+geçmiş 2023 skorundan seçilmez. Yeni 63-label early-stop ayırmak en erken
+528 train örneğini 500 altına düşüreceği için ek iç seçim yapılmaz.
+
+Sentetik kontroller ayrı ledger'dadır: sabit tarifte güçlü doğrusal ve
+`0,02*(x0²−1)` doğrusal olmayan sinyal (her ikisi ≥%50 MAE kazancı),
+etiket blok kaydırma (≤%20), ayrıca aile ezberleme kontrolü (128 aynı
+train/test, depth8/400 ağaç, ≥%90). Ezberleme tarifi piyasa tarifi değildir.
+Her sonuç native tahminlerden yeniden değerlendirilir; cached `passed`
+yetmez. Tek kontrol başarısızsa piyasa fit'i durur, otomatik parametre
+değişikliği/yerine yeni fit yok. Bu güçlü sinyaller %5'lik piyasa etkisini
+bulma gücünü veya gerçek piyasa becerisini kanıtlamaz.
+
+## Zaman ve veri sınırları
+
+Karar Cotton kaynak tarihi+1 gün 00:15 UTC. Arşiv kaynak takvimi+1 gün
+00:00 UTC ve final vintage varsayımı değişmez. Tarihsel UTC/ilk sürüm
+kanıtlanmış değildir; deney yalnız varsayıma bağlı tarihsel duyarlılıktır.
+Train hedef tarihi cutoff'tan önce ve named hedef kaynağı varsayımsal
+erişim saati refit kararından önce olmalıdır. Orijinal boş özellikler,
+origin/target tarihleri korunur; geç/bilinmeyen origin fiyatından fiyat
+tahmini üretilmez, eksik gerçekleşmeye sıfır hata verilmez. Kaynak/ön
+işleme/target/shared model kodu referans snapshot'ıyla byte eşit olmalı.
+
+2023 daha önce görülmüş geliştirme verisidir. Tek yıl eski 6/8 yıl, %5
+MAE ve %53/%55 yön yayın koşullarını değerlendiremez. 2024+ seçimde yok.
+Veri indirme, canlı writer, GPU, başka model/grid, merge veya model yayını yok.
+
+## Önceden belirlenen karar
+
+10.000 tekrar, seed42, blok20 ve60; 246 ordinal yuva korunur, 4 bilinmeyen
+yuvada yalnız bookkeeping ağırlığı0; her çekim bilinen örnek sayısına
+bölünür. Recentered basic aralıklar araştırma/model/insan seçimlerinin
+tamamını veya varsayımsal vintage yanlılığını kapsamaz. Naive hata en büyük
+%1 (3 origin) çıkarılmış duyarlılık ayrıca raporlanır, seçimde kullanılmaz.
+
+- İki ham Ridge−XGB aralığının alt sınırı pozitif ve ham XGB Naive
+  kazancı ≥%5: yalnız dar araştırma adayı; bağımsız doğrulama gerekir.
+- İki ham XGB−Naive kazanç aralığının üst sınırı <%5: bu tek sabit sığ
+  kapasite tarifi pratik hedefi kurtarmıyor. Bütün doğrusal olmayan
+  modeller/bütün kaynaklar hakkında negatif hüküm verilmez.
+- Diğer durum: INCONCLUSIVE; otomatik ek fit/grid başlamaz.
+
+Kod/test/veri/gerçek paket sürümleri ve karar sözleşmesi dondurulup
+checksum Release yayımlanacak; taze GitHub restore doğrulanmadan **sentetik
+profil kontrolleri dahil yeni fit yok**. Ardından tek kayıtlı deney
+sonuçlandırılır; native tahmin, bağımsız Decimal fiyat hesabı, scalar
+bootstrap ve tutarlı bozulma kontrolleriyle denetlenir. Eski kanıtlar
+silinmez/değiştirilmez; sonuç sicile ayrı ek kayıt olarak girer.
+
+## 11 Ekim: çalıştırma tamamlandı, piyasa kararı açık
+
+PR40 ve sıfır-fit ön kayıt GitHub'da yayımlandı; taze indirmede 768 dosya
+doğrulandı. Kaynak `4a2feff2817bf57db64970c94c8b6a7bbd55cbdc97c8c872225a0756a9dd15af`,
+256 ML dosyası. 22 piyasa+4 sentetik fit tamamlandı; eski Ridge yeniden
+eğitilmedi. Bilinen doğrusal/nonlinear sentetik MAE kazançları %92,469824/
+%77,639833; negatif kontrol −%3,510613, aile ezberleme %99,953439.
+Bunlar **piyasa becerisi değildir**.
+
+22 yeni, 22 referans ve 4 sentetik native tahmin çıkarımı tekrar doğrulandı;
+veri/recipe/train kimliği, label olgunluğu ve 246/242/4 örneklem korunuyor.
+Ek doğrulama fit'i0. Genel ML suite 1064 geçti/3 skip/2 eski uyarı; son
+kaynak dar regresyon suite 34 geçti (17 yeni kapasite testi). Son kaynak
+koruması geniş test collection'ından sonra eklendi ve dar çalıştırmada
+sınandı. Ruff geçti. GPU kontrolü çalıştırılmadı.
+
+11 Ekim heartbeat'i “Performans skoru ... başlatma” kısıtı içerdiğinden bu
+tetiklemede yeni piyasa skor raporu başlatılmadı. Bu ek kayıt yalnız
+**VERIFIED fit yürütme/native bütünlük** kanıtıdır; çalışma performans
+sınıfı INCONCLUSIVE ve pratik karar henüz verilmedi. Ön kayıt ve eski
+kanıtlar değişmez. Model eğitimi tekrarlanmayacak.
+
+Tek sonraki iş, skor kapsamı izin verdiğinde zaten dondurulmuş
+`report.py → verify.py → controls.py` sıfır-fit zincirini çalıştırıp mevcut
+22+4 deneyi kapatmak. Yeni model/grid/tarif yok. Rapor/verifier checksum'ları
+ön kayıt Release'indedir; fit sonrası birincil metrik veya eşik seçilemez.
+
+[Native yürütme Release'i](https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/named-capacity-execution-20261011)
+taze GitHub indirmesinde 902 dosya/48 native çıkarımla doğrulandı; yeni fit0,
+piyasa skor raporu yok. [Teslimat kanıtı](../research/evidence/named-capacity-execution-delivery-20261011.json).
+Sicil 170 çalışma aşaması/523 tarif nesnesi içerir; 29.688 fit makbuzu
+kopyası bağımsız deney sayısı değildir. Eski 168 çalışma, 520 tarif ve94
+proof korunur. Paketleyicinin R1 son kontrolü append sonrası aynı nesnenin
+523 uzunluğunu donmuş520 ile yanlış karşılaştırdı; bağımsız R2 frozen-prefix
+kontrolü eski kayıtların değişmediğini doğruladı. Model/veri/analiz değişmedi.
+
+## 11 Ekim: sıfır-fit raporun sayısal düzeltmesi
+
+Hedefin devam talimatıyla aynı tarihsel deney raporu sonuçlandırılıyor;
+canlı126 cohort performansı kapalı kalır. R1 rapor, piyasa sonuçları
+hesaplanmadan önce sentetik native replay ölçümünde durdu: `np.exp`
+float32 log tahmininde çalışırken kayıtlı `evaluate` float64'e çevirir.
+Bilinen-sinyal gain farkı 3,1339628×10⁻⁷ idi; bu başarısız öğrenme veya
+farklı native tahmin değildir. R2 yalnız bu replay log dizisini exp'ten
+önce float64'e çevirir. Dört kayıtlı sentetik native veriyle regresyon
+geçti; aynı1e−13 tolerans ve tüm tahmin değerleri korunur, yeni fit0.
+
+R1/hash/başarısız log korunur. [Ek sayısal kayıt](../research/evidence/named-capacity-report-amendment-20261011.json)
+ve checksum paketi herhangi bir yeni piyasa skorundan önce yayımlanır.
+ML kaynak4a2feff…, veri, tarif, cohort, hedef, birincil metrik, bootstrap
+ve karar eşikleri değişmez. Ön kayıttaki R1 hash'i değiştirilmez;
+final sonuç R2 hash'ini ve bu açık düzeltmeyi birlikte taşımak zorundadır.
+
+## 11 Ekim: kayıtlı deney sonuçlandırıldı
+
+**VERIFIED:** aynı 242 bilinen hedefte named Ridge ham MAE2,132941,
+XGBoost1,985831, Naive1,976074 cent/lb. Ham Naive kazançları sırasıyla
+−%7,938310 ve−%0,493740. XGB ham yön %54,958678, aktif oran%100;
+iki modelin geçmiş shrinkage ağırlığı0, seçilmiş sonuç birebir Naive.
+En büyük üç Naive hatası çıkarılınca XGB kazancı−%0,417239.
+
+Ham Ridge−XGB farkı0,147110 cent/lb, Naive-MAE biriminde+%7,444570.
+Blok20/60 %95 aralıkları aynı birimde [+%0,569530;+%14,087050] ve
+[+%2,251767;+%12,795063]. Dar birincil kapasite etkisi
+**DECISIVE_POSITIVE**: aynı doğru hedef/bilgi/cohortta bu sabit nonlinear
+tarif Ridge'den iyi. “Model kapasitesi hiç önemli değil / Ridge gürültü
+sınırında” anlatısı bu örneklemde desteklenmiyor.
+
+Pratik karar ayrı: XGB−Naive kazanç aralıkları blok20
+[−%4,136759;+%3,269655], blok60 [−%4,701305;+%3,662587]. İki üst sınır
+%5 altında: `FIXED_SHALLOW_CAPACITY_BELOW_PRACTICAL_GOAL`. Bu tarif eski
+yayın hedefini kurtarmadı. Bu, bütün modellerde/kaynaklarda sinyal yokluğu
+veya sıfır etkinin kanıtı değildir. %54,96 yön tek başına beceri kanıtı
+değildir; unweighted yön doğruluğu ile fiyat-MAE farklı niceliklerdir.
+
+984 tahmin satırı/972 bilinen-origin fiyatı,48 native replay,12 bağımsız
+scalar aralık ve8 tutarlı bozulma ret kontrolü doğrulandı; ek fit0.
+R1 rapor sayısal hatası korunur, R2 düzeltmesi ilk piyasa skorundan önce
+GitHub'a yayımlandı/taze restore edildi. Veri/kod/fit tarifi değişmedi.
+Kaynak saat/vintage varsayımları, görülmüş tek2023 yılı ve değerlendiremeyen
+6/8 gate sınırı sürer. Yeni model/grid/veri veya üretim yayını yok.
+
+İlk sonraki bilimsel adım **sıfır-fit tanı**: saklanan ham XGB tahminlerinde
+doğru/yanlış yön ve tahmin büyüklüğünün mutlak-hata farkına katkısını
+cebirsel ayırmak. %55'e yakın yönün niçin fiyat-MAE üstünlüğüne dönüşmediği
+açıklanacak; sonuca göre origin/işlem seçmek, threshold aramak veya yeni
+politikanın OOS başarısı varmış gibi karşıolgu sunmak yok. Önce checksum
+Release/taze replay teslimatı kapanır. Canlı126 cohort skorlanmaz.
+
+## 11 Ekim: GitHub sonuç teslimi doğrulandı
+
+[Sonuç Release'i](https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/named-capacity-result-20261010)
+GitHub'dan taze indirildi; 911 payload checksum'ı, 48 native replay,12
+aralık ve8 bozulma ret kontrolü yeniden doğrulandı. Rapor/CSV/complete
+ve bağımsız makbuz birebir aynı. Yeni fit0. Arşiv SHA256
+`0ea96d465e87536a09df72ceaa3356c769dcc8a068d30c5470f6bd577cc3d52d`,
+9.319.946 byte. [Teslimat kanıtı](../research/evidence/named-capacity-result-delivery-20261011.json).
+Önceki170 aşama/101 proof ve trials dosyasının tamamı korunur; sicil171
+aşama/523 tarif. Release'in ilk oluşturma isteği kısa commit kimliğiyle
+reddedildi; tam commit kimliğiyle aynı arşiv yayımlandı, kanıt değişmedi.
+Kayıtlı deney kapanmıştır; pratik Naive hedefi ve genel proje hedefi
+tamamlanmadı. Tek sonraki iş yukarıdaki sıfır-fit hata katkısı tanısıdır.
+
+## 11 Ekim: yön–büyüklük hata mekanizması (sonuç-sonrası, sıfır-fit)
+
+**VERIFIED**, yalnız bu 242 hedef için: `n=actual−origin`,
+`q=forecast−origin` olduğunda Naive katkısı `|n|−|n−q|`.
+Doğru yönde hedefi aşmayan tahmin `+|q|`, yanlış yön `−|q|`,
+doğru yönde aşım `2|n|−|q|` katkı yapar. Bu tanı yeni politika veya
+gelecekten özellik üretmez; gerçekleşen sonuç yalnız hata açıklamasıdır.
+
+| Ham XGB grubu | Origin | Katkı toplamı (cent/lb) |
+|---|---:|---:|
+| Doğru yön, aşım yok |110|+39,100245|
+| Yanlış yön |109|−43,600888|
+| Doğru yön, aşım var |23|+2,139528|
+| Bütün bilinen hedefler |242|−2,361115|
+
+Yön ve tahmin büyüklüğünün işaretli toplamı +12,319829; doğru yöndeki
+aşım cezası14,680944: net−2,361115. Naive hata toplamında sırasıyla
++%2,576238 ve−%3,069978; net−%0,493740. Aşım grubunun bütün katkısı
+negatif değildir;23 origin'in9'u tek başına negatif katkı verir. Ortalama
+mutlak tahmin hareketi0,411246, gerçekleşen1,976074 cent/lb: ortalamada
+küçük tahminler bile küçük gerçekleşen hareketlerde aşım yaratabilir.
+
+**VERIFIED sınırlı karşıolgu:** yalnız doğru yönlü aşım tahminlerini
+gerçekleşen fiyatı bilerek kusursuz düzeltsek, bütün diğer tahminleri
+aynen bıraksak, kazanç +%1,041249 olur. Bu geleceği kullanan **tanısal
+cebirsel sınırdır**; uygulanabilir kalibrasyon, OOS politika veya bütün
+modeller için sınır değildir. Aşım düzeltmesi tek başına5% hedefini
+kurtaramaz. Eğitim kaybının bu hataya neden olduğu henüz gösterilmedi.
+
+Yön hit133/242=%54,958678; gerçekleşen düşüş de133/242. Sonradan
+seçilen sürekli-düşüş tahmini aynı hit sayısını verir; bu ex-ante baseline
+değildir ve XGB sürekli-düşüş üretmiyor (174/242 yükseliş tahmini).
+Yuvarlanmış “%55” başarı iddiası yapılamaz; eski gate ve tek-yıl
+sınırları aynen kalır. Önceki kapasite-pozitif/pratik-negatif sınıf değişmez.
+
+[Kanıt](../research/evidence/named-error-attribution-20261011.json):984
+satır/4 grup, Decimal formüllerden bağımsız exact-rational fiyat mesafesi
+kontrolü;11 cebir sınırı ve4 checksum'ı yeniden yazılmış bozulma ret
+kontrolü geçti. İlgili58 çalışma/120 tarif incelendi. Yeni fit/tahmin0,
+eski171 aşama/trials/kanıt değişmedi. Saat/vintage varsayımları ve canlı126
+skor yasağı korunur.
+
+**Tek sonraki bilimsel soru:** named hedefe geçtiğimiz halde28 girdide
+hâlâ CT proxy fiyat geçmişini mi kullanıyoruz? `named_label_control.projection`
+etiketi değiştiriyor; features listesini değiştirmiyor. Mevcut quote'larda
+origin'de seçilen **aynı kontratın** geçmişi nedensel/eksiksiz yeniden
+kurulabiliyor mu, sıfır-fit denetlenecek. Bu olası temsil sorunudur;
+ana başarısızlık nedeni olduğu henüz kanıtlanmadı. Önce bu sınır
+açıklığa kavuşmadan yeni MAE/alpha/depth veya veri deneyi başlatılmaz.
+
+[Hata tanısı Release'i](https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/named-error-attribution-20261011)
+taze GitHub indirmesinde13payload/984satır ve bütün kontrollerle birebir
+yeniden üretildi; yeni fit/tahmin0. [Teslimat kaydı](../research/evidence/named-error-attribution-delivery-20261011.json).
+İlk yerel restore yardımcı kodu ordinaryJSON makbuzunu signed-ledger
+okuyucusuna verdiği için durdu; partial klasör korunur. R2 yalnız bu
+makbuzuJSON olarak okuyor; aynı arşiv/analiz/tahmin/verifier değişmedi.
+
+## 11 Ekim: mevcut girdinin kontrat geçmişi denetimi
+
+[Ön veri/temsil kanıtı](../research/evidence/named-history-lineage-audit-20261011.json).
+**VERIFIED:** dört `cotton_ret_*` alanı CT close geçmişinden aynen
+hesaplanıyor;28 özellikte named-kontrat geçmişi yok. Mevcut997 raporda
+aynı origin'de seçilen kontratı geriye izleyerek1/5/10/20 as-of endpoint
+246/246 origin'de mevcut (saat/vintage varsayımı altında). Ortalama
+mutlak CT-log-getiri farkları sırasıyla0,003524/0,009557/0,012737/0,015295;
+bunlar sinyal, korelasyon veya performans ölçüsü değildir.
+
+Geriye dönük ikinci sıra ile aynı kontrat1/5/10/20 lags'te5/25/50/95
+origin'de farklı. `second_price.shift(k)` aynı kontrat geçmişi değildir.
+243 karar-anında bilinen origin fiyatı kaynaklardan yeniden kuruldu.
+21/26 Haziran2023 geç yayım varsayımı taşıyan güncel quote'lar tamamlanan
+pipeline'da eligible sayılmamış; ilk keşif kontrolünde bunları current
+quote diye kullanma girişimi durdu. Bu tamamlanmış deneye leakage
+atfetmez; önceden korunan4 bilinmeyen ve246 cohort aynen durur.
+
+Bu feature eksikliğinin başarısızlığa neden olduğu **PLAUSIBLE**, henüz
+test edilmedi. Kodun etiket kontrolü için özellikleri sabit tutması
+bilimsel olarak doğruydu; kontrolün yanıtlamadığı soru şimdi açıkça
+tanımlıdır. Yeni fit/feature/veri0. **Tek sonraki iş:** mevcut donmuş
+train/inner/outer satırlarında aynı kontrat geçmişi için tüm endpoint,
+eskilik, missingness ve gelecekteki quote değişmezliği kontrolleri;
+cohort düşürmeden kurulabilirlik. Ancak bundan sonra ayrı source-effect
+ön kaydı düşünülebilir; şu anda yeni model/grid başlamaz.
+
+Aynı Release'e ayrı checksum'lı3-member lineage paketi eklenmiştir;
+önceki arşivler değiştirilmedi. Taze GitHub paketindeki denetim kodu,
+taze capacity-result input'larında birebir aynıJSON'u verdi. [Makbuz](../research/evidence/named-history-lineage-delivery-20261011.json).
+Bu yalnız ön origin endpoint denetimi; tüm train/inner readiness veya
+yeni özelliğin katkı sonucu değildir.

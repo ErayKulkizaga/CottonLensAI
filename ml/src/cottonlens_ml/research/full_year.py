@@ -22,7 +22,8 @@ from cottonlens_ml.research.ledger import (
     writer,
 )
 from cottonlens_ml.research.protocol import full_year_manifest, rows_at
-from cottonlens_ml.research.review import audit_market, verify_history
+from cottonlens_ml.research.reproduction import verified_native_predictions
+from cottonlens_ml.research.review import audit_market, training_rows, verify_history
 from cottonlens_ml.research.statistics import (
     bh_adjust,
     correlation,
@@ -191,18 +192,76 @@ def causal_intervals(history, origins, h):
     return interval_rows(history, current, current.ewma_variance.to_numpy(), past, h)
 
 
+def _verified_yearly_outputs(folder, paths):
+    ready = read_record(folder/'ready.json')
+    folds = ready['identity']['split']['folds']
+    by_year = {f['year']: f['origins'] for f in folds}
+    years = set(range(2016, 2024))
+    if len(folds) != len(years) or set(by_year) != years:
+        raise ValueError('Eight unique frozen years required')
+    keys = {f't{h}-year{year}.json': (year, h) for year in years for h in (1, 5)}
+    if {p.name for p in paths} != set(keys):
+        raise ValueError('Sixteen unique frozen year/horizon outputs required')
+
+    derived = ready.get('derived_analysis')
+    parent = folder.parent if derived else folder
+    if derived:
+        parent_ready = parent/'ready.json'
+        if digest(parent_ready) != derived['parent_ready_sha256']:
+            raise ValueError('Corrected outputs require their exact parent manifest')
+        if read_record(parent_ready) != {k: v for k, v in ready.items() if k != 'derived_analysis'}:
+            raise ValueError('Corrected outputs changed their frozen history identity')
+    history_path = parent/'history.parquet'
+    if digest(history_path) != ready['history_sha256']:
+        raise ValueError('Yearly outputs require verified frozen history')
+    history = pd.read_parquet(history_path)
+    if history.date.duplicated().any() or not history.date.is_monotonic_increasing:
+        raise ValueError('Unique sorted frozen Cotton origins required')
+
+    records = []
+    for path in paths:
+        year, h = keys[path.name]
+        record = read_record(path)
+        if (record['year'], record['horizon']) != (year, h):
+            raise ValueError('Frozen year/horizon mismatch')
+        origins = by_year[year]
+        frame = pd.DataFrame(record['records'])
+        if (not origins or sorted(set(origins)) != origins or 'date' not in frame
+                or frame.date.tolist() != origins):
+            raise ValueError('Frozen origin mismatch')
+        reference = rows_at(history, origins)
+        targets = reference[f'target_date_{h}']
+        if targets.isna().any() or targets.le(reference.date).any() or targets.ge(pd.Timestamp('2024-01-01')).any():
+            raise ValueError('Frozen target dates must mature within the research period')
+        if 'target_date' in frame and frame.target_date.tolist() != targets.dt.strftime('%Y-%m-%d').tolist():
+            raise ValueError('Frozen target date mismatch')
+        fields = ('cotton_close', f'target_return_{h}', f'variance_target_{h}')
+        for name in fields:
+            if name not in frame or not np.array_equal(frame[name], reference[name]):
+                raise ValueError(f'Frozen value mismatch for {name}')
+        if derived:
+            source_path = parent/'pilot-full-year'/path.name
+            parent_sha = derived['parent_outputs_sha256'][path.name]
+            if digest(source_path) != parent_sha or record.get('parent_output_sha256') != parent_sha:
+                raise ValueError('Corrected output parent checksum mismatch')
+            original = read_record(source_path)
+            def point_values(row):
+                return {k: v for k, v in row.items() if k != 'status' and not k.endswith(('_lo', '_hi'))}
+
+            if (record.get('decision_id') != original.get('decision_id') or
+                any(point_values(a) != point_values(b)
+                    for a, b in zip(original['records'], record['records'], strict=True))):
+                raise ValueError('Corrected output changed frozen targets or point forecasts')
+        records.append(record)
+    return ready, history, records
+
+
 def correct_intervals(folder):
     """Separate analysis identity: preserve all fitted prices/variances and old records."""
     originals = sorted((folder/'pilot-full-year').glob('*.json'))
-    if len(originals) != 16:
+    if len(originals) < 16:
         return folder
-    expected_keys = {(year, h) for year in range(2016, 2024) for h in (1, 5)}
-    if {(read_record(p)['year'], read_record(p)['horizon']) for p in originals} != expected_keys:
-        raise ValueError('Sixteen unique frozen year/horizon outputs required')
-    ready = read_record(folder/'ready.json')
-    history = pd.read_parquet(folder/'history.parquet')
-    if digest(folder/'history.parquet') != ready['history_sha256']:
-        raise ValueError('Correction requires verified frozen history')
+    ready, history, records = _verified_yearly_outputs(folder, originals)
     source = {p.name: digest(p) for p in originals}
     policy = {**INTERVAL_POLICY, 'parent_ready_sha256': digest(folder/'ready.json'),
               'parent_outputs_sha256': source, 'correction_code_sha256': digest(Path(__file__)),
@@ -210,14 +269,10 @@ def correct_intervals(folder):
               'model_training': False, 'price_and_variance_predictions_unchanged': True}
     target = folder/('interval-correction-'+content_id(policy)[:16])
     freeze_record(target/'ready.json', {**ready, 'derived_analysis': policy})
-    for path in originals:
-        original = read_record(path)
+    for path, original in zip(originals, records, strict=True):
         h = original['horizon']
         frame = pd.DataFrame(original['records'])
         frame['date'] = pd.to_datetime(frame.date)
-        expected = next(f['origins'] for f in ready['identity']['split']['folds'] if f['year'] == original['year'])
-        if frame.date.dt.strftime('%Y-%m-%d').tolist() != expected:
-            raise ValueError('Correction cannot change frozen origins')
         intervals = causal_intervals(history, frame, h)
         if not intervals.status.eq('available').all():
             raise ValueError('Incomplete causal interval replay; decision pending')
@@ -325,34 +380,108 @@ def run(experiment, *, max_minutes=60):
     return {'status': 'complete', 'saved_year_horizon_outputs': 16}
 
 
-def verify_reproduction(folder):
-    comparisons = []
-    for original in sorted((folder/'pilot-full-year').glob('*.json')):
-        repeated = folder/'reproduction/pilot-full-year'/original.name
-        if not repeated.exists():
-            return {'status': 'pending', 'reason': 'fresh_selected_fits_not_all_complete'}
-        a, b = (pd.DataFrame(read_record(p)['records']) for p in (original, repeated))
-        if a.date.tolist() != b.date.tolist():
-            raise ValueError('Reproduction changed frozen origins')
+def _verified_yearly_fits(ledger, history, fold, chosen, first, second):
+    from cottonlens_ml.research.engine import Experiment
+
+    h, year = first['horizon'], first['year']
+    decision = content_id(chosen)
+    for record in (first, second):
+        if (chosen['year'] != year or chosen['horizon'] != h or record['decision_id'] != decision
+                or record['price_family'] != chosen['price']['recipe']['family']
+                or record['volatility_family'] != chosen['variance']['recipe']['family']):
+            raise ValueError('CPU reproduction changed the frozen yearly decision')
+    frames = [pd.DataFrame(record['records']) for record in (first, second)]
+    reference = ewma(history, pd.to_datetime(fold['origins']), h)
+    if chosen['price']['weight'] not in SHRINKAGE or any(
+        not np.allclose(frame.ewma_variance, reference, rtol=0, atol=1e-13) for frame in frames
+    ):
+        raise ValueError('CPU reproduction changed the frozen price weight or EWMA reference')
+    repeats = (None, 'reproduction')
+    receipts = ({}, {})
+    for task, column, role in (('price', 'predicted_return', 'price'), ('variance', 'variance', 'vol')):
+        selected = chosen[task]
+        recipe = selected['recipe']
+        if recipe['horizon'] != h or recipe['task'] != task:
+            raise ValueError('CPU reproduction recipe horizon or task mismatch')
+        parts = ([], [])
+        for i, test in enumerate(chunks(history, fold['origins'])):
+            train = training_rows(history, test.date.min(), recipe, ledger.identity['split'].get('coverage_start'))
+            specification = Experiment.fit_specification(recipe, train, None, test, f'{role}-outer-{year}-{i}',
+                                                        selected['iterations'] if task == 'price' else 1)
+            for repeat, bucket, receipt in zip(repeats, parts, receipts, strict=True):
+                expected = {**specification, 'repeat_reason': repeat}
+                key = ledger.key(expected)
+                if not (ledger.root/'completed'/f'{key}.json').is_file():
+                    raise ValueError('Frozen reproduction inputs are missing an expected native fit')
+                values, receipt[key] = verified_native_predictions(ledger, key, expected)
+                bucket.append(values)
+        for frame, bucket in zip(frames, parts, strict=True):
+            prediction = np.concatenate(bucket)
+            if task == 'price':
+                prediction *= selected['weight']
+            elif (prediction <= 0).any():
+                raise ValueError('CPU reproduction contains nonpositive variance')
+            if not np.allclose(frame[column], prediction, rtol=0, atol=1e-13):
+                raise ValueError('CPU yearly output disagrees with its native fit predictions')
+    return receipts
+
+
+def verify_reproduction(folder, *, persist=True):
+    paths = sorted((folder/'pilot-full-year').glob('*.json'))
+    if len(paths) < 16:
+        return {'status': 'pending', 'reason': 'original_pilot_incomplete'}
+    repeated_paths = sorted((folder/'reproduction/pilot-full-year').glob('*.json'))
+    if len(repeated_paths) < 16:
+        return {'status': 'pending', 'reason': 'fresh_selected_fits_not_all_complete'}
+    ready_path, history_path = folder/'ready.json', folder/'history.parquet'
+    decisions = [folder/'decisions/full-year'/p.name for p in paths]
+    inputs = [ready_path, history_path, *paths, *repeated_paths, *decisions]
+    if not all(path.is_file() for path in inputs):
+        raise ValueError('Frozen reproduction inputs are missing')
+    checksums = {path: digest(path) for path in inputs}
+    ready, history, original = _verified_yearly_outputs(folder, paths)
+    _, _, repeated = _verified_yearly_outputs(folder, repeated_paths)
+    ledger = Ledger(folder/'ledger', ready['identity'])
+    by_year = {f['year']: f for f in ready['identity']['split']['folds']}
+    comparisons, original_fits, repeated_fits = [], {}, {}
+    for path, repeat_path, decision_path, first, second in zip(
+        paths, repeated_paths, decisions, original, repeated, strict=True,
+    ):
+        chosen = read_record(decision_path)
+        fold = by_year[first['year']]
+        selected, repeats = _verified_yearly_fits(ledger, history, fold, chosen, first, second)
+        original_fits.update(selected)
+        repeated_fits.update(repeats)
+        a, b = (pd.DataFrame(r['records']) for r in (first, second))
+        fields = sorted(c for c in a if c.endswith(('_lo', '_hi')))
+        if (not fields or set(fields) != {c for c in b if c.endswith(('_lo', '_hi'))}
+                or not np.isfinite(a[fields]).all().all() or not np.isfinite(b[fields]).all().all()):
+            raise ValueError('CPU reproduction interval outputs are missing or incompatible')
         price = float(np.max(np.abs(a.predicted_return-b.predicted_return)))
         variance = bool(np.allclose(a.variance, b.variance, rtol=1e-6, atol=1e-10))
-        interval = max(float(np.max(np.abs(a[c]-b[c]))) for c in a if c.endswith(('_lo','_hi')))
-        comparisons.append({'output': original.name, 'max_log_return_difference': price,
-            'variance_parity': variance, 'max_interval_return_difference': interval,
-            'passed': bool(price<=1e-6 and variance and interval<=1e-6)})
-    if len(comparisons)!=16:
-        return {'status': 'pending', 'reason': 'original_pilot_incomplete'}
-    body = {'status': 'passed' if all(c['passed'] for c in comparisons) else 'failed',
-            'fresh_fits': True, 'price_atol': 1e-6, 'variance_atol': 1e-10, 'variance_rtol': 1e-6,
-            'interval_return_atol': 1e-6, 'comparisons': comparisons}
-    freeze_record(folder/'reproduction/verification.json', body)
+        interval = float(np.max(np.abs(a[fields].to_numpy()-b[fields].to_numpy())))
+        comparisons.append({'output': path.name, 'original_sha256': checksums[path],
+            'repeated_sha256': checksums[repeat_path], 'decision_sha256': checksums[decision_path],
+            'max_log_return_difference': price, 'variance_parity': variance, 'max_interval_return_difference': interval,
+            'passed': bool(price <= 1e-6 and variance and interval <= 1e-6)})
+    if any(digest(path) != checksum for path, checksum in checksums.items()):
+        raise ValueError('Frozen CPU reproduction inputs changed during verification')
+    body = {'version': 'cpu-bound-reproduction-v1',
+            'status': 'passed' if all(c['passed'] for c in comparisons) else 'failed',
+            'ready_sha256': checksums[ready_path], 'original_fits': original_fits,
+            'repeated_fits': repeated_fits, 'fresh_fits': True, 'price_atol': 1e-6,
+            'variance_atol': 1e-10, 'variance_rtol': 1e-6, 'interval_return_atol': 1e-6,
+            'interval_evidence': 'stored_output_parity_only', 'comparisons': comparisons}
+    if persist:
+        freeze_record(folder/'reproduction/verification-bound-v1.json', body)
     return body
 
 
 def report(folder, *, repetitions=10000):
-    records = [read_record(p) for p in sorted((folder / 'pilot-full-year').glob('*.json'))]
-    if len(records) != 16:
-        return {'status': 'pending', 'complete_outputs': len(records), 'required_outputs': 16, 'decision': 'pending_not_negative'}
+    paths = sorted((folder / 'pilot-full-year').glob('*.json'))
+    if len(paths) < 16:
+        return {'status': 'pending', 'complete_outputs': len(paths), 'required_outputs': 16, 'decision': 'pending_not_negative'}
+    ready, _, records = _verified_yearly_outputs(folder, paths)
     hypotheses, horizons = {}, {}
     for h in (1, 5):
         parts, interval_parts, vol_parts, hit_parts = [], [], [], []
@@ -439,10 +568,10 @@ def report(folder, *, repetitions=10000):
     body = {'status': 'complete', 'evidence': 'reused_historical_research_not_independent_holdout',
             'horizons': horizons, 'hypotheses': hypotheses, 'wide_search_started': False,
             'interval_policy': records[0].get('interval_policy', {'status': 'invalid_annual_selection_calibration'}),
-            'analysis_identity': read_record(folder/'ready.json').get('derived_analysis'),
+            'analysis_identity': ready.get('derived_analysis'),
             'reports_only_no_runtime_import': True,
             'ready_sha256': digest(folder / 'ready.json'),
-            'input_outputs_sha256': {p.name: digest(p) for p in sorted((folder/'pilot-full-year').glob('*.json'))},
+            'input_outputs_sha256': {p.name: digest(p) for p in paths},
             'repetitions': repetitions, 'report_code_sha256': digest(Path(__file__))}
     from cottonlens_ml.research import statistics
     body['statistics_code_sha256'] = digest(Path(statistics.__file__))
@@ -499,6 +628,11 @@ def dispatch(args):
             project(Experiment(folder, repo=args.repo))
     elif args.stage in ('pilot', 'reproduce'):
         with writer(folder):
+            if args.stage == 'reproduce' and any((folder/'reproduction'/name).exists() for name in (
+                'verification.json', 'verification-bound-v1.json',
+            )):
+                print(json.dumps(verify_reproduction(folder)))
+                return
             experiment = Experiment(folder, repo=args.repo)
             if args.stage == 'reproduce':
                 if report(folder)['status'] != 'complete':

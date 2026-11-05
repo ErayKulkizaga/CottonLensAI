@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/contract-curve-t5-preregistration-20261010",
+  "archive": {
+    "name": "contract-curve-t5-preregistration-20261010.zip",
+    "sha256": "8ee6f537da740e6b18ce35b748265627d27c0dda5e066b212dbdb4ae37a816e1",
+    "bytes": 14324019
+  },
+  "members": 799,
+  "inventory_sha256": "c1d04c3a7479402eed687505eac1548637a46ac0f5efcb6dd4694c6494bab087",
+  "source_id": "20d0c1869afc35b9c83b34cfd3fc8de8ec90a56ebd64c1cf3dcb3b085685d7b3",
+  "registration_id": "aeed8a21350c322a34125f080a9c5adc77029ce4407e1d3e8356a2a2774ca8b6",
+  "new_market_fits": 0,
+  "new_synthetic_fits": 0,
+  "scope": "Frozen T5 source/inputs/parent T1 evidence/target integrity/decision contract/environment/zero-fit execution and fit-forbidden portable verifier."
+}

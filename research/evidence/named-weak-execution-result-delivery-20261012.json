@@ -1,0 +1,32 @@
+{
+  "schema": 1,
+  "status": "fresh_github_synthetic_result_verified",
+  "source_id": "b8420a30f9f433880e96237c6cafe25613092e1b8b69f7fd42e5f69bd202e760",
+  "fresh_restore": {
+    "status": "verified",
+    "mode": "result",
+    "archive_sha256": "3c72d56735b00e1b40c027eb4b1310e2b00e605f1db770004d4886fc15f2b9fc",
+    "source_id": "b8420a30f9f433880e96237c6cafe25613092e1b8b69f7fd42e5f69bd202e760",
+    "members": 1760,
+    "new_fits": 0,
+    "exact_member_hashes": true,
+    "frozen_source_replay": true,
+    "market_skill_claimed": false
+  },
+  "synthetic_fits": 132,
+  "market_fits": 0,
+  "verification_fits": 0,
+  "native_replays": 132,
+  "scalar_scored_rows": 1452,
+  "prediction_rows": 1476,
+  "unknown_rows": 24,
+  "predictions_sha256": "2d8b1bb1d94fb9e7dd619b2df2ea5714bd3fd293600e9d7d5c3977c366264736",
+  "exact_ready_report_prediction_bytes": true,
+  "old_registry_records_preserved": 179,
+  "old_trial_recipes_preserved": 526,
+  "old_evidence_files_preserved": 148,
+  "market_skill_claimed": false,
+  "goal_achieved": false,
+  "next_exact_step": "Zero-fit information-source freshness/missingness and prior named-target ablation-scope audit; no automatic market/model/grid fits.",
+  "record_id": "7bc7ba8d54573d4d1fb28c3da8ab7949cc398f300b53744920c0034c735ded31"
+}

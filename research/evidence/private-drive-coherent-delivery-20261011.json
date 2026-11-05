@@ -1,0 +1,31 @@
+{
+  "schema": 1,
+  "status": "coherent_partial_restore_recipe_fresh_github_verified",
+  "release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/drive-preservation-20261011",
+  "parent_record_id": "92413a61a644f02d54d911a30407dba669bf67b9edd4495e8be09cd1d424ecfd",
+  "assets": [
+    {
+      "name": "coherent-restore-helper-v1.py",
+      "sha256": "5f3ac29b2605be899be714b031c4a586594abbac44c6cc0a130c1045cf5d444b",
+      "bytes": 13095
+    },
+    {
+      "name": "coherent-drive-v1-inventory.json",
+      "sha256": "89a714ac7fec5c4ca4c217d33370e1c4408291096a4e498c6c8f7160f818eef4",
+      "bytes": 5500931
+    },
+    {
+      "name": "coherent-partial-restore-proof-v1.json",
+      "sha256": "25ab179ea145c0c0b097bcc38ca553f8afd3d349592d486f1aea1aeedc19b30c",
+      "bytes": 9897
+    }
+  ],
+  "delivery_manifest_asset": "coherent-restore-delivery-v1.json",
+  "delivery_manifest_sha256": "10c4330a6600467a738ac7fd815d80f553ad81223cdb8208dd64f95f49b6750e",
+  "new_remote_logical_source_files": 0,
+  "source_files_deleted": 0,
+  "new_fits": 0,
+  "full_project_migration_complete": false,
+  "quota_recovery_verified": false,
+  "record_id": "186e172ff7a0b89414034ff8891919290fabb43a83c9d41c95a588e06b1da3a6"
+}

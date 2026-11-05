@@ -1,15 +1,105 @@
 # Veri bütünlüğü, kaynakların yeniden değerlendirilmesi ve sonraki araştırma planı
 
+## 10 Ekim karar eki
+
+**Sıfır-fit bilgi elemesi:** [mevcut eğri envanteri](INFORMATION_ADMISSION_20261010.md)
+997 AMS raporunda 9.970 gerçek vade fiyatı buldu; aşağıdaki vadeli-yapı
+satırının “yeni sağlayıcı gerekebilir” aşamasından önce bu mevcut arşiv
+değerlendirilmelidir. Bu kaynak tüm yılları kapsamaz; saat/ilk-vintage kabulü
+yok, model-eligible 0. Eski spot-basis T+5 sonucu gerçek kontrat farkını
+elemez. Sonraki tek iş kaynak/clock/cohort kabul kararı ve tek eşleştirilmiş
+ablation ön kayıt önerisi; yeni fit/veri indirme 0. Tarihsel satırlar korunur.
+
+**Aynı gün sonuç güncellemesi:** [kontrollü price_delta loss sonucu](PAIRED_PRICE_LOSS_RESULT_20261010.md)
+54 kayıtlı model çıkarımı, altı paired aralık ve rapor/CSV replay'i ile doğrulandı;
+yeni fit 0. MAE–MSE katkısı pozitif, Naive kapıları başarısız. Aşağıdaki karar
+ekindeki kapanış işi GitHub'dan yeni indirilen sonuç paketinin 54 çıkarım/altı
+aralık/exact replay kontrolüyle tamamlandı. Şimdi yalnız sıfır-fit bilgi hipotezi
+kabul elemesi. Eski plan ve ön kayıt
+değiştirilmez; daha büyük MAE/grid başlatılmaz.
+
+[Yeni teknik inceleme ve karar eki](RESEARCH_PRIORITY_ADDENDUM_20261010.md)
+aşağıdaki tarihsel planı korur. PR #25 kalibrasyonu ve #26 eski loss kapsamı
+tamamlandı; tekrarlanmaz. **Sonraki tek bilimsel iş PR #27'nin mevcut 48 piyasa
+ve 6 sentetik model çıktısını sıfır yeni fit ile sonuçlandırmaktır.** Sonra yalnız
+eksik tutarlı MAE/MAPE raporu; ancak ardından sıfır-fit bilgi hipotezi elemesi.
+İleri Naive/EWMA yayın denetimi ve PR entegrasyonu ayrı hatlar; FAS'ın dış kanıt
+bekleyen kabul kapısı bu ekle açılmaz. Yeni grid/model/veri izni yoktur.
+
 5 Ekim 2026 — **inceleme sonucunda hazırlanmış uygulama taslağı**. Bu belge yeni
 eğitim veya veri kabulü yapıldığını göstermez. Ürün amacı ve mevcut kararlar
 [STATUS](STATUS.md) ve [işlem sözleşmesinde](TRADING_RESEARCH_CONTRACT_20261005.md)
 kalır. İncelenen ek: `CottonLens_Model_Dogrulugu_Plan (1).md`; belge kimliği ve
 bu incelemenin sayısal kanıtı [doğrulama kaydında](../research/evidence/plan-review-20261005.json).
 
-**Uygulama durumu:** ilk sınırlı teslimat tamamlandı: saat/CLI tazelik düzeltmeleri,
-2.006 origin'lik sıfır-fit işlem tanısı ve 95 rapor/26 alanlı WASDE aday paketi.
-[Sonuç ve kabul engelleri](TRADING_WASDE_DELIVERY_20261005.md). Aşağıdaki planın
-tam kaynak kabulü ve işlem pilotu aşamaları tamamlanmış sayılmaz; yeni fit yok.
+**8 Ekim güncellemesi:** ilk teslimat, fiyat/seans denetimi, WASDE sayısal
+mutabakatı ve [bölgesel T+1 deneyi](WASDE_REGIONAL_T1_RESULT_20261008.md) tamamlandı.
+424 piyasa fit'i, aynı 1.254 origin'de seçilmiş D0/D1 Naive kazancı
+−%0,5229 / −%0,0107: bu tarif %5 hedefini kurtarmadı. Eski veriler değişmedi.
+WASDE kapsamını/modelini büyütmek otomatik sonraki iş değildir.
+
+**9 Ekim bağımsız veri işi:** [Texas/NASS denetimi](NASS_REGIONAL_AUDIT_20261009.md)
+311 mevcut raporda kondisyon ve 636 gelişim tablosunu ayırdı; iki revizyon ayrı
+korundu. Ekim 46 raporla sınırlı, tam sezon varsayımı yapılamaz. Veri karantinada;
+[30 Mayıs tek raporlu kontrol](NASS_CLOCK_CASE_20261009.md) tamamlandı: 22 hücre
+eşleşti; tarihsel erişim saati doğrulanmadı. Sınırlı CDX araması tekrar edilmeyecek.
+[Texas T+1 ön kaydı](NASS_REGIONAL_T1_PREREGISTRATION_20261009.md) tamamlandı:
+ortak 2.006 origin ve 676 piyasa + 1 sentetik fit bütçesi; ulusal kondisyon ortak.
+[Yürütme/sonuç](NASS_REGIONAL_T1_RESULT_20261009.md) tamamlandı: 676 piyasa+1
+sentetik fit; seçilmiş D0/D1 Naive kazancı −%0,0274/−%0,2556. Sabit tarifin %5
+hedefi iki gecikme/blokta dışlandı; Naive korunur, yeni grid yok. Vintage/saat
+kabulü kapalı; FAS engeli/gece görevi değişmedi. Sonraki operasyon kontrolü
+mevcut ileri görevde ilk zamanında yayının makbuz zinciridir.
+
+**FAS işi — dış kanıt bekleyen ülke bilgisinin kabul denetimi; sıfır fit.**
+9 Ekim: [değer/sürüm/saat koruması ve ortak-origin adapter'i](FAS_REVIEWED_ALIGNMENT_20261009.md)
+sentetik paketle tamamlandı. Gerçek country-feature snapshot'ları ve tarihsel
+erişim kabulü hazırlanmadı; tek ön kayıt/eğitim aşaması hâlâ kapalı.
+[Karantina ülke hazırlığı](FAS_COUNTRY_PREPARATION_20261008.md) ayrıca tamamlandı:
+752 hafta × dört kod, seviyeler/paylar/dört haftalık akışlar. Negatif stok
+bileşeninin bulunduğu haftada pay üretilmez; kaynak sürümü/saat kabulü ve
+eğitim adapter'i açılmadı. Dış kanıt beklerken aynı PDF/form araması tekrarlanmaz.
+[Yeni okunabilir kanıt](../research/evidence/fas-country-field-audit-20261008.json):
+15 yıllık kaynakta 27.887 ham satır; aynı pazarlama yılı kuralıyla 26.313 satır,
+752 hafta ve 64 ülke kodu. Ulusal satış/sevkiyat toplamları eski tabloyla tam
+eşleşir; commitment = outstanding + accumulated eşitliğinde sıfır fark vardır.
+18 girdinin önce/sonra hash'i eşit. 3.121 negatif net satış satırı korunur;
+65 haftada ulusal net satış toplamı sıfır/negatif olduğundan bu payda ile ülke
+payı oluşturulmaz. Eksik ülke satırları sıfır sayılmaz.
+Commitment, outstanding ve accumulated toplamına eşit olduğundan bunlar üç
+bağımsız bilgi kaynağı diye sayılmaz; yeni temsil bu cebirsel tekrarı gözetir.
+
+**Ülke raporu kontrolü tamamlandı, kabul tamamlanmadı:** [iki haftalık mutabakat](FAS_COUNTRY_REPORT_REVIEW_20261008.md) dört ülke/üç stok alanında 22/24 eşleşme buldu. 28 Mayıs Çin/Pakistan accumulatedExports farkı −55/−53 balya; ulusal toplam eşitliği bunları gizliyor. Değer veya ±50 sınırı değiştirilmedi. Haftalık akışlar, tam tarihsel katalog ve sürüme bağlı erişim doğrulanmadı. [Alt sınıf kontrolü](FAS_MAY28_VERSION_AUDIT_20261008.md) bu iki farkın yuvarlama varsayımıyla uyumunu gösterdi, nedeni kanıtlamadı. Şimdi tek ayırıcı test Çin'in 28 Mayıs özgün tam-balya accumulated hücresidir; yalnız güncel API/aynı PDF aramasını büyütmek yeterli değil. Kanıt olmadan aşağıdaki ön kayıt/eğitim aşamalarına geçilmez.
+
+[Tarihsel form erişim denetimi](FAS_HISTORICAL_REFERENCE_20261008.md) dört kod için 2020 tanığı sağladı; özgün Çin sayısal hücresi **dış kanıt bekliyor**. Aynı formları/boş düzeltme sorgusunu tekrarlamak veya anahtar almak bu ilk sürüm boşluğunu çözmez. Aşağıdaki eğitim sırası bu nedenle açılmadı.
+
+Sonraki üç teslimatın sırası ve durma koşulu:
+
+1. **FAS kabul kanıtı PR'ı:** checksum bağlı ülke kod kataloğu; mevcut iki
+   rapor örneğinde ülke bazlı outstanding/commitment/sevkiyat değerleri ve toplam
+   kapsamı; hafta sonu, pazarlama yılı ve birimler; kullanılan belirli sürümün
+   en geç erişim kanıtı. Bir ülkenin satırının yokluğu sıfır kabul edilmez.
+   Katalog veya rapor/sürüm kanıtı yoksa ilgili alan bilinmeyen/karantinada kalır;
+   model eğitimi açılmaz. Önce mevcut dosyalar kullanılır; ağ/veri edinimi gerekirse
+   kapsam ayrıca kaydedilir. Tahmini emek 1–2 çalışma günü; kaynak beklemesi hariç.
+   İki rapor örneği bütün 752 haftanın doğrulaması değildir; kabul edilen kapsam
+   kanıtın gerçekten kapsadığı ülke/alan/sürüm/tarihlerle sınırlandırılır.
+2. **Yalnız kabul yeterliyse tek ön kayıt PR'ı:** ulusal toplamların ötesinde
+   ülke dağılımı/bekleyen satışların katkısını sınayan tek hipotez. Ülke/alan
+   sayısı kapsama ve ekonomik gerekçeye göre, OOS sonuç görülmeden sınırlandırılır.
+   Model, kaynak ve hedef aynı anda değiştirilmez; aynı origin, hedef, karar saati,
+   eski ulusal bilgi kontrolü ve aynı eksiklik kontrolleri korunur. Sicil kontrolü,
+   birincil ölçü, pratik etki sınırı ve tam fit bütçesi hesaplanıp kilitlenmeden
+   yürütme olmaz. Bu belge yeni deney kimliği veya eğitim izni oluşturmaz.
+3. **Sonuç PR'ı:** yalnız kilitlenen pilot; ham/seçilmiş sonuçlar, yıllar,
+   paired blok20/60 aralıkları ve bağımsız hesap. Negatif veya belirsiz sonucu
+   daha büyük grid'e dönüştürme yok. Tarihsel saat kanıtı yetersizse ancak ayrı
+   varsayım duyarlılığı olarak açıkça kararlaştırılabilir; gerçek PIT kanıtı denmez.
+
+Her PR ayrı branch, dar diff, uygun test/CI ve checksum doğrulamasıyla GitHub'a
+gider. Kod/küçük kanıt Git'te, büyük ham veri/checkpoint Release'te kalır.
+Eski sicil/kanıt değiştirilmez; tamamlanan denetim ek kayıt olur. Gerçek zamanlı
+aday üstünlüğü bulunmadan eski tarihleri yeni holdout diye yeniden kullanmayız.
 
 **Kapsam açıklaması:** kullanıcı projeyi araştırma/ispat olarak tanımladı; gerçek
 alım/satım yapılmayacak. Aşağıdaki broker/giriş/maliyet koşulları yalnız gerçek
@@ -31,13 +121,14 @@ kanıtı için süre garantisi olamaz. Önceki fiyat hedeflerinin eşikleri koru
 eski deneyleri yeniden sınıflandırmak için kullanılmaz. %0,55 MAPE izlenebilir;
 evrensel başarı ölçüsü veya yüzde doğruluk değildir.
 
-Seçilen ürün amacı vadeli piyasada yön ve pozisyondur. Birincil ürün ölçüsü
-işlem sözleşmesindeki maliyet sonrası sonuçtur; MAE/MAPE ve yön yardımcıdır.
-Fiyat programı ile işlem araştırmasının hedefleri ve kayıtları karıştırılmaz.
+Seçilen araştırma amacı vadeli piyasada yön ve pozisyon fikrini incelemektir;
+gerçek işlem yapılmaz. Güncel sözleşmede birincil kanıt tahmin katkısıdır;
+PnL yardımcı simülasyondur. Net işlem iddiası ayrıca fiyat/kontrat/maliyet kanıtı
+ister. Fiyat programı ile işlem simülasyonunun hedef ve kayıtları karıştırılmaz.
 
 ## 1. Önceden yapılanlar: yeniden başlatılmayacak işler
 
-**VERIFIED:** Sicil doğrulandı: 122 deney/kontrol/tarihçe kaydı, 430 tarif,
+**5 Ekim inceleme snapshot'ı — VERIFIED:** Sicil doğrulandı: 122 deney/kontrol/tarihçe kaydı, 430 tarif,
 24.575 benzersiz tamamlanmış fit makbuzu. Sekiz ilgili profilde 60 grubun **432
 yıllık tahmin dosyası** checksum ile kontrol edildi; ham ve küçültülmüş fiyat-MAE
 yeniden hesaplandı. Aynı profilin gruplarında tarih/fiyat/T+5 hedef vektörleri
@@ -135,7 +226,10 @@ Erişim tarihi 5 Ekim 2026; bu sayfalar tek başına bütün tarihsel satırlar�
    alınır. Eski snapshot ve Naive geri dönüş referansı korunur. Public kopyadaki
    secret temizliğiyle değişmiş byte'lar eski cache checksum'ı yerine konulmaz.
 
-**VERIFIED — entegrasyondan önce düzeltilecek iki nokta:**
+**5 Ekim'de saptanıp ilk teslimatta düzeltilen iki nokta:**
+Yeni sürümlü 00:15 UTC politika ve CLI/engine tazelik eşitliği uygulanmıştır;
+[teslimat kanıtı](TRADING_WASDE_DELIVERY_20261005.md). Aşağıdaki iki paragraf
+bulgunun tarihsel halidir; aynı düzeltme yeniden yapılmaz.
 
 - `research/protocol.py:attach_releases` bugün karar saatini ertesi gün **00:00**
   yapıyor ve eşit timestamp'i dışlıyor (`allow_exact_matches=False`). Bu, yeni
@@ -157,24 +251,27 @@ bağımsız metrik hesabı; önce/sonra özgün checksum eşitliği ve küçük 
 
 ## 4. Dört iş paketi ve durma koşulları
 
-### A — Mevcut tahminin işlem karşılığını ve veri kabul sınırını belirle
+### A — Tamamlanan tahmin/işlem karşılığı denetimi
 
-İlk iş, mevcut işlem sözleşmesindeki **eğitimsiz T+1 analizidir**: saklanan kontrol
+İlk teslimatta tamamlanan iş, mevcut sözleşmedeki **eğitimsiz T+1 analizidir**: saklanan kontrol
 ve zamanlama müdahalesi tahminlerinin `sign(selected_return)` pozisyonunu, aynı
 origin'lerde sonraki kayıtlı Cotton open→close hareketiyle eşleştir. Ham işaret
 ayrı tanısaldır. Flat/long/short referansları, aktif oran, yıl sonuçları ve başa
 baş çift yön maliyet raporlanır. CT=F sonucu proxy kalır; open'ın karar sonrasında
 uygulanabilir olduğu ve kontrat kimliği kanıtlanmadan net işlem üstünlüğü denmez.
 
-Aynı paket, yukarıdaki kaynak matrisini admission aday kayıtlarına dönüştürür;
-uygulanabilir kontrat/seans verisinin küçük örneği ve 00:15 saat testleri çıkarılır.
-Beklenen emek **1–2 çalışma günü**, sıfır fit. Kanıt bulunamazsa açık blocker;
-başka bir model grid'iyle devam edilmez. Kaynak içerik incelemesi yine ilerleyebilir.
+Sonuç ve sınırlar [ilk teslimatta](TRADING_WASDE_DELIVERY_20261005.md) ve
+[fiyat/seans denetiminde](PRICE_SEMANTICS_AUDIT_20261005.md) kayıtlıdır. Aynı
+proxy analizi tekrar yapılmaz. Gerçek kontrat/uygulanabilir fiyat kanıtı hâlâ
+net işlem iddiasının ayrı koşuludur; FAS kaynak içerik denetimini engellemez.
 
 ### B — Önce WASDE, ardından FAS için yeni veri paketi
 
-Önce mevcut ham dosyalardan bölgesel WASDE tablo ve revizyonları kur. Sonraki aday
-FAS ülke/commitment tablosu. İlk pakette bütün kaynaklar aynı anda birleştirilmez.
+WASDE tablo, revizyon, sayısal doğrulama ve sınırlı T+1 pilotu tamamlandı;
+[negatif sonuç](WASDE_REGIONAL_T1_RESULT_20261008.md) korunur. FAS ülke/commitment
+adayında sıfır-fit alan denetimi ve karantina ülke aritmetiği tamamlandı; kabul
+ve Cotton'a hizalanmış eğitim paketi henüz tamamlanmadı. İlk pakette bütün
+kaynaklar aynı anda birleştirilmez.
 Her pakette kaynak/kolon kapsamı, veri kaybı, revision/availability kanıtı, orijinal
 hash koruması ve kullanım statüsü raporlanır. Salt parser başarısı eğitim kabulü
 sayılmaz. Texas evreleri ve CFTC maskeleri aynı matriste ayrı bağımlılıklar olarak
@@ -184,43 +281,30 @@ Beklenen emek mevcut dosyalar için **2–4 gün**; yayın kanıtı/sağlayıcı
 bu tahmine dahil değildir. Sıfır gerçek model fit'i. Yeni veri edinimi gerekirse
 önce küçük kapsam ve ücretsiz kullanım doğrulanır; ücretli servis otomatik açılmaz.
 
-### C — Tek ayrıştırıcı pilot; başarıya göre daha fazla model değil
+### C — Tamamlanan WASDE pilotunun kapsamı ve kapanış
 
-A ve B uygun olduğunda ilk yeni hipotez: **WASDE ülke revizyonları, eski üç dünya
-özelliğinin ötesinde T+1 işlem kararına katkı veriyor mu?** Bu hipotez sicildeki
-eski T+5 dünya oranı veya metin deneyinin tekrarı değildir.
+İlk taslaktaki giriş→çıkış/net PnL deneyi yürütülmüş sayılmaz. Kullanıcının
+araştırma/ispat açıklamasına göre ayrı [ön kayıt](WASDE_REGIONAL_T1_PREREGISTRATION_20261008.md)
+ile close→next close T+1 hedefinde D0/D1, numeric/mask dört kol çalıştırıldı.
+Tarif, 424 fit ve karar sınırları ilk fit'ten önce kilitlendi. Bu çalışma eski
+üç dünya özelliğine karşı yalnız revizyon ekleme deneyi olarak sunulmaz.
 
-- İki kol: aynı mevcut bilgi + dünya özellikleri + aynı rapor yaşı/eksiklik
-  kontrolleri; müdahalede bunlara yalnız önceden seçilmiş ülke revizyonları eklenir.
-- Aynı yayımlanmış sürümler, karar saati, kontrat, origin, giriş/çıkış, hedef,
-  preprocessing, seçim ve refit. Saat düzeltmesi sadece müdahaleye uygulanmaz.
-- İlk tarif: Ridge alpha=1/seed42/window1; geçmişe bağlı standartlaştırılmış
-  **uygulanabilir giriş→çıkış log-return** hedefi. T+1 birincil; eski kapanış
-  hedefiyle aynı deneymiş gibi gösterilmez. T+5 sonraki ayrı karardır.
-- Aynı geçmiş validasyonda parametre ve varsa flat eşiği kuralları ilk hesaptan
-  önce kilitlenir. İlk mekanizma testinde eşik taraması yapılmaz; sabit işaret
-  kuralı ve sabit kontrat birimi kullanılır. Fiyat-MAE için seçilen shrinkage'ın
-  işlem faydasını optimize ettiği varsayılmaz.
-- Birincil ölçüm: tüm uygun karar günlerinde müdahale−kontrol net kontrat-birim
-  PnL farkı. Flat ve sabit yönlerle de karşılaştır. Yıllık sonuç, drawdown,
-  turnover, aktif oran, maliyet başa baş noktası; fiyat hatası yardımcıdır.
-- Yılları aşmayan paired bootstrap: 10.000 tekrar, seed42, blok20 ve60. Maliyet
-  ve risk/istikrar eşiği ilk sonuçtan önce sözleşmeye yazılır. Tarihsel inceleme
-  tekrarlarının tamamını kapsayan bağımsız anlamlılık iddiası yok.
-- Kontrat/giriş/maliyet kanıtı yoksa **bu işlem pilotu başlamaz**. İstenirse ayrı
-  açıkça varsayımlı fiyat/proxy çalışması kaydedilir; onun başarısı işlem GO'su değildir.
-- Aynı 2.006 origin/sekiz yıl/21-refit düzeni korunabilirse iki kol, tek ufuk için
-  mevcut mekanik 338 fit ölçeğindedir. Yeni veri cohort'u netleşmeden bu kesin
-  bütçe sayılmaz; engine planı tam fit sayısını çıkarıp dondurmalı. Tek CPU süreç,
-  en fazla iki thread, ilk oturum 30 dakika/checkpoint duraklatmalı; otomatik grid yok.
-
-Pozitif etki hem maliyet sonrası pratik eşiği hem istikrarı karşılıyorsa yalnız
-kilitli ileri doğrulamaya geç. Aralık pratik etkiyi dışlıyorsa bu temsil kapatılır.
-Belirsizse veri/bağımsız örnek sayısı sınırı açıklanır; aynı yıllarda yeni model
-yarışması açılmaz. Bu aşamayı hazırlama/test emeği **2–3 gün**; koşul sağlanmazsa
-fit bütçesi sıfır kalır.
+[Sonuç](WASDE_REGIONAL_T1_RESULT_20261008.md): %5 pratik hedef bu sabit tarifte
+desteklenmedi; Naive korunur. Sonuç net işlem becerisi, bütün WASDE temsillerinde
+sinyal yokluğu veya gerçek erişim/vintage onayı değildir. Yukarıdaki FAS kabul
+denetimi dışında yeni eğitim, model araması veya otomatik hedef değişimi yoktur.
 
 ### D — Kilitli ileri kayıt ve kanıt paketi
+
+9 Ekim görev düzeltmesi dağıtıldı: [sabit kaynak/yayın penceresi](FORWARD_RUNTIME_WINDOW_20261009.md),
+gündüz gerçek çağrı exit 0; gece yayını ve tahmin becerisi henüz doğrulanmadı.
+Mevcut görev/tetikleyiciler korunur; 03:35 Türkiye saatinde bu sohbetin devam
+kontrolü aktiftir. Genel sistem güç ayarları ve araştırma karar saati değişmedi.
+
+9 Ekim sıfır-fit denetimi tamamlandı: altı missing origin, sıfır yayımlanmış
+tahmin; kesim-öncesi yerel makbuz yok. [Kanıt ve durum komutu](FORWARD_EVIDENCE_AUDIT_20261009.md).
+Sonraki operasyon kontrolü mevcut görevde tek gerçek 00:05→00:20 UTC zinciridir;
+altyapı kurulmuş olması ileri performans birikimi sayılmaz.
 
 `research/prospective.py` ve `research/live.py` mevcut; yeni CSV tabanlı paralel
 canlı sistem kurulmaz. Naive/EWMA kayıtları ve kaçırılmış günler önce denetlenir.

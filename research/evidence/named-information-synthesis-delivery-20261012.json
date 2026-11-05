@@ -1,0 +1,23 @@
+{
+  "schema": 1,
+  "release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/named-information-synthesis-20261012",
+  "archive_sha256": "7a98d73305b7f02a6f472923c73478d487bd146c690551c6fa39e6e84c2da60f",
+  "fresh_download_verified_members": 734,
+  "restore": {
+    "status": "verified",
+    "members": 734,
+    "archive_sha256": "7a98d73305b7f02a6f472923c73478d487bd146c690551c6fa39e6e84c2da60f",
+    "exact_member_hashes": true,
+    "exact_frozen_source_values_and_record_ids": true,
+    "report_bytes_identical": false,
+    "serialization_difference": "JSON object key order only; all decoded values exactly equal",
+    "five_other_replay_payloads_byte_identical": true,
+    "new_fits": 0,
+    "original_restore_attempt": "failed strict byte comparison; preserved, not called successful",
+    "verifier_sha256": "bf372bbfb3402cd6ead9356fba1137db380d945244b376aa8867bd4f8d46dc51"
+  },
+  "new_fits": 0,
+  "old_evidence_unchanged": true,
+  "drive_changed": false,
+  "record_id": "dd994a8d106c6a3669c3dbaad764ef780bc70bf3ff405942b7e19cc7dfe3e4b0"
+}

@@ -1,0 +1,58 @@
+{
+  "schema": 1,
+  "profile": "ams-contract-lifecycle-correction-v1",
+  "classification": "METHODOLOGICALLY_COMPROMISED",
+  "finding": {
+    "status": "SOURCE_ADMISSION_FAILED",
+    "new_fits": 0,
+    "classification": "METHODOLOGICALLY_COMPROMISED",
+    "classification_scope": "Named-contract market interpretation; native predictions and arithmetic remain reproducible",
+    "history_past_contract_origins": 218,
+    "evaluation_past_contract_origins": 217,
+    "evaluation_year_counts": {
+      "2016": 0,
+      "2017": 0,
+      "2018": 0,
+      "2019": 106,
+      "2020": 111,
+      "2021": 0,
+      "2022": 0,
+      "2023": 0
+    },
+    "first_bad_history_origin": "2019-08-01 00:00:00",
+    "last_bad_history_origin": "2020-06-11 00:00:00",
+    "affected_source_containers": [
+      "2018-2019 Price file.xlsx",
+      "2019-2020 Price file.xlsx"
+    ],
+    "raw_xlsx_sha256": "03d7347b7a0a5c9b5c277cd39666cb9336deb00d9723d1ff17d8513115311ea6",
+    "raw_xml_witness_sha256": "6580c9fe20ce51720a0f9e716ce0838024bf5a90039ae040ffbf99629c01d666",
+    "affected_origin_csv_sha256": "01aceaaf001df6bf4d49379012e6f0a2bf815846f0cfe981d57519428e599590",
+    "original_forecast_report_sha256": "6a4fd28e66348a7d31265c54e266198ea3258e1add94bd95815c168e90b1b8d5",
+    "automatic_repair_allowed": false,
+    "historical_availability_verified": false,
+    "scope_limit": "This defect concerns AMS named-contract controls; it does not explain all earlier CT price results. Before-expiry mislabeled intervals and downstream train impact not fully measured."
+  },
+  "affected_jobs_with_known_bad_train": 86,
+  "affected_jobs_with_known_bad_test": 20,
+  "affected_profiles": [
+    "ams-named-ewma-har-full-year-t1-v1",
+    "ams-risk-curvature-score-t1-v1",
+    "risk-level-source-t1-v1"
+  ],
+  "scope_limit": "Prior CT and2023-only named controls are not automatically invalidated. Synthetic recovery stays a fixed-design learning control. Additional contaminated intervals and model impact are not fully resolved.",
+  "supersedes_interpretation_not_original_bytes": true,
+  "new_fits": 0,
+  "source_guard_verified_on_actual_history": true,
+  "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/risk-level-source-result-20261029",
+  "fresh_correction_asset_hashes": {
+    "source-admission-correction.json": "400e34bf968b26329b39d13700184611964ff059ba2977f5591129cd013899d5",
+    "raw-contract-cell-witness.json": "6580c9fe20ce51720a0f9e716ce0838024bf5a90039ae040ffbf99629c01d666",
+    "past-contract-origin-witness.csv": "01aceaaf001df6bf4d49379012e6f0a2bf815846f0cfe981d57519428e599590",
+    "source-admission-job-impact.json": "09139d74ac75b39f38edff601e01937cf3be256a5ef92c3b67fb8d1df323f421",
+    "diagnostic-training-vs-oos.json": "14659f00f07e25039660d8749e465b44b93072f166cea6da643e3c4fcc304082"
+  },
+  "ice_contract_reference": "https://www.ice.com/products/254/cotton-no-2-futures/specs",
+  "next_exact_step": "Obtain one independent dated daily contract/price witness for2020-02-26/27 before deciding whether annual contract identities can be reconstructed; no year-shift/drop-expired shortcut.",
+  "record_id": "7f507c048374aefddabf35a2f7557b2292fedf5663405db432f8c1ba9d219c1e"
+}

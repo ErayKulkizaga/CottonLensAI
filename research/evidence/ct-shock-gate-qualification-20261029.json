@@ -1,0 +1,42 @@
+{
+  "schema": 1,
+  "profile": "ct-signed-unsigned-shock-forecast-t1-v1",
+  "kind": "append_only_protocol_qualification_zero_fit",
+  "classification": "INCONCLUSIVE",
+  "new_fits": 0,
+  "authority": "User-approved risk-first plan in this conversation, sections1and3",
+  "quoted_constraint": "Bu \u00e7\u0131karma ana sonucu de\u011fi\u015ftirmeyecek.",
+  "original_candidate_rule": "positive meanQLIKEgain,both20/60CI lower>0,atleast6/8positiveyears",
+  "deviation": "Frozen CT shock profile copied an additional positive-trim hard gate from previous research code",
+  "correction": "Apply the original three candidate conditions in interpretation and future preregistrations; report top1pct trim as sensitivity. Independent forward validation is still required.",
+  "decisions": {
+    "unsigned_raw_vs_EWMA": {
+      "user_follow_candidate_gate_passed": false,
+      "frozen_profile_gate_passed": false,
+      "trim_is_sensitivity": true
+    },
+    "unsigned_selected_vs_EWMA": {
+      "user_follow_candidate_gate_passed": false,
+      "frozen_profile_gate_passed": false,
+      "trim_is_sensitivity": true
+    },
+    "signed_raw_vs_EWMA": {
+      "user_follow_candidate_gate_passed": false,
+      "frozen_profile_gate_passed": false,
+      "trim_is_sensitivity": true
+    },
+    "signed_selected_vs_EWMA": {
+      "user_follow_candidate_gate_passed": false,
+      "frozen_profile_gate_passed": false,
+      "trim_is_sensitivity": true
+    }
+  },
+  "primary_user_gate_passed": false,
+  "current_conclusion_changed": false,
+  "frozen_report_sha256": "6618f167b6a554bb813652ac8a3fa358b74f86525cf47de0fb03592cd9997d9e",
+  "source_id": "e47bf678aff38bb6809c4c13ba8411ce0053396f3c31ea9ca5a320ff215b1cd6",
+  "market_skill": false,
+  "release_allowed": false,
+  "frozen_source_data_models_predictions_report_preserved": true,
+  "record_id": "09f014e895e090578a9ac2344ae6b44769de33d835ee5cc43007e2166243550f"
+}

@@ -1,0 +1,78 @@
+{
+  "schema": 1,
+  "release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/fas-may28-version-20261008",
+  "models_trained": 0,
+  "ml_source_id": "5c6f952f69a8f337b03a14ccfe26072382b0aff64ec9eaf1ca4f90620802e776",
+  "archive": {
+    "name": "fas-may28-version-20261008-v1.zip",
+    "sha256": "b445dba980e3fbb665521b5662b29adf8a65c4241e11f6a544e82ce958801564",
+    "bytes": 1156034
+  },
+  "members": {
+    "environment.json": {
+      "sha256": "a90f4fa8cbe221bd5171ca73eb054df34f41cf59a1d1ffdfd098957fdf2638fd",
+      "bytes": 329
+    },
+    "evidence/census-country-codes/retrieval.json": {
+      "sha256": "b5689f94cf7a8949758139ef0f20a9341bed03984cbeeae399c82428773fd259",
+      "bytes": 624
+    },
+    "evidence/census-country-codes/source.html": {
+      "sha256": "c6ff60439d3694fdc2e61db58c18f7c9ad13a1c465d9b851cd12d94d50838523",
+      "bytes": 87177
+    },
+    "evidence/index-2020/retrieval.json": {
+      "sha256": "13757643ef9bf83682afd368b56f78bcbb2de724b72cc74e57be82aac9a8d1d0",
+      "bytes": 599
+    },
+    "evidence/index-2020/source.bin": {
+      "sha256": "7b527026b4870c6e84f3698aae0cae6e045e7128148c20702f26bbd5be12dc98",
+      "bytes": 14147
+    },
+    "evidence/pinned-api-2020.json": {
+      "sha256": "9973f506fa67950687cb3f945c36cf601ed3cf8c49420ee2ada45bfc52ad3c83",
+      "bytes": 544345
+    },
+    "evidence/pinned-commodity-catalog.json": {
+      "sha256": "38449fd690f631f2cabc4cca7373e9923487680ae242efd0ec12a36de49b811b",
+      "bytes": 3264
+    },
+    "evidence/recovered-20200528/retrieval.json": {
+      "sha256": "a97ecd8b7831ad1ee3f366409d70043d3c696d4ed1814474af2ecdb8463c9c22",
+      "bytes": 587
+    },
+    "evidence/recovered-20200528/source.bin": {
+      "sha256": "1905ec8bcef929c29d4a2dcd9ebd1af3d3e8e1de55335aa6b0754910054ea51a",
+      "bytes": 450469
+    },
+    "http-attempts.json": {
+      "sha256": "3f9c727d83416b75225b9d0978c4d401d5cd5c04f57593353c0b0cd1c8318813",
+      "bytes": 1409
+    },
+    "README.txt": {
+      "sha256": "5e1320958f30448457eded7448b65415397944ffc4eb57b9a193adf48d4e71d2",
+      "bytes": 819
+    },
+    "review-inputs.json": {
+      "sha256": "7ac0226bf1db6c47ea2b0aba1b2acd62592347f3f2e9acd1407e28ed7479c425",
+      "bytes": 1212
+    },
+    "review-source.zip": {
+      "sha256": "6a3d2a9fd60db24a6f40da504a6564e3527d19314ab4e9853ac9f86cdb55f713",
+      "bytes": 674910
+    },
+    "subtype-review-v1.json": {
+      "sha256": "0da3f0d010a135039b896e1070c603ec557ff0231dcaaa1c2017c5d05fb6f6e5",
+      "bytes": 13238
+    },
+    "version-audit.json": {
+      "sha256": "66130acf3d1b06407519439bde0631b051929a2debe3f15b8ea4e3a59de8b687",
+      "bytes": 10203
+    },
+    "manifest.json": {
+      "sha256": "25e383b3b6a3fba17069ecd971f3e48b4995527e80696dfced27cc2b60e7aff3",
+      "bytes": 2424
+    }
+  },
+  "scope": "checksum-bound content diagnosis; no model/source promotion"
+}

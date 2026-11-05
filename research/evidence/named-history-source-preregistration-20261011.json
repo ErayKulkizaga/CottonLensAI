@@ -1,0 +1,47 @@
+{
+  "schema": 1,
+  "status": "frozen_single_named_history_source_control_not_run",
+  "profile": "named-history-source-control-t5-v1",
+  "source_id": "466e4d3f756178561aca5e1706384d0be7398a7cf01757bef34677777c1ed155",
+  "source_files": 260,
+  "code_commit": "a0892eb543b79d1c6d95e3abf9fc2afd644345de",
+  "ready_sha256": "c62f94bb9495605702580da6f747bbce698397aed4c64cae771e50d15b533f20",
+  "decision_contract_sha256": "a53ff3f80d81e13a4a919c21eebbfb439f1d1b86a371d700e6dcf748f8c2cec8",
+  "design_id": "dbcc9de865336922d4cb451a8641189363aac002c6d2ff635518123be7999f57",
+  "input_hashes": {
+    "parent-files.json": "fbdb9896817d0db0ac41aaf5c327bc92786bc6c6935521b9bf5d117f31b1ba2f",
+    "readiness-proof.json": "4bf704482f0dc7fe592d0de5f83fec436d3f940b9b1b58dc627b594b01862b4d",
+    "readiness-delivery.json": "c5aa7a1a80eb101edf5f527922ba4608d6f246bad4415c1c4ea9bd27aec664f9"
+  },
+  "fit_budget": {
+    "market": 44,
+    "synthetic": 4,
+    "threads": 2,
+    "processes": 1,
+    "session_minutes": 30
+  },
+  "origins": 246,
+  "scored": 242,
+  "unknown": 4,
+  "new_fits": 0,
+  "new_market_scores": 0,
+  "report_script_sha256": "3ec9f5b6631cd154dfccccc768e52800eb8f9fe82409430dd1fd62599b43feb8",
+  "verifier_script_sha256": "54696be5c1653ab2f9d2be79b1b3a4a3385127bf9197bc69b8a541e21322d7ac",
+  "bootstrap_sha256": "4578dae770a5963e54454b6fd79adec6bf488ef52bc6683a73e7a0acdc6fbe60",
+  "synthetic_checks": [
+    "known_signal",
+    "known_nonlinear",
+    "negative_block_shift",
+    "small_subset_overfit"
+  ],
+  "previous_report_fixture_verification_sha256": "2a20f1b904f66d5b55d23a27ff6bb6bb95d3e2b1b7985610ac487254cb56d2ad",
+  "previous_report_fixture_controls_sha256": "7bb40a355e79508f1a0a7cc96eb87874f049a24378c8e7dfaf3e98757a0cbb85",
+  "fixture_is_not_new_market_evidence": true,
+  "gate_evaluation_allowed": false,
+  "historical_availability_verified": false,
+  "first_vintage_verified": false,
+  "independent_holdout": false,
+  "protocol": "docs/NAMED_HISTORY_SOURCE_CONTROL_T5_20261011.md",
+  "deliberate_repeat_reason": "Completed named-label/capacity studies retain CT price history. New same-contract histories were not fit; compare identical-width numeric/mask arms, not a new model/grid.",
+  "record_id": "ac355b3e40264ebef3ab615382b6f3245f8cbd73ad759ca28e891b421870ab0e"
+}

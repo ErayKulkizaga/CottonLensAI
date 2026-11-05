@@ -1,0 +1,90 @@
+{
+  "schema": 1,
+  "release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/fas-country-report-20261008",
+  "models_trained": 0,
+  "ml_source_id": "650a4bc6f68abdd81f27b7515818cee921f4934d2b791665bfe45e023f9f3179",
+  "archive": {
+    "name": "fas-country-report-20261008-v1.zip",
+    "sha256": "ec457eacf16e0718b73b3c97c996d53243e450117c7baf10bcb88a8eba6491e5",
+    "bytes": 1801854
+  },
+  "members": {
+    "README.txt": {
+      "sha256": "5eb1fdb25243fb7dd81fd1ae64814b50df43bc04e9e59b8560e89fed2caf1c8c",
+      "bytes": 2351
+    },
+    "country-content-review-v1.json": {
+      "sha256": "287d727f8a273d5b0e81ea6cec87f69e909ea6c26c0a4a9ec4346e94f6befed1",
+      "bytes": 23978
+    },
+    "country-content-review-v2.json": {
+      "sha256": "ae2e031160d12980e2c1fa2be17e0156a47806c58e21a4a24d3c6ca543a9f278",
+      "bytes": 24038
+    },
+    "country-report-verification.json": {
+      "sha256": "be2593eebfb5c7cec2d106e46df68194b1a7d688fdf864f10184629eb0245d5e",
+      "bytes": 8453
+    },
+    "environment.json": {
+      "sha256": "5e04374d2c3370e9232d82ffbc7189b06c509ca04eca56913768c6b20965012c",
+      "bytes": 424
+    },
+    "evidence/census-country-codes/retrieval.json": {
+      "sha256": "b5689f94cf7a8949758139ef0f20a9341bed03984cbeeae399c82428773fd259",
+      "bytes": 624
+    },
+    "evidence/census-country-codes/source.html": {
+      "sha256": "c6ff60439d3694fdc2e61db58c18f7c9ad13a1c465d9b851cd12d94d50838523",
+      "bytes": 87177
+    },
+    "evidence/index-2020/retrieval.json": {
+      "sha256": "13757643ef9bf83682afd368b56f78bcbb2de724b72cc74e57be82aac9a8d1d0",
+      "bytes": 599
+    },
+    "evidence/index-2020/source.bin": {
+      "sha256": "7b527026b4870c6e84f3698aae0cae6e045e7128148c20702f26bbd5be12dc98",
+      "bytes": 14147
+    },
+    "evidence/pinned-api-2020.json": {
+      "sha256": "9973f506fa67950687cb3f945c36cf601ed3cf8c49420ee2ada45bfc52ad3c83",
+      "bytes": 544345
+    },
+    "evidence/pinned-commodity-catalog.json": {
+      "sha256": "38449fd690f631f2cabc4cca7373e9923487680ae242efd0ec12a36de49b811b",
+      "bytes": 3264
+    },
+    "evidence/recovered-20200528/retrieval.json": {
+      "sha256": "a97ecd8b7831ad1ee3f366409d70043d3c696d4ed1814474af2ecdb8463c9c22",
+      "bytes": 587
+    },
+    "evidence/recovered-20200528/source.bin": {
+      "sha256": "1905ec8bcef929c29d4a2dcd9ebd1af3d3e8e1de55335aa6b0754910054ea51a",
+      "bytes": 450469
+    },
+    "evidence/recovered-20200604/retrieval.json": {
+      "sha256": "ecd1c4211f94380bc1a575a36ce747505bc27e4e692780fe29a078a77da16d32",
+      "bytes": 587
+    },
+    "evidence/recovered-20200604/source.bin": {
+      "sha256": "52294267f5f00b1edb1f106f637a9dfcef2554e1392894dfe10f6e890bc68df2",
+      "bytes": 375462
+    },
+    "evidence/release-cover/govdelivery-wr06042020.pdf": {
+      "sha256": "02c8bd9f80ff8d4a727f6b8255b8dd5a27922a8f28b8b28d137e7b9569c08e69",
+      "bytes": 468668
+    },
+    "evidence/release-cover/retrieval.json": {
+      "sha256": "c6999a62438c0fb8866a457fac9a287ae5f34091cd9920b43d4cb3df69cc71db",
+      "bytes": 680
+    },
+    "manifest.json": {
+      "sha256": "eb5f5127bdaf1a59275ed653f728d520b1c7c429863c2024083fbbdb6b2eb13e",
+      "bytes": 3133
+    },
+    "review-source.zip": {
+      "sha256": "312a23558a793a20aedc83ee7dd2fa5ee39e2a4fa629b7b438e3b8e88c3b4d7b",
+      "bytes": 671704
+    }
+  },
+  "scope": "checksum-bound public content review, not model/source promotion"
+}

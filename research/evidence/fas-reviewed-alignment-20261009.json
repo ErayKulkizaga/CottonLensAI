@@ -1,0 +1,79 @@
+{
+  "schema": 1,
+  "profile": "fas-reviewed-alignment-v1",
+  "as_of": "2026-10-09",
+  "kind": "no_fit_synthetic_source_contract_and_alignment",
+  "market_fits": 0,
+  "real_historical_source_admitted": false,
+  "ml_source_id": "3a1cb6ee2fbad006352d0a80ea516f3a3c663374d34b1febddfd420b0cc67820",
+  "source_files": 224,
+  "source_bundle_sha256": "9eaf8786f000b3de7def4072724050c4d7778ec40319100f0a31f4163c59437c",
+  "replay": {
+    "schema": 1,
+    "profile": "fas-reviewed-alignment-v1",
+    "synthetic_only": true,
+    "market_fits": 0,
+    "real_historical_source_admitted": false,
+    "cases": [
+      {
+        "case": "exact",
+        "synthetic_only": true,
+        "origins": 4,
+        "original_targets_unchanged": true,
+        "national_values": [
+          null,
+          20.0,
+          20.0,
+          null
+        ],
+        "country_null_preserved": true,
+        "shared_masks": 3,
+        "market_fits": 0
+      },
+      {
+        "case": "upper-bound",
+        "synthetic_only": true,
+        "origins": 4,
+        "original_targets_unchanged": true,
+        "national_values": [
+          null,
+          20.0,
+          20.0,
+          null
+        ],
+        "country_null_preserved": true,
+        "shared_masks": 3,
+        "market_fits": 0
+      }
+    ],
+    "quarantine_probe": {
+      "synthetic_assertion_against_unchanged_real_quarantine_input": true,
+      "source_sha256": "84557e73abbfe1736c0781da59443dcf26c2394d73db8ac4ab5f3c0ff085be03",
+      "rejected": true,
+      "reason": "FAS quarantined panel is not an as-published source",
+      "market_fits": 0,
+      "source_admitted": false
+    }
+  },
+  "verification": {
+    "focused_tests": 117,
+    "full_ml_tests_passed": 836,
+    "full_ml_tests_skipped": 3,
+    "ruff": "passed"
+  },
+  "preservation": {
+    "old_pinned_inputs": 18,
+    "old_registered_evidence_files": 32,
+    "old_registry_records": 138,
+    "protected_file_hashes": 55,
+    "all_protected_hashes_unchanged": true,
+    "trials_unchanged": true,
+    "primary_working_tree_status_unchanged": true
+  },
+  "limits": [
+    "Synthetic receipt validation is not external publication truth or predictive skill.",
+    "No historical FAS version admitted; original-cell and broader version/field review remain unresolved.",
+    "No training, model selection, new market data, automatic release or reinterpretation of old experiments.",
+    "The source-specific review rejects the generated quarantine panel and binds normalized floats/nulls to the receipt."
+  ]
+}

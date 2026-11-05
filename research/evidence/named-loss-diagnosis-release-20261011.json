@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/named-loss-diagnosis-20261011",
+  "source_id": "466e4d3f756178561aca5e1706384d0be7398a7cf01757bef34677777c1ed155",
+  "archive": {
+    "name": "named-loss-diagnosis-20261011.zip",
+    "sha256": "c103e338faa450ab020ca1bd58167d940b0e7b7e25830768fe865092798ed1f1",
+    "bytes": 770751
+  },
+  "inventory_sha256": "c1d436b7a0499a60d67b57aafde4adc0a239570575ab1624f39accf3bc49e2a6",
+  "members": 29,
+  "new_fits": 0,
+  "new_forecasts": 0,
+  "parent_release": "named-history-source-result-20261011",
+  "parent_archive_sha256": "61bf6a11f316a83d5d50c6e24240cb98187595056d169586b1e99cff3ed23a89",
+  "restore_sha256": "bf6d26c340b49ae77c6cb7636caddb10447fb67b33d2f6352f03683d0c7d595b",
+  "report_sha256": "81cb12c1c3ea0221b0a4a19b5804ffdc421165809bdfb2f7c80a66a26df71894",
+  "record_id": "c4d8f1c2458f623fbcf3e1c4b702c990e8bf723ab8f8bd778502e83a0342446e"
+}

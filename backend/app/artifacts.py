@@ -1,10 +1,12 @@
 import hashlib
 import json
+import os
 import re
 import shutil
 import stat
 import tempfile
 import zipfile
+from contextlib import contextmanager
 from datetime import datetime
 from pathlib import Path, PurePosixPath
 
@@ -58,10 +60,7 @@ def _payload_path(root: Path, relative: str) -> Path:
     return target
 
 
-def verify_directory(root: Path) -> dict:
-    missing = sorted(name for name in REQUIRED_FILES if not (root / name).is_file())
-    if missing:
-        raise ArtifactVerificationError(f"artifact is missing required files: {', '.join(missing)}")
+def _checksum_inventory(root: Path) -> dict[str, str]:
     expected: dict[str, str] = {}
     for line in (root / "checksums.sha256").read_text(encoding="utf-8").splitlines():
         if not line.strip():
@@ -76,6 +75,29 @@ def verify_directory(root: Path) -> dict:
         expected[relative] = digest.lower()
     if not expected:
         raise ArtifactVerificationError("checksums.sha256 is empty")
+    return expected
+
+
+def _inventory_identity(expected: dict[str, str]) -> str:
+    inventory = json.dumps(expected, sort_keys=True, separators=(",", ":")).encode("utf-8")
+    return hashlib.sha256(b"cottonlens-artifact-payload-v1\0" + inventory).hexdigest()
+
+
+def payload_identity(root: Path) -> str:
+    """Read the declared identity, after the caller has verified the directory."""
+    return _inventory_identity(_checksum_inventory(root))
+
+
+def verify_directory(root: Path) -> dict:
+    manifest, _ = verify_directory_with_identity(root)
+    return manifest
+
+
+def verify_directory_with_identity(root: Path) -> tuple[dict, str]:
+    missing = sorted(name for name in REQUIRED_FILES if not (root / name).is_file())
+    if missing:
+        raise ArtifactVerificationError(f"artifact is missing required files: {', '.join(missing)}")
+    expected = _checksum_inventory(root)
     for relative, digest in expected.items():
         target = _payload_path(root, relative)
         if not target.is_file():
@@ -149,20 +171,57 @@ def verify_directory(root: Path) -> dict:
             if (receipt.get('status') != 'passed' or receipt.get('fresh_fits') is not True
                     or not isinstance(difference, (float, int)) or not 0 <= difference <= 1e-6):
                 raise ArtifactVerificationError('Research release requires fresh reproduction')
-    return manifest
+    return manifest, _inventory_identity(expected)
+
+
+@contextmanager
+def _installation_lock(lock_path: Path):
+    # Keep the file in place so contenders always lock the same file. The OS
+    # releases the lock when its descriptor closes, including on process exit.
+    with lock_path.open("a+b") as handle:
+        try:
+            if os.name == "nt":
+                import msvcrt
+
+                handle.seek(0)
+                msvcrt.locking(handle.fileno(), msvcrt.LK_NBLCK, 1)
+            else:
+                import fcntl
+
+                fcntl.flock(handle.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)
+        except OSError as exc:
+            raise ArtifactVerificationError(
+                f"cannot acquire artifact install lock; another artifact installation may be active: {lock_path}"
+            ) from exc
+        yield
 
 
 def install_bundle(bundle_path: Path, destination: Path) -> dict:
-    """Verify fully before replacing the active runtime artifact directory."""
+    """Install one verified release at a time and recover interrupted activation."""
+    destination = destination.parent.resolve() / destination.name
+    staged = destination.with_name(f".{destination.name}.staged")
+    backup = destination.with_name(f".{destination.name}.previous")
+    lock_path = destination.with_name(f".{destination.name}.install.lock")
+    for path in (destination, staged, backup, lock_path):
+        if path.is_symlink() or path.is_junction():
+            raise ArtifactVerificationError(f"linked artifact installation path: {path}")
+    destination.parent.mkdir(parents=True, exist_ok=True)
+    with _installation_lock(lock_path):
+        if backup.exists() and not destination.exists():
+            verify_directory(backup)
+            backup.replace(destination)
+        return _install_bundle_locked(bundle_path, destination, staged, backup)
+
+
+def _install_bundle_locked(bundle_path: Path, destination: Path, staged: Path, backup: Path) -> dict:
     if not bundle_path.is_file():
         raise ArtifactVerificationError(f"bundle not found: {bundle_path}")
     sidecar = bundle_path.with_suffix(f"{bundle_path.suffix}.sha256")
     if not sidecar.is_file():
         raise ArtifactVerificationError(f"bundle checksum sidecar not found: {sidecar.name}")
-    expected_bundle_digest = sidecar.read_text(encoding="utf-8").split()[0]
-    if sha256_file(bundle_path) != expected_bundle_digest:
+    fields = sidecar.read_text(encoding="utf-8").split()
+    if not fields or sha256_file(bundle_path) != fields[0]:
         raise ArtifactVerificationError("bundle checksum mismatch")
-    destination.parent.mkdir(parents=True, exist_ok=True)
     with tempfile.TemporaryDirectory(prefix="cottonlens-artifact-") as temp_dir:
         extracted = Path(temp_dir) / "bundle"
         extracted.mkdir()
@@ -171,12 +230,14 @@ def install_bundle(bundle_path: Path, destination: Path) -> dict:
         roots = [path for path in extracted.iterdir() if path.is_dir()]
         root = roots[0] if len(roots) == 1 and not (extracted / "manifest.json").exists() else extracted
         manifest = verify_directory(root)
-        staged = destination.parent / f".{destination.name}.staged"
         if staged.exists():
             shutil.rmtree(staged)
         shutil.copytree(root, staged)
-        backup = destination.parent / f".{destination.name}.previous"
+        verify_directory(staged)
         if backup.exists():
+            # A prior activation may have succeeded before its cleanup ran.
+            # Only retire its recovery copy if the active release verifies.
+            verify_directory(destination)
             shutil.rmtree(backup)
         if destination.exists():
             destination.replace(backup)

@@ -17,3 +17,5 @@ Bu belgeler geçmiş kanıttır; içlerindeki planlar güncel talimat değildir.
 - [USDA_VINTAGE_REVIEW.md](USDA_VINTAGE_REVIEW.md)
 
 Tarihsel notebook'lar [ml/notebooks/archive](../../ml/notebooks/archive/) altında; eski model kaynakları frozen source ZIP'leriyle Release içinde korunur.
+
+- [README_HISTORY_20261105.md](README_HISTORY_20261105.md) — özgün README byte içeriği; eski göreli bağlantılar özgün köke göredir.

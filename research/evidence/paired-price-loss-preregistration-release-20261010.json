@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/paired-price-loss-preregistration-20261010",
+  "archive": {
+    "name": "paired-price-loss-preregistration-20261010.zip",
+    "sha256": "ab074df148b01c53926f3a1a1b686088db56bbc65bbc7a3b662c3ba95bbb01e5",
+    "bytes": 4922800
+  },
+  "members": 284,
+  "inventory_member": "checksums.json",
+  "inventory_sha256": "08553faa671590dcf65ed5c5333967f2e9075e00b16df67aee62b7e34a226ad4",
+  "market_fits": 0,
+  "synthetic_fits": 0,
+  "fit_budget": 48,
+  "tree_budget": 2688,
+  "scope": "Frozen zero-fit preparation/selected original receipts/source/environment; not a completed experiment or market skill."
+}

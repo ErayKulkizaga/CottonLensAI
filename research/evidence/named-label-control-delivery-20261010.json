@@ -1,0 +1,106 @@
+{
+  "schema": 1,
+  "status": "verified_fresh_github_no_fit_delivery",
+  "profile": "named-label-control-t5-v1",
+  "source_id": "cc7e6693a9662a1dc7a91d4ca322c129a6ff8583c4dc4010d376e7b41aa52b65",
+  "result_commit": "7d455351375fb0c67846452609d8beb645cc4b3b",
+  "pr": "https://github.com/ErayKulkizaga/CottonLensAI/pull/39",
+  "fresh_github_restore": {
+    "status": "verified",
+    "archive_sha256": "07fcbcd9bb99d23c9e2aeea5172a122d52afb23fbdb343038888f28264e6ed70",
+    "inventory_members": 512,
+    "source_id": "cc7e6693a9662a1dc7a91d4ca322c129a6ff8583c4dc4010d376e7b41aa52b65",
+    "verification_fits": 0,
+    "native_market_replays": 44,
+    "scalar_intervals": 12,
+    "tamper_controls": 8,
+    "exact_report_csv_complete": true,
+    "exact_verification_receipt": true
+  },
+  "local_restore": {
+    "status": "verified",
+    "archive_sha256": "07fcbcd9bb99d23c9e2aeea5172a122d52afb23fbdb343038888f28264e6ed70",
+    "inventory_members": 512,
+    "source_id": "cc7e6693a9662a1dc7a91d4ca322c129a6ff8583c4dc4010d376e7b41aa52b65",
+    "verification_fits": 0,
+    "native_market_replays": 44,
+    "scalar_intervals": 12,
+    "tamper_controls": 8,
+    "exact_report_csv_complete": true,
+    "exact_verification_receipt": true
+  },
+  "published_proofs": {
+    "research/evidence/named-label-control-result-20261010.json": "da74f5dcda6e6c1375c4314c2db72e00f159e8cf264a6f63110a03d1722d0cf7",
+    "research/evidence/named-label-control-result-release-20261010.json": "e38c8abd2181d5e07277e6a800b3b6946e800858c0c07c4415f3e4c15fddc3d6"
+  },
+  "old_studies_preserved": 166,
+  "old_fit_recipes_preserved": 518,
+  "old_proofs_preserved": 89,
+  "new_market_fits": 44,
+  "new_synthetic_fits": 1,
+  "verification_fits": 0,
+  "goal_achieved": false,
+  "ci_result_head": [
+    {
+      "name": "backend",
+      "status": "COMPLETED",
+      "conclusion": "SUCCESS"
+    },
+    {
+      "name": "backend",
+      "status": "COMPLETED",
+      "conclusion": "SUCCESS"
+    },
+    {
+      "name": "backend",
+      "status": "COMPLETED",
+      "conclusion": "SUCCESS"
+    },
+    {
+      "name": "frontend",
+      "status": "COMPLETED",
+      "conclusion": "SUCCESS"
+    },
+    {
+      "name": "frontend",
+      "status": "COMPLETED",
+      "conclusion": "SUCCESS"
+    },
+    {
+      "name": "frontend",
+      "status": "COMPLETED",
+      "conclusion": "SUCCESS"
+    },
+    {
+      "name": "ml-data-contracts",
+      "status": "COMPLETED",
+      "conclusion": "SUCCESS"
+    },
+    {
+      "name": "ml-data-contracts",
+      "status": "COMPLETED",
+      "conclusion": "SUCCESS"
+    },
+    {
+      "name": "ml-data-contracts",
+      "status": "COMPLETED",
+      "conclusion": "SUCCESS"
+    },
+    {
+      "name": "compose-contract",
+      "status": "COMPLETED",
+      "conclusion": "SUCCESS"
+    },
+    {
+      "name": "compose-contract",
+      "status": "COMPLETED",
+      "conclusion": "SUCCESS"
+    },
+    {
+      "name": "compose-contract",
+      "status": "COMPLETED",
+      "conclusion": "SUCCESS"
+    }
+  ],
+  "record_id": "27e47edc92f6562637b2baf9fbdcb9a87da3d8f4f82e9578b44cf18a5d5191bd"
+}

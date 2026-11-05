@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "status": "fresh_github_preliminary_lineage_replay_verified",
+  "checked_payloads": 2,
+  "exact_audit_json": true,
+  "archive_sha256": "5264ab9d9fa7d77e3babde57412b88a9c82f486a403ca4cbd7f13b3366a6b4a5",
+  "analyzer_sha256": "856fb5a29683fba736986ef18c53ccf32078f7354f60e6b8f4f92b764b7f74eb",
+  "parent_source": "Fresh GitHub named-capacity result experiment; same frozen inputs",
+  "new_fits": 0,
+  "new_features": 0,
+  "not_signal_test": true,
+  "historical_availability_verified": false,
+  "first_vintage_verified": false,
+  "source_not_admitted": true,
+  "next_exact_step": "Whole frozen train/inner/outer same-contract endpoint,missingness,staleness and future-invariance readiness; do not shift changing second-rank prices.",
+  "prior_scientific_decisions_unchanged": true,
+  "record_id": "0c4f79a206e455103d31b80507391c9c35c421c28d6b2431ef5ad74887666c20"
+}

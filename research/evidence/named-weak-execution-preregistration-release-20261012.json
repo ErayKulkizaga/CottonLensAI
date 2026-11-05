@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/named-weak-execution-preregistration-20261012",
+  "source_id": "5cfaabfd4e35737f625ebf19acbeb357bfde701b8e605438c85449de5c55f80c",
+  "archive": {
+    "name": "named-weak-execution-preregistration-20261012.zip",
+    "sha256": "cfe0f31cc895ca64c8593c1379a0ba33aaccdf2ee3e02b285acee4087b1639aa",
+    "bytes": 5552383
+  },
+  "inventory_sha256": "cf2f0e0e802502db1686cfd81cc9dfb7f864fa0f3c81f18dc27d3893b47c8ada",
+  "members": 562,
+  "mode": "registration",
+  "new_fits": 0,
+  "market_skill_claimed": false,
+  "record_id": "6355a502cdc062556d69e10579dfb57f0a447706199075f40f321eb5f9fa4610"
+}

@@ -1,0 +1,24 @@
+{
+  "status": "verified",
+  "release": "ct-forward-records-2026-q4",
+  "assets": [
+    "CT-forward-activation-receipts-20261030.zip",
+    "CT-forward-activation-receipts-20261030-manifest.json"
+  ],
+  "files": 27,
+  "logical_bytes": 192058,
+  "excluded": 0,
+  "archive_sha256": "60574bfe4495ddd82cdb630e20198fbc18eaee0e3466d19781f789f0ece76c73",
+  "model_deserialization_performed": false,
+  "deleted_files": 0,
+  "new_fits": 0,
+  "new_forecasts": 0,
+  "schema": 1,
+  "activation_evidence": "evidence/ct-forward-daily-activation-20261030.json",
+  "activation_evidence_sha256": "7997dc3477907586c7c4a45371f8110630fdc3933a5948050dc59aeb18a8a860",
+  "core_source_id": "a173df8e65b42460931018e53ab11778b248698383920231af1f31bb6cb16d41",
+  "execution_source_id": "2747450ff4d46b022493cc604c565aa941e0378c5c3bd741179d962cff04a644",
+  "market_skill": false,
+  "source_deletions": 0,
+  "record_id": "da19b6d5784e01450e62619c277dbd5ebf264af562be3daf1b5a925fd1d7fabe"
+}

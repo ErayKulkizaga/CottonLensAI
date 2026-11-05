@@ -1,0 +1,114 @@
+{
+  "schema": 1,
+  "profile": "ams-front-slope-named-ewma-error-t1-v1",
+  "classification": "INCONCLUSIVE",
+  "classification_scope": "Frozen positive covariance screen failed; association is not learned forecasting skill or source-wide no-signal proof",
+  "new_fits": 0,
+  "origin_count": 2006,
+  "eligible_origins": 1987,
+  "yearly": [
+    {
+      "year": 2016,
+      "ordinal": 250,
+      "eligible": 247,
+      "covariance": -0.0005811986448758434
+    },
+    {
+      "year": 2017,
+      "ordinal": 251,
+      "eligible": 249,
+      "covariance": 0.008734517721246329
+    },
+    {
+      "year": 2018,
+      "ordinal": 251,
+      "eligible": 246,
+      "covariance": 0.0013892192797258455
+    },
+    {
+      "year": 2019,
+      "ordinal": 252,
+      "eligible": 252,
+      "covariance": 1.462987470009291e-05
+    },
+    {
+      "year": 2020,
+      "ordinal": 253,
+      "eligible": 252,
+      "covariance": 0.0011348780183647045
+    },
+    {
+      "year": 2021,
+      "ordinal": 252,
+      "eligible": 250,
+      "covariance": -0.0003975693868442577
+    },
+    {
+      "year": 2022,
+      "ordinal": 251,
+      "eligible": 250,
+      "covariance": 0.008401138703182721
+    },
+    {
+      "year": 2023,
+      "ordinal": 246,
+      "eligible": 241,
+      "covariance": -0.0005791274705329753
+    }
+  ],
+  "bootstrap": {
+    "20": {
+      "covariance": 0.002276842168020663,
+      "ci_95": [
+        -0.0005938509010804676,
+        0.004640553839944559
+      ],
+      "block": 20,
+      "replicates": 10000
+    },
+    "60": {
+      "covariance": 0.002276842168020663,
+      "ci_95": [
+        7.132749400736403e-05,
+        0.0043267707044190445
+      ],
+      "block": 60,
+      "replicates": 10000
+    }
+  },
+  "top1pct_trim_covariance": 0.0010714575988965815,
+  "screen_passed": false,
+  "model_skill_established": false,
+  "training_allowed": false,
+  "release_allowed": false,
+  "historical_availability_verified": false,
+  "independent_holdout": false,
+  "multiplicity_adjusted": false,
+  "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/ams-curve-risk-moment-20261029",
+  "archive_sha256": "7fbfed917979177cf91e23a76d7a75cad42c4de7dd6cbea75d8ae0fb1f22986e",
+  "archive_members": 10,
+  "fresh_restored_input_replay": {
+    "schema": 1,
+    "status": "verified",
+    "new_fits": 0,
+    "retained_origins": 2006,
+    "eligible_origins": 1987,
+    "independent_decimal_scalars": 5961,
+    "independent_intervals": 2,
+    "positive_years": 5,
+    "trimmed_origin_count": 20,
+    "screen_passed": false,
+    "model_skill_established": false,
+    "source_clock_verified": false,
+    "result_sha256": "cdc5f7d93b8558238a26d6d8c5e39d9088388efef5e3b2c27aa5fddb1aee1ddd",
+    "moments_sha256": "edb08fe0b1b4f6d1c0a89c5200dc53c3598ffcf33955aee9f66a25f3eddbfa1a",
+    "report_sha256": "7ce8c5a66c31e22af599244593540b085d8ea01b5cc13d67f008856e033ac252",
+    "observations_sha256": "42f9e8e964e4188087b6746a02b09d3d2774396ec229e450f6b8973199000b6c",
+    "verifier_sha256": "b1c68e70e68866e6e013bd1677ba7735214d8de90f9fea63127a215c70053161"
+  },
+  "replay_receipt_bytes_equal": true,
+  "old_records_preserved": 204,
+  "old_evidence_preserved": 185,
+  "old_trials_sha256": "c0a594d11474502f41b540c6f1a34efee503a994a8f40ad461e25a009c179cf1",
+  "record_id": "d02e347f06467b600b7b486caca9b34740a3fff01b5648b9eb1bce2250f2b0ee"
+}

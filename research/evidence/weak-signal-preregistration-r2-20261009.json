@@ -1,0 +1,64 @@
+{
+  "schema": 1,
+  "as_of": "2026-10-09",
+  "experiment": "research-weak-signal-control-v1-r2",
+  "profile": "weak-signal-control-v1",
+  "completed_experiment": false,
+  "synthetic_fits": 0,
+  "market_fits": 0,
+  "registration_id": "359a4c58ddb76d5fc79df23c2e8c7a47ab3d7cd45a8ea2e908ee14864f4fcb95",
+  "registration_sha256": "1eef893ff545b6bca644b0ebb1725eb1e0da2b7117864b67ff1a6cbaee636369",
+  "complete_sha256": "db5fd4a8564044ec365d397d7cb592cb0961a19e8a328ac2e758919feecb7532",
+  "source_id": "f6028315cc38ff61ad81c9e9bc8b89bf9d11dd1070dd091b276aef33ed04192f",
+  "source_files": 236,
+  "release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/weak-signal-preregistration-r2-20261009",
+  "fit_budget": 3380,
+  "annual_outputs": 160,
+  "prediction_rows": 40120,
+  "conditions": [
+    "null",
+    "injected"
+  ],
+  "seeds": [
+    1201,
+    1202,
+    1203,
+    1204,
+    1205,
+    1206,
+    1207,
+    1208,
+    1209,
+    1210
+  ],
+  "calibration": {
+    "period_start": "2010-01-01",
+    "period_end_exclusive": "2015-01-01",
+    "observations": 1139,
+    "known_source_observations": 553,
+    "source": "numeric_D0_texas_minus_national_ge",
+    "source_median": -0.14,
+    "source_scale": 0.07907266917124799,
+    "volatility_fallback_median": 0.016287377083312043,
+    "noise_volatility_clip": [
+      0.005,
+      0.05
+    ],
+    "beta": 0.008453569350107845,
+    "expected_calibration_oracle_gain_pct": 4.999999999999982,
+    "calibrated_without_2015_or_later_outcomes": true
+  },
+  "synthetic_only": true,
+  "market_skill_demonstrated": false,
+  "independent_holdout": false,
+  "validation": {
+    "new_tests_passed": 18,
+    "existing_ml_tests_passed": 937,
+    "existing_skips": 3,
+    "ruff": "passed",
+    "note": "16 current control tests passed; additional identity-revision/ambiguity and portable-launcher tests passed (18 distinct cases). Prior Linux failure was dummy interpreter path only; no fits were started."
+  },
+  "supersedes_zero_fit_registration_id": "62cdc32cffdcda8edab9425d13a4731a87cef56d403e1f68f4df965d8d20c40b",
+  "identical_synthetic_histories": 20,
+  "record_id": "463c00035a55af24eda748d35fd2cd1f524b9e1e9070b363d000277a0eafd9f1"
+}

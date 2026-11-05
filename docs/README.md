@@ -1,8 +1,18 @@
 # Belge indeksi
 
+- [5 Kasım Naive-MAE araştırma planı](NAIVE_MAE_PLAN_20261105.md) ve [GitHub teslimatı](GITHUB_DELIVERY_20261105.md).
+
 ## Güncel
 
 - [Durum ve kararlar](STATUS.md)
+- [Texas/NASS: bölgesel bilgi, sütun tarihleri, revizyonlar ve sezon kapsamı](NASS_REGIONAL_AUDIT_20261009.md)
+- [Sabit kaynakla çalışan görev, yayın penceresi ve gerçek gece doğrulaması](FORWARD_RUNTIME_WINDOW_20261009.md)
+- [İleri kayıt: sıfır yayın, makbuz/saat denetimi ve tek operasyon kontrolü](FORWARD_EVIDENCE_AUDIT_20261009.md)
+- [FAS sürüm/değer/saat sözleşmesi ve ortak-origin hizalama kontrolü](FAS_REVIEWED_ALIGNMENT_20261009.md)
+- [FAS karantina ülke paneli, stok anomalisi ve eğitime kalan iş](FAS_COUNTRY_PREPARATION_20261008.md)
+- [FAS tarihsel kod tanığı ve özgün hücre için dış kanıt sınırı](FAS_HISTORICAL_REFERENCE_20261008.md)
+- [FAS 28 Mayıs: alt sınıf yuvarlaması, sürüm belirsizliği ve tek ayırıcı hücre](FAS_MAY28_VERSION_AUDIT_20261008.md)
+- [FAS ülke raporu mutabakatı: iki küçük uyuşmazlık ve kapalı kaynak kabulü](FAS_COUNTRY_REPORT_REVIEW_20261008.md)
 - [İspat amacı ve yardımcı simülasyon sözleşmesi](TRADING_RESEARCH_CONTRACT_20261005.md)
 - [Fiyat anlamı, USDA eşleşmesi ve kontrat geçişi denetimi](PRICE_SEMANTICS_AUDIT_20261005.md)
 - [Bölgesel WASDE sayı/sürüm/zaman doğrulaması ve model kabul koruması](WASDE_REGIONAL_VERIFICATION_20261008.md)

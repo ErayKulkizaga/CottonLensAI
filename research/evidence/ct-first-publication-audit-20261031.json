@@ -1,0 +1,177 @@
+{
+  "schema": 1,
+  "profile": "ct-own-level-manual-forward-t1-v1",
+  "analysis_profile": "ct-first-forward-publication-zero-fit-v1",
+  "classification": "INCONCLUSIVE",
+  "classification_scope": "Forward risk superiority remains untested; first actual source/model/forecast publication and independent replay are VERIFIED",
+  "publication_verified": true,
+  "source_id": "a173df8e65b42460931018e53ab11778b248698383920231af1f31bb6cb16d41",
+  "design_id": "2950ca5a0792022c1cea2f584b1599936c94221de3f27aff46af50233e795134",
+  "analysis_source_id": "9aacd67acecd4a890766667daed208a4aabb2cd438cbade051de1c7113057576",
+  "execution_source_id": "2747450ff4d46b022493cc604c565aa941e0378c5c3bd741179d962cff04a644",
+  "cohort_lock_id": "71421358ac97bd1c9d331e8d30a413d1c78c689743413e369a39d366b1847fb6",
+  "origin": "2026-10-30",
+  "target_date": "2026-11-02",
+  "horizon": 1,
+  "new_market_fits": 0,
+  "new_synthetic_fits": 0,
+  "completed_market_fits": 0,
+  "reused_market_fit_states": 10,
+  "initial_native_files_reverified": 92,
+  "verified_forward_forecasts": 1,
+  "new_audit_forecasts": 0,
+  "performance_scored": false,
+  "market_skill": false,
+  "mature_training_rows": 4108,
+  "history_rows": 4233,
+  "verified_numeric_fields": [
+    "baseline_variance",
+    "raw_variance",
+    "selected_variance",
+    "weight"
+  ],
+  "forward_actual_or_losses_reported": false,
+  "local_result": {
+    "status": "first_forward_publication_replayed_without_performance_score",
+    "source_id": "a173df8e65b42460931018e53ab11778b248698383920231af1f31bb6cb16d41",
+    "design_id": "2950ca5a0792022c1cea2f584b1599936c94221de3f27aff46af50233e795134",
+    "cohort_lock_id": "71421358ac97bd1c9d331e8d30a413d1c78c689743413e369a39d366b1847fb6",
+    "origin": "2026-10-30",
+    "target_date": "2026-11-02",
+    "horizon": 1,
+    "source_observed_at": "2026-10-31T00:05:23.024919+00:00",
+    "decision_at": "2026-10-31T00:15:00+00:00",
+    "generated_at": "2026-10-31T00:20:03.635015+00:00",
+    "publication_completed_at": "2026-10-31T00:20:03.852947+00:00",
+    "observation_id": "9ae35c7a516302699fd57219f1d5ee5e126871397c67372bd43a8b312a1a3389",
+    "forecast_id": "e8f3a09174b181033c0371f091ce46a0147cbbdd019e207ce63075ecc4c89d92",
+    "forecast_sha256": "b9251323d672578d45cbf4e63e8d14a179cc075f5dad355ad8e136abc7184343",
+    "fit_id": "0cbebb098272cb4bcc500f82068b210197afa4bbee69695882a0a97084d6e7d6",
+    "model_sha256": "b91c91d3fce22cde128f9b631bf63608a6b133b69d7ba43030f5b870ab31b19e",
+    "model_completed_at": "2026-10-30T14:19:05.097731+00:00",
+    "selection_created_at": "2026-10-30T14:19:05.022832+00:00",
+    "training_source_available_at": "2026-10-30T09:58:30.126827+00:00",
+    "mature_training_rows": 4108,
+    "history_rows": 4233,
+    "completed_market_fits": 10,
+    "baseline_variance": 0.000238941261633199,
+    "raw_variance": 0.00025309811014497484,
+    "selected_variance": 0.00025309811014497484,
+    "weight": 1.0,
+    "new_fits": 0,
+    "new_forecasts": 0,
+    "performance_scored": false,
+    "market_skill": false,
+    "actual_forward_target_or_loss_reported": false,
+    "first_historical_vintage_verified": false,
+    "execution_source_id": "2747450ff4d46b022493cc604c565aa941e0378c5c3bd741179d962cff04a644",
+    "runs": {
+      "publish": {
+        "run_id": "7241a4abe823418c8cbc92c3681f89cd",
+        "receipt_sha256": "82318725fa67bb752961a5bbd67b4587ec258c80b9f318e3c2056bc7441a6bae"
+      },
+      "capture": {
+        "run_id": "d4ec3a51eeb84a60960e54ed11be8e82",
+        "receipt_sha256": "47b42ee6139a582220363c9218e36993b141f60aa768861a6c4f296d2e6aacb6"
+      }
+    },
+    "analysis_source_id": "9aacd67acecd4a890766667daed208a4aabb2cd438cbade051de1c7113057576"
+  },
+  "result_sha256": "2a710d764c5f8b95798983ba901bbe7228e5db84974002ecf127d3db4c88f45a",
+  "fresh_replay_byte_identical": true,
+  "offline_replay_has_no_fits_or_forward_loss_scoring": true,
+  "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/ct-first-publication-audit-20261031",
+  "archive_sha256": "b4d6bea0a7cd52cc387e56ab537bfc2e5980c1da8bde71c0b3bf532a4abeaee9",
+  "fresh_restored_members": 466,
+  "excluded_members": 0,
+  "original_delta_members": [
+    419,
+    15,
+    13,
+    16,
+    13
+  ],
+  "reconstructed_study_files": 446,
+  "server_clock_corroboration": [
+    {
+      "backup_id": "3b14d5dde2eb2f4da27720a6f261ede98371fcca76b2f1c6ecd35c52c715ec32",
+      "parent_backup_id": "43e5819bd6395cdfa27e3214ea115088cdf6115686fd241b858b0adea52e1c9e",
+      "run_id": "d4ec3a51eeb84a60960e54ed11be8e82",
+      "phase": "capture",
+      "assets": [
+        "CT-forward-20261031T000527Z-capture-d4ec3a51.zip",
+        "CT-forward-20261031T000527Z-capture-d4ec3a51-manifest.json"
+      ],
+      "archive_sha256": "4d7f71892b6b38d940555d6ff16659665a00dac69a9656949bdea4f701eddf35",
+      "manifest_sha256": "77036c2ebac80d5bc2badcc36a8c5a47cd5208f1b3aec32c126120b49b9a7b69",
+      "verified_files": 16,
+      "github_objects": [
+        {
+          "name": "CT-forward-20261031T000527Z-capture-d4ec3a51.zip",
+          "id": 693825354,
+          "created_at": "2026-10-31T00:05:31Z",
+          "updated_at": "2026-10-31T00:05:31Z",
+          "digest": "sha256:4d7f71892b6b38d940555d6ff16659665a00dac69a9656949bdea4f701eddf35",
+          "size": 100020
+        },
+        {
+          "name": "CT-forward-20261031T000527Z-capture-d4ec3a51-manifest.json",
+          "id": 693825355,
+          "created_at": "2026-10-31T00:05:31Z",
+          "updated_at": "2026-10-31T00:05:31Z",
+          "digest": "sha256:77036c2ebac80d5bc2badcc36a8c5a47cd5208f1b3aec32c126120b49b9a7b69",
+          "size": 3629
+        }
+      ]
+    },
+    {
+      "backup_id": "cf78e4fbc3edfdd0671b042000cb0f1539ea777cbd11cef210a07f729dd89daa",
+      "parent_backup_id": "3b14d5dde2eb2f4da27720a6f261ede98371fcca76b2f1c6ecd35c52c715ec32",
+      "run_id": "7241a4abe823418c8cbc92c3681f89cd",
+      "phase": "publish",
+      "assets": [
+        "CT-forward-20261031T002005Z-publish-7241a4ab.zip",
+        "CT-forward-20261031T002005Z-publish-7241a4ab-manifest.json"
+      ],
+      "archive_sha256": "66e53dee9af8ed5d6f7c7c1512b9e56d9563e20980544746d649832ff048be9d",
+      "manifest_sha256": "34acdb7aca8e05c8cc93b815fe790c37a37b90e13232ac1e5ec62a4b52b64ac4",
+      "verified_files": 13,
+      "github_objects": [
+        {
+          "name": "CT-forward-20261031T002005Z-publish-7241a4ab.zip",
+          "id": 693856858,
+          "created_at": "2026-10-31T00:20:09Z",
+          "updated_at": "2026-10-31T00:20:10Z",
+          "digest": "sha256:66e53dee9af8ed5d6f7c7c1512b9e56d9563e20980544746d649832ff048be9d",
+          "size": 39865
+        },
+        {
+          "name": "CT-forward-20261031T002005Z-publish-7241a4ab-manifest.json",
+          "id": 693856864,
+          "created_at": "2026-10-31T00:20:10Z",
+          "updated_at": "2026-10-31T00:20:10Z",
+          "digest": "sha256:34acdb7aca8e05c8cc93b815fe790c37a37b90e13232ac1e5ec62a4b52b64ac4",
+          "size": 2803
+        }
+      ]
+    }
+  ],
+  "source_and_state_in_github_before_decision": true,
+  "forecast_in_github_before_publication_end": true,
+  "first_historical_vintage_verified": false,
+  "target_proxy": "Yahoo CT=F; not contract-specific exchange settlement",
+  "scoped_new_analytic_tests_passed": 8,
+  "existing_end_report_tests_passed": 22,
+  "ruff": "passed",
+  "active_model_core_changed": false,
+  "active_daily_execution_changed": false,
+  "old_hourly_task_reenabled": false,
+  "source_files_deleted": 0,
+  "drive_operations": false,
+  "old_stages_preserved": 226,
+  "old_proofs_preserved": 208,
+  "trials_sha256_unchanged": "5c50fbac2629490f61566bc8a123a4cfa7fd3ba5c405c2d826bf5f3a8ffd1adc",
+  "parent_evidence": "evidence/ct-forward-daily-activation-20261030.json",
+  "next_exact_step": "Prepare official2027Cotton calendar extension with preserved2026overlap; keep fixed252cohort, existing model/clock and no-intermediate-score policy.",
+  "record_id": "0942b560b8d4230a6935a7ce5b2976dbb47e8e62114e21dcfde448178a7ee951"
+}

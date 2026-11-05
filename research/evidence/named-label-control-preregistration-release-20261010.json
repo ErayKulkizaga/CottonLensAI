@@ -1,0 +1,25 @@
+{
+  "schema": 1,
+  "release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/named-label-control-preregistration-20261010",
+  "archive": {
+    "name": "named-label-control-preregistration-20261010.zip",
+    "sha256": "119d8b08d5f773e15b833f7efa4270457302c5e74c1b58600d7319649ed552d0",
+    "bytes": 4315825
+  },
+  "members": 279,
+  "inventory_sha256": "386947152acf5b10618fda8a3e070da3ba244ab491dccd623046a34af4a39beb",
+  "source_id": "cc7e6693a9662a1dc7a91d4ca322c129a6ff8583c4dc4010d376e7b41aa52b65",
+  "new_market_fits": 0,
+  "new_synthetic_fits": 0,
+  "new_market_scores": 0,
+  "ml_tests": {
+    "passed": 1048,
+    "skipped": 3,
+    "new_regression_tests": 17,
+    "ruff": "passed"
+  },
+  "report_script_sha256": "dd3c46f00b4d30aa18ec12b4fc3e317ec185687dd9bacfa9ec765025639eb670",
+  "market_fit_budget": 44,
+  "synthetic_fit_budget": 1,
+  "record_id": "e142dc9b099d149f1252da09c6adaadef0180d9ededdead836223eed3536f5a8"
+}

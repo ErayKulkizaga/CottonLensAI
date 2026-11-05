@@ -1,0 +1,65 @@
+{
+  "schema": 1,
+  "profile": "paired-price-loss-control-v1",
+  "source_commit": "c1a962b714fecca83a21e52667f573a8b8221236",
+  "source_id": "d3ca00e498639dc266f34dafb60f2f24dbba5e66ee0deeda0d9c4c0e5b7f7313",
+  "identity_id": "cd9512fc07b0011d427265e0d75b85381e46a08c1eac96774606d4dba2a8c953",
+  "ready_sha256": "d9318a00c6ce67d492c8c477822e4ffd8cb54675cbc14cf05266095b6bd11784",
+  "preregistered_sha256": "aff0c4cad95dd68f3d81a8d7b06ff03b9420ab82804af7ae5d07cb3262be5d91",
+  "market_fits": 0,
+  "synthetic_fits": 0,
+  "fit_budget": 48,
+  "tree_budget": 2688,
+  "synthetic_fit_budget": 6,
+  "origin_count": 1008,
+  "periods": 8,
+  "classification": "INCONCLUSIVE",
+  "coverage": "preregistered_not_trained",
+  "independent_holdout": false,
+  "historical_source_admitted": false,
+  "release_allowed": false,
+  "rules": {
+    "primary": "absolute vs squared same-origin paired price-MAE",
+    "baseline": "same-origin zero-return Naive; no fit",
+    "bootstrap": {
+      "blocks": [
+        20,
+        60
+      ],
+      "replicates": 10000,
+      "seed": 42,
+      "within_period": true
+    },
+    "gates": {
+      "naive_mae_gain_pct": 5,
+      "direction_pct": 53,
+      "periods_won": 6
+    },
+    "selection": "none; original past-chosen parameters and per-seed iterations fixed in both arms",
+    "ensemble": "mean of the three log-return forecasts; identical in both arms",
+    "shrinkage": null,
+    "independent_holdout": false,
+    "historical_source_admitted": false,
+    "automatic_release": false,
+    "learning_controls": {
+      "policy": "all-executed-families-v2",
+      "losses": [
+        "reg:squarederror",
+        "reg:absoluteerror"
+      ],
+      "known_signal_min_gain": 0.5,
+      "memorization_min_gain": 0.9,
+      "negative_shift_max_gain": 0.2,
+      "fits": 6,
+      "market_evidence": false
+    },
+    "limitations": [
+      "Reviewed historical periods; not independent holdout.",
+      "Original parameters/iterations were chosen under mixed targets/losses; inference is conditional on these recipes.",
+      "Original source clock/vintage assumptions remain unverified.",
+      "A negative contrast is not universal absence of information or failure of all MAE models."
+    ]
+  },
+  "input_count": 28,
+  "release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/paired-price-loss-preregistration-20261010"
+}

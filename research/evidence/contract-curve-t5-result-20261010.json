@@ -1,0 +1,1821 @@
+{
+  "schema": 1,
+  "profile": "contract-curve-t5-pilot-v1",
+  "status": "completed_assumption_sensitivity",
+  "source_commit": "c5322b2b3eeea83a578add22d9fbf42abaa082af",
+  "source_id": "20d0c1869afc35b9c83b34cfd3fc8de8ec90a56ebd64c1cf3dcb3b085685d7b3",
+  "identity_id": "571f59e1f47562ece477c2befe6595991229e281833ebcf39b5fbdcddd9b014a",
+  "registration_id": "aeed8a21350c322a34125f080a9c5adc77029ce4407e1d3e8356a2a2774ca8b6",
+  "ready_sha256": "c600c5b1984273f11e73cd49dba089c22cad59b54c69cda82e2a5ec7c5d1b5ad",
+  "report_sha256": "eaca95ed2c7cb361510911c17ac57c2406b7f91782bf7a1af9bce3990eea0869",
+  "predictions_sha256": "43e44ed429d0d1bee2270355b4811f749dfd49bb9b68417f44184ece541a4305",
+  "verification_sha256": "1134a36f522b9c39802dc531aa7bccf0d5b55254116bf9db7da7474f164e1095",
+  "verification_script_sha256": "9dfd918951b21ed70af24409ea257595bc00aefe8fa5d7843b274e23d3612961",
+  "ex_post_transition_attribution_sha256": "2e28dbce44f12632b865d807a707561d66a62c4cd0c6d90ec4f91e965579b775",
+  "release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/contract-curve-t5-result-20261010",
+  "market_fits": 252,
+  "synthetic_fits": 1,
+  "new_verification_fits": 0,
+  "origin_count": 749,
+  "prediction_rows": 2996,
+  "annual_outputs": 12,
+  "horizon": 5,
+  "classification": "INCONCLUSIVE",
+  "classification_scope": "Selected source contribution lacks useful evidence; small raw source effects remain unresolved. Fixed T5 recipe does not meet practical goal; post-result transition strata are descriptive only.",
+  "decision": "FIXED_RECIPE_BELOW_PRACTICAL_GOAL_SOURCE_INCONCLUSIVE",
+  "arms": {
+    "mask_D0": {
+      "selected": {
+        "count": 749,
+        "price_mae": 3.4517720561073175,
+        "naive_mae": 3.435113517241739,
+        "naive_gain_pct": -0.4849487151433296,
+        "direction_pct": 14.953271028037381,
+        "active_rate_pct": 33.511348464619495,
+        "flat_count": 498,
+        "active_direction_pct": 44.223107569721115,
+        "years": {
+          "2021": {
+            "count": 252,
+            "price_mae": 2.7379762255956255,
+            "naive_mae": 2.7379762255956255,
+            "naive_gain_pct": 0.0,
+            "direction_pct": 0.0,
+            "active_rate_pct": 0.0,
+            "flat_count": 252,
+            "active_direction_pct": null
+          },
+          "2022": {
+            "count": 251,
+            "price_mae": 5.37927186932919,
+            "naive_mae": 5.329561727455412,
+            "naive_gain_pct": -0.9327247607940237,
+            "direction_pct": 44.223107569721115,
+            "active_rate_pct": 100.0,
+            "flat_count": 0,
+            "active_direction_pct": 44.223107569721115
+          },
+          "2023": {
+            "count": 246,
+            "price_mae": 2.216300902327871,
+            "naive_mae": 2.216300902327871,
+            "naive_gain_pct": 0.0,
+            "direction_pct": 0.40650406504065045,
+            "active_rate_pct": 0.0,
+            "flat_count": 246,
+            "active_direction_pct": null
+          }
+        },
+        "year_wins": 0,
+        "versus_naive": {
+          "20": {
+            "count": 749,
+            "block_length": 20,
+            "replicates": 10000,
+            "paired_difference": -0.016658538865577555,
+            "difference_ci_95": [
+              -0.03748788312917371,
+              0.006105953883602931
+            ],
+            "difference_ci_method": "fold-preserving moving-block, recentered basic interval",
+            "column_mean_ci_95": [
+              [
+                3.0430872513550784,
+                3.06504735966592
+              ],
+              [
+                4.0821135015449475,
+                4.100788013817675
+              ]
+            ],
+            "standard_error": 0.011201945432647905,
+            "centered_bootstrap_p_two_sided": 0.13738626137386262,
+            "normal_approx_mde_80pct_relative": 0.009130832810613883,
+            "power_at_relative_effect": {
+              "0.005": 0.3547,
+              "0.01": 0.8673,
+              "0.02": 0.9999,
+              "0.05": 1.0
+            },
+            "power_identifiable": true,
+            "power_limitation": null,
+            "power_assumptions": "post-hoc paired noise held fixed under additive alternatives; selection not adjusted",
+            "gate_changed": false,
+            "gain_ci_pct": [
+              -1.0913142445224053,
+              0.1777511529955427
+            ]
+          },
+          "60": {
+            "count": 749,
+            "block_length": 60,
+            "replicates": 10000,
+            "paired_difference": -0.016658538865577555,
+            "difference_ci_95": [
+              -0.03710276879279784,
+              0.006450311270862968
+            ],
+            "difference_ci_method": "fold-preserving moving-block, recentered basic interval",
+            "column_mean_ci_95": [
+              [
+                3.1639210811762686,
+                3.1885637568356042
+              ],
+              [
+                4.163524862220672,
+                4.179951351795103
+              ]
+            ],
+            "standard_error": 0.01119562266791675,
+            "centered_bootstrap_p_two_sided": 0.14008599140085992,
+            "normal_approx_mde_80pct_relative": 0.009125679053348403,
+            "power_at_relative_effect": {
+              "0.005": 0.3655,
+              "0.01": 0.8691,
+              "0.02": 1.0,
+              "0.05": 1.0
+            },
+            "power_identifiable": true,
+            "power_limitation": null,
+            "power_assumptions": "post-hoc paired noise held fixed under additive alternatives; selection not adjusted",
+            "gate_changed": false,
+            "gain_ci_pct": [
+              -1.080103135065822,
+              0.18777578203710465
+            ]
+          }
+        },
+        "without_top_1pct_naive_errors": {
+          "count": 741,
+          "price_mae": 3.154293091757329,
+          "naive_mae": 3.136167374377952,
+          "naive_gain_pct": -0.5779575901293077,
+          "direction_pct": 14.304993252361673,
+          "active_rate_pct": 32.79352226720648,
+          "flat_count": 498,
+          "active_direction_pct": 43.20987654320987
+        },
+        "source_age_0_4": {
+          "count": 749,
+          "price_mae": 3.4517720561073175,
+          "naive_mae": 3.435113517241739,
+          "naive_gain_pct": -0.4849487151433296,
+          "direction_pct": 14.953271028037381,
+          "active_rate_pct": 33.511348464619495,
+          "flat_count": 498,
+          "active_direction_pct": 44.223107569721115
+        }
+      },
+      "raw": {
+        "count": 749,
+        "price_mae": 3.5809062610332276,
+        "naive_mae": 3.435113517241739,
+        "naive_gain_pct": -4.244189982651703,
+        "direction_pct": 47.79706275033378,
+        "active_rate_pct": 100.0,
+        "flat_count": 0,
+        "active_direction_pct": 47.79706275033378,
+        "years": {
+          "2021": {
+            "count": 252,
+            "price_mae": 2.7651987168830505,
+            "naive_mae": 2.7379762255956255,
+            "naive_gain_pct": -0.9942559410464957,
+            "direction_pct": 53.17460317460318,
+            "active_rate_pct": 100.0,
+            "flat_count": 0,
+            "active_direction_pct": 53.17460317460318
+          },
+          "2022": {
+            "count": 251,
+            "price_mae": 5.652601911438674,
+            "naive_mae": 5.329561727455412,
+            "naive_gain_pct": -6.061289849015328,
+            "direction_pct": 44.223107569721115,
+            "active_rate_pct": 100.0,
+            "flat_count": 0,
+            "active_direction_pct": 44.223107569721115
+          },
+          "2023": {
+            "count": 246,
+            "price_mae": 2.302705825561998,
+            "naive_mae": 2.216300902327871,
+            "naive_gain_pct": -3.8986097575185896,
+            "direction_pct": 45.9349593495935,
+            "active_rate_pct": 100.0,
+            "flat_count": 0,
+            "active_direction_pct": 45.9349593495935
+          }
+        },
+        "year_wins": 0,
+        "versus_naive": {
+          "20": {
+            "count": 749,
+            "block_length": 20,
+            "replicates": 10000,
+            "paired_difference": -0.14579274379148677,
+            "difference_ci_95": [
+              -0.27034856542614694,
+              -0.014044708034144676
+            ],
+            "difference_ci_method": "fold-preserving moving-block, recentered basic interval",
+            "column_mean_ci_95": [
+              [
+                3.0430872513550784,
+                3.213602872955126
+              ],
+              [
+                4.0821135015449475,
+                4.2389883151094745
+              ]
+            ],
+            "standard_error": 0.06538077866951153,
+            "centered_bootstrap_p_two_sided": 0.025297470252974703,
+            "normal_approx_mde_80pct_relative": 0.05329261445241181,
+            "power_at_relative_effect": {
+              "0.005": 0.0579,
+              "0.01": 0.0787,
+              "0.02": 0.1853,
+              "0.05": 0.7539
+            },
+            "power_identifiable": true,
+            "power_limitation": null,
+            "power_assumptions": "post-hoc paired noise held fixed under additive alternatives; selection not adjusted",
+            "gate_changed": false,
+            "gain_ci_pct": [
+              -7.870149387180258,
+              -0.4088571735300912
+            ]
+          },
+          "60": {
+            "count": 749,
+            "block_length": 60,
+            "replicates": 10000,
+            "paired_difference": -0.14579274379148677,
+            "difference_ci_95": [
+              -0.25854548585498455,
+              -0.026389720930761182
+            ],
+            "difference_ci_method": "fold-preserving moving-block, recentered basic interval",
+            "column_mean_ci_95": [
+              [
+                3.1639210811762686,
+                3.3477210872764167
+              ],
+              [
+                4.163524862220672,
+                4.3177665522495685
+              ]
+            ],
+            "standard_error": 0.060000076028859824,
+            "centered_bootstrap_p_two_sided": 0.0131986801319868,
+            "normal_approx_mde_80pct_relative": 0.048906742684796355,
+            "power_at_relative_effect": {
+              "0.005": 0.0604,
+              "0.01": 0.0916,
+              "0.02": 0.2187,
+              "0.05": 0.8181
+            },
+            "power_identifiable": true,
+            "power_limitation": null,
+            "power_assumptions": "post-hoc paired noise held fixed under additive alternatives; selection not adjusted",
+            "gate_changed": false,
+            "gain_ci_pct": [
+              -7.52654852764768,
+              -0.768234318845774
+            ]
+          }
+        },
+        "without_top_1pct_naive_errors": {
+          "count": 741,
+          "price_mae": 3.288670866373462,
+          "naive_mae": 3.136167374377952,
+          "naive_gain_pct": -4.862734471426555,
+          "direction_pct": 47.50337381916329,
+          "active_rate_pct": 100.0,
+          "flat_count": 0,
+          "active_direction_pct": 47.50337381916329
+        },
+        "source_age_0_4": {
+          "count": 749,
+          "price_mae": 3.5809062610332276,
+          "naive_mae": 3.435113517241739,
+          "naive_gain_pct": -4.244189982651703,
+          "direction_pct": 47.79706275033378,
+          "active_rate_pct": 100.0,
+          "flat_count": 0,
+          "active_direction_pct": 47.79706275033378
+        }
+      }
+    },
+    "numeric_D0": {
+      "selected": {
+        "count": 749,
+        "price_mae": 3.453981223062655,
+        "naive_mae": 3.435113517241739,
+        "naive_gain_pct": -0.5492600383135482,
+        "direction_pct": 15.620827770360481,
+        "active_rate_pct": 33.511348464619495,
+        "flat_count": 498,
+        "active_direction_pct": 46.21513944223107,
+        "years": {
+          "2021": {
+            "count": 252,
+            "price_mae": 2.7379762255956255,
+            "naive_mae": 2.7379762255956255,
+            "naive_gain_pct": 0.0,
+            "direction_pct": 0.0,
+            "active_rate_pct": 0.0,
+            "flat_count": 252,
+            "active_direction_pct": null
+          },
+          "2022": {
+            "count": 251,
+            "price_mae": 5.3858641643473115,
+            "naive_mae": 5.329561727455412,
+            "naive_gain_pct": -1.0564177651204432,
+            "direction_pct": 46.21513944223107,
+            "active_rate_pct": 100.0,
+            "flat_count": 0,
+            "active_direction_pct": 46.21513944223107
+          },
+          "2023": {
+            "count": 246,
+            "price_mae": 2.216300902327871,
+            "naive_mae": 2.216300902327871,
+            "naive_gain_pct": 0.0,
+            "direction_pct": 0.40650406504065045,
+            "active_rate_pct": 0.0,
+            "flat_count": 246,
+            "active_direction_pct": null
+          }
+        },
+        "year_wins": 0,
+        "versus_naive": {
+          "20": {
+            "count": 749,
+            "block_length": 20,
+            "replicates": 10000,
+            "paired_difference": -0.018867705820916125,
+            "difference_ci_95": [
+              -0.04979521309569186,
+              0.018434994917811184
+            ],
+            "difference_ci_method": "fold-preserving moving-block, recentered basic interval",
+            "column_mean_ci_95": [
+              [
+                3.0430872513550784,
+                3.0675923025893392
+              ],
+              [
+                4.0821135015449475,
+                4.092882429692112
+              ]
+            ],
+            "standard_error": 0.01751816362021871,
+            "centered_bootstrap_p_two_sided": 0.276972302769723,
+            "normal_approx_mde_80pct_relative": 0.014279253914146712,
+            "power_at_relative_effect": {
+              "0.005": 0.1748,
+              "0.01": 0.5413,
+              "0.02": 0.9662,
+              "0.05": 1.0
+            },
+            "power_identifiable": true,
+            "power_limitation": null,
+            "power_assumptions": "post-hoc paired noise held fixed under additive alternatives; selection not adjusted",
+            "gate_changed": false,
+            "gain_ci_pct": [
+              -1.4495943975579433,
+              0.5366633395164699
+            ]
+          },
+          "60": {
+            "count": 749,
+            "block_length": 60,
+            "replicates": 10000,
+            "paired_difference": -0.018867705820916125,
+            "difference_ci_95": [
+              -0.048668496586773184,
+              0.016113746557618526
+            ],
+            "difference_ci_method": "fold-preserving moving-block, recentered basic interval",
+            "column_mean_ci_95": [
+              [
+                3.1639210811762686,
+                3.186005944947689
+              ],
+              [
+                4.163524862220672,
+                4.1860424189554095
+              ]
+            ],
+            "standard_error": 0.016924235501956375,
+            "centered_bootstrap_p_two_sided": 0.2756724327567243,
+            "normal_approx_mde_80pct_relative": 0.013795136366709778,
+            "power_at_relative_effect": {
+              "0.005": 0.1978,
+              "0.01": 0.565,
+              "0.02": 0.9793,
+              "0.05": 1.0
+            },
+            "power_identifiable": true,
+            "power_limitation": null,
+            "power_assumptions": "post-hoc paired noise held fixed under additive alternatives; selection not adjusted",
+            "gate_changed": false,
+            "gain_ci_pct": [
+              -1.4167944186558372,
+              0.4690892011789244
+            ]
+          }
+        },
+        "without_top_1pct_naive_errors": {
+          "count": 741,
+          "price_mae": 3.158332203644165,
+          "naive_mae": 3.136167374377952,
+          "naive_gain_pct": -0.7067489269640514,
+          "direction_pct": 15.114709851551957,
+          "active_rate_pct": 32.79352226720648,
+          "flat_count": 498,
+          "active_direction_pct": 45.67901234567901
+        },
+        "source_age_0_4": {
+          "count": 749,
+          "price_mae": 3.453981223062655,
+          "naive_mae": 3.435113517241739,
+          "naive_gain_pct": -0.5492600383135482,
+          "direction_pct": 15.620827770360481,
+          "active_rate_pct": 33.511348464619495,
+          "flat_count": 498,
+          "active_direction_pct": 46.21513944223107
+        }
+      },
+      "raw": {
+        "count": 749,
+        "price_mae": 3.6839042918615093,
+        "naive_mae": 3.435113517241739,
+        "naive_gain_pct": -7.242577963465369,
+        "direction_pct": 49.13217623497997,
+        "active_rate_pct": 100.0,
+        "flat_count": 0,
+        "active_direction_pct": 49.13217623497997,
+        "years": {
+          "2021": {
+            "count": 252,
+            "price_mae": 2.8118103191469705,
+            "naive_mae": 2.7379762255956255,
+            "naive_gain_pct": -2.696666715405205,
+            "direction_pct": 53.96825396825397,
+            "active_rate_pct": 100.0,
+            "flat_count": 0,
+            "active_direction_pct": 53.96825396825397
+          },
+          "2022": {
+            "count": 251,
+            "price_mae": 5.776829443401939,
+            "naive_mae": 5.329561727455412,
+            "naive_gain_pct": -8.39220444042168,
+            "direction_pct": 46.21513944223107,
+            "active_rate_pct": 100.0,
+            "flat_count": 0,
+            "active_direction_pct": 46.21513944223107
+          },
+          "2023": {
+            "count": 246,
+            "price_mae": 2.441804568639622,
+            "naive_mae": 2.216300902327871,
+            "naive_gain_pct": -10.174776632310856,
+            "direction_pct": 47.15447154471545,
+            "active_rate_pct": 100.0,
+            "flat_count": 0,
+            "active_direction_pct": 47.15447154471545
+          }
+        },
+        "year_wins": 0,
+        "versus_naive": {
+          "20": {
+            "count": 749,
+            "block_length": 20,
+            "replicates": 10000,
+            "paired_difference": -0.2487907746197715,
+            "difference_ci_95": [
+              -0.4418340014247323,
+              -0.025007165104810825
+            ],
+            "difference_ci_method": "fold-preserving moving-block, recentered basic interval",
+            "column_mean_ci_95": [
+              [
+                3.0430872513550784,
+                3.310203099782209
+              ],
+              [
+                4.0821135015449475,
+                4.337744457966724
+              ]
+            ],
+            "standard_error": 0.1080327598118948,
+            "centered_bootstrap_p_two_sided": 0.019498050194980503,
+            "normal_approx_mde_80pct_relative": 0.08805872817740076,
+            "power_at_relative_effect": {
+              "0.005": 0.0513,
+              "0.01": 0.0592,
+              "0.02": 0.0985,
+              "0.05": 0.3898
+            },
+            "power_identifiable": true,
+            "power_limitation": null,
+            "power_assumptions": "post-hoc paired noise held fixed under additive alternatives; selection not adjusted",
+            "gate_changed": false,
+            "gain_ci_pct": [
+              -12.86228240222779,
+              -0.7279865710199468
+            ]
+          },
+          "60": {
+            "count": 749,
+            "block_length": 60,
+            "replicates": 10000,
+            "paired_difference": -0.2487907746197715,
+            "difference_ci_95": [
+              -0.45118244470778907,
+              -0.013958788368604369
+            ],
+            "difference_ci_method": "fold-preserving moving-block, recentered basic interval",
+            "column_mean_ci_95": [
+              [
+                3.1639210811762686,
+                3.404243169429409
+              ],
+              [
+                4.163524862220672,
+                4.4816335077584615
+              ]
+            ],
+            "standard_error": 0.11402104979977902,
+            "centered_bootstrap_p_two_sided": 0.022397760223977603,
+            "normal_approx_mde_80pct_relative": 0.09293985128495363,
+            "power_at_relative_effect": {
+              "0.005": 0.0522,
+              "0.01": 0.0627,
+              "0.02": 0.1036,
+              "0.05": 0.369
+            },
+            "power_identifiable": true,
+            "power_limitation": null,
+            "power_assumptions": "post-hoc paired noise held fixed under additive alternatives; selection not adjusted",
+            "gate_changed": false,
+            "gain_ci_pct": [
+              -13.134426051517238,
+              -0.4063559558815607
+            ]
+          }
+        },
+        "without_top_1pct_naive_errors": {
+          "count": 741,
+          "price_mae": 3.399933615225598,
+          "naive_mae": 3.136167374377952,
+          "naive_gain_pct": -8.410464409603225,
+          "direction_pct": 48.987854251012145,
+          "active_rate_pct": 100.0,
+          "flat_count": 0,
+          "active_direction_pct": 48.987854251012145
+        },
+        "source_age_0_4": {
+          "count": 749,
+          "price_mae": 3.6839042918615093,
+          "naive_mae": 3.435113517241739,
+          "naive_gain_pct": -7.242577963465369,
+          "direction_pct": 49.13217623497997,
+          "active_rate_pct": 100.0,
+          "flat_count": 0,
+          "active_direction_pct": 49.13217623497997
+        }
+      }
+    },
+    "mask_D1": {
+      "selected": {
+        "count": 749,
+        "price_mae": 3.4516926893872437,
+        "naive_mae": 3.435113517241739,
+        "naive_gain_pct": -0.4826382610731539,
+        "direction_pct": 14.686248331108146,
+        "active_rate_pct": 33.511348464619495,
+        "flat_count": 498,
+        "active_direction_pct": 43.42629482071713,
+        "years": {
+          "2021": {
+            "count": 252,
+            "price_mae": 2.7379762255956255,
+            "naive_mae": 2.7379762255956255,
+            "naive_gain_pct": 0.0,
+            "direction_pct": 0.0,
+            "active_rate_pct": 0.0,
+            "flat_count": 252,
+            "active_direction_pct": null
+          },
+          "2022": {
+            "count": 251,
+            "price_mae": 5.379035033977256,
+            "naive_mae": 5.329561727455412,
+            "naive_gain_pct": -0.9282809553922577,
+            "direction_pct": 43.42629482071713,
+            "active_rate_pct": 100.0,
+            "flat_count": 0,
+            "active_direction_pct": 43.42629482071713
+          },
+          "2023": {
+            "count": 246,
+            "price_mae": 2.216300902327871,
+            "naive_mae": 2.216300902327871,
+            "naive_gain_pct": 0.0,
+            "direction_pct": 0.40650406504065045,
+            "active_rate_pct": 0.0,
+            "flat_count": 246,
+            "active_direction_pct": null
+          }
+        },
+        "year_wins": 0,
+        "versus_naive": {
+          "20": {
+            "count": 749,
+            "block_length": 20,
+            "replicates": 10000,
+            "paired_difference": -0.016579172145504195,
+            "difference_ci_95": [
+              -0.03754518610511375,
+              0.006760579797380647
+            ],
+            "difference_ci_method": "fold-preserving moving-block, recentered basic interval",
+            "column_mean_ci_95": [
+              [
+                3.0430872513550784,
+                3.0655101851783964
+              ],
+              [
+                4.0821135015449475,
+                4.100559236697757
+              ]
+            ],
+            "standard_error": 0.011360603169847447,
+            "centered_bootstrap_p_two_sided": 0.1436856314368563,
+            "normal_approx_mde_80pct_relative": 0.009260156532211133,
+            "power_at_relative_effect": {
+              "0.005": 0.3501,
+              "0.01": 0.8601,
+              "0.02": 0.9999,
+              "0.05": 1.0
+            },
+            "power_identifiable": true,
+            "power_limitation": null,
+            "power_assumptions": "post-hoc paired noise held fixed under additive alternatives; selection not adjusted",
+            "gate_changed": false,
+            "gain_ci_pct": [
+              -1.092982398301092,
+              0.19680804618093456
+            ]
+          },
+          "60": {
+            "count": 749,
+            "block_length": 60,
+            "replicates": 10000,
+            "paired_difference": -0.016579172145504195,
+            "difference_ci_95": [
+              -0.0378177429729092,
+              0.00746761962254916
+            ],
+            "difference_ci_method": "fold-preserving moving-block, recentered basic interval",
+            "column_mean_ci_95": [
+              [
+                3.1639210811762686,
+                3.189005706016309
+              ],
+              [
+                4.163524862220672,
+                4.17935101664079
+              ]
+            ],
+            "standard_error": 0.011683323044488419,
+            "centered_bootstrap_p_two_sided": 0.16058394160583941,
+            "normal_approx_mde_80pct_relative": 0.009523209163356867,
+            "power_at_relative_effect": {
+              "0.005": 0.3403,
+              "0.01": 0.8401,
+              "0.02": 1.0,
+              "0.05": 1.0
+            },
+            "power_identifiable": true,
+            "power_limitation": null,
+            "power_assumptions": "post-hoc paired noise held fixed under additive alternatives; selection not adjusted",
+            "gate_changed": false,
+            "gain_ci_pct": [
+              -1.100916833842375,
+              0.21739076700281407
+            ]
+          }
+        },
+        "without_top_1pct_naive_errors": {
+          "count": 741,
+          "price_mae": 3.15432322515751,
+          "naive_mae": 3.136167374377952,
+          "naive_gain_pct": -0.5789184253330637,
+          "direction_pct": 14.035087719298245,
+          "active_rate_pct": 32.79352226720648,
+          "flat_count": 498,
+          "active_direction_pct": 42.38683127572017
+        },
+        "source_age_0_4": {
+          "count": 749,
+          "price_mae": 3.4516926893872437,
+          "naive_mae": 3.435113517241739,
+          "naive_gain_pct": -0.4826382610731539,
+          "direction_pct": 14.686248331108146,
+          "active_rate_pct": 33.511348464619495,
+          "flat_count": 498,
+          "active_direction_pct": 43.42629482071713
+        }
+      },
+      "raw": {
+        "count": 749,
+        "price_mae": 3.5801700397496377,
+        "naive_mae": 3.435113517241739,
+        "naive_gain_pct": -4.222757756907347,
+        "direction_pct": 47.79706275033378,
+        "active_rate_pct": 100.0,
+        "flat_count": 0,
+        "active_direction_pct": 47.79706275033378,
+        "years": {
+          "2021": {
+            "count": 252,
+            "price_mae": 2.767990077051726,
+            "naive_mae": 2.7379762255956255,
+            "naive_gain_pct": -1.096205700236541,
+            "direction_pct": 53.96825396825397,
+            "active_rate_pct": 100.0,
+            "flat_count": 0,
+            "active_direction_pct": 53.96825396825397
+          },
+          "2022": {
+            "count": 251,
+            "price_mae": 5.650813395325688,
+            "naive_mae": 5.329561727455412,
+            "naive_gain_pct": -6.027731440192108,
+            "direction_pct": 43.42629482071713,
+            "active_rate_pct": 100.0,
+            "flat_count": 0,
+            "active_direction_pct": 43.42629482071713
+          },
+          "2023": {
+            "count": 246,
+            "price_mae": 2.299429667189822,
+            "naive_mae": 2.216300902327871,
+            "naive_gain_pct": -3.750788747802125,
+            "direction_pct": 45.9349593495935,
+            "active_rate_pct": 100.0,
+            "flat_count": 0,
+            "active_direction_pct": 45.9349593495935
+          }
+        },
+        "year_wins": 0,
+        "versus_naive": {
+          "20": {
+            "count": 749,
+            "block_length": 20,
+            "replicates": 10000,
+            "paired_difference": -0.1450565225078959,
+            "difference_ci_95": [
+              -0.2697115024467604,
+              -0.013216929260922466
+            ],
+            "difference_ci_method": "fold-preserving moving-block, recentered basic interval",
+            "column_mean_ci_95": [
+              [
+                3.0430872513550784,
+                3.213157337546571
+              ],
+              [
+                4.0821135015449475,
+                4.237674105078787
+              ]
+            ],
+            "standard_error": 0.0653077361433364,
+            "centered_bootstrap_p_two_sided": 0.025997400259974,
+            "normal_approx_mde_80pct_relative": 0.05323307666064341,
+            "power_at_relative_effect": {
+              "0.005": 0.0575,
+              "0.01": 0.0793,
+              "0.02": 0.1869,
+              "0.05": 0.7571
+            },
+            "power_identifiable": true,
+            "power_limitation": null,
+            "power_assumptions": "post-hoc paired noise held fixed under additive alternatives; selection not adjusted",
+            "gate_changed": false,
+            "gain_ci_pct": [
+              -7.8516037706762045,
+              -0.38475960676650767
+            ]
+          },
+          "60": {
+            "count": 749,
+            "block_length": 60,
+            "replicates": 10000,
+            "paired_difference": -0.1450565225078959,
+            "difference_ci_95": [
+              -0.2596509545379671,
+              -0.023160709828889084
+            ],
+            "difference_ci_method": "fold-preserving moving-block, recentered basic interval",
+            "column_mean_ci_95": [
+              [
+                3.1639210811762686,
+                3.3481478756609824
+              ],
+              [
+                4.163524862220672,
+                4.312590438940762
+              ]
+            ],
+            "standard_error": 0.06123346591065003,
+            "centered_bootstrap_p_two_sided": 0.015798420157984203,
+            "normal_approx_mde_80pct_relative": 0.04991209277051509,
+            "power_at_relative_effect": {
+              "0.005": 0.0609,
+              "0.01": 0.0919,
+              "0.02": 0.2141,
+              "0.05": 0.8066
+            },
+            "power_identifiable": true,
+            "power_limitation": null,
+            "power_assumptions": "post-hoc paired noise held fixed under additive alternatives; selection not adjusted",
+            "gate_changed": false,
+            "gain_ci_pct": [
+              -7.558729958550441,
+              -0.6742341908830489
+            ]
+          }
+        },
+        "without_top_1pct_naive_errors": {
+          "count": 741,
+          "price_mae": 3.288364830936259,
+          "naive_mae": 3.136167374377952,
+          "naive_gain_pct": -4.852976209169779,
+          "direction_pct": 47.50337381916329,
+          "active_rate_pct": 100.0,
+          "flat_count": 0,
+          "active_direction_pct": 47.50337381916329
+        },
+        "source_age_0_4": {
+          "count": 749,
+          "price_mae": 3.5801700397496377,
+          "naive_mae": 3.435113517241739,
+          "naive_gain_pct": -4.222757756907347,
+          "direction_pct": 47.79706275033378,
+          "active_rate_pct": 100.0,
+          "flat_count": 0,
+          "active_direction_pct": 47.79706275033378
+        }
+      }
+    },
+    "numeric_D1": {
+      "selected": {
+        "count": 749,
+        "price_mae": 3.458204483282028,
+        "naive_mae": 3.435113517241739,
+        "naive_gain_pct": -0.6722038711206801,
+        "direction_pct": 15.220293724966622,
+        "active_rate_pct": 33.511348464619495,
+        "flat_count": 498,
+        "active_direction_pct": 45.0199203187251,
+        "years": {
+          "2021": {
+            "count": 252,
+            "price_mae": 2.7379762255956255,
+            "naive_mae": 2.7379762255956255,
+            "naive_gain_pct": 0.0,
+            "direction_pct": 0.0,
+            "active_rate_pct": 0.0,
+            "flat_count": 252,
+            "active_direction_pct": null
+          },
+          "2022": {
+            "count": 251,
+            "price_mae": 5.398466642053726,
+            "naive_mae": 5.329561727455412,
+            "naive_gain_pct": -1.292881443578131,
+            "direction_pct": 45.0199203187251,
+            "active_rate_pct": 100.0,
+            "flat_count": 0,
+            "active_direction_pct": 45.0199203187251
+          },
+          "2023": {
+            "count": 246,
+            "price_mae": 2.216300902327871,
+            "naive_mae": 2.216300902327871,
+            "naive_gain_pct": 0.0,
+            "direction_pct": 0.40650406504065045,
+            "active_rate_pct": 0.0,
+            "flat_count": 246,
+            "active_direction_pct": null
+          }
+        },
+        "year_wins": 0,
+        "versus_naive": {
+          "20": {
+            "count": 749,
+            "block_length": 20,
+            "replicates": 10000,
+            "paired_difference": -0.02309096604028893,
+            "difference_ci_95": [
+              -0.050800882818872475,
+              0.010538472842320214
+            ],
+            "difference_ci_method": "fold-preserving moving-block, recentered basic interval",
+            "column_mean_ci_95": [
+              [
+                3.0430872513550784,
+                3.0728256471858644
+              ],
+              [
+                4.0821135015449475,
+                4.101110375994535
+              ]
+            ],
+            "standard_error": 0.015681638158417607,
+            "centered_bootstrap_p_two_sided": 0.13808619138086192,
+            "normal_approx_mde_80pct_relative": 0.012782281174459167,
+            "power_at_relative_effect": {
+              "0.005": 0.2086,
+              "0.01": 0.6192,
+              "0.02": 0.9866,
+              "0.05": 1.0
+            },
+            "power_identifiable": true,
+            "power_limitation": null,
+            "power_assumptions": "post-hoc paired noise held fixed under additive alternatives; selection not adjusted",
+            "gate_changed": false,
+            "gain_ci_pct": [
+              -1.4788705690187376,
+              0.3067867419642712
+            ]
+          },
+          "60": {
+            "count": 749,
+            "block_length": 60,
+            "replicates": 10000,
+            "paired_difference": -0.02309096604028893,
+            "difference_ci_95": [
+              -0.051020961917504375,
+              0.00954390007713133
+            ],
+            "difference_ci_method": "fold-preserving moving-block, recentered basic interval",
+            "column_mean_ci_95": [
+              [
+                3.1639210811762686,
+                3.1896620780480056
+              ],
+              [
+                4.163524862220672,
+                4.193164202938518
+              ]
+            ],
+            "standard_error": 0.015944545482939113,
+            "centered_bootstrap_p_two_sided": 0.15528447155284472,
+            "normal_approx_mde_80pct_relative": 0.012996579917416375,
+            "power_at_relative_effect": {
+              "0.005": 0.2204,
+              "0.01": 0.6131,
+              "0.02": 0.9888,
+              "0.05": 1.0
+            },
+            "power_identifiable": true,
+            "power_limitation": null,
+            "power_assumptions": "post-hoc paired noise held fixed under additive alternatives; selection not adjusted",
+            "gate_changed": false,
+            "gain_ci_pct": [
+              -1.4852773179522811,
+              0.2778336153733489
+            ]
+          }
+        },
+        "without_top_1pct_naive_errors": {
+          "count": 741,
+          "price_mae": 3.161438572032264,
+          "naive_mae": 3.136167374377952,
+          "naive_gain_pct": -0.8057987548998335,
+          "direction_pct": 14.709851551956815,
+          "active_rate_pct": 32.79352226720648,
+          "flat_count": 498,
+          "active_direction_pct": 44.44444444444444
+        },
+        "source_age_0_4": {
+          "count": 749,
+          "price_mae": 3.458204483282028,
+          "naive_mae": 3.435113517241739,
+          "naive_gain_pct": -0.6722038711206801,
+          "direction_pct": 15.220293724966622,
+          "active_rate_pct": 33.511348464619495,
+          "flat_count": 498,
+          "active_direction_pct": 45.0199203187251
+        }
+      },
+      "raw": {
+        "count": 749,
+        "price_mae": 3.6771724326468807,
+        "naive_mae": 3.435113517241739,
+        "naive_gain_pct": -7.046606005600231,
+        "direction_pct": 49.265687583444596,
+        "active_rate_pct": 100.0,
+        "flat_count": 0,
+        "active_direction_pct": 49.265687583444596,
+        "years": {
+          "2021": {
+            "count": 252,
+            "price_mae": 2.8195028676349154,
+            "naive_mae": 2.7379762255956255,
+            "naive_gain_pct": -2.9776241764683187,
+            "direction_pct": 54.761904761904766,
+            "active_rate_pct": 100.0,
+            "flat_count": 0,
+            "active_direction_pct": 54.761904761904766
+          },
+          "2022": {
+            "count": 251,
+            "price_mae": 5.793358738248638,
+            "naive_mae": 5.329561727455412,
+            "naive_gain_pct": -8.70234804494261,
+            "direction_pct": 45.0199203187251,
+            "active_rate_pct": 100.0,
+            "flat_count": 0,
+            "active_direction_pct": 45.0199203187251
+          },
+          "2023": {
+            "count": 246,
+            "price_mae": 2.396562545154904,
+            "naive_mae": 2.216300902327871,
+            "naive_gain_pct": -8.133446258930688,
+            "direction_pct": 47.96747967479675,
+            "active_rate_pct": 100.0,
+            "flat_count": 0,
+            "active_direction_pct": 47.96747967479675
+          }
+        },
+        "year_wins": 0,
+        "versus_naive": {
+          "20": {
+            "count": 749,
+            "block_length": 20,
+            "replicates": 10000,
+            "paired_difference": -0.24205891540513713,
+            "difference_ci_95": [
+              -0.42340161615268473,
+              -0.035607376210177566
+            ],
+            "difference_ci_method": "fold-preserving moving-block, recentered basic interval",
+            "column_mean_ci_95": [
+              [
+                3.0430872513550784,
+                3.310437582256744
+              ],
+              [
+                4.0821135015449475,
+                4.339620570063075
+              ]
+            ],
+            "standard_error": 0.09966755294673466,
+            "centered_bootstrap_p_two_sided": 0.013298670132986702,
+            "normal_approx_mde_80pct_relative": 0.08124015315655086,
+            "power_at_relative_effect": {
+              "0.005": 0.0544,
+              "0.01": 0.0644,
+              "0.02": 0.1082,
+              "0.05": 0.4442
+            },
+            "power_identifiable": true,
+            "power_limitation": null,
+            "power_assumptions": "post-hoc paired noise held fixed under additive alternatives; selection not adjusted",
+            "gate_changed": false,
+            "gain_ci_pct": [
+              -12.325695032420924,
+              -1.0365705829357537
+            ]
+          },
+          "60": {
+            "count": 749,
+            "block_length": 60,
+            "replicates": 10000,
+            "paired_difference": -0.24205891540513713,
+            "difference_ci_95": [
+              -0.431625563376125,
+              -0.023367386173738652
+            ],
+            "difference_ci_method": "fold-preserving moving-block, recentered basic interval",
+            "column_mean_ci_95": [
+              [
+                3.1639210811762686,
+                3.393253316039025
+              ],
+              [
+                4.163524862220672,
+                4.478275301193041
+              ]
+            ],
+            "standard_error": 0.10492803130761505,
+            "centered_bootstrap_p_two_sided": 0.0165983401659834,
+            "normal_approx_mde_80pct_relative": 0.0855280287497546,
+            "power_at_relative_effect": {
+              "0.005": 0.0569,
+              "0.01": 0.0673,
+              "0.02": 0.113,
+              "0.05": 0.4117
+            },
+            "power_identifiable": true,
+            "power_limitation": null,
+            "power_assumptions": "post-hoc paired noise held fixed under additive alternatives; selection not adjusted",
+            "gate_changed": false,
+            "gain_ci_pct": [
+              -12.565103342573183,
+              -0.6802507706499826
+            ]
+          }
+        },
+        "without_top_1pct_naive_errors": {
+          "count": 741,
+          "price_mae": 3.388553098646338,
+          "naive_mae": 3.136167374377952,
+          "naive_gain_pct": -8.047584651582751,
+          "direction_pct": 49.122807017543856,
+          "active_rate_pct": 100.0,
+          "flat_count": 0,
+          "active_direction_pct": 49.122807017543856
+        },
+        "source_age_0_4": {
+          "count": 749,
+          "price_mae": 3.6771724326468807,
+          "naive_mae": 3.435113517241739,
+          "naive_gain_pct": -7.046606005600231,
+          "direction_pct": 49.265687583444596,
+          "active_rate_pct": 100.0,
+          "flat_count": 0,
+          "active_direction_pct": 49.265687583444596
+        }
+      }
+    }
+  },
+  "paired": {
+    "selected_D0": {
+      "20": {
+        "count": 749,
+        "block_length": 20,
+        "replicates": 10000,
+        "paired_difference": -0.0022091669553385707,
+        "difference_ci_95": [
+          -0.026811556942072677,
+          0.027419267532609707
+        ],
+        "difference_ci_method": "fold-preserving moving-block, recentered basic interval",
+        "column_mean_ci_95": [
+          [
+            3.06504735966592,
+            3.0675923025893392
+          ],
+          [
+            4.100788013817675,
+            4.092882429692112
+          ]
+        ],
+        "standard_error": 0.014005845999377533,
+        "centered_bootstrap_p_two_sided": 0.8778122187781222,
+        "normal_approx_mde_80pct_relative": 0.011361227844947197,
+        "power_at_relative_effect": {
+          "0.005": 0.2654,
+          "0.01": 0.721,
+          "0.02": 0.9968,
+          "0.05": 1.0
+        },
+        "power_identifiable": true,
+        "power_limitation": null,
+        "power_assumptions": "post-hoc paired noise held fixed under additive alternatives; selection not adjusted",
+        "gate_changed": false,
+        "gain_ci_pct": [
+          -0.7767476098149133,
+          0.7943533665294041
+        ]
+      },
+      "60": {
+        "count": 749,
+        "block_length": 60,
+        "replicates": 10000,
+        "paired_difference": -0.0022091669553385707,
+        "difference_ci_95": [
+          -0.02494857042170712,
+          0.02292341852719623
+        ],
+        "difference_ci_method": "fold-preserving moving-block, recentered basic interval",
+        "column_mean_ci_95": [
+          [
+            3.1885637568356042,
+            3.186005944947689
+          ],
+          [
+            4.179951351795103,
+            4.1860424189554095
+          ]
+        ],
+        "standard_error": 0.012403304921802092,
+        "centered_bootstrap_p_two_sided": 0.8618138186181382,
+        "normal_approx_mde_80pct_relative": 0.010061282499694152,
+        "power_at_relative_effect": {
+          "0.005": 0.3124,
+          "0.01": 0.7982,
+          "0.02": 1.0,
+          "0.05": 1.0
+        },
+        "power_identifiable": true,
+        "power_limitation": null,
+        "power_assumptions": "post-hoc paired noise held fixed under additive alternatives; selection not adjusted",
+        "gate_changed": false,
+        "gain_ci_pct": [
+          -0.722775722619485,
+          0.6641058028915084
+        ]
+      }
+    },
+    "selected_D0_trimmed": {
+      "20": {
+        "count": 741,
+        "block_length": 20,
+        "replicates": 10000,
+        "paired_difference": -0.00403911188683459,
+        "difference_ci_95": [
+          -0.02706970003390163,
+          0.023867795451367343
+        ],
+        "difference_ci_method": "fold-preserving moving-block, recentered basic interval",
+        "column_mean_ci_95": [
+          [
+            2.873248453714169,
+            2.8777300522775895
+          ],
+          [
+            3.596248694275078,
+            3.596581406508006
+          ]
+        ],
+        "standard_error": 0.01302960299703209,
+        "centered_bootstrap_p_two_sided": 0.7587241275872413,
+        "normal_approx_mde_80pct_relative": 0.011566106043546005,
+        "power_at_relative_effect": {
+          "0.005": 0.2498,
+          "0.01": 0.7044,
+          "0.02": 0.9944,
+          "0.05": 1.0
+        },
+        "power_identifiable": true,
+        "power_limitation": null,
+        "power_assumptions": "post-hoc paired noise held fixed under additive alternatives; selection not adjusted",
+        "gate_changed": false,
+        "gain_ci_pct": [
+          -0.8581859467859557,
+          0.7566765280543428
+        ]
+      },
+      "60": {
+        "count": 741,
+        "block_length": 60,
+        "replicates": 10000,
+        "paired_difference": -0.00403911188683459,
+        "difference_ci_95": [
+          -0.02784929753399685,
+          0.022094611739013583
+        ],
+        "difference_ci_method": "fold-preserving moving-block, recentered basic interval",
+        "column_mean_ci_95": [
+          [
+            2.9364892847276103,
+            2.9473036215425004
+          ],
+          [
+            3.662133319815477,
+            3.663009043518249
+          ]
+        ],
+        "standard_error": 0.01280901643014178,
+        "centered_bootstrap_p_two_sided": 0.7678232176782321,
+        "normal_approx_mde_80pct_relative": 0.011370295962071056,
+        "power_at_relative_effect": {
+          "0.005": 0.2483,
+          "0.01": 0.6979,
+          "0.02": 0.9979,
+          "0.05": 1.0
+        },
+        "power_identifiable": true,
+        "power_limitation": null,
+        "power_assumptions": "post-hoc paired noise held fixed under additive alternatives; selection not adjusted",
+        "gate_changed": false,
+        "gain_ci_pct": [
+          -0.8829013894356078,
+          0.7004615961893437
+        ]
+      }
+    },
+    "selected_D0_annual_gain_pct": {
+      "2021": 0.0,
+      "2022": -0.12254995059290952,
+      "2023": 0.0
+    },
+    "raw_D0": {
+      "20": {
+        "count": 749,
+        "block_length": 20,
+        "replicates": 10000,
+        "paired_difference": -0.10299803082828474,
+        "difference_ci_95": [
+          -0.24666345318236813,
+          0.06805644034935138
+        ],
+        "difference_ci_method": "fold-preserving moving-block, recentered basic interval",
+        "column_mean_ci_95": [
+          [
+            3.213602872955126,
+            3.310203099782209
+          ],
+          [
+            4.2389883151094745,
+            4.337744457966724
+          ]
+        ],
+        "standard_error": 0.08156485917565992,
+        "centered_bootstrap_p_two_sided": 0.20737926207379262,
+        "normal_approx_mde_80pct_relative": 0.06377759959177233,
+        "power_at_relative_effect": {
+          "0.005": 0.0547,
+          "0.01": 0.0717,
+          "0.02": 0.1567,
+          "0.05": 0.626
+        },
+        "power_identifiable": true,
+        "power_limitation": null,
+        "power_assumptions": "post-hoc paired noise held fixed under additive alternatives; selection not adjusted",
+        "gate_changed": false,
+        "gain_ci_pct": [
+          -6.888296850060418,
+          1.9005367744453188
+        ]
+      },
+      "60": {
+        "count": 749,
+        "block_length": 60,
+        "replicates": 10000,
+        "paired_difference": -0.10299803082828474,
+        "difference_ci_95": [
+          -0.2452542238799639,
+          0.06406668605362548
+        ],
+        "difference_ci_method": "fold-preserving moving-block, recentered basic interval",
+        "column_mean_ci_95": [
+          [
+            3.3477210872764167,
+            3.404243169429409
+          ],
+          [
+            4.3177665522495685,
+            4.4816335077584615
+          ]
+        ],
+        "standard_error": 0.08051605393315689,
+        "centered_bootstrap_p_two_sided": 0.21187881211878812,
+        "normal_approx_mde_80pct_relative": 0.06295751259006423,
+        "power_at_relative_effect": {
+          "0.005": 0.0523,
+          "0.01": 0.0717,
+          "0.02": 0.1601,
+          "0.05": 0.6291
+        },
+        "power_identifiable": true,
+        "power_limitation": null,
+        "power_assumptions": "post-hoc paired noise held fixed under additive alternatives; selection not adjusted",
+        "gate_changed": false,
+        "gain_ci_pct": [
+          -6.848942865351598,
+          1.7891193285562241
+        ]
+      }
+    },
+    "raw_D0_trimmed": {
+      "20": {
+        "count": 741,
+        "block_length": 20,
+        "replicates": 10000,
+        "paired_difference": -0.11126274885213938,
+        "difference_ci_95": [
+          -0.2508603660781862,
+          0.057840040743916354
+        ],
+        "difference_ci_method": "fold-preserving moving-block, recentered basic interval",
+        "column_mean_ci_95": [
+          [
+            3.022444184002033,
+            3.1329431903091964
+          ],
+          [
+            3.7543752340672154,
+            3.8735726473760232
+          ]
+        ],
+        "standard_error": 0.07962573286163253,
+        "centered_bootstrap_p_two_sided": 0.15728427157284272,
+        "normal_approx_mde_80pct_relative": 0.06779396937901191,
+        "power_at_relative_effect": {
+          "0.005": 0.0526,
+          "0.01": 0.0673,
+          "0.02": 0.1423,
+          "0.05": 0.5821
+        },
+        "power_identifiable": true,
+        "power_limitation": null,
+        "power_assumptions": "post-hoc paired noise held fixed under additive alternatives; selection not adjusted",
+        "gate_changed": false,
+        "gain_ci_pct": [
+          -7.62801679679241,
+          1.7587664772211968
+        ]
+      },
+      "60": {
+        "count": 741,
+        "block_length": 60,
+        "replicates": 10000,
+        "paired_difference": -0.11126274885213938,
+        "difference_ci_95": [
+          -0.2613465512687855,
+          0.05900278670820866
+        ],
+        "difference_ci_method": "fold-preserving moving-block, recentered basic interval",
+        "column_mean_ci_95": [
+          [
+            3.094995464467101,
+            3.213672640652299
+          ],
+          [
+            3.8287604332590863,
+            3.9521467940079154
+          ]
+        ],
+        "standard_error": 0.08309221085053956,
+        "centered_bootstrap_p_two_sided": 0.18738126187381263,
+        "normal_approx_mde_80pct_relative": 0.07074535574855852,
+        "power_at_relative_effect": {
+          "0.005": 0.0544,
+          "0.01": 0.0689,
+          "0.02": 0.1392,
+          "0.05": 0.5418
+        },
+        "power_identifiable": true,
+        "power_limitation": null,
+        "power_assumptions": "post-hoc paired noise held fixed under additive alternatives; selection not adjusted",
+        "gate_changed": false,
+        "gain_ci_pct": [
+          -7.946874645956344,
+          1.7941225834275472
+        ]
+      }
+    },
+    "raw_D0_annual_gain_pct": {
+      "2021": -1.685651088268303,
+      "2022": -2.1977053029663685,
+      "2023": -6.040664922696992
+    },
+    "selected_D1": {
+      "20": {
+        "count": 749,
+        "block_length": 20,
+        "replicates": 10000,
+        "paired_difference": -0.006511793894784734,
+        "difference_ci_95": [
+          -0.02675271233466352,
+          0.018434513093138753
+        ],
+        "difference_ci_method": "fold-preserving moving-block, recentered basic interval",
+        "column_mean_ci_95": [
+          [
+            3.0655101851783964,
+            3.0728256471858644
+          ],
+          [
+            4.100559236697757,
+            4.101110375994535
+          ]
+        ],
+        "standard_error": 0.011675885294037396,
+        "centered_bootstrap_p_two_sided": 0.5864413558644136,
+        "normal_approx_mde_80pct_relative": 0.009471433805165427,
+        "power_at_relative_effect": {
+          "0.005": 0.359,
+          "0.01": 0.8487,
+          "0.02": 0.9996,
+          "0.05": 1.0
+        },
+        "power_identifiable": true,
+        "power_limitation": null,
+        "power_assumptions": "post-hoc paired noise held fixed under additive alternatives; selection not adjusted",
+        "gate_changed": false,
+        "gain_ci_pct": [
+          -0.7750606656530814,
+          0.5340716787974341
+        ]
+      },
+      "60": {
+        "count": 749,
+        "block_length": 60,
+        "replicates": 10000,
+        "paired_difference": -0.006511793894784734,
+        "difference_ci_95": [
+          -0.028429169489902224,
+          0.018520982326949
+        ],
+        "difference_ci_method": "fold-preserving moving-block, recentered basic interval",
+        "column_mean_ci_95": [
+          [
+            3.189005706016309,
+            3.1896620780480056
+          ],
+          [
+            4.17935101664079,
+            4.193164202938518
+          ]
+        ],
+        "standard_error": 0.012249920404414794,
+        "centered_bootstrap_p_two_sided": 0.6087391260873912,
+        "normal_approx_mde_80pct_relative": 0.009937088906501244,
+        "power_at_relative_effect": {
+          "0.005": 0.3235,
+          "0.01": 0.8064,
+          "0.02": 1.0,
+          "0.05": 1.0
+        },
+        "power_identifiable": true,
+        "power_limitation": null,
+        "power_assumptions": "post-hoc paired noise held fixed under additive alternatives; selection not adjusted",
+        "gate_changed": false,
+        "gain_ci_pct": [
+          -0.8236297969779304,
+          0.5365768042993685
+        ]
+      }
+    },
+    "selected_D1_trimmed": {
+      "20": {
+        "count": 741,
+        "block_length": 20,
+        "replicates": 10000,
+        "paired_difference": -0.007115346874754014,
+        "difference_ci_95": [
+          -0.02699002157265649,
+          0.01689082658767918
+        ],
+        "difference_ci_method": "fold-preserving moving-block, recentered basic interval",
+        "column_mean_ci_95": [
+          [
+            2.872660867768333,
+            2.882930760397858
+          ],
+          [
+            3.596790996400973,
+            3.5989685550934714
+          ]
+        ],
+        "standard_error": 0.011324834514249926,
+        "centered_bootstrap_p_two_sided": 0.5351464853514648,
+        "normal_approx_mde_80pct_relative": 0.01005272268453604,
+        "power_at_relative_effect": {
+          "0.005": 0.3197,
+          "0.01": 0.814,
+          "0.02": 0.9991,
+          "0.05": 1.0
+        },
+        "power_identifiable": true,
+        "power_limitation": null,
+        "power_assumptions": "post-hoc paired noise held fixed under additive alternatives; selection not adjusted",
+        "gate_changed": false,
+        "gain_ci_pct": [
+          -0.8556517403605254,
+          0.535481793779575
+        ]
+      },
+      "60": {
+        "count": 741,
+        "block_length": 60,
+        "replicates": 10000,
+        "paired_difference": -0.007115346874754014,
+        "difference_ci_95": [
+          -0.030036704884531678,
+          0.018939644547125756
+        ],
+        "difference_ci_method": "fold-preserving moving-block, recentered basic interval",
+        "column_mean_ci_95": [
+          [
+            2.9367038243040016,
+            2.9512929582909284
+          ],
+          [
+            3.6622593850431087,
+            3.6668917396170744
+          ]
+        ],
+        "standard_error": 0.012625499652594213,
+        "centered_bootstrap_p_two_sided": 0.5849415058494151,
+        "normal_approx_mde_80pct_relative": 0.011207284892466444,
+        "power_at_relative_effect": {
+          "0.005": 0.2619,
+          "0.01": 0.7162,
+          "0.02": 0.998,
+          "0.05": 1.0
+        },
+        "power_identifiable": true,
+        "power_limitation": null,
+        "power_assumptions": "post-hoc paired noise held fixed under additive alternatives; selection not adjusted",
+        "gate_changed": false,
+        "gain_ci_pct": [
+          -0.9522392836907766,
+          0.6004344892771732
+        ]
+      }
+    },
+    "selected_D1_annual_gain_pct": {
+      "2021": 0.0,
+      "2022": -0.36124710015323913,
+      "2023": 0.0
+    },
+    "raw_D1": {
+      "20": {
+        "count": 749,
+        "block_length": 20,
+        "replicates": 10000,
+        "paired_difference": -0.09700239289724122,
+        "difference_ci_95": [
+          -0.2131827889599326,
+          0.04595042197738319
+        ],
+        "difference_ci_method": "fold-preserving moving-block, recentered basic interval",
+        "column_mean_ci_95": [
+          [
+            3.213157337546571,
+            3.310437582256744
+          ],
+          [
+            4.237674105078787,
+            4.339620570063075
+          ]
+        ],
+        "standard_error": 0.06701121535627091,
+        "centered_bootstrap_p_two_sided": 0.1431856814318568,
+        "normal_approx_mde_80pct_relative": 0.05240851716939111,
+        "power_at_relative_effect": {
+          "0.005": 0.0573,
+          "0.01": 0.0864,
+          "0.02": 0.2122,
+          "0.05": 0.7796
+        },
+        "power_identifiable": true,
+        "power_limitation": null,
+        "power_assumptions": "post-hoc paired noise held fixed under additive alternatives; selection not adjusted",
+        "gate_changed": false,
+        "gain_ci_pct": [
+          -5.954543683484948,
+          1.2834703789822375
+        ]
+      },
+      "60": {
+        "count": 749,
+        "block_length": 60,
+        "replicates": 10000,
+        "paired_difference": -0.09700239289724122,
+        "difference_ci_95": [
+          -0.22785334324482442,
+          0.05434119273807447
+        ],
+        "difference_ci_method": "fold-preserving moving-block, recentered basic interval",
+        "column_mean_ci_95": [
+          [
+            3.3481478756609824,
+            3.393253316039025
+          ],
+          [
+            4.312590438940762,
+            4.478275301193041
+          ]
+        ],
+        "standard_error": 0.07282752834638628,
+        "centered_bootstrap_p_two_sided": 0.18748125187481252,
+        "normal_approx_mde_80pct_relative": 0.056957372724157414,
+        "power_at_relative_effect": {
+          "0.005": 0.0576,
+          "0.01": 0.0806,
+          "0.02": 0.1871,
+          "0.05": 0.7051
+        },
+        "power_identifiable": true,
+        "power_limitation": null,
+        "power_assumptions": "post-hoc paired noise held fixed under additive alternatives; selection not adjusted",
+        "gate_changed": false,
+        "gain_ci_pct": [
+          -6.3643162395928625,
+          1.5178383187038391
+        ]
+      }
+    },
+    "raw_D1_trimmed": {
+      "20": {
+        "count": 741,
+        "block_length": 20,
+        "replicates": 10000,
+        "paired_difference": -0.10018826771007427,
+        "difference_ci_95": [
+          -0.21519170002906454,
+          0.04228708078442478
+        ],
+        "difference_ci_method": "fold-preserving moving-block, recentered basic interval",
+        "column_mean_ci_95": [
+          [
+            3.0227468107865847,
+            3.1291176244149375
+          ],
+          [
+            3.7577366794917397,
+            3.860468308837818
+          ]
+        ],
+        "standard_error": 0.06646893947953918,
+        "centered_bootstrap_p_two_sided": 0.12838716128387162,
+        "normal_approx_mde_80pct_relative": 0.056597439794939,
+        "power_at_relative_effect": {
+          "0.005": 0.0558,
+          "0.01": 0.0808,
+          "0.02": 0.1843,
+          "0.05": 0.723
+        },
+        "power_identifiable": true,
+        "power_limitation": null,
+        "power_assumptions": "post-hoc paired noise held fixed under additive alternatives; selection not adjusted",
+        "gate_changed": false,
+        "gain_ci_pct": [
+          -6.544033618307353,
+          1.2859607421474843
+        ]
+      },
+      "60": {
+        "count": 741,
+        "block_length": 60,
+        "replicates": 10000,
+        "paired_difference": -0.10018826771007427,
+        "difference_ci_95": [
+          -0.23568794263164908,
+          0.052850989668321274
+        ],
+        "difference_ci_method": "fold-preserving moving-block, recentered basic interval",
+        "column_mean_ci_95": [
+          [
+            3.093504262279684,
+            3.1976266358135543
+          ],
+          [
+            3.831454248425511,
+            3.9384663473078727
+          ]
+        ],
+        "standard_error": 0.07443251296851443,
+        "centered_bootstrap_p_two_sided": 0.1822817718228177,
+        "normal_approx_mde_80pct_relative": 0.06337831932489738,
+        "power_at_relative_effect": {
+          "0.005": 0.0538,
+          "0.01": 0.0756,
+          "0.02": 0.1597,
+          "0.05": 0.6224
+        },
+        "power_identifiable": true,
+        "power_limitation": null,
+        "power_assumptions": "post-hoc paired noise held fixed under additive alternatives; selection not adjusted",
+        "gate_changed": false,
+        "gain_ci_pct": [
+          -7.1673295011047875,
+          1.6072118632066021
+        ]
+      }
+    },
+    "raw_D1_annual_gain_pct": {
+      "2021": -1.8610178920170473,
+      "2022": -2.5225632656860064,
+      "2023": -4.224216089365762
+    }
+  },
+  "availability_verified": false,
+  "historical_source_admitted": false,
+  "first_vintage_verified": false,
+  "independent_holdout": false,
+  "gate_evaluated": false,
+  "release_allowed": false,
+  "old_raw_inputs_preserved": 1000,
+  "old_registry_objects_preserved": 161,
+  "old_recipe_objects_preserved": 513,
+  "old_proof_files_preserved": 75,
+  "next": "Close this fixed T5 recipe; next only zero-fit candidate/control proxy-carry decomposition using saved predictions, no model/grid/data/live promotion."
+}

@@ -1,0 +1,126 @@
+{
+  "identity": {
+    "profile": "ct-pre2010-same-contract-risk-t1-r2",
+    "source_id": "7dd7415ae8ac05e092656bbe3e13c91b6ad70df96fe44cf6e929a4f67a920ca2",
+    "data_id": "60f3b70ea432a3137117f43da43712a4f1423172da3b2ce92c268a1fa5a7cca0",
+    "design_id": "a60350c00cf45609c18d982e27f56c6f63f7127fd822caa660a97aef0c7d7251",
+    "contract_id": "b3c5893b5c2ee9f829610cabb8d1950fcce606889aa393a0a4303944f7f67096",
+    "control_id": "a00e190bcc7d00bfaeb7e6e33c2b79f23eefbaf22e910975980390b476f00001",
+    "python": "3.12.14",
+    "versions": {
+      "numpy": "2.1.3",
+      "pandas": "2.2.3",
+      "scipy": "1.18.1",
+      "pyarrow": "21.0.0"
+    },
+    "source_versions": {
+      "pypdf": "6.1.3",
+      "xlrd": "2.0.2",
+      "requests": "2.32.3"
+    },
+    "record_id": "435f85273f024f46e653c7eb8d82962b4d54b31c8718171dc7a8f5b45ccb1d7d"
+  },
+  "source_admission": {
+    "input_id": "48e61a8a4b75bafb420186e18080419adbe1e0f39fb49aa2d76ebac066445164",
+    "archive_hashes": {
+      "2008-2009.bin": "185b7282c03db1adc6440f8693a51e7a81f18c9a8ee9c4423aea57238a3a76f3",
+      "2009-2010.bin": "309877df0efd6121d09dfb50440a65ce0d0952955b2b12644e9c491770cf48e5",
+      "CN20090410WWWCMR.pdf": "e7ff73df145b90922caca0f2aaacbf64d03fcb5abc882a91f00a0a63f349d31f",
+      "CN20090529WWCMR.pdf": "5798aac845c6229454472baaaf2dd2344e45975f4a7cd23e77fc007c08ce3c2d"
+    },
+    "verified_dates": 253,
+    "record_id": "6a0481d78fbd1de1ad4174bbcc9b7feb8ed16451d74c63d04ad0a9dfd399fb61"
+  },
+  "result": {
+    "origins": 252,
+    "fits": 31,
+    "mean_gain": 3.984466528626913e-17,
+    "intervals": {
+      "20": [
+        -9.030940095669714e-17,
+        1.6286442573641348e-16
+      ],
+      "60": [
+        -6.672705380612739e-17,
+        1.431165708482245e-16
+      ]
+    },
+    "years": {
+      "2008": {
+        "origins": 26,
+        "gain": 5.888486191128256e-16
+      },
+      "2009": {
+        "origins": 226,
+        "gain": -2.331508161413117e-17
+      }
+    },
+    "weights": {
+      "2008": 0.0,
+      "2009": 0.0
+    },
+    "raw_mean_gain": -0.001869013595706928,
+    "trimmed_gain": 9.291664638638402e-17,
+    "fallback_origins": 252,
+    "stale_evaluation_origins": {
+      "2009-04-09": "2009-04-08",
+      "2009-05-22": "2009-05-21",
+      "2009-05-26": "2009-05-21",
+      "2009-05-27": "2009-05-21",
+      "2009-05-28": "2009-05-21",
+      "2009-05-29": "2009-05-21"
+    },
+    "archival_replication_gate": false,
+    "first_vintage_verified": false,
+    "forward_publication": false,
+    "current_market_skill": false,
+    "record_id": "dfd3d6accf2a93c86fbb5ccac2c43c7083cc0c45a89de227661aad2939a5b04e"
+  },
+  "independent_replay": {
+    "native_fit_payloads_replayed": 31,
+    "exact_paired_dates": 252,
+    "stale_origin_count": 6,
+    "raw_gain_by_year": {
+      "2008": 0.020863731580067282,
+      "2009": -0.004484285164601334
+    },
+    "raw_gain_nonstale": -0.00191459929316322,
+    "selected_forecasts_equal_ewma_within_float_rounding": true,
+    "fit_calls": 0
+  },
+  "classification": "INCONCLUSIVE",
+  "classification_scope": "Archival risk performance under the stated availability assumption. Exact zero incremental selected forecast change is verified.",
+  "publication_clock": "Conservative delayed weekly quotes for six held forecast slots; original daily first vintage and UTC receipt unverified.",
+  "old_attempts": [
+    {
+      "source": "2e94aa67de628c8dac0dcb28e2128b553d90b6905a9c5c22e98f5cfb6aed0580",
+      "asset": "evidence.zip",
+      "fits": 0,
+      "scores": 0,
+      "status": "rejected_misdated_2009_04_09_and_05_22"
+    },
+    {
+      "source": "e21ee4c457ece31981c1cff60add1eb8031d083f06181a249db21fa799f54292",
+      "asset": "prereg-r2.zip",
+      "fits": 0,
+      "scores": 0,
+      "status": "weekly_futures_and_spot_rows_not_separated"
+    }
+  ],
+  "archive_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/ct-pre2010-risk-prereg-20261104",
+  "preregistered": {
+    "asset": "prereg-r2b.zip",
+    "sha256": "33b6c17bfed28149e98832ce08e6d7a557569b221e6d87c7134ebae2423373f0",
+    "fresh_restored_files": 300,
+    "before_first_fit_or_score": true
+  },
+  "delivery": {
+    "asset": "result-r2b.zip",
+    "sha256": "639797dcb666a903de33455d5b54811868175c9aea8a392e570d47274e043208",
+    "fresh_restored_files": 529,
+    "new_fits_in_replay": 0,
+    "paired_csv_sha256": "0f1c970774bd01be6bfe4fc378ffee6fa7f37f1b257ae8e4c8b5d9106583382a"
+  },
+  "current_market_skill": false,
+  "same_contract": true
+}

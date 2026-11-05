@@ -1,0 +1,33 @@
+{
+  "schema": 1,
+  "time_utc": "2026-10-11T17:49:31.702479+00:00",
+  "status": "drivefs_recoverable_removal_complete_cloud_batch_count_and_permanent_confirmation_pending",
+  "files": 32476,
+  "original_bytes": 4108244956,
+  "expected_top_level_cloud_trash_items": 32114,
+  "permanent_deletions": 0,
+  "quota_recovery_verified": false,
+  "cloud_quota_last_observed": "18.72/15 GB",
+  "retained_current_io_failure_paths": [
+    "experiments/research-v2-tf-placement/ledger/completed/2cfa340c03e5bb073d68cd4efe54840550a911e46b36d673953a08cdf39f97b2.json",
+    "experiments/research-v2-tf-placement/ledger/completed/2cfe3cdf73372f2a697719a17824f8bc6cba109934be378a9708b7e37821e17b.json",
+    "experiments/research-v2-tf-placement/ledger/completed/2d00cfecd554ab9a64cf86ee8267e2c118657c4093c2308495c8e99e750bc69e.json"
+  ],
+  "preexisting_missing_run_receipt_zip_files": 5,
+  "preexisting_missing_receipts_bytes": 6105,
+  "unrelated_older_cloud_trash_items_to_preserve": [
+    "Untitled0.ipynb",
+    "cottonlens_colab.ipynb"
+  ],
+  "full_project_migration_complete": false,
+  "new_fits": 0,
+  "release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/drive-preservation-20261011",
+  "audit_asset": "drive-cleanup-prepurge-v1.zip",
+  "audit_archive_sha256": "2c3178ac458d6ed1ed0fa8b3cfb1a3ea17baa97539f317471d132b777109fe8d",
+  "audit_manifest": "drive-cleanup-prepurge-v1-manifest.json",
+  "audit_manifest_sha256": "96a454aa1b7b6777596fc604d4e22249e7e773fdff0dc2c53eba88ffe5778297",
+  "private_audit_members_fresh_github_verified": 15,
+  "private_audit_rows_contain_source_path_and_hash": true,
+  "historical_evidence_unchanged": true,
+  "record_id": "4b0b7b9970adc9938480ad775c77aff1a40bec42ccbdbf594e8ba12daf7078b0"
+}

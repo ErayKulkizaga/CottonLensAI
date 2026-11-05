@@ -1,0 +1,39 @@
+{
+  "schema": 1,
+  "status": "reviewed_original_usda_html_fresh_recovery_verified",
+  "release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/drive-preservation-20261011",
+  "parent_record_id": "3364259bd4ae40f6c59a4c8267e5e4b05ec9da787b9aa88c9f24ea234586f609",
+  "archive_asset": "reviewed-ams-html-originals.zip",
+  "manifest_asset": "reviewed-ams-html-manifest.json",
+  "manifest_sha256": "a9efee4ce30210980cd0c48e0e08563c3988dd40ed4a326ac1194775e24faece",
+  "review_helper_asset": "ams-html-review-v1.py",
+  "review_helper_sha256": "81b1b01be5ca17298ca45151fe4d13fd2624e07aee1cb7a2005c4d67e13f53a7",
+  "fresh_remote_verification": {
+    "status": "verified",
+    "files": 43,
+    "logical_bytes": 4352133,
+    "archive_sha256": "8f66f110a9fbf63dde7444a83791b865909b6c7586b6b8f66335cb3542065d2d",
+    "source_files_deleted": 0,
+    "new_fits": 0,
+    "source_eligibility_changed": false
+  },
+  "classification": "All 43 initial credential-pattern exclusions are public USDA HTML with one common window.BOOMR_API_key telemetry identifier. Other sensitive-content patterns still checked; original bytes unchanged.",
+  "classification_primary_sources": [
+    "https://techdocs.akamai.com/mpulse-boomerang/docs/implementation",
+    "https://techdocs.akamai.com/mpulse/reference/api"
+  ],
+  "negative_controls_passed": 2,
+  "combined_verified_logical_files": 5971,
+  "combined_verified_logical_bytes": 513539817,
+  "unuploaded_initial_quarantine_originals": 0,
+  "all_47_initial_quarantine_originals_retained_on_drive_and_offline": true,
+  "general_storage_policy_unchanged": true,
+  "source_eligibility_changed": false,
+  "publication_timestamp_verified": false,
+  "new_fits": 0,
+  "source_files_deleted": 0,
+  "full_project_migration_complete": false,
+  "quota_recovery_verified": false,
+  "next_exact_step": "Finish active experiment capture/fresh remote restore, then source closure and current hashes before removal.",
+  "record_id": "d57a17b7f0d51199fb9f79fd80a3c8f890c4b25c55538b0509c5bb1f7cdcdca1"
+}

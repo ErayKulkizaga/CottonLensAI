@@ -1,0 +1,23 @@
+{
+  "schema": 1,
+  "as_of": "2026-11-05",
+  "release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/github-consolidation-20261105",
+  "archive": {
+    "name": "evidence.zip",
+    "sha256": "8f600839b558bc0626a10e472afd277dd3c9182fb421343da37861ed9e07087b",
+    "bytes": 465342
+  },
+  "manifest_sha256": "b10c462e6870d11f8ae2ce27a3421ed6cc4a29722d7ef81046540620d230d642",
+  "fresh_member_count": 6,
+  "excluded_count": 0,
+  "verification": "fresh download and storage.restore hash verification; no model deserialization",
+  "local_checks": {
+    "backend_pytest": 47,
+    "backend_ruff": "passed",
+    "frontend": "Node24.19.0 npm ci/build passed",
+    "npm_audit": "6 existing vulnerabilities:1 low,1 moderate,4 high; unchanged dependencies",
+    "ml_research": "running",
+    "registry": "valid:234 records,563 recipes,32592fit copies",
+    "compose_config": "passed"
+  }
+}

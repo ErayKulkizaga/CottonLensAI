@@ -1,0 +1,154 @@
+{
+  "release": "ct-forward-records-2026-q4",
+  "private": true,
+  "chain": [
+    {
+      "backup_id": "9a697596f83f4a9361958e2c6d349013586395542d48db3becdb93151fb05080",
+      "parent_backup_id": null,
+      "phase": "manual",
+      "assets": [
+        {
+          "id": 707230258,
+          "name": "CT-forward-20261103T215635Z-manual-77c6c8bc.zip",
+          "size": 1430536,
+          "created_at": "2026-11-03T21:56:46Z",
+          "updated_at": "2026-11-03T21:56:47Z",
+          "sha256": "0a9a00ce90feaf8a8566515b2c6cdc6e98c239d9d29c7c9a94c4cc3ee74dbdc6"
+        },
+        {
+          "id": 707230265,
+          "name": "CT-forward-20261103T215635Z-manual-77c6c8bc-manifest.json",
+          "size": 67816,
+          "created_at": "2026-11-03T21:56:46Z",
+          "updated_at": "2026-11-03T21:56:46Z",
+          "sha256": "433db22c70842a4fe50f979c0f0ace42c703e6caae5f6956eb75c3850ff61908"
+        }
+      ],
+      "delta_files": 321,
+      "snapshot_files": 321
+    },
+    {
+      "backup_id": "7aa9d454045f7dff746709d0b298055457c3d372089d14df185898f2069968a8",
+      "parent_backup_id": "9a697596f83f4a9361958e2c6d349013586395542d48db3becdb93151fb05080",
+      "phase": "manual",
+      "assets": [
+        {
+          "id": 707233982,
+          "name": "CT-forward-20261103T215751Z-manual-434f8ae3.zip",
+          "size": 319009,
+          "created_at": "2026-11-03T21:57:57Z",
+          "updated_at": "2026-11-03T21:57:58Z",
+          "sha256": "2d0fe1c73aa92aea93a6b099a85ff45ab461e2c69335c15d1d7e1ad128dbe868"
+        },
+        {
+          "id": 707233991,
+          "name": "CT-forward-20261103T215751Z-manual-434f8ae3-manifest.json",
+          "size": 25495,
+          "created_at": "2026-11-03T21:57:57Z",
+          "updated_at": "2026-11-03T21:57:58Z",
+          "sha256": "fa663f7e03c9150b86aa744de551c85a9e8627ea3984ccd542415a972c09f3a1"
+        }
+      ],
+      "delta_files": 97,
+      "snapshot_files": 418
+    },
+    {
+      "backup_id": "09c3a6331c50a669ba6893ca643a846c104beee76529719e5c4f7e1d6417d238",
+      "parent_backup_id": "7aa9d454045f7dff746709d0b298055457c3d372089d14df185898f2069968a8",
+      "phase": "capture",
+      "assets": [
+        {
+          "id": 707574268,
+          "name": "CT-forward-20261104T000509Z-capture-40945e88.zip",
+          "size": 105219,
+          "created_at": "2026-11-04T00:05:14Z",
+          "updated_at": "2026-11-04T00:05:14Z",
+          "sha256": "3efa6caece2f763ee92b37465999297b65af06f8404330a7e31be46ce4207d26"
+        },
+        {
+          "id": 707574270,
+          "name": "CT-forward-20261104T000509Z-capture-40945e88-manifest.json",
+          "size": 4977,
+          "created_at": "2026-11-04T00:05:14Z",
+          "updated_at": "2026-11-04T00:05:14Z",
+          "sha256": "e2cb4fbf5fd38eca76219b8b27e870e3f298f555d4d8b5ebdabafe55f5b28b54"
+        }
+      ],
+      "delta_files": 17,
+      "snapshot_files": 435
+    },
+    {
+      "backup_id": "071c90e310afdf98a2b91731babb6e0721b069fc1dcfe61986d11a4fd22329e7",
+      "parent_backup_id": "09c3a6331c50a669ba6893ca643a846c104beee76529719e5c4f7e1d6417d238",
+      "phase": "publish",
+      "assets": [
+        {
+          "id": 707613698,
+          "name": "CT-forward-20261104T002007Z-publish-e9e2669b.zip",
+          "size": 39878,
+          "created_at": "2026-11-04T00:20:11Z",
+          "updated_at": "2026-11-04T00:20:12Z",
+          "sha256": "b408fd723ba1b47dec207b2fafc822db27be1e16e28ec0f6c228c4cc1c9e874a"
+        },
+        {
+          "id": 707613697,
+          "name": "CT-forward-20261104T002007Z-publish-e9e2669b-manifest.json",
+          "size": 2803,
+          "created_at": "2026-11-04T00:20:11Z",
+          "updated_at": "2026-11-04T00:20:12Z",
+          "sha256": "ce8c194ff59ee340c9e18ad78770608bc695118999e058dc14ebabbc7d888095"
+        }
+      ],
+      "delta_files": 7,
+      "snapshot_files": 442
+    }
+  ],
+  "study_files": 442,
+  "replay": {
+    "status": "first_forward_publication_replayed_without_performance_score",
+    "source_id": "d4f28151197f7c3a1dc06da284649574225227b98b75fdb9e960c898d4912e89",
+    "design_id": "bcdf95ed8f317eadc9a608b04b6654360cdabeb01f63f8ad9ca447ae7ee2eecb",
+    "cohort_lock_id": "35074e5b8a2253a69a711b7bb2d6c54ea4eb166bdf7417409604fa83b71b02b1",
+    "origin": "2026-11-03",
+    "target_date": "2026-11-04",
+    "horizon": 1,
+    "source_observed_at": "2026-11-04T00:05:06.319573+00:00",
+    "decision_at": "2026-11-04T00:15:00+00:00",
+    "generated_at": "2026-11-04T00:20:04.877587+00:00",
+    "publication_completed_at": "2026-11-04T00:20:05.128014+00:00",
+    "observation_id": "5b9606e7e037d54d899da60fbee9eb9bc83976a2a459c72caee8743565d93773",
+    "forecast_id": "a1c1c2837a07da16a9ab964eae12a0015f2b90431258d75a94ae8c21fe39af13",
+    "forecast_sha256": "2f5a70c08d82a2f4d1fd9b8efa990877bb34d890eee18fb03522d1dd6434af2a",
+    "fit_id": "cc3f741b97905c1a7ea244f7ea7722129248edf8db38326a14f88eb147fe93c1",
+    "model_sha256": "f91a0f44ffa978ec2caee4ce921908d3d87bde0d431159a4252b133bc915d685",
+    "model_completed_at": "2026-11-03T21:56:54.797808+00:00",
+    "selection_created_at": "2026-11-03T21:56:54.722304+00:00",
+    "training_source_available_at": "2026-11-03T00:05:28.873492+00:00",
+    "mature_training_rows": 4110,
+    "history_rows": 4235,
+    "completed_market_fits": 10,
+    "baseline_variance": 0.0002174387127919549,
+    "raw_variance": 0.0002323009149847655,
+    "selected_variance": 0.0002323009149847655,
+    "weight": 1.0,
+    "new_fits": 0,
+    "new_forecasts": 0,
+    "performance_scored": false,
+    "market_skill": false,
+    "actual_forward_target_or_loss_reported": false,
+    "first_historical_vintage_verified": false
+  },
+  "runs": {
+    "execution_source_id": "346816caf38e0d6d60780213dc3d52db36f19a1ad5319740fd82c3f3cf3007ae",
+    "runs": {
+      "capture": {
+        "run_id": "40945e88de894df5a090415c8a116878",
+        "receipt_sha256": "ff58ed0ddc30210851555f404218d4fe8ca35bdfc6ece72ee6c454ce50f2a42c"
+      },
+      "publish": {
+        "run_id": "e9e2669b281a4401a97a1400c83fffe7",
+        "receipt_sha256": "82a7e8a46bae011e02e9018eb41348010555133e4acf6fc29d924c436b5f3061"
+      }
+    }
+  }
+}

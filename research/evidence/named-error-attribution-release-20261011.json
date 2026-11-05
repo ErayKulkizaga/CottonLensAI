@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/named-error-attribution-20261011",
+  "archive": {
+    "name": "named-error-attribution-20261011.zip",
+    "sha256": "86518df36478dc363f0f5763f3905a3186b66fc905c76d4558fce1e4518a9d42",
+    "bytes": 154660
+  },
+  "members": 14,
+  "inventory_sha256": "f832a32cd2ad66507bd9f57199efc395f72564afdd3efaa9527fff4d96f4d815",
+  "new_fits": 0,
+  "new_forecasts": 0,
+  "posthoc": true,
+  "record_id": "ba25538e5da975a9bb91e12a4951fcc8747c0a0c83867e3585cd6bf4ffc75fcc"
+}

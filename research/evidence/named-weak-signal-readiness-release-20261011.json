@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/named-weak-signal-readiness-20261011",
+  "source_id": "46916bcb45e0408402a0e39f130b25d31997575e43b17358c8ec75fd6d0c13df",
+  "archive": {
+    "name": "named-weak-signal-readiness-20261011.zip",
+    "sha256": "d52b6d2a7738af224127f12794efc8648cb0943bde24f8826807d04091a1ab58",
+    "bytes": 3077430
+  },
+  "inventory_sha256": "0768890b9caca6adae11f32b7feebd2a9505fef2990d53adce401259eccb506d",
+  "members": 283,
+  "restore_sha256": "24748d2a5a2f1fb9fe437d3c0187865d6b094d1f78c565bbab394938877d72f6",
+  "parent_release": "named-history-source-result-20261011",
+  "parent_archive_sha256": "61bf6a11f316a83d5d50c6e24240cb98187595056d169586b1e99cff3ed23a89",
+  "new_profile_fits": 0,
+  "scalar_rows": 21120,
+  "market_skill_claimed": false,
+  "record_id": "7caa0c74834a0003742b3516f11c40b297b86594eb88b2e4fc54246a6241e869"
+}

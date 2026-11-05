@@ -1,0 +1,67 @@
+{
+  "schema": 1,
+  "status": "verified_preliminary_named_history_lineage_not_signal_test",
+  "source_audit": {
+    "status": "preliminary_verified_lineage_and_feasibility_not_signal_test",
+    "input_hashes": {
+      "history.parquet": "5a9266059579351875608e58fdc8875797fbb3c39cd4c24fb51b1cef9eb0217b",
+      "ready.json": "98b87771ba35a0df57062cfc17b76bea387bedfa50b516abde68b33328781bf7",
+      "quotes.json": "3cf19b853ce43978342427b915a22d5b11a7886e9db2018274e825bdecf1d91f"
+    },
+    "proxy_feature_lineage_verified": true,
+    "current_28_features_own_named_history": 0,
+    "known_origin_prices_reproduced": 243,
+    "same_contract_asof_feasibility": {
+      "1": {
+        "available_asof_same_contract_endpoints": 246,
+        "missing_retained": 0,
+        "prior_second_rank_differs": 5,
+        "mean_abs_log_difference_from_proxy": 0.003524277159005702,
+        "different_above1e-12": 245
+      },
+      "5": {
+        "available_asof_same_contract_endpoints": 246,
+        "missing_retained": 0,
+        "prior_second_rank_differs": 25,
+        "mean_abs_log_difference_from_proxy": 0.009556590316800413,
+        "different_above1e-12": 246
+      },
+      "10": {
+        "available_asof_same_contract_endpoints": 246,
+        "missing_retained": 0,
+        "prior_second_rank_differs": 50,
+        "mean_abs_log_difference_from_proxy": 0.012737492374006877,
+        "different_above1e-12": 246
+      },
+      "20": {
+        "available_asof_same_contract_endpoints": 246,
+        "missing_retained": 0,
+        "prior_second_rank_differs": 95,
+        "mean_abs_log_difference_from_proxy": 0.015294596081886746,
+        "different_above1e-12": 246
+      }
+    },
+    "new_fits": 0,
+    "new_model_features_written": false,
+    "historical_availability_verified": false,
+    "first_vintage_verified": false,
+    "late_quotes_excluded_completed_pipeline": true,
+    "qualifications": "Same-contract endpoint feasibility uses existing assumed clocks/staleness; not completed full train/validation feature readiness or signal/cause evidence. Never shift the varying second-ranked series as if it were a fixed contract."
+  },
+  "archive": {
+    "name": "named-history-lineage-audit-20261011.zip",
+    "sha256": "5264ab9d9fa7d77e3babde57412b88a9c82f486a403ca4cbd7f13b3366a6b4a5",
+    "bytes": 2960
+  },
+  "inventory_sha256": "09b8ee9759d37bcbb9e66bd91c6a195c8ff84abdef1d05393d81eda4a803f4be",
+  "members": 3,
+  "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/named-error-attribution-20261011",
+  "analyzer_sha256": "856fb5a29683fba736986ef18c53ccf32078f7354f60e6b8f4f92b764b7f74eb",
+  "input_payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/named-capacity-result-20261010",
+  "new_fits": 0,
+  "new_model_features": 0,
+  "performance_claimed": false,
+  "interpretation": "Own same-contract return endpoints can be represented under existing assumptions; actual predictive contribution and whole-training-cohort causal/missingness readiness not tested.",
+  "next_exact_step": "Build and verify same origin-selected contract lag endpoints for every frozen train/inner/outer row; preserve cohort/missingness and future invariance before any source-effect proposal or fit.",
+  "record_id": "4c3ab4b051aeb5bf36aa160de2c65648c71356096510284d04ad115c6b0a7365"
+}

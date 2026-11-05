@@ -1,0 +1,51 @@
+{
+  "schema": 1,
+  "profile": "signed-shock-partial-risk-moment-t1-v1",
+  "classification": "COUNTER_EVIDENCE_POSITIVE_HYPOTHESIS_NOT_FORECAST_SKILL",
+  "new_fits": 0,
+  "ordinal_origins": 2006,
+  "bootstrap": {
+    "20": {
+      "partial_covariance": -0.36789233999790444,
+      "ci_95": [
+        -0.6925076965791359,
+        -0.012673053308100424
+      ],
+      "eligible": 2006,
+      "replicates": 10000,
+      "block": 20
+    },
+    "60": {
+      "partial_covariance": -0.36789233999790444,
+      "ci_95": [
+        -0.7031744057105083,
+        -0.0948055283768201
+      ],
+      "eligible": 2006,
+      "replicates": 10000,
+      "block": 60
+    }
+  },
+  "positive_years": 3,
+  "negative_years": 5,
+  "trim_top1pct_partial_covariance": -0.03922468271969679,
+  "independent_verification": {
+    "status": "verified",
+    "new_fits": 0,
+    "decimal_checked_rows": 2006,
+    "decimal_feature_error_scalars": 6018,
+    "independent_residual_covariance_intervals": 2,
+    "positive_years": 3,
+    "negative_years": 5,
+    "screen_passed": false,
+    "training_allowed": false
+  },
+  "exact_fresh_replay": true,
+  "archive_sha256": "92946134f7cbf257a60610c3afa461f28950a5034fa91777e103692ea170860a",
+  "archive_members": 10,
+  "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/asymmetric-risk-preflight-20261013",
+  "training_admitted": false,
+  "predictive_skill_claim": false,
+  "old_records_preserved": 199,
+  "record_id": "77f2b660a835f59cb17c5e924cd70e13eeba87c91faf7fe732c7181bc31d203b"
+}

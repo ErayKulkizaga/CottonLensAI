@@ -1,0 +1,164 @@
+{
+  "schema": 1,
+  "release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/fas-reviewed-alignment-20261009",
+  "market_fits": 0,
+  "synthetic_only": true,
+  "real_historical_source_admitted": false,
+  "ml_source_id": "3a1cb6ee2fbad006352d0a80ea516f3a3c663374d34b1febddfd420b0cc67820",
+  "source_files": 224,
+  "archive": {
+    "name": "fas-reviewed-alignment-20261009-v1.zip",
+    "sha256": "d1fbd933e1d9cdbd548a401fc10607a03a05403ee5872d9cd8ebcc324bc88adf",
+    "bytes": 921796
+  },
+  "members": {
+    "source.zip": {
+      "sha256": "9eaf8786f000b3de7def4072724050c4d7778ec40319100f0a31f4163c59437c",
+      "bytes": 692297
+    },
+    "environment.json": {
+      "sha256": "bbd649db1e9de3bd8dfd54db9d09b4d4e2da5cf25508de6eadaf59e50b4cc723",
+      "bytes": 363
+    },
+    "replay-summary.json": {
+      "sha256": "5328f5701df9522b7e5694ee2e9f35fe7180fbb70828c24e7c6568f1e0b1b7b5",
+      "bytes": 1163
+    },
+    "verification.json": {
+      "sha256": "6b3a4c26f9d4ddb033a7e4609aa7d369f9b7fa9147b26ca9aaf9cd4123a734d6",
+      "bytes": 2587
+    },
+    "README.txt": {
+      "sha256": "4c1362bf366cf77077e1251de2eac5ba360c5fb6e7ed9a8317e7fb6040daf215",
+      "bytes": 1312
+    },
+    "synthetic/exact/aligned.parquet": {
+      "sha256": "24abab178954b44ecf353b079f9e4a0963c348a4e555456b53d6da010d64ad78",
+      "bytes": 11747
+    },
+    "synthetic/exact/groups.json": {
+      "sha256": "3d3756691c0a55c70f07918f613b2229e49b7e2e7aa725a2e5939a029434663f",
+      "bytes": 684
+    },
+    "synthetic/exact/history.parquet": {
+      "sha256": "c2f1faf0188880ffceea16dd07c48cf1433c01fc189c0f08f6fd854aed8839d0",
+      "bytes": 2340
+    },
+    "synthetic/exact/publication.txt": {
+      "sha256": "ca89f36bafcb0a8087ea668c66778f4397aef5f9205bfa1ca430a156982f6cc1",
+      "bytes": 41
+    },
+    "synthetic/exact/review.json": {
+      "sha256": "d783bbd04c6becdaf63de085aaf5c2165fdf07155af0740af9b3232b07d5b2a4",
+      "bytes": 1050
+    },
+    "synthetic/exact/source.txt": {
+      "sha256": "833d35b1745fed32e1923eac9918763c300ad46ad17c59f8dec7bd4f60956aae",
+      "bytes": 42
+    },
+    "synthetic/exact/vintage.json": {
+      "sha256": "0a8c46f5c831b35eab47c13a151cf6d0c785a5df906f64fc2e8ec7b26a2bcdb5",
+      "bytes": 748
+    },
+    "synthetic/upper-bound/aligned.parquet": {
+      "sha256": "24abab178954b44ecf353b079f9e4a0963c348a4e555456b53d6da010d64ad78",
+      "bytes": 11747
+    },
+    "synthetic/upper-bound/availability.json": {
+      "sha256": "a6929af6e3b35ddb5626e8e5435e441b3f48474d5faa872c3b31bc0d740890bf",
+      "bytes": 336
+    },
+    "synthetic/upper-bound/groups.json": {
+      "sha256": "3d3756691c0a55c70f07918f613b2229e49b7e2e7aa725a2e5939a029434663f",
+      "bytes": 684
+    },
+    "synthetic/upper-bound/history.parquet": {
+      "sha256": "c2f1faf0188880ffceea16dd07c48cf1433c01fc189c0f08f6fd854aed8839d0",
+      "bytes": 2340
+    },
+    "synthetic/upper-bound/publication.txt": {
+      "sha256": "ca89f36bafcb0a8087ea668c66778f4397aef5f9205bfa1ca430a156982f6cc1",
+      "bytes": 41
+    },
+    "synthetic/upper-bound/review.json": {
+      "sha256": "424fb6704f2769498599934058cebc93d006040c8496874c8fe61dc91a162e9c",
+      "bytes": 1241
+    },
+    "synthetic/upper-bound/source.txt": {
+      "sha256": "833d35b1745fed32e1923eac9918763c300ad46ad17c59f8dec7bd4f60956aae",
+      "bytes": 42
+    },
+    "synthetic/upper-bound/vintage.json": {
+      "sha256": "dd3993bf72a82e5bae0738d701635eff0310b6b4b300eba086d719a62fa019bd",
+      "bytes": 772
+    },
+    "synthetic/exact/package/publication-manifest.json": {
+      "sha256": "0a3c675d4317ba2b9c7ef334fd766f1c1f62c09067e9ae8ebe0f1495b31f23f3",
+      "bytes": 922
+    },
+    "synthetic/exact/package/publication.txt": {
+      "sha256": "ca89f36bafcb0a8087ea668c66778f4397aef5f9205bfa1ca430a156982f6cc1",
+      "bytes": 41
+    },
+    "synthetic/exact/package/released-features.parquet": {
+      "sha256": "e7f4e76f5e48147cec9156d8c9d1a2d7561f2ad59d40bba6888957f9066980c5",
+      "bytes": 8249
+    },
+    "synthetic/exact/package/source.txt": {
+      "sha256": "833d35b1745fed32e1923eac9918763c300ad46ad17c59f8dec7bd4f60956aae",
+      "bytes": 42
+    },
+    "synthetic/exact/package/vintage.json": {
+      "sha256": "0a8c46f5c831b35eab47c13a151cf6d0c785a5df906f64fc2e8ec7b26a2bcdb5",
+      "bytes": 748
+    },
+    "synthetic/upper-bound/package/availability.json": {
+      "sha256": "a6929af6e3b35ddb5626e8e5435e441b3f48474d5faa872c3b31bc0d740890bf",
+      "bytes": 336
+    },
+    "synthetic/upper-bound/package/publication-manifest.json": {
+      "sha256": "f2879918161690f8939d20318ee9aec9551cff21666b7e656001b13ae029f3c7",
+      "bytes": 1070
+    },
+    "synthetic/upper-bound/package/publication.txt": {
+      "sha256": "ca89f36bafcb0a8087ea668c66778f4397aef5f9205bfa1ca430a156982f6cc1",
+      "bytes": 41
+    },
+    "synthetic/upper-bound/package/released-features.parquet": {
+      "sha256": "83624409d5cb377a6c17364a351432941fcb9fffa335b3cc5ab6e6554b40ebed",
+      "bytes": 10561
+    },
+    "synthetic/upper-bound/package/source.txt": {
+      "sha256": "833d35b1745fed32e1923eac9918763c300ad46ad17c59f8dec7bd4f60956aae",
+      "bytes": 42
+    },
+    "synthetic/upper-bound/package/vintage.json": {
+      "sha256": "dd3993bf72a82e5bae0738d701635eff0310b6b4b300eba086d719a62fa019bd",
+      "bytes": 772
+    },
+    "denied-quarantine-input/publication.txt": {
+      "sha256": "ca89f36bafcb0a8087ea668c66778f4397aef5f9205bfa1ca430a156982f6cc1",
+      "bytes": 41
+    },
+    "denied-quarantine-input/review.json": {
+      "sha256": "8ecdb061f70ea031615996952f5e3823b1b921170af194b25a7c370b3a992f4d",
+      "bytes": 1050
+    },
+    "denied-quarantine-input/source.txt": {
+      "sha256": "84557e73abbfe1736c0781da59443dcf26c2394d73db8ac4ab5f3c0ff085be03",
+      "bytes": 2578081
+    },
+    "denied-quarantine-input/vintage.json": {
+      "sha256": "a70516a51dd0c6308e9dcda46320cac4b86d13411c1bdb2ba75b581b433cc688",
+      "bytes": 748
+    }
+  },
+  "restore_verification": {
+    "frozen_code_used": true,
+    "member_hashes_verified": 35,
+    "ml_files_verified": 224,
+    "synthetic_dataframe_and_groups_equal": true,
+    "quarantine_rejected": true,
+    "market_fits": 0
+  }
+}

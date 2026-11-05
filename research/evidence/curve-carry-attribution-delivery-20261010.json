@@ -1,0 +1,152 @@
+{
+  "schema": 1,
+  "status": "zero_fit_diagnostic_delivered",
+  "profile": "curve-carry-attribution-v1",
+  "pull_request": "https://github.com/ErayKulkizaga/CottonLensAI/pull/36",
+  "result_commit": "6278070f2f93404ff7b92a787ba9d2cfb3af8db1",
+  "source_id": "20d0c1869afc35b9c83b34cfd3fc8de8ec90a56ebd64c1cf3dcb3b085685d7b3",
+  "parent_registration_id": "aeed8a21350c322a34125f080a9c5adc77029ce4407e1d3e8356a2a2774ca8b6",
+  "release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/curve-carry-attribution-20261010",
+  "archive_sha256": "227ce52023dba9b1f91bbe0724fdf13df30c99024559bbe15bd4917a929260a1",
+  "fresh_github_restore": {
+    "status": "verified",
+    "archive_sha256": "227ce52023dba9b1f91bbe0724fdf13df30c99024559bbe15bd4917a929260a1",
+    "members_verified": 29,
+    "exact_report_rows_completion_replay": true,
+    "exact_independent_decimal_verification_replay": true,
+    "rejection_controls": 7,
+    "new_fits": 0
+  },
+  "independent_verification": {
+    "status": "passed",
+    "new_fits": 0,
+    "source_id": "20d0c1869afc35b9c83b34cfd3fc8de8ec90a56ebd64c1cf3dcb3b085685d7b3",
+    "inputs_sha256": {
+      "history.parquet": "575c19cb25437a28ed6b1c1c3062eb48becead51571e3b57d76b7306e5e4f792",
+      "ready.json": "c600c5b1984273f11e73cd49dba089c22cad59b54c69cda82e2a5ec7c5d1b5ad",
+      "quotes.json": "3cf19b853ce43978342427b915a22d5b11a7886e9db2018274e825bdecf1d91f",
+      "source-proof.json": "9356ed3fc7e41f8c6d6bc63e2060d69bc553171f67e55f9f22b0714ae58927cf",
+      "predictions.csv": "43e44ed429d0d1bee2270355b4811f749dfd49bb9b68417f44184ece541a4305",
+      "primary-report.json": "eaca95ed2c7cb361510911c17ac57c2406b7f91782bf7a1af9bce3990eea0869",
+      "transition-attribution.json": "2e28dbce44f12632b865d807a707561d66a62c4cd0c6d90ec4f91e965579b775",
+      "t5-result-proof.json": "d9ec547f37ee02708ee41534ed85d6eb4a4361c332827a98319d3b91f04e8524",
+      "t5-delivery.json": "d737ed1edb18005950179e57c632d3da19c073e025ec06e60702c707e3f1031b",
+      "parent-verification.json": "1134a36f522b9c39802dc531aa7bccf0d5b55254116bf9db7da7474f164e1095"
+    },
+    "contract_sha256": "524a090f06041c534c696597e54da74048774c2652e4d4837cf40359ebb1d775",
+    "analyzer_sha256": "2d23ab651d6cb28b7ebaa6c6004cdc7422573fe6687f549abb18d7d928020940",
+    "verifier_sha256": "31ade7ca9c129a1690148916e0255618a94e8ec6f433deedebe91e251a027c41",
+    "independent_scalar_error_rows": 2996,
+    "decimal_decompositions_and_counterfactuals": 2972,
+    "unknown_rows_preserved": 24,
+    "unchanged_contract_identity_controls": 2676,
+    "event_summaries_verified": 60,
+    "year_summaries_verified": 12,
+    "forecast_and_primary_result_unchanged": true,
+    "market_or_position_skill_claimed": false
+  },
+  "rejection_controls": [
+    "target-date-rejected",
+    "future-contract-feature-rejected",
+    "counterfactual-value-rejected",
+    "dropped-origin-rejected",
+    "prediction-input-rejected",
+    "quote-input-rejected",
+    "existing-output-overwrite-rejected"
+  ],
+  "local_and_github_report_rows_verification_controls_bytes_equal": true,
+  "new_fits": 0,
+  "old_studies_preserved": 162,
+  "old_recipes_preserved": 518,
+  "old_proofs_preserved": 78,
+  "old_raw_inputs_preserved": 1000,
+  "prior_t5_result_and_preregistration_archives_unchanged": true,
+  "training_source_changed": false,
+  "goal_achieved": false,
+  "classification": "INCONCLUSIVE",
+  "classification_scope": "Source forecast skill unresolved;fixed prior recipe fails practical goal. Counterfactual aggregate proxy-gap dependence verified,not a new forecasting effect or causal/position proof.",
+  "historical_availability_verified": false,
+  "first_vintage_verified": false,
+  "market_or_position_skill_claimed": false,
+  "independent_holdout": false,
+  "release_allowed": false,
+  "ci": {
+    "head": "6278070f2f93404ff7b92a787ba9d2cfb3af8db1",
+    "checks": [
+      {
+        "name": "backend",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "url": "https://github.com/ErayKulkizaga/CottonLensAI/actions/runs/38059850303/job/114235704649"
+      },
+      {
+        "name": "backend",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "url": "https://github.com/ErayKulkizaga/CottonLensAI/actions/runs/38059846262/job/114235694185"
+      },
+      {
+        "name": "backend",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "url": "https://github.com/ErayKulkizaga/CottonLensAI/actions/runs/38059865635/job/114235745693"
+      },
+      {
+        "name": "frontend",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "url": "https://github.com/ErayKulkizaga/CottonLensAI/actions/runs/38059850303/job/114235704668"
+      },
+      {
+        "name": "frontend",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "url": "https://github.com/ErayKulkizaga/CottonLensAI/actions/runs/38059846262/job/114235694160"
+      },
+      {
+        "name": "frontend",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "url": "https://github.com/ErayKulkizaga/CottonLensAI/actions/runs/38059865635/job/114235745863"
+      },
+      {
+        "name": "ml-data-contracts",
+        "status": "IN_PROGRESS",
+        "conclusion": "",
+        "url": "https://github.com/ErayKulkizaga/CottonLensAI/actions/runs/38059850303/job/114235704500"
+      },
+      {
+        "name": "ml-data-contracts",
+        "status": "IN_PROGRESS",
+        "conclusion": "",
+        "url": "https://github.com/ErayKulkizaga/CottonLensAI/actions/runs/38059846262/job/114235693956"
+      },
+      {
+        "name": "ml-data-contracts",
+        "status": "IN_PROGRESS",
+        "conclusion": "",
+        "url": "https://github.com/ErayKulkizaga/CottonLensAI/actions/runs/38059865635/job/114235745857"
+      },
+      {
+        "name": "compose-contract",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "url": "https://github.com/ErayKulkizaga/CottonLensAI/actions/runs/38059850303/job/114235704659"
+      },
+      {
+        "name": "compose-contract",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "url": "https://github.com/ErayKulkizaga/CottonLensAI/actions/runs/38059846262/job/114235694129"
+      },
+      {
+        "name": "compose-contract",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "url": "https://github.com/ErayKulkizaga/CottonLensAI/actions/runs/38059865635/job/114235745946"
+      }
+    ],
+    "limits": "Only this observed head;running checks not passed,later delivery commit CI separate."
+  },
+  "next": "One zero-fit feasibility audit of origin-fixed first/second named contract targets at T1/T5 using existing quotes,not future-first oracle. No target overwrite,forward fill,origin drop,model/grid/data or training automatically."
+}

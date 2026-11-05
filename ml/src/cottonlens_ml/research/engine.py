@@ -32,9 +32,11 @@ from cottonlens_ml.research.models import (
 from cottonlens_ml.research.protocol import (
     feature_groups,
     feature_history,
+    frozen_outer_folds,
     mature,
     rows_at,
     split_manifest,
+    verified_outer,
 )
 from cottonlens_ml.research.search import (
     BUDGETS,
@@ -136,7 +138,7 @@ class Experiment:
         self.root = Path(folder)
         self.ready = read_record(self.root / 'ready.json')
         self.identity = self.ready['identity']
-        identity_fn = research_source_identity if self.identity.get('profile') in ('full-year-v1', 'ams-exploration-v1', 'fas-exploration-v1', 'nass-exploration-v1', 'wasde-exploration-v1', 'cftc-exploration-v1', 'fx-exploration-v1', 'crop-exploration-v1', 'weather-exploration-v1', 'oncall-exploration-v1', 'oncall-exploration-v2', 'recency-pilot-v1', 'availability-clock-pilot-v1', 'return-path-pilot-v1', 'agri-transfer-pilot-v1', 'agri-nonlinear-pilot-v1', 'statistical-pilot-v1', 'nonlinear-path-pilot-v1', 'wasde-text-pilot-v1', 'fundamental-joint-pilot-v1', 'wasde-regional-t1-pilot-v1') else source_identity
+        identity_fn = research_source_identity if self.identity.get('profile') in ('full-year-v1', 'ams-exploration-v1', 'fas-exploration-v1', 'nass-exploration-v1', 'wasde-exploration-v1', 'cftc-exploration-v1', 'fx-exploration-v1', 'crop-exploration-v1', 'weather-exploration-v1', 'oncall-exploration-v1', 'oncall-exploration-v2', 'recency-pilot-v1', 'availability-clock-pilot-v1', 'return-path-pilot-v1', 'agri-transfer-pilot-v1', 'agri-nonlinear-pilot-v1', 'statistical-pilot-v1', 'nonlinear-path-pilot-v1', 'wasde-text-pilot-v1', 'fundamental-joint-pilot-v1', 'wasde-regional-t1-pilot-v1', 'nass-regional-t1-pilot-v1', 'weak-signal-control-v1', 'paired-price-loss-control-v1', 'contract-curve-t1-pilot-v1', 'contract-curve-t5-pilot-v1', 'named-label-control-t5-v1', 'named-capacity-control-t5-v1', 'named-history-source-control-t5-v1', 'named-weak-signal-control-t5-v1', 'named-cftc-source-control-t5-v1', 'named-risk-label-control-t1-v1', 'named-risk-history-control-t1-v1', 'named-risk-loss-control-t1-v1') else source_identity
         if repo is not None and identity_fn(repo)['source_id'] != self.identity['source_id']:
             raise ValueError('Research source identity changed')
         if repo is not None:
@@ -165,12 +167,25 @@ class Experiment:
         # Common 120-observation warmup across all families. Never remove feature-missing rows.
         return rows.loc[rows.date >= self.history.date.iloc[119]].copy()
 
+    @staticmethod
+    def fit_specification(spec, train, validation, test, role, iterations):
+        return {'recipe': spec, 'role': role, 'iterations': iterations,
+                'train_dates': train.date.dt.strftime('%Y-%m-%d').tolist(),
+                'validation_dates': [] if validation is None else validation.date.dt.strftime('%Y-%m-%d').tolist(),
+                'test_dates': test.date.dt.strftime('%Y-%m-%d').tolist(),
+                'train_identity': frame_identity(train, list(train.columns))}
+
+    def outer_chunks(self, test, spec):
+        cadence = spec.get('cadence', 126)
+        if cadence == 126:
+            return [(test.date.min(), test)]
+        start = int(test.cotton_session_index.iloc[0])
+        buckets = (test.cotton_session_index - start) // cadence
+        dates = self.history.set_index('cotton_session_index').date
+        return [(dates.loc[start + int(b) * cadence], test.loc[buckets.eq(b)]) for b in sorted(buckets.unique())]
+
     def fit(self, spec, train, validation, test, role, *, iterations=None, repeat=None):
-        specification = {'recipe': spec, 'role': role, 'iterations': iterations,
-                         'train_dates': train.date.dt.strftime('%Y-%m-%d').tolist(),
-                         'validation_dates': [] if validation is None else validation.date.dt.strftime('%Y-%m-%d').tolist(),
-                         'test_dates': test.date.dt.strftime('%Y-%m-%d').tolist(),
-                         'train_identity': frame_identity(train, list(train.columns))}
+        specification = self.fit_specification(spec, train, validation, test, role, iterations)
         record = self.ledger.run(specification, lambda workspace: fit_predict(
             self.history, train, validation, test, spec, workspace, iterations=iterations), repeat=repeat,
             before_compute=getattr(self, 'before_compute', None))
@@ -271,16 +286,8 @@ class Experiment:
         members, records = [], []
         for seed in chosen['seeds']:
             spec = seed['recipe']
-            cadence = spec.get('cadence', 126)
-            if cadence == 126:
-                chunks = [(test.date.min(), test)]
-            else:
-                start = int(test.cotton_session_index.iloc[0])
-                buckets = (test.cotton_session_index - start) // cadence
-                dates = self.history.set_index('cotton_session_index').date
-                chunks = [(dates.loc[start + int(b) * cadence], test.loc[buckets.eq(b)]) for b in sorted(buckets.unique())]
             predicted = []
-            for cutoff, chunk in chunks:
+            for cutoff, chunk in self.outer_chunks(test, spec):
                 train = self.train_rows(cutoff, spec)
                 record = self.fit(spec, train, None, chunk, f'outer-{namespace}-{fold["fold"]}-{cutoff}',
                                   iterations=seed['iterations'], repeat=repeat)
@@ -402,6 +409,8 @@ def reference_report(experiment):
 def compare(experiment):
     print('STAGE reporting: reading outer predictions and compact timing receipts; no fits', flush=True)
     candidates = []
+    frozen = experiment.identity['split']['folds']
+    by_number = frozen_outer_folds(frozen)
     for namespace in sorted((experiment.root / 'outer').glob('*')):
         grouped = {}
         for file in namespace.glob('*.json'):
@@ -411,24 +420,28 @@ def compare(experiment):
             key = (row['recipe']['family'], row['recipe']['horizon'], row['recipe'].get('task', 'price'))
             grouped.setdefault(key, []).append(row)
         for (family, h, task), folds in grouped.items():
-            if len(folds) != len(experiment.identity['split']['folds']):
-                continue
+            numbers = [f['fold'] for f in folds]
+            if len(numbers) != len(set(numbers)) or not set(numbers).issubset(by_number):
+                raise ValueError('Saved results contain duplicate or unknown frozen fold numbers')
             folds.sort(key=lambda f: f['fold'])
+            resolved = [verified_outer(experiment.history, by_number[f['fold']], f, family, h, task) for f in folds]
+            if len(folds) != len(frozen):
+                continue
             if task == 'price':
                 paired, wins = [], 0
-                for fold in folds:
-                    rows = rows_at(experiment.history, fold['origins'])
-                    naive = evaluate(rows.cotton_close.to_numpy(), rows[f'target_return_{h}'].to_numpy(), np.zeros(len(rows)))
-                    wins += fold['metrics']['mae'] < naive['mae']
-                    paired.append((rows, SimpleNamespace(name=family, horizon=h, predictions=np.asarray(fold['predictions']), parameters={})))
+                for rows, prediction in resolved:
+                    prices = rows.cotton_close.to_numpy()
+                    actual = rows[f'target_return_{h}'].to_numpy()
+                    wins += evaluate(prices, actual, prediction)['mae'] < evaluate(prices, actual, np.zeros(len(rows)))['mae']
+                    paired.append((rows, SimpleNamespace(name=family, horizon=h, predictions=prediction, parameters={})))
                 metrics = summarize(paired, bootstrap_replicates=10000
                                     if experiment.identity.get('profile') == 'free-data-v1' else 1000)
                 gate = historical_gate(metrics, wins, h)
                 if len(folds) != 8:
                     gate.update(passes=False, reason='shorter_source_cohort_research_only', total_folds=len(folds))
             else:
-                rows = rows_at(experiment.history, [d for fold in folds for d in fold['origins']])
-                metrics = class_metrics(class_labels(rows, h), np.concatenate([fold['predictions'] for fold in folds]))
+                rows = pd.concat([frame for frame, _ in resolved], ignore_index=True)
+                metrics = class_metrics(class_labels(rows, h), np.concatenate([p for _, p in resolved]))
                 gate = {'role': 'separate_direction_model_not_price_gate_substitute'}
             candidates.append({'family': family, 'horizon': h, 'task': task, 'namespace': namespace.name,
                                'inner_score': float(np.mean([f['inner_score'] for f in folds])),
@@ -442,7 +455,7 @@ def compare(experiment):
     report['timing'] = report['ledger_status']['timing']
     path = experiment.root / 'reports' / f'comparison-{content_id(report)[:16]}.json'
     freeze_record(path, report)
-    lines = ['CottonLens continuous research — seen historical evidence, not an independent holdout.',
+    lines = ['CottonLens continuous research â€” seen historical evidence, not an independent holdout.',
              f'Completed fits: {report["completed_fits"]}', '2024+ audit was not used for research or selection.']
     for row in candidates:
         metrics = row['metrics']
@@ -463,6 +476,8 @@ def lock(experiment):
         if existing['identity'] != content_id(experiment.identity):
             raise ValueError('Locked research identity changed')
         return existing
+    if sorted(f['fold'] for f in experiment.identity['split']['folds']) != list(range(1, 9)):
+        raise ValueError('Both horizons need complete eight-fold evidence')
     report = compare(experiment)
     chosen = {}
     for h in (1, 5):
@@ -476,20 +491,26 @@ def lock(experiment):
 
 
 def reproduce(experiment):
+    from cottonlens_ml.research.reproduction import (
+        plan,
+        receipt_path,
+        verified_receipt,
+    )
+
     locked = read_record(experiment.root / 'locked.json')
-    for h, candidate in locked['horizons'].items():
-        differences = []
-        for fold in experiment.identity['split']['folds']:
-            path = experiment.root / 'decisions' / candidate['namespace'] / f'{candidate["family"]}-t{h}-fold{fold["fold"]}.json'
-            decision = read_record(path)
-            fresh = experiment.outer(decision['chosen'], fold, candidate['namespace'], repeat='reproduction')
-            original = read_record(experiment.root / 'outer' / candidate['namespace'] / path.name)
-            differences.append(float(np.max(np.abs(np.asarray(fresh['predictions']) - original['predictions']))))
-        receipt = {'max_abs_log_return_difference': max(differences), 'fresh_fits': True,
-                   'status': 'passed' if max(differences) <= 1e-6 else 'failed'}
-        freeze_record(experiment.root / f'reproduction-t{h}.json', receipt)
+    plans = plan(experiment, locked)
+    for h, folds in plans.items():
+        target = receipt_path(experiment, h)
+        legacy = experiment.root / f'reproduction-t{h}.json'
+        if not target.exists() and not legacy.exists():
+            for item in folds:
+                experiment.outer(item.chosen, item.fold, item.namespace, repeat='reproduction')
+        receipt = verified_receipt(experiment, locked, h, folds)
+        if target.exists() and read_record(target) != receipt:
+            raise ValueError('Bound reproduction receipt disagrees with verified native evidence')
+        freeze_record(target, receipt)
         if receipt['status'] != 'passed':
-            raise ValueError('Fresh GPU reproduction exceeds 1e-6; release verification blocked')
+            raise ValueError('Fresh reproduction exceeds 1e-6; release verification blocked')
 
 
 def refinement_search(experiment, round_name):
@@ -506,7 +527,7 @@ def main():
     parser.add_argument('--round', choices=('A', 'B', 'C', 'D', 'E'), default='A')
     parser.add_argument('--extension', type=int, default=0)
     parser.add_argument('--publication-package', type=Path, action='append', default=[])
-    parser.add_argument('--profile', choices=('legacy', 'free-data-v1', 'full-year-v1', 'ams-exploration-v1', 'fas-exploration-v1', 'nass-exploration-v1', 'wasde-exploration-v1', 'cftc-exploration-v1', 'fx-exploration-v1', 'crop-exploration-v1', 'weather-exploration-v1', 'oncall-exploration-v1', 'oncall-exploration-v2', 'recency-pilot-v1', 'availability-clock-pilot-v1', 'return-path-pilot-v1', 'agri-transfer-pilot-v1', 'agri-nonlinear-pilot-v1', 'statistical-pilot-v1', 'nonlinear-path-pilot-v1', 'wasde-text-pilot-v1', 'fundamental-joint-pilot-v1', 'wasde-regional-t1-pilot-v1'), default='legacy')
+    parser.add_argument('--profile', choices=('legacy', 'free-data-v1', 'full-year-v1', 'ams-exploration-v1', 'fas-exploration-v1', 'nass-exploration-v1', 'wasde-exploration-v1', 'cftc-exploration-v1', 'fx-exploration-v1', 'crop-exploration-v1', 'weather-exploration-v1', 'oncall-exploration-v1', 'oncall-exploration-v2', 'recency-pilot-v1', 'availability-clock-pilot-v1', 'return-path-pilot-v1', 'agri-transfer-pilot-v1', 'agri-nonlinear-pilot-v1', 'statistical-pilot-v1', 'nonlinear-path-pilot-v1', 'wasde-text-pilot-v1', 'fundamental-joint-pilot-v1', 'wasde-regional-t1-pilot-v1', 'nass-regional-t1-pilot-v1', 'weak-signal-control-v1', 'paired-price-loss-control-v1', 'contract-curve-t1-pilot-v1', 'contract-curve-t5-pilot-v1', 'named-label-control-t5-v1', 'named-capacity-control-t5-v1', 'named-history-source-control-t5-v1', 'named-weak-signal-control-t5-v1', 'named-cftc-source-control-t5-v1'), default='legacy')
     parser.add_argument('--registration-root', type=Path)
     parser.add_argument('--decision-contract', type=Path)
     parser.add_argument('--market-file', type=Path)
@@ -527,6 +548,42 @@ def main():
     parser.add_argument('--oncall-table', type=Path)
     parser.add_argument('--max-minutes', type=float, default=60.)
     args = parser.parse_args()
+    if args.profile == 'named-cftc-source-control-t5-v1':
+        from cottonlens_ml.research.named_cftc_control import dispatch
+        dispatch(args)
+        return
+    if args.profile == 'named-weak-signal-control-t5-v1':
+        from cottonlens_ml.research.named_weak_execution import dispatch
+        dispatch(args)
+        return
+    if args.profile == 'named-history-source-control-t5-v1':
+        from cottonlens_ml.research.named_history_control import dispatch
+        dispatch(args)
+        return
+    if args.profile == 'named-capacity-control-t5-v1':
+        from cottonlens_ml.research.named_capacity_control import dispatch
+        dispatch(args)
+        return
+    if args.profile == 'named-label-control-t5-v1':
+        from cottonlens_ml.research.named_label_control import dispatch
+        dispatch(args)
+        return
+    if args.profile in ('contract-curve-t1-pilot-v1', 'contract-curve-t5-pilot-v1'):
+        from cottonlens_ml.research.contract_curve_execution import dispatch
+        dispatch(args)
+        return
+    if args.profile == 'paired-price-loss-control-v1':
+        from cottonlens_ml.research.paired_price_loss import dispatch
+        dispatch(args)
+        return
+    if args.profile == 'weak-signal-control-v1':
+        from cottonlens_ml.research.weak_signal import dispatch
+        dispatch(args)
+        return
+    if args.profile == 'nass-regional-t1-pilot-v1':
+        from cottonlens_ml.research.nass_regional_execution import dispatch
+        dispatch(args)
+        return
     if args.profile == 'wasde-regional-t1-pilot-v1':
         from cottonlens_ml.research.wasde_regional_execution import dispatch
         dispatch(args)

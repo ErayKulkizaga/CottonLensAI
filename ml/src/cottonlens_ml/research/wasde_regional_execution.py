@@ -206,10 +206,10 @@ def run(experiment, max_minutes):
                           record_frame_fn=record_frame, output_fn=output, before_fit=before_fit)
 
 
-def learning_control(experiment):
+def learning_control(experiment, *, horizon=1, recipe_fn=recipe):
     """One separately indexed synthetic fit; never consumes or masquerades as OOS fits."""
     frame, train, _, test = synthetic_control('known_signal')
-    spec = recipe(experiment.identity['design'], 'numeric_D0', 1)
+    spec = recipe_fn(experiment.identity['design'], 'numeric_D0', horizon)
     rng = np.random.default_rng(703)
     for name in spec['features']:
         if name not in frame:
@@ -220,7 +220,7 @@ def learning_control(experiment):
     ledger = Ledger(experiment.root / 'learning-control-ledger', identity)
     record = ledger.run({'role': 'synthetic_known_signal_not_market_evidence', 'recipe': spec, 'synthetic_seed': 703},
                         lambda workspace: fit_predict(frame, train, None, test, spec, workspace, iterations=1))
-    naive = evaluate(test.cotton_close.to_numpy(), test.target_return_1.to_numpy(), np.zeros(len(test)))['mae']
+    naive = evaluate(test.cotton_close.to_numpy(), test[f'target_return_{horizon}'].to_numpy(), np.zeros(len(test)))['mae']
     controls = {'ridge/known_signal': {'relative_mae_gain': 1 - record['result']['metrics']['mae'] / naive}}
     failures = control_failures(controls, ('ridge',))  # Re-evaluate, never trust cached passed prose.
     freeze_record(experiment.root / 'learning-control.json', {'status': 'failed' if failures else 'passed',
@@ -230,18 +230,19 @@ def learning_control(experiment):
         raise ValueError('Ridge synthetic learning control failed; no market fitting')
 
 
-def verify_learning_evidence(folder, identity):
+def verify_learning_evidence(folder, identity, *, horizon=1):
     control = read_record(folder / 'learning-control.json')
     record = read_record(folder / f'learning-control-ledger/completed/{control["fit_record"]}.json')
     if (control['policy'] != VALIDATION_POLICY or control['market_evidence'] is not False
             or control['status'] != 'passed' or control_failures(control['controls'], ('ridge',))
-            or record['identity']['source_id'] != identity['source_id'] or not record['files']):
+            or record['identity']['source_id'] != identity['source_id'] or not record['files']
+            or record['specification']['recipe']['horizon'] != horizon):
         raise ValueError('Learning evidence missing, failed or belongs to different source')
     for name, expected in record['files'].items():
         if not safe_member(name) or digest(folder / 'learning-control-ledger' / name) != expected:
             raise ValueError('Learning checkpoint changed')
     _, _, _, test = synthetic_control('known_signal')
-    actual, close = test.target_return_1.to_numpy(), test.cotton_close.to_numpy()
+    actual, close = test[f'target_return_{horizon}'].to_numpy(), test.cotton_close.to_numpy()
     error = evaluate(close, actual, np.asarray(record['result']['predictions']))['mae']
     baseline = evaluate(close, actual, np.zeros(len(test)))['mae']
     gain = 1 - error / baseline
@@ -249,13 +250,13 @@ def verify_learning_evidence(folder, identity):
         raise ValueError('Learning score differs from stored predictions')
 
 
-def verify_fit_payloads(folder, identity):
+def verify_fit_payloads(folder, identity, *, namespace=NAMESPACE, horizon=1, recipe_fn=recipe):
     history = pd.read_parquet(folder / 'history.parquet')
     paths = sorted((folder / 'ledger/completed').glob('*.json'))
     if len(paths) != identity['design']['fit_budget']['total']:
-        raise ValueError('All 424 fit receipts required before scientific comparison')
+        raise ValueError(f'All {identity["design"]["fit_budget"]["total"]} fit receipts required before scientific comparison')
     records = {}
-    allowed = [recipe(identity['design'], group, 1) for group in identity['design']['groups']]
+    allowed = [recipe_fn(identity['design'], group, horizon) for group in identity['design']['groups']]
     for path in paths:
         record = read_record(path)
         spec = record['specification']
@@ -265,7 +266,7 @@ def verify_fit_payloads(folder, identity):
                 or len(record['result']['predictions']) != len(spec['test_dates'])):
             raise ValueError('Fit identity mismatch')
         test = rows_at(history, spec['test_dates'])
-        train = training_rows(history, test.date.min(), spec['recipe'], identity['split']['coverage_start'])
+        train = training_rows(history, test.date.min(), spec['recipe'], identity['split'].get('coverage_start'))
         if (spec['train_dates'] != train.date.dt.strftime('%Y-%m-%d').tolist()
                 or spec['validation_dates'] or spec['train_identity'] != frame_identity(train, list(train))):
             raise ValueError('Fit training cohort/maturity differs from frozen history')
@@ -278,10 +279,10 @@ def verify_fit_payloads(folder, identity):
         records[key] = record
     for fold in identity['split']['folds']:
         for group in identity['design']['groups']:
-            frame = pd.DataFrame(read_record(folder / f'{NAMESPACE}-outputs/{group}-t1-year{fold["year"]}.json')['records'])
+            frame = pd.DataFrame(read_record(folder / f'{namespace}-outputs/{group}-t{horizon}-year{fold["year"]}.json')['records'])
             predicted = []
             for index, block in enumerate(chunks(history, fold['origins'])):
-                key = (f'path-outer-{group}-{fold["year"]}-{index}', content_id(recipe(identity['design'], group, 1)))
+                key = (f'path-outer-{group}-{fold["year"]}-{index}', content_id(recipe_fn(identity['design'], group, horizon)))
                 saved = records[key]
                 if saved['specification']['test_dates'] != block.date.dt.strftime('%Y-%m-%d').tolist():
                     raise ValueError('Outer fit origin mismatch')
@@ -302,22 +303,26 @@ def decision(arms, paired):
     return 'INCREMENTAL_BUT_BELOW_GOAL' if positive else 'INCONCLUSIVE_OR_DELAY_SENSITIVE'
 
 
-def compare(folder, repetitions=10000):
+def compare(folder, repetitions=10000, *, namespace=NAMESPACE, profile=None,
+            verify_fn=None, output_fn=None, decision_fn=None, verify_fits_fn=None,
+            horizon=1, verify_learning_fn=None):
     folder = Path(folder)
-    ready, history = verify_execution(folder)
+    ready, history = (verify_fn or verify_execution)(folder)
     design = ready['identity']['design']
-    expected = {f'{group}-t1-year{fold["year"]}.json' for group in design['groups'] for fold in design['split']['folds']}
-    paths = list((folder / f'{NAMESPACE}-outputs').glob('*.json'))
+    if design['recipe']['horizon'] != horizon:
+        raise ValueError('Comparison horizon differs from registered recipe')
+    expected = {f'{group}-t{horizon}-year{fold["year"]}.json' for group in design['groups'] for fold in design['split']['folds']}
+    paths = list((folder / f'{namespace}-outputs').glob('*.json'))
     if {path.name for path in paths} - expected:
         raise ValueError('Unregistered output exists')
     if {path.name for path in paths} != expected:
-        return {'status': 'pending', 'complete_outputs': len(paths), 'required_outputs': 20}
-    verify_learning_evidence(folder, ready['identity'])
-    verify_fit_payloads(folder, ready['identity'])
+        return {'status': 'pending', 'complete_outputs': len(paths), 'required_outputs': len(expected)}
+    (verify_learning_fn or verify_learning_evidence)(folder, ready['identity'])
+    (verify_fits_fn or verify_fit_payloads)(folder, ready['identity'])
     frames = {group: [] for group in design['groups']}
     for fold in design['split']['folds']:
         for group in design['groups']:
-            _, frame = output(folder, f'{group}-t1-year{fold["year"]}.json', fold, group, 1, design, history)
+            _, frame = (output_fn or output)(folder, f'{group}-t{horizon}-year{fold["year"]}.json', fold, group, horizon, design, history)
             frame['year'], frame['group'] = fold['year'], group
             frames[group].append(frame)
     combined = {group: pd.concat(values, ignore_index=True) for group, values in frames.items()}
@@ -366,14 +371,14 @@ def compare(folder, repetitions=10000):
         raise ValueError('Frozen prediction export changed')
     if not export.exists():
         export.write_bytes(encoded)
-    body = {'status': 'complete', 'profile': PROFILE, 'registration_id': ready['identity']['registration_id'],
+    body = {'status': 'complete', 'profile': profile or PROFILE, 'registration_id': ready['identity']['registration_id'],
             'ready_sha256': digest(folder / 'ready.json'), 'decision_contract_sha256': ready['identity']['decision_contract_sha256'],
             'fits': design['fit_budget']['total'], 'origin_count': len(anchor), 'prediction_rows': len(rows),
-            'arms': arms, 'paired': paired, 'decision': decision(arms, paired),
+            'arms': arms, 'paired': paired, 'decision': (decision_fn or decision)(arms, paired),
             'availability_verified': False, 'gate_evaluated': False, 'release_allowed': False,
             'independent_holdout': False, 'primary': design['rules']['primary'],
             'predictions_sha256': digest(export), 'output_sha256': {path.name: digest(path) for path in paths}}
-    freeze_record(folder / 'reports' / f'regional-{content_id(body)[:16]}.json', body)
+    freeze_record(folder / 'reports' / f'{namespace}-{content_id(body)[:16]}.json', body)
     return body
 
 

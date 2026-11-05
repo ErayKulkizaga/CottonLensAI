@@ -1,0 +1,92 @@
+{
+  "schema": 1,
+  "profile": "contract-curve-t5-pilot-v1",
+  "status": "zero_fit_preregistered_assumption_sensitivity",
+  "source_commit": "c5322b2b3eeea83a578add22d9fbf42abaa082af",
+  "source_id": "20d0c1869afc35b9c83b34cfd3fc8de8ec90a56ebd64c1cf3dcb3b085685d7b3",
+  "source_files": 252,
+  "registration_id": "aeed8a21350c322a34125f080a9c5adc77029ce4407e1d3e8356a2a2774ca8b6",
+  "preregistered_sha256": "91aaf38489cfb56da3187c955a5b4a0a770051c572324695495155443675f09d",
+  "complete_sha256": "63166274628d345dcb2423b9390fe427268933e18a7bc562829a4e2a43bee752",
+  "decision_contract_sha256": "d20db184f103d2c9429fbb65d7fc2b4d1dd54952f87bc68c4dcfe758d282e6ee",
+  "source_inventory_sha256": "9356ed3fc7e41f8c6d6bc63e2060d69bc553171f67e55f9f22b0714ae58927cf",
+  "registered_history_sha256": "575c19cb25437a28ed6b1c1c3062eb48becead51571e3b57d76b7306e5e4f792",
+  "parent_ready_sha256": "6865dd1d8f1a5afef10a7397b6eba94d9e0d57a56290f425f1fca0a971fe8693",
+  "parent_history_sha256": "575c19cb25437a28ed6b1c1c3062eb48becead51571e3b57d76b7306e5e4f792",
+  "parent_result_proof_sha256": "496cebd3e9c55de747118a81d608c0a2a2e9681419e8ed4bc1bfcc48b1349b7f",
+  "target_integrity_proof_sha256": "ef19df6cdd2142dc9eb5acc5b0e89929cfc53e7e81d380d7bb66a81af13ee704",
+  "same_t1_features_labels_and_origins": true,
+  "origin_count": 749,
+  "horizon": 5,
+  "fit_budget": {
+    "inner": 108,
+    "outer": 144,
+    "total": 252,
+    "synthetic_guard": 1,
+    "maximum_all_fits": 253,
+    "annual_outputs": 12,
+    "prediction_rows": 2996,
+    "processes": 1,
+    "threads": 2,
+    "session_minutes": 30
+  },
+  "rules": {
+    "primary": "Selected numeric_D0 versus mask_D0 paired absolute price error; positive favors numeric",
+    "secondary": "D1 robustness; raw/selected, active rate, direction, annual, top1% Naive-error removal",
+    "bootstrap": {
+      "repetitions": 10000,
+      "seed": 42,
+      "blocks": [
+        20,
+        60
+      ],
+      "preserve_years": true
+    },
+    "source_effect": "Both D0 difference interval lower bounds >0; D1 is secondary and cannot replace primary",
+    "practical_goal": {
+      "naive_gain_pct": 5,
+      "direction_pct": 55,
+      "year_wins": "6/8"
+    },
+    "gate_evaluated": false,
+    "automatic_release": false,
+    "interpretation": "Same reviewed three years and UTC/first-vintage assumptions; continuous-target contribution is not same-contract or position skill",
+    "transition_guard": "Ex-post transition/unchanged/unknown error attribution only after full-cohort scoring; never features, cohort filters or selection",
+    "overlap": "T5 labels overlap; preserve year blocks20/60;74 crossed origins are15 observed transitions, not independent events"
+  },
+  "python": "3.12.14",
+  "versions": {
+    "numpy": "2.1.3",
+    "pandas": "2.2.3",
+    "pyarrow": "21.0.0",
+    "scipy": "1.18.1",
+    "scikit-learn": "1.6.1",
+    "threadpoolctl": "3.7.0"
+  },
+  "lock_sha256": "b30b84923ae5b528a6a30e55d4e15ab8e1c658937ed74b14b2433668d507e3f5",
+  "release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/contract-curve-t5-preregistration-20261010",
+  "local_checks": {
+    "narrow_regressions_passed": 69,
+    "new_t5_tests_in_broad_run": 8,
+    "ml_tests_passed": 1031,
+    "ml_tests_skipped": 3,
+    "ruff_passed": true,
+    "gpu_verification_run": false
+  },
+  "new_market_fits": 0,
+  "new_synthetic_fits": 0,
+  "completed_experiment": false,
+  "historical_source_admitted": false,
+  "availability_verified": false,
+  "first_vintage_verified": false,
+  "independent_holdout": false,
+  "gate_evaluated": false,
+  "automatic_release": false,
+  "classification": "INCONCLUSIVE",
+  "classification_scope": "Prerecorded design only, no T5 market result.",
+  "original_raw_inputs_preserved": 1000,
+  "old_studies_preserved": 160,
+  "old_recipes_preserved": 513,
+  "old_proofs_preserved": 72,
+  "limits": "Horizon-only fixed-recipe sensitivity, not historical PIT or deployable/position skill. Ex-post contract strata are report-only, never selection/features;3 years cannot evaluate6/8 gate."
+}

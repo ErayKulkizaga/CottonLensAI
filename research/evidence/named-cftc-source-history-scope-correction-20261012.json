@@ -1,0 +1,21 @@
+{
+  "status": "canonical_lookup_scope_corrected_without_refit",
+  "original_proposal_scope_id": "889c03f2952e7f3ed6e480a48dffda25f1fc822b5e3036a4a42fcdf9ac6f0f72",
+  "canonical_scope_id": "105f1106c9bae0cdad3f5b66e494e8241c459ebbc58526b90e3b34a2d0e411a7",
+  "canonical_scope": {
+    "identity_id": "4966a9fe44b306fe7864e342910683a160545bb1582d541fa44567efe9a34661",
+    "source_id": "8eca71445366d207b74393acad43968ab5f8f5f6c6954ee21ce22dda24c3af38",
+    "data_id": "5a14da3d6ba3e14dd6b625eb5d40df2ee0b9c0aa2729468b0326b938b19b6dc5",
+    "split_id": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+    "profile": "named-cftc-source-control-t5-v1"
+  },
+  "new_fits": 0,
+  "scientific_design_changed": false,
+  "frozen_originals_unchanged": true,
+  "reason": "Initial no-match helper omitted identity_id/split_id and used design_id. Match history_index exact scope instead. Related-evidence review still covered old experiments; no-match never established novelty.",
+  "before_fit_index_status": "RELATED_EVIDENCE",
+  "before_fit_index_exact_matches": 0,
+  "postfit_status": "REPEAT_FIT_RECIPE",
+  "completed_market_fits_found": 44,
+  "record_id": "581eccd9e3ff8b17b5b5055967810064c802d0656b70e1a58fbbc1c0d764d244"
+}

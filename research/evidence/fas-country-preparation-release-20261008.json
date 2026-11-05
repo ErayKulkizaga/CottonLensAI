@@ -1,0 +1,110 @@
+{
+  "schema": 1,
+  "release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/fas-country-preparation-20261008",
+  "market_fits": 0,
+  "ml_source_id": "d67ca7f4c74a0d6901cc6484105a622f2fab38e7eb9dbbb8cbe4f74ded325176",
+  "archive": {
+    "name": "fas-country-preparation-20261008-v1.zip",
+    "sha256": "656dad160da6634434f3bfc784fbcf2b97dee819e60266506ecf3d6aa5739f1f",
+    "bytes": 1544494
+  },
+  "members": {
+    "country-panel.json": {
+      "sha256": "84557e73abbfe1736c0781da59443dcf26c2394d73db8ac4ab5f3c0ff085be03",
+      "bytes": 2578081
+    },
+    "summary.json": {
+      "sha256": "5359b984b21f513d6b6a6a30625b29f440417263678464b100b2b5f1d3ac449e",
+      "bytes": 1014
+    },
+    "source.zip": {
+      "sha256": "8b95ab652b59ed02d85896cc70073f4ec9afcf63d2fd272525751243f34e4de3",
+      "bytes": 685155
+    },
+    "environment.json": {
+      "sha256": "66929c4f160134ec5343234aa0dcbb510d008e69f6b934039d820198aa5ee49b",
+      "bytes": 161
+    },
+    "preparation.json": {
+      "sha256": "742057802bb57f969bec70cb2f193df5b545751ba4065c02d82dd24808681b03",
+      "bytes": 3080
+    },
+    "inputs/weekly-sales-2010-2023.manifest.json": {
+      "sha256": "4c37a2ad8af2216ac4b4e3da9cecbdd3a882e377f25af2adacadcc20bed1bae2",
+      "bytes": 2344
+    },
+    "inputs/weekly-sales-2010-2023.csv": {
+      "sha256": "cd5cd3f7434bf65e6b9c873006e06bef9e6586fb62cdbc16ef5541cdf49af827",
+      "bytes": 46266
+    },
+    "inputs/raw/01cc793bdbd86f13e320caa68f42663e4f87400dbe564c11179fba6c7ae0e7a1/eff127d6cf9e451cef84f4f888ee643ba64ae389f942f296584cdda5266b1d1c/source.json": {
+      "sha256": "eff127d6cf9e451cef84f4f888ee643ba64ae389f942f296584cdda5266b1d1c",
+      "bytes": 565154
+    },
+    "inputs/raw/0e14eb99e4c841a2ed5b7d3fc1c984a8831e0e427fc024ceb0c7418d5b463125/cfd8fd78f5701771b1e6b6916005aad60dd69839af0b9f0939312b7d22f1dc0d/source.json": {
+      "sha256": "cfd8fd78f5701771b1e6b6916005aad60dd69839af0b9f0939312b7d22f1dc0d",
+      "bytes": 537442
+    },
+    "inputs/raw/21a59f0f646b9eff5437acc8ab8a4cfe69dc4b542c9f4c331d8df2624a57ae44/669569a067490bfdf4f4f881bc961d74a207dcf1add43cd1fd39d42a198e454b/source.json": {
+      "sha256": "669569a067490bfdf4f4f881bc961d74a207dcf1add43cd1fd39d42a198e454b",
+      "bytes": 477972
+    },
+    "inputs/raw/28f907d0e22b20b2fe486ce4fba574685d6da5cfa4ec6ccf1f1a69a1b711345d/38449fd690f631f2cabc4cca7373e9923487680ae242efd0ec12a36de49b811b/source.json": {
+      "sha256": "38449fd690f631f2cabc4cca7373e9923487680ae242efd0ec12a36de49b811b",
+      "bytes": 3264
+    },
+    "inputs/raw/499170226fba472752e6abebd060d5d53e74106cb64d5049811c9e0bc5fbecbf/9973f506fa67950687cb3f945c36cf601ed3cf8c49420ee2ada45bfc52ad3c83/source.json": {
+      "sha256": "9973f506fa67950687cb3f945c36cf601ed3cf8c49420ee2ada45bfc52ad3c83",
+      "bytes": 544345
+    },
+    "inputs/raw/5134a037d253d736f77e533ff7c1846e2af75e993d3c356f845374a346f52eb9/cf8f912c5902cea2f895ba5f30e07fbf6839200b081e58c8d8ee53eb989bad83/source.json": {
+      "sha256": "cf8f912c5902cea2f895ba5f30e07fbf6839200b081e58c8d8ee53eb989bad83",
+      "bytes": 631713
+    },
+    "inputs/raw/5cf3005930c0e28efae867be4f74ce0b321ec71d7ff77fcff7dab6899539f8b0/651ca742efaaff1ee02fa218b59b1c15e131b2b633a08094d65646b4b2265ea1/source.json": {
+      "sha256": "651ca742efaaff1ee02fa218b59b1c15e131b2b633a08094d65646b4b2265ea1",
+      "bytes": 550697
+    },
+    "inputs/raw/6a7fa40f32eea940e0084f625a07e1c04b39e7a12cf24a3bb8d2282fe2f206cd/c6cae16f4dc9c1dd7449ea6df2df593627bbb12bb48cfe1ed3957b050f3d366e/source.json": {
+      "sha256": "c6cae16f4dc9c1dd7449ea6df2df593627bbb12bb48cfe1ed3957b050f3d366e",
+      "bytes": 529009
+    },
+    "inputs/raw/6f884148e15169ac0dea52e3890f059b1f8454a8c3364911ff075014b12df2a0/6136325c8ac5171c7269f0fde7f28cb819ce99a77ae1ee94b61c54e7cc9a7480/source.json": {
+      "sha256": "6136325c8ac5171c7269f0fde7f28cb819ce99a77ae1ee94b61c54e7cc9a7480",
+      "bytes": 508284
+    },
+    "inputs/raw/83ac63116d3c45f32b59276bb0c8d267f8c3ae1235e295f81fb26c4ff8f49f95/e07331166bb185785a846b10da15a8843617474c5998b1ee3fd0502f110db5d4/source.json": {
+      "sha256": "e07331166bb185785a846b10da15a8843617474c5998b1ee3fd0502f110db5d4",
+      "bytes": 459783
+    },
+    "inputs/raw/9ee3d50ead459069e6b1ba2235ebf3571585e2a414f013c8e2335139ea527631/3191b8e2cabbc1ae2cd039d1e89a80ed840b47031a607ceae94ec0d35531e59f/source.json": {
+      "sha256": "3191b8e2cabbc1ae2cd039d1e89a80ed840b47031a607ceae94ec0d35531e59f",
+      "bytes": 541974
+    },
+    "inputs/raw/ad36dd3e5362cd8b0ecc90620902671595c7c53c9e2334757ad52b4efc2f3096/2f9f9024811da98d3fe250b1e78f5316060efa838959de0adc4212b54e392751/source.json": {
+      "sha256": "2f9f9024811da98d3fe250b1e78f5316060efa838959de0adc4212b54e392751",
+      "bytes": 521065
+    },
+    "inputs/raw/b17d0eb9d9bcfbbba2145e3c6b0adf9babf492ea631f672f08d4b4448b062004/46e66bbff9052b283e0ae0b9cc9f29b970f515f366e8a9cc85eb20f4deccaea0/source.json": {
+      "sha256": "46e66bbff9052b283e0ae0b9cc9f29b970f515f366e8a9cc85eb20f4deccaea0",
+      "bytes": 508235
+    },
+    "inputs/raw/e67503c784321ff7a6bdff639a1ee9dfbb4beefdabf1f51aa6df48724a102a84/959bf35189682a205daa84ae0181696f09e1e98eb5af17fde2f82480c94da185/source.json": {
+      "sha256": "959bf35189682a205daa84ae0181696f09e1e98eb5af17fde2f82480c94da185",
+      "bytes": 534752
+    },
+    "inputs/raw/e761a08ec19c52271d940e250e34fbe713ce921ad0e91db75cb797cbc6c2492f/da5dc6bd239597ecf60e9584baf594ad09ba2b99d3ad8c4376fe44e035378c62/source.json": {
+      "sha256": "da5dc6bd239597ecf60e9584baf594ad09ba2b99d3ad8c4376fe44e035378c62",
+      "bytes": 607390
+    },
+    "inputs/raw/f40a00e257fe836b7f62ef434936d34d01f29c3d89ee08c80b74a120352b6b01/88bda4ee9b117aacce67af0358781c16fdfa3bfe0748e570e411a88e40e89b9e/source.json": {
+      "sha256": "88bda4ee9b117aacce67af0358781c16fdfa3bfe0748e570e411a88e40e89b9e",
+      "bytes": 480822
+    },
+    "README.txt": {
+      "sha256": "e3807b5e2a0488d887b3d3fa8683dbc2b28cf8f652be0ad0f62edd2337c86d46",
+      "bytes": 863
+    }
+  },
+  "source_bundle_files": 221
+}

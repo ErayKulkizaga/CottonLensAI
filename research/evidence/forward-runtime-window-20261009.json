@@ -1,0 +1,186 @@
+{
+  "schema": "forward-runtime-window-v1",
+  "kind": "no_fit_operational_deployment",
+  "verified_at": "2026-10-09T09:14:03.370822+00:00",
+  "code_id": "44f3d16f90af44d9ec0ecbc058055c89a2779e5b3e7ad2006eed19428c0ed965",
+  "frozen_ml_files": 226,
+  "market_fits": 0,
+  "scheduler": {
+    "existing_task_updated": true,
+    "original_xml_sha256": "b96883e08ddd42f178dfb0d3d8844462d866788c23ac25ca55f6e5d31bc55086",
+    "updated_xml_sha256": "ec87a8e5735c6e0a0bb0a891043d5df91cecc2ae0af7ee3514ff9327f2fe941b",
+    "triggers_unchanged": true,
+    "principal_unchanged": true,
+    "wake_to_run": true,
+    "system_power_policy_changed": false,
+    "task_result": 0,
+    "task_result_basis": "Get-ScheduledTaskInfo after explicitly started real invocation"
+  },
+  "run": {
+    "original_file_sha256": "5a02bc61524b9760623f98b5ffa05b4ae14f60f7ee643e0343f1c8471d0cc4a8",
+    "original_record_id": "09c7897b42e41af21fadcd21ab8731df9671f0cfefa021fb02ee657d231fe7ef",
+    "observed_at": "2026-10-09T09:09:54.933403+00:00",
+    "execution_source_id": "44f3d16f90af44d9ec0ecbc058055c89a2779e5b3e7ad2006eed19428c0ed965",
+    "phase": "collection",
+    "training": false,
+    "forward": {
+      "registered_origins": 6,
+      "published_origins": 0,
+      "required_origins": 126,
+      "added_origins": 0,
+      "performance_feedback": "closed_until_all_targets_mature"
+    },
+    "forward_record_ids": [
+      "dac2a4880f654eeea11395f0f3fa2831f87e5f95b3c36a2bbe68fb4fddb11de6",
+      "0515b9d507e1bc393f675831ff25b62eb05e2d4b4852dced9112b709dce2ae05",
+      "da8568ae869d394d09e5d4dfbcfe5b12a585d37e6ad4daf40cd1e9938010d8a1",
+      "82ec665714a9f06740847b76580a179714ead95aca6c346b7381d23d1d74c96b",
+      "99d6347c841877aaa77510c36d799b0351a82f0e5c7e96a67724ff78b25b075e",
+      "6d8b332b7eed720a18d929600c5d01d157d914442930818559f417f1620f304e"
+    ],
+    "source_statuses": [
+      {
+        "source": "CT=F",
+        "status": "observed"
+      },
+      {
+        "source": "ams-api",
+        "status": "credential_not_available_locally"
+      },
+      {
+        "source": "fas-api",
+        "status": "credential_not_available_locally"
+      },
+      {
+        "source": "nass-api",
+        "status": "credential_not_available_locally"
+      }
+    ]
+  },
+  "quote_receipt": {
+    "symbol": "CT=F",
+    "observed_available_at": "2026-10-09T09:09:56.414046+00:00",
+    "source_sha256": "4c9305fbf907008168fa9fae9bfc1e6fcba3fa8d511af16dbd86f43f5b262b49",
+    "last_bar_date": "2026-10-08",
+    "first_publication_verified": false
+  },
+  "forward_audit": {
+    "status": "awaiting_forward_predictions",
+    "audit_schema": "prospective-baseline-status-v1",
+    "audited_at": "2026-10-09T09:14:03.370822+00:00",
+    "baseline_lock_present": true,
+    "lock_id": "29cb4f5dbc89afe5bed39d0c55ee333f6b96ddf2be1bd4a664974468655dbb18",
+    "registered_origins": 6,
+    "published_origins": 0,
+    "missing_origins": 6,
+    "required_origins": 126,
+    "remaining_origin_slots": 120,
+    "recorded_coverage": 0.0,
+    "unregistered_origins": [],
+    "pending_publication_origins": [],
+    "origins": [
+      {
+        "origin": "2026-10-01",
+        "state": "missing",
+        "diagnosis": "no_archived_pre_cutoff_input",
+        "decision_at": "2026-10-02T00:15:00+00:00",
+        "recorded_at": "2026-10-02T17:36:19.881676+00:00",
+        "pre_cutoff_snapshots": 0,
+        "first_archived_input_at": "2026-10-02T17:36:12.306058+00:00",
+        "source_receipt_id": "71646ddb1613a4ebdec3f36a6bdbd7446961168e596e8a1ba34f3b11552e5c44",
+        "input_sha256": "a6cc89a6670640fbbe3e85cda612d2b8d1a13f5c4146ab2b5a44641fae613303"
+      },
+      {
+        "origin": "2026-10-02",
+        "state": "missing",
+        "diagnosis": "no_archived_pre_cutoff_input",
+        "decision_at": "2026-10-03T00:15:00+00:00",
+        "recorded_at": "2026-10-03T09:05:08.056238+00:00",
+        "pre_cutoff_snapshots": 0,
+        "first_archived_input_at": "2026-10-03T09:05:07.455659+00:00",
+        "source_receipt_id": "31f25be3fe872b58b7c25d14d3cda38a04527aa4d5abeaffccddfce7b2181b00",
+        "input_sha256": "7050fa84edfc01abb3ee87ddc6eb6006ea7271be67aa7ad2ac0fde3125b0444a"
+      },
+      {
+        "origin": "2026-10-05",
+        "state": "missing",
+        "diagnosis": "no_archived_pre_cutoff_input",
+        "decision_at": "2026-10-06T00:15:00+00:00",
+        "recorded_at": "2026-10-08T11:05:08.094540+00:00",
+        "pre_cutoff_snapshots": 0,
+        "first_archived_input_at": "2026-10-08T11:05:08.000788+00:00",
+        "source_receipt_id": "324ac066d202f95c1411948bca63904acd0c0b6ea33694c8dff0aa5bf863d9bf",
+        "input_sha256": "c36456749b545b58c83c95b2c2b68e255c053bb6ccef24ad2f4c4e1c0cefc9d6"
+      },
+      {
+        "origin": "2026-10-06",
+        "state": "missing",
+        "diagnosis": "no_archived_pre_cutoff_input",
+        "decision_at": "2026-10-07T00:15:00+00:00",
+        "recorded_at": "2026-10-08T11:05:08.094540+00:00",
+        "pre_cutoff_snapshots": 0,
+        "first_archived_input_at": "2026-10-08T11:05:08.000788+00:00",
+        "source_receipt_id": "324ac066d202f95c1411948bca63904acd0c0b6ea33694c8dff0aa5bf863d9bf",
+        "input_sha256": "85a6e1aa86f9bc460506d09c0a5b33930bd3ca028bd628ee22e3ef36f870c42d"
+      },
+      {
+        "origin": "2026-10-07",
+        "state": "missing",
+        "diagnosis": "no_archived_pre_cutoff_input",
+        "decision_at": "2026-10-08T00:15:00+00:00",
+        "recorded_at": "2026-10-08T11:05:08.094540+00:00",
+        "pre_cutoff_snapshots": 0,
+        "first_archived_input_at": "2026-10-08T11:05:08.000788+00:00",
+        "source_receipt_id": "324ac066d202f95c1411948bca63904acd0c0b6ea33694c8dff0aa5bf863d9bf",
+        "input_sha256": "f8b0a0d46c3909c3a9a6f17c269e0b04239136f31a11beab2244060cef4d2992"
+      },
+      {
+        "origin": "2026-10-08",
+        "state": "missing",
+        "diagnosis": "no_archived_pre_cutoff_input",
+        "decision_at": "2026-10-09T00:15:00+00:00",
+        "recorded_at": "2026-10-09T08:05:12.346205+00:00",
+        "pre_cutoff_snapshots": 0,
+        "first_archived_input_at": "2026-10-09T08:05:05.564367+00:00",
+        "source_receipt_id": "3d0e2ea675a098f0ce0dc04bbc407800ab78947aef954a900f0e6d0cbf8fbd6e",
+        "input_sha256": "91889b53d65ebca15a164ddfa233fc256c37fb69d45cf10e45a43e46dc7bc809"
+      }
+    ],
+    "performance_feedback": "not_computed; separate score requires all 126 origins mature",
+    "limits": "Local archive evidence only; no external attestation, provider latency proof or independent model skill."
+  },
+  "preservation": {
+    "original_forward_files": {
+      "forward/baseline-lock.json": "f2061381316b5410717265a472ad42e94161d8da4f105f69945e75b601235237",
+      "forward/baseline-inputs/2026-10-01.parquet": "a6cc89a6670640fbbe3e85cda612d2b8d1a13f5c4146ab2b5a44641fae613303",
+      "forward/baseline-inputs/2026-10-02.parquet": "7050fa84edfc01abb3ee87ddc6eb6006ea7271be67aa7ad2ac0fde3125b0444a",
+      "forward/baseline-inputs/2026-10-05.parquet": "c36456749b545b58c83c95b2c2b68e255c053bb6ccef24ad2f4c4e1c0cefc9d6",
+      "forward/baseline-inputs/2026-10-06.parquet": "85a6e1aa86f9bc460506d09c0a5b33930bd3ca028bd628ee22e3ef36f870c42d",
+      "forward/baseline-inputs/2026-10-07.parquet": "f8b0a0d46c3909c3a9a6f17c269e0b04239136f31a11beab2244060cef4d2992",
+      "forward/baseline-inputs/2026-10-08.parquet": "91889b53d65ebca15a164ddfa233fc256c37fb69d45cf10e45a43e46dc7bc809",
+      "forward/baseline-origins/2026-10-01.json": "dc5ed1c2217cb69075a3343a0ea665a5c83acf87bbdfb67668e424acc9581354",
+      "forward/baseline-origins/2026-10-02.json": "57a19ee658ebcf1f15abb1396d8fcc393a903b47fe3e03167f4fdac0017ddbd2",
+      "forward/baseline-origins/2026-10-05.json": "f71d7f38fa9f46ab3dc3f4f9c4996162b75b739ba39e6ee2e17bdd13f889321b",
+      "forward/baseline-origins/2026-10-06.json": "27b9679b00c50d45d67a0e007c745365636cd01e8a42a8a2743aa0597af1e9fe",
+      "forward/baseline-origins/2026-10-07.json": "dc6d3f942416d9967e9bab8da50f0855be404b96efdf8b7ccfa4d5d0a79edf8b",
+      "forward/baseline-origins/2026-10-08.json": "36a2a309bb26cae3d45877b42dfc2e13d8a16cadf43758accf0834a70c46a322"
+    },
+    "older_registry_records": 140,
+    "older_evidence_files": 36,
+    "trials_sha256": "52b15504c580eaa220bb57815045da55930e268b87e3595d9c13c4934b7e04ff",
+    "primary_checkout_unchanged": true
+  },
+  "followup": {
+    "kind": "thread_heartbeat",
+    "local_time": "03:35 Europe/Istanbul",
+    "quiet_if_unchanged": true
+  },
+  "limits": [
+    "Real daylight collection succeeded; no new in-window publication or predictive skill is demonstrated.",
+    "WakeToRun cannot guarantee execution after shutdown, logout or under restricted OS wake policy.",
+    "Slow-write deadline defect was synthetic-reproduced; no old published baseline predictions existed to be affected.",
+    "Private task XML, machine paths, raw quotes and unsanitized run body are excluded from public evidence.",
+    "Source was deployed reversibly from tested frozen bytes; PR stack remains unmerged; no learned model promotion.",
+    "Actual atomic-file rename may follow the pre-freeze clock by filesystem latency; local timestamp is not external attestation."
+  ]
+}

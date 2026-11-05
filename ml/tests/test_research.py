@@ -65,6 +65,45 @@ def test_missingness_is_train_fitted_and_sequences_preserve_observations():
     assert matrix[0, 30:51, 2].sum() == 21
 
 
+@pytest.mark.parametrize(
+    ('rows', 'window', 'message'),
+    [([0, 2, 1], 2, 'chronological'), ([0, 2, 3], 2, 'consecutive'), ([0, 1, 2], 0, 'positive integer')],
+)
+def test_inputs_refuses_noncausal_or_compressed_sequence(rows, window, message):
+    frame = pd.DataFrame({
+        'date': pd.bdate_range('2023-01-01', periods=4),
+        'cotton_session_index': np.arange(4),
+        'value': np.arange(4, dtype=float),
+    })
+    processor = Preprocessor.fit(frame.head(1), ['value'])
+    origin = frame.iloc[[1 if message == 'chronological' else 2]]
+    with pytest.raises(ValueError, match=message):
+        inputs(frame.iloc[rows], origin, processor, window)
+
+
+def test_inputs_uses_only_the_requested_prefix_and_preserves_order():
+    frame = pd.DataFrame({
+        'date': pd.bdate_range('2023-01-01', periods=5),
+        'cotton_session_index': np.arange(5),
+        'value': np.arange(5, dtype=float),
+    })
+    processor = Preprocessor.fit(frame.head(1), ['value'])
+    visited = []
+
+    class TracingProcessor:
+        def transform(self, rows):
+            visited.extend(rows['value'])
+            return processor.transform(rows)
+
+    values = inputs(frame, frame.iloc[[2, 1]], TracingProcessor(), 2)
+    np.testing.assert_array_equal(values[..., 0], [[1., 2.], [0., 1.]])
+    assert visited == [0., 1., 2.]
+    visited.clear()
+    single = inputs(frame, frame.iloc[[2, 1]], TracingProcessor())
+    np.testing.assert_array_equal(single[:, 0], [2., 1.])
+    assert visited == [2., 1.]
+
+
 @pytest.mark.parametrize('kind', ['raw_log', 'scaled_log', 'price_delta'])
 def test_target_roundtrip_uses_training_only(kind):
     frame = history().head(300)
@@ -76,11 +115,55 @@ def test_target_roundtrip_uses_training_only(kind):
     assert Target.fit(frame.head(150), 5, kind) == transform
 
 
+@pytest.mark.parametrize('field', ['target_return_1', 'variance_target_1', 'gk_target_5'])
+def test_preprocessor_refuses_future_outcome_columns(field):
+    frame = pd.DataFrame({'past_value': [1., 2.], field: [.01, .02]})
+    with pytest.raises(ValueError, match='Future target columns'):
+        Preprocessor.fit(frame, ['past_value', field])
+
+
+@pytest.mark.parametrize('kind', ['raw_log', 'scaled_log', 'price_delta'])
+def test_target_transform_refuses_invalid_training_labels(kind):
+    frame = pd.DataFrame({'cotton_close': [80.], 'target_return_1': [np.nan]})
+    with pytest.raises(ValueError, match='Finite nonempty training targets'):
+        Target.fit(frame, 1, kind)
+
+
 def test_causal_feature_extension_is_unchanged_by_future():
     frame = history().head(350)
     earlier = feature_history(frame).iloc[:200]
     frame.loc[200:, 'cotton_close'] *= 5
     pd.testing.assert_frame_equal(earlier, feature_history(frame).iloc[:200])
+
+
+@pytest.mark.parametrize('clock', ['published_at', 'exact_available_at', 'upper_bound'])
+def test_publication_join_does_not_assume_naive_timestamps_are_utc(clock):
+    frame = history().head(5)
+    release = pd.DataFrame({
+        'published_at': ['2010-01-05T12:00:00'],
+        'vintage_id': ['original'], 'source_url': ['https://example.test/a'],
+        'source_sha256': ['a'*64], 'timestamp_verified': [True], 'signal': [1.],
+    })
+    if clock != 'published_at':
+        release['available_at'] = '2010-01-05T12:00:00'
+        release['availability_verified'] = True
+        release['availability_basis'] = 'exact_publication' if clock == 'exact_available_at' else 'verified_upper_bound'
+        if clock == 'upper_bound':
+            release['published_at'] = None
+            release['timestamp_verified'] = False
+    with pytest.raises(ValueError, match='Explicit timezone'):
+        attach_releases(frame, release, ['signal'])
+
+
+def test_publication_join_normalizes_offsets_before_cutoff_comparison():
+    frame = pd.DataFrame({'date': pd.to_datetime(['2010-01-05'])})
+    release = pd.DataFrame({
+        'published_at': ['2010-01-06T00:30:00+02:00', '2010-01-06T00:15:00Z'],
+        'vintage_id': ['earlier', 'later'], 'source_url': ['https://example.test/a']*2,
+        'source_sha256': ['a'*64]*2, 'timestamp_verified': [True, True], 'signal': [1., 2.],
+    })
+    assert attach_releases(frame, release, ['signal']).signal.tolist() == [1.]
+    assert attach_releases(frame, release, ['signal'], decision_clock='cotton-next-day-0015-v1').signal.tolist() == [2.]
 
 
 def test_publication_timestamp_and_vintage_fail_closed():
@@ -226,6 +309,40 @@ def test_prospective_emissions_are_immutable_and_not_backdated(tmp_path):
         record(tmp_path, locked, 'release-2', frame, lambda h, x: .01, now=now)
 
 
+@pytest.mark.parametrize('corruption', ['origin', 'fold', 'overlapping_folds', None])
+def test_generic_comparison_pairs_frozen_origins_and_counts_wins_from_predictions(tmp_path, monkeypatch, corruption):
+    from types import SimpleNamespace
+
+    from cottonlens_ml.research import diagnostics
+
+    frame = history()
+    frozen = split_manifest(frame)
+    if corruption == 'overlapping_folds':
+        frozen['folds'][1]['origins'][0] = frozen['folds'][0]['origins'][-1]
+    monkeypatch.setattr(engine, 'reference_report', lambda _: {})
+    monkeypatch.setattr(diagnostics, 'write_lesson_packet', lambda *_: None)
+    ledger = SimpleNamespace(root=tmp_path/'ledger', summary=lambda: {'timing': {}})
+    experiment = SimpleNamespace(root=tmp_path, identity={'split': frozen}, history=frame, ledger=ledger)
+    for fold in frozen['folds']:
+        i = fold['fold']
+        origins = list(fold['origins'])
+        if i == 1 and corruption == 'origin':
+            origins = origins[1:] + origins[:1]
+        freeze_record(tmp_path/'outer/round'/f'ridge-t1-fold{i}.json', {
+            'recipe': {'family': 'ridge', 'horizon': 1}, 'origins': origins,
+            'fold': 2 if i == 1 and corruption == 'fold' else i,
+            'predictions': [0.] * len(origins), 'metrics': {'mae': 0.}, 'inner_score': 1.,
+        })
+    if corruption:
+        with pytest.raises(ValueError, match='frozen (outer origins|fold)'):
+            engine.compare(experiment)
+        assert not (tmp_path/'reports').exists()
+    else:
+        candidate = engine.compare(experiment)['candidates'][0]
+        assert candidate['gate']['fold_wins'] == 0
+        assert candidate['metrics']['relative_mae_improvement_pct'] == pytest.approx(0.)
+
+
 def test_lock_resume_preserves_prospective_start(tmp_path, monkeypatch):
     from types import SimpleNamespace
     identity = {'protocol': 'test'}
@@ -233,6 +350,77 @@ def test_lock_resume_preserves_prospective_start(tmp_path, monkeypatch):
     freeze_record(tmp_path / 'locked.json', locked)
     monkeypatch.setattr(engine, 'compare', lambda _: pytest.fail('Already locked; must not select again'))
     assert engine.lock(SimpleNamespace(root=tmp_path, identity=identity)) == locked
+
+
+def test_release_rechecks_locked_gate_from_paired_outputs(tmp_path):
+    from types import SimpleNamespace
+
+    from cottonlens_ml.evaluation import evaluate
+    from cottonlens_ml.research.release import _checked_price_lock
+
+    frame = history()
+    identity = {'split': split_manifest(frame)}
+    experiment = SimpleNamespace(root=tmp_path, identity=identity, history=frame)
+    candidates = {}
+    for h in (1, 5):
+        folds = identity['split']['folds']
+        origins = [d for fold in folds for d in fold['origins']]
+        rows = rows_at(frame, origins)
+        for fold in folds:
+            fold_origins = fold['origins']
+            freeze_record(tmp_path/'outer/round'/f'ridge-t{h}-fold{fold["fold"]}.json', {
+                'fold': fold['fold'], 'origins': fold_origins,
+                'recipe': {'family': 'ridge', 'horizon': h},
+                'predictions': [0.] * len(fold_origins),
+            })
+        candidates[str(h)] = {
+            'family': 'ridge', 'namespace': 'round', 'primary_forecast': 'Naive',
+            'gate': {'passes': False, 'fold_wins': 0},
+            'metrics': evaluate(rows.cotton_close, rows[f'target_return_{h}'], np.zeros(len(rows))),
+        }
+    locked = {'identity': content_id(identity), 'horizons': candidates}
+    assert all(len(folds) == 8 for folds in _checked_price_lock(experiment, locked).values())
+    candidates['1']['primary_forecast'] = 'ridge'
+    candidates['1']['gate'] = {'passes': True, 'fold_wins': 8}
+    with pytest.raises(ValueError, match='disagrees with paired price gate'):
+        _checked_price_lock(experiment, locked)
+
+
+def test_export_rejects_unbound_pass_markers_before_loading_deployment_data(tmp_path, monkeypatch):
+    from types import SimpleNamespace
+
+    from cottonlens_ml.research import release
+
+    identity = {'source_data': {}, 'split': {'folds': []}}
+    freeze_record(tmp_path/'locked.json', {'identity': content_id(identity), 'horizons': {}})
+    freeze_record(tmp_path/'diagnosis.json', {'status': 'passed'})
+    for h in (1, 5):
+        freeze_record(tmp_path/f'reproduction-t{h}.json', {
+            'status': 'passed', 'fresh_fits': True, 'max_abs_log_return_difference': 0.,
+        })
+    monkeypatch.setattr(release, 'require_colab_training', lambda: None)
+    monkeypatch.setattr(release, '_checked_price_lock', lambda *_: {})
+    monkeypatch.setattr(release, 'load_frozen_data', lambda *_: pytest.fail('Unbound receipt reached deployment'))
+    with pytest.raises(ValueError, match='Bound reproduction receipt'):
+        release.export(SimpleNamespace(root=tmp_path, identity=identity), tmp_path)
+
+
+def test_reproduction_rejects_misaligned_original_before_fitting(tmp_path):
+    from types import SimpleNamespace
+
+    frame = history()
+    fold = split_manifest(frame)['folds'][0]
+    identity = {'split': {'folds': [fold]}}
+    freeze_record(tmp_path/'locked.json', {'identity': content_id(identity),
+                  'horizons': {'1': {'family': 'ridge', 'namespace': 'round'}}})
+    freeze_record(tmp_path/'outer/round/ridge-t1-fold1.json', {
+        'fold': 1, 'origins': fold['origins'], 'recipe': {'family': 'ridge', 'horizon': 1},
+        'predictions': [0.],
+    })
+    experiment = SimpleNamespace(root=tmp_path, identity=identity, history=frame,
+                                 outer=lambda *a, **k: pytest.fail('Malformed evidence must stop before any fit'))
+    with pytest.raises(ValueError, match='one finite output per frozen origin'):
+        engine.reproduce(experiment)
 
 
 def test_keras_data_adapter_and_save_do_not_inherit_forced_gpu_scope():

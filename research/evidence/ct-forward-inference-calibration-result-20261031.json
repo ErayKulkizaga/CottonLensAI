@@ -1,0 +1,298 @@
+{
+  "schema": 1,
+  "profile": "ct-forward-inference-calibration-v1",
+  "classification": "INCONCLUSIVE",
+  "classification_scope": "Known-mean synthetic inference calibration verified, not actual market power or forecast superiority",
+  "source_id": "7a2e2018579ec767e56f503cc5256a97f48d95fe38148ea7b1871193545fa2e4",
+  "active_core_source_id": "a173df8e65b42460931018e53ab11778b248698383920231af1f31bb6cb16d41",
+  "active_execution_source_id": "2747450ff4d46b022493cc604c565aa941e0378c5c3bd741179d962cff04a644",
+  "completed_market_fits": 0,
+  "completed_synthetic_fits": 0,
+  "new_forecasts": 0,
+  "market_skill": false,
+  "actual_market_power_estimated": false,
+  "forward_performance_scored": false,
+  "active_protocol_changed": false,
+  "old_study_unchanged": true,
+  "study_files_hash_verified": 1462,
+  "trials_sha256_unchanged": "5c50fbac2629490f61566bc8a123a4cfa7fd3ba5c405c2d826bf5f3a8ffd1adc",
+  "stratum_sizes": [
+    43,
+    209
+  ],
+  "synthetic_paths_per_case": 1024,
+  "cases_share_innovations_not8192_independent_experiments": true,
+  "cases": [
+    {
+      "partition": "active_calendar",
+      "phi": 0.0,
+      "true_mean_qlike_gain": 0.0,
+      "paths": 1024,
+      "joint_positive_count": 21,
+      "joint_positive_rate": 0.0205078125,
+      "monte_carlo_wilson_95": [
+        0.013451953263233687,
+        0.031147783814205146
+      ],
+      "single_interval_positive_counts": {
+        "20": 24,
+        "60": 74
+      },
+      "null_oversize_demonstrated": false
+    },
+    {
+      "partition": "active_calendar",
+      "phi": 0.0,
+      "true_mean_qlike_gain": 0.01770104344442714,
+      "paths": 1024,
+      "joint_positive_count": 118,
+      "joint_positive_rate": 0.115234375,
+      "monte_carlo_wilson_95": [
+        0.09709903784969771,
+        0.13624576135297217
+      ],
+      "single_interval_positive_counts": {
+        "20": 122,
+        "60": 237
+      },
+      "null_oversize_demonstrated": false
+    },
+    {
+      "partition": "active_calendar",
+      "phi": 0.8,
+      "true_mean_qlike_gain": 0.0,
+      "paths": 1024,
+      "joint_positive_count": 18,
+      "joint_positive_rate": 0.017578125,
+      "monte_carlo_wilson_95": [
+        0.011147506606701729,
+        0.027614754322534085
+      ],
+      "single_interval_positive_counts": {
+        "20": 19,
+        "60": 65
+      },
+      "null_oversize_demonstrated": false
+    },
+    {
+      "partition": "active_calendar",
+      "phi": 0.8,
+      "true_mean_qlike_gain": 0.01770104344442714,
+      "paths": 1024,
+      "joint_positive_count": 48,
+      "joint_positive_rate": 0.046875,
+      "monte_carlo_wilson_95": [
+        0.035535985542678575,
+        0.061601036868587464
+      ],
+      "single_interval_positive_counts": {
+        "20": 49,
+        "60": 120
+      },
+      "null_oversize_demonstrated": false
+    },
+    {
+      "partition": "pooled_sensitivity",
+      "phi": 0.0,
+      "true_mean_qlike_gain": 0.0,
+      "paths": 1024,
+      "joint_positive_count": 16,
+      "joint_positive_rate": 0.015625,
+      "monte_carlo_wilson_95": [
+        0.00964032654076094,
+        0.025230283623006194
+      ],
+      "single_interval_positive_counts": {
+        "20": 18,
+        "60": 51
+      },
+      "null_oversize_demonstrated": false
+    },
+    {
+      "partition": "pooled_sensitivity",
+      "phi": 0.0,
+      "true_mean_qlike_gain": 0.01770104344442714,
+      "paths": 1024,
+      "joint_positive_count": 97,
+      "joint_positive_rate": 0.0947265625,
+      "monte_carlo_wilson_95": [
+        0.07827489001348567,
+        0.11420757615176305
+      ],
+      "single_interval_positive_counts": {
+        "20": 105,
+        "60": 178
+      },
+      "null_oversize_demonstrated": false
+    },
+    {
+      "partition": "pooled_sensitivity",
+      "phi": 0.8,
+      "true_mean_qlike_gain": 0.0,
+      "paths": 1024,
+      "joint_positive_count": 11,
+      "joint_positive_rate": 0.0107421875,
+      "monte_carlo_wilson_95": [
+        0.006008712294577323,
+        0.019132770955518102
+      ],
+      "single_interval_positive_counts": {
+        "20": 13,
+        "60": 40
+      },
+      "null_oversize_demonstrated": false
+    },
+    {
+      "partition": "pooled_sensitivity",
+      "phi": 0.8,
+      "true_mean_qlike_gain": 0.01770104344442714,
+      "paths": 1024,
+      "joint_positive_count": 29,
+      "joint_positive_rate": 0.0283203125,
+      "monte_carlo_wilson_95": [
+        0.019789746477255746,
+        0.040376593662057814
+      ],
+      "single_interval_positive_counts": {
+        "20": 31,
+        "60": 75
+      },
+      "null_oversize_demonstrated": false
+    }
+  ],
+  "analytic_iid_variance_ratios": {
+    "active_calendar": {
+      "20": {
+        "ratio": 0.8206595619164871,
+        "strata": [
+          {
+            "stratum_size": 43,
+            "expected_count_covariance_trace": 18.541666666666664,
+            "stratum_variance_ratio": 0.43120155038759683
+          },
+          {
+            "stratum_size": 209,
+            "expected_count_covariance_trace": 188.2645429362881,
+            "stratum_variance_ratio": 0.9007872867764981
+          }
+        ]
+      },
+      "60": {
+        "ratio": 0.5609188712522045,
+        "strata": [
+          {
+            "stratum_size": 43,
+            "expected_count_covariance_trace": 0.0,
+            "stratum_variance_ratio": 0.0
+          },
+          {
+            "stratum_size": 209,
+            "expected_count_covariance_trace": 141.35155555555554,
+            "stratum_variance_ratio": 0.6763232323232322
+          }
+        ]
+      }
+    },
+    "pooled_sensitivity": {
+      "20": {
+        "ratio": 0.91817308133689,
+        "strata": [
+          {
+            "stratum_size": 252,
+            "expected_count_covariance_trace": 231.3796164968963,
+            "stratum_variance_ratio": 0.91817308133689
+          }
+        ]
+      },
+      "60": {
+        "ratio": 0.7316962168367576,
+        "strata": [
+          {
+            "stratum_size": 252,
+            "expected_count_covariance_trace": 184.3874466428629,
+            "stratum_variance_ratio": 0.7316962168367576
+          }
+        ]
+      }
+    }
+  },
+  "native_interval_checks": 24,
+  "compute_seconds": 9.20954900002107,
+  "max_blas_threads": 2,
+  "result_sha256": "487ddced65ffd50e44a80df8b463b117dfbbc3399ae17ebab9f3323ebacfd838",
+  "independent_verification": {
+    "status": "independent_synthetic_inference_verification_passed",
+    "cases": 8,
+    "synthetic_scalars_checked": 2097152,
+    "analytic_variance_ratios_checked": 4,
+    "independent_generator": "scipy.signal.lfilter stationary Gaussian square",
+    "independent_resampler": "interval-endpoint increments and prefix sums",
+    "new_fits": 0,
+    "market_skill": false,
+    "forward_performance_scored": false,
+    "actual_market_power_estimated": false,
+    "result_sha256": "487ddced65ffd50e44a80df8b463b117dfbbc3399ae17ebab9f3323ebacfd838"
+  },
+  "verification_authored_after_primary_result": true,
+  "verification_source_sha256": "9746df28ed1b139000f55347a687cb680cede540830cbc5e2a274a5bfb6fac74",
+  "verification_tests_sha256": "42e8cf113093ddd5a70eefe3d7b6dd04480b08eed2b8941357b58dc217dd3f01",
+  "preregistration_evidence": "evidence/ct-forward-inference-calibration-prereg-20261031.json",
+  "preregistration_sha256": "ace0e0271a0c13e744c1b3f2448737a116b657e6be7a1b10befeb69a8b1f5a54",
+  "fresh_replay": {
+    "status": "fresh_private_restore_offline_zero_fit_calibration_replay_verified",
+    "analysis_source_id": "7a2e2018579ec767e56f503cc5256a97f48d95fe38148ea7b1871193545fa2e4",
+    "fresh_restored_files": 322,
+    "byte_equal": {
+      "result.json": "487ddced65ffd50e44a80df8b463b117dfbbc3399ae17ebab9f3323ebacfd838",
+      "inputs.json": "ef48db1a4ee41caadb121e8b669c2b9350ceda862d66ba799f51c74cd2930286"
+    },
+    "npz_files_byte_equal": true,
+    "decoded_arrays_exact": 32,
+    "independent_receipt_byte_equal": true,
+    "new_fits": 0,
+    "market_skill": false,
+    "active_protocol_changed": false,
+    "forward_performance_scored": false,
+    "network_and_subprocess_disabled": true,
+    "replay_driver_sha256": "bb84df30113fc05bd0c6935ed7fa7aef58982abbeeb234c26fc6ea2b35a5efb0",
+    "verification_source_sha256": "9746df28ed1b139000f55347a687cb680cede540830cbc5e2a274a5bfb6fac74"
+  },
+  "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/ct-inference-calibration-20261031",
+  "deliveries": {
+    "prereg": {
+      "archive_sha256": "50117ac995fa249fb3ad3e4c253be39261fade7d4ba46c1f901ff42b94286dec",
+      "restored_files": 294,
+      "excluded": 0,
+      "assets": [
+        "CT-inference-prereg-20261031.zip",
+        "CT-inference-prereg-20261031-manifest.json"
+      ]
+    },
+    "result": {
+      "archive_sha256": "59263a5e775394e8d0717b7585b4f0ee9bed4e16197cc005eaeb28b5e1367241",
+      "restored_files": 322,
+      "excluded": 0,
+      "assets": [
+        "CT-inference-result-20261031.zip",
+        "CT-inference-result-20261031-manifest.json"
+      ]
+    },
+    "replay": {
+      "archive_sha256": "9aa11e4c671fe704e21c15565955f055568e6e1e303734113f6147d9ee9dfa01",
+      "restored_files": 8,
+      "excluded": 0,
+      "assets": [
+        "CT-inference-replay-20261031.zip",
+        "CT-inference-replay-20261031-manifest.json"
+      ]
+    }
+  },
+  "first_release_creation_failure_preserved": true,
+  "tests_passed": 12,
+  "ruff_passed": true,
+  "old_stages_preserved": 229,
+  "old_proofs_preserved": 212,
+  "decision": "Joint null oversize not demonstrated under declared DGPs; not universal calibration proof. Small-effect synthetic recovery remains low. Preserve active cohort/model/gates; no fit or grid.",
+  "next_exact_step": "Read the Nov3,2026 03:05TR source/clock receipt for the Nov2target under the existing consoleless daily task, without intermediate performance scoring/backfill.",
+  "record_id": "68d67006fa92726772f478e0bc169127c0db44415f00035f09fda296baeaa668"
+}

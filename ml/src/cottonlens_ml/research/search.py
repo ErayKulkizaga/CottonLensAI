@@ -63,7 +63,8 @@ def diagnostic_recipes(horizon, features):
 
 
 def historical_gate(metrics, fold_wins, horizon):
-    return {'passes': bool(metrics['relative_mae_improvement_pct'] >= 5 and fold_wins >= 6
+    gain = metrics['relative_mae_improvement_pct']
+    return {'passes': bool(gain is not None and gain >= 5 and fold_wins >= 6
             and metrics['directional_accuracy'] >= (53 if horizon == 1 else 55)),
             'required_fold_wins': 6, 'total_folds': 8, 'evidence': 'seen_historical_research',
             'fold_wins': int(fold_wins),

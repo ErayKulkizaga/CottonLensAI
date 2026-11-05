@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "status": "registered_execution_not_fitted",
+  "profile": "named-weak-signal-control-t5-v1",
+  "source_id": "b8420a30f9f433880e96237c6cafe25613092e1b8b69f7fd42e5f69bd202e760",
+  "source_files": 265,
+  "design_id": "a89337cadb88a99bca24d20c7750bb0ba5389a1c87cbcf522c10c987bd1b7fcc",
+  "ready_sha256": "592beb1a02fdfecc895fb4e489945fb581dc8cfef72b45e14287b142dfbe69a4",
+  "history_sha256": "da8a286df8e98b8a0932f088a9b384546d30a22ebac45db0bfe32a3a021d3465",
+  "decision_contract_sha256": "bb20e3571fb35535e431e1c1bb0c7c7ee9dd3962efdaf809a8c9d99d35aa9f86",
+  "report_policy": "named-weak-expected-raw-v1",
+  "synthetic_fit_ceiling": 132,
+  "market_fit_ceiling": 0,
+  "new_fits": 0,
+  "tamper_controls": 4,
+  "related_tests_passed": 71,
+  "readiness_design_id": "230a15e3cfbe8f484ff4e79604a53c152405cce5194f2e1742b7be544480dd5c",
+  "market_skill_claimed": false,
+  "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/named-weak-execution-preregistration-r2-20261012",
+  "record_id": "9ef0d8ad57318b81e60034d894aae1232610147aec506d5c17bc1219e1d5d083"
+}

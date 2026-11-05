@@ -1,0 +1,68 @@
+{
+  "schema": 1,
+  "profile": "ams-risk-curvature-score-t1-v1",
+  "classification": "INCONCLUSIVE",
+  "classification_scope": "one conditional curvature score only; not forecast gain or all-nonlinearity test",
+  "new_forecast_model_fits": 0,
+  "feature_only_projections": 97,
+  "retained_origins": 2006,
+  "eligible_origins": 1989,
+  "mean_improvement_score": -0.02157804797264152,
+  "score_ci_95": {
+    "20": [
+      -0.09117357925089956,
+      0.04454094158216493
+    ],
+    "60": [
+      -0.08773870041911667,
+      0.04402773184350681
+    ]
+  },
+  "yearly_score": {
+    "2016": -0.0766851142723511,
+    "2017": 0.04887740480451845,
+    "2018": -0.15977343552269221,
+    "2019": -0.028944246069803822,
+    "2020": -0.06512749572441376,
+    "2021": -0.02738986073896407,
+    "2022": 0.08821194673246885,
+    "2023": 0.04832077905083175
+  },
+  "supported_direction": 0,
+  "same_direction_years": 0,
+  "trim_top1pct_mean_score": 0.009685809202301792,
+  "score_gate_passed": false,
+  "market_skill": false,
+  "new_model_training_allowed": false,
+  "release_allowed": false,
+  "independent_holdout": false,
+  "historical_availability_verified": false,
+  "source_id": "ce7e8ee2408d6f8e0972cd374569038b61878618a6d5b57d620089205cfc45d2",
+  "design_id": "e16fbecac11b910005f6cb952ad01a066ea2aeb9170a1f8abad0b27326cc60c2",
+  "scores_sha256": "164411c9c32395936cbb3fdf9d97046c55b7f8017b04e8809b93879131ff1af0",
+  "transformations_sha256": "2966b9c5ae82a8d85a4c8c76085c20985de697bbc54344384f00acb8f2d14857",
+  "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/risk-curvature-score-20261029",
+  "archive_sha256": "1f202822d76aba4f6f4dfc45afe656a599e271769eed70f392db9bd5d861b2ad",
+  "fresh_restored_files": 1548,
+  "fresh_independent_replay": {
+    "status": "verified",
+    "new_forecast_model_fits": 0,
+    "native_outer_models": 97,
+    "independent_feature_only_projections": 97,
+    "independent_scores": 1989,
+    "independent_intervals": 2,
+    "retained_origins": 2006,
+    "max_basis_difference": 5.329070518200751e-15,
+    "max_score_difference": 3.552713678800501e-15,
+    "score_gate_passed": false,
+    "market_skill": false,
+    "result_sha256": "e8d38b24183b5bb9603e5c53e5fbd375ccbd8cbfac3f4caeedd55c0c600272c2",
+    "scores_sha256": "164411c9c32395936cbb3fdf9d97046c55b7f8017b04e8809b93879131ff1af0",
+    "verifier_sha256": "4e66642723f035d80e31a00e5197dfc4e5059ef90bfb5ad72dfd1d3cc8666dd3"
+  },
+  "independent_receipt_bytes_equal": true,
+  "old_records_preserved": 207,
+  "old_evidence_preserved": 188,
+  "trials_sha256_unchanged": "4e4467dc0bf0005ae44e0653b0c6377302c28ba9cc4089ef6f06ab1b0fee07d7",
+  "record_id": "369dab7d58a54f30f1bef592f585df8a618aec6ba3a9c715f9747aca4f6c9102"
+}

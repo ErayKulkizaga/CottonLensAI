@@ -1,0 +1,29 @@
+{
+  "schema": 1,
+  "profile": "risk-level-source-t1-v1",
+  "classification": "INCONCLUSIVE",
+  "classification_scope": "Frozen two-arm capacity-matched preregistration; no model result yet",
+  "source_id": "5d2863df0bf85dc399eb640ac254e4a21b14635dd1e3d649027cad8dbdf89c70",
+  "design_id": "55bca1d78d532628252b77c613515447c6053d8dd9f908fef42207b6a82e3a15",
+  "ready_sha256": "7a56725c5c3ae9cf3ba2c58f1e61a7dc9d447bb47428944b8a1ed5e72d57faac",
+  "fit_budget": {
+    "market": 348,
+    "synthetic": 1,
+    "processes": 1,
+    "threads": 2,
+    "session_minutes": 30
+  },
+  "completed_fits": 0,
+  "origin_count": 2006,
+  "paired_origins": 1989,
+  "historical_availability_verified": false,
+  "independent_holdout": false,
+  "market_skill": false,
+  "release_allowed": false,
+  "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/risk-level-source-prereg-20261029",
+  "archive_sha256": "56c57797d33a591dd06d6a5548b8590dca6dd19c729fed862598e2079ab4c728",
+  "fresh_restored_members": 1544,
+  "fresh_source_verify_passed": true,
+  "fresh_source_receipt_sha256": "4f0da748bbbcb596b48b3738bc4d70baaec4ee2b90787637017f2fc075d71aff",
+  "record_id": "4d21961c7bb3d142f6f4d3bad9933dfac85b5967a099f71048b10606e41d6710"
+}

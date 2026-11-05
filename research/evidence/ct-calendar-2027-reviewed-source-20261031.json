@@ -1,0 +1,213 @@
+{
+  "reviewed_market_column": "Cotton",
+  "document_sha256": "d2e39a2db2a26e0578ad0d09b36f51dfdad8502635020fe79d66303c09c1a040",
+  "document_url": "https://www.ice.com/publicdocs/futures_us/exchange_notices/ICE_Futures_US_Exchange_Notice-2027_Holiday_Calendar_20260604.pdf",
+  "issuer_date_label": "June 4, 2026",
+  "observed_available_at": "2026-10-31T07:50:29.109480+00:00",
+  "first_historical_publication_time_verified": false,
+  "calendar": {
+    "market": "ICE Futures US Cotton No. 2",
+    "timezone": "America/New_York",
+    "coverage_start": "2026-01-01",
+    "coverage_end": "2028-01-03",
+    "cotton_closed_dates": [
+      "2026-01-01",
+      "2026-01-19",
+      "2026-02-16",
+      "2026-04-03",
+      "2026-05-25",
+      "2026-06-19",
+      "2026-07-03",
+      "2026-09-07",
+      "2026-11-26",
+      "2026-12-25",
+      "2027-01-01",
+      "2027-01-18",
+      "2027-02-15",
+      "2027-03-26",
+      "2027-05-31",
+      "2027-06-18",
+      "2027-07-05",
+      "2027-09-06",
+      "2027-11-25",
+      "2027-12-24"
+    ],
+    "completion_time_local": "14:20",
+    "completion_qualification": "Conservative regular close bound; special holiday hours may end earlier. This is not a publication timestamp or an exchange settlement timestamp.",
+    "review": "2026 overlap unchanged; 2027 Cotton column page1 visually reviewed and matched by pdfplumber+pypdf; issuer label June4,2026 is not capture time. Jan3,2028 is OPEN for Cotton.",
+    "evidence": [
+      {
+        "file": "ice-2026-cotton-holidays.pdf",
+        "sha256": "b9723d9afa1c20a0792b628de36c7d3726add58ea3d94972a1e7cefd3e50bf4e",
+        "url": "https://www.ice.com/publicdocs/futures_us/exchange_notices/ICE_Futures_US_Exchange_Notice_2026_Holiday_Calendar_20260609.pdf"
+      },
+      {
+        "file": "ice-regular-hours.pdf",
+        "sha256": "381c04fcb4d5b4093f72463246652ac8e24c3ca7b89283dfe86f736497c13ed2",
+        "url": "https://status.ice.com/publicdocs/futures_us/ICE_Futures_US_Regular_Trading_Hours.pdf"
+      },
+      {
+        "file": "document.pdf",
+        "sha256": "d2e39a2db2a26e0578ad0d09b36f51dfdad8502635020fe79d66303c09c1a040",
+        "url": "https://www.ice.com/publicdocs/futures_us/exchange_notices/ICE_Futures_US_Exchange_Notice-2027_Holiday_Calendar_20260604.pdf",
+        "scope": "2027 Cotton holiday column, including Jan3,2028 open boundary"
+      }
+    ]
+  },
+  "literal_rows": [
+    {
+      "holiday": "New Year\u2019s Day",
+      "date": "2027-01-01",
+      "weekday": "Friday",
+      "cotton": "closed",
+      "canola_comparison_only": "closed",
+      "source_date_text": "Friday, Jan 1"
+    },
+    {
+      "holiday": "Martin Luther King Day",
+      "date": "2027-01-18",
+      "weekday": "Monday",
+      "cotton": "closed",
+      "canola_comparison_only": "open",
+      "source_date_text": "Monday, Jan 18"
+    },
+    {
+      "holiday": "Presidents Day/ Louis Riel Day (Canada)",
+      "date": "2027-02-15",
+      "weekday": "Monday",
+      "cotton": "closed",
+      "canola_comparison_only": "closed",
+      "source_date_text": "Monday, Feb 15"
+    },
+    {
+      "holiday": "Good Friday",
+      "date": "2027-03-26",
+      "weekday": "Friday",
+      "cotton": "closed",
+      "canola_comparison_only": "closed",
+      "source_date_text": "Friday, Mar 26"
+    },
+    {
+      "holiday": "Victoria Day (Canada)",
+      "date": "2027-05-24",
+      "weekday": "Monday",
+      "cotton": "open",
+      "canola_comparison_only": "closed",
+      "source_date_text": "Monday, May 24"
+    },
+    {
+      "holiday": "Memorial Day",
+      "date": "2027-05-31",
+      "weekday": "Monday",
+      "cotton": "closed",
+      "canola_comparison_only": "open",
+      "source_date_text": "Monday, May 31"
+    },
+    {
+      "holiday": "Juneteenth",
+      "date": "2027-06-18",
+      "weekday": "Friday",
+      "cotton": "closed",
+      "canola_comparison_only": "open",
+      "source_date_text": "Friday, June 18"
+    },
+    {
+      "holiday": "Canada Day (Canada)",
+      "date": "2027-07-01",
+      "weekday": "Thursday",
+      "cotton": "open",
+      "canola_comparison_only": "closed",
+      "source_date_text": "Thursday, July 1"
+    },
+    {
+      "holiday": "Independence Day (observed)",
+      "date": "2027-07-05",
+      "weekday": "Monday",
+      "cotton": "closed",
+      "canola_comparison_only": "open",
+      "source_date_text": "Monday, July 5"
+    },
+    {
+      "holiday": "Terry Fox Day (Canada)",
+      "date": "2027-08-02",
+      "weekday": "Monday",
+      "cotton": "open",
+      "canola_comparison_only": "closed",
+      "source_date_text": "Monday, Aug 2"
+    },
+    {
+      "holiday": "Labor Day/Labour Day (Canada)",
+      "date": "2027-09-06",
+      "weekday": "Monday",
+      "cotton": "closed",
+      "canola_comparison_only": "closed",
+      "source_date_text": "Monday, Sep 6"
+    },
+    {
+      "holiday": "National Day for Truth and Reconciliation (Canada)",
+      "date": "2027-09-30",
+      "weekday": "Thursday",
+      "cotton": "open",
+      "canola_comparison_only": "closed",
+      "source_date_text": "Thursday, Sep 30"
+    },
+    {
+      "holiday": "Columbus Day/ Thanksgiving Day (Canada)",
+      "date": "2027-10-11",
+      "weekday": "Monday",
+      "cotton": "open",
+      "canola_comparison_only": "closed",
+      "source_date_text": "Monday, Oct 11"
+    },
+    {
+      "holiday": "Veterans Day/ Remembrance Day (Canada)",
+      "date": "2027-11-11",
+      "weekday": "Thursday",
+      "cotton": "open",
+      "canola_comparison_only": "closed",
+      "source_date_text": "Thursday, Nov 11"
+    },
+    {
+      "holiday": "Thanksgiving Day",
+      "date": "2027-11-25",
+      "weekday": "Thursday",
+      "cotton": "closed",
+      "canola_comparison_only": "open",
+      "source_date_text": "Thursday, Nov 25"
+    },
+    {
+      "holiday": "Christmas Day (observed)",
+      "date": "2027-12-24",
+      "weekday": "Friday",
+      "cotton": "closed",
+      "canola_comparison_only": "closed",
+      "source_date_text": "Friday, Dec 24"
+    },
+    {
+      "holiday": "Boxing Day (observed)",
+      "date": "2027-12-27",
+      "weekday": "Monday",
+      "cotton": "open",
+      "canola_comparison_only": "closed",
+      "source_date_text": "Monday, Dec 27"
+    },
+    {
+      "holiday": "New Year\u2019s Day (observed)",
+      "date": "2028-01-03",
+      "weekday": "Monday",
+      "cotton": "open",
+      "canola_comparison_only": "closed",
+      "source_date_text": "Monday, Jan 3, 2028"
+    }
+  ],
+  "visual_review": {
+    "page": 1,
+    "zero_based_column": 3,
+    "png_sha256": "9ea5afd58ca4088ec3137b07fb91a3d362a47889ab56c618f249741df59a197b"
+  },
+  "reader_checks": {
+    "pdfplumber_json_sha256": "548be124f4832e687aeb41f4ff6790ad85f74492df216590195bce5ea257440f",
+    "pypdf_json_sha256": "f6752c156e43575f08f14dcc0c476b637976e8d284ee42081dbfc305d7dd6e8a",
+    "rows_agreed": 18
+  }
+}

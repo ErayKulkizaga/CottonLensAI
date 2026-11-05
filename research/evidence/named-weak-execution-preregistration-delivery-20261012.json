@@ -1,0 +1,21 @@
+{
+  "status": "fresh_github_preregistration_verified",
+  "source_id": "5cfaabfd4e35737f625ebf19acbeb357bfde701b8e605438c85449de5c55f80c",
+  "ready_sha256": "dc28b418cc422219cd6f90b9f2578f3a8776940dd60e0e65e57875d242db8efb",
+  "new_fits": 0,
+  "fresh_restore": {
+    "status": "verified",
+    "mode": "registration",
+    "archive_sha256": "cfe0f31cc895ca64c8593c1379a0ba33aaccdf2ee3e02b285acee4087b1639aa",
+    "source_id": "5cfaabfd4e35737f625ebf19acbeb357bfde701b8e605438c85449de5c55f80c",
+    "members": 561,
+    "new_fits": 0,
+    "exact_member_hashes": true,
+    "frozen_source_replay": true,
+    "market_skill_claimed": false
+  },
+  "execution_started": false,
+  "superseded_before_fitting": true,
+  "reason": "R2 corrects unknown-price equality and literal null CSV parsing; input/model/design unchanged",
+  "record_id": "5c217dd83c4f26f012db1c73a0ba0b645b5ceb38288477ea020b25c0c84d3b40"
+}

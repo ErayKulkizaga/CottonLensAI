@@ -1,0 +1,160 @@
+{
+  "schema": 1,
+  "profile": "named-risk-label-control-t1-v1",
+  "classification": "DECISIVE_POSITIVE",
+  "classification_scope": "Conditional one-year label mechanism ONLY; not market-wide source/model absence",
+  "new_market_fits": 44,
+  "new_synthetic_fits": 1,
+  "source_id": "42221c6e9b71a39588f2299fddd1325a1c047bb933387deda7aea565d79df203",
+  "result_sha256": "3debb17701f43d9afd0165c6ee1fd27fda42c7a3d10023982591289821917ced",
+  "result_record_id": "ac327d078cb3a85c5ff866ba40ec054cbdc893efb07753217e53bd7ec2cec4bf",
+  "paired_losses_sha256": "ae8ac0ff8899eaabc1d86a066fe5ebac0fe52cb1f149bec55c0496acb5ce45eb",
+  "origin_count": 246,
+  "eligible_origins": 242,
+  "comparisons": {
+    "label_mechanism": {
+      "delta": 0.07117630596098276,
+      "bootstrap": {
+        "20": {
+          "eligible": 242,
+          "ordinal_slots": 246,
+          "block": 20,
+          "replicates": 10000,
+          "paired_difference": 0.07117630596098312,
+          "difference_ci_95": [
+            0.024920006652160404,
+            0.12265009929523109
+          ]
+        },
+        "60": {
+          "eligible": 242,
+          "ordinal_slots": 246,
+          "block": 60,
+          "replicates": 10000,
+          "paired_difference": 0.07117630596098312,
+          "difference_ci_95": [
+            0.022735162689647037,
+            0.11680117419607734
+          ]
+        }
+      },
+      "trim_top1pct_ewma_loss_delta": 0.0944721982526942
+    },
+    "named_raw_vs_ewma": {
+      "delta": -0.033638832779638174,
+      "bootstrap": {
+        "20": {
+          "eligible": 242,
+          "ordinal_slots": 246,
+          "block": 20,
+          "replicates": 10000,
+          "paired_difference": -0.03363883277963753,
+          "difference_ci_95": [
+            -0.0766899837378468,
+            0.011750327396550894
+          ]
+        },
+        "60": {
+          "eligible": 242,
+          "ordinal_slots": 246,
+          "block": 60,
+          "replicates": 10000,
+          "paired_difference": -0.03363883277963753,
+          "difference_ci_95": [
+            -0.06755746600014925,
+            -0.0007703027960175787
+          ]
+        }
+      },
+      "trim_top1pct_ewma_loss_delta": -0.058272748141382454
+    },
+    "ct_raw_vs_ewma": {
+      "delta": -0.10481513874062093,
+      "bootstrap": {
+        "20": {
+          "eligible": 242,
+          "ordinal_slots": 246,
+          "block": 20,
+          "replicates": 10000,
+          "paired_difference": -0.10481513874062065,
+          "difference_ci_95": [
+            -0.18344977267541773,
+            -0.024083927022621326
+          ]
+        },
+        "60": {
+          "eligible": 242,
+          "ordinal_slots": 246,
+          "block": 60,
+          "replicates": 10000,
+          "paired_difference": -0.10481513874062065,
+          "difference_ci_95": [
+            -0.17523324048604566,
+            -0.028200741207257476
+          ]
+        }
+      },
+      "trim_top1pct_ewma_loss_delta": -0.15274494639407668
+    },
+    "named_selected_vs_ewma": {
+      "delta": 0.0,
+      "bootstrap": {
+        "20": {
+          "eligible": 242,
+          "ordinal_slots": 246,
+          "block": 20,
+          "replicates": 10000,
+          "paired_difference": 0.0,
+          "difference_ci_95": [
+            0.0,
+            0.0
+          ]
+        },
+        "60": {
+          "eligible": 242,
+          "ordinal_slots": 246,
+          "block": 60,
+          "replicates": 10000,
+          "paired_difference": 0.0,
+          "difference_ci_95": [
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "trim_top1pct_ewma_loss_delta": 0.0
+    }
+  },
+  "independent_verification": {
+    "status": "passed",
+    "new_fits": 0,
+    "eligible_scalar_origins": 242,
+    "retained_origins": 246,
+    "independent_decimal_losses": 1210,
+    "independent_same_contract_ewma_origins": 242,
+    "independent_intervals": 8,
+    "past_only_job_cutoffs": 22,
+    "checked_train_rows": 17248,
+    "input_hashes_unchanged": 8,
+    "result_sha256": "3debb17701f43d9afd0165c6ee1fd27fda42c7a3d10023982591289821917ced"
+  },
+  "archive_sha256": "bf6d5a3cf3624e14945c264e71889334023b2d0904192dfe1248e753c2698cf7",
+  "archive_members": 573,
+  "fresh_replay": {
+    "status": "verified",
+    "native_market_fits": 44,
+    "native_synthetic_fits": 1,
+    "new_fits": 0,
+    "exact_report_csv_verification": true
+  },
+  "fresh_replay_sha256": "8f161afa653682b1801bc6e55d3d5c08537e47eb31e552957b4c910a3df0c8d6",
+  "old_registry_records_preserved": 186,
+  "old_evidence_hashes_preserved": 167,
+  "old_trials_sha256": "9e31b21899bf1c73bf09ce3c4a09513ef8ea7f5e25d5cae03a19c005bcf08467",
+  "release_allowed": false,
+  "independent_holdout": false,
+  "historical_availability_verified": false,
+  "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/named-risk-label-result-20261012",
+  "next_single_task": "Fixed named-risk HAR-feature readiness: same named labels/reference, change only CT versus own-contract history; no grid or GPU rationale yet",
+  "record_id": "2560506521ffcbfa4ee446f11ab76300c55ab30abf1beb5892ee6ecda6802c5a"
+}

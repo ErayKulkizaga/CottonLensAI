@@ -1,0 +1,132 @@
+{
+  "schema": 1,
+  "status": "fresh_github_companions_verified_main_experiments_pending",
+  "release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/drive-preservation-20261011",
+  "groups": [
+    {
+      "status": "verified",
+      "files": 52,
+      "logical_bytes": 18810661,
+      "excluded": 0,
+      "archive_sha256": "8882f0bd687d8087a587aa6b68fc66528851eaee0ef0429bd58647350079e230",
+      "model_deserialization_performed": false,
+      "deleted_files": 0,
+      "group": "bundles"
+    },
+    {
+      "status": "verified",
+      "files": 11,
+      "logical_bytes": 4583135,
+      "excluded": 0,
+      "archive_sha256": "dcddf32dde3e2956c7ea7cee66f0976380ffe748c1f26c6891db282fc143ae34",
+      "model_deserialization_performed": false,
+      "deleted_files": 0,
+      "group": "artifacts"
+    },
+    {
+      "status": "verified",
+      "files": 289,
+      "logical_bytes": 138110500,
+      "excluded": 0,
+      "archive_sha256": "3fee70ede8ed909195c1148c96c5b9aabbebd06a5b0358f4236e250b6e612b01",
+      "model_deserialization_performed": false,
+      "deleted_files": 0,
+      "group": "data"
+    },
+    {
+      "status": "verified",
+      "files": 4994,
+      "logical_bytes": 279536895,
+      "excluded": 45,
+      "archive_sha256": "64fa7724da251a96e69ad3d5b0cb1626fb8671773252c00e059bd4991827d086",
+      "model_deserialization_performed": false,
+      "deleted_files": 0,
+      "group": "reports"
+    },
+    {
+      "status": "verified",
+      "files": 25,
+      "logical_bytes": 5471880,
+      "excluded": 0,
+      "archive_sha256": "eb89e2241fd2d1a1329e7bc3f805411b1912e83f4baf5ec0aa3ca405c070355b",
+      "model_deserialization_performed": false,
+      "deleted_files": 0,
+      "group": "sources"
+    },
+    {
+      "status": "verified",
+      "files": 1,
+      "logical_bytes": 25744,
+      "excluded": 0,
+      "archive_sha256": "90d19ba07bb31549c5e3782256b4bb0504b48c4f9dc501146bea88fe64ffef28",
+      "model_deserialization_performed": false,
+      "deleted_files": 0,
+      "group": "notebooks"
+    },
+    {
+      "status": "verified",
+      "files": 78,
+      "logical_bytes": 980764,
+      "excluded": 0,
+      "archive_sha256": "5ce8881a547b07f108134c9354e57aafd1a4db7f59fba554984160bacd9af6ea",
+      "model_deserialization_performed": false,
+      "deleted_files": 0,
+      "group": "workbenches"
+    },
+    {
+      "status": "verified",
+      "files": 42,
+      "logical_bytes": 7859845,
+      "excluded": 0,
+      "archive_sha256": "53eb83f3c50de7d2cc4421c65713b2230bc05b8279c595826610c22ef68b6393",
+      "model_deserialization_performed": false,
+      "deleted_files": 0,
+      "group": "archive"
+    }
+  ],
+  "checkpoint_restore": {
+    "status": "verified",
+    "files": 363,
+    "logical_bytes": 40728390,
+    "excluded": 0,
+    "archive_sha256": "a54b189d8cfe8038e09086f2861bc95d5b35c0f15e14197afe70381535ed3e45",
+    "model_deserialization_performed": false,
+    "deleted_files": 0,
+    "restored_files": 363,
+    "source_files_deleted": 0
+  },
+  "verified_logical_files": 5855,
+  "verified_logical_bytes": 496107814,
+  "excluded_files_retained_on_drive_and_private_offline": 45,
+  "fresh_versioned_helper": {
+    "schema": 1,
+    "helper": "storage-v3.py",
+    "sha256": "2f603ba5bb77a41e914e3cec4730e3ac37ba7adc9fefebdb9c5d4a7e8486b307",
+    "payload_commit": "ab07af4fe142760478ab9e0308e42e5eb6b1ffe6",
+    "tests_passed": 11,
+    "model_deserialization": false,
+    "source_deletion": false,
+    "supports": [
+      "pack",
+      "explicit_same_source_resume",
+      "verify",
+      "restore",
+      "split"
+    ]
+  },
+  "model_deserialization_performed": false,
+  "new_fits": 0,
+  "source_files_deleted": 0,
+  "quota_recovery_verified": false,
+  "full_project_migration_complete": false,
+  "remaining_scopes": [
+    "experiments",
+    "live-baselines-v2",
+    "tracking",
+    "mlruns",
+    "root entrypoints",
+    "Cotton-related Colab Notebooks only"
+  ],
+  "next_exact_step": "Finish journaled experiment capture, partition and fresh GitHub restore; recheck current originals before Drive removal. No automatic source deletion or training.",
+  "record_id": "fb4424604f11380621d9cb0718184df502a9b9ed68bca74f7934a8957d47e498"
+}

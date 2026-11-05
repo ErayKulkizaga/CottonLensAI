@@ -1,0 +1,14 @@
+{
+  "schema": 1,
+  "release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/selection-stability-20261010",
+  "archive": {
+    "name": "selection-stability-20261010.zip",
+    "sha256": "77a6bd48d596a9a2c19200e15a9fc734c1914bb562ae05fc036c6782f677dc98",
+    "bytes": 89673679
+  },
+  "members": 6207,
+  "inventory_member": "checksums.json",
+  "inventory_sha256": "f687be12e932dd13d65a143c4da0f4fec70866109af916edd464ee3f7df1f1a6",
+  "new_fits": 0,
+  "scope": "Only checksum-bound inputs consumed by the no-fit diagnostic; not the whole original study."
+}

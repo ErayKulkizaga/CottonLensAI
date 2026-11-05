@@ -1,0 +1,19 @@
+{
+  "status": "restore_quota_amendment_only",
+  "result_archive_sha256": "61bf6a11f316a83d5d50c6e24240cb98187595056d169586b1e99cff3ed23a89",
+  "old_helper_sha256": "e1aa9e52ec087972283ef630fb0910890f4b1c9cf544f32fd5112a0d4e4727c6",
+  "new_helper_sha256": "bc7abe531c8fad8cd5af00d30361ec6c7dfc3a7d18bafea60043d81bfeb9131a",
+  "expected_expanded_bytes": 152680879,
+  "old_limit": 150000000,
+  "new_limit": 160000000,
+  "scientific_report_predictions_models_source_unchanged": true,
+  "new_fits": 0,
+  "reason": "Full preserved parent plus48 new native payloads expands to152680879 bytes, above prototype150MB quota. New helper keeps checksum/member/path/symlink protection and requires exact signed inventory total.",
+  "asset_name": "named-history-source-result-restore-r2-20261011.zip",
+  "asset_sha256": "39fa751df609c1973156967d25b6bfff8c36c830d6b5e8f69a69d142d75988f9",
+  "asset_bytes": 4190,
+  "inventory_sha256": "9c5c4c82b184790fa3cb2d99d6ac12012e1bb9a4e5ebf0b626f3f500d3fc7a7b",
+  "members": 4,
+  "release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/named-history-source-result-20261011",
+  "record_id": "0f74070e09a57ccf37a34d1c3ba34eae9c4363798963d8f5a7cb6ea325717327"
+}

@@ -1,0 +1,144 @@
+{
+  "schema": 1,
+  "profile": "ct-signed-shock-conditional-qlike-score-t1-v1",
+  "classification": "INCONCLUSIVE",
+  "classification_scope": "one local conditional QLIKE direction; no forecast improvement established",
+  "source_id": "c6e8021d9fc07d222465f604cacb0a8ec8d83a56a56244f3510f69f73fc4e0c0",
+  "design_id": "019a8a2f931c59f75e6251420cc9c3a3d7c1e2cf5fdf9a44da083c31db0fe662",
+  "completed_market_fits": 0,
+  "completed_synthetic_fits": 0,
+  "ordinal_origins": 2006,
+  "native_outer_fits_reused": 97,
+  "mean_score": -0.24122131703300842,
+  "score_ci": {
+    "20": [
+      -0.5072937242446662,
+      0.19320329194815217
+    ],
+    "60": [
+      -0.5422818698075347,
+      0.14232997088866967
+    ]
+  },
+  "yearly_score": {
+    "2016": 0.0298301856877807,
+    "2017": 0.15558312443121933,
+    "2018": -0.12058946058641604,
+    "2019": -0.25521642632051567,
+    "2020": -0.14315397022809911,
+    "2021": 0.05291158745901774,
+    "2022": -1.5221865571028348,
+    "2023": -0.12546064358368914
+  },
+  "negative_years": 5,
+  "trim_top1pct_score": -0.01573316640626103,
+  "direction_gate_passed": false,
+  "independent_verification": {
+    "status": "verified",
+    "new_forecast_fits": 0,
+    "market_skill": false,
+    "ordinal_origins": 2006,
+    "native_outer_fits": 97,
+    "past_only_feature_projections": 97,
+    "decimal_close_rows": 3520,
+    "decimal_qlike_derivatives": 2006,
+    "independent_intervals": 2,
+    "maximum_basis_error": 1.1723955140041653e-13,
+    "direction_gate_passed": false
+  },
+  "result_sha256": "127a38a0a059d29eca09aaafcd175054ea09f43ebbabac3a15072ad2f670d010",
+  "scores_sha256": "983844334e70dc9ddd03ac685a825e2c8540373dee3d3355d2bcb8ef3ab27db4",
+  "extreme_attribution": {
+    "profile": "ct-largest-risk-loss-attribution-v1",
+    "new_forecast_fits": 0,
+    "original_origins": 2006,
+    "focus_rule": "largest stored EWMA QLIKE loss, descriptive post-result audit",
+    "origin": "2022-06-23",
+    "target_date": "2022-06-24",
+    "front_contract_on_both_prints": "2022-07-01",
+    "front_prices": [
+      "136.32",
+      "103.76"
+    ],
+    "front_log_return": -0.27292452307281717,
+    "second_contract_on_both_prints": "2022-10-01",
+    "second_prices": [
+      "109.01",
+      "107.15"
+    ],
+    "second_log_return": -0.01720989922068114,
+    "held_CT_volumes": [
+      5807.0,
+      174.0
+    ],
+    "total_raw_QLIKE_net_gain_sum": 35.05411349877427,
+    "focus_raw_QLIKE_gain": 32.09288469493485,
+    "focus_fraction_of_net_raw_gain": 0.9155240709783472,
+    "focus_fraction_of_net_signed_score": 0.85064876156078,
+    "without_focus_raw_mean_gain_descriptive": 0.0014769220966780114,
+    "decimal_target_rows_checked": 2006,
+    "decimal_loss_scalars_checked": 4012,
+    "continuous_contract_switch_established": false,
+    "source_is_same_publisher": true,
+    "exchange_or_first_vintage_verified": false,
+    "market_skill": false,
+    "interpretation": "Both dated AMS prints label July22. An automatic continuous-roll explanation is not established for this event. The source also does not prove the economic cause or rule out shared vendor revision.",
+    "not_done": "No target deletion, cohort change, retraining, strategy or substitution of second-contract labels",
+    "inputs_sha256": {
+      "scores.csv": "983844334e70dc9ddd03ac685a825e2c8540373dee3d3355d2bcb8ef3ab27db4",
+      "history.parquet": "ac709a5b70b43e06c8eb1ad65dcd444dd8669ce7cd5c0bc1f137cdfb31bc7f7d",
+      "daily-parser.py": "3e9812563851459958aa65645fa358649f4021414bd01687098be6e5e9b15de7",
+      "origin-report.txt": "ebe1dbf597df341c00d6f554bb16de2a52803090030518d49f2eac17b6a74650",
+      "source.py": "21efb8e7588772f304f744fbcf32fa30e7f060635c475b448d7996b0aa4185e4",
+      "target-report.txt": "9bf4d5ed50cc6ef6e25fa15e804e90204f5a7f065ff326bb0caf21d7f57fa1dd"
+    }
+  },
+  "extreme_attribution_sha256": "f7f2f89a4d905e77b5b4649e214809f7572eeefc93fe0b2bc9057dd39df1dc81",
+  "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/ct-signed-risk-score-20261029",
+  "archive_sha256": "face179c62f22447c1e02166e8a193da27c61f835cbb3425708d21d72c76263d",
+  "fresh_restored_members": 1800,
+  "supplement_archive_sha256": "fb76db369a31c09e0ec811328b33ed1aab0253310aff2f0bf5975d7e953352b3",
+  "supplement_fresh_members": 10,
+  "fresh_replay": {
+    "status": "fresh_github_restore_offline_replay_byte_identical",
+    "new_forecast_fits": 0,
+    "network_requests_during_replay": 0,
+    "source_id": "c6e8021d9fc07d222465f604cacb0a8ec8d83a56a56244f3510f69f73fc4e0c0",
+    "original_origins": 2006,
+    "native_outer_fits": 97,
+    "equal_outputs": {
+      "result.json": "127a38a0a059d29eca09aaafcd175054ea09f43ebbabac3a15072ad2f670d010",
+      "scores.csv": "983844334e70dc9ddd03ac685a825e2c8540373dee3d3355d2bcb8ef3ab27db4",
+      "transformations.json": "fa736952ff45f75bf3047682aa7ed7aff070be3cf1835bd221d0300b4a380110",
+      "independent-verification.json": "91eaa90f3c0207dc42375aedcc2683b07897e1e39169c5817686f2cf95cb2034"
+    },
+    "market_skill": false,
+    "direction_gate_passed": false,
+    "replay_sha256": "bcc863aef7563ff61da85756cbc7cb080711926e8d54d2d3d8dcf2e68234d599"
+  },
+  "supplement_replay": {
+    "status": "fresh_github_restore_offline_replay_byte_identical",
+    "new_forecast_fits": 0,
+    "market_skill": false,
+    "network_requests_during_replay": 0,
+    "equal_outputs": {
+      "daily-parser.py": "3e9812563851459958aa65645fa358649f4021414bd01687098be6e5e9b15de7",
+      "origin-report.txt": "ebe1dbf597df341c00d6f554bb16de2a52803090030518d49f2eac17b6a74650",
+      "result.json": "f7f2f89a4d905e77b5b4649e214809f7572eeefc93fe0b2bc9057dd39df1dc81",
+      "source.py": "21efb8e7588772f304f744fbcf32fa30e7f060635c475b448d7996b0aa4185e4",
+      "target-report.txt": "9bf4d5ed50cc6ef6e25fa15e804e90204f5a7f065ff326bb0caf21d7f57fa1dd"
+    },
+    "replay_sha256": "09343ee4855f87e63f0e666c1628edaed7aa11b990bfe8888b152762812d1eaf"
+  },
+  "old_registry_stages_preserved": 215,
+  "old_evidence_hashes_preserved": 196,
+  "old_trials_sha256": "99004d234a71eab55b7e0f5d38e06c18bd83a60c56de55cd52f4cddb33d77051",
+  "market_skill": false,
+  "training_allowed": false,
+  "release_allowed": false,
+  "independent_holdout": false,
+  "historical_availability_verified": false,
+  "prior_interpretation": "Negative covariance was counter-evidence to the original positive inverse-leverage hypothesis, not no-sign-information proof. Current conditional direction is inconclusive, not forecast improvement.",
+  "next_exact_step": "Separately freeze one past-learned signed-versus-unsigned shock contrast at equal5parameter capacity and sameCT origins/reference; no fit is started by this diagnostic. Named-market source admission remains required separately.",
+  "record_id": "8b93143518a9864b96da1ee7b1c682cbc5a0cdda97caaeba4a2faf6237054571"
+}

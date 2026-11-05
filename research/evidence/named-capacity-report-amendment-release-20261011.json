@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/named-capacity-report-amendment-20261011",
+  "archive": {
+    "name": "named-capacity-report-amendment-20261011.zip",
+    "sha256": "083779bf53ec85091ddff964e0fe3b747261073f114338b046634b553ef36b96",
+    "bytes": 11565
+  },
+  "members": 7,
+  "inventory_sha256": "512e1be446ebc762e030882d83d96af66f0590644341625689fcaa0dd5e58506",
+  "source_id": "4a2feff2817bf57db64970c94c8b6a7bbd55cbdc97c8c872225a0756a9dd15af",
+  "new_fits": 0,
+  "new_market_scores": 0,
+  "old_report_sha256": "430f146af488ad9c3068299bd062dd4258632b6a9f507442533a6ff4f07131aa",
+  "new_report_sha256": "3cd9b82818d5e73a6090039a197a4ab247194a8e9ff0dfba63774d4a77f23626",
+  "record_id": "d40ec4fe773fe492c9bcf038c795d65be83628659f7ef35b1f87ef345fe8369a"
+}

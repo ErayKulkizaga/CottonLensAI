@@ -1,0 +1,24 @@
+{
+  "schema": 1,
+  "profile": "named-ewma-scale-control-t1-v1",
+  "source_id": "443102eccde8acc51bf2de6b882088ee69f4da9ff1f5ceeed07aea77412cdbcd",
+  "design_id": "0405432905085d4e4ffc1a53af5bb17f2dfb87fedc24ca8a54c3810bff6b50f9",
+  "ready_sha256": "cf1e47f0cd9b61f48d41a2f76b0b0e2b9c7db6c7c4f73aa540a8a85e2be6741a",
+  "new_fits": 0,
+  "fresh_restore_verified": true,
+  "archive_sha256": "83886a3e061c9bf25804224c7f479c649bd891f1005b3de1b7e891c7407792b7",
+  "archive_members": 352,
+  "fit_budget": {
+    "market": 22,
+    "synthetic": 1,
+    "processes": 1,
+    "threads": 2,
+    "session_minutes": 30
+  },
+  "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/named-ewma-scale-preregistration-20261013",
+  "release_allowed": false,
+  "independent_holdout": false,
+  "historical_availability_verified": false,
+  "human_authorization_scope": "Active goal; bounded analytic CPU EWMA control without search",
+  "record_id": "188f347a2e8cc46d3da5d31006b9c2c810dc9ae2d65d2f236b60ac5ad04b364a"
+}

@@ -1,0 +1,191 @@
+{
+  "schema": 1,
+  "status": "completed_matched_label_control_verified",
+  "profile": "named-label-control-t5-v1",
+  "source_id": "cc7e6693a9662a1dc7a91d4ca322c129a6ff8583c4dc4010d376e7b41aa52b65",
+  "design_id": "128d1e0bcc4e936b05bc58c17f2736d99a50f9b60c1af4002b4accec2f946b19",
+  "ready_sha256": "1766d80dd46f2b2808d63cc8b97bbda6999571b5d2cd2e26db14ef59d545c811",
+  "report_sha256": "3b855d9faa7848fe55b916b3a95f5d97c3d5089fa2b3dc8c7c479a546f8803c1",
+  "predictions_sha256": "98bff14ea54d956f1b3cafaeabdafde0e073265f43f1d529c2a163157b12d36d",
+  "complete_sha256": "de5f84465df3adaa5e476783e04399dc785c094275509420c2bf44461d9c754e",
+  "verification_sha256": "efbbdc6400e689ba99e2a38d48e4fe55642700979311a0626b90021ef3c02bd7",
+  "controls_sha256": "c122ec90e991f9fad6a89aa596f60f22224c9339366439c15f07b3d92cf740d1",
+  "market_fits": 44,
+  "synthetic_fits": 1,
+  "verification_fits": 0,
+  "native_market_replays": 44,
+  "prediction_rows": 984,
+  "price_forecasts": 972,
+  "origins_per_arm": 246,
+  "scored_per_arm": 242,
+  "unknown_per_arm": 4,
+  "classification": "DECISIVE_POSITIVE",
+  "classification_scope": "Paired historical2023 RAW label effect only; both20/60 lower bounds positive. NOT Naive superiority,independent holdout,8yeargate,PIT,allmodels or allinformation proof.",
+  "practical_decision": "FIXED_LABEL_CONTROL_BELOW_PRACTICAL_GOAL",
+  "summaries": {
+    "ct_raw": {
+      "receipts": 246,
+      "scored": 242,
+      "unknown": 4,
+      "naive_mae": 1.9760743801652894,
+      "model_mae": 2.397313164792049,
+      "gain_pct": -21.316949850416304,
+      "direction_pct": 44.214876033057855,
+      "active_pct": 100.0,
+      "trimmed_gain_pct": -20.9438641194321
+    },
+    "ct_selected": {
+      "receipts": 246,
+      "scored": 242,
+      "unknown": 4,
+      "naive_mae": 1.9760743801652894,
+      "model_mae": 1.9760743801652894,
+      "gain_pct": 0.0,
+      "direction_pct": 0.0,
+      "active_pct": 0.0,
+      "trimmed_gain_pct": 0.0
+    },
+    "named_raw": {
+      "receipts": 246,
+      "scored": 242,
+      "unknown": 4,
+      "naive_mae": 1.9760743801652894,
+      "model_mae": 2.1329412988498926,
+      "gain_pct": -7.93831043300516,
+      "direction_pct": 45.45454545454545,
+      "active_pct": 100.0,
+      "trimmed_gain_pct": -7.407091015277735
+    },
+    "named_selected": {
+      "receipts": 246,
+      "scored": 242,
+      "unknown": 4,
+      "naive_mae": 1.9760743801652894,
+      "model_mae": 1.9760743801652894,
+      "gain_pct": 0.0,
+      "direction_pct": 0.0,
+      "active_pct": 0.0,
+      "trimmed_gain_pct": 0.0
+    }
+  },
+  "contrasts": {
+    "raw": {
+      "price_mae_difference_ct_minus_named": 0.26437186594215634,
+      "pct_of_named_naive_mae": 13.378639417411144,
+      "trimmed_pct_of_named_naive_mae": 13.178441012937096
+    },
+    "selected": {
+      "price_mae_difference_ct_minus_named": 0.0,
+      "pct_of_named_naive_mae": 0.0,
+      "trimmed_pct_of_named_naive_mae": 0.0
+    }
+  },
+  "primary_intervals": {
+    "named_raw_vs_naive_20": {
+      "eligible": 242,
+      "ordinal_slots": 246,
+      "block": 20,
+      "replicates": 10000,
+      "paired_difference": -0.15686691868460545,
+      "difference_ci_95": [
+        -0.29640884759680064,
+        -0.007946256872019358
+      ],
+      "gain_pct": -7.938310433005279,
+      "gain_ci_95_pct": [
+        -14.999883130512911,
+        -0.4021233690279764
+      ],
+      "resampled_eligible_min_max": [
+        229,
+        246
+      ],
+      "method": "full-ordinal year-preserving weighted moving-block,recentered basic",
+      "selection_adjusted": false
+    },
+    "named_raw_vs_naive_60": {
+      "eligible": 242,
+      "ordinal_slots": 246,
+      "block": 60,
+      "replicates": 10000,
+      "paired_difference": -0.15686691868460545,
+      "difference_ci_95": [
+        -0.2948141811823075,
+        0.003083329788808681
+      ],
+      "gain_pct": -7.938310433005279,
+      "gain_ci_95_pct": [
+        -14.919184426531954,
+        0.1560330835598798
+      ],
+      "resampled_eligible_min_max": [
+        236,
+        246
+      ],
+      "method": "full-ordinal year-preserving weighted moving-block,recentered basic",
+      "selection_adjusted": false
+    },
+    "ct_minus_named_raw_20": {
+      "eligible": 242,
+      "ordinal_slots": 246,
+      "block": 20,
+      "replicates": 10000,
+      "paired_difference": 0.26437186594215367,
+      "difference_ci_95": [
+        0.1373810980097422,
+        0.3966058611495791
+      ],
+      "gain_pct": 11.027840243186851,
+      "gain_ci_95_pct": [
+        5.730627939118634,
+        16.5437652024066
+      ],
+      "resampled_eligible_min_max": [
+        229,
+        246
+      ],
+      "method": "full-ordinal year-preserving weighted moving-block,recentered basic",
+      "selection_adjusted": false,
+      "difference_ci_pct_of_named_naive": [
+        6.952223023014493,
+        20.070391333974225
+      ]
+    },
+    "ct_minus_named_raw_60": {
+      "eligible": 242,
+      "ordinal_slots": 246,
+      "block": 60,
+      "replicates": 10000,
+      "paired_difference": 0.26437186594215367,
+      "difference_ci_95": [
+        0.17163593903114077,
+        0.3409795170593183
+      ],
+      "gain_pct": 11.027840243186851,
+      "gain_ci_95_pct": [
+        7.159512639060203,
+        14.223403185995362
+      ],
+      "resampled_eligible_min_max": [
+        236,
+        246
+      ],
+      "method": "full-ordinal year-preserving weighted moving-block,recentered basic",
+      "selection_adjusted": false,
+      "difference_ci_pct_of_named_naive": [
+        8.685702357862876,
+        17.255398910176496
+      ]
+    }
+  },
+  "selected_weights": {
+    "ct": 0.0,
+    "named": 0.0
+  },
+  "historical_availability_verified": false,
+  "first_vintage_verified": false,
+  "independent_holdout": false,
+  "release_allowed": false,
+  "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/named-label-control-result-20261010",
+  "record_id": "9049283a20e7c56cc3b62bed70bd6479a895d12b5f541204f3f20c80ef99f2b7"
+}

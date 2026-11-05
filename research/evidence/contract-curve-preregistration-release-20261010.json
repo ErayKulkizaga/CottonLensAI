@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/contract-curve-preregistration-20261010",
+  "archive": {
+    "name": "contract-curve-preregistration-20261010.zip",
+    "sha256": "18520c49d6750a3a6b08dcd9fe69d7f1a04d69cc12b8e35a2e96a2c79956fc1e",
+    "bytes": 7313091
+  },
+  "members": 564,
+  "inventory_member": "checksums.json",
+  "inventory_sha256": "ec0918bcb5376e80a43bb739f07f827631cdeed34d9a667d847b96cc3b52a176",
+  "market_fits": 0,
+  "synthetic_fits": 0,
+  "source_id": "84d40007e33b75ecff9ca422958daab79d30d67f3adb59b7bb419bc873412d1a",
+  "registration_id": "e2fac4fa52a20d48ba4a09346ca1b7b9ae32db88133f61dcc8080bcec5ac2698",
+  "scope": "Frozen zero-fit execution,inputs,source,contract,quarantine quotes,portable no-fit verifier. Clock and first vintage unverified."
+}

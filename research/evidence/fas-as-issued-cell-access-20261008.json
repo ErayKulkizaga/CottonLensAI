@@ -1,0 +1,137 @@
+{
+  "schema": 1,
+  "experiment": "fas-historical-reference-witness-v1",
+  "market_fits": 0,
+  "ml_source_id": "91f43a67917834a9c7ff90deb66c4b0e2bf1061791a1445dae6c3c1096b04299",
+  "data_id": "17e906f1f4598ee74ac8bea661c2d9d0156a6d595a6f306e9f6cac7c297e731c",
+  "inputs": {
+    "manual.pdf": "a8448537758c90dbe07ecc631c71601aecf3d8f898f130f2c996297bad2930b7",
+    "adjustments-20200604.html": "8d25bfb01494a443264acb41c8197567d4c78834fe269431891d3eb463080a72",
+    "wayback-query-index.html": "bdd1ddf3b8953042cd8657b5e3806f1c2968219d78c771dbb2886dcc27613960",
+    "wayback-query-form-20200417.html": "a9bb9fcc823bfc0b5046e932c323380df254c574057276b34d5992469b12a0d1",
+    "wayback-query-form-20200701.html": "9628062cb01e5bb9b791fa3ef625ce56ced2d9fb15c1935984b2ad4a2d519e51",
+    "retrievals.json": "c82f3602ac81d5c7d9d6f2e4bce89a102c97996ebafd3a9294b5ce1402a3ce20",
+    "wayback-form-retrieval.json": "41fc452fa61dab50881d71869ae11dffee29005b56eb5401fa46b08d40ec4c39",
+    "wayback-preperiod-retrieval.json": "d88bc81949c63fabd45203523b56cb6ccacc6c441221c5c6d16d546f6b47702e"
+  },
+  "historical_reference_review_sha256": "ab9077905a4c83e798cc239462fc7eb883ed838856b61ae43fe5c991c3f1e529",
+  "historical_witness": {
+    "scope": "four named country code pairs and commodity 1404 option only",
+    "declared_archive_capture_timestamps": [
+      "20200417213154",
+      "20200701005521"
+    ],
+    "cdx_payload_digests_match": true,
+    "four_code_name_pairs_observed": true,
+    "continuous_validity_verified": false,
+    "full_historical_catalog_verified": false,
+    "archive_timestamp_is_usda_publication_proof": false,
+    "unit_verified": false
+  },
+  "access_review": {
+    "as_issued_cell_access": "BLOCKED_EXTERNAL_EVIDENCE",
+    "queried_adjustment_period": "2020-06-04",
+    "http_status": 200,
+    "report_data_rows_observed": 0,
+    "result": "column headings only in anonymous HTML and live UI",
+    "no_adjustments_in_history_verified": false,
+    "unsupported_date_or_empty_dataset_cause_verified": false,
+    "manual_pages_reviewed": [
+      20,
+      21
+    ],
+    "manual_page_21_visual_review": true,
+    "manual_scope": "adjustments reported in selected week; not a complete numerical-vintage ledger",
+    "cdx_2020_exact_query_url_captures": 7,
+    "archived_query_form_not_executed_result": true,
+    "archived_form_post_attempted": false,
+    "market_dataset_downloads": 0,
+    "messages_sent": 0
+  },
+  "required_discriminator": {
+    "country_code": 5700,
+    "commodity_code": 1404,
+    "week_ending": "2020-05-28",
+    "field": "accumulatedExports",
+    "pinned_later_api_value": 1478645,
+    "required": "original as-issued exact running-bale cell with release/version-bound evidence",
+    "observation_date_is_publication_date": false,
+    "same_search_without_new_evidence_to_be_repeated": false
+  },
+  "cause_verified": false,
+  "publication_timestamp_verified": false,
+  "first_version_verified": false,
+  "model_eligible": false,
+  "preservation": {
+    "prior_registry_records_unchanged": 135,
+    "prior_evidence_sha256": {
+      "research/evidence/availability-clock-result.json": "68f7382912a825a3628842c6774d9cfce5a1f87c4998f2058d9e88f6cb1c697f",
+      "research/evidence/fas-country-field-audit-20261008.json": "0392c53cbaaf72e1070be312d4ef50bb69ebeaf26c94e5709af6363dcd11f576",
+      "research/evidence/fas-country-report-release-20261008.json": "dd44f77ede6b72bc0dd531d5c669261b4bc3415327de0e96393df4a48004599d",
+      "research/evidence/fas-country-report-review-20261008.json": "ae2e031160d12980e2c1fa2be17e0156a47806c58e21a4a24d3c6ca543a9f278",
+      "research/evidence/fas-country-report-verification-20261008.json": "be2593eebfb5c7cec2d106e46df68194b1a7d688fdf864f10184629eb0245d5e",
+      "research/evidence/fas-may28-subtype-review-20261008.json": "0da3f0d010a135039b896e1070c603ec557ff0231dcaaa1c2017c5d05fb6f6e5",
+      "research/evidence/fas-may28-version-audit-20261008.json": "66130acf3d1b06407519439bde0631b051929a2debe3f15b8ea4e3a59de8b687",
+      "research/evidence/fas-may28-version-release-20261008.json": "31ea7316502dc7bfc5585958dbaa82319b6f0c78db3c32f989c6367c2ad1e35e",
+      "research/evidence/independent-verification.json": "4870594191971cdb6e56d93ce738d6488759926e8be6bb465a32744e5edc0353",
+      "research/evidence/information-delivery-check.json": "4f0c4bb2f7b8a5065e3967a0a49d4e2f752660f0ad643dca5fe60ffa95ae0e04",
+      "research/evidence/learning-control-correction.json": "5047911b72a7e0a280c7ad7e88e943a426760c3d9371d32bdde3109e96b2d628",
+      "research/evidence/legacy-lstm-correction.json": "a6c229b39dd53af08bd45be6686eddb14ea36f503e7cda8307e2a7481e94ec83",
+      "research/evidence/plan-review-20261005.json": "4900f8213f765d9806e6b739fbdf3a627ab6e6ac1acfe936db1fa7335707e04d",
+      "research/evidence/price-semantics-20261005.json": "a387d3942a0c9cb82230f824b2130a5a8d5f40ad63961af97f7ea96c47576ea7",
+      "research/evidence/price-semantics-release-20261005.json": "314164a2badf836f9be3825415fde4c91d60070473358e0a7dbb2219dc0d0b59",
+      "research/evidence/trading-wasde-delivery-20261005.json": "95eee29780199f9c4c2412d39e89005371d2afb7792bb3d148e05eba24689d3e",
+      "research/evidence/trading-wasde-release-20261005.json": "3bd89451e3a6cd144f3c6ee26c42718899f5576ea212db6d05053f8d7ef78ea1",
+      "research/evidence/wasde-as-reported-20261008.json": "8d69f10bebfb62150d783ee0fbcf4f4f0bed1abf03694eab8406682d615db66a",
+      "research/evidence/wasde-as-reported-release-20261008.json": "9db4d59f7d26c938bbdb2501151609ece36281109854aba9afb0bde05518f251",
+      "research/evidence/wasde-clock-case-20261008.json": "4348b38f282437a27bca87f8e2ce1a7918d4ea3955336dfa74741737254e5eac",
+      "research/evidence/wasde-clock-case-release-20261008.json": "47b7b4cec5f1638da6d33d1360b0d8c209890cb75ec59314e3425f5dfc872d58",
+      "research/evidence/wasde-regional-preregistration-20261008.json": "9d11b6004f8818230a5488f8d8910193f0a8536cb6a8b778531934a5532f83e3",
+      "research/evidence/wasde-regional-preregistration-release-20261008.json": "a103c800328dbdaf5283d9db28a9eaebc369c26c73955e9359eb5d5bd7f5047a",
+      "research/evidence/wasde-regional-release-20261008.json": "46fa8a7da38a3e0d0dfb68dfe261aa3d5cd458424c838675ebbf71d634634b1d",
+      "research/evidence/wasde-regional-result-20261008.json": "d1b8b4269a50d6aec8271db1a69e048866b67729bf21f56ae708e0caf2ce3750",
+      "research/evidence/wasde-regional-result-release-20261008.json": "d3fb9057ed0ff94a4bf15e776d2b1fafeb3ec1178d55ff23871f64ec0109160b",
+      "research/evidence/wasde-regional-verification-20261008.json": "0eee010ef731768b81857b7bdc75c2d1d598cd52df7b4e313562eacdfc8d10ae"
+    },
+    "trials_sha256": "52b15504c580eaa220bb57815045da55930e268b87e3595d9c13c4934b7e04ff",
+    "previous_eight_raw_inputs_unchanged": [
+      {
+        "path": "pinned-api-2020.json",
+        "sha256": "9973f506fa67950687cb3f945c36cf601ed3cf8c49420ee2ada45bfc52ad3c83"
+      },
+      {
+        "path": "pinned-commodity-catalog.json",
+        "sha256": "38449fd690f631f2cabc4cca7373e9923487680ae242efd0ec12a36de49b811b"
+      },
+      {
+        "path": "index-2020/source.bin",
+        "sha256": "7b527026b4870c6e84f3698aae0cae6e045e7128148c20702f26bbd5be12dc98"
+      },
+      {
+        "path": "index-2020/retrieval.json",
+        "sha256": "13757643ef9bf83682afd368b56f78bcbb2de724b72cc74e57be82aac9a8d1d0"
+      },
+      {
+        "path": "recovered-20200528/source.bin",
+        "sha256": "1905ec8bcef929c29d4a2dcd9ebd1af3d3e8e1de55335aa6b0754910054ea51a"
+      },
+      {
+        "path": "recovered-20200528/retrieval.json",
+        "sha256": "a97ecd8b7831ad1ee3f366409d70043d3c696d4ed1814474af2ecdb8463c9c22"
+      },
+      {
+        "path": "census-country-codes/source.html",
+        "sha256": "c6ff60439d3694fdc2e61db58c18f7c9ad13a1c465d9b851cd12d94d50838523"
+      },
+      {
+        "path": "census-country-codes/retrieval.json",
+        "sha256": "b5689f94cf7a8949758139ef0f20a9341bed03984cbeeae399c82428773fd259"
+      }
+    ]
+  },
+  "validation": {
+    "targeted_tests_passed": 96,
+    "ruff_passed": true,
+    "no_training_or_admission_change": true
+  }
+}
