@@ -170,9 +170,13 @@ ve EWMA karşılaştırması için yeni kohorta özgü 10 ilk fit tamamlandı.
 Windows görevi 4 Kasım 03:05 veri alımı ve 03:20 yayın için yeni
 kohorta yönlendirildi. Uyandırma ayarı açık. Gerçek Yahoo yanıtıyla
 izole provada iki revizyon kaydedildi ve her iki görev aşaması geçti.
-Provanın saati simüle edildi. Gerçek ileri yayın kendi saatinde
-doğrulanacak. 84 ilgili test geçti ve yeni çalışma alanının private
-GitHub yedeği taze indirilerek doğrulandı.
+Provanın saati simüle edildi. İlk gerçek V2 kaydı 4 Kasım'da
+00:05:06 UTC kaynak alımı ve 00:20:05 UTC yayınla doğrulandı.
+Private GitHub Release'teki dört parçadan 442 dosya geri kuruldu.
+Saklanan EWMA ve model çıktıları sıfır yeni fit ile yeniden üretildi.
+252 origin koşulu devam ediyor ve ileri performans ölçülmedi.
+Son kontrolde iki Windows görevi de kapalıydı.
+[İlk gerçek V2 yayın makbuzu](../research/evidence/ct-forward-first-observed-publication-audit-20261104.json)
 
 [Çalışma kanıtları](https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/ct-forward-records-2026-q4)
 

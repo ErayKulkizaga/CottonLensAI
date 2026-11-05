@@ -15,8 +15,6 @@ from cottonlens_ml.research.ledger import Ledger, freeze_record, read_record, wr
 from cottonlens_ml.research.volatility import qlike
 
 from research import ct_manual_forward as forward
-from research.ct_manual_source import CottonCalendar, classify_chart, verified_response
-from research.ct_prospective_readiness import append_snapshot, overlap_revisions
 from research.verify_ct_prospective_readiness import decimal_difference
 from research.verify_ct_signed_risk_score import independent_history
 from research.verify_risk_weak_teacher import difference_interval
@@ -99,7 +97,7 @@ def require_end(root, repo):
         raise ValueError('Last target has not completed; no intermediate score')
     if design['no_partial_score'] is not True:
         raise ValueError('Unexpected scoring protocol')
-    forward.status(root, repo)  # verifies publication/event hashes, timestamps and target dates
+    forward.status(root, repo)  # verifies publication provenance before any scoring
     return ready, lock, cal, dates
 
 
@@ -115,45 +113,9 @@ def study_hashes(root):
 
 
 def observation_history(root):
-    """Rebuild every admitted source transition from preserved raw bytes, without network."""
-    final, latest = forward.current_history(root)
-    if latest is None or forward.utc(latest['observed_available_at']) > forward.now():
+    final, latest, frames, receipts = forward.observation_history(root)
+    if latest is None:
         raise ValueError('A real final source observation is required')
-    initial = pd.read_parquet(root/'inputs/seed.parquet'); combined = initial
-    retain_first = read_record(root/'decision-contract.json').get('overlap_price_policy') == 'retain-first-observed-v1'
-    if retain_first:
-        rebuilt, revisions = forward.replay_first_observed_seed(root)
-        pd.testing.assert_frame_equal(initial, rebuilt, check_exact=True)
-        if read_record(root/'inputs/bootstrap-revisions.json')['transitions'] != revisions:
-            raise ValueError('Bootstrap revision audit differs')
-    calendars = {content_id(json.loads((root/'inputs/calendar.json').read_bytes())):
-                 json.loads((root/'inputs/calendar.json').read_bytes())}
-    for p in (root/'calendar-extensions').glob('*/extension.json'):
-        body = read_record(p)['calendar']; calendars[content_id(body)] = body
-    records = [read_record(p) for p in (root/'observations').glob('*/receipt.json')]
-    records.sort(key=lambda r: forward.utc(r['observed_available_at']))
-    frames, receipts = {}, {}
-    for r in records:
-        base = root/'observations'/r['observation_id']
-        http = verified_response(base/'chart.json', base/'http-receipt.json')
-        if (http['observed_available_at'] != r['observed_available_at'] or r['calendar_id'] not in calendars
-                or http.get('source_url') != 'https://query1.finance.yahoo.com/v8/finance/chart/CT%3DF?range=2y&interval=1d&includePrePost=false'
-                or r['observation_id'] != content_id({'source_sha256': digest(base/'chart.json'),
-                                                     'receipt_sha256': digest(base/'http-receipt.json')})):
-            raise ValueError('Source receipt/calendar identity changed')
-        _, quotes = classify_chart(json.loads((base/'chart.json').read_bytes()), http, CottonCalendar(calendars[r['calendar_id']]))
-        if retain_first and read_record(base/'overlap-revisions.json') != {
-                'observation_id': r['observation_id'], 'policy': 'retain-first-observed-v1',
-                'revisions': overlap_revisions(combined, quotes)}:
-            raise ValueError('Source revision audit differs')
-        combined = append_snapshot(combined, quotes, retain_first_observed=retain_first)
-        stored = pd.read_parquet(base/'history.parquet')
-        pd.testing.assert_frame_equal(combined, stored, check_exact=True)
-        pd.testing.assert_frame_equal(final.iloc[:len(stored)].reset_index(drop=True), stored, check_exact=True)
-        if r['latest_completed_date'] != str(stored.date.iloc[-1].date()):
-            raise ValueError('Incorrect source final-session label')
-        frames[r['observation_id']], receipts[r['observation_id']] = stored, r
-    pd.testing.assert_frame_equal(combined, final, check_exact=True)
     return final, latest, frames, receipts
 
 

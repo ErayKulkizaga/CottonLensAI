@@ -20551,6 +20551,30 @@
       "completed_market_fits": 0,
       "market_skill": false,
       "id": "1891e78efad33553087e02c73c35deaf2677c4104ab811c78a4ed24ef751b1d5"
+    },
+    {
+      "experiment": "research-ct-first-observed-publication-audit-v2",
+      "profile": "ct-own-level-first-observed-forward-t1-v2",
+      "horizon": 1,
+      "kind": "zero_fit_source_native_clock_and_fresh_private_delta_restore_audit",
+      "classification": "INCONCLUSIVE",
+      "classification_scope": "First actual publication and private restore verified; forward performance unscored",
+      "publication_verified": true,
+      "model_families": [
+        "har"
+      ],
+      "completed_market_fits": 0,
+      "completed_synthetic_fits": 0,
+      "reused_market_fit_states": 10,
+      "source_id": "d4f28151197f7c3a1dc06da284649574225227b98b75fdb9e960c898d4912e89",
+      "design_id": "bcdf95ed8f317eadc9a608b04b6654360cdabeb01f63f8ad9ca447ae7ee2eecb",
+      "execution_source_id": "346816caf38e0d6d60780213dc3d52db36f19a1ad5319740fd82c3f3cf3007ae",
+      "verified_forward_forecasts": 1,
+      "market_skill": false,
+      "performance_scored": false,
+      "evidence": "evidence/ct-forward-first-observed-publication-audit-20261104.json",
+      "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/ct-forward-records-2026-q4",
+      "id": "46375daaf697844b07d1b12a7e25975f8070601f69ec9eedc403b8efd8d18b65"
     }
   ],
   "local_evidence": [
@@ -21425,6 +21449,10 @@
     {
       "path": "evidence/ct-limit-readiness-20261104.json",
       "sha256": "2e0bdcb7ea16d308fb78b9693acb785cbadd70bbcaead9c272d171be3cd6ab1d"
+    },
+    {
+      "path": "evidence/ct-forward-first-observed-publication-audit-20261104.json",
+      "sha256": "0f88cccb05288200837cbe5d40a5f2ca8bfb406640559c685d6f3fd69c82593c"
     }
   ]
 }

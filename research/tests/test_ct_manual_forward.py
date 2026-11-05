@@ -169,7 +169,8 @@ def publishing_fixture(root, first='2026-10-30'):
     p = seed(); p['date'] = pd.bdate_range(end='2026-10-30', periods=len(p))
     h = study.history(p); origin = '2026-10-30'
     identity = {'source_id': 'synthetic', 'design_id': 'synthetic'}
-    locked = {'first_origin': first, 'locked_at': '2026-10-29T10:00Z', 'identity': identity}
+    locked = {'first_origin': first, 'locked_at': (study.decision(first)-pd.Timedelta(hours=1)).isoformat(),
+              'identity': identity, 'required_origins': 252}
     freeze_record(root/'cohort-lock.json', locked)
     (root/'inputs').mkdir()
     (root/'inputs/calendar.json').write_bytes(Path('research/calendars/ice-cotton-2026.json').read_bytes())
@@ -195,6 +196,7 @@ def test_manual_publication_records_real_links_and_preserves_missing_slots(tmp_p
     with (patch.object(study, 'verify', return_value=({'identity': identity}, {'required_origins': 252})),
           patch.object(study, 'current_history', return_value=(p, observation)),
           patch.object(study, 'native_record', return_value=record),
+          patch.object(study, 'observation_history', return_value=(p, observation, {'capture': p}, {'capture': observation})),
           patch.object(study, 'verify_selection', return_value=selection),
           patch.object(study, 'now', return_value=study.utc('2026-10-31T00:20Z'))):
         result = study.publish(tmp_path, tmp_path)
@@ -220,10 +222,15 @@ def test_serialization_that_crosses_publication_deadline_is_late(tmp_path):
     times = [study.utc(v) for v in ['2026-10-31T00:29:59Z', '2026-10-31T00:30Z', '2026-10-31T00:30Z']]
     with (patch.object(study, 'verify', return_value=({'identity': identity}, {'required_origins': 252})),
           patch.object(study, 'current_history', return_value=(p, observation)),
+          patch.object(study, 'observation_history', return_value=(p, observation, {'capture': p}, {'capture': observation})),
           patch.object(study, 'native_record', return_value=record),
           patch.object(study, 'verify_selection', return_value=selection),
           patch.object(study, 'now', side_effect=times)):
         assert study.publish(tmp_path, tmp_path)['status'] == 'LATE'
+        with patch.object(study, 'now', return_value=times[-1]):
+            status = study.status(tmp_path, tmp_path)
+        assert status['timely_forecasts'] == 0
+        assert status['elapsed_missing_origins'] == ['2026-10-30']
 
 
 def test_published_payload_tamper_is_rejected(tmp_path):
@@ -239,7 +246,8 @@ def test_published_payload_tamper_is_rejected(tmp_path):
         study.status(tmp_path, tmp_path)
 
 
-def test_active_writer_and_unsealed_publication_never_count_as_complete(tmp_path):
+@pytest.mark.parametrize('filename', ['forecast.json', 'publication-receipt.json'])
+def test_active_writer_and_unsealed_publication_never_count_as_complete(tmp_path, filename):
     (tmp_path/'.writer-lock').mkdir()
     with pytest.raises(RuntimeError, match='writer is active'):
         study.status(tmp_path, tmp_path)
@@ -247,9 +255,34 @@ def test_active_writer_and_unsealed_publication_never_count_as_complete(tmp_path
     (tmp_path/'inputs').mkdir()
     (tmp_path/'inputs/calendar.json').write_bytes(Path('research/calendars/ice-cotton-2026.json').read_bytes())
     freeze_record(tmp_path/'cohort-lock.json', {'first_origin': '2026-10-30'})
-    freeze_record(tmp_path/'forecasts/2026-10-30/publication-receipt.json', {'status': 'TIMELY'})
+    freeze_record(tmp_path/'forecasts/2026-10-30'/filename, {'status': 'TIMELY'})
     with (patch.object(study, 'verify', return_value=({}, {'required_origins': 252})),
           pytest.raises(ValueError, match='Partial publication')):
+        study.status(tmp_path, tmp_path)
+
+
+def test_missing_event_cannot_preempt_a_still_open_publication_window(tmp_path):
+    publishing_fixture(tmp_path)
+    freeze_record(tmp_path/'events/000.json', {
+        'ordinal_slot': 0, 'origin': '2026-10-30', 'previous_event_id': None,
+        'kind': 'MISSING', 'created_at': '2026-10-31T00:29:59Z',
+        'forecast_sha256': None, 'publication_receipt_sha256': None,
+    })
+    with (patch.object(study, 'verify', return_value=({}, {'required_origins': 252})),
+          patch.object(study, 'now', return_value=study.utc('2026-10-31T00:30Z')),
+          pytest.raises(ValueError, match='Invalid missing forward event')):
+        study.status(tmp_path, tmp_path)
+
+
+def test_status_cannot_silently_restart_a_locked_cohort(tmp_path):
+    _, identity, *_ = publishing_fixture(tmp_path)
+    path = tmp_path/'cohort-lock.json'
+    lock = read_record(path)
+    path.unlink()
+    freeze_record(path, {**lock, 'first_origin': '2026-11-02'})
+    with (patch.object(study, 'verify', return_value=({'identity': identity}, {'required_origins': 252})),
+          patch.object(study, 'now', return_value=study.utc('2026-11-03T00:30Z')),
+          pytest.raises(ValueError, match='Locked cohort identity or first origin changed')):
         study.status(tmp_path, tmp_path)
 
 

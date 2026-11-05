@@ -294,6 +294,34 @@ Sekiz yıllık seçilmiş sonuç, en büyük %1 EWMA kaybı çıkarılınca
 farklı işaretliydi. Yakın dönem seçilmiş küçük fark 2024'ten geldi.
 Bu kapsamda vade geçişi tek başına başarısızlığı açıklamıyor.
 
+### İleri yayın ve kaynak makbuzu
+
+`ct_manual_forward.status` eskiden tahmin ve yayın makbuzunun iç
+hash'leri eşleştiğinde kaynak gözlemi eksik, karar saatinden sonra
+alınmış veya girdi hash'i yanlış olsa bile kaydı zamanında sayıyordu.
+Üçü de regresyon testinde yeniden üretildi. Durum komutu artık ham
+Yahoo yanıtından ve HTTP makbuzundan gözlem zincirini yeniden kuruyor.
+Tahmini bu zincirdeki doğru seans ve girdi hash'iyle eşliyor. Kilitli
+ilk origin'i, seans takvimini, yayın saatini ve tamamlanma durumunu
+ayrıca denetliyor. Tek dosyası yazılmış yayın dizini tamamlanmış
+sayılmıyor. Pencere kapanmadan `MISSING` kaydı kabul edilmiyor.
+
+| Origin → hedef | Kaynak alımı UTC | Yayın UTC |
+| --- | --- | --- |
+| V1 30 Ekim → 2 Kasım | 31 Ekim 00:05:23.024919 | 31 Ekim 00:20:03.852947 |
+| V2 3 Kasım → 4 Kasım | 4 Kasım 00:05:06.319573 | 4 Kasım 00:20:05.128014 |
+
+İki arşivde karar saati 00:15 UTC. Dondurulmuş kaynak ve runner
+kimlikleri, çalıştırma makbuzları, 4.108/4.110 olgun eğitim satırı
+ve mevcut katsayılardan üretilen EWMA, ham ve seçilmiş tahminler
+yeniden doğrulandı. 446 V1 ve 1.713 V2 yerel dosya hash'i aynı kaldı.
+V2 için private Release'ten dört parça taze indirilip 442 dosyalık
+bilimsel durum yeniden kuruldu. GitHub makbuzları kaynak için
+00:05:14, yayın için 00:20:11–00:20:12 UTC zamanlarını doğruladı.
+İşlem sıfır yeni fit içeriyor. İleri performans ölçülmedi. İki Windows
+görevi de son kontrolde kapalıydı.
+[V2 geri kurma ve yayın makbuzu](../research/evidence/ct-forward-first-observed-publication-audit-20261104.json)
+
 ## Kalan denetim kapsamı
 
 | Alan | Sonraki doğrulama |
@@ -303,7 +331,7 @@ Bu kapsamda vade geçişi tek başına başarısızlığı açıklamıyor.
 | Veri girişi | Kaynak semantiği, vintage, seans ve saat, yarım cache ve eksiklik |
 | Araştırma hattı | Diğer profillerin zaman, seçim ve native çıktı kapsamı |
 | Metrikler ve karar | Diğer risk karşılaştırmaları, kaynak kanıtı ve ileri doğrulama sınırı |
-| Canlı kayıt ve operasyon | Saat, kimlik zinciri, kilitli kohort, iş tekrarı ve geri kurma |
+| Canlı kayıt ve operasyon | Eski Naive/EWMA arşivi, kesinti ve tekrar çalıştırma senaryoları |
 | Uygulama ve CI | Backend, frontend, temiz ortam ve release geri yükleme |
 
 Önceki tahmin ve veri kanıtı bağımsız olarak korunur. Kapsam tamamlandıkça

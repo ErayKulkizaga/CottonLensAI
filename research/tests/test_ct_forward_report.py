@@ -140,7 +140,7 @@ def test_study_hashes_expose_input_mutations(tmp_path):
     assert report.study_hashes(tmp_path) != before
 
 
-def analytic_study(root):
+def analytic_study(root, source_offset_minutes=-10):
     freeze_record(root/'decision-contract.json', {'no_partial_score': True})
     """Analytic mock records, NOT fitted models, Yahoo data or a real cohort.
 
@@ -177,8 +177,9 @@ def analytic_study(root):
             'locked_at': '2026-10-30T10:00Z'}
     freeze_record(root/'cohort-lock.json', lock)
 
-    def observation(frame, previous):
-        last = str(frame.date.iloc[-1].date()); observed = f.decision(last)-pd.Timedelta(minutes=10)
+    def observation(frame, previous, minutes_from_cutoff=-10):
+        last = str(frame.date.iloc[-1].date())
+        observed = f.decision(last)+pd.Timedelta(minutes=minutes_from_cutoff)
         chart = {'chart': {'error': None, 'result': [{'meta': {'symbol': 'CT=F', 'dataGranularity': '1d',
             'exchangeTimezoneName': 'America/New_York', 'regularMarketTime': int(observed.timestamp())},
             'timestamp': [int(pd.Timestamp(d, tz='America/New_York').timestamp()) for d in frame.date],
@@ -198,7 +199,8 @@ def analytic_study(root):
             'files': {p.name: f.digest(p) for p in directory.iterdir()}})
         return oid
 
-    first_oid = observation(origin_prices, None); observation(prices, first_oid)
+    first_oid = observation(origin_prices, None, source_offset_minutes)
+    observation(prices, first_oid)
     h = f.history(origin_prices); ledger = Ledger(root/'ledger', {**identity, 'cohort_lock_id': f.content_id(lock)})
 
     def model_record(job):
@@ -240,6 +242,7 @@ def analytic_study(root):
     raw = float(f.predict_model(ledger, model, test)[0]); baseline = float(test.ct_ewma.iloc[0]); w = selection['weight']
     forecast = {'origin': '2026-10-30', 'target_date': '2026-11-02', 'horizon': 1,
                 'generated_at': '2026-10-31T00:20Z', 'cohort_lock_id': f.content_id(lock),
+                'ordinal_slot': 0, 'decision_at': f.decision('2026-10-30').isoformat(), 'calendar_id': f.content_id(body),
                 'observation_id': first_oid, 'history_sha256': f.frame_identity(origin_prices, list(origin_prices)),
                 'fit_id': model['experiment_id'], 'selection_id': f.content_id(selection), 'weight': w,
                 'baseline_variance': baseline, 'raw_variance': raw, 'selected_variance': w*raw+(1-w)*baseline}
@@ -247,9 +250,42 @@ def analytic_study(root):
     freeze_record(directory/'publication-receipt.json', {'status': 'TIMELY', 'completed_at': '2026-10-31T00:20:01Z',
                   'forecast_sha256': f.digest(directory/'forecast.json')})
     freeze_record(root/'events/000.json', {'ordinal_slot': 0, 'origin': '2026-10-30', 'previous_event_id': None,
-        'kind': 'FORECAST', 'forecast_sha256': f.digest(directory/'forecast.json'),
+        'kind': 'FORECAST', 'created_at': '2026-10-31T00:20:02Z',
+        'forecast_sha256': f.digest(directory/'forecast.json'),
         'publication_receipt_sha256': f.digest(directory/'publication-receipt.json')})
     return identity
+
+
+@pytest.mark.parametrize(('defect', 'error'), [
+    ('unknown_observation', 'publication source'),
+    ('late_observation', 'publication source'),
+    ('wrong_history', 'publication history'),
+    ('wrong_status', 'publication clock or status'),
+])
+def test_status_rejects_rehashed_publication_with_invalid_source_chain(tmp_path, defect, error):
+    identity = analytic_study(tmp_path, source_offset_minutes=1 if defect == 'late_observation' else -10)
+    directory = tmp_path/'forecasts/2026-10-30'
+    forecast_path, pub_path = directory/'forecast.json', directory/'publication-receipt.json'
+    event_path = tmp_path/'events/000.json'
+    forecast, pub, event = (read_record(p) for p in (forecast_path, pub_path, event_path))
+    if defect == 'unknown_observation':
+        forecast['observation_id'] = '0'*64
+    elif defect == 'wrong_history':
+        forecast['history_sha256'] = '0'*64
+    elif defect == 'wrong_status':
+        pub['status'] = 'LATE'
+    for path in (forecast_path, pub_path, event_path):
+        path.unlink()
+    freeze_record(forecast_path, forecast)
+    pub['forecast_sha256'] = event['forecast_sha256'] = report.digest(forecast_path)
+    freeze_record(pub_path, pub)
+    event['publication_receipt_sha256'] = report.digest(pub_path)
+    freeze_record(event_path, event)
+
+    with (patch.object(report.forward, 'verify', return_value=({'identity': identity}, {'required_origins': 252})),
+          patch.object(report.forward, 'now', return_value=report.forward.utc('2028-01-01T12:00Z')),
+          pytest.raises(ValueError, match=error)):
+        report.forward.status(tmp_path, tmp_path)
 
 
 def test_full_synthetic_provenance_path_uses_native_state_and_independent_targets(tmp_path):

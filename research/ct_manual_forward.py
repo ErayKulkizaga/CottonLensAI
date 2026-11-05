@@ -47,6 +47,7 @@ HELPERS = ('research/ct_manual_forward.py', 'research/tests/test_ct_manual_forwa
 NAMES = ['har_1', 'har_5', 'har_22', 'origin_state']
 WEIGHTS = (0., .25, .5, .75, 1.)
 SOURCE_PROOF = 'evidence/ct-manual-source-admission-20261030.json'
+SOURCE_URL = 'https://query1.finance.yahoo.com/v8/finance/chart/CT%3DF?range=2y&interval=1d&includePrePost=false'
 
 
 def now():
@@ -223,8 +224,9 @@ def verify(root, repo):
     return ready, design
 
 
-def calendar_body(root):
+def calendar_versions(root):
     body = json.loads((root/'inputs/calendar.json').read_bytes())
+    versions = {content_id(body): body}
     paths = sorted((root/'calendar-extensions').glob('*/extension.json'))
     if len(paths) != len([p for p in (root/'calendar-extensions').glob('*') if p.is_dir()]):
         raise ValueError('Incomplete calendar extension is not admitted evidence')
@@ -237,7 +239,12 @@ def calendar_body(root):
                 raise ValueError('Calendar extension evidence changed')
         check_calendar_extension(body, extension['calendar'], utc(extension['reviewed_at']))
         body = extension['calendar']
-    return body
+        versions[content_id(body)] = body
+    return versions
+
+
+def calendar_body(root):
+    return next(reversed(calendar_versions(root).values()))
 
 
 def calendar(root):
@@ -364,6 +371,48 @@ def replay_first_observed_seed(root):
     return history, revision_log
 
 
+def observation_history(root, calendars=None):
+    """Rebuild every admitted source transition from preserved raw bytes, without network."""
+    final, latest = current_history(root)
+    if latest is None:
+        return final, None, {}, {}
+    if utc(latest['observed_available_at']) > now():
+        raise ValueError('A real, nonfuture source observation is required')
+    initial = pd.read_parquet(root/'inputs/seed.parquet')
+    combined = initial
+    retain_first = read_record(root/'decision-contract.json').get('overlap_price_policy') == 'retain-first-observed-v1'
+    if retain_first:
+        rebuilt, revisions = replay_first_observed_seed(root)
+        pd.testing.assert_frame_equal(initial, rebuilt, check_exact=True)
+        if read_record(root/'inputs/bootstrap-revisions.json')['transitions'] != revisions:
+            raise ValueError('Bootstrap revision audit differs')
+    calendars = calendar_versions(root) if calendars is None else calendars
+    records = [read_record(p) for p in (root/'observations').glob('*/receipt.json')]
+    records.sort(key=lambda r: utc(r['observed_available_at']))
+    frames, receipts = {}, {}
+    for r in records:
+        base = root/'observations'/r['observation_id']
+        http = verified_response(base/'chart.json', base/'http-receipt.json')
+        if (http['observed_available_at'] != r['observed_available_at'] or r['calendar_id'] not in calendars
+                or http.get('source_url') != SOURCE_URL
+                or r['observation_id'] != content_id({'source_sha256': digest(base/'chart.json'),
+                                                     'receipt_sha256': digest(base/'http-receipt.json')})):
+            raise ValueError('Source receipt/calendar identity changed')
+        _, quotes = classify_chart(json.loads((base/'chart.json').read_bytes()), http, CottonCalendar(calendars[r['calendar_id']]))
+        if retain_first and read_record(base/'overlap-revisions.json') != {
+                'observation_id': r['observation_id'], 'policy': 'retain-first-observed-v1',
+                'revisions': overlap_revisions(combined, quotes)}:
+            raise ValueError('Source revision audit differs')
+        combined = append_snapshot(combined, quotes, retain_first_observed=retain_first)
+        stored = pd.read_parquet(base/'history.parquet')
+        pd.testing.assert_frame_equal(combined, stored, check_exact=True)
+        pd.testing.assert_frame_equal(final.iloc[:len(stored)].reset_index(drop=True), stored, check_exact=True)
+        if r['latest_completed_date'] != str(stored.date.iloc[-1].date()):
+            raise ValueError('Incorrect source final-session label')
+        frames[r['observation_id']], receipts[r['observation_id']] = stored, r
+    pd.testing.assert_frame_equal(combined, final, check_exact=True)
+    return final, latest, frames, receipts
+
 def admit(root, repo, raw, receipt_path):
     _, design = verify(root, repo); read_record(root/'cohort-lock.json')
     retain_first = design.get('overlap_price_policy') == 'retain-first-observed-v1'
@@ -406,7 +455,7 @@ def capture(root, repo):
     if not started.normalize() <= started <= started.normalize()+pd.Timedelta(minutes=15):
         raise ValueError('Manual capture only within00:00–00:15UTC; no background polling')
     import requests
-    url = 'https://query1.finance.yahoo.com/v8/finance/chart/CT%3DF?range=2y&interval=1d&includePrePost=false'
+    url = SOURCE_URL
     with writer(root):
         directory = root/'captures'/started.strftime('%Y%m%dT%H%M%S%fZ'); directory.mkdir(parents=True, exist_ok=False)
         response = requests.get(url, timeout=20, headers={'User-Agent': 'CottonLensAI source verification research'})
@@ -612,42 +661,78 @@ def publish(root, repo):
 def status(root, repo):
     if (root/'.writer-lock').exists():
         raise RuntimeError('A writer is active or interrupted; do not read partial publication as complete')
-    _, design = verify(root, repo)
+    ready, design = verify(root, repo)
     if not (root/'cohort-lock.json').exists():
         return {'status': 'not_locked', 'performance_scored': False, 'automatic_tasks': False}
-    locked = read_record(root/'cohort-lock.json'); dates = slots(calendar(root), locked['first_origin']); stamp = now()
-    elapsed = [d for d in dates if decision(d)+pd.Timedelta(minutes=15) <= stamp]
-    timely = []
-    previous = None; event_forecasts = set()
+    locked = read_record(root/'cohort-lock.json')
+    calendars = calendar_versions(root)
+    cal = CottonCalendar(next(reversed(calendars.values())))
+    dates = slots(cal, locked['first_origin'])
+    stamp = now()
+    window = pd.Timedelta(minutes=15)
+    elapsed = [d for d in dates if decision(d)+window <= stamp]
+    events = {}
+    previous = None
     for index, path in enumerate(sorted((root/'events').glob('*.json'))):
         event = read_record(path)
         if (path.stem != f'{index:03d}' or index >= len(dates) or event['ordinal_slot'] != index or event['origin'] != dates[index]
                 or event['previous_event_id'] != previous):
             raise ValueError('Missing, reordered or altered forward event')
+        day = event['origin']
         if event['kind'] == 'FORECAST':
-            event_forecasts.add(event['origin'])
-            directory = root/'forecasts'/event['origin']
-            if (event['forecast_sha256'] != digest(directory/'forecast.json')
-                    or event['publication_receipt_sha256'] != digest(directory/'publication-receipt.json')):
+            directory = root/'forecasts'/day
+            forecast_path, receipt_path = directory/'forecast.json', directory/'publication-receipt.json'
+            if not forecast_path.is_file() or not receipt_path.is_file():
+                raise ValueError('Partial publication lacks its completed forward payload')
+            if (event['forecast_sha256'] != digest(forecast_path)
+                    or event['publication_receipt_sha256'] != digest(receipt_path)):
                 raise ValueError('Forward event payload changed')
-        elif event['kind'] != 'MISSING':
+            events[day] = event
+        elif event['kind'] == 'MISSING':
+            created = utc(event['created_at'])
+            if (not decision(day)+window <= created <= stamp or event.get('forecast_sha256') is not None
+                    or event.get('publication_receipt_sha256') is not None):
+                raise ValueError('Invalid missing forward event')
+        else:
             raise ValueError('Unsupported forward event')
         previous = content_id(event)
-    for day in dates:
-        p = root/'forecasts'/day/'publication-receipt.json'
-        if p.exists():
-            if day not in event_forecasts:
-                raise ValueError('Partial publication lacks its completed forward event')
-            receipt = read_record(p); forecast = read_record(p.parent/'forecast.json')
-            if (receipt['forecast_sha256'] != digest(p.parent/'forecast.json') or forecast['origin'] != day
-                    or forecast['target_date'] != target_date(calendar(root), day) or forecast['horizon'] != 1):
-                raise ValueError('Published forecast chain changed')
-            if receipt['status'] == 'TIMELY':
-                cutoff = decision(day)
-                if (not cutoff <= utc(forecast['generated_at']) <= utc(receipt['completed_at']) < cutoff+pd.Timedelta(minutes=15)
-                        or forecast['cohort_lock_id'] != content_id(locked)):
-                    raise ValueError('False timely publication receipt')
-                timely.append(day)
+
+    directories = {p.name for p in (root/'forecasts').glob('*') if p.is_dir()}
+    if directories != set(events):
+        raise ValueError('Partial publication lacks its completed forward event')
+    locked_at = utc(locked['locked_at'])
+    if (locked['identity'] != ready['identity'] or locked['required_origins'] != design['required_origins']
+            or locked_at > stamp or locked['first_origin'] != first_origin(cal, locked_at)):
+        raise ValueError('Locked cohort identity or first origin changed')
+    timely = []
+    histories, observations = {}, {}
+    if events:
+        _, _, histories, observations = observation_history(root, calendars)
+    for day, event in events.items():
+        directory = root/'forecasts'/day
+        forecast = read_record(directory/'forecast.json')
+        receipt = read_record(directory/'publication-receipt.json')
+        cutoff = decision(day)
+        calendar_id = forecast.get('calendar_id')
+        if (receipt['forecast_sha256'] != event['forecast_sha256'] or forecast['origin'] != day
+                or forecast['ordinal_slot'] != event['ordinal_slot'] or forecast['horizon'] != 1
+                or utc(forecast['decision_at']) != cutoff or forecast['cohort_lock_id'] != content_id(locked)
+                or calendar_id not in calendars or forecast['target_date'] != target_date(cal, day)
+                or forecast['target_date'] != target_date(CottonCalendar(calendars[calendar_id]), day)):
+            raise ValueError('Published forecast chain changed')
+        generated, completed = utc(forecast['generated_at']), utc(receipt['completed_at'])
+        expected_status = 'TIMELY' if completed < cutoff+window else 'LATE'
+        if (not cutoff <= generated < cutoff+window or not locked_at < generated
+                or not generated <= completed <= utc(event['created_at']) <= stamp or receipt['status'] != expected_status):
+            raise ValueError('False publication clock or status')
+        oid = forecast['observation_id']
+        if (oid not in observations or observations[oid]['latest_completed_date'] != day
+                or utc(observations[oid]['observed_available_at']) > cutoff):
+            raise ValueError('Unproved or postcutoff publication source')
+        if forecast['history_sha256'] != frame_identity(histories[oid], list(histories[oid])):
+            raise ValueError('Published input differs from the proved publication history')
+        if expected_status == 'TIMELY':
+            timely.append(day)
     return {'status': 'collecting', 'known_calendar_slots': len(dates), 'required_origins': design['required_origins'],
             'timely_forecasts': len(timely), 'elapsed_missing_origins': [d for d in elapsed if d not in timely],
             'calendar_extension_required': len(dates) < 252, 'performance_scored': False, 'automatic_tasks': False}
