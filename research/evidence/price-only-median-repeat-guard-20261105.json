@@ -1,0 +1,36 @@
+{
+  "status": "REPEAT_FIT_RECIPE",
+  "completed_matching_market_fits": 169,
+  "exit_code": 3,
+  "scope_id": "a929ded6e574fc2eadd489129076f5489c605ec0e9ae81f3a3a154089a78ca69",
+  "recipe": {
+    "family": "quantile",
+    "params": {
+      "quantile": 0.5,
+      "alpha": 0.01,
+      "fit_intercept": true,
+      "solver": "highs",
+      "solver_options": {
+        "threads": 1,
+        "time_limit": 120.0
+      }
+    },
+    "research_profile": "price-only-median-t1-v1",
+    "horizon": 1,
+    "task": "price",
+    "device": "cpu",
+    "seed": 42,
+    "target": "price_delta",
+    "years": null,
+    "cadence": 21,
+    "window": 1,
+    "features": [
+      "mae_ret1",
+      "mae_ret5",
+      "mae_ret20",
+      "mae_vol20",
+      "mae_z20"
+    ]
+  },
+  "new_fits": 0
+}

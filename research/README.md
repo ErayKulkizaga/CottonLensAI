@@ -1,5 +1,7 @@
 # Deney geçmişi ve tekrar kontrolü
 
+5 Kasım tamamlanan [price-only median T+1](../docs/PRICE_ONLY_MEDIAN_RESULT_20261105.md):338 market/4 sentetik,STOP. Tam scope/recipe araması her piyasa kolunda169 completed fit bulur; tekrar çalışma yok. Yeni skorlar private Release ve ek sicil kayıtlarında korunur.
+
 
 Güncel 5 Kasım iş sırası: [GitHub teslimatı](../docs/GITHUB_DELIVERY_20261105.md), ardından [Naive-MAE planı](../docs/NAIVE_MAE_PLAN_20261105.md). Aşağıdaki tarihli sonraki-adım ifadeleri tarihçedir.
 

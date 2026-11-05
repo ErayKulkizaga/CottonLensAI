@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "as_of": "2026-11-04",
+  "as_of": "2026-11-05",
   "release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/evidence-20261005",
   "limits": [
     "Only available files are inventoried; missing past predictions are not reconstructed.",
@@ -20575,6 +20575,217 @@
       "evidence": "evidence/ct-forward-first-observed-publication-audit-20261104.json",
       "payload_release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/ct-forward-records-2026-q4",
       "id": "46375daaf697844b07d1b12a7e25975f8070601f69ec9eedc403b8efd8d18b65"
+    },
+    {
+      "experiment": "research-price-only-median-t1-v1",
+      "profile": "price-only-median-t1-v1",
+      "horizon": 1,
+      "code_id": "3de9a24659880fab4063f0c2e6d1c7fe9705c7ca8801ca49f0157c201d9ebafc",
+      "data_id": "9d2dc135b9ed8529b8c3cee52ded8ee813d7b8e3d0d87803591a542adb216362",
+      "design_id": "a929ded6e574fc2eadd489129076f5489c605ec0e9ae81f3a3a154089a78ca69",
+      "independent_holdout": false,
+      "release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/price-only-median-result-20261105",
+      "coverage": "preregistered_at_commit_849470e_before_market_fits",
+      "classification": "INCONCLUSIVE",
+      "reason": "Historical preregistration only; now completed results are separate records.",
+      "recipes": [],
+      "id": "fe6c1278a910db2c61c7b787b2ab8e124c39f23a574181aa32eaeb58329adc12"
+    },
+    {
+      "experiment": "research-price-only-median-t1-v1",
+      "profile": "price-only-median-t1-v1",
+      "horizon": 1,
+      "code_id": "3de9a24659880fab4063f0c2e6d1c7fe9705c7ca8801ca49f0157c201d9ebafc",
+      "data_id": "9d2dc135b9ed8529b8c3cee52ded8ee813d7b8e3d0d87803591a542adb216362",
+      "design_id": "a929ded6e574fc2eadd489129076f5489c605ec0e9ae81f3a3a154089a78ca69",
+      "independent_holdout": false,
+      "release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/price-only-median-result-20261105",
+      "group": "synthetic_controls",
+      "coverage": "four_native_synthetic_controls_not_market",
+      "classification": "INCONCLUSIVE",
+      "reason": "Both families pass fixed known-signal and shuffled checks; not market skill.",
+      "recipes": [],
+      "id": "b5b61ead4e6eb9ccdd29f87384ba05359db88cafe35cf115a4fe4c4d11d0fddc"
+    },
+    {
+      "experiment": "research-price-only-median-t1-v1",
+      "profile": "price-only-median-t1-v1",
+      "horizon": 1,
+      "code_id": "3de9a24659880fab4063f0c2e6d1c7fe9705c7ca8801ca49f0157c201d9ebafc",
+      "data_id": "9d2dc135b9ed8529b8c3cee52ded8ee813d7b8e3d0d87803591a542adb216362",
+      "design_id": "a929ded6e574fc2eadd489129076f5489c605ec0e9ae81f3a3a154089a78ca69",
+      "independent_holdout": false,
+      "release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/price-only-median-result-20261105",
+      "group": "ridge",
+      "model_families": [
+        "ridge"
+      ],
+      "recipes": [
+        {
+          "family": "ridge",
+          "params": {
+            "alpha": 1.0
+          },
+          "research_profile": "price-only-median-t1-v1",
+          "horizon": 1,
+          "task": "price",
+          "device": "cpu",
+          "seed": 42,
+          "target": "price_delta",
+          "years": null,
+          "cadence": 21,
+          "window": 1,
+          "features": [
+            "mae_ret1",
+            "mae_ret5",
+            "mae_ret20",
+            "mae_vol20",
+            "mae_z20"
+          ]
+        }
+      ],
+      "coverage": "complete_annual_outputs",
+      "output_years_complete": true,
+      "prediction_payload_exists": true,
+      "years": [
+        2016,
+        2017,
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023
+      ],
+      "classification": "DECISIVE_NEGATIVE",
+      "reason": "Frozen practical Naive price-MAE goal unmet. Selected/raw kept separate; no claim against all median/price models.",
+      "metrics": {
+        "count": 2006,
+        "naive_mae": 1.0209522418462387,
+        "selected": {
+          "mae": 1.0225581136796895,
+          "gain_pct": -0.15729157228225876,
+          "all_origin_direction_pct": 12.462612163509473,
+          "active_rate_pct": 24.77567298105683
+        },
+        "raw": {
+          "mae": 1.0492952312169301,
+          "gain_pct": -2.776132732657244
+        },
+        "year_wins": 1
+      },
+      "payloads": {
+        "output/research-price-only-median-t1-v1/median-outputs/ridge-t1-year2016.json": "dee426a63f9d70a219d87606fcda92986d3459aa3d4af3e42a4aa83fc48c7d7e",
+        "output/research-price-only-median-t1-v1/median-outputs/ridge-t1-year2017.json": "e259b0bdf592b9b4d87e7be9b6d4bbecffbdb40aa5551226cd599323698f8862",
+        "output/research-price-only-median-t1-v1/median-outputs/ridge-t1-year2018.json": "baae2598a1e9679c75c9480dc742135028e159569a756e0c6fe2d953280e24a5",
+        "output/research-price-only-median-t1-v1/median-outputs/ridge-t1-year2019.json": "e95d80198083860f8cf9b442a0652b986481661c7cbe03c011c6461b57dcbf16",
+        "output/research-price-only-median-t1-v1/median-outputs/ridge-t1-year2020.json": "2616e7cbad7a59a130a64e4d32587aac45031b9be97c74a324a194a7e411af26",
+        "output/research-price-only-median-t1-v1/median-outputs/ridge-t1-year2021.json": "e3baab3492fceb33f9c33d85a9b17d416f12780607913fbb7661b2556b0acbd8",
+        "output/research-price-only-median-t1-v1/median-outputs/ridge-t1-year2022.json": "f1a4d2e08f3e8ea9b690e96e026533523941fbf032b2f20ee62701d1fa9511dc",
+        "output/research-price-only-median-t1-v1/median-outputs/ridge-t1-year2023.json": "cd22a258f0dfeff7f509fb0fab257413c3d364031b5304c1380aae955930da06"
+      },
+      "primary": false,
+      "id": "364474fd9dc43b0432f6f317b0bd2769905dbcab25be2c275601d8dab6f87644"
+    },
+    {
+      "experiment": "research-price-only-median-t1-v1",
+      "profile": "price-only-median-t1-v1",
+      "horizon": 1,
+      "code_id": "3de9a24659880fab4063f0c2e6d1c7fe9705c7ca8801ca49f0157c201d9ebafc",
+      "data_id": "9d2dc135b9ed8529b8c3cee52ded8ee813d7b8e3d0d87803591a542adb216362",
+      "design_id": "a929ded6e574fc2eadd489129076f5489c605ec0e9ae81f3a3a154089a78ca69",
+      "independent_holdout": false,
+      "release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/price-only-median-result-20261105",
+      "group": "quantile",
+      "model_families": [
+        "quantile"
+      ],
+      "recipes": [
+        {
+          "family": "quantile",
+          "params": {
+            "quantile": 0.5,
+            "alpha": 0.01,
+            "fit_intercept": true,
+            "solver": "highs",
+            "solver_options": {
+              "threads": 1,
+              "time_limit": 120.0
+            }
+          },
+          "research_profile": "price-only-median-t1-v1",
+          "horizon": 1,
+          "task": "price",
+          "device": "cpu",
+          "seed": 42,
+          "target": "price_delta",
+          "years": null,
+          "cadence": 21,
+          "window": 1,
+          "features": [
+            "mae_ret1",
+            "mae_ret5",
+            "mae_ret20",
+            "mae_vol20",
+            "mae_z20"
+          ]
+        }
+      ],
+      "coverage": "complete_annual_outputs",
+      "output_years_complete": true,
+      "prediction_payload_exists": true,
+      "years": [
+        2016,
+        2017,
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023
+      ],
+      "classification": "DECISIVE_NEGATIVE",
+      "reason": "Frozen practical Naive price-MAE goal unmet. Selected/raw kept separate; no claim against all median/price models.",
+      "metrics": {
+        "count": 2006,
+        "naive_mae": 1.0209522418462387,
+        "selected": {
+          "mae": 1.0217947667061364,
+          "gain_pct": -0.08252343502122006,
+          "all_origin_direction_pct": 11.665004985044865,
+          "active_rate_pct": 24.77567298105683
+        },
+        "raw": {
+          "mae": 1.022163280177732,
+          "gain_pct": -0.11861850945187324
+        },
+        "year_wins": 0
+      },
+      "payloads": {
+        "output/research-price-only-median-t1-v1/median-outputs/quantile-t1-year2016.json": "940e9fa2f39fe260d911697f9eb83c0111b99fff27ff57a6bd9b9fd9cdd04e4e",
+        "output/research-price-only-median-t1-v1/median-outputs/quantile-t1-year2017.json": "cebe10458df8acf3702d83d9f138cdf6a3fe077d198bf81272d3363439182fda",
+        "output/research-price-only-median-t1-v1/median-outputs/quantile-t1-year2018.json": "1c09295506b44d5891227fd224a564c3847bd417af42cb7d1ed8d4f8b0a3a761",
+        "output/research-price-only-median-t1-v1/median-outputs/quantile-t1-year2019.json": "0ea63d40af9b3abadb287e0b32307824d8156baf74b1a61b18fd9b84cb8ec86a",
+        "output/research-price-only-median-t1-v1/median-outputs/quantile-t1-year2020.json": "e69b2a2cfdd18c6f0af72c4fcde481650c08457b05758427fac7bdc70aef1a26",
+        "output/research-price-only-median-t1-v1/median-outputs/quantile-t1-year2021.json": "6e94cb9f72aae5085c07d0a0231aad3c44d5425d2f11a6183edb43b9780a3fa0",
+        "output/research-price-only-median-t1-v1/median-outputs/quantile-t1-year2022.json": "78226fb582d4fe05f06e11ad2d35750724f3288413f090797694513bcb41dafa",
+        "output/research-price-only-median-t1-v1/median-outputs/quantile-t1-year2023.json": "96d19c44fa665e5f20447dbe9b6b338c49c78695a12d4e053ea1f973633245c7"
+      },
+      "primary": true,
+      "id": "ad5d83c456b73a31d22c2c983771c69871cb19dba9c93b5e52eb64984c0ce5cc"
+    },
+    {
+      "experiment": "naive-error-audit-20261105",
+      "profile": "naive-price-error-audit-v1",
+      "horizon": null,
+      "coverage": "2006_origins_each_horizon_zero_fit",
+      "classification": "INCONCLUSIVE",
+      "reason": "Raw targets/canonical cohort verified; 676 prior native timing fits replayed; descriptive regimes, no new forecast skill.",
+      "code_id": "3de9a24659880fab4063f0c2e6d1c7fe9705c7ca8801ca49f0157c201d9ebafc",
+      "recipes": [],
+      "independent_holdout": false,
+      "release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/price-only-median-result-20261105",
+      "id": "58b7fd752092a88995fb14f1c93f78b544127d9aa39c785df676b6cea93f0bed"
     }
   ],
   "local_evidence": [
@@ -21453,6 +21664,22 @@
     {
       "path": "evidence/ct-forward-first-observed-publication-audit-20261104.json",
       "sha256": "0f88cccb05288200837cbe5d40a5f2ca8bfb406640559c685d6f3fd69c82593c"
+    },
+    {
+      "path": "evidence/price-only-median-prereg-20261105.json",
+      "sha256": "abf081ea540a64c51ace60e6f2f1aa0a7ab3f00b6fe0baa29345ad336aa3edd0"
+    },
+    {
+      "path": "evidence/price-only-median-result-20261105.json",
+      "sha256": "5d575b42875d15eee651dc135bcff04ebc43d932d2abdb3f9f93278908223596"
+    },
+    {
+      "path": "evidence/github-consolidation-complete-20261105.json",
+      "sha256": "68e0c61d55564a0cae7f920187440c112d79f570dcb35a20c38d422dfb9e2090"
+    },
+    {
+      "path": "evidence/price-only-median-repeat-guard-20261105.json",
+      "sha256": "1542d67242680eb97eab55abd79757978346dd7278b74f74c73b2f7dd27ea73a"
     }
   ]
 }

@@ -1,3 +1,7 @@
+# Sabit fiyat-only medyan deneyi tamamlandı — 5 Kasım 2026
+
+338 piyasa +4 sentetik fit; birincil Quantile kazancı **−%0,082523**,0/8 yıl. Karar **STOP**; Naive korunur. 2.085 private dosya taze restore,342 native fit/selection ve dört rapor byte eşit replay doğrulandı. [Sonuç ve sınırlar](PRICE_ONLY_MEDIAN_RESULT_20261105.md). GitHub konsolidasyonu #75 main ve CI tamamlandı; önceki66PR kapandı, dallar korundu. Aşağıdaki önceki iş sıraları tarihçedir.
+
 # GitHub konsolidasyonu ve yeni fiyat araştırması — 5 Kasım 2026
 
 Önce [GitHub teslimatı](GITHUB_DELIVERY_20261105.md): güncel kod/belgeler/kanıt

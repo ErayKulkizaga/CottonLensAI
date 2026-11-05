@@ -1,5 +1,7 @@
 # Naive-MAE araştırması — onaylanan plan, 5 Kasım 2026
 
+Güncel durum: ilk deney tamamlandı, **STOP**. [Sonuç ve kanıt](PRICE_ONLY_MEDIAN_RESULT_20261105.md). Aşağıdaki hazırlık ifadeleri ilk kayıt anını anlatır.
+
 Durum: bu kayıt hazırlanırken yeni tarif uygulanmadı veya eğitilmedi. Önce GitHub
 birleştirme teslimatı tamamlanır; sonuçlar ayrı kimlikli ek kayıtla yayımlanır.
 
