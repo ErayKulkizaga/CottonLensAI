@@ -18,6 +18,7 @@ Kaynak erişim saati, fiyat alanı ve kontrat kimliği sınırları [STATUS](doc
 
 | Çalışma | Ölçülen sonuç ve kapsam |
 | --- | --- |
+| [Fiyat-only koşullu medyan, T+1](docs/PRICE_ONLY_MEDIAN_RESULT_20261105.md) | 338 piyasa +4 sentetik fit; 2.006 origin, seçilmiş Naive-MAE kazancı −%0,0825; STOP. |
 | [DXY/WTI zamanlama, T+1](docs/AVAILABILITY_CLOCK_RESULT_20261005.md) | 2.006 origin; seçilmiş Naive-MAE kazancı −%0,154. |
 | [Bölgesel WASDE, T+1](docs/WASDE_REGIONAL_T1_RESULT_20261008.md) | 1.254 origin; numeric D0/D1 kazancı −%0,523 / −%0,011. |
 | [Eşlenmiş fiyat-delta MAE/MSE](docs/PAIRED_PRICE_LOSS_RESULT_20261010.md) | 1.008 origin; MAE kolu MSE'den iyi, Naive kazancı −%0,488. |
@@ -103,8 +104,12 @@ Sırlar, `.env`, özel veritabanları ve kişisel yapılandırmalar arşiv kapsa
 
 [Onaylanan Naive-MAE planı](docs/NAIVE_MAE_PLAN_20261105.md): önce eski kanıtları
 ve Naive hatalarını doğrula; ardından yalnız fiyat geçmişiyle küçük koşullu medyan
-ve Ridge kontrolünü ön kayıtlı bütçede karşılaştır. Bu planın kaydı yeni deney sonucu değildir.
+ve Ridge kontrolünü ön kayıtlı bütçede karşılaştır. İlk sabit deney tamamlandı: [sonuç STOP](docs/PRICE_ONLY_MEDIAN_RESULT_20261105.md).
 
 [GitHub kapsam teslimatı](docs/GITHUB_DELIVERY_20261105.md), [güncel durum](docs/STATUS.md),
 [araştırma sözleşmesi](docs/TRADING_RESEARCH_CONTRACT_20261005.md) ve
 [korunan README tarihçesi](docs/archive/README_HISTORY_20261105.md).
+
+Sabit araştırma CLI'sı: `python ml/naive_mae.py --help`. İlk audit/prepare adımları
+fit yapmaz; `pilot` yalnız açık CPU izni ve frozen kaynakla çalışır.
+[Audit ve ön kayıt](docs/NAIVE_MAE_AUDIT_20261105.md).

@@ -1,0 +1,570 @@
+{
+  "schema": 1,
+  "as_of": "2026-11-05",
+  "merge_commit": "e56c89eacf8d2169015577ae6942c8eda1f5b3bc",
+  "main_ci": {
+    "conclusion": "success",
+    "headSha": "e56c89eacf8d2169015577ae6942c8eda1f5b3bc",
+    "status": "completed",
+    "url": "https://github.com/ErayKulkizaga/CottonLensAI/actions/runs/42014358287"
+  },
+  "open_prs_after": 0,
+  "consolidated_prs": 66,
+  "coverage_before": [
+    {
+      "baseRefName": "main",
+      "headRefName": "codex/end-to-end-audit",
+      "headRefOid": "5b22559cbcdc291099a115538a4c2646df04530d",
+      "number": 75,
+      "url": "https://github.com/ErayKulkizaga/CottonLensAI/pull/75",
+      "contained_in_consolidation": true
+    },
+    {
+      "baseRefName": "codex/ct-pre2010-risk-replication",
+      "headRefName": "codex/ct-limit-readiness",
+      "headRefOid": "281dd8cb3cb00bf746d6288079fddb4e7b797838",
+      "number": 74,
+      "url": "https://github.com/ErayKulkizaga/CottonLensAI/pull/74",
+      "contained_in_consolidation": true
+    },
+    {
+      "baseRefName": "codex/ct-recent-risk-audit",
+      "headRefName": "codex/ct-pre2010-risk-replication",
+      "headRefOid": "e33f596a8cf083d10a7e6858dcbe3882354d247f",
+      "number": 73,
+      "url": "https://github.com/ErayKulkizaga/CottonLensAI/pull/73",
+      "contained_in_consolidation": true
+    },
+    {
+      "baseRefName": "codex/ct-first-observed-forward",
+      "headRefName": "codex/ct-recent-risk-audit",
+      "headRefOid": "1e4416403d7f9034ac0331b1093207cbcc822ee1",
+      "number": 72,
+      "url": "https://github.com/ErayKulkizaga/CottonLensAI/pull/72",
+      "contained_in_consolidation": true
+    },
+    {
+      "baseRefName": "codex/ct-inference-calibration",
+      "headRefName": "codex/ct-first-observed-forward",
+      "headRefOid": "148b53ada3280226650f14846f6deb9cb88e10b9",
+      "number": 71,
+      "url": "https://github.com/ErayKulkizaga/CottonLensAI/pull/71",
+      "contained_in_consolidation": true
+    },
+    {
+      "baseRefName": "codex/ct-calendar-2027",
+      "headRefName": "codex/ct-inference-calibration",
+      "headRefOid": "6aa319f9fbf893b58172f5ae6780ad53f2999606",
+      "number": 70,
+      "url": "https://github.com/ErayKulkizaga/CottonLensAI/pull/70",
+      "contained_in_consolidation": true
+    },
+    {
+      "baseRefName": "codex/ct-first-publication-audit",
+      "headRefName": "codex/ct-calendar-2027",
+      "headRefOid": "c9fa94383745fcae6ee36be66a9d1a558e1cbebc",
+      "number": 69,
+      "url": "https://github.com/ErayKulkizaga/CottonLensAI/pull/69",
+      "contained_in_consolidation": true
+    },
+    {
+      "baseRefName": "codex/ct-forward-end-report",
+      "headRefName": "codex/ct-first-publication-audit",
+      "headRefOid": "d0175b2136373f2efd1b22b07dcabb8961ae9f2f",
+      "number": 68,
+      "url": "https://github.com/ErayKulkizaga/CottonLensAI/pull/68",
+      "contained_in_consolidation": true
+    },
+    {
+      "baseRefName": "codex/ct-manual-forward-t1",
+      "headRefName": "codex/ct-forward-end-report",
+      "headRefOid": "a72d9fc315a724779b9c6c3205a4473bef93cab4",
+      "number": 67,
+      "url": "https://github.com/ErayKulkizaga/CottonLensAI/pull/67",
+      "contained_in_consolidation": true
+    },
+    {
+      "baseRefName": "codex/ct-manual-risk-protocol",
+      "headRefName": "codex/ct-manual-forward-t1",
+      "headRefOid": "57014a37c75f6236f685850eefae9923bb3bfc4a",
+      "number": 66,
+      "url": "https://github.com/ErayKulkizaga/CottonLensAI/pull/66",
+      "contained_in_consolidation": true
+    },
+    {
+      "baseRefName": "codex/ct-risk-prospective-readiness",
+      "headRefName": "codex/ct-manual-risk-protocol",
+      "headRefOid": "f965b9704405f59d0cd101b3cbbf4ba9c340e3c1",
+      "number": 65,
+      "url": "https://github.com/ErayKulkizaga/CottonLensAI/pull/65",
+      "contained_in_consolidation": true
+    },
+    {
+      "baseRefName": "codex/ct-level-dxy-risk-control",
+      "headRefName": "codex/ct-risk-prospective-readiness",
+      "headRefOid": "1cd7fe5bf09a70c06eca78a4a0355e5d7247b470",
+      "number": 64,
+      "url": "https://github.com/ErayKulkizaga/CottonLensAI/pull/64",
+      "contained_in_consolidation": true
+    },
+    {
+      "baseRefName": "codex/ct-shock-forecast-control",
+      "headRefName": "codex/ct-level-dxy-risk-control",
+      "headRefOid": "113cf857d278b2854bf0c8619398aaa625eb777c",
+      "number": 63,
+      "url": "https://github.com/ErayKulkizaga/CottonLensAI/pull/63",
+      "contained_in_consolidation": true
+    },
+    {
+      "baseRefName": "codex/ct-signed-risk-score",
+      "headRefName": "codex/ct-shock-forecast-control",
+      "headRefOid": "08f58d74a7a758ceb0df837efecfebe2f0b197ba",
+      "number": 62,
+      "url": "https://github.com/ErayKulkizaga/CottonLensAI/pull/62",
+      "contained_in_consolidation": true
+    },
+    {
+      "baseRefName": "codex/ams-required-cell-readiness",
+      "headRefName": "codex/ct-signed-risk-score",
+      "headRefOid": "3e609526333c27e7c1637e1957b9e451e647ec8e",
+      "number": 61,
+      "url": "https://github.com/ErayKulkizaga/CottonLensAI/pull/61",
+      "contained_in_consolidation": true
+    },
+    {
+      "baseRefName": "codex/ams-weekly-contract-recovery",
+      "headRefName": "codex/ams-required-cell-readiness",
+      "headRefOid": "ec1774243dbdfe7018a9d2323b89b16814524adc",
+      "number": 60,
+      "url": "https://github.com/ErayKulkizaga/CottonLensAI/pull/60",
+      "contained_in_consolidation": true
+    },
+    {
+      "baseRefName": "codex/ams-contract-reconciliation",
+      "headRefName": "codex/ams-weekly-contract-recovery",
+      "headRefOid": "f1e8d66f9449e0e72c53621646f5e124905ce0d7",
+      "number": 59,
+      "url": "https://github.com/ErayKulkizaga/CottonLensAI/pull/59",
+      "contained_in_consolidation": true
+    },
+    {
+      "baseRefName": "codex/risk-level-source",
+      "headRefName": "codex/ams-contract-reconciliation",
+      "headRefOid": "884366580f85e26fd0cb5c86b495fea459e8a6b3",
+      "number": 58,
+      "url": "https://github.com/ErayKulkizaga/CottonLensAI/pull/58",
+      "contained_in_consolidation": true
+    },
+    {
+      "baseRefName": "codex/risk-curvature-score",
+      "headRefName": "codex/risk-level-source",
+      "headRefOid": "14c79b94392ee27113adeb0433b55601c075e062",
+      "number": 57,
+      "url": "https://github.com/ErayKulkizaga/CottonLensAI/pull/57",
+      "contained_in_consolidation": true
+    },
+    {
+      "baseRefName": "codex/risk-weak-teacher",
+      "headRefName": "codex/risk-curvature-score",
+      "headRefOid": "01d8e56dfd5bdc7247cff41a2460396c25cb90b1",
+      "number": 56,
+      "url": "https://github.com/ErayKulkizaga/CottonLensAI/pull/56",
+      "contained_in_consolidation": true
+    },
+    {
+      "baseRefName": "codex/risk-evidence-consolidation",
+      "headRefName": "codex/risk-weak-teacher",
+      "headRefOid": "d7b7891054918c317833c831deeaefc55828cdb9",
+      "number": 55,
+      "url": "https://github.com/ErayKulkizaga/CottonLensAI/pull/55",
+      "contained_in_consolidation": true
+    },
+    {
+      "baseRefName": "codex/named-risk-history-control",
+      "headRefName": "codex/risk-evidence-consolidation",
+      "headRefOid": "fdd0a1bb069784a40230e75d8e7265cab6e0e4ec",
+      "number": 54,
+      "url": "https://github.com/ErayKulkizaga/CottonLensAI/pull/54",
+      "contained_in_consolidation": true
+    },
+    {
+      "baseRefName": "codex/named-risk-label-control",
+      "headRefName": "codex/named-risk-history-control",
+      "headRefOid": "47ee30ad587026e943932efcadb7e01df57d855a",
+      "number": 53,
+      "url": "https://github.com/ErayKulkizaga/CottonLensAI/pull/53",
+      "contained_in_consolidation": true
+    },
+    {
+      "baseRefName": "codex/risk-measurement-readiness",
+      "headRefName": "codex/named-risk-label-control",
+      "headRefOid": "495d25f063392e78e20fd3bd381bd66ec1c01b67",
+      "number": 52,
+      "url": "https://github.com/ErayKulkizaga/CottonLensAI/pull/52",
+      "contained_in_consolidation": true
+    },
+    {
+      "baseRefName": "codex/risk-evidence-audit",
+      "headRefName": "codex/risk-measurement-readiness",
+      "headRefOid": "07568813b927e42b989154301835e722b49f01b6",
+      "number": 51,
+      "url": "https://github.com/ErayKulkizaga/CottonLensAI/pull/51",
+      "contained_in_consolidation": true
+    },
+    {
+      "baseRefName": "codex/named-information-synthesis",
+      "headRefName": "codex/risk-evidence-audit",
+      "headRefOid": "e68634fa985cc268e32bdd5f4b35292d97fe02a8",
+      "number": 50,
+      "url": "https://github.com/ErayKulkizaga/CottonLensAI/pull/50",
+      "contained_in_consolidation": true
+    },
+    {
+      "baseRefName": "codex/named-cftc-source-control",
+      "headRefName": "codex/named-information-synthesis",
+      "headRefOid": "b3bbe67bb08e046f520172a78396aae41b35dec3",
+      "number": 49,
+      "url": "https://github.com/ErayKulkizaga/CottonLensAI/pull/49",
+      "contained_in_consolidation": true
+    },
+    {
+      "baseRefName": "codex/named-cftc-information-audit",
+      "headRefName": "codex/named-cftc-source-control",
+      "headRefOid": "f3fc879eb366d9d17990b41b7b7ad131939082a3",
+      "number": 48,
+      "url": "https://github.com/ErayKulkizaga/CottonLensAI/pull/48",
+      "contained_in_consolidation": true
+    },
+    {
+      "baseRefName": "codex/named-weak-signal-execution",
+      "headRefName": "codex/named-cftc-information-audit",
+      "headRefOid": "8e1eec11edaf4727a7b4c631685b153eea6c0663",
+      "number": 47,
+      "url": "https://github.com/ErayKulkizaga/CottonLensAI/pull/47",
+      "contained_in_consolidation": true
+    },
+    {
+      "baseRefName": "codex/private-evidence-migration",
+      "headRefName": "codex/named-weak-signal-execution",
+      "headRefOid": "bd63b075ef109509e3f59f294933e5354a01c992",
+      "number": 46,
+      "url": "https://github.com/ErayKulkizaga/CottonLensAI/pull/46",
+      "contained_in_consolidation": true
+    },
+    {
+      "baseRefName": "codex/named-weak-signal-readiness",
+      "headRefName": "codex/private-evidence-migration",
+      "headRefOid": "576f9b617b715bfafa1b028ba899417f6d9174b1",
+      "number": 45,
+      "url": "https://github.com/ErayKulkizaga/CottonLensAI/pull/45",
+      "contained_in_consolidation": true
+    },
+    {
+      "baseRefName": "codex/named-loss-diagnosis",
+      "headRefName": "codex/named-weak-signal-readiness",
+      "headRefOid": "4230f54beec1e49860cf3dd53acafd5e21569615",
+      "number": 44,
+      "url": "https://github.com/ErayKulkizaga/CottonLensAI/pull/44",
+      "contained_in_consolidation": true
+    },
+    {
+      "baseRefName": "codex/named-history-source-control",
+      "headRefName": "codex/named-loss-diagnosis",
+      "headRefOid": "45d949814163e898b2a210f78b06205904272c61",
+      "number": 43,
+      "url": "https://github.com/ErayKulkizaga/CottonLensAI/pull/43",
+      "contained_in_consolidation": true
+    },
+    {
+      "baseRefName": "codex/named-history-readiness",
+      "headRefName": "codex/named-history-source-control",
+      "headRefOid": "f40e884ba02588cf246e66788dec2030e6d691f4",
+      "number": 42,
+      "url": "https://github.com/ErayKulkizaga/CottonLensAI/pull/42",
+      "contained_in_consolidation": true
+    },
+    {
+      "baseRefName": "codex/named-capacity-control",
+      "headRefName": "codex/named-history-readiness",
+      "headRefOid": "be938e58fd5284fdf9e2e87f00cfb59946907b6d",
+      "number": 41,
+      "url": "https://github.com/ErayKulkizaga/CottonLensAI/pull/41",
+      "contained_in_consolidation": true
+    },
+    {
+      "baseRefName": "codex/named-label-control",
+      "headRefName": "codex/named-capacity-control",
+      "headRefOid": "7b5d14850b67844c89838483c6b01c5d287d5303",
+      "number": 40,
+      "url": "https://github.com/ErayKulkizaga/CottonLensAI/pull/40",
+      "contained_in_consolidation": true
+    },
+    {
+      "baseRefName": "codex/origin-fixed-forecast-transport",
+      "headRefName": "codex/named-label-control",
+      "headRefOid": "90c56a6281c87e846418d92743e9fe52c1d98fbe",
+      "number": 39,
+      "url": "https://github.com/ErayKulkizaga/CottonLensAI/pull/39",
+      "contained_in_consolidation": true
+    },
+    {
+      "baseRefName": "codex/fixed-contract-feasibility",
+      "headRefName": "codex/origin-fixed-forecast-transport",
+      "headRefOid": "cb6a9ad34633f351c608a217c09f06f1b856aa52",
+      "number": 38,
+      "url": "https://github.com/ErayKulkizaga/CottonLensAI/pull/38",
+      "contained_in_consolidation": true
+    },
+    {
+      "baseRefName": "codex/curve-carry-attribution",
+      "headRefName": "codex/fixed-contract-feasibility",
+      "headRefOid": "9f7ee8b7087bbae46946ee8ce0fa9f7684cfbf7a",
+      "number": 37,
+      "url": "https://github.com/ErayKulkizaga/CottonLensAI/pull/37",
+      "contained_in_consolidation": true
+    },
+    {
+      "baseRefName": "codex/contract-curve-t5-result",
+      "headRefName": "codex/curve-carry-attribution",
+      "headRefOid": "8adff8d07b548908bcfb585b690715897ec6140c",
+      "number": 36,
+      "url": "https://github.com/ErayKulkizaga/CottonLensAI/pull/36",
+      "contained_in_consolidation": true
+    },
+    {
+      "baseRefName": "codex/contract-curve-t5-preregistration",
+      "headRefName": "codex/contract-curve-t5-result",
+      "headRefOid": "58ed4a2481935dd64fb65c6867d0aa6f45b0a032",
+      "number": 35,
+      "url": "https://github.com/ErayKulkizaga/CottonLensAI/pull/35",
+      "contained_in_consolidation": true
+    },
+    {
+      "baseRefName": "codex/curve-target-integrity",
+      "headRefName": "codex/contract-curve-t5-preregistration",
+      "headRefOid": "75916d148516e935dea8de397bcaf172c0afa934",
+      "number": 34,
+      "url": "https://github.com/ErayKulkizaga/CottonLensAI/pull/34",
+      "contained_in_consolidation": true
+    },
+    {
+      "baseRefName": "codex/contract-curve-t1-pilot",
+      "headRefName": "codex/curve-target-integrity",
+      "headRefOid": "f0a0fda58d9db231bdda82cbc07af29dd96535f7",
+      "number": 33,
+      "url": "https://github.com/ErayKulkizaga/CottonLensAI/pull/33",
+      "contained_in_consolidation": true
+    },
+    {
+      "baseRefName": "codex/existing-information-admission",
+      "headRefName": "codex/contract-curve-t1-pilot",
+      "headRefOid": "a9544f45ecc4ed2008711045569854e78bb215a6",
+      "number": 32,
+      "url": "https://github.com/ErayKulkizaga/CottonLensAI/pull/32",
+      "contained_in_consolidation": true
+    },
+    {
+      "baseRefName": "codex/paired-price-loss-result",
+      "headRefName": "codex/existing-information-admission",
+      "headRefOid": "1e3ab7977a89b68b03c1baa5bc2eafebbe693a72",
+      "number": 31,
+      "url": "https://github.com/ErayKulkizaga/CottonLensAI/pull/31",
+      "contained_in_consolidation": true
+    },
+    {
+      "baseRefName": "codex/research-priority-addendum-20261010",
+      "headRefName": "codex/paired-price-loss-result",
+      "headRefOid": "e64b72c9d281c233d62f517e6073e3fa510e2c39",
+      "number": 30,
+      "url": "https://github.com/ErayKulkizaga/CottonLensAI/pull/30",
+      "contained_in_consolidation": true
+    },
+    {
+      "baseRefName": "codex/forward-window-audit-20261010",
+      "headRefName": "codex/research-priority-addendum-20261010",
+      "headRefOid": "e4bff3840faad6ac4da8799917fcc4cf067b6cb1",
+      "number": 29,
+      "url": "https://github.com/ErayKulkizaga/CottonLensAI/pull/29",
+      "contained_in_consolidation": true
+    },
+    {
+      "baseRefName": "codex/paired-price-loss-control",
+      "headRefName": "codex/forward-window-audit-20261010",
+      "headRefOid": "1f51b7ad521fc6bd35534cf695e9c06fdf304962",
+      "number": 28,
+      "url": "https://github.com/ErayKulkizaga/CottonLensAI/pull/28",
+      "contained_in_consolidation": true
+    },
+    {
+      "baseRefName": "codex/legacy-loss-lineage",
+      "headRefName": "codex/paired-price-loss-control",
+      "headRefOid": "8b69ef8e33f159599770ffdd310efa8a555bc810",
+      "number": 27,
+      "url": "https://github.com/ErayKulkizaga/CottonLensAI/pull/27",
+      "contained_in_consolidation": true
+    },
+    {
+      "baseRefName": "codex/price-mae-calibration",
+      "headRefName": "codex/legacy-loss-lineage",
+      "headRefOid": "508c428568231d9b9ecbb6cc51d54030cf8d30f5",
+      "number": 26,
+      "url": "https://github.com/ErayKulkizaga/CottonLensAI/pull/26",
+      "contained_in_consolidation": true
+    },
+    {
+      "baseRefName": "codex/selection-stability",
+      "headRefName": "codex/price-mae-calibration",
+      "headRefOid": "d220fb7bf155267caf73e5a0a5fc6536277eab26",
+      "number": 25,
+      "url": "https://github.com/ErayKulkizaga/CottonLensAI/pull/25",
+      "contained_in_consolidation": true
+    },
+    {
+      "baseRefName": "codex/weak-signal-result",
+      "headRefName": "codex/selection-stability",
+      "headRefOid": "052c7cebbfd9a0e4f5fdb982e716628126e50018",
+      "number": 24,
+      "url": "https://github.com/ErayKulkizaga/CottonLensAI/pull/24",
+      "contained_in_consolidation": true
+    },
+    {
+      "baseRefName": "codex/weak-signal-calibration",
+      "headRefName": "codex/weak-signal-result",
+      "headRefOid": "c72963c4c1ce6eecd97b5fa1ee12f5f7f6ad4951",
+      "number": 23,
+      "url": "https://github.com/ErayKulkizaga/CottonLensAI/pull/23",
+      "contained_in_consolidation": true
+    },
+    {
+      "baseRefName": "codex/nass-regional-t1-result",
+      "headRefName": "codex/weak-signal-calibration",
+      "headRefOid": "a21bd444b8c739218bfe428effe02a122653015e",
+      "number": 22,
+      "url": "https://github.com/ErayKulkizaga/CottonLensAI/pull/22",
+      "contained_in_consolidation": true
+    },
+    {
+      "baseRefName": "codex/nass-regional-t1-preregistration",
+      "headRefName": "codex/nass-regional-t1-result",
+      "headRefOid": "2b2a9fbdf5f722a568853c80fe7854217cec646d",
+      "number": 21,
+      "url": "https://github.com/ErayKulkizaga/CottonLensAI/pull/21",
+      "contained_in_consolidation": true
+    },
+    {
+      "baseRefName": "codex/nass-version-clock-case",
+      "headRefName": "codex/nass-regional-t1-preregistration",
+      "headRefOid": "6105ddfe25d0f63c24e87c9cc3b1101adf139197",
+      "number": 20,
+      "url": "https://github.com/ErayKulkizaga/CottonLensAI/pull/20",
+      "contained_in_consolidation": true
+    },
+    {
+      "baseRefName": "codex/nass-regional-audit",
+      "headRefName": "codex/nass-version-clock-case",
+      "headRefOid": "3e7ec5ac369a0669accd6e371f74075fdedd7889",
+      "number": 19,
+      "url": "https://github.com/ErayKulkizaga/CottonLensAI/pull/19",
+      "contained_in_consolidation": true
+    },
+    {
+      "baseRefName": "codex/forward-runtime-window",
+      "headRefName": "codex/nass-regional-audit",
+      "headRefOid": "ec832e255f41b1d071e2c124045e853ac72aaba4",
+      "number": 18,
+      "url": "https://github.com/ErayKulkizaga/CottonLensAI/pull/18",
+      "contained_in_consolidation": true
+    },
+    {
+      "baseRefName": "codex/forward-evidence-audit",
+      "headRefName": "codex/forward-runtime-window",
+      "headRefOid": "2d08d863a31546f2176bd7dca6dcf7c44d0da171",
+      "number": 17,
+      "url": "https://github.com/ErayKulkizaga/CottonLensAI/pull/17",
+      "contained_in_consolidation": true
+    },
+    {
+      "baseRefName": "codex/fas-reviewed-alignment",
+      "headRefName": "codex/forward-evidence-audit",
+      "headRefOid": "1530db571a85fe1f3ba182461697dc72cef90464",
+      "number": 16,
+      "url": "https://github.com/ErayKulkizaga/CottonLensAI/pull/16",
+      "contained_in_consolidation": true
+    },
+    {
+      "baseRefName": "codex/fas-country-quarantine-panel",
+      "headRefName": "codex/fas-reviewed-alignment",
+      "headRefOid": "7ff0d6334c1d2a6c2952e2add2bac7578c817351",
+      "number": 15,
+      "url": "https://github.com/ErayKulkizaga/CottonLensAI/pull/15",
+      "contained_in_consolidation": true
+    },
+    {
+      "baseRefName": "codex/fas-historical-reference-witness",
+      "headRefName": "codex/fas-country-quarantine-panel",
+      "headRefOid": "ea0b717e51028803543758c12edb2f4e7c3e552b",
+      "number": 14,
+      "url": "https://github.com/ErayKulkizaga/CottonLensAI/pull/14",
+      "contained_in_consolidation": true
+    },
+    {
+      "baseRefName": "codex/fas-may28-version-audit",
+      "headRefName": "codex/fas-historical-reference-witness",
+      "headRefOid": "aa377d9daf817f21cb51dc7b7984652aafed72f8",
+      "number": 13,
+      "url": "https://github.com/ErayKulkizaga/CottonLensAI/pull/13",
+      "contained_in_consolidation": true
+    },
+    {
+      "baseRefName": "codex/fas-country-report-verification",
+      "headRefName": "codex/fas-may28-version-audit",
+      "headRefOid": "b835e9456e1efa9b718ca5640e6e2873b20ec7c4",
+      "number": 12,
+      "url": "https://github.com/ErayKulkizaga/CottonLensAI/pull/12",
+      "contained_in_consolidation": true
+    },
+    {
+      "baseRefName": "codex/fas-country-readiness",
+      "headRefName": "codex/fas-country-report-verification",
+      "headRefOid": "7baea8f687d40578df7452bf369ec54efca7f6e6",
+      "number": 11,
+      "url": "https://github.com/ErayKulkizaga/CottonLensAI/pull/11",
+      "contained_in_consolidation": true
+    },
+    {
+      "baseRefName": "main",
+      "headRefName": "codex/fas-country-readiness",
+      "headRefOid": "7c16953e5b07609460f48b5f5187f340a2eff40d",
+      "number": 10,
+      "url": "https://github.com/ErayKulkizaga/CottonLensAI/pull/10",
+      "contained_in_consolidation": true
+    }
+  ],
+  "local_validation": {
+    "ml_research": {
+      "passed": 1562,
+      "skipped": 3,
+      "warnings": 2,
+      "seconds": 925.06
+    },
+    "backend": {
+      "passed": 47,
+      "ruff": "passed"
+    },
+    "frontend": {
+      "node": "24.19.0",
+      "npm_ci": "passed",
+      "build": "passed",
+      "existing_npm_audit": {
+        "low": 1,
+        "moderate": 1,
+        "high": 4
+      }
+    },
+    "registry": "valid",
+    "compose_config": "passed",
+    "diff_check": "passed with cr-at-eol for immutable CRLF archive"
+  },
+  "branches_deleted": 0,
+  "new_market_fits": 0
+}

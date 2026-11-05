@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "profile": "price-only-median-t1-v1",
+  "status": "preregistered_no_market_fits",
+  "design_id": "a929ded6e574fc2eadd489129076f5489c605ec0e9ae81f3a3a154089a78ca69",
+  "source_id": "3de9a24659880fab4063f0c2e6d1c7fe9705c7ca8801ca49f0157c201d9ebafc",
+  "ready_sha256": "ba3b438b707f1547c80adbea565133e6c573c3261def3414655896ce32d5f351",
+  "audit_sha256": "c453ddaa67956f4042d60e0533e8b68a0f8d730365944665d029561d28da2701",
+  "market_fits": 0,
+  "max_market_fits": 338,
+  "synthetic_controls_budget": 4,
+  "prior_clock_recheck": {
+    "new_fits": 0,
+    "native_fits": 676,
+    "annual_outputs": 32,
+    "prediction_rows": 8024
+  },
+  "independent_holdout": false,
+  "automatic_release": false
+}
