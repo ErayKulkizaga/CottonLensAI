@@ -2,3 +2,5 @@
 /research/evidence/** -text
 /docs/archive/** -text
 /ml/notebooks/archive/** -text
+
+/docs/archive/README_HISTORY_20261105.md -text

@@ -1,5 +1,7 @@
 # Belge indeksi
 
+- [5 Kasım Naive-MAE araştırma planı](NAIVE_MAE_PLAN_20261105.md) ve [GitHub teslimatı](GITHUB_DELIVERY_20261105.md).
+
 ## Güncel
 
 - [Durum ve kararlar](STATUS.md)

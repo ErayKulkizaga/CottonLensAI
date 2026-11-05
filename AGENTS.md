@@ -1,5 +1,8 @@
 # CottonLens AI contributor notes
 
+- Current execution order (2026-11-05): finish authorized GitHub consolidation, then docs/NAIVE_MAE_PLAN_20261105.md. User authorized commit/push, merge PR75 preserving history, and closing only content-covered PRs. No branch deletion/model deployment.
+- Dated forward-operation entries below are history; latest STATUS and disabled-task state supersede their active-task wording.
+
 - Current as of 2026-11-04: both CottonLens Windows collection tasks are disabled. The earlier daily configuration and cohort entries below are historical. Preserve the actual first-observed publication. The 61-fit `ct-own-level-recent-history-audit-v1` is complete and inconclusive on 711 reviewed origins; see `docs/STATUS.md`. Keep EWMA and consult the fit registry before further work.
 
 - The 2026-11-04 successor study `own-level-forward-v2-first-observed` is separately locked. Its first-admitted-price rule records later conflicts and requires complete session overlap. The v1 study remains strict and preserves the missed 2026-11-02 origin. The existing consoleless daily task points to v2 and has user-approved wake enabled. See the latest `docs/STATUS.md` entry. Earlier entries describe v1.

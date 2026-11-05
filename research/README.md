@@ -1,5 +1,8 @@
 # Deney geçmişi ve tekrar kontrolü
 
+
+Güncel 5 Kasım iş sırası: [GitHub teslimatı](../docs/GITHUB_DELIVERY_20261105.md), ardından [Naive-MAE planı](../docs/NAIVE_MAE_PLAN_20261105.md). Aşağıdaki tarihli sonraki-adım ifadeleri tarihçedir.
+
 [Sentetik ortak-karar kontrolü](../docs/CT_INFERENCE_CALIBRATION_20261031.md)
 `ct-forward-inference-calibration-v1` sıfır-fit tamamlandı; tekrar çalıştırma.
 Bu bir piyasa güç/başarı hesabı değildir. Sicil230aşama;561tarif/32.500fit

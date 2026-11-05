@@ -1,3 +1,11 @@
+# GitHub konsolidasyonu ve yeni fiyat araştırması — 5 Kasım 2026
+
+Önce [GitHub teslimatı](GITHUB_DELIVERY_20261105.md): güncel kod/belgeler/kanıt
+kapsamı main'de birleştirilir. Ardından [onaylanan Naive-MAE planı](NAIVE_MAE_PLAN_20261105.md)
+uygulanır; bu kayıt henüz yeni deney sonucu değildir. Naive/EWMA referansları,
+bağımsız ileri başarı sınırı ve iki kapalı Windows görevi korunur.
+Aşağıdaki tarihli araştırma sırası ifadeleri geçmiş kayıttır.
+
 # ICE fiyat limiti duyurusu denetimi — 4 Kasım 2026
 
 CFTC'nin Mart 2008 vakasındaki altı Mayıs kontratı kapanışı USDA ile
