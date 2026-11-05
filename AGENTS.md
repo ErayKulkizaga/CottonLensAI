@@ -1,5 +1,7 @@
 # CottonLens AI contributor notes
 
+- The user approved the fixed price-only-median-t1-v1 CPU study (docs/NAIVE_MAE_AUDIT_20261105.md). Quantile is limited to that profile/recipe, same explicit CPU opt-in, one process and <=2 threads; no CI real-market training. Preserve the frozen source and 338 market/4 archived synthetic-control fit budget.
+
 - Current execution order (2026-11-05): finish authorized GitHub consolidation, then docs/NAIVE_MAE_PLAN_20261105.md. User authorized commit/push, merge PR75 preserving history, and closing only content-covered PRs. No branch deletion/model deployment.
 - Dated forward-operation entries below are history; latest STATUS and disabled-task state supersede their active-task wording.
 

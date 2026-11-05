@@ -8,12 +8,14 @@ CPU_FAMILIES = frozenset({'ridge', 'elasticnet', 'xgboost', 'ewma', 'har', 'garc
 COLAB_CPU_FAMILIES = frozenset({'arima', 'drift', 'naive'})
 
 
-def require_training(family, device='cuda', threads=2):
+def require_training(family, device='cuda', threads=2, *, profile=None):
     """Explicit CPU permission is not a GPU fallback or a CI exception."""
     if device not in ('cpu', 'cuda'):
         raise RuntimeError('Explicit cpu or cuda device required')
     if family in COLAB_CPU_FAMILIES and device != 'cpu':
         raise RuntimeError('Statistical baselines require CPU, not GPU fallback')
+    if family == 'quantile' and (device != 'cpu' or profile != 'price-only-median-t1-v1'):
+        raise RuntimeError('Quantile is restricted to the fixed price-only CPU research profile')
     if device != 'cpu':
         require_colab_training()
         return
@@ -24,7 +26,7 @@ def require_training(family, device='cuda', threads=2):
             raise RuntimeError('Two-thread limit required')
         require_colab_training()
         return
-    if family not in CPU_FAMILIES or type(threads) is not int or not 1 <= threads <= 2:
+    if (family not in CPU_FAMILIES and family != 'quantile') or type(threads) is not int or not 1 <= threads <= 2:
         raise RuntimeError('CPU allowlist and two-thread limit required')
     if os.environ.get('COTTONLENS_ALLOW_LOCAL_CPU_TABULAR') != '1':
         raise RuntimeError('Explicit COTTONLENS_ALLOW_LOCAL_CPU_TABULAR=1 required')

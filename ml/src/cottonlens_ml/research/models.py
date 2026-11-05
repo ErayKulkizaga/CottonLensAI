@@ -4,6 +4,7 @@ import os
 import subprocess
 import threading
 import time
+import warnings
 
 import numpy as np
 
@@ -149,7 +150,12 @@ class PriceMetric:
 
 def fit_predict(history, train, validation, test, spec, workspace, *, iterations=None):
     device_requested = spec.get('device', 'cuda')
-    require_training(spec.get('family'), device_requested)
+    if spec.get('family') == 'quantile':
+        from cottonlens_ml.research.naive_mae import validate_quantile
+        validate_quantile(spec)
+        require_training('quantile', device_requested, profile=spec.get('research_profile'))
+    else:
+        require_training(spec.get('family'), device_requested)
     if spec['family'] in ('arima', 'drift', 'naive'):
         from cottonlens_ml.research.statistical_models import (
             fit_predict as statistical_fit,
@@ -352,6 +358,19 @@ def fit_predict(history, train, validation, test, spec, workspace, *, iterations
             curves = {'epochs': recorded}
             details = {'effective_device': tensor.device, 'variable_devices': variable_devices,
                        'iterations_run': len(recorded), 'parameters': model.count_params()}
+        elif family == 'quantile':
+            from sklearn.exceptions import ConvergenceWarning
+            from sklearn.linear_model import QuantileRegressor
+            with warnings.catch_warnings():
+                warnings.simplefilter('error', ConvergenceWarning)
+                # SciPy forwards the fixed threads option to native HiGHS.
+                model = QuantileRegressor(**params).fit(x, y)
+            if not np.isfinite(model.coef_).all() or not np.isfinite(model.intercept_):
+                raise ValueError('Nonfinite Quantile solution; no fallback')
+            prediction, training_prediction = model.predict(xt), model.predict(x)
+            model_path.write_text(json.dumps({'coef': model.coef_.tolist(),
+                'intercept': float(model.intercept_), 'dtype': str(model.coef_.dtype)}), encoding='utf-8')
+            count, details = 1, {'effective_device': 'CPU_reference_explicit', 'solver_threads': 1}
         elif family in ('ridge', 'elasticnet', 'logistic'):
             from sklearn.linear_model import ElasticNet, LogisticRegression, Ridge
             if family == 'logistic':

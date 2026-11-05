@@ -108,3 +108,7 @@ ve Ridge kontrolünü ön kayıtlı bütçede karşılaştır. Bu planın kaydı
 [GitHub kapsam teslimatı](docs/GITHUB_DELIVERY_20261105.md), [güncel durum](docs/STATUS.md),
 [araştırma sözleşmesi](docs/TRADING_RESEARCH_CONTRACT_20261005.md) ve
 [korunan README tarihçesi](docs/archive/README_HISTORY_20261105.md).
+
+Sabit araştırma CLI'sı: `python ml/naive_mae.py --help`. İlk audit/prepare adımları
+fit yapmaz; `pilot` yalnız açık CPU izni ve frozen kaynakla çalışır.
+[Audit ve ön kayıt](docs/NAIVE_MAE_AUDIT_20261105.md).

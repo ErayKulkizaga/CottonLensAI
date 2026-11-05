@@ -33,3 +33,5 @@
 ## Tarihsel
 
 [Arşiv](archive/README.md), önceki planları, model kartı/değerlendirmeleri ve uygulama/demo notlarını saklar. Bunlar bugünün çalışma sırasını belirlemez. Eski runtime/artifact işletim bilgisi için [model kartı](archive/MODEL_CARD.md) ve [demo rehberi](archive/INTERVIEW_DEMO.md) kullanılabilir; metrik yorumlarını güncel düzeltmelerle birlikte okuyun.
+
+- [Naive-MAE audit ve ön kayıt](NAIVE_MAE_AUDIT_20261105.md).
