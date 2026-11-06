@@ -79,3 +79,66 @@ def test_each_injected_defect_stops_both_selection_entrypoints(kind, reason):
     # The same valid control must still pass after the injected defect.
     clean, original = fixture()
     validate_inner_fold(clean, original)
+
+
+@pytest.mark.parametrize('entrypoint', ['engine', 'full_year', 'tune'])
+def test_valid_selection_executes_and_ignores_future_outer_values(tmp_path, entrypoint):
+    """Actual selection loops, generated callback only; no backend/model fit proof."""
+    import numpy as np
+    from cottonlens_ml.research.protocol import mature
+
+    dates = pd.bdate_range('2000-01-03', periods=720)
+    history = pd.DataFrame({'date': dates, 'cotton_session_index': np.arange(720),
+                            'cotton_close': 80.+np.arange(720)/100,
+                            'target_return_1': .01+np.sin(np.arange(720))*.001,
+                            'target_return_5': .05+np.cos(np.arange(720))*.001,
+                            'target_date_1': pd.Series(dates).shift(-1),
+                            'target_date_5': pd.Series(dates).shift(-5)})
+    fold = {'fold': 0, 'year': 2002, 'origins': dates[620:683].strftime('%Y-%m-%d').tolist(),
+            'inner': [{'origins': dates[i:i+63].strftime('%Y-%m-%d').tolist(),
+                       'cutoff': dates[i].isoformat()} for i in (300, 363, 426)]}
+    spec = {'family': 'ridge', 'horizon': 1, 'seed': 42, 'task': 'price',
+            'cadence': 21, 'features': ['cotton_close'], 'params': {'alpha': 1.}}
+    runs = []
+
+    def execute(frame, root):
+        seen = []
+        experiment = SimpleNamespace(history=frame, root=root)
+
+        def train_rows(cutoff, recipe):
+            return mature(frame, cutoff).loc[lambda x: x.date >= dates[119]].copy()
+
+        def generated_fit(recipe, train, validation, test, role, **kwargs):
+            # This callback substitutes all model computation. Check the frames
+            # delivered by the real orchestration, not inferred fold metadata.
+            cutoff = test.date.min() if validation is None else validation.date.min()
+            assert len(train) > 0 and (train.target_date_5 < cutoff).all()
+            assert test.date.max() < dates[620]
+            if validation is not None:
+                assert (validation.target_date_5 < dates[620]).all()
+            value = float(train.target_return_1.median()) / recipe['params']['alpha']
+            seen.append((role, train.date.dt.strftime('%Y-%m-%d').tolist(),
+                         test.date.dt.strftime('%Y-%m-%d').tolist(), value))
+            return {'experiment_id': f'generated-{len(seen)}',
+                    'result': {'iterations': 2, 'predictions': [value]*len(test)}}
+
+        experiment.train_rows = train_rows
+        experiment.fit = generated_fit
+        experiment.inner = lambda recipe, block, **kw: Experiment.inner(experiment, recipe, block, **kw)
+        if entrypoint == 'engine':
+            result = Experiment.inner(experiment, spec, fold)
+        elif entrypoint == 'full_year':
+            result = inner_price(experiment, spec, fold)
+        else:
+            candidates = [spec, {**spec, 'params': {'alpha': 10.}}]
+            result = Experiment.tune(experiment, 'ridge', 1, fold, candidates, 'generated')
+        assert seen  # A positive control must execute, not merely reject early.
+        runs.append(seen)
+        return result
+
+    original = execute(history, tmp_path/'original')
+    changed = history.copy(deep=True)
+    changed.loc[620:, ['cotton_close', 'target_return_1']] = [999999., -50.]
+    perturbed = execute(changed, tmp_path/'changed')
+    assert original == perturbed
+    assert runs[0] == runs[1]

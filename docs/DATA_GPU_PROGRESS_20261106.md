@@ -481,3 +481,12 @@ price-prediction-causality-20261106.zip. Restored source reproduced the full
 Final local checks for this delta:334research tests passed,1optional HDF5 skip;
 10temporal ML controls passed; changed-file Ruff and staged diff check passed.
 Pinned CPU environment lacks Ruff, so Ruff ran with the existing host installation.
+
+## Positive selection-loop controls
+
+All three actual selection loops (Experiment.inner, full_year.inner_price and
+Experiment.tune) now complete on generated valid data with a deterministic fit
+callback. The callback checks delivered training maturity and excludes outer
+origins. Changing outer-period prices/returns leaves results and execution traces
+identical.18selection-boundary tests passed. These callbacks fit no models and
+do not certify backend early stopping or all selection policies.
