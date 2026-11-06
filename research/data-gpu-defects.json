@@ -49,9 +49,12 @@
       "evidence": [
         "research/evidence/source-gate-review-20261106.json",
         "research/evidence/early-catalog-review-20261106.json",
-        "docs/DATA_SOURCE_REQUEST_20261106.md"
+        "docs/DATA_SOURCE_REQUEST_20261106.md",
+        "research/evidence/source-request-matrix-20261106/result.json",
+        "research/evidence/source-request-matrix-listing-20261106/result.json",
+        "research/evidence/listing-coverage-delivery-20261106.json"
       ],
-      "remediation": "Keep G1 closed; use exact coverage matrix, observed official links and provider sample acceptance conditions.",
+      "remediation": "Keep G1 closed. Latest 58-contract lifecycle-first matrix has 99,523 potential cells across 3,108dates. Separate report completeness from listing-universe coverage; obtain official historical listed_on/last_trade_on before inferring absence. Prior 40,450cell matrix is preserved as a superseded conditional calculation. PIT/vintage remains separate.",
       "closure": "All required cells accepted, or separately preregistered narrower universe; current catalog limits do not prove global absence."
     },
     {
@@ -136,6 +139,20 @@
       ],
       "remediation": "Serialize direct ledger execution with visible non-stealable ownership; record run_id before computation and after verified staging; correlate caught failures with the run. Unresolved starts are counted separately from completed fits.",
       "closure": "Actual competing process rejected, hard-exit attempt/partial preserved, explicit verified-owner test recovery starts a distinct run; completed cache is reused and corrupted staging never retrains. This does not close native GPU G3."
+    },
+    {
+      "id": "DG-011",
+      "status": "FIXED_VERIFIED",
+      "problem": "Readiness treated complete ten-quote reports and conditional annual tables as proof of absence for all other contracts. Report completeness is not exchange listing completeness.",
+      "affected_scope": "Main readiness quote lookup and independently constructed verification pool; historical listings themselves remain unverified.",
+      "evidence": [
+        "research/ams_cell_readiness.py",
+        "research/verify_ams_cell_readiness.py",
+        "research/tests/test_ams_cell_readiness.py",
+        "research/evidence/listing-coverage-delivery-20261106.json"
+      ],
+      "remediation": "Only separate verified absence coverage can establish ABSENT; existing report constructors do not supply it. Current primary ICE expiry table has 15contracts but is not backdated to the historical universe.",
+      "closure": "Regression tests reject absence from a full ten-quote report. Zero-fit real-source rerun and independent verifier agree on99,523potential cells,0fully ready origins. Fresh restore reproduces eight outputs byte-identically. Lifecycle/PIT evidence gaps are not closed."
     }
   ]
 }

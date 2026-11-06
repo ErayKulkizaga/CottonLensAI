@@ -21,8 +21,10 @@ def quote_cell(table, contract, day):
         return PRESENT, float(table['quotes'][contract])
     # A month comparison or a sorted partial quote list cannot prove absence.
     # Historical labels may themselves be wrong (the annual-source defect).
-    # Only an explicitly complete, admitted table establishes a missing cell.
-    if table['complete']:
+    # A complete ten-row report is not proof of the exchange listing universe.
+    # Absence needs separate admitted lifecycle/listing coverage; no current
+    # report constructor supplies that evidence automatically.
+    if table['complete'] and table.get('absence_coverage_verified', False):
         return ABSENT, None
     return UNKNOWN, None
 

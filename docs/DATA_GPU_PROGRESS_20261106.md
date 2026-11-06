@@ -332,3 +332,47 @@ session recovery, stochastic RNG/dropout continuation, real GPU OOM or remote
 hardware attestation. G3 remains partial and source G1 remains closed; no new
 market campaign is admitted. User need not repeat this fixed successful probe.
 d56987dPR CI42248201986 succeeded; subsequent verifier changes need their own CI.
+
+## Lifecycle-first source request matrix
+
+The strict unresolved dependency panel was hash-checked and reduced to58contract
+requests without changing any source cell or training gate.40,450upper-bound cells
+span766source dates:38,397no accepted table,1,593partial weekly prefix,460identity
+or price conflicts. The1,947,792cell-origin dependency edges match independently
+when summed from the cell panel and the origin panel; they are not unique fits.
+
+research/source_request_matrix.py emits the per-contract CSV and input/output
+hash receipt under research/evidence/source-request-matrix-20261106. Five positive
+and injected duplicate/count/interval/unknown-kind tests and Ruff passed. Requests
+now explicitly ask for official listing/last-trade metadata before paying for
+prices of potentially unlisted contracts. No lifecycle date or absent status was
+inferred; no provider contact/purchase or new fit occurred. Conditional annual
+source and PIT/vintage gaps remain open. The data request document links the exact
+58contracts and date ranges, including2024delivery months used before2024origins.
+
+## Complete report is not complete exchange listing
+
+A primary ICE production expiry page and its CSV download show15current futures
+with FTD/LTD fields. These current rows do not cover our58historical contracts;
+no old listing date was inferred. The previous readiness path nevertheless used
+complete ten-price reports and conditional annual tables as absence coverage.
+That implication is removed. quote_cell requires a separate verified absence
+coverage flag; no existing report constructor supplies one. The independent
+verifier makes the same policy correction with its own literal pool builder.
+
+Real-source zero-fit rerun: potential unknown cells40,450→99,523; source dates766→3108.
+2006eval/2824requested origins/174jobs are unchanged.1955target pairs and1647HAR
+ready remain; EWMA and all-input readiness remain0. Independent verification agrees.
+The request matrix was separately versioned; the earlier matrix and exact original
+generator bytes are preserved. New counts include58,759cells outside reports or
+annual quotes without listing-coverage evidence. These are uncertainty bounds,
+not observed price errors.32focused tests and changed-file Ruff passed.
+
+Private Release asset listing-coverage-review-20261106.zip preserves227manifested
+members plus the manifest, including current source snapshot, raw official HTML/CSV,
+new readiness outputs and both matrix versions. Fresh download/restoration verified
+every member; offline/training-disabled replay regenerated8outputs byte-identically.
+Receipt: research/evidence/listing-coverage-delivery-20261106.json. The full research
+suite passed310tests with1optional HDF5-dependency skip in the pinned CPU environment;
+changed-file Ruff and diff checks passed. No source accepted and no model fit run.
+Previous commit59f5a7cPR CI42272556465 succeeded; the listing correction needs own CI.

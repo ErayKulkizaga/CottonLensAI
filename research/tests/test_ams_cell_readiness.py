@@ -19,6 +19,8 @@ def test_partial_far_quote_is_unknown_not_absent():
     assert quote_cell(table, '2019-10-01', '2018-10-15') == (UNKNOWN, None)
     assert quote_cell(table, '2019-03-01', '2018-10-15') == (PRESENT, 75.)
     table['complete'] = True
+    assert quote_cell(table, '2019-10-01', '2018-10-15') == (UNKNOWN, None)
+    table['absence_coverage_verified'] = True
     assert quote_cell(table, '2019-10-01', '2018-10-15') == (ABSENT, None)
 
 
@@ -86,3 +88,6 @@ def test_prefix_does_not_discard_unchanged_annual_far_quotes(tmp_path, suspect):
     tables, _ = source_tables(path, {'quotes': {}}, merged, {'2018-08-01'}, full)
     assert tables['2018-08-01']['complete'] is True
     assert tables['2018-08-01']['kind'] == 'verified_full_daily_settlement'
+    # A report with ten verified prices still does not establish the universe
+    # of listed contracts. Do not infer historical absence of an eleventh.
+    assert quote_cell(tables['2018-08-01'], '2020-10-01', '2018-08-01')[0] == UNKNOWN

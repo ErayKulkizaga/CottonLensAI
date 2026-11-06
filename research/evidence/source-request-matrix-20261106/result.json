@@ -1,0 +1,28 @@
+{
+  "schema": 1,
+  "status": "source_requests_bounded_not_data_admitted",
+  "contracts": 58,
+  "unknown_cells_upper_bound": 40450,
+  "unique_source_dates": 766,
+  "source_kind_counts": {
+    "no_accepted_original_source_table": 38397,
+    "unresolved_identity_or_price": 460,
+    "verified_weekly_prefix": 1593
+  },
+  "cell_origin_dependency_edges": 1947792,
+  "input_hashes": {
+    "unknown-ewma-cells.csv": "f5179a96d3445892484a6882a42eb8a96f5e7c838629bcff8111c5e9f1f62097",
+    "origin-readiness.csv": "1a1d6c0dc6313bf902480dc38a69e51c4ff30219caf72ab457365d8abe0a490a",
+    "result.json": "c0e85bf92b0ee583d92a0ec97a64893e373fbcf801b02d3d44da32634ba17186"
+  },
+  "matrix_sha256": "3fca39bec6aa762bb8045b23e019ec2888742475428de9b3ae6e5b3296bc04a8",
+  "generator_sha256": "46f95eae960eb12fed992d6b15653411e644c1ae909182631ee674897c31b4e0",
+  "new_fits": 0,
+  "source_admission_granted": false,
+  "limits": [
+    "Upper bounds are not proven price errors or proof a contract was listed.",
+    "Edges reuse origins and cells; they are not unique fits, trials or affected dates.",
+    "Lifecycle evidence may establish absence; no listing date is inferred here.",
+    "This request scope does not resolve conditional annual data or historical availability."
+  ]
+}

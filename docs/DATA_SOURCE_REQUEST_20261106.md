@@ -26,6 +26,38 @@ yeniden dağıtım yasaksa şifreli olsa da GitHub'a yüklenebilir varsayılmaya
 lisanslı arşiv yöntemi ayrı kararlaştırılacak. Ücret, exchange entitlement,
 abonelik, geçmiş indirme limiti ve tekrar erişim şartları istenmeli.
 
+## Mevcut açıkların somut talep kapsamı
+
+[58 kontratlık talep matrisi](../research/evidence/source-request-matrix-listing-20261106/contract-evidence-request.csv)
+ve [hash bağlı hesap kaydı](../research/evidence/source-request-matrix-listing-20261106/result.json)
+mevcut katı readiness çıktılarından üretildi. Kontrat teslim ayları2012-12–2024-05;
+gereken kaynak seansları2010-01-04–2023-11-23arasında3.108tarih.2024teslim ayı,
+2024sonuçlarını seçime katmak anlamına gelmez:2023origin'lerinde kullanılan ileri
+vadeli kontratın kimliğidir.
+
+Güncel99.523hücre üst sınırının38.588'i kabul edilmiş tablosu bulunmayan
+günlerden,1.625'i kısmi haftalık prefix'ten,551'i kimlik/fiyat çatışmasından,
+58.759'u rapor/annual dışında listeli kontrat kapsamı kanıtı bulunmamasından gelir.
+Bunlar kesin fiyat hatası veya işlem görmüş/listelenmiş kontrat sayısı değildir.
+Hücre→origin bağımlılık sayısı4.778.562; iki CSV yönünden bağımsız toplam aynı.
+Bu sayı bağımsız fit, hipotez veya tekil etkilenen origin sayısı değildir.
+
+İlk40.450hücrelik [matris sürümü](../research/evidence/source-request-matrix-20261106/result.json)
+korunur; raporun tamlığını listing kapsamı sayan önceki koşullu hesabı açıklar.
+Güncel kabul kapsamı olarak kullanılmaz. [Resmi ICE expiry tablosu](https://www.ice.com/products/254/Cotton-No-2-Futures/expiry)
+6Kasım2026'da15güncel kontrat ve FTD/LTD alanı gösteriyor. Bu canlı sayfa geçmiş
+58kontratın listeleme tarihlerini sağlamıyor; güncel listeleme kuralı geçmişe
+kopyalanmayacak. Bir USDA raporunda10quote bulunması tüm listeli kontratların
+bunlardan ibaret olduğunu kanıtlamaz.
+
+Önce her58kontrat için resmi `listed_on`, `last_trade_on`, exchange contract ID
+ve bu tarihlerin kaynak belgesi/hash'i istenir. Veri sağlayıcısı kontratın o gün
+listelenmediğini belgeleyebiliyorsa hayali settlement fiyatı istenmez. Ancak
+listeleme tarihi, on-kontrat tablosundaki sıra veya teslim ayından tahmin edilmez;
+metadata gelene kadar söz konusu hücre UNKNOWN kalır. Gerçekten listeli günler
+için dated settlement/no-quote açıklaması; PIT/vintage kanıtı ayrıca gerekir.
+Bu aşamalama talebi daraltır, kabul kapısını gevşetmez. Matrisin kendisi G1'i açmaz.
+
 ## Aday kaynaklar ve doğrulanmamış noktalar
 
 | Aday | Resmi sayfanın desteklediği kapsam | Satın almadan kanıtlanacak |

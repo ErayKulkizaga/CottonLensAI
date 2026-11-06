@@ -15,7 +15,7 @@ Parent401dosyanın hash'i ayrıca kontrol edildi; eski parent arşivi tekrar
 yüklenmedi. L4sonucu ve bağımsız NumPy/Adam verifier raporu da taze restore
 üzerinden byte eşit üretildi. [Teslim makbuzu](../research/evidence/source-gate-delivery-20261106.json).
 
-## Yeni kontrolün etkisi
+## İlk katı kontrolün etkisi (korunan önceki sürüm)
 
 | Koşullu değerlendirme kapsamı | Eski | Katı |
 |---|---:|---:|
@@ -65,3 +65,22 @@ ve gözlenen bütün ay seçeneklerini korur. Aynı private Release'e ayrı
 `early-catalog-review-20261106.zip` asset'i eklendi; taze indirme sonrası üç üyenin
 tam byte eşitliği ve HTML hash'leri doğrulandı. Eski paketlerin üzerine yazılmadı.
 G1 kapalı; yeni piyasa fit'i yok.
+
+## Listing kapsamı kontrolüyle güncel durum
+
+Tam on-quote rapor ile bütün listeli kontrat evreni ayrıldı. Artık report
+complete=True tek başına rapor dışındaki kontratı ABSENT yapmıyor; ayrı
+absence_coverage_verified gerekir. Mevcut source constructor'ları bunu otomatik
+vermez. Bağımsız verifier da rapor/annual sayısından yokluk çıkarmıyor.
+
+Aynı gerçek kaynak/joblardan sıfır fit ile yapılan yeni hesap:99.523potansiyel
+bilinmeyen hücre,3.108kaynak tarihi; önceki40.450hesabı arşivde korunur. Bunlar
+fiyat hata sayısı değildir.1955hedef çifti/1647HAR hazır/0EWMA hazır/0tüm-girdi
+hazır değişmedi;174işin train ve test bağımlılıkları hâlâ eksik. Bağımsız set/bisect
+verifier aynı99.523hücreyi ve bütün2824origin/174işi doğruladı.
+
+Resmi ICE canlı expiry HTML/CSV'si15kontrat gösteriyor; eski58kontrat için
+FTD/LTD kanıtı olarak kullanılmadı. Güncel sayfa geçmişi doğrulamaz, fakat
+on-satırlı raporun evrensel listing kapsamına eşitlenemeyeceğini açıklaştırır.
+Kaynak talebi güncel58kontrat matrisiyle lifecycle-first yapılır; fiyatlar veya
+yokluklar uydurulmaz. Koşullu annual ve PIT/vintage açıkları hâlâ kapanmadı.
