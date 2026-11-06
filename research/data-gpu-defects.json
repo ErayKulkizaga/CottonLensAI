@@ -56,9 +56,10 @@
         "research/evidence/ice-listing-schedule-20261106/result.json",
         "research/evidence/ice-listing-rule-delivery-20261106.json",
         "docs/ICE_DATA_REQUEST_DRAFT_20261106.md",
-        "research/evidence/ice-inquiry-status-20261106.json"
+        "research/evidence/ice-inquiry-status-20261106.json",
+        "research/evidence/ice-routing-status-20261106.json"
       ],
-      "remediation": "G1 stays closed. Official Rule10.07 default schedule is now a hash-bound conditional diagnostic (83,312pre-month/1,216in-month/14,995post-month unknown cells), not actual historical absence admission. The user reports sending the58-contract lifecycle/exception/sample/quote inquiry. Actual sent content, delivery and reply are not independently verified; no source has been admitted.",
+      "remediation": "G1 stays closed. Official Rule10.07 default schedule is now a hash-bound conditional diagnostic (83,312pre-month/1,216in-month/14,995post-month unknown cells), not actual historical absence admission. The user reports sending the58-contract lifecycle/exception/sample/quote inquiry. Actual sent content, delivery and reply are not independently verified; no source has been admitted. Updated user plan reports helpdesk routing to data@ice.com; no direct data evidence accepted and no message sent by assistant.",
       "closure": "All required cells accepted, or separately preregistered narrower universe; current catalog limits do not prove global absence."
     },
     {
@@ -105,9 +106,10 @@
         "ml/tests/test_ledger_faults.py",
         "research/evidence/gpu-restart-handoff-20261106.json",
         "research/evidence/l4-restart-verification-20261106.json",
-        "research/evidence/l4-restart-delivery-20261106.json"
+        "research/evidence/l4-restart-delivery-20261106.json",
+        "research/evidence/l4-oom-package-20261106.json"
       ],
-      "remediation": "User-returned L4 deterministic native worker-exit/resume passed hash binding, exact optimizer/weight comparisons and independent NumPy Adam replay. Fresh Release restoration reproduces verification. Whole-session loss, stochastic RNG and real GPU OOM remain unverified.",
+      "remediation": "User-returned L4 deterministic native worker-exit/resume passed hash binding, exact optimizer/weight comparisons and independent NumPy Adam replay. Fresh Release restoration reproduces verification. Whole-session loss, stochastic RNG and real GPU OOM remain unverified. A separate bounded allocator-OOM/fresh-process recovery handoff is prepared and fresh-restored; actual Colab execution remains pending.",
       "closure": "Fault-specific receipts, no duplicate completed fits, explicit attempt semantics and fresh restore."
     },
     {

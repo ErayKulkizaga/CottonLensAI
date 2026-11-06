@@ -13,7 +13,7 @@ Bu takip kaydı tamamlanma iddiası değildir. Önceki bilimsel kayıtlar deği�
 | E: Bağımsız değerlendirme | KISMİ | Price-only T+1 exact frozen cohort, Decimal MAE/yön/yıl/aktif oran ve native replay doğrulandı; diğer sözleşmelerin kapsamı açık |
 | F: GPU yürütme/restore | KISMİ | Kullanıcının onayladığı L4 sentetik/native Adam replay ve uzak arşiv restore geçti; native worker kesinti/devam doğrulandı; tam oturum/RNG/GPU OOM eksik |
 | G: Kampanya manifesti/sonuç | G1/G2/G3 BEKLİYOR | Veri kabulü olmadan yeni piyasa fit'i yok |
-| GitHub teslimatı | DEVAM | Draft PR77 ve checksum bağlı private Release mevcut; 1969c3c kod/kanıt teslim edildi, son CI ayrıca izleniyor |
+| GitHub teslimatı | DEVAM | Draft PR77 ve checksum bağlı private Release mevcut; 3741386 başlığında PR/push CI başarılı; sonraki teslimat kendi CI sonucunu bekler |
 | İleri doğrulama kararı | BEKLİYOR | Aday ve geçerli kampanya sonucu oluşmadan karar yok |
 
 Aşağıdaki bölümler tarih sıralı çalışma kaydıdır; eski anlık durumlar yukarıdaki
@@ -490,3 +490,34 @@ callback. The callback checks delivered training maturity and excludes outer
 origins. Changing outer-period prices/returns leaves results and execution traces
 identical.18selection-boundary tests passed. These callbacks fit no models and
 do not certify backend early stopping or all selection policies.
+
+
+## Güncellenmiş planın bağımsız işleri
+
+Aktif uygulama worktree'si naive-mae-20261105/CottonLensAI, dal
+codex/root-cause-audit-20261106. Ana eski checkout'taki kullanıcı değişiklikleri
+korundu. PR77 taslak/açık;3741386için42283410170ve42283397748başarılı.
+Kullanıcının güncel plan değişikliği ve yerel Cotcast inceleme notu korunuyor.
+Plan yeni genel planla değiştirilmedi. ICE yönlendirme bilgisi kullanıcı planı
+beyanıdır; data@ice.com'a mesaj gönderilmedi, veri yanıtı kabul edilmedi.
+
+Yeni çıktılar docs/DEMO_WEATHER_ACCEPTANCE_20261106.md içinde:
+- Değişmez manuel demo kayıt aracı ve9hata/pozitif kontrol; kimlik/gerçekleşme
+  kabulü olmadığı için birincil değerlendirme kapalı. Mevcut tarayıcı sekme
+  listesi boş; bu tur yeni canlı gözlem oluşturulmadı.
+- Mevsimsel hava kaynak kararı DEFER_SOURCE_ADMISSION. Sayısal NASA kataloğu
+  bulundu, retrospektif ürün ile tarihsel yayın ayrımı korundu. Yeni ön kayıt
+  veya piyasa eğitimi yok.
+- Ayrı ürün ekranı gereksinimleri; backend/frontend/API değişmedi.
+- L4 bounded allocator-OOM/fresh-process recovery notebook/kaynak paketi hazır.
+ 145kaynak üyesi ve notebook AST/UTF8 doğrulandı; private Release'ten taze
+ indirilip3dış/145iç dosya hash'i eşleşti. Gerçek GPU çalışması henüz yapılmadı;
+ bu yüzden DG007/G3 kapanmadı. Önceki başarılı restart çalışması tekrarlanmaz.
+
+Yerel doğrulama:343research testi geçti,1opsiyonel HDF5 atlandı; yeni OOM
+kontrol akışı ve demo kontrolleri13test geçti; değiştirilmiş Python dosyalarında
+Ruff geçti. Bu testlerde gerçek model fit'i veya TensorFlow/CUDA kurulumu yok.
+
+Kalan bağımlılıklar: kaynak G1 için gerçek lifecycle/PIT ve lisans kanıtı;
+Colab için kullanıcının yeni OOM paketini çalıştırması; session/RNG resume ve
+kalan G2 kapsam denetimi. Kampanya manifesti veri kabulünden sonra kilitlenecek.
