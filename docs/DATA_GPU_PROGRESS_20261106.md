@@ -10,7 +10,7 @@ Bu takip kaydı tamamlanma iddiası değildir. Önceki bilimsel kayıtlar deği�
 | C: Onarım ve etki yayılımı | DEVAM |139/106/28yeniden doğrulandı; katı kapsam0hazır, tam kaynak onarımı eksik |
 | D: Zorunlu eğitim kapısı | DEVAM | Ledger/model/backend/legacy fit ve doğrudan QLIKE kernel kimlik kontrolü; bütün seçim/preprocessing yollarının kapsam denetimi açık |
 | D: Sızıntı testi | DEVAM | Kabul ve hata enjeksiyonları;5fiyat feature'ı169cutoff prefix/future testi geçti. Bütün model/seçim yollarının prediction invariance denetimi eksik |
-| E: Bağımsız değerlendirme | BEKLİYOR | Eski verifier'lar mevcut; yeni sözleşmeye kapsam eşlemesi yapılacak |
+| E: Bağımsız değerlendirme | KISMİ | Price-only T+1 exact frozen cohort, Decimal MAE/yön/yıl/aktif oran ve native replay doğrulandı; diğer sözleşmelerin kapsamı açık |
 | F: GPU yürütme/restore | KISMİ | Kullanıcının onayladığı L4 sentetik/native Adam replay ve uzak arşiv restore geçti; native worker kesinti/devam doğrulandı; tam oturum/RNG/GPU OOM eksik |
 | G: Kampanya manifesti/sonuç | G1/G2/G3 BEKLİYOR | Veri kabulü olmadan yeni piyasa fit'i yok |
 | GitHub teslimatı | DEVAM | Draft PR77 ve checksum bağlı private Release mevcut;41ffe0e PR CI başarılı. Sonraki commit'ler ayrıca doğrulanacak |
@@ -376,3 +376,41 @@ Receipt: research/evidence/listing-coverage-delivery-20261106.json. The full res
 suite passed310tests with1optional HDF5-dependency skip in the pinned CPU environment;
 changed-file Ruff and diff checks passed. No source accepted and no model fit run.
 Previous commit59f5a7cPR CI42272556465 succeeded; the listing correction needs own CI.
+
+## Independent evaluation bound to frozen origins and targets
+
+The independent median verifier previously checked 2006unique origins per arm and
+cross-arm equality without checking exact frozen fold/history alignment. Both
+arms could share a wrong date/target metadata value. It now independently checks
+the ready record identity/history hash, exact origin order/coverage, target dates,
+prices/returns, year/horizon and finite predictions. No intersection/drop repair
+is performed. This missing guard is not proof the actual historical export was
+wrong: the authentic export passed all new checks.
+
+Sixteen generated cohort/loss tests passed, including both-arm defects, omitted
+predictions, duplicates, order/year/horizon changes, nonfinite predictions, Naive
+zero-correction identity, zero realized movement, perfect prediction and unit
+scaling. The first scaling test used default28-digit Decimal arithmetic against
+50-digit results; it was corrected to test50-digit rounding at1e-43. This does
+not change scientific thresholds. Main MAE tolerance remains1e-12 and CI1e-11.
+All research tests:326passed/1optional HDF5skip; changed-file Ruff passed.
+
+The original private result Release was freshly downloaded: archive ddf449e4...
+and manifest7948cef...matched recorded identities;2085files were restored. Frozen
+native verification ran with network and training denied.338existing market plus
+4existing synthetic fits and train-only preprocessing replayed; the338market
+fit aggregate has0native return difference (controls passed their1e-7tolerance). All2085files still matched their original hashes afterward;0new fits.
+
+The independent calculator rechecked12,036Decimal price losses, raw/selected MAE,
+direction, individual annual gains/year wins, active rates and active-only direction,
+and both preregistered10000replicate block20/60 primary intervals. Both arms have
+the same exact2006frozen T+1origin/target pairs; decision remains STOP. This is
+frozen dataset consistency, not vendor PIT or named-contract truth.
+
+Receipts: research/evidence/price-independent-cohort-20261106.json and
+research/evidence/price-independent-native-20261106.json. A small supplemental
+private Release asset price-cohort-audit-20261106.zip adds the current verifier,
+tests and receipts without reuploading original data/models. Its fresh download
+and independent output matched byte-for-byte; delivery receipt is
+research/evidence/price-cohort-delivery-20261106.json. G1 and full G2/G3 remain open.
+Previous cbfa6c3PR CI42274764716 succeeded; current changes require own CI.

@@ -80,9 +80,11 @@
         "ml/tests/test_admission.py",
         "ml/tests/test_temporal_audit.py",
         "research/evidence/price-selection-boundary-20261106.json",
-        "ml/tests/test_selection_boundary.py"
+        "ml/tests/test_selection_boundary.py",
+        "research/evidence/price-independent-cohort-20261106.json",
+        "research/evidence/price-independent-native-20261106.json"
       ],
-      "remediation": "Shared engine/full-year selection entrypoints revalidate fixed 3x63 blocks and strict T+5 maturity. Remaining entrypoint and fixed-recipe prediction/selection-state coverage still needs audit.",
+      "remediation": "The fixed price-only T+1 cohort now has independent exact-origin/target/value checks, Decimal loss and gate checks, active metrics and fresh native/preprocessing replay. Remaining model/selection prediction-invariance and other dataset contracts still need coverage.",
       "closure": "Requirement-by-requirement G2 coverage including independent common-origin evaluation and native prediction replay."
     },
     {
@@ -153,6 +155,21 @@
       ],
       "remediation": "Only separate verified absence coverage can establish ABSENT; existing report constructors do not supply it. Current primary ICE expiry table has 15contracts but is not backdated to the historical universe.",
       "closure": "Regression tests reject absence from a full ten-quote report. Zero-fit real-source rerun and independent verifier agree on99,523potential cells,0fully ready origins. Fresh restore reproduces eight outputs byte-identically. Lifecycle/PIT evidence gaps are not closed."
+    },
+    {
+      "id": "DG-012",
+      "status": "FIXED_VERIFIED",
+      "problem": "The independent price verifier checked equal arm cohorts but did not bind every exported origin and target to the frozen split/history.",
+      "affected_scope": "research.verify_naive_mae for fixed price-only median T+1; no actual wrong export was found.",
+      "evidence": [
+        "research/verify_naive_mae.py",
+        "research/tests/test_independent_price_cohort.py",
+        "research/evidence/price-independent-cohort-20261106.json",
+        "research/evidence/price-independent-native-20261106.json",
+        "research/evidence/price-cohort-delivery-20261106.json"
+      ],
+      "remediation": "Validate exact frozen cohort/targets, chronology, year/horizon, finite values, active rates and every annual gain; retain independent Decimal/bootstrap implementation.",
+      "closure": "Both-arm injected defects fail, clean controls pass, original2006-origin exports pass, and fresh native342fit replay has zero difference without training. Scope does not prove vendor availability or other model families."
     }
   ]
 }
