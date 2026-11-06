@@ -159,6 +159,14 @@ class Experiment:
         if self.history.date.max() >= pd.Timestamp('2024-01-01'):
             raise ValueError('Seen audit cannot enter research')
         self.ledger = Ledger(self.root / 'ledger', self.identity)
+        admission_path = self.root / 'admission' / 'manifest.json'
+        receipt_path = self.root / 'admission' / 'receipt.json'
+        if admission_path.exists() or receipt_path.exists():
+            from cottonlens_ml.research.admission import ExecutionAdmission
+            if not admission_path.is_file() or not receipt_path.is_file():
+                raise ValueError('Incomplete data admission; preserve failed preparation')
+            self.admission = ExecutionAdmission(
+                read_record(admission_path), read_record(receipt_path), self.root)
 
     def train_rows(self, cutoff, spec):
         rows = mature(self.history, cutoff, spec.get('years'))
@@ -188,7 +196,7 @@ class Experiment:
         specification = self.fit_specification(spec, train, validation, test, role, iterations)
         record = self.ledger.run(specification, lambda workspace: fit_predict(
             self.history, train, validation, test, spec, workspace, iterations=iterations), repeat=repeat,
-            before_compute=getattr(self, 'before_compute', None))
+            before_compute=getattr(self, 'before_compute', None), admission=getattr(self, 'admission', None))
         if getattr(self, 'after_fit', None):
             self.after_fit(record)
         return record

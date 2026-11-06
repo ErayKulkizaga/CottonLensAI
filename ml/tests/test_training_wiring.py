@@ -69,7 +69,7 @@ class FakeLSTM:
 
 
 @pytest.fixture
-def fakes(monkeypatch):
+def fakes(monkeypatch, admit_generated_legacy):
     FakeXGB.fits = []
     FakeRidge.fits = []
     FakeLSTM.fits = []
@@ -104,6 +104,27 @@ def frames():
     train, validation = purged_validation_split(frame.iloc[60:360])
     test = frame.iloc[370:390].copy()
     return frame, train, validation, test
+
+
+def test_colab_without_data_admission_cannot_fit_estimators_or_scalers(fakes, tmp_path, monkeypatch):
+    from cottonlens_ml.research.admission import AdmissionError, require_legacy_fit
+    monkeypatch.setattr(training, 'require_legacy_fit', require_legacy_fit)
+    frame, train, validation, test = frames()
+    for function in (training.ridge_candidates, training.train_xgboost, training.train_lstm):
+        args = (train, validation, test) if function is training.ridge_candidates else (train, validation, test, tmp_path)
+        with pytest.raises(AdmissionError, match='Legacy estimator fit is not admitted'):
+            function(*args, feature_history=frame)
+    assert not FakeXGB.fits and not FakeLSTM.fits and not FakeRidge.fits and not FakeScaler.fits
+
+
+def test_cached_xgb_remains_readable_without_authorizing_new_fit(fakes, tmp_path, monkeypatch):
+    from cottonlens_ml.research.admission import require_legacy_fit
+    frame, train, validation, test = frames()
+    training.train_xgboost(train, validation, test, tmp_path, feature_history=frame)
+    fitted = len(FakeXGB.fits)
+    monkeypatch.setattr(training, 'require_legacy_fit', require_legacy_fit)
+    training.train_xgboost(train, validation, test, tmp_path, feature_history=frame)
+    assert len(FakeXGB.fits) == fitted
 
 
 def test_training_entrypoints_block_local_fits_before_loading_runtimes(monkeypatch, tmp_path):

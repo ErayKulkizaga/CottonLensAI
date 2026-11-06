@@ -121,7 +121,7 @@ def test_gpu_fit_passes_asset_weights_and_stops_on_cotton_price_mae(nonlinear_ca
         models.fit_predict(exp.history,train,test,test,spec,tmp_path)
 
 
-def test_locked_outer_tree_count_resume_and_no_duplicate_fit(nonlinear_case,monkeypatch):
+def test_locked_outer_tree_count_resume_and_no_duplicate_fit(admit_generated_jobs, nonlinear_case,monkeypatch):
     exp = nonlinear_case
     computed, counts, pause = [],[],[True]
 

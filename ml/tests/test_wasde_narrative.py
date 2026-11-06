@@ -177,7 +177,7 @@ def test_narrative_cannot_export_or_launch_wide_search(tmp_path):
     assert not list(tmp_path.iterdir())
 
 
-def test_text_fit_resumes_from_same_ledger_and_corrupt_payload_is_rejected(frozen,monkeypatch):
+def test_text_fit_resumes_from_same_ledger_and_corrupt_payload_is_rejected(admit_generated_jobs, frozen,monkeypatch):
     from cottonlens_ml.research import models
     from cottonlens_ml.research.engine import Experiment
     _,folder,_,_,ready = frozen

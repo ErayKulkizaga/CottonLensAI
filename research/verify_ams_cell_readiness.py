@@ -18,6 +18,14 @@ def digest(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
+def source_cell_status(table, contract):
+    """Independent literal-table rule; partial/missing tables prove no absence."""
+    quotes, _, complete = table
+    if contract in quotes:
+        return 1
+    return 0 if complete else -1
+
+
 def verify(root, recovery, merged_path, full_path, contract_path, output):
     report = read_record(root/'result.json')
     for name, expected in report['output_hashes'].items():
@@ -61,8 +69,7 @@ def verify(root, recovery, merged_path, full_path, contract_path, output):
     h = pd.read_parquet(parent/'inputs/history.parquet'); days = h.date.dt.strftime('%Y-%m-%d').tolist()
     positions = {d: i for i, d in enumerate(days)}
     def cell(day, contract):
-        q, ranked, complete = pool.get(day, ({}, [], True))
-        return 1 if contract in q else 0 if complete or contract[:7] < day[:7] or (ranked and contract <= ranked[-1]) else -1
+        return source_cell_status(pool.get(day, ({}, [], False)), contract)
     design = read_record(contract_path); jobs = [j for f in design['folds'] for j in f['jobs']]
     evaluated = {d for f in design['folds'] for d in f['origins']}
     wanted = evaluated | {d for j in jobs for d in j['train_dates']+j['origins']}

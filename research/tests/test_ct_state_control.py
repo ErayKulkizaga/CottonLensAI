@@ -49,7 +49,7 @@ def test_state_capacity_raw_calendar_and_independent_alignment():
 
 
 @pytest.mark.parametrize('arm', ['own_level', 'dxy_state'])
-def test_declared_state_is_fitted_without_future_targets(tmp_path, arm):
+def test_declared_state_is_fitted_without_future_targets(admit_generated_risk, tmp_path, arm):
     rng = np.random.default_rng(42); x = rng.uniform(-2, 2, (600, 4))
     b = np.exp(rng.uniform(-12, -4, len(x)))
     f = pd.DataFrame({'date': pd.bdate_range('2000-01-03', periods=len(x)), 'ct_ewma': b, 'origin_state': x[:, 3]})

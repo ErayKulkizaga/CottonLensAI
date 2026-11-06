@@ -3,6 +3,7 @@ import json
 import shutil
 import time
 import uuid
+from contextlib import nullcontext
 from datetime import UTC, datetime
 from pathlib import Path
 
@@ -63,7 +64,13 @@ class Ledger:
                 'payloads_verified_by_status': False, 'timing': index['timing'],
                 'failed_or_interrupted_attempts': len(list((self.root / 'attempts').glob('*.json')))}
 
-    def run(self, specification, operation, *, repeat=None, before_compute=None):
+    def run(self, specification, operation, *, repeat=None, before_compute=None, admission=None):
+        # New admitted namespaces validate before either cache reuse or fitting.
+        # Historical namespaces remain readable; campaign migration is explicit.
+        if self.identity.get('admission_policy') == 1:
+            if admission is None:
+                raise ValueError('Required data admission is missing')
+            admission(self.identity, specification)
         if repeat is not None and repeat not in REPEAT_REASONS:
             raise ValueError('Explicit valid repetition reason required')
         spec = {**specification, 'repeat_reason': repeat}
@@ -71,6 +78,8 @@ class Ledger:
         result_path = self.root / 'completed' / f'{key}.json'
         if result_path.exists():
             record = read_record(result_path)
+            if record['identity'] != self.identity or record['specification'] != spec:
+                raise ValueError('Completed record identity/specification mismatch')
             for name, checksum in record['files'].items():
                 if not safe_member(name) or digest(self.root / name) != checksum:
                     raise ValueError(f'Corrupt completed payload: {name}')
@@ -97,10 +106,24 @@ class Ledger:
             else:
                 if before_compute is not None:
                     before_compute()
+                # Any new estimator job requires admission, including legacy
+                # namespaces. Completed/staged historical jobs stay readable.
+                if 'recipe' in specification or 'profile' in self.identity or 'source_id' in self.identity:
+                    from cottonlens_ml.research.admission import ExecutionAdmission
+                    if not isinstance(admission, ExecutionAdmission):
+                        raise ValueError('New estimator fit requires verified data admission')
+                    admission(self.identity, specification)
+                elif self.identity.get('admission_policy') == 1:
+                    # The budget hook may yield control or stage files. Recheck
+                    # immediately before execution, including any changed bytes.
+                    admission(self.identity, specification)
                 workspace = spool / run_id
                 workspace.mkdir(parents=True)
                 print(f'FIT running {key[:12]} role={specification.get("role", "unknown")}', flush=True)
-                body = operation(workspace)
+                scope = (admission.training_scope(self.identity, specification)
+                         if admission is not None else nullcontext())
+                with scope:
+                    body = operation(workspace)
                 compute_seconds = time.monotonic() - started
                 staged = {'run_id': run_id, 'result': body, 'compute_seconds': compute_seconds,
                           'files': {p.relative_to(workspace).as_posix(): digest(p)

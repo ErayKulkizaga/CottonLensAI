@@ -1,0 +1,23 @@
+{
+  "schema": 1,
+  "new_fits": 0,
+  "history_bad_origins": 218,
+  "evaluation_slots_with_bad_contract": 218,
+  "eligible_evaluation_bad_origins": 217,
+  "eligible_evaluation_year_counts": {
+    "2019": 106,
+    "2020": 111
+  },
+  "unscored_bad_origin": "2020-06-11",
+  "unscored_reason": "origin_contract_absent_at_target",
+  "first": "2019-08-01",
+  "last": "2020-06-11",
+  "bad_contracts_match_literal_annual_second_rank": true,
+  "history_sha256": "e9fe1d9dcc67c6f1d99460ff521ed3c08a60ddcd5aa080003e489de06c3dbe1c",
+  "contract_sha256": "4e75f3d5ffd3443dee545c67959c53bec6792ec914adf6f924fceba0c2e718ba",
+  "limits": [
+    "Month-level necessary lifecycle invariant; exact expiry/future mislabeled contracts need separate checks.",
+    "217 refers to eligible targets, not all evaluation slots.",
+    "No automatic source repair or historical availability admission."
+  ]
+}

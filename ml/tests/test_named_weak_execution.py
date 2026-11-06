@@ -112,7 +112,7 @@ def test_future_labels_and_oracle_noise_never_enter_actual_feature_stream():
     pd.testing.assert_frame_equal(h, original, check_exact=True)
 
 
-def test_engine_run_resume_and_corrupt_native_cache_fails_without_recompute(tmp_path, monkeypatch):
+def test_engine_run_resume_and_corrupt_native_cache_fails_without_recompute(admit_generated_jobs, tmp_path, monkeypatch):
     h, fold, calibration = sample()
     fixed = {'folds': [fold], 'calibration': calibration, 'fit_budget': {'total': 12}}
     ready = {'identity': {'design': fixed}}

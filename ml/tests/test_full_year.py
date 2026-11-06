@@ -136,7 +136,7 @@ def test_intervals_use_only_mature_prequential_scores():
     assert interval_metrics([0], [-1], [1], .9)[0]['coverage'] == 1
 
 
-def test_resume_and_mirror_never_retrain_completed_fit(tmp_path):
+def test_resume_and_mirror_never_retrain_completed_fit(admit_generated_jobs, tmp_path):
     ledger = Ledger(tmp_path/'local/ledger', {'profile': 'full-year-v1'})
     calls = []
     def operation(work):
@@ -224,7 +224,7 @@ def test_cpu_reproduction_cannot_pass_on_identical_json_without_native_fits(tmp_
     assert not (tmp_path/'reproduction/verification.json').exists()
 
 
-def test_cpu_reproduction_binds_original_and_repeat_ledger(tmp_path):
+def test_cpu_reproduction_binds_original_and_repeat_ledger(admit_generated_jobs, tmp_path):
     from cottonlens_ml.cohort import content_id
     from cottonlens_ml.research.engine import Experiment
     from cottonlens_ml.research.full_year import verify_reproduction
@@ -383,7 +383,7 @@ def test_mirror_receipt_cache_detects_changed_receipt(tmp_path, monkeypatch):
         mirror.flush()
 
 
-def test_status_metadata_restore_excludes_payloads_but_restores_timing(tmp_path):
+def test_status_metadata_restore_excludes_payloads_but_restores_timing(admit_generated_jobs, tmp_path):
     ledger = Ledger(tmp_path/'local/ledger', {'profile': 'full-year-v1'})
     def operation(work):
         (work/'model.json').write_text('synthetic')

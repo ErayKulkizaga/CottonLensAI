@@ -1,3 +1,12 @@
+# Veri kabulü ve GPU altyapısı — 6 Kasım 2026
+
+Uygulama devam ediyor; [takip kaydı](DATA_GPU_PROGRESS_20261106.md).
+[Gerçek kaynak yeniden denetimi](SOURCE_GATE_RECHECK_20261106.md): yeni katı
+named-risk bağımlılık hesabında0tam hazır origin; G1 geçmedi. Bu, bütün CT=F
+çalışmalarının bozuk olduğu anlamına gelmez. Yeni eğitim kapıları ve sentetik
+teknik GPU paketi hazırlanıyor; Colab çalıştırma kullanıcıda. Yeni piyasa fit'i
+ve bağımsız üstünlük yok. [Onaylanan kapsam](DATA_GPU_EXECUTION_PLAN_20261106.md).
+
 # Sabit fiyat-only medyan deneyi tamamlandı — 5 Kasım 2026
 
 338 piyasa +4 sentetik fit; birincil Quantile kazancı **−%0,082523**,0/8 yıl. Karar **STOP**; Naive korunur. 2.085 private dosya taze restore,342 native fit/selection ve dört rapor byte eşit replay doğrulandı. [Sonuç ve sınırlar](PRICE_ONLY_MEDIAN_RESULT_20261105.md). GitHub konsolidasyonu #75 main ve CI tamamlandı; önceki66PR kapandı, dallar korundu. Aşağıdaki önceki iş sıraları tarihçedir.

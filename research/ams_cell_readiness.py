@@ -19,8 +19,10 @@ PRESENT, ABSENT, UNKNOWN = 1, 0, -1
 def quote_cell(table, contract, day):
     if contract in table['quotes']:
         return PRESENT, float(table['quotes'][contract])
-    if (table['complete'] or contract[:7] < day[:7]
-            or (table['ranked'] and contract <= table['ranked'][-1])):
+    # A month comparison or a sorted partial quote list cannot prove absence.
+    # Historical labels may themselves be wrong (the annual-source defect).
+    # Only an explicitly complete, admitted table establishes a missing cell.
+    if table['complete']:
         return ABSENT, None
     return UNKNOWN, None
 
@@ -120,7 +122,7 @@ def audit(recovery, merged_path, contract_path, output, full_daily_path=None):
     requested = evaluation | {d for j in jobs for d in j['train_dates']+j['origins']}
     if len(evaluation) != 2006 or len(jobs) != 174 or not requested <= set(days):
         raise ValueError('Original complete cohort/common jobs required')
-    empty = {'quotes': {}, 'ranked': [], 'complete': True, 'kind': 'no_accepted_original_source_table'}
+    empty = {'quotes': {}, 'ranked': [], 'complete': False, 'kind': 'no_accepted_original_source_table'}
     rows, by_contract = {}, defaultdict(dict)
     for day in sorted(requested):
         i = positions[day]; current = tables.get(day, empty); rank = current['ranked']

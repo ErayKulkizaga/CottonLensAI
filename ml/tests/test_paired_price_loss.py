@@ -175,7 +175,7 @@ def test_cpu_launcher_routes_fixed_profile_and_caps_session(tmp_path, monkeypatc
     assert all(kwargs['env'][name] == '2' for name in ('OMP_NUM_THREADS', 'OPENBLAS_NUM_THREADS', 'MKL_NUM_THREADS'))
 
 
-def test_runner_resumes_without_refitting_cached_market_records(reference, tmp_path, monkeypatch):
+def test_runner_resumes_without_refitting_cached_market_records(admit_generated_jobs, reference, tmp_path, monkeypatch):
     from cottonlens_ml.research import engine, paired_price_loss
     from cottonlens_ml.research.ledger import Ledger
     ready, history, report, receipts = reference

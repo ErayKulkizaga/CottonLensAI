@@ -129,7 +129,7 @@ def test_frozen_design_and_auxiliary_checksum_are_not_silently_replaced(experime
         transfer.TransferExperiment(exp.root)
 
 
-def test_shared_runner_interruption_resume_baselines_and_complete_report(experiment,monkeypatch):
+def test_shared_runner_interruption_resume_baselines_and_complete_report(admit_generated_jobs, experiment,monkeypatch):
     exp,_ = experiment
     computed,pause = [],[True]
 

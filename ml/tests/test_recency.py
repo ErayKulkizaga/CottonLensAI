@@ -95,7 +95,7 @@ def test_design_rejects_an_extra_history_or_recipe_axis(packet):
         recency.validate_design(changed)
 
 
-def test_interruption_resume_report_and_corrupt_output(packet, monkeypatch):
+def test_interruption_resume_report_and_corrupt_output(admit_generated_jobs, packet, monkeypatch):
     folder, _, _ = packet
     experiment = Experiment(folder)
     computed, pause = [], [True]

@@ -255,12 +255,14 @@ def test_ensemble_weights_are_nonnegative_and_sum_to_one():
 
 
 def test_nested_tuning_uses_earlier_stopping_and_cadence_mature_labels(tmp_path, monkeypatch):
+    from admission_fixture import synthetic_admitter
     frame = history()
     frame = frame.loc[frame.date < '2024-01-01'].copy()
     frame.to_parquet(tmp_path / 'history.parquet', index=False)
     identity = {'split': split_manifest(frame)}
     freeze_record(tmp_path / 'ready.json', {'identity': identity, 'history_sha256': digest(tmp_path / 'history.parquet')})
     experiment = engine.Experiment(tmp_path)
+    experiment.admission = synthetic_admitter(tmp_path/'synthetic-admission', experiment.identity)
     calls = []
     def fake(history, train, validation, test, spec, workspace, *, iterations=None):
         calls.append((train, validation, test, iterations))

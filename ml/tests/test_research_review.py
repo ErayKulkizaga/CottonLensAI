@@ -148,7 +148,7 @@ def test_learning_curve_lookup_matches_engine_identity_and_checks_payload(tmp_pa
                                  'validation': {'price_mae': [1.1, .9]}}))
 
     class CaptureFit:
-        def run(self, specification, operation, *, repeat=None, before_compute=None):
+        def run(self, specification, operation, *, repeat=None, before_compute=None, admission=None):
             # Capture the real engine's specification without calling its training lambda.
             specification = {**specification, 'repeat_reason': repeat}
             key = content_id({'identity': ready['identity'], 'specification': specification})

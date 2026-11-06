@@ -7,6 +7,7 @@ import pandas as pd
 import pytest
 from cottonlens_ml.research import models
 from cottonlens_ml.research import naive_mae as m
+from cottonlens_ml.research.admission import model_inputs_id
 from cottonlens_ml.research.ledger import Ledger
 from cottonlens_ml.research.protocol import Target
 from cottonlens_ml.runtime_guard import require_training
@@ -60,16 +61,19 @@ def test_quantile_permission_is_profile_only_and_ci_closed(monkeypatch):
 
 @pytest.mark.parametrize('family', m.GROUPS)
 def test_native_replay_resume_and_corrupt_payload_rejected(tmp_path, monkeypatch, family):
+    from admission_fixture import synthetic_admitter
     # Explicit synthetic fixture, never an environment-based real-data bypass.
     monkeypatch.setattr(models, 'require_training', lambda *a, **kw: None)
     kind, frame = next(m.control_frames())
     train, test = frame.iloc[:600], frame.iloc[610:790]
     spec = m.recipe({}, family, 1)
     ledger = Ledger(tmp_path/'ledger', {'profile': m.PROFILE})
+    admission = synthetic_admitter(tmp_path/'synthetic-admission', ledger.identity)
     specification = {'kind': kind, 'recipe': spec, 'train_dates': train.date.dt.strftime('%Y-%m-%d').tolist(),
-                     'test_dates': test.date.dt.strftime('%Y-%m-%d').tolist()}
+                     'test_dates': test.date.dt.strftime('%Y-%m-%d').tolist(),
+                     'model_inputs_id': model_inputs_id(frame, train, None, test, spec, 1)}
     record = ledger.run(specification, lambda workspace: models.fit_predict(
-        frame, train, None, test, spec, workspace, iterations=1))
+        frame, train, None, test, spec, workspace, iterations=1), admission=admission)
     assert m.verify_linear(record, ledger, frame) < 1e-7
     def fail(_):
         pytest.fail('Completed fit must not retrain')
@@ -81,6 +85,7 @@ def test_native_replay_resume_and_corrupt_payload_rejected(tmp_path, monkeypatch
 
 
 def test_quantile_solver_failure_is_not_a_fallback(tmp_path, monkeypatch):
+    from admission_fixture import synthetic_admitter
     from sklearn.exceptions import ConvergenceWarning
     from sklearn.linear_model import QuantileRegressor
     monkeypatch.setattr(models, 'require_training', lambda *a, **kw: None)
@@ -89,9 +94,14 @@ def test_quantile_solver_failure_is_not_a_fallback(tmp_path, monkeypatch):
         warnings.warn('synthetic timeout', ConvergenceWarning)
     monkeypatch.setattr(QuantileRegressor, 'fit', failed)
     _, frame = next(m.control_frames())
-    with pytest.raises(ConvergenceWarning, match='timeout'):
+    recipe = m.recipe({}, 'quantile', 1)
+    train, test = frame.iloc[:600], frame.iloc[610:790]
+    ledger_identity = {'profile': 'synthetic-solver-failure'}
+    specification = {'recipe': recipe, 'model_inputs_id': model_inputs_id(frame, train, None, test, recipe, 1)}
+    admission = synthetic_admitter(tmp_path/'synthetic-admission', ledger_identity)
+    with admission.training_scope(ledger_identity, specification), pytest.raises(ConvergenceWarning, match='timeout'):
         models.fit_predict(frame, frame.iloc[:600], None, frame.iloc[610:790],
-                           m.recipe({}, 'quantile', 1), tmp_path, iterations=1)
+                           recipe, tmp_path, iterations=1)
 
 
 def test_cached_control_status_requires_native_evidence(tmp_path):

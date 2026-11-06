@@ -13,7 +13,7 @@ from test_sprint import history
 
 
 @pytest.fixture
-def native_repeats(tmp_path):
+def native_repeats(admit_generated_jobs, tmp_path):
     frame = history()
     fold = split_manifest(frame)['folds'][0]
     fold = {**fold, 'origins': fold['origins'][:3]}

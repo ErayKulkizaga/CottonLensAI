@@ -156,6 +156,8 @@ def fit_predict(history, train, validation, test, spec, workspace, *, iterations
         require_training('quantile', device_requested, profile=spec.get('research_profile'))
     else:
         require_training(spec.get('family'), device_requested)
+    from cottonlens_ml.research.admission import require_model_inputs
+    require_model_inputs(history, train, validation, test, spec, iterations)
     if spec['family'] in ('arima', 'drift', 'naive'):
         from cottonlens_ml.research.statistical_models import (
             fit_predict as statistical_fit,

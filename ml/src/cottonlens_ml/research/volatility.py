@@ -100,6 +100,8 @@ def qlike_har(train, horizon, *, feature_names=None):
 
 def fit_predict(history, train, test, spec, workspace):
     require_training(spec['family'], spec.get('device', 'cpu'))
+    from cottonlens_ml.research.admission import require_backend_inputs
+    require_backend_inputs(history, train, test, spec)
     h = spec['horizon']
     if spec['family'] == 'har' and spec.get('training_loss', 'log_mse') not in ('log_mse', 'qlike'):
         raise ValueError('Explicit supported HAR training loss required')

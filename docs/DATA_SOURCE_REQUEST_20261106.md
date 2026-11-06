@@ -1,0 +1,67 @@
+# Kontrat/vintage veri açığı için teklif ve örnek kabul şartları
+
+Bu bir satın alma veya gönderilmiş tedarikçi mesajı değildir. Canlı teklif/fiyat
+alınmadı; herhangi bir kaynak kabul edilmedi. Aşağıdaki resmi ürün sayfaları
+6Kasım2026'da incelendi. GPU erişimi bu kaynak boşluklarını gidermez.
+
+## Talep
+
+ICE Futures US Cotton No.2 bireysel kontratları için2010–2023dahil günlük,
+ayarlanmamış uzlaşma fiyatları ve kontrat referans verisi. Seans kapsamı,
+listeleme/son işlem tarihi, kontrat kimliği, cent/lb birimi, settlement/last
+ayrımı, null/no-trade/not-listed durumları ve düzeltme sürümleri gerekir.
+Sürekli seri tek başına bu talebi karşılamaz. Gerekli ilk model durumu için
+2010öncesi başlangıç gerekiyorsa ayrı kapsam olarak fiyatlandırılmalı; başlangıç
+durumu performansa göre seçilmemeli.
+
+Tarihsel first-publication timestamp/vintage, düzeltme zamanı ve arşiv erişim
+kanıtı ayrıca sorulmalı. Sağlayıcı bunları sunamıyorsa açıkça NO bildirilmeli.
+Güncel indirmenin UTC zamanı geçmiş erişilebilirliğin yerine geçmez. İki teklif
+ayrılmalı: nihai tarihsel fiyat/kontrat paketi ve point-in-time/vintage paketi.
+İlki fiyat araştırmasını destekleyebilir; tek başına sızıntısız PIT kanıtı olmaz.
+
+Lisans: özel araştırma, model eğitimi, Colab'da işleme, türetilmiş model/tahmin
+saklama ve privateGitHub'da ham veri yedekleme hakları ayrı belirtilmeli. Ham
+yeniden dağıtım yasaksa şifreli olsa da GitHub'a yüklenebilir varsayılmayacak;
+lisanslı arşiv yöntemi ayrı kararlaştırılacak. Ücret, exchange entitlement,
+abonelik, geçmiş indirme limiti ve tekrar erişim şartları istenmeli.
+
+## Aday kaynaklar ve doğrulanmamış noktalar
+
+| Aday | Resmi sayfanın desteklediği kapsam | Satın almadan kanıtlanacak |
+|---|---|---|
+| [ICE Report Center](https://www.ice.com/report-center) | Günlük settlement ve raporlar için resmi başlangıç noktası | İstenen tüm geçmiş kontratlar, makine erişimi, ilk sürüm/UTC ve lisans |
+| [Nasdaq Data Link MWIS](https://data.nasdaq.com/databases/MWIS) | ICE borsalarında işlem gören futures kontratları için günlük settlement feed tanımı | CT geçmiş başlangıcı, erişilebilir ürün, kontrat metadata, PIT arşivi ve güncel teklif |
+| [Portara Cotton ICE](https://portaracqg.com/futures/day/cte) | Cotton günlük/intraday ürün ve bireysel kontrat seçeneği | Daily alanın last mı settlement mı olduğu, ilk sürüm, listeleme takvimi ve haklar |
+
+Bu tablo kaynak önerisi veya kalite sıralaması değildir. Reklam kapsamı
+gerçek örnek veri ve alan sözleşmesi yerine geçmez. Henüz rakamsal teklif yok.
+
+## Ücretsiz örnek için sonuçlardan bağımsız kabul testi
+
+Sabit tarihler:2018-08-01,2019-08-05,2019-11-18,2020-04-24,
+2020-12-04,2021-02-09,2022-07-01,2022-10-10,2023-06-26.
+Her tarihin önceki/sonraki iki resmi Cotton seansı ve o seanstaki tüm listeli
+kontratlar istenir. Tarihler bilinen kaynak/roll/alan çatışmalarını sınar;
+başarı skoru seçmek için kullanılmaz. Örnek yalnız tanısaldır; tüm tarihi kabul
+etmez. Tam paket için tüm seans/hücre denetimi ayrıca gerekir.
+
+Zorunlu testler:
+
+- Tekil kontrat/seans anahtarı, geçerli lifecycle, tutarlı birim ve açık null
+  semantiği; expired/unlisted kontratın sessiz yeniden adlandırılması reddedilir.
+-2019annual'daki yanlış kimlikler ve2021ön-kontrat eksikliği kaynak tanıklarıyla
+  ayrıştırılır; referans kaynağın kendisi de hatalı olabilir, uyuşmazlık korunur.
+- Published change/previous varsa Decimal aritmetik; settlement high–low
+  dışında diye reddetme veya kırpma yok. Sağlayıcı hassasiyeti kaynak sözleşmesinde
+  sabitlenir; fiyat eşleştirme toleransı sonuç görülmeden belirlenir.
+-2020-04-24 gibi çözümsüz fark için sağlayıcının sürüm ve alan açıklaması gerekir.
+- Roll serisi verilirse mapping ve adjustment ayrı olmalı; origin'de seçilen
+  kontratın hedefteki fiyatı aynı kontrattan alınabilmeli.
+- Aynı yanıtın tekrar indirilmesi hash/fark raporuyla kontrol edilir. Eşit hash
+  fiyatın doğru veya tarihsel olarak erişilebilir olduğunu tek başına ispatlamaz.
+- PIT iddiası varsa ilk yayın ve revizyon kanıtı örneklenir; eksik kanıtla
+  `historical_availability_verified` verilemez.
+
+Karar sırası: örnek → alan/lisans cevabı → tam kapsam ve maliyet teklifi →
+kullanıcı satın alma kararı → tam veri kabulü. Otomatik iletişim/satın alma yok.
