@@ -180,3 +180,9 @@ Kullanıcı cottonlens-a100-result.zip ve checksum dosyasını gönderdi. Kaynak
 research/verify_gpu_probe.py TensorFlow ithal etmeden nativeHDF5ağırlık/Adam durumunu okudu ve ikinci adımı NumPy ile bağımsız hesapladı. Maksimum mutlak fark1.1920928955078125e-7; ön kayıt toleransı1e-6. Rapor research/evidence/l4-technical-verification-20261106.json. Bu donanımın uzaktan kriptografik attestation'ı, piyasa öğrenme gücü veya G1/G2kabulü değildir. Oturumun zorla kesilmesi/çokworker/arşivrestore dahil bütünG3maddeleri tamamlanmış sayılmaz.
 
 Verilen iki dosya output/data-gpu-audit/l4-returned altında kopyalandı; kullanıcı Downloads orijinalleri değişmedi. Girdi/üye bozulması için2arşiv-yapısı testi ve Ruff geçti. Eski CI'daki11sentetik fixture eksikliği6test modülünde giderildi; bu grupta45test geçti. Son kodun tamCI'ı ayrıca beklenir.
+
+## G2 fonksiyonel nedensellik kontrolü
+
+Temporal audit sentry eklendi: future join, centered rolling, global scaling ve backfill enjeksiyonlarını reddeder; kaynak mutasyonu ve origin düşürme de reddedilir.6sentetik test geçti. Son median deneyinin338completed market kaydından169tekil cutoff çıkarıldı; her cutoff'ta tam tarihçe/prefix ve gelecekteki sayısal gözlemleri değiştirerek5fiyat feature'ı byte/float-exact eşleşti. Yeni fit0. Makbuz research/evidence/price-feature-prefix-audit-20261106.json; tekrar üretim CLI research/recheck_price_features.py. Kontrol kayıtlı satır nedenselliğiyle sınırlı; yayın/vintage kanıtı, bütün diğer feature builder'lar veya bütün seçim politikaları için geçerli değildir.
+
+884c35c commit'inin PR CI42189277401 çalışması success oldu: backend/frontend/ML-research/Compose. Bu başarı sonraki temporal-audit commit'ini kapsamıyor. G1 veri boşluğu devam ediyor; yeni market kampanyası açılmadı.
