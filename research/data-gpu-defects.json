@@ -89,9 +89,11 @@
       "affected_scope": "Remaining G3 infrastructure acceptance; zero market skill evidence.",
       "evidence": [
         "research/evidence/l4-technical-verification-20261106.json",
-        "research/evidence/source-gate-delivery-20261106.json"
+        "research/evidence/source-gate-delivery-20261106.json",
+        "research/evidence/ledger-fault-controls-20261106.json",
+        "ml/tests/test_ledger_faults.py"
       ],
-      "remediation": "Prepare synthetic fault/restart tests; Colab operations remain with the user.",
+      "remediation": "Local real-process contention/hard-exit and injected OOM/corruption tests pass; ledger has direct-call ownership and durable attempt identities. Native GPU interruption and optimizer/random-state continuation still require a user-run Colab handoff.",
       "closure": "Fault-specific receipts, no duplicate completed fits, explicit attempt semantics and fresh restore."
     },
     {
@@ -118,6 +120,19 @@
       ],
       "remediation": "Reject outer-origin substitution, late or unknown T+1/T+5 maturity, duplicate/reordered/overlapping origins, missing blocks/rows, compressed recorded source observations and cutoff mismatch before fits.",
       "closure": "Positive controls and injected defects exercised all three entrypoints; actual eight-year price split passed zero-fit replay. Vendor availability and other selection procedures remain outside this proof."
+    },
+    {
+      "id": "DG-010",
+      "status": "FIXED_VERIFIED",
+      "problem": "Direct concurrent Ledger.run calls relied on caller ownership, and an abrupt process exit could leave no durable attempt-start record.",
+      "affected_scope": "Research Ledger.run execution, staging/upload retry and summary metadata; existing completed records remain readable.",
+      "evidence": [
+        "ml/src/cottonlens_ml/research/ledger.py",
+        "ml/tests/test_ledger_faults.py",
+        "research/evidence/ledger-fault-controls-20261106.json"
+      ],
+      "remediation": "Serialize direct ledger execution with visible non-stealable ownership; record run_id before computation and after verified staging; correlate caught failures with the run. Unresolved starts are counted separately from completed fits.",
+      "closure": "Actual competing process rejected, hard-exit attempt/partial preserved, explicit verified-owner test recovery starts a distinct run; completed cache is reused and corrupted staging never retrains. This does not close native GPU G3."
     }
   ]
 }

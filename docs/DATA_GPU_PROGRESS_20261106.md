@@ -248,3 +248,34 @@ selection-boundary-audit-20261106.zipasset'inde saklandı; taze indirmede bütü
 üyeler ve makbuzdaki validator hash'i eşleşti. Teslim makbuzu:
 research/evidence/selection-boundary-delivery-20261106.json. Bu son kontrol
 pipeline çalıştırması değil, arşiv üyelerinin byte/kimlik kontrolüdür.
+
+## Ledger sahipliği ve ani kapanma
+
+Doğrudan Ledger.run çağrısı artık cache/fit/upload/summary güncellemesi boyunca
+ledger/execution/.writer-lock altında tek yazıcıdır. Farklı worker'lar aynı
+ledger'a yazamaz; ayrı ledger/result alanı gerekir. Eski campaign-level lock
+korunur. Hard-kill sonrası lock süreye veya PID tahminine bakılarak çalınmaz.
+
+Fit girişimi başlamadan run_id/spec bağlı started kaydı, doğrulanmış staging
+sonrası computed kaydı yazılır. Yakalanan hatalar run_id ile ilişkilidir.
+Başlamış ama computed/failure kanıtı olmayan girişim unresolved kalır; bitmiş
+fit sayılmaz. Tam optimizer devamı iddia edilmez. Metadata hash'i ve run_id
+uyuşmazlığı summary'de reddedilir. Verified staged restore computed olayını
+yayımlayabilir; bu işlem yeniden eğitim değildir.
+
+Beş fault testi gerçek ayrı süreç rekabeti ve os._exit ile ani kapanma, enjekte
+OOM-benzeri hata, bozuk staged payload ve değiştirilmiş journal kontrolünü geçti.
+104 ilgili ledger/admission/research/information testi önce geçti; son iki yeni
+fault testi dahil5fault kontrolü ayrı JUnit makbuzuyla geçti. Ruff geçti.
+İlk hard-exit testi Windows venv launcher PID'sini interpreter PID'si sandığı
+için başarısızdı; test gerçek owner PID'sini kaydedip Windows process durumunu
+salt-okunur sorgulayacak şekilde düzeltildi. Üretimde otomatik lock silme yok.
+
+Kanıt research/evidence/ledger-fault-controls-20261106.json. Bunlar üretilmiş
+byte fixture'larıdır: yeni piyasa/native GPU fit0. GPU OOM, optimizer/random
+state ve Colab oturum kopması bütünüyle doğrulanmış değildir; G3kısmi kalır.
+6c5fd9f commit CI42245469238 başarılı; yeni ledger değişikliği ayrıca CI bekler.
+
+JUnit sonucu research/evidence/ledger-fault-tests-20261106.xml olarak saklandi;
+yalniz gereksiz yerel hostname cikarildi, test adi/sonuc/sureler korundu.
+Makbuz hem orijinal yerel hem disa aktarilan XML hash degerini belirtir.
