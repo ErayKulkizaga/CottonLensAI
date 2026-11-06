@@ -6,14 +6,14 @@ Bu takip kaydı tamamlanma iddiası değildir. Önceki bilimsel kayıtlar deği�
 | Teslimat | Durum | Mevcut kanıt / kalan iş |
 |---|---|---|
 | A: Hata ve kapsam sicili | DEVAM | [Hata sicili](../research/data-gpu-defects.json);239 deney kaydı,139/106/28 ve217scored lifecycle sorunu yeniden doğrulandı; bütün gereksinimlerin kapanışı henüz kanıtlanmadı |
-| B: Veri sözleşmesi | DEVAM | Role-aware dependency admission çekirdeği eklendi; source-specific doğrulama ve gerçek hücre matrisi bekliyor |
+| B: Veri sözleşmesi | DEVAM | Role-aware admission ve 99.523 potansiyel hücre ve 58 kontrat için matrisi mevcut; tarihsel listeleme/vintage kanıtı ve kaynak kabulü eksik |
 | C: Onarım ve etki yayılımı | DEVAM |139/106/28yeniden doğrulandı; katı kapsam0hazır, tam kaynak onarımı eksik |
 | D: Zorunlu eğitim kapısı | DEVAM | Ledger/model/backend/legacy fit ve doğrudan QLIKE kernel kimlik kontrolü; bütün seçim/preprocessing yollarının kapsam denetimi açık |
-| D: Sızıntı testi | DEVAM | Kabul ve hata enjeksiyonları;5fiyat feature'ı169cutoff prefix/future testi geçti. Bütün model/seçim yollarının prediction invariance denetimi eksik |
+| D: Sızıntı testi | DEVAM | Kabul/hata enjeksiyonları; beş fiyat özelliğinde 169 cutoff ve 338 sabit native fiyat fit'inde prefix/future testi geçti. Seçim politikaları ve diğer model yollarının kapsamı açık |
 | E: Bağımsız değerlendirme | KISMİ | Price-only T+1 exact frozen cohort, Decimal MAE/yön/yıl/aktif oran ve native replay doğrulandı; diğer sözleşmelerin kapsamı açık |
 | F: GPU yürütme/restore | KISMİ | Kullanıcının onayladığı L4 sentetik/native Adam replay ve uzak arşiv restore geçti; native worker kesinti/devam doğrulandı; tam oturum/RNG/GPU OOM eksik |
 | G: Kampanya manifesti/sonuç | G1/G2/G3 BEKLİYOR | Veri kabulü olmadan yeni piyasa fit'i yok |
-| GitHub teslimatı | DEVAM | Draft PR77 ve checksum bağlı private Release mevcut;41ffe0e PR CI başarılı. Sonraki commit'ler ayrıca doğrulanacak |
+| GitHub teslimatı | DEVAM | Draft PR77 ve checksum bağlı private Release mevcut; 1969c3c kod/kanıt teslim edildi, son CI ayrıca izleniyor |
 | İleri doğrulama kararı | BEKLİYOR | Aday ve geçerli kampanya sonucu oluşmadan karar yok |
 
 Aşağıdaki bölümler tarih sıralı çalışma kaydıdır; eski anlık durumlar yukarıdaki
