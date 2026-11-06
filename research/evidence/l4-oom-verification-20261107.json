@@ -1,0 +1,22 @@
+{
+  "schema": 1,
+  "status": "bounded_oom_and_recovery_receipts_verified",
+  "archive_sha256": "f97e452329db25172ccc44d90721eaa664915e75e4b401c5590bd4c7d5306251",
+  "source_archive_sha256": "336f5bea63a2cbbfa271517d7d5d9cc43d19ca01853c704186b617e0b02e5964",
+  "hardware_reported": "NVIDIA L4, 23034 MiB, 580.82.07",
+  "tensorflow_reported": "2.20.0",
+  "logical_memory_limit_mb": 128,
+  "requested_bytes": 268435456,
+  "recovery_values": [
+    1.0,
+    2.0
+  ],
+  "new_fits": 0,
+  "tensorflow_imported": false,
+  "physical_vram_exhaustion_verified": false,
+  "remote_hardware_attestation": false,
+  "whole_session_restart_verified": false,
+  "stochastic_resume_verified": false,
+  "market_skill": false,
+  "verifier_sha256": "48c1c003ae1ba3e09781c6dadee0c870f334f44ffa6560090bb91cfc9fd006da"
+}

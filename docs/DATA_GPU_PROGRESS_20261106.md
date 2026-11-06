@@ -525,3 +525,23 @@ kalan G2 kapsam denetimi. Kampanya manifesti veri kabulünden sonra kilitlenecek
 Ek sınır kontrolü: gözlem saati UTC olarak normalize ediliyor; aynı anın+03:00
 veZgösterimleri yeni revizyon üretmiyor, çağıranın girdisi değişmiyor.
 10demo kontrolü ve Ruff geçti; önceki343research sonucu bu ek testten öncedir.
+
+## Returned L4 bounded OOM evidence — 7 November 2026
+
+User-returned result ZIP SHA f97e452329db25172ccc44d90721eaa664915e75e4b401c5590bd4c7d5306251
+matches its checksum and the delivered source archive336f5bea. All three record
+identities and file closure pass offline semantic verification without TensorFlow.
+Reported L4/TF2.20.0 caught ResourceExhaustedError for256MiB under128MiB logical
+limit; fresh-process GPU recovery returned[1,2] and binds the exact OOM receipt.
+No new fits. This is returned receipt verification, not remote hardware attestation
+or physical VRAM saturation. Whole-session and stochastic resume remain open.
+Eight generated controls pass, including rehashed semantic corruption injections;
+Ruff passes. See research/evidence/l4-oom-verification-20261107.json.
+
+User preference is persisted in AGENTS.md: batch compatible remaining checks in
+one resumable notebook, deliver directly to Drive, preserve prior successful
+results. No separate new notebook is generated in this review.
+
+Private Release fresh download checked5manifested files and reproduced the
+OOM verification exactly without TensorFlow/new fits. Receipt:
+research/evidence/l4-oom-result-delivery-20261107.json.
