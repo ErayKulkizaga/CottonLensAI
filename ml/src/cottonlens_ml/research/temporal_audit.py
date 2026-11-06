@@ -1,8 +1,11 @@
 """Functional causality sentry for feature builders; no fitting or source admission."""
+import json
+
 import numpy as np
 import pandas as pd
 
 from cottonlens_ml.cohort import frame_identity
+from cottonlens_ml.research.admission import identity
 
 
 class TemporalAuditFailure(ValueError):
@@ -66,3 +69,30 @@ def audit_features(history, builder, columns, cutoffs):
             'feature_frame_id': frame_identity(full, list(full.columns)),
             'columns': list(columns), 'cutoffs': list(cutoffs), 'new_fits': 0,
             'historical_source_availability_proven': False, 'market_skill': False}
+
+
+def audit_predictions(history, predictor, state, columns, cutoffs):
+    """Audit non-fitting native inference with frozen recipe/selection/model state.
+
+    The caller supplies a read-only native predictor, not a training callback.
+    Mutation of passed state is rejected; this is not a universal detector for
+    hidden process-global state or a proof that model selection was valid.
+    """
+    frozen = json.loads(json.dumps(state, allow_nan=False))
+    if not all(k in frozen for k in ('recipe', 'selection', 'native')):
+        raise TemporalAuditFailure('Explicit frozen recipe, selection and native state required')
+    state_id = identity(frozen)
+
+    def build(frame):
+        context = json.loads(json.dumps(frozen))
+        result = predictor(frame, context)
+        if identity(context) != state_id:
+            raise TemporalAuditFailure('Predictor mutated frozen model or selection state')
+        return result
+
+    result = audit_features(history, build, columns, cutoffs)
+    result['status'] = 'fixed_state_prediction_prefix_and_future_perturbation_passed'
+    result['prediction_frame_id'] = result.pop('feature_frame_id')
+    result['fixed_state_id'] = state_id
+    result['selection_procedure_validity_proven'] = False
+    return result

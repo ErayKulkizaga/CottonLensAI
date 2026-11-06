@@ -1,0 +1,12 @@
+{
+  "schema": 1,
+  "asset": "price-prediction-causality-20261106.zip",
+  "archive_sha256": "683269c42dbb4e4dc4f285ee0b486f394ca5459e5d58944655f2357757b5e4fc",
+  "manifested_members_checked": 142,
+  "fresh_download_verified": true,
+  "offline_prediction_audit_byte_identical": true,
+  "network_disabled": true,
+  "training_disabled": true,
+  "new_fits": 0,
+  "historical_source_availability_verified": false
+}

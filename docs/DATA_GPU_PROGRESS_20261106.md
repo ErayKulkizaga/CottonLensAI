@@ -444,3 +444,40 @@ exception history, a fixed settlement sample and written licensing/price quotes.
 User authorization was requested asynchronously because AGENTS.md requires consent
 before external messages; no message was sent and no purchase was made.
 Prior70fa21bPR CI42276527781 succeeded. Final-head CI remains separate.
+
+## User-reported ICE send; fixed-native prediction invariance
+
+The user reported sending the approved ICE inquiry. No duplicate message was sent
+by the assistant; actual sent content/attachments, delivery and any reply are not
+independently verified. research/evidence/ice-inquiry-status-20261106.json records
+this distinction. The purchase and source-admission gates remain closed.
+
+The interrupted prediction audit process handle was no longer available, but its
+complete result existed. All338unique market records and the pipeline/builder/audit
+source hashes were checked before accepting that result; it was not blindly restarted.
+Each frozen JSON model/preprocessing and actual outer selection weight was held fixed.
+At first/last test origins the full-history, prefix and future-price perturbation
+predictions matched exactly. Inner fits were checked as raw validation predictions;
+outer selected predictions also matched their recorded annual outputs within1e-7.
+No scaler/target/model fit or model selection ran in this audit.
+
+The row-wise audit reduction differs from saved native predictions by at most
+3.6410563938882312e-9, below the pre-existing1e-7native-equivalence tolerance. Exact
+causal invariance is tested within the same fixed arithmetic path, not confused
+with differing BLAS batch roundoff. Model/recipe/selection mutation and generated
+future-scaler/future-selection injections are rejected.10temporal controls and
+changed-file Ruff passed. The first end-to-end receipt is
+research/evidence/price-prediction-causality-20261106.json.
+
+This is fixed price-only Ridge/Quantile inference causality for this338fit corpus,
+not universal selection-policy validity, vendor availability or all model-family
+acceptance. Native/source/readiness gates and STOP decision are unchanged.
+
+Fresh private Release download checked142manifested members of
+price-prediction-causality-20261106.zip. Restored source reproduced the full
+338-record prediction report byte-identically with network and training disabled;
+0new fits. Receipt: research/evidence/prediction-causality-delivery-20261106.json.
+
+Final local checks for this delta:334research tests passed,1optional HDF5 skip;
+10temporal ML controls passed; changed-file Ruff and staged diff check passed.
+Pinned CPU environment lacks Ruff, so Ruff ran with the existing host installation.

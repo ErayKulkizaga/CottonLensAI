@@ -1,7 +1,11 @@
 import numpy as np
 import pandas as pd
 import pytest
-from cottonlens_ml.research.temporal_audit import TemporalAuditFailure, audit_features
+from cottonlens_ml.research.temporal_audit import (
+    TemporalAuditFailure,
+    audit_features,
+    audit_predictions,
+)
 
 
 def data():
@@ -40,3 +44,30 @@ def test_mutating_builder_and_dropped_origins_rejected():
         audit_features(data(), mutate, ['value'], [10])
     with pytest.raises(TemporalAuditFailure, match='dropped/reordered'):
         audit_features(data(), lambda f: f.iloc[1:].assign(value=0.), ['value'], [10])
+
+
+def test_fixed_prediction_state_passes_without_mutating_caller():
+    state = {'recipe': {'kind': 'generated'}, 'selection': {'weight': .5}, 'native': {'coef': 2.}}
+    def predict(f, context):
+        value = context['selection']['weight']*context['native']['coef']*f.price.rolling(3).mean()
+        return f.assign(prediction=value)
+    result = audit_predictions(data(), predict, state, ['prediction'], [10, 20])
+    assert result['new_fits'] == 0 and not result['selection_procedure_validity_proven']
+    assert state['selection']['weight'] == .5
+
+
+@pytest.mark.parametrize('kind', ['future_scaler', 'future_selection', 'state_mutation'])
+def test_prediction_pipeline_leak_or_state_mutation_rejected(kind):
+    state = {'recipe': {}, 'selection': {'weight': .5}, 'native': {'coef': 2.}}
+    def predict(f, context):
+        if kind == 'state_mutation':
+            context['selection']['weight'] = 1.
+            value = f.price
+        elif kind == 'future_scaler':
+            value = (f.price-f.price.mean())/f.price.std()
+        else:
+            value = f.price*(1. if f.price.iloc[-1] > 100 else 0.)
+        return f.assign(prediction=value)
+    with pytest.raises(TemporalAuditFailure, match='mutated|Future'):
+        audit_predictions(data(), predict, state, ['prediction'], [10, 20])
+    assert state['selection']['weight'] == .5

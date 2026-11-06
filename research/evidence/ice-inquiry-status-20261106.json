@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "status": "user_reported_sent",
+  "recipient": "ICEHelpdesk@ice.com",
+  "request_scope": "58-contract lifecycle/exception/sample/quote inquiry",
+  "reported_sent_date": "2026-11-06",
+  "evidence_basis": "User statement in chat",
+  "independent_delivery_verification": false,
+  "reply_received_or_verified": false,
+  "purchase_authorized": false,
+  "source_admission_granted": false,
+  "draft_sha256": "131e497414bfaa1285077c60121f51a24966d06765045498081c1d1b67953523",
+  "requested_attachment_sha256": "cf79fd39fe95cfeb10e83929ceb6212cc5f80bf9e341d0267da88d35b72bad14",
+  "sent_content_and_attachment_independently_verified": false
+}

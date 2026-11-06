@@ -1,0 +1,3396 @@
+{
+  "schema": 1,
+  "status": "fixed_native_prediction_causality_verified",
+  "market_records_checked": 338,
+  "checks_at_first_and_last_test_origins": [
+    {
+      "fit_id": "02311bee97c7ff4b4d196ad12c04bf9a447a657ea4091281eadb09bfc50d4092",
+      "role": "inner-2022-1-2",
+      "cutoffs": [
+        2930,
+        2950
+      ],
+      "fixed_state_id": "39ffdb673155981fe911019319f0cdd296c2b63d43dae8927748737e7f06170c",
+      "prediction_frame_id": "3376fa0e69c5af606bbb6e723132ad2dbda0f3539b9f1abe8bc7ccb76010ae79"
+    },
+    {
+      "fit_id": "024e6829daefd6ba85719dde1e344b43a002d85615be93c9ce1117c8359abfef",
+      "role": "path-outer-quantile-2019-8",
+      "cutoffs": [
+        2430,
+        2450
+      ],
+      "fixed_state_id": "68a9a7bec9b360aed34417e0013a858a6cef65fee627ad0e6dd8ac237a60389d",
+      "prediction_frame_id": "eac7417c0f661ae024eb82c7108a66c492dd132eec74c2c14fdf6216af0f0b90"
+    },
+    {
+      "fit_id": "051db1cc3e562023b5e0489686d870da3a6a249295bf5551046b5bd83c809caf",
+      "role": "inner-2017-2-0",
+      "cutoffs": [
+        1692,
+        1712
+      ],
+      "fixed_state_id": "4219f45a26cff985c31db39ed8c8a220496ae4969c1b16320fde24be42a36ee5",
+      "prediction_frame_id": "852fdbf26ea2393375219f1f6c3d0df53dbe3664adb8b32439e2cac71b712861"
+    },
+    {
+      "fit_id": "055efc5930e2c0e189ba386ed317e60dc288fe6d981d67b4c569efe4be09afea",
+      "role": "inner-2018-2-1",
+      "cutoffs": [
+        1964,
+        1984
+      ],
+      "fixed_state_id": "1e95f549db2adf68f3aa706779608bd50b6b99768af8bc0f5b7a45accdfe17c3",
+      "prediction_frame_id": "c9820b1b2f4137608b3cc4617ec6435821fefc3b229c485087fe1ebe1e2129a2"
+    },
+    {
+      "fit_id": "05b1ba08a841b0483a148852236ba0530f83a9dedf9189fc0f347516b26dddc8",
+      "role": "inner-2023-1-1",
+      "cutoffs": [
+        3160,
+        3180
+      ],
+      "fixed_state_id": "9c93d113cd5ea791a84f7d05708777e08d20bbe599146d1d65c4d4fe26823ae6",
+      "prediction_frame_id": "8f4c9bcb244c5b8ecf887412ce4d636bc136414aed065d6a53ff47c14a2a100e"
+    },
+    {
+      "fit_id": "0613dfbc0f74b1beb0087882005b29be8a3b2799dd37f22784cf65a251362388",
+      "role": "path-outer-quantile-2023-7",
+      "cutoffs": [
+        3417,
+        3437
+      ],
+      "fixed_state_id": "ad26c78b1d4a0cc78b0ed3ee31930267da2674f575cef8be4b5334c387418c5f",
+      "prediction_frame_id": "43f176a459b14af7ba13d4133a07e130a0eb0aacd12824cd0f048dc9205d037e"
+    },
+    {
+      "fit_id": "07e57f996d4e1ba0b5e549e26c5a042d45f15b55ce9b76fafc7796ceb053e1ec",
+      "role": "inner-2018-2-2",
+      "cutoffs": [
+        1985,
+        2005
+      ],
+      "fixed_state_id": "81ca874ffa8810dd03841ee989a8a26c62bd9822a695e9d5d69f206d5ee9ac91",
+      "prediction_frame_id": "39e5380a58df05ea851a1c7c20b0aa3480bbd359779aa5c3581ea0db019cc17c"
+    },
+    {
+      "fit_id": "07f75c757da7fc5fdf2463334e3c631c726cd1e06c85d936144ae090ccac6afb",
+      "role": "inner-2023-0-0",
+      "cutoffs": [
+        3076,
+        3096
+      ],
+      "fixed_state_id": "27673cb3eb9df2d897f5c5bd2eb0c263ef4d79d6b9c9d696ef3cdd15a8bc63b0",
+      "prediction_frame_id": "6e0e91cdd10e3207a01564196b52e274388349fc95602c3a3a16b3c609d12463"
+    },
+    {
+      "fit_id": "08863543f52ed6c8c21603f0674d5733ab42b6d5078245687587dc954321b7ca",
+      "role": "inner-2018-0-0",
+      "cutoffs": [
+        1817,
+        1837
+      ],
+      "fixed_state_id": "92075c5e2aba8f789d0a9adbd983c79f80a69007ab1c9d46b07a6d593e325799",
+      "prediction_frame_id": "d305200edc450637fb350639dd54b9aa9619a4d56c2e0c28c70e8762aac9e43f"
+    },
+    {
+      "fit_id": "08ce789f7691900031f6af9c263a8391d1a9a9190a8118aeeb9d340d42dc79b4",
+      "role": "path-outer-quantile-2019-7",
+      "cutoffs": [
+        2409,
+        2429
+      ],
+      "fixed_state_id": "85266fe8017ea8b327a4f33321f35175cd7736e0cdf916dcace77604d8a3b7e5",
+      "prediction_frame_id": "be379c58eb2098876fb9e2e8c1ec26504e595158834ffd5bdafd49dddf4f47e4"
+    },
+    {
+      "fit_id": "0982fc270350746b4063d0bc1329aaf9211983b4d98c789b175fc9d81ae43207",
+      "role": "path-outer-ridge-2016-11",
+      "cutoffs": [
+        1741,
+        1759
+      ],
+      "fixed_state_id": "50171b168194984112a9fb9385e741866fdecd40a334e8826c326034a605ab62",
+      "prediction_frame_id": "f75431d641d0f54327760ae1967273b61dba62d11b070fa5211e242df887c35e"
+    },
+    {
+      "fit_id": "09d0f4e8bac7ce618131557a2a0b372d43d19dffd25ee5763035ff00f0af2ad0",
+      "role": "path-outer-quantile-2022-6",
+      "cutoffs": [
+        3145,
+        3165
+      ],
+      "fixed_state_id": "57830fb80465ae68258c1f5850d44397023fbc44cf0413bc59769465884ceb5d",
+      "prediction_frame_id": "ec1f2c0bc6c19747ae0438220292f1907527d00708b836219e7c04a219e736e4"
+    },
+    {
+      "fit_id": "0a33e6e782f217a559a19970e040e4e7c7e1ddc216f25758ecae12ac0a7832fe",
+      "role": "path-outer-ridge-2019-3",
+      "cutoffs": [
+        2325,
+        2345
+      ],
+      "fixed_state_id": "e29506c5e001bd217d38cea41dfeaea9b05cf06adcd9a481098fd53f3107cf16",
+      "prediction_frame_id": "2c2b5b646995ac6d67ee40fd4da24d48852093d7387293b1e7391d9e0715d511"
+    },
+    {
+      "fit_id": "0ac0a813a9586bebaecb4577379601e5b23f68f7fb1c5c3e4cf1d71ecf7423ea",
+      "role": "path-outer-quantile-2019-10",
+      "cutoffs": [
+        2472,
+        2492
+      ],
+      "fixed_state_id": "c816c5af3380ebe8d59baa3633ca4e5a8417b239bba87a0936fe975179059703",
+      "prediction_frame_id": "08bf517d273288b8ad047b442f449361fae249180029c69570d565e9b0122c87"
+    },
+    {
+      "fit_id": "0b09ae79b71aa4edbedbc3c475fe87d31b98561b7f1caa8718c97fe6872548f2",
+      "role": "inner-2019-0-1",
+      "cutoffs": [
+        2089,
+        2109
+      ],
+      "fixed_state_id": "01b3d2aa723f7ec232c7b8dac68949ba21b8dd377c7a810aedead05f49a74212",
+      "prediction_frame_id": "c8e15b6b39b737525a715f747f25f0474c5b10c590541956b20e38930e111987"
+    },
+    {
+      "fit_id": "0b14c559e34a9ff7534c07445a36871be1a009e30873780c32a059fa3d639008",
+      "role": "path-outer-quantile-2016-8",
+      "cutoffs": [
+        1678,
+        1698
+      ],
+      "fixed_state_id": "c9e82c38b122c6bccf425c0d0233b786fb36b39e73da5f0a693d4d463b7e918b",
+      "prediction_frame_id": "3fbedb03f8ea3b0c050e33115f84a687244613c66e14164c74645fcd73fa50e4"
+    },
+    {
+      "fit_id": "0b3e49f501a51633eb729cdcc7225d70b4d5fcf215976c6eb26e38df6054d509",
+      "role": "inner-2023-2-2",
+      "cutoffs": [
+        3244,
+        3264
+      ],
+      "fixed_state_id": "e4eda3e7d54343d9e428597d9efdf4ea8322a243c2faf5551b6d0aee0485cdec",
+      "prediction_frame_id": "6b0511ffe30217535103cfd6c36961f85bd93132aa5d385db99603671c595dc3"
+    },
+    {
+      "fit_id": "0b4c0f8b0dac0f09dfeb3399324f72016682ba97842f3b6797a9fb0616c1752d",
+      "role": "path-outer-quantile-2022-7",
+      "cutoffs": [
+        3166,
+        3186
+      ],
+      "fixed_state_id": "ccb1e94b2d866ee7279bd67b941a6ed2f439ea61cb07912ab45ef3f91b80edd0",
+      "prediction_frame_id": "3dc48a3355507d9b7f13bff533a7f32fc25469dfb0a8020034127cde4bf54869"
+    },
+    {
+      "fit_id": "0b5934da90b1122bc26169b58326a747a6c4966bd4bcca0e7dd885d2c07f99bb",
+      "role": "path-outer-quantile-2023-3",
+      "cutoffs": [
+        3333,
+        3353
+      ],
+      "fixed_state_id": "085c55caae007e43c501a3705164ea25f88a50d73563cdbe1bd26559fcae7f88",
+      "prediction_frame_id": "accd9e63f122182d29a58c89bd2b1e0ea3a88fc142b0f9d445cdf39903f6cdca"
+    },
+    {
+      "fit_id": "0cea75853afff1c633bcecaa0f46d279ac1c9af3b9203f932b8aad2498990284",
+      "role": "path-outer-quantile-2020-1",
+      "cutoffs": [
+        2535,
+        2555
+      ],
+      "fixed_state_id": "b6e51f51f914b5b880cee13cc337c0edd17a10c586fe6947ed3896c89100ca33",
+      "prediction_frame_id": "fda10cba9af00e2361db868e282eec6710a7606f408be35e38caf589da7d09f5"
+    },
+    {
+      "fit_id": "0d25bbf4b090ca9a363db96c0814839e812da07a53ee3079585c4c1b34933338",
+      "role": "path-outer-quantile-2019-5",
+      "cutoffs": [
+        2367,
+        2387
+      ],
+      "fixed_state_id": "c703fb4c4ec4b37ef151e73ca33b592b64311d768780f66a290a545e1d2c0b61",
+      "prediction_frame_id": "6cb3235c5c4f7ecccdca8a914323dcd2f8ad9ef09048dad8605e23c944f351d5"
+    },
+    {
+      "fit_id": "0e6667e69e651205459061eafbe62d9d2f2ab98d0e20dc94d99222d1e31a965d",
+      "role": "path-outer-quantile-2016-1",
+      "cutoffs": [
+        1531,
+        1551
+      ],
+      "fixed_state_id": "507e0f38aaf189bf7759f74cadbaab1894abaede903011b2c1216e15f5b889fb",
+      "prediction_frame_id": "3c78b10caa81398d1ab5ae4b744da2872ae48b987e3ef772f195a34d137111cc"
+    },
+    {
+      "fit_id": "0fd5c64392b5b8bf3b7ca469b28d56167cf162045ca70d7064834c17ae3219c2",
+      "role": "inner-2021-0-2",
+      "cutoffs": [
+        2615,
+        2635
+      ],
+      "fixed_state_id": "a0c4832bb649a547685d0b75c902842009e930259a018acde59f5bff7d183e89",
+      "prediction_frame_id": "1b25081179ab332de8a9b0cf8924afbe204a68fb555d72b27aa1c95108bb500f"
+    },
+    {
+      "fit_id": "105c04f1f37a8815c783d7f0eeaa587b8d2ae4e885843dbea0f31e9e3fec16ee",
+      "role": "path-outer-quantile-2019-6",
+      "cutoffs": [
+        2388,
+        2408
+      ],
+      "fixed_state_id": "3e368d5d2c4962cd8f5a007b8aa3f9c10b932d3309dd7122099041bab955d96e",
+      "prediction_frame_id": "f9b6d760b2dde416b9071384982919fe41767c3b6addc3158b26c329e711cbd3"
+    },
+    {
+      "fit_id": "11284e39dbc48ba5cfa9ffb9904a9a262df21a3d469ca77c8495d65f90a4b1bf",
+      "role": "path-outer-ridge-2021-9",
+      "cutoffs": [
+        2956,
+        2976
+      ],
+      "fixed_state_id": "be6fbd52c29f62bbaa9fa7068a47ac6b60f1827dd71648133001da51d838cf9f",
+      "prediction_frame_id": "af2dbb2f6db9e6bd050ec8538429aaef1595447f7c217602b4eec23046f626b1"
+    },
+    {
+      "fit_id": "117742880b523142173587cc34bcfefdbe16c7f2372989f981b98f17432b3618",
+      "role": "path-outer-ridge-2020-10",
+      "cutoffs": [
+        2724,
+        2744
+      ],
+      "fixed_state_id": "d629b9155c6483a1df9115669929ef602aecfd06c1cf27507d55d0ea39b095c7",
+      "prediction_frame_id": "df1b248a65e9bafb56622c836348abe7d4a07d45df897e334f3571a09efeeff1"
+    },
+    {
+      "fit_id": "1183c61eaf4ea7deee319176c6868b813c3242127a8814b6ac2e7c2a6b4a138a",
+      "role": "path-outer-ridge-2018-5",
+      "cutoffs": [
+        2116,
+        2136
+      ],
+      "fixed_state_id": "b9649ae0f5f567ea628428355988ec86bce7988ce083cb85536571b92d7d2e1c",
+      "prediction_frame_id": "3ce5f10d502fb2039a715e29f279efeb7a4d91fe075acf529b008608618ceb27"
+    },
+    {
+      "fit_id": "126f7a78013ed7a6ddb7732a1f15c9aa817c29b71df109b1363dec600c57eb04",
+      "role": "inner-2023-2-2",
+      "cutoffs": [
+        3244,
+        3264
+      ],
+      "fixed_state_id": "81dc29c21c8088127ba1fd6b4ab360d99ea1ef41a20e29ee3c08bf16f5514c67",
+      "prediction_frame_id": "790fb06e469eaa2eb54eade9d2b17a2b269f0012981b7957809de46a19e170c8"
+    },
+    {
+      "fit_id": "141bd643f2d32c9f24a4f3b99216f277994fda30e2cda3cae97f36cc762860fe",
+      "role": "path-outer-quantile-2017-4",
+      "cutoffs": [
+        1844,
+        1864
+      ],
+      "fixed_state_id": "778937b8b78c8bf10e3fe73c4e83fbb60eb2750130d49046721a21639060628e",
+      "prediction_frame_id": "7f185b798eaac12195eeca777ef63b366fd48707314306cf5c004186b6457ef6"
+    },
+    {
+      "fit_id": "141eb124aa82a09782720ee95d6be1869bfbf714a46b2a82906449f30019eaa6",
+      "role": "path-outer-quantile-2021-2",
+      "cutoffs": [
+        2809,
+        2829
+      ],
+      "fixed_state_id": "5dd2adc96b68a4afdcff492a42ade778d513535938152649802d01f4c3f2970b",
+      "prediction_frame_id": "0a4fc7206ea4e12ffd4ac288511ce155eb04d81a744d1bcc57f6067eb909a89b"
+    },
+    {
+      "fit_id": "147dc919bdad95dbc44a0a55abf50c30e9f6c631ed93d780d44b0360f9230da4",
+      "role": "inner-2019-1-2",
+      "cutoffs": [
+        2173,
+        2193
+      ],
+      "fixed_state_id": "b733dd701d1cbf9be894af127350fffde48a6df7d0b9ea344d2f111e2ea8b110",
+      "prediction_frame_id": "cabbbd193b7589ff50f4a6f9849816c6d91b8f2148ad94ec90637f64a1059eba"
+    },
+    {
+      "fit_id": "16114abd725a9ca83ec68cff5f5c89c9e43a05802163f23ff35810d92f3725f9",
+      "role": "path-outer-quantile-2019-0",
+      "cutoffs": [
+        2262,
+        2282
+      ],
+      "fixed_state_id": "76178ce40b8fa0fb50f0e4e7c96840ed4ecf2bb7740a70539dc047962b7aab76",
+      "prediction_frame_id": "dfd9328d50946eba811dc62bc6750676fb2ca6132e45d6987e682e9946b0548c"
+    },
+    {
+      "fit_id": "17bd8a2b3ff4d9220e4595140d4ef7596ff366bb7f7f7dea9a21d809cb44ec27",
+      "role": "path-outer-ridge-2020-9",
+      "cutoffs": [
+        2703,
+        2723
+      ],
+      "fixed_state_id": "8971935155ed12ddf6a1d7ae89e66419243eb5107d9c1bc02a022d5d2c34c239",
+      "prediction_frame_id": "022656ab1596304422726743596d0a1b8143aaaef59317cf63f03542f7b3abfb"
+    },
+    {
+      "fit_id": "184ae511eeffb0fd3b2f7358d60cbc814181c411a862ce3ace071a19ed9d9200",
+      "role": "inner-2017-0-2",
+      "cutoffs": [
+        1608,
+        1628
+      ],
+      "fixed_state_id": "281265422549a11edcbf076bb57fc2a77cbb29a2608755ceaa82fbdcc943ad07",
+      "prediction_frame_id": "7979a2d3b231d44388255d5e8fff366642073a09a784feb6f4306e29045eb915"
+    },
+    {
+      "fit_id": "1ac0317eba86c07dd4c652692f48c542ee06cb71c693c836fdced26da7e5426d",
+      "role": "path-outer-ridge-2020-11",
+      "cutoffs": [
+        2745,
+        2765
+      ],
+      "fixed_state_id": "ded6faefa786cf6d7fbb22a162f1f6a268ee1953c8c4ef63de52881bb0d6d884",
+      "prediction_frame_id": "13dc8c5b9730e6c84f12d469d95e13956e4b2413925d81cc34296ba8e7fd043f"
+    },
+    {
+      "fit_id": "1bbd36be8813342ddeeb8ba57ab844cdd126b99572dc1d0831fa9690f298c489",
+      "role": "inner-2021-2-1",
+      "cutoffs": [
+        2720,
+        2740
+      ],
+      "fixed_state_id": "9e30e71fb8e088f749b7a71d9bdd18938c194bbb66ed437cf376d257a99bb1d2",
+      "prediction_frame_id": "2d63abce60c62bf439bd6f52705f7521a9f91702dcbd7b05b20af4603e15aa83"
+    },
+    {
+      "fit_id": "1de46b815e25400237483bb2bba1f355ef5786103f9490dbe1d385cc4e2918c5",
+      "role": "inner-2018-1-2",
+      "cutoffs": [
+        1922,
+        1942
+      ],
+      "fixed_state_id": "38a131c3ac60fcca8dda01a82188677d7d76ad7f04d9c902b30afa15d0bb5261",
+      "prediction_frame_id": "4445eba70675f04735f9926929a78d085869c9c8f81eac900039735b9ca076da"
+    },
+    {
+      "fit_id": "1ec7682388a82630c8ffe2f80af0b9152dae32e01376212011c12af9eda050a9",
+      "role": "path-outer-quantile-2016-9",
+      "cutoffs": [
+        1699,
+        1719
+      ],
+      "fixed_state_id": "9f405b9e41a4e2e67947c50981522a51e8de160953998c1d637df0081f7378e6",
+      "prediction_frame_id": "55477a3c47d2500971733a9fccb276262f37886d1d0c2ead66a62659e2a3708d"
+    },
+    {
+      "fit_id": "1ff43713db72a1d09e3384c9f96929ef00a66635f657b0f58f029d75eae3097d",
+      "role": "inner-2021-1-1",
+      "cutoffs": [
+        2657,
+        2677
+      ],
+      "fixed_state_id": "62b399f715ed6a3141e54f4be6ffdb11f8d797d8c83e3ef6fa268ea8722b8352",
+      "prediction_frame_id": "af1fcc8b2e982683032b4f29655e4e17969b2a343d6a981ec5cbdb200f230576"
+    },
+    {
+      "fit_id": "2004c3716486a51bfcfe77f1c227554f9bdb870a69ebea587845dff41e02b671",
+      "role": "inner-2020-2-2",
+      "cutoffs": [
+        2488,
+        2508
+      ],
+      "fixed_state_id": "5fe880f0c3083fc17763159e26cc4b8bfc00dba0507dd8fba77b7fe3dfb9b55a",
+      "prediction_frame_id": "2626860db933571c370f72d74cf2bc521397350f26e6922b13fadd17450ad0c8"
+    },
+    {
+      "fit_id": "20726c43cec3a26a9585b7019a15e2e8e96f0ae2607fd9039c29e7e0ab8badbe",
+      "role": "path-outer-ridge-2023-11",
+      "cutoffs": [
+        3501,
+        3515
+      ],
+      "fixed_state_id": "81eb4f7b0530369c64888608acdb1fe63b1627fd7725d7d40e9c3cd262e82db5",
+      "prediction_frame_id": "1f7b337fbeb9dc69de209d1130f8b1b172f5573d17e616e9e91bd92588445c68"
+    },
+    {
+      "fit_id": "212ab49a47d35fe0134393baca7ab676c854e7756441e48d22a2b9ad987baa1c",
+      "role": "inner-2022-2-0",
+      "cutoffs": [
+        2951,
+        2971
+      ],
+      "fixed_state_id": "736f94dc1b4eb12177896094e2c9bd295dfa5d6bed2a3c2b25ae13af8b7b6336",
+      "prediction_frame_id": "b9f52621a3f070e9b85aa25716853b6ce300f0cc7af44095c05119b721d66dbd"
+    },
+    {
+      "fit_id": "2394013734d7ebb516d56ef1df87f386564086a8af26506dbf9a635485b2b2c6",
+      "role": "inner-2022-1-0",
+      "cutoffs": [
+        2888,
+        2908
+      ],
+      "fixed_state_id": "57b758d9c6aa46f430f615bb3f94ecdd7ce483859165854922bdc7845de3fdf5",
+      "prediction_frame_id": "49e4ae36de198712d8df3327355d384dfcf18dfc5e38dfeb4cbc083deb0f0754"
+    },
+    {
+      "fit_id": "23ad4061de35277b3eb5ba8e14de9e5fc62a34377c2cfea359ae8b98f273eb19",
+      "role": "inner-2018-1-1",
+      "cutoffs": [
+        1901,
+        1921
+      ],
+      "fixed_state_id": "450bcda14da7a57deb9c6ddb9a3e43e11ac3b485b933e27d4c4a25c833ea04a2",
+      "prediction_frame_id": "bbe8f6caf0340aa34359f49c3fe31c27de9e90f99c25874f91ed893b64a74a9a"
+    },
+    {
+      "fit_id": "240219dd841562652cda154d7ba35350ab1d0980911a3a37a3f466b6cb0fe4a8",
+      "role": "path-outer-ridge-2021-10",
+      "cutoffs": [
+        2977,
+        2997
+      ],
+      "fixed_state_id": "1dccde4a31ea0f54f201fec3793f5abc9cfe90f21f939f17b65ef2f3001ce985",
+      "prediction_frame_id": "047327eed2d833c4198678f7b6d5d818786789e1a4152ed21ceb1ca4e4d0bd9c"
+    },
+    {
+      "fit_id": "243c4d9e1da4ee91a1dd6a767343b84d884b4ee67a7e03573ae552e3caa59910",
+      "role": "path-outer-ridge-2019-0",
+      "cutoffs": [
+        2262,
+        2282
+      ],
+      "fixed_state_id": "c324ea6963327781109995f4fe3618541d993654797ab8e075402a0d093800f2",
+      "prediction_frame_id": "042153b1e69724aeccc39e689a58f7318f298cbdee2fb4395c0bfb3fff37c0e5"
+    },
+    {
+      "fit_id": "245324117c631f802686d245e709c24d78636a3290704809c621370100ac7489",
+      "role": "inner-2019-0-2",
+      "cutoffs": [
+        2110,
+        2130
+      ],
+      "fixed_state_id": "0cbba58ff452702a986526303ca721cda5de0936901308c1c7d22c6e630f0077",
+      "prediction_frame_id": "62b0be9c733d10c037737ad30390845a4d67177d9e7ab180f0bfaee25f9df5dd"
+    },
+    {
+      "fit_id": "2603fdd0645992972a93e193a11010e209b1cd23084a6d5ae53e231f2aebf8b2",
+      "role": "path-outer-ridge-2018-2",
+      "cutoffs": [
+        2053,
+        2073
+      ],
+      "fixed_state_id": "0950efc00b45b72c11cc46a040523a7bb10ec9650ecc4306f10c88461243b74f",
+      "prediction_frame_id": "c2fae3559217867e686f66e1d1c9e49c11035704e750c21f4f77398ad6a7e8f7"
+    },
+    {
+      "fit_id": "26241369c01bf22f51962d30a63e012bade997b239f47f90e876ccd5b668f602",
+      "role": "path-outer-ridge-2016-4",
+      "cutoffs": [
+        1594,
+        1614
+      ],
+      "fixed_state_id": "fa31710883974603df890ab6939387c2b736a2915f80c6aee9ae8e19b77a34fb",
+      "prediction_frame_id": "1572bb30625ee521c22359a731b94ddab02e90364cf91e2ca4aa817030f1f522"
+    },
+    {
+      "fit_id": "265ecd23f5bce4b13f71e2716afa8f0cf28c22afc36cbf7fe77fbd279f874936",
+      "role": "inner-2022-1-0",
+      "cutoffs": [
+        2888,
+        2908
+      ],
+      "fixed_state_id": "339fe2b365a921d2b324aa9bac7a55ed0bbcd538206613d89a05010efaf4f047",
+      "prediction_frame_id": "4d601f73f987d364ce39d7fd4b0bdfa2fe53118165eaa2d1f3a2ff1653565f41"
+    },
+    {
+      "fit_id": "267d48518a52263139361edead4ebaf5dbf1b0c42d617e6c7b35f5694b2f681b",
+      "role": "inner-2020-1-2",
+      "cutoffs": [
+        2425,
+        2445
+      ],
+      "fixed_state_id": "b117f3a625668bb795490335c31825f92b78e49e4fc61e4f6475285cbb933cb9",
+      "prediction_frame_id": "6a280568a7bba8620ac6ebe8fb1b8c553cf6a2e6ebcfe2e0b320aa53759696d9"
+    },
+    {
+      "fit_id": "2738113bdaf4ea9e731af9bc04ad433ecead336e9e80bc92ca19a5cb476c93cd",
+      "role": "path-outer-quantile-2020-11",
+      "cutoffs": [
+        2745,
+        2765
+      ],
+      "fixed_state_id": "9253f7d7be4eeb7682d62d1562adbf5d711dabe297e4d647998f2ba80a1240c4",
+      "prediction_frame_id": "4e28b26af215dece346a5854db2180228cfd191cc612c1cc264d4162aa48b7db"
+    },
+    {
+      "fit_id": "27bb978b067a5afa5a6af1b595e1ab69cf777349dd4e3a0dfac33da36d325cb7",
+      "role": "inner-2022-2-0",
+      "cutoffs": [
+        2951,
+        2971
+      ],
+      "fixed_state_id": "e05422339ce3933f37a047356a0635797fba41fb0c6b9344b5f92d14c4d2d0ec",
+      "prediction_frame_id": "0670b6cbdaef1a9a04b773aaa19a60e7b5a1aed87e6af5830a325b25d7a89d07"
+    },
+    {
+      "fit_id": "28aa9c8ee22db05d762fa4bdaef55fdf300b89d5e13d02d7599f209c49b86deb",
+      "role": "path-outer-quantile-2020-0",
+      "cutoffs": [
+        2514,
+        2534
+      ],
+      "fixed_state_id": "5c7cce2b120c4d5063e45561c644493ca53b429925d48f39ccf91fc665900720",
+      "prediction_frame_id": "a423b021866734bc1fbda1b7689a2af15ace8006fb5cc5afd76d616e97d6fa9a"
+    },
+    {
+      "fit_id": "2a55799857a9a3746f8e96b640d00375303bc915166e23bab005b960d6b12daa",
+      "role": "path-outer-ridge-2016-3",
+      "cutoffs": [
+        1573,
+        1593
+      ],
+      "fixed_state_id": "a9f1deb5193bc8c9cc64edf2241584262aed2112aff68ef4c9176458e251c2bc",
+      "prediction_frame_id": "3ed173d97490ea5e59983454f124f5bfc11f254874db482cee7befcdfa58ba1a"
+    },
+    {
+      "fit_id": "2a5f97346adc4f971f9de573b3384af397eb901def4256b3cc59647435ee0c49",
+      "role": "path-outer-ridge-2022-4",
+      "cutoffs": [
+        3103,
+        3123
+      ],
+      "fixed_state_id": "59e57922d275d2a3a38c575adc990d39719a5e26b65aaf0ef0d2ada3a6a469d5",
+      "prediction_frame_id": "11ec414530ff9f4dcdf7fde64a99493a462243ade1fe35af023b484fffeb1434"
+    },
+    {
+      "fit_id": "2a75adf95f4fc7456aa31ae874676962bb2470c8fd010b3779f31ade7f9c599a",
+      "role": "inner-2021-2-2",
+      "cutoffs": [
+        2741,
+        2761
+      ],
+      "fixed_state_id": "e180867fc97cbb6c57957b9b8a938978ce71b4fb7c6aa7cddb451107f4edb1d1",
+      "prediction_frame_id": "cc9336641f3ccc9500f8d23feeccdd89786fc2d475e3dbe6ed3d2f2d1d2053c2"
+    },
+    {
+      "fit_id": "2b057a876749cb7609f2e6503e2999f5d22a22a506454b66cb93d7140cc1f008",
+      "role": "path-outer-quantile-2020-2",
+      "cutoffs": [
+        2556,
+        2576
+      ],
+      "fixed_state_id": "b585299adf1f09af0573ce3774428abd708041f88205e6e09fd6e0f81a234d89",
+      "prediction_frame_id": "3429ea13d5cf3f3f569610d1fc7de082085fc3f8c9bd517c5c74c96ab6a1dd62"
+    },
+    {
+      "fit_id": "2c351bb8e0650560371f9ac059fb9d624a4081e797e3e4baa4157baaf12fdeaf",
+      "role": "path-outer-ridge-2019-4",
+      "cutoffs": [
+        2346,
+        2366
+      ],
+      "fixed_state_id": "bdfd6b20814f537dc57da55d52af7a3cd7d051276ef083f2c7a3f70aab384ae2",
+      "prediction_frame_id": "c4d4f2673ff0b319585bd02752326541fa321aae255420d649aa25669afbd135"
+    },
+    {
+      "fit_id": "2de54aa662d3fff5a6457b0839f382335d7836e9c8ed89ab19f81975c43b85cb",
+      "role": "path-outer-ridge-2022-3",
+      "cutoffs": [
+        3082,
+        3102
+      ],
+      "fixed_state_id": "d6b51eb629e2686ee609e582b6383d0a6d39bf399918debc76fa19f6bb4bf784",
+      "prediction_frame_id": "7550405b4708647d5011fc0ac16478a2e76a3a8809076385f76a7ed664d10c10"
+    },
+    {
+      "fit_id": "2f53c52921abc57b7c5b3498b0b3ae363bcf7b79d16f18e798a45e9349c41e40",
+      "role": "inner-2019-0-0",
+      "cutoffs": [
+        2068,
+        2088
+      ],
+      "fixed_state_id": "28e63e9bfe8a133e1f40b095c00234421248b9cd1214aa8f7848c9d2ea389260",
+      "prediction_frame_id": "18d961ca29c3bf72c3694403f54f5e9a502a9a21f671c1ae7775ddd25856f41c"
+    },
+    {
+      "fit_id": "2f5fba2a4a3087e5fcd5805bfdb2b8bc7b41c08ce4398dc032478578fbe74339",
+      "role": "inner-2017-1-0",
+      "cutoffs": [
+        1629,
+        1649
+      ],
+      "fixed_state_id": "1e6ed2f5e2de8399b712255c63e41b34d2715fd3bc68546b9ed188cf2b26a6d8",
+      "prediction_frame_id": "d88c2ba1b2819036e7526e2e30d75e336b9d733244109d57494531ea4f307477"
+    },
+    {
+      "fit_id": "311fcd8c5605c0f9c068ffcd088789b3922280d0749ae84a8ad17cae44503b1f",
+      "role": "path-outer-quantile-2016-4",
+      "cutoffs": [
+        1594,
+        1614
+      ],
+      "fixed_state_id": "db54a408e9fa1a000dc3725e6cb3a916cd384cc372d9a29f22e61abcf275177c",
+      "prediction_frame_id": "c8645f945dc33e4ffdc752c1f854e3c33ace96987244351755930e88f3e1df66"
+    },
+    {
+      "fit_id": "32693716e9afc0ac7499a88255ca7d86b9d70715b0fdddfa3bd034a7eed97fbe",
+      "role": "path-outer-ridge-2021-3",
+      "cutoffs": [
+        2830,
+        2850
+      ],
+      "fixed_state_id": "7416701e7ea2042f04799fcca3b28027ddf852b2f4ee3c621656ea03e61a9f83",
+      "prediction_frame_id": "f0b9f3ad1f1cf830f300d8921aeb099837642d3d21453dcf16e44613af208c0c"
+    },
+    {
+      "fit_id": "33a7a767c2cd7c49824635e22e168e7cb2309b2904076bf6558d5f5237e10fa9",
+      "role": "inner-2017-1-1",
+      "cutoffs": [
+        1650,
+        1670
+      ],
+      "fixed_state_id": "76bc809e4af8d161ee1b72c5138440760dc670a9d0a27d665b33720805b44237",
+      "prediction_frame_id": "23d06db1068f2a2b033e860d0bf89de1c43ce97fab23fa3d1094f4c85f60c902"
+    },
+    {
+      "fit_id": "341ab0bfecbad395254ca63ee394e933a00ae024c9a1c73c912f34464b629f50",
+      "role": "path-outer-quantile-2020-6",
+      "cutoffs": [
+        2640,
+        2660
+      ],
+      "fixed_state_id": "138a586fb6bc547a37953acd23a8e083a6f0323df9f495e7cad5a819edda10a2",
+      "prediction_frame_id": "985890ee0693a0b2910115fed644b3815abe9d25f65ac32ab6437274ef3d0d95"
+    },
+    {
+      "fit_id": "353f7ccddbf23743d55792e4244078391af1e491e1267de9c98203ddc473bdf5",
+      "role": "inner-2019-2-0",
+      "cutoffs": [
+        2194,
+        2214
+      ],
+      "fixed_state_id": "56a85bbee8621c1da653b665f907f9d7b919c4040073602fa504da47b994cf91",
+      "prediction_frame_id": "9f10e6e59b8fff80b06911eb933a5c9c295afa2ef05cd7f05f8d797b1faeb6f4"
+    },
+    {
+      "fit_id": "36084e0986cffef18d35a05029ec071cb216025eea0e16c45ba307b2ca5c5223",
+      "role": "path-outer-quantile-2020-5",
+      "cutoffs": [
+        2619,
+        2639
+      ],
+      "fixed_state_id": "dee119b602eabab2dd1f5fa69eb47e0bf65347798b1c24b02f569e118f48bf0b",
+      "prediction_frame_id": "a17490e3e692d27291dda1bc8b9209f0c2740b5c561fc55dcb78f6991967c3cb"
+    },
+    {
+      "fit_id": "36e9fd057f2dbb1c9a6d1b5415dc67052e3f0248f47be9fbbafca5437fda893c",
+      "role": "inner-2016-0-2",
+      "cutoffs": [
+        1358,
+        1378
+      ],
+      "fixed_state_id": "78ed2152284e01e6a4834728d155adc3c020a872b397e58deaa4d549b68d7926",
+      "prediction_frame_id": "9607c2a32f39be4d58f762d2e8bd107c6bf6571f79db530f33c34c30b385944c"
+    },
+    {
+      "fit_id": "38131a8b21cedd03dcbcfb6f79048caad7ced832213a8fb42746f19dbe476bf3",
+      "role": "inner-2023-0-2",
+      "cutoffs": [
+        3118,
+        3138
+      ],
+      "fixed_state_id": "b70d8905bd366fc0db2f35c74902d97baa424640aacde99d2d89c470d343cb72",
+      "prediction_frame_id": "25fc3d59d8518848dbdfc15a6208f46dc39f757728af98eb43ab89b782396259"
+    },
+    {
+      "fit_id": "383e372b972e54153d06a8df090f7d155bd977268e2f66a65c3dcc3689e887c0",
+      "role": "path-outer-quantile-2020-9",
+      "cutoffs": [
+        2703,
+        2723
+      ],
+      "fixed_state_id": "b36ca9a94976d51633fd495d1f5ae7d5e4a4b034b4afb6bb6b03f99d2467a51d",
+      "prediction_frame_id": "247e1dbac46e18fca579d2ef22e00254247e05fa0aae8f0abf2e84050ac74cc9"
+    },
+    {
+      "fit_id": "384e5ec7fa58bf5d8e412bab99ae3cbe6ced3462e08dd46ed5971210ff0ff68b",
+      "role": "path-outer-ridge-2020-8",
+      "cutoffs": [
+        2682,
+        2702
+      ],
+      "fixed_state_id": "b5ddabd98574fd88923306432616d52ff288e601865415642ff16fb36adb3cf5",
+      "prediction_frame_id": "6cbaee507fe078c63fe69e559b5464e4a8815c17f560016e675d46000240642a"
+    },
+    {
+      "fit_id": "39113babd33081e98d865903c585990d9a20c940d17714b7ec612ad327d1b6c3",
+      "role": "path-outer-ridge-2017-1",
+      "cutoffs": [
+        1781,
+        1801
+      ],
+      "fixed_state_id": "547a127d9109d6d968edd6f56979f61df23378e5be0c5be98fd2ed1837b7edd4",
+      "prediction_frame_id": "c6a505ba4f50abdeba3c99e5b951ac383a28c8a33918f614afea5c1181686776"
+    },
+    {
+      "fit_id": "39f51c8a2491c2be6406acbf07f7681af093a5a21d6992c061a8c817de84d177",
+      "role": "inner-2016-2-2",
+      "cutoffs": [
+        1484,
+        1504
+      ],
+      "fixed_state_id": "94c4d8552cf8f41e7530fc864f7e726be9fec66d9389824388cf0a65d8709d0b",
+      "prediction_frame_id": "c7583fb6c321462f8f18416cca3081034b426f967316a2cc32d93c0b6f5aad5e"
+    },
+    {
+      "fit_id": "3a8b2caaf0f11e5f999cc2fa1d46cead6fe8230af63dbcecbfb4654ff522a4e0",
+      "role": "inner-2020-0-2",
+      "cutoffs": [
+        2362,
+        2382
+      ],
+      "fixed_state_id": "18e2894e81d38218d6c9fcf99cfa67bf7e77d8da097fb276fb8b6763735947d6",
+      "prediction_frame_id": "e86b5f952c0b0380be53a9e9377589c4b9013e7d131049b953039953ba4ac643"
+    },
+    {
+      "fit_id": "3b0cce4bb59810fab6ff475ba1240323f449bc09fd7fd2011543adbdec24a3fe",
+      "role": "path-outer-ridge-2017-3",
+      "cutoffs": [
+        1823,
+        1843
+      ],
+      "fixed_state_id": "8b9404a6d5f3c367cbb8464c5f87c3c783843a11d98b892395d1e41fb91f4d0d",
+      "prediction_frame_id": "a8d4932672f674b047e192fe1620afcdfe553b268b0f56539f031343e2175c84"
+    },
+    {
+      "fit_id": "3bf09654c32510bd4bfe545b404f0312bf8170ccd36af4d63522addcff067b78",
+      "role": "path-outer-ridge-2020-0",
+      "cutoffs": [
+        2514,
+        2534
+      ],
+      "fixed_state_id": "930e852af8b3e4a093dd06feab5e4c5489ddbf150e0486e9ce815a93ab9549bb",
+      "prediction_frame_id": "74c32008189e3fbc229514f648b1c2e6516c621a2af4c854f06d690937c24d4f"
+    },
+    {
+      "fit_id": "3c6d9e44cedc110e1f3ae7370989e3dd63696ab9881e666ebdb287e15cb2ac6f",
+      "role": "inner-2020-2-0",
+      "cutoffs": [
+        2446,
+        2466
+      ],
+      "fixed_state_id": "eb65b9d2dcf13ce4f3ca342595b90f74ca6120180aa17fd6b3adb945e12fc18f",
+      "prediction_frame_id": "33f1a24bdaf17b32075b97ad265209ce159def687c49278af6955ece251516fe"
+    },
+    {
+      "fit_id": "3d0d7b2f9b566d10e5840a0903a3bc855ccead957127852f7922eaeec4daaa0b",
+      "role": "inner-2018-1-1",
+      "cutoffs": [
+        1901,
+        1921
+      ],
+      "fixed_state_id": "ee12643ad2174bfea8fc9339e08116a6cd50b2cd23b4521780c282e8faf0086b",
+      "prediction_frame_id": "e70f189194f338dcb3e6cf2968212308c7ce5a88dcb989d7a3f9ffe19d095d94"
+    },
+    {
+      "fit_id": "3e530b71e90bf47278641a9d0d5166f1fa22fe2f22667681b840e705e3066be4",
+      "role": "path-outer-ridge-2022-1",
+      "cutoffs": [
+        3040,
+        3060
+      ],
+      "fixed_state_id": "8ebddf2a6b57583adf676f6156c31a4e622a2d0dbec181d0b814655a4f568d5f",
+      "prediction_frame_id": "c129daab8c9b75ed339cdbfd2d16a86e61bc4f91acb424c50a6f379375644775"
+    },
+    {
+      "fit_id": "3ec62b9859590f655ecdab4f89572d46521d6e4f0958483b621771f25b7fc80c",
+      "role": "path-outer-quantile-2023-9",
+      "cutoffs": [
+        3459,
+        3479
+      ],
+      "fixed_state_id": "6ff34fb9eddb5ba41114547c900ee580a86eac93a3e17541b6e2acbd22d4b506",
+      "prediction_frame_id": "0e289efcfdee18e7e65a4a69c67158f79c015420b6afa8f17ceb3826369aafdd"
+    },
+    {
+      "fit_id": "404faba47fdfd8f68101557da726c09ad811e0ddf4ee9fe5c008091853031fd0",
+      "role": "inner-2020-1-0",
+      "cutoffs": [
+        2383,
+        2403
+      ],
+      "fixed_state_id": "d3fe581d9341b938a4965a02f1fce38485ba44aebbddad358408161efdf75066",
+      "prediction_frame_id": "03d38c7b63dd56b1c9ccb0adbda22ea549535cc07c2be0d41602d18177541fde"
+    },
+    {
+      "fit_id": "40a858acf755396437d922b6d4c7882720e6b85a8bce48252ab61da2b4771a01",
+      "role": "inner-2022-1-1",
+      "cutoffs": [
+        2909,
+        2929
+      ],
+      "fixed_state_id": "a3c059631d8010e378216980623b05e2a8ae17d53a8a37bc35bd0d4bc4d51c99",
+      "prediction_frame_id": "c9d4f22dfb8c8a87573d8eb50c967266d187a0c4735026800e75684de4bfae2e"
+    },
+    {
+      "fit_id": "40cb96f200ec8bc45fd71ae199ab0564535651977e429b5727ea91c8b8c736ba",
+      "role": "inner-2023-2-1",
+      "cutoffs": [
+        3223,
+        3243
+      ],
+      "fixed_state_id": "81a3592638e74cc94a4682b0fa41d292b7f34faf130aae55b939c35c49b16416",
+      "prediction_frame_id": "9e412bc21bb1beace2a250c2a0eb219fb41215b553ac67b47f0c26c23de4c810"
+    },
+    {
+      "fit_id": "41666e8d83ffc62e709bc2692c3c2bb0266178f1ccefbdb532fde2fdecf9a0c3",
+      "role": "inner-2021-1-2",
+      "cutoffs": [
+        2678,
+        2698
+      ],
+      "fixed_state_id": "e46ec1184ce5e51ee5a902903a9fb52503091497c72613711ed423aba884a95e",
+      "prediction_frame_id": "a33d1c52ed09ac9244e8bfcec07cad1fedfa9a419947912351f6b35820853b61"
+    },
+    {
+      "fit_id": "42d56eb2773e89192fcd232b87a3dc158a85cba0668ad0210b79a899d1b897e9",
+      "role": "inner-2021-0-0",
+      "cutoffs": [
+        2573,
+        2593
+      ],
+      "fixed_state_id": "8bc2158940f33b80b0933b2fb55439a1fd7f8ddeb0cc46ef6262b3acd881a551",
+      "prediction_frame_id": "49726fe7f7cc0e8666612fda87d0e53b3593545002c820f4821f982590338604"
+    },
+    {
+      "fit_id": "439ce8cc0dab3604944ca130804d16a34b8fbe80deb480804ad694f234fb7c1b",
+      "role": "inner-2023-0-1",
+      "cutoffs": [
+        3097,
+        3117
+      ],
+      "fixed_state_id": "a3b3fba5cd74a20027cd2866167a26b0ad4bb88d623cc131adf4c7563c327b14",
+      "prediction_frame_id": "f4edbafb71468e2f9336656abf6bfed44cbcef39e589723e09a67518b12e0c61"
+    },
+    {
+      "fit_id": "43c930846deb8e79881a144c1d98812e2130ea92639b7e0cf7778e5dbe85ae59",
+      "role": "path-outer-quantile-2021-5",
+      "cutoffs": [
+        2872,
+        2892
+      ],
+      "fixed_state_id": "aa78b8d6c5d33883eea5df013486202c99613dc7bee38357222a0f6f524c843b",
+      "prediction_frame_id": "f555650dce8d9ce47aaf0f0e83b43c234bb432ec3ce702ade3d3763563ff507b"
+    },
+    {
+      "fit_id": "43ca9c2a50a1a2d63dc0cb92d80cba427a34ee48e3778c0f9bbf9142e9e22458",
+      "role": "inner-2022-0-2",
+      "cutoffs": [
+        2867,
+        2887
+      ],
+      "fixed_state_id": "a2eb5ec70f4a491f0635d7c4e398f16328b4a1dc1dc499841157a5ef58ca3446",
+      "prediction_frame_id": "b93d3790d1aaade1ca33b35aaeeec4d2dfcc2f86e18e099f53fadf8db24090ab"
+    },
+    {
+      "fit_id": "44114e25969ac8a1a741ecb804060592dc6d6bc53eca604cf973aefe0216e8ff",
+      "role": "inner-2022-0-0",
+      "cutoffs": [
+        2825,
+        2845
+      ],
+      "fixed_state_id": "a0f6c3e12b9e036cd3ab4e67ae5a515bc0903ba48b12778ebeac4e23a04ea8ee",
+      "prediction_frame_id": "b66788ed430d10f394017225e8195977279a7c383ef15e964fef2eb8445a0dc8"
+    },
+    {
+      "fit_id": "44438055bd5687d3fa3f2f995ecc1673fb0917e339136d8359fc066d54f6538d",
+      "role": "inner-2018-2-1",
+      "cutoffs": [
+        1964,
+        1984
+      ],
+      "fixed_state_id": "1d4c8698d42d14a3d1898b55f0afc6695a0ea5d87dd716d681c390dfa9af5a42",
+      "prediction_frame_id": "3a66171fa813d51d13a30b4bec03275a133ed9b8e3c3efe8eb1b109f000ec144"
+    },
+    {
+      "fit_id": "455d23c2347a328d5a68476518bba3d3663a7fde113e9fe502f4815cb4d4d2db",
+      "role": "path-outer-quantile-2017-6",
+      "cutoffs": [
+        1886,
+        1906
+      ],
+      "fixed_state_id": "f5cafb73b9b23b4038e296d50840aef32147d0c6bc3854d196d1343089940c74",
+      "prediction_frame_id": "005f8451ee32af17a510e418ff11b5c68199ee656ad2abaf3c31e90834ddb41a"
+    },
+    {
+      "fit_id": "46a2e4308f5e5298b7599eac78822ecf4089690fee410287d0219d48633cab13",
+      "role": "path-outer-quantile-2022-2",
+      "cutoffs": [
+        3061,
+        3081
+      ],
+      "fixed_state_id": "af0777a660e4e298243c2402c8222c536db45f82be33b1c66ab92cdc889516a9",
+      "prediction_frame_id": "e899d4cbaeba89eb399e00598334766422564c08540ee5df125758df96ddadaa"
+    },
+    {
+      "fit_id": "48adc22f5f0d49b01099b31cd171dc9a594b12d36b7f7978dc36d9af18ab98f0",
+      "role": "path-outer-quantile-2023-5",
+      "cutoffs": [
+        3375,
+        3395
+      ],
+      "fixed_state_id": "6c007f252f37e37a6868c38f785a159fda33e0f555fe62da71fca8c906502ea9",
+      "prediction_frame_id": "0871203a396b424f2cca9e9880e1698033a8b15c0a8a53ff3e3f6d15acb64e94"
+    },
+    {
+      "fit_id": "493e17284a64850c04b1a995809b3d607c3022869a363a5a40af71d2549e6b5c",
+      "role": "inner-2020-1-2",
+      "cutoffs": [
+        2425,
+        2445
+      ],
+      "fixed_state_id": "605b4248e3e891c275cd615884141d88a4ecc80a44120dd02c8737d79dd2b544",
+      "prediction_frame_id": "4d4fef434be314902100fda013c7ae509c2907787cdf5d4cef56b0e9865a2d7e"
+    },
+    {
+      "fit_id": "49862165c05d3d86128586133ac2e4ada47461fb890cf24c6a808ce44bdc3fab",
+      "role": "inner-2019-2-0",
+      "cutoffs": [
+        2194,
+        2214
+      ],
+      "fixed_state_id": "16317370d429cfd6c2376af6da6f4db600f51f54b2bd7bc3674dc1f0db2b3f16",
+      "prediction_frame_id": "6f0f3a63d455064ef93609b05032e40569cef2775c878769532dc056dc029950"
+    },
+    {
+      "fit_id": "4afafffa341ad92e4069596067f77f2a8889f15d0020bc2389b73c7be8c88989",
+      "role": "inner-2019-2-2",
+      "cutoffs": [
+        2236,
+        2256
+      ],
+      "fixed_state_id": "930f347692410227a6396d4aa65900ea8329027eb31f6106651e72f2c5a995da",
+      "prediction_frame_id": "7f61c2f44279a10134d4f13b89de6ee34d8ac7a7ba5696be97488646f0223948"
+    },
+    {
+      "fit_id": "4c419caa933d83c40a09ad67dbb0ec376a09fb43ab7883418d8ff4e6527da492",
+      "role": "path-outer-quantile-2022-10",
+      "cutoffs": [
+        3229,
+        3249
+      ],
+      "fixed_state_id": "966eb618627030e35c1370891f317c9ca3d4acb8d87d5b6089ae9d848e98e1b0",
+      "prediction_frame_id": "da9ab1e6771a99a799f0333410b84a579cc9073b633cce3df660e9afeaa51efc"
+    },
+    {
+      "fit_id": "4dfe86ba00c3bfabdf57815b9bbc000b51c32a355852b8baa6a60febff0cb4a2",
+      "role": "path-outer-quantile-2018-6",
+      "cutoffs": [
+        2137,
+        2157
+      ],
+      "fixed_state_id": "87106e9d723f8dcb8ae9d4a732ebae6178c0cbed5918b9c4cee2ed00540aaebf",
+      "prediction_frame_id": "12afe414355acf8a8ca3dc3c30e802451d3c424fc22f6c44ac26cc799e37f83a"
+    },
+    {
+      "fit_id": "4e954d5c35aa0b29ce1fa082ff8643eb0757d0cb2892095df95c2681037c45a0",
+      "role": "inner-2017-0-1",
+      "cutoffs": [
+        1587,
+        1607
+      ],
+      "fixed_state_id": "042d6c508565a74b126a7770a8451649aff11519c00bcaa3e5b0a5744a244617",
+      "prediction_frame_id": "9a338714597c00890078044824cdd151ec11af8b081bd9b198e48bcb5349e0c1"
+    },
+    {
+      "fit_id": "50abc2193170522eba7486db36d36fc6fdbb2a45e1e4d60ccbb9729511a81688",
+      "role": "path-outer-ridge-2019-8",
+      "cutoffs": [
+        2430,
+        2450
+      ],
+      "fixed_state_id": "f0077a5d40964c9436b9e32be21fda6c6963192627ab1c7b2a92ab9c77893faf",
+      "prediction_frame_id": "909c9d32c72aff0027780653403b3f4212eda2932459bad8d6e20557b07306f1"
+    },
+    {
+      "fit_id": "50b9c51346f323dd94146672da25a24a3bec5f73f0087e99bd00406c641ff87f",
+      "role": "inner-2020-2-2",
+      "cutoffs": [
+        2488,
+        2508
+      ],
+      "fixed_state_id": "dff87d1cd97248fc91c1b116b9630a292f2d30bf92fae7ddad4a09835f123a5c",
+      "prediction_frame_id": "379718a141c99f33a7debc6bbc1a3db705c2c142536f5e1426aaebd26f92cd0e"
+    },
+    {
+      "fit_id": "515429635decb24faacb6e2fe1be2ae12f17cfc12c2b188ffd9f952f99f4f4a9",
+      "role": "path-outer-quantile-2017-8",
+      "cutoffs": [
+        1928,
+        1948
+      ],
+      "fixed_state_id": "27fa2dd4d1b343aae5390c5db1e3fb3bc13c2c9fb02477ba1d8378657db158ca",
+      "prediction_frame_id": "5c6b0fdb21b21789259fda7b211dfed6e9f99392ea9690039718c82e80947842"
+    },
+    {
+      "fit_id": "5165fe8a15a4a74e3ac325532356ef26ef5612bb14b1c4c82a276f987b6c3b69",
+      "role": "inner-2022-2-1",
+      "cutoffs": [
+        2972,
+        2992
+      ],
+      "fixed_state_id": "cade13d1309ea9be004109f5c35d4e56fe242610fa856fb6f033bf558ebe7d53",
+      "prediction_frame_id": "38a0f2cb342ba8a4beca6c0ef444fb718b4a3090f1b89f81e1f89fb244437a04"
+    },
+    {
+      "fit_id": "51d951c311850d50efb7fbafba7f1b2afcebd29a03d163435f1769c2b9cc366d",
+      "role": "path-outer-quantile-2022-3",
+      "cutoffs": [
+        3082,
+        3102
+      ],
+      "fixed_state_id": "4282c3afba8268c71b4604e6ea2ef14c52fe587301d5f20c9f90337f01069917",
+      "prediction_frame_id": "bc26bb8be9d5816ce1c1b951159ddf72f41de11c5a7de56d0d3941708fc18841"
+    },
+    {
+      "fit_id": "5231d607a12a4718e08a422e4d9e91dea8361b8f66c8b436ed200c3de3121d65",
+      "role": "path-outer-quantile-2021-8",
+      "cutoffs": [
+        2935,
+        2955
+      ],
+      "fixed_state_id": "d59c815d3e429f1580d830e9723773b769a35372de1a04b151887fb4682975dc",
+      "prediction_frame_id": "8762a0e2511c7f83160f5eb54a3b0ddc4916038ae3c40cec64a87c4c0930c1e6"
+    },
+    {
+      "fit_id": "52845c19c68c7cbc6035d1d160f49c7f879fd6e9288da62f86b29c5a7bdb0b9f",
+      "role": "path-outer-quantile-2018-4",
+      "cutoffs": [
+        2095,
+        2115
+      ],
+      "fixed_state_id": "f85da91db27b4ed60907cde265f6741e3d4101feb2ccfce7dbc96b4c68bc634a",
+      "prediction_frame_id": "413191f9c65bfebc25c64dbed47962289305ff37c00561412d7006509b8d87ae"
+    },
+    {
+      "fit_id": "53065e833101cd05a4a00e05687840ad9624629c2ef0ffc7c9182ef50a87e47e",
+      "role": "path-outer-ridge-2018-10",
+      "cutoffs": [
+        2221,
+        2241
+      ],
+      "fixed_state_id": "d962008d3960af4225ab8516ed94caf0ae1ff2e4053def42542e2ec802fb2a54",
+      "prediction_frame_id": "282af3bfeee59d72f728e3e2d0c23bfa2c79ff4ed0da762fd4c49204a1256df2"
+    },
+    {
+      "fit_id": "53c6da490f1509173e2d210cf2f672fe930c129b0797ac03b964d43a0e5697eb",
+      "role": "path-outer-quantile-2016-7",
+      "cutoffs": [
+        1657,
+        1677
+      ],
+      "fixed_state_id": "20de087f4b932219e1b6b78745878e0381c1e6f9d47e1180485e962a8dd177ca",
+      "prediction_frame_id": "2f4a2cc8f2afbe52aff65e960b73294e11457827de4a997e118ce9055d77b890"
+    },
+    {
+      "fit_id": "53f47772da4eea84b12380f7931cb457716154b3dfec142c23e3b289bf20ce7e",
+      "role": "inner-2022-2-2",
+      "cutoffs": [
+        2993,
+        3013
+      ],
+      "fixed_state_id": "18904e9f72c4ba8c92259683daf1b7273dd4d00897b896bf82504f8e94209149",
+      "prediction_frame_id": "8f192d8515b8f1d859ac6422e4d2b0a2254fb964129d904a5400de318625110e"
+    },
+    {
+      "fit_id": "5408fbc3e1783e8d11f37070867b847970d2a0e6361ec383cd206feb61bfc38a",
+      "role": "path-outer-ridge-2016-1",
+      "cutoffs": [
+        1531,
+        1551
+      ],
+      "fixed_state_id": "cc314df4b8497b860d2ec2e0bf85d5f0da1b312d6615cf84af26fc9c710598bb",
+      "prediction_frame_id": "a79081dddf27c4c8f179a6f683b8db519b89434c678a0d1064d275cb57ed684c"
+    },
+    {
+      "fit_id": "54312181c74b6c902b772eaba7a6aa61de4182d48625d8fe2df741d2e9e05df9",
+      "role": "inner-2023-1-0",
+      "cutoffs": [
+        3139,
+        3159
+      ],
+      "fixed_state_id": "4bc910ec3b66104040393174c836c412f5056522ecd100ba4e160f4fb6a5fd14",
+      "prediction_frame_id": "c1e8237ce3c0c9f8d55b1ea2437a2b24467a2871d89492eed474eb63822b266c"
+    },
+    {
+      "fit_id": "545144a8e2e55f6714f8ce7f1647c5aa3ae20413c0f1829b0b426d99559e4bfd",
+      "role": "inner-2023-1-1",
+      "cutoffs": [
+        3160,
+        3180
+      ],
+      "fixed_state_id": "ba0957693db17024162d6b40eed7bf3bbe8a5d8a17c6eb2290defa6bcfe6d91b",
+      "prediction_frame_id": "88ce8eec8980dc666187f11d1af10dcf3e5792ac04b7639295f7b5dd4e550bfd"
+    },
+    {
+      "fit_id": "55033cda2303ecbb4ba0fb33b373a749a5d988af2557fd5885e4dd5135980159",
+      "role": "inner-2017-1-0",
+      "cutoffs": [
+        1629,
+        1649
+      ],
+      "fixed_state_id": "1a6bebe1fecb5f30449294bcea52a09908f22763107c5e8d5e74ea7aaf551e47",
+      "prediction_frame_id": "9ad3403bd15e938684ed8d8a954cc165fd64cdf0268eca455cd358cb86b7fc96"
+    },
+    {
+      "fit_id": "567960f4a5bbc52eed0eecbac41ab2b7d9a2cf693e700b5949d4a8d457c932d5",
+      "role": "path-outer-ridge-2023-9",
+      "cutoffs": [
+        3459,
+        3479
+      ],
+      "fixed_state_id": "b42c590d0fd3c29596e0837936225e3fe141648837a1fe5d12ce6070fe66fff0",
+      "prediction_frame_id": "baebf98d0b56230e194193ccdb8890b2b053c33e8bd5e3ca98511fc51858e5e5"
+    },
+    {
+      "fit_id": "5688e657b4052c78f148a377e59b7924e89313f74d6b85b9d134152b78370273",
+      "role": "path-outer-quantile-2017-7",
+      "cutoffs": [
+        1907,
+        1927
+      ],
+      "fixed_state_id": "80e1e8259f0660cebd571fd38b6ffeef8dcf096873445bbe5cdc701448e51532",
+      "prediction_frame_id": "e30c1f7d195997a0889f09e3939ab22c4dee76c0f124f28e09b63175786bc1ef"
+    },
+    {
+      "fit_id": "57e0c59d36cda672797614f92f0ca6586ef4f939613b2e8f8ce3a470bc1958d8",
+      "role": "inner-2018-0-0",
+      "cutoffs": [
+        1817,
+        1837
+      ],
+      "fixed_state_id": "fd26560743c58c8a84f398de13af8075f718dba1af0d902fec822234f2edc2f4",
+      "prediction_frame_id": "c265d5473e3420b08eb35014507979457fad3e8a917c329491228555e0cfaf57"
+    },
+    {
+      "fit_id": "580b261782e820380f3ca741b07a327316ccfbb404f546e0164f4151efda03a8",
+      "role": "path-outer-ridge-2019-7",
+      "cutoffs": [
+        2409,
+        2429
+      ],
+      "fixed_state_id": "176718bb36f94fa782a890ff47d68e7409a04e7880b6b64824529d66b973031e",
+      "prediction_frame_id": "ee7a8821a89593be3d5d5047681a57da5ad39d260df0ce6ee88f8eddc4876874"
+    },
+    {
+      "fit_id": "58d7242258720ca8816ab785a4c30bc3d58a83b8fba74ab5f6938ad6d633d8d5",
+      "role": "path-outer-ridge-2020-6",
+      "cutoffs": [
+        2640,
+        2660
+      ],
+      "fixed_state_id": "22f4429c59cd2a0b898650c176d85c6c4cc0ffd2fffd0e46befc8b5796906b56",
+      "prediction_frame_id": "aa34d2b8cf8ab2505cb7fa61f4f90d5358e22f7cdbc32a00d722c1a3568638f0"
+    },
+    {
+      "fit_id": "593d94814f1718babaae57b695aaf279065edbfd025ebaf272aa55c726850fed",
+      "role": "path-outer-ridge-2023-5",
+      "cutoffs": [
+        3375,
+        3395
+      ],
+      "fixed_state_id": "be44e00b8ba1726014edf0c2badda05a793a59058830784b2c05a74a603eb95c",
+      "prediction_frame_id": "b7d70a110dfd7471b7f4889f60fff0f2030699d9fb985e275dd354db88a78cb5"
+    },
+    {
+      "fit_id": "596d69de3d96b51894f3913b03258a1a539665c69dc8da11ded85466f96bd0ce",
+      "role": "inner-2021-1-0",
+      "cutoffs": [
+        2636,
+        2656
+      ],
+      "fixed_state_id": "5f3f00081aad34c1fca3e59af6a31751fa10687309ab8019e3e7f35bb5a7d123",
+      "prediction_frame_id": "7d49fcfca39ba3fe64e498782afa9810fd982fba8e94e7007c13ff1de5158baa"
+    },
+    {
+      "fit_id": "5a3a3301e00201143d48eb0849b252d86453a553bd4d0623132a2f23c0aafa54",
+      "role": "inner-2021-1-1",
+      "cutoffs": [
+        2657,
+        2677
+      ],
+      "fixed_state_id": "3a8cc993e4f03edec4b517db2532b812f8d9b539748f4c3c96ef508b6f7bffec",
+      "prediction_frame_id": "71d36b182cea445013404c3a13a02b1ab5425b6e0548fca3920741b3cf024ac4"
+    },
+    {
+      "fit_id": "5ab9d3642fba2c49f38952fc250d928e7a506f466e6818f0815ad5b83054eb4c",
+      "role": "path-outer-quantile-2020-12",
+      "cutoffs": [
+        2766
+      ],
+      "fixed_state_id": "cb5745c623cfc13e66d667b6dff329aa71c68222010178eb597505796b5cd50a",
+      "prediction_frame_id": "aa2df04ddff64c467a7f35716f336e83a0e8d4cb5d0dbbee84552143da6d93d2"
+    },
+    {
+      "fit_id": "5c331041799ba278946ed2fb20a605f3fc6cfd7d1784103e1b195daf9d1f3528",
+      "role": "inner-2021-2-0",
+      "cutoffs": [
+        2699,
+        2719
+      ],
+      "fixed_state_id": "e8f85d18fa9acbc04ebac226c07457e82db1363ad3553a29f0a0f41e81a15d63",
+      "prediction_frame_id": "b9667f86b93553597b701b1f918a6c38e63322576559d9738f70e9a888a965f3"
+    },
+    {
+      "fit_id": "60047bb42a9f0da614a30321206d759ee89bb0e89983f36af7c58758cd257b36",
+      "role": "inner-2019-2-1",
+      "cutoffs": [
+        2215,
+        2235
+      ],
+      "fixed_state_id": "27a96c0b07eb80ca2e70e2626471fc768fee20aef98e0efa0a54bab6a09e0130",
+      "prediction_frame_id": "ce98b7f9f1b71f9ed0f52f39c8f27c7978975de8846c740d61feab720c67dbe9"
+    },
+    {
+      "fit_id": "604ff9ba3204a5b2f121884b3a99ea193c3cbb12b844909175fa3eb01fb766ce",
+      "role": "path-outer-ridge-2022-6",
+      "cutoffs": [
+        3145,
+        3165
+      ],
+      "fixed_state_id": "6132468497fc4550b5e0a287ae0b4bbe86d71b54860a19b2d98c3276bce4e3fd",
+      "prediction_frame_id": "62dfac4eb95b442e28138b645888510b1d7729da2d66c22f9e3ef089de329676"
+    },
+    {
+      "fit_id": "6131e04583d17a8c66a702c6d30a020f186482b9780bccbc843b288b3c276a9d",
+      "role": "inner-2016-0-0",
+      "cutoffs": [
+        1316,
+        1336
+      ],
+      "fixed_state_id": "dd37daad9bd89252d00386d1ba3734806382a14ec4c9a66c608f271b5b2d313f",
+      "prediction_frame_id": "0220be2386ff5ac45be87790810c28d402b95d62797130acfd37c97b4e516fec"
+    },
+    {
+      "fit_id": "6139729498c3307c27f9124fe2d4e73e17f816d51ddcf63304332d4782aab206",
+      "role": "inner-2016-1-1",
+      "cutoffs": [
+        1400,
+        1420
+      ],
+      "fixed_state_id": "f5fc51964db6232c7f43876f48a0a21c7d395fa4df389448126e2ecde0748d85",
+      "prediction_frame_id": "07f4b35793d7809a4bcbf298c4517ef6bdeebef9b1184710b4f0c184bb7b4950"
+    },
+    {
+      "fit_id": "61bb9cff2b61584230b0b49e29861bbc934167ae18e36abd18b6a534f759fb8d",
+      "role": "inner-2018-1-2",
+      "cutoffs": [
+        1922,
+        1942
+      ],
+      "fixed_state_id": "5aff837d6b3a55be2a14e864db4d82de3eeb40b846879a92bd5d4cc23ed8cff5",
+      "prediction_frame_id": "01dc3ab50174f3a10d4429b63f53959cbd5510c6742b6f3ae01992797839f410"
+    },
+    {
+      "fit_id": "61ce2728b7e8d2f49df31778bbacfe231bdd898e3b31b9af27f5ee36e435044b",
+      "role": "inner-2022-2-2",
+      "cutoffs": [
+        2993,
+        3013
+      ],
+      "fixed_state_id": "25516fe7dc9f28ffa8900a65fbf415be76ecfb24bb241030a3b6df1bad6b9976",
+      "prediction_frame_id": "18a389e5f53d5a9796d91bbeb402875965ede4818591d6b4d6512481c77d3468"
+    },
+    {
+      "fit_id": "630a0cb830b16df5099b4841f8e288f9804e5c264be7d90e040094a2905fd361",
+      "role": "path-outer-quantile-2021-9",
+      "cutoffs": [
+        2956,
+        2976
+      ],
+      "fixed_state_id": "0d426224823a702f030ac92616abcf60921e2a6ec0e4a4d9ea0f794634531b8c",
+      "prediction_frame_id": "cbfa5716704cdaab4d1bd3c7ba2b0f4e791ccf8d6c3a589c1d33c5f22f9becb4"
+    },
+    {
+      "fit_id": "63773b8bb1d6f3f10fb70d3befd77df5dc1ef6adc5d14927ac2684045cfff523",
+      "role": "path-outer-quantile-2019-9",
+      "cutoffs": [
+        2451,
+        2471
+      ],
+      "fixed_state_id": "906be23603bc6648dfe8333dacf07d6844426cd3cbb0e5de889b3685988f73f4",
+      "prediction_frame_id": "0583726dcd4327e47113dae2783e2d96862438310cdbbaadbb9752289821a816"
+    },
+    {
+      "fit_id": "652fa0ca7f238990313fe3edc1253da64c9b6b1703421a6e415d7be682e3444e",
+      "role": "path-outer-ridge-2020-5",
+      "cutoffs": [
+        2619,
+        2639
+      ],
+      "fixed_state_id": "cb92bbc993b756d8d4f178a14d234565892149a3a5cf10b0403d9c942918cf76",
+      "prediction_frame_id": "4fb520c41b1e757690599c6d4f338cf625a870d61c43d96ee37f8dd6604751bc"
+    },
+    {
+      "fit_id": "66b009e5d453a61e648f64972f84313ccb67cb0feaee9dc541d4608ce2bc0a25",
+      "role": "path-outer-quantile-2017-10",
+      "cutoffs": [
+        1970,
+        1990
+      ],
+      "fixed_state_id": "55440ad6d687be04ef810d8cc92a0666d91a44baf428870cd28d532e4be58164",
+      "prediction_frame_id": "799f1bcd0f37d9f832e585cb33321a02a5e7ba43ccd0265f237e3a2292f5ebff"
+    },
+    {
+      "fit_id": "681bb89cd7a570f9536faad671fd933360eceb24e698339ce8c35e6ef3a21fd2",
+      "role": "path-outer-quantile-2020-3",
+      "cutoffs": [
+        2577,
+        2597
+      ],
+      "fixed_state_id": "d33607c25d5095d267737d3c7bc15a71d303fc7786738ef22f22112d4591ad7d",
+      "prediction_frame_id": "8a27c5d0e923d830d518b778979ecd6bc60606c14276453f28b2d1dd9d9678e2"
+    },
+    {
+      "fit_id": "684c15e936475128b79b6e51d83b0b7bd67ddb88a7b7a55c13733855cf50f535",
+      "role": "path-outer-quantile-2018-5",
+      "cutoffs": [
+        2116,
+        2136
+      ],
+      "fixed_state_id": "47eb47dfcd7857a5ffca00bce02f0b4dd868c58df830b07b9e62f9961a2833f0",
+      "prediction_frame_id": "dd2ce6da0e9f2c99336254a6b8ce92f9235d5468a34c2b3f515a38e5591626ea"
+    },
+    {
+      "fit_id": "6865d8634c5c92318b80111673f2e949dc7bf49964ca451e74d4f511e9610984",
+      "role": "inner-2017-2-2",
+      "cutoffs": [
+        1734,
+        1754
+      ],
+      "fixed_state_id": "dcbd84016de4de92de9fe0f04dfae4f122ab871b5df75a1e0881bbb480b15878",
+      "prediction_frame_id": "25fc4a46d3ce2113c7403ec666a39108e90453226440a2aee501f3a91a40f5b6"
+    },
+    {
+      "fit_id": "68ab2c083d01d8b6b10528f9c5d7ad2f75832c3a9f64831ba7fe875616223791",
+      "role": "path-outer-ridge-2017-5",
+      "cutoffs": [
+        1865,
+        1885
+      ],
+      "fixed_state_id": "c6bd301290bcea964028a4dfa4c31e1d9a82ba164e53dcda36d643ad8ddeea2f",
+      "prediction_frame_id": "66148119cbf814fd1af66933e7bdee40ccd9c473ddf9c2ed2e23d37d8fd3c856"
+    },
+    {
+      "fit_id": "68c6c7457d2664b0c386048108dabb7a4530cc6c8279c75f22958f3f2da84a6e",
+      "role": "path-outer-quantile-2022-4",
+      "cutoffs": [
+        3103,
+        3123
+      ],
+      "fixed_state_id": "f6dbc4a597d021b2fdc044df53d0ba299ed54f84a30b1edb46689c3719e4e7a1",
+      "prediction_frame_id": "596343c443c5bbdd3996d63f53dcb105fc16b0c3a4a4dcadca53fa1498dcede0"
+    },
+    {
+      "fit_id": "69141c1c63c3e65344c80f6582138de699201e0c171beb06333fffc2bc331b01",
+      "role": "path-outer-ridge-2016-5",
+      "cutoffs": [
+        1615,
+        1635
+      ],
+      "fixed_state_id": "8ad15e96dcd58c2ea065b9f025a7314a7fa4bb604f2726daf7d5f7fae4a6d5a7",
+      "prediction_frame_id": "3ae7b59367325e4e828f4b1fa917cbb9a940e6b28733c219005b002f88bb4dd7"
+    },
+    {
+      "fit_id": "6a4feceb28d9034525b6e9e2dc8a5b0dcfeb75f86254cc3b31101b960e5a3857",
+      "role": "path-outer-quantile-2017-11",
+      "cutoffs": [
+        1991,
+        2010
+      ],
+      "fixed_state_id": "10a74beb3b88edb476ee93aef0ce5775245549e48e7820a1b0ada3128f9b19a3",
+      "prediction_frame_id": "52e7818bed5a9b44502482f1f68a6d08b1d4bae1d2fa325ca5861edcf0b7d1ff"
+    },
+    {
+      "fit_id": "6a6433bc619f84aff43d30d26a644e1f9983211722c7b5fc5b544cb689bcc9d6",
+      "role": "path-outer-ridge-2018-11",
+      "cutoffs": [
+        2242,
+        2261
+      ],
+      "fixed_state_id": "7bd794bc3b0f6964dbd7983948286e30e092520e83d76f61d9aaca860436de59",
+      "prediction_frame_id": "7f2df6eba653a5bac7c94602b9568f286f5089b83ec1fa0eb18623f0188888ec"
+    },
+    {
+      "fit_id": "6ae63b0ffc5f76e8cb86e5e239cedb687e8c9acd13477860a167813d8f1e36aa",
+      "role": "path-outer-quantile-2020-10",
+      "cutoffs": [
+        2724,
+        2744
+      ],
+      "fixed_state_id": "3b0b078ef9ed3b222eff215535073b61b5b63ca5619ebfee9c8f5a6e1a92518f",
+      "prediction_frame_id": "6e669caed7b4667324f533e62e0f7dbb84424542d14cb6d63f9910d26d4e7fdf"
+    },
+    {
+      "fit_id": "6b284ad6cdd8f486d29222483bb91e5e6dfd87b4944c6db8b77bf9461fa9c578",
+      "role": "path-outer-quantile-2022-5",
+      "cutoffs": [
+        3124,
+        3144
+      ],
+      "fixed_state_id": "df506e7129d7e0d7472efdd01558c8982b9bb3e79e61a26270590fe976e4c434",
+      "prediction_frame_id": "349298358f5a7488236a088975e90721d6ce0eee9fff338d4955eaacfa39cdc2"
+    },
+    {
+      "fit_id": "6bf7a7f37c7edc63f982c9de4009c1a725a3c56296197152d618f705d52615c8",
+      "role": "path-outer-ridge-2022-9",
+      "cutoffs": [
+        3208,
+        3228
+      ],
+      "fixed_state_id": "c547600099a3682e0cd1274074aaa5dd2c02a85fca085cff4560cb973f24ccc8",
+      "prediction_frame_id": "336041034421c120c088008178da330f0ac162b1d14ecff2f4f5b45846d1b866"
+    },
+    {
+      "fit_id": "6d074455d4efc82bcb8d0045f8cca414bf1336def7f31f0154282272d16e8c45",
+      "role": "path-outer-ridge-2019-9",
+      "cutoffs": [
+        2451,
+        2471
+      ],
+      "fixed_state_id": "686ad6d5b650e5377343e512c1ab9039a5bdde1dd75d6987f3d0cdfb85724a8c",
+      "prediction_frame_id": "1e97c658504ad053f59d7282400e395d8308158960aa3968940b5b8e09285f2d"
+    },
+    {
+      "fit_id": "6ddd80fc559813c63d62055c9ef957d9529290441946877757c03d67671e58f0",
+      "role": "path-outer-ridge-2017-2",
+      "cutoffs": [
+        1802,
+        1822
+      ],
+      "fixed_state_id": "3a44955891fbf621dbe4b215c533089a4f3daa37821724e77817760dbfa6e780",
+      "prediction_frame_id": "a7003bc0e73faaabf836cc13af7ee5a88c149c6735b1e32d32d7f5ebaf7d3085"
+    },
+    {
+      "fit_id": "7332958e7aaeab72b4461a340dc6825accf703de67523d0c7b88b1557764548f",
+      "role": "inner-2021-2-1",
+      "cutoffs": [
+        2720,
+        2740
+      ],
+      "fixed_state_id": "8d46bb0ec16f968ea500dbea1794216eff8d8821574c9124e3ba1954c06b5f28",
+      "prediction_frame_id": "ecb742a93b7f939521a95aa0b3b8f7fd69589bdc6312b3846d439ef90971d82b"
+    },
+    {
+      "fit_id": "7447b88e8a6a4d91e38597c4c462a1ee49e30d009e78b3a376c0c6a1576c471a",
+      "role": "path-outer-ridge-2020-7",
+      "cutoffs": [
+        2661,
+        2681
+      ],
+      "fixed_state_id": "e6176eb1e118c948bcb53f8b25ceeb8684fbd46c98602fbc5fd19003d98693f3",
+      "prediction_frame_id": "142c71ca2eae4ef3744189a17af6e9e7534ee896c42ad217c619a7b60fa41f87"
+    },
+    {
+      "fit_id": "74df083597ca79e824969d303624296a9a85c256c372dcaa3ab32d344994609c",
+      "role": "inner-2023-1-0",
+      "cutoffs": [
+        3139,
+        3159
+      ],
+      "fixed_state_id": "137e526e1f005c78158a3f192090930f91e9f84570f6cea46fe78839b205b6b1",
+      "prediction_frame_id": "ee356eaaaeb347e71b93ea6473558c878cbb6034481cd2908e96ea8ed86f4f8f"
+    },
+    {
+      "fit_id": "75f904465e5328feddb90bab09cbf290205088dd382165c2295055388be2d834",
+      "role": "inner-2017-2-0",
+      "cutoffs": [
+        1692,
+        1712
+      ],
+      "fixed_state_id": "61ee029b998e435224dd73959123f89b9175cf456df42eddc230196f0f7523d5",
+      "prediction_frame_id": "356c5893b2a3e96f893964c27f16d045668544bf0d2c2857ef1833e695d27107"
+    },
+    {
+      "fit_id": "764254d70ec886d716125b931c45c2d3bd54b6d12a90b0455203b54ce772755d",
+      "role": "path-outer-ridge-2021-8",
+      "cutoffs": [
+        2935,
+        2955
+      ],
+      "fixed_state_id": "15e3fcd5db714308b25b3fb3252f9e1ca09314906aecc4f71ff0f3932db5fe64",
+      "prediction_frame_id": "ff542172c0253591f59239e5f55a24e35f87a43d040ceeb36eb2f1a073c781a0"
+    },
+    {
+      "fit_id": "765c0269485da56933ff6801b591288d42dd6937bf1c114565c740c3f56807fc",
+      "role": "path-outer-ridge-2017-8",
+      "cutoffs": [
+        1928,
+        1948
+      ],
+      "fixed_state_id": "39a18817f751499b399fb755edc01994ef562f6f069a582700d1e3768591eb7c",
+      "prediction_frame_id": "542c3f76a195900d73f3e296db1f1157b55f34b0e3190473a3b0cc01f91d99d9"
+    },
+    {
+      "fit_id": "7721fad8550a3cd7222334f483b859a9e15d8f0f0279f71902f8872c0a7b7ec9",
+      "role": "inner-2016-0-0",
+      "cutoffs": [
+        1316,
+        1336
+      ],
+      "fixed_state_id": "836d82e77a6c56d58a362eaf65272c7348eeb9e210bc589e1225478403d15fea",
+      "prediction_frame_id": "2d3459427c1515f0eded5e2e37aea775eb8e70d7b99eebe351034063e8a08f83"
+    },
+    {
+      "fit_id": "7805db23284336c0949aec4ae84ddcbf738fc604f3f24e58cb8889d8c4a39f75",
+      "role": "path-outer-quantile-2016-5",
+      "cutoffs": [
+        1615,
+        1635
+      ],
+      "fixed_state_id": "8563fede3c816a9d8f25ecd8c89a3c3c36e04aa07930177172bf3a1fd1ceee9e",
+      "prediction_frame_id": "d49313dcad6f2748bfe18f2135fe78c8b70ac05bd33fec5bc67a8bd06c192988"
+    },
+    {
+      "fit_id": "79eb74329d00ad74a73dc3d29e5ef61c298e6d4e76a12ea66bda5315b4b64813",
+      "role": "inner-2017-0-0",
+      "cutoffs": [
+        1566,
+        1586
+      ],
+      "fixed_state_id": "2cca30aa3f78ffbc81ae99a409853c5d45e72578d2e085cdc23cf109cac4242e",
+      "prediction_frame_id": "7a30057cd2ba259c1c0fc36e7943742e0a4f818d1beac699b2b60e54e31ef5dc"
+    },
+    {
+      "fit_id": "7b39abe31b62a73347388985e89f79f500d5a132e7815506589ddd69dac82bc6",
+      "role": "inner-2017-2-2",
+      "cutoffs": [
+        1734,
+        1754
+      ],
+      "fixed_state_id": "bd4083bcd49ff51ffbb9dd94f2032a37b35fa59a98147f8b630507cd1bf4f968",
+      "prediction_frame_id": "7a0c459771f3f95e364aef1453e2099f08e985b5cfcd97d1e76f9d72f249ba02"
+    },
+    {
+      "fit_id": "7c24d30ee64615ad1b64b2593d3e9032c9fbb6bcf437521411ce42f2cf035f97",
+      "role": "path-outer-ridge-2020-3",
+      "cutoffs": [
+        2577,
+        2597
+      ],
+      "fixed_state_id": "b77cb6cdf27fc957b3b61ce7345048cdd64a5433e64aabbec0ba56363c89e90f",
+      "prediction_frame_id": "da3ddabd249635a02692dcea9a07d5c2c2ce82a4b09ab8c1f6d3c4dc8330fca8"
+    },
+    {
+      "fit_id": "7d4daa27681f92b57266dab34bd197997494df1fbd74ed63b5deda27608f9417",
+      "role": "path-outer-ridge-2023-2",
+      "cutoffs": [
+        3312,
+        3332
+      ],
+      "fixed_state_id": "2e35c0cd8772877c37a1d82d6c3384d3cc251bb5b4137a10388e5ac4b791b2e4",
+      "prediction_frame_id": "1805cb686bf96596a779ce0a9b15435f0a5310a7adbca08d4879a41cc39f7fe6"
+    },
+    {
+      "fit_id": "80e663807be12a3fcb1cbead48cfdb846441c6f07ce3a3a3eec88ffdd0abc7cc",
+      "role": "path-outer-quantile-2017-1",
+      "cutoffs": [
+        1781,
+        1801
+      ],
+      "fixed_state_id": "ee16ed3d8d0557ae79701d36d0b8c607d8d179b2e31e6b70a4f7582277e8a2f7",
+      "prediction_frame_id": "0c049cb76c97cbf68d379c8f061ce476f701a8a2b9e2b82d6bbe36760fec83d3"
+    },
+    {
+      "fit_id": "810756fcfb95666d79984f4806b973f51f9323167ac530449e36df0d25b1f048",
+      "role": "inner-2019-0-2",
+      "cutoffs": [
+        2110,
+        2130
+      ],
+      "fixed_state_id": "81ea5e1e94258bcad1d95bee91f478b0062df7284d79aef1a60861bddc05a748",
+      "prediction_frame_id": "9cf4dc33c048c86e688e259a81cf4a985f6f71789f9c528435bd23f06293897f"
+    },
+    {
+      "fit_id": "813f838775163b55fa2dba10b1795bf0982cd455412a529ed113f96673c5fae2",
+      "role": "inner-2017-1-2",
+      "cutoffs": [
+        1671,
+        1691
+      ],
+      "fixed_state_id": "a90c3ad4eacd09768048c5377a3c9672d4a37b84bea95eab584e55a91ac3b989",
+      "prediction_frame_id": "db9a574927a38c59b2062b6cae52510293276a1a2a244fd98ffb0082072d3906"
+    },
+    {
+      "fit_id": "8196b560e40b1a95f1522a9b460ed60d57a1e67f05c585ed57f38a0d3c1f211e",
+      "role": "inner-2023-0-1",
+      "cutoffs": [
+        3097,
+        3117
+      ],
+      "fixed_state_id": "40a43b244f6adb39eba8e83eac539e1e88c79afdb6a9136a5b9617f04c2a1641",
+      "prediction_frame_id": "bd268bd93fc2f650e0e980bfd0e4adbd8815706f2b359fdf4656315293f1f2f9"
+    },
+    {
+      "fit_id": "8200c5ae9bde038719633df827929e874de49e7645b3162816e8598e96ca8666",
+      "role": "inner-2021-0-0",
+      "cutoffs": [
+        2573,
+        2593
+      ],
+      "fixed_state_id": "63e0ae8f04110422446fa1510dc877dc53eafb18ec458de80e4ceb6960542d65",
+      "prediction_frame_id": "ea50b3dbc097fe998d9474ffe028718ee278932adf32303de6509ed29179b9b2"
+    },
+    {
+      "fit_id": "82093bb5ac718dfae3a8120198ce80eeb4ac1e6c0ffc4ad181b026e31eef3156",
+      "role": "path-outer-quantile-2022-1",
+      "cutoffs": [
+        3040,
+        3060
+      ],
+      "fixed_state_id": "ff441330232b804c4c5ccf65c8fb84f33addf06a689bd3a672b780d406344961",
+      "prediction_frame_id": "56b8066464dc731214514d2e0d11aaaadc7e303d6d1144fd7b30af1d3bfb1c55"
+    },
+    {
+      "fit_id": "82459b6b9140c62a37bb6f6265d4c5f5ffa21d34fdf2778bc6219420cb554c54",
+      "role": "path-outer-ridge-2021-6",
+      "cutoffs": [
+        2893,
+        2913
+      ],
+      "fixed_state_id": "383a0eebda13b8ccb2c3a8a6b6697097f88d1628ffb0b8df9289cd31f0bb5f92",
+      "prediction_frame_id": "c10e7e9766e7d26887bb65198071ab468920d8292418df047db1eef206c6dcee"
+    },
+    {
+      "fit_id": "824df940e618490cba3d67b3cef323eae38402bc3f98a1379d47fbeaace9cafb",
+      "role": "path-outer-ridge-2022-11",
+      "cutoffs": [
+        3250,
+        3269
+      ],
+      "fixed_state_id": "3231aa4498e50d38291bb9ca04c81011a1f46f98a8b100a7429b61b4cbe916bb",
+      "prediction_frame_id": "8f5229121e77d03880afe7dcd4229ff6d2b3505ec97ab582da87050ffcdfc646"
+    },
+    {
+      "fit_id": "8314be880054f7f5e8340e2136c10528193a1d9e8e5b50a737eec215f1879d3e",
+      "role": "path-outer-quantile-2023-10",
+      "cutoffs": [
+        3480,
+        3500
+      ],
+      "fixed_state_id": "aaf5ed94ff8b32190f10b5c95c689a508edfcdf13ad745852ec61410350b95f5",
+      "prediction_frame_id": "c58b5281706a7178f88e940a2e26c11f11048d1d5230c214990b2c24e36c2557"
+    },
+    {
+      "fit_id": "839f5b7d87e42a7335d886cb3c48df5e7e691d19f58966e0b5570d69779c8b03",
+      "role": "inner-2022-1-2",
+      "cutoffs": [
+        2930,
+        2950
+      ],
+      "fixed_state_id": "49af2330357fccd44d84f2433fbed573c82c2c5bbe26ab10379c84a4d924dc75",
+      "prediction_frame_id": "720bf2b0317f148136a076a572a722a6739c4e1b8263df871972f3a69442d090"
+    },
+    {
+      "fit_id": "83ea3d7f2aba035e3fb5a776dda2bc2e67a9decf072cda4c9958701e42bf4426",
+      "role": "path-outer-quantile-2018-10",
+      "cutoffs": [
+        2221,
+        2241
+      ],
+      "fixed_state_id": "6ec591b28fa484385b444020f803317f40c9a1bf137cc5e8d1d0328234f6fabe",
+      "prediction_frame_id": "38a4856e48dd28258b06422f3f42f374057ec7e38efc13052f2454fd860b60e8"
+    },
+    {
+      "fit_id": "8459f26f1168808dd2abdd040530262315b66b8c95e6ac524a5f1a1badda4cd4",
+      "role": "inner-2018-1-0",
+      "cutoffs": [
+        1880,
+        1900
+      ],
+      "fixed_state_id": "f6275638a576827f658469607174e814faf14986d39ff10f67f2ecfc48ab9236",
+      "prediction_frame_id": "d9faceaae47d3818561b127eabe16c2da8bfb34f15ce5e9dced51bbba5f6d324"
+    },
+    {
+      "fit_id": "84e0c935fe02a3517aca51cedb9dbea47a27c6be86a81ea726ce668ec1e0dfa7",
+      "role": "path-outer-ridge-2016-2",
+      "cutoffs": [
+        1552,
+        1572
+      ],
+      "fixed_state_id": "cd980ebdc480c9e41cccf02dc19b68e1b860648a01eb31a624af3e9c796fcd4e",
+      "prediction_frame_id": "71f8f2c1f405bdc89ae958a93993fce2c421d5efd7cdfbd5af3efddede3e9f31"
+    },
+    {
+      "fit_id": "85ab580d096f9543ab1ccfa8d66ffa92bddf5f7b20cd07967fc9e27b4bff02f7",
+      "role": "path-outer-ridge-2022-8",
+      "cutoffs": [
+        3187,
+        3207
+      ],
+      "fixed_state_id": "028eec7657fab203ded731aa2a8df9c56fca601664ad7efc304fc0ee0eac053a",
+      "prediction_frame_id": "e348bea38cbc64425c5439260bc946423ee5a7445b9ddb6e36a6cd38c15ba1e4"
+    },
+    {
+      "fit_id": "86fa1062b1901be113d8ea61ba8af29691187400c6b3342002e3e19dc838f930",
+      "role": "path-outer-quantile-2021-7",
+      "cutoffs": [
+        2914,
+        2934
+      ],
+      "fixed_state_id": "bea88d3a0fba99b740dc5a69bbb69e13539bf14e2081cb81253269d0eca5595f",
+      "prediction_frame_id": "eccdbf71f78fe8c75fdc075d44efabaa251a319f4a4a5dec4693face0fb215d8"
+    },
+    {
+      "fit_id": "871145e04c920341bf2146fe20b55dd0feb0f3003d2698945017f7457b8dc958",
+      "role": "inner-2018-0-1",
+      "cutoffs": [
+        1838,
+        1858
+      ],
+      "fixed_state_id": "55d80881b08f6532b29742c68f99815d7cc2ac91e702176283b82542ff567d86",
+      "prediction_frame_id": "9fb6c83cc7d1be38621f5bdd8fb5dfe0ce2169d5c930a3a99ec732f08523d5ba"
+    },
+    {
+      "fit_id": "8808540546643c2367e59e3de9eb0c3d1bb56732a8127aed9f46e927f837147d",
+      "role": "inner-2016-0-1",
+      "cutoffs": [
+        1337,
+        1357
+      ],
+      "fixed_state_id": "7b43a7ce279651f550063346e56298f09bd82b358477278ce3d66cc54fe009fd",
+      "prediction_frame_id": "f940f3f3d7af7d2efc5f93fe47d6be132ead9acfa39f55d42a3fd198fe337675"
+    },
+    {
+      "fit_id": "8839528b2f5dd8c1221777dd5892f397bea959940a61b10e9b2d6f5b7447020f",
+      "role": "inner-2018-0-2",
+      "cutoffs": [
+        1859,
+        1879
+      ],
+      "fixed_state_id": "d5f4b7681f9db8317bead0f7cb137167a4a11cd7bc3e970a774c3baeae260a40",
+      "prediction_frame_id": "cd60e2b4380f3ef743a335778ef23ed23164c317bff034c756a3f98d7645014b"
+    },
+    {
+      "fit_id": "88763db12d95dd8b90d816677de8f7e643cead223409b779010383edde575f0c",
+      "role": "inner-2023-2-1",
+      "cutoffs": [
+        3223,
+        3243
+      ],
+      "fixed_state_id": "1a51df93812d6913640dc0a8083a521ba517313e4a1b837be78aa0ae65ab64bb",
+      "prediction_frame_id": "65a2b0cc82358621f7feba41f63f7c8f13ee56b9a3d647cbfe2beec2c707a80f"
+    },
+    {
+      "fit_id": "892560b48e945f8eb4dff59807f2b6bd9bd80bd2e954da346b6f3063e9e93895",
+      "role": "inner-2022-0-2",
+      "cutoffs": [
+        2867,
+        2887
+      ],
+      "fixed_state_id": "6437a28624fbd4d1d0248c598f8b563e88de57cbec4ae1660fa22d04b0f84164",
+      "prediction_frame_id": "6cff9eda39c0c0f07439688d044c11cc6b90ec8cb725b61b398a386c193c780d"
+    },
+    {
+      "fit_id": "895516286b8417be0ddf305c94060cfbd196bfefe1f7975de3f1cc4a356c9307",
+      "role": "path-outer-quantile-2022-11",
+      "cutoffs": [
+        3250,
+        3269
+      ],
+      "fixed_state_id": "061da3052591f12ada1bf7044c10a7955b0177aeb6e2d139570e98596d4e2b66",
+      "prediction_frame_id": "53800eeac43118e29a38e92b1d67ca081371e61e73a30f009c1689e893e77313"
+    },
+    {
+      "fit_id": "89e7766600f6374ce45b5628f124c1da00f58d3e9fa09c5254a13d767ccef857",
+      "role": "path-outer-quantile-2021-3",
+      "cutoffs": [
+        2830,
+        2850
+      ],
+      "fixed_state_id": "b5c26c2ff3e48d7e252756d5b7cf0b7bf72b22096fa45896de5e3865a4a1a8b4",
+      "prediction_frame_id": "2c5ee247e45a32c5736642eeed9698c0e82a99d444944f64dabee00dcdd9446d"
+    },
+    {
+      "fit_id": "8a18fe4a4b17f873ec636eac305b99454fcde2eb159b7722f83460d9790c462c",
+      "role": "inner-2016-0-1",
+      "cutoffs": [
+        1337,
+        1357
+      ],
+      "fixed_state_id": "650836378db4d463700073ae302bf352d6ff58d8d1a1883025683eed541940c9",
+      "prediction_frame_id": "a3c592298aa0c717713707f97fb2aa6d02c8da523a88b0f0eb345e7ebcbfb5a6"
+    },
+    {
+      "fit_id": "8a341672bbd89cb2a71084e45a4ba7fabb727603376e1cc7c4e1cb8791483576",
+      "role": "path-outer-ridge-2017-11",
+      "cutoffs": [
+        1991,
+        2010
+      ],
+      "fixed_state_id": "47c769c2170a383293322870bff29c4c65e488962721877530eeaa1ea200d14b",
+      "prediction_frame_id": "16daa5b31d0d6071a516c27b26c3e8226958c77281be6da27b6e283a67cbf556"
+    },
+    {
+      "fit_id": "8ad01df4a4ad1a4e4223c15fab5c326d1f4463b3b88ac8750ee39e04b0f9dc41",
+      "role": "inner-2016-2-1",
+      "cutoffs": [
+        1463,
+        1483
+      ],
+      "fixed_state_id": "f91f05b5a174b803eeb6f07490243a75b060d08d6bb021fd31c45565d66f7c0e",
+      "prediction_frame_id": "4db4a53891acddd8b138570e42166d39b8b5128165a19898643894e76747b562"
+    },
+    {
+      "fit_id": "8aff5191059ec24ba9dfca7e9abff6437fc4dd361f12cd4720fe9111d8ef0655",
+      "role": "inner-2020-0-2",
+      "cutoffs": [
+        2362,
+        2382
+      ],
+      "fixed_state_id": "433081cac3c4195b63f561e615824c4fd27d9ff4ec8e39f56e6b8771a42ceba0",
+      "prediction_frame_id": "0d2abe7e75299523fc9bc1ac77d7e20fa635abd85c7fb9c7995be182e5954989"
+    },
+    {
+      "fit_id": "8b1a9470ef085f57db37113350428d6541fd3bd875e01cdc5405b111921b952c",
+      "role": "inner-2018-2-2",
+      "cutoffs": [
+        1985,
+        2005
+      ],
+      "fixed_state_id": "1dd940e5c351d4bcb441f15d4ece7b22ff848fe6f3d4ad17d7b67a7ac87c4086",
+      "prediction_frame_id": "e3b92d08f53687e4669cac8075c400b98e4f7e1bb2ddf754f2b941f04da7bb41"
+    },
+    {
+      "fit_id": "8cb1d7ea2c0ddfd7b7c645207d9c5fda3aaafc8dc65cf9ef82bf6de8fb1b108e",
+      "role": "inner-2023-0-0",
+      "cutoffs": [
+        3076,
+        3096
+      ],
+      "fixed_state_id": "bd2aaaec0ecede777d8a4893803a0d2976eb02ac14a64c308755de999077e781",
+      "prediction_frame_id": "b180ce3d5ca69078524b5809b3e07705fa97a0053a2e2db8eef1b3e69889a487"
+    },
+    {
+      "fit_id": "8cffd35eb4488a89d7a1f310b6703020e897be33c98e2dc21d17eaa4b7e017f0",
+      "role": "path-outer-quantile-2023-6",
+      "cutoffs": [
+        3396,
+        3416
+      ],
+      "fixed_state_id": "311965be45e6b78016319e1c58a68119e3ce55a063fddf882e21ff9efb44c355",
+      "prediction_frame_id": "c426460545041a4343aeb75dde9d27e001e12e1f0f23b1a6fc8d2232b4957b1b"
+    },
+    {
+      "fit_id": "8d99cd4eec0def11cbb09cbc2e62fa1725f9315e3bd47dcfb1cf6edc158434e2",
+      "role": "path-outer-ridge-2019-2",
+      "cutoffs": [
+        2304,
+        2324
+      ],
+      "fixed_state_id": "0c01a72ef0f7569b884300d341d7b81312d5e15d726541a5f676e6945997f312",
+      "prediction_frame_id": "326b9f3c7692d89a8c581e213f05634adec79fc9d982d50e2d7048592b360404"
+    },
+    {
+      "fit_id": "8e8e90745b6e1d61432a968b15fd545e2028158204f082c07f83548859be7b3d",
+      "role": "path-outer-ridge-2021-5",
+      "cutoffs": [
+        2872,
+        2892
+      ],
+      "fixed_state_id": "e684ed89c65d5231a7ee4b31c4119378031e3e316b1661ee9853ee1dea5808d7",
+      "prediction_frame_id": "7ce07a0ddb50ba8910b852587d8ba9233b23a64b38f0e65fae05c80749529f15"
+    },
+    {
+      "fit_id": "8ed0f46447b9320f69bf1c515a890956e0ff1d08a0a422249a0080d70c89246a",
+      "role": "inner-2016-1-0",
+      "cutoffs": [
+        1379,
+        1399
+      ],
+      "fixed_state_id": "1cc4d958f4e5b491a1ee33e7cdc0e5725698170a59e732ebe5a885f11a313a17",
+      "prediction_frame_id": "71d5265ff65f4800ed847f028fb7e05401607fee7ccd283dc0daa945a671a164"
+    },
+    {
+      "fit_id": "8f91e568c5c1adf1e0c67ac2112a40db8576d51956d766319e7680756a336954",
+      "role": "inner-2023-2-0",
+      "cutoffs": [
+        3202,
+        3222
+      ],
+      "fixed_state_id": "de8276fe198b37490a922962caacc594de7988afb75413c889a6ba844275d5b2",
+      "prediction_frame_id": "5bdd3f2a04bda1297789c9e400be4a9bf9680abb79dfdde7b9ee8e9cec1b1790"
+    },
+    {
+      "fit_id": "9101a6d9fd7a968c407943e61e23e9c33a88342dfd7943d2b0e311b7f4726c2f",
+      "role": "path-outer-ridge-2018-1",
+      "cutoffs": [
+        2032,
+        2052
+      ],
+      "fixed_state_id": "c5c5821b1d4961d1970a461c6d005c5f689dc86060ee676b367cb21c42d395ff",
+      "prediction_frame_id": "7fce815dff5727137a9f94d20a181ab2848e7e08aa6c6108ebb15f54e0525193"
+    },
+    {
+      "fit_id": "91aaf201bb3692010abb697e0c0ee8084e5ee228897e2ad2623e6b4a056587b3",
+      "role": "inner-2021-2-2",
+      "cutoffs": [
+        2741,
+        2761
+      ],
+      "fixed_state_id": "13eadc59c75fc917c481b433fca8a154ed6319fb6102fcd719974e49e094da47",
+      "prediction_frame_id": "bc9049a5fa553ca3f3d35b7e3665a05ba395bce157c759a5d7be73850afe9be5"
+    },
+    {
+      "fit_id": "93a6128cbb7bb17ce874375938479a3e2b144aa9330d61379a75483874f544f4",
+      "role": "path-outer-ridge-2019-5",
+      "cutoffs": [
+        2367,
+        2387
+      ],
+      "fixed_state_id": "977b5769dd4485e198e919e9ea16f39ab7cab8b04fffe658c84a1d25478eb6f2",
+      "prediction_frame_id": "15a530eebde6a0407308f95887ed55ecb82b42dea96b891bc274a4d05fbd829a"
+    },
+    {
+      "fit_id": "96da78fdc460bb35d186b0a40ab43266a32c460a5d425460708591105e286d42",
+      "role": "path-outer-quantile-2021-10",
+      "cutoffs": [
+        2977,
+        2997
+      ],
+      "fixed_state_id": "8679958edc4bbf3eab64f875bead310af1fd5c2a705db1309b1a9e0d0f7990c2",
+      "prediction_frame_id": "8d18cc2d8f173c932b9e48a9cde8c6e1db20fa5ee3d61c78ee04377036adfcd4"
+    },
+    {
+      "fit_id": "973613f986d5bc3c9b7063a716377725347be96c0884952a63c7f217bfa59e42",
+      "role": "path-outer-ridge-2020-2",
+      "cutoffs": [
+        2556,
+        2576
+      ],
+      "fixed_state_id": "633df49935843dcbbb919e392ddd65d2a19e73cf9e5a8c7f09e614e0a3f3a651",
+      "prediction_frame_id": "f10bdfc569fab589ce8c4884964becf31cbcfb2c4c3d70b96093caf9ce38e0ce"
+    },
+    {
+      "fit_id": "974e7673656262dd79a795c168bfd4eb6991c6e60b54ab93179c8486a7b9a06e",
+      "role": "path-outer-quantile-2023-11",
+      "cutoffs": [
+        3501,
+        3515
+      ],
+      "fixed_state_id": "7b6f06af8b391a39d1e98386d6b81fbdbf8a4913106e727f2db7930ddb8fe7ef",
+      "prediction_frame_id": "5c362216797ae2db98420ac59dd645ea8e4dc54e1f1c6a1bdb4ff0bb2a644a1a"
+    },
+    {
+      "fit_id": "9804d680ae54c6e9f7d00a348c67aeb170ca7497f1a4bf4de7ef5b6bce6ea942",
+      "role": "inner-2019-1-1",
+      "cutoffs": [
+        2152,
+        2172
+      ],
+      "fixed_state_id": "1cdc92eed18dd41d427f73acc781ac16b52f4abac16b58b7f0f3587f2c4a2beb",
+      "prediction_frame_id": "5ce5b5f38fc9f4a497a4d2f3244143cc97714cafab9e69276a10a16499de937a"
+    },
+    {
+      "fit_id": "98347d465b5f14414c0ea691c6de924c57c13becafa764130e0561d0ab877f35",
+      "role": "path-outer-quantile-2019-2",
+      "cutoffs": [
+        2304,
+        2324
+      ],
+      "fixed_state_id": "0b91ba7b414171ed94cf07f510874f8b9ad0b25ac057a6e7b6308728f903b31c",
+      "prediction_frame_id": "27c72e6394fdaf89a40c75f6446178185ba9b4e619fa4b3858b9cdec0616384a"
+    },
+    {
+      "fit_id": "9862a9fba4c7af9dead114504d6ed0c6b39035345ef5021c9768779af54c1741",
+      "role": "inner-2023-1-2",
+      "cutoffs": [
+        3181,
+        3201
+      ],
+      "fixed_state_id": "a1190cbf9bc57f4c7680248004ad5422fd1c44b0c898742d09d475d1c2b97b3a",
+      "prediction_frame_id": "1449e86fb7b1145677d9277d384baf9625b5048d1ab021731c3546e8504cb908"
+    },
+    {
+      "fit_id": "98dc2173c35d9d6dc367e5a8b2092a32764a2989c2c58d50af083d2a4f6c3323",
+      "role": "inner-2021-0-1",
+      "cutoffs": [
+        2594,
+        2614
+      ],
+      "fixed_state_id": "f1dc3c7501f372d94c8225a3ec5a3f7a2a0d303d64f3666bebf06f462c4b01b6",
+      "prediction_frame_id": "c98aec936af8e5884dafea63b5c5d66e617d240ad3ad015ad3663f7704bfa639"
+    },
+    {
+      "fit_id": "99c69a0f7fb01ac0dd67bc71d96fbb76116de592e737a543e9a0a4e37236ef34",
+      "role": "path-outer-ridge-2019-10",
+      "cutoffs": [
+        2472,
+        2492
+      ],
+      "fixed_state_id": "43ae9e4624477b4b7c7bd3b4246ae513cde8766d72ec2d81d23681a760071b40",
+      "prediction_frame_id": "df1de93018d57bd1cf751d660a84eb8d95a636ac947291d0e05345ff490e7998"
+    },
+    {
+      "fit_id": "99ee5368ddf97f148f64c2facdae88ddec9b85186ad6d9aecd87a5819e0c53bc",
+      "role": "path-outer-ridge-2017-0",
+      "cutoffs": [
+        1760,
+        1780
+      ],
+      "fixed_state_id": "28f36bbb19c65323df6cc9c6662ac209356c27f9f2a827bbbe801a1576a72b74",
+      "prediction_frame_id": "599b4e31d3bbc4173b23bcd3988e63f2e06f213819ff0701bc608b07deea3311"
+    },
+    {
+      "fit_id": "99ef54cba73f8a380da49b3a73b82de1ae337828d77c428282a3f4335358dab1",
+      "role": "path-outer-ridge-2016-0",
+      "cutoffs": [
+        1510,
+        1530
+      ],
+      "fixed_state_id": "2ca7f39028f81a9ea11bcf8926869b6aed17845994300e20db34f6de766f0107",
+      "prediction_frame_id": "ef3bb5e168edcb745d8552cd28ced4d85ff44474d9fc24dc9d5e8a34dff762fd"
+    },
+    {
+      "fit_id": "9aef0fd8086954c2cf2cd3b1974b72b3d43a76ac446711fe888efb29c4f6121e",
+      "role": "inner-2019-0-1",
+      "cutoffs": [
+        2089,
+        2109
+      ],
+      "fixed_state_id": "862b6b5a47c4188f76031608a974682de3e0be6379c7f3f8919d3fa80f1b6102",
+      "prediction_frame_id": "f8c87835f37dec6cd9e361324df8c4030c1be7f97cd9b6641ad0d76d3cdb1dce"
+    },
+    {
+      "fit_id": "9af6b34d2b5a3e56a365ab9a11603b3c242118692a48157484506196cc0ee99b",
+      "role": "path-outer-quantile-2021-4",
+      "cutoffs": [
+        2851,
+        2871
+      ],
+      "fixed_state_id": "8973452855e41840364590fd3bfaea1f65f891159d9f646a412b8c3e94f7782a",
+      "prediction_frame_id": "972dd887c1adf10daae25f9060c2a56f7bd1a61ed102eca90fa0f8bbee53c1e2"
+    },
+    {
+      "fit_id": "9d0c2491491322c1abbf5d5bcf274a06f74f94e24cef0f6ac9b2913decbbdd62",
+      "role": "inner-2019-0-0",
+      "cutoffs": [
+        2068,
+        2088
+      ],
+      "fixed_state_id": "5cc53abad39fc6b655ebe01fa8e92faae7dc1f5620fa078f98921cdc5bda88bf",
+      "prediction_frame_id": "c6f3a6770fb0dfc49eff1735e301d7ee2918015fd3d40b55240a39ee9ba8f0fd"
+    },
+    {
+      "fit_id": "9d5f26d6164003f9c90b9b30c86073f79061a5d828b693da822068283feb0d12",
+      "role": "inner-2016-2-2",
+      "cutoffs": [
+        1484,
+        1504
+      ],
+      "fixed_state_id": "d27eae37e2caca18183db328055df99d9696fb3a8f83d39f20b6c2f2f1aa29d4",
+      "prediction_frame_id": "16013b7d5e277209dcbd5e735a1ab17f9df0e6817d1cc58b3db86d1385a6aa40"
+    },
+    {
+      "fit_id": "9d726511d3bbb1fa88e833c6f64ec3a5a9a66b4692b93f58aa2960b10934d348",
+      "role": "path-outer-quantile-2019-11",
+      "cutoffs": [
+        2493,
+        2513
+      ],
+      "fixed_state_id": "a08f3e7c15400b9ded0454dbf02360c277544e069708bb515754e8cae93cab4a",
+      "prediction_frame_id": "74a5cc348e8f115c86d42f89f7e73d72198570a7bfccaefae28b687428e9cdf8"
+    },
+    {
+      "fit_id": "9e03329f523e630f1f211932dcf3bd8d9f8821f39d9d55843b62f061d03abc8c",
+      "role": "path-outer-ridge-2016-10",
+      "cutoffs": [
+        1720,
+        1740
+      ],
+      "fixed_state_id": "285ec723b54231dfe7033ae2db5da3ce396eafe1b7096ba61f30d87345495779",
+      "prediction_frame_id": "be7f652d71265b0df2ffe83ae5650d42742ee85c4c183956a31b206db8c8ccc5"
+    },
+    {
+      "fit_id": "9edf077a0b402ba0b0a78c3e1dd69843f31881e29356935d68226e2dc926b14d",
+      "role": "path-outer-quantile-2021-6",
+      "cutoffs": [
+        2893,
+        2913
+      ],
+      "fixed_state_id": "daf49ee31a97d02c7ab7a6ed91e01845f0f1e0b18f65d2d9803b0cb624187d06",
+      "prediction_frame_id": "b883d93abd39f93d5ab19866b587d7ae7e65bc5918a3481f9a9b31dfd674b2e1"
+    },
+    {
+      "fit_id": "9f8a4ce9e634e8ead681438e29162a6a6d3e6f362e22eaf4ddd4f27e3ade5b91",
+      "role": "path-outer-ridge-2018-9",
+      "cutoffs": [
+        2200,
+        2220
+      ],
+      "fixed_state_id": "c425203daffc3ae0b7b9efe4f291be0d3a71d35ffe0337a66b0bed620545d2a0",
+      "prediction_frame_id": "724074202e01fd8c69a01c23de499cd8f785d2f44822b284053d5ed024fee53c"
+    },
+    {
+      "fit_id": "9f97d5b69a549d689bed7c6bd23c94a680db2781f11aca447bac6eb470e368b2",
+      "role": "path-outer-quantile-2018-11",
+      "cutoffs": [
+        2242,
+        2261
+      ],
+      "fixed_state_id": "04bf60a05e34ac536914b08ecb9e5702a084f393d9fdaa69d840e45948bc88e4",
+      "prediction_frame_id": "cb830f09a56a0fb7300a3622e0e16569450dd177db749a55a4775a2479258189"
+    },
+    {
+      "fit_id": "a132689003898215c617a3d2d1dd187238f0c7b6adcc6b1e2da07ef57a7a72ea",
+      "role": "path-outer-ridge-2018-7",
+      "cutoffs": [
+        2158,
+        2178
+      ],
+      "fixed_state_id": "2ee36d7362d1b9c631f8cfe6aab5044c85b63283a4db676b81a270dbcc2cb416",
+      "prediction_frame_id": "cf59737d67ae898309c682dc4edb53b0c7391486e2beb6e481c9c17b987ae2bd"
+    },
+    {
+      "fit_id": "a137eef19741dd97f4aa483e09455bc2817ea65191d66bd89f0b39b5e63e9317",
+      "role": "inner-2020-0-0",
+      "cutoffs": [
+        2320,
+        2340
+      ],
+      "fixed_state_id": "a4930d3bc0b8fdfc191ee2c22f9761a3db794eabc6082013fa4a093e5faa309e",
+      "prediction_frame_id": "55907136b2a2d9ba2609d20626b8a55075db3ca2be842bd5fb0f1c309c2c2bda"
+    },
+    {
+      "fit_id": "a280acac1a75801cd8980ed9d68fd0e323f717b75c24a76f4e34885223fe67ff",
+      "role": "path-outer-ridge-2021-2",
+      "cutoffs": [
+        2809,
+        2829
+      ],
+      "fixed_state_id": "49e2a6de7cb36e808a21c47e48fc73e073922cdbae982e419ec14fead895c5f9",
+      "prediction_frame_id": "c8c5d0ebddd876fd26e9deffe0dcceb30baf261c28a952680d09184c864ec8e0"
+    },
+    {
+      "fit_id": "a34c0864492cd2b6a5c29a525b8f51da449ca8a596621386130ff3cbb46b7ae5",
+      "role": "inner-2021-0-1",
+      "cutoffs": [
+        2594,
+        2614
+      ],
+      "fixed_state_id": "119cde0c61215feddc882de3169fb8d3a15f5920d90b1d58fc61ce84753c9cd7",
+      "prediction_frame_id": "72d588bd3e93c715bafb8a55f5aab633819846d4109b7a6fcc599484ca719fda"
+    },
+    {
+      "fit_id": "a3d7b849c56fbb900154d2d9ac56ae060e95a27a0012ca97598fc8cee0c35522",
+      "role": "inner-2022-0-0",
+      "cutoffs": [
+        2825,
+        2845
+      ],
+      "fixed_state_id": "2636b501080140e8e257eeea1673717f26a500f2a6b337c92ac87fce4db38f16",
+      "prediction_frame_id": "9bae6a69ef90db8dc169b64485ae75d75575413bc1c34d9db7f4586f01d73927"
+    },
+    {
+      "fit_id": "a45aba100462364bcf63dbbeba599b801ebb1617b3dea50ef306117f4d751cee",
+      "role": "path-outer-ridge-2021-11",
+      "cutoffs": [
+        2998,
+        3018
+      ],
+      "fixed_state_id": "02b9671ee26faa9d9a37cacf03c09c1f2e88e4739b77c48ea6a186236a2adafe",
+      "prediction_frame_id": "c4623166a7ad8bb53a190cfba6f6e29a0f6a097b3fa86e9e724d839ad6156b49"
+    },
+    {
+      "fit_id": "a5461be6bf53467f302fa0cc50a37b29a8e3b4a1f27df65792b360fc7b714912",
+      "role": "inner-2017-2-1",
+      "cutoffs": [
+        1713,
+        1733
+      ],
+      "fixed_state_id": "6e3b9ac74684d668f3c12fcdfe31a4d691742f790ad5b522ddd85cc31cd3b801",
+      "prediction_frame_id": "1e71d10013da9e699ba6ad1cec1abd3545601a030a93fa1a57398e2ad7749700"
+    },
+    {
+      "fit_id": "a5dac84816ce8a0aa4fe635fd938f2d677f784fb621d8f47d2153e69b5ab4744",
+      "role": "path-outer-ridge-2020-4",
+      "cutoffs": [
+        2598,
+        2618
+      ],
+      "fixed_state_id": "d4b1538860c32d5342911ee1e2431a901fdbfc094db6a24afaa1069d16edae93",
+      "prediction_frame_id": "821c2342dc40db50c444aec81ebc3333f7cc943ecc890c82d2b98e2d5da2f628"
+    },
+    {
+      "fit_id": "a680d1aa29c23fe4775353cf9b74e42cd7cf908175c773e698179d6aba333c50",
+      "role": "path-outer-ridge-2023-10",
+      "cutoffs": [
+        3480,
+        3500
+      ],
+      "fixed_state_id": "959277f852a0c456f29688730032821272acdee4a5a18942f51dec20627eeb41",
+      "prediction_frame_id": "6683ad5f9e78fde23c9d5e93fc70245909b402c239ed6145e0269d753724b985"
+    },
+    {
+      "fit_id": "a6e8c6dcfb277dad7d1e1daea5808de384266170aca552c3ac6609a7198cc56d",
+      "role": "path-outer-ridge-2019-11",
+      "cutoffs": [
+        2493,
+        2513
+      ],
+      "fixed_state_id": "21c1afb1430105208a95bdbeb35c3c0a88f4be53950acf33d02ba36ae07fc1e3",
+      "prediction_frame_id": "5c8d9123f5ceebbb1184a422650cec1fe38fce8037c3f491fe47618e5e3c3e40"
+    },
+    {
+      "fit_id": "a870f55c0d7b8e35dc919f8b6105047b0802ae68e0fab79181c80dc5f9803017",
+      "role": "path-outer-quantile-2023-4",
+      "cutoffs": [
+        3354,
+        3374
+      ],
+      "fixed_state_id": "55114243a89e999bf8783b0221220cb46de191251882b95458fa8577a8439425",
+      "prediction_frame_id": "e78892e2c26fcd0b904209dc781ac530afadc2a82d8f99a849dda647672ce860"
+    },
+    {
+      "fit_id": "aa0c2edd9de774a56bbe2e7d8d79d9d55ce6d470baddc88950898bb373525e3c",
+      "role": "path-outer-ridge-2021-7",
+      "cutoffs": [
+        2914,
+        2934
+      ],
+      "fixed_state_id": "62394ca517c8218eb097dfc4e6edda41240b01bc2f13ab56763bd6beef496faa",
+      "prediction_frame_id": "7bf4ed39d42260a14d7a506a0661a8ef57e737a97a589626187e13b93835691a"
+    },
+    {
+      "fit_id": "aafcae77d84c91cc66ead2afb2f42a3442e7a005eec9e4232d3324505a58e559",
+      "role": "path-outer-quantile-2016-10",
+      "cutoffs": [
+        1720,
+        1740
+      ],
+      "fixed_state_id": "9669972d60b5e57721d87278052b9124c1df1c284ceb242b7bc64d1091d0b558",
+      "prediction_frame_id": "b00d3419d1b559b2e1c06fd587de4e326f79eba89c6e87c001c93b76fa93b692"
+    },
+    {
+      "fit_id": "ab1704518507dec1bdf2bb186619f42b5024a9c924f25534729eb9c2da992c2d",
+      "role": "path-outer-ridge-2023-0",
+      "cutoffs": [
+        3270,
+        3290
+      ],
+      "fixed_state_id": "cd3b79cd7d5a7ce58d5082de8777696d1225c1547505456858dd2d68a88e60cd",
+      "prediction_frame_id": "2329db7f14325331b4009298a26ad4f05c7041293739a801ff6039d1c49f67ec"
+    },
+    {
+      "fit_id": "ac12d2fe2e7ed2463bb012c983fce19775a6844ac3cdddd78df4b3d77c79933b",
+      "role": "path-outer-quantile-2016-6",
+      "cutoffs": [
+        1636,
+        1656
+      ],
+      "fixed_state_id": "ab628fbd55197c01a114cd07e512e8066024a4cc699cfcdf86264abcd4afff46",
+      "prediction_frame_id": "1b46383c7c14d626c80e8a098144fc4033e28398eb1301be309e8e1176da6b1b"
+    },
+    {
+      "fit_id": "ac3b391cecfaf0648f165ff933fa0fd5e6ecd08318186aaa7588a31aef2319e5",
+      "role": "inner-2016-1-2",
+      "cutoffs": [
+        1421,
+        1441
+      ],
+      "fixed_state_id": "579a0bee6ba30d4e11a3399818cbe1d4b95f59a74d1da0179aa4b356828ffaeb",
+      "prediction_frame_id": "c7d70d00da7eec066261838fcce086e29f7311c37e716240c924646fb4c8b480"
+    },
+    {
+      "fit_id": "ac91864231702dc886ccd75a35a6224d8096541425c7dbcd10484228d831f0f3",
+      "role": "inner-2020-1-1",
+      "cutoffs": [
+        2404,
+        2424
+      ],
+      "fixed_state_id": "86ee2395ea15c066ced471622846eda945e0c95b4ef0e0243c6903feb0f55570",
+      "prediction_frame_id": "b3cfd87c15e6bc49f5e4d0d0283724d1c812862c52dc97870859054de0a1ecfe"
+    },
+    {
+      "fit_id": "ad4899e363c402b030dc3f25764a27d6afd9818a88dc6159489bd5c0322566a4",
+      "role": "inner-2022-0-1",
+      "cutoffs": [
+        2846,
+        2866
+      ],
+      "fixed_state_id": "42c82027a310e9259778a78d63ec89fd6c4e6f9e175c02fc6cf22d13eba62b9c",
+      "prediction_frame_id": "c4efd7749b19738eaaf8d417f0a331138daee8356d032d96e8d6687781719035"
+    },
+    {
+      "fit_id": "ae23b9e29692609476825238b1c8f055dace63ce90d7e1ef49881cec25644c9b",
+      "role": "inner-2021-1-0",
+      "cutoffs": [
+        2636,
+        2656
+      ],
+      "fixed_state_id": "a60d453f6a1b1eb03085e90cd748cb7edc4c883cbc80553ec64a19d5cd21efff",
+      "prediction_frame_id": "b47b64ad90b24e8ef008e289521f68c06ba7ebedc55eced66200e0bc4d7e4fba"
+    },
+    {
+      "fit_id": "afed166413289c02c01c9e0e25e709f8c63842e638b8ad2a5e6d9cb0dc9ba970",
+      "role": "path-outer-quantile-2018-0",
+      "cutoffs": [
+        2011,
+        2031
+      ],
+      "fixed_state_id": "c7612f0ac70d9f13d51218354fcde0597f17b36f7d7ae5765fcce682d180d699",
+      "prediction_frame_id": "a0636df9ba4d472d8ef833059b75755c6ec3874f244e1179529154747c446e72"
+    },
+    {
+      "fit_id": "b09667ccf461f810c9a8597742d27ed2b937718e1153ef3211a189746815ac43",
+      "role": "path-outer-ridge-2018-6",
+      "cutoffs": [
+        2137,
+        2157
+      ],
+      "fixed_state_id": "54b4f13733433db37ef333e80fe97ee571c6dc8048011ee3bf6d44a58ce5bc10",
+      "prediction_frame_id": "b38dc1e44e618df0a460895b08d559daac8c94987c2baac698585ed53eab2bf5"
+    },
+    {
+      "fit_id": "b212e1a538cd636a5b5c48dcb5496c2bc92402e5084778e0915903f7971eea5d",
+      "role": "inner-2020-0-1",
+      "cutoffs": [
+        2341,
+        2361
+      ],
+      "fixed_state_id": "0c32f87e8076d7d436c8c6d07db40b1998a9d69acd9287f96610789ed4926e1f",
+      "prediction_frame_id": "eedc35e9f059b4729a503f411faf11b3eb44982b7407315418136da8b98b3bfd"
+    },
+    {
+      "fit_id": "b3061d118bef086e7daffef136ec39f3b16a986869d30700672f0443131e3eaf",
+      "role": "path-outer-ridge-2023-7",
+      "cutoffs": [
+        3417,
+        3437
+      ],
+      "fixed_state_id": "1d794f8aeac3c4d79d040b2104510f7b56f3b937e062c616b6d9137ba9346434",
+      "prediction_frame_id": "ce41bcb5046e07410d0c08a7071b39316a551a58ba88a1d81e4de5fa98e46eab"
+    },
+    {
+      "fit_id": "b36a12160d8ee89700abc5c4620d9440edc1df508acfdec2a1cb3d77b3fa205b",
+      "role": "inner-2020-1-1",
+      "cutoffs": [
+        2404,
+        2424
+      ],
+      "fixed_state_id": "2fc5f3f10373946956e958d70c907cc5779c351c96e18caa7450ab2f6915b44e",
+      "prediction_frame_id": "4493a89a960509a3f525e4cd41462b2cf7821cb85d537afdba6f332f9000ecf8"
+    },
+    {
+      "fit_id": "b3b0dc6611619a85deb0e30b213ffa7f6df5662cc011f1353a2d20039580943b",
+      "role": "path-outer-quantile-2022-0",
+      "cutoffs": [
+        3019,
+        3039
+      ],
+      "fixed_state_id": "171c07f0ff2bca94098b488b38f9bafd9ef49f36dab6c43aaf2166614a1266fe",
+      "prediction_frame_id": "16e6bf0f95a8a88fc11347def469825cf40cd3790d461cb9d24dfe42f2a2c50d"
+    },
+    {
+      "fit_id": "b3d5df8312f34faf90059a9a5ff1d207c0fe8049820e5c23d579ef342efc1712",
+      "role": "path-outer-ridge-2022-2",
+      "cutoffs": [
+        3061,
+        3081
+      ],
+      "fixed_state_id": "0562d04b0580694e1969fb4937cba31c31fd61758606f1d506c1edc316ea0704",
+      "prediction_frame_id": "c59cf12cdc7058e644ed910f3c0dfe9f466fd3a9b936a8633051fd73926d5562"
+    },
+    {
+      "fit_id": "b3d69dd38cd9c2945997ecdf7a078bde6cb08f5b4d8a50784d39fc6b5e765ac4",
+      "role": "path-outer-quantile-2016-11",
+      "cutoffs": [
+        1741,
+        1759
+      ],
+      "fixed_state_id": "01de35b0dffccc60347e145a59e29dec7a55b1d6fe4357c6b448b4d14feaac34",
+      "prediction_frame_id": "c245b6ece4290985b02374b07cad4e501934c93a22bbffb217ef9a6a73a1e78d"
+    },
+    {
+      "fit_id": "b452571923c0f10f8f1f6c2fb2017f73e3fa672fdc504818cfd2b5ed478061ac",
+      "role": "path-outer-quantile-2016-2",
+      "cutoffs": [
+        1552,
+        1572
+      ],
+      "fixed_state_id": "51ff79c65d9550bb34c80ba57e5df3ebc9fafdf8af5594b4b5ded673ca16c341",
+      "prediction_frame_id": "2ec0c92f5caa9e6f77bab0e80c22c8d591d63ee793192b028938aac720a9d0cb"
+    },
+    {
+      "fit_id": "b47e3070e32fc26cbd06333696da8802d27f94d38cf786a64782bca623f9279c",
+      "role": "path-outer-ridge-2016-7",
+      "cutoffs": [
+        1657,
+        1677
+      ],
+      "fixed_state_id": "71055e3942ba8aeb842e34bf56bfbfd6c13ebc37af20347bc14a1b7ab10fcfff",
+      "prediction_frame_id": "f44b846c4648e5cdb638a95e954c4880756d9e2bbcc6961b767f6c8234056241"
+    },
+    {
+      "fit_id": "b4e4d23dbe41e24c9da6b6c37b42e757d72caf4c58247eab7d92e2ea1a55d93f",
+      "role": "path-outer-ridge-2016-6",
+      "cutoffs": [
+        1636,
+        1656
+      ],
+      "fixed_state_id": "4b5eef4295b503eec2b0b5cd145771cb790cd6fb60db7b7c60ae760a530ce4c7",
+      "prediction_frame_id": "16518d372b02723ca10eeab3a075cf0b7817abfd2ee5560e872d9b3d6c2aab3e"
+    },
+    {
+      "fit_id": "b52f95f686a6fadec8b78b2588fe1cc1fc6105db1e2851af2cd1e0b5fb29a5de",
+      "role": "inner-2017-1-1",
+      "cutoffs": [
+        1650,
+        1670
+      ],
+      "fixed_state_id": "b48eb9d90652c2750cba0b5a4ddeee48e365af346198b3e6c68e663f719385fb",
+      "prediction_frame_id": "1656735b354236896f1e2eff6969680e9918ea5163d9e5c5b06ba37d6dde4838"
+    },
+    {
+      "fit_id": "b55def33f799d36320c0431928e5b5b6cfdb07016998de37db7f81c258722b31",
+      "role": "path-outer-ridge-2021-0",
+      "cutoffs": [
+        2767,
+        2787
+      ],
+      "fixed_state_id": "f6b97ac06f6505511276a32de2ee6833e740c72c268308398ca18c0a68e04810",
+      "prediction_frame_id": "9cefd009e168a35f7a8454a04a827a1f3afec4a79979578eb50ce4e2e29ababb"
+    },
+    {
+      "fit_id": "b5bb3f96f4d02646f2e466ec25d21600ea77adfa282870055244f40ec09d8093",
+      "role": "path-outer-ridge-2023-4",
+      "cutoffs": [
+        3354,
+        3374
+      ],
+      "fixed_state_id": "fab5f29f94b0483e15eebe1637590856bc38092fdd7ce201393d45d5262d23c4",
+      "prediction_frame_id": "251f40959e4d5402ae32fa12952308f7044ec1e14a37b0a67aaf42e753a080a7"
+    },
+    {
+      "fit_id": "b674bfea8e968f45ef719c94b1732fe4baefbe991001245e33b24d04b036ce20",
+      "role": "inner-2017-0-2",
+      "cutoffs": [
+        1608,
+        1628
+      ],
+      "fixed_state_id": "24d0cf01050954f20a8fe17ff33e2f67675bdaf9e5130e63dffaa40b23bd0650",
+      "prediction_frame_id": "08d9099b371a75d312ebf0d9f16d03c71937f1fe2f6feacbea14028a685a6b6a"
+    },
+    {
+      "fit_id": "b6a31f4eb4dc1e0bfa19f1846b2715090e49d5ec80519ab6221d60ad4027b742",
+      "role": "path-outer-quantile-2020-8",
+      "cutoffs": [
+        2682,
+        2702
+      ],
+      "fixed_state_id": "5fea816cc8959acc72cd3bbbb4b637f793836e4bc5dbf3f67f3d0a0f9e21c331",
+      "prediction_frame_id": "1a93f36e39fc6af1fb09a9e1dd05e6c1249cf0976b9f9843d7f21ced40c47df7"
+    },
+    {
+      "fit_id": "b720579460aee6962a1cec9cbb6253aeff30ee3ef3ee24aa6de024bd9e16177a",
+      "role": "path-outer-quantile-2023-0",
+      "cutoffs": [
+        3270,
+        3290
+      ],
+      "fixed_state_id": "215c8a20a1a1010ae03f47d42afec4d1019961266b76ecf8fd2d97f54644137b",
+      "prediction_frame_id": "a5c934d6bb324901a04cab7cc2c001e9842aebb88008fed5a6b3204f550e9977"
+    },
+    {
+      "fit_id": "b75599e94ab238f3494b3a74a050482801de982145747f755ef9fd83e609d6e1",
+      "role": "path-outer-ridge-2023-1",
+      "cutoffs": [
+        3291,
+        3311
+      ],
+      "fixed_state_id": "e9b1387bb32d6ebce9e9ef4758533a256778a51718c7d609d818aadc60e96a19",
+      "prediction_frame_id": "d603872e28bbb5fc445f7ef8ca4731c090a8eb2c165b4507c6f05ee1c17d82f8"
+    },
+    {
+      "fit_id": "b80dc7825bbb679c0676145741bc629bb55597274b66169014b9afd3fcf15af5",
+      "role": "path-outer-ridge-2018-8",
+      "cutoffs": [
+        2179,
+        2199
+      ],
+      "fixed_state_id": "80bf3bb92cb0ec17b9870fd7a9e68c04f5ac82dee2d8e9889a9e9798d67f990d",
+      "prediction_frame_id": "210aadd1852b0483441a4257aeed21b1caee1bca3f6dab3c10a9e5efd5441027"
+    },
+    {
+      "fit_id": "b93f2e2581c8c7e039549eda7d0576f4fd2d505a74d8d724ab17100fd422178f",
+      "role": "inner-2017-2-1",
+      "cutoffs": [
+        1713,
+        1733
+      ],
+      "fixed_state_id": "7379d23fdac58f7f4503e66677fe716a535df917033cd6f8801622a1ba30e1a5",
+      "prediction_frame_id": "cb09ec629a73611ea680d0b4cc6e70d6deb54fab2408d1b30d36943b4df2ffcd"
+    },
+    {
+      "fit_id": "b955c2b1d004741e03ec9bfcfede9fb9b8e67748f7f4f36a1554f1115c97b836",
+      "role": "path-outer-ridge-2018-3",
+      "cutoffs": [
+        2074,
+        2094
+      ],
+      "fixed_state_id": "3ef0ce44eaefb341687da31978afdb4eea97ea4710fe174186af61b6ab71f8b1",
+      "prediction_frame_id": "a499438d868932a25c2d4e385cbfb05673edd08236c494852302dfe1a0b48f4c"
+    },
+    {
+      "fit_id": "bbd501d4190c3e4d43516882e865ea62f2742c06f068e2f0b030ba4946b6427b",
+      "role": "inner-2020-2-1",
+      "cutoffs": [
+        2467,
+        2487
+      ],
+      "fixed_state_id": "c17cd33c6699d687765506f1dc73b30874c0ef2445196bfd1d3e0ee699f5461f",
+      "prediction_frame_id": "05d7a30d04e28cafbf4bb8d31258816d03eeb5650cb83553c16624db829fb863"
+    },
+    {
+      "fit_id": "bc1d8df216487701d93bab0d8bcf2cb81272c41a1425654eca24d0748959205d",
+      "role": "inner-2023-1-2",
+      "cutoffs": [
+        3181,
+        3201
+      ],
+      "fixed_state_id": "94b856852f6649df6b6e783d57648b97faa136e62d3314dbab5fa9aec033bf26",
+      "prediction_frame_id": "375f5ac0fc398404734642394c647eba56947688fe36b4b7214ab189b35056a4"
+    },
+    {
+      "fit_id": "bcc57706c8f82f6f94dee39347b9c1c93f26f6075b44d237a7198c7e41344b12",
+      "role": "inner-2017-1-2",
+      "cutoffs": [
+        1671,
+        1691
+      ],
+      "fixed_state_id": "6b364bb6da042c822b606baa3742d1872c92eea8fa833df899328944b3a9722d",
+      "prediction_frame_id": "4578edfa742912eb80c664d79fe4666b5d0bb7e4c776e45c8610540e1099af2a"
+    },
+    {
+      "fit_id": "bcfb433594acfb81044908e1dca972ac6072831a6bad3d61128394cf7a14486c",
+      "role": "inner-2017-0-0",
+      "cutoffs": [
+        1566,
+        1586
+      ],
+      "fixed_state_id": "58c5f7c19df95e6d792e3ff46dfd600eec2daa66de6df8dfc93d6dbb7972bd2d",
+      "prediction_frame_id": "305886aee765440ac1ebdac736eef53db47998eabbaf82d470ff4221656b3813"
+    },
+    {
+      "fit_id": "bdae2c09da638ba2a8f2c96f85a500891a89378d55c83cccf85f4d6d2648d5e5",
+      "role": "inner-2019-1-0",
+      "cutoffs": [
+        2131,
+        2151
+      ],
+      "fixed_state_id": "1ae53c3c3e69d800420de5f6771adb5a926d4e810ba5aebfa6a745c88e46220f",
+      "prediction_frame_id": "c5da9eed6ef21682533287b6aade5b7470bcf7fc634c9e11cf23fe04cf195155"
+    },
+    {
+      "fit_id": "bdb735187c375967d7a3745aea524b89154ad00eb9b865a07cc3cb55d24279e9",
+      "role": "path-outer-ridge-2020-1",
+      "cutoffs": [
+        2535,
+        2555
+      ],
+      "fixed_state_id": "5bfd8d158c584c270a17d5ae764806df09a7b42610f2e08926fad6f8db4927d5",
+      "prediction_frame_id": "97fdff46c23a1c9afe0894ce5b5fa3a3a088cd09f61cd10669ddef98345aab0b"
+    },
+    {
+      "fit_id": "be6bc76bed52f25a19b1589e43d03fd11715bb843eda74de091d9e292559c499",
+      "role": "inner-2021-0-2",
+      "cutoffs": [
+        2615,
+        2635
+      ],
+      "fixed_state_id": "848b8882495f548b6cc245a71a4ebcd5d3e0c9e0351c023f157ff75385e6e72c",
+      "prediction_frame_id": "26ef5998880f0f890e73fc549195768b8c63dce7a727e0e1b6b1ffcf71d4afd4"
+    },
+    {
+      "fit_id": "be79fbe934f22b179462516be6ab6c407f0e9d37d255505fc92c24486d1b373e",
+      "role": "path-outer-ridge-2021-4",
+      "cutoffs": [
+        2851,
+        2871
+      ],
+      "fixed_state_id": "17899d68fb3e1037f97f49d85ededdc7769f6904b605677db4c842b4edb44d8e",
+      "prediction_frame_id": "e34bb51ff7796f32cb6e39d93e362efe2932e6a7e849e681c98ee36a7ea408d7"
+    },
+    {
+      "fit_id": "c035bf43386708c48a5e0fe84ff85b5668941a473f2d46b29f1ba78cbf0d4b88",
+      "role": "inner-2021-2-0",
+      "cutoffs": [
+        2699,
+        2719
+      ],
+      "fixed_state_id": "fca79f54084672b371cfad4a741924ba79a40416156f9ca510e4dfddcbd2ff5d",
+      "prediction_frame_id": "5f480551461174bc0cb37f2d5115f618c15e8f2e9e1315d17cefd4b81d77815f"
+    },
+    {
+      "fit_id": "c091f3811ce725c6b719c43aec3aaabc8fdf3a4e57abaf4294daf8c3b27a1bad",
+      "role": "inner-2016-0-2",
+      "cutoffs": [
+        1358,
+        1378
+      ],
+      "fixed_state_id": "5b43df08971008e90bf9e787b3800d8c6003574d321038140c6c1ce5d7fa52ef",
+      "prediction_frame_id": "108488dcb235c6c5264ea269f605734bee96e905d2e4070fe173b9207a1fda91"
+    },
+    {
+      "fit_id": "c0d9bd00d87edc34cdcac62ae1091a85b96a4339785f6ec840a6ca54a9e79d11",
+      "role": "path-outer-quantile-2017-2",
+      "cutoffs": [
+        1802,
+        1822
+      ],
+      "fixed_state_id": "4359e4daa3aef6e38ffd8577b896c3f7cca61df72dc6dc7c215f467d012598f9",
+      "prediction_frame_id": "8226c05fec4c7ebbfb68ca000738d369298975fb3c5879447e7598f38ad77a52"
+    },
+    {
+      "fit_id": "c1feb6984e2df3f9da8ab16de3db3dd621c47aaf45f972c861e2b27c1e059596",
+      "role": "inner-2022-0-1",
+      "cutoffs": [
+        2846,
+        2866
+      ],
+      "fixed_state_id": "5ce5d21b710020f9adb2301715bcf561c99ad77ca4d8d4b0d84bdd99e0947a02",
+      "prediction_frame_id": "2ca2da85c6ec9aae7731e1f51105e616988cd043f95594697a1a839e465b503d"
+    },
+    {
+      "fit_id": "c27767d04db7fccc799e4cb1e9dc6f768353c6ff9ffcd637b612cec94ec0e1f9",
+      "role": "path-outer-ridge-2022-7",
+      "cutoffs": [
+        3166,
+        3186
+      ],
+      "fixed_state_id": "f3545f39b0de6135dc264d7d92822c76e769ac20e8b8ececfc08c2529b09111b",
+      "prediction_frame_id": "999ef72b5dc60fe98df17a98a1951f7ae2118f8f4b94f41ab30ca61703ff18c2"
+    },
+    {
+      "fit_id": "c2bad3bc1ce9f5fd5437fa0b0b8eaf638cacfe496f45a8407433561c7e66758c",
+      "role": "path-outer-ridge-2019-6",
+      "cutoffs": [
+        2388,
+        2408
+      ],
+      "fixed_state_id": "9d3f7e909191a9a63b8b42f926ad3b3cd982c800bd85f3bf457e82471d533483",
+      "prediction_frame_id": "7c727194c76660bde63e2456760f8a8cdffc30a233a94aabe2f76ee5b5fad7bc"
+    },
+    {
+      "fit_id": "c5068f1409054dedc3ee01bfc05c161426f8d33b76ebbee56074249fe3a03ca5",
+      "role": "path-outer-quantile-2017-3",
+      "cutoffs": [
+        1823,
+        1843
+      ],
+      "fixed_state_id": "2490789f88bdece0a1fceaa6de55b67b20746a0467fbc88969b32f6c93601ebf",
+      "prediction_frame_id": "29df8f25c81df4579f58603a92978f8545f1ce30d50452900d0573f568907e80"
+    },
+    {
+      "fit_id": "c560c88ac0cc7b34017b59cfd5f03d2d74a8702c7f4b92041298a6e40eb26990",
+      "role": "inner-2016-2-1",
+      "cutoffs": [
+        1463,
+        1483
+      ],
+      "fixed_state_id": "e253695108785ce51d537d777c708ad04a9f87010517931a5f9a372bd1d9daea",
+      "prediction_frame_id": "7bf221c1db1d0f968cddac549c86085a592bd21a5198c06f09effe59681ebe1a"
+    },
+    {
+      "fit_id": "c827355a5ccfb2aae63d9684e73537fa146b61c4a898cf871782dca068360c87",
+      "role": "inner-2016-1-2",
+      "cutoffs": [
+        1421,
+        1441
+      ],
+      "fixed_state_id": "143a7d1a0c7e62ed771a4382e1874d69e401dd0129f63592b077ac61f1f08394",
+      "prediction_frame_id": "8c4d81014c1293f6158165ba94a58596938d410c9df7b3a665010b2777230cfd"
+    },
+    {
+      "fit_id": "c864cfdb8bd25adf1129709fc3b9f096f1a58471795391e2a8f76d849a11edb6",
+      "role": "inner-2023-2-0",
+      "cutoffs": [
+        3202,
+        3222
+      ],
+      "fixed_state_id": "712fafc2cf29bf9b479a152d05ede0c9710a3d7fb7652d58a6fccf76eee966f0",
+      "prediction_frame_id": "0be501b69a5d501b1640b23648aecc0115ea482dd831e7ad5a60e59d54e17947"
+    },
+    {
+      "fit_id": "c8d60989ed7268167100ab1ae271b94128896264ee4b79aa94165d34cf94c680",
+      "role": "path-outer-quantile-2023-8",
+      "cutoffs": [
+        3438,
+        3458
+      ],
+      "fixed_state_id": "a1d99d5d3dc7b4da28f8987384c9a318346f7a157feb2a4a4ddcd4eb9e770c9a",
+      "prediction_frame_id": "c8a9c318385345900308cfa3d6b5001bff97e248083f3209c0ad0e4a0f89258a"
+    },
+    {
+      "fit_id": "c91bb3445f937901b9c6ea4c4ce1db74f4ed3ee0aeb0c2f0051c54fb6ad0223a",
+      "role": "path-outer-quantile-2018-2",
+      "cutoffs": [
+        2053,
+        2073
+      ],
+      "fixed_state_id": "18e7a50491eb6a64f86765513b0f20a7ca6313f251afb15105b9fa9f13e68d02",
+      "prediction_frame_id": "12523ecca1698ef5631c34020f400f292ab86e57f8046bf76abb3ca49d0f104d"
+    },
+    {
+      "fit_id": "ca4b02625b9e1f4252d436fbd4235fa02016b4aa893c095b3ad7577074594a8c",
+      "role": "inner-2022-1-1",
+      "cutoffs": [
+        2909,
+        2929
+      ],
+      "fixed_state_id": "4069cd38ff607bbe27bb7335d4c43590b14c96c4eea30586d24998c4353f6c84",
+      "prediction_frame_id": "b45c2a9e74993b935cea0493d2193289f18f006533640a2075b2bb698f19b19b"
+    },
+    {
+      "fit_id": "ca8ff12e5f49d767ddb583429d8bd8b5896af87f7ca663c71d783a316928ee1f",
+      "role": "path-outer-ridge-2019-1",
+      "cutoffs": [
+        2283,
+        2303
+      ],
+      "fixed_state_id": "bd520390c08712a28961b5bbc6024cdc58e08835c4b7d797993aa1bcd2a60d02",
+      "prediction_frame_id": "b67833f1038366ca652b7121c5ff928f33b7259faf976c840173a73f5a9b76a1"
+    },
+    {
+      "fit_id": "cb58adab7ecfebc714923f44d68232483363be0486708c1c929555c8850e0ce6",
+      "role": "inner-2020-0-0",
+      "cutoffs": [
+        2320,
+        2340
+      ],
+      "fixed_state_id": "1ec0d98283c5e7c2b70e5aad6d8ce0d5f2e19bf4076aaf75a0052964ffe6b0ff",
+      "prediction_frame_id": "a751b7da04dbf3bd38861fcf47bec128765b8b72e2e63dd87ccf67e3f140c218"
+    },
+    {
+      "fit_id": "cd2321579e4cdee5a1988ec368ef7fdab351fc9d4a53439254518a48c6ef8d84",
+      "role": "path-outer-quantile-2021-0",
+      "cutoffs": [
+        2767,
+        2787
+      ],
+      "fixed_state_id": "c02f1f3c235d36e5cd1ab2a967bcd6738a6e707948d334f948a351bcfbf75cc0",
+      "prediction_frame_id": "10899fcee0e8d6337979936b6d34b77c6f8f452d70f277948924d723e1ad1766"
+    },
+    {
+      "fit_id": "cd880108be1bd261af445881ae63151f1319473b46b16cb9fc288155fe74d925",
+      "role": "path-outer-quantile-2019-4",
+      "cutoffs": [
+        2346,
+        2366
+      ],
+      "fixed_state_id": "f1239aaa9ed98f1a5d02685ed8c63739f0a2389042dd00010b89ccf29e2a6837",
+      "prediction_frame_id": "7e489a46b8d886e5c1f77be9a34f9fa63cf05806cbe29a355cbe239a04a5d38f"
+    },
+    {
+      "fit_id": "cd97eecb1a7f13259a1230405446f49c6edab0d84907fd7168fb851a52b178f3",
+      "role": "inner-2019-2-1",
+      "cutoffs": [
+        2215,
+        2235
+      ],
+      "fixed_state_id": "c550669039c6a9b611f5821e603758e58b3fb14a384253e9e53b39fb045f83ec",
+      "prediction_frame_id": "c13872061d551e34d2997517daefe602d7049633fafd78bd3fc290d59a870599"
+    },
+    {
+      "fit_id": "cdb6addfe2091d1ef5e7856d76e3ce15c8d95634b892ed37f9d9374ab4dc0436",
+      "role": "path-outer-quantile-2017-0",
+      "cutoffs": [
+        1760,
+        1780
+      ],
+      "fixed_state_id": "c8fa5889146cb10bea2c9555577b471fd0369fa9e112fd0120de4331bb992efd",
+      "prediction_frame_id": "4e23b5f22b0aab04abe00cbd623a70cc27317c380e0ba6497bc06c84c34f5e02"
+    },
+    {
+      "fit_id": "ce792eb9e2962d2e2387622e37e151ae02f5b26f8c59d22b8d70cf55b81fdcea",
+      "role": "inner-2019-1-0",
+      "cutoffs": [
+        2131,
+        2151
+      ],
+      "fixed_state_id": "cb28356225dee9370da903fa0cc345e2303711ce651f95130d0fb2d78d0602f3",
+      "prediction_frame_id": "25ee3d20b3deaa233afc2d5ac1f296efe38732864b741a62399f23c617419d7a"
+    },
+    {
+      "fit_id": "ce8d7bb0720122c99198a7c5e887e618622e9cd17215fef6f7b6d0fdf0ed9bec",
+      "role": "inner-2020-2-1",
+      "cutoffs": [
+        2467,
+        2487
+      ],
+      "fixed_state_id": "d78c328ec4c600ccd4077ce530daff0f485e1300cd84be700b9e9c7d1dc51e19",
+      "prediction_frame_id": "303ae0db7af917236db1270e9b734c1e5a21d6d1a46790d54239508a97de41be"
+    },
+    {
+      "fit_id": "cf6622266c2918b6d2562b2f1eba97490e5984b8bdeadf6c14e82310c8a9ac81",
+      "role": "path-outer-quantile-2019-1",
+      "cutoffs": [
+        2283,
+        2303
+      ],
+      "fixed_state_id": "33de49b27161a7dd8b2e5c4d1bfd0ae646f5eeb4a3780622c828c6c5817ebff6",
+      "prediction_frame_id": "73fa32036f0bec5f7d913fc2aefa6095f34ae9c7e65c4ba39356e5dc01e41dfb"
+    },
+    {
+      "fit_id": "cf9b892ad93482d0461220e074c49428ad1dc6e26702982d692539e6af8efa3c",
+      "role": "path-outer-ridge-2023-3",
+      "cutoffs": [
+        3333,
+        3353
+      ],
+      "fixed_state_id": "54eb093df1e4070bff8b98e0ea9c036562ae71254e3bedab75a5c1cd5f5d4c8c",
+      "prediction_frame_id": "66113b5ff57aa6a503a2c2327e1b974b00ff0c2de19d89a898b4a260e89f7f64"
+    },
+    {
+      "fit_id": "cfbef82acab5621b9920e90338962f577e59f793f4e008de5eb6136137c1b9f5",
+      "role": "path-outer-ridge-2017-9",
+      "cutoffs": [
+        1949,
+        1969
+      ],
+      "fixed_state_id": "14a6e47df3cd9c15bdfffc9e690e1fc6ab23dbbf5262a62f4fd2d3bc66d4e821",
+      "prediction_frame_id": "d1da5c626cb190de696dc30835f14800c175b356c6d973506945c494ae916f1a"
+    },
+    {
+      "fit_id": "d066cb96076d7da15b4765e5ae3bb0ba23a2f3a8705bd8fce9a926822fbf0991",
+      "role": "path-outer-ridge-2022-0",
+      "cutoffs": [
+        3019,
+        3039
+      ],
+      "fixed_state_id": "0dc714ceff0fb9d39326744ef3c03193641cf9ea2b7676452e213cdf071f7009",
+      "prediction_frame_id": "096a544381e413249abf8f29d9fd0b6cdcc91540a71829606590d331e66aed19"
+    },
+    {
+      "fit_id": "d1d5c36c0fa2ebaf6fe3c6e2fca4016d98e25d5fe2556c84560c54ff8e9b76fe",
+      "role": "inner-2018-2-0",
+      "cutoffs": [
+        1943,
+        1963
+      ],
+      "fixed_state_id": "c1167dccaf8bad6452fbb20fd0eb35bbc96d5ca12ce3192782c066d650c06aa2",
+      "prediction_frame_id": "4f900981254bf3ba25958feeb4b91ec46e86c82bd6f3aa041ad2ad18c1c95166"
+    },
+    {
+      "fit_id": "d1de4962a487a93acd8173348d62fd647998613ed9c57fc2514e9d062b8de828",
+      "role": "inner-2018-2-0",
+      "cutoffs": [
+        1943,
+        1963
+      ],
+      "fixed_state_id": "98b401502bf10c2c0dc747244d11b1015c692be9efc520a99b9331afc7a90395",
+      "prediction_frame_id": "bb33a7096eb240a304b90057f5671d4a5318076d0bf09c88ed8814cdd13465ef"
+    },
+    {
+      "fit_id": "d45f38a06645d9f0044e208137d1e7a12c1de4e8f3c1700efe70624e7c267dc0",
+      "role": "inner-2016-2-0",
+      "cutoffs": [
+        1442,
+        1462
+      ],
+      "fixed_state_id": "68b326b29a003c92e0643fa9c2747e3b3539f2613f095220d36bacd576736213",
+      "prediction_frame_id": "6761cfc88aa76e8ab1018fee345c16acfd29541b8953a78b8556d5a2474bb315"
+    },
+    {
+      "fit_id": "d559f3ff77e7985158b76e3dc885cc8df9a6d4e394eef7531b5ca94fc5b0329b",
+      "role": "path-outer-ridge-2017-6",
+      "cutoffs": [
+        1886,
+        1906
+      ],
+      "fixed_state_id": "d387892e04d4bb3c515fc63082c4ee5cfd17954c61aac03bd14f53493a3df1ca",
+      "prediction_frame_id": "5157293ba733c0f0917a76887248431031a5b5340730dd6f06735694f1623278"
+    },
+    {
+      "fit_id": "d5b4df482997162266a07b70bb5b1ec8c0b10c6d37c3af3328950ca2367665ba",
+      "role": "path-outer-quantile-2021-1",
+      "cutoffs": [
+        2788,
+        2808
+      ],
+      "fixed_state_id": "a588b13855929d07d7e83472a7dab58ebbbec03ae157b08babf78d72d76cb703",
+      "prediction_frame_id": "f07dbbfebbdc72a7aa14869dcce0b7fd8a3c4611a32bdce1b82fc3d0d1288565"
+    },
+    {
+      "fit_id": "d72d5f93a35cb9cb6dfc636bce028afee84f298c42dca1488a66f7d43f1f98cd",
+      "role": "path-outer-quantile-2022-8",
+      "cutoffs": [
+        3187,
+        3207
+      ],
+      "fixed_state_id": "22a271164f14e5e3fa7fbbfee363a3c5dc24f1adaf8af4990b6220e93aae6c70",
+      "prediction_frame_id": "092a3bfcc5e16e688e6f082da16e58ed508aaa1ccdb07fd67796264fd6171cc7"
+    },
+    {
+      "fit_id": "d7e264039976bef6c1fc9372514a9f2c6ebdfd42802a9f5fbeb57f90ce52009e",
+      "role": "path-outer-quantile-2018-8",
+      "cutoffs": [
+        2179,
+        2199
+      ],
+      "fixed_state_id": "c84a3c1cac8717f45168a0c8897d098666572370c3b4e91183ce14f722263661",
+      "prediction_frame_id": "6488d88b588dbe3a0438ce08ced0d8251a9a4c2d3fafacb875723dc6b8dfb8ff"
+    },
+    {
+      "fit_id": "d85f8e7ad6dfd80b29504ed117f437284448c29445687f7b3e4fa7d047b87b12",
+      "role": "path-outer-quantile-2020-7",
+      "cutoffs": [
+        2661,
+        2681
+      ],
+      "fixed_state_id": "68a1ca71fb1e1951d411acb33185ab370b2d9f4e70aaa1b2ebc066167261a812",
+      "prediction_frame_id": "5bfd8abbacded2873e055d194b55e335236f1f3ee190c2c9e33dd223a7c1ab03"
+    },
+    {
+      "fit_id": "da9119fc88b5ba8cbeafe4fea4268c2ce6d947a6257805f2c66866b20feae7b1",
+      "role": "path-outer-quantile-2017-9",
+      "cutoffs": [
+        1949,
+        1969
+      ],
+      "fixed_state_id": "990af268f2ed2f7ce09268e568a84779f19a3444d618e6db597b1d6eca3fd651",
+      "prediction_frame_id": "c2aa461b0b9660b8dfae6acda23b248a5062d2793386d621e9744fe4fc55752c"
+    },
+    {
+      "fit_id": "da9936c236b35d4f522e9bcda590cd6ef06175f4107e27f481663a23d48b21ba",
+      "role": "inner-2019-1-1",
+      "cutoffs": [
+        2152,
+        2172
+      ],
+      "fixed_state_id": "dd882f138ef11bf6235c3724c5475229e1e0ad7d69feb953180ec78b2cb7b4c3",
+      "prediction_frame_id": "471ca2e30f9ed17d3e59047d43e041fd080a31677fda89be9cb48455638ffb96"
+    },
+    {
+      "fit_id": "db18b4e41b6d63601bf8460084a6a479b6fb183ccc5877eb6e0ee593fec05949",
+      "role": "path-outer-ridge-2022-10",
+      "cutoffs": [
+        3229,
+        3249
+      ],
+      "fixed_state_id": "c3e218f34a8e68adb410c3afd513edaec709e4a599584207dee78e3803f948e8",
+      "prediction_frame_id": "f0bbc0a462c44972116729f1082a06915886a5539c5285888b60daaecdc1719f"
+    },
+    {
+      "fit_id": "dba1f43afe37898a2a71e5c16473d21f6139cd7cf88576aa413482fd9b3a676e",
+      "role": "path-outer-ridge-2018-4",
+      "cutoffs": [
+        2095,
+        2115
+      ],
+      "fixed_state_id": "407a165fb76f1ae0dcbf1c71b214410c94d507312d92efb03fb900e3df74424a",
+      "prediction_frame_id": "23408aaf4b2249a218c1300534812a5a1b9eec41ba036d73a0bdfcd7de0e4f35"
+    },
+    {
+      "fit_id": "dbcf266609500712223cb12384147bac0263b0f4143ea4cda76ae173da01f3e8",
+      "role": "path-outer-quantile-2021-11",
+      "cutoffs": [
+        2998,
+        3018
+      ],
+      "fixed_state_id": "66d21d86908e36000eab3da387014db5d487cb82104b7be511787cd5c5185d9b",
+      "prediction_frame_id": "20f4f2d4d9e7b40102f03af0333da24eb3a80fa29688419198d207a8257d56ae"
+    },
+    {
+      "fit_id": "dcca34ee66af4371ad3c003283bb4fcabfdd9e75f4d412756817f6ae72ca9a9d",
+      "role": "path-outer-ridge-2016-8",
+      "cutoffs": [
+        1678,
+        1698
+      ],
+      "fixed_state_id": "6bed0b9679cbd1183f28c19179141c2b515c8fb80191beb28f1834a0e0e6696e",
+      "prediction_frame_id": "70daba6b1117a9529340b5ab247d140fd55b6ceb9107d434d450c8407ed01d36"
+    },
+    {
+      "fit_id": "ddbe1abde96beb7668f05c91c914fc2a1b1f1afb35f876f7c5ca76778ca42686",
+      "role": "path-outer-ridge-2020-12",
+      "cutoffs": [
+        2766
+      ],
+      "fixed_state_id": "23b5ac090f860b88a60cc602ef2d31ea9062b0b5920ba0be77ac45980ac84755",
+      "prediction_frame_id": "3f088b527064a8f84fb13f0a40bf56511b39589b9322631b1c9c9ea2b5017e6b"
+    },
+    {
+      "fit_id": "df01b6d4d6565ded44c9c5978b09b569c9385acd2ddb8a989cb4126a43f24943",
+      "role": "inner-2018-0-1",
+      "cutoffs": [
+        1838,
+        1858
+      ],
+      "fixed_state_id": "0014846a21200124c43e92e2d4dbb478af769907ad7d9686b7ff448555dcb09b",
+      "prediction_frame_id": "ce8de8a412b6d3d04d242244fa16813d06a6d31aba72a3fcf0103dc6ac6de493"
+    },
+    {
+      "fit_id": "df5ab11698049f70dc53f4ba61b5cd32d324fa9f5c9370f3cdb07a5ac84975b8",
+      "role": "path-outer-quantile-2019-3",
+      "cutoffs": [
+        2325,
+        2345
+      ],
+      "fixed_state_id": "cf38aa82575eae8946504cb0068cc9f339f01fafde433efb2756459fee5e108d",
+      "prediction_frame_id": "3bd02e8ac4b3805516227f322b7b2bc7339b0e92a5e959e0d85cb5f28099b2ca"
+    },
+    {
+      "fit_id": "df6ce45b4b5e54c3890c2f04f983e6fc759ef4aee7c47fd65f532afb8e8cfae5",
+      "role": "path-outer-quantile-2017-5",
+      "cutoffs": [
+        1865,
+        1885
+      ],
+      "fixed_state_id": "52ef1a0a5888a8450e1c5c63ca213111d28fd2e0952964fbabdf1f3e2d4c088b",
+      "prediction_frame_id": "ce935ab0dd28301a75533799e38b22d91fc866f39720e43d3b3f5c50cf939607"
+    },
+    {
+      "fit_id": "dfe0c40265a94481c193feb9800726e259d12e87b05306543e965b1982ff27c1",
+      "role": "path-outer-ridge-2017-7",
+      "cutoffs": [
+        1907,
+        1927
+      ],
+      "fixed_state_id": "45232582ef7fe67fb80c7f6d1d58226d727075649789d3796393ff7ddf6c1f57",
+      "prediction_frame_id": "01238df9339d3b65550c294b2705e60e8fd3e34104586dbcb4228d293c48e092"
+    },
+    {
+      "fit_id": "e0101636e8ae0337f0a363be4d3b58a169dc0e84eedf709dacc1060080f7d103",
+      "role": "path-outer-ridge-2017-4",
+      "cutoffs": [
+        1844,
+        1864
+      ],
+      "fixed_state_id": "342c6283d33e042ab9de440af6620a9a36a55e1d304326915c485f68a6b52361",
+      "prediction_frame_id": "38c77b104cc8b62630b29898637f08ca7f1e66db09e21bbe0df5559b10136ca8"
+    },
+    {
+      "fit_id": "e0688148484f02a15483d4d4d1cb32a51f0e70abc3195b0742ed5933e406a8a7",
+      "role": "inner-2016-2-0",
+      "cutoffs": [
+        1442,
+        1462
+      ],
+      "fixed_state_id": "ddd10ad5f2ade7a256a4f77579bd2a630ff4464cbfcff0fc2d33f7d50290b49a",
+      "prediction_frame_id": "b0ab531bbc43fa3085139ebdf9f63b45f160772b0f9ae243702df51441e3ba2b"
+    },
+    {
+      "fit_id": "e0c2fadeacbdc7f3afd6db8b55ab399fb34f4b7bcbf235862086b26fe399fb16",
+      "role": "path-outer-quantile-2016-3",
+      "cutoffs": [
+        1573,
+        1593
+      ],
+      "fixed_state_id": "1fd0786226d5a84cec7b827b56d239cd7cec459ba2b124aba533da7a58d71ae9",
+      "prediction_frame_id": "efa84507611b6ec22c8f426f84e86332580d48e8de181f18f8ef75744d4d600c"
+    },
+    {
+      "fit_id": "e13976814aba878290b1015536a673b2dc3b5e06edfea4e69d6d5ba3ab321229",
+      "role": "path-outer-ridge-2022-5",
+      "cutoffs": [
+        3124,
+        3144
+      ],
+      "fixed_state_id": "f47ad17b1700a9547d1074ca65a3c4ec352f90d2c5d4f766df74cd3be512e4b5",
+      "prediction_frame_id": "9df79e0cf1c12977111876c58b0f1276a10d93a8667a564c1123e652be778f0e"
+    },
+    {
+      "fit_id": "e1cf0f17260faba7e286298ff2fd7832f02c59953b32bba5785036bb41cb9383",
+      "role": "path-outer-quantile-2023-2",
+      "cutoffs": [
+        3312,
+        3332
+      ],
+      "fixed_state_id": "afe3d627cb868dc333df6ae2384b44dfb103757277f5415244214d5e3ad36489",
+      "prediction_frame_id": "93fb691062c937ef6e073d0ff54e981c1a61930b3d936a967cf0d7531970e2f0"
+    },
+    {
+      "fit_id": "e29c49220180682e2026cdb6b3584131718965c14f2d5be05fe7716de1411c97",
+      "role": "inner-2020-2-0",
+      "cutoffs": [
+        2446,
+        2466
+      ],
+      "fixed_state_id": "e400a962f38ca01ce886b71bf981f458222eaa9618db6902c9a5464a0a90a9f4",
+      "prediction_frame_id": "a7af733c9a3d83707ec70e377791cf0acb49d1e8479764434a03f16944b19bb4"
+    },
+    {
+      "fit_id": "e3565e9c9682df7ffcdbaadcc1640e4003d53f3f4d8bcf5bfae881ab654ced11",
+      "role": "inner-2018-0-2",
+      "cutoffs": [
+        1859,
+        1879
+      ],
+      "fixed_state_id": "21f12b259f9e4abf0c4614dbcc5c5a7ad773d81a1d07de7da9b65053a7b000a6",
+      "prediction_frame_id": "30a791c163681338b49a37a260c98e409d6695d4695096348ad2d5fa85f8fa67"
+    },
+    {
+      "fit_id": "e3c6a3349db382c41b64944bdb4a6fa7647d4c617c0d36ff4f0c39792ea06c86",
+      "role": "path-outer-quantile-2023-1",
+      "cutoffs": [
+        3291,
+        3311
+      ],
+      "fixed_state_id": "e85d2334de7a0cc66e80c59c91d147b9d5006392f59d97f4430ffdab5e36326c",
+      "prediction_frame_id": "1e430fafc5b876aeb5e67e66147b70d91b9a9270c119fe4cfc35dd549249dbc5"
+    },
+    {
+      "fit_id": "e519c3be5076007c54eadf792ed450ed2720452de853a1b1f67f3cba3e5ccc3a",
+      "role": "path-outer-quantile-2018-7",
+      "cutoffs": [
+        2158,
+        2178
+      ],
+      "fixed_state_id": "593016a74686c2f9fb8d3fa02912a85d6b3175978412f05e2f5a40b34b101c1d",
+      "prediction_frame_id": "0d94ad04f0b50b9f1c04d45cca91d8381a7a27f01e69ebda8fb4aeef93c04335"
+    },
+    {
+      "fit_id": "e5577ad175e9144abd263e636eaeead824f2aba7dae994770a46885b6ba1d8fc",
+      "role": "path-outer-ridge-2018-0",
+      "cutoffs": [
+        2011,
+        2031
+      ],
+      "fixed_state_id": "2f4e79c9587dca538accb847fc06faa54af70025f3ba9bb404173fb52b3f9c73",
+      "prediction_frame_id": "afb00f282109875aaa479f05faaf8eeb17e733fa640974eb36527ad8beb5b46a"
+    },
+    {
+      "fit_id": "e5f5afce3756a1ee22efe14883eb18a05c27be2d0bedfed45668d33fcde04c1a",
+      "role": "path-outer-ridge-2017-10",
+      "cutoffs": [
+        1970,
+        1990
+      ],
+      "fixed_state_id": "113e68c4546737a5cd86bdee417867b489f24188c1f9f45fdda5ec2978934b40",
+      "prediction_frame_id": "b9c6ee0e05828542b08322d321b11456ec6b8d34d7e6a565e7e2cf4dd406ff18"
+    },
+    {
+      "fit_id": "e6f399e207d77d0966bcc0e202404bbe41077a0dd8266851f44a1b6100dabf2a",
+      "role": "inner-2019-2-2",
+      "cutoffs": [
+        2236,
+        2256
+      ],
+      "fixed_state_id": "72882a355fa9ecf8c0e1be2834341b5ba74c142b9fd4684ed684888ad5efd82f",
+      "prediction_frame_id": "f21c49bead49d556d3f44acac6dddf4293090a0a97dc70bcd2fe4f382617f55c"
+    },
+    {
+      "fit_id": "e781ca22270bf457cc6fb1151ca3304760bde2741f8fd9c9698c06ed1055c6e3",
+      "role": "inner-2020-1-0",
+      "cutoffs": [
+        2383,
+        2403
+      ],
+      "fixed_state_id": "e1b6fc98c300e358f99403a2ebf4ab31a42dfbe0f93588731dbf5392d45c1ff0",
+      "prediction_frame_id": "59a6699d77a36963a868dc3e9be0f1ba864c3745090cf59bbe3ab5ea92675342"
+    },
+    {
+      "fit_id": "e8836a5cc27f443facbdf10938ab7a39897daeb848de9424cab71ead04357a7c",
+      "role": "path-outer-ridge-2016-9",
+      "cutoffs": [
+        1699,
+        1719
+      ],
+      "fixed_state_id": "8f681e378d86095ad267a36d6b85f0b8e9c52636f031eb27b466d0d9a2069425",
+      "prediction_frame_id": "828f9296e8b628fae55a1695d53df53d9744c95231fa0ea482dad9a566f06548"
+    },
+    {
+      "fit_id": "e9cd9b2f1b4f1e4d7c37eddf945f2cfa91509b72ed8ea841f51f799048aa62ec",
+      "role": "inner-2019-1-2",
+      "cutoffs": [
+        2173,
+        2193
+      ],
+      "fixed_state_id": "4eb3aff875e1d17e2ff29060171eed9136835446cbf7b8794a35ff98fe81fae1",
+      "prediction_frame_id": "8d6f3d19c379493623036ea89dc551ea439c933b38fa2e22ea77d78346891f43"
+    },
+    {
+      "fit_id": "ebcec7b8a83d623ed7587268fc2cb70ca25d3adb01e3db22e81c08bbe7742062",
+      "role": "path-outer-quantile-2020-4",
+      "cutoffs": [
+        2598,
+        2618
+      ],
+      "fixed_state_id": "42041304c7fc744795ec186bb0db83f7971a90c205c36fcb2f2d0f0faa2209e5",
+      "prediction_frame_id": "8caf78d7f0180d22d40b744b721fff1e14f963dfcddcc147e8d5b9e9441925e8"
+    },
+    {
+      "fit_id": "eccf3dfc0d9261e984c3239e8633d4a126de15fe931c3c6b3f263adb16954bd2",
+      "role": "path-outer-ridge-2023-6",
+      "cutoffs": [
+        3396,
+        3416
+      ],
+      "fixed_state_id": "b8178f5970769ee6d107b620655d3b0558d77182988bb9a94f8ea16925f13c1e",
+      "prediction_frame_id": "907689fad0393839b95163f8278621d6ed7bcd18a016217a497da0f472ae9cc7"
+    },
+    {
+      "fit_id": "f006ab298e813a0d5f1b8bf9f8b9a406583aaef958f89e7254db1b4c359d58c1",
+      "role": "path-outer-quantile-2018-1",
+      "cutoffs": [
+        2032,
+        2052
+      ],
+      "fixed_state_id": "2edf267fccc25ad91cec8fc8e76b04bf3bb50ff24fb38e2407ea71e21fa9458a",
+      "prediction_frame_id": "899233f8e983dedf8ce01db4494407f7cb589d65d7138b3ebd43d04a9544ee79"
+    },
+    {
+      "fit_id": "f081fadb1d34a29b388531c7dc8457d8e262236116228d327266e900b5f494d4",
+      "role": "path-outer-quantile-2016-0",
+      "cutoffs": [
+        1510,
+        1530
+      ],
+      "fixed_state_id": "559fc31c44cb9f373c6e97ca2eb57d197d8b13f8a3aff81c14e17ed48812017c",
+      "prediction_frame_id": "07421d70a6c93ddb4c6b38635ee0afb1e9956d3ddf8542e3f3394b30c72ac728"
+    },
+    {
+      "fit_id": "f10193b5bffb0e3e5c73f46ebfed2274eb1964de8bbb99ac8abdb85de30d3721",
+      "role": "inner-2016-1-0",
+      "cutoffs": [
+        1379,
+        1399
+      ],
+      "fixed_state_id": "e4c56be34ab1e6707a911c877a344fb38598abb0b79e7dd09cb5ff6332a883ed",
+      "prediction_frame_id": "81c3d86a1a561c45caba7c0b854037769755ce6c336d359d25f8979fdb14c4c4"
+    },
+    {
+      "fit_id": "f16050139319648b734c6236abec41cddf61195d0e035b8f4a033ab131db0f74",
+      "role": "inner-2020-0-1",
+      "cutoffs": [
+        2341,
+        2361
+      ],
+      "fixed_state_id": "c93b37910fd067d24ba792db000bfbe46579864aa02fd0507859c0d52c540b5e",
+      "prediction_frame_id": "5bb6aa50249048cef37e05d90dbaa5340031df7bd53c243e6a033d5c934b3fe9"
+    },
+    {
+      "fit_id": "f1ec0413e59039bb17d698fac55a0d593024794d1d47d37cc7fcac57ac3b6327",
+      "role": "inner-2016-1-1",
+      "cutoffs": [
+        1400,
+        1420
+      ],
+      "fixed_state_id": "9719e40ad1e4bf89ba7a9b037eb464afc59bb7c2d01df139a7b20d40d999a084",
+      "prediction_frame_id": "ad68d2054bfb13505088074885b5964b879735e5413f8b14d542a4103b34dd22"
+    },
+    {
+      "fit_id": "f1fd6bf5b8bf104e30ee1e9bf37ba50bb27b94aedbf16cae1fa9aceb49a60e5a",
+      "role": "inner-2018-1-0",
+      "cutoffs": [
+        1880,
+        1900
+      ],
+      "fixed_state_id": "e2f892fa002e7234a8594d5e98154333322f679e0b12aaea605d4b58ad7c5339",
+      "prediction_frame_id": "283fc6e1ba4c7bc7939725b53e08e9ef939d6d09cb2bfc4eb2b670bdc0e86d7c"
+    },
+    {
+      "fit_id": "f264a0b8ccf2d1f6c6347104fcf26d5d8171d1b727358af46fc8f7ad84737cff",
+      "role": "path-outer-quantile-2022-9",
+      "cutoffs": [
+        3208,
+        3228
+      ],
+      "fixed_state_id": "4e9428bf8ed5780bb0eb0783e3769abdb3bba143bfc7aca5a628fe8eba59b724",
+      "prediction_frame_id": "c89b15dcf62700004e568d6b81bf9156eeab344a1c94a53f6a94e4cdfee35c71"
+    },
+    {
+      "fit_id": "f34ed4ab921f29798eb3bacf430d7cc10069bc2a47727bdcb074dcd249475c62",
+      "role": "inner-2023-0-2",
+      "cutoffs": [
+        3118,
+        3138
+      ],
+      "fixed_state_id": "4538699587b1812643769a720d63d8bcb7951adc4f5039d979f609f1702ef37e",
+      "prediction_frame_id": "ba48dff2c7a278baecb936cec183ffbba3d5865b88d746fb486f554a49c093f8"
+    },
+    {
+      "fit_id": "f4d39622edf95cdd05d042092c87b6ef428fcbfdbe15c62ec5666c9fc1ef044b",
+      "role": "path-outer-ridge-2023-8",
+      "cutoffs": [
+        3438,
+        3458
+      ],
+      "fixed_state_id": "65d78c063a63abb27dc717b083518383db5890df0f800b552770114fde76e8f2",
+      "prediction_frame_id": "53e2be689f10f8a3469c3124dea662cd02eb93b115bd4b69018069e36cc67242"
+    },
+    {
+      "fit_id": "f62da02c7290db78815d9bef934498076310f636a2da50c98ed7ace86381a50b",
+      "role": "path-outer-quantile-2018-3",
+      "cutoffs": [
+        2074,
+        2094
+      ],
+      "fixed_state_id": "d019f38d654cc23c9c4cdf7f582da01dc0e5fb7915c0123e8c784b8133ffe93d",
+      "prediction_frame_id": "667820eda84f45dd8bb3bb084f4399036725a99fe111969852d57106db36aa10"
+    },
+    {
+      "fit_id": "f86e2fb3addb66264d745796e5d7ece97120bb80a288d8c75edd3276698c54b6",
+      "role": "inner-2017-0-1",
+      "cutoffs": [
+        1587,
+        1607
+      ],
+      "fixed_state_id": "f3b7811d1852bf03760c8a3f76007649d106ee603131282b292286e41298660a",
+      "prediction_frame_id": "7a15627cd41048715c2b9a3dd86ee2365708459cab6111ae3c1bd3c3dcb9fde3"
+    },
+    {
+      "fit_id": "fa4090e1fca5fc9ceb9488e841c64b5c01b226f70eead9776a2ba1cd3b6a2e17",
+      "role": "inner-2021-1-2",
+      "cutoffs": [
+        2678,
+        2698
+      ],
+      "fixed_state_id": "b22ac66ad75c806849a1bdcd3c5cb6b10ce8aacd4c47186db57409d59a910326",
+      "prediction_frame_id": "6d1159a0859058e21a1ca769c18a5c5ae4d91717e41719b9b32a2ec0619605ef"
+    },
+    {
+      "fit_id": "fb5cfb18a7a5d2abd836772b32399bce38ba6cd53b74d91b9945d263624f32bd",
+      "role": "path-outer-quantile-2018-9",
+      "cutoffs": [
+        2200,
+        2220
+      ],
+      "fixed_state_id": "c16f3e91255c78f232cd38069de3c507807331e93e617451cd923d94321536e5",
+      "prediction_frame_id": "4e82f2195c3eb9d9d38e6569d6236e4ab3ecec320e8509e7ac755984b12f82f4"
+    },
+    {
+      "fit_id": "fe89717f731ff612e5ac2f9e4d4dd18bf7d479e516349bfb969b944d6be6bcec",
+      "role": "inner-2022-2-1",
+      "cutoffs": [
+        2972,
+        2992
+      ],
+      "fixed_state_id": "292ed4a80c598bce231e49720cb13b8903649e1653676b460fc6db4c060df093",
+      "prediction_frame_id": "c1a18f2a15bb325d44e510c85b7ab26d9610b7bba022f30fd45f238a2d33d545"
+    },
+    {
+      "fit_id": "ff80f75223a54a5ad749d2b3ba90e7832b368f83c1648ccdd123534eedcfa6c0",
+      "role": "path-outer-ridge-2021-1",
+      "cutoffs": [
+        2788,
+        2808
+      ],
+      "fixed_state_id": "351e883292af7f4ddb2c0402a8e21177423c320960292583a12d56d5bba6abc8",
+      "prediction_frame_id": "49cc43e925e659d17e6ffa72043de336607b9779acd160da10639c00ecc35517"
+    }
+  ],
+  "maximum_saved_native_return_difference": 3.6410563938882312e-09,
+  "native_equivalence_tolerance": 1e-07,
+  "raw_history_sha256": "2132162a410b4e12655d36a2ac3e9efd62a3fc0e49fdb08cb038d4cc328836d7",
+  "ready_sha256": "ba3b438b707f1547c80adbea565133e6c573c3261def3414655896ce32d5f351",
+  "pipeline_sha256": "8cdf3f95bbdd1dd2e1023a51b8d79c0467cf9fcf2af740c12a86686f4f661ef0",
+  "builder_sha256": "45e9bfd427eec1bc6379fff0e79cf91ea1ce04b62d16ee767a146a8333b156b4",
+  "audit_sha256": "da0e8e92727e57ccfb340510cf37f6b0d844fb738c9c21365274dec9c02b2d9e",
+  "new_fits": 0,
+  "historical_availability_verified": false,
+  "all_selection_procedures_verified": false,
+  "market_skill": false
+}

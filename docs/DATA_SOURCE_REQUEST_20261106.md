@@ -1,6 +1,10 @@
 # Kontrat/vintage veri açığı için teklif ve örnek kabul şartları
 
-Bu bir satın alma veya gönderilmiş tedarikçi mesajı değildir. Canlı teklif/fiyat
+Güncel takip: Kullanıcı6Kasım2026'da ICE talebini gönderdiğini bildirdi.
+Gönderim/ekler bağımsız gözlenmedi; yanıt veya fiyat teklifi henüz doğrulanmadı.
+Bu bildirim veri kabulü veya satın alma yetkisi değildir.
+
+Bu belge satın alma talimatı değildir; gönderilen mesajın bağımsız makbuzu da değildir. Canlı teklif/fiyat
 alınmadı; herhangi bir kaynak kabul edilmedi. Aşağıdaki resmi ürün sayfaları
 6Kasım2026'da incelendi. GPU erişimi bu kaynak boşluklarını gidermez.
 
