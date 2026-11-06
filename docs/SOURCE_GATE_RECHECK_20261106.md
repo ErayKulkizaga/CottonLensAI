@@ -8,7 +8,12 @@ kontrolü2.829 Decimal scalar'ı doğruladı. Önceki139 evaluation HAR farkı v
 
 [Sayısal makbuz](../research/evidence/source-gate-review-20261106.json), çalışma
 payload'larının ve güncel iki kaynak dosyasının hash'lerini içerir. Büyük dosyalar
-yerel output/data-gpu-audit altında; bu yeni paket henüz uzak arşive yüklenmedi.
+yerel output/data-gpu-audit altında. Yeni paket artık
+[private Release'te](https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/source-gate-l4-audit-20261106):
+224dosya taze restore edildi;9katı-kaynak çıktısı byte eşit replay edildi.
+Parent401dosyanın hash'i ayrıca kontrol edildi; eski parent arşivi tekrar
+yüklenmedi. L4sonucu ve bağımsız NumPy/Adam verifier raporu da taze restore
+üzerinden byte eşit üretildi. [Teslim makbuzu](../research/evidence/source-gate-delivery-20261106.json).
 
 ## Yeni kontrolün etkisi
 

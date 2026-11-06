@@ -1,0 +1,32 @@
+{
+  "schema": 1,
+  "release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/source-gate-l4-audit-20261106",
+  "files_restored": 224,
+  "parent_files_rechecked": 401,
+  "excluded_files": 0,
+  "archive_sha256": "2f24cb3ec508a084b00e3aebb21e81ebcb2ac363ddf05ad7d1b9680384271701",
+  "archive_bytes": 1765595,
+  "source_gate_replay": {
+    "status": "strict_source_replay_byte_identical",
+    "new_fits": 0,
+    "network_disabled": true,
+    "parent_members_checked": 401,
+    "outputs_verified": {
+      "strict-feature-independent.json": "07926aad22e1687c5792fdc10a6cbfa44cfac0301d7d45eca9604ad5fbbc3334",
+      "strict-independent.json": "f669f9f9e64060f0dceeea0c2cac48e7efa351995a79bf6aee9b89fe87cbd007",
+      "strict-feature-impact/feature-impact.csv": "0cc1e6c1edeed6ba9d31252ee9912fa8bc3f207885f92904203e951cb7a7d5e7",
+      "strict-feature-impact/result.json": "f4e95296872b881115eec935fe2eb627a37fe915e2e705c8e67adcbc45021dbc",
+      "strict-readiness/job-readiness.csv": "3aebdde9ac1f81bae9753d4f12f8e8aba42d85f02e204b1d03745cd9f78b01dd",
+      "strict-readiness/origin-readiness.csv": "1a1d6c0dc6313bf902480dc38a69e51c4ff30219caf72ab457365d8abe0a490a",
+      "strict-readiness/result.json": "c0e85bf92b0ee583d92a0ec97a64893e373fbcf801b02d3d44da32634ba17186",
+      "strict-readiness/unknown-ewma-cells.csv": "f5179a96d3445892484a6882a42eb8a96f5e7c838629bcff8111c5e9f1f62097",
+      "strict-readiness/witness-overlay.json": "1d6124234aa0453537aa732626039adbf81c1c9c54c190936edc8b048fc37bd0"
+    },
+    "replay_script_sha256": "e13c0ee055a4adb3927557a8fe4ac961ab80a9f987bc4558dcc73e1ec6924cd3"
+  },
+  "gpu_report_byte_identical": true,
+  "gpu_report_sha256": "33d8069736efedf9eb5b454a2b8123e94697c125b8bae6cc6a4f698a7e7a7038",
+  "new_fits": 0,
+  "training_allowed": false,
+  "market_skill": false
+}
