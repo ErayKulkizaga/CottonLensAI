@@ -557,3 +557,9 @@ including4session phase controls, before the7new verifier controls were added.
 Actual L4 execution is pending; no local TensorFlow, no market fits.
 See docs/L4_REMAINING_CHECKS_20261107.md and the handoff receipt.
 Drive UI confirmed2uploads; remote download hashes were not claimed.
+
+Final handoff review caught a notebook/setup project path mismatch before user
+execution. v2 preserves /content/CottonLensAI and adds a regression against the
+actual setup PROJECT constant.12controls pass. Drive v2 upload completed; use
+CottonLens_L4_Remaining_Checks_Drive_v2.ipynb. Prior artifacts remain historical.
+Source archive unchanged; no prior GPU probes retrained.

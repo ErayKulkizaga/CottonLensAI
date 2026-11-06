@@ -1,7 +1,7 @@
 # Kalan L4 kontrolleri — tek Drive notebook'u
 
 Drive klasörü: https://drive.google.com/drive/u/0/folders/1rtMBiFl2lMBR2DVCB0Ez5UlB75j5uqy2
-Dosya: CottonLens_L4_Remaining_Checks_Drive.ipynb.
+Dosya: CottonLens_L4_Remaining_Checks_Drive_v2.ipynb.
 Kaynak yanındadır; kullanıcı ZIP indirme/yükleme yapmaz.
 
 1. Yeni L4 çalışma zamanında notebook'u açıp Tümünü çalıştır.
@@ -46,3 +46,6 @@ korunur; güncel doküman sayfasının2.21olması paket yükseltmesi gerekçesi 
 
 Bu teslimat G3 hazırlığıdır, gerçek session/RNG kabulü henüz yoktur. Piyasa
 fit'i0; G1/G2 kaynak kabulleri ve bilimsel kampanya bu notebook ile açılmaz.
+
+Kullanılacak notebook v2: kurulumun mevcut /content/CottonLensAI proje yolu
+korunur. İlk teslimat arşivi tarihçe olarak kalır; çalıştırma için v2 kullanılır.

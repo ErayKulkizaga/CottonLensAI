@@ -18,10 +18,12 @@ def test_handoff_repeatability_and_changed_source_rejected(tmp_path, monkeypatch
         (tmp_path/'research/evidence'/name).write_text('{"generated_fixture":true}')
     first = builder.build()
     assert builder.build() == first
-    root = tmp_path/'output/l4-session-handoff-20261107'
-    notebook = json.loads((root/'CottonLens_L4_Remaining_Checks_Drive.ipynb').read_text(encoding='utf-8'))
+    root = tmp_path/'output/l4-session-handoff-20261107-v2'
+    notebook = json.loads((root/'CottonLens_L4_Remaining_Checks_Drive_v2.ipynb').read_text(encoding='utf-8'))
     code = '\n'.join(''.join(c['source']) for c in notebook['cells'] if c['cell_type'] == 'code')
     ast.parse(code)
+    from colab_setup import PROJECT
+    assert f'root = Path({PROJECT.as_posix()!r})' in code
     assert 'files.upload' not in code and 'files.download' not in code
     with zipfile.ZipFile(root/'cottonlens-l4-session-source.zip') as z:
         assert len([n for n in z.namelist() if n.startswith('prior-evidence/')]) == 3

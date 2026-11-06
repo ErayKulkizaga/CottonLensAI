@@ -10,7 +10,7 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 def build():
-    output = ROOT/'output/l4-session-handoff-20261107'
+    output = ROOT/'output/l4-session-handoff-20261107-v2'
     output.mkdir(parents=True, exist_ok=True)
     paths = [ROOT/'ml'/n for n in ('gpu_session_probe.py', 'gpu_restart_probe.py', 'a100_preflight.py',
                                   'colab_setup.py', 'pyproject.toml', 'uv.lock')]
@@ -60,7 +60,7 @@ base = Path('/content/drive/MyDrive/CottonLensAI/GPU_Handoff_L4_20261106')
 source = (base/'cottonlens-l4-session-source.zip').read_bytes()
 assert hashlib.sha256(source).hexdigest() == {digest!r}, 'Source hash mismatch'
 expected = {manifest!r}
-root = Path('/content/CottonLensSessionProbe')
+root = Path('/content/CottonLensAI')
 with zipfile.ZipFile(io.BytesIO(source)) as z:
     assert len(z.namelist()) == len(set(z.namelist())) and set(z.namelist()) == set(expected)
     for name, wanted in expected.items():
@@ -115,7 +115,7 @@ else:
     notebook = {'nbformat': 4, 'nbformat_minor': 5, 'metadata': {'accelerator': 'GPU',
         'kernelspec': {'display_name': 'Python 3', 'name': 'python3'}}, 'cells': cells}
     artifacts = {'cottonlens-l4-session-source.zip': source,
-                 'CottonLens_L4_Remaining_Checks_Drive.ipynb': (json.dumps(notebook, ensure_ascii=False, indent=2)+'\n').encode()}
+                 'CottonLens_L4_Remaining_Checks_Drive_v2.ipynb': (json.dumps(notebook, ensure_ascii=False, indent=2)+'\n').encode()}
     for name, raw in artifacts.items():
         path = output/name
         if path.exists() and path.read_bytes() != raw:
