@@ -35,18 +35,41 @@ def admit_generated_jobs(tmp_path, monkeypatch):
 @pytest.fixture
 def admit_generated_backends(tmp_path, monkeypatch):
     """Opt-in direct adapter checks for tests with explicitly generated labels."""
-    from cottonlens_ml.research import admission as module
-    original = module.require_backend_inputs
+    from cottonlens_ml.research import ct_ewma_har, statistical_models, volatility
 
-    def check(history, train, test, spec):
-        ledger_identity = {'profile': 'generated-backend-test'}
-        specification = {'recipe': spec}
-        permit = synthetic_admitter(tmp_path/'generated-backend-admission', ledger_identity,
-                                    model_inputs=model_inputs_id(history, train, None, test, spec, None))
-        with permit.training_scope(ledger_identity, specification):
-            return original(history, train, test, spec)
+    def wrap(original):
+        def fit(history, train, test, spec, workspace):
+            ledger_identity = {'profile': 'generated-backend-test'}
+            specification = {'recipe': spec}
+            permit = synthetic_admitter(tmp_path/'generated-backend-admission', ledger_identity,
+                                        model_inputs=model_inputs_id(history, train, None, test, spec, None))
+            with permit.training_scope(ledger_identity, specification):
+                return original(history, train, test, spec, workspace)
+        return fit
 
-    monkeypatch.setattr(module, 'require_backend_inputs', check)
+    for module in (statistical_models, volatility, ct_ewma_har):
+        monkeypatch.setattr(module, 'fit_predict', wrap(module.fit_predict))
+
+
+@pytest.fixture
+def admit_generated_qlike(tmp_path, monkeypatch):
+    """Only generated numerical-kernel tests; retain actual identity checks."""
+    from cottonlens_ml.research import volatility
+    from cottonlens_ml.research.admission import require_backend_inputs
+    original = volatility.qlike_har
+
+    def fit(train, horizon, *, feature_names=None):
+        spec = {'family': 'har', 'horizon': horizon, 'training_loss': 'qlike',
+                'variance_features': feature_names}
+        ledger_identity = {'profile': 'generated-qlike-test'}
+        permit = synthetic_admitter(tmp_path/'generated-qlike-admission', ledger_identity,
+                                    model_inputs=model_inputs_id(None, train, None, None, spec, None))
+        with permit.training_scope(ledger_identity, spec):
+            require_backend_inputs(None, train, None, spec)
+            return original(train, horizon, feature_names=feature_names)
+
+    monkeypatch.setattr(volatility, 'require_training', lambda *args: None)
+    monkeypatch.setattr(volatility, 'qlike_har', fit)
 
 
 @pytest.fixture

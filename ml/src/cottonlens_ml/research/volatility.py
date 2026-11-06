@@ -67,8 +67,11 @@ def qlike_features(names=None):
 
 def qlike_har(train, horizon, *, feature_names=None):
     """One declared log-link design, unchanged optimizer and past-only conditioning."""
-    from scipy.optimize import minimize
     names = qlike_features(feature_names)
+    require_training('har', 'cpu')
+    from cottonlens_ml.research.admission import require_qlike_inputs
+    require_qlike_inputs(train, horizon, names)
+    from scipy.optimize import minimize
     raw = train[names].to_numpy(dtype=float)
     actual = train[f'variance_target_{horizon}'].to_numpy(dtype=float)
     if (not np.isfinite(raw).all() or not np.isfinite(actual).all()

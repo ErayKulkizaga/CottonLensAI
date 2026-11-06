@@ -1,0 +1,79 @@
+{
+  "schema": 1,
+  "updated": "2026-11-06",
+  "scope": "Known defects and evidence gaps in the approved data/GPU remediation; not certification of every training path.",
+  "issues": [
+    {
+      "id": "DG-001",
+      "status": "EVIDENCE_GAP",
+      "problem": "Expired named-contract identities in 218 history/evaluation slots, including 217 scored targets.",
+      "affected_scope": "Three source-qualified named-risk profiles; not all CT=F experiments.",
+      "evidence": ["research/evidence/lifecycle-recheck-20261106.json", "docs/SOURCE_GATE_RECHECK_20261106.md"],
+      "remediation": "Preserve old results with source qualifications; require verified replacement cells and lifecycle evidence before new fits.",
+      "closure": "Complete source-bound repair and downstream dependency acceptance; recounting the defect is not repair."
+    },
+    {
+      "id": "DG-002",
+      "status": "FIXED_VERIFIED",
+      "problem": "Partial source tables inferred contract absence from month/rank.",
+      "affected_scope": "Readiness computation and its independent verifier.",
+      "evidence": ["research/ams_cell_readiness.py", "research/verify_ams_cell_readiness.py", "research/tests/test_ams_cell_readiness.py", "research/evidence/source-gate-review-20261106.json"],
+      "remediation": "Missing quotes in partial tables remain UNKNOWN. Strict real-source replay and independent computation agree.",
+      "closure": "Code defect fixed; this does not close DG-001 or DG-004."
+    },
+    {
+      "id": "DG-003",
+      "status": "FIXED_VERIFIED",
+      "problem": "Missing source tables defaulted to complete and implied absence.",
+      "affected_scope": "Readiness and independent cell lookup.",
+      "evidence": ["research/tests/test_ams_cell_readiness.py", "research/evidence/source-gate-review-20261106.json"],
+      "remediation": "Default completeness is false; uncertainty propagates through EWMA without hidden state reset.",
+      "closure": "Strict conditional scope has zero fully ready origins; no new market campaign admitted."
+    },
+    {
+      "id": "DG-004",
+      "status": "EVIDENCE_GAP",
+      "problem": "Full source/lifecycle/first-publication/vintage evidence is not available for every required dependency.",
+      "affected_scope": "Named-risk G1; actual price errors are not equivalent to potential unknown cells.",
+      "evidence": ["research/evidence/source-gate-review-20261106.json", "research/evidence/early-catalog-review-20261106.json", "docs/DATA_SOURCE_REQUEST_20261106.md"],
+      "remediation": "Keep G1 closed; use exact coverage matrix, observed official links and provider sample acceptance conditions.",
+      "closure": "All required cells accepted, or separately preregistered narrower universe; current catalog limits do not prove global absence."
+    },
+    {
+      "id": "DG-005",
+      "status": "FIXED_VERIFIED",
+      "problem": "Direct QLIKE-HAR optimizer could fit without a data-admission scope.",
+      "affected_scope": "volatility.qlike_har direct entrypoint and nested adapter calls.",
+      "evidence": ["ml/src/cottonlens_ml/research/admission.py", "ml/src/cottonlens_ml/research/volatility.py", "ml/tests/test_qlike_har.py"],
+      "remediation": "Require runtime permission and exact admitted training frame, horizon and ordered features before preprocessing or optimization.",
+      "closure": "Valid generated fit passes; absent/expired authority, changed labels/split/horizon/features stop before minimize."
+    },
+    {
+      "id": "DG-006",
+      "status": "EVIDENCE_GAP",
+      "problem": "Admission and temporal tests do not yet prove every preprocessing, selection and prediction path is protected.",
+      "affected_scope": "Full G2; feature-level causality is narrower than prediction/selection invariance.",
+      "evidence": ["research/evidence/price-feature-prefix-audit-20261106.json", "ml/tests/test_admission.py", "ml/tests/test_temporal_audit.py"],
+      "remediation": "Audit remaining entrypoints and fixed-recipe prediction/selection state; add discriminating injected defects.",
+      "closure": "Requirement-by-requirement G2 coverage including independent common-origin evaluation and native prediction replay."
+    },
+    {
+      "id": "DG-007",
+      "status": "EVIDENCE_GAP",
+      "problem": "L4 save/load and optimizer replay do not establish forced-session interruption, OOM or duplicate-worker handling.",
+      "affected_scope": "Remaining G3 infrastructure acceptance; zero market skill evidence.",
+      "evidence": ["research/evidence/l4-technical-verification-20261106.json", "research/evidence/source-gate-delivery-20261106.json"],
+      "remediation": "Prepare synthetic fault/restart tests; Colab operations remain with the user.",
+      "closure": "Fault-specific receipts, no duplicate completed fits, explicit attempt semantics and fresh restore."
+    },
+    {
+      "id": "DG-008",
+      "status": "EVIDENCE_GAP",
+      "problem": "Legacy LSTM positive comparison used unequal periods; missing predictions prevent a complete paired inference.",
+      "affected_scope": "Legacy comparison; not evidence that all engines fail.",
+      "evidence": ["docs/NAIVE_MAE_AUDIT_20261105.md", "docs/ROOT_CAUSE_REVIEW_20261106.md"],
+      "remediation": "Retract unequal-period advantage and preserve incomplete evidence; do not fill historical gaps by retraining.",
+      "closure": "Historical paired claim remains unavailable unless original required predictions are recovered."
+    }
+  ]
+}

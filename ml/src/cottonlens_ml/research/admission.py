@@ -223,7 +223,10 @@ def require_model_inputs(history, train, validation, test, recipe, iterations):
     actual = model_inputs_id(history, train, validation, test, recipe, iterations)
     if actual != job['model_inputs_id']:
         raise AdmissionError('Actual model inputs changed after admission')
-    _BACKEND_INPUTS.set(model_inputs_id(history, train, None, test, recipe, None))
+    _BACKEND_INPUTS.set({
+        'inputs_id': model_inputs_id(history, train, None, test, recipe, None),
+        'qlike_id': qlike_inputs_id(train, recipe['horizon'], recipe.get('variance_features'))
+        if recipe.get('family') == 'har' and recipe.get('training_loss') == 'qlike' else None})
 
 
 def require_backend_inputs(history, train, test, recipe):
@@ -233,8 +236,22 @@ def require_backend_inputs(history, train, test, recipe):
     expected = _BACKEND_INPUTS.get()
     if expected is None:
         require_model_inputs(history, train, None, test, recipe, None)
-    elif model_inputs_id(history, train, None, test, recipe, None) != expected:
+    elif model_inputs_id(history, train, None, test, recipe, None) != expected['inputs_id']:
         raise AdmissionError('Backend inputs changed after model admission')
+
+
+def qlike_inputs_id(train, horizon, names):
+    from cottonlens_ml.cohort import frame_identity
+    return identity({'train': frame_identity(train, list(train.columns)), 'horizon': horizon,
+                     'features': list(names) if names is not None else ['har_1', 'har_5', 'har_22']})
+
+
+def require_qlike_inputs(train, horizon, names):
+    """The direct optimizer must use the exact admitted backend training split."""
+    expected = _BACKEND_INPUTS.get()
+    if (_TRAINING_JOB.get() is None or expected is None
+            or expected['qlike_id'] != qlike_inputs_id(train, horizon, names)):
+        raise AdmissionError('QLIKE optimizer inputs are not admitted')
 
 
 def require_legacy_fit(fit_identity):

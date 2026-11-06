@@ -50,3 +50,18 @@ kuruldu. Eğitim bağımlılıkları/üretim backend'i değiştirilmedi.
 Sıradaki veri işi: erken tam kontrat tanıkları ve listeleme kapsamını bulmak;
 gerekirse kabul testiyle ücretli kaynak teklifi. Mevcut makbuzlarda kanıtlanmamış
 tarihsel yayın zamanını varsayarak kabul vermek çözüm değildir.
+
+## Erken katalog kapsamı kontrolü
+
+6 Kasım'da resmi ESMIS HTML tarih filtreleri yeniden indirildi: tam günlük
+`daily-spot-quotations` seçenekleri2018-12–2025-09; `excerpts` seçenekleri
+2018-11–2025-07. Sabit örnek2018-08-01 her iki filtrenin dışında. Bu yalnız
+gözlenen katalog arayüzünün kapsamıdır; başka arşivde belge bulunmadığını veya
+geçmişte yayınlanmadığını göstermez. Özet rapor tam on-kontrat tablosunun yerine
+geçmez; filtre seçeneği de tarihsel first-publication kanıtı değildir.
+
+[Makbuz](../research/evidence/early-catalog-review-20261106.json) ham HTML hash'lerini
+ve gözlenen bütün ay seçeneklerini korur. Aynı private Release'e ayrı
+`early-catalog-review-20261106.zip` asset'i eklendi; taze indirme sonrası üç üyenin
+tam byte eşitliği ve HTML hash'leri doğrulandı. Eski paketlerin üzerine yazılmadı.
+G1 kapalı; yeni piyasa fit'i yok.

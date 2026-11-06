@@ -5,16 +5,19 @@ Bu takip kaydı tamamlanma iddiası değildir. Önceki bilimsel kayıtlar deği�
 
 | Teslimat | Durum | Mevcut kanıt / kalan iş |
 |---|---|---|
-| A: Hata ve kapsam sicili | DEVAM | 239 kayıtlık önceki envanter;139/106/28 sayıları frozen replay ile doğrulandı,217lifecycle kaynağı ayrıca doğrulanacak |
+| A: Hata ve kapsam sicili | DEVAM | [Hata sicili](../research/data-gpu-defects.json);239 deney kaydı,139/106/28 ve217scored lifecycle sorunu yeniden doğrulandı; bütün gereksinimlerin kapanışı henüz kanıtlanmadı |
 | B: Veri sözleşmesi | DEVAM | Role-aware dependency admission çekirdeği eklendi; source-specific doğrulama ve gerçek hücre matrisi bekliyor |
 | C: Onarım ve etki yayılımı | DEVAM |139/106/28yeniden doğrulandı; katı kapsam0hazır, tam kaynak onarımı eksik |
-| D: Zorunlu eğitim kapısı | DEVAM | Yeni recipe/profile/source_id ledger işleri için kabul zorunlu; Experiment bağlı, doğrudan model/pipeline yolları denetimi bekliyor |
-| D: Sızıntı testi | DEVAM | 19 kabul testi ve ilgili kaynak testleri geçti; prefix/join/scaler/tuning entegrasyonları bekliyor |
+| D: Zorunlu eğitim kapısı | DEVAM | Ledger/model/backend/legacy fit ve doğrudan QLIKE kernel kimlik kontrolü; bütün seçim/preprocessing yollarının kapsam denetimi açık |
+| D: Sızıntı testi | DEVAM | Kabul ve hata enjeksiyonları;5fiyat feature'ı169cutoff prefix/future testi geçti. Bütün model/seçim yollarının prediction invariance denetimi eksik |
 | E: Bağımsız değerlendirme | BEKLİYOR | Eski verifier'lar mevcut; yeni sözleşmeye kapsam eşlemesi yapılacak |
-| F: A100 yürütme/restore | BEKLİYOR | Colab kurulumu ve tek-yazıcılı ledger incelendi; canlı A100 bağlantısı doğrulanmadı |
+| F: GPU yürütme/restore | KISMİ | Kullanıcının onayladığı L4 sentetik/native Adam replay ve uzak arşiv restore geçti; zorla kesinti/OOM/worker çakışması eksik |
 | G: Kampanya manifesti/sonuç | G1/G2/G3 BEKLİYOR | Veri kabulü olmadan yeni piyasa fit'i yok |
-| GitHub teslimatı | BEKLİYOR | Yerel değişiklikler henüz gönderilmedi |
+| GitHub teslimatı | DEVAM | Draft PR77 ve checksum bağlı private Release mevcut;41ffe0e PR CI başarılı. Sonraki commit'ler ayrıca doğrulanacak |
 | İleri doğrulama kararı | BEKLİYOR | Aday ve geçerli kampanya sonucu oluşmadan karar yok |
+
+Aşağıdaki bölümler tarih sıralı çalışma kaydıdır; eski anlık durumlar yukarıdaki
+güncel tablonun yerine geçmez.
 
 ## İlk doğrulama
 
@@ -186,3 +189,33 @@ Verilen iki dosya output/data-gpu-audit/l4-returned altında kopyalandı; kullan
 Temporal audit sentry eklendi: future join, centered rolling, global scaling ve backfill enjeksiyonlarını reddeder; kaynak mutasyonu ve origin düşürme de reddedilir.6sentetik test geçti. Son median deneyinin338completed market kaydından169tekil cutoff çıkarıldı; her cutoff'ta tam tarihçe/prefix ve gelecekteki sayısal gözlemleri değiştirerek5fiyat feature'ı byte/float-exact eşleşti. Yeni fit0. Makbuz research/evidence/price-feature-prefix-audit-20261106.json; tekrar üretim CLI research/recheck_price_features.py. Kontrol kayıtlı satır nedenselliğiyle sınırlı; yayın/vintage kanıtı, bütün diğer feature builder'lar veya bütün seçim politikaları için geçerli değildir.
 
 884c35c commit'inin PR CI42189277401 çalışması success oldu: backend/frontend/ML-research/Compose. Bu başarı sonraki temporal-audit commit'ini kapsamıyor. G1 veri boşluğu devam ediyor; yeni market kampanyası açılmadı.
+
+## Doğrudan QLIKE optimizasyon açığı kapatıldı
+
+Üst adapter kabul kapısına rağmen doğrudan `qlike_har` çağrısı optimizasyon
+başlatabiliyordu. Runtime izni ve tam eğitim frame'i/ufuk/sıralı feature kimliği
+artık scaler istatistiği, OLS başlangıcı ve BFGS öncesinde zorunlu. Scope dışında
+veya scope bittikten sonra çağrı reddedilir. Label/split/ufuk/feature değişikliği
+testlerinde `minimize` hiç çağrılmaz; geçerli sentetik örnek fit olur.
+
+Opt-in sentetik backend fixture artık yalnız kontrol fonksiyonunu geçici olarak
+yetkilendirmek yerine adapter'ın tüm çağrısı boyunca gerçek admission scope'u
+tutar. Kernel sayısal testleri de yalnız üretilmiş veriye açık fixture kullanır.
+72 QLIKE/named-CT-offset/statistical/admission testi ve değişen Python dosyalarında
+Ruff geçti. Bu sayı bütün suite veya gerçek veri kabulü değildir.
+
+[Tek hata sicili](../research/data-gpu-defects.json), kapatılan kod kusurlarını
+kaynak ve doğrulama açıklarından ayırır. Tarihsel ESMIS katalog kapsamı için
+[ayrı arşiv makbuzu](../research/evidence/early-catalog-review-20261106.json) eklendi.
+41ffe0e commit'inin PR CI42190338412 çalışması dört job ile başarıyla tamamlandı;
+bu bölümdeki sonraki kernel değişikliğini henüz kapsamaz.
+
+Tam ML+research çalışması1.624passed/4failed/3skipped verdi; dört başarısızlık
+research sentetik fixture scope süresindeydi. Fixture, adapter çağrısının tamamı
+boyunca kimlik denetimini tutacak biçimde düzeltildi; üretim kapısı gevşetilmedi.
+Bu ilk run bütün suite başarılıymış gibi sunulmaz.
+
+Fixture düzeltmesi sonrası bütün research/tests ve etkilenen ML grubu birlikte
+371passed/74.18s verdi. Değişen beş Python dosyasında Ruff ve diff kontrolü geçti.
+Tam ML suite fixture-only düzeltmeden sonra yerelde yeniden çalıştırılmadı;
+son commit CI sonucu ayrıca gerekli.

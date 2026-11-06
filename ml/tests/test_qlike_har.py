@@ -29,7 +29,7 @@ def test_analytic_gradient_matches_finite_difference_with_zero_target():
     np.testing.assert_allclose(gradient, numeric, atol=1e-9)
 
 
-def test_noiseless_known_mean_is_recovered():
+def test_noiseless_known_mean_is_recovered(admit_generated_qlike):
     f = data()
     coefficient, info = v.qlike_har(f.iloc[:500], 1)
     prediction = np.exp(np.column_stack([np.ones(100), f.iloc[500:][['har_1', 'har_5', 'har_22']]]) @ coefficient)
@@ -38,7 +38,7 @@ def test_noiseless_known_mean_is_recovered():
     assert len(coefficient) == 4
 
 
-def test_objective_not_worse_than_initial_and_gradient_certified():
+def test_objective_not_worse_than_initial_and_gradient_certified(admit_generated_qlike):
     f = data()
     f['variance_target_1'] *= np.random.default_rng(12).lognormal(0, .8, len(f))
     f.loc[0, 'variance_target_1'] = 0.
@@ -48,19 +48,19 @@ def test_objective_not_worse_than_initial_and_gradient_certified():
 
 
 @pytest.mark.parametrize('value', [np.nan, np.inf, -1])
-def test_invalid_targets_rejected(value):
+def test_invalid_targets_rejected(value, admit_generated_qlike):
     f = data(); f.loc[0, 'variance_target_1'] = value
     with pytest.raises(v.InvalidVarianceFit):
         v.qlike_har(f, 1)
 
 
-def test_all_zero_targets_have_no_finite_unconstrained_optimum():
+def test_all_zero_targets_have_no_finite_unconstrained_optimum(admit_generated_qlike):
     f = data(); f['variance_target_1'] = 0.
     with pytest.raises(v.InvalidVarianceFit, match='positive mass'):
         v.qlike_har(f, 1)
 
 
-def test_numerical_failure_cannot_fallback_to_ols():
+def test_numerical_failure_cannot_fallback_to_ols(admit_generated_qlike):
     f = data()
     fake = SimpleNamespace(x=np.zeros(4), success=False, nit=0)
     with patch('scipy.optimize.minimize', return_value=fake), pytest.raises(v.InvalidVarianceFit, match='no OLS fallback'):
@@ -99,7 +99,7 @@ def test_declared_fourth_feature_reaches_fit_and_heldout_prediction(admit_genera
     np.testing.assert_allclose(result['variance_predictions'], f.variance_target_1.iloc[500:], rtol=1e-6)
 
 
-def test_legacy_default_matches_explicit_three_features_exactly():
+def test_legacy_default_matches_explicit_three_features_exactly(admit_generated_qlike):
     f = data()
     default, info = v.qlike_har(f, 1)
     explicit, second_info = v.qlike_har(f, 1, feature_names=['har_1', 'har_5', 'har_22'])
@@ -117,3 +117,48 @@ def test_declared_features_cannot_silently_enter_another_loss(admit_generated_ba
     with patch.object(v, 'require_training'), pytest.raises(ValueError, match='QLIKE HAR path'):
         v.fit_predict(data(), data(), data(), {'family': 'har', 'horizon': 1,
                       'variance_features': ['har_1'], 'training_loss': 'log_mse'}, tmp_path)
+
+
+def test_direct_optimizer_without_admission_never_reaches_minimize():
+    from cottonlens_ml.research.admission import AdmissionError
+    with patch.object(v, 'require_training'), patch('scipy.optimize.minimize') as optimizer:
+        with pytest.raises(AdmissionError, match='optimizer inputs'):
+            v.qlike_har(data(), 1)
+        optimizer.assert_not_called()
+
+
+def test_direct_optimizer_retains_runtime_guard():
+    with (patch.object(v, 'require_training', side_effect=RuntimeError('runtime denied')),
+          pytest.raises(RuntimeError, match='runtime denied')):
+        v.qlike_har(data(), 1)
+
+
+def test_kernel_authority_binds_split_horizon_features_and_expires(tmp_path):
+    from cottonlens_ml.research.admission import (
+        AdmissionError,
+        model_inputs_id,
+        require_backend_inputs,
+    )
+
+    from ml.tests.admission_fixture import synthetic_admitter
+    f = data()
+    spec = {'family': 'har', 'horizon': 1, 'training_loss': 'qlike'}
+    ledger_id = {'profile': 'generated-kernel-boundary'}
+    permit = synthetic_admitter(tmp_path/'admission', ledger_id,
+                                model_inputs=model_inputs_id(None, f, None, None, spec, None))
+    with patch.object(v, 'require_training'):
+        with permit.training_scope(ledger_id, spec):
+            require_backend_inputs(None, f, None, spec)
+            _, info = v.qlike_har(f, 1)
+            assert info['success']
+            changed = f.copy()
+            changed.loc[0, 'variance_target_1'] *= 2
+            cases = [(changed, 1, None), (f.iloc[:-1], 1, None),
+                     (f, 5, None), (f, 1, ['har_5', 'har_1', 'har_22'])]
+            for rows, horizon, names in cases:
+                with patch('scipy.optimize.minimize') as optimizer:
+                    with pytest.raises(AdmissionError, match='optimizer inputs'):
+                        v.qlike_har(rows, horizon, feature_names=names)
+                    optimizer.assert_not_called()
+        with pytest.raises(AdmissionError, match='optimizer inputs'):
+            v.qlike_har(f, 1)
