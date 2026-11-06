@@ -85,7 +85,7 @@ def test_invalid_inputs_and_corrupt_state_rejected(change):
             TextPreprocessor.from_dict(body)
 
 
-def test_synthetic_model_checkpoint_contains_exact_text_transform(tmp_path,monkeypatch):
+def test_synthetic_model_checkpoint_contains_exact_text_transform(admit_generated_models, tmp_path,monkeypatch):
     from cottonlens_ml.research import models
     train, names, config = fixture()
     train['date'] = pd.date_range('2017-01-01',periods=len(train))

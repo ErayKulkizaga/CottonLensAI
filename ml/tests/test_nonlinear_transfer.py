@@ -67,7 +67,7 @@ def test_early_validation_is_cotton_only_and_tree_counts_are_past_locked(nonline
     assert chosen['inner_score']==pytest.approx(1.)
 
 
-def test_gpu_fit_passes_asset_weights_and_stops_on_cotton_price_mae(nonlinear_case,tmp_path,monkeypatch):
+def test_gpu_fit_passes_asset_weights_and_stops_on_cotton_price_mae(admit_generated_models, nonlinear_case,tmp_path,monkeypatch):
     exp = nonlinear_case
     spec = nonlinear.recipe(exp.identity['design'],transfer.GROUPS[1],1)
     test = exp.history.loc[exp.history.date.isin(pd.to_datetime(exp.identity['split']['folds'][0]['origins'][:21]))].copy()

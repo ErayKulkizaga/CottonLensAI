@@ -172,3 +172,11 @@ Legacy pipeline yeni estimator ve preprocessing fit noktalarına tam fit kimliğ
 Admission manifest artık market/synthetic amacını açıkça belirtir. Market leaf, hash'e bağlı source-verification raporundaki alan/sembol/kontrat/seans/vintage/erişim zamanı ile eşleşmek zorunda. Futures için listed_on <= session <= last_trade_on kontrol edilir; eksik tarih reddedilir. Raporun alan/kimlik/takvim/PIT/lifecycle kontrol durumları tam olmalı. Rapor okunurken hash tekrar kontrol edilir. Bu bir tutarlılık katmanıdır; raporun güvenilir yayıncıdan geldiğini imzalayan veya ilk-vintage kanıtını kendiliğinden yaratan bir sistem değildir. Source-specific doğrulama hâlâ gerekli ve gerçek named-risk verisi için G1 hâlâ kapalıdır.
 
 57admission/legacy-wiring/native-synthetic test geçti; değişen3Python dosyasında Ruff geçti. Yeni market-shaped rapor testleri yalnız üretilmiş şema örnekleridir, gerçek piyasa kabulü değildir. İlk commit03c3dda için backend/frontend/Compose CI başarılı; ML/research son gözlemde çalışıyordu. Bu CI sonucu sonraki commit'ler için geçerli sayılmaz.
+
+## Kullanıcıdan dönen L4 teknik sonuç doğrulandı
+
+Kullanıcı cottonlens-a100-result.zip ve checksum dosyasını gönderdi. Kaynak arşiv hash'i L4teslimatı4c6a206c… ile eşleşti; complete.json record_id, tüm3üye ve2nativeKeras dosyasının hash'leri doğrulandı. Probe bildirimi:NVIDIA L4/23034MiB,TensorFlow2.20.0,NumPy2.1.3,12.702884s,3sentetik train_on_batch/0piyasa fit.
+
+research/verify_gpu_probe.py TensorFlow ithal etmeden nativeHDF5ağırlık/Adam durumunu okudu ve ikinci adımı NumPy ile bağımsız hesapladı. Maksimum mutlak fark1.1920928955078125e-7; ön kayıt toleransı1e-6. Rapor research/evidence/l4-technical-verification-20261106.json. Bu donanımın uzaktan kriptografik attestation'ı, piyasa öğrenme gücü veya G1/G2kabulü değildir. Oturumun zorla kesilmesi/çokworker/arşivrestore dahil bütünG3maddeleri tamamlanmış sayılmaz.
+
+Verilen iki dosya output/data-gpu-audit/l4-returned altında kopyalandı; kullanıcı Downloads orijinalleri değişmedi. Girdi/üye bozulması için2arşiv-yapısı testi ve Ruff geçti. Eski CI'daki11sentetik fixture eksikliği6test modülünde giderildi; bu grupta45test geçti. Son kodun tamCI'ı ayrıca beklenir.

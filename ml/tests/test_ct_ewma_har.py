@@ -17,14 +17,14 @@ def fixture():
     return rows
 
 
-def test_known_relative_variance_recovers_absolute_scale(tmp_path):
+def test_known_relative_variance_recovers_absolute_scale(admit_generated_backends, tmp_path):
     rows = fixture()
     with patch('cottonlens_ml.research.ct_ewma_har.require_training'), patch('cottonlens_ml.research.volatility.require_training'):
         result = fit_offset(rows.iloc[:500], rows.iloc[500:], tmp_path)
     np.testing.assert_allclose(result['variance_predictions'], rows.variance_target_1.iloc[500:], rtol=1e-5)
 
 
-def test_future_targets_cannot_change_native_model(tmp_path):
+def test_future_targets_cannot_change_native_model(admit_generated_backends, tmp_path):
     rows = fixture(); first, second = tmp_path/'first', tmp_path/'second'; first.mkdir(); second.mkdir()
     with patch('cottonlens_ml.research.ct_ewma_har.require_training'), patch('cottonlens_ml.research.volatility.require_training'):
         before = fit_offset(rows.iloc[:500], rows.iloc[500:], first)

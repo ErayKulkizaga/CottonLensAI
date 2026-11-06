@@ -35,21 +35,33 @@ def admit_generated_jobs(tmp_path, monkeypatch):
 @pytest.fixture
 def admit_generated_backends(tmp_path, monkeypatch):
     """Opt-in direct adapter checks for tests with explicitly generated labels."""
-    from cottonlens_ml.research import statistical_models, volatility
+    from cottonlens_ml.research import admission as module
+    original = module.require_backend_inputs
 
-    def wrap(original):
-        def run(history, train, test, spec, workspace):
-            ledger_identity = {'profile': 'generated-backend-test'}
-            specification = {'recipe': spec}
-            admission = synthetic_admitter(
-                tmp_path/'generated-backend-admission', ledger_identity,
-                model_inputs=model_inputs_id(history, train, None, test, spec, None))
-            with admission.training_scope(ledger_identity, specification):
-                return original(history, train, test, spec, workspace)
-        return run
+    def check(history, train, test, spec):
+        ledger_identity = {'profile': 'generated-backend-test'}
+        specification = {'recipe': spec}
+        permit = synthetic_admitter(tmp_path/'generated-backend-admission', ledger_identity,
+                                    model_inputs=model_inputs_id(history, train, None, test, spec, None))
+        with permit.training_scope(ledger_identity, specification):
+            return original(history, train, test, spec)
 
-    for module in (statistical_models, volatility):
-        monkeypatch.setattr(module, 'fit_predict', wrap(module.fit_predict))
+    monkeypatch.setattr(module, 'require_backend_inputs', check)
+
+
+@pytest.fixture
+def admit_generated_models(tmp_path, monkeypatch):
+    from cottonlens_ml.research import models
+    original = models.fit_predict
+
+    def fit(history, train, validation, test, recipe, workspace, *, iterations=None):
+        ledger_identity, specification = {'profile': 'generated-model-test'}, {'recipe': recipe}
+        permit = synthetic_admitter(tmp_path/'generated-model-admission', ledger_identity,
+                                    model_inputs=model_inputs_id(history, train, validation, test, recipe, iterations))
+        with permit.training_scope(ledger_identity, specification):
+            return original(history, train, validation, test, recipe, workspace, iterations=iterations)
+
+    monkeypatch.setattr(models, 'fit_predict', fit)
 
 
 @pytest.fixture

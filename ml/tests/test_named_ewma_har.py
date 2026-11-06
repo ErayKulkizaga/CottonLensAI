@@ -17,14 +17,14 @@ def rows():
     return f
 
 
-def test_four_parameter_known_relative_mean_recovers_absolute_variance(tmp_path):
+def test_four_parameter_known_relative_mean_recovers_absolute_variance(admit_generated_backends, tmp_path):
     f = rows()
     with patch('cottonlens_ml.research.named_ewma_har.require_training'), patch('cottonlens_ml.research.volatility.require_training'):
         r = fit_offset(f.iloc[:500], f.iloc[500:], tmp_path)
     np.testing.assert_allclose(r['variance_predictions'], f.variance_target_1.iloc[500:], rtol=1e-5)
 
 
-def test_future_labels_cannot_change_native_model_or_forecast(tmp_path):
+def test_future_labels_cannot_change_native_model_or_forecast(admit_generated_backends, tmp_path):
     f = rows(); first_path = tmp_path/'first'; second_path = tmp_path/'second'
     first_path.mkdir(); second_path.mkdir()
     with patch('cottonlens_ml.research.named_ewma_har.require_training'), patch('cottonlens_ml.research.volatility.require_training'):
