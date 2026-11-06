@@ -8,7 +8,10 @@
       "status": "EVIDENCE_GAP",
       "problem": "Expired named-contract identities in 218 history/evaluation slots, including 217 scored targets.",
       "affected_scope": "Three source-qualified named-risk profiles; not all CT=F experiments.",
-      "evidence": ["research/evidence/lifecycle-recheck-20261106.json", "docs/SOURCE_GATE_RECHECK_20261106.md"],
+      "evidence": [
+        "research/evidence/lifecycle-recheck-20261106.json",
+        "docs/SOURCE_GATE_RECHECK_20261106.md"
+      ],
       "remediation": "Preserve old results with source qualifications; require verified replacement cells and lifecycle evidence before new fits.",
       "closure": "Complete source-bound repair and downstream dependency acceptance; recounting the defect is not repair."
     },
@@ -17,7 +20,12 @@
       "status": "FIXED_VERIFIED",
       "problem": "Partial source tables inferred contract absence from month/rank.",
       "affected_scope": "Readiness computation and its independent verifier.",
-      "evidence": ["research/ams_cell_readiness.py", "research/verify_ams_cell_readiness.py", "research/tests/test_ams_cell_readiness.py", "research/evidence/source-gate-review-20261106.json"],
+      "evidence": [
+        "research/ams_cell_readiness.py",
+        "research/verify_ams_cell_readiness.py",
+        "research/tests/test_ams_cell_readiness.py",
+        "research/evidence/source-gate-review-20261106.json"
+      ],
       "remediation": "Missing quotes in partial tables remain UNKNOWN. Strict real-source replay and independent computation agree.",
       "closure": "Code defect fixed; this does not close DG-001 or DG-004."
     },
@@ -26,7 +34,10 @@
       "status": "FIXED_VERIFIED",
       "problem": "Missing source tables defaulted to complete and implied absence.",
       "affected_scope": "Readiness and independent cell lookup.",
-      "evidence": ["research/tests/test_ams_cell_readiness.py", "research/evidence/source-gate-review-20261106.json"],
+      "evidence": [
+        "research/tests/test_ams_cell_readiness.py",
+        "research/evidence/source-gate-review-20261106.json"
+      ],
       "remediation": "Default completeness is false; uncertainty propagates through EWMA without hidden state reset.",
       "closure": "Strict conditional scope has zero fully ready origins; no new market campaign admitted."
     },
@@ -35,7 +46,11 @@
       "status": "EVIDENCE_GAP",
       "problem": "Full source/lifecycle/first-publication/vintage evidence is not available for every required dependency.",
       "affected_scope": "Named-risk G1; actual price errors are not equivalent to potential unknown cells.",
-      "evidence": ["research/evidence/source-gate-review-20261106.json", "research/evidence/early-catalog-review-20261106.json", "docs/DATA_SOURCE_REQUEST_20261106.md"],
+      "evidence": [
+        "research/evidence/source-gate-review-20261106.json",
+        "research/evidence/early-catalog-review-20261106.json",
+        "docs/DATA_SOURCE_REQUEST_20261106.md"
+      ],
       "remediation": "Keep G1 closed; use exact coverage matrix, observed official links and provider sample acceptance conditions.",
       "closure": "All required cells accepted, or separately preregistered narrower universe; current catalog limits do not prove global absence."
     },
@@ -44,7 +59,11 @@
       "status": "FIXED_VERIFIED",
       "problem": "Direct QLIKE-HAR optimizer could fit without a data-admission scope.",
       "affected_scope": "volatility.qlike_har direct entrypoint and nested adapter calls.",
-      "evidence": ["ml/src/cottonlens_ml/research/admission.py", "ml/src/cottonlens_ml/research/volatility.py", "ml/tests/test_qlike_har.py"],
+      "evidence": [
+        "ml/src/cottonlens_ml/research/admission.py",
+        "ml/src/cottonlens_ml/research/volatility.py",
+        "ml/tests/test_qlike_har.py"
+      ],
       "remediation": "Require runtime permission and exact admitted training frame, horizon and ordered features before preprocessing or optimization.",
       "closure": "Valid generated fit passes; absent/expired authority, changed labels/split/horizon/features stop before minimize."
     },
@@ -53,8 +72,14 @@
       "status": "EVIDENCE_GAP",
       "problem": "Admission and temporal tests do not yet prove every preprocessing, selection and prediction path is protected.",
       "affected_scope": "Full G2; feature-level causality is narrower than prediction/selection invariance.",
-      "evidence": ["research/evidence/price-feature-prefix-audit-20261106.json", "ml/tests/test_admission.py", "ml/tests/test_temporal_audit.py"],
-      "remediation": "Audit remaining entrypoints and fixed-recipe prediction/selection state; add discriminating injected defects.",
+      "evidence": [
+        "research/evidence/price-feature-prefix-audit-20261106.json",
+        "ml/tests/test_admission.py",
+        "ml/tests/test_temporal_audit.py",
+        "research/evidence/price-selection-boundary-20261106.json",
+        "ml/tests/test_selection_boundary.py"
+      ],
+      "remediation": "Shared engine/full-year selection entrypoints revalidate fixed 3x63 blocks and strict T+5 maturity. Remaining entrypoint and fixed-recipe prediction/selection-state coverage still needs audit.",
       "closure": "Requirement-by-requirement G2 coverage including independent common-origin evaluation and native prediction replay."
     },
     {
@@ -62,7 +87,10 @@
       "status": "EVIDENCE_GAP",
       "problem": "L4 save/load and optimizer replay do not establish forced-session interruption, OOM or duplicate-worker handling.",
       "affected_scope": "Remaining G3 infrastructure acceptance; zero market skill evidence.",
-      "evidence": ["research/evidence/l4-technical-verification-20261106.json", "research/evidence/source-gate-delivery-20261106.json"],
+      "evidence": [
+        "research/evidence/l4-technical-verification-20261106.json",
+        "research/evidence/source-gate-delivery-20261106.json"
+      ],
       "remediation": "Prepare synthetic fault/restart tests; Colab operations remain with the user.",
       "closure": "Fault-specific receipts, no duplicate completed fits, explicit attempt semantics and fresh restore."
     },
@@ -71,9 +99,25 @@
       "status": "EVIDENCE_GAP",
       "problem": "Legacy LSTM positive comparison used unequal periods; missing predictions prevent a complete paired inference.",
       "affected_scope": "Legacy comparison; not evidence that all engines fail.",
-      "evidence": ["docs/NAIVE_MAE_AUDIT_20261105.md", "docs/ROOT_CAUSE_REVIEW_20261106.md"],
+      "evidence": [
+        "docs/NAIVE_MAE_AUDIT_20261105.md",
+        "docs/ROOT_CAUSE_REVIEW_20261106.md"
+      ],
       "remediation": "Retract unequal-period advantage and preserve incomplete evidence; do not fill historical gaps by retraining.",
       "closure": "Historical paired claim remains unavailable unless original required predictions are recovered."
+    },
+    {
+      "id": "DG-009",
+      "status": "FIXED_VERIFIED",
+      "problem": "Inner model-selection loops trusted supplied fold metadata without rechecking the frozen temporal boundaries at execution. No historical leakage occurrence is inferred from the missing guard.",
+      "affected_scope": "Experiment.inner, Experiment.tune and full_year.inner_price; fixed three-by-63 protocol.",
+      "evidence": [
+        "ml/src/cottonlens_ml/research/protocol.py",
+        "ml/tests/test_selection_boundary.py",
+        "research/evidence/price-selection-boundary-20261106.json"
+      ],
+      "remediation": "Reject outer-origin substitution, late or unknown T+1/T+5 maturity, duplicate/reordered/overlapping origins, missing blocks/rows, compressed recorded source observations and cutoff mismatch before fits.",
+      "closure": "Positive controls and injected defects exercised all three entrypoints; actual eight-year price split passed zero-fit replay. Vendor availability and other selection procedures remain outside this proof."
     }
   ]
 }

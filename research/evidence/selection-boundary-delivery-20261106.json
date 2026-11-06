@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/source-gate-l4-audit-20261106",
+  "asset": "selection-boundary-audit-20261106.zip",
+  "archive_sha256": "88d7d18c4bd50beb4136830067463c4b7982b01584d7e36819ee3c83ae5bff0c",
+  "members": {
+    "ml/src/cottonlens_ml/research/protocol.py": "5fb320d4dcb769a2bc96e0ddd3bff81508c74b1ad9ec587673cd8e90d8cd2fce",
+    "research/recheck_selection.py": "3045316f97d109137760dbeaef8f75389e9684677d9d09ee8c301152bbc23a5d",
+    "research/evidence/price-selection-boundary-20261106.json": "658480aebd68532248230c712412c9d7134cedd5a12b1d6c91b9c2c8ee99b0f0"
+  },
+  "fresh_download_member_bytes_verified": true,
+  "scope": "Raw validator snapshot, CLI and zero-fit receipt; experiment history is hash-referenced, not duplicated. This delivery check does not execute the training pipeline."
+}

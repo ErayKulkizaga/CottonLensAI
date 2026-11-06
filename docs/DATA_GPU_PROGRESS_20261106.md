@@ -219,3 +219,32 @@ Fixture düzeltmesi sonrası bütün research/tests ve etkilenen ML grubu birlik
 371passed/74.18s verdi. Değişen beş Python dosyasında Ruff ve diff kontrolü geçti.
 Tam ML suite fixture-only düzeltmeden sonra yerelde yeniden çalıştırılmadı;
 son commit CI sonucu ayrıca gerekli.
+
+## İç seçim sınırı yeniden kontrolü
+
+Engine inner/tune ve full-year inner_price girişleri, hazırlanmış fold'a
+körü körüne güvenmek yerine tam3×63origin, sıralama/tekillik/ayrıklık,
+kayıtlı kaynak satırlarını sıkıştırmama, cutoff eşleşmesi ve dış origin'den
+kesin önce olgunlaşmış T+1/T+5hedeflerini denetler. T+1tarifte de mevcut
+T+5purge gevşetilmedi. Bozuk örnekler hiçbir fit'e ulaşmaz; geçerli örnek
+hata enjeksiyonundan sonra da geçer. Bu guard'ın önce eksik olması geçmişte
+sızıntı meydana geldiğinin kanıtı değildir.
+
+78selection/research/full-year testi ve değişen Python dosyalarında Ruff geçti.
+Son median deneyinin hash'e bağlı history/ready/split dosyalarıyla8fold yeniden
+kontrol edildi; her yılda3×63iç origin, toplam2006dış origin korunuyor. Yeni fit0.
+Makbuz research/evidence/price-selection-boundary-20261106.json; tekrar üretim
+CLI research/recheck_selection.py. Bunlar kayıtlı tarih sınırlarıdır; ilk yayın,
+vintage, bütün seçim yöntemleri veya bütün tahmin değişmezliği kanıtı değildir.
+G1/G2tamamlanmadı.
+
+7a9f862commit push CI42244166480başarılı tamamlandı. Bu başarı sonraki seçim
+koruması commit'ini kapsamaz.
+
+İlgili nonlinear-path/transfer testleri8passed/2skipped verdi. İki skip mevcut
+isteğe bağlı bağımlılık koşullarıdır; bu çalışmada gerçek GPU testi yapılmadı.
+Validator'ın ham byte snapshot'ı, CLI ve makbuz ayrı
+selection-boundary-audit-20261106.zipasset'inde saklandı; taze indirmede bütün
+üyeler ve makbuzdaki validator hash'i eşleşti. Teslim makbuzu:
+research/evidence/selection-boundary-delivery-20261106.json. Bu son kontrol
+pipeline çalıştırması değil, arşiv üyelerinin byte/kimlik kontrolüdür.

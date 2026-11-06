@@ -36,6 +36,7 @@ from cottonlens_ml.research.protocol import (
     mature,
     rows_at,
     split_manifest,
+    validate_inner_fold,
     verified_outer,
 )
 from cottonlens_ml.research.search import (
@@ -202,6 +203,7 @@ class Experiment:
         return record
 
     def inner(self, spec, fold, repeat=None, progress=None):
+        validate_inner_fold(self.history, fold)
         records, scores = [], []
         for index, block in enumerate(fold['inner']):
             print(f'STAGE inner fold={fold["fold"]} block={index + 1}/3 '
@@ -248,6 +250,7 @@ class Experiment:
                 'origins': [d for r in records for d in r['result']['origins']]}
 
     def tune(self, family, horizon, fold, candidates, namespace):
+        validate_inner_fold(self.history, fold)
         marker = self.root / 'decisions' / namespace / f'{family}-t{horizon}-fold{fold["fold"]}.json'
         if marker.exists():
             return read_record(marker)

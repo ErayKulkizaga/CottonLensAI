@@ -1,0 +1,106 @@
+{
+  "schema": 1,
+  "status": "recorded_selection_boundaries_verified",
+  "profile": "price-only-median-t1-v1",
+  "source_id": "3de9a24659880fab4063f0c2e6d1c7fe9705c7ca8801ca49f0157c201d9ebafc",
+  "design_id": "a929ded6e574fc2eadd489129076f5489c605ec0e9ae81f3a3a154089a78ca69",
+  "split_id": "9d964b2c88a6d36b7e1fc8421efa1a3c86a3b0531b6cbcb072856918d014aa1d",
+  "ready_sha256": "ba3b438b707f1547c80adbea565133e6c573c3261def3414655896ce32d5f351",
+  "history_sha256": "bc3b2987cbdddea9fe625541ba7b4a27855d4b07f3c34c31909bc9b32cadd8c6",
+  "validator_sha256": "5fb320d4dcb769a2bc96e0ddd3bff81508c74b1ad9ec587673cd8e90d8cd2fce",
+  "folds": [
+    {
+      "fold": 1,
+      "year": 2016,
+      "outer_start": "2016-01-04",
+      "outer_origins": 250,
+      "inner_origin_counts": [
+        63,
+        63,
+        63
+      ]
+    },
+    {
+      "fold": 2,
+      "year": 2017,
+      "outer_start": "2017-01-03",
+      "outer_origins": 251,
+      "inner_origin_counts": [
+        63,
+        63,
+        63
+      ]
+    },
+    {
+      "fold": 3,
+      "year": 2018,
+      "outer_start": "2018-01-02",
+      "outer_origins": 251,
+      "inner_origin_counts": [
+        63,
+        63,
+        63
+      ]
+    },
+    {
+      "fold": 4,
+      "year": 2019,
+      "outer_start": "2019-01-02",
+      "outer_origins": 252,
+      "inner_origin_counts": [
+        63,
+        63,
+        63
+      ]
+    },
+    {
+      "fold": 5,
+      "year": 2020,
+      "outer_start": "2020-01-02",
+      "outer_origins": 253,
+      "inner_origin_counts": [
+        63,
+        63,
+        63
+      ]
+    },
+    {
+      "fold": 6,
+      "year": 2021,
+      "outer_start": "2021-01-04",
+      "outer_origins": 252,
+      "inner_origin_counts": [
+        63,
+        63,
+        63
+      ]
+    },
+    {
+      "fold": 7,
+      "year": 2022,
+      "outer_start": "2022-01-03",
+      "outer_origins": 251,
+      "inner_origin_counts": [
+        63,
+        63,
+        63
+      ]
+    },
+    {
+      "fold": 8,
+      "year": 2023,
+      "outer_start": "2023-01-03",
+      "outer_origins": 246,
+      "inner_origin_counts": [
+        63,
+        63,
+        63
+      ]
+    }
+  ],
+  "new_fits": 0,
+  "market_skill": false,
+  "historical_source_availability_proven": false,
+  "all_selection_procedures_verified": false,
+  "record_id": "60274255da19c2abdacda541b7b915666a803d6602dcb131b3f3266fe3b5aad7"
+}

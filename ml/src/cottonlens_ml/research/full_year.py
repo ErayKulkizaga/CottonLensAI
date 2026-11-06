@@ -21,7 +21,11 @@ from cottonlens_ml.research.ledger import (
     read_record,
     writer,
 )
-from cottonlens_ml.research.protocol import full_year_manifest, rows_at
+from cottonlens_ml.research.protocol import (
+    full_year_manifest,
+    rows_at,
+    validate_inner_fold,
+)
 from cottonlens_ml.research.reproduction import verified_native_predictions
 from cottonlens_ml.research.review import audit_market, training_rows, verify_history
 from cottonlens_ml.research.statistics import (
@@ -116,6 +120,7 @@ def predict_chunks(experiment, spec, origins, role, iterations=1):
 
 
 def inner_price(experiment, spec, fold, *, weights=SHRINKAGE):
+    validate_inner_fold(experiment.history, fold)
     blocks, counts = [], []
     for i, block in enumerate(fold['inner']):
         test = rows_at(experiment.history, block['origins'])
