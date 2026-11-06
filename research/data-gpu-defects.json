@@ -109,9 +109,10 @@
         "research/evidence/l4-restart-delivery-20261106.json",
         "research/evidence/l4-oom-package-20261106.json",
         "research/evidence/l4-oom-verification-20261107.json",
-        "research/evidence/l4-oom-result-delivery-20261107.json"
+        "research/evidence/l4-oom-result-delivery-20261107.json",
+        "research/evidence/l4-session-handoff-20261107.json"
       ],
-      "remediation": "User-returned L4 deterministic native worker-exit/resume passed hash binding, exact optimizer/weight comparisons and independent NumPy Adam replay. Fresh Release restoration reproduces verification. Whole-session loss, stochastic RNG and real GPU OOM remain unverified. A separate bounded allocator-OOM/fresh-process recovery handoff is prepared and fresh-restored; actual Colab execution remains pending. Returned bounded128MiB GPU allocator OOM and fresh-process recovery receipts verified offline on2026-11-07. Physical VRAM saturation, whole-session and stochastic resume remain outside this result.",
+      "remediation": "User-returned L4 deterministic native worker-exit/resume passed hash binding, exact optimizer/weight comparisons and independent NumPy Adam replay. Fresh Release restoration reproduces verification. Whole-session loss, stochastic RNG and real GPU OOM remain unverified. A separate bounded allocator-OOM/fresh-process recovery handoff is prepared and fresh-restored; actual Colab execution remains pending. Returned bounded128MiB GPU allocator OOM and fresh-process recovery receipts verified offline on2026-11-07. Physical VRAM saturation, whole-session and stochastic resume remain outside this result. Remaining explicit RNG/session controls are consolidated into one two-runtime Drive notebook; source/hash/control tests pass, actual execution pending.",
       "closure": "Fault-specific receipts, no duplicate completed fits, explicit attempt semantics and fresh restore."
     },
     {

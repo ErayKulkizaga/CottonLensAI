@@ -545,3 +545,15 @@ results. No separate new notebook is generated in this review.
 Private Release fresh download checked5manifested files and reproduced the
 OOM verification exactly without TensorFlow/new fits. Receipt:
 research/evidence/l4-oom-result-delivery-20261107.json.
+
+## Consolidated remaining session/RNG handoff — 7 November2026
+
+One two-runtime Drive notebook now carries the three prior verified receipts
+without rerunning old probes. Explicit NumPy PCG64/TF Philox batch/mask state,
+native model/Adam and prediction continuation are prepared. New boot identity
+and absent local marker are required; incomplete attempts cannot silently retry.
+Twelve focused controls and Ruff pass. An earlier broader run had357passed/1skip
+including4session phase controls, before the7new verifier controls were added.
+Actual L4 execution is pending; no local TensorFlow, no market fits.
+See docs/L4_REMAINING_CHECKS_20261107.md and the handoff receipt.
+Drive UI confirmed2uploads; remote download hashes were not claimed.

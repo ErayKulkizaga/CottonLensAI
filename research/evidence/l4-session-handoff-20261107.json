@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "source_sha256": "c9d84121ba0e433eaf6f65fbe8615a6223b5463dbdbc83198822482b9b63b6aa",
+  "notebook_sha256": "04446177e341e13af156f1104ffae91c85a528291ceece1fe3d0f266ea28c8dc",
+  "source_members": 148,
+  "drive_folder": "https://drive.google.com/drive/u/0/folders/1rtMBiFl2lMBR2DVCB0Ez5UlB75j5uqy2",
+  "drive_ui_uploads_completed": 2,
+  "drive_download_hash_verified": false,
+  "gpu_execution_verified": false,
+  "prior_checks_retrained": false,
+  "market_fits": 0,
+  "planned_synthetic_train_on_batch_calls": 3,
+  "local_control_tests_passed": 12,
+  "scope": "Two-runtime explicit NumPy PCG64/TF Philox state and native Adam continuation; no universal dropout or remote VM attestation."
+}
