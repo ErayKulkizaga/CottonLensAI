@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "status": "native_restart_state_and_independent_adam_verified",
+  "archive_sha256": "bc16b482fd0b2ad958496e585730798788119ab4623cd993a1b487616203ec42",
+  "source_archive_sha256": "81d0d1f17106f70d2044defe6066d2423963b37e5c30642d4f5a6a1642202e95",
+  "completion_record_id": "e8e82365b1a63c6f04c472bcb418c293e98ea5b6da533b0e1a2ea9c75b67e972",
+  "hardware_reported": "NVIDIA L4, 23034 MiB, 580.82.07",
+  "worker_exit_reported": 73,
+  "before_exit_state_max_abs_error": 0.0,
+  "resumed_state_max_abs_error": 0.0,
+  "baseline_adam_max_abs_error": 1.1920928955078125e-07,
+  "absolute_tolerance": 1e-06,
+  "new_fits": 0,
+  "tensorflow_imported": false,
+  "whole_session_restart_verified": false,
+  "stochastic_rng_resume_verified": false,
+  "real_gpu_oom_verified": false,
+  "market_skill": false,
+  "verifier_sha256": "957bc320daf5bfb47427477067aa3abe8328d70faeb996c7f5a72e81d7ee45b9",
+  "baseline_verifier_sha256": "608270688dd8eb5f17318cbb693ffb4d3af764d228b569cf3717b231592c5f31"
+}

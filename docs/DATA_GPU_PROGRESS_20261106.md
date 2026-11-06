@@ -11,7 +11,7 @@ Bu takip kaydı tamamlanma iddiası değildir. Önceki bilimsel kayıtlar deği�
 | D: Zorunlu eğitim kapısı | DEVAM | Ledger/model/backend/legacy fit ve doğrudan QLIKE kernel kimlik kontrolü; bütün seçim/preprocessing yollarının kapsam denetimi açık |
 | D: Sızıntı testi | DEVAM | Kabul ve hata enjeksiyonları;5fiyat feature'ı169cutoff prefix/future testi geçti. Bütün model/seçim yollarının prediction invariance denetimi eksik |
 | E: Bağımsız değerlendirme | BEKLİYOR | Eski verifier'lar mevcut; yeni sözleşmeye kapsam eşlemesi yapılacak |
-| F: GPU yürütme/restore | KISMİ | Kullanıcının onayladığı L4 sentetik/native Adam replay ve uzak arşiv restore geçti; zorla kesinti/OOM/worker çakışması eksik |
+| F: GPU yürütme/restore | KISMİ | Kullanıcının onayladığı L4 sentetik/native Adam replay ve uzak arşiv restore geçti; native worker kesinti/devam doğrulandı; tam oturum/RNG/GPU OOM eksik |
 | G: Kampanya manifesti/sonuç | G1/G2/G3 BEKLİYOR | Veri kabulü olmadan yeni piyasa fit'i yok |
 | GitHub teslimatı | DEVAM | Draft PR77 ve checksum bağlı private Release mevcut;41ffe0e PR CI başarılı. Sonraki commit'ler ayrıca doğrulanacak |
 | İleri doğrulama kararı | BEKLİYOR | Aday ve geçerli kampanya sonucu oluşmadan karar yok |
@@ -304,3 +304,31 @@ matched byte-for-byte. Receipt: research/evidence/gpu-restart-handoff-20261106.j
 Drive itself was not freshly downloaded; runtime source hashes remain mandatory.
 Actual GPU result is pending.5d5b285PR CI42247008149 succeeded; this follow-up needs
 its own CI. G1 remains closed and G2/G3 remain incomplete.
+
+## User-returned L4 worker restart verified
+
+The returned result ZIP SHA256 is bc16b482fd0b2ad958496e585730798788119ab4623cd993a1b487616203ec42.
+All8members, four self-hashed JSON records, source archive81d0d1f... and both
+executed script hashes match the delivered handoff. Hardware is reported as
+NVIDIA L4/23034MiB; baseline and resume report TensorFlow2.20.0. Four generated
+train_on_batch calls,0market fits. The worker exit report is73.
+
+Without importing TensorFlow or deserializing executable Keras objects, the
+verifier reads finite native HDF5 arrays with parent-link checks. Interrupted
+weights/Adam state match step1exactly; resumed weights/Adam state match step2
+exactly (both max absolute difference0). Baseline Adam step is independently
+recomputed in NumPy: max error1.1920928955078125e-7 <1e-6. Keras shared_object_id
+is ignored only as an in-memory serialization alias; recipe fields still match.
+
+Five archive/record/config/external-link tests and Ruff pass. Original Downloads
+files remain intact; copies and the initial verifier receipt remain in output.
+The private Release received l4-native-restart-returned-20261106.zip. All5members
+were freshly downloaded/checked; the fresh payload produced the same independent
+verification result. Receipts: research/evidence/l4-restart-verification-20261106.json
+and research/evidence/l4-restart-delivery-20261106.json.
+
+This verifies deterministic native worker-exit continuation, not whole Colab
+session recovery, stochastic RNG/dropout continuation, real GPU OOM or remote
+hardware attestation. G3 remains partial and source G1 remains closed; no new
+market campaign is admitted. User need not repeat this fixed successful probe.
+d56987dPR CI42248201986 succeeded; subsequent verifier changes need their own CI.
