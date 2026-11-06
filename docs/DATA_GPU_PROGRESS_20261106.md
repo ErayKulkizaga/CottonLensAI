@@ -414,3 +414,33 @@ tests and receipts without reuploading original data/models. Its fresh download
 and independent output matched byte-for-byte; delivery receipt is
 research/evidence/price-cohort-delivery-20261106.json. G1 and full G2/G3 remain open.
 Previous cbfa6c3PR CI42274764716 succeeded; current changes require own CI.
+
+## Primary historical-rule lead and pending provider inquiry
+
+The connected TradingView health check returned UNAVAILABLE/HTTP404; no chart,
+account, integration settings or alert was changed and no data was retrieved.
+No candidate paid-provider credential names were present in the process env;
+values/secrets were not read or printed. This is not proof no account exists.
+
+A primary ICE Cotton Rule10.07 PDF provides the default35-month listing schedule,
+with a November16,2007effective annotation and Board-override language. The source
+PDF was captured and hashed. A conditional, zero-admission schedule diagnostic
+matches all15current FTD months and partitions the58historical contracts'99,523
+unknown cells:83,312before the normal listing month;1,216within;14,995after.
+Current rows do not prove historical dates; exceptions and actual first Business
+Days remain unchecked. The main readiness source cells and all G1states are unchanged.
+
+research/ice_listing_schedule.py and8generated tests verify month arithmetic,
+invalid delivery months, duplicates and preservation of all unknown cells. Ruff
+passed. The private Release asset ice-listing-rule-review-20261106.zip preserves
+the raw PDF, current expiry input, code, outputs and inquiry draft. Fresh download
+checked9manifested members; offline replay reproduced both outputs byte-identically.
+Receipts: research/evidence/ice-listing-schedule-20261106/result.json and
+research/evidence/ice-listing-rule-delivery-20261106.json.0new fits,0cells admitted.
+
+The ICE helpdesk request is concrete in docs/ICE_DATA_REQUEST_DRAFT_20261106.md.
+It attaches only the58contract metadata/request CSV and asks for actual lifecycle,
+exception history, a fixed settlement sample and written licensing/price quotes.
+User authorization was requested asynchronously because AGENTS.md requires consent
+before external messages; no message was sent and no purchase was made.
+Prior70fa21bPR CI42276527781 succeeded. Final-head CI remains separate.

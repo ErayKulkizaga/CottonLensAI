@@ -97,3 +97,25 @@ Zorunlu testler:
 
 Karar sırası: örnek → alan/lisans cevabı → tam kapsam ve maliyet teklifi →
 kullanıcı satın alma kararı → tam veri kabulü. Otomatik iletişim/satın alma yok.
+
+## Rule 10.07: conditional schedule, not actual historical listing admission
+
+The primary ICE Cotton rulebook, Rule10.07, describes the default opening in the
+35th month preceding delivery and includes a November16,2007effective annotation.
+It also permits Board direction/override. The raw PDF and its hash are preserved
+in the private evidence release; this is stronger context than current expiry
+rows alone but does not establish that no historical exceptions occurred.
+
+The [conditional matrix](../research/evidence/ice-listing-schedule-20261106/conditional-contract-schedule.csv)
+partitions the same99,523UNKNOWNcells into83,312before the default listing month,
+1,216within it and14,995after it. The arithmetic matches the FTD month in all15
+observed current expiry rows. No exact first business day is inferred. None of
+these historical cells is admitted or declared absent on this diagnostic alone.
+
+Ask for actual dates and the completeness of exception notices first. Only a
+validated answer can eliminate requests for genuinely unlisted dates; the
+conditional partition is not permission to drop inconvenient observations.
+The complete [ICE inquiry draft](ICE_DATA_REQUEST_DRAFT_20261106.md) requests
+reference data, exceptions, a fixed diagnostic sample and separate license/price
+quotes. It has not been sent; external-message authorization is pending. No
+purchase or subscription is authorized by this draft.

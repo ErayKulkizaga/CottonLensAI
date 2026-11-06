@@ -52,9 +52,12 @@
         "docs/DATA_SOURCE_REQUEST_20261106.md",
         "research/evidence/source-request-matrix-20261106/result.json",
         "research/evidence/source-request-matrix-listing-20261106/result.json",
-        "research/evidence/listing-coverage-delivery-20261106.json"
+        "research/evidence/listing-coverage-delivery-20261106.json",
+        "research/evidence/ice-listing-schedule-20261106/result.json",
+        "research/evidence/ice-listing-rule-delivery-20261106.json",
+        "docs/ICE_DATA_REQUEST_DRAFT_20261106.md"
       ],
-      "remediation": "Keep G1 closed. Latest 58-contract lifecycle-first matrix has 99,523 potential cells across 3,108dates. Separate report completeness from listing-universe coverage; obtain official historical listed_on/last_trade_on before inferring absence. Prior 40,450cell matrix is preserved as a superseded conditional calculation. PIT/vintage remains separate.",
+      "remediation": "G1 stays closed. Official Rule10.07 default schedule is now a hash-bound conditional diagnostic (83,312pre-month/1,216in-month/14,995post-month unknown cells), not actual historical absence admission. A concrete58-contract lifecycle/exception/sample/quote inquiry is prepared; user consent to send is pending.",
       "closure": "All required cells accepted, or separately preregistered narrower universe; current catalog limits do not prove global absence."
     },
     {

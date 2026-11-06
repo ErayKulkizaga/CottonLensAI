@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "asset": "ice-listing-rule-review-20261106.zip",
+  "archive_sha256": "55490915a999098a20f10ff329e33d1f3decb58a22695bf27884117787feb646",
+  "manifested_members_checked": 9,
+  "fresh_download_verified": true,
+  "offline_replay_outputs_byte_identical": 2,
+  "official_rule_pdf_sha256": "a3149a70e71fa32971e832b8b3da635390040f3ce3fce8f1211c7abc370b8190",
+  "unknown_cells_unchanged": 99523,
+  "source_cells_admitted": 0,
+  "new_fits": 0,
+  "draft_sent": false
+}
