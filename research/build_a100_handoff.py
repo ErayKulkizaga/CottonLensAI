@@ -14,12 +14,16 @@ def sha(data):
     return hashlib.sha256(data).hexdigest()
 
 
-def build(namespace='a100-handoff-20261106', gpu='A100'):
+def build(namespace='a100-handoff-20261106', gpu='A100', probe='preflight'):
     if Path(namespace).name != namespace or namespace in ('.', '..') or gpu not in ('A100', 'L4', 'G4'):
         raise ValueError('Invalid handoff namespace or device')
+    if probe not in ('preflight', 'restart'):
+        raise ValueError('Explicit supported probe required')
     output = ROOT/'output'/namespace
     output.mkdir(parents=True, exist_ok=True)
     paths = [ROOT/'ml'/n for n in ('colab_setup.py', 'a100_preflight.py', 'pyproject.toml', 'uv.lock')]
+    if probe == 'restart':
+        paths.append(ROOT/'ml/gpu_restart_probe.py')
     paths += sorted((ROOT/'ml/src').rglob('*.py'))
     members = {p.relative_to(ROOT).as_posix(): p.read_bytes() for p in paths}
     manifest = {name: sha(data) for name, data in members.items()}
@@ -46,7 +50,7 @@ def build(namespace='a100-handoff-20261106', gpu='A100'):
             body.update(execution_count=None, outputs=[])
         cells.append(body)
 
-    cell('markdown', f'# CottonLensAI — {gpu} teknik doğrulama\n'
+    cell('markdown', f'# CottonLensAI — {gpu} {probe} teknik doğrulama\n'
          f'Çalışma zamanı türünü **{gpu} GPU** seç. Hücreleri sırayla çalıştır. '
          'Yalnız üretilmiş veri; piyasa eğitimi yok. Kaynak ZIP aynı teslimattan olmalı. '
          'Drive izni kurulum içindir; eski deneyleri çalıştırma. '
@@ -81,17 +85,21 @@ sys.path.insert(0, str(root/'ml'))
 import colab_setup
 python = colab_setup.setup()
 ''')
+    entrypoint = 'gpu_restart_probe.py' if probe == 'restart' else 'a100_preflight.py'
     cell('code', f'''import subprocess
 env = colab_setup.process_env()
 env['PYTHONPATH'] = str(root/'ml/src')
-probe_output = Path('/content/cottonlens-probe-{gpu.lower()}-20261106')
-subprocess.run([str(python), '-B', str(root/'ml/a100_preflight.py'),
+probe_output = Path('/content/cottonlens-{probe}-{gpu.lower()}-20261106')
+subprocess.run([str(python), '-B', str(root/'ml/{entrypoint}'),
                 '--output', str(probe_output), '--gpu', {gpu!r}], cwd=root, env=env, check=True)
 ''')
+    export_names = ("assert (probe_output/'complete.json').is_file(), 'Restart probe tamamlanmadi'\n"
+                    "names = sorted(p.relative_to(probe_output).as_posix() for p in probe_output.rglob('*') if p.is_file())"
+                    if probe == 'restart' else "names = ['complete.json', 'step1.keras', 'step2.keras']")
     cell('code', '''import json, shutil
 from datetime import datetime, timezone
 result = Path('/content/cottonlens-a100-result.zip')
-names = ['complete.json', 'step1.keras', 'step2.keras']
+''' + export_names + '''
 assert all((probe_output/n).is_file() for n in names), 'Teknik probe tamamlanmadı'
 with zipfile.ZipFile(result, 'w', zipfile.ZIP_DEFLATED) as z:
     for n in names: z.write(probe_output/n, n)
@@ -111,7 +119,7 @@ files.download(str(checksum))
     notebook = {'nbformat': 4, 'nbformat_minor': 5,
                 'metadata': {'accelerator': 'GPU', 'colab': {'name': 'CottonLens_A100_Preflight.ipynb'},
                              'kernelspec': {'display_name': 'Python 3', 'name': 'python3'}}, 'cells': cells}
-    target = output/f'CottonLens_GPU_Preflight_{gpu}.ipynb'
+    target = output/f'CottonLens_GPU_{probe}_{gpu}.ipynb' if probe == 'restart' else output/f'CottonLens_GPU_Preflight_{gpu}.ipynb'
     target.write_text(json.dumps(notebook, ensure_ascii=False, indent=2)+'\n', encoding='utf-8')
     (output/'source-manifest.json').write_text(json.dumps({'archive_sha256': archive_hash, 'files': manifest}, indent=2)+'\n')
     print(json.dumps({'notebook': str(target), 'source_zip': str(archive), 'source_sha256': archive_hash,
@@ -122,5 +130,6 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--namespace', default='a100-handoff-20261106')
     parser.add_argument('--gpu', choices=('A100', 'L4', 'G4'), default='A100')
+    parser.add_argument('--probe', choices=('preflight', 'restart'), default='preflight')
     args = parser.parse_args()
-    build(args.namespace, args.gpu)
+    build(args.namespace, args.gpu, args.probe)

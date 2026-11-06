@@ -91,9 +91,10 @@
         "research/evidence/l4-technical-verification-20261106.json",
         "research/evidence/source-gate-delivery-20261106.json",
         "research/evidence/ledger-fault-controls-20261106.json",
-        "ml/tests/test_ledger_faults.py"
+        "ml/tests/test_ledger_faults.py",
+        "research/evidence/gpu-restart-handoff-20261106.json"
       ],
-      "remediation": "Local real-process contention/hard-exit and injected OOM/corruption tests pass; ledger has direct-call ownership and durable attempt identities. Native GPU interruption and optimizer/random-state continuation still require a user-run Colab handoff.",
+      "remediation": "Local fault tests pass. A hash-bound native deterministic L4 worker-exit/resume handoff was uploaded to Drive; user execution is pending. Whole-session loss, stochastic RNG and real GPU OOM are not accepted.",
       "closure": "Fault-specific receipts, no duplicate completed fits, explicit attempt semantics and fresh restore."
     },
     {

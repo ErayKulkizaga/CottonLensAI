@@ -279,3 +279,28 @@ state ve Colab oturum kopması bütünüyle doğrulanmış değildir; G3kısmi k
 JUnit sonucu research/evidence/ledger-fault-tests-20261106.xml olarak saklandi;
 yalniz gereksiz yerel hostname cikarildi, test adi/sonuc/sureler korundu.
 Makbuz hem orijinal yerel hem disa aktarilan XML hash degerini belirtir.
+
+## User-run L4 native worker restart handoff
+
+ml/gpu_restart_probe.py runs a bounded generated-data test in separate Python
+processes. The baseline exits cleanly before the crash worker acquires the GPU.
+That worker saves the native checkpoint and optimizer, then exits via os._exit(73).
+A fresh process resumes one Adam step and compares all weights, optimizer variables
+and predictions to the uninterrupted reference at absolute tolerance1e-6.
+Total4train_on_batch calls;0market fits. Completed cache is hash-checked; partial
+or corrupted output stops without automatic retraining. No stochastic RNG, real
+GPU OOM or whole Colab-session restart acceptance is claimed.
+
+11local refusal/orchestration tests and Ruff passed. Notebook cells parse; all144
+source members match their hashes. New distinct files were uploaded to the existing
+Drive folder: CottonLens_L4_Restart_Drive.ipynb, cottonlens-gpu-restart-source.zip,
+restart-source-manifest.json. The UI showed3completed uploads; old files remain.
+The notebook reads its ZIP from Drive without manual upload. User runs a fresh
+L4runtime and returns cottonlens-gpu-restart-result.zip and its.sha256.json.
+No Colab browser execution was performed by the assistant.
+
+A separate private Release handoff asset was freshly downloaded and all3members
+matched byte-for-byte. Receipt: research/evidence/gpu-restart-handoff-20261106.json.
+Drive itself was not freshly downloaded; runtime source hashes remain mandatory.
+Actual GPU result is pending.5d5b285PR CI42247008149 succeeded; this follow-up needs
+its own CI. G1 remains closed and G2/G3 remain incomplete.
