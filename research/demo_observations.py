@@ -49,6 +49,7 @@ def records(root):
 
 def append(root, observation):
     stamp = validate(observation)
+    observation = {**observation, 'observed_at': stamp.astimezone(UTC).isoformat().replace('+00:00', 'Z')}
     now = datetime.now(UTC)
     if stamp > now:
         raise ValueError('Future observation timestamp rejected')

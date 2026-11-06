@@ -48,3 +48,11 @@ def test_mutated_and_missing_chain_rejected(tmp_path):
     path.rename(tmp_path/'preserved.json')
     with pytest.raises(ValueError, match='Incomplete'):
         records(tmp_path)
+
+
+def test_observation_timezone_normalizes_without_mutating_input(tmp_path):
+    value = {**observation(), 'observed_at': '2020-01-01T13:00:00+03:00'}
+    first = append(tmp_path, value)
+    assert first['observation']['observed_at'] == '2020-01-01T10:00:00Z'
+    assert value['observed_at'] == '2020-01-01T13:00:00+03:00'
+    assert append(tmp_path, observation()) == first

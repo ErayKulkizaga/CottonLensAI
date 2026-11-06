@@ -521,3 +521,7 @@ Ruff geçti. Bu testlerde gerçek model fit'i veya TensorFlow/CUDA kurulumu yok.
 Kalan bağımlılıklar: kaynak G1 için gerçek lifecycle/PIT ve lisans kanıtı;
 Colab için kullanıcının yeni OOM paketini çalıştırması; session/RNG resume ve
 kalan G2 kapsam denetimi. Kampanya manifesti veri kabulünden sonra kilitlenecek.
+
+Ek sınır kontrolü: gözlem saati UTC olarak normalize ediliyor; aynı anın+03:00
+veZgösterimleri yeni revizyon üretmiyor, çağıranın girdisi değişmiyor.
+10demo kontrolü ve Ruff geçti; önceki343research sonucu bu ek testten öncedir.
