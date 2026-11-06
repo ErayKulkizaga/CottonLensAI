@@ -8,7 +8,7 @@ import hashlib
 import json
 from contextlib import contextmanager
 from contextvars import ContextVar
-from datetime import datetime
+from datetime import date, datetime
 from pathlib import Path
 
 _TRAINING_JOB = ContextVar('cottonlens_admitted_training_job', default=None)
@@ -42,10 +42,48 @@ def file_hash(root, name):
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
+def market_leaf_errors(cell, files, root):
+    """Cross-check claimed facts against a bound source-verification report.
+
+    This is a consistency gate, not a signature of an authoritative publisher.
+    Source-specific verifiers and original witnesses remain required.
+    """
+    errors = []
+    name = cell.get('verification_report')
+    if name not in files:
+        return ['missing_source_verification_report']
+    raw = (Path(root)/name).read_bytes()
+    if hashlib.sha256(raw).hexdigest() != files[name]:
+        raise AdmissionError('Source verification report changed during validation')
+    report = json.loads(raw.decode('utf-8'))
+    checks = ('source_identity', 'field_semantics', 'calendar', 'point_in_time')
+    if cell.get('instrument_type') == 'futures':
+        checks += ('contract_lifecycle',)
+        try:
+            listed, session, expiry = (date.fromisoformat(cell[k]) for k in ('listed_on', 'session', 'last_trade_on'))
+            if not listed <= session <= expiry:
+                errors.append('contract_outside_lifecycle')
+        except (ValueError, KeyError, TypeError):
+            errors.append('unknown_contract_lifecycle')
+    elif cell.get('instrument_type') not in ('spot', 'index'):
+        errors.append('unknown_instrument_type')
+    if not report.get('verifier_source_id') or any(report.get('checks', {}).get(k) != 'VERIFIED' for k in checks):
+        errors.append('incomplete_source_verification')
+    expected = report.get('cells', {}).get(cell['id'], {})
+    fields = ('provider', 'symbol', 'contract', 'unit', 'field', 'session', 'vintage', 'available_at', 'instrument_type')
+    if cell.get('instrument_type') == 'futures':
+        fields += ('listed_on', 'last_trade_on')
+    if not expected or any(expected.get(k) != cell.get(k) for k in fields):
+        errors.append('source_assertion_report_mismatch')
+    return errors
+
+
 def inspect(manifest, root):
     """Validate a complete closure; return reasons without dropping bad rows."""
     if manifest.get('schema') != 1:
         raise AdmissionError('Unsupported admission schema')
+    if manifest.get('purpose') not in ('market', 'synthetic'):
+        raise AdmissionError('Explicit market or synthetic purpose required')
     required = ('source', 'parser', 'calendar', 'features', 'target', 'split', 'recipe', 'code')
     bindings = manifest.get('bindings', {})
     if set(bindings) != set(required) or any(not bindings[k] for k in required):
@@ -89,6 +127,8 @@ def inspect(manifest, root):
                 if cell.get('status') != 'VERIFIED':
                     reasons.append('unverified_source')
                 if not cell.get('parents'):
+                    if manifest['purpose'] == 'market':
+                        reasons.extend(market_leaf_errors(cell, files, root))
                     for field in ('provider', 'symbol', 'contract', 'unit', 'field', 'session', 'vintage'):
                         if not cell.get(field):
                             reasons.append('missing_' + field)

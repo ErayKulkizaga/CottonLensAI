@@ -26,7 +26,7 @@ def synthetic_admitter(root, ledger_identity, *, model_inputs=None, legacy_fit_i
                     'session': '2000-01-01', 'vintage': 'generated', 'status': 'VERIFIED',
                     'evidence': [name], 'parents': [], 'available_at': '2000-01-01T00:00:00Z',
                     'mature_at': '2000-01-01T00:00:00Z', 'target_policy': 'generated'}
-            manifest = {'schema': 1, 'bindings': dict.fromkeys(
+            manifest = {'schema': 1, 'purpose': 'synthetic', 'bindings': dict.fromkeys(
                 ('source', 'parser', 'calendar', 'features', 'target', 'split', 'recipe', 'code'), 'synthetic'),
                 'files': {name: hashlib.sha256(witness.read_bytes()).hexdigest()},
                 'ledger_identity': ledger_identity, 'target_policy': 'generated', 'cells': [cell],

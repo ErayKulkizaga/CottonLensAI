@@ -1,4 +1,5 @@
 """Synthetic dependency graphs; no market data or training."""
+import json
 from copy import deepcopy
 from hashlib import sha256
 
@@ -23,7 +24,7 @@ def graph(tmp_path):
             'field': 'settlement', 'session': '2020-01-02', 'vintage': 'first', 'status': 'VERIFIED',
             'evidence': ['source.txt'], 'parents': [], 'available_at': '2020-01-02T20:00:00Z',
             'mature_at': '2020-01-02T20:00:00Z', 'target_policy': 'first'}
-    value = {'schema': 1, 'bindings': dict.fromkeys(
+    value = {'schema': 1, 'purpose': 'synthetic', 'bindings': dict.fromkeys(
         ('source', 'parser', 'calendar', 'features', 'target', 'split', 'recipe', 'code'), 'fixture'),
         'files': {'source.txt': sha256((tmp_path/'source.txt').read_bytes()).hexdigest()},
         'target_policy': 'first', 'open_critical_defects': [],
@@ -237,3 +238,44 @@ def test_backend_dispatch_preserves_validated_inputs_and_drops_authority(graph):
             require_backend_inputs(frame*2, frame, frame, recipe)
     with pytest.raises(AdmissionError, match='Direct backend'):
         require_backend_inputs(frame, frame, frame, recipe)
+
+
+@pytest.fixture
+def market_shaped_graph(graph):
+    """Synthetic report schema, not a real market admission or publisher proof."""
+    value, root = graph
+    value['purpose'] = 'market'
+    for cell in value['cells']:
+        cell.update(instrument_type='futures', listed_on='2019-01-01',
+                    last_trade_on='2020-03-20', verification_report='verified.json')
+    report = {'verifier_source_id': 'synthetic-verifier-fixture',
+              'checks': dict.fromkeys(('source_identity', 'field_semantics', 'calendar',
+                                      'point_in_time', 'contract_lifecycle'), 'VERIFIED'),
+              'cells': {c['id']: dict(c) for c in value['cells']}}
+    path = root/'verified.json'
+    path.write_text(json.dumps(report))
+    value['files']['verified.json'] = sha256(path.read_bytes()).hexdigest()
+    return value, root
+
+
+def test_market_claims_require_bound_source_report(graph):
+    value, root = graph
+    value['purpose'] = 'market'
+    result = inspect(value, root)
+    assert not result['accepted']
+    assert any(e['reason'] == 'missing_source_verification_report' for e in result['errors'])
+
+
+@pytest.mark.parametrize(('field', 'replacement', 'reason'), [
+    ('listed_on', '2021-01-01', 'contract_outside_lifecycle'),
+    ('last_trade_on', '2019-07-01', 'contract_outside_lifecycle'),
+    ('last_trade_on', None, 'unknown_contract_lifecycle'),
+    ('available_at', '2020-01-02T19:00:00Z', 'source_assertion_report_mismatch'),
+    ('field', 'last_trade', 'source_assertion_report_mismatch'),
+])
+def test_market_metadata_cannot_silently_override_source_report(market_shaped_graph, field, replacement, reason):
+    value, root = market_shaped_graph
+    assert inspect(value, root)['accepted']
+    value['cells'][0][field] = replacement
+    result = inspect(value, root)
+    assert not result['accepted'] and reason in {e['reason'] for e in result['errors']}

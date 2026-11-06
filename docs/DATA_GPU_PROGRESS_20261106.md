@@ -166,3 +166,9 @@ Kullanıcı A100'e bağlanamadığını, L4'e bağlandığını bildirdi ve alte
 Kullanıcının açık isteğiyle L4 kaynak ZIP'i, source-manifest.json ve elle ZIP yüklemesi istemeyen CottonLens_L4_Drive.ipynb Drive'a yüklendi. Klasör: https://drive.google.com/drive/u/0/folders/1rtMBiFl2lMBR2DVCB0Ez5UlB75j5uqy2 . Drive arayüzünde3yükleme tamamlandı ve3dosya görüldü. Notebook kaynağı /content/drive/MyDrive/CottonLensAI/GPU_Handoff_L4_20261106 konumundan kendi hash'iyle okur. Uzak dosyalar ayrıca taze indirilip hash doğrulanmış sayılmıyor; notebook çalışırken kaynak hash kontrolü yapılacak. Colab çalıştırma kullanıcıda kalıyor.
 
 Legacy pipeline yeni estimator ve preprocessing fit noktalarına tam fit kimliği denetimi eklendi; cached XGBoost okuyuşu yeni fit yetkisi gerektirmeden sınandı.42training-wiring/admission test ve Ruff geçti. Bu, bütün planın veya bütün source-specific kabulün tamamlandığı anlamına gelmez.
+
+## Piyasa kaynağı için çapraz rapor kontrolü
+
+Admission manifest artık market/synthetic amacını açıkça belirtir. Market leaf, hash'e bağlı source-verification raporundaki alan/sembol/kontrat/seans/vintage/erişim zamanı ile eşleşmek zorunda. Futures için listed_on <= session <= last_trade_on kontrol edilir; eksik tarih reddedilir. Raporun alan/kimlik/takvim/PIT/lifecycle kontrol durumları tam olmalı. Rapor okunurken hash tekrar kontrol edilir. Bu bir tutarlılık katmanıdır; raporun güvenilir yayıncıdan geldiğini imzalayan veya ilk-vintage kanıtını kendiliğinden yaratan bir sistem değildir. Source-specific doğrulama hâlâ gerekli ve gerçek named-risk verisi için G1 hâlâ kapalıdır.
+
+57admission/legacy-wiring/native-synthetic test geçti; değişen3Python dosyasında Ruff geçti. Yeni market-shaped rapor testleri yalnız üretilmiş şema örnekleridir, gerçek piyasa kabulü değildir. İlk commit03c3dda için backend/frontend/Compose CI başarılı; ML/research son gözlemde çalışıyordu. Bu CI sonucu sonraki commit'ler için geçerli sayılmaz.
