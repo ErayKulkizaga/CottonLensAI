@@ -91,7 +91,8 @@
         "research/evidence/price-prediction-causality-20261106.json",
         "research/evidence/prediction-causality-delivery-20261106.json",
         "docs/G2_COVERAGE_20261107.md",
-        "research/evidence/text-learning-admission-20261107.json"
+        "research/evidence/text-learning-admission-20261107.json",
+        "research/evidence/decision-cache-oof-20261107.json"
       ],
       "remediation": "The fixed price-only T+1 cohort has independent exact-origin/target/value checks, Decimal loss/gate checks, active metrics and fresh native/preprocessing replay. All338fixed Ridge/Quantile native states pass first/last-test-origin prefix and future-price perturbation checks, including frozen outer weights. Fresh archive replay is byte-identical with network/training disabled. This does not prove how all selections were made; remaining selection-policy and other dataset/model contracts still need coverage.",
       "closure": "Requirement-by-requirement G2 coverage including independent common-origin evaluation and native prediction replay."
@@ -204,6 +205,38 @@
       ],
       "remediation": "Require exact dispatched training frame, ordered features and text config before learning; reject future-target features before vocabulary/SVD. Preserve no-fit deserialization and explicitly admitted synthetic controls.",
       "closure": "Regression failed before fix at vocabulary learning; 11new controls and existing generated text/model admission checks pass. Source truth and full G2 remain separate open requirements."
+    },
+    {
+      "id": "DG-014",
+      "status": "FIXED_VERIFIED",
+      "problem": "Engine tune/outer reused self-hashed records by path without binding current candidates, selected members/weights or actual source frames. No historical occurrence is inferred.",
+      "affected_scope": "Experiment.tune and Experiment.outer, including inherited transfer panel context and nested ensembles.",
+      "evidence": [
+        "research/evidence/decision-cache-oof-20261107.json",
+        "ml/src/cottonlens_ml/research/decision_cache.py",
+        "ml/src/cottonlens_ml/research/engine.py",
+        "ml/src/cottonlens_ml/research/free_rounds.py",
+        "ml/tests/test_decision_cache.py",
+        "ml/tests/test_free_rounds.py"
+      ],
+      "remediation": "Bind exact request, fold, identity and bounded history/panel frames; reject missing/changed bindings before callbacks. Preserve historical read_record/frozen-source inspection and never silently retrain.",
+      "closure": "Generated valid/reuse and injected-fault controls pass in covered entrypoints. Other custom selection/cache paths and full G2 remain open."
+    },
+    {
+      "id": "DG-015",
+      "status": "FIXED_VERIFIED",
+      "problem": "Ensemble weights required common OOF origins but did not require the exact frozen three-by-63 inner cohort or recheck its maturity. No historical occurrence is inferred.",
+      "affected_scope": "free_rounds.ensemble_fold shared OOF cohort before member predictions and weight optimization.",
+      "evidence": [
+        "research/evidence/decision-cache-oof-20261107.json",
+        "ml/src/cottonlens_ml/research/decision_cache.py",
+        "ml/src/cottonlens_ml/research/engine.py",
+        "ml/src/cottonlens_ml/research/free_rounds.py",
+        "ml/tests/test_decision_cache.py",
+        "ml/tests/test_free_rounds.py"
+      ],
+      "remediation": "Validate temporal fold and exact ordered189inner origins for every seed before prediction/optimization; reject outer labels, missing origins and immature labels.",
+      "closure": "Generated valid/reuse and injected-fault controls pass in covered entrypoints. Other custom selection/cache paths and full G2 remain open."
     }
   ]
 }

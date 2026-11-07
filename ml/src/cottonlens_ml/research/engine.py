@@ -251,9 +251,13 @@ class Experiment:
 
     def tune(self, family, horizon, fold, candidates, namespace):
         validate_inner_fold(self.history, fold)
+        from cottonlens_ml.research.decision_cache import execution_binding, read_bound
+        binding = execution_binding(self, fold, {
+            'operation': 'tune', 'family': family, 'horizon': horizon,
+            'candidates': candidates, 'namespace': namespace, 'seeds': SEEDS}, selection=True)
         marker = self.root / 'decisions' / namespace / f'{family}-t{horizon}-fold{fold["fold"]}.json'
         if marker.exists():
-            return read_record(marker)
+            return read_bound(marker, binding)
         evaluated = []
         for i, spec in enumerate(candidates):
             result = self.inner(spec, fold)
@@ -272,13 +276,18 @@ class Experiment:
         chosen = min(confirmed, key=lambda r: (r['score'], complexity(r['recipe'])))
         result = {'chosen': chosen, 'trials': [{'recipe': r['recipe'], 'score': r['score'], 'records': r['records']}
                                               for r in evaluated], 'fold': fold['fold'], 'selection_used_outer': False}
+        result['execution_binding'] = binding
         freeze_record(marker, result)
         return result
 
     def outer(self, chosen, fold, namespace, *, repeat=None):
+        from cottonlens_ml.research.decision_cache import execution_binding, read_bound
+        binding = execution_binding(self, fold, {
+            'operation': 'outer', 'chosen': chosen, 'namespace': namespace, 'repeat': repeat},
+            selection=False)
         marker = self.root / ('reproduction' if repeat else 'outer') / namespace / f'{chosen["recipe"]["family"]}-t{chosen["recipe"]["horizon"]}-fold{fold["fold"]}.json'
         if marker.exists():
-            return read_record(marker)
+            return read_bound(marker, binding)
         if chosen['recipe']['family'] == 'ensemble':
             members = [self.outer(member['decision'], fold, member['namespace'], repeat=repeat)
                        for member in chosen['members']]
@@ -291,6 +300,7 @@ class Experiment:
             if self.identity.get('profile') == 'free-data-v1':
                 from cottonlens_ml.research.uncertainty import for_candidate
                 result['uncertainty'] = for_candidate(self.history, chosen, fold['origins'], predicted)
+            result['execution_binding'] = binding
             freeze_record(marker, result)
             return result
         test = rows_at(self.history, fold['origins'])
@@ -326,6 +336,7 @@ class Experiment:
         if self.identity.get('profile') == 'free-data-v1' and spec.get('task', 'price') == 'price':
             from cottonlens_ml.research.uncertainty import for_candidate
             result['uncertainty'] = for_candidate(self.history, chosen, fold['origins'], predicted)
+        result['execution_binding'] = binding
         freeze_record(marker, result)
         return result
 

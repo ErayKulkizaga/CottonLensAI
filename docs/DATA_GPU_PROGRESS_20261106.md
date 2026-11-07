@@ -609,3 +609,30 @@ G1/source response and full G2 remain open; no market campaign is admitted.
 
 Receipts: research/evidence/l4-session-verification-20261107.json and
 research/evidence/l4-session-result-delivery-20261107.json.
+
+## Decision caches and ensemble OOF boundary — 7 November 2026
+
+ICE reply is still pending per the user. No mailbox check, message or market
+training was performed. Continued independent G2 implementation.
+
+DG-014: engine tune/outer caches were reused by filename without binding the
+current request/source frames. The regression failed before the fix. New records
+bind fold, candidates/seeds or chosen members/weights/repeat, experiment identity
+and actual bounded history/panel values. Selection excludes outer-origin rows;
+outer replay includes its evaluation rows. Changed/unbound records stop before
+callbacks, remain intact and never silently trigger fitting. Historical inspection
+uses read_record or the original frozen source; old records are not rewritten.
+
+DG-015: free-round ensembles checked equal seed origins but not the exact locked
+OOF cohort. The temporal three-by-63 fold and all 189 ordered seed origins now
+must pass before member predictions or simplex weight optimization. Outer-label
+substitution, missing origins and immature labels are rejected.
+
+37 generated cache/selection/transfer controls passed; a second focused run
+covering ensemble/selection/cache passed34 controls. Changed-file Ruff passes.
+These runs overlap and their counts must not be added. No estimator or market
+fits. Receipt: research/evidence/decision-cache-oof-20261107.json.
+
+Full G2 remains open: custom adaptive/ablation caches and prior-choice ingestion
+need separate coverage. The inherited engine and generated transfer checks do
+not certify every custom runner. G1 still requires external source evidence.

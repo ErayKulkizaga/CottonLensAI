@@ -5,7 +5,7 @@ import numpy as np
 
 from cottonlens_ml.evaluation import evaluate
 from cottonlens_ml.research.ledger import freeze_record, read_record
-from cottonlens_ml.research.protocol import rows_at
+from cottonlens_ml.research.protocol import rows_at, validate_inner_fold
 from cottonlens_ml.research.search import recipes, simplex_weights
 from cottonlens_ml.runtime_guard import require_colab_training
 
@@ -105,6 +105,7 @@ def run(experiment, round_name):
 
 def ensemble_fold(experiment, horizon, fold, ranked):
     """One member per family, selected by this fold's inner evidence only."""
+    validate_inner_fold(experiment.history, fold)
     selected, families = [], set()
     for candidate in ranked:
         if candidate['family'] not in families:
@@ -116,6 +117,10 @@ def ensemble_fold(experiment, horizon, fold, ranked):
         return
     inner, outer = [], []
     origins = selected[0]['decision']['seeds'][0]['origins']
+    expected = [date for block in fold['inner'] for date in block['origins']]
+    if origins != expected or any(
+            s['origins'] != expected for member in selected for s in member['decision']['seeds']):
+        raise ValueError('Ensemble requires the exact frozen inner OOF cohort')
     for member in selected:
         chosen = member['decision']
         if any(s['origins'] != origins for s in chosen['seeds']):

@@ -1,0 +1,43 @@
+{
+  "schema": 1,
+  "status": "scoped_cache_binding_and_ensemble_oof_controls_passed",
+  "market_fits": 0,
+  "estimator_fits": 0,
+  "controls": "Generated orchestration callbacks and existing generated transfer tests; no new market experiment.",
+  "runs": [
+    {
+      "tests": [
+        "test_decision_cache",
+        "test_selection_boundary",
+        "test_transfer",
+        "test_nonlinear_transfer"
+      ],
+      "passed": 37
+    },
+    {
+      "tests": [
+        "test_free_rounds",
+        "test_decision_cache",
+        "test_selection_boundary"
+      ],
+      "passed": 34
+    }
+  ],
+  "regression_before_fix": "Unbound historical decision returned without rejecting execution; regression failed DID NOT RAISE.",
+  "ruff": "passed",
+  "source_hash_algorithm": "SHA256 after CRLF-to-LF normalization",
+  "source_hashes": {
+    "ml/src/cottonlens_ml/research/decision_cache.py": "c78736646ae1fc8a35d5f9b6d4ecab051e7f0542ade1576c910218aab25a5b94",
+    "ml/src/cottonlens_ml/research/engine.py": "0ea94bbb0b07b475bb22ee55cedc2c961a4e254194bce9e8393056ac02eb5b61",
+    "ml/src/cottonlens_ml/research/free_rounds.py": "3c0ee0aa1cbbc44e75888bfa773dbdb1e804d4ba3c20c27a620cc9f69419d344",
+    "ml/tests/test_decision_cache.py": "ff86241a7a78147744b626129733eb89b9ee30db2cbf32494d1fbd47bdfd6ca5",
+    "ml/tests/test_free_rounds.py": "d848072904476c741477aad72d06549269978901cbf1f99c5109657beb698cb9"
+  },
+  "limits": [
+    "No historical misuse is inferred",
+    "Bounded data identity is not publisher availability proof",
+    "Existing unbound records remain readable using read_record/frozen-source replay; changed caches never trigger automatic refits",
+    "Custom adaptive, ablation and prior-choice ingestion paths still need separate coverage",
+    "G1 and full G2 remain open"
+  ]
+}
