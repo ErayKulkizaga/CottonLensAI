@@ -75,6 +75,7 @@ def fake_native(raw):
 
 def test_valid_receipt_scope(tmp_path, monkeypatch):
     monkeypatch.setattr(verifier, 'native', fake_native)
+    monkeypatch.setattr(verifier, 'independent_replay', lambda *a: {'mock_receipt_scope_only': True})
     result = verifier.verify(*fixture(tmp_path))
     assert result['new_fits'] == 0 and not result['remote_runtime_attestation']
     assert not result['universal_dropout_rng_verified']
@@ -83,5 +84,6 @@ def test_valid_receipt_scope(tmp_path, monkeypatch):
 @pytest.mark.parametrize('fault', ['boot', 'marker', 'source', 'fits', 'prior', 'mask'])
 def test_rehashed_semantic_defect_rejected(tmp_path, monkeypatch, fault):
     monkeypatch.setattr(verifier, 'native', fake_native)
+    monkeypatch.setattr(verifier, 'independent_replay', lambda *a: {'mock_receipt_scope_only': True})
     with pytest.raises(ValueError):
         verifier.verify(*fixture(tmp_path, fault))

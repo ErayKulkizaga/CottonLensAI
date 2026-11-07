@@ -582,3 +582,30 @@ Requirement-to-evidence scope: docs/G2_COVERAGE_20261107.md.
 G1 source/lifecycle/PIT gaps and full G2 remain open. G3 still needs the user's
 two-runtime L4 session/RNG result from the already delivered Drive v2 notebook.
 ICE was not contacted. User plan/competitor note and other worktrees are preserved.
+
+## Returned L4 session/explicit RNG acceptance — 7 November2026
+
+The user completed the consolidated v2 notebook. ZIP/checksum were downloaded
+directly from the existing Drive folder. Fourteen members, frozen source and
+three carried prior receipts match. Distinct boot/absent marker witnesses,
+PCG64 batch continuation, reference/resumed masks and stored RNG states pass.
+Actual native steps1/2/2 and reference/resumed state error0 are verified without
+TensorFlow or executable model deserialization.
+
+Added an independent NumPy checker for both fixed Adam updates and64predictions:
+maximum state error3.516836e-8, prediction error2.150546e-7, tolerance1e-6.
+Fifteen new closed-form/fault controls cover wrong recipe, equally wrong native
+states, predictions and minibatch shape.30focused checks and375research tests
+pass;1optional HDF5 test skipped in the CPU environment (the host HDF5 guard
+and returned native files were checked separately).
+
+The private Release includes original result/checksum, frozen source and exact
+verifiers. A fresh download verified/restored10payload files; training imports
+blocked, the restored verifier reproduces the same result. New fits0; old probes
+were not repeated. DG-007 is FIXED_VERIFIED only for this fixed single-worker
+L4 synthetic fault/continuation scope. No remote runtime attestation, independent
+TF random-draw generation, universal Dropout/tf.data/multi-GPU or market claim.
+G1/source response and full G2 remain open; no market campaign is admitted.
+
+Receipts: research/evidence/l4-session-verification-20261107.json and
+research/evidence/l4-session-result-delivery-20261107.json.

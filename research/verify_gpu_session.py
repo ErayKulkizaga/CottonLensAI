@@ -4,6 +4,7 @@ import json
 import zipfile
 from pathlib import Path
 
+from research.session_math import independent_replay
 from research.verify_gpu_probe import members, sha
 from research.verify_gpu_restart import native, record
 
@@ -79,10 +80,13 @@ def verify(archive, checksum, source):
     for devices in (before['variable_devices'], resumed['variable_devices']):
         if not devices or any('GPU:' not in d.upper() for d in devices):
             raise ValueError('GPU placement witness required')
+    independent = independent_replay(states, reference)
     return {'schema': 1, 'status': 'native_session_and_explicit_rng_receipts_verified',
             'archive_sha256': sha(raw), 'source_archive_sha256': manifest['source_archive_sha256'],
             'native_max_abs_difference': max(errors), 'new_fits': 0, 'tensorflow_imported': False,
             'reported_train_on_batch_calls': 3, 'prior_checks_retrained': False,
+            'independent_numpy_replay': independent,
+            'independent_replay_sha256': sha(Path(__file__).with_name('session_math.py').read_bytes()),
             'remote_runtime_attestation': False, 'universal_dropout_rng_verified': False,
             'market_skill': False, 'verifier_sha256': sha(Path(__file__).read_bytes())}
 

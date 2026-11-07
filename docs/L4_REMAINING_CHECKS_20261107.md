@@ -1,5 +1,28 @@
 # Kalan L4 kontrolleri — tek Drive notebook'u
 
+## Güncel sonuç: doğrulandı — 7 Kasım 2026
+
+Kullanıcı çalışmayı tamamladı; aşağıdaki adımlar teslimat tarihçesidir.
+Tekrar çalıştırma gerekmez. Drive'dan indirilen14üyeli ZIP/checksum ve donmuş
+kaynak eşleşti. Yeni boot/yerel marker tanıkları, NumPy batch sırası,
+referans/devam maskeleri ve RNG durumları tutarlı. Üç native checkpoint'in
+optimizer adımları1/2/2; referans/devam ağırlık ve optimizer farkı0.
+
+TensorFlow kullanmayan bağımsız NumPy hesabı iki Adam güncellemesini ve64
+tahmini denetledi: en büyük durum farkı3.52e-8, tahmin farkı2.15e-7;
+tolerans1e-6. Otuz hedefli kontrol ve375research testi geçti,1opsiyonel kontrol
+atlandı. Private Release'ten taze indirilip10dosya restore edildi; eğitim
+importları engellenmişken aynı sonuç elde edildi. Yeni fit0.
+
+Makbuzlar: [doğrulama](../research/evidence/l4-session-verification-20261107.json),
+[geri yükleme](../research/evidence/l4-session-result-delivery-20261107.json).
+DG-007 yalnız bu sabit sentetik L4 arıza/continuation kapsamıyla kapandı.
+TF Philox uniform sayılarını bağımsız üretmedik; native GPU/VM attestation,
+genel Dropout/tf.data/multi-GPU veya piyasa başarısı iddiası yok.
+G1/G2 ve araştırma kampanyası bu sonuçla açılmadı.
+
+## Tamamlanan çalıştırma adımları ve hazırlık tarihçesi
+
 Drive klasörü: https://drive.google.com/drive/u/0/folders/1rtMBiFl2lMBR2DVCB0Ez5UlB75j5uqy2
 Dosya: CottonLens_L4_Remaining_Checks_Drive_v2.ipynb.
 Kaynak yanındadır; kullanıcı ZIP indirme/yükleme yapmaz.
@@ -44,7 +67,8 @@ Kaynak dayanağı: https://www.tensorflow.org/api_docs/python/tf/random/Generato
 State/algorithm açıkça saklanıp from_state ile yüklenir. Depo TF2.20.0 kilidi
 korunur; güncel doküman sayfasının2.21olması paket yükseltmesi gerekçesi sayılmadı.
 
-Bu teslimat G3 hazırlığıdır, gerçek session/RNG kabulü henüz yoktur. Piyasa
+Teslimat anında bu G3 hazırlığıydı; gerçek session/RNG kabulü üstteki güncel
+sonuçla sınırlı olarak doğrulandı. Piyasa
 fit'i0; G1/G2 kaynak kabulleri ve bilimsel kampanya bu notebook ile açılmaz.
 
 Kullanılacak notebook v2: kurulumun mevcut /content/CottonLensAI proje yolu

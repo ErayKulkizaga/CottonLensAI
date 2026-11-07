@@ -98,9 +98,9 @@
     },
     {
       "id": "DG-007",
-      "status": "EVIDENCE_GAP",
+      "status": "FIXED_VERIFIED",
       "problem": "L4 save/load and optimizer replay do not establish forced-session interruption, OOM or duplicate-worker handling.",
-      "affected_scope": "Remaining G3 infrastructure acceptance; zero market skill evidence.",
+      "affected_scope": "Fixed single-worker L4 synthetic worker/session restart, explicit PCG64/Philox mask continuation and bounded allocator OOM; not universal G3 or market-model certification.",
       "evidence": [
         "research/evidence/l4-technical-verification-20261106.json",
         "research/evidence/source-gate-delivery-20261106.json",
@@ -113,10 +113,14 @@
         "research/evidence/l4-oom-verification-20261107.json",
         "research/evidence/l4-oom-result-delivery-20261107.json",
         "research/evidence/l4-session-handoff-20261107.json",
-        "research/evidence/l4-session-handoff-v2-20261107.json"
+        "research/evidence/l4-session-handoff-v2-20261107.json",
+        "research/evidence/l4-session-verification-20261107.json",
+        "research/evidence/l4-session-result-delivery-20261107.json",
+        "research/session_math.py",
+        "research/tests/test_session_math.py"
       ],
-      "remediation": "User-returned L4 deterministic native worker-exit/resume passed hash binding, exact optimizer/weight comparisons and independent NumPy Adam replay. Fresh Release restoration reproduces verification. Whole-session loss, stochastic RNG and real GPU OOM remain unverified. A separate bounded allocator-OOM/fresh-process recovery handoff is prepared and fresh-restored; actual Colab execution remains pending. Returned bounded128MiB GPU allocator OOM and fresh-process recovery receipts verified offline on2026-11-07. Physical VRAM saturation, whole-session and stochastic resume remain outside this result. Remaining explicit RNG/session controls are consolidated into one two-runtime Drive notebook; source/hash/control tests pass, actual execution pending.",
-      "closure": "Fault-specific receipts, no duplicate completed fits, explicit attempt semantics and fresh restore."
+      "remediation": "User-returned L4 save/load, worker-exit/resume, bounded128MiB allocator-OOM/fresh-process recovery, and distinct-boot session/explicit RNG receipts passed independent hash/native checks. Session native reference/resume error is0; NumPy checks both Adam updates and predictions within1e-6. Prior receipts are preserved without rerunning probes. Ledger duplicate/attempt controls remain separately verified.",
+      "closure": "Scoped fault evidence is complete: actual returned session/RNG result and10-file fresh private Release restore reproduce offline verification with training imports blocked and0new fits. Boot/marker/hardware are reported witnesses, not remote attestation. Physical VRAM saturation, arbitrary Keras dropout/tf.data RNG, multi-GPU, other architectures, performance campaigns and G1/G2 admission are outside this closure."
     },
     {
       "id": "DG-008",
