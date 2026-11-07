@@ -93,7 +93,8 @@
         "docs/G2_COVERAGE_20261107.md",
         "research/evidence/text-learning-admission-20261107.json",
         "research/evidence/decision-cache-oof-20261107.json",
-        "research/evidence/adaptive-ablation-cache-20261107.json"
+        "research/evidence/adaptive-ablation-cache-20261107.json",
+        "research/evidence/refinement-causality-release-cache-20261107.json"
       ],
       "remediation": "The fixed price-only T+1 cohort has independent exact-origin/target/value checks, Decimal loss/gate checks, active metrics and fresh native/preprocessing replay. All338fixed Ridge/Quantile native states pass first/last-test-origin prefix and future-price perturbation checks, including frozen outer weights. Fresh archive replay is byte-identical with network/training disabled. This does not prove how all selections were made; remaining selection-policy and other dataset/model contracts still need coverage.",
       "closure": "Requirement-by-requirement G2 coverage including independent common-origin evaluation and native prediction replay."
@@ -276,6 +277,42 @@
       ],
       "remediation": "Revalidate exact context on creation, resume and consumption; reject altered/unbound records without deleting old evidence or automatically retraining.",
       "closure": "59generated controls pass under pinned Optuna4.5.0, including interrupted/completed invalidation, legitimate extension reuse, rehashed bad trial state, stale prior decisions, aggregate/plan corruption and stopped-extension zero-compute controls. Other custom paths/full G2 remain open."
+    },
+    {
+      "id": "DG-018",
+      "status": "FIXED_VERIFIED",
+      "problem": "Legacy refinements ranked global all-fold inner-score averages and used that ranking in earlier folds; later-fold scores could change an earlier decision.",
+      "affected_scope": "research.refinements D/E and direct refinement ensemble; not all historical experiments.",
+      "evidence": [
+        "research/evidence/refinement-causality-release-cache-20261107.json",
+        "ml/src/cottonlens_ml/research/refinements.py",
+        "ml/src/cottonlens_ml/research/free_rounds.py",
+        "ml/src/cottonlens_ml/research/decision_cache.py",
+        "ml/src/cottonlens_ml/research/reproduction.py",
+        "ml/src/cottonlens_ml/research/release.py",
+        "ml/tests/test_refinements.py",
+        "ml/tests/test_reproduction.py"
+      ],
+      "remediation": "Fold-local verified selection with separately named v2 policy records and retained native leaves; current reproduction/gates required before accepting cached exports. Preserve old records and frozen-source inspection.",
+      "closure": "80generated controls pass, including later-fold perturbation invariance, wrong OOF rejection, policy native replay and stale cached export refusal. No historical occurrence count or market success is inferred; full G2 remains open."
+    },
+    {
+      "id": "DG-019",
+      "status": "FIXED_VERIFIED",
+      "problem": "Cached release export returned after archive hashing before checking current bound reproduction and paired price gates.",
+      "affected_scope": "research.release.export cache acceptance; native artifact/API schemas unchanged.",
+      "evidence": [
+        "research/evidence/refinement-causality-release-cache-20261107.json",
+        "ml/src/cottonlens_ml/research/refinements.py",
+        "ml/src/cottonlens_ml/research/free_rounds.py",
+        "ml/src/cottonlens_ml/research/decision_cache.py",
+        "ml/src/cottonlens_ml/research/reproduction.py",
+        "ml/src/cottonlens_ml/research/release.py",
+        "ml/tests/test_refinements.py",
+        "ml/tests/test_reproduction.py"
+      ],
+      "remediation": "Fold-local verified selection with separately named v2 policy records and retained native leaves; current reproduction/gates required before accepting cached exports. Preserve old records and frozen-source inspection.",
+      "closure": "80generated controls pass, including later-fold perturbation invariance, wrong OOF rejection, policy native replay and stale cached export refusal. No historical occurrence count or market success is inferred; full G2 remains open."
     }
   ]
 }

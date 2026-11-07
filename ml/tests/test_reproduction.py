@@ -93,6 +93,76 @@ def test_legacy_receipt_with_missing_native_model_never_refits(native_repeats):
     assert read_record(experiment.root/'reproduction-t1.json')['status'] == 'passed'
 
 
+@pytest.mark.parametrize('fault', [None, 'missing_policy', 'wrong_weight'])
+def test_fold_local_policy_replays_exact_native_leaf_without_fitting(native_repeats, fault):
+    experiment, original_lock, _ = native_repeats
+    root = experiment.root
+    leaf = read_record(root/'decisions/fixed/ridge-t1-fold1.json')['chosen']
+    chosen = {'recipe': {'family': 'ensemble', 'horizon': 1},
+              'selection_policy': 'fold-local-refinement-v2',
+              'weights': [1.], 'members': [{'namespace': 'fixed', 'decision': leaf}]}
+    if fault == 'missing_policy':
+        del chosen['selection_policy']
+    elif fault == 'wrong_weight':
+        chosen['weights'] = [.5]
+    body = read_record(root/'outer/fixed/ridge-t1-fold1.json')
+    body['recipe'] = chosen['recipe']
+    for directory in ('outer', 'reproduction'):
+        freeze_record(root/directory/'policy/ensemble-t1-fold1.json', body)
+    freeze_record(root/'decisions/policy/ensemble-t1-fold1.json',
+                  {'chosen': chosen, 'selection_used_outer': False})
+    lock = {**original_lock, 'horizons': {**original_lock['horizons'],
+                                        '1': {'family': 'ensemble', 'namespace': 'policy'}}}
+    (root/'locked.json').unlink()  # Generated fixture only.
+    freeze_record(root/'locked.json', lock)
+    if fault:
+        with pytest.raises(ValueError, match='ensemble weights'):
+            engine.reproduce(experiment)
+    else:
+        engine.reproduce(experiment)
+        receipt = verify_for_export(experiment, lock)['1']
+        assert len(receipt['fit_records']) == 1
+        assert receipt['max_abs_log_return_difference'] == 0.
+
+
+@pytest.mark.parametrize('fault', [None, 'source', 'receipt', 'archive', 'gate'])
+def test_cached_export_rechecks_current_evidence_before_return(native_repeats, monkeypatch, fault):
+    from cottonlens_ml.code_identity import digest
+    from cottonlens_ml.research import release
+    experiment, lock, _ = native_repeats
+    freeze_record(experiment.root/'diagnosis.json', {'status': 'passed'})
+    engine.reproduce(experiment)
+    receipts = verify_for_export(experiment, lock)
+    archive = experiment.root/'generated-release.zip'
+    archive.write_bytes(b'generated cache-control fixture; not a model package')
+    prior = {'path': str(archive), 'sha256': digest(archive), 'reproduction': receipts,
+             'runtime_parity': 'passed', 'prospective_verified': False}
+    if fault == 'receipt':
+        prior['reproduction'] = {}
+    freeze_record(experiment.root/'release.json', prior)
+    monkeypatch.setattr(release, 'require_colab_training', lambda: None)
+    checked = []
+    def gate(*args):
+        checked.append(True)
+        if fault == 'gate':
+            raise ValueError('Injected paired gate failure')
+        return {}
+    monkeypatch.setattr(release, '_checked_price_lock', gate)
+    monkeypatch.setattr(release, 'load_frozen_data',
+                        lambda *a: pytest.fail('Cached export attempted deployment computation'))
+    if fault == 'source':
+        experiment.identity = {**experiment.identity, 'source_id': 'changed'}
+    elif fault == 'archive':
+        archive.write_bytes(b'changed')
+    if fault:
+        with pytest.raises(ValueError):
+            release.export(experiment, experiment.root)
+    else:
+        release.export(experiment, experiment.root)
+        assert checked == [True]
+    assert read_record(experiment.root/'release.json') == prior
+
+
 @pytest.mark.parametrize('corruption', ['native_bytes', 'predictions', 'fit_key', 'decision', 'lock'])
 def test_export_requires_exact_reproduction_evidence(native_repeats, corruption):
     experiment, lock, files = native_repeats

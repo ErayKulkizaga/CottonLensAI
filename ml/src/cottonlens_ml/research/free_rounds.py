@@ -106,7 +106,7 @@ def run(experiment, round_name):
                 ensemble_fold(experiment, horizon, fold, prior)
 
 
-def ensemble_fold(experiment, horizon, fold, ranked):
+def ensemble_fold(experiment, horizon, fold, ranked, *, output_namespace='free-E-ensemble'):
     """One member per family, selected by this fold's inner evidence only."""
     validate_inner_fold(experiment.history, fold)
     selected, families = [], set()
@@ -142,12 +142,12 @@ def ensemble_fold(experiment, horizon, fold, ranked):
         name for m in selected for name in m['decision']['recipe']['features'])), 'params': {}, 'seed': 42, 'cadence': 126}
     chosen = {'recipe': model, 'score': score, 'members': deepcopy(selected), 'weights': weights}
     marker = f'ensemble-t{horizon}-fold{fold["fold"]}.json'
-    freeze_record(experiment.root / 'decisions/free-E-ensemble' / marker,
+    freeze_record(experiment.root / 'decisions' / output_namespace / marker,
                   {'chosen': chosen, 'selection_used_outer': False, 'family_selection': 'this_fold_inner_only'})
     test = rows_at(experiment.history, fold['origins'])
     prediction = np.asarray(outer).T @ weights
     from cottonlens_ml.research.uncertainty import for_candidate
-    freeze_record(experiment.root / 'outer/free-E-ensemble' / marker,
+    freeze_record(experiment.root / 'outer' / output_namespace / marker,
                   {'recipe': model, 'predictions': prediction.tolist(), 'origins': fold['origins'],
                    'fold': fold['fold'], 'inner_score': score,
                    'metrics': evaluate(test.cotton_close.to_numpy(), test[f'target_return_{horizon}'].to_numpy(), prediction),

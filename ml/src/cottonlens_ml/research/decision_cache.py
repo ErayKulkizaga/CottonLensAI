@@ -35,7 +35,7 @@ def read_selection(experiment, marker, fold, namespace, family, horizon):
     validate_inner_fold(experiment.history, fold)
     result = read_record(marker)
     request = result.get('execution_request', {})
-    if (request.get('operation') not in ('tune', 'adaptive', 'adaptive-skip')
+    if (request.get('operation') not in ('tune', 'adaptive', 'adaptive-skip', 'fold-choice')
             or request.get('namespace') != namespace or request.get('family') != family
             or request.get('horizon') != horizon):
         raise ValueError('Selection request missing or changed')

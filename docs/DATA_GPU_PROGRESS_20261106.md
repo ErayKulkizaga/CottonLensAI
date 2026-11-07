@@ -664,3 +664,36 @@ Evidence: research/evidence/adaptive-ablation-cache-20261107.json.
 Full G2 remains open: other refinement/release and model-specific consumers
 still need scoped review. G1 source evidence awaits the user-supplied ICE reply.
 No email access/messages, new GPU run, production model/API or collector change.
+
+## Fold-local refinement and cached export — 7 November 2026
+
+DG-018 was reproduced on the prior committed source: changing only later-fold
+scores switched the first-fold family from XGBoost to CatBoost with unchanged
+first-fold evidence. Legacy D/E and refinement ensemble ranking used aggregate
+comparison scores. Corrected code reads verified current-fold selections only.
+D/E policies use separate v2 namespaces; the native chosen family/recipe is
+retained in a one-member ensemble policy, allowing a consistent policy identity
+across folds with existing recursive native/OOF/export interfaces. Native replay
+allows this single-member case only with its explicit policy marker, weight1
+and matching horizon; unmarked or invalid ensembles still fail.
+
+Original records are not repaired or overwritten. Any eventual market execution
+requires a new source/recipe identity and exact preregistered admission; this is
+a code/control repair, not permission to rerun old studies. Tests perturb both
+later-fold scores and future rows; earlier policy records remain byte-equivalent
+as decoded records while later choices respond to their own evidence.
+
+DG-019: cached export now rechecks bound reproduction and paired price gates
+before returning a prior archive. Its reproduction/status must match current
+evidence; unchanged valid cache uses no data loading or new fitting.
+
+80 targeted generated controls and changed-file Ruff pass. Native receipt tests
+exercise policy replay and stale cache refusal; no real-market/estimator fits
+or active model/API/collector changes. Evidence:
+research/evidence/refinement-causality-release-cache-20261107.json.
+Index discovery did not establish actual affected historical runs; role-name
+matches are not an absence proof. Old evidence remains qualified, not erased.
+
+The goal stays active: G1 requires external lifecycle/PIT evidence; full G2 still
+needs a requirement-level audit of remaining protocol-specific paths and archive
+coverage. No ICE/mail access was attempted.
