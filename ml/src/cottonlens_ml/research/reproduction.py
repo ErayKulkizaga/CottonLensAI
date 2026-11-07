@@ -120,7 +120,8 @@ def _repeat_predictions(experiment, fold, namespace, chosen, receipts):
         raise ValueError('Reproduction changed the chosen recipe')
     if family == 'ensemble':
         weights = np.asarray(chosen['weights'], dtype=float)
-        single_policy = (chosen.get('selection_policy') == 'fold-local-refinement-v2'
+        single_policy = (chosen.get('selection_policy') in (
+                            'fold-local-refinement-v2', 'fold-local-search-extension-v2')
                          and len(chosen['members']) == 1 and chosen['weights'] == [1.]
                          and chosen['members'][0]['decision']['recipe']['horizon'] == h)
         if ((len(chosen['members']) < 2 and not single_policy)

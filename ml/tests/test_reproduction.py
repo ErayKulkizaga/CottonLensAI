@@ -94,12 +94,13 @@ def test_legacy_receipt_with_missing_native_model_never_refits(native_repeats):
 
 
 @pytest.mark.parametrize('fault', [None, 'missing_policy', 'wrong_weight'])
-def test_fold_local_policy_replays_exact_native_leaf_without_fitting(native_repeats, fault):
+@pytest.mark.parametrize('policy', ['fold-local-refinement-v2', 'fold-local-search-extension-v2'])
+def test_fold_local_policy_replays_exact_native_leaf_without_fitting(native_repeats, fault, policy):
     experiment, original_lock, _ = native_repeats
     root = experiment.root
     leaf = read_record(root/'decisions/fixed/ridge-t1-fold1.json')['chosen']
     chosen = {'recipe': {'family': 'ensemble', 'horizon': 1},
-              'selection_policy': 'fold-local-refinement-v2',
+              'selection_policy': policy,
               'weights': [1.], 'members': [{'namespace': 'fixed', 'decision': leaf}]}
     if fault == 'missing_policy':
         del chosen['selection_policy']

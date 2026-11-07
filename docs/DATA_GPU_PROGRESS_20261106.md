@@ -705,3 +705,30 @@ both paths. The new regression failed at a forbidden callback before correction;
 81 targeted controls and Ruff pass after it. The first80-test receipt stays
 immutable; current source hashes and81-test result are in
 research/evidence/refinement-causality-release-cache-v2-20261107.json.
+
+## Fold-local legacy search extensions — 7 November 2026
+
+DG-020 was reproduced on c190943: changing global/later-fold aggregate scores
+switched the first extension family from XGBoost to Ridge before any fit. Legacy
+engine A/C extensions now rank paired T+1/T+5 inner evidence within each fold;
+aggregate comparison reports cannot control earlier work.
+
+The existing two-family/64-candidate-per-horizon limit, deterministic offsets,
+initial-gain and two-small-gain stopping rules are retained. Decisions/receipts
+use separate local-v2 identities, current source/candidate contracts and a bound
+prefix of prior extension receipts. Missing earlier indices are not auto-run.
+Stopped or zero-loss folds carry already verified native forecasts into a policy
+record with zero fitting/prediction callbacks. Missing derived policy metadata
+can be reconstructed from those exact native caches; a corrupt source still stops.
+Every completed prior policy is checked before advancing another extension.
+
+77 targeted generated routing/causality/native-receipt controls and Ruff passed.
+A/C later-fold score/price changes leave earlier policies unchanged. Plateau,
+completed-cache replay, missing-derived recovery, stale/rehashed evidence,
+paired coverage and candidate contracts are exercised. No estimator/market fits.
+Evidence: research/evidence/search-extension-causality-20261107.json.
+
+The goal remains active. G1 still requires ICE/lifecycle/PIT evidence; next G2
+review targets actual validation/test/history identities in per-fit cache keys,
+plus remaining protocol-specific/archive coverage. No old experiment/receipt,
+production API/model or collector was changed.

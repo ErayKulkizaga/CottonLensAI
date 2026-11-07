@@ -1,0 +1,39 @@
+{
+  "schema": 1,
+  "status": "fold_local_search_extension_controls_verified",
+  "tests_passed": 77,
+  "market_fits": 0,
+  "estimator_fits": 0,
+  "scope": [
+    "Legacy A/C extensions select paired-horizon families using only current-fold verified inner decisions",
+    "At most the existing two families by64candidates per horizon with unchanged deterministic offsets",
+    "Per-fold bound receipts preserve initial/no-gain and two-small-gain stopping; zero loss stops without division",
+    "Stopped folds carry verified cached native forecasts into a separately named policy without calling fitting/prediction callbacks",
+    "Completed receipt replay and missing derived-policy recovery use no new computation",
+    "Stale inputs/receipts/candidate contracts and missing extension prefixes fail closed",
+    "Tagged one-member policy native reproduction tested for both refinement/extension identifiers"
+  ],
+  "pre_fix_reproduction": {
+    "commit": "c190943",
+    "observed_first_fold_families": [
+      "xgboost",
+      "ridge"
+    ],
+    "description": "Changed global/later-fold aggregate scores changed the earlier extension family; interception occurred at tune before fitting."
+  },
+  "source_hash_algorithm": "SHA256 with CRLF normalized to LF",
+  "source_hashes": {
+    "ml/src/cottonlens_ml/research/extensions.py": "760f31afe5fde0abedee1f617891dbb1036c2c121e6a5bbb4ec9da7cfdc21d16",
+    "ml/src/cottonlens_ml/research/engine.py": "f31a4ef625655ce6a4db895124f2332585ac6f03ac9703576dfdbf34ab0bfff8",
+    "ml/src/cottonlens_ml/research/refinements.py": "13708cd6eadd6c2e179729f733f9c86e52af4384e1ba9d0d7c0cdcf03010c34c",
+    "ml/src/cottonlens_ml/research/reproduction.py": "0751ca093e9f652623611f5e05a02140d37d579b3e3da21727cffee79dfe3718",
+    "ml/tests/test_extensions.py": "fb9601c6247ee617a2fa5305ef9fef75b1722010356e1dca33ced9e60687b295",
+    "ml/tests/test_reproduction.py": "74b11bfee3fcc17a9bae689e420100a3fd00002c75ce51483c29872e98659a5b"
+  },
+  "ruff": "passed",
+  "limits": [
+    "Generated objective callbacks, cached byte fixtures and protocol routing; no actual market experiment or skill claim",
+    "Old global extension receipts remain unchanged and are not silently reused as fold-local evidence",
+    "Full G2 still needs remaining per-fit input/cache and protocol-specific contract audit; G1 external source evidence remains unavailable"
+  ]
+}

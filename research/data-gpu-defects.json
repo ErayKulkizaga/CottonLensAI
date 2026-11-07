@@ -94,7 +94,8 @@
         "research/evidence/text-learning-admission-20261107.json",
         "research/evidence/decision-cache-oof-20261107.json",
         "research/evidence/adaptive-ablation-cache-20261107.json",
-        "research/evidence/refinement-causality-release-cache-20261107.json"
+        "research/evidence/refinement-causality-release-cache-20261107.json",
+        "research/evidence/search-extension-causality-20261107.json"
       ],
       "remediation": "The fixed price-only T+1 cohort has independent exact-origin/target/value checks, Decimal loss/gate checks, active metrics and fresh native/preprocessing replay. All338fixed Ridge/Quantile native states pass first/last-test-origin prefix and future-price perturbation checks, including frozen outer weights. Fresh archive replay is byte-identical with network/training disabled. This does not prove how all selections were made; remaining selection-policy and other dataset/model contracts still need coverage.",
       "closure": "Requirement-by-requirement G2 coverage including independent common-origin evaluation and native prediction replay."
@@ -315,6 +316,23 @@
       ],
       "remediation": "Fold-local verified selection with separately named v2 policy records and retained native leaves; current reproduction/gates required before accepting cached exports. Preserve old records and frozen-source inspection.",
       "closure": "80generated controls pass, including later-fold perturbation invariance, wrong OOF rejection, policy native replay and stale cached export refusal. No historical occurrence count or market success is inferred; full G2 remains open. Follow-up81-test control additionally verifies nonpositive folds stop both native refinement and ensemble computation."
+    },
+    {
+      "id": "DG-020",
+      "status": "FIXED_VERIFIED",
+      "problem": "Legacy search extensions selected families and continuation using all-fold aggregate inner scores, allowing later-fold evidence to change earlier work. No actual historical misuse count is inferred.",
+      "affected_scope": "Non-free-data legacy engine.search A/C extensions; existing per-fold adaptive/free-data search remains separate.",
+      "evidence": [
+        "research/evidence/search-extension-causality-20261107.json",
+        "ml/src/cottonlens_ml/research/extensions.py",
+        "ml/src/cottonlens_ml/research/engine.py",
+        "ml/src/cottonlens_ml/research/refinements.py",
+        "ml/src/cottonlens_ml/research/reproduction.py",
+        "ml/tests/test_extensions.py",
+        "ml/tests/test_reproduction.py"
+      ],
+      "remediation": "Route to verified fold-local paired-horizon ranking, immutable per-fold receipt chains and source/candidate contracts. Keep original two-family64-candidate budget/offsets. Carry cached baseline forecasts for stopped folds without refits; preserve old artifacts in their original namespace.",
+      "closure": "77targeted generated controls and Ruff pass, including A/C future-fold perturbation invariance, plateau stopping, no-refit cache/derived recovery, rehashed receipt rejection, prefix and candidate integrity and native policy receipt replay. Full G1/G2 and historical occurrence audit remain open."
     }
   ]
 }

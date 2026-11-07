@@ -368,43 +368,18 @@ def search(experiment, round_name, extension=0):
     budgets = BUDGETS[round_name]
     if extension < 0 or (extension and round_name == 'B'):
         raise ValueError('Extensions apply to price search rounds with a positive extension number')
-    extension_path = experiment.root / 'extensions' / f'{round_name}-{extension}.json'
-    baseline = None
     if extension:
-        previous = compare(experiment)
-        from cottonlens_ml.research.search import next_round
-        base = [r for r in previous['candidates'] if r['task'] == 'price' and r['namespace'] == round_name]
-        if {r['horizon'] for r in base} != {1, 5}:
-            raise ValueError('Complete the initial round before extending it')
-        histories = [read_record(experiment.root / 'extensions' / f'{round_name}-{i}.json')
-                     for i in range(1, extension)]
-        initial_score = float(np.mean([min(r['inner_score'] for r in base if r['horizon'] == h) for h in (1, 5)]))
-        gains = [1 - initial_score, *[r['relative_improvement'] for r in histories]]
-        if next_round(gains) != 'extend_top_two_families_64_each':
-            raise ValueError('Plateau: new information or diagnosis required')
-        allowed = {round_name, *[f'{round_name}-extension-{i}' for i in range(1, extension)]}
-        best = [r for r in previous['candidates'] if r['task'] == 'price' and r['namespace'] in allowed]
-        baseline = float(np.mean([min(r['inner_score'] for r in best if r['horizon'] == h) for h in (1, 5)]))
-        family_scores = {f: float(np.mean([min(r['inner_score'] for r in best if r['family'] == f and r['horizon'] == h)
-                                           for h in (1, 5)])) for f in {r['family'] for r in best}}
-        families = sorted(family_scores, key=lambda f: (family_scores[f], f))[:2]
-        budgets = {family: 64 for family in families}
-    namespace = round_name if not extension else f'{round_name}-extension-{extension}'
+        from cottonlens_ml.research.extensions import extend
+        return extend(experiment, round_name, extension)
+    namespace = round_name
     for family, count in budgets.items():
         for h in (1, 5):
             candidates = recipes(family, h, experiment.identity['groups']['base'], count,
                                  task='direction' if round_name == 'B' else 'price',
-                                 offset=0 if not extension else BUDGETS[round_name][family] + (extension - 1) * 64)
+                                 offset=0)
             for fold in experiment.identity['split']['folds']:
                 decision = experiment.tune(family, h, fold, candidates, namespace)
                 experiment.outer(decision['chosen'], fold, namespace)
-    if extension:
-        report = compare(experiment)
-        completed = [r for r in report['candidates'] if r['namespace'] == namespace]
-        current = float(np.mean([min(r['inner_score'] for r in completed if r['horizon'] == h) for h in (1, 5)]))
-        freeze_record(extension_path, {'baseline_inner_score': baseline, 'new_inner_score': current,
-                      'relative_improvement': max(0., (baseline - current) / baseline),
-                      'families': sorted(budgets), 'selection_used_outer': False})
 
 
 def reference_report(experiment):

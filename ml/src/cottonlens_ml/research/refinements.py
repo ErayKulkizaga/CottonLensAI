@@ -2,14 +2,15 @@
 from copy import deepcopy
 
 from cottonlens_ml.cohort import content_id
-from cottonlens_ml.research.decision_cache import execution_binding
+from cottonlens_ml.research.decision_cache import execution_binding, read_bound
 from cottonlens_ml.research.free_rounds import ensemble_fold, prior_choices
 from cottonlens_ml.research.ledger import freeze_record
-from cottonlens_ml.research.protocol import validate_inner_fold
+from cottonlens_ml.research.protocol import validate_inner_fold, verified_outer
 from cottonlens_ml.research.search import recipes
 
 
-def publish_choice(experiment, horizon, fold, selected, namespace):
+def publish_choice(experiment, horizon, fold, selected, namespace, *,
+                   cached_only=False, selection_policy='fold-local-refinement-v2'):
     """One-member ensemble: fixed selection rule, actual native leaves retained."""
     decision = deepcopy(selected['decision'])
     chosen = {
@@ -17,14 +18,28 @@ def publish_choice(experiment, horizon, fold, selected, namespace):
                    'features': decision['recipe']['features'], 'params': {},
                    'seed': 42, 'cadence': 126},
         'score': decision['score'], 'members': [deepcopy(selected)], 'weights': [1.],
-        'seeds': decision['seeds'], 'selection_policy': 'fold-local-refinement-v2'}
+        'seeds': decision['seeds'], 'selection_policy': selection_policy}
     request = {'operation': 'fold-choice', 'namespace': namespace,
                'family': 'ensemble', 'horizon': horizon, 'selected': content_id(selected)}
     freeze_record(experiment.root/'decisions'/namespace/f'ensemble-t{horizon}-fold{fold["fold"]}.json',
                   {'chosen': chosen, 'selection_used_outer': False,
                    'execution_request': request,
                    'execution_binding': execution_binding(experiment, fold, request, selection=True)})
-    experiment.outer(chosen, fold, namespace)
+    if cached_only:
+        source_namespace = selected['namespace']
+        family = decision['recipe']['family']
+        source_request = {'operation': 'outer', 'chosen': decision,
+                          'namespace': source_namespace, 'repeat': None}
+        source = read_bound(experiment.root/'outer'/source_namespace/
+            f'{family}-t{horizon}-fold{fold["fold"]}.json',
+            execution_binding(experiment, fold, source_request, selection=False))
+        verified_outer(experiment.history, fold, source, family, horizon)
+        request = {'operation': 'outer', 'chosen': chosen, 'namespace': namespace, 'repeat': None}
+        freeze_record(experiment.root/'outer'/namespace/f'ensemble-t{horizon}-fold{fold["fold"]}.json',
+                      {**source, 'recipe': chosen['recipe'], 'inner_score': chosen['score'],
+                       'execution_binding': execution_binding(experiment, fold, request, selection=False)})
+    else:
+        experiment.outer(chosen, fold, namespace)
 
 
 def leaf_recipe(chosen):
