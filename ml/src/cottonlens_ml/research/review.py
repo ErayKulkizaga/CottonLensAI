@@ -7,7 +7,7 @@ import numpy as np
 import pandas as pd
 
 from cottonlens_ml.code_identity import digest, safe_member
-from cottonlens_ml.cohort import content_id, frame_identity
+from cottonlens_ml.cohort import content_id
 from cottonlens_ml.evaluation import evaluate
 from cottonlens_ml.research.ledger import freeze_record, read_record
 from cottonlens_ml.research.protocol import mature, rows_at, split_manifest
@@ -264,13 +264,13 @@ def sample_learning_curve(root, ready, history):
     train = training_rows(history, validation.date.min(), spec, coverage)
     early_validation = train.tail(63)
     early_train = training_rows(history, early_validation.date.min(), spec, coverage)
-    dates = early_validation.date.dt.strftime('%Y-%m-%d').tolist()
-    # Reconstruct the frozen historical Experiment.fit identity, not a new recipe.
-    specification = {'recipe': spec, 'role': f'early-stop-{fold["fold"]}-0', 'iterations': None,
-        'train_dates': early_train.date.dt.strftime('%Y-%m-%d').tolist(),
-        'validation_dates': dates, 'test_dates': dates,
-        'train_identity': frame_identity(early_train, list(early_train.columns)), 'repeat_reason': None}
-    key = content_id({'identity': ready['identity'], 'specification': specification})
+    from cottonlens_ml.research.engine import Experiment
+    from cottonlens_ml.research.ledger import Ledger
+    from cottonlens_ml.research.reproduction import resolve_fit_identity
+    args = (spec, early_train, early_validation, early_validation, f'early-stop-{fold["fold"]}-0', None)
+    legacy = {**Experiment.fit_specification(*args), 'repeat_reason': None}
+    full = {**Experiment.fit_specification(*args, history=history), 'repeat_reason': None}
+    specification, key, scope = resolve_fit_identity(Ledger(root/'ledger', ready['identity']), legacy, full)
     path = root / 'ledger/completed' / (key + '.json')
     fit = read_record(path)
     if fit['specification'] != specification or fit['identity'] != ready['identity']:
@@ -282,6 +282,7 @@ def sample_learning_curve(root, ready, history):
     if digest(curves_path) != fit['files'][names[0]]:
         raise ValueError('Learning-curve checksum mismatch')
     return {'scope': 'one predeclared sample; not all candidates or evidence of generalization',
+        'input_binding_scope': scope,
         'namespace': namespace, 'fold': fold['fold'], 'seed': 42, 'inner_block': 1,
         'receipt_sha256': digest(path), 'curve_sha256': digest(curves_path),
         'iterations_selected': fit['result']['iterations'],

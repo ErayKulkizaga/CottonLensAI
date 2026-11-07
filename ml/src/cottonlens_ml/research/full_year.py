@@ -175,6 +175,17 @@ def interval_rows(history, origin_frame, variance, variance_history, h):
 
 def interval_metrics(actual, lo, hi, coverage):
     actual, lo, hi = (np.asarray(v, float) for v in (actual, lo, hi))
+    if (actual.ndim != 1 or not actual.size or actual.shape != lo.shape or actual.shape != hi.shape
+            or not np.isfinite([actual, lo, hi]).all() or (lo > hi).any()):
+        raise ValueError('Finite nonempty matching 1D interval cohort with ordered bounds required')
+    try:
+        if np.ndim(coverage) != 0:
+            raise ValueError('Scalar coverage required')
+        coverage = float(coverage)
+    except (TypeError, ValueError, OverflowError) as exc:
+        raise ValueError('Finite scalar coverage strictly between zero and one required') from exc
+    if not np.isfinite(coverage) or not 0 < coverage < 1:
+        raise ValueError('Finite scalar coverage strictly between zero and one required')
     alpha = 1 - coverage
     score = hi - lo + 2 / alpha * (np.maximum(lo - actual, 0) + np.maximum(actual - hi, 0))
     hit = (actual >= lo) & (actual <= hi)

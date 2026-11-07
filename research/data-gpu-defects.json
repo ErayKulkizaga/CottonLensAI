@@ -346,10 +346,26 @@
         "ml/src/cottonlens_ml/research/full_year.py",
         "ml/src/cottonlens_ml/research/naive_mae.py",
         "ml/tests/test_fit_input_cache.py",
-        "ml/tests/test_reproduction.py"
+        "ml/tests/test_reproduction.py",
+        "research/evidence/interval-metric-curve-20261107.json"
       ],
       "remediation": "Bind every actual input in current fit specs and recheck exact admission before cache use. Preserve old IDs and qualify legacy native proof; refuse automatic missing-evidence retraining.",
-      "closure": "Six regressions failed on37b5ccd;109targeted and59pinned-Optuna adjacent tests pass, plus Ruff. Read-only current verifier preserves2054historical experiment files and342native fits with zero differences/new fits and STOP. Full G1/G2/protocol and archive coverage remain open."
+      "closure": "Six regressions failed on37b5ccd;109targeted and59pinned-Optuna adjacent tests pass, plus Ruff. Read-only current verifier preserves2054historical experiment files and342native fits with zero differences/new fits and STOP. Full G1/G2/protocol and archive coverage remain open. Complete CI exposed a learning-curve consumer/fixture migration gap; dual-format read-only lookup and exact generated admission are covered by the follow-up86-test receipt."
+    },
+    {
+      "id": "DG-022",
+      "status": "FIXED_VERIFIED",
+      "problem": "Interval metrics accepted broadcast/mismatched, empty, multidimensional, nonfinite or crossed interval inputs and invalid nominal coverage. No actual historical misuse count is inferred.",
+      "affected_scope": "full_year.interval_metrics domain and independent arithmetic controls; not all calibration input/source paths.",
+      "evidence": [
+        "research/evidence/interval-metric-curve-20261107.json",
+        "ml/src/cottonlens_ml/research/full_year.py",
+        "ml/src/cottonlens_ml/research/review.py",
+        "ml/tests/test_interval_metrics.py",
+        "ml/tests/test_research_review.py"
+      ],
+      "remediation": "Reject invalid numeric cohorts/coverage before scoring; preserve valid independent arithmetic and inclusive-boundary/zero-width semantics.",
+      "closure": "15injected invalid-domain regressions failed before correction;86targeted generated/read-only controls and Ruff pass. Source/PIT, all calibration paths and full G2 remain unproven."
     }
   ]
 }

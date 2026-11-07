@@ -134,7 +134,11 @@ def test_zero_naive_error_is_not_infinite_gain_and_review_is_idempotent(tmp_path
     assert write_review(body, tmp_path) == a
 
 
-def test_learning_curve_lookup_matches_engine_identity_and_checks_payload(tmp_path):
+@pytest.mark.parametrize('legacy', [False, True])
+def test_learning_curve_lookup_matches_engine_identity_and_checks_payload(tmp_path, legacy):
+    from cottonlens_ml.research.admission import model_inputs_id
+
+    from ml.tests.admission_fixture import synthetic_admitter
     history = frame()
     fold, record = saved(history)
     fold['inner'] = [{'origins': history.date.iloc[500:563].dt.strftime('%Y-%m-%d').tolist()}]
@@ -163,10 +167,19 @@ def test_learning_curve_lookup_matches_engine_identity_and_checks_payload(tmp_pa
     train = experiment.train_rows(validation.date.min(), spec)
     early_validation = train.tail(63)
     early_train = experiment.train_rows(early_validation.date.min(), spec)
-    experiment.fit(spec, early_train, early_validation, early_validation, 'early-stop-1-0')
+    if legacy:
+        specification = Experiment.fit_specification(spec, early_train, early_validation,
+                                                     early_validation, 'early-stop-1-0', None)
+        experiment.ledger.run(specification, None)
+    else:
+        experiment.admission = synthetic_admitter(tmp_path/'admission', experiment.identity,
+            model_inputs=model_inputs_id(history, early_train, early_validation, early_validation, spec, None))
+        experiment.fit(spec, early_train, early_validation, early_validation, 'early-stop-1-0')
     result = sample_learning_curve(tmp_path, ready, history)
     assert result['iterations_selected'] == 2
     assert result['curves']['validation']['price_mae'] == [1.1, .9]
+    assert result['input_binding_scope'] == ('legacy_missing_full_input_identity' if legacy
+                                             else 'full_model_inputs_v2')
     curve.write_text('{}')
     with pytest.raises(ValueError, match='checksum'):
         sample_learning_curve(tmp_path, ready, history)

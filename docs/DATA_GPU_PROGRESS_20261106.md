@@ -769,3 +769,26 @@ identity to full-input proof.
 G1/ICE source evidence and full G2 remain open. Next audit covers remaining
 protocol-specific calibration/interval consumers and archive coverage; no new
 market campaign, Colab rerun, production/API or collector change is authorized.
+
+## Interval metric domain and learning-curve migration — 7 November 2026
+
+Full CI at13c0fa4 exposed one DG-021 migration omission: the learning-curve
+fixture lacked exact admission, and its read-only consumer reconstructed only
+legacy fit IDs. Mandatory admission stays intact. The current fixture now uses
+real generated admission; the reader resolves both exact formats, reports their
+input-binding scope and rechecks curve bytes without fitting. Missing/ambiguous
+identities fail. Failed runs42382981331/42382976175 remain evidence; their
+backend/frontend/Compose jobs passed, but that head's overall CI failed.
+
+DG-022:15 generated invalid interval cohorts failed the new rejection tests on
+13c0fa4. Metrics silently broadcast unequal arrays or scored empty/2D/nonfinite
+values, crossed bounds and invalid coverage. The entrypoint now rejects those
+inputs before scoring. Independent manual interval scores12/2/32, pinball
+losses, inclusive boundary hits and a valid zero-width interval still pass.
+86 targeted generated/read-only controls and Ruff passed; no market training.
+Evidence: research/evidence/interval-metric-curve-20261107.json. Full new-head
+CI is required separately; prior failed runs are not treated as passing.
+
+This does not establish actual historical misuse, calendar/contract/PIT truth
+or all calibration-row ingestion paths. G1 and full G2 remain open; current
+native evidence/price STOP and production/API/collector state are preserved.

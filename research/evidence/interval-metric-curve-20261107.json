@@ -1,0 +1,39 @@
+{
+  "schema": 1,
+  "status": "interval_metric_domain_and_curve_identity_controls_verified",
+  "market_fits": 0,
+  "targeted_tests_passed": 86,
+  "ruff": "passed",
+  "pre_fix": {
+    "commit": "13c0fa421c3d7c7cf93ecaf98985be16eeaca780",
+    "invalid_interval_regressions_failed": 15,
+    "independent_valid_arithmetic_passed": 1,
+    "observed": "Mismatched lengths broadcast; empty/2D/nonfinite or crossed bounds and invalid coverage were not rejected before scoring."
+  },
+  "scope": [
+    "Interval scoring requires nonempty matching 1D finite arrays, ordered lower/upper bounds and finite scalar coverage strictly between0and1",
+    "Independent manual scores12/2/32, pinball losses, inclusive boundary hits and valid zero-width point interval are preserved",
+    "Learning-curve reader resolves exact full-input or legacy fit identity, rechecks curve bytes and labels binding scope without fitting or scanning all ledger payloads",
+    "Generated current learning-curve fixture uses real synthetic input admission; historical fixture remains zero-fit readable"
+  ],
+  "ci_followup": {
+    "failed_pr_run": 42382981331,
+    "failed_push_run": 42382976175,
+    "head": "13c0fa421c3d7c7cf93ecaf98985be16eeaca780",
+    "failure": "Learning-curve fixture lacked newly required exact admission and reader reconstructed only legacy ID.",
+    "repair": "Retain mandatory admission; update current fixture and dual-schema checksummed read-only lookup with both-format regression coverage.",
+    "other_previous_jobs": "backend/frontend/Compose passed; complete new-head CI still required"
+  },
+  "source_hash_algorithm": "SHA256 with CRLF normalized to LF",
+  "source_hashes": {
+    "ml/src/cottonlens_ml/research/full_year.py": "503c182c29a284fe1675cd8625e72baa32c45fbe24919fb23c479154e80c5f88",
+    "ml/src/cottonlens_ml/research/review.py": "d052ce5f33b4f5fb7d715339e256e32dc83dfb0ad19912e862653557cee32cf3",
+    "ml/tests/test_interval_metrics.py": "f56ab9c3673d08c3abe8e5ab9f3fceeb9986fa320f8755e0cbe903addd14cdd0",
+    "ml/tests/test_research_review.py": "36fc6a556748724ae9f072c668d15ef13c63d8dde818374959d0da513880db7b"
+  },
+  "limits": [
+    "Generated numeric controls do not establish date/contract/PIT truth, all calibration-row input paths or actual historical corruption occurrence counts",
+    "This does not recompute old scientific reports, promote legacy missing-input evidence, retrain models or change the production artifact/API contract",
+    "G1 external source evidence and remaining calibration/protocol/archive coverage for full G2 stay open"
+  ]
+}
