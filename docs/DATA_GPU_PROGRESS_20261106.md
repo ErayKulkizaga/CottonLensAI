@@ -563,3 +563,22 @@ execution. v2 preserves /content/CottonLensAI and adds a regression against the
 actual setup PROJECT constant.12controls pass. Drive v2 upload completed; use
 CottonLens_L4_Remaining_Checks_Drive_v2.ipynb. Prior artifacts remain historical.
 Source archive unchanged; no prior GPU probes retrained.
+
+## Direct text-learning admission — 7 November2026
+
+DG-013 was reproduced: a direct TextPreprocessor.fit call reached vocabulary
+learning without admission despite the protected outer model entrypoint.
+Exact dispatched training frame, ordered feature names and text configuration
+are now required before TF-IDF/SVD learning. Future-target names are rejected
+before learning. Missing/expired/nested authority and changed inputs fail closed;
+generated positive controls and no-fit deserialization remain supported.
+
+Eleven new controls;56focused text/admission tests and changed-file Ruff pass.
+Research suite:360passed,1optional HDF5 skip. No market fits, production model/API
+changes, collector activation, or alteration of frozen GPU handoffs.
+Receipt: research/evidence/text-learning-admission-20261107.json.
+Requirement-to-evidence scope: docs/G2_COVERAGE_20261107.md.
+
+G1 source/lifecycle/PIT gaps and full G2 remain open. G3 still needs the user's
+two-runtime L4 session/RNG result from the already delivered Drive v2 notebook.
+ICE was not contacted. User plan/competitor note and other worktrees are preserved.

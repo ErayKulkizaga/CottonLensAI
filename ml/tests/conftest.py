@@ -88,6 +88,26 @@ def admit_generated_models(tmp_path, monkeypatch):
 
 
 @pytest.fixture
+def admit_generated_text(tmp_path, monkeypatch):
+    """Explicit generated text only; exercise the real dispatch/input guard."""
+    from cottonlens_ml.research.admission import require_model_inputs
+    from cottonlens_ml.research.text_adapter import TextPreprocessor
+    original = TextPreprocessor.fit
+
+    def fit(cls, train, names, config):
+        recipe = {'family': 'ridge', 'horizon': 5, 'features': names, 'text_adapter': config}
+        ledger = {'profile': 'generated-text-test'}
+        permit = synthetic_admitter(
+            tmp_path/'generated-text-admission', ledger,
+            model_inputs=model_inputs_id(None, train, None, None, recipe, None))
+        with permit.training_scope(ledger, recipe):
+            require_model_inputs(None, train, None, None, recipe, None)
+            return original(train, names, config)
+
+    monkeypatch.setattr(TextPreprocessor, 'fit', classmethod(fit))
+
+
+@pytest.fixture
 def admit_generated_legacy(tmp_path, monkeypatch):
     """For fake-estimator wiring tests only; real guard still checks exact IDs."""
     from cottonlens_ml import training

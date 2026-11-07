@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "updated": "2026-11-06",
+  "updated": "2026-11-07",
   "scope": "Known defects and evidence gaps in the approved data/GPU remediation; not certification of every training path.",
   "issues": [
     {
@@ -89,7 +89,9 @@
         "research/evidence/price-independent-cohort-20261106.json",
         "research/evidence/price-independent-native-20261106.json",
         "research/evidence/price-prediction-causality-20261106.json",
-        "research/evidence/prediction-causality-delivery-20261106.json"
+        "research/evidence/prediction-causality-delivery-20261106.json",
+        "docs/G2_COVERAGE_20261107.md",
+        "research/evidence/text-learning-admission-20261107.json"
       ],
       "remediation": "The fixed price-only T+1 cohort has independent exact-origin/target/value checks, Decimal loss/gate checks, active metrics and fresh native/preprocessing replay. All338fixed Ridge/Quantile native states pass first/last-test-origin prefix and future-price perturbation checks, including frozen outer weights. Fresh archive replay is byte-identical with network/training disabled. This does not prove how all selections were made; remaining selection-policy and other dataset/model contracts still need coverage.",
       "closure": "Requirement-by-requirement G2 coverage including independent common-origin evaluation and native prediction replay."
@@ -182,6 +184,22 @@
       ],
       "remediation": "Validate exact frozen cohort/targets, chronology, year/horizon, finite values, active rates and every annual gain; retain independent Decimal/bootstrap implementation.",
       "closure": "Both-arm injected defects fail, clean controls pass, original2006-origin exports pass, and fresh native342fit replay has zero difference without training. Scope does not prove vendor availability or other model families."
+    },
+    {
+      "id": "DG-013",
+      "status": "FIXED_VERIFIED",
+      "problem": "Direct TextPreprocessor.fit could learn TF-IDF vocabulary/IDF and SVD without data admission; future-target feature validation occurred only after SVD. No historical leakage occurrence is inferred.",
+      "affected_scope": "Direct text preprocessing and nested fixed Ridge T+5 text adapter; no production artifact schema change.",
+      "evidence": [
+        "ml/src/cottonlens_ml/research/admission.py",
+        "ml/src/cottonlens_ml/research/text_adapter.py",
+        "ml/tests/test_text_admission.py",
+        "ml/tests/test_text_adapter.py",
+        "research/evidence/text-learning-admission-20261107.json",
+        "docs/G2_COVERAGE_20261107.md"
+      ],
+      "remediation": "Require exact dispatched training frame, ordered features and text config before learning; reject future-target features before vocabulary/SVD. Preserve no-fit deserialization and explicitly admitted synthetic controls.",
+      "closure": "Regression failed before fix at vocabulary learning; 11new controls and existing generated text/model admission checks pass. Source truth and full G2 remain separate open requirements."
     }
   ]
 }

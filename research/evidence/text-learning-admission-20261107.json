@@ -1,0 +1,38 @@
+{
+  "schema": 1,
+  "status": "fixed_scoped_direct_text_learning_admission",
+  "defect": "DG-013",
+  "reproduced_before_fix": "Direct unadmitted call reached TfidfVectorizer.fit_transform; fail-before-learning regression failed as expected.",
+  "verification": {
+    "command": "python -m pytest -q ml/tests/test_text_admission.py ml/tests/test_text_adapter.py ml/tests/test_admission.py",
+    "passed": 56,
+    "new_text_controls": 11,
+    "changed_file_ruff": "passed",
+    "market_fits": 0,
+    "generated_text_learning_only": true
+  },
+  "bindings": {
+    "hash_algorithm": "SHA256 of UTF-8 source bytes with CRLF normalized to LF",
+    "files": {
+      "ml/src/cottonlens_ml/research/admission.py": "81ce083494f8fac6360002234d35350f55bbad2bebb227bc71d31f758a1ad00a",
+      "ml/src/cottonlens_ml/research/text_adapter.py": "be40c1d30d322ee3d4baca3fd516fab0bcf7bd6709ddcd84ec7626631680dcf3",
+      "ml/tests/test_text_admission.py": "f7d368e8900d1042cd0657d0700fd081fe210fc9a5ab8becba4a4065a3a3a510",
+      "ml/tests/test_text_adapter.py": "c982205e45ecafdc2952b2bacb169d9a8e9dea900e4bfdd9299d046b92174873",
+      "ml/tests/conftest.py": "b080687a5c7b31bf6d24bda3a75fea76880cbc61256d770b422cfda97bfa6c5e"
+    }
+  },
+  "scope": [
+    "Direct text learning requires model dispatch after exact frame admission",
+    "Exact training frame, ordered features and text configuration are bound",
+    "Missing, expired and nested unvalidated authority rejected before vocabulary/SVD learning",
+    "Future target prefixes rejected before learning",
+    "Existing generated transform/serialization/checkpoint controls retained"
+  ],
+  "limitations": [
+    "No historical leakage occurrence is inferred",
+    "No vendor publication/vintage or contract evidence is admitted",
+    "No new market recipe or campaign",
+    "Full G2 remains open; other dataset/model/selection contracts not certified",
+    "Existing frozen Drive session/RNG source is unchanged; new market fits stay blocked"
+  ]
+}

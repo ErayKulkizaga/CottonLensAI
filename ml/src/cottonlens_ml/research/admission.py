@@ -225,6 +225,8 @@ def require_model_inputs(history, train, validation, test, recipe, iterations):
         raise AdmissionError('Actual model inputs changed after admission')
     _BACKEND_INPUTS.set({
         'inputs_id': model_inputs_id(history, train, None, test, recipe, None),
+        'text_id': text_inputs_id(train, recipe['features'], recipe['text_adapter'])
+        if recipe.get('text_adapter') else None,
         'qlike_id': qlike_inputs_id(train, recipe['horizon'], recipe.get('variance_features'))
         if recipe.get('family') == 'har' and recipe.get('training_loss') == 'qlike' else None})
 
@@ -252,6 +254,20 @@ def require_qlike_inputs(train, horizon, names):
     if (_TRAINING_JOB.get() is None or expected is None
             or expected['qlike_id'] != qlike_inputs_id(train, horizon, names)):
         raise AdmissionError('QLIKE optimizer inputs are not admitted')
+
+
+def text_inputs_id(train, names, config):
+    from cottonlens_ml.cohort import frame_identity
+    return identity({'train': frame_identity(train, list(train.columns)),
+                     'features': list(names), 'text_adapter': config})
+
+
+def require_text_inputs(train, names, config):
+    """Vocabulary/SVD learning requires the exact dispatched training split."""
+    expected = _BACKEND_INPUTS.get()
+    if (_TRAINING_JOB.get() is None or expected is None
+            or expected['text_id'] != text_inputs_id(train, names, config)):
+        raise AdmissionError('Text transform inputs are not admitted')
 
 
 def require_legacy_fit(fit_identity):

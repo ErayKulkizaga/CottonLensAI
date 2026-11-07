@@ -19,7 +19,7 @@ def fixture():
     return train, ['value',*config['latent_names']], config
 
 
-def test_document_idf_is_not_daily_repeat_weighted():
+def test_document_idf_is_not_daily_repeat_weighted(admit_generated_text):
     train, names, config = fixture()
     first = TextPreprocessor.fit(train,names,config)
     repeated = pd.concat([train,train.iloc[[0]*20]])
@@ -30,7 +30,7 @@ def test_document_idf_is_not_daily_repeat_weighted():
     assert len(first.training_document_ids) == 12
 
 
-def test_future_unseen_documents_do_not_fit_or_change_state():
+def test_future_unseen_documents_do_not_fit_or_change_state(admit_generated_text):
     train, names, config = fixture()
     fitted = TextPreprocessor.fit(train,names,config)
     before = json.dumps(fitted.as_dict(),sort_keys=True)
@@ -43,7 +43,7 @@ def test_future_unseen_documents_do_not_fit_or_change_state():
     assert result[1,-8:].tolist() == [1.]*8  # Missing text imputed with explicit indicators.
 
 
-def test_json_state_round_trip_needs_no_refitting():
+def test_json_state_round_trip_needs_no_refitting(admit_generated_text):
     train, names, config = fixture()
     fitted = TextPreprocessor.fit(train,names,config)
     body = json.loads(json.dumps(fitted.as_dict()))
@@ -53,7 +53,7 @@ def test_json_state_round_trip_needs_no_refitting():
     assert fitted.transform(train).shape == (24,18)
 
 
-def test_manual_serialized_tfidf_matches_sklearn_transform():
+def test_manual_serialized_tfidf_matches_sklearn_transform(admit_generated_text):
     from cottonlens_ml.research.text_adapter import TOKEN
     from sklearn.feature_extraction.text import TfidfVectorizer
     train, names, config = fixture()
@@ -66,7 +66,7 @@ def test_manual_serialized_tfidf_matches_sklearn_transform():
 
 
 @pytest.mark.parametrize('change', ['few_docs','identity','components','order'])
-def test_invalid_inputs_and_corrupt_state_rejected(change):
+def test_invalid_inputs_and_corrupt_state_rejected(change, admit_generated_text):
     train, names, config = fixture()
     if change == 'few_docs':
         with pytest.raises(ValueError,match='unique eligible'):
