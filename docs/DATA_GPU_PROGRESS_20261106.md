@@ -636,3 +636,31 @@ fits. Receipt: research/evidence/decision-cache-oof-20261107.json.
 Full G2 remains open: custom adaptive/ablation caches and prior-choice ingestion
 need separate coverage. The inherited engine and generated transfer checks do
 not certify every custom runner. G1 still requires external source evidence.
+
+## Adaptive journals and ablation consumption — 7 November 2026
+
+DG-016/017 scoped controls are implemented. The previous committed adaptive
+runner returned an unbound cached decision even with changed features/budget;
+this was reproduced with a forbidden fit callback and zero fits.
+
+Adaptive decisions now bind actual source/fold/features, exact attempt budget,
+namespace, search policy and Optuna version. The shared journal context excludes
+only count/namespace to permit the existing deliberate extension protocol; a
+separate per-namespace attempt record prevents silent budget changes. Cached
+trial states bind their exact proposal and reject unknown/changed states.
+
+Selection records carry their request; consumers revalidate it before ranking.
+Ablation priority rechecks all source decisions, candidate feature contracts,
+aggregate scores/flags and plan consistency. Stopped extensions validate their
+prior selections/outer cache and rebind copied records without fitting.
+Legacy artifacts remain readable with frozen source/read_record; current
+execution rejects incomplete bindings instead of adopting/retraining them.
+
+59 focused controls passed using the pinned Optuna4.5.0 wheel without modifying
+installed environments; host Optuna4.9.0 was not used for this final check.
+Changed-file Ruff passes. Generated callbacks only, zero estimator/market fits.
+Evidence: research/evidence/adaptive-ablation-cache-20261107.json.
+
+Full G2 remains open: other refinement/release and model-specific consumers
+still need scoped review. G1 source evidence awaits the user-supplied ICE reply.
+No email access/messages, new GPU run, production model/API or collector change.

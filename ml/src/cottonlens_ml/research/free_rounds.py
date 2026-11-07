@@ -4,6 +4,7 @@ from copy import deepcopy
 import numpy as np
 
 from cottonlens_ml.evaluation import evaluate
+from cottonlens_ml.research.decision_cache import read_selection
 from cottonlens_ml.research.ledger import freeze_record, read_record
 from cottonlens_ml.research.protocol import rows_at, validate_inner_fold
 from cottonlens_ml.research.search import recipes, simplex_weights
@@ -15,7 +16,8 @@ def prior_choices(experiment, horizon, fold, namespaces):
     choices = []
     for namespace in namespaces:
         for path in sorted((experiment.root / 'decisions' / namespace).glob(f'*-t{horizon}-fold{fold["fold"]}.json')):
-            chosen = read_record(path)['chosen']
+            family = path.name.split('-t', 1)[0]
+            chosen = read_selection(experiment, path, fold, namespace, family, horizon)['chosen']
             if chosen['recipe'].get('task', 'price') == 'price':
                 choices.append({'namespace': namespace, 'decision': chosen, 'family': chosen['recipe']['family']})
     if not choices:
@@ -57,7 +59,8 @@ def run(experiment, round_name):
         raise ValueError('Experiment is locked')
     if read_record(experiment.root / 'diagnosis.json')['status'] != 'passed':
         raise ValueError('Diagnosis gate must pass')
-    read_record(experiment.root / 'ablation-summary.json')
+    from cottonlens_ml.research.ablation import read_summary
+    read_summary(experiment)
     if round_name not in ('B', 'C', 'E'):
         raise ValueError('Use ablate for data groups; available free rounds are A/B/C/E')
     if round_name == 'C':

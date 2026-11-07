@@ -3,6 +3,7 @@ from types import SimpleNamespace
 
 import numpy as np
 import pytest
+from cottonlens_ml.research.decision_cache import execution_binding
 from cottonlens_ml.research.free_rounds import ensemble_fold, prior_choices
 from cottonlens_ml.research.ledger import freeze_record, read_record
 from test_sprint import history
@@ -14,12 +15,37 @@ def choice(family, score, dates):
         {'recipe': recipe, 'origins': dates, 'predictions': [0.] * len(dates), 'iterations': 1}]}
 
 
-def test_family_selection_reads_only_requested_fold(tmp_path):
+@pytest.mark.parametrize('fault', [None, 'changed_history', 'missing_binding', 'wrong_namespace'])
+def test_family_selection_reads_only_requested_fold(tmp_path, fault):
     first = choice('xgboost', .99, ['2020-01-01'])
     future = choice('catboost', .01, ['2023-01-01'])
-    freeze_record(tmp_path / 'decisions/adaptive-A/xgboost-t1-fold1.json', {'chosen': first})
+    from ml.tests.test_selection_boundary import fixture
+    frame, fold = fixture()
+    fold['fold'] = 1
+    experiment = SimpleNamespace(root=tmp_path, history=frame)
+    request = {'operation': 'adaptive', 'family': 'xgboost', 'horizon': 1, 'namespace': 'adaptive-A'}
+    freeze_record(tmp_path / 'decisions/adaptive-A/xgboost-t1-fold1.json',
+                  {'chosen': first, 'execution_request': request,
+                   'execution_binding': execution_binding(experiment, fold, request, selection=True)})
     freeze_record(tmp_path / 'decisions/adaptive-A/catboost-t1-fold8.json', {'chosen': future})
-    found = prior_choices(SimpleNamespace(root=tmp_path), 1, {'fold': 1}, ['adaptive-A'])
+    if fault == 'changed_history':
+        frame.loc[0, 'target_date_1'] = frame.date.iloc[10]
+    elif fault:
+        path = tmp_path/'decisions/adaptive-A/xgboost-t1-fold1.json'
+        body = read_record(path)
+        if fault == 'missing_binding':
+            del body['execution_binding']
+        else:
+            body['execution_request']['namespace'] = 'other'
+        import json
+
+        from cottonlens_ml.cohort import content_id
+        path.write_text(json.dumps({**body, 'record_id': content_id(body)}))
+    if fault:
+        with pytest.raises(ValueError, match='binding|request'):
+            prior_choices(experiment, 1, fold, ['adaptive-A'])
+        return
+    found = prior_choices(experiment, 1, fold, ['adaptive-A'])
     assert [c['family'] for c in found] == ['xgboost']
 
 

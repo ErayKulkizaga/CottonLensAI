@@ -27,3 +27,16 @@ def read_bound(marker, binding):
         raise ValueError('Cache execution binding missing or changed; preserve old record. '
                          'Inspect historical records with read_record or their frozen source.')
     return result
+
+
+def read_selection(experiment, marker, fold, namespace, family, horizon):
+    """Validate a selection again at consumption, before ranking its score."""
+    from cottonlens_ml.research.protocol import validate_inner_fold
+    validate_inner_fold(experiment.history, fold)
+    result = read_record(marker)
+    request = result.get('execution_request', {})
+    if (request.get('operation') not in ('tune', 'adaptive', 'adaptive-skip')
+            or request.get('namespace') != namespace or request.get('family') != family
+            or request.get('horizon') != horizon):
+        raise ValueError('Selection request missing or changed')
+    return read_bound(marker, execution_binding(experiment, fold, request, selection=True))

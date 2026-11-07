@@ -252,9 +252,10 @@ class Experiment:
     def tune(self, family, horizon, fold, candidates, namespace):
         validate_inner_fold(self.history, fold)
         from cottonlens_ml.research.decision_cache import execution_binding, read_bound
-        binding = execution_binding(self, fold, {
+        request = {
             'operation': 'tune', 'family': family, 'horizon': horizon,
-            'candidates': candidates, 'namespace': namespace, 'seeds': SEEDS}, selection=True)
+            'candidates': candidates, 'namespace': namespace, 'seeds': list(SEEDS)}
+        binding = execution_binding(self, fold, request, selection=True)
         marker = self.root / 'decisions' / namespace / f'{family}-t{horizon}-fold{fold["fold"]}.json'
         if marker.exists():
             return read_bound(marker, binding)
@@ -277,6 +278,7 @@ class Experiment:
         result = {'chosen': chosen, 'trials': [{'recipe': r['recipe'], 'score': r['score'], 'records': r['records']}
                                               for r in evaluated], 'fold': fold['fold'], 'selection_used_outer': False}
         result['execution_binding'] = binding
+        result['execution_request'] = request
         freeze_record(marker, result)
         return result
 

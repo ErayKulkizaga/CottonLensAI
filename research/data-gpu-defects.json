@@ -92,7 +92,8 @@
         "research/evidence/prediction-causality-delivery-20261106.json",
         "docs/G2_COVERAGE_20261107.md",
         "research/evidence/text-learning-admission-20261107.json",
-        "research/evidence/decision-cache-oof-20261107.json"
+        "research/evidence/decision-cache-oof-20261107.json",
+        "research/evidence/adaptive-ablation-cache-20261107.json"
       ],
       "remediation": "The fixed price-only T+1 cohort has independent exact-origin/target/value checks, Decimal loss/gate checks, active metrics and fresh native/preprocessing replay. All338fixed Ridge/Quantile native states pass first/last-test-origin prefix and future-price perturbation checks, including frozen outer weights. Fresh archive replay is byte-identical with network/training disabled. This does not prove how all selections were made; remaining selection-policy and other dataset/model contracts still need coverage.",
       "closure": "Requirement-by-requirement G2 coverage including independent common-origin evaluation and native prediction replay."
@@ -237,6 +238,44 @@
       ],
       "remediation": "Validate temporal fold and exact ordered189inner origins for every seed before prediction/optimization; reject outer labels, missing origins and immature labels.",
       "closure": "Generated valid/reuse and injected-fault controls pass in covered entrypoints. Other custom selection/cache paths and full G2 remain open."
+    },
+    {
+      "id": "DG-016",
+      "status": "FIXED_VERIFIED",
+      "problem": "Adaptive completed decisions and partial journals could be replayed without binding the current actual source/fold/features/budget and Optuna version. No historical leakage occurrence is inferred.",
+      "affected_scope": "adaptive.tune decisions, shared trial journal, per-namespace attempt, exact proposal/result binding and stopped extensions.",
+      "evidence": [
+        "research/evidence/adaptive-ablation-cache-20261107.json",
+        "ml/src/cottonlens_ml/research/decision_cache.py",
+        "ml/src/cottonlens_ml/research/engine.py",
+        "ml/src/cottonlens_ml/research/adaptive.py",
+        "ml/src/cottonlens_ml/research/ablation.py",
+        "ml/src/cottonlens_ml/research/free_rounds.py",
+        "ml/tests/test_adaptive.py",
+        "ml/tests/test_ablation_cache.py",
+        "ml/tests/test_free_rounds.py"
+      ],
+      "remediation": "Revalidate exact context on creation, resume and consumption; reject altered/unbound records without deleting old evidence or automatically retraining.",
+      "closure": "59generated controls pass under pinned Optuna4.5.0, including interrupted/completed invalidation, legitimate extension reuse, rehashed bad trial state, stale prior decisions, aggregate/plan corruption and stopped-extension zero-compute controls. Other custom paths/full G2 remain open."
+    },
+    {
+      "id": "DG-017",
+      "status": "FIXED_VERIFIED",
+      "problem": "Prior-choice/ablation consumers trusted stored selections and aggregate flags without revalidating current data/feature contracts and source decisions. No historical leakage occurrence is inferred.",
+      "affected_scope": "free_rounds.prior_choices/run and adaptive.search_tabular via shared read_selection/read_summary; ablation score/flag consistency.",
+      "evidence": [
+        "research/evidence/adaptive-ablation-cache-20261107.json",
+        "ml/src/cottonlens_ml/research/decision_cache.py",
+        "ml/src/cottonlens_ml/research/engine.py",
+        "ml/src/cottonlens_ml/research/adaptive.py",
+        "ml/src/cottonlens_ml/research/ablation.py",
+        "ml/src/cottonlens_ml/research/free_rounds.py",
+        "ml/tests/test_adaptive.py",
+        "ml/tests/test_ablation_cache.py",
+        "ml/tests/test_free_rounds.py"
+      ],
+      "remediation": "Revalidate exact context on creation, resume and consumption; reject altered/unbound records without deleting old evidence or automatically retraining.",
+      "closure": "59generated controls pass under pinned Optuna4.5.0, including interrupted/completed invalidation, legitimate extension reuse, rehashed bad trial state, stale prior decisions, aggregate/plan corruption and stopped-extension zero-compute controls. Other custom paths/full G2 remain open."
     }
   ]
 }

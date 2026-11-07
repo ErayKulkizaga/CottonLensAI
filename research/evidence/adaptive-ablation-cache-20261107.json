@@ -1,0 +1,36 @@
+{
+  "schema": 1,
+  "status": "scoped_adaptive_journal_and_selection_consumption_verified",
+  "market_fits": 0,
+  "estimator_fits": 0,
+  "local_tests_passed": 59,
+  "local_test_optuna_version": "4.5.0",
+  "local_test_environment": "Host Python3.13; pinned Optuna4.5.0 wheel prepended to test import path without installation. Host Optuna4.9.0 was not used in this final check. CI uses the pinned Python3.12 environment.",
+  "ruff": "passed",
+  "pre_fix_reproduction": "Prior committed adaptive.tune at2c56561 returned an unbound cached decision for changed features and count999; a forbidden fit callback was never reached.",
+  "source_hash_algorithm": "SHA256 with CRLF normalized to LF",
+  "source_hashes": {
+    "ml/src/cottonlens_ml/research/decision_cache.py": "6ef10d0d110ca18ff2acde59e57709a10dceabb20faf55595ee4f988b4720724",
+    "ml/src/cottonlens_ml/research/engine.py": "c05ee50ef3c99ed12239147a50fe6c2d84f9507dcb14eb5c34c94b39ae521afc",
+    "ml/src/cottonlens_ml/research/adaptive.py": "640d4728766170df8f7d3c39fb571777562eadef2e8028a3954d42656e2fdee2",
+    "ml/src/cottonlens_ml/research/ablation.py": "bc0976a21b4f331e0ab936ed3605718a06f3bdfbd454ef93e43ab593f4eee6d3",
+    "ml/src/cottonlens_ml/research/free_rounds.py": "8defb40cd02b3fbadabb62de21359d54339ed7d7a32a3ef0c9b632e243b5a5cb",
+    "ml/tests/test_adaptive.py": "ef61d6e4a50e2d3187522850c6c74a49ffc72b05bdfc0666d6a95baf780e0f43",
+    "ml/tests/test_ablation_cache.py": "4b1fc4890d5c37b14dd83296bb64f5c1557f2205a7fc3b90d61ddb5af231767d",
+    "ml/tests/test_free_rounds.py": "823b503641cd721f378e1a0fea129b474853ebf4229924053173f116526e88c6"
+  },
+  "scope": [
+    "Actual bounded source, fold, features, Optuna version and count/namespace binding before adaptive reuse",
+    "Shared journal context plus per-namespace fixed attempt budget",
+    "Each completed/pruned result binds the exact proposal and valid state",
+    "Revalidation before prior-choice ranking and ablation-based research priority",
+    "Ablation aggregates match bound source decision scores; no forged admission flag",
+    "Stopped extensions validate and rebind copied outer records without computation"
+  ],
+  "limits": [
+    "Generated callbacks only; no market campaign",
+    "Old unbound artifacts preserved and rejected for current execution",
+    "No source/PIT/vendor truth admitted",
+    "Other custom refinement/release and model-specific readers still require review; full G2 remains open"
+  ]
+}
