@@ -11,7 +11,7 @@ from cottonlens_ml.cohort import content_id
 from cottonlens_ml.research.ledger import read_record
 from cottonlens_ml.research.protocol import frozen_outer_folds, verified_outer
 
-VERSION = 'bound-reproduction-v1'
+VERSION = 'bound-reproduction-v2'
 
 
 class FoldPlan(NamedTuple):
@@ -26,6 +26,8 @@ class FoldPlan(NamedTuple):
 
 
 def _record_with_sha(path):
+    if not path.is_file():
+        raise ValueError('Required reproduction evidence is missing; refusing automatic retraining')
     before = digest(path)
     value = read_record(path)
     if digest(path) != before:
@@ -34,7 +36,22 @@ def _record_with_sha(path):
 
 
 def receipt_path(experiment, horizon):
-    return experiment.root / f'reproduction-t{horizon}-bound-v1.json'
+    return experiment.root / f'reproduction-t{horizon}-bound-v2.json'
+
+
+def resolve_fit_identity(ledger, legacy, full, recorded_ids=None):
+    """Read exactly one evidenced format; never relabel an old fit as full-bound."""
+    candidates = []
+    for spec, scope in ((full, 'full_model_inputs_v2'),
+                        (legacy, 'legacy_missing_full_input_identity')):
+        key = ledger.key(spec)
+        exists = ((ledger.root/'completed'/f'{key}.json').is_file() if recorded_ids is None
+                  else key in recorded_ids)
+        if exists:
+            candidates.append((spec, key, scope))
+    if len(candidates) != 1:
+        raise ValueError('Reproduction is missing an expected fresh fit record or has ambiguous input schema')
+    return candidates[0]
 
 
 def _marker(experiment, directory, namespace, family, horizon, fold):
@@ -110,7 +127,7 @@ def verified_native_predictions(ledger, fit_id, expected):
     return prediction, fit_sha
 
 
-def _repeat_predictions(experiment, fold, namespace, chosen, receipts):
+def _repeat_predictions(experiment, fold, namespace, chosen, receipts, scopes):
     recipe = chosen['recipe']
     family, h = recipe['family'], recipe['horizon']
     path = _marker(experiment, 'reproduction', namespace, family, h, fold)
@@ -128,7 +145,7 @@ def _repeat_predictions(experiment, fold, namespace, chosen, receipts):
                 or weights.shape != (len(chosen['members']),)
                 or not np.isfinite(weights).all() or (weights < 0).any() or abs(weights.sum()-1) > 1e-8):
             raise ValueError('Invalid reproduction ensemble weights')
-        members = [_repeat_predictions(experiment, fold, member['namespace'], member['decision'], receipts)[0]
+        members = [_repeat_predictions(experiment, fold, member['namespace'], member['decision'], receipts, scopes)[0]
                    for member in chosen['members']]
         expected = np.asarray(members).T @ weights
     else:
@@ -139,10 +156,16 @@ def _repeat_predictions(experiment, fold, namespace, chosen, receipts):
             chunks = []
             for cutoff, test in experiment.outer_chunks(rows, seed['recipe']):
                 train = experiment.train_rows(cutoff, seed['recipe'])
-                spec = experiment.fit_specification(seed['recipe'], train, None, test,
+                legacy_spec = experiment.fit_specification(seed['recipe'], train, None, test,
                     f'outer-{namespace}-{fold["fold"]}-{cutoff}', seed['iterations'])
-                spec['repeat_reason'] = 'reproduction'
-                fit_id = experiment.ledger.key(spec)
+                full_spec = experiment.fit_specification(seed['recipe'], train, None, test,
+                    f'outer-{namespace}-{fold["fold"]}-{cutoff}', seed['iterations'],
+                    history=experiment.history)
+                for spec in (legacy_spec, full_spec):
+                    spec['repeat_reason'] = 'reproduction'
+                spec, fit_id, scope = resolve_fit_identity(
+                    experiment.ledger, legacy_spec, full_spec, fresh.get('records', ()))
+                scopes.add(scope)
                 expected_ids.append(fit_id)
                 if fit_id not in fresh.get('records', ()):
                     raise ValueError('Reproduction is missing an expected fresh fit record')
@@ -159,10 +182,11 @@ def _repeat_predictions(experiment, fold, namespace, chosen, receipts):
 
 def verified_receipt(experiment, locked, horizon, folds):
     fit_records, evidence = {}, []
+    scopes = set()
     for item in folds:
         if digest(item.original_path) != item.original_sha256 or digest(item.decision_path) != item.decision_sha256:
             raise ValueError('Locked reproduction inputs changed since planning')
-        fresh, fresh_sha = _repeat_predictions(experiment, item.fold, item.namespace, item.chosen, fit_records)
+        fresh, fresh_sha = _repeat_predictions(experiment, item.fold, item.namespace, item.chosen, fit_records, scopes)
         evidence.append({'fold': item.fold['fold'], 'original_sha256': item.original_sha256,
                          'decision_sha256': item.decision_sha256, 'repeated_sha256': fresh_sha,
                          'max_abs_difference': float(np.max(np.abs(fresh - item.original_prediction)))})
@@ -170,6 +194,8 @@ def verified_receipt(experiment, locked, horizon, folds):
         raise ValueError('Reproduction requires complete native fits')
     difference = max(item['max_abs_difference'] for item in evidence)
     return {'version': VERSION, 'lock_identity': content_id(locked), 'horizon': int(horizon),
+            'input_binding_scope': ('full_model_inputs_v2' if scopes == {'full_model_inputs_v2'}
+                                    else 'legacy_missing_full_input_identity'),
             'folds': evidence, 'fit_records': fit_records, 'max_abs_log_return_difference': difference,
             'fresh_fits': True, 'status': 'passed' if difference <= 1e-6 else 'failed'}
 
@@ -185,4 +211,6 @@ def verify_for_export(experiment, locked):
     for h, receipt in receipts.items():
         if receipt != verified_receipt(experiment, locked, h, plans[h]) or receipt['status'] != 'passed':
             raise ValueError('Bound reproduction receipt does not prove fresh parity for the locked choice')
+        if receipt['input_binding_scope'] != 'full_model_inputs_v2':
+            raise ValueError('Legacy reproduction lacks full input identity; historical inspection only')
     return receipts

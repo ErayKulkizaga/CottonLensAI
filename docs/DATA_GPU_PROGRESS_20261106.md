@@ -732,3 +732,40 @@ The goal remains active. G1 still requires ICE/lifecycle/PIT evidence; next G2
 review targets actual validation/test/history identities in per-fit cache keys,
 plus remaining protocol-specific/archive coverage. No old experiment/receipt,
 production API/model or collector was changed.
+
+## Exact per-fit input/cache identity — 7 November 2026
+
+DG-021 reproduced six failures against37b5ccd using generated callbacks:
+changed history, validation or test values with unchanged dates reused a
+completed fit, including after explicit admission of the new input context.
+Current execution hashes every actual frame, ordered values/dtypes, recipe
+and iterations, and rechecks exact admission before completed/staged reuse.
+The generated upload-failure control resumes identical staged bytes without
+another computation; changed inputs are rejected first.
+
+Legacy fit IDs remain readable with frozen-source/native inspection. Research
+bound-reproduction-v2 records full-input versus legacy-missing-input scope;
+legacy proof cannot authorize a current export. Both/missing schema identities
+fail instead of guessing. Existing partial native repetition is read-only
+across both horizons, even if an old summary is missing; it never silently
+creates replacement fits. Old native records/v1 receipts are preserved.
+
+109 targeted tests and Ruff pass; the wider set includes generated-data
+estimator tests, not market training.59 adjacent selection/cache controls pass
+with the pinned Optuna4.5.0 wheel. The new cache/reproduction regressions use
+generated callbacks, not estimator fits. The complete local ML command could
+not start in the CPU environment because its optional Optuna dependency
+colorlog is absent; the matching GitHub environment runs the full suite.
+Evidence: research/evidence/fit-input-cache-20261107.json.
+
+Current dual-schema verifier also replayed the already restored price-only
+experiment with network, ledger execution and estimator callbacks forbidden:
+338market +4synthetic existing native fits, zero prediction difference,2006
+origins per arm, STOP unchanged. All2054files in the experiment subtree remain
+byte-identical. This is not a new remote download or verification of every
+member in the parent2085-file archive, and it does not upgrade legacy input
+identity to full-input proof.
+
+G1/ICE source evidence and full G2 remain open. Next audit covers remaining
+protocol-specific calibration/interval consumers and archive coverage; no new
+market campaign, Colab rerun, production/API or collector change is authorized.

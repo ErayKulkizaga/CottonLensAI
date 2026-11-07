@@ -49,6 +49,8 @@ from cottonlens_ml.runtime_guard import require_colab_training
 from cottonlens_ml.sprint import R2, R2_READINESS
 from cottonlens_ml.walkforward import summarize
 
+_HISTORY_UNSET = object()
+
 
 def root_path(root, name):
     import re
@@ -177,12 +179,18 @@ class Experiment:
         return rows.loc[rows.date >= self.history.date.iloc[119]].copy()
 
     @staticmethod
-    def fit_specification(spec, train, validation, test, role, iterations):
-        return {'recipe': spec, 'role': role, 'iterations': iterations,
+    def fit_specification(spec, train, validation, test, role, iterations, *, history=_HISTORY_UNSET):
+        """Current execution supplies history; omission reads frozen legacy IDs."""
+        result = {'recipe': spec, 'role': role, 'iterations': iterations,
                 'train_dates': train.date.dt.strftime('%Y-%m-%d').tolist(),
                 'validation_dates': [] if validation is None else validation.date.dt.strftime('%Y-%m-%d').tolist(),
                 'test_dates': test.date.dt.strftime('%Y-%m-%d').tolist(),
                 'train_identity': frame_identity(train, list(train.columns))}
+        if history is not _HISTORY_UNSET:
+            from cottonlens_ml.research.admission import model_inputs_id
+            result.update(model_inputs_schema=2, model_inputs_id=model_inputs_id(
+                history, train, validation, test, spec, iterations))
+        return result
 
     def outer_chunks(self, test, spec):
         cadence = spec.get('cadence', 126)
@@ -194,7 +202,19 @@ class Experiment:
         return [(dates.loc[start + int(b) * cadence], test.loc[buckets.eq(b)]) for b in sorted(buckets.unique())]
 
     def fit(self, spec, train, validation, test, role, *, iterations=None, repeat=None):
-        specification = self.fit_specification(spec, train, validation, test, role, iterations)
+        from cottonlens_ml.research.admission import (
+            AdmissionError,
+            ExecutionAdmission,
+            require_model_inputs,
+        )
+        specification = self.fit_specification(spec, train, validation, test, role, iterations,
+                                               history=self.history)
+        admission = getattr(self, 'admission', None)
+        if not isinstance(admission, ExecutionAdmission):
+            raise AdmissionError('Exact input admission required before fit/cache use; '
+                                 'inspect historical records with frozen-source replay')
+        with admission.training_scope(self.identity, specification):
+            require_model_inputs(self.history, train, validation, test, spec, iterations)
         record = self.ledger.run(specification, lambda workspace: fit_predict(
             self.history, train, validation, test, spec, workspace, iterations=iterations), repeat=repeat,
             before_compute=getattr(self, 'before_compute', None), admission=getattr(self, 'admission', None))
@@ -498,10 +518,18 @@ def reproduce(experiment):
 
     locked = read_record(experiment.root / 'locked.json')
     plans = plan(experiment, locked)
+    # Evidence recovery is read-only across the whole repetition, including a
+    # horizon whose summary was lost. Missing proof must never trigger a rerun.
+    existing = any((experiment.root/'reproduction').rglob('*.json')) or any(
+        (experiment.root/name).exists() for h in plans for name in (
+            f'reproduction-t{h}.json', f'reproduction-t{h}-bound-v1.json',
+            f'reproduction-t{h}-bound-v2.json'))
+    if not existing:
+        existing = any(read_record(path).get('specification', {}).get('repeat_reason') == 'reproduction'
+                       for path in (experiment.ledger.root/'completed').glob('*.json'))
     for h, folds in plans.items():
         target = receipt_path(experiment, h)
-        legacy = experiment.root / f'reproduction-t{h}.json'
-        if not target.exists() and not legacy.exists():
+        if not existing:
             for item in folds:
                 experiment.outer(item.chosen, item.fold, item.namespace, repeat='reproduction')
         receipt = verified_receipt(experiment, locked, h, folds)

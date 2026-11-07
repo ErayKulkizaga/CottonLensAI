@@ -333,6 +333,23 @@
       ],
       "remediation": "Route to verified fold-local paired-horizon ranking, immutable per-fold receipt chains and source/candidate contracts. Keep original two-family64-candidate budget/offsets. Carry cached baseline forecasts for stopped folds without refits; preserve old artifacts in their original namespace.",
       "closure": "77targeted generated controls and Ruff pass, including A/C future-fold perturbation invariance, plateau stopping, no-refit cache/derived recovery, rehashed receipt rejection, prefix and candidate integrity and native policy receipt replay. Full G1/G2 and historical occurrence audit remain open."
+    },
+    {
+      "id": "DG-021",
+      "status": "FIXED_VERIFIED",
+      "problem": "Per-fit cache identity omitted actual history/validation/test contents; changed inputs reused the same completed fit. This does not establish an actual historical misuse count.",
+      "affected_scope": "Experiment.fit completed/staged routing and exact fit ID; native reproduction ID compatibility/read-only recovery and current research export proof qualification.",
+      "evidence": [
+        "research/evidence/fit-input-cache-20261107.json",
+        "ml/src/cottonlens_ml/research/engine.py",
+        "ml/src/cottonlens_ml/research/reproduction.py",
+        "ml/src/cottonlens_ml/research/full_year.py",
+        "ml/src/cottonlens_ml/research/naive_mae.py",
+        "ml/tests/test_fit_input_cache.py",
+        "ml/tests/test_reproduction.py"
+      ],
+      "remediation": "Bind every actual input in current fit specs and recheck exact admission before cache use. Preserve old IDs and qualify legacy native proof; refuse automatic missing-evidence retraining.",
+      "closure": "Six regressions failed on37b5ccd;109targeted and59pinned-Optuna adjacent tests pass, plus Ruff. Read-only current verifier preserves2054historical experiment files and342native fits with zero differences/new fits and STOP. Full G1/G2/protocol and archive coverage remain open."
     }
   ]
 }
