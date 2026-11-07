@@ -90,4 +90,6 @@ def ensemble(experiment, horizon, candidates=None):
         namespaces = ['A', 'C'] + [
             p.name for p in sorted((experiment.root/'decisions').glob('D-*')) if p.is_dir()]
         ranked = prior_choices(experiment, horizon, fold, namespaces)
+        if ranked[0]['decision']['score'] >= 1:
+            continue
         ensemble_fold(experiment, horizon, fold, ranked, output_namespace='E-ensemble-v2')

@@ -697,3 +697,11 @@ matches are not an absence proof. Old evidence remains qualified, not erased.
 The goal stays active: G1 requires external lifecycle/PIT evidence; full G2 still
 needs a requirement-level audit of remaining protocol-specific paths and archive
 coverage. No ICE/mail access was attempted.
+
+Follow-up stopping-boundary control caught an implementation omission: a fold
+with no positive inner gain skipped native E refinement but still reached
+ensemble prediction/weight computation. The same per-fold stop now applies to
+both paths. The new regression failed at a forbidden callback before correction;
+81 targeted controls and Ruff pass after it. The first80-test receipt stays
+immutable; current source hashes and81-test result are in
+research/evidence/refinement-causality-release-cache-v2-20261107.json.

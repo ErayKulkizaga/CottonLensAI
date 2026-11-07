@@ -291,10 +291,11 @@
         "ml/src/cottonlens_ml/research/reproduction.py",
         "ml/src/cottonlens_ml/research/release.py",
         "ml/tests/test_refinements.py",
-        "ml/tests/test_reproduction.py"
+        "ml/tests/test_reproduction.py",
+        "research/evidence/refinement-causality-release-cache-v2-20261107.json"
       ],
       "remediation": "Fold-local verified selection with separately named v2 policy records and retained native leaves; current reproduction/gates required before accepting cached exports. Preserve old records and frozen-source inspection.",
-      "closure": "80generated controls pass, including later-fold perturbation invariance, wrong OOF rejection, policy native replay and stale cached export refusal. No historical occurrence count or market success is inferred; full G2 remains open."
+      "closure": "80generated controls pass, including later-fold perturbation invariance, wrong OOF rejection, policy native replay and stale cached export refusal. No historical occurrence count or market success is inferred; full G2 remains open. Follow-up81-test control additionally verifies nonpositive folds stop both native refinement and ensemble computation."
     },
     {
       "id": "DG-019",
@@ -309,10 +310,11 @@
         "ml/src/cottonlens_ml/research/reproduction.py",
         "ml/src/cottonlens_ml/research/release.py",
         "ml/tests/test_refinements.py",
-        "ml/tests/test_reproduction.py"
+        "ml/tests/test_reproduction.py",
+        "research/evidence/refinement-causality-release-cache-v2-20261107.json"
       ],
       "remediation": "Fold-local verified selection with separately named v2 policy records and retained native leaves; current reproduction/gates required before accepting cached exports. Preserve old records and frozen-source inspection.",
-      "closure": "80generated controls pass, including later-fold perturbation invariance, wrong OOF rejection, policy native replay and stale cached export refusal. No historical occurrence count or market success is inferred; full G2 remains open."
+      "closure": "80generated controls pass, including later-fold perturbation invariance, wrong OOF rejection, policy native replay and stale cached export refusal. No historical occurrence count or market success is inferred; full G2 remains open. Follow-up81-test control additionally verifies nonpositive folds stop both native refinement and ensemble computation."
     }
   ]
 }

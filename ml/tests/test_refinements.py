@@ -105,3 +105,24 @@ def test_direct_refinement_ensemble_rejects_rehashed_outer_label_substitution(tm
     monkeypatch.setattr('cottonlens_ml.research.free_rounds.simplex_weights', forbidden)
     with pytest.raises(ValueError, match='OOF cohort'):
         refinements.ensemble(exp, 1)
+
+
+def test_nonpositive_fold_stops_both_native_refinement_and_ensemble(tmp_path):
+    import json
+
+    from cottonlens_ml.cohort import content_id
+    exp, seen = experiment(tmp_path)
+    for path in (tmp_path/'decisions').glob('*/*fold1.json'):
+        body = read_record(path)
+        body['chosen']['score'] = 1.1
+        path.write_text(json.dumps({**body, 'record_id': content_id(body)}))
+    original = exp.outer
+    def outer(chosen, fold, namespace, **kwargs):
+        if fold['fold'] == 1:
+            pytest.fail('Nonpositive fold reached ensemble computation')
+        return original(chosen, fold, namespace, **kwargs)
+    exp.outer = outer
+    refinements.run_refinement(exp, 'E')
+    assert all(c[1] != 1 for c in seen)
+    assert not (tmp_path/'outer/E-ensemble-v2/ensemble-t1-fold1.json').exists()
+    assert (tmp_path/'refinement-v2/skipped-t1-fold1.json').exists()
