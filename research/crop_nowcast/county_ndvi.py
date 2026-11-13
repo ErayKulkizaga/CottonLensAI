@@ -37,6 +37,9 @@ def main(panel_json, out_dir, first=DEFAULT_YEARS[0], last=DEFAULT_YEARS[1]):
     out.mkdir(parents=True, exist_ok=True)
     panel = json.loads(Path(panel_json).read_text())['counties']
     tiles = sorted({t for c in panel for t in c['tiles']})
+    only = [a.split('=', 1)[1] for a in sys.argv if a.startswith('--tile=')]
+    if only:
+        tiles = [t for t in tiles if t in only]
     cat = pystac_client.Client.open(STAC, modifier=pc.sign_inplace)
     rasterio.Env(GDAL_DISABLE_READDIR_ON_OPEN='EMPTY_DIR', GDAL_HTTP_MAX_RETRY='5', GDAL_HTTP_RETRY_DELAY='3').__enter__()
     t0 = time.time()
