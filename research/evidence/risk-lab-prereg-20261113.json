@@ -1,0 +1,52 @@
+{
+  "schema": 1,
+  "profile": "risk-lab-confirmatory-t1-v1",
+  "classification": "PREREGISTERED_NOT_RUN",
+  "prepared": "2026-11-13",
+  "base_commit": "accf003628c91213d934c68545bc779c0168eb92",
+  "preregistration_doc": {
+    "path": "docs/RISK_LAB_PREREGISTRATION_20261113.md",
+    "sha256": "e37b4fd5917020a7c9df6a048f9cd541b014845b4dce163bd228c9e4792ff25a"
+  },
+  "source": {
+    "path": "research/risk_lab.py",
+    "sha256": "52130e4e0bb518c3c9a4bbe5874de04cc2fcd7f41662b809831b358149929c4b"
+  },
+  "frozen_dependency": {
+    "path": "research/range_ewma.py",
+    "sha256": "1791a501d20932f784e15b3c6d9ba7e0df3c795d9b56e1a120dae97df9a951d3"
+  },
+  "tests": {
+    "path": "research/tests/test_risk_lab.py",
+    "sha256": "163ded347bab4b36768674ac8d2cb02ee006ab491c34ddb38ac754050e199b76",
+    "result": "10 passed (synthetic only)"
+  },
+  "admission": {
+    "path": "research/evidence/range-ewma-admission-20261113.json",
+    "sha256": "54aa23804d71f96d8ccddc76f48cc31a8144fcd51ac95f143773bf81d0bf68fb"
+  },
+  "hypotheses": [
+    "H2a garch qlike",
+    "H2b har qlike",
+    "H3 bigmove brier (5 markets, SB/KC excluded)",
+    "H4 interval80 winkler"
+  ],
+  "family_size": 4,
+  "confirmed_label_requires": "bonferroni 98.75% CI20 and CI60 lower > 0, mean > 0, breadth >= ceil(2/3)",
+  "seen_before": {
+    "CT=F_smoke": {
+      "origins": 2945,
+      "qlike_gain_vs_garch": 0.0185,
+      "qlike_gain_vs_har": 0.023,
+      "brier_gain": 0.00046,
+      "auc_range": 0.738,
+      "cov80": 0.787
+    },
+    "SB_KC_bigmove_exploration": true
+  },
+  "fits": {
+    "garch_yearly_refits": "~25 per market, CPU",
+    "har_ols_yearly": "~25 per market"
+  },
+  "scores_computed": false
+}
