@@ -1,0 +1,273 @@
+{
+  "profile": "risk-lab-confirmatory-t1-v1",
+  "prereg_sha256": "34a1b6a7da708b85eea3f16eb29df136b9e0f4edc4dd12a981cb38e1a89a7cf1",
+  "admission_sha256": "54aa23804d71f96d8ccddc76f48cc31a8144fcd51ac95f143773bf81d0bf68fb",
+  "H2a_range_vs_garch_qlike": {
+    "pooled_mean_gain": -0.04978479686572478,
+    "per_market_mean_gain": {
+      "CC=F": 0.01060160347263869,
+      "HE=F": -0.4123638217487399,
+      "KC=F": 0.01278075491077637,
+      "KE=F": 0.006473114034851895,
+      "SB=F": 0.026729544868466064,
+      "ZL=F": 0.0037618602745713996,
+      "ZW=F": 0.0035233661273620597
+    },
+    "positive_markets": 6,
+    "markets": 7,
+    "ci20_95": [
+      -0.08176131987613589,
+      -0.021744880627023244
+    ],
+    "ci20_bonferroni": [
+      -0.09048640934978709,
+      -0.016164510019050095
+    ],
+    "ci60_95": [
+      -0.0791533505985604,
+      -0.02198794384005929
+    ],
+    "ci60_bonferroni": [
+      -0.08870881950158861,
+      -0.01529859326904524
+    ],
+    "pass_95": false,
+    "pass_bonferroni": false
+  },
+  "H2b_range_vs_har_qlike": {
+    "pooled_mean_gain": -0.015269742753980936,
+    "per_market_mean_gain": {
+      "CC=F": 0.06353172145075665,
+      "HE=F": -0.3783652912851449,
+      "KC=F": 0.0344842837240607,
+      "KE=F": 0.01975937400054937,
+      "SB=F": 0.11883175820456521,
+      "ZL=F": 0.014608157350889155,
+      "ZW=F": 0.02026179727645725
+    },
+    "positive_markets": 6,
+    "markets": 7,
+    "ci20_95": [
+      -0.048206544461004766,
+      0.014714479334635423
+    ],
+    "ci20_bonferroni": [
+      -0.05782709402811767,
+      0.022253454199820773
+    ],
+    "ci60_95": [
+      -0.04576161101469044,
+      0.01544455383516869
+    ],
+    "ci60_bonferroni": [
+      -0.05620229257828293,
+      0.023581774807138994
+    ],
+    "pass_95": false,
+    "pass_bonferroni": false
+  },
+  "H3_bigmove_brier_range_vs_ewma": {
+    "pooled_mean_gain": 0.001062936422361696,
+    "per_market_mean_gain": {
+      "CC=F": 0.00014644320959174064,
+      "HE=F": 0.0039865373410825035,
+      "KE=F": 0.0006030992823882914,
+      "ZL=F": 0.00041979674243353577,
+      "ZW=F": 0.0001588055363124091
+    },
+    "positive_markets": 5,
+    "markets": 5,
+    "ci20_95": [
+      0.0007097147050135708,
+      0.001436775644276674
+    ],
+    "ci20_bonferroni": [
+      0.0005955148365243071,
+      0.0015357854629191843
+    ],
+    "ci60_95": [
+      0.0006396580962085388,
+      0.0014760526250519076
+    ],
+    "ci60_bonferroni": [
+      0.0005138925214423119,
+      0.0015932290043181524
+    ],
+    "pass_95": true,
+    "pass_bonferroni": true
+  },
+  "H4_interval80_winkler_range_vs_ewma": {
+    "pooled_mean_gain": 0.0004942038460076508,
+    "per_market_mean_gain": {
+      "CC=F": 0.00029169503896822683,
+      "HE=F": 0.0015822554552147546,
+      "KC=F": 0.0003495361653705859,
+      "KE=F": 0.0003233378428184037,
+      "SB=F": 0.0005290686733151416,
+      "ZL=F": 0.00020711647491202786,
+      "ZW=F": 0.00017641727145441488
+    },
+    "positive_markets": 7,
+    "markets": 7,
+    "ci20_95": [
+      0.0003826228998892535,
+      0.0006040060017814197
+    ],
+    "ci20_bonferroni": [
+      0.0003516257193710947,
+      0.0006299411298303436
+    ],
+    "ci60_95": [
+      0.0003607853910179721,
+      0.0006231838680952082
+    ],
+    "ci60_bonferroni": [
+      0.00032600334499043997,
+      0.0006573940261411252
+    ],
+    "pass_95": true,
+    "pass_bonferroni": true
+  },
+  "H3_reported_SB_KC": {
+    "KC=F": 0.0005037850147077154,
+    "SB=F": 0.0006827052578397557
+  },
+  "descriptive": {
+    "CC=F": {
+      "origins": 5486,
+      "first": "2005-01-03",
+      "last": "2026-10-29",
+      "event_rate": 0.10426540284360189,
+      "auc_ewma": 0.7588465665388743,
+      "auc_range": 0.7609660638506792,
+      "brier_skill_vs_climatology_range": 0.10756283676335354,
+      "coverage80_range": 0.8051403572730587,
+      "coverage90_range": 0.9028436018957346,
+      "coverage80_ewma": 0.8004010207801677,
+      "w90_gain_range_vs_ewma": 0.000317737407971849,
+      "mean_qlike": {
+        "q_range": -6.892940714311273,
+        "q_garch": -6.882339110838634,
+        "q_har": -6.8294089928605155
+      }
+    },
+    "HE=F": {
+      "origins": 5238,
+      "first": "2006-01-03",
+      "last": "2026-10-29",
+      "event_rate": 0.10882016036655212,
+      "auc_ewma": 0.6179437453960522,
+      "auc_range": 0.6357053999609135,
+      "brier_skill_vs_climatology_range": 0.0313618998946813,
+      "coverage80_range": 0.8167239404352806,
+      "coverage90_range": 0.907598319969454,
+      "coverage80_ewma": 0.8207331042382588,
+      "w90_gain_range_vs_ewma": 0.0038150606701307993,
+      "mean_qlike": {
+        "q_range": -6.078716362433413,
+        "q_garch": -6.491080184182152,
+        "q_har": -6.457081653718556
+      }
+    },
+    "KC=F": {
+      "origins": 5486,
+      "first": "2005-01-03",
+      "last": "2026-10-29",
+      "event_rate": 0.0980678089682829,
+      "auc_ewma": 0.6206236307411203,
+      "auc_range": 0.6277212376747918,
+      "brier_skill_vs_climatology_range": 0.01925207872043533,
+      "coverage80_range": 0.7881881152023332,
+      "coverage90_range": 0.8975574188844331,
+      "coverage80_ewma": 0.7905577834487787,
+      "w90_gain_range_vs_ewma": 0.000719846815450725,
+      "mean_qlike": {
+        "q_range": -6.773030466779157,
+        "q_garch": -6.760249711868381,
+        "q_har": -6.738546183055097
+      }
+    },
+    "KE=F": {
+      "origins": 5492,
+      "first": "2005-01-03",
+      "last": "2026-10-29",
+      "event_rate": 0.12126729788783686,
+      "auc_ewma": 0.6582539335854711,
+      "auc_range": 0.670782417311634,
+      "brier_skill_vs_climatology_range": 0.0462803371186753,
+      "coverage80_range": 0.7967953386744355,
+      "coverage90_range": 0.8998543335761107,
+      "coverage80_ewma": 0.8035324107793154,
+      "w90_gain_range_vs_ewma": 0.0006050815950334136,
+      "mean_qlike": {
+        "q_range": -6.962220426226847,
+        "q_garch": -6.955747312191994,
+        "q_har": -6.942461052226298
+      }
+    },
+    "SB=F": {
+      "origins": 5487,
+      "first": "2005-01-03",
+      "last": "2026-10-29",
+      "event_rate": 0.08237652633497357,
+      "auc_ewma": 0.6994582172579554,
+      "auc_range": 0.7124781397474317,
+      "brier_skill_vs_climatology_range": 0.049153397211537664,
+      "coverage80_range": 0.7938764352104976,
+      "coverage90_range": 0.8937488609440496,
+      "coverage80_ewma": 0.7885912156005103,
+      "w90_gain_range_vs_ewma": 0.0008974343564001142,
+      "mean_qlike": {
+        "q_range": -6.93105811844709,
+        "q_garch": -6.904328573578623,
+        "q_har": -6.812226360242525
+      }
+    },
+    "ZL=F": {
+      "origins": 5492,
+      "first": "2005-01-03",
+      "last": "2026-10-29",
+      "event_rate": 0.10287691187181355,
+      "auc_ewma": 0.7394605487911113,
+      "auc_range": 0.7428512925886078,
+      "brier_skill_vs_climatology_range": 0.0806345423732624,
+      "coverage80_range": 0.7967953386744355,
+      "coverage90_range": 0.8996722505462491,
+      "coverage80_ewma": 0.8000728332119447,
+      "w90_gain_range_vs_ewma": 0.00036819039310564955,
+      "mean_qlike": {
+        "q_range": -7.424345328668342,
+        "q_garch": -7.420583468393771,
+        "q_har": -7.4097371713174525
+      }
+    },
+    "ZW=F": {
+      "origins": 5492,
+      "first": "2005-01-03",
+      "last": "2026-10-29",
+      "event_rate": 0.11143481427530955,
+      "auc_ewma": 0.703751305850209,
+      "auc_range": 0.7101114660345013,
+      "brier_skill_vs_climatology_range": 0.05770308173260519,
+      "coverage80_range": 0.8000728332119447,
+      "coverage90_range": 0.8976693372177713,
+      "coverage80_ewma": 0.7967953386744355,
+      "w90_gain_range_vs_ewma": 0.00017841427011998606,
+      "mean_qlike": {
+        "q_range": -6.883057578003026,
+        "q_garch": -6.879534211875664,
+        "q_har": -6.86279578072657
+      }
+    }
+  },
+  "execution_note": {
+    "run_count": 1,
+    "deviation": "code and prereg were run from a git-archive export that autocrlf converted to CRLF; the CLI hash check used the CRLF prereg bytes. LF-normalized SHA-256 of range_ewma.py, risk_lab.py and the prereg doc match commit 6f51762 exactly (e8255b5d..., 52130e4e..., e37b4fd5...). Not rerun.",
+    "decisions": {
+      "H2a": "NOT_CONFIRMED (pooled negative; HE=F strongly favors GARCH; 6/7 markets positive)",
+      "H2b": "NOT_CONFIRMED (CIs include 0; HE=F negative; 6/7 positive)",
+      "H3": "CONFIRMED at Bonferroni level (5/5)",
+      "H4": "CONFIRMED at Bonferroni level (7/7)"
+    }
+  }
+}
