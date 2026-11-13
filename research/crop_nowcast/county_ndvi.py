@@ -29,6 +29,7 @@ def main(panel_json, out_dir, first=DEFAULT_YEARS[0], last=DEFAULT_YEARS[1]):
     import planetary_computer as pc
     import pystac_client
     import rasterio
+    import rasterio.errors
     from pyproj import Transformer
     from rasterio.features import rasterize
     from rasterio.windows import Window, from_bounds
@@ -40,7 +41,27 @@ def main(panel_json, out_dir, first=DEFAULT_YEARS[0], last=DEFAULT_YEARS[1]):
     only = [a.split('=', 1)[1] for a in sys.argv if a.startswith('--tile=')]
     if only:
         tiles = [t for t in tiles if t in only]
-    cat = pystac_client.Client.open(STAC, modifier=pc.sign_inplace)
+    cat = pystac_client.Client.open(STAC)
+
+    def ropen(href, tries=6):
+        # sign at use time (tokens expire on long runs) and back off on transient 403/IO errors
+        for k in range(tries):
+            try:
+                return rasterio.open(pc.sign(href))
+            except rasterio.errors.RasterioIOError:
+                if k == tries - 1:
+                    raise
+                time.sleep(15 * (k + 1))
+
+    def rread(href, **kw):
+        for k in range(6):
+            try:
+                with ropen(href) as s:
+                    return s.read(1, **kw)
+            except rasterio.errors.RasterioIOError:
+                if k == 5:
+                    raise
+                time.sleep(15 * (k + 1))
     rasterio.Env(GDAL_DISABLE_READDIR_ON_OPEN='EMPTY_DIR', GDAL_HTTP_MAX_RETRY='5', GDAL_HTTP_RETRY_DELAY='3').__enter__()
     t0 = time.time()
 
@@ -53,7 +74,7 @@ def main(panel_json, out_dir, first=DEFAULT_YEARS[0], last=DEFAULT_YEARS[1]):
         bb = [min(c['bbox'][0] for c in members), min(c['bbox'][1] for c in members),
               max(c['bbox'][2] for c in members), max(c['bbox'][3] for c in members)]
         probe = modis(tile, bb, 2015)[0]
-        with rasterio.open(probe.assets['250m_16_days_NDVI'].href) as src:
+        with ropen(probe.assets['250m_16_days_NDVI'].href) as src:
             to_sin = Transformer.from_crs('EPSG:4326', src.crs, always_xy=True)
             xs, ys = to_sin.transform([bb[0], bb[2], bb[0], bb[2]], [bb[1], bb[1], bb[3], bb[3]])
             win = from_bounds(min(xs), min(ys), max(xs), max(ys), src.transform).round_offsets().round_lengths()
@@ -84,7 +105,7 @@ def main(panel_json, out_dir, first=DEFAULT_YEARS[0], last=DEFAULT_YEARS[1]):
             items = [i for i in items if i.properties.get('usda_cdl:type') == 'cropland']
             m = np.zeros(len(sel), bool)
             for it in items:
-                with rasterio.open(it.assets['cropland'].href) as s:
+                with ropen(it.assets['cropland'].href) as s:
                     tx, ty = Transformer.from_crs('EPSG:4326', s.crs, always_xy=True).transform(lon, lat)
                     b = s.bounds
                     inside = (tx >= b.left) & (tx < b.right) & (ty > b.bottom) & (ty <= b.top)
@@ -109,8 +130,7 @@ def main(panel_json, out_dir, first=DEFAULT_YEARS[0], last=DEFAULT_YEARS[1]):
             lines = ['fips,year,tile,end,start,sensor,n_cotton,n_valid,mean,median,p90']
             groups = county_of[mask]
             for it in modis(tile, bb, year):
-                with rasterio.open(it.assets['250m_16_days_NDVI'].href) as s:
-                    nd = s.read(1, window=win).ravel()[sel][mask].astype(float)
+                nd = rread(it.assets['250m_16_days_NDVI'].href, window=win).ravel()[sel][mask].astype(float)
                 nd[(nd < -2000) | (nd > 10000)] = np.nan
                 nd /= 10000.0
                 end, start = it.properties['end_datetime'][:10], it.properties['start_datetime'][:10]
