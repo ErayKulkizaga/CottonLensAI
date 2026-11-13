@@ -29,7 +29,8 @@ def nass_state(nass_dir, name):
     return d
 
 
-def state_frame(nass_dir, cutoff_key):
+def state_frame(nass_dir, cutoff_key, area='mar'):
+    """area='jun' uses the June 30 Acreage survey (public before every cutoff) as planted_known."""
     prod, plant = nass_state(nass_dir, 'state_production'), nass_state(nass_dir, 'state_planted')
     usprod = nass_state(nass_dir, 'us_production')
     fin = prod[prod.reference_period_desc == 'YEAR'].set_index(['state_alpha', 'year']).v.rename('prod')
@@ -41,8 +42,13 @@ def state_frame(nass_dir, cutoff_key):
     s['ppa'] = s['prod'] * 480 / s.planted
     s['ppa_base'] = s.groupby('state').ppa.transform(lambda x: x.expanding().median().shift(1))
     s['planted_prev'] = s.groupby('state').planted.shift(1)
-    s['planted_known'] = s.planted_mar.fillna(s.planted_prev)
-    s['planted_fallback'] = s.planted_mar.isna()
+    known = s.planted_mar
+    if area == 'jun':
+        jun = json.loads((Path(nass_dir) / 'june_acreage.json').read_text())['planted_june']
+        s['planted_jun'] = [jun.get(str(y), {}).get(st) for st, y in zip(s.state, s.year, strict=True)]
+        known = s.planted_jun.astype(float).fillna(s.planted_mar)
+    s['planted_known'] = known.fillna(s.planted_prev)
+    s['planted_fallback'] = known.isna()
     us = pd.DataFrame({'final': usprod[usprod.reference_period_desc == 'YEAR'].set_index('year').v,
                        'usda': usprod[usprod.reference_period_desc == f'YEAR - {USDA_MONTH[cutoff_key]} FORECAST'].set_index('year').v})
     return s, us
