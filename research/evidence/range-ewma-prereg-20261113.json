@@ -1,0 +1,123 @@
+{
+  "schema": 1,
+  "profile": "range-ewma-confirmatory-t1-v1",
+  "classification": "PREREGISTERED_NOT_RUN",
+  "prepared": "2026-11-13",
+  "prepared_by": "Claude (independent review), user-approved preparation only",
+  "base_commit": "445d1fec15285ecf2058cc2fb1ba9fb46fe9a1e5",
+  "preregistration_doc": {
+    "path": "docs/RANGE_EWMA_PREREGISTRATION_20261113.md",
+    "sha256": "7c36996737d4ef4291ada957837327ab22e9b6a3021e71b3dcb88d15b3718706"
+  },
+  "source": {
+    "path": "research/range_ewma.py",
+    "sha256": "e8255b5dd9e3dc285e1cdbb042a37df668b1ffa722a431bc1d2030623cf38a1e"
+  },
+  "tests": {
+    "path": "research/tests/test_range_ewma.py",
+    "sha256": "f766363d0ee16335a759e40678b718f7030146996fba98ccdd73f612a813ce33",
+    "result": "10 passed (synthetic only)"
+  },
+  "frozen_constants": {
+    "alpha": 0.06,
+    "blend": 0.5,
+    "min_k_days": 250,
+    "estimator": "parkinson",
+    "invalid_bar": "same_day_r2",
+    "blocks": [
+      20,
+      60
+    ],
+    "resamples": 10000,
+    "seed": 42,
+    "end_target": "2026-10-30",
+    "admission": {
+      "min_origins": 2000,
+      "min_valid_fraction": 0.8,
+      "max_gap_days": 10
+    }
+  },
+  "confirmatory_markets": [
+    "ZW=F",
+    "KE=F",
+    "ZM=F",
+    "ZL=F",
+    "ZO=F",
+    "ZR=F",
+    "SB=F",
+    "KC=F",
+    "CC=F",
+    "OJ=F",
+    "LE=F",
+    "HE=F",
+    "GF=F"
+  ],
+  "excluded_seen_markets": [
+    "CT=F",
+    "ZC=F",
+    "ZS=F"
+  ],
+  "fits": {
+    "market": 0,
+    "synthetic": 0
+  },
+  "data_downloaded": false,
+  "scores_computed": false,
+  "market_skill": false,
+  "baseline_unchanged": "volatility.ewma alpha 0.06; max relative difference 0.0 on CT=F replay",
+  "frozen_replay_on_seen_ct": {
+    "note": "exploratory, seen data, not confirmation",
+    "2016_2023": {
+      "origins": 2011,
+      "mean_gain": 0.02167
+    },
+    "2024_2026_09": {
+      "origins": 683,
+      "mean_gain": 0.02886
+    }
+  },
+  "history_checks": {
+    "query parkinson": "NO_REGISTERED_MATCH",
+    "family ewma": "RELATED_EVIDENCE named-ewma-scale-control-t1-v1 (2)",
+    "related_prior_screen": "docs/RISK_INFORMATION_PREFLIGHT_20261013.md log range/EWMA moment, not passed; preserved"
+  },
+  "exploratory_evidence": {
+    "dir": "output/claude-findings-20261113 (git-ignored, local only)",
+    "files": {
+      "ac.out": "f262743772fc8246f371fcef75d3a236086a59447ba3323e55eb8c35c42539d5",
+      "ac.py": "889f22578affd23b140c7aacaddcd663cc6623a88823ac38116190353f35c97e",
+      "fals.out": "d5cae98ac88c95f6d6c9a8e7fde5d78208c7feb246f5cb6dc1577588584907d4",
+      "fals.py": "6129968915b268fcf18c17d2e14c3fb542da6004745902492a53c9e8ce6a17d9",
+      "fals2.out": "f5d1fa6e917baaba522f6851bc3b2bb6aaddc7c73a5b7bb65ce0f9f3ca177793",
+      "fals2.py": "0b8c4636d6153dbc3b3a907af4126714d0ed1fdfcf411a6362cc3e496d96875d",
+      "feas.out": "95ee25804d94e4fa04c1cdde29cf34c46ba627649f86c8594c8dd997c51511be",
+      "feas.py": "5eb32a0dd427e76ffeece6ebc4f9ee6c78d020c17b3bbf1f3549e3aaafb01b99",
+      "FINDINGS.md": "ce4f6e54244f58a69259d0a27980a2e45fb39a270b5d0cca1599d83220bbe1cf",
+      "inputs.sha256": "a009a8a806633c1c66c0971d5c57c7aaa1768fbea83971b01e86b977d2a83e95",
+      "inv.out": "9a0047ac0d397a787189c4fa2e9fd468fc6438db8dd6980d9bf31dcddf2764de",
+      "inv.py": "ae4945f75878bfef927546f6c626c86d2a34947e324e941ccff2834742958d78",
+      "rng.out": "f39dc903e0924582b8acceafbdcac54ec91d9fe448d4019e26f92399ad8a7f16",
+      "rng.py": "b344ee0447e7cb5d085932d1d3720d76187567f84bdf82e7bdcee4ad734751b6",
+      "xmkt.out": "9985891e072271b510536e78f478d8b67111dc00e57cd1cf9367657c5463229a",
+      "xmkt.py": "eb01f0971355a07e984f2c5cc4ed4f3ed2a275355718c59e1baf2fae1803b5f3"
+    },
+    "inputs": {
+      "C:/Users/Eray/SEZAR/PROJELER/CottonLensAI/runtime/artifacts/current/market_history.parquet": "767891b5cbdd0f52c95d370e8299e90dfd06bd45b2d75e06e85ee012fd578b98",
+      "C:/Users/Eray/SEZAR/PROJELER/CottonLensAI/output/full-year/experiments/research-availability-clock-pilot-v1/history.parquet": "9bd97433ff9eebb708242d8e0454c08384a54ca9ddf30ae81740e267995d13f8",
+      "C:/Users/Eray/SEZAR/PROJELER/CottonLensAI/output/crop-prices-2010-2023/crop-prices-2010-2023.csv": "25e4258d7873bd79ae51c179774e119355d7212b4013f9289ebdf4ad97228ce3"
+    }
+  },
+  "disclosures": [
+    "~20 variants examined on CT=F 2010-2026-09 and ZC/ZS 2010-2023 without multiplicity correction",
+    "expanding-k form chosen after seeing 2024-2026 results; CT 2024+ no longer clean for this hypothesis",
+    "80% valid-bar admission threshold set while knowing CT=F is 80.4%",
+    "gain concentrated in tails; top-5% trim negative on CT"
+  ],
+  "pending_user_approvals": [
+    "Yahoo download",
+    "admission and scoring runs",
+    "private GitHub release/push",
+    "arm B forward collection",
+    "registry/trials entry"
+  ]
+}
