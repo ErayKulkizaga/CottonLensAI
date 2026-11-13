@@ -1,0 +1,106 @@
+{
+  "schema": 1,
+  "profile": "cotton-risk-terminal-20261113",
+  "classification": "DEMONSTRATION_NOT_EVIDENCE",
+  "counters": [
+    [
+      32934,
+      "tamamlanmış model fit kaydı (Codex sicili; aynı tarifin tekrarları dahil)"
+    ],
+    [
+      569,
+      "farklı model tarifi; XGBoost, Ridge, LSTM, TCN, GARCH, HAR dahil 11 aile"
+    ],
+    [
+      113,
+      "tamamlanmış fiyat deneyi; en iyisi +%0.22, hiçbiri %5 kapısında değil"
+    ],
+    [
+      370,
+      "işlenen 16 günlük MODIS uydu karesi (13 sezon)"
+    ],
+    [
+      78704672,
+      "pamuk tarlası piksel gözlemi (250 m)"
+    ],
+    [
+      82557,
+      "önceden kayıtlı testlerde skorlanan piyasa-günü"
+    ],
+    [
+      16,
+      "incelenen emtia piyasası; 7 tanesi kör doğrulamada"
+    ],
+    [
+      5,
+      "ön kayıtlı hipotez: 3 doğrulandı, 2 doğrulanmadı"
+    ]
+  ],
+  "satellite_stats": {
+    "composites": 370,
+    "window_pixels_read": 323480640,
+    "cotton_pixel_observations": 78704672,
+    "cdl_maps": 13,
+    "modis_tile": "h09v05",
+    "window_shape": [
+      672,
+      1301
+    ],
+    "display_grid": [
+      420,
+      400
+    ],
+    "seconds": 332,
+    "years": 13
+  },
+  "fan_historical_coverage_ct": {
+    "1": {
+      "n": 5496,
+      "cov80": 0.7914847161572053,
+      "cov90": 0.9057496360989811
+    },
+    "5": {
+      "n": 5492,
+      "cov80": 0.8008011653313911,
+      "cov90": 0.9024034959941734
+    },
+    "10": {
+      "n": 5487,
+      "cov80": 0.8168398031711318,
+      "cov90": 0.9090577729178058
+    },
+    "20": {
+      "n": 5477,
+      "cov80": 0.8221654190250137,
+      "cov90": 0.9114478729231331
+    }
+  },
+  "time_machine": {
+    "first": "2003-01-15",
+    "last": "2026-11-12",
+    "days": 5986
+  },
+  "files": {
+    "cotton-risk-terminal.html": "9bb39fb6ba28be31d23094efdd55c5409eaa18dc3ac44e6d1e39afeccf0eaf31",
+    "counters.json": "d0933481ee62b094af3d03f3acfd1d0233c0276e88394ba7d258d1ffeb310ed9",
+    "frames_2009.png": "bf1a43b74ae148701937daa87e9392650a4251018f9b3046c7570db5f27fb2b1",
+    "frames_2010.png": "d40907f1a88bce4672757fb9175fc634e00fdf3b4844827f6d0414aa2775d172",
+    "frames_2011.png": "88e4c0343d141a4f3e18d9dce2ac73cf42d83270c56db8e683197401e31f701c",
+    "frames_2012.png": "e6102f9ed76bf16a53265d746b8963a6680987cf0bcd65709c3c411b9422c82c",
+    "frames_2013.png": "fbd605e6385044fefe847dd783c8d5167d2cf777be3bcba7e34b83ebbab1d2ce",
+    "frames_2014.png": "6a55db000010dd2c6c7bf7530fb8b59172102f0822a06094b5876c25bed086ef",
+    "frames_2015.png": "e0c2cc0d39c7af335bf0cbf87ba65799df207147711127cbd4a623a0b6d3e0d2",
+    "frames_2016.png": "b36c1df3bed8a216bf36a46e3ddd290fffd605145e5c8bf09848dd76c8a3ebfe",
+    "frames_2017.png": "564c2f13eb8bcf15b3d67f3fd769e5260684d96b6a115cb5eb491fcf4079ba87",
+    "frames_2018.png": "8e0d3612ded0bc3ccbbaca2ebe8c98fc2fd968ab0edd9c81a753338df8d48b0c",
+    "frames_2019.png": "24efca49d4d9c9fc5eba06960f4605a146c42ba261feb9cd677048dc92a82e71",
+    "frames_2020.png": "71391412c8f045bfd9cf55e7cfb9fd01232c9aa9fdd23c55699d8ac7d83dde5f",
+    "frames_2021.png": "319e5b44c054ca3d70be1d6e7d5458a6372f889fa7be7a5968507943b6a4ad2b"
+  },
+  "artifact": "private claude.ai artifact",
+  "notes": [
+    "fan horizons beyond T+1 are historical checks on CT, not preregistered",
+    "satellite frames are exploratory, pre-2022, prior-year CDL mask",
+    "counters: fit copies include repeats of the same recipe; not independent experiments"
+  ]
+}
