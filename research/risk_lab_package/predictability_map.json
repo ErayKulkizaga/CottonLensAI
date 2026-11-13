@@ -1,0 +1,1626 @@
+{
+  "source_registry_sha256": "3dd425eefa10544665656e2b796a2bd2d003d641d6fde40be772a51d5375150f",
+  "experiments": 113,
+  "selected_positive": 6,
+  "selected_ge_5pct": 0,
+  "max_selected_gain_pct": 0.2171214238542718,
+  "rows": [
+    {
+      "profile": "fundamental-joint-pilot-v1",
+      "source": "Temel veri birleşimi",
+      "group": "interaction_L1",
+      "horizon": 5,
+      "families": [
+        "ridge"
+      ],
+      "origins": 2006,
+      "selected_gain_pct": 0.16710601263232316,
+      "raw_gain_pct": -6.8344382604832,
+      "raw_direction_pct": 54.13758723828514,
+      "classification": "INCONCLUSIVE"
+    },
+    {
+      "profile": "fundamental-joint-pilot-v1",
+      "source": "Temel veri birleşimi",
+      "group": "interaction_L2",
+      "horizon": 5,
+      "families": [
+        "ridge"
+      ],
+      "origins": 2006,
+      "selected_gain_pct": -0.47569033844947484,
+      "raw_gain_pct": -7.203439832230307,
+      "raw_direction_pct": 53.88833499501495,
+      "classification": "INCONCLUSIVE"
+    },
+    {
+      "profile": "fundamental-joint-pilot-v1",
+      "source": "Temel veri birleşimi",
+      "group": "interaction_L6",
+      "horizon": 5,
+      "families": [
+        "ridge"
+      ],
+      "origins": 2006,
+      "selected_gain_pct": -1.4755476954972035,
+      "raw_gain_pct": -9.508192193791176,
+      "raw_direction_pct": 52.19341974077767,
+      "classification": "INCONCLUSIVE"
+    },
+    {
+      "profile": "fundamental-joint-pilot-v1",
+      "source": "Temel veri birleşimi",
+      "group": "joint_L1",
+      "horizon": 5,
+      "families": [
+        "ridge"
+      ],
+      "origins": 2006,
+      "selected_gain_pct": 0.2171214238542718,
+      "raw_gain_pct": -6.641759877063369,
+      "raw_direction_pct": 53.539381854436684,
+      "classification": "INCONCLUSIVE"
+    },
+    {
+      "profile": "fundamental-joint-pilot-v1",
+      "source": "Temel veri birleşimi",
+      "group": "joint_L2",
+      "horizon": 5,
+      "families": [
+        "ridge"
+      ],
+      "origins": 2006,
+      "selected_gain_pct": -0.2642343907242717,
+      "raw_gain_pct": -6.889753593188641,
+      "raw_direction_pct": 53.090727816550356,
+      "classification": "INCONCLUSIVE"
+    },
+    {
+      "profile": "fundamental-joint-pilot-v1",
+      "source": "Temel veri birleşimi",
+      "group": "joint_L6",
+      "horizon": 5,
+      "families": [
+        "ridge"
+      ],
+      "origins": 2006,
+      "selected_gain_pct": -0.6389870214453142,
+      "raw_gain_pct": -8.828769248832003,
+      "raw_direction_pct": 52.59222333000997,
+      "classification": "INCONCLUSIVE"
+    },
+    {
+      "profile": "fundamental-joint-pilot-v1",
+      "source": "Temel veri birleşimi",
+      "group": "timing_L1",
+      "horizon": 5,
+      "families": [
+        "ridge"
+      ],
+      "origins": 2006,
+      "selected_gain_pct": -0.8745041735154002,
+      "raw_gain_pct": -5.214850816146699,
+      "raw_direction_pct": 49.700897308075774,
+      "classification": "INCONCLUSIVE"
+    },
+    {
+      "profile": "fundamental-joint-pilot-v1",
+      "source": "Temel veri birleşimi",
+      "group": "timing_L2",
+      "horizon": 5,
+      "families": [
+        "ridge"
+      ],
+      "origins": 2006,
+      "selected_gain_pct": -0.8982159551922164,
+      "raw_gain_pct": -5.1452319301762195,
+      "raw_direction_pct": 49.55134596211366,
+      "classification": "INCONCLUSIVE"
+    },
+    {
+      "profile": "fundamental-joint-pilot-v1",
+      "source": "Temel veri birleşimi",
+      "group": "timing_L6",
+      "horizon": 5,
+      "families": [
+        "ridge"
+      ],
+      "origins": 2006,
+      "selected_gain_pct": -0.6481903601629924,
+      "raw_gain_pct": -5.777360063593595,
+      "raw_direction_pct": 49.30209371884347,
+      "classification": "INCONCLUSIVE"
+    },
+    {
+      "profile": "agri-transfer-pilot-v1",
+      "source": "Tarım piyasaları transfer",
+      "group": "cotton_corn_soybean",
+      "horizon": 1,
+      "families": [
+        "ridge"
+      ],
+      "origins": 2006,
+      "selected_gain_pct": 0.06169854293497368,
+      "raw_gain_pct": 0.023919181258991173,
+      "raw_direction_pct": 50.14955134596212,
+      "classification": "INCONCLUSIVE"
+    },
+    {
+      "profile": "agri-transfer-pilot-v1",
+      "source": "Tarım piyasaları transfer",
+      "group": "cotton_corn_soybean",
+      "horizon": 5,
+      "families": [
+        "ridge"
+      ],
+      "origins": 2006,
+      "selected_gain_pct": 0.17571666924566243,
+      "raw_gain_pct": -0.0990090808573374,
+      "raw_direction_pct": 51.894317048853445,
+      "classification": "INCONCLUSIVE"
+    },
+    {
+      "profile": "agri-transfer-pilot-v1",
+      "source": "Tarım piyasaları transfer",
+      "group": "cotton_only",
+      "horizon": 1,
+      "families": [
+        "ridge"
+      ],
+      "origins": 2006,
+      "selected_gain_pct": -0.025397283547867744,
+      "raw_gain_pct": -0.17490559488611002,
+      "raw_direction_pct": 49.2023928215354,
+      "classification": "INCONCLUSIVE"
+    },
+    {
+      "profile": "agri-transfer-pilot-v1",
+      "source": "Tarım piyasaları transfer",
+      "group": "cotton_only",
+      "horizon": 5,
+      "families": [
+        "ridge"
+      ],
+      "origins": 2006,
+      "selected_gain_pct": -0.0924740357967968,
+      "raw_gain_pct": -1.020929137608273,
+      "raw_direction_pct": 51.096709870388835,
+      "classification": "INCONCLUSIVE"
+    },
+    {
+      "profile": "ams-exploration-v1",
+      "source": "USDA AMS spot/kontrat",
+      "group": "base",
+      "horizon": 5,
+      "families": [
+        "ridge"
+      ],
+      "origins": 246,
+      "selected_gain_pct": 0.0,
+      "raw_gain_pct": 0.21221700126601295,
+      "raw_direction_pct": 54.47154471544715,
+      "classification": "INCONCLUSIVE"
+    },
+    {
+      "profile": "ams-exploration-v1",
+      "source": "USDA AMS spot/kontrat",
+      "group": "missing_L1",
+      "horizon": 5,
+      "families": [
+        "ridge"
+      ],
+      "origins": 246,
+      "selected_gain_pct": 0.0,
+      "raw_gain_pct": -0.1265892478700792,
+      "raw_direction_pct": 53.2520325203252,
+      "classification": "INCONCLUSIVE"
+    },
+    {
+      "profile": "ams-exploration-v1",
+      "source": "USDA AMS spot/kontrat",
+      "group": "missing_L2",
+      "horizon": 5,
+      "families": [
+        "ridge"
+      ],
+      "origins": 246,
+      "selected_gain_pct": 0.0,
+      "raw_gain_pct": -0.21967265789950563,
+      "raw_direction_pct": 54.0650406504065,
+      "classification": "INCONCLUSIVE"
+    },
+    {
+      "profile": "ams-exploration-v1",
+      "source": "USDA AMS spot/kontrat",
+      "group": "missing_L6",
+      "horizon": 5,
+      "families": [
+        "ridge"
+      ],
+      "origins": 246,
+      "selected_gain_pct": 0.0,
+      "raw_gain_pct": -0.3914294038291244,
+      "raw_direction_pct": 54.87804878048781,
+      "classification": "INCONCLUSIVE"
+    },
+    {
+      "profile": "ams-exploration-v1",
+      "source": "USDA AMS spot/kontrat",
+      "group": "quote_L1",
+      "horizon": 5,
+      "families": [
+        "ridge"
+      ],
+      "origins": 246,
+      "selected_gain_pct": 0.0,
+      "raw_gain_pct": -1.4349227290852973,
+      "raw_direction_pct": 55.6910569105691,
+      "classification": "INCONCLUSIVE"
+    },
+    {
+      "profile": "ams-exploration-v1",
+      "source": "USDA AMS spot/kontrat",
+      "group": "quote_L2",
+      "horizon": 5,
+      "families": [
+        "ridge"
+      ],
+      "origins": 246,
+      "selected_gain_pct": 0.0,
+      "raw_gain_pct": -1.2047845151655245,
+      "raw_direction_pct": 54.87804878048781,
+      "classification": "INCONCLUSIVE"
+    },
+    {
+      "profile": "ams-exploration-v1",
+      "source": "USDA AMS spot/kontrat",
+      "group": "quote_L6",
+      "horizon": 5,
+      "families": [
+        "ridge"
+      ],
+      "origins": 246,
+      "selected_gain_pct": 0.0,
+      "raw_gain_pct": -0.05405667316702445,
+      "raw_direction_pct": 55.28455284552846,
+      "classification": "INCONCLUSIVE"
+    },
+    {
+      "profile": "cftc-exploration-v1",
+      "source": "CFTC pozisyonları",
+      "group": "base",
+      "horizon": 5,
+      "families": [
+        "ridge",
+        "xgboost"
+      ],
+      "origins": 2006,
+      "selected_gain_pct": -1.0110696852664969,
+      "raw_gain_pct": -1.9782897163988844,
+      "raw_direction_pct": 50.14955134596212,
+      "classification": "INCONCLUSIVE"
+    },
+    {
+      "profile": "cftc-exploration-v1",
+      "source": "CFTC pozisyonları",
+      "group": "missing_L1",
+      "horizon": 5,
+      "families": [
+        "ridge",
+        "xgboost"
+      ],
+      "origins": 2006,
+      "selected_gain_pct": -1.0138584421216512,
+      "raw_gain_pct": -2.0274574158585246,
+      "raw_direction_pct": 50.099700897308075,
+      "classification": "INCONCLUSIVE"
+    },
+    {
+      "profile": "cftc-exploration-v1",
+      "source": "CFTC pozisyonları",
+      "group": "missing_L2",
+      "horizon": 5,
+      "families": [
+        "ridge",
+        "xgboost"
+      ],
+      "origins": 2006,
+      "selected_gain_pct": -1.01330086153264,
+      "raw_gain_pct": -2.005106012302904,
+      "raw_direction_pct": 49.950149551345966,
+      "classification": "INCONCLUSIVE"
+    },
+    {
+      "profile": "cftc-exploration-v1",
+      "source": "CFTC pozisyonları",
+      "group": "missing_L6",
+      "horizon": 5,
+      "families": [
+        "ridge",
+        "xgboost"
+      ],
+      "origins": 2006,
+      "selected_gain_pct": -1.011478970331936,
+      "raw_gain_pct": -2.032354334243336,
+      "raw_direction_pct": 49.950149551345966,
+      "classification": "INCONCLUSIVE"
+    },
+    {
+      "profile": "cftc-exploration-v1",
+      "source": "CFTC pozisyonları",
+      "group": "position_L1",
+      "horizon": 5,
+      "families": [
+        "ridge",
+        "xgboost"
+      ],
+      "origins": 2006,
+      "selected_gain_pct": -0.8543626868275478,
+      "raw_gain_pct": -1.9153726830205553,
+      "raw_direction_pct": 50.24925224327019,
+      "classification": "INCONCLUSIVE"
+    },
+    {
+      "profile": "cftc-exploration-v1",
+      "source": "CFTC pozisyonları",
+      "group": "position_L2",
+      "horizon": 5,
+      "families": [
+        "ridge",
+        "xgboost"
+      ],
+      "origins": 2006,
+      "selected_gain_pct": -0.7684015556022494,
+      "raw_gain_pct": -1.7773996335186615,
+      "raw_direction_pct": 52.44267198404786,
+      "classification": "INCONCLUSIVE"
+    },
+    {
+      "profile": "cftc-exploration-v1",
+      "source": "CFTC pozisyonları",
+      "group": "position_L6",
+      "horizon": 5,
+      "families": [
+        "ridge",
+        "xgboost"
+      ],
+      "origins": 2006,
+      "selected_gain_pct": -1.7829302330914842,
+      "raw_gain_pct": -2.6134648672680116,
+      "raw_direction_pct": 50.847457627118644,
+      "classification": "INCONCLUSIVE"
+    },
+    {
+      "profile": "crop-exploration-v1",
+      "source": "Mısır/soya fiyatları",
+      "group": "base",
+      "horizon": 5,
+      "families": [
+        "ridge",
+        "xgboost"
+      ],
+      "origins": 2006,
+      "selected_gain_pct": -1.0110696852664969,
+      "raw_gain_pct": -1.9782897163988844,
+      "raw_direction_pct": 50.14955134596212,
+      "classification": "INCONCLUSIVE"
+    },
+    {
+      "profile": "crop-exploration-v1",
+      "source": "Mısır/soya fiyatları",
+      "group": "missing_L1",
+      "horizon": 5,
+      "families": [
+        "ridge",
+        "xgboost"
+      ],
+      "origins": 2006,
+      "selected_gain_pct": -1.0188376608776473,
+      "raw_gain_pct": -1.9351284368646304,
+      "raw_direction_pct": 50.0,
+      "classification": "INCONCLUSIVE"
+    },
+    {
+      "profile": "crop-exploration-v1",
+      "source": "Mısır/soya fiyatları",
+      "group": "missing_L2",
+      "horizon": 5,
+      "families": [
+        "ridge",
+        "xgboost"
+      ],
+      "origins": 2006,
+      "selected_gain_pct": -1.0191662622951903,
+      "raw_gain_pct": -1.9928813609271234,
+      "raw_direction_pct": 50.04985044865404,
+      "classification": "INCONCLUSIVE"
+    },
+    {
+      "profile": "crop-exploration-v1",
+      "source": "Mısır/soya fiyatları",
+      "group": "missing_L6",
+      "horizon": 5,
+      "families": [
+        "ridge",
+        "xgboost"
+      ],
+      "origins": 2006,
+      "selected_gain_pct": -1.0144825685723058,
+      "raw_gain_pct": -2.0089938950405672,
+      "raw_direction_pct": 50.04985044865404,
+      "classification": "INCONCLUSIVE"
+    },
+    {
+      "profile": "crop-exploration-v1",
+      "source": "Mısır/soya fiyatları",
+      "group": "prices_L1",
+      "horizon": 5,
+      "families": [
+        "ridge",
+        "xgboost"
+      ],
+      "origins": 2006,
+      "selected_gain_pct": -1.8800795699143613,
+      "raw_gain_pct": -3.2750344154607314,
+      "raw_direction_pct": 51.4456630109671,
+      "classification": "INCONCLUSIVE"
+    },
+    {
+      "profile": "crop-exploration-v1",
+      "source": "Mısır/soya fiyatları",
+      "group": "prices_L2",
+      "horizon": 5,
+      "families": [
+        "ridge",
+        "xgboost"
+      ],
+      "origins": 2006,
+      "selected_gain_pct": -2.5063456756106994,
+      "raw_gain_pct": -2.9863042833166764,
+      "raw_direction_pct": 51.844466600199404,
+      "classification": "INCONCLUSIVE"
+    },
+    {
+      "profile": "crop-exploration-v1",
+      "source": "Mısır/soya fiyatları",
+      "group": "prices_L6",
+      "horizon": 5,
+      "families": [
+        "ridge",
+        "xgboost"
+      ],
+      "origins": 2006,
+      "selected_gain_pct": -1.1493794973120863,
+      "raw_gain_pct": -2.058778318920451,
+      "raw_direction_pct": 54.03788634097707,
+      "classification": "INCONCLUSIVE"
+    },
+    {
+      "profile": "fas-exploration-v1",
+      "source": "FAS ihracat satışları",
+      "group": "base",
+      "horizon": 5,
+      "families": [
+        "ridge",
+        "xgboost"
+      ],
+      "origins": 2006,
+      "selected_gain_pct": -1.0110696852664969,
+      "raw_gain_pct": -1.9782897163988844,
+      "raw_direction_pct": 50.14955134596212,
+      "classification": "INCONCLUSIVE"
+    },
+    {
+      "profile": "fas-exploration-v1",
+      "source": "FAS ihracat satışları",
+      "group": "missing_L1",
+      "horizon": 5,
+      "families": [
+        "ridge",
+        "xgboost"
+      ],
+      "origins": 2006,
+      "selected_gain_pct": -1.1527230612341732,
+      "raw_gain_pct": -2.500380931283863,
+      "raw_direction_pct": 50.099700897308075,
+      "classification": "INCONCLUSIVE"
+    },
+    {
+      "profile": "fas-exploration-v1",
+      "source": "FAS ihracat satışları",
+      "group": "missing_L2",
+      "horizon": 5,
+      "families": [
+        "ridge",
+        "xgboost"
+      ],
+      "origins": 2006,
+      "selected_gain_pct": -1.0080835234874241,
+      "raw_gain_pct": -1.9337222503216234,
+      "raw_direction_pct": 50.099700897308075,
+      "classification": "INCONCLUSIVE"
+    },
+    {
+      "profile": "fas-exploration-v1",
+      "source": "FAS ihracat satışları",
+      "group": "missing_L6",
+      "horizon": 5,
+      "families": [
+        "ridge",
+        "xgboost"
+      ],
+      "origins": 2006,
+      "selected_gain_pct": -1.0076458521566467,
+      "raw_gain_pct": -1.9870784581153877,
+      "raw_direction_pct": 50.299102691924226,
+      "classification": "INCONCLUSIVE"
+    },
+    {
+      "profile": "fas-exploration-v1",
+      "source": "FAS ihracat satışları",
+      "group": "sales_L1",
+      "horizon": 5,
+      "families": [
+        "ridge",
+        "xgboost"
+      ],
+      "origins": 2006,
+      "selected_gain_pct": -0.6944142380314267,
+      "raw_gain_pct": -2.058712386279682,
+      "raw_direction_pct": 49.50149551345962,
+      "classification": "INCONCLUSIVE"
+    },
+    {
+      "profile": "fas-exploration-v1",
+      "source": "FAS ihracat satışları",
+      "group": "sales_L2",
+      "horizon": 5,
+      "families": [
+        "ridge",
+        "xgboost"
+      ],
+      "origins": 2006,
+      "selected_gain_pct": -1.5664834571202269,
+      "raw_gain_pct": -3.0060780146216493,
+      "raw_direction_pct": 49.152542372881356,
+      "classification": "INCONCLUSIVE"
+    },
+    {
+      "profile": "fas-exploration-v1",
+      "source": "FAS ihracat satışları",
+      "group": "sales_L6",
+      "horizon": 5,
+      "families": [
+        "ridge",
+        "xgboost"
+      ],
+      "origins": 2006,
+      "selected_gain_pct": -0.586022703646405,
+      "raw_gain_pct": -2.2724305333253536,
+      "raw_direction_pct": 51.64506480558325,
+      "classification": "INCONCLUSIVE"
+    },
+    {
+      "profile": "full-year-v1",
+      "source": "full-year",
+      "group": "selected",
+      "horizon": 1,
+      "families": [
+        "elasticnet",
+        "ridge",
+        "xgboost"
+      ],
+      "origins": 2006,
+      "selected_gain_pct": -0.261948428717651,
+      "raw_gain_pct": null,
+      "raw_direction_pct": null,
+      "classification": "INCONCLUSIVE"
+    },
+    {
+      "profile": "full-year-v1",
+      "source": "full-year",
+      "group": "selected",
+      "horizon": 5,
+      "families": [
+        "elasticnet",
+        "ridge",
+        "xgboost"
+      ],
+      "origins": 2006,
+      "selected_gain_pct": -0.9964432355274555,
+      "raw_gain_pct": null,
+      "raw_direction_pct": null,
+      "classification": "INCONCLUSIVE"
+    },
+    {
+      "profile": "fx-exploration-v1",
+      "source": "Döviz",
+      "group": "base",
+      "horizon": 5,
+      "families": [
+        "ridge",
+        "xgboost"
+      ],
+      "origins": 2006,
+      "selected_gain_pct": -1.0110696852664969,
+      "raw_gain_pct": -1.9782897163988844,
+      "raw_direction_pct": 50.14955134596212,
+      "classification": "INCONCLUSIVE"
+    },
+    {
+      "profile": "fx-exploration-v1",
+      "source": "Döviz",
+      "group": "currency_L1",
+      "horizon": 5,
+      "families": [
+        "ridge",
+        "xgboost"
+      ],
+      "origins": 2006,
+      "selected_gain_pct": -0.5284166232296439,
+      "raw_gain_pct": -2.4455428696988024,
+      "raw_direction_pct": 50.54835493519442,
+      "classification": "INCONCLUSIVE"
+    },
+    {
+      "profile": "fx-exploration-v1",
+      "source": "Döviz",
+      "group": "currency_L2",
+      "horizon": 5,
+      "families": [
+        "ridge",
+        "xgboost"
+      ],
+      "origins": 2006,
+      "selected_gain_pct": -0.5658728362917698,
+      "raw_gain_pct": -1.3864892406979745,
+      "raw_direction_pct": 51.19641076769691,
+      "classification": "INCONCLUSIVE"
+    },
+    {
+      "profile": "fx-exploration-v1",
+      "source": "Döviz",
+      "group": "currency_L6",
+      "horizon": 5,
+      "families": [
+        "ridge",
+        "xgboost"
+      ],
+      "origins": 2006,
+      "selected_gain_pct": -0.5398379399967457,
+      "raw_gain_pct": -5.109940450249084,
+      "raw_direction_pct": 51.59521435692921,
+      "classification": "INCONCLUSIVE"
+    },
+    {
+      "profile": "fx-exploration-v1",
+      "source": "Döviz",
+      "group": "missing_L1",
+      "horizon": 5,
+      "families": [
+        "ridge",
+        "xgboost"
+      ],
+      "origins": 2006,
+      "selected_gain_pct": -1.0162543864171258,
+      "raw_gain_pct": -1.9822045736765714,
+      "raw_direction_pct": 50.14955134596212,
+      "classification": "INCONCLUSIVE"
+    },
+    {
+      "profile": "fx-exploration-v1",
+      "source": "Döviz",
+      "group": "missing_L2",
+      "horizon": 5,
+      "families": [
+        "ridge",
+        "xgboost"
+      ],
+      "origins": 2006,
+      "selected_gain_pct": -1.0226613934902318,
+      "raw_gain_pct": -1.9682619086802466,
+      "raw_direction_pct": 50.19940179461615,
+      "classification": "INCONCLUSIVE"
+    },
+    {
+      "profile": "fx-exploration-v1",
+      "source": "Döviz",
+      "group": "missing_L6",
+      "horizon": 5,
+      "families": [
+        "ridge",
+        "xgboost"
+      ],
+      "origins": 2006,
+      "selected_gain_pct": -1.0633924760161007,
+      "raw_gain_pct": -2.173934683500822,
+      "raw_direction_pct": 49.85044865403789,
+      "classification": "INCONCLUSIVE"
+    },
+    {
+      "profile": "nass-exploration-v1",
+      "source": "USDA NASS ürün durumu",
+      "group": "base",
+      "horizon": 5,
+      "families": [
+        "ridge",
+        "xgboost"
+      ],
+      "origins": 2006,
+      "selected_gain_pct": -1.0110696852664969,
+      "raw_gain_pct": -1.9782897163988844,
+      "raw_direction_pct": 50.14955134596212,
+      "classification": "INCONCLUSIVE"
+    },
+    {
+      "profile": "nass-exploration-v1",
+      "source": "USDA NASS ürün durumu",
+      "group": "condition_L1",
+      "horizon": 5,
+      "families": [
+        "ridge",
+        "xgboost"
+      ],
+      "origins": 2006,
+      "selected_gain_pct": -0.6921557301095227,
+      "raw_gain_pct": -4.874469594901498,
+      "raw_direction_pct": 52.74177467597209,
+      "classification": "INCONCLUSIVE"
+    },
+    {
+      "profile": "nass-exploration-v1",
+      "source": "USDA NASS ürün durumu",
+      "group": "condition_L2",
+      "horizon": 5,
+      "families": [
+        "ridge",
+        "xgboost"
+      ],
+      "origins": 2006,
+      "selected_gain_pct": -1.0568522164749572,
+      "raw_gain_pct": -5.78856506966503,
+      "raw_direction_pct": 51.99401794616152,
+      "classification": "INCONCLUSIVE"
+    },
+    {
+      "profile": "nass-exploration-v1",
+      "source": "USDA NASS ürün durumu",
+      "group": "condition_L6",
+      "horizon": 5,
+      "families": [
+        "ridge",
+        "xgboost"
+      ],
+      "origins": 2006,
+      "selected_gain_pct": -0.8787685420163172,
+      "raw_gain_pct": -4.476190174708772,
+      "raw_direction_pct": 52.043868394815554,
+      "classification": "INCONCLUSIVE"
+    },
+    {
+      "profile": "nass-exploration-v1",
+      "source": "USDA NASS ürün durumu",
+      "group": "missing_L1",
+      "horizon": 5,
+      "families": [
+        "ridge",
+        "xgboost"
+      ],
+      "origins": 2006,
+      "selected_gain_pct": -1.061664155212405,
+      "raw_gain_pct": -2.2678378311101532,
+      "raw_direction_pct": 50.54835493519442,
+      "classification": "INCONCLUSIVE"
+    },
+    {
+      "profile": "nass-exploration-v1",
+      "source": "USDA NASS ürün durumu",
+      "group": "missing_L2",
+      "horizon": 5,
+      "families": [
+        "ridge",
+        "xgboost"
+      ],
+      "origins": 2006,
+      "selected_gain_pct": -1.0795929040212204,
+      "raw_gain_pct": -2.3823803042964053,
+      "raw_direction_pct": 50.44865403788634,
+      "classification": "INCONCLUSIVE"
+    },
+    {
+      "profile": "nass-exploration-v1",
+      "source": "USDA NASS ürün durumu",
+      "group": "missing_L6",
+      "horizon": 5,
+      "families": [
+        "ridge",
+        "xgboost"
+      ],
+      "origins": 2006,
+      "selected_gain_pct": -1.4913162551518866,
+      "raw_gain_pct": -2.986216022741006,
+      "raw_direction_pct": 49.30209371884347,
+      "classification": "INCONCLUSIVE"
+    },
+    {
+      "profile": "oncall-exploration-v2",
+      "source": "On-call",
+      "group": "base",
+      "horizon": 5,
+      "families": [
+        "ridge",
+        "xgboost"
+      ],
+      "origins": 749,
+      "selected_gain_pct": -2.655335804951253,
+      "raw_gain_pct": -4.092298994914567,
+      "raw_direction_pct": 47.930574098798395,
+      "classification": "INCONCLUSIVE"
+    },
+    {
+      "profile": "oncall-exploration-v2",
+      "source": "On-call",
+      "group": "missing_L1",
+      "horizon": 5,
+      "families": [
+        "xgboost"
+      ],
+      "origins": 250,
+      "selected_gain_pct": -5.70590413329215,
+      "raw_gain_pct": -5.70590413329215,
+      "raw_direction_pct": 48.4,
+      "classification": "INCONCLUSIVE"
+    },
+    {
+      "profile": "oncall-exploration-v2",
+      "source": "On-call",
+      "group": "oncall_L1",
+      "horizon": 5,
+      "families": [
+        "ridge",
+        "xgboost"
+      ],
+      "origins": 753,
+      "selected_gain_pct": -1.330682097564373,
+      "raw_gain_pct": -5.5762503791537466,
+      "raw_direction_pct": 50.73041168658698,
+      "classification": "INCONCLUSIVE"
+    },
+    {
+      "profile": "oncall-exploration-v2",
+      "source": "On-call",
+      "group": "oncall_L2",
+      "horizon": 5,
+      "families": [
+        "xgboost"
+      ],
+      "origins": 502,
+      "selected_gain_pct": -1.3169053549460408,
+      "raw_gain_pct": -1.925931421692395,
+      "raw_direction_pct": 48.20717131474104,
+      "classification": "INCONCLUSIVE"
+    },
+    {
+      "profile": "return-path-pilot-v1",
+      "source": "Fiyat yolu (nonlinear)",
+      "group": "base",
+      "horizon": 1,
+      "families": [
+        "ridge"
+      ],
+      "origins": 2006,
+      "selected_gain_pct": -0.3231639231482841,
+      "raw_gain_pct": -1.745570809259922,
+      "raw_direction_pct": 48.50448654037886,
+      "classification": "INCONCLUSIVE"
+    },
+    {
+      "profile": "return-path-pilot-v1",
+      "source": "Fiyat yolu (nonlinear)",
+      "group": "base",
+      "horizon": 5,
+      "families": [
+        "ridge"
+      ],
+      "origins": 2006,
+      "selected_gain_pct": -1.0870242380689454,
+      "raw_gain_pct": -4.233208395592647,
+      "raw_direction_pct": 50.3988035892323,
+      "classification": "INCONCLUSIVE"
+    },
+    {
+      "profile": "return-path-pilot-v1",
+      "source": "Fiyat yolu (nonlinear)",
+      "group": "base_plus_return_path",
+      "horizon": 1,
+      "families": [
+        "ridge"
+      ],
+      "origins": 2006,
+      "selected_gain_pct": -0.04325299129623872,
+      "raw_gain_pct": -4.423810713939336,
+      "raw_direction_pct": 49.45164506480558,
+      "classification": "INCONCLUSIVE"
+    },
+    {
+      "profile": "return-path-pilot-v1",
+      "source": "Fiyat yolu (nonlinear)",
+      "group": "base_plus_return_path",
+      "horizon": 5,
+      "families": [
+        "ridge"
+      ],
+      "origins": 2006,
+      "selected_gain_pct": -0.9516027451205167,
+      "raw_gain_pct": -5.971001896803285,
+      "raw_direction_pct": 50.04985044865404,
+      "classification": "INCONCLUSIVE"
+    },
+    {
+      "profile": "wasde-exploration-v1",
+      "source": "WASDE sayısal",
+      "group": "balance_L1",
+      "horizon": 5,
+      "families": [
+        "ridge",
+        "xgboost"
+      ],
+      "origins": 1254,
+      "selected_gain_pct": -0.7457265972457217,
+      "raw_gain_pct": -5.3383656591696305,
+      "raw_direction_pct": 49.760765550239235,
+      "classification": "INCONCLUSIVE"
+    },
+    {
+      "profile": "wasde-exploration-v1",
+      "source": "WASDE sayısal",
+      "group": "balance_L2",
+      "horizon": 5,
+      "families": [
+        "ridge",
+        "xgboost"
+      ],
+      "origins": 1254,
+      "selected_gain_pct": -0.29651692238661376,
+      "raw_gain_pct": -4.26335076154587,
+      "raw_direction_pct": 50.15948963317385,
+      "classification": "INCONCLUSIVE"
+    },
+    {
+      "profile": "wasde-exploration-v1",
+      "source": "WASDE sayısal",
+      "group": "balance_L6",
+      "horizon": 5,
+      "families": [
+        "ridge",
+        "xgboost"
+      ],
+      "origins": 1254,
+      "selected_gain_pct": -0.6191037643848762,
+      "raw_gain_pct": -5.742807396153959,
+      "raw_direction_pct": 49.122807017543856,
+      "classification": "INCONCLUSIVE"
+    },
+    {
+      "profile": "wasde-exploration-v1",
+      "source": "WASDE sayısal",
+      "group": "base",
+      "horizon": 5,
+      "families": [
+        "ridge",
+        "xgboost"
+      ],
+      "origins": 1254,
+      "selected_gain_pct": -0.5217675682274381,
+      "raw_gain_pct": -3.2928186806209014,
+      "raw_direction_pct": 49.36204146730462,
+      "classification": "INCONCLUSIVE"
+    },
+    {
+      "profile": "wasde-exploration-v1",
+      "source": "WASDE sayısal",
+      "group": "missing_L1",
+      "horizon": 5,
+      "families": [
+        "ridge",
+        "xgboost"
+      ],
+      "origins": 1254,
+      "selected_gain_pct": -0.28567608331975247,
+      "raw_gain_pct": -2.409785540431786,
+      "raw_direction_pct": 49.36204146730462,
+      "classification": "INCONCLUSIVE"
+    },
+    {
+      "profile": "wasde-exploration-v1",
+      "source": "WASDE sayısal",
+      "group": "missing_L2",
+      "horizon": 5,
+      "families": [
+        "ridge",
+        "xgboost"
+      ],
+      "origins": 1254,
+      "selected_gain_pct": -0.2773392897319038,
+      "raw_gain_pct": -3.4828384983685456,
+      "raw_direction_pct": 50.23923444976076,
+      "classification": "INCONCLUSIVE"
+    },
+    {
+      "profile": "wasde-exploration-v1",
+      "source": "WASDE sayısal",
+      "group": "missing_L6",
+      "horizon": 5,
+      "families": [
+        "ridge",
+        "xgboost"
+      ],
+      "origins": 1254,
+      "selected_gain_pct": -0.24581061722981357,
+      "raw_gain_pct": -3.5985906298775294,
+      "raw_direction_pct": 49.68102073365232,
+      "classification": "INCONCLUSIVE"
+    },
+    {
+      "profile": "weather-exploration-v1",
+      "source": "Hava (NASA POWER)",
+      "group": "base",
+      "horizon": 5,
+      "families": [
+        "ridge",
+        "xgboost"
+      ],
+      "origins": 2006,
+      "selected_gain_pct": -1.0110696852664969,
+      "raw_gain_pct": -1.9782897163988844,
+      "raw_direction_pct": 50.14955134596212,
+      "classification": "INCONCLUSIVE"
+    },
+    {
+      "profile": "weather-exploration-v1",
+      "source": "Hava (NASA POWER)",
+      "group": "missing_L1",
+      "horizon": 5,
+      "families": [
+        "ridge",
+        "xgboost"
+      ],
+      "origins": 2006,
+      "selected_gain_pct": -1.3133838896213668,
+      "raw_gain_pct": -2.269804557913635,
+      "raw_direction_pct": 49.65104685942173,
+      "classification": "INCONCLUSIVE"
+    },
+    {
+      "profile": "weather-exploration-v1",
+      "source": "Hava (NASA POWER)",
+      "group": "missing_L2",
+      "horizon": 5,
+      "families": [
+        "ridge",
+        "xgboost"
+      ],
+      "origins": 2006,
+      "selected_gain_pct": -1.3133838896213668,
+      "raw_gain_pct": -2.269804557913635,
+      "raw_direction_pct": 49.65104685942173,
+      "classification": "INCONCLUSIVE"
+    },
+    {
+      "profile": "weather-exploration-v1",
+      "source": "Hava (NASA POWER)",
+      "group": "missing_L6",
+      "horizon": 5,
+      "families": [
+        "ridge",
+        "xgboost"
+      ],
+      "origins": 2006,
+      "selected_gain_pct": -1.3133838896213668,
+      "raw_gain_pct": -2.269804557913635,
+      "raw_direction_pct": 49.65104685942173,
+      "classification": "INCONCLUSIVE"
+    },
+    {
+      "profile": "weather-exploration-v1",
+      "source": "Hava (NASA POWER)",
+      "group": "weather_L1",
+      "horizon": 5,
+      "families": [
+        "ridge",
+        "xgboost"
+      ],
+      "origins": 2006,
+      "selected_gain_pct": -1.0117250731206617,
+      "raw_gain_pct": -2.2817041640742497,
+      "raw_direction_pct": 49.45164506480558,
+      "classification": "INCONCLUSIVE"
+    },
+    {
+      "profile": "weather-exploration-v1",
+      "source": "Hava (NASA POWER)",
+      "group": "weather_L2",
+      "horizon": 5,
+      "families": [
+        "ridge",
+        "xgboost"
+      ],
+      "origins": 2006,
+      "selected_gain_pct": -1.1839400754497964,
+      "raw_gain_pct": -2.5765006839856275,
+      "raw_direction_pct": 49.80059820538385,
+      "classification": "INCONCLUSIVE"
+    },
+    {
+      "profile": "weather-exploration-v1",
+      "source": "Hava (NASA POWER)",
+      "group": "weather_L6",
+      "horizon": 5,
+      "families": [
+        "ridge",
+        "xgboost"
+      ],
+      "origins": 2006,
+      "selected_gain_pct": -1.8860329606457338,
+      "raw_gain_pct": -5.900435957959971,
+      "raw_direction_pct": 51.296111665004986,
+      "classification": "INCONCLUSIVE"
+    },
+    {
+      "profile": "recency-pilot-v1",
+      "source": "Yakın dönem ağırlığı",
+      "group": "selected",
+      "horizon": 1,
+      "families": [
+        "elasticnet",
+        "ridge",
+        "xgboost"
+      ],
+      "origins": 2006,
+      "selected_gain_pct": -0.19833784168792334,
+      "raw_gain_pct": -2.6522760972545134,
+      "raw_direction_pct": 51.046859421734794,
+      "classification": "INCONCLUSIVE"
+    },
+    {
+      "profile": "recency-pilot-v1",
+      "source": "Yakın dönem ağırlığı",
+      "group": "selected",
+      "horizon": 5,
+      "families": [
+        "elasticnet",
+        "ridge",
+        "xgboost"
+      ],
+      "origins": 2006,
+      "selected_gain_pct": -1.4770041933426903,
+      "raw_gain_pct": -10.284053016470063,
+      "raw_direction_pct": 51.69491525423729,
+      "classification": "INCONCLUSIVE"
+    },
+    {
+      "profile": "wasde-text-pilot-v1",
+      "source": "WASDE metni",
+      "group": "base_L1",
+      "horizon": 5,
+      "families": [
+        "ridge"
+      ],
+      "origins": 1254,
+      "selected_gain_pct": -1.3608367619235562,
+      "raw_gain_pct": -5.776649113082022,
+      "raw_direction_pct": 49.441786283891545,
+      "classification": "INCONCLUSIVE"
+    },
+    {
+      "profile": "wasde-text-pilot-v1",
+      "source": "WASDE metni",
+      "group": "base_L2",
+      "horizon": 5,
+      "families": [
+        "ridge"
+      ],
+      "origins": 1254,
+      "selected_gain_pct": -1.3698924186921424,
+      "raw_gain_pct": -5.875463592422481,
+      "raw_direction_pct": 49.760765550239235,
+      "classification": "INCONCLUSIVE"
+    },
+    {
+      "profile": "wasde-text-pilot-v1",
+      "source": "WASDE metni",
+      "group": "base_L6",
+      "horizon": 5,
+      "families": [
+        "ridge"
+      ],
+      "origins": 1254,
+      "selected_gain_pct": -1.2444302054564593,
+      "raw_gain_pct": -5.821230083519935,
+      "raw_direction_pct": 49.68102073365232,
+      "classification": "INCONCLUSIVE"
+    },
+    {
+      "profile": "wasde-text-pilot-v1",
+      "source": "WASDE metni",
+      "group": "numeric_L1",
+      "horizon": 5,
+      "families": [
+        "ridge"
+      ],
+      "origins": 1254,
+      "selected_gain_pct": -0.2602715072800299,
+      "raw_gain_pct": -7.995891968975877,
+      "raw_direction_pct": 49.601275917065394,
+      "classification": "INCONCLUSIVE"
+    },
+    {
+      "profile": "wasde-text-pilot-v1",
+      "source": "WASDE metni",
+      "group": "numeric_L2",
+      "horizon": 5,
+      "families": [
+        "ridge"
+      ],
+      "origins": 1254,
+      "selected_gain_pct": -0.26182394499363326,
+      "raw_gain_pct": -8.153895653785948,
+      "raw_direction_pct": 49.441786283891545,
+      "classification": "INCONCLUSIVE"
+    },
+    {
+      "profile": "wasde-text-pilot-v1",
+      "source": "WASDE metni",
+      "group": "numeric_L6",
+      "horizon": 5,
+      "families": [
+        "ridge"
+      ],
+      "origins": 1254,
+      "selected_gain_pct": -0.6164787404320471,
+      "raw_gain_pct": -8.13615213847083,
+      "raw_direction_pct": 50.079744816586924,
+      "classification": "INCONCLUSIVE"
+    },
+    {
+      "profile": "wasde-text-pilot-v1",
+      "source": "WASDE metni",
+      "group": "text_L1",
+      "horizon": 5,
+      "families": [
+        "ridge"
+      ],
+      "origins": 1254,
+      "selected_gain_pct": -0.2102992526330727,
+      "raw_gain_pct": -10.845022927022896,
+      "raw_direction_pct": 49.920255183413076,
+      "classification": "INCONCLUSIVE"
+    },
+    {
+      "profile": "wasde-text-pilot-v1",
+      "source": "WASDE metni",
+      "group": "text_L2",
+      "horizon": 5,
+      "families": [
+        "ridge"
+      ],
+      "origins": 1254,
+      "selected_gain_pct": 0.0,
+      "raw_gain_pct": -11.300907747660816,
+      "raw_direction_pct": 49.20255183413078,
+      "classification": "INCONCLUSIVE"
+    },
+    {
+      "profile": "wasde-text-pilot-v1",
+      "source": "WASDE metni",
+      "group": "text_L6",
+      "horizon": 5,
+      "families": [
+        "ridge"
+      ],
+      "origins": 1254,
+      "selected_gain_pct": -0.7557766519125986,
+      "raw_gain_pct": -11.720539637218819,
+      "raw_direction_pct": 50.15948963317385,
+      "classification": "INCONCLUSIVE"
+    },
+    {
+      "profile": null,
+      "source": "",
+      "group": "base",
+      "horizon": 1,
+      "families": null,
+      "origins": 2006,
+      "selected_gain_pct": -0.10554016945740763,
+      "raw_gain_pct": -0.14066789131632618,
+      "raw_direction_pct": 49.2023928215354,
+      "classification": "INCONCLUSIVE"
+    },
+    {
+      "profile": null,
+      "source": "",
+      "group": "base",
+      "horizon": 5,
+      "families": null,
+      "origins": 2006,
+      "selected_gain_pct": -0.47375702360814564,
+      "raw_gain_pct": -0.5833132944818242,
+      "raw_direction_pct": 48.155533399800596,
+      "classification": "INCONCLUSIVE"
+    },
+    {
+      "profile": null,
+      "source": "",
+      "group": "base_plus_return_path",
+      "horizon": 1,
+      "families": null,
+      "origins": 2006,
+      "selected_gain_pct": -0.004519988996287694,
+      "raw_gain_pct": -0.12084116449082583,
+      "raw_direction_pct": 49.40179461615155,
+      "classification": "INCONCLUSIVE"
+    },
+    {
+      "profile": null,
+      "source": "",
+      "group": "base_plus_return_path",
+      "horizon": 5,
+      "families": null,
+      "origins": 2006,
+      "selected_gain_pct": -0.5385772872259942,
+      "raw_gain_pct": -1.163882846861064,
+      "raw_direction_pct": 48.60418743768694,
+      "classification": "INCONCLUSIVE"
+    },
+    {
+      "profile": null,
+      "source": "",
+      "group": "cotton_corn_soybean",
+      "horizon": 1,
+      "families": null,
+      "origins": 2006,
+      "selected_gain_pct": -0.051931723964848686,
+      "raw_gain_pct": -0.06108409656280234,
+      "raw_direction_pct": 49.50149551345962,
+      "classification": "INCONCLUSIVE"
+    },
+    {
+      "profile": null,
+      "source": "",
+      "group": "cotton_corn_soybean",
+      "horizon": 5,
+      "families": null,
+      "origins": 2006,
+      "selected_gain_pct": -0.03500624123597973,
+      "raw_gain_pct": -0.16215846042084703,
+      "raw_direction_pct": 50.897308075772685,
+      "classification": "INCONCLUSIVE"
+    },
+    {
+      "profile": null,
+      "source": "",
+      "group": "cotton_only",
+      "horizon": 1,
+      "families": null,
+      "origins": 2006,
+      "selected_gain_pct": 0.03831096317039595,
+      "raw_gain_pct": -0.19086292902019686,
+      "raw_direction_pct": 50.34895314057827,
+      "classification": "INCONCLUSIVE"
+    },
+    {
+      "profile": null,
+      "source": "",
+      "group": "cotton_only",
+      "horizon": 5,
+      "families": null,
+      "origins": 2006,
+      "selected_gain_pct": 0.2133148543846275,
+      "raw_gain_pct": -0.504881335157692,
+      "raw_direction_pct": 49.2023928215354,
+      "classification": "INCONCLUSIVE"
+    },
+    {
+      "profile": null,
+      "source": "",
+      "group": "drift_reference",
+      "horizon": 1,
+      "families": null,
+      "origins": 2006,
+      "selected_gain_pct": -0.025812533354141465,
+      "raw_gain_pct": -0.025812533354141465,
+      "raw_direction_pct": 49.25224327018943,
+      "classification": "INCONCLUSIVE"
+    },
+    {
+      "profile": null,
+      "source": "",
+      "group": "drift_reference",
+      "horizon": 5,
+      "families": null,
+      "origins": 2006,
+      "selected_gain_pct": -0.16628913142209267,
+      "raw_gain_pct": -0.16628913142209267,
+      "raw_direction_pct": 45.363908275174474,
+      "classification": "INCONCLUSIVE"
+    },
+    {
+      "profile": null,
+      "source": "",
+      "group": "selected_statistical",
+      "horizon": 1,
+      "families": null,
+      "origins": 2006,
+      "selected_gain_pct": -0.2874842911996023,
+      "raw_gain_pct": -0.3640222998485543,
+      "raw_direction_pct": 36.78963110667996,
+      "classification": "INCONCLUSIVE"
+    },
+    {
+      "profile": null,
+      "source": "",
+      "group": "selected_statistical",
+      "horizon": 5,
+      "families": null,
+      "origins": 2006,
+      "selected_gain_pct": -0.0879017308979213,
+      "raw_gain_pct": -0.13614258389942346,
+      "raw_direction_pct": 23.728813559322035,
+      "classification": "INCONCLUSIVE"
+    },
+    {
+      "profile": "availability-clock-pilot-v1",
+      "source": "DXY/WTI zamanlama",
+      "group": "control",
+      "horizon": 1,
+      "families": [
+        "ridge"
+      ],
+      "origins": 2006,
+      "selected_gain_pct": -0.3284734888145735,
+      "raw_gain_pct": -1.8459210315834085,
+      "raw_direction_pct": null,
+      "classification": "DECISIVE_NEGATIVE"
+    },
+    {
+      "profile": "availability-clock-pilot-v1",
+      "source": "DXY/WTI zamanlama",
+      "group": "control",
+      "horizon": 5,
+      "families": [
+        "ridge"
+      ],
+      "origins": 2006,
+      "selected_gain_pct": -0.7999705045629302,
+      "raw_gain_pct": -4.510063563471878,
+      "raw_direction_pct": null,
+      "classification": "DECISIVE_NEGATIVE"
+    },
+    {
+      "profile": "availability-clock-pilot-v1",
+      "source": "DXY/WTI zamanlama",
+      "group": "available",
+      "horizon": 1,
+      "families": [
+        "ridge"
+      ],
+      "origins": 2006,
+      "selected_gain_pct": -0.15380486939062799,
+      "raw_gain_pct": -2.0309243973972713,
+      "raw_direction_pct": null,
+      "classification": "DECISIVE_NEGATIVE"
+    },
+    {
+      "profile": "availability-clock-pilot-v1",
+      "source": "DXY/WTI zamanlama",
+      "group": "available",
+      "horizon": 5,
+      "families": [
+        "ridge"
+      ],
+      "origins": 2006,
+      "selected_gain_pct": -1.3395648580184272,
+      "raw_gain_pct": -4.915869056596711,
+      "raw_direction_pct": null,
+      "classification": "DECISIVE_NEGATIVE"
+    },
+    {
+      "profile": "wasde-regional-t1-pilot-v1",
+      "source": "WASDE sayısal",
+      "group": null,
+      "horizon": 1,
+      "families": [
+        "ridge"
+      ],
+      "origins": null,
+      "selected_gain_pct": -0.5229397679180181,
+      "raw_gain_pct": -10.213412184826742,
+      "raw_direction_pct": null,
+      "classification": "DECISIVE_NEGATIVE"
+    },
+    {
+      "profile": "nass-regional-t1-pilot-v1",
+      "source": "USDA NASS ürün durumu",
+      "group": null,
+      "horizon": 1,
+      "families": [
+        "ridge"
+      ],
+      "origins": null,
+      "selected_gain_pct": -0.027443907902746645,
+      "raw_gain_pct": -3.7557492088717392,
+      "raw_direction_pct": null,
+      "classification": "DECISIVE_NEGATIVE"
+    },
+    {
+      "profile": "price-mae-calibration-v1",
+      "source": "price-mae-calibration",
+      "group": null,
+      "horizon": 1,
+      "families": [
+        "ridge"
+      ],
+      "origins": null,
+      "selected_gain_pct": -0.02608146329374783,
+      "raw_gain_pct": -3.736847686107403,
+      "raw_direction_pct": null,
+      "classification": "DECISIVE_NEGATIVE"
+    },
+    {
+      "profile": "legacy-loss-lineage-v1",
+      "source": "legacy-loss-lineage",
+      "group": null,
+      "horizon": 1,
+      "families": [
+        "xgboost"
+      ],
+      "origins": null,
+      "selected_gain_pct": -0.6110172877478393,
+      "raw_gain_pct": null,
+      "raw_direction_pct": null,
+      "classification": "INCONCLUSIVE"
+    },
+    {
+      "profile": "paired-price-loss-control-v1",
+      "source": "paired-price-loss-control",
+      "group": null,
+      "horizon": 1,
+      "families": [
+        "xgboost"
+      ],
+      "origins": null,
+      "selected_gain_pct": -0.48829781699724073,
+      "raw_gain_pct": null,
+      "raw_direction_pct": null,
+      "classification": "DECISIVE_POSITIVE"
+    },
+    {
+      "profile": "price-only-median-t1-v1",
+      "source": "Yalnız fiyat geçmişi",
+      "group": "ridge",
+      "horizon": 1,
+      "families": [
+        "ridge"
+      ],
+      "origins": 2006,
+      "selected_gain_pct": -0.15729157228225876,
+      "raw_gain_pct": -2.776132732657244,
+      "raw_direction_pct": null,
+      "classification": "DECISIVE_NEGATIVE"
+    },
+    {
+      "profile": "price-only-median-t1-v1",
+      "source": "Yalnız fiyat geçmişi",
+      "group": "quantile",
+      "horizon": 1,
+      "families": [
+        "quantile"
+      ],
+      "origins": 2006,
+      "selected_gain_pct": -0.08252343502122006,
+      "raw_gain_pct": -0.11861850945187324,
+      "raw_direction_pct": null,
+      "classification": "DECISIVE_NEGATIVE"
+    }
+  ]
+}
