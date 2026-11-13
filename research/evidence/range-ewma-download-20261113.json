@@ -1,0 +1,160 @@
+{
+  "source": "Yahoo Finance via yfinance 1.8.0",
+  "params": {
+    "period": "max",
+    "interval": "1d",
+    "auto_adjust": false
+  },
+  "markets": {
+    "ZW=F": {
+      "retrieved_utc": "2026-11-13T15:02:48.124028+00:00",
+      "rows": 6601,
+      "first": "2000-07-17",
+      "last": "2026-11-13",
+      "raw": "ZW.csv",
+      "raw_sha256": "eb8ca8b7230b8aaf72152d1bdaa1160ee377b7d55ef2abce95091393c297c16b",
+      "frame": "ZW.csv",
+      "frame_sha256": "77bfd210e2b59683b9d82a8e883ebfa6550432d7183b03c95358c4b7e3489fd9",
+      "normalization": "date = exchange-local calendar date from Yahoo timestamp; OHLCV unchanged; no row dropped/filled"
+    },
+    "KE=F": {
+      "retrieved_utc": "2026-11-13T15:02:52.658653+00:00",
+      "rows": 6578,
+      "first": "2000-09-21",
+      "last": "2026-11-13",
+      "raw": "KE.csv",
+      "raw_sha256": "ed35b88898aba55e86ddf7d6a8707a42712e87e6ce55b90a2527e64b3e757f00",
+      "frame": "KE.csv",
+      "frame_sha256": "682bc056248fa972e8264cdbb912ab8fc183d159b877ead26d40a7e623d25330",
+      "normalization": "date = exchange-local calendar date from Yahoo timestamp; OHLCV unchanged; no row dropped/filled"
+    },
+    "ZM=F": {
+      "retrieved_utc": "2026-11-13T15:02:53.751997+00:00",
+      "rows": 6592,
+      "first": "2000-05-15",
+      "last": "2026-11-13",
+      "raw": "ZM.csv",
+      "raw_sha256": "1467cc3a0002a2ae9f25b4bd87b17f94b93df1ca8519ca01f6db9a39fdda2568",
+      "frame": "ZM.csv",
+      "frame_sha256": "a41bb0137789eae8371d029aefd70eb360f278a30f84b894ff48dfc2cb7c9293",
+      "normalization": "date = exchange-local calendar date from Yahoo timestamp; OHLCV unchanged; no row dropped/filled"
+    },
+    "ZL=F": {
+      "retrieved_utc": "2026-11-13T15:02:54.812546+00:00",
+      "rows": 6630,
+      "first": "2000-03-15",
+      "last": "2026-11-13",
+      "raw": "ZL.csv",
+      "raw_sha256": "7809f9fb72a29bf4f3fc7eaba363bebb3494e2f176ae89a2ca37b90cc33e241d",
+      "frame": "ZL.csv",
+      "frame_sha256": "d7b24cdeee3803fe533d59555bc13a17a99ddfbdc1332937e568ee6ce15729e4",
+      "normalization": "date = exchange-local calendar date from Yahoo timestamp; OHLCV unchanged; no row dropped/filled"
+    },
+    "ZO=F": {
+      "retrieved_utc": "2026-11-13T15:02:55.951607+00:00",
+      "rows": 6668,
+      "first": "1999-09-14",
+      "last": "2026-11-13",
+      "raw": "ZO.csv",
+      "raw_sha256": "363258eb454b1d53f6350cf7a17fa59e705edd7b8f8c4e9be66f30aadca58b8c",
+      "frame": "ZO.csv",
+      "frame_sha256": "ec07232bb85ef15c5d4869339f78aff0fcf875e2d908f8863b740035b6d308ed",
+      "normalization": "date = exchange-local calendar date from Yahoo timestamp; OHLCV unchanged; no row dropped/filled"
+    },
+    "ZR=F": {
+      "retrieved_utc": "2026-11-13T15:02:56.970891+00:00",
+      "rows": 6811,
+      "first": "1999-09-14",
+      "last": "2026-11-13",
+      "raw": "ZR.csv",
+      "raw_sha256": "86a75e992e888901a9780d4e3f0e300181da6f68ac08feb1db1b4f0c51458edb",
+      "frame": "ZR.csv",
+      "frame_sha256": "fe57aa5144cb58f6b817bce4f2a6431dda524a669643e600ca366005ab34a155",
+      "normalization": "date = exchange-local calendar date from Yahoo timestamp; OHLCV unchanged; no row dropped/filled"
+    },
+    "SB=F": {
+      "retrieved_utc": "2026-11-13T15:02:58.155145+00:00",
+      "rows": 6700,
+      "first": "2000-03-01",
+      "last": "2026-11-13",
+      "raw": "SB.csv",
+      "raw_sha256": "ca8c2f944866e51dcccecd2834fa13ba2ba703a660da62a2b2c00e36137b1e9d",
+      "frame": "SB.csv",
+      "frame_sha256": "e8998b239e1308cfec2fb07d45c43078370d02516bbdd2a00413dc6c87d10452",
+      "normalization": "date = exchange-local calendar date from Yahoo timestamp; OHLCV unchanged; no row dropped/filled"
+    },
+    "KC=F": {
+      "retrieved_utc": "2026-11-13T15:02:59.293209+00:00",
+      "rows": 6737,
+      "first": "2000-01-03",
+      "last": "2026-11-13",
+      "raw": "KC.csv",
+      "raw_sha256": "9a1bbf6e176f6751ef3d0cde3a3aacb5fb4ae24520e526a17e9bf9afcb52d926",
+      "frame": "KC.csv",
+      "frame_sha256": "d55d4b464abba9ca54fb51cf9c6378f4a237590432cb64d148acdaab467d7948",
+      "normalization": "date = exchange-local calendar date from Yahoo timestamp; OHLCV unchanged; no row dropped/filled"
+    },
+    "CC=F": {
+      "retrieved_utc": "2026-11-13T15:03:00.409443+00:00",
+      "rows": 6739,
+      "first": "2000-01-03",
+      "last": "2026-11-13",
+      "raw": "CC.csv",
+      "raw_sha256": "9f32267a47c9e0809287ea1fdec018775af99ebfb6db7221d15984d3365d8b1c",
+      "frame": "CC.csv",
+      "frame_sha256": "737e45181c9c78e931e80481c778c6278b95c487a2db325be3ace1088738aea6",
+      "normalization": "date = exchange-local calendar date from Yahoo timestamp; OHLCV unchanged; no row dropped/filled"
+    },
+    "OJ=F": {
+      "retrieved_utc": "2026-11-13T15:03:31.414079+00:00",
+      "rows": 1,
+      "first": "2026-11-13",
+      "last": "2026-11-13",
+      "raw": "OJ.csv",
+      "raw_sha256": "2b2fa7fe246bde482a4669db0737d9f8380409cc51aebf4a52b0baeaeb27068f",
+      "frame": "OJ.csv",
+      "frame_sha256": "07df848dfaf529d49faa2c858bd14cd40f04a6dbd299c59f2615d178c9d578d0",
+      "attempt1": {
+        "raw": "OJ.attempt1.csv",
+        "raw_sha256": "2b2fa7fe246bde482a4669db0737d9f8380409cc51aebf4a52b0baeaeb27068f",
+        "retrieved_utc": "2026-11-13T15:03:01.554303+00:00"
+      },
+      "retry_note": "attempt1 returned 1 row; single bounded retry",
+      "normalization": "date = exchange-local calendar date from Yahoo timestamp; OHLCV unchanged; no row dropped/filled"
+    },
+    "LE=F": {
+      "retrieved_utc": "2026-11-13T15:03:01.908485+00:00",
+      "rows": 6444,
+      "first": "2001-03-01",
+      "last": "2026-11-13",
+      "raw": "LE.csv",
+      "raw_sha256": "dcc842063f6c152587f3add5b87fb1dbdc1d6a4723d596b275eccaff8c2809b2",
+      "frame": "LE.csv",
+      "frame_sha256": "6ccee6ffcdbb559e7eaae3a4cc2f1031a76fa0969882fd9ff1037183eb0ecff0",
+      "normalization": "date = exchange-local calendar date from Yahoo timestamp; OHLCV unchanged; no row dropped/filled"
+    },
+    "HE=F": {
+      "retrieved_utc": "2026-11-13T15:03:02.970753+00:00",
+      "rows": 6512,
+      "first": "2000-12-15",
+      "last": "2026-11-13",
+      "raw": "HE.csv",
+      "raw_sha256": "e1eccae63d986009af99491d72d597187f19875bc3e02c2c749cbba7ec113e7e",
+      "frame": "HE.csv",
+      "frame_sha256": "f18fb641a7715421ca2a0af2a445548ca703f702ec1d378c126393a5b76e4ef3",
+      "normalization": "date = exchange-local calendar date from Yahoo timestamp; OHLCV unchanged; no row dropped/filled"
+    },
+    "GF=F": {
+      "retrieved_utc": "2026-11-13T15:03:04.164166+00:00",
+      "rows": 6414,
+      "first": "2001-04-03",
+      "last": "2026-11-13",
+      "raw": "GF.csv",
+      "raw_sha256": "c4b02fdf5e770559a53faeee6a5b7e67cc6135079d5fec55f7df07db4a36fbd4",
+      "frame": "GF.csv",
+      "frame_sha256": "18fa6ce43ebd21f5ca4752b0fcefb9c71376aa5680a297fb6549c1b43b227b7f",
+      "normalization": "date = exchange-local calendar date from Yahoo timestamp; OHLCV unchanged; no row dropped/filled"
+    }
+  },
+  "normalization_fix": "first normalization produced a duplicated date column; frames rebuilt from unchanged raw CSVs without re-download"
+}

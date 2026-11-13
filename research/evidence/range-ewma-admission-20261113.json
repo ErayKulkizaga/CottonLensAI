@@ -1,0 +1,164 @@
+{
+  "profile": "range-ewma-confirmatory-t1-v1",
+  "stage": "admission",
+  "markets": {
+    "ZW=F": {
+      "file": "output/range-ewma-confirmatory-20261113/frames/ZW.csv",
+      "sha256": "77bfd210e2b59683b9d82a8e883ebfa6550432d7183b03c95358c4b7e3489fd9",
+      "origins": 6308,
+      "valid_fraction": 0.8398727465535525,
+      "max_gap_days": 5.0,
+      "first_origin": "2001-10-01",
+      "last_origin": "2026-10-29",
+      "admitted": true,
+      "reasons": []
+    },
+    "KE=F": {
+      "file": "output/range-ewma-confirmatory-20261113/frames/KE.csv",
+      "sha256": "682bc056248fa972e8264cdbb912ab8fc183d159b877ead26d40a7e623d25330",
+      "origins": 6302,
+      "valid_fraction": 0.8891760413499544,
+      "max_gap_days": 5.0,
+      "first_origin": "2001-10-11",
+      "last_origin": "2026-10-29",
+      "admitted": true,
+      "reasons": []
+    },
+    "ZM=F": {
+      "file": "output/range-ewma-confirmatory-20261113/frames/ZM.csv",
+      "sha256": "a41bb0137789eae8371d029aefd70eb360f278a30f84b894ff48dfc2cb7c9293",
+      "origins": 6206,
+      "valid_fraction": 0.830248786407767,
+      "max_gap_days": 38.0,
+      "first_origin": "2002-01-25",
+      "last_origin": "2026-10-29",
+      "admitted": false,
+      "reasons": [
+        "calendar_gap"
+      ]
+    },
+    "ZL=F": {
+      "file": "output/range-ewma-confirmatory-20261113/frames/ZL.csv",
+      "sha256": "d7b24cdeee3803fe533d59555bc13a17a99ddfbdc1332937e568ee6ce15729e4",
+      "origins": 6258,
+      "valid_fraction": 0.8223227752639517,
+      "max_gap_days": 5.0,
+      "first_origin": "2001-12-04",
+      "last_origin": "2026-10-29",
+      "admitted": true,
+      "reasons": []
+    },
+    "ZO=F": {
+      "file": "output/range-ewma-confirmatory-20261113/frames/ZO.csv",
+      "sha256": "ec07232bb85ef15c5d4869339f78aff0fcf875e2d908f8863b740035b6d308ed",
+      "origins": 5398,
+      "valid_fraction": 0.7114577084583084,
+      "max_gap_days": 5.0,
+      "first_origin": "2005-05-18",
+      "last_origin": "2026-10-29",
+      "admitted": false,
+      "reasons": [
+        "valid_bar_fraction"
+      ]
+    },
+    "ZR=F": {
+      "file": "output/range-ewma-confirmatory-20261113/frames/ZR.csv",
+      "sha256": "fe57aa5144cb58f6b817bce4f2a6431dda524a669643e600ca366005ab34a155",
+      "origins": 4900,
+      "valid_fraction": 0.6765526354426663,
+      "max_gap_days": 17.0,
+      "first_origin": "2007-04-23",
+      "last_origin": "2026-10-29",
+      "admitted": false,
+      "reasons": [
+        "valid_bar_fraction",
+        "calendar_gap"
+      ]
+    },
+    "SB=F": {
+      "file": "output/range-ewma-confirmatory-20261113/frames/SB.csv",
+      "sha256": "e8998b239e1308cfec2fb07d45c43078370d02516bbdd2a00413dc6c87d10452",
+      "origins": 6437,
+      "valid_fraction": 0.9980597014925373,
+      "max_gap_days": 7.0,
+      "first_origin": "2001-03-02",
+      "last_origin": "2026-10-29",
+      "admitted": true,
+      "reasons": []
+    },
+    "KC=F": {
+      "file": "output/range-ewma-confirmatory-20261113/frames/KC.csv",
+      "sha256": "d55d4b464abba9ca54fb51cf9c6378f4a237590432cb64d148acdaab467d7948",
+      "origins": 6475,
+      "valid_fraction": 0.8425115036366335,
+      "max_gap_days": 7.0,
+      "first_origin": "2001-01-03",
+      "last_origin": "2026-10-29",
+      "admitted": true,
+      "reasons": []
+    },
+    "CC=F": {
+      "file": "output/range-ewma-confirmatory-20261113/frames/CC.csv",
+      "sha256": "737e45181c9c78e931e80481c778c6278b95c487a2db325be3ace1088738aea6",
+      "origins": 6473,
+      "valid_fraction": 0.8053123608844042,
+      "max_gap_days": 6.0,
+      "first_origin": "2001-01-09",
+      "last_origin": "2026-10-29",
+      "admitted": true,
+      "reasons": []
+    },
+    "OJ=F": {
+      "file": "output/range-ewma-confirmatory-20261113/frames/OJ.csv",
+      "sha256": "07df848dfaf529d49faa2c858bd14cd40f04a6dbd299c59f2615d178c9d578d0",
+      "origins": 0,
+      "valid_fraction": 0.0,
+      "max_gap_days": Infinity,
+      "first_origin": null,
+      "last_origin": null,
+      "admitted": false,
+      "reasons": [
+        "too_few_origins",
+        "valid_bar_fraction",
+        "calendar_gap"
+      ]
+    },
+    "LE=F": {
+      "file": "output/range-ewma-confirmatory-20261113/frames/LE.csv",
+      "sha256": "6ccee6ffcdbb559e7eaae3a4cc2f1031a76fa0969882fd9ff1037183eb0ecff0",
+      "origins": 6176,
+      "valid_fraction": 0.8268156424581006,
+      "max_gap_days": 33.0,
+      "first_origin": "2002-03-08",
+      "last_origin": "2026-10-29",
+      "admitted": false,
+      "reasons": [
+        "calendar_gap"
+      ]
+    },
+    "HE=F": {
+      "file": "output/range-ewma-confirmatory-20261113/frames/HE.csv",
+      "sha256": "f18fb641a7715421ca2a0af2a445548ca703f702ec1d378c126393a5b76e4ef3",
+      "origins": 6131,
+      "valid_fraction": 0.8662469287469288,
+      "max_gap_days": 5.0,
+      "first_origin": "2002-06-07",
+      "last_origin": "2026-10-29",
+      "admitted": true,
+      "reasons": []
+    },
+    "GF=F": {
+      "file": "output/range-ewma-confirmatory-20261113/frames/GF.csv",
+      "sha256": "18fa6ce43ebd21f5ca4752b0fcefb9c71376aa5680a297fb6549c1b43b227b7f",
+      "origins": 4843,
+      "valid_fraction": 0.7765824758341129,
+      "max_gap_days": 8.0,
+      "first_origin": "2007-07-12",
+      "last_origin": "2026-10-29",
+      "admitted": false,
+      "reasons": [
+        "valid_bar_fraction"
+      ]
+    }
+  }
+}
