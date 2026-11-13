@@ -1,0 +1,62 @@
+{
+  "schema": 1,
+  "profile": "risk-lab-package-20261113",
+  "classification": "DEMONSTRATION_NOT_EVIDENCE",
+  "today_card": {
+    "run_utc": "2026-11-13T16:54:12.157783+00:00",
+    "raw_sha256": "6c0be7c9342045be739e86e2dd82bf8772d75e0ae84ba16b51b456b1f909576c",
+    "origin_session": "2026-11-12",
+    "origin_close_cents_lb": 78.66999816894531,
+    "next_session_sigma_pct": 1.2940073966540369,
+    "big_move_probability": 0.03423284502698535,
+    "interval80_cents_lb": [
+      77.49631426263592,
+      79.89520708625581
+    ],
+    "interval90_cents_lb": [
+      77.06640769465444,
+      80.37514287306261
+    ],
+    "ct_calibration": {
+      "coverage80": 0.7919278014539985,
+      "coverage90": 0.9029832038104788,
+      "origins": 3989,
+      "auc_range": 0.755042146839905,
+      "auc_ewma": 0.7478716763794108
+    }
+  },
+  "satellite": {
+    "bbox": [
+      -102.6,
+      33.0,
+      -101.0,
+      34.4
+    ],
+    "rules": "CDL year Y-1 cotton class 2; MODIS v061 end_datetime; no 2022+",
+    "peak_ndvi": {
+      "2009": 0.4901,
+      "2010": 0.5365,
+      "2011": 0.2569,
+      "2012": 0.3745,
+      "2013": 0.4907,
+      "2014": 0.4887,
+      "2015": 0.5121,
+      "2016": 0.4924,
+      "2017": 0.5526,
+      "2018": 0.4351,
+      "2019": 0.4662,
+      "2020": 0.3261,
+      "2021": 0.5444
+    },
+    "texas_ndvi_sha256": "36ccc683dc5ecdfaf4a1037696381e4ab6fd7a89d5fab70b844043c836877f86"
+  },
+  "page": {
+    "path": "output/risk-lab-package/cotton-risk-lab.html",
+    "sha256": "80f3479db210530e97a0460a26355a907b1003aa6268627a50ad11f8eadb13a4",
+    "artifact": "private claude.ai artifact"
+  },
+  "notes": [
+    "today card is not externally timestamped; not forward evidence",
+    "satellite vignette is exploratory, pre-2022 only, prior-year CDL mask, MODIS v061 reprocessed"
+  ]
+}

@@ -1,0 +1,347 @@
+<title>Cotton Risk Lab</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one reading column of evidence sections, each opened by a claim and closed by its proof. */
+:root {
+  --bg: #f4f6f3; --surface: #ffffff; --ink: #14191a; --ink-2: #485155; --muted: #79838a; --line: #dbe0dc;
+  --s1: #2a78d6; --s2: #eb6834; --good: #1d7a3c; --good-bg: #e3f2e7; --bad: #a8321f; --bad-bg: #f8e6e1;
+  --warn: #8a5a00; --warn-bg: #fbf0d8;
+  --display: "Space Grotesk", "Segoe UI", system-ui, sans-serif;
+  --body: "Inter", "Segoe UI", system-ui, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #111516; --surface: #191e20; --ink: #eef2f0; --ink-2: #b8c1c3; --muted: #8b959a; --line: #2b3336;
+  --s1: #3987e5; --s2: #d95926; --good: #63c57f; --good-bg: #16301f; --bad: #f08a76; --bad-bg: #3a1d17;
+  --warn: #e3b55a; --warn-bg: #33280f; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #111516; --surface: #191e20; --ink: #eef2f0; --ink-2: #b8c1c3; --muted: #8b959a; --line: #2b3336;
+  --s1: #3987e5; --s2: #d95926; --good: #63c57f; --good-bg: #16301f; --bad: #f08a76; --bad-bg: #3a1d17;
+  --warn: #e3b55a; --warn-bg: #33280f; color-scheme: dark }
+body { background: var(--bg); color: var(--ink); font: 15px/1.6 var(--body); }
+.wrap { max-width: 1040px; margin: 0 auto; padding-block: 40px 72px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+  display: grid; gap: 56px; }
+h1, h2, h3 { font-family: var(--display); text-wrap: balance; margin: 0; letter-spacing: -0.01em; }
+h1 { font-size: clamp(2rem, 5vw, 3.1rem); line-height: 1.08; }
+h2 { font-size: 1.6rem; line-height: 1.2; }
+h3 { font-size: 1.05rem; }
+p { margin: 0; max-width: 68ch; color: var(--ink-2); }
+.eyebrow { font: 500 12px/1.4 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+section { display: grid; gap: 20px; min-width: 0; }
+.head { display: grid; gap: 10px; }
+.tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 12px; }
+.tile { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 18px; display: grid; gap: 6px; align-content: start; }
+.tile .big { font: 600 2rem/1.1 var(--display); font-variant-numeric: tabular-nums; }
+.tile .lab { font-size: 13px; color: var(--ink-2); }
+.panel { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 18px; min-width: 0; display: grid; gap: 12px; }
+.chart { width: 100%; height: auto; display: block; overflow: visible; }
+.chart text { font: 11px var(--mono); fill: var(--muted); }
+.chart .lbl { fill: var(--ink-2); font-family: var(--body); font-size: 12px; }
+.legend { display: flex; flex-wrap: wrap; gap: 16px; font-size: 13px; color: var(--ink-2); }
+.legend i { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 6px; vertical-align: -1px; }
+.scroll { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: 13.5px; }
+th, td { text-align: left; padding: 9px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font: 500 11.5px var(--mono); letter-spacing: .05em; text-transform: uppercase; color: var(--muted); }
+td.num { font-family: var(--mono); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.pill { display: inline-block; font: 500 11.5px var(--mono); padding: 2px 8px; border-radius: 99px; white-space: nowrap; }
+.pill.ok { color: var(--good); background: var(--good-bg); }
+.pill.no { color: var(--bad); background: var(--bad-bg); }
+.pill.mid { color: var(--warn); background: var(--warn-bg); }
+.two { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; }
+.card { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 14px; }
+.kv { display: grid; gap: 2px; }
+.kv b { font: 600 1.35rem/1.2 var(--display); font-variant-numeric: tabular-nums; }
+.kv span { font-size: 12.5px; color: var(--muted); }
+figure { margin: 0; display: grid; gap: 8px; }
+figure img { width: 100%; border-radius: 8px; background: var(--bg); border: 1px solid var(--line); }
+figcaption { font-size: 13px; color: var(--ink-2); }
+ul.plain { margin: 0; padding-left: 18px; color: var(--ink-2); display: grid; gap: 6px; max-width: 75ch; }
+code { font: 12.5px var(--mono); background: var(--bg); padding: 1px 5px; border-radius: 4px; border: 1px solid var(--line); }
+.note { font-size: 13px; color: var(--muted); }
+#tip { position: fixed; pointer-events: none; z-index: 20; background: var(--surface); color: var(--ink); border: 1px solid var(--line);
+  border-radius: 8px; padding: 8px 10px; font-size: 12.5px; line-height: 1.45; box-shadow: 0 6px 20px rgba(0,0,0,.12); max-width: 260px; }
+.hit { fill: transparent; cursor: default; }
+@media (prefers-reduced-motion: no-preference) { .tile, .panel { transition: border-color .15s } .tile:hover { border-color: var(--muted) } }
+</style>
+
+<div class="wrap">
+  <header class="head">
+    <div class="eyebrow">CottonLensAI · Araştırma özeti · 13 Kasım 2026</div>
+    <h1>Pamukta neyi tahmin edebiliriz?</h1>
+    <p>ICE Cotton No. 2 üzerinde yüzlerce model ve on iki veri kaynağı denendi. Günlük fiyat yönü, basit
+      "yarın = bugün" tahminini anlamlı biçimde geçmiyor. Riskin büyüklüğü ise ölçülebilir biçimde tahmin
+      edilebiliyor: önceden kaydedilmiş testlerde, keşifte görülmemiş piyasalarda doğrulandı.</p>
+  </header>
+
+  <div class="tiles" id="tiles"></div>
+
+  <section>
+    <div class="head">
+      <div class="eyebrow">1 · Fiyat</div>
+      <h2>Fiyat yönünde sinyal bulunamadı</h2>
+      <p>Her nokta tamamlanmış bir fiyat deneyidir: Naive'e göre MAE kazancı, geçmiş doğrulamayla seçilmiş tahmin,
+        2016–2023 boyunca 2.006 origin. Proje kapısı %5'ti; hiçbir deney yaklaşamadı.</p>
+    </div>
+    <div class="panel">
+      <div class="legend"><span><i style="background:var(--s1)"></i>T+5 ufku</span><span><i style="background:var(--s2)"></i>T+1 ufku</span></div>
+      <div class="scroll"><svg class="chart" id="mapChart" role="img" aria-label="Deney başına Naive MAE kazancı"></svg></div>
+    </div>
+    <div class="two">
+      <div class="panel">
+        <h3>Naive (yarın = bugün) hatası, CT=F</h3>
+        <div class="scroll"><table id="naiveT"><thead><tr><th>Ufuk</th><th>MAPE 2016–23</th><th>MAPE 2024–26</th></tr></thead><tbody></tbody></table></div>
+      </div>
+      <div class="panel">
+        <h3>Bir kıyas noktası</h3>
+        <p>Cotcast kamuya açık blogunda ICE Cotton No. 2 için <b>%0,56 MAPE</b> yayımlıyor; ufuk, test dönemi ve
+          karşılaştırma ölçütü belirtilmiyor. Aynı seride en kısa ufukta bile Naive hatası %1,0–1,2. Bu sayı gerçek bir
+          ileri test hatasıysa Naive'i yarıdan fazla geçmek demek. Bizim analizimizde geleceği gören bir model bile
+          T+1'de ancak %3,4 iyileşme sağladı. Metriğin tanımı açıklanınca sayı anlam kazanır.</p>
+        <p class="note">Kaynak: cotcast.ai blogu, Kasım 2026 erişimi. Bu bir yanlış iddiası değil, tanım talebidir.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="head">
+      <div class="eyebrow">2 · Risk</div>
+      <h2>Önceden kaydedilmiş testler: neyi geçti, neyi geçemedi</h2>
+      <p>Tarif, veri kabulü ve karar kuralı sonuçlardan önce Git'e kaydedildi; her test bir kez çalıştı. Doğrulama 7
+        emtia piyasasında yapıldı (buğday ×2, soya yağı, şeker, kahve, kakao, domuz), yaklaşık 2005–2026.
+        Pamuk keşif verisi olduğu için doğrulamaya girmedi.</p>
+    </div>
+    <div class="panel scroll">
+      <table id="hypT"><thead><tr><th>Soru</th><th>Sonuç</th><th>Havuz kazancı</th><th>Güven aralığı (20 gün blok)</th><th>Pozitif piyasa</th></tr></thead><tbody></tbody></table>
+      <p class="note">Range-EWMA = günlük kapanış getirisi ile gün içi yüksek–düşük aralığından (Parkinson) gelen EWMA'ların yarı yarıya karışımı.
+        Risk Lab testlerinde aralıklar Bonferroni düzeltmelidir (dört test, %98,75).</p>
+    </div>
+    <div class="two">
+      <div class="panel">
+        <h3>Aralıklar söylediği kadar tutuyor</h3>
+        <div class="legend"><span><i style="background:var(--s1)"></i>%80 aralık</span><span><i style="background:var(--s2)"></i>%90 aralık</span></div>
+        <svg class="chart" id="covChart" role="img" aria-label="Piyasa başına gerçekleşen kapsama"></svg>
+        <p class="note">Kesikli çizgiler hedef kapsamadır. CT satırı keşif verisidir.</p>
+      </div>
+      <div class="panel">
+        <h3>Sert hareket günlerini ayırt etme (AUC)</h3>
+        <div class="scroll"><table id="aucT"><thead><tr><th>Piyasa</th><th>EWMA</th><th>Range</th><th>Gün</th></tr></thead><tbody></tbody></table></div>
+        <p class="note">Sert hareket: ertesi günkü mutlak getiri, geçmişteki %90 kantili aşıyor. 0,5 rastgele tahmindir.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="head">
+      <div class="eyebrow">3 · Bugün</div>
+      <h2 id="todayH">CT=F risk kartı</h2>
+      <p id="todayP"></p>
+    </div>
+    <div class="panel">
+      <div class="card" id="todayCard"></div>
+      <svg class="chart" id="pxChart" role="img" aria-label="Son 120 seans CT=F kapanışı ve sonraki seans aralığı"></svg>
+      <p class="note">Yahoo CT=F sürekli vadeli proxy'si. Kart gösterim amaçlıdır; dışarıda zaman damgalanmadığı için ileri test kanıtı sayılmaz.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="head">
+      <div class="eyebrow">4 · Uydu</div>
+      <h2>Teksas High Plains: kuraklık uzaydan görünüyor</h2>
+      <p>MODIS 250 m NDVI, yalnız pamuk piksellerinde. Maske, sızıntıyı önlemek için bir önceki yılın USDA Cropland
+        Data Layer haritasından alındı. Lubbock çevresi; temmuz sonu kompoziti. 2011, Teksas'ın kayıtlardaki en kurak yılıydı.</p>
+    </div>
+    <div class="two">
+      <figure><img alt="2010 temmuz sonu NDVI, pamuk pikselleri" src="data:image/png;base64,__PNG2010__"><figcaption id="cap2010"></figcaption></figure>
+      <figure><img alt="2011 temmuz sonu NDVI, pamuk pikselleri" src="data:image/png;base64,__PNG2011__"><figcaption id="cap2011"></figcaption></figure>
+    </div>
+    <div class="panel">
+      <h3>Sezon boyu pamuk NDVI medyanı, 2009–2021</h3>
+      <div class="legend"><span><i style="background:var(--s1)"></i>2010</span><span><i style="background:var(--s2)"></i>2011</span><span><i style="background:var(--muted)"></i>diğer yıllar</span></div>
+      <svg class="chart" id="ndviChart" role="img" aria-label="Yıllara göre sezonluk NDVI eğrileri"></svg>
+      <p class="note">Keşif amaçlı görsel; verim modeli değildir. 2022 ve sonrası açılmadı. MODIS arşivi 2021'de yeniden işlenmiş sürümdür.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="head">
+      <div class="eyebrow">5 · Yöntem</div>
+      <h2>Sonuçlar nasıl güvence altına alındı</h2>
+    </div>
+    <div class="two">
+      <div class="panel">
+        <h3>Disiplin</h3>
+        <ul class="plain">
+          <li>Her doğrulama testinden önce tarif, kod hash'i ve karar kuralı commit'lendi: <code>dcf5870</code>, <code>6f51762</code>.</li>
+          <li>Veri kabulü yalnız kalite ölçütleriyle, skorlardan önce yapıldı: 13 piyasadan 7'si kabul edildi (<code>ac23b94</code>).</li>
+          <li>Sonuçlar tek seferde kaydedildi, olumsuzlar dahil: <code>8701743</code>, <code>63953a1</code>.</li>
+          <li>Keşifte görülen piyasalar doğrulamadan çıkarıldı; görülenler belgede açıkça yazıldı.</li>
+          <li>Geleceği sızdırmama testleri: gelecekteki veriyi değiştirmek geçmiş tahminleri değiştirmiyor.</li>
+        </ul>
+      </div>
+      <div class="panel">
+        <h3>Sınırlar ve sıradaki adım</h3>
+        <ul class="plain">
+          <li>Tüm doğrulamalar tarihsel proxy veride; gerçek zamanlı ileri test henüz başlamadı.</li>
+          <li>Range-EWMA, GARCH ve HAR'ı geçemedi; domuzda GARCH açıkça daha iyi.</li>
+          <li>Kazancın büyük kısmı sert hareket günlerinden geliyor.</li>
+          <li>Sıradaki: uydu ve hava ile USDA'dan önce pamuk üretimi tahmini. Veri sözleşmesi ve sızıntı kuralları hazır.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</div>
+<div id="tip" hidden></div>
+
+<script>
+const D = /*__DATA__*/null;
+const NS = 'http://www.w3.org/2000/svg';
+const f = (x, d = 1) => (x == null || isNaN(x)) ? '–' : x.toFixed(d).replace('.', ',');
+const pct = (x, d = 1) => '%' + f(100 * x, d);
+const tip = document.getElementById('tip');
+function show(e, html) { tip.innerHTML = html; tip.hidden = false; move(e); }
+function move(e) { const w = tip.offsetWidth, h = tip.offsetHeight; let x = e.clientX + 14, y = e.clientY + 14;
+  if (x + w > innerWidth - 8) x = e.clientX - w - 14; if (y + h > innerHeight - 8) y = e.clientY - h - 14; tip.style.left = x + 'px'; tip.style.top = y + 'px'; }
+function hide() { tip.hidden = true; }
+function el(tag, attrs, parent) { const n = document.createElementNS(NS, tag); for (const k in attrs) n.setAttribute(k, attrs[k]); if (parent) parent.appendChild(n); return n; }
+function txt(parent, x, y, s, attrs = {}) { const t = el('text', Object.assign({ x, y }, attrs), parent); t.textContent = s; return t; }
+function hover(n, html) { n.addEventListener('mouseenter', e => show(e, html)); n.addEventListener('mousemove', move); n.addEventListener('mouseleave', hide); }
+const css = v => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+
+// tiles
+(() => {
+  const covs = Object.values(D.desc).map(d => d.c80);
+  const t = [
+    [String(D.map.n), `tamamlanmış fiyat deneyi; ${D.map.pos} tanesi Naive'i geçti, en iyisi +%${f(D.map.max, 2)}. Hedef %5'ti.`],
+    ['%0,56 / %' + f(D.naive[0].b, 1), "Cotcast'in yayımladığı MAPE ve aynı seride Naive'in 1 seanslık hatası (2024–26)."],
+    [`${pct(Math.min(...covs), 0)}–${pct(Math.max(...covs), 0)}`, '%80 tahmin aralıklarının 7 piyasada gerçekleşen kapsaması. Önceden kayıtlı, Bonferroni düzeltmeli.'],
+  ];
+  const box = document.getElementById('tiles');
+  t.forEach(([b, l]) => { const d = document.createElement('div'); d.className = 'tile'; d.innerHTML = `<div class="big">${b}</div><div class="lab">${l}</div>`; box.appendChild(d); });
+})();
+
+// predictability strip
+(() => {
+  const svg = document.getElementById('mapChart');
+  const groups = {}; D.map.rows.forEach(r => (groups[r.s] = groups[r.s] || []).push(r));
+  const med = a => { const s = a.map(r => r.g).sort((x, y) => x - y); return s[Math.floor(s.length / 2)]; };
+  const names = Object.keys(groups).sort((a, b) => med(groups[b]) - med(groups[a]));
+  const W = 900, L = 210, R = 30, rowH = 26, T = 24, H = T + names.length * rowH + 30;
+  svg.setAttribute('viewBox', `0 0 ${W} ${H}`); svg.style.minWidth = '620px';
+  const x0 = -6, x1 = 5.5, X = v => L + (v - x0) / (x1 - x0) * (W - L - R);
+  for (let v = -6; v <= 5; v += 1) { el('line', { x1: X(v), x2: X(v), y1: T - 6, y2: H - 26, stroke: css('--line'), 'stroke-width': v === 0 ? 1.5 : 1 }, svg); txt(svg, X(v), H - 10, (v > 0 ? '+' : '') + v + '%', { 'text-anchor': 'middle' }); }
+  el('line', { x1: X(5), x2: X(5), y1: T - 10, y2: H - 26, stroke: css('--good'), 'stroke-width': 2, 'stroke-dasharray': '4 3' }, svg);
+  txt(svg, X(5) - 4, T - 12, '%5 kapısı', { 'text-anchor': 'end', fill: css('--good') });
+  names.forEach((n, i) => {
+    const y = T + i * rowH + rowH / 2;
+    txt(svg, L - 12, y + 4, n, { 'text-anchor': 'end', class: 'lbl' });
+    groups[n].forEach((r, j) => {
+      const c = el('circle', { cx: X(Math.max(x0, r.g)), cy: y + ((j % 3) - 1) * 4, r: 4.5, fill: r.h === 1 ? css('--s2') : css('--s1'), stroke: css('--surface'), 'stroke-width': 1.5 }, svg);
+      hover(c, `<b>${n}</b><br>T+${r.h} · seçilmiş kazanç ${r.g > 0 ? '+' : ''}${f(r.g, 2)}%`);
+    });
+  });
+})();
+
+// naive table
+(() => { const tb = document.querySelector('#naiveT tbody');
+  D.naive.forEach(r => { const tr = document.createElement('tr'); tr.innerHTML = `<td>${r.h}</td><td class="num">%${f(r.a, 2)}</td><td class="num">%${f(r.b, 2)}</td>`; tb.appendChild(tr); }); })();
+
+// hypotheses
+(() => {
+  const tb = document.querySelector('#hypT tbody');
+  const rows = [
+    ['Range-EWMA, EWMA\'yı geçiyor mu? (QLIKE, 7 piyasa)', D.armA.mean > 0 && D.armA.ci20[0] > 0 && D.armA.ci60[0] > 0, D.armA.mean, D.armA.ci20, D.armA.pos, D.armA.n, 4],
+    ['Range-EWMA, GARCH(1,1)\'i geçiyor mu? (QLIKE)', D.lab.H2a_range_vs_garch_qlike.pass, D.lab.H2a_range_vs_garch_qlike.mean, D.lab.H2a_range_vs_garch_qlike.ci20, D.lab.H2a_range_vs_garch_qlike.pos, D.lab.H2a_range_vs_garch_qlike.n, 4],
+    ['Range-EWMA, HAR\'ı geçiyor mu? (QLIKE)', D.lab.H2b_range_vs_har_qlike.pass, D.lab.H2b_range_vs_har_qlike.mean, D.lab.H2b_range_vs_har_qlike.ci20, D.lab.H2b_range_vs_har_qlike.pos, D.lab.H2b_range_vs_har_qlike.n, 4],
+    ['Sert hareket olasılığı daha isabetli mi? (Brier, 5 piyasa)', D.lab.H3_bigmove_brier_range_vs_ewma.pass, D.lab.H3_bigmove_brier_range_vs_ewma.mean, D.lab.H3_bigmove_brier_range_vs_ewma.ci20, D.lab.H3_bigmove_brier_range_vs_ewma.pos, D.lab.H3_bigmove_brier_range_vs_ewma.n, 5],
+    ['%80 aralık daha iyi mi? (Winkler skoru)', D.lab.H4_interval80_winkler_range_vs_ewma.pass, D.lab.H4_interval80_winkler_range_vs_ewma.mean, D.lab.H4_interval80_winkler_range_vs_ewma.ci20, D.lab.H4_interval80_winkler_range_vs_ewma.pos, D.lab.H4_interval80_winkler_range_vs_ewma.n, 5],
+  ];
+  rows.forEach(([q, ok, m, ci, p, n, d]) => {
+    const tr = document.createElement('tr');
+    const pill = ok ? '<span class="pill ok">✓ Doğrulandı</span>' : '<span class="pill no">✕ Doğrulanmadı</span>';
+    tr.innerHTML = `<td>${q}</td><td>${pill}</td><td class="num">${m > 0 ? '+' : ''}${m.toExponential(2).replace('.', ',')}</td><td class="num">[${ci[0].toExponential(1).replace('.', ',')}; ${ci[1].toExponential(1).replace('.', ',')}]</td><td class="num">${p}/${n}</td>`;
+    tb.appendChild(tr);
+  });
+})();
+
+// coverage dot plot
+(() => {
+  const svg = document.getElementById('covChart');
+  const rows = Object.entries(D.desc).map(([k, v]) => [k.replace('=F', ''), v.c80, v.c90, v.n]);
+  rows.push(['CT (keşif)', D.today.ct_calibration.coverage80, D.today.ct_calibration.coverage90, D.today.ct_calibration.origins]);
+  const W = 460, L = 92, R = 16, rowH = 26, T = 10, H = T + rows.length * rowH + 28;
+  svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+  const x0 = .72, x1 = .96, X = v => L + (v - x0) / (x1 - x0) * (W - L - R);
+  [.75, .8, .85, .9, .95].forEach(v => { el('line', { x1: X(v), x2: X(v), y1: T, y2: H - 24, stroke: css('--line'), 'stroke-dasharray': (v === .8 || v === .9) ? '4 3' : '', 'stroke-width': (v === .8 || v === .9) ? 1.5 : 1 }, svg); txt(svg, X(v), H - 8, '%' + Math.round(v * 100), { 'text-anchor': 'middle' }); });
+  rows.forEach(([n, a, b, cnt], i) => {
+    const y = T + i * rowH + rowH / 2;
+    txt(svg, L - 10, y + 4, n, { 'text-anchor': 'end', class: 'lbl' });
+    el('line', { x1: X(a), x2: X(b), y1: y, y2: y, stroke: css('--line'), 'stroke-width': 2 }, svg);
+    [[a, '--s1', '%80'], [b, '--s2', '%90']].forEach(([v, c, lab]) => { const d = el('circle', { cx: X(v), cy: y, r: 5, fill: css(c), stroke: css('--surface'), 'stroke-width': 2 }, svg); hover(d, `<b>${n}</b> · ${lab} aralık<br>gerçekleşen kapsama ${pct(v)}<br>${cnt.toLocaleString('tr-TR')} gün`); });
+  });
+})();
+
+// AUC table
+(() => { const tb = document.querySelector('#aucT tbody');
+  const rows = Object.entries(D.desc).map(([k, v]) => [k.replace('=F', ''), v.aucE, v.auc, v.n]);
+  rows.push(['CT (keşif)', D.today.ct_calibration.auc_ewma, D.today.ct_calibration.auc_range, D.today.ct_calibration.origins]);
+  rows.forEach(([n, e, r, c]) => { const tr = document.createElement('tr'); tr.innerHTML = `<td>${n}</td><td class="num">${f(e, 3)}</td><td class="num">${f(r, 3)}</td><td class="num">${c.toLocaleString('tr-TR')}</td>`; tb.appendChild(tr); }); })();
+
+// today
+(() => {
+  const t = D.today, run = new Date(t.run_utc);
+  document.getElementById('todayH').textContent = `CT=F risk kartı · ${t.origin_session} kapanışı`;
+  document.getElementById('todayP').textContent = `Hesap ${run.toISOString().slice(0, 16).replace('T', ' ')} UTC. Aynı günün yarım barı atıldı. Tahmin, bir sonraki seansın kapanışına kadarki hareket içindir.`;
+  const card = document.getElementById('todayCard');
+  const kv = [[f(t.origin_close_cents_lb, 2), 'son kapanış, cent/lb'], ['%' + f(t.next_session_sigma_pct, 2), 'beklenen günlük oynaklık (σ)'],
+    [`${f(t.interval80_cents_lb[0], 2)} – ${f(t.interval80_cents_lb[1], 2)}`, '%80 aralık, cent/lb'], [`${f(t.interval90_cents_lb[0], 2)} – ${f(t.interval90_cents_lb[1], 2)}`, '%90 aralık, cent/lb'],
+    [pct(t.big_move_probability), `sert hareket olasılığı (|getiri| > %${f(t.big_move_threshold_pct, 1)}); normal oran %10`]];
+  kv.forEach(([b, s]) => { const d = document.createElement('div'); d.className = 'kv'; d.innerHTML = `<b>${b}</b><span>${s}</span>`; card.appendChild(d); });
+  const svg = document.getElementById('pxChart'), r = t.recent;
+  const W = 900, L = 44, R = 70, T = 12, H = 240;
+  svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+  const ys = r.map(p => p.close).concat(t.interval90_cents_lb), y0 = Math.floor(Math.min(...ys) - 0.5), y1 = Math.ceil(Math.max(...ys) + 0.5);
+  const X = i => L + i / r.length * (W - L - R), Y = v => T + (y1 - v) / (y1 - y0) * (H - T - 24);
+  const step = Math.max(1, Math.round((y1 - y0) / 5));
+  for (let v = y0; v <= y1; v += step) { el('line', { x1: L, x2: W - R + 30, y1: Y(v), y2: Y(v), stroke: css('--line') }, svg); txt(svg, L - 8, Y(v) + 4, String(v), { 'text-anchor': 'end' }); }
+  [0, Math.floor(r.length / 2), r.length - 1].forEach(i => txt(svg, X(i), H - 6, r[i].date.slice(5), { 'text-anchor': 'middle' }));
+  el('path', { d: r.map((p, i) => (i ? 'L' : 'M') + X(i) + ' ' + Y(p.close)).join(' '), fill: 'none', stroke: css('--s1'), 'stroke-width': 2, 'stroke-linejoin': 'round' }, svg);
+  const xn = X(r.length) + 14;
+  el('rect', { x: xn - 7, y: Y(t.interval90_cents_lb[1]), width: 14, height: Y(t.interval90_cents_lb[0]) - Y(t.interval90_cents_lb[1]), rx: 4, fill: css('--s1'), opacity: .22 }, svg);
+  el('rect', { x: xn - 7, y: Y(t.interval80_cents_lb[1]), width: 14, height: Y(t.interval80_cents_lb[0]) - Y(t.interval80_cents_lb[1]), rx: 4, fill: css('--s1'), opacity: .5 }, svg);
+  el('circle', { cx: X(r.length - 1), cy: Y(r[r.length - 1].close), r: 4, fill: css('--s1'), stroke: css('--surface'), 'stroke-width': 2 }, svg);
+  txt(svg, xn + 12, Y(t.interval80_cents_lb[1]) + 4, '%80', { class: 'lbl' }); txt(svg, xn + 12, Y(t.interval90_cents_lb[1]) + 4, '%90', { class: 'lbl' });
+  const cross = el('line', { y1: T, y2: H - 24, stroke: css('--muted'), 'stroke-width': 1, visibility: 'hidden' }, svg);
+  const hit = el('rect', { x: L, y: T, width: W - L - R, height: H - T - 24, class: 'hit' }, svg);
+  hit.addEventListener('mousemove', e => { const b = svg.getBoundingClientRect(); const sx = (e.clientX - b.left) / b.width * W; const i = Math.max(0, Math.min(r.length - 1, Math.round((sx - L) / (W - L - R) * r.length)));
+    cross.setAttribute('x1', X(i)); cross.setAttribute('x2', X(i)); cross.setAttribute('visibility', 'visible'); show(e, `<b>${r[i].date}</b><br>kapanış ${f(r[i].close, 2)}<br>σ tahmini %${f(r[i].sigma_pct, 2)}`); });
+  hit.addEventListener('mouseleave', () => { cross.setAttribute('visibility', 'hidden'); hide(); });
+})();
+
+// NDVI
+(() => {
+  const c = D.ndvi;
+  document.getElementById('cap2010').textContent = `2010 · temmuz sonu · pamuk NDVI tepe medyanı ${f(c['2010'].peak, 2)} (maske: CDL ${c['2010'].cdl}). Halka: Lubbock.`;
+  document.getElementById('cap2011').textContent = `2011 · temmuz sonu · pamuk NDVI tepe medyanı ${f(c['2011'].peak, 2)} (maske: CDL ${c['2011'].cdl}).`;
+  const svg = document.getElementById('ndviChart');
+  const W = 900, L = 44, R = 60, T = 12, H = 260;
+  svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+  const x0 = 95, x1 = 305, y0 = 0.1, y1 = 0.6, X = v => L + (v - x0) / (x1 - x0) * (W - L - R), Y = v => T + (y1 - v) / (y1 - y0) * (H - T - 24);
+  [0.1, 0.2, 0.3, 0.4, 0.5, 0.6].forEach(v => { el('line', { x1: L, x2: W - R, y1: Y(v), y2: Y(v), stroke: css('--line') }, svg); txt(svg, L - 8, Y(v) + 4, f(v, 1), { 'text-anchor': 'end' }); });
+  [['Nis', 91], ['May', 121], ['Haz', 152], ['Tem', 182], ['Ağu', 213], ['Eyl', 244], ['Eki', 274], ['Kas', 305]].forEach(([m, d]) => { if (d >= x0) txt(svg, X(d), H - 6, m, { 'text-anchor': 'middle' }); });
+  const order = Object.keys(c).filter(y => y !== '2010' && y !== '2011').concat(['2010', '2011']);
+  order.forEach(y => {
+    const pts = c[y].pts.filter(p => p[0] >= x0 && p[0] <= x1);
+    const main = y === '2010' || y === '2011';
+    const col = y === '2010' ? css('--s1') : y === '2011' ? css('--s2') : css('--muted');
+    const p = el('path', { d: pts.map((q, i) => (i ? 'L' : 'M') + X(q[0]) + ' ' + Y(q[1])).join(' '), fill: 'none', stroke: col, 'stroke-width': main ? 2.5 : 1, opacity: main ? 1 : .45, 'stroke-linejoin': 'round' }, svg);
+    const last = pts[pts.length - 1];
+    if (main) txt(svg, X(last[0]) + 6, Y(last[1]) + 4, y, { class: 'lbl' });
+    const hp = el('path', { d: p.getAttribute('d'), fill: 'none', stroke: 'transparent', 'stroke-width': 10 }, svg);
+    hover(hp, `<b>${y}</b><br>tepe NDVI ${f(c[y].peak, 2)}<br>pamuk pikseli ${c[y].px.toLocaleString('tr-TR')} (CDL ${c[y].cdl})`);
+  });
+})();
+</script>
