@@ -3,7 +3,9 @@ import json
 
 import pytest
 
-from research.crop_nowcast import county_ndvi, nass_pull, power_pull
+import numpy as np
+
+from research.crop_nowcast import county_ndvi, landsat_fields, nass_pull, power_pull
 
 
 def test_nass_years_are_capped_before_seal():
@@ -29,8 +31,22 @@ def test_nass_receipt_never_contains_key(tmp_path, monkeypatch):
     assert json.loads((tmp_path / 'receipt.json').read_text())['queries']['q']['rows'] == 14
 
 
-@pytest.mark.parametrize('mod', [power_pull, county_ndvi])
+@pytest.mark.parametrize('mod', [power_pull, county_ndvi, landsat_fields])
 def test_sealed_years_need_explicit_unseal(mod, tmp_path, monkeypatch):
     monkeypatch.setattr('sys.argv', ['x'])
     with pytest.raises(SystemExit):
         mod.main(str(tmp_path / 'panel.json'), str(tmp_path), 2009, 2022)
+
+
+def test_landsat_features_respect_lag_and_count_failed_fields():
+    # 40 points in one county: half green (0.7) on 1 July, half never green (0.2);
+    # a late green scene on 25 July for every point must not count for aug1 (25 Jul + 16 d > 1 Aug)
+    n = 40
+    idx = np.r_[np.arange(n), np.arange(n)]
+    day = np.array(['2019-07-01'] * n + ['2019-07-25'] * n, dtype='datetime64[D]')
+    nd = np.r_[np.where(np.arange(n) < 20, 0.7, 0.2), np.full(n, 0.9)]
+    rows = landsat_fields.county_features(idx, day, nd, np.zeros(n, int), ['48001'], 2019)
+    aug = next(r for r in rows if r['cutoff'] == 'aug1')
+    sep = next(r for r in rows if r['cutoff'] == 'sep1')
+    assert aug['l_fail25'] == 0.5 and aug['l_p90'] == 0.7 and aug['l_nobs'] == 1
+    assert sep['l_fail25'] == 0 and sep['l_last'] == 0.9 and sep['l_nobs'] == 2  # usable by 1 Sep
