@@ -1,11 +1,17 @@
 """Guards that keep the crop-nowcast test years sealed and the API key out of files (no network)."""
 import json
 
+import numpy as np
+import pandas as pd
 import pytest
 
-import numpy as np
-
-from research.crop_nowcast import county_ndvi, landsat_fields, nass_pull, power_pull
+from research.crop_nowcast import (
+    county_ndvi,
+    county_up,
+    landsat_fields,
+    nass_pull,
+    power_pull,
+)
 
 
 def test_nass_years_are_capped_before_seal():
@@ -50,3 +56,14 @@ def test_landsat_features_respect_lag_and_count_failed_fields():
     sep = next(r for r in rows if r['cutoff'] == 'sep1')
     assert aug['l_fail25'] == 0.5 and aug['l_p90'] == 0.7 and aug['l_nobs'] == 1
     assert sep['l_fail25'] == 0 and sep['l_last'] == 0.9 and sep['l_nobs'] == 2  # usable by 1 Sep
+
+
+def test_landsat_merge_anomaly_uses_only_earlier_years(tmp_path):
+    for y, v in ((2010, 0.4), (2011, 0.2), (2012, 0.6)):
+        row = dict.fromkeys(county_up.LANDSAT, v) | {'fips': '48303', 'year': y, 'cutoff': 'aug1'}
+        pd.DataFrame([row, row | {'cutoff': 'oct1', 'l_p50': 9.9}]).to_csv(tmp_path / f'landsat_TX_{y}.csv', index=False)
+    c = pd.DataFrame({'fips': ['48303'] * 3, 'year': [2010, 2011, 2012]})
+    m = county_up.add_landsat(c, tmp_path, 'aug1').set_index('year')
+    assert m.l_p50.tolist() == [0.4, 0.2, 0.6]  # aug1 rows only
+    assert np.isnan(m.loc[2010, 'l_p50_a'])
+    assert np.isclose(m.loc[2011, 'l_p50_a'], -0.2) and np.isclose(m.loc[2012, 'l_p50_a'], 0.3)

@@ -26,6 +26,18 @@ from research.crop_nowcast.state_model import (
 )
 
 NDVI = ['n_max', 'n_last', 'n_mean', 'n_int', 'n_p90max']
+LANDSAT = ['l_p10', 'l_p25', 'l_p50', 'l_p75', 'l_p90', 'l_fail25', 'l_fail35', 'l_last', 'l_nobs']
+
+
+def add_landsat(c, landsat_dir, cutoff_key):
+    """Merge Move 3 Landsat county features for one cutoff; anomalies vs the county's earlier years only."""
+    parts = [pd.read_csv(f, dtype={'fips': str}) for f in sorted(Path(landsat_dir).rglob('landsat_*_*.csv'))]
+    lf = pd.concat(parts)
+    lf = lf[lf.cutoff == cutoff_key][['fips', 'year', *LANDSAT]]
+    c = c.merge(lf, on=['fips', 'year'], how='left').sort_values(['fips', 'year'])
+    for k in LANDSAT:
+        c[k + '_a'] = c[k] - c.groupby('fips')[k].transform(lambda s: s.expanding().mean().shift(1))
+    return c
 
 
 def prepare(csv):
@@ -59,10 +71,12 @@ def run(c, nass_dir, cutoff_key, cols, kind, area='mar'):
     return pd.concat(rows), us
 
 
-def main(feature_dir, nass_dir, out_json, cutoffs='aug1,sep1,oct1', area='mar'):
+def main(feature_dir, nass_dir, out_json, cutoffs='aug1,sep1,oct1', area='mar', landsat_dir=None):
     res = {}
     for ck in cutoffs.split(','):
         c = prepare(Path(feature_dir) / f'features_{ck}.csv')
+        if landsat_dir:
+            c = add_landsat(c, landsat_dir, ck)
         wz = [k for k in c.columns if k.startswith('w_') and k.endswith('_z')]
         na = [k + '_a' for k in NDVI]
         res[ck] = {}
@@ -70,8 +84,13 @@ def main(feature_dir, nass_dir, out_json, cutoffs='aug1,sep1,oct1', area='mar'):
             for kind in ('ridge', 'hgb'):
                 r, us = run(c, nass_dir, ck, cols, kind, area)
                 res[ck][f'{label}/{kind}'] = summarize(r, us, f'{ck} {area} {label} {kind}')
+        if landsat_dir:  # Move 3: primary = ndvi anom + landsat (HGB); landsat alone is secondary
+            la = LANDSAT + [k + '_a' for k in LANDSAT]
+            for label, cols in (('MOVE3 PRIMARY ndvi anom + landsat', na + la), ('landsat only', la)):
+                r, us = run(c, nass_dir, ck, cols, 'hgb', area)
+                res[ck][f'{label}/hgb'] = summarize(r, us, f'{ck} {area} {label} hgb')
     Path(out_json).write_text(json.dumps(res, indent=2), encoding='utf-8')
 
 
 if __name__ == '__main__':
-    main(*sys.argv[1:6])
+    main(*sys.argv[1:7])
