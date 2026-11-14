@@ -59,3 +59,16 @@ same county's mean over earlier years.
   - Then write the preregistration, push it, and open 2022–2025 once.
 - **FAIL:** record the negative result. The sealed years stay sealed.
 - The threshold is fixed here and is not moved after seeing results.
+
+## Amendment 1 (14 Nov 2026, before any Landsat model result was computed)
+Only a 6-scene 2019 smoke test exists. It produced features but no model was fitted on them.
+- **Scope widened to all 17 panel states (263 counties).** Reason: more training
+  examples of field failure; the county model is trained across all states. Output
+  is one CSV per state and year.
+- **Resolution check, run before the full extraction.**
+  - Sample: the 10 largest Texas counties in 2011, 2016 and 2019, extracted at both 30 m and 120 m.
+  - Comparison: the Pearson correlation of each `l_*` feature between the two grids, over county × cutoff.
+  - Decision: if the median correlation is ≥ 0.95, the full run stays at 120 m. Otherwise it runs at 30 m.
+  - This check uses no yield or production data.
+- **Unchanged:** the primary variant, the harness, the test years and the gate
+  (TX aug1 MAPE ≤ 16.0% and < 18.9%).
