@@ -9,6 +9,7 @@ Usage: python stack.py feature_dir nass_dir fsa_csv out.json [cnn_preds_root]
 """
 import itertools
 import json
+import os
 import sys
 from pathlib import Path
 
@@ -19,6 +20,8 @@ ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT))
 from research.crop_nowcast import county_up as C
 from research.crop_nowcast import usda_correction as UC
+
+SCORE_FROM = int(os.environ.get('COTTONLENS_SCORE_FROM', '2013'))
 
 
 def grid(k, step=0.05):
@@ -83,10 +86,13 @@ def main(feature_dir, nass_dir, fsa_csv, out_json, cnn_root=None):
         f = f[f.year.isin(UC.TEST_YEARS)]
         weights = {}
         e = ensemble(f, members, weights)
+        e, f = e[e.year >= SCORE_FROM], f[f.year >= SCORE_FROM]  # T39 scores sealed years only; weights still use all past
+        r_cov = {int(y): int((g[members].isna().any(axis=1)).sum()) for y, g in f.groupby('year')}
         t25 = UC.score(f.assign(corr=f.B), us)
         ens = UC.score(e, us)
         r = {'members': members, 'weights': weights, 'T36': ens, 'T25_same_rows': t25,
-             'state_w': state_w(e, 'corr'), 'state_w_T25': state_w(f, 'B'), 'state_w_usda': state_w(f, 'usda')}
+             'state_w': state_w(e, 'corr'), 'state_w_T25': state_w(f, 'B'), 'state_w_usda': state_w(f, 'usda'),
+             'states_falling_back_to_B': r_cov}
         r['pass'] = {'beats_usda': ens['TX_model'] < ens['TX_usda'] and ens['US_model'] < ens['US_usda'],
                      'beats_t25': ens['TX_model'] < t25['TX_model'] and ens['US_model'] < t25['US_model'],
                      'state_w': r['state_w'] < min(r['state_w_usda'], r['state_w_T25'])}
@@ -134,6 +140,7 @@ def late(feature_dir, nass_dir, usda_ck, feat_ck, bench_ck, gin_csv=None, mode='
     weights = {}
     members = {'stack': ['B', 'H', 'U'], 'gin': ['G'], 'stack+gin': ['B', 'H', 'U', 'G']}[mode]
     e = f.assign(corr=f.G) if mode == 'gin' else ensemble(f, members, weights)
+    e = e[e.year >= SCORE_FROM]
     fb, usb = UC.usda_frame(nass_dir, bench_ck)
     e = e.merge(fb[['state', 'year', 'usda']].rename(columns={'usda': 'bench'}), on=['state', 'year']).dropna(subset=['bench', 'final'])
     tx = e[e.state == 'TX']

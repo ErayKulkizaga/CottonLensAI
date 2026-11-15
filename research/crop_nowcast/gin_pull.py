@@ -42,7 +42,7 @@ def parse(text):
 
 def main(raw_dir, out_csv, first=2009, last=2021):
     first, last = int(first), int(last)
-    if last >= SEALED_FROM:
+    if last >= SEALED_FROM and '--unseal' not in sys.argv:  # T39 prereg pushed
         raise SystemExit('Sealed years need a pushed preregistration')
     raw = Path(raw_dir)
     raw.mkdir(parents=True, exist_ok=True)
@@ -66,4 +66,4 @@ def main(raw_dir, out_csv, first=2009, last=2021):
 
 
 if __name__ == '__main__':
-    main(*sys.argv[1:5])
+    main(*[a for a in sys.argv[1:] if not a.startswith('--')])

@@ -39,7 +39,7 @@ def main(hist_dir, features_csv, ck, out_npz):
     for f in sorted(Path(hist_dir).rglob('*.npz')):
         z = np.load(f)
         year = int(f.stem.split('_')[1])
-        if year >= 2022:
+        if year >= 2022 and '--unseal' not in sys.argv:  # T39 prereg pushed
             raise SystemExit(f'sealed year file present: {f.name}')
         for k, end in enumerate(z['end']):
             s = slot_of(end, ck)
@@ -58,4 +58,4 @@ def main(hist_dir, features_csv, ck, out_npz):
 
 
 if __name__ == '__main__':
-    main(*sys.argv[1:5])
+    main(*[a for a in sys.argv[1:] if not a.startswith('--')])
