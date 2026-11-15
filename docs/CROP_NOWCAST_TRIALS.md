@@ -130,6 +130,18 @@ All rows use county HGB, rolling 2013–2021, the pinned environment, and 1 Aug 
 - In 2020, the August FSA file showed a 23% failed share, but final abandonment was 54%. Most abandonment happens after August, and nobody sees it in August, neither us nor USDA.
 - 2016 is a large miss for every method: USDA −22%, ours −35%. That crop came in far above all forecasts.
 
+### T32 (PRE-DECLARED 15 Nov, before running): late-season hybrid for the Dec 10 report
+
+**Hypothesis.** By 1 Nov and 1 Dec, satellites have seen most abandonment. Our harvested area was already better than USDA's at 1 Oct (TX 7.2 vs 8.8). So the T31 NDVI+FSA specification, *unchanged*, should beat USDA's November and December production forecasts.
+
+**Setup**
+- **Cutoffs.** nov1 is compared with USDA's November forecast, dec1 with USDA's December forecast.
+- **Satellite.** MODIS composites end in October, so the NDVI input is the same at nov1 and dec1. Weather runs up to each cutoff.
+- **FSA.** The August file only, as in T31.
+- **Variants.** Only this one: no other features, no tuning.
+
+**Pass rule.** At both cutoffs, mean absolute % error is below USDA's for TX *and* for the US, *and* the production-weighted state error is below USDA's.
+
 ### External landscape (research, 15 Nov)
 
 - **Descartes Labs** claimed to beat USDA's August *corn* yield forecast in 2015, by about 1 percentage point. The figures are company-reported and cover one season.
