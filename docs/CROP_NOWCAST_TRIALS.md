@@ -100,6 +100,19 @@ All rows use county HGB, rolling 2013–2021, the pinned environment, and 1 Aug 
 | T30a | Ensemble: log mean of T06, T13, T28 (June area) | 17.8 / 7.9 | 16.7 / 7.3 | 13.3 / 6.8 | |
 | T30b | T30a blended 50/50 (log) with USDA | 14.9 / **6.8** | 13.1 / **6.2** | 11.4 / 6.1 | |
 
+**CORRECTION (review, 15 Nov).** The notes "first standalone model to beat USDA" for T29 and T29b, and the same wording in the message of commit 62506ce, are withdrawn.
+
+- **FSA availability**, checked by comparing each workbook's save time with the USDA report date:
+  - **August files:** saved before USDA's August report in every test year 2013–2021. 2012 was saved after. A save time is not proof of publication.
+  - **September and October files:** saved **after** the USDA report in 2013, 2014 and 2015, and in Oct 2018. Using them in those years is not a fair comparison, so the T29 result at 1 Oct for TX does not stand.
+  - In any case, T29 at 10.6 does not beat the matched bias model T25 (10.4).
+- **T29b at 1 Aug, US 6.0 vs 7.2:**
+  - It is better than USDA in only 4 of 9 years. The gain comes from 2019 and 2020: model +1.2% and −3.8%, against USDA +13.0% and +24.6%.
+  - The production-weighted state error is *worse* than USDA (15.6 vs 14.3), so the US result is cancellation across states.
+  - With rows containing missing FSA values dropped, it is 7.2, equal to USDA. Hyperparameter changes give 5.9–6.2.
+  - **Verdict:** not robust. It does show a real pattern: the models beat USDA in abandonment years and lose in normal years.
+- **Area comparator:** the area check compares FSA with June Acreage. USDA's own in-season planted figures (the AUG/SEP ACREAGE rows) are sparse in our pull, so that comparison is not yet made.
+
 **Selection warning.** About 50 variants have now been tried. The best single cells are optimistic, and none of these methods beats USDA in every cell. Before any sealed test, a single method has to be fixed in advance, and its dev-year numbers taken as an upper bound.
 
 ## Chain: Link 1, report-day price reaction (preregistered; run once on 15 Nov)
