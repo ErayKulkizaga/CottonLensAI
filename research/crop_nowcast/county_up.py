@@ -80,7 +80,9 @@ def run(c, nass_dir, cutoff_key, cols, kind, area='mar', nan_ok=()):
     for y in TEST_YEARS:
         tr = c[(c.year < y) & c.target.notna()].dropna(subset=[k for k in cols if k not in nan_ok])  # HGB handles NaN
         te = c[(c.year == y) & c.ppa_base.notna() & c.w.notna()].copy()
-        if kind == 'ridge':
+        if kind == 'external':  # predictions made elsewhere (e.g. the T35 GPU model), column p_ext
+            te = te.assign(p=te.p_ext).dropna(subset=['p'])
+        elif kind == 'ridge':
             m = make_pipeline(StandardScaler(), RidgeCV(alphas=np.logspace(-1, 4, 30))).fit(tr[cols], tr.target)
             te['p'] = m.predict(te[cols].fillna(tr[cols].mean()))
         else:

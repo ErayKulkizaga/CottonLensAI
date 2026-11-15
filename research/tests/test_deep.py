@@ -19,3 +19,11 @@ def test_hist_refuses_sealed_years(tmp_path, monkeypatch):
     monkeypatch.setattr('sys.argv', ['x'])
     with pytest.raises(SystemExit):
         H.main(str(tmp_path / 'p.json'), str(tmp_path), 2009, 2022)
+
+
+def test_slot_respects_cutoff_lag_and_start():
+    from research.deep import build_tensor as B
+    assert B.n_slots('oct1') == 22
+    assert B.slot_of('2019-04-07', 'oct1') == 0
+    assert B.slot_of('2019-09-22', 'oct1') == 21  # 22 Sep + 8 days = 30 Sep, before 1 Oct
+    assert B.slot_of('2019-09-24', 'oct1') is None  # 24 Sep + 8 days = 2 Oct, after the cutoff
