@@ -201,6 +201,27 @@ All rows use county HGB, rolling 2013–2021, the pinned environment, and 1 Aug 
 - **Stop rule.** A second architecture, Prithvi, or any tuning needs the user's explicit word.
 - **Seal.** Extraction refuses years 2022 and later.
 
+**T35 result (15 Nov): FAIL on every part of the pass rule.**
+
+Kaggle setup:
+- CPU extraction: 5 tiles × 2009–2021, 65 files.
+- Training on a Kaggle GPU (CUDA).
+- Data: 263 panel counties, 3,419 county-years, 2,753 with a target.
+- Scored locally with `score_t35.py`. The HGB reference was re-scored on identical rows and reproduces 10.3 / 6.6.
+
+| Cutoff | CNN seed mean TX / US | HGB same rows | USDA | Seed spread TX / US |
+|---|---|---|---|---|
+| 1 Oct (primary) | 18.4 / 9.6 | 10.3 / 6.6 | 11.0 / 6.1 | 4.2 / 3.0 |
+| 1 Aug (secondary) | 20.7 / 8.9 | 20.0 / 8.5 | 14.8 / 7.2 | 8.1 / 1.6 |
+
+- The CNN only slightly beats the naive past-mean base (21.9 / 10.8) and is far worse than HGB.
+- Seeds disagree strongly (TX 16.5–20.7 at 1 Oct). The likely cause is too few samples for a CNN: about 1,500–2,400 training rows per fold.
+- **Deviations from the prereg, disclosed:**
+  - bins use fixed physical ranges (VI −0.2..1.0, reflectance 0..0.6) instead of ranges fitted on training years. This puts no data into the binning;
+  - MOD and MYD composites are interleaved into 8-day slots.
+- Evidence: `t35-cnn-oct1-20261115.json`, `t35-cnn-aug1-20261115.json`.
+- Per the stop rule, there is no tuning and no second architecture without the user's word.
+
 ### External landscape (research, 15 Nov)
 
 - **Descartes Labs** claimed to beat USDA's August *corn* yield forecast in 2015, by about 1 percentage point. The figures are company-reported and cover one season.

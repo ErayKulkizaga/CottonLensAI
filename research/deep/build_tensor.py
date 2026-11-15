@@ -27,7 +27,7 @@ def n_slots(ck):
 
 def slot_of(end, ck):
     """Slot index of a composite ending on `end`, or None if it is not available by the cutoff."""
-    end = pd.Timestamp(end)
+    end = pd.Timestamp(str(end))
     if end + pd.Timedelta(days=NDVI_LAG_DAYS) > pd.Timestamp(f'{end.year}-{CUTOFFS[ck]}'):
         return None
     return int(np.clip((end.dayofyear - START_DOY) // SLOT_DAYS, 0, n_slots(ck) - 1))
