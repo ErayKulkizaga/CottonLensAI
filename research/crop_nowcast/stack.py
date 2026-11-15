@@ -54,6 +54,12 @@ def ensemble(f, members, weights_out):
     return f.assign(corr=out)
 
 
+def us_by_year(r, us):
+    """US error (%) per year, aggregated the same way as UC.score."""
+    j = r.groupby('year')[['corr', 'usda']].sum().join(us, rsuffix='_us').dropna()
+    return {int(y): round(float(100 * (v / q - 1)), 2) for y, v, q in zip(j.index, j.usda_us * j['corr'] / j.usda, j.final, strict=True)}
+
+
 def state_w(r, col):
     r = r.dropna(subset=[col, 'final'])
     return float(100 * np.average((r[col] / r.final - 1).abs(), weights=r.final))
@@ -85,6 +91,10 @@ def main(feature_dir, nass_dir, fsa_csv, out_json, cnn_root=None):
                      'state_w': r['state_w'] < min(r['state_w_usda'], r['state_w_T25'])}
         r['pass'] = {k: bool(v) for k, v in r['pass'].items()}
         r['pass']['ALL'] = all(r['pass'].values())
+        ue, ub = us_by_year(e, us), us_by_year(f.assign(corr=f.B), us)
+        r['US_by_year'] = {y: (ue[y], ub[y]) for y in ue}
+        r['US_years_better_than_T25'] = sum(abs(ue[y]) < abs(ub[y]) for y in ue)
+        r['US_years_worse_than_T25'] = sum(abs(ue[y]) > abs(ub[y]) for y in ue)
         r['TX_years_better_than_T25'] = sum(abs(a) < abs(b) for (a, _), (b, _) in
                                             zip(ens['TX_by_year'].values(), t25['TX_by_year'].values(), strict=True))
         res[ck] = r

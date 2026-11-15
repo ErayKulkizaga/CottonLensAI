@@ -218,7 +218,15 @@ Kaggle setup:
 - Seeds disagree strongly (TX 16.5–20.7 at 1 Oct). The likely cause is too few samples for a CNN: about 1,500–2,400 training rows per fold.
 - **Deviations from the prereg, disclosed:**
   - bins use fixed physical ranges (VI −0.2..1.0, reflectance 0..0.6) instead of ranges fitted on training years. This puts no data into the binning;
-  - MOD and MYD composites are interleaved into 8-day slots.
+  - MOD and MYD composites are interleaved into 8-day slots;
+  - composites ending before 7 April are clipped into slot 0, so that slot sums two composites;
+  - the last slot is always empty under the lag rule, a constant zero input. About 4.6% of (county-year, slot) cells are empty at 1 Oct, all of them in that slot.
+- "Too few samples" is the likely cause but was **not tested**.
+- **Provenance:**
+  - Kaggle dataset `eraykulkzaga/cottonlens-t35-tensors`, kernel `eraykulkzaga/cottonlens-t35-cnn` (v1);
+  - histogram kernels `cottonlens-hist-<tile>` (v1);
+  - sha256 `tensor_oct1.npz` b292d358…a4127, `tensor_aug1.npz` 88515ba5…676eb, `train_cnn.py` d31313f4…4ab10;
+  - local copies in `CottonLensAI/output/deep/`.
 - Evidence: `t35-cnn-oct1-20261115.json`, `t35-cnn-aug1-20261115.json`.
 - Per the stop rule, there is no tuning and no second architecture without the user's word.
 
@@ -250,8 +258,9 @@ Kaggle setup:
 | 1 Aug (B+H+N+U) | 16.6 / 8.0 | 15.6 / 8.1 | 14.8 / 7.2 | 14.4 / 14.7 / 14.4 | fails |
 
 - **Weights at 1 Oct.** Mostly B: 0.9–0.95 from 2018 on, with H at 0.05–0.10. **The CNN got weight 0 in every year**, so it adds nothing.
-- **Years 2013–2016 equal T25.** In 2013–2015 there were too few past years with every member (FSA rows start late), and 2016 chose B = 1.0.
+- **Years 2014–2016 equal T25.** USDA published no October 2013 forecast (the October 2013 report was cancelled), so 1 Oct is scored on 8 years (2014–2021). That leaves 2014 and 2015 with fewer than 2 past years, so the fallback covered 2015 as well, not only 2013–2014 as the prereg named. 2016 chose B = 1.0.
 - **TX, year by year vs T25:** better in 5 of 5 years where they differ (2017–2021), by 0.3–1.7 percentage points. Never worse.
+- **US, year by year vs T25 (1 Oct):** better in 4 years and worse in 1 (2018: 4.6 vs 4.3). At 1 Sep: 5 better, 2 worse.
 - **Same caveat as T25.** The gain comes from pulling USDA's 2017–2021 overestimates down further, with H acting as a second, independent "lower" signal. If USDA's bias reverses in the sealed years, both B and H weights will hurt.
 - **1 Aug** is still not beaten. There, past fits put weight on N and U, and the result is worse than T25.
 - Evidence: `t36-stack-20261115.json`; code: `research/crop_nowcast/stack.py`.
