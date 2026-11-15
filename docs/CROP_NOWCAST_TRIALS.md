@@ -265,6 +265,22 @@ Kaggle setup:
 - **1 Aug** is still not beaten. There, past fits put weight on N and U, and the result is worse than T25.
 - Evidence: `t36-stack-20261115.json`; code: `research/crop_nowcast/stack.py`.
 
+### T37 (PRE-DECLARED 15 Nov, before running): the T36 ensemble at Nov/Dec, the 10 Dec target
+
+- **Primary ("before the 10 Dec report").** Uses only information public by 1 Dec. The members are:
+  - U = USDA's November forecast;
+  - B = U corrected by the pooled past-mean bias of USDA's November forecast (rolling, the T15/T25 idea without FSA rows, since there are no FSA Nov/Dec files);
+  - H = T06 HGB at the 1 Dec cutoff with `fsa_aug` area.
+- **Weights.** Same T36 rule: a 0.05 simplex, past years only, B when fewer than 2 past years.
+- **Benchmark:** USDA's **December** forecast, published 10 Dec. US = USDA_US Nov × Σ ensemble / Σ USDA Nov.
+- **Pass rule (primary).** All of the following must hold:
+  - TX and US MAPE below USDA's December forecast;
+  - production-weighted state error below USDA December's.
+- **Secondary (reported, not a claim):**
+  - the 1 Nov cutoff (H at nov1) against USDA November;
+  - a post-report December correction (U, B and H on USDA December) against USDA December.
+- **Prior expectation (written before running).** T32 failed and T33 found no skill on the Nov→Dec revision, so passing is unlikely.
+
 ### External landscape (research, 15 Nov)
 
 - **Descartes Labs** claimed to beat USDA's August *corn* yield forecast in 2015, by about 1 percentage point. The figures are company-reported and cover one season.
