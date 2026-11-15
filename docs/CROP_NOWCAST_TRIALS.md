@@ -40,6 +40,12 @@ Cells give TX / US error. **Bold** marks a cell that beats USDA.
 
 Each trial corrects USDA's own forecast by predicting its error. The model is fitted on all states pooled, using only earlier years. The 1 Sep row uses USDA's September forecast and data up to 1 Sep; the 1 Oct row is the same for October.
 
+> **SUPERSEDED (15 Nov).** Rows T14–T24 below had two defects, found in review:
+> 1. **Leak.** USDA's implied abandonment used the *final* planted area, which was not public at the cutoff.
+> 2. **Unscaled features.** The ridge penalty was applied to raw units, so small features such as `fsa_gap` were shrunk to almost zero, and T14 acted as a bias correction.
+>
+> The corrected rerun (June Acreage planted area, features standardised within each fold) is T25–T27, after this table. The claim "FSA beats USDA" in commit b63dd54 is withdrawn.
+
 | ID | Correction signal | 1 Aug | 1 Sep | 1 Oct | Verdict |
 |---|---|---|---|---|---|
 | T14 | FSA failed-acre share minus USDA's implied abandonment | 15.4 / 8.5 | **9.3 / 3.9** | **10.3 / 4.9** | **beats USDA at Sep and Oct, TX and US** |
@@ -64,6 +70,22 @@ Each trial corrects USDA's own forecast by predicting its error. The model is fi
 - **Missing data:** the FSA 2012 Oct file has an unknown layout and the 2012 Sep file is damaged on the server.
 - FSA failed acres arrive late. In TX the August share was 23% in 2020, against a final abandonment of 54%. The signal is relative, not absolute.
 
+### Corrected rerun (leak fixed, features standardised within each fold)
+
+| ID | Trial | 1 Aug | 1 Sep | 1 Oct | Verdict |
+|---|---|---|---|---|---|
+| T25 | Bias only, fitted on the same rows as the FSA variant (needs at least 10 past rows; otherwise USDA is left unchanged) | 15.6 / 8.1 | **9.5 / 3.9** | **10.4 / 4.9** | **the consistent gain** |
+| T26 | FSA gap (standardised) | 16.2 / 8.2 | **11.1 / 4.6** | **10.6 / 5.1** | no better than T25; FSA coefficient ≈ 0.007, intercept ≈ −0.068 |
+| T27 | Ten variants: satellite, FSA, drought, condition and combinations | best 14.7 / 7.7 | mixed: 10.4–12.6 / 4.1–6.4 | mixed: 9.1–12.7 / 4.3–6.4 | no signal beats T25 consistently; T27 cells are noise-level |
+
+**What T25 means**
+
+- USDA's September and October cotton forecasts were biased upward in 2014–2021. A rolling, pooled correction by the mean past error reduces the error.
+- **Year by year at 1 Sep:** better in 6 of 9 years for the US and 4 of 9 for TX. The gains come from 2017–2021, when USDA overestimated US production by 4–17%. The correction is worse in 2014 and 2016.
+- **Depends on persistence.** The gain holds only if USDA's upward bias persists. If USDA under-forecasts in 2022–2025, the correction will hurt.
+- **Not an earlier forecast.** This is a correction to USDA's published number, so it exists only after USDA's report.
+- **1 Aug:** still not beaten by any signal (best 14.7 vs 14.8 for TX, noise-level).
+
 ## Findings to combine later
 
 1. County NDVI anomaly is the strongest single signal. Its correlation with production per planted acre at 1 Oct is +0.52 (+0.62 in Texas).
@@ -79,7 +101,9 @@ Each trial corrects USDA's own forecast by predicting its error. The model is fi
   - county-level FSA failed share combined with the satellite model;
   - irrigated versus dryland split of FSA failures;
   - planted area from FSA in place of the June Acreage figure.
-- **Sealed test candidate:** T14 at 1 Sep and 1 Oct. It needs only USDA's monthly forecasts, FSA files and final production for 2022–2025; no satellite data. It needs a pushed preregistration before unsealing.
+- **Sealed test candidate:** T25 (bias correction) at 1 Sep and 1 Oct. It needs only USDA's monthly forecasts and final production for 2022–2025.
+  - Risk: it wins only if USDA's upward bias persists. It is one shot.
+  - It needs the user's explicit yes and a pushed preregistration.
 - **Price track** (second priority; the user's request, relayed on 15 Nov). The idea is "forecast the forecasts": price reacts to the report surprise.
   - **P01** Price after USDA reports. On WASDE and Crop Production days, and the 1–5 days after, does cotton over- or under-react (drift)? Needs only the existing CT history and report dates. Cheapest, so it runs first.
   - **P02** Surprise prediction. Does the gap between our USDA-correction model and the analyst consensus predict USDA's revision and the price move on report day? Needs a pre-report poll archive, not verified to exist.

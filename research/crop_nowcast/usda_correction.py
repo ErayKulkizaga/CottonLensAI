@@ -19,7 +19,7 @@ import pandas as pd
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT))
 from research.crop_nowcast import county_up as C
-from research.crop_nowcast.state_model import nass_state
+from research.crop_nowcast.state_model import nass_state, state_frame
 
 TEST_YEARS = range(2013, 2022)
 MONTH = {'aug1': 'AUG', 'sep1': 'SEP', 'oct1': 'OCT'}
@@ -32,8 +32,7 @@ def usda_frame(nass_dir, ck):
         return d[d.reference_period_desc == ref].set_index(['state_alpha', 'year']).v
     m = MONTH[ck]
     f = pd.DataFrame({'final': pick('state_production', 'YEAR'), 'usda': pick('state_production', f'YEAR - {m} FORECAST'),
-                      'harv_m': pick('state_harvested', f'YEAR - {m} FORECAST'),
-                      'planted': pick('state_planted', 'YEAR')})
+                      'harv_m': pick('state_harvested', f'YEAR - {m} FORECAST')})
     f.index = f.index.set_names(['state', 'year'])
     us = nass_state(nass_dir, 'us_production')
     usf = pd.DataFrame({'final': us[us.reference_period_desc == 'YEAR'].set_index('year').v,
@@ -91,7 +90,9 @@ def build(feature_dir, nass_dir, ck, fsa_csv=None, area='jun', usdm_csv=None, co
     f = f.merge(r[['state', 'year', 'pred']], on=['state', 'year'], how='left')
     f['e'] = np.log(f.final / f.usda)
     f['sat_gap'] = np.log(f.pred / f.usda)
-    f['usda_aband'] = 1 - f.harv_m / f.planted
+    known, _ = state_frame(nass_dir, ck, 'jun')  # June Acreage planted, public before every cutoff
+    f = f.merge(known[['state', 'year', 'planted_known']], on=['state', 'year'], how='left')
+    f['usda_aband'] = 1 - f.harv_m / f.planted_known
     g = fsa_frame(fsa_csv, ck)
     if g is not None:
         ids = nass_state(nass_dir, 'state_production')[['state_ansi', 'state_alpha']].drop_duplicates()
@@ -105,19 +106,26 @@ def build(feature_dir, nass_dir, ck, fsa_csv=None, area='jun', usdm_csv=None, co
     return f, us
 
 
-def fit_predict(f, cols, ridge=1.0):
+def fit_predict(f, cols, ridge=1.0, rows=None, coefs=None):
+    """Rolling pooled ridge on fold-standardised features (intercept unpenalised).
+    rows: extra columns that must be present in training rows (to match another variant's rows).
+    coefs: optional dict filled with {year: coefficients} for inspection."""
+    need = list(dict.fromkeys([*cols, *(rows or [])]))
     out = []
     for y in TEST_YEARS:
-        tr = f[(f.year < y)].dropna(subset=['e', *cols])
+        tr = f[(f.year < y)].dropna(subset=['e', *need])
         te = f[(f.year == y)].dropna(subset=['usda'])
-        if cols and len(tr) < 10:  # too few past rows with this signal: leave USDA unchanged
+        if need and len(tr) < 10:  # too few past rows with this signal: leave USDA unchanged
             eh = np.zeros(len(te))
         elif cols:
-            X = np.c_[np.ones(len(tr)), tr[cols].to_numpy()]
-            A = X.T @ X + ridge * np.diag([0] + [1] * len(cols))  # intercept not penalised
+            mu, sd = tr[cols].mean(), tr[cols].std(ddof=0).replace(0, 1)
+            X = np.c_[np.ones(len(tr)), ((tr[cols] - mu) / sd).to_numpy()]
+            A = X.T @ X + ridge * np.diag([0] + [1] * len(cols))
             b = np.linalg.solve(A, X.T @ tr.e.to_numpy())
-            xt = np.c_[np.ones(len(te)), te[cols].fillna(tr[cols].mean()).to_numpy()]
+            xt = np.c_[np.ones(len(te)), ((te[cols].fillna(mu) - mu) / sd).to_numpy()]
             eh = xt @ b
+            if coefs is not None:
+                coefs[y] = [round(float(v), 4) for v in b]
         else:
             eh = np.full(len(te), tr.e.mean() if len(tr) else 0.0)
         out.append(te.assign(corr=te.usda * np.exp(eh)))
