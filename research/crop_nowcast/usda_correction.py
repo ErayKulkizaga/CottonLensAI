@@ -30,7 +30,7 @@ def usda_frame(nass_dir, ck):
     def pick(name, ref):
         d = nass_state(nass_dir, name)
         return d[d.reference_period_desc == ref].set_index(['state_alpha', 'year']).v
-    m = MONTH[ck]
+    m = {**MONTH, 'nov1': 'NOV', 'dec1': 'DEC'}[ck]
     f = pd.DataFrame({'final': pick('state_production', 'YEAR'), 'usda': pick('state_production', f'YEAR - {m} FORECAST'),
                       'harv_m': pick('state_harvested', f'YEAR - {m} FORECAST')})
     f.index = f.index.set_names(['state', 'year'])

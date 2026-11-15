@@ -5,6 +5,7 @@ Members per state-year: B = T25 bias-corrected USDA, H = T06 HGB (fsa_aug area),
 chosen for year Y on states x years 2013..Y-1 (out-of-sample member predictions only). Fewer than 2 past
 years, or a state missing a member -> B. Scored with the T25 scorer. Dev years only.
 Usage: python stack.py feature_dir nass_dir fsa_csv out.json [cnn_preds_root]
+       python stack.py --late feature_dir nass_dir out.json   (T37, Nov/Dec)
 """
 import itertools
 import json
@@ -105,5 +106,48 @@ def main(feature_dir, nass_dir, fsa_csv, out_json, cnn_root=None):
     Path(out_json).write_text(json.dumps(res, indent=1), encoding='utf-8')
 
 
+def late(feature_dir, nass_dir, usda_ck, feat_ck, bench_ck):
+    """T37: members on USDA's usda_ck forecast (U, pooled past-mean bias B) + HGB at feat_ck; scored vs USDA bench_ck."""
+    f, us = UC.usda_frame(nass_dir, usda_ck)
+    f['e'] = np.log(f.final / f.usda)
+    f = f.merge(UC.fit_predict(f, [])[['state', 'year', 'corr']].rename(columns={'corr': 'B'}), on=['state', 'year'])
+    h, _ = C.run(C.prepare(Path(feature_dir) / f'features_{feat_ck}.csv'), nass_dir, feat_ck, [k + '_a' for k in C.NDVI],
+                 'hgb', area='fsa_aug')
+    f = f.merge(h[['state', 'year', 'pred']].rename(columns={'pred': 'H'}), on=['state', 'year'], how='left')
+    f['U'] = f.usda
+    f = f[f.year.isin(UC.TEST_YEARS)]
+    weights = {}
+    e = ensemble(f, ['B', 'H', 'U'], weights)
+    fb, usb = UC.usda_frame(nass_dir, bench_ck)
+    e = e.merge(fb[['state', 'year', 'usda']].rename(columns={'usda': 'bench'}), on=['state', 'year']).dropna(subset=['bench', 'final'])
+    tx = e[e.state == 'TX']
+    j = e.groupby('year')[['corr', 'usda']].sum().join(us.rename(columns={'usda': 'us_m'})).join(usb.usda.rename('us_bench')).dropna()
+    j['us_hat'] = j.us_m * j['corr'] / j.usda
+    mape = lambda a, b: float(100 * (a / b - 1).abs().mean())
+    r = {'members': ['B', 'H', 'U'], 'weights': weights, 'years': sorted(int(y) for y in j.index),
+         'TX': mape(tx['corr'], tx.final), 'TX_bench': mape(tx.bench, tx.final), 'TX_raw_usda_m': mape(tx.usda, tx.final),
+         'US': mape(j.us_hat, j.final), 'US_bench': mape(j.us_bench, j.final), 'US_raw_usda_m': mape(j.us_m, j.final),
+         'state_w': state_w(e, 'corr'), 'state_w_bench': state_w(e, 'bench'),
+         'TX_by_year': {int(y): (round(100 * (a / q - 1), 1), round(100 * (b / q - 1), 1))
+                        for y, a, b, q in zip(tx.year, tx['corr'], tx.bench, tx.final, strict=True)},
+         'US_by_year': {int(y): (round(100 * (a / q - 1), 1), round(100 * (b / q - 1), 1))
+                        for y, a, b, q in zip(j.index, j.us_hat, j.us_bench, j.final, strict=True)}}
+    r['pass'] = bool(r['TX'] < r['TX_bench'] and r['US'] < r['US_bench'] and r['state_w'] < r['state_w_bench'])
+    print(f"T37 USDA {usda_ck} + HGB {feat_ck} vs USDA {bench_ck}: TX {r['TX']:4.1f} vs {r['TX_bench']:4.1f} (raw {r['TX_raw_usda_m']:4.1f})"
+          f" | US {r['US']:4.1f} vs {r['US_bench']:4.1f} (raw {r['US_raw_usda_m']:4.1f}) | state_w {r['state_w']:4.1f} vs "
+          f"{r['state_w_bench']:4.1f}  pass={r['pass']}\n   weights {weights}")
+    return r
+
+
+def main_late(feature_dir, nass_dir, out_json):
+    res = {'primary_pre_10dec': late(feature_dir, nass_dir, 'nov1', 'dec1', 'dec1'),
+           'secondary_nov1': late(feature_dir, nass_dir, 'nov1', 'nov1', 'nov1'),
+           'secondary_post_dec': late(feature_dir, nass_dir, 'dec1', 'dec1', 'dec1')}
+    Path(out_json).write_text(json.dumps(res, indent=1), encoding='utf-8')
+
+
 if __name__ == '__main__':
-    main(*sys.argv[1:6])
+    if sys.argv[1] == '--late':
+        main_late(*sys.argv[2:5])
+    else:
+        main(*sys.argv[1:6])

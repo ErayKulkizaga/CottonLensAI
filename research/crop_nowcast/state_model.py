@@ -18,7 +18,7 @@ from sklearn.pipeline import make_pipeline
 from sklearn.preprocessing import StandardScaler
 
 TEST_YEARS = range(2013, 2022)
-USDA_MONTH = {'aug1': 'AUG', 'sep1': 'SEP', 'oct1': 'OCT', 'nov1': 'NOV'}
+USDA_MONTH = {'aug1': 'AUG', 'sep1': 'SEP', 'oct1': 'OCT', 'nov1': 'NOV', 'dec1': 'DEC'}
 
 
 def nass_state(nass_dir, name):

@@ -281,6 +281,19 @@ Kaggle setup:
   - a post-report December correction (U, B and H on USDA December) against USDA December.
 - **Prior expectation (written before running).** T32 failed and T33 found no skill on the Nov→Dec revision, so passing is unlikely.
 
+**T37 result (15 Nov): FAIL (primary), as expected. The secondary rows show no gain either.**
+
+| Variant | Ours TX / US | Benchmark TX / US | Raw USDA of the input month | Prod-wtd state, ours / benchmark |
+|---|---|---|---|---|
+| **Primary:** USDA Nov + HGB dec1 vs USDA Dec | 8.3 / 4.6 | **4.7 / 3.1** | 8.5 / 4.4 | 6.8 / 4.6 |
+| Secondary: 1 Nov vs USDA Nov | 8.5 / 4.8 | 8.5 / 4.4 | — | 6.9 / 6.8 |
+| Secondary: post-report Dec correction vs USDA Dec | 4.5 / 3.3 | 4.7 / 3.1 | — | 4.7 / 4.6 |
+
+- **Weights go to raw USDA** (U = 0.85–1.0 in 2015–2020). The past-mean bias of USDA's Nov/Dec forecasts is close to zero, so B adds nothing, and HGB gets 0–0.15.
+- What USDA learns between November and December (mostly ginning data) is not in any of our inputs. Nothing here beats USDA's 10 Dec number before its release.
+- **Implication for the 10 Dec 2026 forward forecast:** we have no validated edge over USDA's December figure. A locked forecast would be USDA November plus a near-zero correction, which is not a claim worth making as "beating USDA".
+- Evidence: `t37-late-stack-20261115.json`.
+
 ### External landscape (research, 15 Nov)
 
 - **Descartes Labs** claimed to beat USDA's August *corn* yield forecast in 2015, by about 1 percentage point. The figures are company-reported and cover one season.
