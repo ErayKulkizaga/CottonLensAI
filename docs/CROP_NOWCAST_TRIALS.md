@@ -312,6 +312,26 @@ Kaggle setup:
   - T36-style stack of B, H, U and G (this correction) against USDA December.
 - One feature set only. No other ginning dates or features are reported as results.
 
+**T38 result (15 Nov): FAIL (primary). Ginning pace improves USDA's November forecast, but not enough to reach USDA's December one.**
+
+Data:
+- `gin_pull.py` parsed 13 reports as of 15 November (2009–2021), with 13–17 states each.
+- All were released 22–25 Nov, before that year's December Crop Production report.
+- 2009 uses an older layout; the parser handles both and tests cover both.
+
+| Variant | Ours TX / US | Benchmark TX / US | Prod-wtd state, ours / benchmark |
+|---|---|---|---|
+| **Primary:** G (USDA Nov + pace correction) vs USDA Dec | 8.1 / 4.0 | **4.7 / 3.1** | 6.8 / 4.6 |
+| Secondary: G vs USDA Nov | **8.1 / 4.0** | 8.5 / 4.4 | 6.8 / 6.8 |
+| Secondary: stack of B, H, U, G vs USDA Dec | 7.3 / 3.9 | **4.7 / 3.1** | 6.5 / 4.6 |
+
+- **Improvement over USDA November.** The pace correction moves TX from 8.5 to 8.1 and the US from 4.4 to 4.0. US is better in 6 of 9 years, TX in 6 of 8 years where they differ. The state error is unchanged.
+- **The stack uses the ginning signal.** G's weight rises to 0.45–0.65 in 2018–2021, and the stack beats USDA November more (7.3 / 3.9). It is still far from USDA December.
+- **Correlation of ê with USDA's actual Nov→Dec revision:** +0.09 over 153 state-years. That is weak.
+- **Why it misses.** The large Nov→Dec errors are TX 2016 (−17.7 vs USDA Dec −8.6) and TX 2020 (+30.2 vs +13.8). These are abandonment and late-harvest years, where by 15 November ginning pace does not show what USDA learns by early December.
+- **10 Dec implication.** Still no validated edge over USDA's December figure. The one honest pre-report claim we could make is "better than USDA November" (secondary, small, about 9 years).
+- Evidence: `t38-ginnings-20261115.json`; data in `output/crop-nowcast/gin/` (raw ESMIS text plus `ginnings.csv`).
+
 ### External landscape (research, 15 Nov)
 
 - **Descartes Labs** claimed to beat USDA's August *corn* yield forecast in 2015, by about 1 percentage point. The figures are company-reported and cover one season.

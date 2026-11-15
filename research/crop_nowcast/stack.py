@@ -106,10 +106,25 @@ def main(feature_dir, nass_dir, fsa_csv, out_json, cnn_root=None):
     Path(out_json).write_text(json.dumps(res, indent=1), encoding='utf-8')
 
 
-def late(feature_dir, nass_dir, usda_ck, feat_ck, bench_ck):
-    """T37: members on USDA's usda_ck forecast (U, pooled past-mean bias B) + HGB at feat_ck; scored vs USDA bench_ck."""
+def gin_pace(f, gin_csv, asof='11-15'):
+    """T38: pace = log(running bales ginned by asof / USDA forecast); pace_a = pace minus the state's earlier-years mean."""
+    g = pd.read_csv(gin_csv, parse_dates=['asof'])
+    g = g[g['asof'].dt.strftime('%m-%d') == asof].assign(year=lambda x: x['asof'].dt.year)[['state', 'year', 'bales']]
+    f = f.merge(g, on=['state', 'year'], how='left').sort_values(['state', 'year'])
+    f['pace'] = np.log(f.bales / f.usda)
+    f['pace_a'] = f.pace - f.groupby('state').pace.transform(lambda x: x.expanding().mean().shift(1))
+    return f
+
+
+def late(feature_dir, nass_dir, usda_ck, feat_ck, bench_ck, gin_csv=None, mode='stack'):
+    """T37 (mode 'stack': B, H, U) / T38 (mode 'gin': ginning-pace correction G alone; 'stack+gin': B, H, U, G).
+    Members sit on USDA's usda_ck forecast; scored against USDA's bench_ck forecast."""
     f, us = UC.usda_frame(nass_dir, usda_ck)
     f['e'] = np.log(f.final / f.usda)
+    if gin_csv:
+        f = gin_pace(f, gin_csv)
+        f = f.merge(UC.fit_predict(f, ['pace_a'])[['state', 'year', 'corr']].rename(columns={'corr': 'G'}),
+                    on=['state', 'year'])
     f = f.merge(UC.fit_predict(f, [])[['state', 'year', 'corr']].rename(columns={'corr': 'B'}), on=['state', 'year'])
     h, _ = C.run(C.prepare(Path(feature_dir) / f'features_{feat_ck}.csv'), nass_dir, feat_ck, [k + '_a' for k in C.NDVI],
                  'hgb', area='fsa_aug')
@@ -117,14 +132,15 @@ def late(feature_dir, nass_dir, usda_ck, feat_ck, bench_ck):
     f['U'] = f.usda
     f = f[f.year.isin(UC.TEST_YEARS)]
     weights = {}
-    e = ensemble(f, ['B', 'H', 'U'], weights)
+    members = {'stack': ['B', 'H', 'U'], 'gin': ['G'], 'stack+gin': ['B', 'H', 'U', 'G']}[mode]
+    e = f.assign(corr=f.G) if mode == 'gin' else ensemble(f, members, weights)
     fb, usb = UC.usda_frame(nass_dir, bench_ck)
     e = e.merge(fb[['state', 'year', 'usda']].rename(columns={'usda': 'bench'}), on=['state', 'year']).dropna(subset=['bench', 'final'])
     tx = e[e.state == 'TX']
     j = e.groupby('year')[['corr', 'usda']].sum().join(us.rename(columns={'usda': 'us_m'})).join(usb.usda.rename('us_bench')).dropna()
     j['us_hat'] = j.us_m * j['corr'] / j.usda
     mape = lambda a, b: float(100 * (a / b - 1).abs().mean())
-    r = {'members': ['B', 'H', 'U'], 'weights': weights, 'years': sorted(int(y) for y in j.index),
+    r = {'members': members, 'weights': weights, 'years': sorted(int(y) for y in j.index),
          'TX': mape(tx['corr'], tx.final), 'TX_bench': mape(tx.bench, tx.final), 'TX_raw_usda_m': mape(tx.usda, tx.final),
          'US': mape(j.us_hat, j.final), 'US_bench': mape(j.us_bench, j.final), 'US_raw_usda_m': mape(j.us_m, j.final),
          'state_w': state_w(e, 'corr'), 'state_w_bench': state_w(e, 'bench'),
@@ -133,7 +149,11 @@ def late(feature_dir, nass_dir, usda_ck, feat_ck, bench_ck):
          'US_by_year': {int(y): (round(100 * (a / q - 1), 1), round(100 * (b / q - 1), 1))
                         for y, a, b, q in zip(j.index, j.us_hat, j.us_bench, j.final, strict=True)}}
     r['pass'] = bool(r['TX'] < r['TX_bench'] and r['US'] < r['US_bench'] and r['state_w'] < r['state_w_bench'])
-    print(f"T37 USDA {usda_ck} + HGB {feat_ck} vs USDA {bench_ck}: TX {r['TX']:4.1f} vs {r['TX_bench']:4.1f} (raw {r['TX_raw_usda_m']:4.1f})"
+    if gin_csv:
+        x = e.merge(fb[['state', 'year', 'usda']].rename(columns={'usda': 'dec'}), on=['state', 'year'])
+        x = x.assign(gh=np.log(x.G / x.usda), rv=np.log(x.dec / x.usda)).dropna(subset=['gh', 'rv'])
+        r['corr_G_vs_revision'], r['n_revision'] = float(np.corrcoef(x.gh, x.rv)[0, 1]), len(x)
+    print(f"{mode} USDA {usda_ck} + HGB {feat_ck} vs USDA {bench_ck}: TX {r['TX']:4.1f} vs {r['TX_bench']:4.1f} (raw {r['TX_raw_usda_m']:4.1f})"
           f" | US {r['US']:4.1f} vs {r['US_bench']:4.1f} (raw {r['US_raw_usda_m']:4.1f}) | state_w {r['state_w']:4.1f} vs "
           f"{r['state_w_bench']:4.1f}  pass={r['pass']}\n   weights {weights}")
     return r
@@ -146,8 +166,17 @@ def main_late(feature_dir, nass_dir, out_json):
     Path(out_json).write_text(json.dumps(res, indent=1), encoding='utf-8')
 
 
+def main_gin(feature_dir, nass_dir, gin_csv, out_json):
+    res = {'primary_gin_vs_dec': late(feature_dir, nass_dir, 'nov1', 'dec1', 'dec1', gin_csv, 'gin'),
+           'secondary_gin_vs_nov': late(feature_dir, nass_dir, 'nov1', 'dec1', 'nov1', gin_csv, 'gin'),
+           'secondary_stack_gin_vs_dec': late(feature_dir, nass_dir, 'nov1', 'dec1', 'dec1', gin_csv, 'stack+gin')}
+    Path(out_json).write_text(json.dumps(res, indent=1), encoding='utf-8')
+
+
 if __name__ == '__main__':
     if sys.argv[1] == '--late':
         main_late(*sys.argv[2:5])
+    elif sys.argv[1] == '--gin':
+        main_gin(*sys.argv[2:6])
     else:
         main(*sys.argv[1:6])

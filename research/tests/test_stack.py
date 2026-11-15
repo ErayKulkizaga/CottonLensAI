@@ -21,3 +21,20 @@ def test_weights_never_see_the_test_year():
     g.loc[g.year == 2019, 'final'] *= 3  # changing year-Y outcomes must not move year-Y weights
     ensemble(g, ['B', 'H', 'U'], w2)
     assert w1[2019] == w2[2019] and w1[2014] is None
+
+
+def test_gin_parse_both_layouts():
+    from research.crop_nowcast.gin_pull import parse
+
+    new = ('Released November 25, 2019, by NASS\n'
+           'Running Bales Ginned by Crop - States and United States: November 15, 2016-2019\n'
+           'Upland   :\nTexas ......:   (D)   (D)   2,197,400   3,249,800\n'
+           'All      :\nTexas ......:   2,613,700   3,140,850   2,200,000   3,254,300\n'
+           'Arizona .....:   121,850   109,450   60,050   (D)\n---\n')
+    a, r, o = parse(new)
+    assert str(a) == '2019-11-15' and str(r) == '2019-11-25' and o == {'TX': 3254300, 'AZ': None}
+    old = ('Released November 24, 2009, by NASS\n  As of November 15, Crop Years 2006-2009\n'
+           'All Cotton  :\nTX          :    2,322,400   2,635,050   1,485,950   1,868,550\n'
+           'NM          :    1/   1/   1/   1/\nUS          :   11,832,450\n')
+    a, _, o = parse(old)
+    assert str(a) == '2009-11-15' and o == {'TX': 1868550, 'NM': None}
