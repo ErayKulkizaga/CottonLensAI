@@ -84,3 +84,26 @@ def test_search_items_retries_transient_stac_errors(monkeypatch):
     monkeypatch.setattr(landsat_fields.time, 'sleep', lambda s: None)
     assert landsat_fields.search_items(Fake(), collections=['x']) == ['item']
     assert Fake.calls == 3
+
+
+def test_fsa_cotton_rows_keep_upland_only_and_split_irrigation():
+    from research.crop_nowcast import fsa_acreage
+    rows = [
+        {'st': '48', 'co': '303', 'crop': 'COTTON  UPLAND', 'ctype': '', 'irr': 'I', 'planted': 100, 'failed': 5},
+        {'st': '48', 'co': '303', 'crop': 'COTTON  UPLAND', 'ctype': '', 'irr': 'N', 'planted': 200, 'failed': 150},
+        {'st': '48', 'co': '303', 'crop': 'COTTON  UPLAND', 'ctype': '', 'irr': 'N', 'planted': 50, 'failed': 0},
+        {'st': '48', 'co': '303', 'crop': 'COTTON  ELS', 'ctype': '', 'irr': 'I', 'planted': 999, 'failed': 9},
+        {'st': '48', 'co': '303', 'crop': 'COTTON', 'ctype': 'UPLAND', 'irr': None, 'planted': 10, 'failed': 1},
+        {'st': '48', 'co': '303', 'crop': 'CORN', 'ctype': 'YELLOW', 'irr': 'I', 'planted': 7, 'failed': 7},
+    ]
+    out = fsa_acreage.cotton_rows(rows)
+    assert out[('48', '303', 'I')] == [100.0, 5.0]
+    assert out[('48', '303', 'N')] == [260.0, 151.0]  # untyped irrigation counts as non-irrigated
+    assert len(out) == 2
+
+
+def test_fsa_refuses_sealed_years(tmp_path):
+    from research.crop_nowcast import fsa_acreage
+    (tmp_path / 'r.json').write_text(json.dumps({'x.zip': {'year': 2023, 'label': '2023 as of August 1, 2023'}}))
+    with pytest.raises(SystemExit):
+        fsa_acreage.main(tmp_path / 'r.json', tmp_path, tmp_path / 'o.csv')
