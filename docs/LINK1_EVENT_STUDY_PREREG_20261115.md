@@ -1,6 +1,6 @@
-# Link 1 preregistration (DRAFT, waiting for the user's approval): report-day price reaction
+# Link 1 preregistration (APPROVED by the user on 15 Nov 2026): report-day price reaction
 
-Written before any report-day return was computed. This draft sets a new success criterion, so it needs the user's approval before the test runs.
+Written before any report-day return was computed. The user approved this new success criterion on 15 Nov 2026 ("Approve and run"). It is frozen by this commit; the run must check this file's hash.
 
 ## Question
 1. Does the cotton price move more on USDA Crop Production report days than on other days?
