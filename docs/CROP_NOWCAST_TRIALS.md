@@ -104,6 +104,8 @@ Each trial corrects USDA's own forecast by predicting its error. The model is fi
 - **Sealed test candidate:** T25 (bias correction) at 1 Sep and 1 Oct. It needs only USDA's monthly forecasts and final production for 2022–2025.
   - Risk: it wins only if USDA's upward bias persists. It is one shot.
   - It needs the user's explicit yes and a pushed preregistration.
+- **Unified goal (approved 15 Nov).** All tracks are now one chain; see [WORK_PLAN_20261115.md](WORK_PLAN_20261115.md). The P items below became Links 1–3.
+- **Already tested in the Codex era (P00, not to be repeated).** These used WASDE regional numbers (2019–2023) and Texas condition (2016–2023) as features for *every-day* T+1 price MAE. All stayed below the 5% target, and the weak-signal check showed that shrinkage hides small signals. Report-day behaviour and the revision-to-price sign were never tested. Sources: WASDE_REGIONAL_T1_RESULT, NASS_REGIONAL_T1_RESULT, WEAK_SIGNAL_RESULT, and the two CLOCK_CASE documents.
 - **Price track** (second priority; the user's request, relayed on 15 Nov). The idea is "forecast the forecasts": price reacts to the report surprise.
   - **P01** Price after USDA reports. On WASDE and Crop Production days, and the 1–5 days after, does cotton over- or under-react (drift)? Needs only the existing CT history and report dates. Cheapest, so it runs first.
   - **P02** Surprise prediction. Does the gap between our USDA-correction model and the analyst consensus predict USDA's revision and the price move on report day? Needs a pre-report poll archive, not verified to exist.
