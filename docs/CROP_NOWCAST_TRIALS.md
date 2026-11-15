@@ -222,6 +222,25 @@ Kaggle setup:
 - Evidence: `t35-cnn-oct1-20261115.json`, `t35-cnn-aug1-20261115.json`.
 - Per the stop rule, there is no tuning and no second architecture without the user's word.
 
+### T36 (PRE-DECLARED 15 Nov, before running): rolling percentage ensemble around the USDA correction
+
+- **Members, per state-year:**
+  - B = T25 (USDA bias-corrected, the same rows as the FSA variant);
+  - H = T06 HGB with `fsa_aug` area;
+  - N = T35 CNN seed mean (1 Aug and 1 Oct only);
+  - U = USDA's raw forecast for the month.
+- **Ensemble.** exp(Σ wₖ log memberₖ), with weights wₖ ≥ 0 that sum to 1, on a 0.05 simplex grid.
+- **Weights for year Y** minimise the pooled squared log error over states × years 2013…Y−1. They use only the members' out-of-sample predictions from earlier folds.
+  - With fewer than 2 past years (2013 and 2014), the ensemble is B.
+  - A state with any member missing uses B for that state.
+- **Aggregation and scoring** are the same as T25: US = USDA_US × Σ ensemble / Σ USDA over the states. MAPE for TX and US, plus the production-weighted state error.
+- **Primary: 1 Oct, members B + H + N + U.** Secondary: 1 Sep (B + H + U) and 1 Aug (B + H + N + U).
+- **Pass rule at 1 Oct.** All of the following must hold:
+  - beat USDA (11.0 / 6.1) for both TX and US;
+  - beat T25 on the same rows, for both TX and US;
+  - production-weighted state error below USDA's and below T25's.
+- One variant only. No other member sets are reported as results.
+
 ### External landscape (research, 15 Nov)
 
 - **Descartes Labs** claimed to beat USDA's August *corn* yield forecast in 2015, by about 1 percentage point. The figures are company-reported and cover one season.
