@@ -160,6 +160,47 @@ All rows use county HGB, rolling 2013–2021, the pinned environment, and 1 Aug 
 
 **Verdict:** no ability to predict USDA's December revision.
 
+### Reference refresh and T34a (15 Nov)
+
+- **T06 reproduced** in the pinned environment: 18.9 at 1 Aug and 12.7 at 1 Oct (June area).
+- **Same model with August-file FSA area (`fsa_aug`):** 1 Aug TX 20.0 / US 8.5; **1 Oct TX 10.3** / US 6.6. At 1 Oct, TX beats USDA (11.0) and T25 (10.4), while the US does not (USDA 6.1). This is a new cell and counts as one more variant.
+- **T34a (exploratory):** per-16-day composite median and p90 NDVI, each as an anomaly against the county's past mean (season sequence), added to HGB with `fsa_aug` area.
+
+  | Variant | 1 Aug TX / US | 1 Oct TX / US |
+  |---|---|---|
+  | Sequence only | 18.8 / **6.6** | 15.9 / 7.1 |
+  | NDVI + sequence | 18.0 / **6.7** | 14.6 / 7.6 |
+
+  The sequence helps at 1 Aug for the US and hurts at 1 Oct.
+
+### T35 (PRE-DECLARED 15 Nov, before any extraction or training): GPU histogram CNN (You et al. 2017 style)
+
+- **Input.** For each county-year: MOD13Q1 v061 histograms of cotton pixels (prior-year CDL mask, as before).
+  - 6 bands: NDVI, EVI, red, NIR, blue and MIR reflectance.
+  - 32 fixed bins per band, with ranges set from training years only.
+  - One histogram per 16-day composite. A composite is available once its end date plus 8 days falls on or before the cutoff. Missing composites are zero-padded.
+  - Tensor shape is [6 bands, T composites, 32 bins].
+- **Target.** The same as T06: log(production per planted acre / the county's past mean).
+- **Architecture (one, fixed).**
+  - 3 conv blocks (Conv2d over composites × bins, with 32, 64 and 128 channels, kernel 3, BatchNorm, ReLU, dropout 0.25, stride 2 on the bin axis);
+  - global average pooling;
+  - a dense layer of 64 units;
+  - 1 output.
+  - Adam, learning rate 1e-3, weight decay 1e-4, batch size 64, 60 epochs, MSE loss.
+- **Protocol.**
+  - Rolling origin over test years 2013–2021.
+  - The validation year is the last training year (Y−1). It is used only for early stopping, with patience 10. Inputs are normalised with statistics from training years only.
+  - **5 seeds** (0–4). The result is the seed mean of the county predictions.
+  - State aggregation, planted area (`fsa_aug`) and scoring use the same local code as T06. Kaggle only writes county predictions per (fold, seed).
+- **Primary cutoff: 1 Oct.** 1 Aug is reported as secondary.
+- **Pass rule at 1 Oct.** All of the following must hold:
+  - TX < 11.0 and US < 6.1 (USDA);
+  - TX < 10.4 and US < 4.9 (the T25 bias model);
+  - production-weighted state error below USDA's;
+  - better than the HGB reference (T06 `fsa_aug`: 10.3 / 6.6) on identical rows, by more than the seed spread (min–max of the 5 seed results).
+- **Stop rule.** A second architecture, Prithvi, or any tuning needs the user's explicit word.
+- **Seal.** Extraction refuses years 2022 and later.
+
 ### External landscape (research, 15 Nov)
 
 - **Descartes Labs** claimed to beat USDA's August *corn* yield forecast in 2015, by about 1 percentage point. The figures are company-reported and cover one season.

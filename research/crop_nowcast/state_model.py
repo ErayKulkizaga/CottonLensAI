@@ -49,11 +49,11 @@ def state_frame(nass_dir, cutoff_key, area='mar'):
         jun = json.loads((Path(nass_dir) / 'june_acreage.json').read_text())['planted_june']
         s['planted_jun'] = [jun.get(str(y), {}).get(st) for st, y in zip(s.state, s.year, strict=True)]
         known = s.planted_jun.astype(float).fillna(s.planted_mar)
-    if area == 'fsa':
+    if area in ('fsa', 'fsa_aug'):  # fsa_aug: always the August file (saved before USDA's report 2013-2021)
         jun = json.loads((Path(nass_dir) / 'june_acreage.json').read_text())['planted_june']
         june = pd.Series([jun.get(str(y), {}).get(st) for st, y in zip(s.state, s.year, strict=True)], index=s.index)
         d = pd.read_csv(Path(nass_dir).parent / 'fsa/fsa_cotton.csv', dtype={'st': str, 'co': str})
-        d = d[d.month == {'aug1': 'aug', 'sep1': 'sep', 'oct1': 'oct'}[cutoff_key]]
+        d = d[d.month == ('aug' if area == 'fsa_aug' else {'aug1': 'aug', 'sep1': 'sep', 'oct1': 'oct'}[cutoff_key])]
         ids = prod[['state_ansi', 'state_alpha']].drop_duplicates()
         d['state'] = d.st.map(dict(zip(ids.state_ansi.str.zfill(2), ids.state_alpha, strict=True)))
         f = (d.planted + d.failed).groupby([d.state, d.year]).sum().rename('fsa')
