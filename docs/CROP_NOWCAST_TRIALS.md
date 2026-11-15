@@ -325,7 +325,10 @@ Data:
 | Secondary: G vs USDA Nov | **8.1 / 4.0** | 8.5 / 4.4 | 6.8 / 6.8 |
 | Secondary: stack of B, H, U, G vs USDA Dec | 7.3 / 3.9 | **4.7 / 3.1** | 6.5 / 4.6 |
 
-- **Improvement over USDA November.** The pace correction moves TX from 8.5 to 8.1 and the US from 4.4 to 4.0. US is better in 6 of 9 years, TX in 6 of 8 years where they differ. The state error is unchanged.
+- **Improvement over USDA November.** The pace correction moves TX from 8.5 to 8.1 and the US from 4.4 to 4.0. Year by year this is **not robust**:
+  - US is better in 4 years and worse in 4, with 1 tie. The mean gain comes from 2019–2021.
+  - TX is better in 5 of the 8 years where they differ.
+  - The state error is unchanged.
 - **The stack uses the ginning signal.** G's weight rises to 0.45–0.65 in 2018–2021, and the stack beats USDA November more (7.3 / 3.9). It is still far from USDA December.
 - **Correlation of ê with USDA's actual Nov→Dec revision:** +0.09 over 153 state-years. That is weak.
 - **Why it misses.** The large Nov→Dec errors are TX 2016 (−17.7 vs USDA Dec −8.6) and TX 2020 (+30.2 vs +13.8). These are abandonment and late-harvest years, where by 15 November ginning pace does not show what USDA learns by early December.
