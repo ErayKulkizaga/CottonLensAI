@@ -294,6 +294,24 @@ Kaggle setup:
 - **Implication for the 10 Dec 2026 forward forecast:** we have no validated edge over USDA's December figure. A locked forecast would be USDA November plus a near-zero correction, which is not a claim worth making as "beating USDA".
 - Evidence: `t37-late-stack-20261115.json`.
 
+### T38 (PRE-DECLARED 15 Nov, before pulling or running): ginning pace corrects USDA's November forecast
+
+- **Data.** NASS *Cotton Ginnings* reports from ESMIS. For each year 2009–2021, use that year's report "as of November 15", taking all-cotton running bales by state for the current crop as first published.
+  - Use it only if the report was released before that year's December Crop Production report.
+  - (D) values are treated as missing.
+- **Feature.** pace = log(ginned by 15 Nov / USDA November state forecast). Also pace_a = pace minus the state's mean pace over earlier years only.
+- **Model.** Rolling pooled ridge on e = log(final / USDA Nov), with feature pace_a, standardised within each fold. This is `usda_correction.fit_predict`, with USDA left unchanged when fewer than 10 past rows exist.
+  - Corrected = USDA Nov × exp(ê).
+  - US = USDA_US Nov × Σ corrected / Σ USDA Nov (the same as T25).
+- **Primary pass rule (the 10 Dec target).** All of the following must hold:
+  - TX and US MAPE below USDA's December forecast;
+  - production-weighted state error below USDA December's.
+- **Secondary (reported, not a claim):**
+  - against USDA November (does pace improve the November forecast?);
+  - correlation of ê with USDA's actual Nov→Dec revision;
+  - T36-style stack of B, H, U and G (this correction) against USDA December.
+- One feature set only. No other ginning dates or features are reported as results.
+
 ### External landscape (research, 15 Nov)
 
 - **Descartes Labs** claimed to beat USDA's August *corn* yield forecast in 2015, by about 1 percentage point. The figures are company-reported and cover one season.
