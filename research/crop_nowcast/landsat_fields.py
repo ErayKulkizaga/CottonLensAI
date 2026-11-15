@@ -28,6 +28,19 @@ PLATFORMS = ('landsat-5', 'landsat-7', 'landsat-8')
 DEFAULT_YEARS = (2009, 2021)
 
 
+def search_items(cat, **kw):
+    """STAC search with retries: the gateway drops connections for long runs (seen on Kaggle)."""
+    from pystac_client.exceptions import APIError
+
+    for k in range(6):
+        try:
+            return list(cat.search(**kw).item_collection())
+        except (APIError, OSError):
+            if k == 5:
+                raise
+            time.sleep(15 * (k + 1))
+
+
 def county_features(idx, day, ndvi, county_of, fips, year):
     """idx: point index per observation, day: acquisition date (datetime64[D]), ndvi: float.
     Returns rows of per-county features for each cutoff, honouring LAG_DAYS."""
@@ -125,8 +138,8 @@ def main(panel_json, out_dir, first=DEFAULT_YEARS[0], last=DEFAULT_YEARS[1]):
         print(st, 'grid', H, W, 'county cells', len(px_all), flush=True)
 
         def cotton_points(cdl_year):
-            items = cat.search(collections=['usda-cdl'], bbox=[lon0, lat0, lon1, lat1],
-                               datetime=f'{cdl_year}-01-01/{cdl_year}-12-31').item_collection()
+            items = search_items(cat, collections=['usda-cdl'], bbox=[lon0, lat0, lon1, lat1],
+                                 datetime=f'{cdl_year}-01-01/{cdl_year}-12-31')
             items = [i for i in items if i.properties.get('usda_cdl:type') == 'cropland']
             m = np.zeros(len(px_all), bool)
             for it in items:
@@ -157,9 +170,9 @@ def main(panel_json, out_dir, first=DEFAULT_YEARS[0], last=DEFAULT_YEARS[1]):
             keep = cotton_points(year - 1)
             px, py, county_of = px_all[keep], py_all[keep], county_all[keep]
             lon, lat = Transformer.from_crs('EPSG:5070', 'EPSG:4326', always_xy=True).transform(px, py)
-            items = cat.search(collections=['landsat-c2-l2'], bbox=[lon0, lat0, lon1, lat1],
-                               datetime=f'{year}-{SEASON[0]}/{year}-{SEASON[1]}',
-                               query={'eo:cloud_cover': {'lt': 60}}).item_collection()
+            items = search_items(cat, collections=['landsat-c2-l2'], bbox=[lon0, lat0, lon1, lat1],
+                                 datetime=f'{year}-{SEASON[0]}/{year}-{SEASON[1]}',
+                                 query={'eo:cloud_cover': {'lt': 60}})
             items = [i for i in items if i.properties.get('platform') in PLATFORMS
                      and i.properties.get('landsat:collection_category') == 'T1']
             limit = next((int(a.split('=', 1)[1]) for a in sys.argv if a.startswith('--limit=')), None)

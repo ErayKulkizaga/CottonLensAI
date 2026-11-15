@@ -67,3 +67,20 @@ def test_landsat_merge_anomaly_uses_only_earlier_years(tmp_path):
     assert m.l_p50.tolist() == [0.4, 0.2, 0.6]  # aug1 rows only
     assert np.isnan(m.loc[2010, 'l_p50_a'])
     assert np.isclose(m.loc[2011, 'l_p50_a'], -0.2) and np.isclose(m.loc[2012, 'l_p50_a'], 0.3)
+
+
+def test_search_items_retries_transient_stac_errors(monkeypatch):
+    APIError = pytest.importorskip('pystac_client.exceptions').APIError
+
+    class Fake:
+        calls = 0
+
+        def search(self, **kw):
+            Fake.calls += 1
+            if Fake.calls < 3:
+                raise APIError('upstream connect error')
+            return type('S', (), {'item_collection': lambda self: ['item']})()
+
+    monkeypatch.setattr(landsat_fields.time, 'sleep', lambda s: None)
+    assert landsat_fields.search_items(Fake(), collections=['x']) == ['item']
+    assert Fake.calls == 3
