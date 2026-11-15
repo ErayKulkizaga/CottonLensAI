@@ -106,6 +106,14 @@ Frozen preregistration: `docs/LINK1_EVENT_STUDY_PREREG_20261115.md` (LF sha256 1
 - The market appears to anticipate most revisions. In Nov 2018 the revision was −7.4% and the return +0.06%.
 - The reaction-size result rests on a few large days.
 
+## Chain: Link 3, analyst consensus archive (time-boxed check, 15 Nov)
+
+- **Rule:** find the pre-report average trade estimate of US production for two past reports, in two independent public sources. Continue only if one source covers most of the 38 events.
+- **Sep 2019:** found. A Bloomberg survey expected 21.8 M bales; USDA reported 21.86 M (bloombergquint article).
+- **Nov 2018:** not found in any public source.
+- Reuters cotton polls appear only scattered in republications (Business Recorder), and most cover exports and stocks rather than production.
+- **Result: UNAVAILABLE from public sources.** A paid archive (Bloomberg or Reuters terminal) would be needed. That is the user's call.
+
 ## Findings to combine later
 
 1. County NDVI anomaly is the strongest single signal. Its correlation with production per planted acre at 1 Oct is +0.52 (+0.62 in Texas).
