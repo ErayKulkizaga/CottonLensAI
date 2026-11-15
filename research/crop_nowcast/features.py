@@ -9,6 +9,7 @@ Availability rules (frozen here, documented in the data contract):
 No value from year Y's NASS estimates enters a feature.
 """
 import json
+import os
 from pathlib import Path
 
 import numpy as np
@@ -17,6 +18,7 @@ import pandas as pd
 WEATHER_LAG_DAYS = 3
 NDVI_LAG_DAYS = 8
 SEASON_START = '04-01'
+LAST = int(os.environ.get('COTTONLENS_LAST_YEAR', '2021'))  # sealed years only after the T39 prereg
 CUTOFFS = {'aug1': '08-01', 'sep1': '09-01', 'oct1': '10-01', 'nov1': '11-01', 'dec1': '12-01'}
 
 
@@ -41,10 +43,8 @@ def targets(nass_dir):
 
 def weather(power_dir, fips, clim_dir=None):
     parts = []
-    for d, span in ((clim_dir, '1991_2007'), (power_dir, '2008_2021')):
-        if d is None:
-            continue
-        p = json.loads((Path(d) / f'{fips}_{span}.json').read_text())['properties']['parameter']
+    for f in [*(sorted(Path(clim_dir).glob(f'{fips}_*.json')) if clim_dir else []), *sorted(Path(power_dir).glob(f'{fips}_*.json'))]:
+        p = json.loads(f.read_text())['properties']['parameter']
         w = pd.DataFrame(p)
         w.index = pd.to_datetime(w.index, format='%Y%m%d')
         parts.append(w)
@@ -111,9 +111,9 @@ def build(nass_dir, power_dir, ndvi_dir, panel_json, cutoff_key, clim_dir=None):
         hist = t[t.fips == f].set_index('year')
         clim = {}
         if clim_dir is not None:
-            for y0 in range(1991, 2022):
+            for y0 in range(1991, LAST + 1):
                 clim[y0] = weather_feats(w, y0, cutoff)
-        for year in range(2009, 2022):
+        for year in range(2009, LAST + 1):
             r = {'fips': f, 'state': c['state'], 'year': year}
             past = hist[hist.index < year]
             ys = past['yield'].dropna()

@@ -64,11 +64,20 @@ def month_of(label):
 def main(receipt_json, raw_dir, out_csv):
     rec = json.loads(Path(receipt_json).read_text())
     lines = ['year,month,label,st,co,irr,planted,failed']
+    def day(label):  # day of the 'as of' date; files without one (e.g. 'August 2014') count as earliest
+        m = re.search(r'(?:August|September|October|July)\s+(\d{1,2})', label)
+        return int(m.group(1)) if m else 0
+
+    first = {}
+    for name, meta in rec.items():
+        key = (meta['year'], month_of(meta['label']))
+        if key[1] and (key not in first or day(meta['label']) < day(rec[first[key]]['label'])):
+            first[key] = name
     for name, meta in sorted(rec.items()):
-        if meta['year'] >= SEALED_FROM:
+        if meta['year'] >= SEALED_FROM and '--unseal' not in sys.argv:  # T39 prereg pushed
             raise SystemExit(f'sealed year file present: {name}')
         mon = month_of(meta['label'])
-        if mon is None or 'August 22' in meta['label']:  # keep one snapshot per month (the earliest)
+        if mon is None or first[(meta['year'], mon)] != name:  # keep one snapshot per month (the earliest)
             continue
         try:
             z = zipfile.ZipFile(Path(raw_dir) / name)
@@ -88,4 +97,4 @@ def main(receipt_json, raw_dir, out_csv):
 
 
 if __name__ == '__main__':
-    main(*sys.argv[1:4])
+    main(*[a for a in sys.argv[1:] if not a.startswith('--')])

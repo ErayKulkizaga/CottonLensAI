@@ -53,18 +53,19 @@ def fetch(params, key, year):
             time.sleep(5 * (attempt + 1))
 
 
-def main(out_dir):
+def main(out_dir, first=MIN_YEAR, last=MAX_YEAR):
+    first, last = int(first), int(last)
     key = os.environ.get('NASS_API_KEY')
     if not key:
         raise SystemExit('NASS_API_KEY not set')
-    if MAX_YEAR >= SEALED_FROM:
-        raise SystemExit('Sealed test years may not be pulled before preregistration')
+    if last >= SEALED_FROM and '--unseal' not in sys.argv:  # T39: pushed prereg docs/SEALED_TEST_T39_PREREG_20261115.md
+        raise SystemExit('Sealed test years need --unseal after a pushed preregistration')
     out = Path(out_dir)
     out.mkdir(parents=True, exist_ok=True)
-    receipt = {'api': API, 'base_params': BASE, 'years': [MIN_YEAR, MAX_YEAR], 'queries': {}}
+    receipt = {'api': API, 'base_params': BASE, 'years': [first, last], 'queries': {}}
     for name, params in QUERIES.items():
         rows, hashes = [], {}
-        for year in range(MIN_YEAR, MAX_YEAR + 1):
+        for year in range(first, last + 1):
             try:
                 raw = fetch(params, key, year)
             except urllib.error.HTTPError as exc:
@@ -90,4 +91,4 @@ def main(out_dir):
 
 
 if __name__ == '__main__':
-    main(sys.argv[1])
+    main(*[a for a in sys.argv[1:] if not a.startswith('--')])

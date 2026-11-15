@@ -27,6 +27,11 @@ def main(panel_json, out_dir, first=DEFAULT_YEARS[0], last=DEFAULT_YEARS[1]):
     if last >= 2022 and '--unseal' not in sys.argv:
         raise SystemExit('Sealed years need --unseal after preregistration')
     import planetary_computer as pc
+
+    try:
+        from research.crop_nowcast.cdl_source import cdl_hrefs
+    except ImportError:  # Kaggle/Colab: shipped flat next to this script
+        from cdl_source import cdl_hrefs
     import pystac_client
     import rasterio
     import rasterio.errors
@@ -100,12 +105,11 @@ def main(panel_json, out_dir, first=DEFAULT_YEARS[0], last=DEFAULT_YEARS[1]):
         lon, lat = Transformer.from_crs(crs, 'EPSG:4326', always_xy=True).transform(px, py)
         county_of = cid.ravel()[sel] - 1
 
-        def cotton(cdl_year, bb=bb, sel=sel, lon=lon, lat=lat):
-            items = cat.search(collections=['usda-cdl'], bbox=bb, datetime=f'{cdl_year}-01-01/{cdl_year}-12-31').item_collection()
-            items = [i for i in items if i.properties.get('usda_cdl:type') == 'cropland']
+        def cotton(cdl_year, bb=bb, sel=sel, lon=lon, lat=lat, members=members):
+            hrefs = cdl_hrefs(lambda **kw: cat.search(**kw).item_collection(), bb, cdl_year, [c['fips'][:2] for c in members])
             m = np.zeros(len(sel), bool)
-            for it in items:
-                with ropen(it.assets['cropland'].href) as s:
+            for href in hrefs:
+                with ropen(href) as s:
                     tx, ty = Transformer.from_crs('EPSG:4326', s.crs, always_xy=True).transform(lon, lat)
                     b = s.bounds
                     inside = (tx >= b.left) & (tx < b.right) & (ty > b.bottom) & (ty <= b.top)

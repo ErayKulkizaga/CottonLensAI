@@ -37,6 +37,11 @@ def main(panel_json, out_dir, first=2009, last=2021):
     if last >= SEALED_FROM and '--unseal' not in sys.argv:
         raise SystemExit('Sealed years need --unseal after preregistration')
     import planetary_computer as pc
+
+    try:
+        from research.crop_nowcast.cdl_source import cdl_hrefs
+    except ImportError:  # Kaggle/Colab: shipped flat next to this script
+        from cdl_source import cdl_hrefs
     import pystac_client
     import pystac_client.exceptions
     import rasterio
@@ -108,12 +113,11 @@ def main(panel_json, out_dir, first=2009, last=2021):
         county_of = cid.ravel()[sel] - 1
         n_pix, n_cty = len(sel), len(members)
 
-        def cotton(cdl_year, bb=bb, lon=lon, lat=lat, n=n_pix):
+        def cotton(cdl_year, bb=bb, lon=lon, lat=lat, n=n_pix, members=members):
             m = np.zeros(n, bool)
-            for it in [i for i in search(collections=['usda-cdl'], bbox=bb, datetime=f'{cdl_year}-01-01/{cdl_year}-12-31')
-                       if i.properties.get('usda_cdl:type') == 'cropland']:
-                def go(it=it):
-                    with rasterio.open(pc.sign(it.assets['cropland'].href)) as s:
+            for href in cdl_hrefs(search, bb, cdl_year, [c['fips'][:2] for c in members]):
+                def go(href=href):
+                    with rasterio.open(pc.sign(href)) as s:
                         tx, ty = Transformer.from_crs('EPSG:4326', s.crs, always_xy=True).transform(lon, lat)
                         b = s.bounds
                         inside = (tx >= b.left) & (tx < b.right) & (ty > b.bottom) & (ty <= b.top)
