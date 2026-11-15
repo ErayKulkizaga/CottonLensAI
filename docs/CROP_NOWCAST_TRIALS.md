@@ -86,6 +86,26 @@ Each trial corrects USDA's own forecast by predicting its error. The model is fi
 - **Not an earlier forecast.** This is a correction to USDA's published number, so it exists only after USDA's report.
 - **1 Aug:** still not beaten by any signal (best 14.7 vs 14.8 for TX, noise-level).
 
+## Chain: Link 1, report-day price reaction (preregistered; run once on 15 Nov)
+
+Frozen preregistration: `docs/LINK1_EVENT_STUDY_PREREG_20261115.md` (LF sha256 16e2b440…). Code: commit 863f195. Result: `research/evidence/link1-event-study-20261115.json`.
+
+- **Events:** 38 reports, Sep–Dec of 2012–2021. Oct and Nov 2013 are excluded because there was no previous forecast (shutdown).
+- **Price:** `cotton` daily close series, 2021 and earlier only.
+- **Deviation from the preregistration:** the NASS series used is upland production (about 97% of all cotton), not all-cotton.
+
+| Test | Result | Bar | Pass |
+|---|---|---|---|
+| H1: mean \|R\| on report days vs other days | **1.42×**, p = 0.0038 | p < 0.025 | **yes** |
+| H2: Spearman(revision, return) < 0 | −0.232, p = 0.076 | p < 0.025 | no |
+| Oracle gate: R̂ = β·revision vs naive, event-day MAE | −3.8% (32 events) | ≥ +5% | no |
+| Sensitivity without the 3 days with \|R\| ≥ 4% (Sep 2017, Sep 2019, Dec 2021) | H1 1.15×, p = 0.16; H2 −0.137 | | no |
+
+**Pre-declared decision:** the price reacts, but the month-to-month revision is the wrong measure of surprise, so Link 3 (consensus) is needed.
+
+- The market appears to anticipate most revisions. In Nov 2018 the revision was −7.4% and the return +0.06%.
+- The reaction-size result rests on a few large days.
+
 ## Findings to combine later
 
 1. County NDVI anomaly is the strongest single signal. Its correlation with production per planted acre at 1 Oct is +0.52 (+0.62 in Texas).

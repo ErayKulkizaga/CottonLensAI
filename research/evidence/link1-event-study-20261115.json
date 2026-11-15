@@ -1,0 +1,334 @@
+{
+ "prereg_sha256_lf": "16e2b4403c46e9ab2e0b17494d21a30d3f0bdc7281d7146290b5bc6bf1433e0c",
+ "seal": "2021-12-31",
+ "excluded_no_previous_forecast": [
+  {
+   "year": 2013,
+   "month": 10
+  },
+  {
+   "year": 2013,
+   "month": 11
+  }
+ ],
+ "deviation": "NASS series is UPLAND cotton production (about 97% of US all-cotton); prereg said all-cotton",
+ "primary": {
+  "label": "primary (all events)",
+  "events": 38,
+  "pool_days": 1164,
+  "H1_ratio": 1.4187095748625163,
+  "H1_p": 0.0037996200379962005,
+  "H1_pass": true,
+  "H2_spearman": -0.23208228471386366,
+  "H2_p": 0.07549245075492451,
+  "H2_pass": false,
+  "oracle": {
+   "events": 32,
+   "mae_oracle": 0.01462452884926731,
+   "mae_naive": 0.014085095172797157,
+   "gain_pct": -3.829819180149907
+  },
+  "gate_pass": false
+ },
+ "flagged_abs_R_ge_4pct": [
+  {
+   "year": 2017,
+   "month": 9
+  },
+  {
+   "year": 2019,
+   "month": 9
+  },
+  {
+   "year": 2021,
+   "month": 12
+  }
+ ],
+ "sensitivity_without_flagged": {
+  "label": "without |R|>=4%",
+  "events": 35,
+  "pool_days": 1164,
+  "H1_ratio": 1.1508007922105188,
+  "H1_p": 0.15658434156584342,
+  "H1_pass": false,
+  "H2_spearman": -0.1369747899159664,
+  "H2_p": 0.21177882211778823,
+  "H2_pass": false,
+  "oracle": {
+   "events": 29,
+   "mae_oracle": 0.011209801898374337,
+   "mae_naive": 0.010907544361110747,
+   "gain_pct": -2.7710869399829807
+  },
+  "gate_pass": false
+ },
+ "decision": "PRICE_REACTS_BUT_REVISION_IS_WRONG_SURPRISE -> Link 3 (consensus) needed",
+ "events_table": [
+  {
+   "year": 2012,
+   "month": 9,
+   "day": "2012-09-12",
+   "revision_pct": -3.21,
+   "return_pct": -1.97
+  },
+  {
+   "year": 2012,
+   "month": 10,
+   "day": "2012-10-11",
+   "revision_pct": 1.08,
+   "return_pct": -1.95
+  },
+  {
+   "year": 2012,
+   "month": 11,
+   "day": "2012-11-09",
+   "revision_pct": 0.96,
+   "return_pct": 0.46
+  },
+  {
+   "year": 2012,
+   "month": 12,
+   "day": "2012-12-11",
+   "revision_pct": -1.14,
+   "return_pct": 2.02
+  },
+  {
+   "year": 2013,
+   "month": 9,
+   "day": "2013-09-12",
+   "revision_pct": -1.62,
+   "return_pct": 1.27
+  },
+  {
+   "year": 2013,
+   "month": 12,
+   "day": "2013-12-10",
+   "revision_pct": -0.29,
+   "return_pct": 0.41
+  },
+  {
+   "year": 2014,
+   "month": 9,
+   "day": "2014-09-11",
+   "revision_pct": -5.99,
+   "return_pct": 0.92
+  },
+  {
+   "year": 2014,
+   "month": 10,
+   "day": "2014-10-10",
+   "revision_pct": -1.79,
+   "return_pct": -0.7
+  },
+  {
+   "year": 2014,
+   "month": 11,
+   "day": "2014-11-10",
+   "revision_pct": 0.9,
+   "return_pct": -2.42
+  },
+  {
+   "year": 2014,
+   "month": 12,
+   "day": "2014-12-10",
+   "revision_pct": -3.04,
+   "return_pct": -0.52
+  },
+  {
+   "year": 2015,
+   "month": 9,
+   "day": "2015-09-11",
+   "revision_pct": 2.55,
+   "return_pct": 0.96
+  },
+  {
+   "year": 2015,
+   "month": 10,
+   "day": "2015-10-09",
+   "revision_pct": -0.7,
+   "return_pct": 0.0
+  },
+  {
+   "year": 2015,
+   "month": 11,
+   "day": "2015-11-10",
+   "revision_pct": -0.44,
+   "return_pct": 0.05
+  },
+  {
+   "year": 2015,
+   "month": 12,
+   "day": "2015-12-09",
+   "revision_pct": -1.97,
+   "return_pct": 4.0
+  },
+  {
+   "year": 2016,
+   "month": 9,
+   "day": "2016-09-12",
+   "revision_pct": 1.72,
+   "return_pct": -2.81
+  },
+  {
+   "year": 2016,
+   "month": 10,
+   "day": "2016-10-12",
+   "revision_pct": -0.7,
+   "return_pct": 2.69
+  },
+  {
+   "year": 2016,
+   "month": 11,
+   "day": "2016-11-09",
+   "revision_pct": 0.82,
+   "return_pct": -0.67
+  },
+  {
+   "year": 2016,
+   "month": 12,
+   "day": "2016-12-09",
+   "revision_pct": 2.29,
+   "return_pct": -0.87
+  },
+  {
+   "year": 2017,
+   "month": 9,
+   "day": "2017-09-12",
+   "revision_pct": 6.16,
+   "return_pct": -4.16
+  },
+  {
+   "year": 2017,
+   "month": 10,
+   "day": "2017-10-12",
+   "revision_pct": -3.11,
+   "return_pct": -1.3
+  },
+  {
+   "year": 2017,
+   "month": 11,
+   "day": "2017-11-09",
+   "revision_pct": 1.28,
+   "return_pct": -0.5
+  },
+  {
+   "year": 2017,
+   "month": 12,
+   "day": "2017-12-12",
+   "revision_pct": 0.3,
+   "return_pct": -0.12
+  },
+  {
+   "year": 2018,
+   "month": 9,
+   "day": "2018-09-12",
+   "revision_pct": 2.44,
+   "return_pct": -0.33
+  },
+  {
+   "year": 2018,
+   "month": 10,
+   "day": "2018-10-11",
+   "revision_pct": 0.43,
+   "return_pct": 0.01
+  },
+  {
+   "year": 2018,
+   "month": 11,
+   "day": "2018-11-08",
+   "revision_pct": -7.4,
+   "return_pct": 0.06
+  },
+  {
+   "year": 2018,
+   "month": 12,
+   "day": "2018-12-11",
+   "revision_pct": 1.02,
+   "return_pct": 0.18
+  },
+  {
+   "year": 2019,
+   "month": 9,
+   "day": "2019-09-12",
+   "revision_pct": -2.71,
+   "return_pct": 4.74
+  },
+  {
+   "year": 2019,
+   "month": 10,
+   "day": "2019-10-10",
+   "revision_pct": -0.78,
+   "return_pct": 0.67
+  },
+  {
+   "year": 2019,
+   "month": 11,
+   "day": "2019-11-08",
+   "revision_pct": -4.44,
+   "return_pct": 0.57
+  },
+  {
+   "year": 2019,
+   "month": 12,
+   "day": "2019-12-10",
+   "revision_pct": -2.98,
+   "return_pct": 0.84
+  },
+  {
+   "year": 2020,
+   "month": 9,
+   "day": "2020-09-11",
+   "revision_pct": -6.0,
+   "return_pct": 0.16
+  },
+  {
+   "year": 2020,
+   "month": 10,
+   "day": "2020-10-09",
+   "revision_pct": -0.03,
+   "return_pct": 2.17
+  },
+  {
+   "year": 2020,
+   "month": 11,
+   "day": "2020-11-10",
+   "revision_pct": 0.21,
+   "return_pct": -0.21
+  },
+  {
+   "year": 2020,
+   "month": 12,
+   "day": "2020-12-10",
+   "revision_pct": -7.14,
+   "return_pct": 1.64
+  },
+  {
+   "year": 2021,
+   "month": 9,
+   "day": "2021-09-10",
+   "revision_pct": 7.31,
+   "return_pct": 0.71
+  },
+  {
+   "year": 2021,
+   "month": 10,
+   "day": "2021-10-12",
+   "revision_pct": -2.92,
+   "return_pct": -3.16
+  },
+  {
+   "year": 2021,
+   "month": 11,
+   "day": "2021-11-09",
+   "revision_pct": 1.13,
+   "return_pct": 2.4
+  },
+  {
+   "year": 2021,
+   "month": 12,
+   "day": "2021-12-09",
+   "revision_pct": 0.32,
+   "return_pct": -4.55
+  }
+ ]
+}
