@@ -115,6 +115,36 @@ All rows use county HGB, rolling 2013–2021, the pinned environment, and 1 Aug 
 
 **Selection warning.** About 50 variants have now been tried. The best single cells are optimistic, and none of these methods beats USDA in every cell. Before any sealed test, a single method has to be fixed in advance, and its dev-year numbers taken as an upper bound.
 
+### T31: hybrid of USDA's yield and our harvested area (15 Nov)
+
+**Idea.** USDA's same-month yield per harvested acre, multiplied by our harvested area. Harvested area = FSA-scaled planted area (August file) × county harvested/planted ratio from HGB, using NDVI anomaly + FSA from the August file only.
+
+| Variant | 1 Aug TX / US | 1 Sep | 1 Oct | TX harvested-area error, ours vs USDA |
+|---|---|---|---|---|
+| T31 NDVI+FSA | 18.6 / 8.4 | 14.9 / 7.5 | 14.2 / 7.1 | Aug 12.0 vs **8.9**; Sep 10.0 vs **8.8**; Oct **7.2** vs 8.8 |
+| T31 FSA only | 20.5 / 9.4 | 18.8 / 8.8 | 19.3 / 9.0 | worse |
+| T31 NDVI only | 27.3 / 12.5 | 27.7 / 11.7 | 23.0 / 11.0 | much worse |
+
+**Verdict: FAIL.** USDA's own harvested-area forecast is better than ours until October.
+
+- In 2020, the August FSA file showed a 23% failed share, but final abandonment was 54%. Most abandonment happens after August, and nobody sees it in August, neither us nor USDA.
+- 2016 is a large miss for every method: USDA −22%, ours −35%. That crop came in far above all forecasts.
+
+### External landscape (research, 15 Nov)
+
+- **Descartes Labs** claimed to beat USDA's August *corn* yield forecast in 2015, by about 1 percentage point. The figures are company-reported and cover one season.
+- **No published work** was found that predicts cotton abandonment and compares it with NASS.
+- Related work:
+  - a Texas High Plains Sentinel-2 field-yield study;
+  - commercial county cotton yields from Barchart and EOS;
+  - a USDA-ARS 17-state cotton ML project, with no published results yet.
+- **CY-Bench** (WUR, open source) is a county yield benchmark for maize and wheat only. It is useful for methods and evaluation, not for data.
+- **To check for the GPU track:**
+  - the CropNet dataset (Sentinel-2 + HRRR + USDA county yields, including cotton);
+  - the pycrop-yield-prediction (You et al. 2017) code.
+
+  Neither has been verified yet.
+
 ## Chain: Link 1, report-day price reaction (preregistered; run once on 15 Nov)
 
 Frozen preregistration: `docs/LINK1_EVENT_STUDY_PREREG_20261115.md` (LF sha256 16e2b440…). Code: commit 863f195. Result: `research/evidence/link1-event-study-20261115.json`.
