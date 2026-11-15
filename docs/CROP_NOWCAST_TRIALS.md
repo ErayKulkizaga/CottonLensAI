@@ -142,6 +142,24 @@ All rows use county HGB, rolling 2013–2021, the pinned environment, and 1 Aug 
 
 **Pass rule.** At both cutoffs, mean absolute % error is below USDA's for TX *and* for the US, *and* the production-weighted state error is below USDA's.
 
+**T32 result (run once): FAIL.**
+
+| Cutoff | TX ours / USDA | US ours / USDA | Production-weighted state error, ours / USDA | TX harvested-area error, ours / USDA |
+|---|---|---|---|---|
+| nov1 | 11.5 / **8.5** | 5.4 / **4.4** | 9.1 / **6.8** | **7.6** / 8.6 |
+| dec1 | 7.8 / **4.7** | 4.6 / **3.1** | 6.8 / **4.5** | **7.7** / 8.6 |
+
+- USDA's November and December forecasts are very accurate: 3–5% error at US and TX level by December.
+- Our harvested area is slightly better than USDA's, but our production is worse. USDA's yield per harvested acre is internally consistent with its own harvested area, so combining it with our area breaks that consistency.
+
+**T33 (exploratory, not pre-declared):** does our 1 Nov gap to USDA's November forecast, log(our model / USDA Nov), predict USDA's December revision?
+
+- Over 143 state-years, the correlation is **−0.04** and the sign hit rate is **36%**, worse than chance. It is 34% when the gap exceeds 10%.
+- The gap does not predict the final figure either: correlation 0.12, sign hit rate 49%.
+- Our late model is biased low. Its TX gap was negative in 7 of 9 years.
+
+**Verdict:** no ability to predict USDA's December revision.
+
 ### External landscape (research, 15 Nov)
 
 - **Descartes Labs** claimed to beat USDA's August *corn* yield forecast in 2015, by about 1 percentage point. The figures are company-reported and cover one season.

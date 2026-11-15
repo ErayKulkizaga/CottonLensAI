@@ -17,7 +17,7 @@ import pandas as pd
 WEATHER_LAG_DAYS = 3
 NDVI_LAG_DAYS = 8
 SEASON_START = '04-01'
-CUTOFFS = {'aug1': '08-01', 'sep1': '09-01', 'oct1': '10-01', 'nov1': '11-01'}
+CUTOFFS = {'aug1': '08-01', 'sep1': '09-01', 'oct1': '10-01', 'nov1': '11-01', 'dec1': '12-01'}
 
 
 def nass_county(nass_dir, name):

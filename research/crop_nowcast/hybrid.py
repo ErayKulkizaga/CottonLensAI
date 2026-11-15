@@ -22,13 +22,14 @@ from research.crop_nowcast import county_up as C
 from research.crop_nowcast.state_model import nass_state, state_frame
 
 MONTH = {'aug1': 'AUG', 'sep1': 'SEP', 'oct1': 'OCT'}
+LATE = {'nov1': 'NOV', 'dec1': 'DEC'}  # T32
 
 
 def usda(nass_dir, ck):
     def pick(name, ref):
         d = nass_state(nass_dir, name)
         return d[d.reference_period_desc == ref].set_index(['state_alpha', 'year']).v
-    m = MONTH[ck]
+    m = {**MONTH, **LATE}[ck]
     f = pd.DataFrame({'final': pick('state_production', 'YEAR'), 'usda': pick('state_production', f'YEAR - {m} FORECAST'),
                       'harv_final': pick('state_harvested', 'YEAR'), 'harv_usda': pick('state_harvested', f'YEAR - {m} FORECAST'),
                       'yield_usda': pick('state_yield', f'YEAR - {m} FORECAST')})
