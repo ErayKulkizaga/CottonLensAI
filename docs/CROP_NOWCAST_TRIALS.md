@@ -241,6 +241,21 @@ Kaggle setup:
   - production-weighted state error below USDA's and below T25's.
 - One variant only. No other member sets are reported as results.
 
+**T36 result (15 Nov): PASS at 1 Oct (primary). The margin over T25 is small.**
+
+| Cutoff | T36 TX / US | T25 same rows | USDA | Prod-wtd state: T36 / T25 / USDA | Rule |
+|---|---|---|---|---|---|
+| 1 Oct (B+H+N+U) | **9.9 / 4.6** | 10.4 / 4.9 | 11.0 / 6.1 | 9.0 / 9.3 / 9.4 | **PASS** |
+| 1 Sep (B+H+U) | **9.4 / 3.8** | 9.5 / 3.9 | 11.2 / 6.3 | 9.6 / 9.7 / 10.3 | passes (secondary) |
+| 1 Aug (B+H+N+U) | 16.6 / 8.0 | 15.6 / 8.1 | 14.8 / 7.2 | 14.4 / 14.7 / 14.4 | fails |
+
+- **Weights at 1 Oct.** Mostly B: 0.9–0.95 from 2018 on, with H at 0.05–0.10. **The CNN got weight 0 in every year**, so it adds nothing.
+- **Years 2013–2016 equal T25.** In 2013–2015 there were too few past years with every member (FSA rows start late), and 2016 chose B = 1.0.
+- **TX, year by year vs T25:** better in 5 of 5 years where they differ (2017–2021), by 0.3–1.7 percentage points. Never worse.
+- **Same caveat as T25.** The gain comes from pulling USDA's 2017–2021 overestimates down further, with H acting as a second, independent "lower" signal. If USDA's bias reverses in the sealed years, both B and H weights will hurt.
+- **1 Aug** is still not beaten. There, past fits put weight on N and U, and the result is worse than T25.
+- Evidence: `t36-stack-20261115.json`; code: `research/crop_nowcast/stack.py`.
+
 ### External landscape (research, 15 Nov)
 
 - **Descartes Labs** claimed to beat USDA's August *corn* yield forecast in 2015, by about 1 percentage point. The figures are company-reported and cover one season.
