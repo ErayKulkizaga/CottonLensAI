@@ -8,6 +8,7 @@ PPA = production*480 / final planted; model target log(PPA / median past PPA).
 Rolling origin: test year Y uses only years < Y. Sealed years 2022-2025 untouched.
 """
 import json
+import os
 import sys
 from pathlib import Path
 
@@ -17,7 +18,8 @@ from sklearn.linear_model import RidgeCV
 from sklearn.pipeline import make_pipeline
 from sklearn.preprocessing import StandardScaler
 
-TEST_YEARS = range(2013, 2022)
+# Sealed years 2022+ only via COTTONLENS_LAST_YEAR, after the sealed-test preregistration (T39).
+TEST_YEARS = range(2013, int(os.environ.get('COTTONLENS_LAST_YEAR', '2021')) + 1)
 USDA_MONTH = {'aug1': 'AUG', 'sep1': 'SEP', 'oct1': 'OCT', 'nov1': 'NOV', 'dec1': 'DEC'}
 
 

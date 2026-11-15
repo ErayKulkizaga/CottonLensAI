@@ -19,9 +19,8 @@ import pandas as pd
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT))
 from research.crop_nowcast import county_up as C
-from research.crop_nowcast.state_model import nass_state, state_frame
+from research.crop_nowcast.state_model import TEST_YEARS, nass_state, state_frame
 
-TEST_YEARS = range(2013, 2022)
 MONTH = {'aug1': 'AUG', 'sep1': 'SEP', 'oct1': 'OCT'}
 FSA_MONTH = {'aug1': 'aug', 'sep1': 'sep', 'oct1': 'oct'}
 

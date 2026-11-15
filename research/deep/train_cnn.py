@@ -5,6 +5,7 @@ Unit of work = (test year, seed). Each unit writes preds_<Y>_<seed>.csv; a unit 
 already exists is skipped, so an interrupted run resumes on any platform without recomputation.
 Usage: python train_cnn.py tensor.npz out_dir
 """
+import os
 import sys
 from pathlib import Path
 
@@ -12,7 +13,7 @@ import numpy as np
 import torch
 from torch import nn
 
-TEST_YEARS, SEEDS = range(2013, 2022), range(5)
+TEST_YEARS, SEEDS = range(2013, int(os.environ.get('COTTONLENS_LAST_YEAR', '2021')) + 1), range(5)
 EPOCHS, PATIENCE, BATCH, LR, WD = 60, 10, 64, 1e-3, 1e-4
 
 
