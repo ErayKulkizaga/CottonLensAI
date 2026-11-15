@@ -38,3 +38,14 @@ Code frozen at commit `fe716ac`, plus the sealed-data pull and feature-extension
 
 ## Push
 The repo rule asks for a pushed preregistration before unsealing. Pushing needs the user's explicit approval. If the user declines, this local commit is the record and the waiver is noted in the ledger.
+
+## Amendments before any outcome was read (15 Nov, evening)
+- **FSA snapshot rule.** The parser had a literal rule that skipped labels containing "August 22", written for 2019's duplicate August file. It would have dropped 2022's only August file (as of 22 Aug 2022).
+  - Replaced by the rule the code comment states: keep the earliest snapshot per year and month.
+  - The dev FSA csv is byte-identical after the change.
+- **Coverage known so far (inputs only):**
+  - FSA files: 2022 Aug/Sep/Oct, 2023 Aug/Sep/Oct, 2024 Aug/Sep. There is no 2024 Oct file, so 2024 has no Oct `fsa_gap`. That affects only B's training rows for later years.
+  - June Acreage 2022–2025: all parsed.
+  - POWER 2022–2024: pulled.
+- **What was seen, nothing else.** Row counts of the NASS sealed pull and the FSA state totals of planted/failed acres (inputs). No production final, USDA forecast value or error was printed or read.
+- **The features builder** now reads every weather span file and takes years from `COTTONLENS_LAST_YEAR`. The dev oct1 features rebuild matches the stored file (max difference 5e-13).
