@@ -52,11 +52,33 @@ def prepare(csv):
     return c
 
 
-def run(c, nass_dir, cutoff_key, cols, kind, area='mar'):
+FSA = ['f_fail', 'f_fail_dry', 'f_fail_irr', 'f_irr_share', 'f_fail_a']
+FSA_MONTH = {'aug1': 'aug', 'sep1': 'sep', 'oct1': 'oct'}
+
+
+def add_fsa(c, fsa_csv, cutoff_key):
+    """County FSA failed-acre shares from the in-season file of the cutoff month (FSA 'planted' excludes failed).
+    2011 files have no irrigation split, so the split features are left empty for 2011."""
+    d = pd.read_csv(fsa_csv, dtype={'st': str, 'co': str})
+    d = d[d.month == FSA_MONTH[cutoff_key]].assign(fips=lambda x: x.st.str.zfill(2) + x.co.str.zfill(3),
+                                                   tot=lambda x: x.planted + x.failed)
+    g = d.groupby(['fips', 'year'])[['failed', 'tot']].sum()
+    out = pd.DataFrame({'f_fail': g.failed / g.tot.where(g.tot > 0)})
+    for code, name in (('N', 'f_fail_dry'), ('I', 'f_fail_irr')):
+        h = d[d.irr == code].groupby(['fips', 'year'])[['failed', 'tot']].sum()
+        out[name] = h.failed / h.tot.where(h.tot > 0)
+    irr = d[d.irr == 'I'].groupby(['fips', 'year']).tot.sum()
+    out['f_irr_share'] = (irr / g.tot).fillna(0)
+    out.loc[out.index.get_level_values('year') == 2011, ['f_fail_dry', 'f_fail_irr', 'f_irr_share']] = np.nan
+    c = c.merge(out.reset_index(), on=['fips', 'year'], how='left').sort_values(['fips', 'year'])
+    c['f_fail_a'] = c.f_fail - c.groupby('fips').f_fail.transform(lambda s: s.expanding().mean().shift(1))
+    return c
+
+def run(c, nass_dir, cutoff_key, cols, kind, area='mar', nan_ok=()):
     s, us = state_frame(nass_dir, cutoff_key, area)
     rows = []
     for y in TEST_YEARS:
-        tr = c[(c.year < y) & c.target.notna()].dropna(subset=cols)
+        tr = c[(c.year < y) & c.target.notna()].dropna(subset=[k for k in cols if k not in nan_ok])  # HGB handles NaN
         te = c[(c.year == y) & c.ppa_base.notna() & c.w.notna()].copy()
         if kind == 'ridge':
             m = make_pipeline(StandardScaler(), RidgeCV(alphas=np.logspace(-1, 4, 30))).fit(tr[cols], tr.target)

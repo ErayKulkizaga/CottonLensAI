@@ -30,7 +30,9 @@ def nass_state(nass_dir, name):
 
 
 def state_frame(nass_dir, cutoff_key, area='mar'):
-    """area='jun' uses the June 30 Acreage survey (public before every cutoff) as planted_known."""
+    """area='jun' uses the June 30 Acreage survey (public before every cutoff) as planted_known.
+    area='fsa' uses FSA in-season planted+failed acres of the cutoff month, scaled by the state's past mean
+    NASS/FSA ratio (years < Y), read from <nass_dir>/../fsa/fsa_cotton.csv; June Acreage is the fallback."""
     prod, plant = nass_state(nass_dir, 'state_production'), nass_state(nass_dir, 'state_planted')
     usprod = nass_state(nass_dir, 'us_production')
     fin = prod[prod.reference_period_desc == 'YEAR'].set_index(['state_alpha', 'year']).v.rename('prod')
@@ -47,6 +49,17 @@ def state_frame(nass_dir, cutoff_key, area='mar'):
         jun = json.loads((Path(nass_dir) / 'june_acreage.json').read_text())['planted_june']
         s['planted_jun'] = [jun.get(str(y), {}).get(st) for st, y in zip(s.state, s.year, strict=True)]
         known = s.planted_jun.astype(float).fillna(s.planted_mar)
+    if area == 'fsa':
+        jun = json.loads((Path(nass_dir) / 'june_acreage.json').read_text())['planted_june']
+        june = pd.Series([jun.get(str(y), {}).get(st) for st, y in zip(s.state, s.year, strict=True)], index=s.index)
+        d = pd.read_csv(Path(nass_dir).parent / 'fsa/fsa_cotton.csv', dtype={'st': str, 'co': str})
+        d = d[d.month == {'aug1': 'aug', 'sep1': 'sep', 'oct1': 'oct'}[cutoff_key]]
+        ids = prod[['state_ansi', 'state_alpha']].drop_duplicates()
+        d['state'] = d.st.map(dict(zip(ids.state_ansi.str.zfill(2), ids.state_alpha, strict=True)))
+        f = (d.planted + d.failed).groupby([d.state, d.year]).sum().rename('fsa')
+        s = s.join(f, on=['state', 'year'])
+        ratio = (s.planted / s.fsa).groupby(s.state).transform(lambda x: x.expanding().mean().shift(1))
+        known = (s.fsa * ratio).fillna(june.astype(float)).fillna(s.planted_mar)
     s['planted_known'] = known.fillna(s.planted_prev)
     s['planted_fallback'] = known.isna()
     us = pd.DataFrame({'final': usprod[usprod.reference_period_desc == 'YEAR'].set_index('year').v,

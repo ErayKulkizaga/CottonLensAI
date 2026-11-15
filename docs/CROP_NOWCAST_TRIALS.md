@@ -86,6 +86,22 @@ Each trial corrects USDA's own forecast by predicting its error. The model is fi
 - **Not an earlier forecast.** This is a correction to USDA's published number, so it exists only after USDA's report.
 - **1 Aug:** still not beaten by any signal (best 14.7 vs 14.8 for TX, noise-level).
 
+### Back to beating USDA: county FSA, FSA area, ensembles (15 Nov, after the chain decision)
+
+All rows use county HGB, rolling 2013–2021, the pinned environment, and 1 Aug / 1 Sep / 1 Oct cutoffs. Each cell gives TX / US error. **Bold** marks a cell that beats USDA.
+
+| ID | Trial | 1 Aug | 1 Sep | 1 Oct | Note |
+|---|---|---|---|---|---|
+| T28 | NDVI anomaly + county FSA (failed share total, dryland and irrigated; irrigated share; anomaly), June area | 19.6 / **6.4** | 14.3 / 7.0 | 15.3 / 8.7 | Fragile: when rows with any missing FSA value are dropped, US Aug is 7.7 |
+| T28b | County FSA only, June area | 21.2 / 8.2 | 17.8 / 8.9 | 17.3 / 8.2 | |
+| — | Planted-area check: FSA in-season planted+failed acres × past NASS/FSA ratio, vs June Acreage | | | | Area error TX **1.2%** vs 3.9%; all states **4.0%** vs 9.2% (Aug files); Sep files TX 0.7%, all 2.0% |
+| T29 | NDVI anomaly, **FSA-scaled area** | 20.0 / 8.5 | 14.7 / 6.3 | **10.6** / 6.7 | First standalone model (not a USDA correction) to beat USDA in TX at 1 Oct |
+| T29b | NDVI anomaly + county FSA, FSA-scaled area | 19.7 / **6.0** | 14.6 / 6.7 | 13.4 / 7.5 | Standalone model beats USDA for the US at 1 Aug |
+| T30a | Ensemble: log mean of T06, T13, T28 (June area) | 17.8 / 7.9 | 16.7 / 7.3 | 13.3 / 6.8 | |
+| T30b | T30a blended 50/50 (log) with USDA | 14.9 / **6.8** | 13.1 / **6.2** | 11.4 / 6.1 | |
+
+**Selection warning.** About 50 variants have now been tried. The best single cells are optimistic, and none of these methods beats USDA in every cell. Before any sealed test, a single method has to be fixed in advance, and its dev-year numbers taken as an upper bound.
+
 ## Chain: Link 1, report-day price reaction (preregistered; run once on 15 Nov)
 
 Frozen preregistration: `docs/LINK1_EVENT_STUDY_PREREG_20261115.md` (LF sha256 16e2b440…). Code: commit 863f195. Result: `research/evidence/link1-event-study-20261115.json`.
