@@ -13,7 +13,7 @@ ABD pamuk piyasası üzerine iki aşamalı bir araştırma.
 USDA tahminlerini temkinli revize ediyor: tahmini bir ay düşürdüyse, nihai rakam çoğunlukla biraz daha düşük çıkıyor. Bu gecikmeyi düzelten kural önceden sabitlendi, sadece geçmiş yıllarla eğitildi ve hiçbir ayarı değiştirilmedi. 2002–2025 arasında USDA'nın her aylık raporunda (1 Eylül, Ekim, Kasım, Aralık) Teksas, ABD ve eyalet bazında ortalama hatası USDA'nınkinden düşük çıktı: 12 ölçümün 12'si. 2002–2011'i hiç görmeden test ettim.
 
 **Bu "USDA'yı her zaman geçtin" demek mi?**
-Hayır. Fark %3–11 arası ve her yıl kazanmıyor. Örneğin Aralık'ta ABD'de 21 yılın 14'ünde daha yakın, 7'sinde daha uzak; Eylül'de ABD'de 9'a 10 kaybediyor. Önceden yazdığım resmi testler de teknik olarak geçmedi: T44 Eylül'ü de şart koşuyordu, T45'te Teksas Aralık'ta 3–3 berabere kaldı.
+Hayır. Fark %3–11 arası, her yıl kazanmıyor ve 8 hücrenin yalnızca 3'ünde istatistiksel olarak anlamlı. Aynı kural mısır ve soyada ön kayıtlı testte başarısız oldu (T46). Örneğin Aralık'ta ABD'de 21 yılın 14'ünde daha yakın, 7'sinde daha uzak; Eylül'de ABD'de 9'a 10 kaybediyor. Önceden yazdığım resmi testler de teknik olarak geçmedi: T44 Eylül'ü de şart koşuyordu, T45'te Teksas Aralık'ta 3–3 berabere kaldı.
 
 **Kaç model eğittin?**
 - Birinci aşamanın kayıt defterinde 32.934 tamamlanmış eğitim var: 28.245'i gerçek piyasa verisiyle, 4.597'si sentetik kontrol, 92'si denetim ve tekrar üretim.
@@ -36,6 +36,16 @@ Hayır. Fark %3–11 arası ve her yıl kazanmıyor. Örneğin Aralık'ta ABD'de
 
 **Link 1 olay çalışması hangi aşamaya ait?**
 - 15 Kasım'da Claude ile yapıldı; iki aşama arasındaki köprü. Codex döneminin bir parçası değil.
+
+**Bu fark istatistiksel olarak anlamlı mı?**
+- Kısmen. Yıl bazında permütasyon testinde 8 hücrenin 3'ü tek yönlü p < 0,05 (Ekim ABD 0,02, Kasım Teksas 0,03, Aralık ABD 0,02). Diğerleri 0,08–0,38 arası; bu örneklem büyüklüğünde şanstan ayırt edilemiyor.
+- Çoklu karşılaştırma düzeltmesi yapmadım; yapılırsa daha da zayıflar.
+
+**Aynı kural başka ürünlerde çalışıyor mu?**
+- Hayır. Bunu ön kayıtla test ettim (T46). Kuralın tek bir ayarını değiştirmeden USDA'nın mısır ve soya tahminlerine uyguladım, 2002–2025.
+- Sonuç: her iki üründe 3 ayın yalnızca 1'inde USDA'dan iyi; havuzlanmış kazanç +0,03 puan, p = 0,28. Başarısız.
+- Yorum: mısır ve soyada USDA zaten %1–3,6 hata yapıyor ve revizyonlarında bu kuralın kullanabileceği bir momentum yok. Pamuktaki etki pamuğa özgü (Teksas'ta büyük terk edilen alan, geç hasat) ya da kısmen şans. "USDA'nın genel bir davranışını bulduk" diyemem.
+- Testi yaparken iki veri hatası çıktı (bir "Other States" satırı, bir raporda yapışık iki sütun). İkisini de veri tarafında düzelttim, ön kayda tarihli not olarak ekledim ve bozuk çalıştırmaları da sakladım.
 
 ## Model ayrıntıları
 

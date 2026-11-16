@@ -79,6 +79,8 @@ Every number below has a source. "Exact" means counted from a file; "approx." me
 | 1.42× | Report-day absolute return vs other days (p = 0.004) |
 | 12/12 | Report × region cells where the momentum rule's 2002–2025 MAPE is below USDA's |
 | 3–11% | Relative MAPE reduction of the momentum rule |
+| 3 of 8 | Cotton TX/US cells where the momentum gain is significant at one-sided p < 0.05 (season-level permutation, uncorrected) |
+| 1 / 3 | Months passed by the frozen rule on corn and on soybeans in T46 (2 needed): FAIL; pooled p = 0.28 |
 | 14/7 | US December seasons closer / further than USDA |
 | 18.4 / 9.6 | CNN TX / US MAPE at 1 Oct (USDA 11.0 / 6.1) |
 | r ≈ 0.8 | Landsat failed-field share vs Texas abandonment |

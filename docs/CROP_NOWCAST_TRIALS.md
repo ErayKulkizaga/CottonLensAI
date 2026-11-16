@@ -659,3 +659,34 @@ Data: 963 state and 59 US forecasts parsed. Parser validated 153/153 exact again
 - **Average error is lower than USDA's at every monthly report**, for TX, the US and the production-weighted states: 12 of 12 cells. The relative reductions are about 3–11%.
 - **It does not win every year.** By season count it wins more often than it loses in 6 of 8 TX/US cells; Oct TX is tied and Sep US loses 9–10.
 - Evidence: `momentum-full-2002-2025-20261116.json` / `.log`.
+
+### Significance of the cotton momentum record (16 Nov, descriptive, after the fact)
+One-sided sign-flip permutation on |USDA error| − |rule error| per season (20,000 draws, seed 42); `research/crop_nowcast/momentum_significance.py`.
+
+| Report | TX: better / worse yrs, mean gain (pts), p | US: better / worse yrs, mean gain (pts), p |
+|---|---|---|
+| 1 Sep | 10 / 9, +0.96, p 0.14 | 9 / 10, +0.34, p 0.15 |
+| 1 Oct | 9 / 9, +0.81, p 0.08 | 12 / 9, +0.61, **p 0.02** |
+| 1 Nov | 13 / 8, +0.58, **p 0.03** | 12 / 10, +0.09, p 0.38 |
+| 1 Dec | 9 / 8, +0.27, p 0.13 | 14 / 7, +0.20, **p 0.02** |
+
+- 3 of 8 cells reach p < 0.05 one-sided, without multiple-comparison correction. The rest cannot be told apart from chance at this sample size.
+- Evidence: `momentum-significance-20261116.json`.
+
+### T46 — the frozen momentum rule on USDA corn and soybeans, 2002–2025 (16 Nov) — **FAIL**
+- **Preregistration:** `docs/T46_CORN_SOY_PREREG_20261116.md`, pushed before any value was loaded, with two dated amendments (an "Other States" row with final 0; one fused report column in Sep 2004). Both are data fixes; the rule did not change.
+- **Data:** 2000–2011 forecasts parsed from 56 Crop Production reports (parser equal to QuickStats in 441 of 441 overlap cells, 2012–2013); 2012–2025 forecasts and all finals from QuickStats.
+
+| Crop · report | US MAPE rule vs USDA (better / worse yrs, p) | Prod-wtd state error | Cell |
+|---|---|---|---|
+| Corn · 1 Sep | 2.17 vs 2.20 (13 / 11, p 0.33) | **4.76** vs 4.81 | pass |
+| Corn · 1 Oct | 1.57 vs 1.57 (12 / 10, p 0.50) | 3.54 vs **3.48** | fail |
+| Corn · 1 Nov | 1.03 vs **1.02** (11 / 13, p 0.56) | **2.72** vs 2.75 | fail |
+| Soy · 1 Sep | **3.40** vs 3.60 (14 / 10, p 0.07) | 5.67 vs **5.64** | fail |
+| Soy · 1 Oct | 2.03 vs **1.90** (10 / 12, p 0.71) | 3.86 vs **3.85** | fail |
+| Soy · 1 Nov | **1.31** vs 1.38 (11 / 13, p 0.13) | **2.72** vs 2.75 | pass |
+
+- **Crop rule (2 of 3 months):** corn 1 of 3, soybeans 1 of 3. **PRIMARY FAIL.**
+- **Pooled six cells:** mean gain +0.03 points, year-block p = 0.28. **SECONDARY FAIL.**
+- **Reading.** Outside cotton the rule adds nothing: USDA's corn and soybean forecasts are already within 1–3.6% and their revisions carry no usable momentum for this rule. The cotton effect is therefore cotton-specific (large Texas abandonment, a late harvest) or partly luck; it is not a general property of USDA forecasts. This is the result that most limits the cotton claim.
+- Evidence: `t46-corn-soy-20261116.json` / `.log`; invalid runs kept as `t46-corn-soy-20261116-invalid.*` and `-run2-fused-2004.log`.

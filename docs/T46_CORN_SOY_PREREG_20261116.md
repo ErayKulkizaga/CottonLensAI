@@ -50,3 +50,17 @@ Across all six cells: a year-block permutation (one sign per year shared by all 
 - **What happened.** The second run (`t46-corn-soy-20261116-run2-fused-2004.log`) was valid in five of six cells. Corn 1 Sep US MAPE was about 3.6 × 10⁸ % for both the rule and USDA. Cause: in the Sep 2004 report the US row's last two columns are printed without a space (`99,999,99999,999,999` with digits masked), and the parser read them as one number.
 - **Fix.** `last_value` splits a fused number into two valid comma groupings and keeps the right half closest to current area × current yield (unit test added). A scan of every parsed corn, soybean and cotton row found this single fused row; the T45 cotton data had none.
 - **Effect.** Only the corn 1 Sep US numbers can change (states are trained at state level; the US figure only enters the US aggregation). The outcomes of the other five cells were already seen in run 2 and are disclosed here. Corn fails its crop rule in run 2 on 1 Oct and 1 Nov whatever 1 Sep shows, so PRIMARY is FAIL independent of this fix.
+
+## Result (16 Nov 2026) — PRIMARY FAIL, SECONDARY FAIL
+
+| Crop · report | US MAPE rule vs USDA (better / worse yrs, p) | Prod-wtd state error | Cell |
+|---|---|---|---|
+| Corn · 1 Sep | 2.17 vs 2.20 (13 / 11, p 0.33) | **4.76** vs 4.81 | pass |
+| Corn · 1 Oct | 1.57 vs 1.57 (12 / 10, p 0.50) | 3.54 vs **3.48** | fail |
+| Corn · 1 Nov | 1.03 vs **1.02** (11 / 13, p 0.56) | **2.72** vs 2.75 | fail |
+| Soy · 1 Sep | **3.40** vs 3.60 (14 / 10, p 0.07) | 5.67 vs **5.64** | fail |
+| Soy · 1 Oct | 2.03 vs **1.90** (10 / 12, p 0.71) | 3.86 vs **3.85** | fail |
+| Soy · 1 Nov | **1.31** vs 1.38 (11 / 13, p 0.13) | **2.72** vs 2.75 | pass |
+
+- Corn passes 1 of 3 months, soybeans 1 of 3; the crop rule needs 2. Pooled mean gain +0.03 points, year-block p = 0.28.
+- The frozen cotton rule does not carry over to corn or soybeans. Evidence: `research/evidence/t46-corn-soy-20261116.json`.

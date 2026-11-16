@@ -1,0 +1,66 @@
+{
+ "SEP_TX": {
+  "n": 23,
+  "better": 10,
+  "worse": 9,
+  "mean_gain_pts": 0.961,
+  "perm_p_one_sided": 0.13615,
+  "sign_p_one_sided": 0.5
+ },
+ "SEP_US": {
+  "n": 23,
+  "better": 9,
+  "worse": 10,
+  "mean_gain_pts": 0.339,
+  "perm_p_one_sided": 0.1471,
+  "sign_p_one_sided": 0.6761970520019531
+ },
+ "OCT_TX": {
+  "n": 22,
+  "better": 9,
+  "worse": 9,
+  "mean_gain_pts": 0.809,
+  "perm_p_one_sided": 0.07955,
+  "sign_p_one_sided": 0.5927352905273438
+ },
+ "OCT_US": {
+  "n": 22,
+  "better": 12,
+  "worse": 9,
+  "mean_gain_pts": 0.609,
+  "perm_p_one_sided": 0.0225,
+  "sign_p_one_sided": 0.33181190490722656
+ },
+ "NOV_TX": {
+  "n": 24,
+  "better": 13,
+  "worse": 8,
+  "mean_gain_pts": 0.583,
+  "perm_p_one_sided": 0.03415,
+  "sign_p_one_sided": 0.19165515899658203
+ },
+ "NOV_US": {
+  "n": 24,
+  "better": 12,
+  "worse": 10,
+  "mean_gain_pts": 0.088,
+  "perm_p_one_sided": 0.37635,
+  "sign_p_one_sided": 0.4159059524536133
+ },
+ "DEC_TX": {
+  "n": 24,
+  "better": 9,
+  "worse": 8,
+  "mean_gain_pts": 0.271,
+  "perm_p_one_sided": 0.12655,
+  "sign_p_one_sided": 0.5
+ },
+ "DEC_US": {
+  "n": 24,
+  "better": 14,
+  "worse": 7,
+  "mean_gain_pts": 0.196,
+  "perm_p_one_sided": 0.01985,
+  "sign_p_one_sided": 0.09462356567382812
+ }
+}

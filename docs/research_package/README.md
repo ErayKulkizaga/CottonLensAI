@@ -36,7 +36,7 @@ Every number here comes from the project's own ledgers, evidence files and docum
 | `hyperparameter_ranges.csv` | 27 | Per family and parameter: count, min, median, max, distinct values |
 | `docs_catalog.csv` | 127 | Every project document with its title, date and result/decision lines |
 | `evidence_index.csv` | 297 | Every evidence file with size and SHA-256 |
-| `claude_phase_trials.csv` | 35 | Phase 2 trials T01–T45 with scores and verdicts |
+| `claude_phase_trials.csv` | 36 | Phase 2 trials T01–T46 with scores and verdicts |
 | `momentum_by_year_2002_2025.csv` | 186 | The momentum rule vs USDA, per report month, region and year |
 | `bias_correction_t25_by_year.csv` | 48 | The pooled bias correction vs USDA per year (2013–2025) |
 

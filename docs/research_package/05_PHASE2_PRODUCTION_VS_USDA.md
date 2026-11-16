@@ -82,6 +82,26 @@ Every puller refuses years ≥ 2022 without `--unseal`. That flag was used only 
 - **Record 2002–2025:** MAPE below USDA in 12 of 12 cells. See `data/momentum_by_year_2002_2025.csv` and the table in `01_PROJECT_OVERVIEW.md`.
 - **Why it can work:** USDA forecast smoothing, i.e. revisions are positively autocorrelated. This is documented for corn and soybeans (Isengildina, Irwin & Good).
 - **Limits:** gains are 3–11%; it does not win every year; the formal pre-declared gates were not passed (T44 needed Sep as well, T45 tied in TX).
+- **Significance (descriptive, `momentum_significance.py`):** one-sided season-level permutation p < 0.05 in 3 of 8 TX/US cells (Oct US 0.02, Nov TX 0.03, Dec US 0.02); the others are 0.08–0.38.
+
+| Report | TX: better / worse yrs, mean gain (pts), p | US: better / worse yrs, mean gain (pts), p |
+|---|---|---|
+| 1 Sep | 10 / 9, +0.96, p 0.14 | 9 / 10, +0.34, p 0.15 |
+| 1 Oct | 9 / 9, +0.81, p 0.08 | 12 / 9, +0.61, **p 0.02** |
+| 1 Nov | 13 / 8, +0.58, **p 0.03** | 12 / 10, +0.09, p 0.38 |
+| 1 Dec | 9 / 8, +0.27, p 0.13 | 14 / 7, +0.20, **p 0.02** |
+
+- **T46, corn and soybeans (preregistered, FAIL):** the same frozen rule on USDA corn and soybean forecasts 2002–2025 passed 1 of 3 months for each crop (2 needed); pooled gain +0.03 points, p = 0.28. Smoothing is documented in the literature for these crops, but this rule cannot exploit it there. The cotton effect is cotton-specific or partly luck.
+
+| Crop · report | US MAPE rule vs USDA (better / worse yrs, p) | Prod-wtd state error | Cell |
+|---|---|---|---|
+| Corn · 1 Sep | 2.17 vs 2.20 (13 / 11, p 0.33) | **4.76** vs 4.81 | pass |
+| Corn · 1 Oct | 1.57 vs 1.57 (12 / 10, p 0.50) | 3.54 vs **3.48** | fail |
+| Corn · 1 Nov | 1.03 vs **1.02** (11 / 13, p 0.56) | **2.72** vs 2.75 | fail |
+| Soy · 1 Sep | **3.40** vs 3.60 (14 / 10, p 0.07) | 5.67 vs **5.64** | fail |
+| Soy · 1 Oct | 2.03 vs **1.90** (10 / 12, p 0.71) | 3.86 vs **3.85** | fail |
+| Soy · 1 Nov | **1.31** vs 1.38 (11 / 13, p 0.13) | **2.72** vs 2.75 | pass |
+
 
 ## 5.7 Forward lock (2026)
 - Locked on 16 Nov 2026, commit `18c3bc7`, in `docs/FORWARD_LOCK_2026.md`.
