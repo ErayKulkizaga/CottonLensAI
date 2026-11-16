@@ -42,8 +42,15 @@ Every number here comes from the project's own ledgers, evidence files and docum
 | `claude_phase_trials.csv` | 36 | Phase 2 trials T01–T46 with scores and verdicts |
 | `momentum_by_year_2002_2025.csv` | 186 | The momentum rule vs USDA, per report month, region and year |
 | `bias_correction_t25_by_year.csv` | 48 | The pooled bias correction vs USDA per year (2013–2025) |
+| `data_versions.csv` | 135 | Every cached input file behind the Phase 2 results: SHA-256, size, retrieval time, timing rule |
 
 `images/` holds real Landsat NDVI renders of Lubbock County, Texas (2021, 2022, 2023) and the 2021 Cropland Data Layer for the same window. The scripts that produced them are in `research/package/`.
+
+## Reproducing the results
+```
+python research/reproduce.py
+```
+This re-runs the seven Phase 2 scorers (momentum record, 2026 lock, robustness, T46, T47 stage A, both error-mechanism studies) on the cached public data. It compares every number with the committed evidence JSONs, and exits non-zero on any difference. On 16 Nov 2026 all seven matched under the pinned environment (`research/requirements-phase2.txt`: numpy 2.1.3, pandas 2.2.3, scikit-learn 1.6.1) and under numpy 2.3.2 / pandas 3.0.1. The county satellite models (T01–T43) and the CNN need the large satellite feature caches and Kaggle; their outputs are kept as evidence files but are not re-run by this script.
 
 ## Regenerating the data
 
