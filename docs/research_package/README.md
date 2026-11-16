@@ -20,6 +20,7 @@ Every number here comes from the project's own ledgers, evidence files and docum
 | [08_FAILURES_AND_LESSONS.md](08_FAILURES_AND_LESSONS.md) | What failed, why, and what it taught; bugs and leaks found and fixed |
 | [09_INTERVIEW_QA_TR.md](09_INTERVIEW_QA_TR.md) | Interview questions and answers in Turkish |
 | [10_GLOSSARY.md](10_GLOSSARY.md) | Terms in English and Turkish |
+| [11_QUESTIONS_FOR_CODEX.md](11_QUESTIONS_FOR_CODEX.md) | Open gaps in the Phase 1 record, as questions for Codex (Turkish) |
 
 ## Machine-readable data (`data/`)
 
