@@ -38,6 +38,14 @@ QUERIES = {
 BASE = dict(source_desc='SURVEY', commodity_desc='COTTON', class_desc='UPLAND', domain_desc='TOTAL', format='JSON')
 
 
+def nass_key():
+    """NASS key from NASS_API_KEY, else from ~/.nass_api_key (never printed or written anywhere)."""
+    k = os.environ.get('NASS_API_KEY') or (Path.home() / '.nass_api_key').read_text(encoding='utf-8').strip()
+    if not k:
+        raise SystemExit('NASS key not found')
+    return k
+
+
 def fetch(params, key, year):
     # year__GE/__LE were observed to be ignored; query one year at a time instead.
     q = dict(BASE, **params, year=str(year), key=key)
@@ -55,9 +63,7 @@ def fetch(params, key, year):
 
 def main(out_dir, first=MIN_YEAR, last=MAX_YEAR):
     first, last = int(first), int(last)
-    key = os.environ.get('NASS_API_KEY')
-    if not key:
-        raise SystemExit('NASS_API_KEY not set')
+    key = nass_key()
     if last >= SEALED_FROM and '--unseal' not in sys.argv:  # T39: pushed prereg docs/SEALED_TEST_T39_PREREG_20261115.md
         raise SystemExit('Sealed test years need --unseal after a pushed preregistration')
     out = Path(out_dir)

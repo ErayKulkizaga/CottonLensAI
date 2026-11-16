@@ -112,9 +112,7 @@ def cmd_pull(root, first, last):
     import urllib.error
 
     from research.crop_nowcast.nass_pull import API, fetch
-    key = os.environ.get('NASS_API_KEY')
-    if not key:
-        raise SystemExit('NASS_API_KEY not set')
+    key = __import__('research.crop_nowcast.nass_pull', fromlist=['nass_key']).nass_key()
     for c, cfg in CROPS.items():
         d = Path(root) / c / 'quickstats'
         d.mkdir(parents=True, exist_ok=True)

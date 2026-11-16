@@ -81,7 +81,7 @@ def cmd_parse(root):
 
 def cmd_finals(root):
     from research.crop_nowcast.nass_pull import fetch
-    key = os.environ['NASS_API_KEY']
+    key = __import__('research.crop_nowcast.nass_pull', fromlist=['nass_key']).nass_key()
     out = []
     for stat, unit in (('AREA HARVESTED', 'ACRES'), ('YIELD', 'LB / ACRE'), ('PRODUCTION', '480 LB BALES')):
         for agg in ('STATE', 'NATIONAL'):

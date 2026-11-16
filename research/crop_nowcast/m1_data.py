@@ -46,7 +46,7 @@ def cmd_usdm(root):
 
 def cmd_qs(root):
     from research.crop_nowcast.nass_pull import fetch
-    key = os.environ['NASS_API_KEY']
+    key = __import__('research.crop_nowcast.nass_pull', fromlist=['nass_key']).nass_key()
     out = Path(root)
     rows = []
     for y in range(1995, 2026):

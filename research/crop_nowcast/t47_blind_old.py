@@ -157,7 +157,7 @@ def cmd_finals(root, first, last):
     import time
 
     from research.crop_nowcast.nass_pull import fetch
-    key = os.environ['NASS_API_KEY']
+    key = __import__('research.crop_nowcast.nass_pull', fromlist=['nass_key']).nass_key()
     out = Path(root) / 'finals'
     out.mkdir(parents=True, exist_ok=True)
     rec = {}

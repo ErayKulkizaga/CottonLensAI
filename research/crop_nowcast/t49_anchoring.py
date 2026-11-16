@@ -31,7 +31,7 @@ def qs(key, **q):
 
 
 def cmd_pull(root):
-    key = os.environ['NASS_API_KEY']
+    key = __import__('research.crop_nowcast.nass_pull', fromlist=['nass_key']).nass_key()
     out = Path(root)
     out.mkdir(parents=True, exist_ok=True)
     cond = []
