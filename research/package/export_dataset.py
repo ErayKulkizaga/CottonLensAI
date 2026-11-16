@@ -17,6 +17,16 @@ ROOT = Path(__file__).resolve().parents[2]
 O = ROOT / 'output'
 
 
+def source_from_release(path, release):
+    """T45 rows carry no file name; the raw report next to them is named CropProd-MM-DD-YYYY.txt by release date."""
+    if not release:
+        return ''
+    y, m, _ = release.split('-')
+    # one report per month; some files carry a '_revision' suffix or a release day that differs by one
+    hits = sorted((Path(path).parents[1] / 'cp_raw').glob(f'CropProd-{m}-??-{y}*.txt'))
+    return hits[0].name if len(hits) == 1 else ''
+
+
 def load(path, crop, method, years):
     rows = json.loads(Path(path).read_text(encoding='utf-8'))['data']
     out = []
@@ -27,7 +37,7 @@ def load(path, crop, method, years):
         out.append({'crop': crop, 'year': y, 'report_month': r['reference_period_desc'][7:10], 'release': r.get('release'),
                     'state': r.get('state_alpha', 'US'), 'production': float(r['Value'].replace(',', '')),
                     'unit': 'bales_480lb' if crop == 'cotton_upland' else 'bushels', 'method': method,
-                    'source_file': r.get('source', '')})
+                    'source_file': r.get('source') or source_from_release(path, r.get('release'))})
     return out
 
 
