@@ -462,3 +462,12 @@ Motivation (T39): one pooled bias for all states hurt the US total when USDA's b
   - Its production-weighted state error at 1 Oct is slightly worse (10.1 vs 9.9).
   - This is not a new claim: T25 was chosen on 2013–2021 and the T39 rule judged T36, not T25.
 - Evidence: `t40-state-bias-dev-20261116.json`; code: `research/crop_nowcast/state_bias.py`.
+
+### T41 (PRE-DECLARED 16 Nov, before running): cheap gate for option B. Does FSA failed acreage explain Texas's USDA error beyond T25?
+
+- **Data.** TX rows only, at 1 Sep and 1 Oct. Target e = log(final / USDA_m). Feature: `fsa_gap` (FSA failed share minus USDA-implied abandonment, from `UC.build`), standardised within each fold.
+- **Model.** Rolling ridge (λ = 1, intercept unpenalised) on TX years < Y. With fewer than 5 past TX rows, it falls back to T25. Years 2013–2024. 2025 is **not** opened.
+- **Pass.** At both cutoffs, TX MAPE below T25 and better than T25 in more years than worse. Otherwise option B stops here and is logged.
+- **Why this is enough.**
+  - 2025/2026 FSA files are not posted, so a full B model could not be scored on 2025 or used for 10 Dec 2026.
+  - The pooled versions of these signals (T17, T18, T26, T27, T31) added nothing over T25.
