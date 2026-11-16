@@ -215,8 +215,17 @@ def main(panel_json, out_dir, first=DEFAULT_YEARS[0], last=DEFAULT_YEARS[1]):
                 day = np.datetime64(it.datetime.date())
                 return sel[clear][good], np.full(int(good.sum()), day), nd[good].astype(np.float32)
 
+            skipped = []
+
+            def safe_scene(it, skipped=skipped):  # a scene whose files stay unreadable after retries is skipped and recorded
+                try:
+                    return scene(it)
+                except rasterio.errors.RasterioIOError:
+                    skipped.append(it.id)
+                    return None
+
             with ThreadPoolExecutor(workers) as ex:
-                res = [r for r in ex.map(scene, items) if r is not None]
+                res = [r for r in ex.map(safe_scene, items) if r is not None]
             if not res:
                 print(st, year, 'no usable scenes', flush=True)
                 continue
@@ -228,7 +237,7 @@ def main(panel_json, out_dir, first=DEFAULT_YEARS[0], last=DEFAULT_YEARS[1]):
             pd.DataFrame(rows).to_csv(part, index=False)
             part.replace(dest)
             meta = {'state': st, 'year': year, 'grid_m': grid, 'points': len(px), 'scenes_listed': len(items), 'scenes_used': len(res),
-                    'observations': len(idx), 'seconds': round(time.time() - t0),
+                    'observations': len(idx), 'scenes_skipped_unreadable': skipped, 'seconds': round(time.time() - t0),
                     'run_utc': dt.datetime.now(dt.timezone.utc).isoformat()}
             (out / f'landsat_{st}_{year}.json').write_text(json.dumps(meta), encoding='utf-8')
             print(meta, flush=True)

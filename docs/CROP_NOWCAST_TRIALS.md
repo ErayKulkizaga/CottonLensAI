@@ -550,3 +550,18 @@ On dev 2013–2021, TX MAPE was worse than USDA and T25 at every cutoff:
 
 - The failed-field share tracks abandonment, but a TX-only regression of production error on it, fitted on 5–11 past years, does not improve USDA.
 - The pre-declared test (2022–2025) will still be run once and reported as is.
+
+**T43 test result (16 Nov, run once): FAIL.**
+
+| Test, TX MAPE | T43 | T25 | USDA | vs USDA, better / worse |
+|---|---|---|---|---|
+| 1 Sep, 2022–2025 | 16.7 | 14.3 | 15.5 | 2 / 2 |
+| 1 Oct, 2022–2024 | 15.0 | 13.7 | 20.3 | 3 / 0 (but worse than T25) |
+
+- **What the satellite saw.** The TX failed-field share was 0.68 in 2022, a severe drought year with record abandonment, which is correct. But it was only 0.22–0.25 in **2023**, the year USDA missed by +40%.
+  - So in 2023 the abandonment that USDA missed was not visible as non-greening fields by 1 Sep or 1 Oct.
+  - The regression also over-corrected 2022 at 1 Oct (−10.4% vs T25 +4.1%).
+- **Data notes:**
+  - 2022 skipped 3 unreadable Landsat 7 scenes (recorded in `landsat_TX_2022.json`).
+  - 2024–2025 have about half the observations: Landsat 7 was retired, and Landsat 9 was excluded to keep the declared spec.
+- Evidence: `t43-tx-fail-20261116.json` / `.log`.

@@ -1,0 +1,6 @@
+aug1 dev [2013, 2021]: TX T43 18.1 | T25 15.6 | USDA 14.8 | vs USDA better 2 worse 7
+aug1 test [2022, 2025]: TX T43 18.2 | T25 18.2 | USDA 18.7 | vs USDA better 2 worse 2 pass=False
+sep1 dev [2013, 2021]: TX T43 12.1 | T25 9.5 | USDA 11.2 | vs USDA better 3 worse 5
+sep1 test [2022, 2025]: TX T43 16.7 | T25 14.3 | USDA 15.5 | vs USDA better 2 worse 2 pass=False
+oct1 dev [2013, 2021]: TX T43 13.2 | T25 10.4 | USDA 11.0 | vs USDA better 1 worse 6
+oct1 test [2022, 2025]: TX T43 15.0 | T25 13.7 | USDA 20.3 | vs USDA better 3 worse 0 pass=False
