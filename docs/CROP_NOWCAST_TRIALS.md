@@ -602,3 +602,23 @@ On dev 2013–2021, TX MAPE was worse than USDA and T25 at every cutoff:
 - **September.** The Aug→Sep revision does *not* carry forward; it tends to over-shoot.
 - **Status.** The pre-declared primary (Dec **and** Sep) failed. The December cell is a hypothesis with a rolling-backtest edge, not a validated result. It is the natural candidate for a forward test on the 2026 crop.
 - Evidence: `t44-momentum-20261116.json` / `.log`.
+
+### T45 (PRE-DECLARED 16 Nov, before parsing any 2000–2011 forecast): blind test in 2000–2011
+
+USDA's monthly cotton forecasts before 2012 were never pulled or looked at in this project. Their errors are unseen, so this is a genuinely blind, time-ordered test.
+
+**Data.**
+- Upland cotton production forecasts by state and US: the last column of the "Upland" block of the table "Cotton: Area Harvested, Yield, and Production by Type, State, and United States", in ESMIS Crop Production text reports, Aug–Dec, seasons 2000–2011.
+- Finals: NASS QuickStats upland `YEAR` production, pulled with the same `nass_pull.py`.
+- Every forecast used is the one in that month's report, which is public at its release.
+
+**Primary.** T44's December rule, unchanged: pooled no-intercept ridge e = b·z(r), r = log(Dec / Nov), λ = 1, ≥ 10 training rows.
+- Trained rolling **only on seasons 2000…Y−1** (no information from 2012 onward).
+- Scored on 2002–2011.
+- Pass rule as in T44's December cell: TX and US MAPE below USDA December's, better in more years than worse (TX and US), production-weighted state error below USDA's.
+
+**Secondaries (reported, not claimed):**
+- momentum at Sep, Oct, Nov;
+- the pooled past-mean bias (T25 without FSA rows, which do not exist then) at Sep and Oct, rolling within 2000–2011.
+
+Run once, committed as produced.
