@@ -48,3 +48,18 @@ def test_eb_bias_shrinks_toward_zero_and_keeps_consistent_states():
     b = eb_bias(pd.DataFrame(rows, columns=['state', 'e']))
     assert -0.16 < b['TX'] < -0.10  # persistent bias kept (slightly shrunk)
     assert all(abs(b[s]) < 0.03 for s in 'ABCD')  # noise states pulled to ~0, not to the pooled mean
+
+
+def test_cp_parse_takes_production_not_yield():
+    from research.crop_nowcast.cp_pull import parse
+
+    old = ('Released December 9, 2005, by NASS\n Cotton:  Area Harvested, Yield, and Production by Type, State,\n'
+           'Upland   :\n  MS     : 1,100.0   1,180.0   1,024      854       879      2,346.0    2,160.0\n'
+           '  US     :12,000.0 13,000.0   800      830       850     20,000.0   21,500.0\nAmer-Pima:\n')
+    new = ('Released August 12, 2010, by NASS\nCotton Area Harvested, Yield, and Production by Type - States\n'
+           'Upland           :\nMississippi .....:   300     400     900      950       600      700      800\n'
+           'United States ..:  9,000   9,500   800   820   17,000  17,500  18,000\nAmerican Pima    :\n')
+    _, o = parse(old)
+    assert o == {'MS': 2_160_000, 'US': 21_500_000}
+    _, o = parse(new)
+    assert o == {'MS': 800_000, 'US': 18_000_000}

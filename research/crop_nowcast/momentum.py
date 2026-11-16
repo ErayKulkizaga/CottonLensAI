@@ -4,6 +4,7 @@ r = log(USDA_m / USDA_prev), e = log(final / USDA_m); pooled no-intercept ridge 
 Usage: python momentum.py nass_dir out.json
 """
 import json
+import os
 import sys
 from pathlib import Path
 
@@ -16,7 +17,9 @@ from research.crop_nowcast.stack import state_w
 from research.crop_nowcast.state_model import nass_state
 
 MONTHS = ['AUG', 'SEP', 'OCT', 'NOV', 'DEC']
-YEARS, FIRST_TRAIN, MIN_ROWS, LAM = range(2014, 2026), 2012, 10, 1.0
+_lo, _hi = (int(v) for v in os.environ.get('COTTONLENS_MOMENTUM_YEARS', '2014-2025').split('-'))
+YEARS, FIRST_TRAIN = range(_lo, _hi + 1), int(os.environ.get('COTTONLENS_MOMENTUM_FIRST_TRAIN', '2012'))
+MIN_ROWS, LAM = 10, 1.0
 
 
 def frame(nass_dir, level):
