@@ -471,3 +471,8 @@ Motivation (T39): one pooled bias for all states hurt the US total when USDA's b
 - **Why this is enough.**
   - 2025/2026 FSA files are not posted, so a full B model could not be scored on 2025 or used for 10 Dec 2026.
   - The pooled versions of these signals (T17, T18, T26, T27, T31) added nothing over T25.
+
+**T41 result (16 Nov): FAIL. Option B stops here.**
+- **1 Sep:** TX 14.1 vs T25 11.4 (USDA 13.5). Better than T25 in 2 years, worse in 5.
+- **1 Oct:** TX 11.1 vs T25 11.3 (USDA 13.5). Better in 3, worse in 3.
+- Texas-only FSA abandonment does not explain USDA's TX error beyond the simple bias. Evidence: `t41-tx-fsa-gate-20261116.json`.
