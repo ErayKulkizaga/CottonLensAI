@@ -41,3 +41,4 @@ docs/CLAUDE_PROJECT_HANDOFF_20261001.md
 
 # Personal tool configuration may contain credentials.
 /opencode.json
+.claude/settings.local.json
