@@ -34,6 +34,7 @@ Bu dosya `docs/portfolio/cottonlens-sunum.html` sayfasını güncelleyecek kişi
 | T52 (ön kayıtlı) | Revizyon yönü sinyali rapor günü vadeli fiyatı hareket ettiriyor mu? 2010–2021 | 32 olay, +%0,27, isabet %53, p = 0,30. **GEÇMEDİ.** Fiyat verisi yalnızca sinyalin artık çalışmadığı dönemi kapsıyor (bu olaylarda sinyal %47 doğru). | `docs/T52_MARKET_PREREG_20261116.md` |
 | T53 (ön kayıtlı) | Alan düzeltmesi → Teksas üretimi, en uzun tarih (2001–2025, 1985–1994 alanları OCR ile) | Tüm dönem 4/4 ay, p = 0,19; 2008–2025 4/4 ay, p = 0,12; 2001–2007 1/4 ay. **GEÇMEDİ.** Seyrelme riski testten önce yazılmıştı. Alan hatası sonucu uzun örneklemde de tutuyor (Eylül %9,3 → %6,6). | `docs/T53_AREA_PRODUCTION_LONG_PREREG_20261116.md` |
 | T54 (ön kayıtlı) | Aynı sabitlenme kuru tarım tane sorgumunda da var mı? (Kansas, Teksas, 2012–2025) | İşaret var: korelasyon −0,44, üst sınır −0,10. Düzeltme 4 ayın 4'ünde daha kötü, p = 0,70. **GEÇMEDİ.** USDA'nın sorgum alan hatası zaten küçük (%4–7). | `docs/T54_SORGHUM_PREREG_20261116.md` |
+| T55 (ön kayıtlı, 17 Kasım) | Piyasa testi, sinyalin çalıştığı 2000–2009 döneminde (Yahoo `CT=F` günlük kapanışları) | 30 olay; sinyal USDA revizyonunu %67 doğru bildi, ama rapor günü getirisi ortalama +%0,47, isabet %53, p = 0,082. **GEÇMEDİ.** Kazancın yarısı tek bir sezondan (2003) geliyor. İkincil 2000–2011 görünümünde p = 0,046 çıkıyor, ama bu geçme sayılmaz. | `docs/T55_MARKET_2000_2009_PREREG_20261117.md` |
 | Çalışma makalesi | İngilizce taslak; başarısız testlerin hepsi içinde | Hiçbir yere gönderilmedi. Yayın kararı kullanıcının. | `docs/paper/WORKING_PAPER.md` |
 | Açık veri seti | Kurtarılan USDA aylık tahminleri 1985–2011, 5.088 satır | QuickStats ile çakışan hücrelerde 153/153 ve 441/441 eşleşme | `docs/research_package/data/usda_monthly_forecasts_recovered_1985_2011.csv` |
 | Veri seti düzeltmesi (17 Kasım) | 2000–2011 pamuk satırlarının 1.022'sinde kaynak dosya adı boştu | Artık her satırda kaynak rapor adı var. Değerler değişmedi; yalnızca `source_file` sütunu doldu. Not: Eylül 2005 raporunun kayıtlı yayın tarihi 12 Eylül, dosya adı ise `CropProd-09-13-2005.txt`. | `research/package/export_dataset.py` |
@@ -57,7 +58,7 @@ Sayfa 17 Kasım 01:03 sürümünde T50–T54'ü, makaleyi, veri setini ve monit�
 1. **"Ne iddia ediyoruz, ne etmiyoruz" kutusu ekle.** Bölüm 1'deki tabloyu ya da kısa bir sürümünü koy, kapanış cümlesi bölüm 1'deki alıntı olsun. Bu sayfanın en çok sorulacak sorusu "USDA'yı geçtiniz mi?".
 2. **T54 sorgum kartı:** "İşaret genelleşiyor; düzeltme yalnızca USDA'nın alan hatasının büyük olduğu yerde çalışıyor (sorgumda USDA'nın alan hatası %4–7)" cümlesini ekle.
 3. **Veri seti kartı:** "1.022 satırda kaynak dosya adı boş" cümlesini kaldır; artık her satırın kaynağı var.
-4. **Model envanteri:** "Üretim aşamasında T01–T46 denemeleri" ifadesini "T01–T54" yap.
+4. **Model envanteri:** "Üretim aşamasında T01–T46 denemeleri" ifadesini "T01–T55" yap. T55 için T52 kartının yanına bir kart ekle: "2000–2009, sinyal %67 doğru, fiyat +%0,47, p = 0,082, geçmedi; piyasa revizyonu büyük ölçüde önceden fiyatlıyor".
 5. **Kanıt dosyası sayısı:** sayfada 297 yazıyor; `research/evidence/` altında şu an 331 dosya var. `data/evidence_index.csv` güncellenmediyse sayıyı "297 (dizinde)" diye bırak ya da dizini yeniden üret.
 6. **Bağlantılar** `0fb5c4a…` commit'ine sabitlenmiş. Bu dosyanın commit'inden sonra en son commit'e çevir; veri seti bağlantısı özellikle değişti.
 7. **Tarihli takvim:**
@@ -66,7 +67,7 @@ Sayfa 17 Kasım 01:03 sürümünde T50–T54'ü, makaleyi, veri setini ve monit�
 
 ## 5. Kullanılmaması gereken ifadeler
 - "USDA'yı geçtik" (koşulsuz), "USDA'dan daha iyi tahmin ediyoruz".
-- "Piyasada para kazandırır" (T52 sıfır sonuç verdi).
+- "Piyasada para kazandırır": T52 sıfır sonuç verdi; T55'te sinyal çalışıyordu, ama fiyat kazancı anlamlı değil (p = 0,082) ve tek bir sezona dayanıyor.
 - "Mekanizma bütün ürünlerde geçerli" (buğdayda yok, sorgumda düzeltme yok).
 - "Üretimde anlamlı iyileşme" (p = 0,12–0,19).
 - "Teksas sonucu bağımsız doğrulandı" (Teksas keşif eyaleti; Oklahoma/Kansas p = 0,056).

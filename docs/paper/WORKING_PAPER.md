@@ -39,7 +39,7 @@ We report all failed tests and release the recovered forecast archive.
 
 ## 3. Protocol
 - **Rolling fits.** Every model is fitted only on seasons before the one predicted.
-- **Preregistration.** Pass rules were written and pushed before the data that tests them was opened (T39–T54). Amendments are dated and limited to data or parsing fixes, and invalid runs are kept.
+- **Preregistration.** Pass rules were written and pushed before the data that tests them was opened (T39–T55). Amendments are dated and limited to data or parsing fixes, and invalid runs are kept.
 - **Inference.** Year-block sign-flip permutation (20,000 draws) treats each season as one unit. Holm and Benjamini–Hochberg corrections are reported for multi-cell results.
 - **Point-in-time tests** check that every condition value used was released by the survey date.
 - **Reproduction.** A single command (`python research/reproduce.py`) reproduces the headline results.
@@ -56,6 +56,7 @@ We report all failed tests and release the recovered forecast archive.
   - corn and soybeans: 57–69%;
   - cotton after 2012: 43%.
 - **Market test (T52).** A report-day futures test on 2010–2021 is null (p = 0.30). In that era the signal itself no longer works.
+- **Market test in the signal era (T55).** On 2000–2009, when the signal called USDA's revision 67% of the time, the report-day futures return in the predicted direction averages +0.47% but is not significant (p = 0.082) and half of it comes from one season (2003).
 
 ### 4.2 Where the error comes from
 log(final / forecast) = area part + yield part, exactly.
@@ -84,7 +85,7 @@ log(final / forecast) = area part + yield part, exactly.
 **Production (T51, T53).** Area-corrected Texas production is better than USDA in 4 of 4 months after 2008 (for example October, 14.1% → 11.3%), but not significantly (p = 0.12). Before 2008 there was little area error to correct.
 
 ## 5. What did not work
-The project's ledger records 54 numbered trials and many more in an earlier price phase:
+The project's ledger records 55 numbered trials and many more in an earlier price phase:
 - daily price forecasting (about 33,000 model fits, no edge over a no-change forecast);
 - satellite county models;
 - a histogram CNN on MODIS (data-starved);
@@ -92,7 +93,7 @@ The project's ledger records 54 numbered trials and many more in an earlier pric
 - Landsat abandonment signals that missed 2023;
 - corn/soybean production corrections;
 - the frozen-coefficient blind tests;
-- the market test.
+- the market tests (2010–2021 and 2000–2009).
 
 They are reported with the same detail as the successes.
 
@@ -120,5 +121,5 @@ They are reported with the same detail as the successes.
 
 ## Reproducibility
 - `python research/reproduce.py` re-runs the headline results; 7/7 matched under the pinned environment.
-- The preregistrations are in `docs/T39_…` to `docs/T54_…` and the evidence files in `research/evidence/`.
+- The preregistrations are in `docs/T39_…` to `docs/T55_…` and the evidence files in `research/evidence/`.
 - The trial ledger is `docs/CROP_NOWCAST_TRIALS.md`.
