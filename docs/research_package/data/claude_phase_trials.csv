@@ -1,0 +1,36 @@
+trial,name,category,scores_tx_us_mape,verdict,note
+T01,State ridge on weather z-scores,county ML,Aug 22.1/13.0 ; Sep 17.6/13.8 ; Oct 16.1/11.8,fail,"RidgeCV (α grid logspace(−1,4,30)) at state level; far behind USDA."
+T02,"State ridge, weather z + anomalies",county ML,Aug 24.6/11.9 ; Sep 17.0/12.7 ; Oct 16.6/10.8,fail,Adding anomalies did not help.
+T03,State ridge on MODIS NDVI levels,satellite,Aug 27.5/15.2 ; Sep 24.0/13.3 ; Oct 22.6/12.6,fail,Worse than the naive base: levels overfit; anomalies needed.
+T04,"State ridge, weather + NDVI",county ML,Aug 24.1/15.2 ; Sep 21.9/14.1 ; Oct 20.2/13.2,fail,State resolution too coarse.
+T05,County HGB on NDVI anomalies (March area),county ML,Aug 19.8/11.2 ; Sep 17.6/10.6 ; Oct 14.4/10.2,behind USDA,"HistGradientBoosting: max_iter 300, learning_rate 0.04, max_leaf_nodes 15, min_samples_leaf 30, l2 2.0. County log yield anomaly aggregated with prior-year planted weights."
+T06,County HGB on NDVI anomalies (June area),county ML,"Aug 18.9/9.9 ; Sep 15.1/7.9 ; Oct 12.7/7.7 ; Oct, FSA area 10.3/6.6",best standalone,Best model that does not use USDA's own forecast. With FSA-scaled planted area TX beats USDA at 1 Oct (10.3 vs 11.0); the US does not (6.6 vs 6.1).
+T07,County HGB on weather z (+NDVI),county ML,Aug 20.9/11.1 ; Sep 16.7/8.2 ; Oct 14.7/8.5,fail,Weather features added noise.
+T08,"Blend of county model and USDA, 50/50 log",ensemble,Aug 16.0/9.0 ; Sep 13.6/7.9 ; Oct 12.1 TX,fail,A fixed blend sits between its members.
+T09,Blend with weights from past MSE,ensemble,Aug 15.2 TX ; Sep 11.3 TX ; Oct 10.8 TX,≈ USDA,Noise-level difference.
+T10,Predict the direction of USDA's next revision,revision,"Sep corr +0.28, hit 57% ; Oct corr +0.07",weak,First hint that revisions carry information.
+T11,County-level accuracy vs naive base,county ML,Aug −5.7% ; Sep +3.4% ; Oct +7.7%,weak,RMSE gain over each county's own past mean.
+T12,NDVI + Landsat 30 m field features,satellite,Aug 19.0/7.4 ; Sep 20.6/9.0 ; Oct 17.0/7.6,gate fail,"Field NDVI percentiles and failed-field shares over 49.8M cotton grid points, 13 seasons."
+T13,Landsat field features only,satellite,Aug 14.9/6.2 ; Sep 21.6/8.5 ; Oct 22.4/10.0,unstable,One US-August cell beat USDA; post hoc and unstable.
+T14–24,"USDA error correction with FSA, drought, condition, satellite (11 variants)",USDA correction,Sep up to 9.3/3.9,withdrawn,Withdrawn after review found a leak (final planted area used in-season) and unscaled ridge features. Rerun as T25–T27.
+T25,Pooled past-mean bias correction of USDA,USDA correction,Aug 15.6/8.1 ; Sep 9.5/3.9 ; Oct 10.4/4.9,dev win,"Beat USDA at Sep and Oct on 2013–2021. Later failed out of sample (T39, T42)."
+T26,Correction with standardised FSA failed-acre gap,USDA correction,Aug 16.2/8.2 ; Sep 11.1/4.6 ; Oct 10.6/5.1,no gain,FSA coefficient ≈ 0.007 after fold-wise standardisation.
+T27,"Ten correction variants (satellite, drought, condition, combinations)",USDA correction,Sep 10.4–12.6 TX ; Oct 9.1–12.7 TX,noise,No signal beat T25 consistently.
+T28,NDVI + county FSA failed shares,county ML,Aug 19.6/6.4 ; Sep 14.3/7.0 ; Oct 15.3/8.7,fragile,The US-August cell was sensitive to NaN handling.
+T29,NDVI with FSA-scaled planted area,county ML,Aug 20.0/8.5 ; Sep 14.7/6.3 ; Oct 10.6/6.7,claim withdrawn,Some FSA Sep/Oct files were saved after the USDA report: a timing leak.
+T30,Ensembles of county models (± USDA blend),ensemble,Aug 14.9/6.8 ; Sep 13.1/6.2 ; Oct 11.4/6.1,≈ USDA,Log-mean ensembles; 50/50 blend with USDA.
+T31,USDA yield × our harvested area (hybrid),county ML,Aug 18.6/8.4 ; Sep 14.9/7.5 ; Oct 14.2/7.1 ; TX harvested area Oct 7.2 vs USDA 8.8,fail,"Better harvested area, worse production: USDA's yield and area are internally consistent."
+T32,Late-season hybrid vs USDA Nov/Dec,county ML,Nov 11.5/5.4 vs 8.5/4.4 ; Dec 7.8/4.6 vs 4.7/3.1,fail,Pre-declared; USDA's December forecast is very accurate.
+T33,Does our gap to USDA Nov predict its Dec revision?,revision,corr −0.04 ; sign hit 36%,no skill,143 state-years.
+T34a,NDVI season-sequence features,satellite,Aug 18.8/6.6 ; Oct 15.9/7.1,mixed,"Helps the US at 1 Aug, hurts at 1 Oct."
+T35,GPU histogram CNN (MODIS 6 bands × 32 bins),deep learning,Oct 18.4/9.6 ; Aug 20.7/8.9 ; seed spread TX 4.2,fail,5 seeds × 9 folds × 2 cutoffs on a Kaggle GPU. Data-starved.
+T36,Rolling percentage ensemble (bias + HGB + CNN + USDA),ensemble,"Sep 9.4/3.8 ; Oct 9.9/4.6 ; 0.05 simplex grid, 1,771 weight vectors",dev pass,Pre-declared pass on 2013–2021. Effectively the bias correction + 5–10% HGB; CNN weight 0.
+T37,The T36 ensemble at Nov/Dec,ensemble,Dec 8.3/4.6 vs 4.7/3.1,fail,Weights collapsed to raw USDA.
+T38,Ginning-pace correction of USDA November,revision,Dec 8.1/4.0 vs 4.7/3.1 ; vs USDA Nov: 8.1/4.0 vs 8.5/4.4,fail,"Improves November, not enough for December."
+T39,Sealed test of T36 on 2022–2024,sealed tests,Oct 15.0/5.2 vs USDA 20.3/4.2 ; TX better 3/3 years,fail,The US failed because USDA's bias flipped (under-forecast in 2022 and 2024).
+T40,State-specific empirical-Bayes bias,USDA correction,Sep 14.0/5.6 vs 13.5/5.8 (2013–24),fail,Shrinkage toward zero; too few years per state.
+T41,Texas-only FSA abandonment gate,USDA correction,Sep TX 14.1 vs bias 11.4 ; Oct TX 11.1 vs 11.3,fail,Option stopped at the gate.
+T42,One-shot 2025 holdout of the bias correction,sealed tests,Sep TX −5.3% vs −0.6% ; US −8.8% vs −4.3%,fail,USDA under-forecast 2025; the bias reversed a third time.
+T43,Landsat failed-field share corrects USDA Texas,satellite,Sep 2022–25: 16.7 vs USDA 15.5 ; r ≈ 0.8 with abandonment,fail,"The satellite saw 2022's drought, but fields were still green before the 2023 write-offs."
+T44,"USDA revision momentum, 2014–2025",revision,Dec 5.5/3.0 vs 5.9/3.2 ; Sep 14.1/6.5 vs 13.4/6.2,primary fail · Dec ok,"No-intercept pooled ridge on log(USDA_m / USDA_m−1), λ = 1."
+T45,"Momentum, blind 2002–2011",revision,Dec 4.3/1.7 vs 4.4/2.0 ; Sep 9.9/6.8 vs 12.5/7.9 ; Oct 7.8/4.6 vs 9.5/5.9 ; Nov 4.8/2.3 vs 5.2/2.9,TX tie · rest better,Never-seen USDA forecasts parsed from 2000–2011 reports. The Dec primary tied 3–3 in TX; every other cell beat USDA.

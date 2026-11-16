@@ -1,0 +1,17 @@
+group,family,horizon,mae_gain_pct_vs_naive,direction_pct,gain_ci95_low,gain_ci95_high,fold_wins_of_8,gate_passes,inner_score
+ablate-base,xgboost,1,-0.384,46.825,-0.6797,0.0501,1,False,0.99708
+ablate-base,xgboost,5,-0.9649,54.365,-3.0499,0.8767,3,False,0.98766
+ablate-base,catboost,1,-0.3649,46.429,-0.6592,0.0012,1,False,0.99623
+ablate-base,catboost,5,-0.3178,51.587,-2.434,1.1386,4,False,0.98643
+ablate-cotton_no_volume,xgboost,1,-0.292,47.421,-0.5342,0.09,1,False,0.9971
+ablate-cotton_no_volume,xgboost,5,0.494,56.647,-1.3514,1.6524,4,False,0.98984
+ablate-cotton_no_volume,catboost,1,-0.6077,48.611,-0.9101,0.0888,1,False,0.99696
+ablate-cotton_no_volume,catboost,5,-0.3498,52.282,-2.1976,1.3352,3,False,0.99279
+ablate-expanded,xgboost,1,-0.5563,49.206,-0.9285,-0.1696,1,False,0.99792
+ablate-expanded,xgboost,5,0.7003,57.341,-1.2884,2.1356,5,False,0.98629
+ablate-expanded,catboost,1,-0.3817,48.016,-0.6857,-0.0417,2,False,0.99712
+ablate-expanded,catboost,5,0.1028,56.052,-1.9525,1.1779,4,False,0.99162
+ablate-expanded_availability,xgboost,1,-0.3763,49.107,-0.6982,0.0453,1,False,0.99919
+ablate-expanded_availability,xgboost,5,0.7631,57.54,-1.4156,2.1838,5,False,0.98391
+ablate-expanded_availability,catboost,1,-0.5007,46.329,-0.8015,-0.1443,2,False,0.99809
+ablate-expanded_availability,catboost,5,-0.0555,54.266,-2.3313,1.2417,4,False,0.98705

@@ -1,0 +1,488 @@
+feature,recipes_using,profiles
+cotton_ret_1,520,None ams-exploration-v1 availability-clock-pilot-v1 cftc-exploration-v1 contract-curve-t1-pilot-v1 contract-curve-t5-pilot-v1 cotton-research-v1 crop-exploration-v1 fas-exploration-v1 full-year-v1 fx-exploration-v1 named-capacity-control-t5-v1 named-cftc-source-control-t5-v1 named-history-source-control-t5-v1 named-label-control-t5-v1 named-weak-signal-control-t5-v1 nass-exploration-v1 nass-regional-t1-pilot-v1 oncall-exploration-v2 paired-price-loss-control-v1 return-path-pilot-v1 wasde-exploration-v1 wasde-regional-t1-pilot-v1 weak-signal-control-v1 weather-exploration-v1
+cotton_ret_5,520,None ams-exploration-v1 availability-clock-pilot-v1 cftc-exploration-v1 contract-curve-t1-pilot-v1 contract-curve-t5-pilot-v1 cotton-research-v1 crop-exploration-v1 fas-exploration-v1 full-year-v1 fx-exploration-v1 named-capacity-control-t5-v1 named-cftc-source-control-t5-v1 named-history-source-control-t5-v1 named-label-control-t5-v1 named-weak-signal-control-t5-v1 nass-exploration-v1 nass-regional-t1-pilot-v1 oncall-exploration-v2 paired-price-loss-control-v1 return-path-pilot-v1 wasde-exploration-v1 wasde-regional-t1-pilot-v1 weak-signal-control-v1 weather-exploration-v1
+cotton_ret_10,520,None ams-exploration-v1 availability-clock-pilot-v1 cftc-exploration-v1 contract-curve-t1-pilot-v1 contract-curve-t5-pilot-v1 cotton-research-v1 crop-exploration-v1 fas-exploration-v1 full-year-v1 fx-exploration-v1 named-capacity-control-t5-v1 named-cftc-source-control-t5-v1 named-history-source-control-t5-v1 named-label-control-t5-v1 named-weak-signal-control-t5-v1 nass-exploration-v1 nass-regional-t1-pilot-v1 oncall-exploration-v2 paired-price-loss-control-v1 return-path-pilot-v1 wasde-exploration-v1 wasde-regional-t1-pilot-v1 weak-signal-control-v1 weather-exploration-v1
+cotton_ret_20,520,None ams-exploration-v1 availability-clock-pilot-v1 cftc-exploration-v1 contract-curve-t1-pilot-v1 contract-curve-t5-pilot-v1 cotton-research-v1 crop-exploration-v1 fas-exploration-v1 full-year-v1 fx-exploration-v1 named-capacity-control-t5-v1 named-cftc-source-control-t5-v1 named-history-source-control-t5-v1 named-label-control-t5-v1 named-weak-signal-control-t5-v1 nass-exploration-v1 nass-regional-t1-pilot-v1 oncall-exploration-v2 paired-price-loss-control-v1 return-path-pilot-v1 wasde-exploration-v1 wasde-regional-t1-pilot-v1 weak-signal-control-v1 weather-exploration-v1
+cotton_momentum_5,520,None ams-exploration-v1 availability-clock-pilot-v1 cftc-exploration-v1 contract-curve-t1-pilot-v1 contract-curve-t5-pilot-v1 cotton-research-v1 crop-exploration-v1 fas-exploration-v1 full-year-v1 fx-exploration-v1 named-capacity-control-t5-v1 named-cftc-source-control-t5-v1 named-history-source-control-t5-v1 named-label-control-t5-v1 named-weak-signal-control-t5-v1 nass-exploration-v1 nass-regional-t1-pilot-v1 oncall-exploration-v2 paired-price-loss-control-v1 return-path-pilot-v1 wasde-exploration-v1 wasde-regional-t1-pilot-v1 weak-signal-control-v1 weather-exploration-v1
+cotton_momentum_20,520,None ams-exploration-v1 availability-clock-pilot-v1 cftc-exploration-v1 contract-curve-t1-pilot-v1 contract-curve-t5-pilot-v1 cotton-research-v1 crop-exploration-v1 fas-exploration-v1 full-year-v1 fx-exploration-v1 named-capacity-control-t5-v1 named-cftc-source-control-t5-v1 named-history-source-control-t5-v1 named-label-control-t5-v1 named-weak-signal-control-t5-v1 nass-exploration-v1 nass-regional-t1-pilot-v1 oncall-exploration-v2 paired-price-loss-control-v1 return-path-pilot-v1 wasde-exploration-v1 wasde-regional-t1-pilot-v1 weak-signal-control-v1 weather-exploration-v1
+cotton_sma_ratio_5_20,520,None ams-exploration-v1 availability-clock-pilot-v1 cftc-exploration-v1 contract-curve-t1-pilot-v1 contract-curve-t5-pilot-v1 cotton-research-v1 crop-exploration-v1 fas-exploration-v1 full-year-v1 fx-exploration-v1 named-capacity-control-t5-v1 named-cftc-source-control-t5-v1 named-history-source-control-t5-v1 named-label-control-t5-v1 named-weak-signal-control-t5-v1 nass-exploration-v1 nass-regional-t1-pilot-v1 oncall-exploration-v2 paired-price-loss-control-v1 return-path-pilot-v1 wasde-exploration-v1 wasde-regional-t1-pilot-v1 weak-signal-control-v1 weather-exploration-v1
+cotton_sma_ratio_20_50,520,None ams-exploration-v1 availability-clock-pilot-v1 cftc-exploration-v1 contract-curve-t1-pilot-v1 contract-curve-t5-pilot-v1 cotton-research-v1 crop-exploration-v1 fas-exploration-v1 full-year-v1 fx-exploration-v1 named-capacity-control-t5-v1 named-cftc-source-control-t5-v1 named-history-source-control-t5-v1 named-label-control-t5-v1 named-weak-signal-control-t5-v1 nass-exploration-v1 nass-regional-t1-pilot-v1 oncall-exploration-v2 paired-price-loss-control-v1 return-path-pilot-v1 wasde-exploration-v1 wasde-regional-t1-pilot-v1 weak-signal-control-v1 weather-exploration-v1
+cotton_volatility_5,520,None ams-exploration-v1 availability-clock-pilot-v1 cftc-exploration-v1 contract-curve-t1-pilot-v1 contract-curve-t5-pilot-v1 cotton-research-v1 crop-exploration-v1 fas-exploration-v1 full-year-v1 fx-exploration-v1 named-capacity-control-t5-v1 named-cftc-source-control-t5-v1 named-history-source-control-t5-v1 named-label-control-t5-v1 named-weak-signal-control-t5-v1 nass-exploration-v1 nass-regional-t1-pilot-v1 oncall-exploration-v2 paired-price-loss-control-v1 return-path-pilot-v1 wasde-exploration-v1 wasde-regional-t1-pilot-v1 weak-signal-control-v1 weather-exploration-v1
+cotton_volatility_20,520,None ams-exploration-v1 availability-clock-pilot-v1 cftc-exploration-v1 contract-curve-t1-pilot-v1 contract-curve-t5-pilot-v1 cotton-research-v1 crop-exploration-v1 fas-exploration-v1 full-year-v1 fx-exploration-v1 named-capacity-control-t5-v1 named-cftc-source-control-t5-v1 named-history-source-control-t5-v1 named-label-control-t5-v1 named-weak-signal-control-t5-v1 nass-exploration-v1 nass-regional-t1-pilot-v1 oncall-exploration-v2 paired-price-loss-control-v1 return-path-pilot-v1 wasde-exploration-v1 wasde-regional-t1-pilot-v1 weak-signal-control-v1 weather-exploration-v1
+cotton_range,520,None ams-exploration-v1 availability-clock-pilot-v1 cftc-exploration-v1 contract-curve-t1-pilot-v1 contract-curve-t5-pilot-v1 cotton-research-v1 crop-exploration-v1 fas-exploration-v1 full-year-v1 fx-exploration-v1 named-capacity-control-t5-v1 named-cftc-source-control-t5-v1 named-history-source-control-t5-v1 named-label-control-t5-v1 named-weak-signal-control-t5-v1 nass-exploration-v1 nass-regional-t1-pilot-v1 oncall-exploration-v2 paired-price-loss-control-v1 return-path-pilot-v1 wasde-exploration-v1 wasde-regional-t1-pilot-v1 weak-signal-control-v1 weather-exploration-v1
+cotton_volume_change,520,None ams-exploration-v1 availability-clock-pilot-v1 cftc-exploration-v1 contract-curve-t1-pilot-v1 contract-curve-t5-pilot-v1 cotton-research-v1 crop-exploration-v1 fas-exploration-v1 full-year-v1 fx-exploration-v1 named-capacity-control-t5-v1 named-cftc-source-control-t5-v1 named-history-source-control-t5-v1 named-label-control-t5-v1 named-weak-signal-control-t5-v1 nass-exploration-v1 nass-regional-t1-pilot-v1 oncall-exploration-v2 paired-price-loss-control-v1 return-path-pilot-v1 wasde-exploration-v1 wasde-regional-t1-pilot-v1 weak-signal-control-v1 weather-exploration-v1
+cotton_volume_z20,520,None ams-exploration-v1 availability-clock-pilot-v1 cftc-exploration-v1 contract-curve-t1-pilot-v1 contract-curve-t5-pilot-v1 cotton-research-v1 crop-exploration-v1 fas-exploration-v1 full-year-v1 fx-exploration-v1 named-capacity-control-t5-v1 named-cftc-source-control-t5-v1 named-history-source-control-t5-v1 named-label-control-t5-v1 named-weak-signal-control-t5-v1 nass-exploration-v1 nass-regional-t1-pilot-v1 oncall-exploration-v2 paired-price-loss-control-v1 return-path-pilot-v1 wasde-exploration-v1 wasde-regional-t1-pilot-v1 weak-signal-control-v1 weather-exploration-v1
+cotton_volatility_regime_20_60,520,None ams-exploration-v1 availability-clock-pilot-v1 cftc-exploration-v1 contract-curve-t1-pilot-v1 contract-curve-t5-pilot-v1 cotton-research-v1 crop-exploration-v1 fas-exploration-v1 full-year-v1 fx-exploration-v1 named-capacity-control-t5-v1 named-cftc-source-control-t5-v1 named-history-source-control-t5-v1 named-label-control-t5-v1 named-weak-signal-control-t5-v1 nass-exploration-v1 nass-regional-t1-pilot-v1 oncall-exploration-v2 paired-price-loss-control-v1 return-path-pilot-v1 wasde-exploration-v1 wasde-regional-t1-pilot-v1 weak-signal-control-v1 weather-exploration-v1
+month_sin,520,None ams-exploration-v1 availability-clock-pilot-v1 cftc-exploration-v1 contract-curve-t1-pilot-v1 contract-curve-t5-pilot-v1 cotton-research-v1 crop-exploration-v1 fas-exploration-v1 full-year-v1 fx-exploration-v1 named-capacity-control-t5-v1 named-cftc-source-control-t5-v1 named-history-source-control-t5-v1 named-label-control-t5-v1 named-weak-signal-control-t5-v1 nass-exploration-v1 nass-regional-t1-pilot-v1 oncall-exploration-v2 paired-price-loss-control-v1 return-path-pilot-v1 wasde-exploration-v1 wasde-regional-t1-pilot-v1 weak-signal-control-v1 weather-exploration-v1
+month_cos,520,None ams-exploration-v1 availability-clock-pilot-v1 cftc-exploration-v1 contract-curve-t1-pilot-v1 contract-curve-t5-pilot-v1 cotton-research-v1 crop-exploration-v1 fas-exploration-v1 full-year-v1 fx-exploration-v1 named-capacity-control-t5-v1 named-cftc-source-control-t5-v1 named-history-source-control-t5-v1 named-label-control-t5-v1 named-weak-signal-control-t5-v1 nass-exploration-v1 nass-regional-t1-pilot-v1 oncall-exploration-v2 paired-price-loss-control-v1 return-path-pilot-v1 wasde-exploration-v1 wasde-regional-t1-pilot-v1 weak-signal-control-v1 weather-exploration-v1
+dxy_ret_1,518,None ams-exploration-v1 availability-clock-pilot-v1 cftc-exploration-v1 contract-curve-t1-pilot-v1 contract-curve-t5-pilot-v1 cotton-research-v1 crop-exploration-v1 fas-exploration-v1 full-year-v1 fx-exploration-v1 named-capacity-control-t5-v1 named-cftc-source-control-t5-v1 named-history-source-control-t5-v1 named-label-control-t5-v1 named-weak-signal-control-t5-v1 nass-exploration-v1 nass-regional-t1-pilot-v1 oncall-exploration-v2 paired-price-loss-control-v1 return-path-pilot-v1 wasde-exploration-v1 wasde-regional-t1-pilot-v1 weak-signal-control-v1 weather-exploration-v1
+dxy_ret_5,518,None ams-exploration-v1 availability-clock-pilot-v1 cftc-exploration-v1 contract-curve-t1-pilot-v1 contract-curve-t5-pilot-v1 cotton-research-v1 crop-exploration-v1 fas-exploration-v1 full-year-v1 fx-exploration-v1 named-capacity-control-t5-v1 named-cftc-source-control-t5-v1 named-history-source-control-t5-v1 named-label-control-t5-v1 named-weak-signal-control-t5-v1 nass-exploration-v1 nass-regional-t1-pilot-v1 oncall-exploration-v2 paired-price-loss-control-v1 return-path-pilot-v1 wasde-exploration-v1 wasde-regional-t1-pilot-v1 weak-signal-control-v1 weather-exploration-v1
+dxy_ret_20,518,None ams-exploration-v1 availability-clock-pilot-v1 cftc-exploration-v1 contract-curve-t1-pilot-v1 contract-curve-t5-pilot-v1 cotton-research-v1 crop-exploration-v1 fas-exploration-v1 full-year-v1 fx-exploration-v1 named-capacity-control-t5-v1 named-cftc-source-control-t5-v1 named-history-source-control-t5-v1 named-label-control-t5-v1 named-weak-signal-control-t5-v1 nass-exploration-v1 nass-regional-t1-pilot-v1 oncall-exploration-v2 paired-price-loss-control-v1 return-path-pilot-v1 wasde-exploration-v1 wasde-regional-t1-pilot-v1 weak-signal-control-v1 weather-exploration-v1
+wti_ret_1,518,None ams-exploration-v1 availability-clock-pilot-v1 cftc-exploration-v1 contract-curve-t1-pilot-v1 contract-curve-t5-pilot-v1 cotton-research-v1 crop-exploration-v1 fas-exploration-v1 full-year-v1 fx-exploration-v1 named-capacity-control-t5-v1 named-cftc-source-control-t5-v1 named-history-source-control-t5-v1 named-label-control-t5-v1 named-weak-signal-control-t5-v1 nass-exploration-v1 nass-regional-t1-pilot-v1 oncall-exploration-v2 paired-price-loss-control-v1 return-path-pilot-v1 wasde-exploration-v1 wasde-regional-t1-pilot-v1 weak-signal-control-v1 weather-exploration-v1
+wti_ret_5,518,None ams-exploration-v1 availability-clock-pilot-v1 cftc-exploration-v1 contract-curve-t1-pilot-v1 contract-curve-t5-pilot-v1 cotton-research-v1 crop-exploration-v1 fas-exploration-v1 full-year-v1 fx-exploration-v1 named-capacity-control-t5-v1 named-cftc-source-control-t5-v1 named-history-source-control-t5-v1 named-label-control-t5-v1 named-weak-signal-control-t5-v1 nass-exploration-v1 nass-regional-t1-pilot-v1 oncall-exploration-v2 paired-price-loss-control-v1 return-path-pilot-v1 wasde-exploration-v1 wasde-regional-t1-pilot-v1 weak-signal-control-v1 weather-exploration-v1
+wti_ret_20,518,None ams-exploration-v1 availability-clock-pilot-v1 cftc-exploration-v1 contract-curve-t1-pilot-v1 contract-curve-t5-pilot-v1 cotton-research-v1 crop-exploration-v1 fas-exploration-v1 full-year-v1 fx-exploration-v1 named-capacity-control-t5-v1 named-cftc-source-control-t5-v1 named-history-source-control-t5-v1 named-label-control-t5-v1 named-weak-signal-control-t5-v1 nass-exploration-v1 nass-regional-t1-pilot-v1 oncall-exploration-v2 paired-price-loss-control-v1 return-path-pilot-v1 wasde-exploration-v1 wasde-regional-t1-pilot-v1 weak-signal-control-v1 weather-exploration-v1
+cotton_dxy_corr_60,518,None ams-exploration-v1 availability-clock-pilot-v1 cftc-exploration-v1 contract-curve-t1-pilot-v1 contract-curve-t5-pilot-v1 cotton-research-v1 crop-exploration-v1 fas-exploration-v1 full-year-v1 fx-exploration-v1 named-capacity-control-t5-v1 named-cftc-source-control-t5-v1 named-history-source-control-t5-v1 named-label-control-t5-v1 named-weak-signal-control-t5-v1 nass-exploration-v1 nass-regional-t1-pilot-v1 oncall-exploration-v2 paired-price-loss-control-v1 return-path-pilot-v1 wasde-exploration-v1 wasde-regional-t1-pilot-v1 weak-signal-control-v1 weather-exploration-v1
+cotton_wti_corr_60,518,None ams-exploration-v1 availability-clock-pilot-v1 cftc-exploration-v1 contract-curve-t1-pilot-v1 contract-curve-t5-pilot-v1 cotton-research-v1 crop-exploration-v1 fas-exploration-v1 full-year-v1 fx-exploration-v1 named-capacity-control-t5-v1 named-cftc-source-control-t5-v1 named-history-source-control-t5-v1 named-label-control-t5-v1 named-weak-signal-control-t5-v1 nass-exploration-v1 nass-regional-t1-pilot-v1 oncall-exploration-v2 paired-price-loss-control-v1 return-path-pilot-v1 wasde-exploration-v1 wasde-regional-t1-pilot-v1 weak-signal-control-v1 weather-exploration-v1
+har_1,34,ams-named-ewma-har-full-year-t1-v1 ct-ewma-har-full-year-t1-v1 ct-own-level-manual-forward-t1-v1 ct-own-level-recent-history-audit-v1 ct-pre2010-same-contract-risk-t1-r2 ct-risk-level-dxy-control-t1-v1 ct-signed-unsigned-shock-forecast-t1-v1 full-year-v1 named-ewma-har-control-t1-v1 named-risk-history-control-t1-v1 named-risk-label-control-t1-v1 named-risk-loss-control-t1-v1 risk-weak-teacher-t1-v1
+har_5,34,ams-named-ewma-har-full-year-t1-v1 ct-ewma-har-full-year-t1-v1 ct-own-level-manual-forward-t1-v1 ct-own-level-recent-history-audit-v1 ct-pre2010-same-contract-risk-t1-r2 ct-risk-level-dxy-control-t1-v1 ct-signed-unsigned-shock-forecast-t1-v1 full-year-v1 named-ewma-har-control-t1-v1 named-risk-history-control-t1-v1 named-risk-label-control-t1-v1 named-risk-loss-control-t1-v1 risk-weak-teacher-t1-v1
+har_22,34,ams-named-ewma-har-full-year-t1-v1 ct-ewma-har-full-year-t1-v1 ct-own-level-manual-forward-t1-v1 ct-own-level-recent-history-audit-v1 ct-pre2010-same-contract-risk-t1-r2 ct-risk-level-dxy-control-t1-v1 ct-signed-unsigned-shock-forecast-t1-v1 full-year-v1 named-ewma-har-control-t1-v1 named-risk-history-control-t1-v1 named-risk-label-control-t1-v1 named-risk-loss-control-t1-v1 risk-weak-teacher-t1-v1
+nass_D0_age_sessions,23,None nass-regional-t1-pilot-v1 weak-signal-control-v1
+nass_D0_unavailable,23,None nass-regional-t1-pilot-v1 weak-signal-control-v1
+nass_D0_national_good_excellent,23,None nass-regional-t1-pilot-v1 weak-signal-control-v1
+nass_D0_national_poor_very_poor,23,None nass-regional-t1-pilot-v1 weak-signal-control-v1
+nass_D0_national_ge_change,23,None nass-regional-t1-pilot-v1 weak-signal-control-v1
+numeric_D0_texas_minus_national_ge,22,None nass-regional-t1-pilot-v1 weak-signal-control-v1
+numeric_D0_texas_minus_national_pvp,22,None nass-regional-t1-pilot-v1 weak-signal-control-v1
+numeric_D0_texas_minus_national_ge_change,22,None nass-regional-t1-pilot-v1 weak-signal-control-v1
+numeric_D0_texas_planted_gap,22,None nass-regional-t1-pilot-v1 weak-signal-control-v1
+numeric_D0_texas_squaring_gap,22,None nass-regional-t1-pilot-v1 weak-signal-control-v1
+numeric_D0_texas_setting_bolls_gap,22,None nass-regional-t1-pilot-v1 weak-signal-control-v1
+numeric_D0_texas_bolls_opening_gap,22,None nass-regional-t1-pilot-v1 weak-signal-control-v1
+numeric_D0_texas_harvested_gap,22,None nass-regional-t1-pilot-v1 weak-signal-control-v1
+curve_D0_age_sessions,18,None contract-curve-t1-pilot-v1 contract-curve-t5-pilot-v1 named-capacity-control-t5-v1 named-cftc-source-control-t5-v1 named-history-source-control-t5-v1 named-label-control-t5-v1 named-weak-signal-control-t5-v1
+curve_D0_unavailable,18,None contract-curve-t1-pilot-v1 contract-curve-t5-pilot-v1 named-capacity-control-t5-v1 named-cftc-source-control-t5-v1 named-history-source-control-t5-v1 named-label-control-t5-v1 named-weak-signal-control-t5-v1
+curve_D0_gap_months,18,None contract-curve-t1-pilot-v1 contract-curve-t5-pilot-v1 named-capacity-control-t5-v1 named-cftc-source-control-t5-v1 named-history-source-control-t5-v1 named-label-control-t5-v1 named-weak-signal-control-t5-v1
+numeric_D0_spread,16,None contract-curve-t1-pilot-v1 contract-curve-t5-pilot-v1 named-capacity-control-t5-v1 named-cftc-source-control-t5-v1 named-history-source-control-t5-v1 named-label-control-t5-v1 named-weak-signal-control-t5-v1
+cftc_age_L1,7,cftc-exploration-v1 named-cftc-source-control-t5-v1
+cftc_missing_L1,7,cftc-exploration-v1 named-cftc-source-control-t5-v1
+named_contract_ret_1,7,named-cftc-source-control-t5-v1 named-history-source-control-t5-v1 named-weak-signal-control-t5-v1
+named_contract_ret_5,7,named-cftc-source-control-t5-v1 named-history-source-control-t5-v1 named-weak-signal-control-t5-v1
+named_contract_ret_10,7,named-cftc-source-control-t5-v1 named-history-source-control-t5-v1 named-weak-signal-control-t5-v1
+named_contract_ret_20,7,named-cftc-source-control-t5-v1 named-history-source-control-t5-v1 named-weak-signal-control-t5-v1
+origin_state,6,ct-own-level-manual-forward-t1-v1 ct-own-level-recent-history-audit-v1 ct-pre2010-same-contract-risk-t1-r2 ct-risk-level-dxy-control-t1-v1
+mae_ret1,6,price-only-median-t1-v1
+mae_ret5,6,price-only-median-t1-v1
+mae_ret20,6,price-only-median-t1-v1
+mae_vol20,6,price-only-median-t1-v1
+mae_z20,6,price-only-median-t1-v1
+cftc_managed_net_share_L1,5,cftc-exploration-v1 named-cftc-source-control-t5-v1
+cftc_producer_net_share_L1,5,cftc-exploration-v1 named-cftc-source-control-t5-v1
+cftc_managed_share_change_L1,5,cftc-exploration-v1 named-cftc-source-control-t5-v1
+wasde_age_L6,4,wasde-exploration-v1
+wasde_missing_L6,4,wasde-exploration-v1
+oncall_age_L2,4,oncall-exploration-v2
+oncall_missing_L2,4,oncall-exploration-v2
+crop_corn_age_L6,4,crop-exploration-v1
+crop_corn_missing_L6,4,crop-exploration-v1
+crop_soybean_age_L6,4,crop-exploration-v1
+crop_soybean_missing_L6,4,crop-exploration-v1
+crop_corn_age_L2,4,crop-exploration-v1
+crop_corn_missing_L2,4,crop-exploration-v1
+crop_soybean_age_L2,4,crop-exploration-v1
+crop_soybean_missing_L2,4,crop-exploration-v1
+nass_age_L1,4,nass-exploration-v1
+nass_missing_L1,4,nass-exploration-v1
+fas_age_L1,4,fas-exploration-v1
+fas_missing_L1,4,fas-exploration-v1
+oncall_age_L1,4,oncall-exploration-v2
+oncall_missing_L1,4,oncall-exploration-v2
+weather_age_L6,4,weather-exploration-v1
+weather_missing_L6,4,weather-exploration-v1
+weather_growing_season_L6,4,weather-exploration-v1
+nass_age_L2,4,nass-exploration-v1
+nass_missing_L2,4,nass-exploration-v1
+cftc_age_L2,4,cftc-exploration-v1
+cftc_missing_L2,4,cftc-exploration-v1
+weather_age_L1,4,weather-exploration-v1
+weather_missing_L1,4,weather-exploration-v1
+weather_growing_season_L1,4,weather-exploration-v1
+fas_age_L6,4,fas-exploration-v1
+fas_missing_L6,4,fas-exploration-v1
+fx_brl_age_L6,4,fx-exploration-v1
+fx_brl_missing_L6,4,fx-exploration-v1
+fx_cny_age_L6,4,fx-exploration-v1
+fx_cny_missing_L6,4,fx-exploration-v1
+fx_inr_age_L6,4,fx-exploration-v1
+fx_inr_missing_L6,4,fx-exploration-v1
+own_return_1,4,agri-transfer-pilot-v1
+own_return_5,4,agri-transfer-pilot-v1
+own_return_20,4,agri-transfer-pilot-v1
+own_volatility_5,4,agri-transfer-pilot-v1
+own_volatility_20,4,agri-transfer-pilot-v1
+own_sma_ratio_5_20,4,agri-transfer-pilot-v1
+wasde_age_L2,4,wasde-exploration-v1
+wasde_missing_L2,4,wasde-exploration-v1
+crop_corn_age_L1,4,crop-exploration-v1
+crop_corn_missing_L1,4,crop-exploration-v1
+crop_soybean_age_L1,4,crop-exploration-v1
+crop_soybean_missing_L1,4,crop-exploration-v1
+fx_brl_age_L1,4,fx-exploration-v1
+fx_brl_missing_L1,4,fx-exploration-v1
+fx_cny_age_L1,4,fx-exploration-v1
+fx_cny_missing_L1,4,fx-exploration-v1
+fx_inr_age_L1,4,fx-exploration-v1
+fx_inr_missing_L1,4,fx-exploration-v1
+nass_age_L6,4,nass-exploration-v1
+nass_missing_L6,4,nass-exploration-v1
+fx_brl_age_L2,4,fx-exploration-v1
+fx_brl_missing_L2,4,fx-exploration-v1
+fx_cny_age_L2,4,fx-exploration-v1
+fx_cny_missing_L2,4,fx-exploration-v1
+fx_inr_age_L2,4,fx-exploration-v1
+fx_inr_missing_L2,4,fx-exploration-v1
+weather_age_L2,4,weather-exploration-v1
+weather_missing_L2,4,weather-exploration-v1
+weather_growing_season_L2,4,weather-exploration-v1
+fas_age_L2,4,fas-exploration-v1
+fas_missing_L2,4,fas-exploration-v1
+ams_age_L6,4,ams-exploration-v1
+ams_missing_L6,4,ams-exploration-v1
+wasde_age_L1,4,wasde-exploration-v1
+wasde_missing_L1,4,wasde-exploration-v1
+cftc_age_L6,4,cftc-exploration-v1
+cftc_missing_L6,4,cftc-exploration-v1
+oncall_age_L6,4,oncall-exploration-v2
+oncall_missing_L6,4,oncall-exploration-v2
+ams_age_L2,4,ams-exploration-v1
+ams_missing_L2,4,ams-exploration-v1
+ams_age_L1,4,ams-exploration-v1
+ams_missing_L1,4,ams-exploration-v1
+curve_D1_age_sessions,4,contract-curve-t1-pilot-v1 contract-curve-t5-pilot-v1
+curve_D1_unavailable,4,contract-curve-t1-pilot-v1 contract-curve-t5-pilot-v1
+curve_D1_gap_months,4,contract-curve-t1-pilot-v1 contract-curve-t5-pilot-v1
+regional_D0_age_sessions,3,None wasde-regional-t1-pilot-v1
+regional_D0_unavailable,3,None wasde-regional-t1-pilot-v1
+relative_har_1,3,risk-level-source-t1-v1
+relative_har_5,3,risk-level-source-t1-v1
+relative_har_22,3,risk-level-source-t1-v1
+origin_shock,3,ct-signed-unsigned-shock-forecast-t1-v1
+wasde_stock_use_L6,2,wasde-exploration-v1
+wasde_production_use_L6,2,wasde-exploration-v1
+wasde_stock_use_change_L6,2,wasde-exploration-v1
+nass_good_excellent_L1,2,nass-exploration-v1
+nass_poor_very_poor_L1,2,nass-exploration-v1
+nass_good_excellent_change_L1,2,nass-exploration-v1
+fas_net_sales_L1,2,fas-exploration-v1
+fas_exports_L1,2,fas-exploration-v1
+fas_net_sales_change_L1,2,fas-exploration-v1
+fas_exports_change_L1,2,fas-exploration-v1
+oncall_net_share_L1,2,oncall-exploration-v2
+oncall_sales_share_L1,2,oncall-exploration-v2
+oncall_net_share_change_L1,2,oncall-exploration-v2
+crop_corn_return_1_L2,2,crop-exploration-v1
+crop_corn_return_5_L2,2,crop-exploration-v1
+crop_corn_return_21_L2,2,crop-exploration-v1
+crop_corn_volatility_21_L2,2,crop-exploration-v1
+crop_soybean_return_1_L2,2,crop-exploration-v1
+crop_soybean_return_5_L2,2,crop-exploration-v1
+crop_soybean_return_21_L2,2,crop-exploration-v1
+crop_soybean_volatility_21_L2,2,crop-exploration-v1
+crop_corn_return_1_L6,2,crop-exploration-v1
+crop_corn_return_5_L6,2,crop-exploration-v1
+crop_corn_return_21_L6,2,crop-exploration-v1
+crop_corn_volatility_21_L6,2,crop-exploration-v1
+crop_soybean_return_1_L6,2,crop-exploration-v1
+crop_soybean_return_5_L6,2,crop-exploration-v1
+crop_soybean_return_21_L6,2,crop-exploration-v1
+crop_soybean_volatility_21_L6,2,crop-exploration-v1
+weather_rain_7_L6,2,weather-exploration-v1
+weather_rain_30_L6,2,weather-exploration-v1
+weather_temperature_7_L6,2,weather-exploration-v1
+weather_heat_excess_7_L6,2,weather-exploration-v1
+weather_growing_rain_7_L6,2,weather-exploration-v1
+weather_growing_rain_30_L6,2,weather-exploration-v1
+weather_growing_temperature_7_L6,2,weather-exploration-v1
+weather_growing_heat_excess_7_L6,2,weather-exploration-v1
+available_dxy_ret_1,2,availability-clock-pilot-v1
+available_dxy_ret_5,2,availability-clock-pilot-v1
+available_dxy_ret_20,2,availability-clock-pilot-v1
+available_wti_ret_1,2,availability-clock-pilot-v1
+available_wti_ret_5,2,availability-clock-pilot-v1
+available_wti_ret_20,2,availability-clock-pilot-v1
+available_cotton_dxy_corr_60,2,availability-clock-pilot-v1
+available_cotton_wti_corr_60,2,availability-clock-pilot-v1
+fas_net_sales_L6,2,fas-exploration-v1
+fas_exports_L6,2,fas-exploration-v1
+fas_net_sales_change_L6,2,fas-exploration-v1
+fas_exports_change_L6,2,fas-exploration-v1
+cotton_path_ret_lag_1,2,return-path-pilot-v1
+cotton_path_ret_lag_2,2,return-path-pilot-v1
+cotton_path_ret_lag_3,2,return-path-pilot-v1
+cotton_path_ret_lag_4,2,return-path-pilot-v1
+cotton_path_ret_lag_5,2,return-path-pilot-v1
+cotton_path_ret_lag_6,2,return-path-pilot-v1
+cotton_path_ret_lag_7,2,return-path-pilot-v1
+cotton_path_ret_lag_8,2,return-path-pilot-v1
+cotton_path_ret_lag_9,2,return-path-pilot-v1
+cotton_path_ret_lag_10,2,return-path-pilot-v1
+cotton_path_ret_lag_11,2,return-path-pilot-v1
+cotton_path_ret_lag_12,2,return-path-pilot-v1
+cotton_path_ret_lag_13,2,return-path-pilot-v1
+cotton_path_ret_lag_14,2,return-path-pilot-v1
+cotton_path_ret_lag_15,2,return-path-pilot-v1
+cotton_path_ret_lag_16,2,return-path-pilot-v1
+cotton_path_ret_lag_17,2,return-path-pilot-v1
+cotton_path_ret_lag_18,2,return-path-pilot-v1
+cotton_path_ret_lag_19,2,return-path-pilot-v1
+cotton_path_ret_lag_20,2,return-path-pilot-v1
+cotton_path_ret_lag_21,2,return-path-pilot-v1
+cotton_path_ret_lag_22,2,return-path-pilot-v1
+cotton_path_ret_lag_23,2,return-path-pilot-v1
+cotton_path_ret_lag_24,2,return-path-pilot-v1
+cotton_path_ret_lag_25,2,return-path-pilot-v1
+cotton_path_ret_lag_26,2,return-path-pilot-v1
+cotton_path_ret_lag_27,2,return-path-pilot-v1
+cotton_path_ret_lag_28,2,return-path-pilot-v1
+cotton_path_ret_lag_29,2,return-path-pilot-v1
+cotton_path_ret_lag_30,2,return-path-pilot-v1
+cotton_path_ret_lag_31,2,return-path-pilot-v1
+cotton_path_ret_lag_32,2,return-path-pilot-v1
+cotton_path_ret_lag_33,2,return-path-pilot-v1
+cotton_path_ret_lag_34,2,return-path-pilot-v1
+cotton_path_ret_lag_35,2,return-path-pilot-v1
+cotton_path_ret_lag_36,2,return-path-pilot-v1
+cotton_path_ret_lag_37,2,return-path-pilot-v1
+cotton_path_ret_lag_38,2,return-path-pilot-v1
+cotton_path_ret_lag_39,2,return-path-pilot-v1
+cotton_path_ret_lag_40,2,return-path-pilot-v1
+cotton_path_ret_lag_41,2,return-path-pilot-v1
+cotton_path_ret_lag_42,2,return-path-pilot-v1
+cotton_path_ret_lag_43,2,return-path-pilot-v1
+cotton_path_ret_lag_44,2,return-path-pilot-v1
+cotton_path_ret_lag_45,2,return-path-pilot-v1
+cotton_path_ret_lag_46,2,return-path-pilot-v1
+cotton_path_ret_lag_47,2,return-path-pilot-v1
+cotton_path_ret_lag_48,2,return-path-pilot-v1
+cotton_path_ret_lag_49,2,return-path-pilot-v1
+cotton_path_ret_lag_50,2,return-path-pilot-v1
+cotton_path_ret_lag_51,2,return-path-pilot-v1
+cotton_path_ret_lag_52,2,return-path-pilot-v1
+cotton_path_ret_lag_53,2,return-path-pilot-v1
+cotton_path_ret_lag_54,2,return-path-pilot-v1
+cotton_path_ret_lag_55,2,return-path-pilot-v1
+cotton_path_ret_lag_56,2,return-path-pilot-v1
+cotton_path_ret_lag_57,2,return-path-pilot-v1
+cotton_path_ret_lag_58,2,return-path-pilot-v1
+cotton_path_ret_lag_59,2,return-path-pilot-v1
+nass_good_excellent_L2,2,nass-exploration-v1
+nass_poor_very_poor_L2,2,nass-exploration-v1
+nass_good_excellent_change_L2,2,nass-exploration-v1
+weather_rain_7_L1,2,weather-exploration-v1
+weather_rain_30_L1,2,weather-exploration-v1
+weather_temperature_7_L1,2,weather-exploration-v1
+weather_heat_excess_7_L1,2,weather-exploration-v1
+weather_growing_rain_7_L1,2,weather-exploration-v1
+weather_growing_rain_30_L1,2,weather-exploration-v1
+weather_growing_temperature_7_L1,2,weather-exploration-v1
+weather_growing_heat_excess_7_L1,2,weather-exploration-v1
+wasde_stock_use_L2,2,wasde-exploration-v1
+wasde_production_use_L2,2,wasde-exploration-v1
+wasde_stock_use_change_L2,2,wasde-exploration-v1
+nass_good_excellent_L6,2,nass-exploration-v1
+nass_poor_very_poor_L6,2,nass-exploration-v1
+nass_good_excellent_change_L6,2,nass-exploration-v1
+fx_brl_return_1_L2,2,fx-exploration-v1
+fx_brl_return_5_L2,2,fx-exploration-v1
+fx_brl_return_21_L2,2,fx-exploration-v1
+fx_brl_volatility_21_L2,2,fx-exploration-v1
+fx_cny_return_1_L2,2,fx-exploration-v1
+fx_cny_return_5_L2,2,fx-exploration-v1
+fx_cny_return_21_L2,2,fx-exploration-v1
+fx_cny_volatility_21_L2,2,fx-exploration-v1
+fx_inr_return_1_L2,2,fx-exploration-v1
+fx_inr_return_5_L2,2,fx-exploration-v1
+fx_inr_return_21_L2,2,fx-exploration-v1
+fx_inr_volatility_21_L2,2,fx-exploration-v1
+fas_net_sales_L2,2,fas-exploration-v1
+fas_exports_L2,2,fas-exploration-v1
+fas_net_sales_change_L2,2,fas-exploration-v1
+fas_exports_change_L2,2,fas-exploration-v1
+oncall_net_share_L6,2,oncall-exploration-v2
+oncall_sales_share_L6,2,oncall-exploration-v2
+oncall_net_share_change_L6,2,oncall-exploration-v2
+cftc_managed_net_share_L6,2,cftc-exploration-v1
+cftc_producer_net_share_L6,2,cftc-exploration-v1
+cftc_managed_share_change_L6,2,cftc-exploration-v1
+fx_brl_return_1_L1,2,fx-exploration-v1
+fx_brl_return_5_L1,2,fx-exploration-v1
+fx_brl_return_21_L1,2,fx-exploration-v1
+fx_brl_volatility_21_L1,2,fx-exploration-v1
+fx_cny_return_1_L1,2,fx-exploration-v1
+fx_cny_return_5_L1,2,fx-exploration-v1
+fx_cny_return_21_L1,2,fx-exploration-v1
+fx_cny_volatility_21_L1,2,fx-exploration-v1
+fx_inr_return_1_L1,2,fx-exploration-v1
+fx_inr_return_5_L1,2,fx-exploration-v1
+fx_inr_return_21_L1,2,fx-exploration-v1
+fx_inr_volatility_21_L1,2,fx-exploration-v1
+crop_corn_return_1_L1,2,crop-exploration-v1
+crop_corn_return_5_L1,2,crop-exploration-v1
+crop_corn_return_21_L1,2,crop-exploration-v1
+crop_corn_volatility_21_L1,2,crop-exploration-v1
+crop_soybean_return_1_L1,2,crop-exploration-v1
+crop_soybean_return_5_L1,2,crop-exploration-v1
+crop_soybean_return_21_L1,2,crop-exploration-v1
+crop_soybean_volatility_21_L1,2,crop-exploration-v1
+cftc_managed_net_share_L2,2,cftc-exploration-v1
+cftc_producer_net_share_L2,2,cftc-exploration-v1
+cftc_managed_share_change_L2,2,cftc-exploration-v1
+ams_spread_L6,2,ams-exploration-v1
+fx_brl_return_1_L6,2,fx-exploration-v1
+fx_brl_return_5_L6,2,fx-exploration-v1
+fx_brl_return_21_L6,2,fx-exploration-v1
+fx_brl_volatility_21_L6,2,fx-exploration-v1
+fx_cny_return_1_L6,2,fx-exploration-v1
+fx_cny_return_5_L6,2,fx-exploration-v1
+fx_cny_return_21_L6,2,fx-exploration-v1
+fx_cny_volatility_21_L6,2,fx-exploration-v1
+fx_inr_return_1_L6,2,fx-exploration-v1
+fx_inr_return_5_L6,2,fx-exploration-v1
+fx_inr_return_21_L6,2,fx-exploration-v1
+fx_inr_volatility_21_L6,2,fx-exploration-v1
+ams_spread_L2,2,ams-exploration-v1
+oncall_net_share_L2,2,oncall-exploration-v2
+oncall_sales_share_L2,2,oncall-exploration-v2
+oncall_net_share_change_L2,2,oncall-exploration-v2
+ams_spread_L1,2,ams-exploration-v1
+wasde_stock_use_L1,2,wasde-exploration-v1
+wasde_production_use_L1,2,wasde-exploration-v1
+wasde_stock_use_change_L1,2,wasde-exploration-v1
+weather_rain_7_L2,2,weather-exploration-v1
+weather_rain_30_L2,2,weather-exploration-v1
+weather_temperature_7_L2,2,weather-exploration-v1
+weather_heat_excess_7_L2,2,weather-exploration-v1
+weather_growing_rain_7_L2,2,weather-exploration-v1
+weather_growing_rain_30_L2,2,weather-exploration-v1
+weather_growing_temperature_7_L2,2,weather-exploration-v1
+weather_growing_heat_excess_7_L2,2,weather-exploration-v1
+regional_D1_age_sessions,2,wasde-regional-t1-pilot-v1
+regional_D1_unavailable,2,wasde-regional-t1-pilot-v1
+numeric_D0_world_production,2,None wasde-regional-t1-pilot-v1
+numeric_D0_world_consumption,2,None wasde-regional-t1-pilot-v1
+numeric_D0_world_ending_stocks,2,None wasde-regional-t1-pilot-v1
+numeric_D0_us_production,2,None wasde-regional-t1-pilot-v1
+numeric_D0_us_consumption,2,None wasde-regional-t1-pilot-v1
+numeric_D0_us_exports,2,None wasde-regional-t1-pilot-v1
+numeric_D0_us_ending_stocks,2,None wasde-regional-t1-pilot-v1
+numeric_D0_china_consumption,2,None wasde-regional-t1-pilot-v1
+numeric_D0_india_production,2,None wasde-regional-t1-pilot-v1
+numeric_D0_brazil_production,2,None wasde-regional-t1-pilot-v1
+numeric_D0_world_stock_use,2,None wasde-regional-t1-pilot-v1
+numeric_D0_world_production_use,2,None wasde-regional-t1-pilot-v1
+numeric_D0_us_stock_use,2,None wasde-regional-t1-pilot-v1
+numeric_D0_world_production_revision,2,None wasde-regional-t1-pilot-v1
+numeric_D0_world_consumption_revision,2,None wasde-regional-t1-pilot-v1
+numeric_D0_world_ending_stocks_revision,2,None wasde-regional-t1-pilot-v1
+numeric_D0_us_production_revision,2,None wasde-regional-t1-pilot-v1
+numeric_D0_us_consumption_revision,2,None wasde-regional-t1-pilot-v1
+numeric_D0_us_exports_revision,2,None wasde-regional-t1-pilot-v1
+numeric_D0_us_ending_stocks_revision,2,None wasde-regional-t1-pilot-v1
+numeric_D0_china_consumption_revision,2,None wasde-regional-t1-pilot-v1
+numeric_D0_india_production_revision,2,None wasde-regional-t1-pilot-v1
+numeric_D0_brazil_production_revision,2,None wasde-regional-t1-pilot-v1
+numeric_D0_world_stock_use_revision,2,None wasde-regional-t1-pilot-v1
+numeric_D0_world_production_use_revision,2,None wasde-regional-t1-pilot-v1
+numeric_D0_us_stock_use_revision,2,None wasde-regional-t1-pilot-v1
+nass_D1_age_sessions,2,nass-regional-t1-pilot-v1
+nass_D1_unavailable,2,nass-regional-t1-pilot-v1
+nass_D1_national_good_excellent,2,nass-regional-t1-pilot-v1
+nass_D1_national_poor_very_poor,2,nass-regional-t1-pilot-v1
+nass_D1_national_ge_change,2,nass-regional-t1-pilot-v1
+numeric_D1_spread,2,contract-curve-t1-pilot-v1 contract-curve-t5-pilot-v1
+mask_D1_spread,2,contract-curve-t1-pilot-v1 contract-curve-t5-pilot-v1
+mask_D0_spread,2,contract-curve-t1-pilot-v1 contract-curve-t5-pilot-v1
+named_ewma,2,named-ewma-scale-control-t1-v1
+log_named_ewma,2,risk-level-source-t1-v1
+numeric_D1_world_production,1,wasde-regional-t1-pilot-v1
+numeric_D1_world_consumption,1,wasde-regional-t1-pilot-v1
+numeric_D1_world_ending_stocks,1,wasde-regional-t1-pilot-v1
+numeric_D1_us_production,1,wasde-regional-t1-pilot-v1
+numeric_D1_us_consumption,1,wasde-regional-t1-pilot-v1
+numeric_D1_us_exports,1,wasde-regional-t1-pilot-v1
+numeric_D1_us_ending_stocks,1,wasde-regional-t1-pilot-v1
+numeric_D1_china_consumption,1,wasde-regional-t1-pilot-v1
+numeric_D1_india_production,1,wasde-regional-t1-pilot-v1
+numeric_D1_brazil_production,1,wasde-regional-t1-pilot-v1
+numeric_D1_world_stock_use,1,wasde-regional-t1-pilot-v1
+numeric_D1_world_production_use,1,wasde-regional-t1-pilot-v1
+numeric_D1_us_stock_use,1,wasde-regional-t1-pilot-v1
+numeric_D1_world_production_revision,1,wasde-regional-t1-pilot-v1
+numeric_D1_world_consumption_revision,1,wasde-regional-t1-pilot-v1
+numeric_D1_world_ending_stocks_revision,1,wasde-regional-t1-pilot-v1
+numeric_D1_us_production_revision,1,wasde-regional-t1-pilot-v1
+numeric_D1_us_consumption_revision,1,wasde-regional-t1-pilot-v1
+numeric_D1_us_exports_revision,1,wasde-regional-t1-pilot-v1
+numeric_D1_us_ending_stocks_revision,1,wasde-regional-t1-pilot-v1
+numeric_D1_china_consumption_revision,1,wasde-regional-t1-pilot-v1
+numeric_D1_india_production_revision,1,wasde-regional-t1-pilot-v1
+numeric_D1_brazil_production_revision,1,wasde-regional-t1-pilot-v1
+numeric_D1_world_stock_use_revision,1,wasde-regional-t1-pilot-v1
+numeric_D1_world_production_use_revision,1,wasde-regional-t1-pilot-v1
+numeric_D1_us_stock_use_revision,1,wasde-regional-t1-pilot-v1
+mask_D1_world_production,1,wasde-regional-t1-pilot-v1
+mask_D1_world_consumption,1,wasde-regional-t1-pilot-v1
+mask_D1_world_ending_stocks,1,wasde-regional-t1-pilot-v1
+mask_D1_us_production,1,wasde-regional-t1-pilot-v1
+mask_D1_us_consumption,1,wasde-regional-t1-pilot-v1
+mask_D1_us_exports,1,wasde-regional-t1-pilot-v1
+mask_D1_us_ending_stocks,1,wasde-regional-t1-pilot-v1
+mask_D1_china_consumption,1,wasde-regional-t1-pilot-v1
+mask_D1_india_production,1,wasde-regional-t1-pilot-v1
+mask_D1_brazil_production,1,wasde-regional-t1-pilot-v1
+mask_D1_world_stock_use,1,wasde-regional-t1-pilot-v1
+mask_D1_world_production_use,1,wasde-regional-t1-pilot-v1
+mask_D1_us_stock_use,1,wasde-regional-t1-pilot-v1
+mask_D1_world_production_revision,1,wasde-regional-t1-pilot-v1
+mask_D1_world_consumption_revision,1,wasde-regional-t1-pilot-v1
+mask_D1_world_ending_stocks_revision,1,wasde-regional-t1-pilot-v1
+mask_D1_us_production_revision,1,wasde-regional-t1-pilot-v1
+mask_D1_us_consumption_revision,1,wasde-regional-t1-pilot-v1
+mask_D1_us_exports_revision,1,wasde-regional-t1-pilot-v1
+mask_D1_us_ending_stocks_revision,1,wasde-regional-t1-pilot-v1
+mask_D1_china_consumption_revision,1,wasde-regional-t1-pilot-v1
+mask_D1_india_production_revision,1,wasde-regional-t1-pilot-v1
+mask_D1_brazil_production_revision,1,wasde-regional-t1-pilot-v1
+mask_D1_world_stock_use_revision,1,wasde-regional-t1-pilot-v1
+mask_D1_world_production_use_revision,1,wasde-regional-t1-pilot-v1
+mask_D1_us_stock_use_revision,1,wasde-regional-t1-pilot-v1
+mask_D0_world_production,1,wasde-regional-t1-pilot-v1
+mask_D0_world_consumption,1,wasde-regional-t1-pilot-v1
+mask_D0_world_ending_stocks,1,wasde-regional-t1-pilot-v1
+mask_D0_us_production,1,wasde-regional-t1-pilot-v1
+mask_D0_us_consumption,1,wasde-regional-t1-pilot-v1
+mask_D0_us_exports,1,wasde-regional-t1-pilot-v1
+mask_D0_us_ending_stocks,1,wasde-regional-t1-pilot-v1
+mask_D0_china_consumption,1,wasde-regional-t1-pilot-v1
+mask_D0_india_production,1,wasde-regional-t1-pilot-v1
+mask_D0_brazil_production,1,wasde-regional-t1-pilot-v1
+mask_D0_world_stock_use,1,wasde-regional-t1-pilot-v1
+mask_D0_world_production_use,1,wasde-regional-t1-pilot-v1
+mask_D0_us_stock_use,1,wasde-regional-t1-pilot-v1
+mask_D0_world_production_revision,1,wasde-regional-t1-pilot-v1
+mask_D0_world_consumption_revision,1,wasde-regional-t1-pilot-v1
+mask_D0_world_ending_stocks_revision,1,wasde-regional-t1-pilot-v1
+mask_D0_us_production_revision,1,wasde-regional-t1-pilot-v1
+mask_D0_us_consumption_revision,1,wasde-regional-t1-pilot-v1
+mask_D0_us_exports_revision,1,wasde-regional-t1-pilot-v1
+mask_D0_us_ending_stocks_revision,1,wasde-regional-t1-pilot-v1
+mask_D0_china_consumption_revision,1,wasde-regional-t1-pilot-v1
+mask_D0_india_production_revision,1,wasde-regional-t1-pilot-v1
+mask_D0_brazil_production_revision,1,wasde-regional-t1-pilot-v1
+mask_D0_world_stock_use_revision,1,wasde-regional-t1-pilot-v1
+mask_D0_world_production_use_revision,1,wasde-regional-t1-pilot-v1
+mask_D0_us_stock_use_revision,1,wasde-regional-t1-pilot-v1
+mask_D0_texas_minus_national_ge,1,nass-regional-t1-pilot-v1
+mask_D0_texas_minus_national_pvp,1,nass-regional-t1-pilot-v1
+mask_D0_texas_minus_national_ge_change,1,nass-regional-t1-pilot-v1
+mask_D0_texas_planted_gap,1,nass-regional-t1-pilot-v1
+mask_D0_texas_squaring_gap,1,nass-regional-t1-pilot-v1
+mask_D0_texas_setting_bolls_gap,1,nass-regional-t1-pilot-v1
+mask_D0_texas_bolls_opening_gap,1,nass-regional-t1-pilot-v1
+mask_D0_texas_harvested_gap,1,nass-regional-t1-pilot-v1
+numeric_D1_texas_minus_national_ge,1,nass-regional-t1-pilot-v1
+numeric_D1_texas_minus_national_pvp,1,nass-regional-t1-pilot-v1
+numeric_D1_texas_minus_national_ge_change,1,nass-regional-t1-pilot-v1
+numeric_D1_texas_planted_gap,1,nass-regional-t1-pilot-v1
+numeric_D1_texas_squaring_gap,1,nass-regional-t1-pilot-v1
+numeric_D1_texas_setting_bolls_gap,1,nass-regional-t1-pilot-v1
+numeric_D1_texas_bolls_opening_gap,1,nass-regional-t1-pilot-v1
+numeric_D1_texas_harvested_gap,1,nass-regional-t1-pilot-v1
+mask_D1_texas_minus_national_ge,1,nass-regional-t1-pilot-v1
+mask_D1_texas_minus_national_pvp,1,nass-regional-t1-pilot-v1
+mask_D1_texas_minus_national_ge_change,1,nass-regional-t1-pilot-v1
+mask_D1_texas_planted_gap,1,nass-regional-t1-pilot-v1
+mask_D1_texas_squaring_gap,1,nass-regional-t1-pilot-v1
+mask_D1_texas_setting_bolls_gap,1,nass-regional-t1-pilot-v1
+mask_D1_texas_bolls_opening_gap,1,nass-regional-t1-pilot-v1
+mask_D1_texas_harvested_gap,1,nass-regional-t1-pilot-v1
+log_dxy_rv5,1,risk-level-source-t1-v1
