@@ -79,3 +79,11 @@ def test_t46_parse_corn_skips_toc_and_reads_production():
     assert rel.month == 9 and o == {'IA': 1_815_000_000, 'US': 10_400_000_000}
     _, o = parse_table(new, CROPS['soy']['title'])
     assert o == {'ND': 137_350_000, 'US': 3_408_000_000}
+
+
+def test_t46_splits_fused_columns_by_area_times_yield():
+    from research.crop_nowcast.t46_crops import last_value
+
+    # prev production 10,089,222 fused with current 10,917,000; area 73,000 x yield 149.5 = 10,913,500
+    assert last_value(['72,000', '73,000', '142.2', '148.0', '149.5', '10,089,22210,917,000']) == 10_917_000
+    assert last_value(['1', '2', '3', '4,567']) == 4567

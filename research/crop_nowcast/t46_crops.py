@@ -39,6 +39,24 @@ ST = dict(zip(
 ABBR = set(ST.values())
 
 
+GROUPED = r'\d{1,3}(?:,\d{3})*(?:\.\d+)?'
+
+
+def last_value(nums):
+    """Last column = current production. Amendment 2: wide numbers can fuse with the previous column
+    ('10,089,22210,917,000'); then split so both halves are valid groupings and the right half is closest to
+    current harvested area (nums[1]) x current yield (nums[-2])."""
+    tok = nums[-1]
+    if re.fullmatch(GROUPED, tok):
+        return float(tok.replace(',', ''))
+    target = float(nums[1].replace(',', '')) * float(nums[-2].replace(',', ''))
+    cands = [float(tok[i:].replace(',', '')) for i in range(1, len(tok))
+             if re.fullmatch(GROUPED, tok[:i]) and re.fullmatch(GROUPED, tok[i:])]
+    if not cands:
+        raise ValueError(f'unsplittable fused number {tok!r}')
+    return min(cands, key=lambda c: abs(c - target))
+
+
 def parse_table(text, title):
     """-> (release date, {state or 'US': bushels}) or None. Last number of each row = current production (1,000 bu)."""
     r = re.search(r'Released ([A-Za-z]+ \d{1,2}, \d{4})', text)
@@ -58,7 +76,7 @@ def parse_table(text, title):
             st = 'US' if name in ('US', 'United States') else ST.get(name.replace(' ', ''), name if name in ABBR else None)
             nums = [x for x in m.group(2).split() if re.fullmatch(r'[\d,]+(?:\.\d+)?', x)]
             if st and nums:
-                out[st] = round(float(nums[-1].replace(',', '')) * 1000)
+                out[st] = round(last_value(nums) * 1000)
             if st == 'US':
                 return rel, out
         return None
