@@ -409,3 +409,11 @@ Frozen preregistration: `docs/LINK1_EVENT_STUDY_PREREG_20261115.md` (LF sha256 1
   - Sentinel-2: dense only from 2019.
   - RMA cause of loss: revised after the season, so it leaks.
   (Source: check by a parallel session, 15 Nov.)
+
+### T39 (16 Nov): one-shot sealed test of T36 on 2022–2024: **FAIL**
+
+- **1 Oct:** T36 scored TX 15.0 / US 5.2, against T25 13.7 / 5.9 and USDA 20.3 / 4.2.
+- **US fails** because USDA under-forecast the US in 2022 and 2024, and the bias correction pushed further down.
+- **TX: T25 and T36 beat USDA in 3 of 3 sealed years.** This was not the declared claim; it is a hypothesis for a new forward test.
+- Details: `docs/SEALED_TEST_T39_PREREG_20261115.md`; evidence `t39-sealed-test-20261116.json`.
+- The seal is now spent for production finals 2022–2024. Prices and returns stay sealed.
