@@ -565,3 +565,24 @@ On dev 2013–2021, TX MAPE was worse than USDA and T25 at every cutoff:
   - 2022 skipped 3 unreadable Landsat 7 scenes (recorded in `landsat_TX_2022.json`).
   - 2024–2025 have about half the observations: Landsat 7 was retired, and Landsat 9 was excluded to keep the declared spec.
 - Evidence: `t43-tx-fail-20261116.json` / `.log`.
+
+### T44 (PRE-DECLARED 16 Nov, before running): USDA revision momentum
+
+**Hypothesis (from the literature, not from our data).** USDA crop forecasts are "smoothed": successive revisions are positively correlated (Isengildina, Irwin and Good on USDA corn/soybean forecasts). So the latest revision predicts the direction of the remaining error.
+
+**Model (one spec).**
+- For month m with the previous published USDA month p (Sep←Aug, Oct←Sep, Nov←Oct, or Sep when there is no Oct, Dec←Nov):
+  - r = log(USDA_m / USDA_p);
+  - e = log(final / USDA_m).
+- Rolling ridge pooled over states, **no intercept** (so no bias term, which failed in T39 and T42): e = b·z(r), λ = 1, trained on state-years 2012…Y−1. With fewer than 10 rows, USDA is unchanged.
+- Corrected = USDA_m × exp(ê). US = USDA_US × Σ corrected / Σ USDA_m.
+- Everything used is published before USDA's month-m report: both forecasts are public at m's release.
+
+**Years.** 2014–2025 (12 seasons; Oct has no 2013 or 2025 report).
+
+**Pass rule.**
+- **Primary: 1 Dec** (USDA December, the 10 Dec report) **and 1 Sep.**
+- At both cutoffs: TX and US MAPE below USDA's; better than USDA in more years than worse (TX and US separately); production-weighted state error below USDA's.
+- Oct and Nov are secondary.
+
+**Disclosure.** Every 2014–2025 outcome has been seen in earlier trials, so this is a rolling backtest of a literature-motivated single spec, not a blind holdout. A pass makes it the candidate for a locked forward forecast of the 2026 crop, built from USDA Nov→Dec and scored when 2026 finals are published.
