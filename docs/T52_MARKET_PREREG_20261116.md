@@ -20,3 +20,15 @@ T50 showed that the direction of USDA's next cotton revision is predictable from
 
 ## Prior expectation, stated before running
 Small sample (about 36 events), and T50 found the signal itself fails in cotton after 2012, so a null is likely. The test is run once and reported either way.
+
+## Result (16 Nov 2026) — FAIL
+| | Events | Mean signed return | Hit rate |
+|---|---|---|---|
+| All, 2010–2021 | 32 | +0.27% | 53% |
+| 2010–2011 | 4 | +0.58% | 75% |
+| 2012–2021 | 28 | +0.22% | 50% |
+
+- **Pass test:** season-block p = 0.30, so the test **fails**.
+- **The signal itself:** in these events it called USDA's actual revision correctly only 47% of the time, matching T50's finding that persistence is gone in cotton after 2012.
+- **What this means:** the price data start in 2010, so the market test could only cover the era in which the revision signal no longer works. No market value can be claimed. Testing a market effect in the era where the signal worked (pre-2010) needs older daily futures prices, which this project does not hold.
+- **Evidence:** `research/evidence/t52-market-20261116.json`.
