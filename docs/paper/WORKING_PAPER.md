@@ -79,7 +79,7 @@ log(final / forecast) = area part + yield part, exactly.
 |---|---|
 | Oklahoma + Kansas cotton | consistent: corr −0.61, 4/4 months better, p = 0.056 |
 | Winter wheat | none |
-| Grain sorghum (T54) | see the evidence file |
+| Grain sorghum (T54) | the same negative relation (corr −0.44), but the correction does not beat USDA's already small area errors (p = 0.70) |
 
 **Production (T51, T53).** Area-corrected Texas production is better than USDA in 4 of 4 months after 2008 (for example October, 14.1% → 11.3%), but not significantly (p = 0.12). Before 2008 there was little area error to correct.
 

@@ -1,0 +1,52 @@
+{
+ "seasons_per_state": {
+  "KS": 14,
+  "TX": 14
+ },
+ "months_present": [
+  "AUG",
+  "NOV",
+  "OCT",
+  "SEP"
+ ],
+ "feasible": true,
+ "months": {
+  "AUG": {
+   "rows": 28,
+   "seasons": 14,
+   "mae_usda_pct": 6.857474443804383,
+   "mae_adjusted_pct": 7.718817808053234,
+   "corr_pvp_e": -0.4451824652893208
+  },
+  "NOV": {
+   "rows": 28,
+   "seasons": 14,
+   "mae_usda_pct": 4.0283451619256265,
+   "mae_adjusted_pct": 4.184138467323504,
+   "corr_pvp_e": -0.5531931091747327
+  },
+  "OCT": {
+   "rows": 24,
+   "seasons": 12,
+   "mae_usda_pct": 3.574438572830743,
+   "mae_adjusted_pct": 3.9330434074755622,
+   "corr_pvp_e": -0.5780005114819854
+  },
+  "SEP": {
+   "rows": 28,
+   "seasons": 14,
+   "mae_usda_pct": 5.734677768851604,
+   "mae_adjusted_pct": 6.176930711152741,
+   "corr_pvp_e": -0.35243967321770464
+  }
+ },
+ "pooled_corr": -0.4432996188603093,
+ "pooled_corr_upper95_one_sided": -0.09739212670257519,
+ "mean_gain_log_pts": -0.44583274170323955,
+ "year_block_p": 0.70175,
+ "months_better": 0,
+ "n_months": 4,
+ "pass_sign": true,
+ "pass_prediction": false,
+ "pass": false
+}

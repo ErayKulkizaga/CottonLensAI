@@ -24,3 +24,22 @@ Grain sorghum is a dryland summer crop of the same region (Kansas, Texas), with 
   - **(i)** pooled corr(pvp, e) < 0, with the one-sided season-bootstrap 95% upper bound < 0;
   - **(ii)** the adjusted area beats USDA in at least 3 of the scored months (or in every month if fewer than 3 are scored), with year-block p < 0.05.
 - **Claim if PASS:** "the anchoring of USDA's harvested area generalises to dryland grain sorghum."
+
+## Result (16 Nov 2026) — FAIL ((i) passes, (ii) fails)
+- **Coverage:** QuickStats monthly sorghum area forecasts exist for 2012–2025 only: 14 seasons per state, Aug–Nov (Oct has 12).
+- **(i) Sign: passes.** Pooled corr(pvp, area error) = −0.44, one-sided 95% upper bound −0.10. By month: Aug −0.45, Sep −0.35, Oct −0.58, Nov −0.55.
+
+| Month | USDA area error % | Adjusted % |
+|---|---|---|
+| Aug | 6.9 | 7.7 |
+| Sep | 5.7 | 6.2 |
+| Oct | 3.6 | 3.9 |
+| Nov | 4.0 | 4.2 |
+
+- **(ii) Prediction: fails.** The adjustment is worse in 4 of 4 months (year-block p = 0.70).
+
+**Reading:**
+- The anchoring signature (USDA's area error moves with the poor-condition share) is present in sorghum too.
+- USDA's sorghum area errors are small, and with 14 seasons a fitted correction adds more noise than it removes.
+- The mechanism's sign generalises; a usable correction does not.
+- Evidence: `research/evidence/t54-sorghum-20261116.json`.
