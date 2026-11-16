@@ -58,6 +58,8 @@ def cmd_parse(raw_dir, root):
 
 
 ABBR = ('AL AZ AR CA FL GA KS LA MS MO NM NC OK SC TN TX VA US').split()
+OLD_NAMES = {'ALA': 'AL', 'ARIZ': 'AZ', 'ARK': 'AR', 'CALIF': 'CA', 'FLA': 'FL', 'KANS': 'KS', 'MISS': 'MS',
+             'NMEX': 'NM', 'OKLA': 'OK', 'TENN': 'TN', 'TEX': 'TX'}
 
 
 def _num(tok):
@@ -69,37 +71,54 @@ def _num(tok):
     return float(tok)
 
 
-def ocr_rows(text):
-    """Upland block of an OCR'd cotton table -> {state: (area_cur, yield_cur, prod_cur)} for rows that pass the
-    area x yield check (amendment 2): |prod_cur x 480 / (area_cur x yield_cur) - 1| < 3%, same for the previous year."""
+def _ocr_block(lines, i):
+    """Rows of one Upland block starting after line i -> {state: (area_cur, yield_cur, prod_cur)}.
+    Amendment 3: columns are told apart by format, not position (areas and productions carry one decimal, yields are
+    integers); OCR noise before the first decimal token (a ':' read as '2', '=', 'H') is ignored."""
     import re
     out = {}
-    lines = text.splitlines()
-    try:
-        i = next(k for k, ln in enumerate(lines) if re.match(r'^\s*Upland\b', ln))
-    except StopIteration:
-        return out
+    ok = lambda a, y, p: a > 0 and y > 0 and abs(p * 480 / (a * y) - 1) < 0.03
     for ln in lines[i + 1:]:
-        if re.match(r'^\s*(Am|All|Pima)', ln):
+        if re.match(r'^\s*(AM|ALL|PIMA)', ln, re.I):
             break
-        m = re.match(r'^\s*(U\.?\s?S\.?|[A-Z]{2})\b(.*)$', ln)
+        m = re.match(r'^\s*([A-Za-z$][A-Za-z.$]*(?:\s[A-Za-z]{2,4}\b)?)(.*)$', ln)
         if not m:
             continue
-        st = 'US' if m.group(1).replace('.', '').replace(' ', '') == 'US' else m.group(1)
+        name = m.group(1).upper().replace('.', '').replace(' ', '').replace('$', 'S')
+        st = OLD_NAMES.get(name, name)  # pre-1992 reports use ALA, ARIZ, CALIF, TEX, N MEX ...
         if st not in ABBR or st in out:
             continue
         toks = re.findall(r'\d[\d.,]*\d|\d', re.sub(r'\b\d/', ' ', m.group(2)))
+        dec = [k for k, t in enumerate(toks) if re.search(r'[.,]\d$', t)]
+        if len(dec) < 4:
+            continue
+        rest = toks[dec[0]:]
         try:
-            n = [_num(t) for t in toks]
+            areas = [_num(t) for t in rest[:2]]
+            yields = [float(t.replace(',', '')) for t in rest[2:] if not re.search(r'[.,]\d$', t)]
+            prods = [_num(t) for t in rest[2:] if re.search(r'[.,]\d$', t)]
         except ValueError:
             continue
-        if len(n) < 6:
+        if len(yields) < 2 or len(prods) < 2:
             continue
-        ap, ac, yp, yc, pp, pc = n[0], n[1], n[2], n[-3], n[-2], n[-1]
-        ok = lambda a, y, p: a > 0 and y > 0 and abs(p * 480 / (a * y) - 1) < 0.03
-        if ok(ac, yc, pc) and ok(ap, yp, pp):
-            out[st] = (ac, yc, pc)
+        if ok(areas[1], yields[-1], prods[-1]):  # amendment 3: current-year check only (pre-1992 column years differ)
+            out[st] = (areas[1], yields[-1], prods[-1])
     return out
+
+
+def ocr_rows(text):
+    """Upland block of an OCR'd cotton table. Row check (amendment 2): production x 480 / (area x yield) within 3%
+    for the current and the previous year. Amendment 3: headers matched case-insensitively; the 'UPLAND' line that
+    yields the most valid rows is used (the crop-summary page also has an UPLAND line)."""
+    import re
+    lines = text.splitlines()
+    best = {}
+    for i, ln in enumerate(lines):
+        if re.match(r'^\s*UPLAND\b', ln, re.I):
+            o = _ocr_block(lines, i)
+            if len(o) > len(best):
+                best = o
+    return best
 
 
 def cmd_parse_ocr(ocr_dir, root):
