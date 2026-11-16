@@ -168,6 +168,8 @@ def cmd_build(root):
         out.mkdir(parents=True, exist_ok=True)
         for lvl in ('state', 'us'):
             q = json.loads((Path(root) / c / 'quickstats' / f'{lvl}_production.json').read_text())['data']
+            if lvl == 'state':  # amendment 1: drop 'OT' (Other States) aggregate rows, final = 0 from 2015 -> log(0)
+                q = [x for x in q if x.get('state_alpha') in ABBR]
             q = [x for x in q if x['reference_period_desc'] == 'YEAR'
                  or (x['reference_period_desc'].endswith('FORECAST') and int(x['year']) >= 2012)]
             rep = [x for x in json.loads((Path(root) / c / 'report_forecasts' / f'{lvl}_forecasts.json').read_text())['data']

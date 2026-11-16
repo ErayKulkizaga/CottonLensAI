@@ -40,3 +40,8 @@ Across all six cells: a year-block permutation (one sign per year shared by all 
 - While writing the parser on 16 Nov, table layouts were inspected with every digit masked. The front-page headlines of three reports (Sep 2000, Sep 2008, Sep 2010) were also seen; they state the direction of that month's corn/soybean revision, not any final value or error.
 - QuickStats `get_counts` was queried for row counts by year (no values) to see that state forecasts exist from 2012 on.
 - The cotton result that motivates this test used 2002–2025 cotton data; no corn or soybean data informed the rule.
+
+## Amendment 1 (16 Nov 2026, after an invalid first run, before any valid result)
+- **What happened.** The first `score` run produced invalid numbers: infinite errors, NaN state errors and US errors in the millions of percent. Cause: QuickStats state data include an `OT` ("Other States") aggregate row whose annual final is 0 from 2015 on; log(final / forecast) = −∞ contaminated every training fit. The cotton data had no such row.
+- **What that run showed.** It printed better/worse year counts and p-values computed from corrupted numbers; they carry no information about the rule and are kept in `research/evidence/t46-corn-soy-20261116-invalid.log`.
+- **Fix.** Only the data: state-level rows are limited to the 50 states (`t46_crops.py build`). The rule, years, metrics and pass rules are unchanged. The corrected run is the only scored run.
