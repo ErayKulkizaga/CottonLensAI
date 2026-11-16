@@ -24,7 +24,7 @@ Texas harvested-area error at 1 Sep, by season (%; negative = USDA's area too hi
 **Findings:**
 1. **Before 2012, Texas misses were yield misses.** Since 2012 they have been harvested-area misses. The area error roughly quadrupled, and in most recent seasons USDA's in-season harvested area was too high. In other words, abandonment was under-estimated, which is the source of the 2014–2021 over-forecast bias that broke T25/T36 when it reversed.
 2. **USDA learns little about harvested area during the season, in both periods.** The December area error is 79% (1995–2011) to 98% (2012–2025) of the August one. The production number is still revised, because area and yield errors offset: in Dec 2012–2025 the Texas area error is 14.7% and the yield error 12.3%, but the production error is only 5.7%.
-3. **The United States is a yield story in both periods.** From October on, the yield part carries most of the US error variance (0.58–0.94 in 1995–2011, 0.58–0.75 in 2012–2025).
+3. **The United States is a yield story in both periods.** The yield part carries most of the US error variance from August to November (0.58–0.94 in 1995–2011, 0.58–0.75 from Sep in 2012–2025). By December it is close to even in 1995–2011 (0.46) and still 0.65 in 2012–2025.
 4. **The momentum effect has no single home.** In 2012–2025 the Texas revision correlated with the remaining *area* error (+0.44 to +0.65) and negatively with the yield error. In 1995–2011 it correlated with both. The preregistered H3 failed.
 
 **What this explains:**
