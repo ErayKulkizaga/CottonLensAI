@@ -128,3 +128,17 @@ def test_t49_evaluate_recovers_planted_anchoring():
     assert r['pooled_corr'] < -0.9 and r['pass']
     null = pd.DataFrame(rows).assign(final=lambda x: 1000.0 * np.exp(rng.normal(0, 0.05, len(x))))
     assert not evaluate(null, {'SEP': 9, 'OCT': 10, 'NOV': 11, 'DEC': 12}, 'loso')['pass']
+
+
+def test_t50_score_detects_persistence_and_rejects_null():
+    import numpy as np
+    import pandas as pd
+
+    from research.crop_nowcast.t50_revision_direction import score
+
+    rng = np.random.default_rng(1)
+    years = np.repeat(np.arange(1985, 2012), 6)
+    sig = pd.DataFrame({'year': years, 'hit': (rng.random(len(years)) < 0.7).astype(int)})
+    null = pd.DataFrame({'year': years, 'hit': (rng.random(len(years)) < 0.5).astype(int)})
+    assert score(sig)['season_block_p'] < 0.01
+    assert score(null)['season_block_p'] > 0.05
