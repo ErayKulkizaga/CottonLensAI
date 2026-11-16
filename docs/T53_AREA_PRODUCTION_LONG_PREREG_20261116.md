@@ -25,3 +25,19 @@ Written 16 Nov 2026, before the pre-2000 Texas condition series, the 1985–1994
 
 ## Note stated before running
 The anchoring was weaker before 2012 (M1: USDA/final response ratio about 0.9). Adding earlier seasons may therefore dilute the effect rather than strengthen it. The result is reported either way.
+
+## Result (16 Nov 2026) — FAIL
+Seasons with 8 earlier seasons of data scored 2001–2025 (data seasons per month: Sep 33, Oct 31, Nov 31, Dec 32).
+
+**Texas production error, mean abs. %: USDA → area-adjusted**
+| Period | Sep | Oct | Nov | Dec | Months better | Year-block p |
+|---|---|---|---|---|---|---|
+| All 2001–2025 | 12.5 → 11.8 | 11.7 → 10.0 | 8.3 → 7.3 | 5.3 → 4.8 | 4 / 4 | 0.19 |
+| 2001–2007 | 8.5 → 10.6 | 6.2 → 6.9 | 2.9 → 3.2 | 2.2 → 2.1 | 1 / 4 | 0.96 |
+| 2008–2025 | 14.1 → 12.3 | 14.1 → 11.3 | 9.9 → 8.4 | 6.3 → 5.7 | 4 / 4 | 0.12 |
+
+**Reading:**
+- Adding early seasons diluted the effect, as stated beforehand. Before 2008 USDA's Texas area error was only about 2%, so there was little to correct, and the correction slightly hurt production in three of four months.
+- The production gain lives in the post-2008 regime: consistent, 4 of 4 months, but still not significant at 5%.
+- The area result itself holds on the long sample: area error 9.3 → 6.6 % (Sep).
+- Evidence: `research/evidence/t53-area-production-long-20261116.json`.
