@@ -49,3 +49,45 @@ The repo rule asks for a pushed preregistration before unsealing. Pushing needs 
   - POWER 2022–2024: pulled.
 - **What was seen, nothing else.** Row counts of the NASS sealed pull and the FSA state totals of planted/failed acres (inputs). No production final, USDA forecast value or error was printed or read.
 - **The features builder** now reads every weather span file and takes years from `COTTONLENS_LAST_YEAR`. The dev oct1 features rebuild matches the stored file (max difference 5e-13).
+
+## Result (run once, 16 Nov 2026, commit c259cb1): **FAIL**
+
+Primary, T36 at 1 Oct, 2022–2024:
+
+| | TX MAPE | US MAPE | Prod-wtd state |
+|---|---|---|---|
+| T36 | 15.0 | 5.2 | 11.9 |
+| T25 | **13.7** | 5.9 | 12.7 |
+| USDA October | 20.3 | **4.2** | **11.8** |
+
+- **Rule outcome.** Beats USDA: no (TX yes, US no). Beats T25: no (US yes, TX no). State error below both: no.
+- **Coverage.** No state fell back to B in any sealed year. The CNN weight was 0–0.05.
+
+TX by year (T36 / T25 / USDA, % error):
+
+| Year | T36 | T25 | USDA |
+|---|---|---|---|
+| 2022 | +6.9 | +4.1 | +11.1 |
+| 2023 | +32.0 | +33.2 | +40.5 |
+| 2024 | +6.0 | +3.9 | +9.2 |
+
+**In TX, both corrections beat USDA in 3 of 3 years.** USDA kept overestimating Texas.
+
+US by year (T36 / T25 / USDA):
+
+| Year | T36 | T25 | USDA |
+|---|---|---|---|
+| 2022 | −9.3 | −10.7 | −4.7 |
+| 2023 | +2.1 | +0.5 | +6.1 |
+| 2024 | −4.2 | −6.5 | −1.8 |
+
+**For the US, the correction wins only in 2023.** In 2022 and 2024, USDA *under*-forecast the US. The downward bias correction then made it worse. This is the bias-reversal risk recorded with T25.
+
+Secondaries (reported, not claimed):
+- **1 Sep T36:** TX 18.5 vs USDA 20.5; US 5.1 vs 4.5.
+- **1 Aug T36:** TX 33.7 vs 24.1; US 6.2 vs 11.4.
+- **H alone at 1 Oct:** TX 23.4; US 4.0 vs USDA 4.2.
+- **T37/T38 (Nov/Dec):** all lose to USDA December (TX 8.6 / US 2.9).
+- **T38 ginning vs USDA November:** TX 12.1 vs 15.0; US 5.1 vs 4.4.
+
+**Reading.** The US-level claim fails out of sample. What survives is a narrower, consistent pattern: the past-mean correction of USDA's *Texas* forecast beat USDA in all 3 sealed years and in most dev years. It is a single-state, persistence-based effect and was not the pre-declared claim, so it stands only as a hypothesis for a new forward test.
