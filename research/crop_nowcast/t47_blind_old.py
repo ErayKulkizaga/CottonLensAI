@@ -24,6 +24,39 @@ from research.crop_nowcast.t46_crops import perm_p
 SCORED = ('SEP', 'OCT', 'NOV', 'DEC')
 
 
+def clean(text):
+    """Amendment 1: 1990s layouts. 'Production, by Type' -> 'Production by Type'; footnoted rows 'FL 2/  :' -> 'FL  :';
+    'Am-Pima' -> 'Amer-Pima' so the Upland block ends there."""
+    import re
+    text = text.replace('Production, by Type', 'Production by Type')
+    text = re.sub(r'^Am-Pima', 'Amer-Pima', text, flags=re.M)  # Aug 1996: Pima block header, else Pima rows overwrite Upland
+    return re.sub(r'^(\s*[A-Za-z][A-Za-z .]*?)\s+\d+/(\s*:)', r'\1\2', text, flags=re.M)
+
+
+def cmd_parse(raw_dir, root):
+    """Cached reports -> forecasts/{state,us}_forecasts.json via the unchanged T45 parser on cleaned text."""
+    import datetime as dt
+
+    from research.crop_nowcast.cp_pull import MON, parse
+    rows = {'state': [], 'us': []}
+    for p in sorted(Path(raw_dir).glob('CropProd-*.txt')):
+        res = parse(clean(p.read_bytes().decode('latin-1')))
+        if not res or res[0].month not in MON:
+            print('unparsed', p.name)
+            continue
+        rel, vals = res
+        assert isinstance(rel, dt.date)
+        for st, v in vals.items():
+            rec = {'year': str(rel.year), 'reference_period_desc': f'YEAR - {MON[rel.month]} FORECAST', 'Value': f'{v:,}',
+                   'prodn_practice_desc': 'ALL PRODUCTION PRACTICES', 'release': str(rel), 'state_alpha': st, 'source': p.name}
+            rows['us' if st == 'US' else 'state'].append(rec)
+    out = Path(root) / 'forecasts'
+    out.mkdir(parents=True, exist_ok=True)
+    for k, r in rows.items():
+        (out / f'{k}_forecasts.json').write_text(json.dumps({'data': r}), encoding='utf-8')
+    print('state rows', len(rows['state']), 'us rows', len(rows['us']))
+
+
 def cmd_finals(root, first, last):
     import hashlib
     import time
@@ -136,4 +169,4 @@ def cmd_score(root, full_dir, out_json):
 
 if __name__ == '__main__':
     cmd, *a = sys.argv[1:]
-    {'finals': cmd_finals, 'gate': cmd_gate, 'score': cmd_score}[cmd](*a)
+    {'parse': cmd_parse, 'finals': cmd_finals, 'gate': cmd_gate, 'score': cmd_score}[cmd](*a)

@@ -87,3 +87,15 @@ def test_t46_splits_fused_columns_by_area_times_yield():
     # prev production 10,089,222 fused with current 10,917,000; area 73,000 x yield 149.5 = 10,913,500
     assert last_value(['72,000', '73,000', '142.2', '148.0', '149.5', '10,089,22210,917,000']) == 10_917_000
     assert last_value(['1', '2', '3', '4,567']) == 4567
+
+
+def test_t47_clean_1990s_layouts():
+    from research.crop_nowcast.cp_pull import parse
+    from research.crop_nowcast.t47_blind_old import clean
+
+    t = ('Released August 12, 1996, by NASS\n Cotton:  Area Harvested, Yield, and Production, by Type, State\n'
+         'Upland  :\nFL 2/   :  100.0  110.0  700  710  150.0  160.0  170.0\nTX      : 5,000.0 5,100.0 500 510 4,000.0 4,100.0 4,200.0\n'
+         'US      : 5,100.0 5,210.0 505 515 4,150.0 4,260.0 4,370.0\nAm-Pima :\nTX      : 10.0 11.0 800 810 20.0 21.0 22.0\n'
+         'US      : 10.0 11.0 800 810 20.0 21.0 22.0\nAll     :\n')
+    _, o = parse(clean(t))
+    assert o == {'FL': 170_000, 'TX': 4_200_000, 'US': 4_370_000}
