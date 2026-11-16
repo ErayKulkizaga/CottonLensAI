@@ -103,7 +103,7 @@ def cmd_score(root, out_json):
     x = f.join(fin, on=['state', 'year']).dropna(subset=['area_f', 'yield_f', 'prod_f'])
     x['area_e'] = np.log(x.area_f / x.area)
     x['yield_e'] = np.log(x.yield_f / x['yield'])
-    x['total'] = np.log(x.prod_f / x.prod)
+    x['total'] = np.log(x.prod_f / x['prod'])
     p = x.pivot_table(index=['state', 'year'], columns='month', values='prod')
     rev = {}
     for i, m in enumerate(MONTHS[1:], 1):

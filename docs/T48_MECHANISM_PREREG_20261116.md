@@ -24,3 +24,29 @@ These are descriptive hypotheses with 17 seasons each and no p-value gates. They
 - **Sep 2010:** this report spells its title "Yield, and, Production". It is normalised before parsing.
 - **Result:** 85 of 85 reports parsed, with TX and US rows in every report.
 - **Disclosure about T45:** the same typo means the T45 cotton parser (`cp_pull.py`) never read the Sep 2010 report. In T45 and in the 2002–2025 momentum record, Sep 2010 is missing, and the Oct 2010 revision was measured from August. T45 is a one-shot test and is not re-run; this is recorded in `docs/CROP_NOWCAST_TRIALS.md`.
+
+## Result (16 Nov 2026) — ALL PASS: no (H1 FAIL, H2 PASS, H3 FAIL, H4 PASS)
+
+| Texas, 1995–2011 (n = 17) | Aug | Sep | Oct | Nov | Dec |
+|---|---|---|---|---|---|
+| Mean abs. area error % | 4.4 | 3.8 | 3.4 | 3.7 | 3.5 |
+| Mean abs. yield error % | 13.3 | 10.2 | 7.1 | 4.1 | 3.5 |
+| Area share of error variance | 0.21 | 0.24 | 0.28 | 0.46 | 0.56 |
+| corr(revision, area) · corr(revision, yield) | – | 0.49 · 0.40 | 0.44 · 0.46 | 0.38 · 0.47 | 0.67 · −0.25 |
+
+| United States, 1995–2011 | Aug | Sep | Oct | Nov | Dec |
+|---|---|---|---|---|---|
+| Mean abs. area error % | 2.2 | 2.0 | 1.7 | 1.7 | 1.6 |
+| Mean abs. yield error % | 7.2 | 5.7 | 4.3 | 2.0 | 1.5 |
+| Yield share of error variance | 0.94 | 0.88 | 0.80 | 0.58 | 0.46 |
+
+- **H1 FAIL.** In 1995–2011 the Texas error was mainly yield, not area: the area share was 0.24–0.46 from Sep to Nov.
+- **H2 PASS.** The December area error is 79% of the August one; USDA learns little about harvested area during the season, in both periods.
+- **H3 FAIL** (2 of 4). The revision correlates with both parts.
+- **H4 PASS.** In the US, yield dominates from Oct to Nov in both periods.
+
+**Reading:**
+- The 2012–2025 mechanism is not a fixed property of USDA's cotton forecasts. The Texas harvested-area error grew from about 3.5–4.4% (1995–2011) to about 15% (2012–2025), and the dominant source of the Texas error shifted from yield to area.
+- This is a regime change, which matches the shrinking momentum coefficient and the bias flips (T39, T42).
+- The data do not identify the cause. Candidates are more frequent dryland abandonment and USDA's growing use of FSA administrative acreage for final harvested area.
+- Evidence: `research/evidence/t48-mechanism-1995-2011-20261116.json` / `.log`.
