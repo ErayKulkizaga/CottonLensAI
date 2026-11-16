@@ -6,7 +6,33 @@ Bu dosyanın tamamını Codex'e yapıştır. Cevaplar gelince bu dosyanın altı
 
 ## Codex'e not
 
-Merhaba Codex. CottonLensAI'nin birinci aşamasını (21 Eylül – 7 Kasım 2026, fiyat ve risk tahmini) sen yürüttün. İkinci aşamayı (USDA'ya karşı üretim tahmini) Claude yaptı ve iki aşamayı tek bir bilgi paketinde topladı: `docs/research_package/` (dal `claude/hls-move3`). Paket bir iş görüşmesi için hazırlanıyor. Bir ML mühendisinin sorabileceği her şeye kanıtla cevap verebilmesi gerekiyor.
+Merhaba Codex. CottonLensAI'nin birinci aşamasını (21 Eylül – 7 Kasım 2026, fiyat ve risk tahmini) sen yürüttün. Sen ayrıldıktan sonra (13–16 Kasım) projeyi Claude devraldı. Claude'un yaptıklarını bilmen gerekmiyor; aşağıdaki sorular yalnızca senin dönemin hakkında.
+
+### Claude'un çalışması nerede
+
+- **Worktree:** `C:/Users/Eray/SEZAR/PROJELER/CottonLensAI-claude-review`.
+- **Dal:** `claude/hls-move3`, GitHub'a push edildi (`origin`, `ErayKulkizaga/CottonLensAI`).
+- **Başlangıç noktası:** senin devir belgen `docs/CLAUDE_HANDOFF.md` ve `445d1fe`.
+- **Bilgi paketi:** `docs/research_package/`.
+  - Senin dönemini anlatan belgeler: `03_PHASE1_PRICE_AND_RISK.md`, `04_MODEL_FAMILIES_AND_HYPERPARAMETERS.md`, `02_NUMBERS_CHEATSHEET.md`.
+  - Bu belgelerin tabloları senin `research/trials.json`, `research/registry.json`, `docs/` ve `research/evidence/` kayıtlarından otomatik üretildi (`research/package/build_catalogs.py`). Tablolar `data/` klasöründe.
+- **Claude'un ikinci aşaması** (USDA'ya karşı üretim tahmini): `docs/CROP_NOWCAST_TRIALS.md`, `research/crop_nowcast/`, `research/deep/`. Bunlara dokunmana gerek yok.
+
+### Senin kayıtların (Claude'un gördüğü yerler)
+
+- **Ana çalışma kopyası:** `C:/Users/Eray/SEZAR/PROJELER/CottonLensAI` (dal `codex/free-data-research-workbench-20261001`), ignore edilen veriler `output/` altında.
+- **Worktree'ler:**
+  - `C:/Users/Eray/.codex/worktrees/naive-mae-20261105/CottonLensAI` (`codex/root-cause-audit-20261106`);
+  - `C:/Users/Eray/.codex/worktrees/repository-curation/CottonLensAI` (`codex/end-to-end-audit`).
+- **Eski oturum kayıtların:** `C:/Users/Eray/.codex/sessions/` ve `archived_sessions/`. Hafızan yoksa cevapları önce buradan ve yukarıdaki dosyalardan çıkar.
+
+### Kurallar
+
+- **Salt okuma.** Hiçbir dosyayı değiştirme, commit yapma, `claude/hls-move3` dalına dokunma ve yeni eğitim başlatma.
+- **Cevapların yeri.** Cevaplarını sohbette ver. Ya da yalnızca şu yeni dosyayı oluştur, başka hiçbir şeyi değiştirme: `C:/Users/Eray/SEZAR/PROJELER/CottonLensAI-claude-review/docs/research_package/12_CODEX_ANSWERS.md`.
+- **Gizli bilgiler.** API anahtarı, token ya da `auth.json` içeriği yazma.
+
+Paket bir iş görüşmesi için hazırlanıyor. Bir ML mühendisinin sorabileceği her şeye kanıtla cevap verebilmesi gerekiyor.
 
 Claude aşağıdaki bilgileri kayıtlarda bulamadı ya da emin olamadı. Her soru için şunları yaz:
 1. **Cevap:** bildiğin kadarıyla.
