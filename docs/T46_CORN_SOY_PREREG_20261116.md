@@ -6,7 +6,7 @@ Written 16 Nov 2026, before any corn or soybean forecast or final value was load
 For cotton, USDA's latest monthly revision predicted the direction of its remaining error (`research/crop_nowcast/momentum.py`, T44/T45, full record 2002–2025). If this is a property of how USDA revises, and not a cotton accident, the **same rule, unchanged**, should also beat USDA's corn-for-grain and soybean forecasts.
 
 ## Rule (frozen; no setting may change)
-`momentum.predict` and `momentum.with_revision`, exactly as committed in `momentum.py` (unchanged since `09acdf0`):
+`momentum.predict` and `momentum.with_revision`, exactly as committed in `momentum.py` (last changed in `e6be6c1`, the T45 commit; not modified for T46):
 - r = log(USDA_m / USDA_prev), where prev is the latest earlier monthly forecast; e = log(final / USDA_m).
 - Pooled over states, no-intercept ridge e = b·(r/σ), σ = RMS of r in training, λ = 1.
 - Fit only on years < Y, from 2000 (`COTTONLENS_MOMENTUM_FIRST_TRAIN=2000`); at least 10 training rows, otherwise no correction.
