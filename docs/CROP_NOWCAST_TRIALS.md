@@ -513,3 +513,27 @@ On 16 Nov the user approved opening 2025 ("Evet, 2025'i aç"). 2025 values were 
 - **AMS "Quality of Cotton Classed by Classing Office" (weekly, ESMIS, dated releases), leak-free but SHORT.**
   - The ESMIS archive starts in late 2018: about 7 seasons (2019–2025).
   - Bales classed season-to-date tracks ginnings closely, and the ginning-pace trial (T38) failed against USDA December. It is a weak candidate on its own.
+
+### T43 (PRE-DECLARED 16 Nov): satellite failed-field share corrects USDA's Texas forecast
+
+**Disclosure (written before the trial).** Before writing this I looked at one exploratory table on 2010–2021.
+- The TX planted-weighted Move 3 Landsat `l_fail35` (share of prior-year-CDL cotton points whose NDVI stays below 0.35) correlates with:
+  - actual TX abandonment: +0.65 to +0.84;
+  - USDA's TX abandonment error: −0.43 to −0.75;
+  - USDA's TX production error: −0.04 to −0.46 at 1 Oct.
+- That look motivated this trial. No model was fitted on it.
+- I have also seen USDA's 2022–2025 TX errors (T39, T42). The 2022–2025 test below is out-of-sample for **model fitting**, but not blind to outcomes. It must be read with that in mind.
+
+**Model (one spec).**
+- x = TX state `l_fail35` at the cutoff: county values from `landsat_fields.py` (unchanged), weighted by prior-year planted acres over TX panel counties.
+- Rolling ridge, TX rows only: e = log(final / USDA_m) on [1, standardised x], λ = 1, intercept unpenalised, trained on years 2010…Y−1. With fewer than 5 rows it falls back to T25.
+- Corrected TX = USDA_m × exp(ê).
+
+**Years and cutoffs.**
+- Dev: 2013–2021, existing Landsat features.
+- Test: 2022–2025. Landsat for TX is extracted with the same script (platforms Landsat 5/7/8 unchanged; prior-year CDL from CropScape for 2022 onward, as in T39).
+- 1 Oct is scored on 2022–2024 (there is no Oct 2025 USDA forecast). 1 Sep is scored on 2022–2025. 1 Aug is secondary.
+
+**Pass rule (test years, 1 Sep and 1 Oct each).** TX MAPE below USDA's and below T25's, and better than USDA in more years than worse.
+
+**Scope.** Texas only. A US effect enters only through TX's share of production and is reported, not claimed.
