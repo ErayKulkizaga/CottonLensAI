@@ -65,6 +65,14 @@ Hayır. Fark %3–11 arası, her yıl kazanmıyor ve 8 hücrenin yalnızca 3'ün
 - USDA'nın bir sonraki revizyonunun yönünü, parametresiz bir kuralla (bir sonraki revizyon son revizyonla aynı yönde olur), kör sezonlarda 3 seferin 2'sinde doğru bildim (p = 0,012). Teksas'ta 5'te 4. Mısır ve soyada da tutuyor.
 - Sınırı: 2012'den sonra pamukta bu davranış kayboldu (%43). Hatanın kaynağı da aynı yıllarda hasat alanına kaydı. 2026 için hem üretimi hem Teksas alanını hem de 10 Aralık revizyon yönlerini kilitledim.
 
+**Bu bir ürün mü, yoksa sadece araştırma mı?**
+- Çalışan küçük bir sistem var. USDA'nın herkese açık metin raporunu otomatik okuyor ve her değeri "üretim = alan × verim" kontrolünden geçiriyor. Kontrol geçmezse kendi tahmini yerine USDA'nın rakamını veriyor. Her tahmini, girdilerin ve modelin özetiyle (SHA-256) birlikte değiştirilemez bir zincire yazıyor; sonradan yapılan bir değişikliği test yakalıyor.
+- İlk canlı kaydı Kasım 2026 raporu. Araştırmada kilitlediğim sayıları ayrı bir hattan birebir üretti. Kasım 2025'i tekrar oynattığımda, iptal edilen Ekim raporunu ve duran ürün durumu verisini doğru şekilde ele aldı.
+- Şimdilik bilerek API, dashboard veya bulut kurmadım. Yılda 5 rapor var; mimari kararlarımı ve reddettiğim alternatifleri bir ADR belgesinde yazdım.
+
+**Alan düzeltmesi üretimi iyileştiriyor mu?**
+- Yönü doğru: Teksas üretim hatası 4 ayın 4'ünde düşüyor (Ekim'de %14,1'den %10,9'a). Ama ön kayıtlı test p = 0,135 ile geçmedi, yani henüz anlamlı değil. Alan tahmininde ise sabitlenme modeli USDA'yı ve geçmiş sapma düzeltmelerini açıkça yeniyor (%7,0'a karşı %11,4 ve %9,6).
+
 **En önemli bulgun ne? (güncel cevap)**
 - USDA'nın Teksas'taki hatası 2012'den sonra karakter değiştirdi. Önceden hata verim kaynaklıydı. Artık hasat edilen alandan geliyor: hasat alanı hatası yaklaşık %3,7'den yaklaşık %15'e çıktı.
 - USDA, sezon içinde terk edilecek alanı sabitlenmiş bir şekilde tahmin ediyor. Anket tarihinde herkesin görebildiği "zayıf + çok zayıf" ürün oranına, nihai terkin ancak üçte ikisi kadar tepki veriyor.

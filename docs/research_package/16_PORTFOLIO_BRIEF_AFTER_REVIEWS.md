@@ -13,6 +13,27 @@ This file gives the portfolio author (Codex or anyone else) what changed, what w
 
 Suggested hero line now: **"On 23 never-seen seasons, a rule built only from USDA's own revisions beat USDA's cotton production forecast in 88 of 128 comparisons (p = 0.007), and called the direction of USDA's next revision two times in three (p = 0.012). Since 2012 the Texas error has moved into harvested area, which public crop-condition data anticipates and USDA does not."**
 
+## 0b. Product-level work after the fourth review (16 Nov 2026, late)
+- **T51 (preregistered), Texas area.**
+  - Baselines: the anchoring model beats USDA (7.0% vs 11.4% mean area error, p = 0.0005) and both past-bias baselines (9.6%, p ≤ 0.008).
+  - Production: USDA × area correction is better than USDA in 4/4 months (Sep 14.1 → 11.8 %, Oct 14.1 → 10.9 %, Nov 9.9 → 7.9 %, Dec 6.3 → 5.8 %) and better than momentum, but p = 0.135, so the production rule **FAILS**. Report it as "consistent, not significant".
+  - In-sample conformal intervals under-cover (80% → 64%). The monitor therefore uses empirical out-of-sample error quantiles.
+  - Structural break: Chow at 2012 p = 0.0005; the sup-F scan peaks at 2019 (permutation p = 0.055). A break is supported but its date is not pinned.
+  - Two automated point-in-time tests pass.
+- **USDA forecast monitor** (`research/monitor/`, `docs/adr/0001-usda-forecast-monitor.md`):
+  - reads ESMIS public text, no key;
+  - parses with production = area × yield validation;
+  - gates with fallback to USDA's own figure;
+  - frozen `model_v1.json` (trained through 2025);
+  - empirical 80/95% intervals;
+  - an append-only, hash-chained log with a tamper test;
+  - a GitHub Actions workflow (manual until it is on `main`);
+  - 15 unit tests pass.
+
+  **First live record:** the 1 Nov 2026 report. Computed independently from the public text, it reproduces the research locks exactly: US 12,763,510 bales, Texas 4,070,552 bales, Texas area 3,258,029 acres (80% interval 2.92–3.64 M acres).
+
+  The replay of Nov 2025 handled real failures: the October 2025 report was cancelled, and condition data had paused during the shutdown. The monitor used September for the revision and fell back to USDA for the area.
+
 ## 1. The new headline (use this, not "we beat USDA")
 > **Since 2012, USDA's Texas cotton forecast errors come from harvested area, not yield. USDA's in-season area stays anchored while the share of the crop in poor condition, public at the survey date, already signals the coming abandonment. A one-variable model built only on past seasons would have cut USDA's in-season Texas area error by about 40% at every report since 2008. The pattern is consistent in Oklahoma and Kansas cotton but just misses significance, and it is absent in winter wheat. The 2026 Texas area is locked as a dated forward test.**
 
