@@ -63,6 +63,8 @@ Exact numbers live in `docs/CROP_NOWCAST_TRIALS.md`, evidence files in `research
 | Percentage ensemble around the correction | T36 | **dev PASS** (9.9 / 4.6) | Mostly T25 plus 5–10% HGB. |
 | Nov/Dec ensemble; ginning pace | T37–T38 | FAIL against USDA December | USDA's December forecast (TX 4.7 / US 3.1) is very hard to beat before release. |
 | **Sealed test of T36, 2022–2024** | T39 | **FAIL**: 1 Oct US 5.2 vs USDA 4.2 | Pooled bias correction breaks when USDA's bias reverses (US under-forecast in 2022 and 2024). |
+| Texas-only FSA abandonment gate | T41 | **FAIL** against T25 | FSA failed acres do not explain TX error beyond the bias. |
+| T25 one-shot holdout, 1 Sep 2025 | T42 | **FAIL**: TX −5.3 vs USDA −0.6; US −8.8 vs −4.3 | USDA under-forecast 2025; the bias reversed a third time (2022, 2024, 2025). |
 | State-specific empirical-Bayes bias | T40 | **FAIL** on dev 2013–2024 | Too few years per state (USDA monthly history from 2012). Early folds were unshrunk, later ones shrank to about 0. |
 
 ## The one signal that survived everything
@@ -73,3 +75,5 @@ Exact numbers live in `docs/CROP_NOWCAST_TRIALS.md`, evidence files in `research
 Our correction beat USDA in TX in **3 of 3 sealed years**.
 
 After T39 we suspected the pooled application of the bias was the problem. **T40 tested a state-specific correction and failed**, so that diagnosis did not hold up. With about 12 years of USDA monthly history, a state's own bias cannot be estimated reliably, and the pooled T25 remains the better of the two on 2013–2024. The Texas pattern is real in the record but not yet a usable, validated rule.
+
+Interview summary page (private Artifact): https://claude.ai/artifact/8tSPjQucn8pmwcL3dBwVJD
