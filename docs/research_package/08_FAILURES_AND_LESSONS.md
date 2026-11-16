@@ -5,7 +5,7 @@
 | What | Phase | Why it failed | Lesson |
 |---|---|---|---|
 | Daily price models (XGBoost, CatBoost, Ridge, ElasticNet, LSTM, Quantile) | 1 | T+1/T+5 cotton returns behave close to a random walk for public features. Inner-validation gains did not transfer to outer years. | Measure against Naive with a hard margin. Report raw and shrunk results. |
-| LSTM v1 | 1 | Best epoch was 1, then validation loss rose: too little signal and data for a recurrent model. | Sequence models need signal before capacity. |
+| LSTM v1 | 1 | On the final validation split the best epoch was 1, then validation loss rose: too little signal and data for a recurrent model. | Sequence models need signal before capacity. |
 | GPU placement in research-v1 | 1 | Keras built a CPU dataset inside a forced GPU scope. | Scope GPU placement to the model only; assert variable placement. |
 | Early stopping on RMSE while selecting on MAE | 1 | Objective mismatch. | Align the early-stopping metric with the selection metric. |
 | AMS annual futures workbooks | 1 | Wrong contract months, from the source itself, not the parser. | Verify contract identity against independent daily reports. |
@@ -23,8 +23,8 @@
 
 ## What worked
 - **Revision momentum:** a sign-agnostic rule that follows USDA's own last revision. It beat USDA's average error at every report over 2002–2025, and held on blind 2002–2011 at Sep, Oct and Nov.
-- **Process:** pre-declaration, sealed and blind tests, resumable cloud jobs, receipts and byte-equal replay. These let the project reject its own false wins (T29, T36) before they reached anyone.
-- **Risk lead (Phase 1):** the own-level HAR variance candidate, now under forward test.
+- **Process:** pre-declaration, sealed and blind tests, resumable cloud jobs, receipts and replay checks. These let the project reject its own false wins (T29, T36) before they reached anyone.
+- **Risk lead (Phase 1):** the own-level HAR variance candidate passed its historical gates. Its forward test published twice and was stopped, so it is not forward-proven.
 
 ## Lessons for forecasting against an official benchmark
 1. **Model the benchmark, not just the crop.** USDA's revision behaviour carried more usable signal than NDVI, drought or abandonment proxies.

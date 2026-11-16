@@ -44,8 +44,9 @@ def recipes():
     rows, pivot, feats, params = [], Counter(), defaultdict(lambda: [0, set()]), defaultdict(list)
     for r in T:
         fits = int(r.get('completed_fits') or 0)
-        fams = r.get('model_families') or []
         recs = r.get('recipes') or [{}]
+        # recipe families first: some records carry no model_families (e.g. price-only median, 342 fits)
+        fams = sorted({rc['family'] for rc in recs if rc.get('family')}) or r.get('model_families') or []
         for i, rc in enumerate(recs):
             fam = rc.get('family') or (fams[0] if len(fams) == 1 else '+'.join(fams) or 'unlabelled')
             f = rc.get('features') or []

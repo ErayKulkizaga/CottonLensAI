@@ -1,7 +1,7 @@
 # 01 · Project overview
 
 ## One paragraph
-CottonLensAI is a research and application project on US cotton markets. Phase 1 (with Codex) asked whether public data can forecast ICE cotton futures prices one and five trading days ahead better than a no-change forecast. Over 133 experiments and about 32,900 logged model fits the answer was no: the best selected result was +0.22% MAE gain against a +5% target. The phase did produce a confirmed risk (volatility) research line, a live forward-testing system, and an event study showing cotton futures move 1.42× more on USDA report days. That pointed Phase 2 (with Claude) at the USDA Crop Production report itself.
+CottonLensAI is a research and application project on US cotton markets. Phase 1 (with Codex) asked whether public data can forecast ICE cotton futures prices one and five trading days ahead better than a no-change forecast. Over 133 experiments and about 32,900 logged model fits the answer was no: the best selected result was +0.22% MAE gain against a +5% target. The phase did produce a confirmed risk (volatility) research line, a forward-testing system (run for two publications, now stopped), and, in the Phase 2 bridge, an event study showing cotton futures move 1.42× more on USDA report days. That pointed Phase 2 (with Claude) at the USDA Crop Production report itself.
 
 Phase 2 asked whether US and Texas upland cotton production can be forecast better than USDA's monthly forecast. After 45 pre-declared trials (satellite gradient boosting, Landsat field analysis, a GPU CNN, USDA error corrections, ensembles, two sealed holdouts), one fixed rule held up: USDA revises cautiously, and a no-intercept "revision momentum" correction had lower mean error than USDA at every monthly report from 2002 to 2025 (12 of 12 report × region cells), including 10 seasons tested blind. The 2026 crop forecast is locked in Git for a forward test in May 2027.
 
@@ -28,8 +28,8 @@ Phase 2 asked whether US and Texas upland cotton production can be forecast bett
 ### Phase 1: price and risk
 - **Price (T+1, T+5):** no model beat the naive no-change forecast by the pre-set +5% MAE margin. Best registry result +0.22% (Ridge, fundamental joint, T+5). Median of 113 scored experiments −0.65%. Best ablation cell +0.76% (XGBoost, expanded availability, T+5, direction 57.5%, 5/8 folds).
 - **Synthetic controls** (4,597 fits): the pipeline recovers an injected signal and does not invent one under the null, so the price failures are not a pipeline artefact.
-- **Risk:** an own-level HAR candidate improved QLIKE over EWMA by +0.0177 with both block-bootstrap CIs positive and 7/8 positive years (historical candidate, not forward-proven). A live forward cohort of 252 origins runs to 2 Nov 2027.
-- **Event study:** cotton futures daily moves are 1.42× larger on USDA Crop Production report days (p = 0.004, 38 events). USDA's own revision did not predict the sign of the move (Spearman −0.23, p = 0.08).
+- **Risk:** an own-level HAR candidate improved QLIKE over EWMA by +0.0177 with both block-bootstrap CIs positive and 7/8 positive years (historical, pre-declared secondary arm; not forward-proven). A daily forward test was built and published twice (31 Oct and 4 Nov 2026); the scheduled tasks are now disabled, so no forward score exists.
+- **Event study (Link 1, 15 Nov, Phase 2 bridge):** cotton futures daily moves are 1.42× larger on USDA Crop Production report days (p = 0.004, 38 events). USDA's own revision did not predict the sign of the move (Spearman −0.23, p = 0.08).
 
 ### Phase 2: production vs USDA
 

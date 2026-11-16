@@ -37,10 +37,10 @@ Fit counts are from `research/trials.json` (Phase 1 ledger). Phase 2 models are 
 | subsample | 0.604 | 0.814 | 1.0 | 178 |
 | colsample_bytree | 0.603 | 0.815 | 1.0 | 178 |
 
-- **Search.** Round A sampled 128 candidates per horizon on log scales and selected by inner-block price MAE. The top 5 per period were confirmed with 3 seeds.
-- **Exploration recipe.** A single fixed "depth 2" recipe was used in every exploration profile, so that only the information changes between arms.
-- **Objectives:** `reg:squarederror` (318 recipes) and `reg:absoluteerror` (164). **Targets:** scaled log return (338), price delta (188), raw log (4).
-- **Early stopping** on price MAE (after the v1 bug where it used RMSE). Device: CUDA in round A, CPU elsewhere. Seed 42.
+- **Search.** Round A drew 128 candidates per family and horizon with deterministic NumPy sampling (`numpy.random.default_rng`, seed from the recipe content id): max_depth uniform 1–8; eta, min_child_weight and lambda log-uniform; alpha 0 on every third candidate, else log-uniform 1e-6–10; subsample and colsample uniform 0.6–1; target and loss rotated by index. Inner score = price MAE / Naive MAE. The top 5 per fold/horizon/family were refit with seeds 17 and 101 (42 reused); the winner is picked on the 3-seed mean, and the outer forecast is the 3-seed average (`ml/src/cottonlens_ml/research/search.py`, `engine.py`).
+- **Exploration recipe.** The standard source explorations used one fixed "depth 2" recipe, so that only the information changes between arms (AMS and on-call had their own protocols).
+- **Objectives** over the 387 XGBoost recipe rows: `reg:squarederror` 223, `reg:absoluteerror` 164. **Targets:** scaled log return 201, price delta 182, raw log 4.
+- **Early stopping** on price MAE (after the v1 bug where it used RMSE). Device: CUDA in round A and market-v1 (T4); L4/CUDA confirmed in some exploration receipts. Seed 42 in the main search and fixed pilots; round A finalists 17/42/101.
 - **Explainability.** Native `pred_contribs` TreeSHAP in the app.
 - **Best results:**
   - round A T+5 −0.53% (direction 55.3%);
@@ -49,10 +49,10 @@ Fit counts are from `research/trials.json` (Phase 1 ledger). Phase 2 models are 
 
   None passed the +5% gate.
 
-### Ridge: 13,730 fits
+### Ridge: 13,901 fits
 - **Synthetic.** 3,380 in `weak-signal-control-v1` (37 features; 20 scenarios × matched null/injected seeds).
 - **Market.** The linear arm of every exploration (about 830–880 each), availability clock, return path, agri transfer and Texas NASS regional (676 each), full-year (653), WASDE regional (424), contract curve T+1/T+5 (252 + 252), AMS (147), on-call (81), named label control (44).
-- **α** ∈ {0.1, 1, 10} over 129 recipes. Most pilots used α = 1, window 1, expanding history, refit every 21 observations, 3×63 inner validation, shrinkage weights {0, .25, .5, .75, 1}.
+- **α** ∈ {0.1, 1, 10} over 129 Ridge recipe rows (round A's reference search used α log-uniform 1e-5–100). Most pilots used α = 1, window 1, expanding history, refit every 21 observations, 3×63 inner validation, shrinkage weights {0, .25, .5, .75, 1}.
 - **Best:** fundamental joint L1 +0.22% selected (raw −6.64%).
 
 ### HAR (heterogeneous autoregressive volatility): 3,048 fits
@@ -69,16 +69,16 @@ Fit counts are from `research/trials.json` (Phase 1 ledger). Phase 2 models are 
   - named label/history/loss/EWMA-HAR 22–44 each;
   - pre-2010 replication 31;
   - manual forward 10.
-- **Result:** the own-level arm improved QLIKE by +0.0177 (both CIs positive, 7/8 years). It is in a live forward test to Nov 2027.
+- **Result:** the pre-declared secondary own-level arm improved QLIKE by +0.0177 historically (both CIs positive, 7/8 years; +0.0007 with the top 1% trimmed). The DXY primary arm was inconclusive. The forward test published twice and is now stopped.
 
 ### GARCH: 707 fits (`full-year-v1`)
 GARCH(1,1) from the `arch` package: zero mean, Student-t errors, no rescaling (`ml/src/cottonlens_ml/research/volatility.py`). Used as a symmetric risk baseline beside HAR in the full-year runs. Not better than EWMA.
 
 ### ElasticNet: 356 fits (`full-year-v1`)
-α ∈ {0.001, 0.01}, l1_ratio 0.5. Also a reference family in round A (24 candidates per horizon). Round A T+1 −0.82%, T+5 −3.58%.
+α ∈ {0.001, 0.01}, l1_ratio 0.5 in the ledger fits. Round A's reference search was wider (α log-uniform 1e-5–100, l1_ratio uniform 0.05–0.95; 24 candidates per horizon). Round A T+1 −0.82%, T+5 −3.58%.
 
-### Quantile regression (conditional median): part of 342 fits (`price-only-median-t1-v1`)
-- Linear Quantile regression, q = 0.5, α = 0.01, fit_intercept, 5 price-only features; Ridge as the second arm. 338 market + 4 synthetic.
+### Quantile regression (conditional median): 171 fits (`price-only-median-t1-v1`)
+- scikit-learn QuantileRegressor, q = 0.5, α = 0.01, fit_intercept, solver `highs`, 1 thread, 120 s limit; T+1 raw price delta, 5 price-only features, refit every 21. 169 market + 2 synthetic. The Ridge arm adds another 169 + 2.
 - **Result:** −0.0825% (0/8 years). STOP.
 
 ### EWMA: 23 fits
@@ -86,17 +86,19 @@ GARCH(1,1) from the `arch` package: zero mean, Student-t errors, no rescaling (`
 
 ### CatBoost: 2 ledger fits, plus the round A and market-v1 GPU searches
 - **Ledger:** depth 6, l2_leaf_reg 1, learning_rate 0.1, both synthetic known-signal controls.
-- **Market:** in round A, 128 GPU candidates per horizon (T+1 −0.46%, T+5 −1.17%). In the market-v1 ablation, about half of the 20,360 sub-fits (best +0.10% T+5, expanded).
+- **Market:** in round A, 128 GPU candidates per horizon (T+1 −0.46%, T+5 −1.17%); search depth 4–8, lr log-uniform 0.01–0.15, l2 log-uniform 1–100. In the market-v1 ablation, 10,176 market fits plus 3 diagnostics (best +0.10% T+5, expanded). The exact total of round A CatBoost fits cannot be recovered from the partial local archive.
 - GPU CatBoost is non-deterministic, so reproduction tolerances were enforced.
 
 ### LSTM, TCN, MLP: 1 ledger fit each, plus the v1 LSTM
 - **Ledger:** one synthetic known-signal control each, confirming that the sequence pipeline can learn a planted signal. Width 32, learning rate 3e-3, batch 64, dropout 0; window 20 for LSTM and TCN; T+1; 24 features.
 - **v1 LSTM** (23 Sep, Colab):
-  - 60-step window, two outputs (T+1 and T+5), 4 configurations per horizon and fold, seed 42, early stopping.
-  - Result: T+1 −1.09%, T+5 −0.01%; best epoch 1, then overfit.
-  - Explained in the app with SHAP GradientExplainer.
-  - The original common-cohort LSTM predictions from that run are missing (registered defect DG-008) and were not regenerated.
-- **Round C** (MLP/LSTM/TCN, 48 candidates per family, windows 20/60/120) was designed but not run on market data, because round A showed no inner-to-outer transfer.
+  - Architecture: input 60 kept observations × 24 features → LSTM (32 or 64 units, tanh/sigmoid, no internal or recurrent dropout) → Dropout (0.10 or 0.20) → Dense(32, ReLU) → Dense(2, linear): T+1 and T+5 log returns from one network.
+  - Training: Adam lr 0.001, batch 64, max 100 epochs, MAE loss on two standardised targets, EarlyStopping and checkpoint on `val_loss` (patience 10, restore best weights), seed 42. StandardScaler on inputs (train rows) and a separate one on targets.
+  - Candidates: (32, 0.10), (32, 0.20), (64, 0.10), (64, 0.20) per fold, in 4 outer folds plus a final split: 20 LSTM fits (`c33d6ae:ml/src/cottonlens_ml/training.py`; checkpoint `config.json` confirms 32 units / 0.20 / Adam 0.001).
+  - Result: T+1 −1.09%, T+5 −0.01%. On the final validation split the best epoch was 1, then validation loss rose; fold epochs differ.
+  - A SHAP GradientExplainer path existed to explain a selected LSTM, but Naive was selected, so no LSTM was exported.
+  - **DG-008** belongs to an earlier run (22 Sep, `v20260922-1450`, code `13761b9`, 6 candidates: (32, .10), (48, .15), (64, .20), (64, .30), (96, .20), (96, .30)). Its 439-row LSTM prediction vector is missing; its old +2.76% T+1 claim compared different windows and is void. On the same window the stored aggregates give −1.70% (T+1) and −4.81% (T+5).
+- **Round C** (MLP/LSTM/TCN, 48 candidates per family and horizon, windows 20/60/120) was designed but parked as a conditional hypothesis after round A's weak outer results and the 28 Sep reset.
 
 ## Phase 2
 

@@ -11,16 +11,18 @@ Every number below has a source. "Exact" means counted from a file; "approx." me
 | 4,597 | of which synthetic controls (injected signal, null, weak teacher, known signal) | same, kinds `synthetic_*` | exact |
 | 92 | of which walk-forward audits and archival replications | same | exact |
 | **20,360** | Additional sub-fits in the `research-market-v1` ablation (128 outer units, 12.2 h compute) | `output/reports/research-market-v1-ablation-review-20261001.json`, also `data/codex_market_v1_ablation.csv` | exact; not in the fit ledger |
-| 14,723 | XGBoost fits in the ledger | `data/codex_fits_pivot.csv` | exact (multi-family records split evenly) |
-| 13,730 | Ridge fits (3,380 of them synthetic power controls) | same | exact |
+| 14,723 | XGBoost fits in the ledger: 7,320 market + 6 synthetic in round A, 6,729 in nine source explorations (FX 1,020, CFTC 1,008, weather 996, FAS 996, NASS 984, crop 972, WASDE 528, on-call 141, AMS 84), 668 in other profiles | `research/trials.json` family count | exact |
+| 13,901 | Ridge fits (3,380 of them synthetic power controls) | same | exact |
 | 3,048 | HAR volatility fits (1,044 synthetic weak-teacher) | same | exact |
 | 707 | GARCH fits | same | exact |
 | 356 | ElasticNet fits | same | exact |
-| 342 | Ridge + linear Quantile fits in the price-only median study (338 market + 4 synthetic) | same, profile `price-only-median-t1-v1` | exact |
+| 171 | Linear Quantile fits (169 market + 2 synthetic); the Ridge arm of the same study has another 171 | same, profile `price-only-median-t1-v1` | exact |
 | 23 | EWMA scale fits | same | exact |
 | 2 / 1 / 1 / 1 | CatBoost / MLP / TCN / LSTM fits in the ledger (all synthetic known-signal controls) | same | exact |
 | 128 + 128 | XGBoost and CatBoost GPU candidates per horizon in round A design | `docs/archive/CONTINUOUS_RESEARCH.md` | design |
 | **120** | GPU CNN trainings in Phase 2 (T35: 5 seeds × 9 folds × 2 cutoffs = 90; T39: 5 × 3 × 2 = 30) | Kaggle outputs, `docs/CROP_NOWCAST_TRIALS.md` | exact |
+| 134 / 97 / 204 | Pre-ledger fits, Sep 2026: v1 report (104 XGBoost, 20 LSTM, 10 Ridge); corrected R2 checkpoint receipts (76 XGBoost, 21 LSTM); tabular sprint XGBoost checkpoints | Colab reports and checkpoint receipts (`12_CODEX_ANSWERS.md` Q1–Q2) | exact for those archives; full September total unknown |
+| 10,176 + 10,176 | XGBoost and CatBoost market fits inside the 20,360 market-v1 sub-fits (+8 diagnostics) | `research-market-v1/ledger/completed` | exact |
 | 1,000+ | Phase 2 rolling refits of gradient boosting, ridge and shrinkage models | 45 trials × ~3 cutoffs × 9–24 test years | approx. |
 | 1,771 | Weight vectors evaluated per fold in the T36 simplex grid (4 members, step 0.05) | `research/crop_nowcast/stack.py` | exact (evaluations, not fits) |
 | **33,000+** | Conservative headline: 32,934 ledger + 120 CNN (+ 1,000+ Phase 2 refits; + 20,360 ablation sub-fits not counted) | above | exact + approx. |
@@ -36,7 +38,7 @@ Every number below has a source. "Exact" means counted from a file; "approx." me
 | 41 | Phase 1 research profiles | `data/codex_profiles.csv` |
 | 10 | Model families in the Phase 1 ledger | same |
 | 487 | Distinct feature names used in Phase 1 | `data/feature_catalog.csv` |
-| 387 | Distinct XGBoost hyperparameter recipes (182 distinct parameter sets in round A) | `data/hyperparameter_ranges.csv`, `data/codex_profiles.csv` |
+| 387 | XGBoost recipe rows in the ledger (round A: 257 recipe rows, 179 distinct parameter sets) | `data/hyperparameter_ranges.csv`, `data/codex_profiles.csv` |
 | 45 | Numbered Phase 2 trials (T01–T45), about 60 variants | `docs/CROP_NOWCAST_TRIALS.md` |
 | 178 | 133 + 45 experiments across both phases | above |
 | 3 | One-shot tests on held-out years: T39 (2022–2024), T42 (2025), T45 (blind 2000–2011) | ledger |

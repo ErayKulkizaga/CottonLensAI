@@ -22,9 +22,9 @@ Machine-readable detail: `data/codex_fit_recipes.csv` (each recipe), `data/codex
 - **Shrinkage selection.** Many studies select a weight w ∈ {0, 0.25, 0.5, 0.75, 1} on the inner blocks: final forecast = Naive + w·(model − Naive). A weight of 0 means "keep Naive", which is why "selected" and "raw" results are both reported.
 - **Statistics.** Paired MAE (or QLIKE) differences with moving-block bootstraps (blocks of 20 and 60, 10,000 draws, seed 42), year counts, and trimmed sensitivities.
 - **Engineering.**
-  - Every fit is a ledger receipt keyed by hashes of source, data, split and recipe.
+  - From 5 Oct 2026 (`3d5f7f0`) the Git fit ledger holds hash-keyed receipts (source, data, split, recipe). Earlier September runs and the market-v1 ablation kept their own checkpoint receipts outside it.
   - Completed fits are never retrained (`REPEAT_FIT_RECIPE` check).
-  - Results are archived to private GitHub releases and verified by fresh restore and byte-equal replay.
+  - Results are archived to private GitHub releases. Many were verified by fresh restore and replay; some audits replay saved state with zero new fits, GPU CatBoost uses tolerances, and some old payloads are missing (`research/README.md`).
 
 ## 3.3 Studies in order
 
@@ -37,20 +37,20 @@ Machine-readable detail: `data/codex_fit_recipes.csv` (each recipe), `data/codex
   | XGBoost | −0.376% | 52.78% | +0.725% | 54.56% |
   | LSTM | −1.094% | 51.98% | −0.011% | 52.78% |
 
-  - **LSTM design:** 60-step input window, two outputs (T+1 and T+5).
-  - **Search budget:** 8 XGBoost and 4 LSTM configurations per horizon and fold; seed 42; early stopping.
-  - The best LSTM checkpoint was epoch 1: train/validation loss went from 0.731/0.922 to 0.636/0.979 by epoch 11, i.e. it overfit immediately.
+  - **LSTM design:** 60 kept observations × 24 features (not necessarily 60 consecutive sessions); one Keras LSTM layer (32 or 64 units, no internal dropout) → Dropout (0.10 or 0.20) → Dense(32, ReLU) → Dense(2, linear) for T+1 and T+5 log returns. Adam lr 0.001, batch 64, up to 100 epochs, MAE loss on standardised targets, early stopping on `val_loss` with patience 10 and best-weight restore, seed 42. Separate StandardScalers for inputs and targets, fitted on train only.
+  - **Search budget:** 8 XGBoost candidates per horizon and 4 two-output LSTM candidates — (32, 0.10), (32, 0.20), (64, 0.10), (64, 0.20) — per fold, in 4 outer folds plus a final train/validation split. In total 104 XGBoost, 20 LSTM and 10 Ridge fits (134).
+  - On the final validation split (train to 17 Mar 2022, validation 25 Mar 2022 – 10 Jun 2024), the best 32/0.20 checkpoint was epoch 1: train/validation loss 0.731/0.922, 0.636/0.979 by epoch 11. Fold epochs differ (for example epoch 2 in fold 1), so "epoch 1" describes that split, not every fold.
   - **Decision:** Naive at both horizons.
   - **Bugs found:** percentage-based inner validation withheld about 2 years; XGBoost early stopping optimised RMSE while selection used MAE; interrupted LSTM checkpoints were treated as complete; a missing origin compressed the LSTM context.
-- **Corrected v2 (release `v20260924-185501`).** Fixed a 126-observation inner validation, refit before evaluation, separate scalers, price-MAE early stopping. Decision: Naive at both horizons.
-- **Tabular sprint (`v20260925-074708`).** T+1 gain +0.06% (direction 46.6%), T+5 −2.09% (direction 47.8%). Reproduction max difference zero. The development T+5 gain of 0.743% did not transfer. A 21-observation refit failed its pre-declared comparison.
+- **Corrected v2 (release `v20260924-185501`).** Fixed a 126-observation inner validation, refit before evaluation, separate scalers, price-MAE early stopping for XGBoost (the LSTM still picks its epoch on scaled-target validation MAE). 97 checkpoint receipts: 76 XGBoost, 21 LSTM. Decision: Naive at both horizons.
+- **Tabular sprint (`v20260925-074708`, 204 XGBoost checkpoints).** T+1 gain +0.06% (direction 46.6%), T+5 −2.09% (direction 47.8%). Reproduction max difference zero. The development T+5 gain of 0.743% did not transfer. A 21-observation refit failed its pre-declared comparison.
 
-### B. Research engine and the large GPU search (30 Sep – 1 Oct)
+### B. Research engine and the large GPU search (28 Sep – 1 Oct; round A result recorded in the 28 Sep reset)
 - **`research-v1`.** Stopped before market search: Keras built a CPU-only `RangeDataset` inside a forced GPU device scope with soft placement off. Fixed in v2 by scoping GPU placement to model construction only and asserting variable placement.
 - **`research-v2-tf-placement` (profile `cotton-research-v1`): 7,331 completed fits on a Colab T4 GPU.**
   - **Round A design:** per horizon, 128 CUDA XGBoost and 128 GPU CatBoost candidates, plus 24 Ridge and 24 ElasticNet references. Four target-scale/regularisation diagnostics first. Price MAE drives early stopping and inner selection. Shortlisted candidates are confirmed with 3 seeds.
   - **Ledger content:** 7,320 XGBoost market fits.
-    - 182 distinct parameter sets: max_depth 1–8, eta 0.005–0.15, min_child_weight 1–100, alpha 0–9.3, lambda 0.001–95, subsample 0.60–1.0, colsample_bytree 0.60–1.0.
+    - 257 recipe rows, 179 distinct parameter sets (targets: 119 scaled_log, 134 price_delta, 4 raw_log rows): max_depth 1–8, eta 0.005–0.15, min_child_weight 1–100, alpha 0–9.3, lambda 0.001–95, subsample 0.60–1.0, colsample_bytree 0.60–1.0.
     - Targets: scaled log or price delta. Objectives: `reg:squarederror` or `reg:absoluteerror`. 24 features. Horizons 1 and 5.
     - Roles: early-stopping, inner and outer fits.
   - **Result (outer 2016–2023):**
@@ -69,9 +69,10 @@ Machine-readable detail: `data/codex_fit_recipes.csv` (each recipe), `data/codex
     - D: expanded causal OHLCV features;
     - E: histories of 3/5/all years and refit cadences 5/21/63/126, with an OOF-weighted ensemble.
 
-    Only one synthetic known-signal control each of MLP, TCN, LSTM and CatBoost is in the ledger (width 32, lr 3e-3, batch 64, dropout 0, window 20 for the sequence models).
+    The ledger holds one synthetic known-signal control each of MLP, TCN and LSTM and two of CatBoost (width 32, lr 3e-3, batch 64, dropout 0; window 20 for LSTM/TCN, 1 for MLP). The TCN control's old `passed` label is wrong: its known-signal gain was −23.6%. Round C was parked as a conditional hypothesis after the 28 Sep reset (`docs/archive/RESEARCH_RESET_20260928.md`).
 - **`research-market-v1` ablation: 20,360 sub-fits, 128 outer units, 44,085 s (12.2 h) compute, 1,008 outer origins.**
-  - Groups: base, cotton without volume, expanded features, expanded with availability. Families: XGBoost and CatBoost, at T+1 and T+5.
+  - Sub-fits: 10,176 XGBoost + 10,176 CatBoost market fits + 8 diagnostics, 16 candidates per unit, 1,008 origins per horizon.
+  - Groups: base (24 features), cotton without volume (14: drops volume, DXY/WTI returns and cross-correlations), expanded (39: causal OHLCV/lag/rolling derivatives), expanded with availability (64: adds gap days and 24 `age_*` fields). Families: XGBoost and CatBoost, at T+1 and T+5. Admission needed a paired inner gain of at least 0.5% in at least 5/8 inner periods; no group passed.
   - Best cell: expanded + availability, XGBoost T+5: +0.763% gain, direction 57.5%, 5/8 folds, 95% CI includes 0.
   - **Decision:** no group admitted; do not repeat or widen the same-information search.
 - **Legacy loss lineage.** The old XGBoost T+1 selection was rebuilt from 6,648 archived fit receipts: 128 seed-42 candidates × 3 inner blocks, top 5 × 3 seeds. The selected target/loss changed year to year (2016: scaled_log/absolute +0.12%; 2017: scaled_log/squared −2.50%; …). This showed the "best" loss was unstable.
@@ -130,8 +131,8 @@ No source passed. Every selected result is near zero because inner validation sh
   - 95.9% of the net gain came from 21 large EWMA misses. 169 of 169 models had a negative extra log(EWMA) coefficient.
 - **Forward test of the own-level candidate.**
   - Locked cohort; first live origin 30 Oct 2026.
-  - Daily automated publishing at 03:05 / 03:20 Turkey time with GitHub release receipts; 252 origins to 2 Nov 2027; at most 31 fits.
-  - Calendar extended with the official 2027 cotton calendar. Mid-period scoring is forbidden.
+  - Designed as daily automated publishing at 03:05 / 03:20 Turkey time with GitHub release receipts, 252 origins to 2 Nov 2027, at most 31 fits.
+  - What happened: v1 published once (31 Oct); a Yahoo revision made it reject the 2 Nov input and miss that origin, breaking its 252/252 rule. v2 (first-observed) published once (4 Nov 2026, 03:20). Both Windows tasks are now **disabled** (checked 16 Nov 2026). No forward QLIKE score exists.
 - **Recent-history audit** (61 fits, 711 forecasts, 2024–Oct 2026): +0.00009 QLIKE, CIs include 0. Undetermined.
 - **Pre-2010 same-contract replication** (31 fits, 252 origins, Nov 2008 – Nov 2009, rebuilt from USDA PDF/XLS archives): the model weight was selected as 0. Same as EWMA.
 
@@ -148,16 +149,16 @@ No source passed. Every selected result is near zero because inner validation sh
   - Decision **STOP**: Naive stays.
 - **Root-cause review (6 Nov).** No single root cause. The common finding is that corrections learned from the tried representations do not carry forward. Stop broad model search; measure contract, price-field and time-coverage gaps first.
 
-### I. Link 1 event study (15 Nov, bridging to Phase 2)
-- 38 USDA Crop Production report days, 2012–2021, against 1,164 other days.
+### I. Link 1 event study (15 Nov, Claude, bridging to Phase 2; not a Codex-era study)
+- 38 USDA Crop Production report days, 2012–2021 (upland series; the preregistration said all-cotton, and the deviation is logged), against 1,164 other days. Prices after 2021-12-31 stay sealed for this chain.
 - **H1** (bigger moves on report days): ratio 1.42, p = 0.0038. **Pass.**
-- **H2** (USDA's revision sign predicts the move): Spearman −0.23, p = 0.076. **Fail.**
+- **H2** (USDA's revision sign predicts the move): Spearman −0.23, p = 0.075. **Fail.** The combined gate failed.
 - An oracle that knows the revision does not beat naive (−3.8%).
 - Without the three |R| ≥ 4% days the ratio is 1.15 (p = 0.16).
-- **Reading:** the market reacts to the report, but the revision is not the surprise. Market consensus data would be needed, and no free archive exists. So Phase 2 targeted production accuracy itself.
+- **Reading:** report days move more, but the revision does not predict the direction. Market consensus data would be needed; none was found in the free sources checked. So Phase 2 targeted production accuracy itself.
 
 ## 3.4 What Phase 1 established
-1. Daily cotton futures returns at T+1 and T+5 are close to a random walk for every public feature set tried. 113 scored experiments have median −0.65% and best +0.22%.
-2. The pipeline is not the reason. Synthetic controls (4,597 fits) recover injected signals, and selection instability and shrinkage were measured directly.
+1. No protocol tried passed the practical price gate at T+1 and T+5: public features gave no usable edge over a no-change forecast. 113 scored experiments have median −0.65% and best +0.22%.
+2. The pipeline is unlikely to be the main reason. Synthetic controls (4,597 fits, positive and negative) recovered injected signals in the tested scenarios, and selection instability and shrinkage were measured directly. This is evidence, not a full acquittal.
 3. Data identity (which contract, which vintage, when published) matters as much as the model. Several apparent effects traced to contract-roll or source errors.
-4. The one surviving lead is risk, not price: an own-level HAR variance forecast, now under a live forward test to Nov 2027.
+4. The one surviving lead is risk, not price: a pre-declared secondary own-level HAR arm that passed its historical gates. Its forward test published twice and is now stopped.

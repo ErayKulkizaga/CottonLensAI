@@ -21,6 +21,7 @@ Every number here comes from the project's own ledgers, evidence files and docum
 | [09_INTERVIEW_QA_TR.md](09_INTERVIEW_QA_TR.md) | Interview questions and answers in Turkish |
 | [10_GLOSSARY.md](10_GLOSSARY.md) | Terms in English and Turkish |
 | [11_QUESTIONS_FOR_CODEX.md](11_QUESTIONS_FOR_CODEX.md) | Open gaps in the Phase 1 record, as questions for Codex (Turkish) |
+| [12_CODEX_ANSWERS.md](12_CODEX_ANSWERS.md) | Codex's sourced answers (16 Nov 2026): LSTM architecture, pre-ledger fit counts, forward-test status, line-by-line corrections. The corrections are applied in 01–04, 08 and 09 |
 
 ## Machine-readable data (`data/`)
 

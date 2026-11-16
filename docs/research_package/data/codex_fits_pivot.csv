@@ -29,11 +29,12 @@ full-year-v1,elasticnet,market,356
 risk-level-source-t1-v1,har,market,348
 ct-signed-unsigned-shock-forecast-t1-v1,har,market,338
 ct-risk-level-dxy-control-t1-v1,har,market,338
-price-only-median-t1-v1,unlabelled,market,338
 contract-curve-t1-pilot-v1,ridge,market,252
 contract-curve-t5-pilot-v1,ridge,market,252
 ams-named-ewma-har-full-year-t1-v1,har,market,174
 ct-ewma-har-full-year-t1-v1,har,market,169
+price-only-median-t1-v1,ridge,market,169
+price-only-median-t1-v1,quantile,market,169
 ams-exploration-v1,ridge,market,147
 oncall-exploration-v2,xgboost,market,141
 named-weak-signal-control-t5-v1,xgboost,synthetic_control,132
@@ -56,8 +57,9 @@ cotton-research-v1,xgboost,synthetic_control,6
 paired-price-loss-control-v1,xgboost,synthetic_control,6
 ,ridge,synthetic_control,5
 named-cftc-source-control-t5-v1,xgboost,synthetic_control,4
-price-only-median-t1-v1,unlabelled,synthetic_control,4
 cotton-research-v1,catboost,synthetic_control,2
+price-only-median-t1-v1,quantile,synthetic_control,2
+price-only-median-t1-v1,ridge,synthetic_control,2
 cotton-research-v1,mlp,synthetic_control,1
 cotton-research-v1,tcn,synthetic_control,1
 cotton-research-v1,lstm,synthetic_control,1
