@@ -1,5 +1,7 @@
 # Roadmap after the external review (16 Nov 2026)
 
+> Superseded by `docs/RESEARCH_PLAN_20261116.md` (merged plan after three external reviews).
+
 Two external reviews judged the project as substantial engineering with modest scientific novelty.
 - **Their main points:**
   - the smoothing idea is published;
