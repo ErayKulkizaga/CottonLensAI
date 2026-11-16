@@ -11,11 +11,11 @@ b path SEP -0.01609 .. 0.07026 first [(2002, 0.03201), (2003, 0.07026)] last (20
 b path OCT 0.01866 .. 0.08031 first [(2002, 0.04144), (2003, 0.08031)] last (2025, 0.01866)
 b path NOV 0.01508 .. 0.05488 first [(2002, 0.01508), (2003, 0.05488)] last (2025, 0.01693)
 b path DEC 0.00265 .. 0.02611 first [(2002, 0.01676), (2003, 0.02611)] last (2025, 0.00265)
-SEP_TX: momentum 11.94 | published 10y 13.59 | expanding 12.51 | USDA 12.90
-SEP_US: momentum 5.99 | published 10y 6.43 | expanding 6.76 | USDA 6.33
-OCT_TX: momentum 11.27 | published 10y 13.08 | expanding 12.19 | USDA 12.08
-OCT_US: momentum 4.87 | published 10y 5.15 | expanding 5.20 | USDA 5.48
-NOV_TX: momentum 7.46 | published 10y 6.92 | expanding 6.48 | USDA 8.04
-NOV_US: momentum 3.46 | published 10y 3.41 | expanding 3.49 | USDA 3.55
-DEC_TX: momentum 4.98 | published 10y 5.25 | expanding 5.20 | USDA 5.25
-DEC_US: momentum 2.29 | published 10y 2.42 | expanding 2.39 | USDA 2.49
+SEP_TX (same 20 seasons): momentum 12.86 | published 10y 13.59 | expanding 12.51 | USDA 13.85
+SEP_US (same 20 seasons): momentum 5.89 | published 10y 6.43 | expanding 6.76 | USDA 6.09
+OCT_TX (same 19 seasons): momentum 12.33 | published 10y 13.08 | expanding 12.19 | USDA 13.25
+OCT_US (same 19 seasons): momentum 5.12 | published 10y 5.15 | expanding 5.20 | USDA 5.46
+NOV_TX (same 21 seasons): momentum 8.14 | published 10y 6.92 | expanding 6.48 | USDA 8.97
+NOV_US (same 21 seasons): momentum 3.60 | published 10y 3.41 | expanding 3.49 | USDA 3.73
+DEC_TX (same 21 seasons): momentum 5.37 | published 10y 5.25 | expanding 5.20 | USDA 5.75
+DEC_US (same 21 seasons): momentum 2.54 | published 10y 2.42 | expanding 2.39 | USDA 2.70

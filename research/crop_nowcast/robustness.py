@@ -120,6 +120,7 @@ def main(nass_dir, out_json):
                 row[name] = float(np.mean([abs(r[y][0]) for y in common]))
                 row[name + '_usda_same_years'] = float(np.mean([abs(r[y][1]) for y in common]))
                 row[name + '_years'] = len(common)
+                row[name + '_momentum_same_years'] = float(np.mean([abs(ours[str(y)][0]) for y in common]))
             pub[f'{m}_{reg}'] = row
     out['published_style_comparison'] = pub
     for k, v in out['cells'].items():
@@ -129,8 +130,9 @@ def main(nass_dir, out_json):
     for m, path in out['coef_path'].items():
         print('b path', m, min(path.values()), '..', max(path.values()), 'first', list(path.items())[:2], 'last', list(path.items())[-1])
     for k, v in pub.items():
-        print(f"{k}: momentum {v['momentum_rule']:.2f} | published 10y {v['published_style_10y']:.2f} | expanding "
-              f"{v['published_style_expanding']:.2f} | USDA {v['usda']:.2f}")
+        print(f"{k} (same {v['published_style_10y_years']} seasons): momentum {v['published_style_10y_momentum_same_years']:.2f} | "
+              f"published 10y {v['published_style_10y']:.2f} | expanding {v['published_style_expanding']:.2f} | "
+              f"USDA {v['published_style_10y_usda_same_years']:.2f}")
     Path(out_json).write_text(json.dumps(out, indent=1), encoding='utf-8')
 
 

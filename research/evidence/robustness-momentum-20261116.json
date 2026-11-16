@@ -238,9 +238,11 @@
    "published_style_10y": 13.588580943225832,
    "published_style_10y_usda_same_years": 13.851088516039741,
    "published_style_10y_years": 20,
+   "published_style_10y_momentum_same_years": 12.86,
    "published_style_expanding": 12.506857181011458,
    "published_style_expanding_usda_same_years": 13.851088516039741,
-   "published_style_expanding_years": 20
+   "published_style_expanding_years": 20,
+   "published_style_expanding_momentum_same_years": 12.86
   },
   "SEP_US": {
    "momentum_rule": 5.986956521739131,
@@ -248,9 +250,11 @@
    "published_style_10y": 6.4302858178885725,
    "published_style_10y_usda_same_years": 6.086641917685015,
    "published_style_10y_years": 20,
+   "published_style_10y_momentum_same_years": 5.895,
    "published_style_expanding": 6.763482717296744,
    "published_style_expanding_usda_same_years": 6.086641917685015,
-   "published_style_expanding_years": 20
+   "published_style_expanding_years": 20,
+   "published_style_expanding_momentum_same_years": 5.895
   },
   "OCT_TX": {
    "momentum_rule": 11.272727272727273,
@@ -258,9 +262,11 @@
    "published_style_10y": 13.080217492173112,
    "published_style_10y_usda_same_years": 13.2455316042945,
    "published_style_10y_years": 19,
+   "published_style_10y_momentum_same_years": 12.331578947368422,
    "published_style_expanding": 12.191150664424027,
    "published_style_expanding_usda_same_years": 13.2455316042945,
-   "published_style_expanding_years": 19
+   "published_style_expanding_years": 19,
+   "published_style_expanding_momentum_same_years": 12.331578947368422
   },
   "OCT_US": {
    "momentum_rule": 4.872727272727271,
@@ -268,9 +274,11 @@
    "published_style_10y": 5.152642838520113,
    "published_style_10y_usda_same_years": 5.457281297709992,
    "published_style_10y_years": 19,
+   "published_style_10y_momentum_same_years": 5.121052631578948,
    "published_style_expanding": 5.196994814147676,
    "published_style_expanding_usda_same_years": 5.457281297709992,
-   "published_style_expanding_years": 19
+   "published_style_expanding_years": 19,
+   "published_style_expanding_momentum_same_years": 5.121052631578948
   },
   "NOV_TX": {
    "momentum_rule": 7.458333333333333,
@@ -278,9 +286,11 @@
    "published_style_10y": 6.923691250332049,
    "published_style_10y_usda_same_years": 8.974525526266635,
    "published_style_10y_years": 21,
+   "published_style_10y_momentum_same_years": 8.142857142857144,
    "published_style_expanding": 6.479749210868296,
    "published_style_expanding_usda_same_years": 8.974525526266635,
-   "published_style_expanding_years": 21
+   "published_style_expanding_years": 21,
+   "published_style_expanding_momentum_same_years": 8.142857142857144
   },
   "NOV_US": {
    "momentum_rule": 3.4625,
@@ -288,9 +298,11 @@
    "published_style_10y": 3.4086276394671775,
    "published_style_10y_usda_same_years": 3.726036053647504,
    "published_style_10y_years": 21,
+   "published_style_10y_momentum_same_years": 3.5952380952380953,
    "published_style_expanding": 3.4859710185894115,
    "published_style_expanding_usda_same_years": 3.726036053647504,
-   "published_style_expanding_years": 21
+   "published_style_expanding_years": 21,
+   "published_style_expanding_momentum_same_years": 3.5952380952380953
   },
   "DEC_TX": {
    "momentum_rule": 4.983333333333333,
@@ -298,9 +310,11 @@
    "published_style_10y": 5.2458781640556325,
    "published_style_10y_usda_same_years": 5.750173190521708,
    "published_style_10y_years": 21,
+   "published_style_10y_momentum_same_years": 5.371428571428571,
    "published_style_expanding": 5.200669883999991,
    "published_style_expanding_usda_same_years": 5.750173190521708,
-   "published_style_expanding_years": 21
+   "published_style_expanding_years": 21,
+   "published_style_expanding_momentum_same_years": 5.371428571428571
   },
   "DEC_US": {
    "momentum_rule": 2.2916666666666665,
@@ -308,9 +322,11 @@
    "published_style_10y": 2.4191255994817524,
    "published_style_10y_usda_same_years": 2.696057222409973,
    "published_style_10y_years": 21,
+   "published_style_10y_momentum_same_years": 2.5380952380952375,
    "published_style_expanding": 2.387525846237704,
    "published_style_expanding_usda_same_years": 2.696057222409973,
-   "published_style_expanding_years": 21
+   "published_style_expanding_years": 21,
+   "published_style_expanding_momentum_same_years": 2.5380952380952375
   }
  }
 }
