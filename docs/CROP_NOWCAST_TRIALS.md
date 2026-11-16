@@ -503,3 +503,13 @@ On 16 Nov the user approved opening 2025 ("Evet, 2025'i aç"). 2025 values were 
 - USDA *under*-forecast 2025, and the downward correction (log −0.05 at Aug/Sep) made it worse. **USDA's US bias has now reversed in 2022, 2024 and 2025.** The past-mean bias correction does not hold forward.
 - All unopened production years are now used. Every model claim from here is in-sample, unless it is tested forward (2026+).
 - Evidence: `t42-holdout-2025-20261116.json` / `.log`.
+
+### Data-source screening for new trials (16 Nov, no model run)
+
+- **RMA Cause of Loss (crop insurance), REJECTED for in-season use: leakage.**
+  - The files (`colsom_YYYY.zip`, layout "as of 5/28/2026") give the *month the loss occurred*. They give no report or publication date.
+  - The files are regenerated as claims settle, often after harvest. Using losses dated ≤ the cutoff month would include claims nobody knew about at the cutoff.
+  - Usable only for after-the-fact analysis, or with archived vintages (none found).
+- **AMS "Quality of Cotton Classed by Classing Office" (weekly, ESMIS, dated releases), leak-free but SHORT.**
+  - The ESMIS archive starts in late 2018: about 7 seasons (2019–2025).
+  - Bales classed season-to-date tracks ginnings closely, and the ginning-pace trial (T38) failed against USDA December. It is a weak candidate on its own.
