@@ -60,6 +60,17 @@ Hayır. Fark %3–11 arası, her yıl kazanmıyor ve 8 hücrenin yalnızca 3'ün
 **Bu işleri kim yaptı?**
 - Hedefleri ve kısıtları ben koydum; mühür açma, push etme, bulutta iş başlatma gibi geri alınamaz her adımı ben onayladım. Kodu ve deneyleri Codex (1. aşama) ve Claude (2. aşama) yazıp çalıştırdı. Her iddiayı dosyalara karşı kontrol ettirdim, hataları kayıtta düzelttirdim. Ayrıntı: `14_DECISIONS_AND_COMPUTE.md`.
 
+**En önemli bulgun ne? (güncel cevap)**
+- USDA'nın Teksas'taki hatası 2012'den sonra karakter değiştirdi. Önceden hata verim kaynaklıydı. Artık hasat edilen alandan geliyor: hasat alanı hatası yaklaşık %3,7'den yaklaşık %15'e çıktı.
+- USDA, sezon içinde terk edilecek alanı sabitlenmiş bir şekilde tahmin ediyor. Anket tarihinde herkesin görebildiği "zayıf + çok zayıf" ürün oranına, nihai terkin ancak üçte ikisi kadar tepki veriyor.
+- Sadece geçmiş sezonlarla eğitilen tek değişkenli bir model, 2008'den beri USDA'nın Teksas alan hatasını her raporda yaklaşık %40 azaltırdı.
+- Aynı imza Oklahoma–Kansas pamuğunda da var. Yön aynı ve 4 ayın 4'ünde daha iyi; ama ön kayıttaki %5 eşiğini kıl payı kaçırdı (p = 0,056), o yüzden "doğrulandı" demiyorum. Kışlık buğdayda yok; yani bu pamuğa özgü bir terk olgusu.
+- 2026 Teksas hasat alanını kilitledim: 3.258.029 akre, USDA'nın Kasım rakamından %16,5 düşük. Mayıs 2027'de belli olacak.
+
+**Momentum kuralı eski yıllarda tuttu mu?**
+- Kısmen. 2000–2025 verisiyle donmuş katsayılar 1985–1999'da tutmadı. Ama kural sadece o dönemin kendi geçmişiyle yeniden eğitildiğinde, hiç görülmemiş 1987–1999'da 8 hücrenin 7'sinde USDA'dan iyi. Aralık ABD'de 10 sezonun 9'unda daha yakın. Havuzlanmış p = 0,089, anlamlı değil.
+- Yorumum: etki tekrar ediyor ama büyüklüğü döneme göre değişiyor. Bu, 2013 makalesindeki "katsayılar istikrarsız" bulgusuyla aynı.
+
 ## Model ayrıntıları
 
 **14.723 XGBoost eğitiminde ne denendi?**

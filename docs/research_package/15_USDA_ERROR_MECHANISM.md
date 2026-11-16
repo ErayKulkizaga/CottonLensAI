@@ -72,3 +72,16 @@ Abandonment uses the final planted area P: USDA in-season A_m = 1 − H_m / P; f
   - **(b)** a shift toward dryland planting.
 
   They are tested next.
+
+## T49 · Preregistered tests of the anchoring mechanism (16 Nov 2026)
+| Setting | corr(pvp, area error) | Area error, USDA → adjusted | p (year-block) | Verdict |
+|---|---|---|---|---|
+| Texas cotton, real-time rolling 2008–2025 (discovery state) | −0.70 | Sep 12.8 → 7.9 %, Oct 13.2 → 7.6 %, Nov 12.6 → 7.0 %, Dec 12.6 → 7.3 % | 0.0003 | demonstration |
+| Oklahoma + Kansas cotton, never examined (independent) | −0.61 | better in 4/4 months (e.g. Sep 11.3 → 9.8 %) | 0.056 | FAIL (p gate missed) |
+| Winter wheat KS/OK/TX (independent, other crop) | +0.09 | worse in 4/4 months | 0.97 | FAIL |
+
+**Where this leaves the mechanism:**
+- **Texas:** in real time, a one-variable model built only on past seasons would have cut USDA's in-season Texas harvested-area error by about 40% at every report since 2008.
+- **Oklahoma and Kansas cotton:** the same signature appears, with the same direction and similar strength, but just misses the pre-declared 5% significance gate. It is reported as consistent, not confirmed.
+- **Winter wheat:** the mechanism does not hold. It is a cotton-abandonment phenomenon, not a general USDA area bias.
+- **Forward test:** Texas 2026 harvested area is locked at 3,258,029 acres, −16.5% vs USDA's 1 Nov figure (`docs/FORWARD_LOCK_2026.md`), and will be scored in May 2027.
