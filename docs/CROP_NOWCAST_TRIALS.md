@@ -476,3 +476,17 @@ Motivation (T39): one pooled bias for all states hurt the US total when USDA's b
 - **1 Sep:** TX 14.1 vs T25 11.4 (USDA 13.5). Better than T25 in 2 years, worse in 5.
 - **1 Oct:** TX 11.1 vs T25 11.3 (USDA 13.5). Better in 3, worse in 3.
 - Texas-only FSA abandonment does not explain USDA's TX error beyond the simple bias. Evidence: `t41-tx-fsa-gate-20261116.json`.
+
+### T42 (PRE-DECLARED 16 Nov, before reading any 2025 value): one-shot 2025 holdout of T25, unchanged
+
+On 16 Nov the user approved opening 2025 ("Evet, 2025'i aç"). 2025 values were pulled with T39 but never printed or read.
+
+- **Model: T25 exactly.**
+  - For year Y, the pooled mean of e = log(final / USDA_m) over all states and years < Y.
+  - At 1 Aug and 1 Sep, training rows are those with `fsa_gap` (as in T25). At 1 Nov and 1 Dec, all rows (as in T37's B).
+  - Corrected = USDA_m × exp(mean e).
+  - US = USDA_US × Σ corrected / Σ USDA over the states.
+- **Primary: 1 Sep 2025.** USDA published no October 2025 forecast.
+  - **Pass:** TX absolute error below USDA September 2025's, **and** US absolute error below USDA September 2025's.
+- **Secondaries (reported, not claimed):** 1 Aug, 1 Nov and 1 Dec 2025 (Nov/Dec against USDA's same month), plus the production-weighted state error.
+- **Limits.** One year is one draw: a pass is evidence, a loss is informative. 2025 is the last unopened year, and this is its only use for T25.
