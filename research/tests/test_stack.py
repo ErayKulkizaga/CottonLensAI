@@ -142,3 +142,45 @@ def test_t50_score_detects_persistence_and_rejects_null():
     null = pd.DataFrame({'year': years, 'hit': (rng.random(len(years)) < 0.5).astype(int)})
     assert score(sig)['season_block_p'] < 0.01
     assert score(null)['season_block_p'] > 0.05
+
+
+def test_t51_point_in_time_condition_and_training_years():
+    """T51-E: the condition week used for each Texas report ends before the survey date (released by the 1st), and
+    rolling fits for season Y use only seasons < Y. Skipped when the local data cache is absent (e.g. CI)."""
+    from pathlib import Path
+
+    import pandas as pd
+    import pytest
+
+    root = Path(__file__).resolve().parents[2] / 'output/t49'
+    if not (root / 'condition.csv').exists():
+        pytest.skip('local T49 data cache not present')
+    from research.crop_nowcast.t49_anchoring import COTTON_M, pvp_at
+
+    cond = pd.read_csv(root / 'condition.csv')
+    tx = cond[(cond.crop == 'COTTON') & (cond.state == 'TX')]
+    for y in range(2000, 2026):
+        for m, mon in COTTON_M.items():
+            ref = pd.Timestamp(y, mon, 1)
+            v = pvp_at(cond, 'COTTON', 'TX', y, mon)
+            if v != v:
+                continue
+            used = tx[(tx.year == y) & (pd.to_datetime(tx.week_ending) <= ref - pd.Timedelta(days=1))].week_ending.max()
+            assert pd.Timestamp(used) + pd.Timedelta(days=1) <= ref  # week ends Sunday, released Monday, on or before the 1st
+            later = tx[(tx.year == y) & (pd.to_datetime(tx.week_ending) > ref - pd.Timedelta(days=1))]
+            if len(later):
+                bumped = later.assign(v=later.v + 50)
+                alt = pd.concat([cond[~cond.index.isin(later.index)], bumped])
+                assert pvp_at(alt, 'COTTON', 'TX', y, mon) == v  # later weeks cannot change the value used
+
+
+def test_t51_rolling_predict_uses_only_past_seasons():
+    import numpy as np
+    import pandas as pd
+
+    from research.crop_nowcast.t51_area_production import predict
+
+    tr = pd.DataFrame({'year': np.arange(2000, 2010), 'pvp': np.linspace(0.1, 0.6, 10), 'e': np.linspace(0, -0.3, 10)})
+    a = predict(tr, 0.4, 'anchor')
+    poisoned = pd.concat([tr, pd.DataFrame({'year': [2010], 'pvp': [0.4], 'e': [5.0]})])
+    assert predict(poisoned[poisoned.year < 2010], 0.4, 'anchor') == a
