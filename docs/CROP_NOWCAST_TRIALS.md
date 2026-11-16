@@ -442,3 +442,21 @@ Motivation (T39): one pooled bias for all states hurt the US total when USDA's b
   - 1 Aug, 1 Nov and 1 Dec 2025 are reported as secondaries.
   - One year is a single draw, so it is reported as evidence, not proof.
 - **Forward.** If the holdout is not failed, the same model is locked for the 2026 December report (USDA Dec 2026, published 10 Dec). It is scored when 2026 finals are published (May 2027).
+
+**T40 result (16 Nov): FAIL on dev 2013–2024. The 2025 holdout is NOT opened and stays sealed.**
+
+| Cutoff | T40 TX / US | T25 TX / US | USDA TX / US | Prod-wtd state, T40 / T25 / USDA |
+|---|---|---|---|---|
+| 1 Aug | 19.0 / 8.2 | 17.2 / 8.6 | 17.1 / 8.3 | 15.7 / 15.1 / 14.6 |
+| 1 Sep | 14.0 / 5.6 | **11.4 / 4.4** | 13.5 / 5.8 | 11.0 / 10.2 / 10.5 |
+| 1 Oct | 13.9 / 5.6 | **11.3 / 5.2** | 13.5 / 5.6 | 10.8 / 10.1 / 9.9 |
+| 1 Nov | 10.1 / 4.2 | 8.9 / 4.5 | 10.1 / 4.4 | 7.5 / 7.2 / 7.2 |
+| 1 Dec | 6.4 / 3.1 | 5.1 / 3.2 | 5.7 / 3.0 | 5.4 / 4.9 / 4.9 |
+
+- **Why it fails.** Empirical-Bayes shrinkage toward zero leaves almost nothing.
+  - TX's own bias shrinks to −0.02 to −0.05 (log), because its year-to-year error variance (2023: +40%) swamps a 6–16-year state mean.
+  - Per-state bias is not estimable with this much noise.
+- **Side finding on 12 dev years** (2022–2024 now opened): pooled T25 still beats USDA at 1 Sep (TX 11.4 vs 13.5, US 4.4 vs 5.8) and at 1 Oct (11.3 vs 13.5, 5.2 vs 5.6).
+  - Its production-weighted state error at 1 Oct is slightly worse (10.1 vs 9.9).
+  - This is not a new claim: T25 was chosen on 2013–2021 and the T39 rule judged T36, not T25.
+- Evidence: `t40-state-bias-dev-20261116.json`; code: `research/crop_nowcast/state_bias.py`.

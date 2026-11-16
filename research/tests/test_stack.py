@@ -38,3 +38,13 @@ def test_gin_parse_both_layouts():
            'NM          :    1/   1/   1/   1/\nUS          :   11,832,450\n')
     a, _, o = parse(old)
     assert str(a) == '2009-11-15' and o == {'TX': 1868550, 'NM': None}
+
+
+def test_eb_bias_shrinks_toward_zero_and_keeps_consistent_states():
+    from research.crop_nowcast.state_bias import eb_bias
+
+    rng = np.random.default_rng(1)
+    rows = [('TX', -0.15 + rng.normal(0, 0.03)) for _ in range(12)] + [(s, rng.normal(0, 0.03)) for s in 'ABCD' for _ in range(12)]
+    b = eb_bias(pd.DataFrame(rows, columns=['state', 'e']))
+    assert -0.16 < b['TX'] < -0.10  # persistent bias kept (slightly shrunk)
+    assert all(abs(b[s]) < 0.03 for s in 'ABCD')  # noise states pulled to ~0, not to the pooled mean
