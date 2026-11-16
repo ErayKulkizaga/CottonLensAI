@@ -109,3 +109,22 @@ def test_t47_ocr_rows_area_times_yield_check():
          ' U.S. : 10.000.0 10,100.0  500  505  10,416.7 10,625.5\nAmer-Pima :\n TX : 1 2 3 4 5 6\n')
     o = ocr_rows(t)
     assert set(o) == {'TX', 'US'} and o['TX'] == (4800.0, 475.0, 4750.0) and o['US'][0] == 10100.0
+
+
+def test_t49_evaluate_recovers_planted_anchoring():
+    import numpy as np
+    import pandas as pd
+
+    from research.crop_nowcast.t49_anchoring import evaluate
+
+    rng = np.random.default_rng(0)
+    rows = []
+    for y in range(2000, 2026):
+        for m in ('SEP', 'OCT', 'NOV', 'DEC'):
+            pvp = rng.uniform(0.05, 0.7)
+            e = -0.5 * pvp + 0.1 + rng.normal(0, 0.02)        # USDA area too high when condition is poor
+            rows.append({'state': 'TX', 'year': y, 'month': m, 'area': 1000.0, 'final': 1000.0 * np.exp(e), 'pvp': pvp})
+    r = evaluate(pd.DataFrame(rows), {'SEP': 9, 'OCT': 10, 'NOV': 11, 'DEC': 12}, 'loso')
+    assert r['pooled_corr'] < -0.9 and r['pass']
+    null = pd.DataFrame(rows).assign(final=lambda x: 1000.0 * np.exp(rng.normal(0, 0.05, len(x))))
+    assert not evaluate(null, {'SEP': 9, 'OCT': 10, 'NOV': 11, 'DEC': 12}, 'loso')['pass']
