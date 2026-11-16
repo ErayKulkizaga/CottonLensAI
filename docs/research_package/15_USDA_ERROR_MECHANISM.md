@@ -36,3 +36,39 @@ Texas harvested-area error at 1 Sep, by season (%; negative = USDA's area too hi
 
 ## The problem worth solving
 For Texas since 2012, the useful question is not "what is the yield?" but "**how much planted cotton will not be harvested, and when can that be known?**" That is a narrower, testable problem. It is also where public data (satellite greenness, drought indices, FSA failed acres) could add information that USDA's monthly survey does not yet hold.
+
+## M1 · Is USDA's in-season Texas area anchored? (16 Nov 2026, descriptive)
+Code `research/crop_nowcast/m1_data.py` and `m1_analysis.py`; evidence `research/evidence/m1-anchoring-tx-20261116.json`.
+
+Signals are public as of each report's survey reference date, the 1st of the month:
+- **pvp:** % of Texas cotton rated poor or very poor (NASS Crop Progress, week ending before the 1st);
+- **d2p:** cotton-weighted share of Texas cotton counties in USDM D2+ drought (map dated at least 2 days before the 1st; county weights = mean planted area 2008–2025).
+
+Abandonment uses the final planted area P: USDA in-season A_m = 1 − H_m / P; final A = 1 − H_final / P. Seasons 2000–2025.
+
+| Signal · report | Period | Slope of final abandonment | Slope of USDA in-season abandonment | USDA / final (95% CI) | corr(signal, area error) |
+|---|---|---|---|---|---|
+| pvp · 1 Sep | 2000–2011 | 0.83 | 0.74 | 0.90 [0.71, 0.98] | −0.53 |
+| pvp · 1 Sep | 2012–2025 | 1.07 | 0.69 | **0.65 [0.40, 0.90]** | **−0.86** |
+| pvp · 1 Oct | 2012–2025 | 1.06 | 0.73 | 0.69 [0.45, 0.92] | −0.88 |
+| pvp · 1 Nov | 2012–2025 | 1.02 | 0.71 | 0.69 [0.43, 0.90] | −0.82 |
+| pvp · 1 Dec | 2012–2025 | 0.93 | 0.63 | 0.67 [0.40, 0.88] | −0.83 |
+| d2p · 1 Sep | 2012–2025 | 0.25 | 0.20 | 0.77 [0.27, 1.08] | −0.37 |
+
+**Reading:**
+1. **Anchoring is measurable.** USDA's in-season abandonment responds to the poor-condition share at only about two-thirds of the rate at which final abandonment does (2012–2025, every report month, CI below 1). In 2000–2011 USDA kept up better (about 0.9).
+2. **The area error is largely predictable from public information at the survey date.** In 2012–2025 the correlation between the poor/very-poor share and USDA's remaining Texas area error is −0.82 to −0.88 at every report. Drought-map coverage is a weaker signal (−0.27 to −0.45).
+3. **More drought is not the explanation (M2c rejected).** The mean poor/very-poor share at 1 Sep is the same in both periods (30.7% vs 31.4%), and so is mean D2+ coverage (44% vs 49%). What changed is the response: final abandonment per unit of poor condition rose (slope 0.83 → 1.07), while USDA's in-season response did not (0.74 → 0.69).
+
+**Status and limits:**
+- This is **discovery**: the area outcomes were seen in T48, and the signals were chosen with that knowledge.
+- With 12–14 seasons per period, the confidence intervals are wide.
+- It is not yet a forecast claim. The claim needs:
+  - **M3:** a pre-specified rolling prediction from information before each report;
+  - **M4:** independent settings (other dryland cotton states, winter wheat);
+  - **forward:** the 2026 Texas harvested-area outcome (May 2027), locked now.
+- The remaining alternative explanations are:
+  - **(a)** the final area depends on FSA failed-acre certification, an administrative timing effect;
+  - **(b)** a shift toward dryland planting.
+
+  They are tested next.
