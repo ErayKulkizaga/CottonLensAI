@@ -622,3 +622,24 @@ USDA's monthly cotton forecasts before 2012 were never pulled or looked at in th
 - the pooled past-mean bias (T25 without FSA rows, which do not exist then) at Sep and Oct, rolling within 2000–2011.
 
 Run once, committed as produced.
+
+**T45 result (16 Nov, run once, blind 2002–2011): primary FAIL on a Texas tie. The blind secondaries show momentum working at Sep, Oct and Nov.**
+
+Data: 963 state and 59 US forecasts parsed. Parser validated 153/153 exact against QuickStats for 2012–2013. One parser bug (decimal values read as yield) was caught by a unit check and fixed **before** any score was computed.
+
+| Cutoff (2002–2011) | TX: momentum vs USDA (better / worse) | US (better / worse) | Prod-wtd state | T44 rule |
+|---|---|---|---|---|
+| **1 Dec (primary)** | 4.3 vs 4.4 (**3 / 3**) | **1.7 vs 2.0** (7 / 2) | 3.1 vs 3.3 | **FAIL** (TX tie) |
+| 1 Sep (secondary) | **9.9 vs 12.5** (5 / 3) | **6.8 vs 7.9** (5 / 3) | 9.9 vs 11.3 | would pass |
+| 1 Oct (secondary) | **7.8 vs 9.5** (5 / 3) | **4.6 vs 5.9** (7 / 3) | 7.7 vs 8.2 | would pass |
+| 1 Nov (secondary) | **4.8 vs 5.2** (6 / 4) | **2.3 vs 2.9** (9 / 1) | 4.8 vs 5.0 | would pass |
+
+- **Pooled past-mean bias (secondary), 2002–2011:**
+  - Sep: TX 13.7 vs 12.5; US 8.7 vs 7.9.
+  - Oct: TX 10.4 vs 9.5; US 6.7 vs 5.9.
+  - **It loses.** USDA's bias does not carry across eras, the same lesson as T39 and T42.
+- **Reading.** On data never seen before, the no-intercept revision-momentum rule beat USDA at Sep, Oct and Nov for both TX and the US, and at Dec for the US. Its declared primary (Dec) failed only because TX tied 3–3.
+  - In 2014–2025 (T44), momentum helped at Dec but not at Sep.
+  - So momentum is the most consistent signal found in this project. It does not depend on the sign of USDA's bias. Its strength varies by month and era.
+  - This is still a set of secondaries, not a pre-declared pass.
+- Evidence: `t45-blind-2000-2011-20261116.json` / `.log`, `t45-bias-secondary-20261116.json`.

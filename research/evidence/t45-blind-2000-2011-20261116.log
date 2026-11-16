@@ -1,0 +1,7 @@
+DEC: TX   4.3 vs USDA   4.4 (better 3 worse 3) | US  1.7 vs  2.0 (better 7 worse 2) | state_w  3.1 vs  3.3  pass=False
+SEP: TX   9.9 vs USDA  12.5 (better 5 worse 3) | US  6.8 vs  7.9 (better 5 worse 3) | state_w  9.9 vs 11.3  pass=True
+OCT: TX   7.8 vs USDA   9.5 (better 5 worse 3) | US  4.6 vs  5.9 (better 7 worse 3) | state_w  7.7 vs  8.2  pass=True
+NOV: TX   4.8 vs USDA   5.2 (better 6 worse 4) | US  2.3 vs  2.9 (better 9 worse 1) | state_w  4.8 vs  5.0  pass=True
+PRIMARY (Dec and Sep): False
+secondary pooled bias SEP 2002-2011: TX 13.7 vs USDA 12.5 | US 8.7 vs 7.9
+secondary pooled bias OCT 2002-2011: TX 10.4 vs USDA 9.5 | US 6.7 vs 5.9
