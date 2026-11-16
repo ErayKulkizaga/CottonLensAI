@@ -1,0 +1,409 @@
+{
+ "AUG": {
+  "TX": {
+   "n": 14,
+   "years": [
+    2012,
+    2025
+   ],
+   "mae_total_pct": 15.579155749656817,
+   "mae_area_pct": 15.09227875159941,
+   "mae_yield_pct": 9.590490207716375,
+   "var_share_area": 0.8106178063472709,
+   "var_share_yield": 0.18943716331881552,
+   "residual_max_pct": 0.14129917969449915
+  },
+  "US": {
+   "n": 14,
+   "years": [
+    2012,
+    2025
+   ],
+   "mae_total_pct": 7.370413869112705,
+   "mae_area_pct": 7.387462329616061,
+   "mae_yield_pct": 5.916744440688788,
+   "var_share_area": 0.7207591360610721,
+   "var_share_yield": 0.2807104674879145,
+   "residual_max_pct": 0.08386123186392772
+  },
+  "states_pooled": {
+   "n": 238,
+   "years": [
+    2012,
+    2025
+   ],
+   "mae_total_pct": 17.344311980067666,
+   "mae_area_pct": 9.576333490946109,
+   "mae_yield_pct": 12.469299987356292,
+   "var_share_area": 0.4622022728579927,
+   "var_share_yield": 0.5379647654629561,
+   "residual_max_pct": 0.14129917969449915
+  }
+ },
+ "SEP": {
+  "TX": {
+   "n": 14,
+   "years": [
+    2012,
+    2025
+   ],
+   "mae_total_pct": 11.838848259866788,
+   "mae_area_pct": 14.860530636988514,
+   "mae_yield_pct": 10.558753702454318,
+   "var_share_area": 0.7186726562895283,
+   "var_share_yield": 0.28350597258942417,
+   "residual_max_pct": 0.11180304466719831,
+   "corr_revision_area": 0.4427720468745301,
+   "corr_revision_yield": -0.24432743216392944,
+   "corr_revision_total": 0.2576364644520856
+  },
+  "US": {
+   "n": 14,
+   "years": [
+    2012,
+    2025
+   ],
+   "mae_total_pct": 5.154759559468109,
+   "mae_area_pct": 7.279789574737586,
+   "mae_yield_pct": 6.290826114798633,
+   "var_share_area": 0.4164504221170424,
+   "var_share_yield": 0.5849581538841,
+   "residual_max_pct": 0.08826588905911925,
+   "corr_revision_area": 0.5584001111166346,
+   "corr_revision_yield": -0.22797209500603346,
+   "corr_revision_total": 0.355306267829102
+  },
+  "states_pooled": {
+   "n": 238,
+   "years": [
+    2012,
+    2025
+   ],
+   "mae_total_pct": 13.025379455488794,
+   "mae_area_pct": 4.712119489257425,
+   "mae_yield_pct": 11.469482304169228,
+   "var_share_area": 0.3190704120422606,
+   "var_share_yield": 0.6808529354862034,
+   "residual_max_pct": 0.12808446065218915,
+   "corr_revision_area": 0.03710285921945908,
+   "corr_revision_yield": -0.13881762131496195,
+   "corr_revision_total": -0.09420554236878888
+  }
+ },
+ "OCT": {
+  "TX": {
+   "n": 12,
+   "years": [
+    2012,
+    2024
+   ],
+   "mae_total_pct": 13.045813773298551,
+   "mae_area_pct": 15.795824859832763,
+   "mae_yield_pct": 10.511749315221765,
+   "var_share_area": 0.7640725282106692,
+   "var_share_yield": 0.2369016691444677,
+   "residual_max_pct": 0.13562901924649706,
+   "corr_revision_area": 0.04211216930296214,
+   "corr_revision_yield": 0.04367054083428839,
+   "corr_revision_total": 0.07185540259936303
+  },
+  "US": {
+   "n": 12,
+   "years": [
+    2012,
+    2024
+   ],
+   "mae_total_pct": 4.999866965944199,
+   "mae_area_pct": 7.611807150301114,
+   "mae_yield_pct": 7.284364184429759,
+   "var_share_area": 0.24864761126306623,
+   "var_share_yield": 0.7522871295208279,
+   "residual_max_pct": 0.06639806909316953,
+   "corr_revision_area": -0.10569875443597124,
+   "corr_revision_yield": -0.037250478043371324,
+   "corr_revision_total": -0.15846410261671356
+  },
+  "states_pooled": {
+   "n": 204,
+   "years": [
+    2012,
+    2024
+   ],
+   "mae_total_pct": 11.754536452906436,
+   "mae_area_pct": 4.786186575058215,
+   "mae_yield_pct": 10.712851714995594,
+   "var_share_area": 0.3108133667427234,
+   "var_share_yield": 0.689154410839382,
+   "residual_max_pct": 0.1452393278344788,
+   "corr_revision_area": 0.18728126620504737,
+   "corr_revision_yield": -0.19481462591525578,
+   "corr_revision_total": -0.0539479998824437
+  }
+ },
+ "NOV": {
+  "TX": {
+   "n": 14,
+   "years": [
+    2012,
+    2025
+   ],
+   "mae_total_pct": 9.32044653615555,
+   "mae_area_pct": 14.738427541564942,
+   "mae_yield_pct": 10.908955614620604,
+   "var_share_area": 0.9411475119627604,
+   "var_share_yield": 0.061536829409116964,
+   "residual_max_pct": 0.13696906172585288,
+   "corr_revision_area": 0.6532107108094217,
+   "corr_revision_yield": -0.2873334348371235,
+   "corr_revision_total": 0.59421424241799
+  },
+  "US": {
+   "n": 14,
+   "years": [
+    2012,
+    2025
+   ],
+   "mae_total_pct": 3.873132542664574,
+   "mae_area_pct": 7.0750963321646845,
+   "mae_yield_pct": 6.843916591770034,
+   "var_share_area": 0.40502573193339914,
+   "var_share_yield": 0.5990132391666275,
+   "residual_max_pct": 0.11526588248846059,
+   "corr_revision_area": 0.15863692745294616,
+   "corr_revision_yield": -0.14716763098292793,
+   "corr_revision_total": 0.0065935760529370864
+  },
+  "states_pooled": {
+   "n": 238,
+   "years": [
+    2012,
+    2025
+   ],
+   "mae_total_pct": 9.815934991809817,
+   "mae_area_pct": 4.615430539924701,
+   "mae_yield_pct": 9.285159609931599,
+   "var_share_area": 0.33314451684703544,
+   "var_share_yield": 0.6671783329146813,
+   "residual_max_pct": 0.13696906172585288,
+   "corr_revision_area": 0.09670297827304482,
+   "corr_revision_yield": -0.04498016222727891,
+   "corr_revision_total": 0.027645442012189634
+  }
+ },
+ "DEC": {
+  "TX": {
+   "n": 14,
+   "years": [
+    2012,
+    2025
+   ],
+   "mae_total_pct": 5.714914348869468,
+   "mae_area_pct": 14.738427541564942,
+   "mae_yield_pct": 12.292134528207061,
+   "var_share_area": 1.5686449989556146,
+   "var_share_yield": -0.5672971718279443,
+   "residual_max_pct": 0.13274617791789456,
+   "corr_revision_area": 0.6114093028671588,
+   "corr_revision_yield": -0.4669257863206393,
+   "corr_revision_total": 0.5770683768684886
+  },
+  "US": {
+   "n": 14,
+   "years": [
+    2012,
+    2025
+   ],
+   "mae_total_pct": 2.798763773683183,
+   "mae_area_pct": 7.0750963321646845,
+   "mae_yield_pct": 6.642437273261242,
+   "var_share_area": 0.34829538253152365,
+   "var_share_yield": 0.6532056432635062,
+   "residual_max_pct": 0.07517580324451767,
+   "corr_revision_area": 0.40934582212871057,
+   "corr_revision_yield": -0.11902308690817742,
+   "corr_revision_total": 0.5908154220251708
+  },
+  "states_pooled": {
+   "n": 238,
+   "years": [
+    2012,
+    2025
+   ],
+   "mae_total_pct": 7.8245992677502985,
+   "mae_area_pct": 4.615430539924701,
+   "mae_yield_pct": 8.08880513787988,
+   "var_share_area": 0.33635423698205735,
+   "var_share_yield": 0.6639521905955549,
+   "residual_max_pct": 0.13274617791789456,
+   "corr_revision_area": 0.16832430302513385,
+   "corr_revision_yield": -0.254822918203607,
+   "corr_revision_total": -0.11567026530979622
+  }
+ },
+ "TX_by_year_pct": {
+  "2012": {
+   "area_AUG": -31.4,
+   "area_SEP": -25.4,
+   "area_OCT": -25.4,
+   "area_NOV": -25.4,
+   "area_DEC": -25.4,
+   "yield_AUG": 2.2,
+   "yield_SEP": 5.5,
+   "yield_OCT": 5.5,
+   "yield_NOV": 8.9,
+   "yield_DEC": 15.9
+  },
+  "2013": {
+   "area_AUG": -6.3,
+   "area_SEP": -6.3,
+   "area_NOV": -6.3,
+   "area_DEC": -6.3,
+   "yield_AUG": 8.1,
+   "yield_SEP": 8.1,
+   "yield_NOV": 8.1,
+   "yield_DEC": 8.1
+  },
+  "2014": {
+   "area_AUG": -16.0,
+   "area_SEP": -11.3,
+   "area_OCT": -11.3,
+   "area_NOV": -11.3,
+   "area_DEC": -11.3,
+   "yield_AUG": 2.0,
+   "yield_SEP": 4.6,
+   "yield_OCT": 10.0,
+   "yield_NOV": 7.6,
+   "yield_DEC": 14.9
+  },
+  "2015": {
+   "area_AUG": 6.9,
+   "area_SEP": 0.0,
+   "area_OCT": 0.0,
+   "area_NOV": 0.0,
+   "area_DEC": 0.0,
+   "yield_AUG": 0.7,
+   "yield_SEP": -0.5,
+   "yield_OCT": 1.2,
+   "yield_NOV": -1.5,
+   "yield_DEC": -1.5
+  },
+  "2016": {
+   "area_AUG": 1.9,
+   "area_SEP": -1.9,
+   "area_OCT": -1.9,
+   "area_NOV": -1.9,
+   "area_DEC": -1.9,
+   "yield_AUG": 23.2,
+   "yield_SEP": 22.4,
+   "yield_OCT": 23.9,
+   "yield_NOV": 18.0,
+   "yield_DEC": 11.0
+  },
+  "2017": {
+   "area_AUG": -3.6,
+   "area_SEP": -7.0,
+   "area_OCT": -5.3,
+   "area_NOV": -5.3,
+   "area_DEC": -5.3,
+   "yield_AUG": 8.8,
+   "yield_SEP": 6.6,
+   "yield_OCT": 8.2,
+   "yield_NOV": 7.2,
+   "yield_DEC": 2.9
+  },
+  "2018": {
+   "area_AUG": -2.4,
+   "area_SEP": -6.9,
+   "area_OCT": -6.9,
+   "area_NOV": -6.9,
+   "area_DEC": -6.9,
+   "yield_AUG": 7.6,
+   "yield_SEP": 12.2,
+   "yield_OCT": 9.1,
+   "yield_NOV": 9.1,
+   "yield_DEC": 4.7
+  },
+  "2019": {
+   "area_AUG": -16.9,
+   "area_SEP": -15.3,
+   "area_OCT": -15.3,
+   "area_NOV": -15.3,
+   "area_DEC": -15.3,
+   "yield_AUG": -11.5,
+   "yield_SEP": -8.3,
+   "yield_OCT": -5.8,
+   "yield_NOV": 3.6,
+   "yield_DEC": 10.9
+  },
+  "2020": {
+   "area_AUG": -20.1,
+   "area_SEP": -20.1,
+   "area_OCT": -20.1,
+   "area_NOV": -20.1,
+   "area_DEC": -20.1,
+   "yield_AUG": -10.5,
+   "yield_SEP": -5.6,
+   "yield_OCT": -8.9,
+   "yield_NOV": -8.9,
+   "yield_DEC": 7.1
+  },
+  "2021": {
+   "area_AUG": 0.9,
+   "area_SEP": 5.6,
+   "area_OCT": 5.6,
+   "area_NOV": 5.6,
+   "area_DEC": 5.6,
+   "yield_AUG": 7.2,
+   "yield_SEP": -16.6,
+   "yield_OCT": -9.3,
+   "yield_NOV": -10.7,
+   "yield_DEC": -9.3
+  },
+  "2022": {
+   "area_AUG": -9.5,
+   "area_SEP": -22.3,
+   "area_OCT": -22.3,
+   "area_NOV": -22.3,
+   "area_DEC": -22.3,
+   "yield_AUG": 14.8,
+   "yield_SEP": 17.9,
+   "yield_OCT": 11.7,
+   "yield_NOV": 14.6,
+   "yield_DEC": 14.6
+  },
+  "2023": {
+   "area_AUG": -61.9,
+   "area_SEP": -52.5,
+   "area_OCT": -52.5,
+   "area_NOV": -52.5,
+   "area_DEC": -52.5,
+   "yield_AUG": 17.8,
+   "yield_SEP": 8.4,
+   "yield_OCT": 18.4,
+   "yield_NOV": 23.8,
+   "yield_DEC": 38.9
+  },
+  "2024": {
+   "area_AUG": -23.0,
+   "area_SEP": -23.0,
+   "area_OCT": -23.0,
+   "area_NOV": -23.0,
+   "area_DEC": -23.0,
+   "yield_AUG": 11.9,
+   "yield_SEP": 21.3,
+   "yield_OCT": 14.1,
+   "yield_NOV": 18.9,
+   "yield_DEC": 26.3
+  },
+  "2025": {
+   "area_AUG": 10.5,
+   "area_SEP": 10.5,
+   "area_NOV": 10.5,
+   "area_DEC": 10.5,
+   "yield_AUG": -8.0,
+   "yield_SEP": -9.8,
+   "yield_NOV": -11.8,
+   "yield_DEC": -6.0
+  }
+ }
+}

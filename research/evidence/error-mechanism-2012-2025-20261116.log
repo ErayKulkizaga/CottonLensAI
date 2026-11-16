@@ -1,0 +1,15 @@
+AUG TX            n  14 | |err| total  15.6 area  15.1 yield   9.6 | var share area +0.81 yield +0.19 | corr(r, area) +nan corr(r, yield) +nan corr(r, total) +nan | resid 0.14
+AUG US            n  14 | |err| total   7.4 area   7.4 yield   5.9 | var share area +0.72 yield +0.28 | corr(r, area) +nan corr(r, yield) +nan corr(r, total) +nan | resid 0.08
+AUG states_pooled n 238 | |err| total  17.3 area   9.6 yield  12.5 | var share area +0.46 yield +0.54 | corr(r, area) +nan corr(r, yield) +nan corr(r, total) +nan | resid 0.14
+SEP TX            n  14 | |err| total  11.8 area  14.9 yield  10.6 | var share area +0.72 yield +0.28 | corr(r, area) +0.44 corr(r, yield) -0.24 corr(r, total) +0.26 | resid 0.11
+SEP US            n  14 | |err| total   5.2 area   7.3 yield   6.3 | var share area +0.42 yield +0.58 | corr(r, area) +0.56 corr(r, yield) -0.23 corr(r, total) +0.36 | resid 0.09
+SEP states_pooled n 238 | |err| total  13.0 area   4.7 yield  11.5 | var share area +0.32 yield +0.68 | corr(r, area) +0.04 corr(r, yield) -0.14 corr(r, total) -0.09 | resid 0.13
+OCT TX            n  12 | |err| total  13.0 area  15.8 yield  10.5 | var share area +0.76 yield +0.24 | corr(r, area) +0.04 corr(r, yield) +0.04 corr(r, total) +0.07 | resid 0.14
+OCT US            n  12 | |err| total   5.0 area   7.6 yield   7.3 | var share area +0.25 yield +0.75 | corr(r, area) -0.11 corr(r, yield) -0.04 corr(r, total) -0.16 | resid 0.07
+OCT states_pooled n 204 | |err| total  11.8 area   4.8 yield  10.7 | var share area +0.31 yield +0.69 | corr(r, area) +0.19 corr(r, yield) -0.19 corr(r, total) -0.05 | resid 0.15
+NOV TX            n  14 | |err| total   9.3 area  14.7 yield  10.9 | var share area +0.94 yield +0.06 | corr(r, area) +0.65 corr(r, yield) -0.29 corr(r, total) +0.59 | resid 0.14
+NOV US            n  14 | |err| total   3.9 area   7.1 yield   6.8 | var share area +0.41 yield +0.60 | corr(r, area) +0.16 corr(r, yield) -0.15 corr(r, total) +0.01 | resid 0.12
+NOV states_pooled n 238 | |err| total   9.8 area   4.6 yield   9.3 | var share area +0.33 yield +0.67 | corr(r, area) +0.10 corr(r, yield) -0.04 corr(r, total) +0.03 | resid 0.14
+DEC TX            n  14 | |err| total   5.7 area  14.7 yield  12.3 | var share area +1.57 yield -0.57 | corr(r, area) +0.61 corr(r, yield) -0.47 corr(r, total) +0.58 | resid 0.13
+DEC US            n  14 | |err| total   2.8 area   7.1 yield   6.6 | var share area +0.35 yield +0.65 | corr(r, area) +0.41 corr(r, yield) -0.12 corr(r, total) +0.59 | resid 0.08
+DEC states_pooled n 238 | |err| total   7.8 area   4.6 yield   8.1 | var share area +0.34 yield +0.66 | corr(r, area) +0.17 corr(r, yield) -0.25 corr(r, total) -0.12 | resid 0.13
