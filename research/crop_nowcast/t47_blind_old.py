@@ -57,6 +57,82 @@ def cmd_parse(raw_dir, root):
     print('state rows', len(rows['state']), 'us rows', len(rows['us']))
 
 
+ABBR = ('AL AZ AR CA FL GA KS LA MS MO NM NC OK SC TN TX VA US').split()
+
+
+def _num(tok):
+    """OCR number: '1.234.5' -> 1234.5 (all but the last '.' are thousands separators)."""
+    tok = tok.replace(',', '.')
+    if tok.count('.') > 1:
+        head, tail = tok.rsplit('.', 1)
+        tok = head.replace('.', '') + '.' + tail
+    return float(tok)
+
+
+def ocr_rows(text):
+    """Upland block of an OCR'd cotton table -> {state: (area_cur, yield_cur, prod_cur)} for rows that pass the
+    area x yield check (amendment 2): |prod_cur x 480 / (area_cur x yield_cur) - 1| < 3%, same for the previous year."""
+    import re
+    out = {}
+    lines = text.splitlines()
+    try:
+        i = next(k for k, ln in enumerate(lines) if re.match(r'^\s*Upland\b', ln))
+    except StopIteration:
+        return out
+    for ln in lines[i + 1:]:
+        if re.match(r'^\s*(Am|All|Pima)', ln):
+            break
+        m = re.match(r'^\s*(U\.?\s?S\.?|[A-Z]{2})\b(.*)$', ln)
+        if not m:
+            continue
+        st = 'US' if m.group(1).replace('.', '').replace(' ', '') == 'US' else m.group(1)
+        if st not in ABBR or st in out:
+            continue
+        toks = re.findall(r'\d[\d.,]*\d|\d', re.sub(r'\b\d/', ' ', m.group(2)))
+        try:
+            n = [_num(t) for t in toks]
+        except ValueError:
+            continue
+        if len(n) < 6:
+            continue
+        ap, ac, yp, yc, pp, pc = n[0], n[1], n[2], n[-3], n[-2], n[-1]
+        ok = lambda a, y, p: a > 0 and y > 0 and abs(p * 480 / (a * y) - 1) < 0.03
+        if ok(ac, yc, pc) and ok(ap, yp, pp):
+            out[st] = (ac, yc, pc)
+    return out
+
+
+def cmd_parse_ocr(ocr_dir, root):
+    """OCR text -> forecasts json. Report gate (amendment 2): TX and US rows pass, accepted states >= 90% of US."""
+    import datetime as dt
+    import re
+    MONTHS = {8: 'AUG', 9: 'SEP', 10: 'OCT', 11: 'NOV', 12: 'DEC'}
+    rows, gate = {'state': [], 'us': []}, {'pass': [], 'fail': []}
+    for p in sorted(Path(ocr_dir).glob('CropProd-*.txt')):
+        mm, dd, yy = re.match(r'CropProd-(\d\d)-(\d\d)-(\d{4})', p.name).groups()
+        rel = dt.date(int(yy), int(mm), int(dd))
+        o = ocr_rows(p.read_text(encoding='utf-8'))
+        st = {k: v for k, v in o.items() if k != 'US'}
+        key = f'{rel.year} {MONTHS[rel.month]}'
+        good = 'TX' in st and 'US' in o and sum(v[2] for v in st.values()) >= 0.9 * o['US'][2] \
+            and sum(v[2] for v in st.values()) <= 1.02 * o['US'][2]
+        gate['pass' if good else 'fail'].append(key)
+        print(p.name, 'rows', len(o), 'TX' in o, 'US' in o, 'PASS' if good else 'FAIL')
+        if not good:
+            continue
+        for s, v in o.items():
+            rec = {'year': str(rel.year), 'reference_period_desc': f'YEAR - {MONTHS[rel.month]} FORECAST',
+                   'Value': f'{round(v[2] * 1000):,}', 'prodn_practice_desc': 'ALL PRODUCTION PRACTICES',
+                   'release': str(rel), 'state_alpha': s, 'source': p.name + ' (OCR)'}
+            rows['us' if s == 'US' else 'state'].append(rec)
+    out = Path(root) / 'forecasts'
+    out.mkdir(parents=True, exist_ok=True)
+    for k, r in rows.items():
+        (out / f'{k}_forecasts.json').write_text(json.dumps({'data': r}), encoding='utf-8')
+    (Path(root) / 'gate.json').write_text(json.dumps(gate, indent=1), encoding='utf-8')
+    print('reports passing', len(gate['pass']), '| failing', gate['fail'])
+
+
 def cmd_finals(root, first, last):
     import hashlib
     import time
@@ -169,4 +245,4 @@ def cmd_score(root, full_dir, out_json):
 
 if __name__ == '__main__':
     cmd, *a = sys.argv[1:]
-    {'parse': cmd_parse, 'finals': cmd_finals, 'gate': cmd_gate, 'score': cmd_score}[cmd](*a)
+    {'parse': cmd_parse, 'parse_ocr': cmd_parse_ocr, 'finals': cmd_finals, 'gate': cmd_gate, 'score': cmd_score}[cmd](*a)

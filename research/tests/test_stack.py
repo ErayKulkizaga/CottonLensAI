@@ -99,3 +99,13 @@ def test_t47_clean_1990s_layouts():
          'US      : 10.0 11.0 800 810 20.0 21.0 22.0\nAll     :\n')
     _, o = parse(clean(t))
     assert o == {'FL': 170_000, 'TX': 4_200_000, 'US': 4_370_000}
+
+
+def test_t47_ocr_rows_area_times_yield_check():
+    from research.crop_nowcast.t47_blind_old import ocr_rows
+
+    t = ('Upland :\n TX  : 5,000.0  4,800.0  480  470  475  5,000.0  4,750.0\n'
+         ' AL  :   400.0    410.0  600  610  12,345.6  999.9\n'          # fails the check -> dropped
+         ' U.S. : 10.000.0 10,100.0  500  505  10,416.7 10,625.5\nAmer-Pima :\n TX : 1 2 3 4 5 6\n')
+    o = ocr_rows(t)
+    assert set(o) == {'TX', 'US'} and o['TX'] == (4800.0, 475.0, 4750.0) and o['US'][0] == 10100.0
