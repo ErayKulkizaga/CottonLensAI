@@ -417,3 +417,28 @@ Frozen preregistration: `docs/LINK1_EVENT_STUDY_PREREG_20261115.md` (LF sha256 1
 - **TX: T25 and T36 beat USDA in 3 of 3 sealed years.** This was not the declared claim; it is a hypothesis for a new forward test.
 - Details: `docs/SEALED_TEST_T39_PREREG_20261115.md`; evidence `t39-sealed-test-20261116.json`.
 - The seal is now spent for production finals 2022–2024. Prices and returns stay sealed.
+
+### T40 (PRE-DECLARED 16 Nov, before running): state-specific, shrunk USDA bias correction (options A + C)
+
+Motivation (T39): one pooled bias for all states hurt the US total when USDA's bias reversed. Texas's bias persisted.
+
+- **Model.** For state s and year Y, from USDA month-m errors e = log(final / USDA_m) over years 2008…Y−1 of that state:
+  - b_s = m_s · τ² / (τ² + σ² / n_s), an empirical-Bayes shrinkage toward **zero** (no pooled bias);
+  - m_s = the state's past mean error and n_s its number of past years;
+  - σ² = the mean within-state variance;
+  - τ² = max(mean(m_s²) − mean(σ² / n_s), 0).
+  - Corrected = USDA_m × exp(b_s).
+  - US = USDA_US × Σ corrected / Σ USDA (the same as T25).
+  - No tuned constants: shrinkage comes from the data in each fold.
+- **Development years: 2013–2024** (12 years; 2022–2024 were opened by T39 and are now development data).
+  - Cutoffs Aug, Sep, Oct, Nov, Dec, each against USDA's same-month forecast.
+  - T25 is reported on the same rows.
+- **Dev pass rule at 1 Sep and 1 Oct.** All of the following must hold:
+  - TX and US MAPE below USDA;
+  - TX and US MAPE below T25;
+  - production-weighted state error below both.
+- **Holdout: 2025, opened once, only if the dev rule passes.**
+  - **Primary 2025 cell: 1 Sep** (there is no USDA October 2025 forecast). It passes if TX and US absolute errors are below USDA September's.
+  - 1 Aug, 1 Nov and 1 Dec 2025 are reported as secondaries.
+  - One year is a single draw, so it is reported as evidence, not proof.
+- **Forward.** If the holdout is not failed, the same model is locked for the 2026 December report (USDA Dec 2026, published 10 Dec). It is scored when 2026 finals are published (May 2027).
