@@ -1,0 +1,134 @@
+{
+ "B_1985_1999": {
+  "excluded_zero_pairs": 250
+ },
+ "B_2000_2011": {
+  "excluded_zero_pairs": 309
+ },
+ "R_2012_2025": {
+  "excluded_zero_pairs": 294,
+  "us": {
+   "pairs": 38,
+   "hits": 17,
+   "hit_rate": 0.4473684210526316,
+   "season_block_p": 0.85005,
+   "binomial_p": 0.7911539045817335,
+   "seasons": 14
+  },
+  "tx_or_states": {
+   "pairs": 27,
+   "hits": 11,
+   "hit_rate": 0.4074074074074074,
+   "season_block_p": 0.84495,
+   "binomial_p": 0.8761057183146477,
+   "seasons": 12
+  },
+  "us_plus_tx": {
+   "pairs": 65,
+   "hits": 28,
+   "hit_rate": 0.4307692307692308,
+   "season_block_p": 0.8661,
+   "binomial_p": 0.8927304029959108,
+   "seasons": 14
+  }
+ },
+ "C_corn_2000_2025": {
+  "excluded_zero_pairs": 693,
+  "us": {
+   "pairs": 48,
+   "hits": 33,
+   "hit_rate": 0.6875,
+   "season_block_p": 0.0058,
+   "binomial_p": 0.006641640781122504,
+   "seasons": 24
+  },
+  "tx_or_states": {
+   "pairs": 859,
+   "hits": 490,
+   "hit_rate": 0.570430733410943,
+   "season_block_p": 0.0012,
+   "binomial_p": 2.0599292616616946e-05,
+   "seasons": 24
+  },
+  "us_plus_tx": null
+ },
+ "C_soy_2000_2025": {
+  "excluded_zero_pairs": 599,
+  "us": {
+   "pairs": 48,
+   "hits": 32,
+   "hit_rate": 0.6666666666666666,
+   "season_block_p": 0.0286,
+   "binomial_p": 0.01465247336026465,
+   "seasons": 24
+  },
+  "tx_or_states": {
+   "pairs": 793,
+   "hits": 455,
+   "hit_rate": 0.5737704918032787,
+   "season_block_p": 0.0009,
+   "binomial_p": 1.8436547849041717e-05,
+   "seasons": 24
+  },
+  "us_plus_tx": null
+ },
+ "PRIMARY_B_us_tx": {
+  "pairs": 93,
+  "hits": 62,
+  "hit_rate": 0.6666666666666666,
+  "season_block_p": 0.01205,
+  "binomial_p": 0.0008563822112001194,
+  "seasons": 22
+ },
+ "PRIMARY_pass": true,
+ "B_us": {
+  "pairs": 60,
+  "hits": 36,
+  "hit_rate": 0.6,
+  "season_block_p": 0.1063,
+  "binomial_p": 0.0775009520016303,
+  "seasons": 22
+ },
+ "B_tx": {
+  "pairs": 33,
+  "hits": 26,
+  "hit_rate": 0.7878787878787878,
+  "season_block_p": 0.0032,
+  "binomial_p": 0.0006593635771423578,
+  "seasons": 16
+ },
+ "B_states_pooled": {
+  "pairs": 413,
+  "hits": 298,
+  "hit_rate": 0.7215496368038741,
+  "season_block_p": 0.0,
+  "binomial_p": 4.12326667279375e-20,
+  "seasons": 22
+ },
+ "B_by_month_us_tx": {
+  "SEP": {
+   "pairs": 29,
+   "hits": 20,
+   "hit_rate": 0.6896551724137931,
+   "season_block_p": 0.05715,
+   "binomial_p": 0.03071417286992073,
+   "seasons": 19
+  },
+  "OCT": {
+   "pairs": 31,
+   "hits": 22,
+   "hit_rate": 0.7096774193548387,
+   "season_block_p": 0.0293,
+   "binomial_p": 0.014724686741828918,
+   "seasons": 20
+  },
+  "NOV": {
+   "pairs": 33,
+   "hits": 20,
+   "hit_rate": 0.6060606060606061,
+   "season_block_p": 0.1779,
+   "binomial_p": 0.1481031842995435,
+   "seasons": 21
+  }
+ }
+}
