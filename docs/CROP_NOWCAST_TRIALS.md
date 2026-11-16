@@ -453,9 +453,11 @@ Motivation (T39): one pooled bias for all states hurt the US total when USDA's b
 | 1 Nov | 10.1 / 4.2 | 8.9 / 4.5 | 10.1 / 4.4 | 7.5 / 7.2 / 7.2 |
 | 1 Dec | 6.4 / 3.1 | 5.1 / 3.2 | 5.7 / 3.0 | 5.4 / 4.9 / 4.9 |
 
-- **Why it fails.** Empirical-Bayes shrinkage toward zero leaves almost nothing.
-  - TX's own bias shrinks to −0.02 to −0.05 (log), because its year-to-year error variance (2023: +40%) swamps a 6–16-year state mean.
-  - Per-state bias is not estimable with this much noise.
+- **Why it fails (corrected after review).** USDA's monthly forecasts in our NASS pull start in **2012**, so each state has only 1–12 past years.
+  - In the earliest folds (1 Sep 2013, 1 Oct 2013 and 2014) n_s = 1, the within-state variance is undefined, and the model applies the **unshrunk** single-year mean.
+  - Example: TX at 1 Oct 2014 was moved by about −18% when USDA was off by +1.2%.
+  - In later folds the shrinkage drives TX's bias to −0.00 to −0.05 (log), because TX's year-to-year error (2023: +40%) swamps a short state mean.
+  - The verdict stands. Rescoring without the thin folds would be a post-hoc diagnostic, not a result.
 - **Side finding on 12 dev years** (2022–2024 now opened): pooled T25 still beats USDA at 1 Sep (TX 11.4 vs 13.5, US 4.4 vs 5.8) and at 1 Oct (11.3 vs 13.5, 5.2 vs 5.6).
   - Its production-weighted state error at 1 Oct is slightly worse (10.1 vs 9.9).
   - This is not a new claim: T25 was chosen on 2013–2021 and the T39 rule judged T36, not T25.

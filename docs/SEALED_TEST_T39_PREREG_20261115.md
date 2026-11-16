@@ -91,3 +91,8 @@ Secondaries (reported, not claimed):
 - **T38 ginning vs USDA November:** TX 12.1 vs 15.0; US 5.1 vs 4.4.
 
 **Reading.** The US-level claim fails out of sample. What survives is a narrower, consistent pattern: the past-mean correction of USDA's *Texas* forecast beat USDA in all 3 sealed years and in most dev years. It is a single-state, persistence-based effect and was not the pre-declared claim, so it stands only as a hypothesis for a new forward test.
+
+**Disclosure (16 Nov, after review): 1 Aug secondary timing.**
+- The 1 Aug sealed row used the FSA August files dated 22 Aug 2022, 9 Aug 2023 and 9 Aug 2024. All are after the 1 Aug cutoff; 2022's is also after USDA's 12 Aug report. Dev used files dated about 1–2 Aug.
+- Posting dates were not checked. The 1 Aug sealed row (US 6.2 vs 11.4) must not be read as a lead.
+- The 1 Oct primary is unaffected: every August file predates 1 Oct.
