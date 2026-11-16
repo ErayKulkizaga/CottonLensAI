@@ -42,3 +42,20 @@ Sources: [JARE 2012 PDF](https://ageconsearch.umn.edu/record/122314/files/Isengi
 
 ## How to say it in one sentence
 "I independently re-tested the published finding that USDA smooths its cotton forecasts, using a leakage-controlled, preregistered protocol with blind seasons. The edge is real in the 2002–2025 record but small, shrinking, not significant after multiple-comparison correction, and absent in corn and soybeans. That is exactly what the published instability result predicts."
+
+## M0 · Targeted search on harvested area and abandonment (16 Nov 2026)
+Searched: USDA cotton harvested-area forecast accuracy, abandonment, and NASS/FSA methodology.
+- **No published accuracy study of USDA's in-season cotton harvested-area forecast** turned up (searches on AgEcon Search, farmdoc, USDA ERS, Texas A&M). This needs a second check (Google Scholar, JARE/AJAE/JAAE indices) before any novelty claim.
+- **How USDA builds harvested area** (USDA [NASS and FSA acreage note, 2019](https://usda.gov/sites/default/files/documents/NASSandFSAacreage_08222019.pdf); NASS [data-user Q&A 2024](https://nass.usda.gov/Education_and_Outreach/Meeting/2024/2024-Fall-Data-Users-qa.pdf)):
+  - NASS uses FSA failed acres as a **minimum** for abandoned acres;
+  - cotton acreage is reviewed with FSA certified data from September;
+  - the June Acreage report gives no harvested area for cotton, so analysts benchmark harvested area for the July WASDE from plantings.
+
+  This supports the "anchored" part of H-core. It is also the main alternative explanation (M2a): the final harvested area depends on administrative failed-acre records that arrive late.
+- **Closest prior work:**
+  - Texas A&M AFPC, ["Examining August FSA data to forecast final cotton acreage"](https://sat-wp.afpc.tamu.edu/2025/08/06/examining-august-fsa-data-to-forecast-final-cotton-acreage/) (2025), uses in-season FSA data to forecast final acreage. Our T29/T41 used FSA data the same way and found that some FSA files were saved after USDA's report, so timing must be proven.
+  - A meta-analysis of USDA forecasts ([arXiv 1801.06575](https://arxiv.org/pdf/1801.06575)) reports that correcting for correlated revisions does not improve USDA cotton forecasts. This matches our robustness result.
+- **Industry context:**
+  - USDA's own outlook: Texas abandonment averaged about 50% over five years, with about 73% in 2022–2024 and 24% in 2025 ([USDA Outlook Forum 2026](https://www.usda.gov/sites/default/files/documents/2026AOF-cotton-outlook.pdf)).
+  - Mid-season harvested-area cuts are large ([Pro Farmer](https://www.profarmer.com/news/agriculture-news/quarterly-cotton-update)).
+- **Implication for B:** the contribution must be **a measured, point-in-time link between public drought information at each cutoff and USDA's later area revisions**, tested out of sample and in another crop. Using FSA data to forecast acreage is already done elsewhere.
