@@ -63,3 +63,19 @@ def test_cp_parse_takes_production_not_yield():
     assert o == {'MS': 2_160_000, 'US': 21_500_000}
     _, o = parse(new)
     assert o == {'MS': 800_000, 'US': 18_000_000}
+
+
+def test_t46_parse_corn_skips_toc_and_reads_production():
+    from research.crop_nowcast.t46_crops import CROPS, parse_table
+
+    old = ('Released September 12, 2000, by NASS\nContents: Corn for Grain:  Area Harvested, Yield, and Production ... 4\n'
+           '         Corn for Grain:  Area Harvested, Yield, and Production by State\n'
+           '  State :         :\n        :\nIA      :  12,000   12,100   140.0  145.0  150.0  1,700,000  1,815,000\n'
+           'US      :  72,000   73,000   136.0  138.0  139.0  9,900,000  10,400,000\n')
+    new = ('Released October 12, 2010, by NASS\nSoybeans for Beans Area Harvested, Yield, and Production - States and United States: 2009\n'
+           '      State      :         :\nNorth Dakota ....:  4,000   4,100   30.0   32.0   33.5   120,000   137,350\n'
+           'United States ...:  76,000  77,000  44.0  44.7  44.4  3,359,000  3,408,000\n')
+    rel, o = parse_table(old, CROPS['corn']['title'])
+    assert rel.month == 9 and o == {'IA': 1_815_000_000, 'US': 10_400_000_000}
+    _, o = parse_table(new, CROPS['soy']['title'])
+    assert o == {'ND': 137_350_000, 'US': 3_408_000_000}
