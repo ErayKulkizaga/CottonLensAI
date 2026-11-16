@@ -1,0 +1,316 @@
+{
+ "cells": {
+  "SEP_TX": {
+   "n": 23,
+   "mean_gain_pts": 0.9608695652173911,
+   "perm_p": 0.13615,
+   "boot_ci95": [
+    -0.4478260869565216,
+    2.6434782608695655
+   ],
+   "loo_most_influential_season": 2005,
+   "loo_mean_without_it": 0.4045454545454545,
+   "loo_min_mean": 0.4045454545454545,
+   "loo_sign_flips": 0,
+   "holm_p": 0.5062,
+   "bh_q": 0.16811428571428572
+  },
+  "SEP_US": {
+   "n": 23,
+   "mean_gain_pts": 0.3391304347826086,
+   "perm_p": 0.1471,
+   "boot_ci95": [
+    -0.11739130434782619,
+    0.9130434782608693
+   ],
+   "loo_most_influential_season": 2005,
+   "loo_mean_without_it": 0.14545454545454536,
+   "loo_min_mean": 0.14545454545454536,
+   "loo_sign_flips": 0,
+   "holm_p": 0.5062,
+   "bh_q": 0.16811428571428572
+  },
+  "OCT_TX": {
+   "n": 22,
+   "mean_gain_pts": 0.8090909090909087,
+   "perm_p": 0.07955,
+   "boot_ci95": [
+    -0.17727272727272753,
+    1.8592045454545438
+   ],
+   "loo_most_influential_season": 2007,
+   "loo_mean_without_it": 0.5857142857142855,
+   "loo_min_mean": 0.5857142857142855,
+   "loo_sign_flips": 0,
+   "holm_p": 0.39775,
+   "bh_q": 0.1591
+  },
+  "OCT_US": {
+   "n": 22,
+   "mean_gain_pts": 0.6090909090909091,
+   "perm_p": 0.0225,
+   "boot_ci95": [
+    0.095340909090909,
+    1.1681818181818182
+   ],
+   "loo_most_influential_season": 2003,
+   "loo_mean_without_it": 0.45714285714285713,
+   "loo_min_mean": 0.45714285714285713,
+   "loo_sign_flips": 0,
+   "holm_p": 0.1588,
+   "bh_q": 0.09
+  },
+  "NOV_TX": {
+   "n": 24,
+   "mean_gain_pts": 0.5833333333333335,
+   "perm_p": 0.03415,
+   "boot_ci95": [
+    -0.01666666666666658,
+    1.1708333333333336
+   ],
+   "loo_most_influential_season": 2004,
+   "loo_mean_without_it": 0.739130434782609,
+   "loo_min_mean": 0.44347826086956527,
+   "loo_sign_flips": 0,
+   "holm_p": 0.2049,
+   "bh_q": 0.09106666666666667
+  },
+  "NOV_US": {
+   "n": 24,
+   "mean_gain_pts": 0.08750000000000006,
+   "perm_p": 0.37635,
+   "boot_ci95": [
+    -0.44166666666666665,
+    0.5791666666666667
+   ],
+   "loo_most_influential_season": 2003,
+   "loo_mean_without_it": 0.2521739130434783,
+   "loo_min_mean": -0.02173913043478257,
+   "loo_sign_flips": 1,
+   "holm_p": 0.5062,
+   "bh_q": 0.37635
+  },
+  "DEC_TX": {
+   "n": 24,
+   "mean_gain_pts": 0.27083333333333326,
+   "perm_p": 0.12655,
+   "boot_ci95": [
+    -0.12916666666666676,
+    0.7125
+   ],
+   "loo_most_influential_season": 2020,
+   "loo_mean_without_it": 0.15217391304347822,
+   "loo_min_mean": 0.15217391304347822,
+   "loo_sign_flips": 0,
+   "holm_p": 0.5062,
+   "bh_q": 0.16811428571428572
+  },
+  "DEC_US": {
+   "n": 24,
+   "mean_gain_pts": 0.1958333333333334,
+   "perm_p": 0.01985,
+   "boot_ci95": [
+    0.033333333333333395,
+    0.3666666666666667
+   ],
+   "loo_most_influential_season": 2020,
+   "loo_mean_without_it": 0.15217391304347833,
+   "loo_min_mean": 0.15217391304347833,
+   "loo_sign_flips": 0,
+   "holm_p": 0.1588,
+   "bh_q": 0.09
+  }
+ },
+ "pooled": {
+  "mean_gain_pts": 0.47526881720430103,
+  "year_block_p": 0.0152
+ },
+ "coef_path": {
+  "SEP": {
+   "2002": 0.03201,
+   "2003": 0.07026,
+   "2004": 0.05978,
+   "2005": 0.05141,
+   "2006": 0.04634,
+   "2007": 0.02201,
+   "2008": 0.00615,
+   "2009": 0.01323,
+   "2010": 0.00265,
+   "2011": 0.00265,
+   "2012": 0.00093,
+   "2013": -8e-05,
+   "2014": -0.00837,
+   "2015": -0.01193,
+   "2016": -0.01609,
+   "2017": -0.01161,
+   "2018": -0.01247,
+   "2019": -0.01473,
+   "2020": -0.01291,
+   "2021": -0.00844,
+   "2022": -0.00727,
+   "2023": -0.01348,
+   "2024": -0.01344,
+   "2025": -0.01217
+  },
+  "OCT": {
+   "2002": 0.04144,
+   "2003": 0.08031,
+   "2004": 0.0726,
+   "2005": 0.06648,
+   "2006": 0.0657,
+   "2007": 0.06323,
+   "2008": 0.05409,
+   "2009": 0.04838,
+   "2010": 0.04929,
+   "2011": 0.04225,
+   "2012": 0.03824,
+   "2013": 0.03701,
+   "2014": 0.03701,
+   "2015": 0.03566,
+   "2016": 0.03833,
+   "2017": 0.03175,
+   "2018": 0.03045,
+   "2019": 0.02905,
+   "2020": 0.02611,
+   "2021": 0.0278,
+   "2022": 0.02787,
+   "2023": 0.02535,
+   "2024": 0.02211,
+   "2025": 0.01866
+  },
+  "NOV": {
+   "2002": 0.01508,
+   "2003": 0.05488,
+   "2004": 0.0414,
+   "2005": 0.0413,
+   "2006": 0.03795,
+   "2007": 0.0353,
+   "2008": 0.03048,
+   "2009": 0.02662,
+   "2010": 0.02503,
+   "2011": 0.02492,
+   "2012": 0.02496,
+   "2013": 0.02576,
+   "2014": 0.02305,
+   "2015": 0.02033,
+   "2016": 0.0287,
+   "2017": 0.03267,
+   "2018": 0.03125,
+   "2019": 0.03063,
+   "2020": 0.0285,
+   "2021": 0.02649,
+   "2022": 0.02612,
+   "2023": 0.02358,
+   "2024": 0.01856,
+   "2025": 0.01693
+  },
+  "DEC": {
+   "2002": 0.01676,
+   "2003": 0.02611,
+   "2004": 0.0204,
+   "2005": 0.01851,
+   "2006": 0.02021,
+   "2007": 0.01978,
+   "2008": 0.01905,
+   "2009": 0.01541,
+   "2010": 0.01106,
+   "2011": 0.01002,
+   "2012": 0.00831,
+   "2013": 0.01344,
+   "2014": 0.01291,
+   "2015": 0.0099,
+   "2016": 0.01022,
+   "2017": 0.01145,
+   "2018": 0.01174,
+   "2019": 0.01205,
+   "2020": 0.01095,
+   "2021": 0.01421,
+   "2022": 0.01222,
+   "2023": 0.01099,
+   "2024": 0.004,
+   "2025": 0.00265
+  }
+ },
+ "published_style_comparison": {
+  "SEP_TX": {
+   "momentum_rule": 11.943478260869565,
+   "usda": 12.904347826086955,
+   "published_style_10y": 13.588580943225832,
+   "published_style_10y_usda_same_years": 13.851088516039741,
+   "published_style_10y_years": 20,
+   "published_style_expanding": 12.506857181011458,
+   "published_style_expanding_usda_same_years": 13.851088516039741,
+   "published_style_expanding_years": 20
+  },
+  "SEP_US": {
+   "momentum_rule": 5.986956521739131,
+   "usda": 6.326086956521739,
+   "published_style_10y": 6.4302858178885725,
+   "published_style_10y_usda_same_years": 6.086641917685015,
+   "published_style_10y_years": 20,
+   "published_style_expanding": 6.763482717296744,
+   "published_style_expanding_usda_same_years": 6.086641917685015,
+   "published_style_expanding_years": 20
+  },
+  "OCT_TX": {
+   "momentum_rule": 11.272727272727273,
+   "usda": 12.081818181818182,
+   "published_style_10y": 13.080217492173112,
+   "published_style_10y_usda_same_years": 13.2455316042945,
+   "published_style_10y_years": 19,
+   "published_style_expanding": 12.191150664424027,
+   "published_style_expanding_usda_same_years": 13.2455316042945,
+   "published_style_expanding_years": 19
+  },
+  "OCT_US": {
+   "momentum_rule": 4.872727272727271,
+   "usda": 5.4818181818181815,
+   "published_style_10y": 5.152642838520113,
+   "published_style_10y_usda_same_years": 5.457281297709992,
+   "published_style_10y_years": 19,
+   "published_style_expanding": 5.196994814147676,
+   "published_style_expanding_usda_same_years": 5.457281297709992,
+   "published_style_expanding_years": 19
+  },
+  "NOV_TX": {
+   "momentum_rule": 7.458333333333333,
+   "usda": 8.041666666666666,
+   "published_style_10y": 6.923691250332049,
+   "published_style_10y_usda_same_years": 8.974525526266635,
+   "published_style_10y_years": 21,
+   "published_style_expanding": 6.479749210868296,
+   "published_style_expanding_usda_same_years": 8.974525526266635,
+   "published_style_expanding_years": 21
+  },
+  "NOV_US": {
+   "momentum_rule": 3.4625,
+   "usda": 3.5500000000000003,
+   "published_style_10y": 3.4086276394671775,
+   "published_style_10y_usda_same_years": 3.726036053647504,
+   "published_style_10y_years": 21,
+   "published_style_expanding": 3.4859710185894115,
+   "published_style_expanding_usda_same_years": 3.726036053647504,
+   "published_style_expanding_years": 21
+  },
+  "DEC_TX": {
+   "momentum_rule": 4.983333333333333,
+   "usda": 5.254166666666666,
+   "published_style_10y": 5.2458781640556325,
+   "published_style_10y_usda_same_years": 5.750173190521708,
+   "published_style_10y_years": 21,
+   "published_style_expanding": 5.200669883999991,
+   "published_style_expanding_usda_same_years": 5.750173190521708,
+   "published_style_expanding_years": 21
+  },
+  "DEC_US": {
+   "momentum_rule": 2.2916666666666665,
+   "usda": 2.4875,
+   "published_style_10y": 2.4191255994817524,
+   "published_style_10y_usda_same_years": 2.696057222409973,
+   "published_style_10y_years": 21,
+   "published_style_expanding": 2.387525846237704,
+   "published_style_expanding_usda_same_years": 2.696057222409973,
+   "published_style_expanding_years": 21
+  }
+ }
+}
