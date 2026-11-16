@@ -537,3 +537,16 @@ On 16 Nov the user approved opening 2025 ("Evet, 2025'i aç"). 2025 values were 
 **Pass rule (test years, 1 Sep and 1 Oct each).** TX MAPE below USDA's and below T25's, and better than USDA in more years than worse.
 
 **Scope.** Texas only. A US effect enters only through TX's share of production and is reported, not claimed.
+
+**T43 dev scoring (16 Nov, recorded while the 2022–2025 Landsat extraction runs; the test part is still pending).**
+
+On dev 2013–2021, TX MAPE was worse than USDA and T25 at every cutoff:
+
+| Cutoff | T43 | T25 | USDA | vs USDA, better / worse years |
+|---|---|---|---|---|
+| 1 Aug | 18.1 | 15.6 | 14.8 | 2 / 7 |
+| 1 Sep | 12.1 | 9.5 | 11.2 | 3 / 5 |
+| 1 Oct | 13.2 | 10.4 | 11.0 | 1 / 6 |
+
+- The failed-field share tracks abandonment, but a TX-only regression of production error on it, fitted on 5–11 past years, does not improve USDA.
+- The pre-declared test (2022–2025) will still be run once and reported as is.

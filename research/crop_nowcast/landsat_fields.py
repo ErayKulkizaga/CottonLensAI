@@ -76,6 +76,11 @@ def main(panel_json, out_dir, first=DEFAULT_YEARS[0], last=DEFAULT_YEARS[1]):
         raise SystemExit('Sealed years need --unseal after preregistration')
     import pandas as pd
     import planetary_computer as pc
+
+    try:
+        from research.crop_nowcast.cdl_source import cdl_hrefs
+    except ImportError:  # Kaggle/Colab: shipped flat next to this script
+        from cdl_source import cdl_hrefs
     import pystac_client
     import rasterio
     import rasterio.errors
@@ -138,12 +143,10 @@ def main(panel_json, out_dir, first=DEFAULT_YEARS[0], last=DEFAULT_YEARS[1]):
         print(st, 'grid', H, W, 'county cells', len(px_all), flush=True)
 
         def cotton_points(cdl_year):
-            items = search_items(cat, collections=['usda-cdl'], bbox=[lon0, lat0, lon1, lat1],
-                                 datetime=f'{cdl_year}-01-01/{cdl_year}-12-31')
-            items = [i for i in items if i.properties.get('usda_cdl:type') == 'cropland']
+            hrefs = cdl_hrefs(lambda **kw: search_items(cat, **kw), [lon0, lat0, lon1, lat1], cdl_year, [f[:2] for f in fips])
             m = np.zeros(len(px_all), bool)
-            for it in items:
-                with ropen(it.assets['cropland'].href) as s:
+            for href in hrefs:
+                with ropen(href) as s:
                     tx_, ty_ = Transformer.from_crs('EPSG:5070', s.crs, always_xy=True).transform(px_all, py_all)
                     b = s.bounds
                     inside = (tx_ >= b.left) & (tx_ < b.right) & (ty_ > b.bottom) & (ty_ <= b.top)
