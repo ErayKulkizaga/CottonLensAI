@@ -184,3 +184,34 @@ def test_t51_rolling_predict_uses_only_past_seasons():
     a = predict(tr, 0.4, 'anchor')
     poisoned = pd.concat([tr, pd.DataFrame({'year': [2010], 'pvp': [0.4], 'e': [5.0]})])
     assert predict(poisoned[poisoned.year < 2010], 0.4, 'anchor') == a
+
+
+def test_monitor_log_chain_detects_tampering(tmp_path):
+    import json
+
+    from research.monitor.monitor import append, verify
+
+    log = tmp_path / 'log.jsonl'
+    append(log, {'report': '2026-09', 'outputs': {'x': 1}})
+    append(log, {'report': '2026-10', 'outputs': {'x': 2}})
+    assert verify(log) == (True, None)
+    lines = log.read_text(encoding='utf-8').splitlines()
+    rec = json.loads(lines[0])
+    rec['outputs']['x'] = 99  # edit an earlier forecast after the fact
+    log.write_text(json.dumps(rec, sort_keys=True) + '\n' + lines[1] + '\n', encoding='utf-8')
+    assert verify(log) == (False, 0)
+
+
+def test_monitor_parse_report_skips_contents_and_area_only_tables():
+    from research.monitor.monitor import parse_report
+
+    text = ('Released September 12, 2025, by NASS\n'
+            'Cotton Area Harvested, Yield, and Production by Type - States and United States ...... 20\n'
+            'Cotton Area Planted and Harvested by Type - States and United States\n'
+            'Upland           :\nTexas ...........:   6,000.0   3,600.0\nUnited States ...:   9,000.0   7,000.0\n'
+            'American Pima    :\n'
+            'Cotton Area Harvested, Yield, and Production by Type - States and United States: 2024 and Forecasted\n'
+            'Upland           :\nTexas ...........:   4,000.0   3,600.0    600    693    5,000.0   5,200.0\n'
+            'United States ...:   8,000.0   7,500.0    800    826   13,000.0  12,915.0\nAmerican Pima    :\n')
+    rel, rows = parse_report(text)
+    assert rel.month == 9 and rows['TX'] == (3600.0, 693.0, 5200.0) and rows['US'][2] == 12915.0
