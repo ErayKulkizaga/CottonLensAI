@@ -586,3 +586,19 @@ On dev 2013–2021, TX MAPE was worse than USDA and T25 at every cutoff:
 - Oct and Nov are secondary.
 
 **Disclosure.** Every 2014–2025 outcome has been seen in earlier trials, so this is a rolling backtest of a literature-motivated single spec, not a blind holdout. A pass makes it the candidate for a locked forward forecast of the 2026 crop, built from USDA Nov→Dec and scored when 2026 finals are published.
+
+**T44 result (16 Nov, run once): primary FAIL (Sep fails). The December cell passes on its own, narrowly.**
+
+| Cutoff | TX: momentum vs USDA (better / worse years) | US (better / worse) | Prod-wtd state | Rule |
+|---|---|---|---|---|
+| **1 Dec** | **5.5 vs 5.9** (6 / 4) | **3.0 vs 3.2** (6 / 4) | 5.39 vs 5.42 | passes |
+| **1 Sep** | 14.1 vs 13.4 (2 / 8) | 6.5 vs 6.2 (4 / 8) | 11.1 vs 10.5 | fails |
+| 1 Oct | 13.5 vs 13.5 (7 / 4) | 5.6 vs 5.6 (4 / 3) | 10.0 vs 9.9 | secondary |
+| 1 Nov | 9.4 vs 10.1 (6 / 4) | 4.6 vs 4.4 (3 / 7) | 7.4 vs 7.5 | secondary |
+
+- **December.** USDA's Nov→Dec revision continues in the same direction toward the final (smoothing).
+  - The gain is small (0.4 TX, 0.2 US points) and comes mostly from TX 2020 and 2023.
+  - 2014, a thin early fold, is worse.
+- **September.** The Aug→Sep revision does *not* carry forward; it tends to over-shoot.
+- **Status.** The pre-declared primary (Dec **and** Sep) failed. The December cell is a hypothesis with a rolling-backtest edge, not a validated result. It is the natural candidate for a forward test on the 2026 crop.
+- Evidence: `t44-momentum-20261116.json` / `.log`.
