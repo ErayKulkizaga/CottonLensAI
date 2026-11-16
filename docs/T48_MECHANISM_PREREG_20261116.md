@@ -18,3 +18,9 @@ Production error splits exactly into a harvested-area part and a yield part.
 - **H4:** in the US, the yield share of the error variance is > 0.5 in at least 2 of Oct, Nov, Dec.
 
 These are descriptive hypotheses with 17 seasons each and no p-value gates. They test whether the 2012–2025 pattern recurs in an earlier, separate period. Results go to `research/evidence/t48-mechanism-1995-2011-20261116.json` and are reported in full.
+
+## Amendment 1 (16 Nov 2026, before the finals were downloaded)
+- **First parse:** August rows failed the check, because August has no previous-month yield column. The parser now takes, as current yield, the yield column that satisfies the production = area × yield check (scanning from the right).
+- **Sep 2010:** this report spells its title "Yield, and, Production". It is normalised before parsing.
+- **Result:** 85 of 85 reports parsed, with TX and US rows in every report.
+- **Disclosure about T45:** the same typo means the T45 cotton parser (`cp_pull.py`) never read the Sep 2010 report. In T45 and in the 2002–2025 momentum record, Sep 2010 is missing, and the Oct 2010 revision was measured from August. T45 is a one-shot test and is not re-run; this is recorded in `docs/CROP_NOWCAST_TRIALS.md`.

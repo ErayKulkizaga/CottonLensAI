@@ -47,9 +47,13 @@ def rows(text):
         n = [float(x.replace(',', '')) for x in m.group(2).split() if re.fullmatch(r'\d{1,3}(?:,\d{3})*(?:\.\d+)?', x)]
         if not st or len(n) < 6:
             continue
-        a, y, p = n[1], n[-3], n[-1]
-        if a > 0 and y > 0 and abs(p * 480 / (a * y) - 1) < 0.03:
-            out[st] = (a, y, p)
+        a, p = n[1], n[-1]
+        # current yield = the yield column that satisfies the check (Aug has no previous-month yield column);
+        # scan from the right so a later month's yield wins over the previous year's
+        for y in reversed(n[2:-2]):
+            if a > 0 and y > 0 and abs(p * 480 / (a * y) - 1) < 0.03:
+                out[st] = (a, y, p)
+                break
     return rel, out
 
 
@@ -57,7 +61,7 @@ def cmd_parse(root):
     recs, seen = [], set()
     for d in RAW:
         for p in sorted(d.glob('CropProd-*.txt')):
-            res = rows(clean(p.read_bytes().decode('latin-1')))
+            res = rows(clean(p.read_bytes().decode('latin-1')).replace('Yield, and, Production', 'Yield, and Production'))
             if not res or res[0].month not in MON or not 1995 <= res[0].year <= 2011:
                 continue
             rel, o = res

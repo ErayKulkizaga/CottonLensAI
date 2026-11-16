@@ -690,3 +690,6 @@ One-sided sign-flip permutation on |USDA error| − |rule error| per season (20,
 - **Pooled six cells:** mean gain +0.03 points, year-block p = 0.28. **SECONDARY FAIL.**
 - **Reading.** Outside cotton the rule adds nothing: USDA's corn and soybean forecasts are already within 1–3.6% and their revisions carry no usable momentum for this rule. The cotton effect is therefore cotton-specific (large Texas abandonment, a late harvest) or partly luck; it is not a general property of USDA forecasts. This is the result that most limits the cotton claim.
 - Evidence: `t46-corn-soy-20261116.json` / `.log`; invalid runs kept as `t46-corn-soy-20261116-invalid.*` and `-run2-fused-2004.log`.
+
+### Defect found 16 Nov in T45 data (recorded, not re-run)
+The Sep 2010 Crop Production report titles its cotton table "Yield, and, Production", so `cp_pull.py` skipped it. T45 and the 2002–2025 momentum record therefore lack Sep 2010 (one Sep season fewer, n = 23), and the Oct 2010 revision was taken from August. Found while parsing for T48; T45 stays as run.
