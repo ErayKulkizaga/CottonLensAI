@@ -490,3 +490,16 @@ On 16 Nov the user approved opening 2025 ("Evet, 2025'i aç"). 2025 values were 
   - **Pass:** TX absolute error below USDA September 2025's, **and** US absolute error below USDA September 2025's.
 - **Secondaries (reported, not claimed):** 1 Aug, 1 Nov and 1 Dec 2025 (Nov/Dec against USDA's same month), plus the production-weighted state error.
 - **Limits.** One year is one draw: a pass is evidence, a loss is informative. 2025 is the last unopened year, and this is its only use for T25.
+
+**T42 result (16 Nov, run once): FAIL.**
+
+| 2025 cell | T25 TX | USDA TX | T25 US | USDA US | Prod-wtd state, T25 / USDA |
+|---|---|---|---|---|---|
+| **1 Sep (primary)** | −5.3% | **−0.6%** | −8.8% | **−4.3%** | 12.2 / 9.0 |
+| 1 Aug | −7.0% | **−2.5%** | −9.2% | **−4.8%** | 12.1 / 10.1 |
+| 1 Nov | −1.7% | **+1.3%** | **−1.3%** | +1.8% | 9.1 / 8.7 |
+| 1 Dec | −6.5% | **−4.4%** | **+0.7%** | +2.9% | 11.0 / 10.7 |
+
+- USDA *under*-forecast 2025, and the downward correction (log −0.05 at Aug/Sep) made it worse. **USDA's US bias has now reversed in 2022, 2024 and 2025.** The past-mean bias correction does not hold forward.
+- All unopened production years are now used. Every model claim from here is in-sample, unless it is tested forward (2026+).
+- Evidence: `t42-holdout-2025-20261116.json` / `.log`.
