@@ -81,6 +81,13 @@ Every number below has a source. "Exact" means counted from a file; "approx." me
 | 3–11% | Relative MAPE reduction of the momentum rule |
 | 3 of 8 | Cotton TX/US cells where the momentum gain is significant at one-sided p < 0.05 (season-level permutation, uncorrected) |
 | 1 / 3 | Months passed by the frozen rule on corn and on soybeans in T46 (2 needed): FAIL; pooled p = 0.28 |
+| 88 / 128, p = 0.007 | All blind seasons pooled (1987–2011, 23 seasons): rolling momentum closer than USDA (pooling chosen after seeing both eras) |
+| 67% (62/93), p = 0.012 | T50: direction of USDA's next revision called on blind cotton 1985–2011, US + TX (TX 79%, states 72%) |
+| 57–69% | T50: same rule on corn and soybeans 2000–2025 (US 69% / 67%, states 57%) |
+| 43% | T50: same rule on cotton 2012–2025: no longer works |
+| 3.8% → 14.9% | Texas 1 Sep harvested-area error, 1995–2011 vs 2012–2025 (T48) |
+| ~40% | Cut in USDA's in-season Texas area error by the real-time anchoring model, 2008–2025 (T49, p = 0.0003) |
+| 3,258,029 ac | Texas 2026 harvested area, locked (−16.5% vs USDA Nov) |
 | 14/7 | US December seasons closer / further than USDA |
 | 18.4 / 9.6 | CNN TX / US MAPE at 1 Oct (USDA 11.0 / 6.1) |
 | r ≈ 0.8 | Landsat failed-field share vs Texas abandonment |

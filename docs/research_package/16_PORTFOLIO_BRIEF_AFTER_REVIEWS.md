@@ -2,6 +2,17 @@
 
 This file gives the portfolio author (Codex or anyone else) what changed, what was tried, what worked, what failed, and what may and may not be claimed. Every number points to an evidence file under `research/evidence/` or a document under `docs/`. Branch `claude/hls-move3`, repo `ErayKulkizaga/CottonLensAI`.
 
+## 0. Two later results that change the headline (16 Nov 2026, evening)
+- **All blind seasons pooled (1987–1999 and 2002–2011, 23 seasons).** The rolling momentum rule, trained only on earlier seasons, was closer than USDA in **88 of 128** season × report × region comparisons. All 8 TX/US cells have a positive mean gain; mean gain 0.64 points; **year-block p = 0.007**. December US was closer in 16 of 19 seasons. Disclosure: the decision to pool was made after both eras were seen, but it pools *all* blind seasons and drops none. Evidence: `pooled-blind-1987-2011-20261116.json`.
+- **T50, preregistered: predicting the direction of USDA's next revision.** The rule has no parameters: next revision in the same direction as the last one.
+  - Blind cotton 1985–2011, US + TX: **66.7% correct (62 / 93), season-block p = 0.012, PASS.**
+  - Texas 78.8%; all states 72.2% (298 / 413, p < 0.0001).
+  - Corn 2000–2025 US 68.8% (p = 0.006); soybeans US 66.7% (p = 0.029); states 57% in both (p ≤ 0.001).
+  - It **fails in cotton 2012–2025 (43%)**, consistent with the regime change.
+  - December 2026 directions are locked (US down, TX down; `t50-forward-lock-dec2026-20261116.json`).
+
+Suggested hero line now: **"On 23 never-seen seasons, a rule built only from USDA's own revisions beat USDA's cotton production forecast in 88 of 128 comparisons (p = 0.007), and called the direction of USDA's next revision two times in three (p = 0.012). Since 2012 the Texas error has moved into harvested area, which public crop-condition data anticipates and USDA does not."**
+
 ## 1. The new headline (use this, not "we beat USDA")
 > **Since 2012, USDA's Texas cotton forecast errors come from harvested area, not yield. USDA's in-season area stays anchored while the share of the crop in poor condition, public at the survey date, already signals the coming abandonment. A one-variable model built only on past seasons would have cut USDA's in-season Texas area error by about 40% at every report since 2008. The pattern is consistent in Oklahoma and Kansas cotton but just misses significance, and it is absent in winter wheat. The 2026 Texas area is locked as a dated forward test.**
 
@@ -57,7 +68,9 @@ Secondary line: the revision-momentum rule is a **published effect** (Isengildin
 - **Locks:**
   - 2026 US production 12,763,510 bales (commit `18c3bc7`);
   - Texas 2026 harvested area 3,258,029 acres (−16.5%, commit `7d48dbf`).
-- **Preregistered tests in this stretch:** T46, T47, T48, T49. All were pushed before data, all reported, failures included.
+- **Preregistered tests in this stretch:** T46, T47, T48, T49 and T50. All were pushed before data, all reported, failures included.
+- **Pooled blind seasons 1987–2011:** 88 / 128 better, p = 0.007.
+- **T50 revision direction:** blind cotton 67% (p = 0.012), Texas 79%, states 72%, corn and soybeans 57–69%; cotton 2012–2025 43%.
 - **Reproduction:** 7/7 results reproduce exactly from one command.
 
 ## 5. What may NOT be claimed

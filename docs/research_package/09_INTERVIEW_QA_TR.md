@@ -60,6 +60,11 @@ Hayır. Fark %3–11 arası, her yıl kazanmıyor ve 8 hücrenin yalnızca 3'ün
 **Bu işleri kim yaptı?**
 - Hedefleri ve kısıtları ben koydum; mühür açma, push etme, bulutta iş başlatma gibi geri alınamaz her adımı ben onayladım. Kodu ve deneyleri Codex (1. aşama) ve Claude (2. aşama) yazıp çalıştırdı. Her iddiayı dosyalara karşı kontrol ettirdim, hataları kayıtta düzelttirdim. Ayrıntı: `14_DECISIONS_AND_COMPUTE.md`.
 
+**USDA'yı geçtin mi? (en güncel, kısa cevap)**
+- Evet, kör testte. Hiç görmediğim 23 sezonda (1987–2011), sadece USDA'nın kendi revizyonlarından kurulan kural, USDA'nın pamuk üretim tahminini 128 karşılaştırmanın 88'inde geçti (p = 0,007). Bu iki dönemi birleştirme kararını sonuçları gördükten sonra verdim ama bütün kör sezonları kullandım, hiçbirini çıkarmadım.
+- USDA'nın bir sonraki revizyonunun yönünü, parametresiz bir kuralla (bir sonraki revizyon son revizyonla aynı yönde olur), kör sezonlarda 3 seferin 2'sinde doğru bildim (p = 0,012). Teksas'ta 5'te 4. Mısır ve soyada da tutuyor.
+- Sınırı: 2012'den sonra pamukta bu davranış kayboldu (%43). Hatanın kaynağı da aynı yıllarda hasat alanına kaydı. 2026 için hem üretimi hem Teksas alanını hem de 10 Aralık revizyon yönlerini kilitledim.
+
 **En önemli bulgun ne? (güncel cevap)**
 - USDA'nın Teksas'taki hatası 2012'den sonra karakter değiştirdi. Önceden hata verim kaynaklıydı. Artık hasat edilen alandan geliyor: hasat alanı hatası yaklaşık %3,7'den yaklaşık %15'e çıktı.
 - USDA, sezon içinde terk edilecek alanı sabitlenmiş bir şekilde tahmin ediyor. Anket tarihinde herkesin görebildiği "zayıf + çok zayıf" ürün oranına, nihai terkin ancak üçte ikisi kadar tepki veriyor.
