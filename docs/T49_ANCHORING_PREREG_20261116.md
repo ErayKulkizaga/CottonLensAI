@@ -37,3 +37,36 @@ For S0, production adjusted by area only (USDA yield kept) is compared with USDA
 
 ## Forward lock
 The S0 model, fitted on 2000–2025, is applied to USDA's 1 Nov 2026 Texas harvested area and the Texas pvp of the last week of October 2026. The result is locked in `research/evidence/t49-forward-lock-2026-*.json` and scored against the NASS final in May 2027. The December procedure is fixed in the same file.
+
+## Data notes (before the single run)
+- **First pull:** incomplete. QuickStats throttling (403/429) was treated as "no data". The helper was fixed to stop retrying only on HTTP 400 (no rows), and the pull was repeated before any analysis.
+- **Coverage used:**
+  - cotton condition: TX and OK 2000–2025, KS 2005–2025 (NASS has no earlier KS series);
+  - winter-wheat condition and area: KS, OK and TX, 2012–2025.
+  - Winter-wheat June harvested-area forecasts exist for 9 of 14 seasons, so June is scored on those.
+
+## Result (16 Nov 2026, single run)
+| Setting | Pooled corr(pvp, area error), one-sided 95% upper bound | Months adjusted < USDA | Mean gain (log pts), year-block p | Verdict |
+|---|---|---|---|---|
+| S0 Texas cotton, rolling 2008–2025 (demonstration) | −0.70, −0.56 | 4 / 4 | +5.2, p = 0.0003 | pass, not counted as confirmation |
+| **S1 Oklahoma + Kansas cotton, LOSO 2000–2025** | **−0.61, −0.49** | **4 / 4** | **+1.7, p = 0.056** | **FAIL** (sign passes; prediction p misses 0.05) |
+| **S2 Winter wheat KS/OK/TX, LOSO 2012–2025** | +0.09, +0.35 | 0 / 4 | −0.4, p = 0.97 | **FAIL** |
+
+Texas area error by month (S0, rolling, mean abs. %): USDA vs adjusted.
+| Month | USDA | Adjusted |
+|---|---|---|
+| Sep | 12.8 | 7.9 |
+| Oct | 13.2 | 7.6 |
+| Nov | 12.6 | 7.0 |
+| Dec | 12.6 | 7.3 |
+
+**Reading:**
+1. **Texas (discovery state).** A one-predictor model fitted only on past seasons cuts USDA's in-season harvested-area error by about 40% at every report from 2008 to 2025. This is the real-time form of the M1 finding, but Texas was the discovery set, so it is not confirmation.
+2. **Oklahoma and Kansas cotton** (independent, never examined state by state):
+   - The anchoring signature is clearly present: correlation −0.61 with a one-sided upper bound of −0.49, and the adjusted area is better in all four months.
+   - The pre-declared significance gate (p < 0.05) is missed: p = 0.056.
+   - By the rule this is a FAIL, and the claim "generalises to other dryland cotton states" is **not** made. The honest summary is "consistent, not yet significant".
+3. **Winter wheat:** no anchoring. The correlation is about zero or positive. USDA's wheat harvested area is not anchored against the condition rating in the same way.
+   - A plausible reason, not tested: wheat abandonment is decided and surveyed (June Acreage, grazing-out) before most of the forecast season.
+   - So the mechanism is specific to cotton, not a general property of USDA's area forecasts.
+- Evidence: `research/evidence/t49-anchoring-20261116.json` / `.log`.

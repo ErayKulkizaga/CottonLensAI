@@ -10,6 +10,7 @@ import json
 import os
 import sys
 import time
+import urllib.error
 import urllib.request
 from pathlib import Path
 
@@ -27,6 +28,10 @@ def get(url, accept='application/json'):
         try:
             return urllib.request.urlopen(urllib.request.Request(url, headers={'User-Agent': 'research-client', 'Accept': accept}),
                                           timeout=180).read()
+        except urllib.error.HTTPError as exc:
+            if exc.code == 400:  # QuickStats answers 400 when a query has no rows; 403/429 are throttling: retry
+                raise SystemExit(f'http {exc.code}')
+            time.sleep(10 * (k + 1))
         except OSError:
             time.sleep(10 * (k + 1))
     raise SystemExit('failed ' + url.split('?')[0])
