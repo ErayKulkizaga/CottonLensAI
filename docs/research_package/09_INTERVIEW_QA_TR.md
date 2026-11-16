@@ -47,6 +47,19 @@ Hayır. Fark %3–11 arası, her yıl kazanmıyor ve 8 hücrenin yalnızca 3'ün
 - Yorum: mısır ve soyada USDA zaten %1–3,6 hata yapıyor ve revizyonlarında bu kuralın kullanabileceği bir momentum yok. Pamuktaki etki pamuğa özgü (Teksas'ta büyük terk edilen alan, geç hasat) ya da kısmen şans. "USDA'nın genel bir davranışını bulduk" diyemem.
 - Testi yaparken iki veri hatası çıktı (bir "Other States" satırı, bir raporda yapışık iki sütun). İkisini de veri tarafında düzelttim, ön kayda tarihli not olarak ekledim ve bozuk çalıştırmaları da sakladım.
 
+**Bu fikir yeni mi?**
+- Hayır. USDA'nın pamuk tahminlerinde "smoothing" (revizyonların aynı yönde devam etmesi) yayımlanmış bir bulgu: Isengildina-Massa, MacDonald & Xie (2012, JARE). 2013 tarihli bir çalışma bu etkiye göre düzeltme yapmanın sadece bazen işe yaradığını ve katsayıların istikrarsız olduğunu gösterdi. Goyal & Adjemian (2023, AJAE) ise bunun nedeninin bilinçli temkinlilik değil, verinin pahalı ya da gürültülü olması olabileceğini söylüyor.
+- Benim katkım fikir değil test: bu bulguyu sızıntı kontrollü, ön kayıtlı, kör yıllar içeren bir protokolle bağımsız olarak yeniden sınadım. Sonuç literatürle uyumlu: 2002–2025'te küçük bir kazanç var ama zamanla küçülüyor, çoklu karşılaştırma düzeltmesinden sonra hücre bazında anlamlı değil ve mısır/soyada yok.
+
+**Yayımlanmış düzeltme yönteminden iyi mi?**
+- Genel olarak hayır. Aynı yıllarda, sabit terimli ve 10 yıllık ya da genişleyen pencereli bir düzeltmeyle karşılaştırdım. Benim kuralım 8 hücrenin yalnız 2'sinde (Eylül ve Ekim ABD) en iyi; diğerlerinde yayımlanmış tarzdaki yöntem daha iyi.
+
+**Sonuç tek bir yıla mı dayanıyor?**
+- Hayır. Her yılı tek tek çıkardığımda 8 hücrenin yalnız 1'inde (Kasım ABD) işaret değişiyor. Ama kuralın katsayısı 2000'lerin başından 2025'e doğru küçülüyor; Eylül'de negatife dönüyor. Etki zayıflıyor.
+
+**Bu işleri kim yaptı?**
+- Hedefleri ve kısıtları ben koydum; mühür açma, push etme, bulutta iş başlatma gibi geri alınamaz her adımı ben onayladım. Kodu ve deneyleri Codex (1. aşama) ve Claude (2. aşama) yazıp çalıştırdı. Her iddiayı dosyalara karşı kontrol ettirdim, hataları kayıtta düzelttirdim. Ayrıntı: `14_DECISIONS_AND_COMPUTE.md`.
+
 ## Model ayrıntıları
 
 **14.723 XGBoost eğitiminde ne denendi?**
