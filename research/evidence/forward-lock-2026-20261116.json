@@ -1,0 +1,94 @@
+{
+ "trained_on": [
+  2000,
+  2025
+ ],
+ "rule": "e_hat = b * log(USDA_m / USDA_prev) / sd; forecast = USDA_m * exp(e_hat)",
+ "NOV": {
+  "b": 0.010114248054739384,
+  "sd": 0.08304834183645773,
+  "train_rows": 432
+ },
+ "DEC": {
+  "b": -0.0056680803436397025,
+  "sd": 0.0731504231531869,
+  "train_rows": 432
+ },
+ "forecast_2026_from_nov": {
+  "states": {
+   "AL": {
+    "usda_nov": 660000.0,
+    "locked_forecast": 654156
+   },
+   "AZ": {
+    "usda_nov": 250000.0,
+    "locked_forecast": 250000
+   },
+   "AR": {
+    "usda_nov": 1600000.0,
+    "locked_forecast": 1600000
+   },
+   "CA": {
+    "usda_nov": 65000.0,
+    "locked_forecast": 64416
+   },
+   "FL": {
+    "usda_nov": 110000.0,
+    "locked_forecast": 108840
+   },
+   "GA": {
+    "usda_nov": 2000000.0,
+    "locked_forecast": 2000000
+   },
+   "KS": {
+    "usda_nov": 80000.0,
+    "locked_forecast": 78861
+   },
+   "LA": {
+    "usda_nov": 260000.0,
+    "locked_forecast": 261245
+   },
+   "MS": {
+    "usda_nov": 850000.0,
+    "locked_forecast": 850000
+   },
+   "MO": {
+    "usda_nov": 850000.0,
+    "locked_forecast": 846417
+   },
+   "NM": {
+    "usda_nov": 39000.0,
+    "locked_forecast": 39000
+   },
+   "NC": {
+    "usda_nov": 780000.0,
+    "locked_forecast": 783735
+   },
+   "OK": {
+    "usda_nov": 200000.0,
+    "locked_forecast": 201253
+   },
+   "SC": {
+    "usda_nov": 340000.0,
+    "locked_forecast": 341238
+   },
+   "TN": {
+    "usda_nov": 450000.0,
+    "locked_forecast": 453797
+   },
+   "TX": {
+    "usda_nov": 4100000.0,
+    "locked_forecast": 4070552
+   },
+   "VA": {
+    "usda_nov": 160000.0,
+    "locked_forecast": 160000
+   }
+  },
+  "US": {
+   "usda_nov": 12794000.0,
+   "locked_forecast": 12763510
+  }
+ },
+ "dec_procedure": "On 10 Dec 2026: per state, forecast = USDA_Dec * exp(-0.005668 * log(USDA_Dec / USDA_Nov) / 0.073150); US = USDA_US_Dec * sum(state forecasts) / sum(state USDA_Dec)."
+}
