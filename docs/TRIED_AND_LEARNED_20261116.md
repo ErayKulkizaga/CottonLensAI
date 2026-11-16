@@ -77,3 +77,13 @@ Our correction beat USDA in TX in **3 of 3 sealed years**.
 After T39 we suspected the pooled application of the bias was the problem. **T40 tested a state-specific correction and failed**, so that diagnosis did not hold up. With about 12 years of USDA monthly history, a state's own bias cannot be estimated reliably, and the pooled T25 remains the better of the two on 2013–2024. The Texas pattern is real in the record but not yet a usable, validated rule.
 
 Interview summary page (private Artifact): https://claude.ai/artifact/8tSPjQucn8pmwcL3dBwVJD
+
+## Update (16 Nov, later): the result that holds up
+- **USDA revision momentum** (T44, T45, full record):
+  - A fixed, literature-motivated rule fitted only on earlier seasons.
+  - Average error is below USDA's at every monthly report, 2002–2025, for TX, the US and production-weighted states (12 of 12 cells).
+  - It is 3–11% better and does not win every year. 2002–2011 were tested blind.
+  - Formal pre-declared passes: none. T44 needed Sep as well; T45 tied 3–3 in TX at Dec.
+- **Landsat failed-field share (T43):** tracks Texas abandonment but missed 2023.
+- **RMA crop insurance:** rejected for leakage.
+- **2026 forward forecast:** locked in `docs/FORWARD_LOCK_2026.md` (commit 18c3bc7).
