@@ -22,6 +22,7 @@ Every number here comes from the project's own ledgers, evidence files and docum
 | [10_GLOSSARY.md](10_GLOSSARY.md) | Terms in English and Turkish |
 | [11_QUESTIONS_FOR_CODEX.md](11_QUESTIONS_FOR_CODEX.md) | Open gaps in the Phase 1 record, as questions for Codex (Turkish) |
 | [13_LITERATURE_AND_CONTRIBUTION.md](13_LITERATURE_AND_CONTRIBUTION.md) | Prior work (smoothing in USDA forecasts, 1987–2023) and what this project adds; robustness and comparison with a published-style adjustment |
+| [15_USDA_ERROR_MECHANISM.md](15_USDA_ERROR_MECHANISM.md) | Where USDA's cotton error comes from: harvested area vs yield, and the 2012 shift in Texas (T48) |
 | [14_DECISIONS_AND_COMPUTE.md](14_DECISIONS_AND_COMPUTE.md) | Who decided what (owner vs AI tools), and recorded compute and cost |
 | [12_CODEX_ANSWERS.md](12_CODEX_ANSWERS.md) | Codex's sourced answers (16 Nov 2026): LSTM architecture, pre-ledger fit counts, forward-test status, line-by-line corrections. The corrections are applied in 01–04, 08 and 09 |
 
