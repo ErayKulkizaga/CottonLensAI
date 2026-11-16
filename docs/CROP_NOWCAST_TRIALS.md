@@ -643,3 +643,19 @@ Data: 963 state and 59 US forecasts parsed. Parser validated 153/153 exact again
   - So momentum is the most consistent signal found in this project. It does not depend on the sign of USDA's bias. Its strength varies by month and era.
   - This is still a set of secondaries, not a pre-declared pass.
 - Evidence: `t45-blind-2000-2011-20261116.json` / `.log`, `t45-bias-secondary-20261116.json`.
+
+### Full-period record of the momentum rule, 2002–2025 (16 Nov, descriptive, rule unchanged)
+
+- **Setup.** T44's rule, unchanged: no intercept, λ = 1, trained rolling on seasons 2000…Y−1. Run once over all 24 seasons on the merged data: report-parsed 2000–2011, QuickStats 2012–2025.
+- **What kind of evidence this is.** 2002–2011 outcomes were blind (T45). 2014–2025 outcomes had been seen, but the rule was never tuned on them. It is a record, not a new pass.
+
+| Report | TX: rule vs USDA (better / worse yrs) | US (better / worse) | Prod-wtd state error |
+|---|---|---|---|
+| 1 Sep | **11.9** vs 12.9 (10 / 9) | **6.0** vs 6.3 (9 / 10) | **10.5** vs 11.0 |
+| 1 Oct | **11.3** vs 12.1 (9 / 9) | **4.9** vs 5.5 (12 / 9) | **9.1** vs 9.3 |
+| 1 Nov | **7.5** vs 8.0 (13 / 8) | **3.5** vs 3.6 (12 / 10) | **6.2** vs 6.4 |
+| 1 Dec | **5.0** vs 5.3 (9 / 8) | **2.3** vs 2.5 (14 / 7) | **4.3** vs 4.5 |
+
+- **Average error is lower than USDA's at every monthly report**, for TX, the US and the production-weighted states: 12 of 12 cells. The relative reductions are about 3–11%.
+- **It does not win every year.** By season count it wins more often than it loses in 6 of 8 TX/US cells; Oct TX is tied and Sep US loses 9–10.
+- Evidence: `momentum-full-2002-2025-20261116.json` / `.log`.
