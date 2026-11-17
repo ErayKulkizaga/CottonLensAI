@@ -11,6 +11,8 @@
 - The price-phase operating notes (dated Oct–Nov 2026 instructions about collectors, cohorts and fit budgets) are archived in `docs/archive/price-phase/AGENTS_HISTORY_20261117.md`. They are history, not current instructions; the general rules below still apply.
 
 ## General rules
+- Run full CI on pull requests and pushes to `main`. Use manual dispatch for pre-PR checks. Cancel superseded runs on the same PR.
+- Before expanding CI triggers, schedules, or matrices, estimate monthly runner minutes from run frequency and job durations. Check for duplicate work across triggers and matrix entries, and preserve required checks.
 - GPU/sequence training and `cottonlens-train` remain Colab-only; CI never trains real models. The approved full-year pilot may run small CPU tabular/HAR/GARCH fits locally with explicit `COTTONLENS_ALLOW_LOCAL_CPU_TABULAR=1`, one process and at most two threads. Use the same ledger and a separate CPU dependency group; no TensorFlow/CUDA installation locally.
 - Statistical Naive/drift/ARIMA pilot fits remain Colab CPU-only, one process/at most two threads. They are not added to the local CPU allowlist. CI may test synthetic data; it cannot fit real market data. No automatic ARIMA order search or silent numerical fallback.
 - Keep 5% price-MAE and 53%/55% direction gates fixed: legacy four-block protocols require 3/4 wins; full-year eight-block protocols require 6/8. Already-reviewed history is research evidence; 2024+ audit cannot guide selection. Current canonical decisions: `docs/archive/price-phase/STATUS.md` and `docs/archive/price-phase/TRADING_RESEARCH_CONTRACT_20261005.md`; dated historical plans in `docs/archive/` are evidence, not active instructions.
