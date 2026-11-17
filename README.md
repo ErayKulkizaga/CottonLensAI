@@ -85,7 +85,13 @@ uv sync --project ml --only-group cpu --frozen
 python ml/history.py check --family ridge --horizon 1
 ```
 
-Bu komutlar fiyat aşamasının gösterim uygulamasını ve deney sicilini çalıştırır. Kurallar [AGENTS.md](AGENTS.md) içinde, eski README [docs/archive/README_HISTORY_20261105.md](docs/archive/README_HISTORY_20261105.md) içinde. Büyük kanıt paketleri private GitHub Releases'te; geri yükleme rehberi [research/README.md](research/README.md).
+Bu komutlar fiyat aşamasının gösterim uygulamasını ve deney sicilini çalıştırır. Kurallar [AGENTS.md](AGENTS.md) içinde, eski README [docs/archive/README_HISTORY_20261105.md](docs/archive/README_HISTORY_20261105.md) içinde. Büyük kanıt paketleri (111 release, yaklaşık 5 GB) ayrı ve private `ErayKulkizaga/CottonLensAI-evidence` deposunun release'lerindedir; etiketler aynıdır. Bu repo public yapılmadan önce oraya taşındılar. Geri yükleme rehberi [research/README.md](research/README.md).
+
+## Lisans ve veri
+
+- Kod ve belgeler [MIT lisansı](LICENSE) altındadır.
+- Repodaki veriler USDA (NASS, ESMIS, AMS, FAS), US Drought Monitor ve benzeri kamu kaynaklarından gelir; açık veri seti `docs/research_package/data/` altındadır. Üçüncü taraf fiyat verisinin (ICE, Yahoo) ham serileri repoda yoktur; yalnızca türetilmiş istatistikler ve bazı denetim kayıtlarında birkaç günlük kısa fiyat alıntıları vardır.
+- Anahtarlar (`NASS_API_KEY` vb.) ortam değişkeninden ya da kullanıcı dizininden okunur ve repoya girmez.
 
 ## Kurallar
 
