@@ -12,7 +12,7 @@ Merhaba Codex. CottonLensAI'nin birinci aşamasını (21 Eylül – 7 Kasım 202
 
 - **Worktree:** `C:/Users/Eray/SEZAR/PROJELER/CottonLensAI-claude-review`.
 - **Dal:** `claude/hls-move3`, GitHub'a push edildi (`origin`, `ErayKulkizaga/CottonLensAI`).
-- **Başlangıç noktası:** senin devir belgen `docs/CLAUDE_HANDOFF.md` ve `445d1fe`.
+- **Başlangıç noktası:** senin devir belgen `docs/archive/phase2-notes/CLAUDE_HANDOFF.md` ve `445d1fe`.
 - **Bilgi paketi:** `docs/research_package/`.
   - Senin dönemini anlatan belgeler: `03_PHASE1_PRICE_AND_RISK.md`, `04_MODEL_FAMILIES_AND_HYPERPARAMETERS.md`, `02_NUMBERS_CHEATSHEET.md`.
   - Bu belgelerin tabloları senin `research/trials.json`, `research/registry.json`, `docs/` ve `research/evidence/` kayıtlarından otomatik üretildi (`research/package/build_catalogs.py`). Tablolar `data/` klasöründe.
@@ -92,7 +92,7 @@ Kesin bilmediğin bir sayıyı tahminle doldurma; `bilmiyorum` yaz. Paketteki bi
 
 22. **+%5 MAE hedefi** ve **%53 / %55 yön eşikleri** neye göre seçildi? Kim karar verdi, nerede yazılı?
 23. Hangi araştırma kararları kullanıcıdan (Eray), hangileri senden geldi? Görüşmede "bu fikir kimindi?" sorusu gelebilir.
-24. `docs/CLAUDE_HANDOFF.md` içinde geçen **private arşivler ve diğer worktree'lerde** repoda olmayan önemli bir sonuç var mı?
+24. `docs/archive/phase2-notes/CLAUDE_HANDOFF.md` içinde geçen **private arşivler ve diğer worktree'lerde** repoda olmayan önemli bir sonuç var mı?
 25. Birinci aşamada **en önemli 10 belge** hangileri? Claude 115 belgenin hepsini okumadı; görüşme için mutlaka okunması gerekenleri sırala.
 
 ## H. Paket kontrolü

@@ -1,4 +1,4 @@
-"""T39 one-shot sealed test driver (docs/SEALED_TEST_T39_PREREG_20261115.md). Run each phase once.
+"""T39 one-shot sealed test driver (docs/prereg/SEALED_TEST_T39_PREREG_20261115.md). Run each phase once.
 
   prep  : assemble dev+sealed inputs, build county features for every cutoff (no scores printed)
   score : T36 primary (1 Oct) + all declared secondaries, scored on 2022-2024 only -> evidence JSON

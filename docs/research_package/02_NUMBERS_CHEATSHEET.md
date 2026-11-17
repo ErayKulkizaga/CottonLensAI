@@ -42,7 +42,7 @@ Every number below has a source. "Exact" means counted from a file; "approx." me
 | 45 | Numbered Phase 2 trials (T01–T45), about 60 variants | `docs/CROP_NOWCAST_TRIALS.md` |
 | 178 | 133 + 45 experiments across both phases | above |
 | 3 | One-shot tests on held-out years: T39 (2022–2024), T42 (2025), T45 (blind 2000–2011) | ledger |
-| 111+ | Private GitHub releases with evidence archives (Phase 1) | `docs/CLAUDE_HANDOFF.md` |
+| 111+ | Private GitHub releases with evidence archives (Phase 1) | `docs/archive/phase2-notes/CLAUDE_HANDOFF.md` |
 | 297 | Evidence files with SHA-256 receipts | `data/evidence_index.csv` |
 | 127 | Project documents (docs + archive) | `data/docs_catalog.csv` |
 

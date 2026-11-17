@@ -1,6 +1,6 @@
 # Tarihsel belgeler
 
-Bu belgeler geçmiş kanıttır; içlerindeki planlar güncel talimat değildir. İçerik taşınırken korunmuştur. Eski göreli yollar eski depo düzenine aittir; güncel yollar aşağıdadır. Orijinal yollar ve SHA-256 değerleri [organization.json](../../research/organization.json) içinde kayıtlıdır. Güncel başlangıç: [STATUS](../STATUS.md).
+Bu belgeler geçmiş kanıttır; içlerindeki planlar güncel talimat değildir. İçerik taşınırken korunmuştur. Eski göreli yollar eski depo düzenine aittir; güncel yollar aşağıdadır. Orijinal yollar ve SHA-256 değerleri [organization.json](../../research/organization.json) içinde kayıtlıdır. Güncel başlangıç: [docs/README.md](../README.md). Fiyat aşamasının belgeleri [price-phase/](price-phase/) altında (son durum: [STATUS](price-phase/STATUS.md)); rekolte aşamasının eski notları [phase2-notes/](phase2-notes/) altında.
 
 - [CONTINUOUS_RESEARCH.md](CONTINUOUS_RESEARCH.md)
 - [DAY1_R2_EVIDENCE_REVIEW.md](DAY1_R2_EVIDENCE_REVIEW.md)

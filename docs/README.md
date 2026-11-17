@@ -1,39 +1,45 @@
-# Belge indeksi
+# Belge dizini
 
-- [5 Kasım Naive-MAE araştırma planı](NAIVE_MAE_PLAN_20261105.md) ve [GitHub teslimatı](GITHUB_DELIVERY_20261105.md).
+Belgeler üç gruba ayrılır: **güncel** (rekolte araştırması ve canlı sistem), **ön kayıtlar** ve **arşiv** (eski planlar ve fiyat aşaması). Arşivdeki belgeler geçmişin kaydıdır, güncel talimat değildir.
 
 ## Güncel
+| Belge | İçerik |
+|---|---|
+| [CROP_NOWCAST_TRIALS.md](CROP_NOWCAST_TRIALS.md) | Rekolte araştırmasının deney kaydı (T01–T55), başarısızlar dahil |
+| [FORWARD_LOCK_2026.md](FORWARD_LOCK_2026.md) | 2026 için kilitlenen tahminler ve puanlama tarihleri |
+| [PLAN_REVIEW5_20261117.md](PLAN_REVIEW5_20261117.md) | Güncel plan ve durumu |
+| [paper/WORKING_PAPER.md](paper/WORKING_PAPER.md) | Çalışma makalesi taslağı (İngilizce) |
+| [research_package/](research_package/README.md) | Araştırma paketi: özet, sayılar, veri kaynakları, protokol, başarısızlıklar, Türkçe mülakat soru-cevapları, sözlük, açık veri seti |
+| [adr/0001-usda-forecast-monitor.md](adr/0001-usda-forecast-monitor.md) | Canlı monitörün tasarım kararları |
+| [monitor/index.html](monitor/index.html) | Monitörün performans geçmişi; iş akışı tarafından üretilir |
+| [portfolio/](portfolio/) | İngilizce portfolyo sayfası (`cotton-usda-research.html`) ve Türkçe sunum (`cottonlens-sunum.html`) |
 
-- [Durum ve kararlar](STATUS.md)
-- [Texas/NASS: bölgesel bilgi, sütun tarihleri, revizyonlar ve sezon kapsamı](NASS_REGIONAL_AUDIT_20261009.md)
-- [Sabit kaynakla çalışan görev, yayın penceresi ve gerçek gece doğrulaması](FORWARD_RUNTIME_WINDOW_20261009.md)
-- [İleri kayıt: sıfır yayın, makbuz/saat denetimi ve tek operasyon kontrolü](FORWARD_EVIDENCE_AUDIT_20261009.md)
-- [FAS sürüm/değer/saat sözleşmesi ve ortak-origin hizalama kontrolü](FAS_REVIEWED_ALIGNMENT_20261009.md)
-- [FAS karantina ülke paneli, stok anomalisi ve eğitime kalan iş](FAS_COUNTRY_PREPARATION_20261008.md)
-- [FAS tarihsel kod tanığı ve özgün hücre için dış kanıt sınırı](FAS_HISTORICAL_REFERENCE_20261008.md)
-- [FAS 28 Mayıs: alt sınıf yuvarlaması, sürüm belirsizliği ve tek ayırıcı hücre](FAS_MAY28_VERSION_AUDIT_20261008.md)
-- [FAS ülke raporu mutabakatı: iki küçük uyuşmazlık ve kapalı kaynak kabulü](FAS_COUNTRY_REPORT_REVIEW_20261008.md)
-- [İspat amacı ve yardımcı simülasyon sözleşmesi](TRADING_RESEARCH_CONTRACT_20261005.md)
-- [Fiyat anlamı, USDA eşleşmesi ve kontrat geçişi denetimi](PRICE_SEMANTICS_AUDIT_20261005.md)
-- [Bölgesel WASDE sayı/sürüm/zaman doğrulaması ve model kabul koruması](WASDE_REGIONAL_VERIFICATION_20261008.md)
-- [WASDE resmî as-reported mutabakatı ve CSV/rapor erişim saati ayrımı](WASDE_AS_REPORTED_20261008.md)
-- [Bölgesel WASDE T+1 sonucu: tamamlanan 424 fit, negatif pratik hedef ve mekanizma](WASDE_REGIONAL_T1_RESULT_20261008.md)
-- [Bölgesel WASDE T+1 ön kaydı: eşit eksiklik kontrolleri, saat varsayımı ve karar kuralları](WASDE_REGIONAL_T1_PREREGISTRATION_20261008.md)
-- [11 Aralık 2018 WASDE: repost değerleri ve sınırlı saat kanıtı incelemesi](WASDE_CLOCK_CASE_20261008.md)
-- [Tamamlanan zamanlama deneyi ve düzeltmeler](AVAILABILITY_CLOCK_RESULT_20261005.md)
-- [İlk işlem tanısı, zamanlama düzeltmeleri ve bölgesel WASDE aday paketi](TRADING_WASDE_DELIVERY_20261005.md)
-- [Deney sicili, tekrar kontrolü ve kanıt yedeği](../research/README.md)
-- [USDA anahtar kurulumu](USDA_COLAB_SETUP.md)
-- [ML doğrulama sınırları](../ml/VALIDATION.md)
+## Ön kayıtlar ([prereg/](prereg/))
+Her dosya, testin kuralını verisine bakılmadan önce tarihli olarak kaydeder; sonuç bölümü sonradan eklenir.
 
-## İnceleme ve uygulama taslağı
+| Test | Konu | Sonuç |
+|---|---|---|
+| [SEALED_TEST_T39](prereg/SEALED_TEST_T39_PREREG_20261115.md) | Mühürlü 2022–2024 testi | Başarısız |
+| [LINK1](prereg/LINK1_EVENT_STUDY_PREREG_20261115.md) | Rapor günü fiyat tepkisi | Fiyat tepki veriyor (1,42×), revizyon yönü sinyal değil |
+| [T46](prereg/T46_CORN_SOY_PREREG_20261116.md) | Momentum kuralı mısır ve soyada | Başarısız |
+| [T47](prereg/T47_BLIND_1985_1999_PREREG_20261116.md) | Kör test 1985–1999 | Sabit katsayılarla başarısız |
+| [T48](prereg/T48_MECHANISM_PREREG_20261116.md) | Hata mekanizması: alan mı, verim mi | 2/4 hipotez |
+| [T49](prereg/T49_ANCHORING_PREREG_20261116.md) | Hasat alanında sabitlenme | Teksas'ta var; OK/KS p = 0,056 |
+| [T50](prereg/T50_REVISION_DIRECTION_PREREG_20261116.md) | Sonraki revizyonun yönü | Geçti (%67) |
+| [T51](prereg/T51_AREA_PRODUCTION_PREREG_20261116.md) | Alan düzeltmesi, aralıklar, üretim | Alanda geçti, üretimde başarısız |
+| [T52](prereg/T52_MARKET_PREREG_20261116.md) | Piyasa testi 2010–2021 | Başarısız |
+| [T53](prereg/T53_AREA_PRODUCTION_LONG_PREREG_20261116.md) | Uzun tarihte üretim | Başarısız |
+| [T54](prereg/T54_SORGHUM_PREREG_20261116.md) | Sorgum | İşaret var, düzeltme yok |
+| [T55](prereg/T55_MARKET_2000_2009_PREREG_20261117.md) | Piyasa testi 2000–2009 | Başarısız |
+| [CAL1](prereg/CAL1_INTERVAL_CALIBRATION_PREREG_20261117.md) | Tahmin aralığı kalibrasyonu | Yalnızca "2 kat" yöntemi kalibre |
 
-- [Ekli model planının denetimi ve veri kaynaklarını yeniden değerlendirme planı](RESEARCH_DATA_REENTRY_PLAN_20261005.md) — tamamlanan deneylerle karşılaştırılmıştır; yeni veri kabulü veya eğitim sonucu değildir.
+T39 öncesi denemelerin kuralları [CROP_NOWCAST_TRIALS.md](CROP_NOWCAST_TRIALS.md) içinde.
 
-## Tarihsel
+## Arşiv ([archive/](archive/))
+| Klasör | İçerik |
+|---|---|
+| [archive/phase2-notes/](archive/phase2-notes/) | Rekolte aşamasının eski planları, ara özetleri ve devir notları (13–16 Kasım) |
+| [archive/price-phase/](archive/price-phase/) | Fiyat aşamasının 101 belgesi (Ekim–Kasım 2026): protokoller, sonuçlar, denetimler, `STATUS.md` |
+| [archive/](archive/README.md) | En erken planlar, model kartı ve demo notları (Eylül–Ekim 2026) |
 
-[Arşiv](archive/README.md), önceki planları, model kartı/değerlendirmeleri ve uygulama/demo notlarını saklar. Bunlar bugünün çalışma sırasını belirlemez. Eski runtime/artifact işletim bilgisi için [model kartı](archive/MODEL_CARD.md) ve [demo rehberi](archive/INTERVIEW_DEMO.md) kullanılabilir; metrik yorumlarını güncel düzeltmelerle birlikte okuyun.
-
-- [Naive-MAE audit ve ön kayıt](NAIVE_MAE_AUDIT_20261105.md).
-
-- [5 Kasım fiyat-only medyan sonucu: STOP ve geri yükleme](PRICE_ONLY_MEDIAN_RESULT_20261105.md).
+Fiyat aşamasının özeti: [research_package/03_PHASE1_PRICE_AND_RISK.md](research_package/03_PHASE1_PRICE_AND_RISK.md).

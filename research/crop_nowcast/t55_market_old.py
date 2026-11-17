@@ -1,4 +1,4 @@
-"""T55 (docs/T55_MARKET_2000_2009_PREREG_20261117.md): T52's report-day market test on 2000-2009.
+"""T55 (docs/prereg/T55_MARKET_2000_2009_PREREG_20261117.md): T52's report-day market test on 2000-2009.
 Usage: python t55_market_old.py fetch out_dir | python t55_market_old.py run out_dir out.json [t52.json]
 """
 import hashlib

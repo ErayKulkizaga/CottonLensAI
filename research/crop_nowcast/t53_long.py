@@ -1,4 +1,4 @@
-"""T53 (docs/T53_AREA_PRODUCTION_LONG_PREREG_20261116.md): Texas area correction -> production, longest history.
+"""T53 (docs/prereg/T53_AREA_PRODUCTION_LONG_PREREG_20261116.md): Texas area correction -> production, longest history.
 
   pull  root        Texas cotton condition 1986-1999 and Texas harvested-area finals 1985-1994 (QuickStats)
   run   root out    build the 1985-2025 Texas frame and score exactly as T51-C

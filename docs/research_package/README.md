@@ -62,6 +62,6 @@ The catalogs are rebuilt from `research/trials.json`, `research/registry.json`, 
 ## Related public material
 - Interactive research page (English): `docs/portfolio/cotton-usda-research.html`
 - Trial ledger (Phase 2): `docs/CROP_NOWCAST_TRIALS.md`
-- Sealed test record: `docs/SEALED_TEST_T39_PREREG_20261115.md`
+- Sealed test record: `docs/prereg/SEALED_TEST_T39_PREREG_20261115.md`
 - Forward lock: `docs/FORWARD_LOCK_2026.md`
-- What was tried: `docs/TRIED_AND_LEARNED_20261116.md`
+- What was tried: `docs/archive/phase2-notes/TRIED_AND_LEARNED_20261116.md`

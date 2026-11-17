@@ -1,6 +1,6 @@
 """T47: blind test of the cotton momentum rule on never-seen USDA forecasts, 1995-1999 (stage A) and 1985-1994 (stage B).
 
-Pre-declared in docs/T47_BLIND_1985_1999_PREREG_20261116.md. The coefficients b and sd per report month are fitted
+Pre-declared in docs/prereg/T47_BLIND_1985_1999_PREREG_20261116.md. The coefficients b and sd per report month are fitted
 once on 2000-2025 (the same formula as lock_2026.coef) and applied unchanged to the blind seasons.
 Subcommands:
   finals  root first last         QuickStats upland state/US production finals ('YEAR' rows only)

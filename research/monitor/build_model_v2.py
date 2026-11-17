@@ -15,7 +15,7 @@ def main():
     f = cal['frozen']
     v2 = {**v1, 'version': 'model_v2', 'intervals_tx_area': {
         'q80_log': f['q80_log'], 'q95_log': f['q95_log'], 'method': f['method'],
-        'source': 'CAL1 (docs/CAL1_INTERVAL_CALIBRATION_PREREG_20261117.md): real-time coverage 2011-2025 '
+        'source': 'CAL1 (docs/prereg/CAL1_INTERVAL_CALIBRATION_PREREG_20261117.md): real-time coverage 2011-2025 '
                   f"{cal[f['method']]['coverage80']:.2f} (80%), {cal[f['method']]['coverage95']:.2f} (95%)"}}
     (ROOT / 'research/monitor/model_v2.json').write_text(json.dumps(v2, indent=1, sort_keys=True), encoding='utf-8')
     print(json.dumps(v2['intervals_tx_area'], indent=1))

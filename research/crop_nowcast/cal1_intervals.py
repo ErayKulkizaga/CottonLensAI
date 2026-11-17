@@ -1,4 +1,4 @@
-"""CAL1 (docs/CAL1_INTERVAL_CALIBRATION_PREREG_20261117.md): real-time calibration of Texas area intervals.
+"""CAL1 (docs/prereg/CAL1_INTERVAL_CALIBRATION_PREREG_20261117.md): real-time calibration of Texas area intervals.
 Usage: python cal1_intervals.py out.json
 """
 import json

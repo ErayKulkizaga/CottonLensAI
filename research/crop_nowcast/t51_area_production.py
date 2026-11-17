@@ -1,4 +1,4 @@
-"""T51 (docs/T51_AREA_PRODUCTION_PREREG_20261116.md): Texas area baselines, conformal intervals, production effect,
+"""T51 (docs/prereg/T51_AREA_PRODUCTION_PREREG_20261116.md): Texas area baselines, conformal intervals, production effect,
 structural break. Usage: python t51_area_production.py t49_root out.json
 """
 import json

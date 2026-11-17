@@ -52,7 +52,7 @@ Eski karşılaştırma 498 Naive ve 439 LSTM origin’ini kullanıyordu. T+1 iç
 
 **Kesinlik** — bilmiyorum. Özgün 22 Eylül LSTM satır vektörünün yedeği henüz doğrulanmadı. ZIP ve düzeltme makbuzunun hash eşleşmesi ve karşılaştırma sayıları kesin.
 
-**Kaynak** — `research/evidence/legacy-lstm-correction.json:2–40`, `docs/AVAILABILITY_CLOCK_RESULT_20261005.md:75–84`, `research/data-gpu-defects.json:130–139`; `13761b9:ml/src/cottonlens_ml/training.py`; yerel 22 ve 23 Eylül ZIP’leri, `output/claude-audit/drive/artifacts/releases/`.
+**Kaynak** — `research/evidence/legacy-lstm-correction.json:2–40`, `docs/archive/price-phase/AVAILABILITY_CLOCK_RESULT_20261005.md:75–84`, `research/data-gpu-defects.json:130–139`; `13761b9:ml/src/cottonlens_ml/training.py`; yerel 22 ve 23 Eylül ZIP’leri, `output/claude-audit/drive/artifacts/releases/`.
 
 **Claude nereye bakmalı** — 22 Eylül ZIP’i ve özgün Colab tracking geçmişini incele. Forecast Parquet’te model adı sütunu yok ve manifest birincil tahmini Naive olarak gösteriyor. 23 Eylül checkpoint’lerini 22 Eylül fit state’i olarak kullanma. Colab arşivinde ilgili raporlar, deneyler ve dosya adları hedefli tarandı. Bulunmayan vektöre ilişkin sonuç bu taramanın kapsamıyla sınırlı.
 
@@ -74,7 +74,7 @@ Eski karşılaştırma 498 Naive ve 439 LSTM origin’ini kullanıyordu. T+1 iç
 
 **Kesinlik** — kesin.
 
-**Kaynak** — 16.11.2026 `Get-ScheduledTask` / `Get-ScheduledTaskInfo`, GitHub Actions workflow API’si, `README.md:15–17`, `docs/CT_FORWARD_DAILY_20261030.md:3–7,32–71`, `docs/STATUS.md:178–202`. [Yayın release’i](https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/ct-forward-records-2026-q4).
+**Kaynak** — 16.11.2026 `Get-ScheduledTask` / `Get-ScheduledTaskInfo`, GitHub Actions workflow API’si, `README.md:15–17`, `docs/archive/price-phase/CT_FORWARD_DAILY_20261030.md:3–7,32–71`, `docs/archive/price-phase/STATUS.md:178–202`. [Yayın release’i](https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/ct-forward-records-2026-q4).
 
 **Claude nereye bakmalı** — Bu makinenin Task Scheduler kaydı ile private release’in capture/publish asset’lerine. Geçmişte planlanan saatleri güncel çalışma kanıtı olarak kullanmamalı.
 
@@ -84,7 +84,7 @@ Eski karşılaştırma 498 Naive ve 439 LSTM origin’ini kullanıyordu. T+1 iç
 
 **Kesinlik** — kesin. Yayın sayıları ve skorun durumuna ilişkin kayıt belirli; ara skor sayısı yok.
 
-**Kaynak** — `docs/END_TO_END_AUDIT.md:303–323`, `docs/STATUS.md:178–202,231–235`, `docs/CT_FORWARD_DAILY_20261030.md:78–96`, `research/evidence/ct-forward-first-observed-publication-audit-20261104.json:80–126`. [Yayın release’i](https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/ct-forward-records-2026-q4).
+**Kaynak** — `docs/archive/price-phase/END_TO_END_AUDIT.md:303–323`, `docs/archive/price-phase/STATUS.md:178–202,231–235`, `docs/archive/price-phase/CT_FORWARD_DAILY_20261030.md:78–96`, `research/evidence/ct-forward-first-observed-publication-audit-20261104.json:80–126`. [Yayın release’i](https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/ct-forward-records-2026-q4).
 
 **Claude nereye bakmalı** — İki `publish` asset’i, ayrı cohort lock’ları, dönem sonu `research/ct_forward_report.py` ve Q27’deki tarihsel belge.
 
@@ -94,7 +94,7 @@ Eski karşılaştırma 498 Naive ve 439 LSTM origin’ini kullanıyordu. T+1 iç
 
 **Kesinlik** — kesin.
 
-**Kaynak** — `docs/END_TO_END_AUDIT.md:308–323`, `research/evidence/ct-forward-first-observed-publication-audit-20261104.json:84–120`, `CT-forward-20261104T002007Z-publish-e9e2669b.zip` metadata’sı ve yerel görev bilgisi. [Private release](https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/ct-forward-records-2026-q4).
+**Kaynak** — `docs/archive/price-phase/END_TO_END_AUDIT.md:308–323`, `research/evidence/ct-forward-first-observed-publication-audit-20261104.json:84–120`, `CT-forward-20261104T002007Z-publish-e9e2669b.zip` metadata’sı ve yerel görev bilgisi. [Private release](https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/ct-forward-records-2026-q4).
 
 **Claude nereye bakmalı** — V2 makbuzunda kaynak, yayın ve GitHub yükleme zamanlarını ayrı alanlarda okuyabilir.
 
@@ -118,7 +118,7 @@ Eski karşılaştırma 498 Naive ve 439 LSTM origin’ini kullanıyordu. T+1 iç
 
 **Kesinlik** — kesin.
 
-**Kaynak** — `docs/CLAUDE_HANDOFF.md:52–62,95–106`, `research/README.md`, `ml/pyproject.toml`, `backend/pyproject.toml`, `backend/app/artifact_importer.py`, `backend/app/runtime.py`.
+**Kaynak** — `docs/archive/phase2-notes/CLAUDE_HANDOFF.md:52–62,95–106`, `research/README.md`, `ml/pyproject.toml`, `backend/pyproject.toml`, `backend/app/artifact_importer.py`, `backend/app/runtime.py`.
 
 **Claude nereye bakmalı** — Fit/eval için `ml/src/cottonlens_ml/research/engine.py`; arşiv için `research/storage.py`; çıkarım için backend runtime.
 
@@ -128,7 +128,7 @@ Eski karşılaştırma 498 Naive ve 439 LSTM origin’ini kullanıyordu. T+1 iç
 
 **Kesinlik** — bilmiyorum. Parçalı compute süreleri araç kayıtlarından geliyor.
 
-**Kaynak** — `output/reports/research-market-v1-ablation-review-20261001.json` (`timing`), `docs/archive/RESEARCH_RESET_20260928.md:18–20`, `docs/archive/CONTINUOUS_RESEARCH.md:3–7`, `docs/DATA_GPU_PROGRESS_20261106.md:165,181,313`, v1 TXT:10, `docs/ROOT_CAUSE_REVIEW_20261106.md:55–57`.
+**Kaynak** — `output/reports/research-market-v1-ablation-review-20261001.json` (`timing`), `docs/archive/RESEARCH_RESET_20260928.md:18–20`, `docs/archive/CONTINUOUS_RESEARCH.md:3–7`, `docs/archive/price-phase/DATA_GPU_PROGRESS_20261106.md:165,181,313`, v1 TXT:10, `docs/archive/price-phase/ROOT_CAUSE_REVIEW_20261106.md:55–57`.
 
 **Claude nereye bakmalı** — Colab oturum/cu kullanım geçmişi ve varsa ödeme kayıtları. Yerel Drive notebook çıktıları ve her ayrı run’ın `result.telemetry` alanı GPU modelini doğrulamak için daha uygun. Eksik oturumları fit sayısından saate dönüştürmemeli.
 
@@ -143,10 +143,10 @@ Eski karşılaştırma 498 Naive ve 439 LSTM origin’ini kullanıyordu. T+1 iç
 | Satır | Düzeltme | Kaynak |
 | --- | --- | --- |
 | 3 | `codex_fit_recipes.csv` eldeki defter tariflerinin dökümü. Legacy aileler ve ablation’ın tamamı bu tabloda yer almıyor. `codex_experiments.csv` skor alanları boş sicil satırlarını da içeriyor. | `research/package/build_catalogs.py:42–86`; Q1–Q3, Q12, Q27. |
-| 6–8 | CT=F günlük bar `Close` proxy’si için “settlement” genellemesi yapma. Gerçek named hedef ve fiyat alanı kaynak bazında yazılmalı. Drift ve çoğunluk yönü fiyat/referans kontrolleri; T+1 varyansın referansı EWMA. | `docs/PRICE_SEMANTICS_AUDIT_20261005.md`; `docs/archive/CONTINUOUS_RESEARCH.md:20–22`; `docs/archive/MODEL_EXPERIMENTS.md:41–49`. |
-| 9–15 | Eşikler operasyonel/pratik kabul kuralları. Eski paketlerde ek LSTM–XGB karşılaştırması vardı. Risk kapısı belirli ön kayıtlara ait; canlı v4 için ayrıca 252/252 zamanında yayın şartı var. | `docs/archive/MODEL_EXPERIMENTS.md:41–49`; `docs/CT_LEVEL_DXY_CONTROL_20261030.md`; `docs/CT_FORWARD_DAILY_20261030.md:78–96`. |
-| 17–23 | Tasarımı çalışmaya göre yaz. V1/R2/sprint dört 126-origin blokta 504 origin kullanır. Round A 8×126, üç önceki 63’lük inner blok ve ayrı erken durdurma segmenti kullanır. 2.006 ve 21 origin cadence belirli full-year işlerindir. 2024+ seçimsiz audit sonraki kuraldır; v1 raporunda eski politika “rejection only” olarak yazılı. Round A bootstrap ana blok 20, duyarlılık 10/40; 20/60 daha sonraki çalışmalarda. Risk shrinkage EWMA ile varyans karışımıdır. | V1 TXT:29–37,73–102; `docs/archive/CONTINUOUS_RESEARCH.md:20–28`; `docs/CT_EWMA_HAR_CONTROL_20261014.md:24–30`. |
-| 25–27 | “Her fit” ve “byte-equal” kapsamını daralt. Yerel checkpoint makbuzu ile Git’teki derlenmiş defter farklı. Eski TF-placement/On-call payload açığı var; CatBoost GPU taze refitte tolerans, bazı arşiv denetimleri saklı state’ten sıfır-fit replay kullanır. Açık smoke/reproduction kimlikleri ve yarım fit retry ayrı. | `research/README.md:672`; `docs/CLAUDE_HANDOFF.md:171–191`; `docs/archive/CONTINUOUS_RESEARCH.md:7–9,30–36`. |
+| 6–8 | CT=F günlük bar `Close` proxy’si için “settlement” genellemesi yapma. Gerçek named hedef ve fiyat alanı kaynak bazında yazılmalı. Drift ve çoğunluk yönü fiyat/referans kontrolleri; T+1 varyansın referansı EWMA. | `docs/archive/price-phase/PRICE_SEMANTICS_AUDIT_20261005.md`; `docs/archive/CONTINUOUS_RESEARCH.md:20–22`; `docs/archive/MODEL_EXPERIMENTS.md:41–49`. |
+| 9–15 | Eşikler operasyonel/pratik kabul kuralları. Eski paketlerde ek LSTM–XGB karşılaştırması vardı. Risk kapısı belirli ön kayıtlara ait; canlı v4 için ayrıca 252/252 zamanında yayın şartı var. | `docs/archive/MODEL_EXPERIMENTS.md:41–49`; `docs/archive/price-phase/CT_LEVEL_DXY_CONTROL_20261030.md`; `docs/archive/price-phase/CT_FORWARD_DAILY_20261030.md:78–96`. |
+| 17–23 | Tasarımı çalışmaya göre yaz. V1/R2/sprint dört 126-origin blokta 504 origin kullanır. Round A 8×126, üç önceki 63’lük inner blok ve ayrı erken durdurma segmenti kullanır. 2.006 ve 21 origin cadence belirli full-year işlerindir. 2024+ seçimsiz audit sonraki kuraldır; v1 raporunda eski politika “rejection only” olarak yazılı. Round A bootstrap ana blok 20, duyarlılık 10/40; 20/60 daha sonraki çalışmalarda. Risk shrinkage EWMA ile varyans karışımıdır. | V1 TXT:29–37,73–102; `docs/archive/CONTINUOUS_RESEARCH.md:20–28`; `docs/archive/price-phase/CT_EWMA_HAR_CONTROL_20261014.md:24–30`. |
+| 25–27 | “Her fit” ve “byte-equal” kapsamını daralt. Yerel checkpoint makbuzu ile Git’teki derlenmiş defter farklı. Eski TF-placement/On-call payload açığı var; CatBoost GPU taze refitte tolerans, bazı arşiv denetimleri saklı state’ten sıfır-fit replay kullanır. Açık smoke/reproduction kimlikleri ve yarım fit retry ayrı. | `research/README.md:672`; `docs/archive/phase2-notes/CLAUDE_HANDOFF.md:171–191`; `docs/archive/CONTINUOUS_RESEARCH.md:7–9,30–36`. |
 | 33–38 | 3.905 label’lı origin veri evreni; tablo 504 dış origin/ufuk. Ridge de çalıştırıldı. Aynı v1’in metrikleri ve daha sonra geri çekilen legacy olumlu LSTM iddiasını ayrı kaydet. | V1 TXT:29–82; `research/data-gpu-defects.json:130–139`. |
 | 40–42 | Dört LSTM adayı **fold başına**, artı final split için dört. Her fit iki çıktı üretir. Epoch 1, geniş validation split’indeki 32 hücre/0,20 adayına ait. Fold’lara genellenemez. | Q4–Q6. |
 | 44–45 | V1 bulguları doğru. R2’de price-MAE early stopping XGBoost içindir; LSTM scaled-target validation MAE’si üzerinden epoch seçer. R2’nin farklı veri kimliği, ayrı v2 kayıp eğrisi ve exact v1 replay sınırını ekle. | `docs/archive/MODEL_EXPERIMENTS.md:18–38,49`; `docs/archive/DAY1_R2_EVIDENCE_REVIEW.md:3–23,38–45`. |
@@ -156,19 +156,19 @@ Eski karşılaştırma 498 Naive ve 439 LSTM origin’ini kullanıyordu. T+1 iç
 | 59–65 | Performans tablosu 1.008 origin/ufuk, görülmüş tarih. “All gates failed” yerine hiçbir aday birleşik kapıyı geçmedi. Örneğin XGB T+5 %55,26 ile yön alt kapısını geçti. | `docs/archive/RESEARCH_RESET_20260928.md:5–16`. |
 | 66–72 | B/C bütçeleri ufuk başına, C 48 aile **ve** ufuk başına. “Only one … each … CatBoost” hatalı: defterde iki CatBoost kontrolü. MLP sekans penceresi 1, LSTM/TCN 20. TCN kontrolünün eski genel `passed` etiketi hatalı: bilinen-sinyal kazancı −%23,593133, aile bazında öğrenme başarısı doğrulanmadı. Yedeklerde sentetik kontrol sayısı defter kesitinden geniş olabilir. | `docs/archive/CONTINUOUS_RESEARCH.md:11–18`; `research/trials.json`; Q8–Q9. |
 | 73–76 | 20.360 ayrı deneyin makbuz toplamı: 20.352 piyasa fiti ve 8 diagnostik; 1.008 origin **ufuk başına**. Compute ~12,25 saat; GPU aktif/billed süre değil. `cotton_no_volume` DXY/WTI ve çapraz korelasyonları da çıkarır. Genişletilmiş availability kaynak ilk-yayın/vintage kabulü değildir. Rapor doğrulaması tüm payload’ları kapsamadı. | `output/reports/research-market-v1-ablation-review-20261001.json`; `ml/src/cottonlens_ml/research/ablation.py:18–32`; Q12. |
-| 77 | 6.648 yalnız eski XGBoost T+1 lineage. Hedef, loss ve diğer hiperparametreler birlikte değiştiğinden farklı yıllardaki seçim nedensel loss etkisi ölçmüyor; eşlenmiş ayrı loss kontrolü var. | `docs/LEGACY_LOSS_LINEAGE_RESULT_20261010.md:3–28,35–53`; `docs/PAIRED_PRICE_LOSS_RESULT_20261010.md`. |
+| 77 | 6.648 yalnız eski XGBoost T+1 lineage. Hedef, loss ve diğer hiperparametreler birlikte değiştiğinden farklı yıllardaki seçim nedensel loss etkisi ölçmüyor; eşlenmiş ayrı loss kontrolü var. | `docs/archive/price-phase/LEGACY_LOSS_LINEAGE_RESULT_20261010.md:3–28,35–53`; `docs/archive/price-phase/PAIRED_PRICE_LOSS_RESULT_20261010.md`. |
 | 79–98 | 1.855 altı standart profilin sayısı. WASDE 1.162, AMS 231, on-call 222 defter kaydı. On-call −%1,32 bir **kısmi**, 502-origin `oncall_L2` sicil satırı; tamamlanmış 2.006-origin replay’de kaynak L1/L2/L6 −%0,272/−%0,026/−%0,385. AMS/WASDE kapsamı farklı. L1/L2/L6 geçmiş saat/vintage varsayımları evrensel doğrulanmış ilk yayın saati değil. 84’te seçilmiş yön görünmüyor; 98’de sıfıra shrinkage genellemesi yerine aktif oran yaz (on-call kısmi %100). | `docs/archive/MASTER_PLAN_20261001.md:562–564`; `research/registry.json`; paket `data/codex_experiments.csv:64`. |
-| 101–104 | “Timing loss is not the main mechanism” yalnız eşlenmiş sabit DXY/WTI Ridge kolunun bulgusu. “No gain”/“Noise-level” yerine ilgili kıyas ve belirsizlik. +%0,22 ölçütü `registry.json` içindeki selected fiyat satırlarına ait maksimum; diğer çalışmaların tamamına uygulanmaz. | `docs/AVAILABILITY_CLOCK_RESULT_20261005.md`; `docs/archive/MASTER_PLAN_20261001.md:573–583`; Q27. |
-| 105–109 | Text/regional sonuçları sabit pilot/ortak kapsam olarak ver. Texas numeric D0/D1 için −%0,02744 / −%0,25559 ve raw D0 −%3,75575; −%0,03 bütün kolların sonucu değil. Zayıf sinyal öğretmeni belirli senaryolar için, “59/80 değişti” injected set içindir. | `docs/NASS_REGIONAL_T1_RESULT_20261009.md`; `docs/WEAK_SIGNAL_RESULT_20261009.md`; `docs/SELECTION_STABILITY_RESULT_20261010.md`. |
-| 110–113 | Paired loss’taki +%1,46 karşılaştırması MSE koluna karşı; Naive sonucu ayrıca gösterilmeli. Kalibrasyonda “unchanged” karar ve pratik ölçek için. T+1 curve tamamı weight 0 olan programın kapsadığı origin’lere aittir. | `docs/PAIRED_PRICE_LOSS_RESULT_20261010.md`; `docs/PRICE_MAE_CALIBRATION_RESULT_20261010.md`; `docs/CONTRACT_CURVE_RESULT_20261010.md`. |
-| 115–118 | Roll’lu proxy’de fiyat değişimi, aynı kontratı tutmanın getirisi olarak yorumlanamaz. Named label/capacity sonucu dar 2023 kohortunu kapsar. Öğretmen, sabit tarifin üretilen etkiyi öğrenebildiğini gösterir; piyasadaki tüm başarısızlıkların eğitim kusurundan bağımsız olduğunu göstermez. | `docs/NAMED_CAPACITY_CONTROL_T5_20261010.md`; `docs/NAMED_WEAK_SIGNAL_EXECUTION_20261012.md`; `docs/ROOT_CAUSE_REVIEW_20261106.md:44–54`. |
-| 121–129 | Risk target günlük close-to-close karesel getiri. HAR parametrelerini kol bazında ver (own-level/DXY beş parametre). CT raw +0,01747463 ile seçili +0,00136570 farklı. “One historical risk candidate” ifadesini tarihsel kapıları geçen önceden kayıtlı **ikincil** own-level kol olarak nitele, DXY birincil sonuç inconclusive. | `docs/CT_EWMA_HAR_CONTROL_20261014.md:7–12`; `docs/CT_LEVEL_DXY_CONTROL_20261030.md:95–108`. |
-| 130 | 95,9% yoğunlaşmayı aktarmaya ek olarak üst %1 çıkarıldığında katkı +0,00073073’e düşüyor. 169 katsayı bulgusu extra `log(EWMA)`’nın bu modeldeki işaretine ait. | `docs/CT_LEVEL_DXY_CONTROL_20261030.md:97–100,122–141`. |
-| 131–136 | “Daily automated publishing” tarihçe. V1 30 Ekim’de başladı, bir yayın ve 2 Kasım missing. V2 başlangıç 3 Kasım, bir yayın; scheduler kapalı. 252 slot / 31 fit tasarım bütçesi ve ilk takvimin hedefi, tamamlanmış ileri test veya skorlama değil. +0,00009 recent audit skoru, pre-2010 seçili EWMA’ya eşit; ikisi de ayrı tarihsel test. | Q16–Q18; `docs/STATUS.md:52–76,93–105,178–202,231–235`. |
-| 139–142 | 217 evaluation (ve 218 history) tarih, geçmiş teslim ayı kesin tanığı. 3.320 **kimlik** hücresi ayrı overlay’de; 110 HAR girdisi 863 doğrulanmış pencereden. Kapsamı ilgili yıllık AMS named sonuçlarıyla sınırlı tut. Yahoo değişiklik satırına v1’in reddedilen origin’ini ve v2’nin ayrı kilidini ekle. ICE 36/75 sayısı kaynak doğrulamasının kapsadığı witness set. | `docs/ROOT_CAUSE_REVIEW_20261106.md:44–49`; `docs/AMS_CONTRACT_RECONCILIATION_20261029.md:12–39,58–81`; Q13–Q14. |
-| 145–149 | 5 feature, 2.006 origin ve 338+4 sayısı iki kol toplamı; birincil Quantile için 169+2. STOP sabit reçete ve araştırma önceliği kararı. | `docs/PRICE_ONLY_MEDIAN_RESULT_20261105.md`; Q9. |
-| 151–157 | 15 Kasım Link 1 Claude Phase 2 köprüsü; 7 Kasım’a kadarki Codex deneyleriyle aynı dönem değil. Ön kayıt all-cotton der, gerçekleşen seri Upland; iki eksik previous-forecast olayı ve oracle n=32 belirtilmeli. H2 p=0,07549245 (üç ondalıkta 0,075). H1 eşlenmiş ay permütasyonundaki ilişki; “reacts” nedensellik kuruyor. H2/combined gate başarısız, üç büyük gün çıkarılınca H1 de başarısız. “No free archive exists” için bu kayıtlarda evrensel ispat yok; konsensüs serisi çalışmaya dahil edilmedi. | `docs/LINK1_EVENT_STUDY_PREREG_20261115.md:11–18,28–53`; `research/evidence/link1-event-study-20261115.json:1–66`. |
-| 160–163 | Tarihsel denenen protokollerde pratik fiyat kapısı geçilmedi. “Returns are close to a random walk for every feature set” istatistiksel random-walk tespiti gibi okunur. 113 skor sicil hücreleri, bağımsız 113 deney veya bütün çalışmaların maksimumu değil. 4.597 sentetik fit pozitif ve negatif kontrolleri içerir; pipeline’a genel beraat vermez. Named kusurun kapsamını belirt; forward görevi durdu. | Q16–Q18, Q27; `docs/ROOT_CAUSE_REVIEW_20261106.md:42–60`. |
+| 101–104 | “Timing loss is not the main mechanism” yalnız eşlenmiş sabit DXY/WTI Ridge kolunun bulgusu. “No gain”/“Noise-level” yerine ilgili kıyas ve belirsizlik. +%0,22 ölçütü `registry.json` içindeki selected fiyat satırlarına ait maksimum; diğer çalışmaların tamamına uygulanmaz. | `docs/archive/price-phase/AVAILABILITY_CLOCK_RESULT_20261005.md`; `docs/archive/MASTER_PLAN_20261001.md:573–583`; Q27. |
+| 105–109 | Text/regional sonuçları sabit pilot/ortak kapsam olarak ver. Texas numeric D0/D1 için −%0,02744 / −%0,25559 ve raw D0 −%3,75575; −%0,03 bütün kolların sonucu değil. Zayıf sinyal öğretmeni belirli senaryolar için, “59/80 değişti” injected set içindir. | `docs/archive/price-phase/NASS_REGIONAL_T1_RESULT_20261009.md`; `docs/archive/price-phase/WEAK_SIGNAL_RESULT_20261009.md`; `docs/archive/price-phase/SELECTION_STABILITY_RESULT_20261010.md`. |
+| 110–113 | Paired loss’taki +%1,46 karşılaştırması MSE koluna karşı; Naive sonucu ayrıca gösterilmeli. Kalibrasyonda “unchanged” karar ve pratik ölçek için. T+1 curve tamamı weight 0 olan programın kapsadığı origin’lere aittir. | `docs/archive/price-phase/PAIRED_PRICE_LOSS_RESULT_20261010.md`; `docs/archive/price-phase/PRICE_MAE_CALIBRATION_RESULT_20261010.md`; `docs/archive/price-phase/CONTRACT_CURVE_RESULT_20261010.md`. |
+| 115–118 | Roll’lu proxy’de fiyat değişimi, aynı kontratı tutmanın getirisi olarak yorumlanamaz. Named label/capacity sonucu dar 2023 kohortunu kapsar. Öğretmen, sabit tarifin üretilen etkiyi öğrenebildiğini gösterir; piyasadaki tüm başarısızlıkların eğitim kusurundan bağımsız olduğunu göstermez. | `docs/archive/price-phase/NAMED_CAPACITY_CONTROL_T5_20261010.md`; `docs/archive/price-phase/NAMED_WEAK_SIGNAL_EXECUTION_20261012.md`; `docs/archive/price-phase/ROOT_CAUSE_REVIEW_20261106.md:44–54`. |
+| 121–129 | Risk target günlük close-to-close karesel getiri. HAR parametrelerini kol bazında ver (own-level/DXY beş parametre). CT raw +0,01747463 ile seçili +0,00136570 farklı. “One historical risk candidate” ifadesini tarihsel kapıları geçen önceden kayıtlı **ikincil** own-level kol olarak nitele, DXY birincil sonuç inconclusive. | `docs/archive/price-phase/CT_EWMA_HAR_CONTROL_20261014.md:7–12`; `docs/archive/price-phase/CT_LEVEL_DXY_CONTROL_20261030.md:95–108`. |
+| 130 | 95,9% yoğunlaşmayı aktarmaya ek olarak üst %1 çıkarıldığında katkı +0,00073073’e düşüyor. 169 katsayı bulgusu extra `log(EWMA)`’nın bu modeldeki işaretine ait. | `docs/archive/price-phase/CT_LEVEL_DXY_CONTROL_20261030.md:97–100,122–141`. |
+| 131–136 | “Daily automated publishing” tarihçe. V1 30 Ekim’de başladı, bir yayın ve 2 Kasım missing. V2 başlangıç 3 Kasım, bir yayın; scheduler kapalı. 252 slot / 31 fit tasarım bütçesi ve ilk takvimin hedefi, tamamlanmış ileri test veya skorlama değil. +0,00009 recent audit skoru, pre-2010 seçili EWMA’ya eşit; ikisi de ayrı tarihsel test. | Q16–Q18; `docs/archive/price-phase/STATUS.md:52–76,93–105,178–202,231–235`. |
+| 139–142 | 217 evaluation (ve 218 history) tarih, geçmiş teslim ayı kesin tanığı. 3.320 **kimlik** hücresi ayrı overlay’de; 110 HAR girdisi 863 doğrulanmış pencereden. Kapsamı ilgili yıllık AMS named sonuçlarıyla sınırlı tut. Yahoo değişiklik satırına v1’in reddedilen origin’ini ve v2’nin ayrı kilidini ekle. ICE 36/75 sayısı kaynak doğrulamasının kapsadığı witness set. | `docs/archive/price-phase/ROOT_CAUSE_REVIEW_20261106.md:44–49`; `docs/archive/price-phase/AMS_CONTRACT_RECONCILIATION_20261029.md:12–39,58–81`; Q13–Q14. |
+| 145–149 | 5 feature, 2.006 origin ve 338+4 sayısı iki kol toplamı; birincil Quantile için 169+2. STOP sabit reçete ve araştırma önceliği kararı. | `docs/archive/price-phase/PRICE_ONLY_MEDIAN_RESULT_20261105.md`; Q9. |
+| 151–157 | 15 Kasım Link 1 Claude Phase 2 köprüsü; 7 Kasım’a kadarki Codex deneyleriyle aynı dönem değil. Ön kayıt all-cotton der, gerçekleşen seri Upland; iki eksik previous-forecast olayı ve oracle n=32 belirtilmeli. H2 p=0,07549245 (üç ondalıkta 0,075). H1 eşlenmiş ay permütasyonundaki ilişki; “reacts” nedensellik kuruyor. H2/combined gate başarısız, üç büyük gün çıkarılınca H1 de başarısız. “No free archive exists” için bu kayıtlarda evrensel ispat yok; konsensüs serisi çalışmaya dahil edilmedi. | `docs/prereg/LINK1_EVENT_STUDY_PREREG_20261115.md:11–18,28–53`; `research/evidence/link1-event-study-20261115.json:1–66`. |
+| 160–163 | Tarihsel denenen protokollerde pratik fiyat kapısı geçilmedi. “Returns are close to a random walk for every feature set” istatistiksel random-walk tespiti gibi okunur. 113 skor sicil hücreleri, bağımsız 113 deney veya bütün çalışmaların maksimumu değil. 4.597 sentetik fit pozitif ve negatif kontrolleri içerir; pipeline’a genel beraat vermez. Named kusurun kapsamını belirt; forward görevi durdu. | Q16–Q18, Q27; `docs/archive/price-phase/ROOT_CAUSE_REVIEW_20261106.md:42–60`. |
 
 #### `04_MODEL_FAMILIES_AND_HYPERPARAMETERS.md`
 
@@ -180,10 +180,10 @@ Eski karşılaştırma 498 Naive ve 439 LSTM origin’ini kullanıyordu. T+1 iç
 | 41 | Sabit depth-2 genellemesini standardize keşif kollarıyla sınırla. AMS ve on-call ayrı protokol/kapsam; her sonraki pilot aynı reçete değil. | `research/trials.json`; `docs/archive/MASTER_PLAN_20261001.md:267–275,562–564`. |
 | 42 | 387 XGB tarif satırında objective **223** squared, **164** absolute. Target **201** scaled_log, **182** price_delta, **4** raw_log. Paket sayıları farklı paydaları birleştiriyor. | `research/trials.json` XGB recipe alanlarının yeniden sayımı. |
 | 43–44 | “CPU elsewhere” hatalı; market-v1 GPU deniyor, bazı keşif makbuzlarında L4/CUDA doğrulandı. Seed 42 ana arama ve sabit pilotların seed’i, Round A finalistleri 17/42/101. Price-MAE early stopping protokol ve eğitilen kol bazında ifade edilmeli. Native `pred_contribs` açıklaması deneysel XGB modeliyle ilişkilendirilmeli. | `docs/archive/CONTINUOUS_RESEARCH.md:11–17`; ana checkout `docs/MASTER_PLAN_20261001.md:707,800`; `c33d6ae:ml/src/cottonlens_ml/export.py`; Q10. |
-| 52–56 | Ridge **13.901**, Quantile **171**. İki kolun 342 fit’inden Quantile 171, Ridge 171. Development/market ve synthetic role kayıtları ayrılmalı. 129, Ridge tarif satırı. 21 cadence ve shrinkage her Ridge tarifinde ortak değil. +%0,22 en iyi selected registry değeridir. | `research/trials.json`; `docs/PRICE_ONLY_MEDIAN_RESULT_20261105.md`; Q9/Q27. |
-| 58–72 | HAR 3.048 doğru. `own_har_k − log(EWMA)` ifadesini log-feature koluna ve ilgili offset’e bağla. EWMA’ya geri dönüş ilgili log-link dahil tüm lineer düzeltme sıfır olduğunda veya seçilen karışım ağırlığı 0 iken olur. +0,0177 tarihsel ikincil sonuç; görev kapalı. | `docs/CT_LEVEL_DXY_CONTROL_20261030.md:95–108`; `docs/CT_EWMA_HAR_CONTROL_20261014.md:7–30`; Q16–Q18. |
-| 74–78 | GARCH uygulama ayarları doğru, sonuç full-year tarihsel protokole ait. 356 tamamlanmış ElasticNet defter fit’inin parametreleri doğru; Round A ElasticNet arama uzayı ayrıdır (geniş α ve l1_ratio). | `ml/src/cottonlens_ml/research/volatility.py:133`, `search.py:28–31`; `research/trials.json`; `docs/RISK_EVIDENCE_AUDIT_20261012.md`. |
-| 80–85 | 342 toplam; Quantile 169 piyasa+2 sentetik, Ridge 169+2. Ham fiyat-delta, `highs`, thread 1, 120 s. EWMA λ=0,94, burada anlatılan ana risk protokollerinin sabit referansı; başka tarifi/araştırma önerisini “everywhere” ile kapsamamalı. | `research/trials.json`; `docs/PRICE_ONLY_MEDIAN_RESULT_20261105.md`; Q9. |
+| 52–56 | Ridge **13.901**, Quantile **171**. İki kolun 342 fit’inden Quantile 171, Ridge 171. Development/market ve synthetic role kayıtları ayrılmalı. 129, Ridge tarif satırı. 21 cadence ve shrinkage her Ridge tarifinde ortak değil. +%0,22 en iyi selected registry değeridir. | `research/trials.json`; `docs/archive/price-phase/PRICE_ONLY_MEDIAN_RESULT_20261105.md`; Q9/Q27. |
+| 58–72 | HAR 3.048 doğru. `own_har_k − log(EWMA)` ifadesini log-feature koluna ve ilgili offset’e bağla. EWMA’ya geri dönüş ilgili log-link dahil tüm lineer düzeltme sıfır olduğunda veya seçilen karışım ağırlığı 0 iken olur. +0,0177 tarihsel ikincil sonuç; görev kapalı. | `docs/archive/price-phase/CT_LEVEL_DXY_CONTROL_20261030.md:95–108`; `docs/archive/price-phase/CT_EWMA_HAR_CONTROL_20261014.md:7–30`; Q16–Q18. |
+| 74–78 | GARCH uygulama ayarları doğru, sonuç full-year tarihsel protokole ait. 356 tamamlanmış ElasticNet defter fit’inin parametreleri doğru; Round A ElasticNet arama uzayı ayrıdır (geniş α ve l1_ratio). | `ml/src/cottonlens_ml/research/volatility.py:133`, `search.py:28–31`; `research/trials.json`; `docs/archive/price-phase/RISK_EVIDENCE_AUDIT_20261012.md`. |
+| 80–85 | 342 toplam; Quantile 169 piyasa+2 sentetik, Ridge 169+2. Ham fiyat-delta, `highs`, thread 1, 120 s. EWMA λ=0,94, burada anlatılan ana risk protokollerinin sabit referansı; başka tarifi/araştırma önerisini “everywhere” ile kapsamamalı. | `research/trials.json`; `docs/archive/price-phase/PRICE_ONLY_MEDIAN_RESULT_20261105.md`; Q9. |
 | 87–90 | İki CatBoost fit **defter** sayısı. Daha geniş arşivde gerçek piyasa fit’leri var. Aday sayısına ek olarak market-v1’de **10.176 CatBoost piyasa fiti** ve üç CatBoost tanı kontrolü sayıldı. Taze reproduction için tolerans kuralı var, bu aramaların bütün CatBoost modelleri için o kontrolün geçtiği kanıtlanmadı. | `docs/archive/CONTINUOUS_RESEARCH.md:30–36`; Q9, Q11–Q12. |
 | 92–99 | 23 Eylül V1: 4 aday **fold başına**, iki horizon çıkışı ortak. Epoch 1 yalnız final validation split’i. DG-008 farklı bir artifact’e, 22 Eylül `v20260922-1450` çalışmasına ait. O dönemde 6 aday vardı. GradientExplainer, seçilen LSTM’i export edebilmek için yazılan koşullu yol; v1 ZIP’te seçilen tahmin Naive ve LSTM payload’u yok. DG-008’in özgün vektörü doğrulanamadı, yerel checkpoint ve raporlar bulundu. Round C bütçesi aile ve ufuk başına; koşullu durdurma kararını ekle. | Q4–Q8; `c33d6ae:ml/src/cottonlens_ml/export.py:75–107,280–292`; v1 ZIP üye listesi. |
 
@@ -208,7 +208,7 @@ Eski karşılaştırma 498 Naive ve 439 LSTM origin’ini kullanıyordu. T+1 iç
 
 **Kesinlik** — kesin. İlk üçü yapılandırılmış dosyalardan yeniden hesapladım. Ablation, HAR ve Link 1 değerlerini özgün rapor/makbuzla karşılaştırdım. Ham piyasa verisinden yeni fit, yeni bootstrap veya mühürlü Link 1 testi yapılmadı.
 
-**Kaynak** — `research/trials.json` (`records[].completed_fits`, `kind`, `profile`, `recipes[].family`); `research/registry.json` (`records[].metrics.selected.gain_pct`), örnek satır paket `data/codex_experiments.csv:5`; `output/reports/research-market-v1-ablation-review-20261001.json` (`results`); `docs/CT_LEVEL_DXY_CONTROL_20261030.md:95–101`; Claude `research/evidence/link1-event-study-20261115.json:1–66`.
+**Kaynak** — `research/trials.json` (`records[].completed_fits`, `kind`, `profile`, `recipes[].family`); `research/registry.json` (`records[].metrics.selected.gain_pct`), örnek satır paket `data/codex_experiments.csv:5`; `output/reports/research-market-v1-ablation-review-20261001.json` (`results`); `docs/archive/price-phase/CT_LEVEL_DXY_CONTROL_20261030.md:95–101`; Claude `research/evidence/link1-event-study-20261115.json:1–66`.
 
 **Claude nereye bakmalı** — Katalogdan önce ham JSON ve özgün makbuz. Defterin toplamı için `completed_fits`, dağılım için `kind`, XGBoost için doğrudan aile filtresi. Registry max/medyan yalnız dolu selected gain alanları. Phase 1 ve Link 1’i farklı zaman ve protokol başlıklarında tutabilir.
 
@@ -258,7 +258,7 @@ Eski karşılaştırma 498 Naive ve 439 LSTM origin’ini kullanıyordu. T+1 iç
 
 **Kesinlik** — kesin. Defter/ablasyon kapsamları ile arama ayarları doğrulandı; Round A'nın geniş CatBoost toplamı açık.
 
-**Kaynak** — `research/trials.json` CatBoost makbuzları `220bf782fab1…`, `8b110175f9f5…` ve `price-only-median-t1-v1`; `docs/PRICE_ONLY_MEDIAN_RESULT_20261105.md:63–83`; `ml/src/cottonlens_ml/research/search.py:6–40`, `models.py:273–291`; paket `research/package/build_catalogs.py:42–71`. Ablation için Q12.
+**Kaynak** — `research/trials.json` CatBoost makbuzları `220bf782fab1…`, `8b110175f9f5…` ve `price-only-median-t1-v1`; `docs/archive/price-phase/PRICE_ONLY_MEDIAN_RESULT_20261105.md:63–83`; `ml/src/cottonlens_ml/research/search.py:6–40`, `models.py:273–291`; paket `research/package/build_catalogs.py:42–71`. Ablation için Q12.
 
 **Claude nereye bakmalı** — Colab `experiments/research-v2-tf-placement/decisions/A` ve `experiments/research-market-v1/ledger/completed`. Park edilmiş eski model payload’larını makbuz veya doğrulanmış restore sayısıyla karıştırmamalı.
 
@@ -278,7 +278,7 @@ Eski karşılaştırma 498 Naive ve 439 LSTM origin’ini kullanıyordu. T+1 iç
 
 **Kesinlik** — kesin. Saklama ve yeniden kurma yerleri belirli, hazır bütün-finalist tablosu doğrulanmadı.
 
-**Kaynak** — `ml/src/cottonlens_ml/research/engine.py:272–303,328–340`, `search.py:6`, `docs/LEGACY_LOSS_LINEAGE_RESULT_20261010.md:3–28`. `output/reports/research-v2-A-saved-results.json` dış sonuç özetidir. [Lineage release’i](https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/legacy-loss-lineage-20261010).
+**Kaynak** — `ml/src/cottonlens_ml/research/engine.py:272–303,328–340`, `search.py:6`, `docs/archive/price-phase/LEGACY_LOSS_LINEAGE_RESULT_20261010.md:3–28`. `output/reports/research-v2-A-saved-results.json` dış sonuç özetidir. [Lineage release’i](https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/legacy-loss-lineage-20261010).
 
 **Claude nereye bakmalı** — `CottonLensAI Colab/CottonLensAI/experiments/research-v2-tf-placement/decisions/A/`, eşleşen `ledger/completed/` ve lineage arşivi. Kaybolan payload’ların kapsamı için `research/README.md:672`.
 
@@ -311,7 +311,7 @@ Ablation giriş kapısı eşlenmiş iç skorlar üzerinden en az %0,5 iyileşme 
 
 **Kesinlik** — kesin.
 
-**Kaynak** — `docs/STATUS.md:178–202`; `research/ct_manual_forward.py:350–406,431–443`; `research/evidence/ct-forward-first-observed-publication-audit-20261104.json`; yerel `output/own-level-forward-v2-first-observed/cohort-lock.json`. [Private release](https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/ct-forward-records-2026-q4).
+**Kaynak** — `docs/archive/price-phase/STATUS.md:178–202`; `research/ct_manual_forward.py:350–406,431–443`; `research/evidence/ct-forward-first-observed-publication-audit-20261104.json`; yerel `output/own-level-forward-v2-first-observed/cohort-lock.json`. [Private release](https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/ct-forward-records-2026-q4).
 
 **Claude nereye bakmalı** — V2 `inputs/bootstrap-revisions.json`, gözlem bazlı `overlap-revisions.json`, capture ham makbuzları ve ayrı v1/v2 release zincirleri.
 
@@ -321,7 +321,7 @@ Ablation giriş kapısı eşlenmiş iç skorlar üzerinden en az %0,5 iyileşme 
 
 **Kesinlik** — kesin.
 
-**Kaynak** — `docs/AMS_CONTRACT_RECONCILIATION_20261029.md:3–39,41–49,58–81`, `docs/ROOT_CAUSE_REVIEW_20261106.md:46–49`, `research/ams_contract_reconciliation.py:163–183`, `research/evidence/ams-contract-reconciliation-20261029.json:158–168`. [Private release](https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/ams-contract-reconciliation-20261029).
+**Kaynak** — `docs/archive/price-phase/AMS_CONTRACT_RECONCILIATION_20261029.md:3–39,41–49,58–81`, `docs/archive/price-phase/ROOT_CAUSE_REVIEW_20261106.md:46–49`, `research/ams_contract_reconciliation.py:163–183`, `research/evidence/ams-contract-reconciliation-20261029.json:158–168`. [Private release](https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/ams-contract-reconciliation-20261029).
 
 **Claude nereye bakmalı** — Release `manifest.json` ve `evidence.zip` içindeki `verified-daily-overlay.json`, `day-reconciliation.csv`, bağımsız replay makbuzu. Overlay kısmi kimlik onarımı; çözümsüz tarih ve saat/vintage doğrulaması ayrı.
 
@@ -331,7 +331,7 @@ Ablation giriş kapısı eşlenmiş iç skorlar üzerinden en az %0,5 iyileşme 
 
 **Kesinlik** — kesin.
 
-**Kaynak** — `README.md:8–16`, `docs/archive/MODEL_EXPERIMENTS.md:49`; Claude `docs/LINK1_EVENT_STUDY_PREREG_20261115.md:11–18,51–53`, `research/chain/link1_event_study.py:21,48,107`, `docs/SEALED_TEST_T39_PREREG_20261115.md:3–5,34–40`.
+**Kaynak** — `README.md:8–16`, `docs/archive/MODEL_EXPERIMENTS.md:49`; Claude `docs/prereg/LINK1_EVENT_STUDY_PREREG_20261115.md:11–18,51–53`, `research/chain/link1_event_study.py:21,48,107`, `docs/prereg/SEALED_TEST_T39_PREREG_20261115.md:3–5,34–40`.
 
 **Claude nereye bakmalı** — Link 1 ön kaydı, kod filtresi ve T39’un dar açma sınırı. Açılma tarihi/kararı iddiası için o kapsamı açıkça adlandıran ayrı ön kayıt ve kullanıcı izni.
 
@@ -355,7 +355,7 @@ Ablation giriş kapısı eşlenmiş iç skorlar üzerinden en az %0,5 iyileşme 
 
 **Kesinlik** — bilmiyorum. Eşiklerin fikir sahipliği Eray’ın doğrudan beyanıyla açıklandı, diğer bütün kararlar için eksiksiz fikir sahipliği haritası yok.
 
-**Kaynak** — Eray’ın bu sohbetin 16 Kasım 2026 tarihli açıklaması; `docs/CT_FORWARD_DAILY_20261030.md:3–19,32–58`, `docs/DATA_GPU_PROGRESS_20261106.md:165,181`, ana `docs/CLAUDE_PROJECT_HANDOFF_20261001.md:25–37`, ana `docs/CLAUDE_HANDOFF.md:95–113`, Kasım 6 Codex rollout’unda kullanıcı mesajı (planı yürütmeye devam, dosya satırı 991).
+**Kaynak** — Eray’ın bu sohbetin 16 Kasım 2026 tarihli açıklaması; `docs/archive/price-phase/CT_FORWARD_DAILY_20261030.md:3–19,32–58`, `docs/archive/price-phase/DATA_GPU_PROGRESS_20261106.md:165,181`, ana `docs/CLAUDE_PROJECT_HANDOFF_20261001.md:25–37`, ana `docs/archive/phase2-notes/CLAUDE_HANDOFF.md:95–113`, Kasım 6 Codex rollout’unda kullanıcı mesajı (planı yürütmeye devam, dosya satırı 991).
 
 **Claude nereye bakmalı** — `C:/Users/Eray/.codex/sessions/2026/11/06/rollout-2026-11-06T22-27-29-01a1ab15-35f6-70c3-a772-07001ee27f19_01a1b254-9178-7422-872c-f560b7175c92.jsonl`, özellikle kullanıcı mesajları; Eylül için özgün sohbet dışa aktarımı veya Eray’ın kendi plan notu gerekir.
 
@@ -365,7 +365,7 @@ Ablation giriş kapısı eşlenmiş iç skorlar üzerinden en az %0,5 iyileşme 
 
 **Kesinlik** — kesin. Bulunan ek kanıtlar ve sınırları dosyadan doğrulandı.
 
-**Kaynak** — Ana `docs/CLAUDE_HANDOFF.md:9–49,115–191`, `docs/GITHUB_DELIVERY_20261105.md:6–24`, `research/README.md:672`, Q1–Q2/Q6–Q7/Q12’deki yollar, `5b22559` ve `445d1fe`. [Median release’i](https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/price-only-median-result-20261105) · [Source gate/L4 release’i](https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/source-gate-l4-audit-20261106) · [Drive preservation](https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/drive-preservation-20261011).
+**Kaynak** — Ana `docs/archive/phase2-notes/CLAUDE_HANDOFF.md:9–49,115–191`, `docs/archive/price-phase/GITHUB_DELIVERY_20261105.md:6–24`, `research/README.md:672`, Q1–Q2/Q6–Q7/Q12’deki yollar, `5b22559` ve `445d1fe`. [Median release’i](https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/price-only-median-result-20261105) · [Source gate/L4 release’i](https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/source-gate-l4-audit-20261106) · [Drive preservation](https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/drive-preservation-20261011).
 
 **Claude nereye bakmalı** — Önce ana checkout `output/claude-audit/drive/`, `output/claude-preparation-20261112/` ve `CottonLensAI Colab/CottonLensAI/`; sonra `C:/Users/Eray/.codex/worktrees/naive-mae-20261105/CottonLensAI/output/data-gpu-audit/` ve `C:/Users/Eray/.codex/worktrees/repository-curation/CottonLensAI/docs/END_TO_END_AUDIT.md`. Farklı restore kopyalarını fit toplamına iki kez ekleme.
 
@@ -373,16 +373,16 @@ Ablation giriş kapısı eşlenmiş iç skorlar üzerinden en az %0,5 iyileşme 
 
 **Cevap** — Önerdiğim okuma sırası:
 
-1. `docs/CLAUDE_HANDOFF.md` — doğru commit, yerel ve private kanıt haritası.
+1. `docs/archive/phase2-notes/CLAUDE_HANDOFF.md` — doğru commit, yerel ve private kanıt haritası.
 2. `docs/archive/MODEL_EXPERIMENTS.md` — v1 sonuç, LSTM ve dört fold, v2 düzeltmeleri.
 3. `docs/archive/DAY1_R2_EVIDENCE_REVIEW.md` — düzeltilmiş LSTM eğrisi, dataset ve ölçüm sınırı.
 4. `docs/archive/CONTINUOUS_RESEARCH.md` — Round A–E bütçeleri, protokol, release ve replay.
-5. `docs/NAIVE_MAE_AUDIT_20261105.md` — Naive neden yenilmedi sorusunun kanıt envanteri ve eski LSTM düzeltmesi.
-6. `docs/PRICE_ONLY_MEDIAN_RESULT_20261105.md` — son fiyat hipotezi, bağımsız replay ve STOP.
-7. `docs/ROOT_CAUSE_REVIEW_20261106.md` — tek kök neden bulunmadığının savunulabilir sentezi.
-8. `docs/AMS_CONTRACT_RECONCILIATION_20261029.md` — kaynak kimliği yanlışının fit ve evaluasyona etkisi.
-9. `docs/CT_LEVEL_DXY_CONTROL_20261030.md` — DXY ana kolu, own-level ikincil QLIKE sonucu ve tail yoğunlaşması.
-10. `docs/END_TO_END_AUDIT.md` — araştırma ve runtime sınırları, sonda v1/v2 forward yayın tablosu.
+5. `docs/archive/price-phase/NAIVE_MAE_AUDIT_20261105.md` — Naive neden yenilmedi sorusunun kanıt envanteri ve eski LSTM düzeltmesi.
+6. `docs/archive/price-phase/PRICE_ONLY_MEDIAN_RESULT_20261105.md` — son fiyat hipotezi, bağımsız replay ve STOP.
+7. `docs/archive/price-phase/ROOT_CAUSE_REVIEW_20261106.md` — tek kök neden bulunmadığının savunulabilir sentezi.
+8. `docs/archive/price-phase/AMS_CONTRACT_RECONCILIATION_20261029.md` — kaynak kimliği yanlışının fit ve evaluasyona etkisi.
+9. `docs/archive/price-phase/CT_LEVEL_DXY_CONTROL_20261030.md` — DXY ana kolu, own-level ikincil QLIKE sonucu ve tail yoğunlaşması.
+10. `docs/archive/price-phase/END_TO_END_AUDIT.md` — araştırma ve runtime sınırları, sonda v1/v2 forward yayın tablosu.
 
 **Kesinlik** — kesin. Belge yolları ve kapsam dosyadan. Sıralama görüşme amaçlı editoryal seçim.
 

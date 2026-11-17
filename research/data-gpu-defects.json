@@ -10,7 +10,7 @@
       "affected_scope": "Three source-qualified named-risk profiles; not all CT=F experiments.",
       "evidence": [
         "research/evidence/lifecycle-recheck-20261106.json",
-        "docs/SOURCE_GATE_RECHECK_20261106.md"
+        "docs/archive/price-phase/SOURCE_GATE_RECHECK_20261106.md"
       ],
       "remediation": "Preserve old results with source qualifications; require verified replacement cells and lifecycle evidence before new fits.",
       "closure": "Complete source-bound repair and downstream dependency acceptance; recounting the defect is not repair."
@@ -49,13 +49,13 @@
       "evidence": [
         "research/evidence/source-gate-review-20261106.json",
         "research/evidence/early-catalog-review-20261106.json",
-        "docs/DATA_SOURCE_REQUEST_20261106.md",
+        "docs/archive/price-phase/DATA_SOURCE_REQUEST_20261106.md",
         "research/evidence/source-request-matrix-20261106/result.json",
         "research/evidence/source-request-matrix-listing-20261106/result.json",
         "research/evidence/listing-coverage-delivery-20261106.json",
         "research/evidence/ice-listing-schedule-20261106/result.json",
         "research/evidence/ice-listing-rule-delivery-20261106.json",
-        "docs/ICE_DATA_REQUEST_DRAFT_20261106.md",
+        "docs/archive/price-phase/ICE_DATA_REQUEST_DRAFT_20261106.md",
         "research/evidence/ice-inquiry-status-20261106.json",
         "research/evidence/ice-routing-status-20261106.json"
       ],
@@ -90,7 +90,7 @@
         "research/evidence/price-independent-native-20261106.json",
         "research/evidence/price-prediction-causality-20261106.json",
         "research/evidence/prediction-causality-delivery-20261106.json",
-        "docs/G2_COVERAGE_20261107.md",
+        "docs/archive/price-phase/G2_COVERAGE_20261107.md",
         "research/evidence/text-learning-admission-20261107.json",
         "research/evidence/decision-cache-oof-20261107.json",
         "research/evidence/adaptive-ablation-cache-20261107.json",
@@ -132,8 +132,8 @@
       "problem": "Legacy LSTM positive comparison used unequal periods; missing predictions prevent a complete paired inference.",
       "affected_scope": "Legacy comparison; not evidence that all engines fail.",
       "evidence": [
-        "docs/NAIVE_MAE_AUDIT_20261105.md",
-        "docs/ROOT_CAUSE_REVIEW_20261106.md"
+        "docs/archive/price-phase/NAIVE_MAE_AUDIT_20261105.md",
+        "docs/archive/price-phase/ROOT_CAUSE_REVIEW_20261106.md"
       ],
       "remediation": "Retract unequal-period advantage and preserve incomplete evidence; do not fill historical gaps by retraining.",
       "closure": "Historical paired claim remains unavailable unless original required predictions are recovered."
@@ -204,7 +204,7 @@
         "ml/tests/test_text_admission.py",
         "ml/tests/test_text_adapter.py",
         "research/evidence/text-learning-admission-20261107.json",
-        "docs/G2_COVERAGE_20261107.md"
+        "docs/archive/price-phase/G2_COVERAGE_20261107.md"
       ],
       "remediation": "Require exact dispatched training frame, ordered features and text config before learning; reject future-target features before vocabulary/SVD. Preserve no-fit deserialization and explicitly admitted synthetic controls.",
       "closure": "Regression failed before fix at vocabulary learning; 11new controls and existing generated text/model admission checks pass. Source truth and full G2 remain separate open requirements."

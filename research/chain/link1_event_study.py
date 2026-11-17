@@ -1,6 +1,6 @@
 """Link 1: cotton price reaction on USDA Crop Production report days, 2012-2021 (frozen prereg).
 
-Prereg: docs/LINK1_EVENT_STUDY_PREREG_20261115.md (LF sha256 checked below).
+Prereg: docs/prereg/LINK1_EVENT_STUDY_PREREG_20261115.md (LF sha256 checked below).
 Seal: prices are filtered to <= 2021-12-31 before any computation; NASS data stop at 2021.
 Usage: python link1_event_study.py market_history.parquet nass_dir out.json
 """
@@ -16,7 +16,7 @@ ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT))
 from research.crop_nowcast.state_model import nass_state
 
-PREREG = ROOT / 'docs/LINK1_EVENT_STUDY_PREREG_20261115.md'
+PREREG = ROOT / 'docs/prereg/LINK1_EVENT_STUDY_PREREG_20261115.md'
 PREREG_SHA = '16e2b4403c46e9ab2e0b17494d21a30d3f0bdc7281d7146290b5bc6bf1433e0c'
 SEAL = pd.Timestamp('2021-12-31')
 MON = {9: 'SEP', 10: 'OCT', 11: 'NOV', 12: 'DEC'}

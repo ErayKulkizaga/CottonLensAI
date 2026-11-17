@@ -352,7 +352,7 @@ Data:
 
 ## Chain: Link 1, report-day price reaction (preregistered; run once on 15 Nov)
 
-Frozen preregistration: `docs/LINK1_EVENT_STUDY_PREREG_20261115.md` (LF sha256 16e2b440…). Code: commit 863f195. Result: `research/evidence/link1-event-study-20261115.json`.
+Frozen preregistration: `docs/prereg/LINK1_EVENT_STUDY_PREREG_20261115.md` (LF sha256 16e2b440…). Code: commit 863f195. Result: `research/evidence/link1-event-study-20261115.json`.
 
 - **Events:** 38 reports, Sep–Dec of 2012–2021. Oct and Nov 2013 are excluded because there was no previous forecast (shutdown).
 - **Price:** `cotton` daily close series, 2021 and earlier only.
@@ -396,7 +396,7 @@ Frozen preregistration: `docs/LINK1_EVENT_STUDY_PREREG_20261115.md` (LF sha256 1
 - **Sealed test candidate:** T25 (bias correction) at 1 Sep and 1 Oct. It needs only USDA's monthly forecasts and final production for 2022–2025.
   - Risk: it wins only if USDA's upward bias persists. It is one shot.
   - It needs the user's explicit yes and a pushed preregistration.
-- **Unified goal (approved 15 Nov).** All tracks are now one chain; see [WORK_PLAN_20261115.md](WORK_PLAN_20261115.md). The P items below became Links 1–3.
+- **Unified goal (approved 15 Nov).** All tracks are now one chain; see [WORK_PLAN_20261115.md](archive/phase2-notes/WORK_PLAN_20261115.md). The P items below became Links 1–3.
 - **Already tested in the Codex era (P00, not to be repeated).** These used WASDE regional numbers (2019–2023) and Texas condition (2016–2023) as features for *every-day* T+1 price MAE. All stayed below the 5% target, and the weak-signal check showed that shrinkage hides small signals. Report-day behaviour and the revision-to-price sign were never tested. Sources: WASDE_REGIONAL_T1_RESULT, NASS_REGIONAL_T1_RESULT, WEAK_SIGNAL_RESULT, and the two CLOCK_CASE documents.
 - **Price track** (second priority; the user's request, relayed on 15 Nov). The idea is "forecast the forecasts": price reacts to the report surprise.
   - **P01** Price after USDA reports. On WASDE and Crop Production days, and the 1–5 days after, does cotton over- or under-react (drift)? Needs only the existing CT history and report dates. Cheapest, so it runs first.
@@ -415,7 +415,7 @@ Frozen preregistration: `docs/LINK1_EVENT_STUDY_PREREG_20261115.md` (LF sha256 1
 - **1 Oct:** T36 scored TX 15.0 / US 5.2, against T25 13.7 / 5.9 and USDA 20.3 / 4.2.
 - **US fails** because USDA under-forecast the US in 2022 and 2024, and the bias correction pushed further down.
 - **TX: T25 and T36 beat USDA in 3 of 3 sealed years.** This was not the declared claim; it is a hypothesis for a new forward test.
-- Details: `docs/SEALED_TEST_T39_PREREG_20261115.md`; evidence `t39-sealed-test-20261116.json`.
+- Details: `docs/prereg/SEALED_TEST_T39_PREREG_20261115.md`; evidence `t39-sealed-test-20261116.json`.
 - The seal is now spent for production finals 2022–2024. Prices and returns stay sealed.
 
 ### T40 (PRE-DECLARED 16 Nov, before running): state-specific, shrunk USDA bias correction (options A + C)
@@ -674,7 +674,7 @@ One-sided sign-flip permutation on |USDA error| − |rule error| per season (20,
 - Evidence: `momentum-significance-20261116.json`.
 
 ### T46 — the frozen momentum rule on USDA corn and soybeans, 2002–2025 (16 Nov) — **FAIL**
-- **Preregistration:** `docs/T46_CORN_SOY_PREREG_20261116.md`, pushed before any value was loaded, with two dated amendments (an "Other States" row with final 0; one fused report column in Sep 2004). Both are data fixes; the rule did not change.
+- **Preregistration:** `docs/prereg/T46_CORN_SOY_PREREG_20261116.md`, pushed before any value was loaded, with two dated amendments (an "Other States" row with final 0; one fused report column in Sep 2004). Both are data fixes; the rule did not change.
 - **Data:** 2000–2011 forecasts parsed from 56 Crop Production reports (parser equal to QuickStats in 441 of 441 overlap cells, 2012–2013); 2012–2025 forecasts and all finals from QuickStats.
 
 | Crop · report | US MAPE rule vs USDA (better / worse yrs, p) | Prod-wtd state error | Cell |
