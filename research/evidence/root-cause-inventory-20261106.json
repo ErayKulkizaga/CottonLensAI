@@ -1,0 +1,43 @@
+{
+  "schema": 1,
+  "date": "2026-11-06",
+  "new_market_fits": 0,
+  "new_synthetic_fits": 0,
+  "registry_records": 239,
+  "trial_records": 569,
+  "profiles": 101,
+  "trial_kinds": {
+    "market_fit_receipt": 501,
+    "synthetic_control:negative_block_shift": 4,
+    "synthetic_control:known_signal": 20,
+    "synthetic_control:small_subset_overfit": 4,
+    "synthetic_control:unspecified": 6,
+    "synthetic_weak_signal:injected": 10,
+    "synthetic_weak_signal:null": 10,
+    "synthetic_control:named_weak_teacher": 1,
+    "synthetic_learning_control_not_market_evidence": 2,
+    "synthetic_control:known_log_har_signal": 1,
+    "synthetic_control:synthetic_risk_weak_teacher": 6,
+    "historical_walk_forward_audit": 1,
+    "archival_replication_same_contract_risk": 1,
+    "synthetic_control:negative_shuffled": 2
+  },
+  "affected_profiles": [
+    "ams-named-ewma-har-full-year-t1-v1",
+    "ams-risk-curvature-score-t1-v1",
+    "risk-level-source-t1-v1"
+  ],
+  "limits": [
+    "Rows are evidence records, not independent hypotheses.",
+    "Fit copies and recipe rows must not be summed as unique scientific trials.",
+    "Absence from affected_profiles does not certify clean data.",
+    "Explicit fit counts may overlap reused records; missing counts are unknown.",
+    "Original classifications preserved; later source qualification is separate.",
+    "No old release archive or training was rerun for this inventory."
+  ],
+  "sha256": {
+    "research/registry.json": "d3c307cb4e05d52b726e77d630d234f928e14a36c1933966fed52a63148f0d39",
+    "research/trials.json": "d47e9f4f6b0571c7d1fb86685b6e3c38d04ee89787b4a4fb542765e5138f7a91",
+    "research/evidence/root-cause-inventory-20261106.csv": "12fd6633837efcaa2cadd77d4bbe99312d2df1409d2bf74406597db1afda700d"
+  }
+}

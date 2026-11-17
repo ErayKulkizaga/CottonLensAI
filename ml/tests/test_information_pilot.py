@@ -116,7 +116,7 @@ def test_expired_budget_pauses_without_candidate_completion(tmp_path, monkeypatc
     assert experiment.before_compute is None
 
 
-def test_pause_mid_candidate_resumes_saved_subfits_without_recomputation(tmp_path, monkeypatch):
+def test_pause_mid_candidate_resumes_saved_subfits_without_recomputation(admit_generated_jobs, tmp_path, monkeypatch):
     identity, history = frozen()
     freeze_record(tmp_path / 'diagnosis.json', {'status': 'passed'})
     ledger = Ledger(tmp_path / 'ledger', identity)

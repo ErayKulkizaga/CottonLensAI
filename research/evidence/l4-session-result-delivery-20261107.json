@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "asset": "l4-session-rng-result-review-20261107.zip",
+  "release": "https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/source-gate-l4-audit-20261106",
+  "archive_sha256": "607e904f9f82f1846e207d36cbc331e01080ce96a3850ce8e210f96d0f0e3663",
+  "fresh_manifested_files_checked": 10,
+  "fresh_restore_verified": true,
+  "fresh_offline_verification_equal": true,
+  "training_imports_blocked": [
+    "tensorflow",
+    "keras",
+    "torch",
+    "sklearn"
+  ],
+  "new_fits": 0,
+  "source_files_deleted": 0,
+  "source_archive_included": true,
+  "scope": "Fixed single-worker L4 synthetic session/explicit RNG continuation; not market admission or remote hardware attestation."
+}

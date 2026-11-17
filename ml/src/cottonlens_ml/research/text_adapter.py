@@ -35,6 +35,10 @@ class TextPreprocessor:
 
     @classmethod
     def fit(cls, train, names, config):
+        from cottonlens_ml.research.admission import require_text_inputs
+        require_text_inputs(train, names, config)
+        if any(name.startswith(('target_', 'variance_target_', 'gk_target_')) for name in names):
+            raise ValueError('Future target columns cannot be model features')
         from sklearn.decomposition import TruncatedSVD
         from sklearn.feature_extraction.text import TfidfVectorizer
         if (config['max_features'] != 128 or config['min_df'] != 2

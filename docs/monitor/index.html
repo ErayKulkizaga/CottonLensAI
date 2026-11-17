@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>USDA Forecast Monitor</title>
+<style>
+:root{--bg:#fbfaf7;--fg:#1d1d1b;--muted:#6b6a65;--rule:#e2dfd6;--soft:#f2efe8}
+@media (prefers-color-scheme:dark){:root{--bg:#16161a;--fg:#ecebe6;--muted:#a3a29c;--rule:#33333a;--soft:#202027}}
+body{background:var(--bg);color:var(--fg);font:15px/1.5 system-ui,sans-serif;margin:0;padding:24px 16px}
+main{max-width:1040px;margin:0 auto} h1{font-size:24px;margin:0 0 6px} p{margin:8px 0} .muted{color:var(--muted)}
+.tbl{overflow-x:auto;border:1px solid var(--rule);border-radius:6px;margin:16px 0}
+table{border-collapse:collapse;width:100%;font-size:13px;font-variant-numeric:tabular-nums}
+th,td{padding:7px 10px;border-bottom:1px solid var(--rule);text-align:right;white-space:nowrap}
+th:nth-child(-n+2),td:nth-child(-n+2){text-align:left} th{background:var(--soft);font-weight:600} code{font-size:12px}
+</style></head><body><main>
+<h1>USDA cotton forecast monitor</h1>
+<p class="muted">Each USDA Crop Production report (Aug–Dec) is read from the public text, checked by gates, corrected by a frozen
+model, and appended to a hash-chained log. A failed gate passes USDA's own number through. Errors appear when NASS publishes
+the final (May of the next year). Generated 2026-11-17 08:34 UTC.</p>
+<p>Latest: <b>2026-11</b> report (released 2026-11-10), status <b>ok</b>, model model_v1. Next revision called: US down, Texas down.</p>
+<div class="tbl"><table>
+<thead><tr><th>Report</th><th>Quantity</th><th>USDA</th><th>Monitor</th><th>80% interval</th><th>Status</th><th>Final</th>
+<th>USDA error</th><th>Monitor error</th></tr></thead>
+<tbody>
+<tr><td>2026-11</td><td>US production, bales</td><td>12,794,000</td><td>12,763,510</td><td>—</td><td>model</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>2026-11</td><td>Texas production, bales</td><td>4,100,000</td><td>4,070,552</td><td>—</td><td>model</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>2026-11</td><td>Texas harvested area, acres</td><td>3,900,000</td><td>3,258,029</td><td>2,919,763 – 3,635,484</td><td>model</td><td>—</td><td>—</td><td>—</td></tr>
+</tbody></table></div>
+<p class="muted">Texas area intervals: model_v1 records use hindsight quantiles; from model_v2 on, intervals are calibrated in
+real time (CAL1: 83% / 93% coverage of the 80% / 95% interval, 2011–2025) and wide, about ±16% at 80%.
+Machine-readable latest record: <a href="latest.json">latest.json</a>.</p>
+<p class="muted">Hash chain: 2026-11 <code>6fbabaeede0e</code></p>
+</main></body></html>

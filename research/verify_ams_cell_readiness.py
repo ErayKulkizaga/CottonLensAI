@@ -18,6 +18,14 @@ def digest(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
+def source_cell_status(table, contract):
+    """Tuple flag means proven listing/absence coverage, not report completeness."""
+    quotes, _, absence_coverage = table
+    if contract in quotes:
+        return 1
+    return 0 if absence_coverage else -1
+
+
 def verify(root, recovery, merged_path, full_path, contract_path, output):
     report = read_record(root/'result.json')
     for name, expected in report['output_hashes'].items():
@@ -46,9 +54,9 @@ def verify(root, recovery, merged_path, full_path, contract_path, output):
     for day in set(annual) | set(merged) | set(full):
         raw = dict(sorted(annual.get(day, {}).items()))
         if day in full:
-            q = full[day]; pool[day] = (q, sorted(q), True)
+            q = full[day]; pool[day] = (q, sorted(q), False)
         elif day in daily:
-            q = daily[day]; pool[day] = (q, sorted(q), True)
+            q = daily[day]; pool[day] = (q, sorted(q), False)
         elif day in merged and (day in suspicious or day in conflicts or not raw):
             q = merged[day]; pool[day] = (q, sorted(q), False)
         elif day in suspicious or day in conflicts:
@@ -57,12 +65,11 @@ def verify(root, recovery, merged_path, full_path, contract_path, output):
             q = {c: p for c, (p, ok) in raw.items() if ok}
             if day in merged and any(q.get(c) != p for c, p in merged[day].items()):
                 raise ValueError('Partial witness contradicts unchanged source')
-            pool[day] = (q, list(raw), True)
+            pool[day] = (q, list(raw), False)
     h = pd.read_parquet(parent/'inputs/history.parquet'); days = h.date.dt.strftime('%Y-%m-%d').tolist()
     positions = {d: i for i, d in enumerate(days)}
     def cell(day, contract):
-        q, ranked, complete = pool.get(day, ({}, [], True))
-        return 1 if contract in q else 0 if complete or contract[:7] < day[:7] or (ranked and contract <= ranked[-1]) else -1
+        return source_cell_status(pool.get(day, ({}, [], False)), contract)
     design = read_record(contract_path); jobs = [j for f in design['folds'] for j in f['jobs']]
     evaluated = {d for f in design['folds'] for d in f['origins']}
     wanted = evaluated | {d for j in jobs for d in j['train_dates']+j['origins']}

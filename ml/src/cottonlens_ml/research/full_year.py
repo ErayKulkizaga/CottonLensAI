@@ -21,8 +21,15 @@ from cottonlens_ml.research.ledger import (
     read_record,
     writer,
 )
-from cottonlens_ml.research.protocol import full_year_manifest, rows_at
-from cottonlens_ml.research.reproduction import verified_native_predictions
+from cottonlens_ml.research.protocol import (
+    full_year_manifest,
+    rows_at,
+    validate_inner_fold,
+)
+from cottonlens_ml.research.reproduction import (
+    resolve_fit_identity,
+    verified_native_predictions,
+)
 from cottonlens_ml.research.review import audit_market, training_rows, verify_history
 from cottonlens_ml.research.statistics import (
     bh_adjust,
@@ -116,6 +123,7 @@ def predict_chunks(experiment, spec, origins, role, iterations=1):
 
 
 def inner_price(experiment, spec, fold, *, weights=SHRINKAGE):
+    validate_inner_fold(experiment.history, fold)
     blocks, counts = [], []
     for i, block in enumerate(fold['inner']):
         test = rows_at(experiment.history, block['origins'])
@@ -167,6 +175,17 @@ def interval_rows(history, origin_frame, variance, variance_history, h):
 
 def interval_metrics(actual, lo, hi, coverage):
     actual, lo, hi = (np.asarray(v, float) for v in (actual, lo, hi))
+    if (actual.ndim != 1 or not actual.size or actual.shape != lo.shape or actual.shape != hi.shape
+            or not np.isfinite([actual, lo, hi]).all() or (lo > hi).any()):
+        raise ValueError('Finite nonempty matching 1D interval cohort with ordered bounds required')
+    try:
+        if np.ndim(coverage) != 0:
+            raise ValueError('Scalar coverage required')
+        coverage = float(coverage)
+    except (TypeError, ValueError, OverflowError) as exc:
+        raise ValueError('Finite scalar coverage strictly between zero and one required') from exc
+    if not np.isfinite(coverage) or not 0 < coverage < 1:
+        raise ValueError('Finite scalar coverage strictly between zero and one required')
     alpha = 1 - coverage
     score = hi - lo + 2 / alpha * (np.maximum(lo - actual, 0) + np.maximum(actual - hi, 0))
     hit = (actual >= lo) & (actual <= hi)
@@ -408,11 +427,13 @@ def _verified_yearly_fits(ledger, history, fold, chosen, first, second):
             train = training_rows(history, test.date.min(), recipe, ledger.identity['split'].get('coverage_start'))
             specification = Experiment.fit_specification(recipe, train, None, test, f'{role}-outer-{year}-{i}',
                                                         selected['iterations'] if task == 'price' else 1)
+            full_specification = Experiment.fit_specification(recipe, train, None, test,
+                f'{role}-outer-{year}-{i}', selected['iterations'] if task == 'price' else 1,
+                history=history)
             for repeat, bucket, receipt in zip(repeats, parts, receipts, strict=True):
-                expected = {**specification, 'repeat_reason': repeat}
-                key = ledger.key(expected)
-                if not (ledger.root/'completed'/f'{key}.json').is_file():
-                    raise ValueError('Frozen reproduction inputs are missing an expected native fit')
+                expected, key, _ = resolve_fit_identity(ledger,
+                    {**specification, 'repeat_reason': repeat},
+                    {**full_specification, 'repeat_reason': repeat})
                 values, receipt[key] = verified_native_predictions(ledger, key, expected)
                 bucket.append(values)
         for frame, bucket in zip(frames, parts, strict=True):

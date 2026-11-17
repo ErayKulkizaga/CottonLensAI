@@ -18,6 +18,8 @@ class InvalidStatisticalFit(ValueError):
 
 def fit_predict(history, train, test, spec, workspace):
     require_training(spec['family'],spec.get('device','cpu'))
+    from cottonlens_ml.research.admission import require_backend_inputs
+    require_backend_inputs(history, train, test, spec)
     started = time.monotonic()
     if (spec['device']!='cpu' or spec['family'] not in ('naive','drift','arima')
             or spec['horizon'] not in (1,5) or spec['cadence']!=21 or spec['years'] is not None):

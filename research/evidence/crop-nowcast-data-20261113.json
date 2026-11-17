@@ -1,0 +1,2734 @@
+{
+ "schema": 1,
+ "profile": "crop-nowcast-data-v1",
+ "classification": "DATA_RECEIPT_DEV_YEARS_ONLY",
+ "sealed_years": "2022-2025 not pulled",
+ "nass": {
+  "api": "https://quickstats.nass.usda.gov/api/api_GET/",
+  "base_params": {
+   "source_desc": "SURVEY",
+   "commodity_desc": "COTTON",
+   "class_desc": "UPLAND",
+   "domain_desc": "TOTAL",
+   "format": "JSON"
+  },
+  "years": [
+   2008,
+   2021
+  ],
+  "queries": {
+   "county_yield": {
+    "params": {
+     "agg_level_desc": "COUNTY",
+     "statisticcat_desc": "YIELD",
+     "unit_desc": "LB / ACRE"
+    },
+    "rows": 6476,
+    "sha256": "4955af6dbe354524b0a0200bbfd89612af3ce014c363bb1022ba34db82530144",
+    "per_year_response_sha256": {
+     "2008": "4a6601abdb2d855d61aa8b50c32635c0720ea720265c2e1b6de7180ca32d5c90",
+     "2009": "3b72d9dd5fd58427b10ca4fa8a52a9d92cb0e7a1c9b7010c13bae1eef2a9df1c",
+     "2010": "42969ba0011c838230b88e888de3b369d4fae30418f83ca6f24ca9d4a5ef2941",
+     "2011": "a6fb7744fe08f88e2015e5e297e4430eddfe44c9f4d6bd31d7069b71d603e581",
+     "2012": "64de7bae5396b68070c07a36bbd57ef9191255063ee16c7467c3cb1968342300",
+     "2013": "3e98ff52c32ba20c0f118b37515cfa07c5c93ae1bc09996ecf66b9b95e94671f",
+     "2014": "d5593874f35d39c2b319798234e23977a380f4700e150c802629946f383c8b20",
+     "2015": "3cbfc8dabbde4fc436756a6d8ee2520fe0256d70ec49084d8b4636cb4b2b7533",
+     "2016": "685398a7b33080e3b2b4091822ea104e0b041d389bb3ac73b130332ff78ee755",
+     "2017": "83c1347472897d58c371d35fada71da8f32542fa89f2158a852f118ba9a75b4c",
+     "2018": "3b9094691f8791a25d1801e0abc50a68046fc912cc4905942d0db1505d6cd437",
+     "2019": "f22b88ac022ebc6d819c6f82cd59d2c88f1645fac71c624b95582d5cb221770d",
+     "2020": "e64f3435662d1c54bc166989c1b87fb6fa5643bf1176c54ac38ccedba0f7840c",
+     "2021": "968768c13db5d25e9f5ad9343f69c0513c2f27f75ba6d2ac15c9536559755b37"
+    },
+    "retrieved_utc": "2026-11-13T17:38:08Z"
+   },
+   "county_production": {
+    "params": {
+     "agg_level_desc": "COUNTY",
+     "statisticcat_desc": "PRODUCTION",
+     "unit_desc": "480 LB BALES"
+    },
+    "rows": 8713,
+    "sha256": "2f4ba350ab0405e5aecee98ecbcc292f32eb25833e1bcaa9fbf40fd04af880b0",
+    "per_year_response_sha256": {
+     "2008": "d580b65a48114a74344a66c0f5dbbcdde95a0c0f9abc1adb2f56eb298ac968af",
+     "2009": "d10473dd4cdcd844bd8a7c234e5e91c927ae9e0b20c714da22fac6148ce9a6df",
+     "2010": "a0fc33eb2a1c794a17b5b7391aadc9044cd42dac1c6e2e8d1644b9fc263e7bc7",
+     "2011": "936fc281de9907204f73db11476159e309d6ce1b816ef2d013e6f5c9533aa82a",
+     "2012": "758696df7a4912f816c4aea99beb9580e2ed96e84d745bd9e26b5fd257e5ce51",
+     "2013": "d5f4ce850b6fbda4838c1774d0a2f834b3e416cc4170a6c5bde0e41d155400b4",
+     "2014": "ca9ed7b9fbabf7dbe931546a18c2e7ab07d7ccd1e61495d8e1df715c28bc19d5",
+     "2015": "00f4a1914aaf1d5756705cb3a61688ec88428721fcbd4064b6d5d3e7e5269a98",
+     "2016": "a5d13f46f7d30e88d46871da43d73d9c0006e24b094a61fb88e243d6cecbbf35",
+     "2017": "dfa5e1c7a903df73dd6bfe04c60ac25be13bc1b05584a3ea7d3748f9c96f4e8d",
+     "2018": "caf628bb9cb69bff220202bd7dbd5c5a7c3bc1bb9ee72d0c75d1058c056248e3",
+     "2019": "c5d63ea89c2ced890283394cca4c16f700df288c1bf96856375d171d220eaef0",
+     "2020": "d779fb24d2dc24b6166f2023f83fae5733180d78a5bfeb610268d310e9d2009c",
+     "2021": "35945a204d6d5f8fcb16ee007e76e591b8e09603e643f14c15dc577b62c145aa"
+    },
+    "retrieved_utc": "2026-11-13T17:38:49Z"
+   },
+   "county_harvested": {
+    "params": {
+     "agg_level_desc": "COUNTY",
+     "statisticcat_desc": "AREA HARVESTED",
+     "unit_desc": "ACRES"
+    },
+    "rows": 6476,
+    "sha256": "9f5f1aa6707d184fc554d9966dc952c60f7fc68996cf9b4fe5bd299cac80c559",
+    "per_year_response_sha256": {
+     "2008": "d8e738c7f553c8493617a2c786b9c5b35e2443687903b09ae3ef371d5dc5dddf",
+     "2009": "2b36efdf9afb74f4b0e59ca37011fecd0bdacfa1f16447fbcd3e877138952ab2",
+     "2010": "5e83bb41a59e1e86bcb042f061d723401d6bb0f72357554d017694d992d10adf",
+     "2011": "688c778c2139d1547f05cf09a2147bb7e201104e411587fc11332c0110022c41",
+     "2012": "bac9a6a17e793d4ed883b4467d9a82125ba35b00b5c5de6d793ff04c74f8c120",
+     "2013": "3a923b7b1eae51203889e1556006d45474a0b5a323869c8d7a14179e39aa798c",
+     "2014": "95ce91133d61c900f4f65867a9f08b4d8277d3654c729328bde441d5326bb616",
+     "2015": "90c03415d7612e6d8d0d12160b20b2f8c51467e63e26e56d77ac231931b6db8e",
+     "2016": "654b8d7a776b69ccd717c6296b9bb3a8ecfe9f7e8da68a9fa5194c42322605c5",
+     "2017": "2c98ef1f4e9d17c14751091a432f15d3568b24172686c26e7b09fa956a7707d2",
+     "2018": "bb1db9cf75ddce344e9781f2d3f310cd4de777f56a154cfc0ff467c5fa76c517",
+     "2019": "ea0fec1e60631020df7e97c38231ba59d824d4f0b3dd4881242bdf1aa60008f6",
+     "2020": "a255b02ce17472a0ceab0351a1d6c953caeaf0ea75834824b820502f8a32d9ab",
+     "2021": "487858df3aedf0a65d0a2f4863f953e4db2e8725e6450cbc9d15999c0c9a041d"
+    },
+    "retrieved_utc": "2026-11-13T17:39:27Z"
+   },
+   "county_planted": {
+    "params": {
+     "agg_level_desc": "COUNTY",
+     "statisticcat_desc": "AREA PLANTED",
+     "unit_desc": "ACRES"
+    },
+    "rows": 6476,
+    "sha256": "dedf182ef6c48dc429f15ec38fd3b5635ff290c7b908b4da89b550fd92d8f192",
+    "per_year_response_sha256": {
+     "2008": "a9db052d571d4212c08c31656d5340531cfd9bb13e55a81a2554286f7c481ccb",
+     "2009": "9249f136904fd930f33ce4b5f4b2ed922e96b99211d6c95749678d6fbdf50da8",
+     "2010": "4c1803feff21268e06d4016da3f8598e549bccb44045194f2d33f0978ef1e710",
+     "2011": "6dd1f94c23a76a2aa7a1951887ebec5de09c51e44c3ac5d1139d4cf86156b81e",
+     "2012": "944d7cab9387f62ccd1ac6757917f134ccc45cbc30370764f2d79709ba613570",
+     "2013": "69edecea45d88c8300fb1de2afa30a1cdb6f2405acea8266025faf55c14330c5",
+     "2014": "6dfc33b25654599cbd6a78613bc13c8f6eee174769ce65f4cb5beb561c2b5cc9",
+     "2015": "4c9726606312ed010e1eba1c18b86138f070781e8d9c37983fd7fcd8cebd5277",
+     "2016": "ccb122872440b0d0f063ac5b99dab85ce45d02f95e4dde1fd12d52a4b8751eef",
+     "2017": "9ae3d98781e17729f707a687b24b83ee9304ec532d944ef32c5bc5b0689e621c",
+     "2018": "b904df1e3899329c73383246efeff83805ba8dc454ed3c204174402e1b5662b4",
+     "2019": "0c34503ef533ac388ae6a3fab953bd559805d4e3e2f148fba0eb9ed9b5a38394",
+     "2020": "f27ca2eb56000214940d6fd63e4039ecb5ea2228d1c40a458894c602675ea7c3",
+     "2021": "ea234f565bf3bfea9ef39d0fc56bc5d4345d49686cf2330489a8b02885069942"
+    },
+    "retrieved_utc": "2026-11-13T17:40:03Z"
+   },
+   "state_yield": {
+    "params": {
+     "agg_level_desc": "STATE",
+     "statisticcat_desc": "YIELD",
+     "unit_desc": "LB / ACRE"
+    },
+    "rows": 1538,
+    "sha256": "1194c83eb0dab9d7a8ebb96c7e8be59de69e1f9845d1296cf69887543fe07049",
+    "per_year_response_sha256": {
+     "2008": "5d83d2c49fdd872607cb32579d7acc1355d5049512978624a3650447dd4d44fe",
+     "2009": "51ea152c6b2e1d642948384ef728c0845ed33fc9f1d1563941aae17f1fe5c033",
+     "2010": "dd259409e5cabe6e18071f46e6008ecc11e9002aa1e115c74d74cb3e4059e173",
+     "2011": "9de0bf276e08b2a9aa128eb12023ea5bb712418e89e744be289b699b899d4854",
+     "2012": "36a36f3a7222e988418a52e118f9b9224a5ce0faea65c2fb15615d09b271d450",
+     "2013": "2a1e22ed9f5dcd1dfa50a31b4134023336d3f16f4a194c37a49013041a75d00f",
+     "2014": "58e9c65fd8c4ab14c8b039940ff7ff1fd1a3f98f7b22a67ea6ff605a9f5aa538",
+     "2015": "f5e0464ff99ed4133249c2bc40efd56bf4a5a344c7a58936664584a66d2874f2",
+     "2016": "ddcece622b4f50a802a6643adb82f423fd4f51fa2d9a226f6c06cdaa13084085",
+     "2017": "b2b9350f8dabe2f6ccf9c25e608b2c25c1043257a580b8bc7f9690e7178ea1f0",
+     "2018": "1a7b1c19885b6e6dbf2a7384d86e01c5fdcf59a226c4cbbe677fde76d8168b49",
+     "2019": "2edddafa543c297765bbe314fc2c2ab8be7b37f061cfc96bb0757d406c2200f4",
+     "2020": "9be4b7447633438e889e4551be231e204f79901584ea20982c36927da0c25ffd",
+     "2021": "79df725941bf05df28e347f7072d56282ef2f6a2fe10d80d6a9bbb2e108c29d5"
+    },
+    "retrieved_utc": "2026-11-13T17:40:35Z"
+   },
+   "state_production": {
+    "params": {
+     "agg_level_desc": "STATE",
+     "statisticcat_desc": "PRODUCTION",
+     "unit_desc": "480 LB BALES"
+    },
+    "rows": 1300,
+    "sha256": "c273da1a37c6826c24a5437e5149bbd7dbe9fc80ee939527539efd9dea5f05f3",
+    "per_year_response_sha256": {
+     "2008": "a0b88217de42cc2dcc349db859438e100b48591e81400e3047c1b68a58ce63e4",
+     "2009": "67fb2f0e616d32bb237c07cf92d9ab02db476a63e302649806d5f14b459507d6",
+     "2010": "df1ccd93044f93c46701de7a7a8b4a70a8fdfc0875480d0a9f825258f8675ba1",
+     "2011": "d8f40fc99e7e91b07559c2a6f40e6ec96541cb5e13899d1dc08b98078824efff",
+     "2012": "6fa6907146b193080ba4dda4eebde6b996da47ac01c68c27390def40b723af78",
+     "2013": "b947787e24b253f860f36cce2f3dd66b47e63ed3b21ce39a0a5098a721f4d8b7",
+     "2014": "5361c6b1a9493f051a1cd680fb68e279f576f3ac9d881d12d6e01cd19c3e6d20",
+     "2015": "1088646a16e801d9f649c20f410b34d7f1e9f8330cb21add8876045aedd63279",
+     "2016": "ecd1f293c8d12b91206acfadc6cee0637cd67500575bee168ff0a0307d6a2494",
+     "2017": "5ee65f23b02cdda0956b319251482821944913c47cf15878b96c1626436a5207",
+     "2018": "23ce7f497f0859dcb8d6852d1b058a49410fbe3a921d46da80855e165f339731",
+     "2019": "64c53d83240aa727bdb7b2645b368e7db55627e84200e1c300235d87c2c9e8cc",
+     "2020": "06b5c3727b590bb072f6d3894311d2334f90345041fbd483cb84f06f91777315",
+     "2021": "b224315fa3078d13347f2497e393b7b055abd340d96a35943c65ceb28ad879af"
+    },
+    "retrieved_utc": "2026-11-13T17:41:05Z"
+   },
+   "state_harvested": {
+    "params": {
+     "agg_level_desc": "STATE",
+     "statisticcat_desc": "AREA HARVESTED",
+     "unit_desc": "ACRES"
+    },
+    "rows": 1198,
+    "sha256": "1c87007ab9d1436a7411d47e143457b917899cee556c0101bcf4a5a41df0b753",
+    "per_year_response_sha256": {
+     "2008": "b6202d1b415ee092b3af9155fd0ee255df2a1a7b4aef4bc6de042c0ed1ed5534",
+     "2009": "1faabc1afefb1b088f00c349a5a2b80c4d7425d27091769a572a9b0146ace238",
+     "2010": "01c0f8488c6804e7dfae89fcf6fce6c2a941054e5b6c1c442a27efc515ebe9b0",
+     "2011": "65e8cce6783f1d879c8aac8cb8142c376710f2f7cf166ed69310ebc9ff67ece3",
+     "2012": "319e4c20646c6f0fb7412bf3cdd44ec521584faed4f8262c4a4bbab0cb1649aa",
+     "2013": "bb2436bc6b2a7e85f7709751a092a027a6c57a467676042adb16256b681dc4ad",
+     "2014": "477ec99edd6830900062997a9355dbefd70329d11dda4c24cad66a65715e51df",
+     "2015": "799c62efe7d10e4af53417f15c0c92d03a727c5daac8d4cadfc8a34eb9016900",
+     "2016": "d1249863931dbd33b5e1c52f66aa13fcbb696d48f47fb983f20da13d70326419",
+     "2017": "470c76e794b3646f5f146b7419313d9fdf830c58443aa7f179dfeb3411be64ec",
+     "2018": "74fadb1e1d0a023e8af7df0b96f994993607361abe1ea4537b2939c696ea6d58",
+     "2019": "a70301320ec8b72bef109374af537c9557be32365f320a3d24d52d10b53568d1",
+     "2020": "4fde7bea686e248622a495be951498fc6254abad435c49c592ebd4bef8df091b",
+     "2021": "4bb11ddb72de947c1e86af38b04f149ca1c9deac20aafbd2fe2bea0a502725e0"
+    },
+    "retrieved_utc": "2026-11-13T17:41:37Z"
+   },
+   "state_planted": {
+    "params": {
+     "agg_level_desc": "STATE",
+     "statisticcat_desc": "AREA PLANTED",
+     "unit_desc": "ACRES"
+    },
+    "rows": 722,
+    "sha256": "65c6085f8ef24884c16cca4f5620456395d684a8e9fbd6dbbe44b879a980af4e",
+    "per_year_response_sha256": {
+     "2008": "20d48e5e21bfd5b74bb9709f4ead4a330c56303df3da1fa0c466b0c3f8c08ece",
+     "2009": "c15a0149f6449bd05fc503adda1efa36890242e3ad33c8e4e03dfdcd65ed6f62",
+     "2010": "315e49115fd8612b612ed61c53fa4fc6266e1fe0e30fb8edf20938cf0a4e84ec",
+     "2011": "9daf7906b307cf72eb6ba5ec0c66e773f59c35e9ee629195169c9f7beef90943",
+     "2012": "db1666cc9feebe4e248c3834fb4db6d070ef47a5bd608cab77c7e4d4baaf19af",
+     "2013": "5a9fb1e61cc16a9dbdfd177b1ac0abbfd67f0d8c72af3da4657d898d4cf4b432",
+     "2014": "553ebd3967ccb43ec1ea7ce2403e3ab76a9db4792442e3bd0924488daea5c933",
+     "2015": "4cfa5219c2bde36942fc3417af1bc709a57f11aaedae443ead0784ba68dd9dd6",
+     "2016": "27f54ac05a73db101a644dad19564098e5c2ea419996c47c0abc5305b79c3995",
+     "2017": "35df8521bf197ca2189fd3ff119761796f347699c06bba8101df8c151af248e4",
+     "2018": "23d34057cce908ef375afdef98a4fb1088144cbb7c804a548c772b9faf18890f",
+     "2019": "ebf2126a891711df0b951c086ebac5f88aee74e58ccc2ba7c26b75ef66e5bb67",
+     "2020": "046226a06ba1317869903edc2586767c5ba0f8fbbc0c4f6160281c627716f659",
+     "2021": "91c6f3021425c12712f774ea3f55979a0f5000d348b5461b476cc2a30a63003a"
+    },
+    "retrieved_utc": "2026-11-13T17:42:06Z"
+   },
+   "us_yield": {
+    "params": {
+     "agg_level_desc": "NATIONAL",
+     "statisticcat_desc": "YIELD",
+     "unit_desc": "LB / ACRE"
+    },
+    "rows": 86,
+    "sha256": "a35d05e282a48d29cd170d808b80096aa4f0266e7bf68e95519d3ef65f0face3",
+    "per_year_response_sha256": {
+     "2008": "54ae52b0d55a12a5deac110b01e3a458dfdf4bd4bb52839cb86107c55a3f7bb4",
+     "2009": "fdee2f29952d125ebfb2a4f200e268f8d6f2d745fc68385b637537b0acba40e1",
+     "2010": "453dfb4bf7627667bb15ca106b5bf4de0244688bcc32af282b29cad431297271",
+     "2011": "6bd7ad37a7ce236f700accede2f37519e26ffd0372834a99acfa9f80456b8bd3",
+     "2012": "e14025709de862a137928bf6ea135c81860a7b513f555419cf7b2eba80c0d0e8",
+     "2013": "c535c9ff92204e61a18aa5db76d857bb7daabbe355c5552fe5278884bfe31cfc",
+     "2014": "c4416a636331ef418a6b4f72079e75fbe183a00586f313df2a465685a3cc2d4b",
+     "2015": "655b086bdc033b6e032c1a53211a359c983c576ae386eed3d858e5cd689957fb",
+     "2016": "3857adbc5110a66fe338ad68bda10e746617007fe478f5fd6bf32e710cda7a69",
+     "2017": "60fbac3d3b3142cb67c52699b9ed736a07562a27c1570727d8e75d098ac27a29",
+     "2018": "3fb5a072b500635772918e46262ee87150f79cfe1876b9d5ee1f163883232d9b",
+     "2019": "e149433003e7fbd3127af2faeccb7c7ba9de1307b7c85be88d32579908d432b1",
+     "2020": "42e8fa627e742198db06809ed065f0f5cee3617b62b020326c1dabaa3deaca51",
+     "2021": "1e5b16e26405aaa60a67416c48bb87492d6841c7ec10a507185f83ca0db705c0"
+    },
+    "retrieved_utc": "2026-11-13T17:42:33Z"
+   },
+   "us_production": {
+    "params": {
+     "agg_level_desc": "NATIONAL",
+     "statisticcat_desc": "PRODUCTION",
+     "unit_desc": "480 LB BALES"
+    },
+    "rows": 71,
+    "sha256": "7f3b1118382e10d21a7087555b9276533eac8b11236d37a60c5e6543bb96bf5b",
+    "per_year_response_sha256": {
+     "2008": "fd3d53a4e7ed4b111154f0964d73ea187392a010a9d7cc7dbd64bf051e48c663",
+     "2009": "efbe0b8fe6059138a8beff4c3fa6b0e56bf5aae8156c14c88e36ca05cc474530",
+     "2010": "468de5e855ac5acbc8f455879feabcf823132e11260272e2caa6355e74ea1c09",
+     "2011": "ab407e90af6434eb1e768a4e521e05406cc44840681ae8e706db3c7414e569ea",
+     "2012": "51900d8522db1f8986b9022ef19e7e207e5469966945e4554773576d9ff8a87c",
+     "2013": "9148e590cbbe25da9624ace56f6d316f55c52cd0eb07fdf5dcdb31cbeff271cf",
+     "2014": "3bdf81abf201c80f1e8d996a67cb22a7471a11bb51d4b58f530b2ab7b5772a4c",
+     "2015": "17382c0a1cdf92379b4b5ca9a5fbc1cdb0f4cfb2b83c4dd3a18734302804a691",
+     "2016": "fe441e98292a8e36fc3a6425e6eb608bdff8b717aa36efbdaf31eaed44bfb44e",
+     "2017": "b49f4576584c8caa50f6439d40170e8643637b0aaaca6b6cd4f5ee0eaaf0ccd5",
+     "2018": "11270ab73017da87762e0894cd9f0d48884d376275b7fca6558c161117784d51",
+     "2019": "1073d68b97254de7c4d2e8e0193a9af066df4e874db17352f04de9d1a1328e8d",
+     "2020": "c60df2c35049260d2aa075dd05d8970fa315ab6204dd2c507a02939e12899a52",
+     "2021": "66f2f21bf0922c13b43ae10ca68b0785d790466b475e5e7a8aa17de2a1971dc9"
+    },
+    "retrieved_utc": "2026-11-13T17:43:31Z"
+   },
+   "us_harvested": {
+    "params": {
+     "agg_level_desc": "NATIONAL",
+     "statisticcat_desc": "AREA HARVESTED",
+     "unit_desc": "ACRES"
+    },
+    "rows": 66,
+    "sha256": "7e44fbafcf04ed6b2495ea5e9d6b67eb3b8e6e007e32a228abbc8f5cdd08f337",
+    "per_year_response_sha256": {
+     "2008": "4c7be9def86b5afb25340b6a5374edb72c3bddd5975a8891f2ab637f3173d428",
+     "2009": "86d20b24ee8fbfb147166961160790b9881500f62850818e646858f27a6702f8",
+     "2010": "e21003ab3d6bbb2d420f5091b7d780220fdce93f9f6b1ee2993456065f325002",
+     "2011": "ae0e50c95d8f2492a5707e147705c48c6fedea800525d239d1e7c528b7a27a01",
+     "2012": "d7294acbab9c65631e67e887c1db0be280ebe2566357ad00911a2d0b1f933418",
+     "2013": "e2082e4d24974c461c7a7b0098ed6843e98ae1f69b82370d139900ddcf2b977f",
+     "2014": "752365659213044b4c4db1a2b5594fc04df5a8c4046fcdfc2c17f2fc05182dbd",
+     "2015": "1f7e3fe4c11722ef8e99ffb32eeedad0fab3c59de976506754bf87c3c334c084",
+     "2016": "7cd1e9988e72acc4138171c4033b1ae4b4dc8081e9ce76c08f44e289428c323b",
+     "2017": "fa7b177c033f8a253814e211e46dd4db81f320f0b9b77cc93ea9f8d4493535a6",
+     "2018": "6f618c0a7778a81bf5e64da3f9b09afee2872eba34e91867d12eab6942164619",
+     "2019": "66b90e933215c1fe77e75cac4d3643637f866e12c608ee26f9d7c9d7c84e50f7",
+     "2020": "374f418f272dd55250e6b2dc7733578dd473cadde0bccab41d7b2242f4e39f88",
+     "2021": "746edab2863a5b9f594906c281d89a4cf1836c686d5e5bf293da984408c45b55"
+    },
+    "retrieved_utc": "2026-11-13T17:44:56Z"
+   },
+   "us_planted": {
+    "params": {
+     "agg_level_desc": "NATIONAL",
+     "statisticcat_desc": "AREA PLANTED",
+     "unit_desc": "ACRES"
+    },
+    "rows": 38,
+    "sha256": "67ba926354bb15bc0c7a549e6cb1de97c0a8f7dbef6b3cd6c828d6a142c91a97",
+    "per_year_response_sha256": {
+     "2008": "374853ddf3c961f235db1c9788437198d37507c2befccb61f2de216405e6cb2b",
+     "2009": "a360f98ffc176cb1d843930a97f73efd40c3265f59f6720031c00e52b513249f",
+     "2010": "691a0f48a8600c1856f35afba61700f009b649dab2cd3fa7974f31612370e706",
+     "2011": "7f0304692b5931750b60dc0cc0a4b9c0003694a87feeb84473afd2954b3fcd2e",
+     "2012": "d63fd3f27533581d24d2f169d1757b39675b03ca87caf81b36b188e172664e5c",
+     "2013": "b5a4c93c43dc2b77686259939f5d6c259e649c5bfa4dca6bd9799caef35d933b",
+     "2014": "7d16ace6dd98d928606c0891e6e81a0fbd109369d6f3677d2b005249356f5879",
+     "2015": "b3ea3e606814999246fc6da60ea50e99cfba3e38cbd6415f3c588ad17434a108",
+     "2016": "47ac95f5c9fca8d32d58ea279c5a045a3a80c4a4ca429d79c6ace449b66b7257",
+     "2017": "a1d81c1a5bb224456f88948b29a342e683423e803d0b9213880bc7d24686b3d1",
+     "2018": "1fac89ec0f46e2e795b2d2fb1becdd581722440298211f463a636b89f4721c90",
+     "2019": "78ba33b8bc3efef125091fda178a4d5b39dcd73604011b3c30d9f4968a9dd21a",
+     "2020": "6cc7b0d9adb9ab82f2072273885c60a8ce8e0e8073b742d351ee050b9074df1a",
+     "2021": "d11d3966811762b60947563cf163e4ba7d0f57f013136dcb0131f445570efd26"
+    },
+    "retrieved_utc": "2026-11-13T17:45:38Z"
+   }
+  }
+ },
+ "panel": {
+  "meta": {
+   "rule": "top counties by mean 2008-2021 upland production covering 90%",
+   "counties": 263,
+   "missing_boundaries": [],
+   "coverage_share": 0.9008741487809766,
+   "tiles": [
+    "h08v05",
+    "h09v05",
+    "h09v06",
+    "h10v05",
+    "h11v05"
+   ]
+  },
+  "counties": [
+   {
+    "fips": "48303",
+    "state": "TX",
+    "county": "LUBBOCK",
+    "mean_production_bales": 305628.5714285714,
+    "tiles": [
+     "h09v05"
+    ]
+   },
+   {
+    "fips": "48189",
+    "state": "TX",
+    "county": "HALE",
+    "mean_production_bales": 282735.71428571426,
+    "tiles": [
+     "h09v05"
+    ]
+   },
+   {
+    "fips": "48305",
+    "state": "TX",
+    "county": "LYNN",
+    "mean_production_bales": 260707.14285714287,
+    "tiles": [
+     "h09v05"
+    ]
+   },
+   {
+    "fips": "48165",
+    "state": "TX",
+    "county": "GAINES",
+    "mean_production_bales": 258757.14285714287,
+    "tiles": [
+     "h09v05"
+    ]
+   },
+   {
+    "fips": "48219",
+    "state": "TX",
+    "county": "HOCKLEY",
+    "mean_production_bales": 254257.14285714287,
+    "tiles": [
+     "h09v05"
+    ]
+   },
+   {
+    "fips": "48153",
+    "state": "TX",
+    "county": "FLOYD",
+    "mean_production_bales": 247800.0,
+    "tiles": [
+     "h09v05"
+    ]
+   },
+   {
+    "fips": "05093",
+    "state": "AR",
+    "county": "MISSISSIPPI",
+    "mean_production_bales": 243078.57142857142,
+    "tiles": [
+     "h10v05"
+    ]
+   },
+   {
+    "fips": "48107",
+    "state": "TX",
+    "county": "CROSBY",
+    "mean_production_bales": 231721.42857142858,
+    "tiles": [
+     "h09v05"
+    ]
+   },
+   {
+    "fips": "04021",
+    "state": "AZ",
+    "county": "PINAL",
+    "mean_production_bales": 231135.7142857143,
+    "tiles": [
+     "h08v05"
+    ]
+   },
+   {
+    "fips": "48115",
+    "state": "TX",
+    "county": "DAWSON",
+    "mean_production_bales": 221400.0,
+    "tiles": [
+     "h09v05"
+    ]
+   },
+   {
+    "fips": "29069",
+    "state": "MO",
+    "county": "DUNKLIN",
+    "mean_production_bales": 216620.0,
+    "tiles": [
+     "h10v05"
+    ]
+   },
+   {
+    "fips": "48445",
+    "state": "TX",
+    "county": "TERRY",
+    "mean_production_bales": 195985.7142857143,
+    "tiles": [
+     "h09v05"
+    ]
+   },
+   {
+    "fips": "48355",
+    "state": "TX",
+    "county": "NUECES",
+    "mean_production_bales": 188635.83333333334,
+    "tiles": [
+     "h09v06"
+    ]
+   },
+   {
+    "fips": "29143",
+    "state": "MO",
+    "county": "NEW MADRID",
+    "mean_production_bales": 183500.0,
+    "tiles": [
+     "h10v05"
+    ]
+   },
+   {
+    "fips": "40065",
+    "state": "OK",
+    "county": "JACKSON",
+    "mean_production_bales": 176345.45454545456,
+    "tiles": [
+     "h09v05"
+    ]
+   },
+   {
+    "fips": "48279",
+    "state": "TX",
+    "county": "LAMB",
+    "mean_production_bales": 171757.14285714287,
+    "tiles": [
+     "h09v05"
+    ]
+   },
+   {
+    "fips": "05031",
+    "state": "AR",
+    "county": "CRAIGHEAD",
+    "mean_production_bales": 165067.85714285713,
+    "tiles": [
+     "h10v05"
+    ]
+   },
+   {
+    "fips": "48409",
+    "state": "TX",
+    "county": "SAN PATRICIO",
+    "mean_production_bales": 164785.7142857143,
+    "tiles": [
+     "h09v06"
+    ]
+   },
+   {
+    "fips": "28027",
+    "state": "MS",
+    "county": "COAHOMA",
+    "mean_production_bales": 154028.57142857142,
+    "tiles": [
+     "h10v05"
+    ]
+   },
+   {
+    "fips": "29207",
+    "state": "MO",
+    "county": "STODDARD",
+    "mean_production_bales": 132890.0,
+    "tiles": [
+     "h10v05"
+    ]
+   },
+   {
+    "fips": "13093",
+    "state": "GA",
+    "county": "DOOLY",
+    "mean_production_bales": 124700.0,
+    "tiles": [
+     "h10v05"
+    ]
+   },
+   {
+    "fips": "47075",
+    "state": "TN",
+    "county": "HAYWOOD",
+    "mean_production_bales": 116692.85714285714,
+    "tiles": [
+     "h10v05"
+    ]
+   },
+   {
+    "fips": "48481",
+    "state": "TX",
+    "county": "WHARTON",
+    "mean_production_bales": 113618.57142857143,
+    "tiles": [
+     "h09v06"
+    ]
+   },
+   {
+    "fips": "13071",
+    "state": "GA",
+    "county": "COLQUITT",
+    "mean_production_bales": 109228.57142857143,
+    "tiles": [
+     "h10v05"
+    ]
+   },
+   {
+    "fips": "48501",
+    "state": "TX",
+    "county": "YOAKUM",
+    "mean_production_bales": 108057.14285714286,
+    "tiles": [
+     "h09v05"
+    ]
+   },
+   {
+    "fips": "13321",
+    "state": "GA",
+    "county": "WORTH",
+    "mean_production_bales": 106692.85714285714,
+    "tiles": [
+     "h10v05"
+    ]
+   },
+   {
+    "fips": "48451",
+    "state": "TX",
+    "county": "TOM GREEN",
+    "mean_production_bales": 104942.85714285714,
+    "tiles": [
+     "h09v05"
+    ]
+   },
+   {
+    "fips": "13205",
+    "state": "GA",
+    "county": "MITCHELL",
+    "mean_production_bales": 102385.71428571429,
+    "tiles": [
+     "h10v05"
+    ]
+   },
+   {
+    "fips": "05077",
+    "state": "AR",
+    "county": "LEE",
+    "mean_production_bales": 98085.71428571429,
+    "tiles": [
+     "h10v05"
+    ]
+   },
+   {
+    "fips": "48437",
+    "state": "TX",
+    "county": "SWISHER",
+    "mean_production_bales": 97600.0,
+    "tiles": [
+     "h09v05"
+    ]
+   },
+   {
+    "fips": "48079",
+    "state": "TX",
+    "county": "COCHRAN",
+    "mean_production_bales": 96182.14285714286,
+    "tiles": [
+     "h09v05"
+    ]
+   },
+   {
+    "fips": "37083",
+    "state": "NC",
+    "county": "HALIFAX",
+    "mean_production_bales": 88328.57142857143,
+    "tiles": [
+     "h11v05"
+    ]
+   },
+   {
+    "fips": "48317",
+    "state": "TX",
+    "county": "MARTIN",
+    "mean_production_bales": 84378.57142857143,
+    "tiles": [
+     "h09v05"
+    ]
+   },
+   {
+    "fips": "40141",
+    "state": "OK",
+    "county": "TILLMAN",
+    "mean_production_bales": 83933.33333333333,
+    "tiles": [
+     "h09v05"
+    ]
+   },
+   {
+    "fips": "22107",
+    "state": "LA",
+    "county": "TENSAS",
+    "mean_production_bales": 82714.28571428571,
+    "tiles": [
+     "h10v05"
+    ]
+   },
+   {
+    "fips": "29155",
+    "state": "MO",
+    "county": "PEMISCOT",
+    "mean_production_bales": 81750.0,
+    "tiles": [
+     "h10v05"
+    ]
+   },
+   {
+    "fips": "48191",
+    "state": "TX",
+    "county": "HALL",
+    "mean_production_bales": 80807.14285714286,
+    "tiles": [
+     "h09v05"
+    ]
+   },
+   {
+    "fips": "48087",
+    "state": "TX",
+    "county": "COLLINGSWORTH",
+    "mean_production_bales": 79614.28571428571,
+    "tiles": [
+     "h09v05"
+    ]
+   },
+   {
+    "fips": "48173",
+    "state": "TX",
+    "county": "GLASSCOCK",
+    "mean_production_bales": 78114.28571428571,
+    "tiles": [
+     "h09v05"
+    ]
+   },
+   {
+    "fips": "13027",
+    "state": "GA",
+    "county": "BROOKS",
+    "mean_production_bales": 75892.85714285714,
+    "tiles": [
+     "h10v05"
+    ]
+   },
+   {
+    "fips": "05021",
+    "state": "AR",
+    "county": "CLAY",
+    "mean_production_bales": 75007.14285714286,
+    "tiles": [
+     "h10v05"
+    ]
+   },
+   {
+    "fips": "37131",
+    "state": "NC",
+    "county": "NORTHAMPTON",
+    "mean_production_bales": 73971.42857142857,
+    "tiles": [
+     "h11v05"
+    ]
+   },
+   {
+    "fips": "48215",
+    "state": "TX",
+    "county": "HIDALGO",
+    "mean_production_bales": 73968.88888888889,
+    "tiles": [
+     "h09v06"
+    ]
+   },
+   {
+    "fips": "13031",
+    "state": "GA",
+    "county": "BULLOCH",
+    "mean_production_bales": 73964.28571428571,
+    "tiles": [
+     "h11v05"
+    ]
+   },
+   {
+    "fips": "48061",
+    "state": "TX",
+    "county": "CAMERON",
+    "mean_production_bales": 73085.71428571429,
+    "tiles": [
+     "h09v06"
+    ]
+   },
+   {
+    "fips": "06047",
+    "state": "CA",
+    "county": "MERCED",
+    "mean_production_bales": 72314.28571428571,
+    "tiles": [
+     "h08v05"
+    ]
+   },
+   {
+    "fips": "48065",
+    "state": "TX",
+    "county": "CARSON",
+    "mean_production_bales": 72085.71428571429,
+    "tiles": [
+     "h09v05"
+    ]
+   },
+   {
+    "fips": "48391",
+    "state": "TX",
+    "county": "REFUGIO",
+    "mean_production_bales": 71280.90909090909,
+    "tiles": [
+     "h09v06"
+    ]
+   },
+   {
+    "fips": "51175",
+    "state": "VA",
+    "county": "SOUTHAMPTON",
+    "mean_production_bales": 71100.0,
+    "tiles": [
+     "h11v05"
+    ]
+   },
+   {
+    "fips": "28143",
+    "state": "MS",
+    "county": "TUNICA",
+    "mean_production_bales": 70775.0,
+    "tiles": [
+     "h10v05"
+    ]
+   },
+   {
+    "fips": "47033",
+    "state": "TN",
+    "county": "CROCKETT",
+    "mean_production_bales": 69585.71428571429,
+    "tiles": [
+     "h10v05"
+    ]
+   },
+   {
+    "fips": "04013",
+    "state": "AZ",
+    "county": "MARICOPA",
+    "mean_production_bales": 68328.57142857143,
+    "tiles": [
+     "h08v05"
+    ]
+   },
+   {
+    "fips": "48227",
+    "state": "TX",
+    "county": "HOWARD",
+    "mean_production_bales": 66945.45454545454,
+    "tiles": [
+     "h09v05"
+    ]
+   },
+   {
+    "fips": "13069",
+    "state": "GA",
+    "county": "COFFEE",
+    "mean_production_bales": 66028.57142857143,
+    "tiles": [
+     "h10v05"
+    ]
+   },
+   {
+    "fips": "28083",
+    "state": "MS",
+    "county": "LEFLORE",
+    "mean_production_bales": 64807.142857142855,
+    "tiles": [
+     "h10v05"
+    ]
+   },
+   {
+    "fips": "13155",
+    "state": "GA",
+    "county": "IRWIN",
+    "mean_production_bales": 64464.28571428572,
+    "tiles": [
+     "h10v05"
+    ]
+   },
+   {
+    "fips": "13087",
+    "state": "GA",
+    "county": "DECATUR",
+    "mean_production_bales": 63235.71428571428,
+    "tiles": [
+     "h10v05"
+    ]
+   },
+   {
+    "fips": "05107",
+    "state": "AR",
+    "county": "PHILLIPS",
+    "mean_production_bales": 62870.0,
+    "tiles": [
+     "h10v05"
+    ]
+   },
+   {
+    "fips": "48195",
+    "state": "TX",
+    "county": "HANSFORD",
+    "mean_production_bales": 62600.0,
+    "tiles": [
+     "h09v05"
+    ]
+   },
+   {
+    "fips": "06029",
+    "state": "CA",
+    "county": "KERN",
+    "mean_production_bales": 61733.333333333336,
+    "tiles": [
+     "h08v05"
+    ]
+   },
+   {
+    "fips": "48069",
+    "state": "TX",
+    "county": "CASTRO",
+    "mean_production_bales": 61478.57142857143,
+    "tiles": [
+     "h09v05"
+    ]
+   },
+   {
+    "fips": "13081",
+    "state": "GA",
+    "county": "CRISP",
+    "mean_production_bales": 61050.0,
+    "tiles": [
+     "h10v05"
+    ]
+   },
+   {
+    "fips": "48207",
+    "state": "TX",
+    "county": "HASKELL",
+    "mean_production_bales": 59833.57142857143,
+    "tiles": [
+     "h09v05"
+    ]
+   },
+   {
+    "fips": "28163",
+    "state": "MS",
+    "county": "YAZOO",
+    "mean_production_bales": 59450.0,
+    "tiles": [
+     "h10v05"
+    ]
+   },
+   {
+    "fips": "48017",
+    "state": "TX",
+    "county": "BAILEY",
+    "mean_production_bales": 59092.857142857145,
+    "tiles": [
+     "h09v05"
+    ]
+   },
+   {
+    "fips": "48369",
+    "state": "TX",
+    "county": "PARMER",
+    "mean_production_bales": 58975.71428571428,
+    "tiles": [
+     "h09v05"
+    ]
+   },
+   {
+    "fips": "13275",
+    "state": "GA",
+    "county": "THOMAS",
+    "mean_production_bales": 58685.71428571428,
+    "tiles": [
+     "h10v05"
+    ]
+   },
+   {
+    "fips": "48151",
+    "state": "TX",
+    "county": "FISHER",
+    "mean_production_bales": 58255.0,
+    "tiles": [
+     "h09v05"
+    ]
+   },
+   {
+    "fips": "13099",
+    "state": "GA",
+    "county": "EARLY",
+    "mean_production_bales": 58178.57142857143,
+    "tiles": [
+     "h10v05"
+    ]
+   },
+   {
+    "fips": "48157",
+    "state": "TX",
+    "county": "FORT BEND",
+    "mean_production_bales": 56698.57142857143,
+    "tiles": [
+     "h09v06"
+    ]
+   },
+   {
+    "fips": "47047",
+    "state": "TN",
+    "county": "FAYETTE",
+    "mean_production_bales": 56064.28571428572,
+    "tiles": [
+     "h10v05"
+    ]
+   },
+   {
+    "fips": "37117",
+    "state": "NC",
+    "county": "MARTIN",
+    "mean_production_bales": 55092.857142857145,
+    "tiles": [
+     "h11v05"
+    ]
+   },
+   {
+    "fips": "13201",
+    "state": "GA",
+    "county": "MILLER",
+    "mean_production_bales": 54828.57142857143,
+    "tiles": [
+     "h10v05"
+    ]
+   },
+   {
+    "fips": "48321",
+    "state": "TX",
+    "county": "MATAGORDA",
+    "mean_production_bales": 54513.57142857143,
+    "tiles": [
+     "h09v06"
+    ]
+   },
+   {
+    "fips": "48489",
+    "state": "TX",
+    "county": "WILLACY",
+    "mean_production_bales": 54281.818181818184,
+    "tiles": [
+     "h09v06"
+    ]
+   },
+   {
+    "fips": "13019",
+    "state": "GA",
+    "county": "BERRIEN",
+    "mean_production_bales": 53885.71428571428,
+    "tiles": [
+     "h10v05"
+    ]
+   },
+   {
+    "fips": "05111",
+    "state": "AR",
+    "county": "POINSETT",
+    "mean_production_bales": 53771.42857142857,
+    "tiles": [
+     "h10v05"
+    ]
+   },
+   {
+    "fips": "12063",
+    "state": "FL",
+    "county": "JACKSON",
+    "mean_production_bales": 53545.454545454544,
+    "tiles": [
+     "h10v05"
+    ]
+   },
+   {
+    "fips": "45075",
+    "state": "SC",
+    "county": "ORANGEBURG",
+    "mean_production_bales": 52785.71428571428,
+    "tiles": [
+     "h11v05"
+    ]
+   },
+   {
+    "fips": "05041",
+    "state": "AR",
+    "county": "DESHA",
+    "mean_production_bales": 52383.333333333336,
+    "tiles": [
+     "h10v05"
+    ]
+   },
+   {
+    "fips": "28119",
+    "state": "MS",
+    "county": "QUITMAN",
+    "mean_production_bales": 51950.0,
+    "tiles": [
+     "h10v05"
+    ]
+   },
+   {
+    "fips": "28135",
+    "state": "MS",
+    "county": "TALLAHATCHIE",
+    "mean_production_bales": 51865.38461538462,
+    "tiles": [
+     "h10v05"
+    ]
+   },
+   {
+    "fips": "13253",
+    "state": "GA",
+    "county": "SEMINOLE",
+    "mean_production_bales": 51628.57142857143,
+    "tiles": [
+     "h10v05"
+    ]
+   },
+   {
+    "fips": "28051",
+    "state": "MS",
+    "county": "HOLMES",
+    "mean_production_bales": 51414.28571428572,
+    "tiles": [
+     "h10v05"
+    ]
+   },
+   {
+    "fips": "48421",
+    "state": "TX",
+    "county": "SHERMAN",
+    "mean_production_bales": 50980.0,
+    "tiles": [
+     "h09v05"
+    ]
+   },
+   {
+    "fips": "48253",
+    "state": "TX",
+    "county": "JONES",
+    "mean_production_bales": 50767.692307692305,
+    "tiles": [
+     "h09v05"
+    ]
+   },
+   {
+    "fips": "48399",
+    "state": "TX",
+    "county": "RUNNELS",
+    "mean_production_bales": 50724.61538461538,
+    "tiles": [
+     "h09v05"
+    ]
+   },
+   {
+    "fips": "01089",
+    "state": "AL",
+    "county": "MADISON",
+    "mean_production_bales": 50664.28571428572,
+    "tiles": [
+     "h10v05"
+    ]
+   },
+   {
+    "fips": "05123",
+    "state": "AR",
+    "county": "SAINT FRANCIS",
+    "mean_production_bales": 50534.61538461538,
+    "tiles": [
+     "h10v05"
+    ]
+   },
+   {
+    "fips": "05003",
+    "state": "AR",
+    "county": "ASHLEY",
+    "mean_production_bales": 50237.5,
+    "tiles": [
+     "h10v05"
+    ]
+   },
+   {
+    "fips": "47053",
+    "state": "TN",
+    "county": "GIBSON",
+    "mean_production_bales": 50142.857142857145,
+    "tiles": [
+     "h10v05"
+    ]
+   },
+   {
+    "fips": "37015",
+    "state": "NC",
+    "county": "BERTIE",
+    "mean_production_bales": 48671.42857142857,
+    "tiles": [
+     "h11v05"
+    ]
+   },
+   {
+    "fips": "40057",
+    "state": "OK",
+    "county": "HARMON",
+    "mean_production_bales": 48600.0,
+    "tiles": [
+     "h09v05"
+    ]
+   },
+   {
+    "fips": "47097",
+    "state": "TN",
+    "county": "LAUDERDALE",
+    "mean_production_bales": 48358.333333333336,
+    "tiles": [
+     "h10v05"
+    ]
+   },
+   {
+    "fips": "13287",
+    "state": "GA",
+    "county": "TURNER",
+    "mean_production_bales": 47728.57142857143,
+    "tiles": [
+     "h10v05"
+    ]
+   },
+   {
+    "fips": "47167",
+    "state": "TN",
+    "county": "TIPTON",
+    "mean_production_bales": 47677.77777777778,
+    "tiles": [
+     "h10v05"
+    ]
+   },
+   {
+    "fips": "13315",
+    "state": "GA",
+    "county": "WILCOX",
+    "mean_production_bales": 47514.28571428572,
+    "tiles": [
+     "h10v05"
+    ]
+   },
+   {
+    "fips": "13033",
+    "state": "GA",
+    "county": "BURKE",
+    "mean_production_bales": 47164.28571428572,
+    "tiles": [
+     "h11v05"
+    ]
+   },
+   {
+    "fips": "28053",
+    "state": "MS",
+    "county": "HUMPHREYS",
+    "mean_production_bales": 46607.692307692305,
+    "tiles": [
+     "h10v05"
+    ]
+   },
+   {
+    "fips": "48273",
+    "state": "TX",
+    "county": "KLEBERG",
+    "mean_production_bales": 46566.666666666664,
+    "tiles": [
+     "h09v06"
+    ]
+   },
+   {
+    "fips": "48341",
+    "state": "TX",
+    "county": "MOORE",
+    "mean_production_bales": 46338.46153846154,
+    "tiles": [
+     "h09v05"
+    ]
+   },
+   {
+    "fips": "13001",
+    "state": "GA",
+    "county": "APPLING",
+    "mean_production_bales": 46085.71428571428,
+    "tiles": [
+     "h10v05",
+     "h11v05"
+    ]
+   },
+   {
+    "fips": "13277",
+    "state": "GA",
+    "county": "TIFT",
+    "mean_production_bales": 45385.71428571428,
+    "tiles": [
+     "h10v05"
+    ]
+   },
+   {
+    "fips": "48239",
+    "state": "TX",
+    "county": "JACKSON",
+    "mean_production_bales": 45359.28571428572,
+    "tiles": [
+     "h09v06"
+    ]
+   },
+   {
+    "fips": "47017",
+    "state": "TN",
+    "county": "CARROLL",
+    "mean_production_bales": 44628.57142857143,
+    "tiles": [
+     "h10v05"
+    ]
+   },
+   {
+    "fips": "48075",
+    "state": "TX",
+    "county": "CHILDRESS",
+    "mean_production_bales": 44435.71428571428,
+    "tiles": [
+     "h09v05"
+    ]
+   },
+   {
+    "fips": "22065",
+    "state": "LA",
+    "county": "MADISON",
+    "mean_production_bales": 44071.42857142857,
+    "tiles": [
+     "h10v05"
+    ]
+   },
+   {
+    "fips": "37065",
+    "state": "NC",
+    "county": "EDGECOMBE",
+    "mean_production_bales": 43971.42857142857,
+    "tiles": [
+     "h11v05"
+    ]
+   },
+   {
+    "fips": "13261",
+    "state": "GA",
+    "county": "SUMTER",
+    "mean_production_bales": 43685.71428571428,
+    "tiles": [
+     "h10v05"
+    ]
+   },
+   {
+    "fips": "04012",
+    "state": "AZ",
+    "county": "LAPAZ",
+    "mean_production_bales": 43208.333333333336,
+    "tiles": [
+     "h08v05"
+    ]
+   },
+   {
+    "fips": "06107",
+    "state": "CA",
+    "county": "TULARE",
+    "mean_production_bales": 43050.0,
+    "tiles": [
+     "h08v05"
+    ]
+   },
+   {
+    "fips": "13131",
+    "state": "GA",
+    "county": "GRADY",
+    "mean_production_bales": 43000.0,
+    "tiles": [
+     "h10v05"
+    ]
+   },
+   {
+    "fips": "48169",
+    "state": "TX",
+    "county": "GARZA",
+    "mean_production_bales": 42842.857142857145,
+    "tiles": [
+     "h09v05"
+    ]
+   },
+   {
+    "fips": "48353",
+    "state": "TX",
+    "county": "NOLAN",
+    "mean_production_bales": 42796.42857142857,
+    "tiles": [
+     "h09v05"
+    ]
+   },
+   {
+    "fips": "28103",
+    "state": "MS",
+    "county": "NOXUBEE",
+    "mean_production_bales": 42439.28571428572,
+    "tiles": [
+     "h10v05"
+    ]
+   },
+   {
+    "fips": "13273",
+    "state": "GA",
+    "county": "TERRELL",
+    "mean_production_bales": 42014.28571428572,
+    "tiles": [
+     "h10v05"
+    ]
+   },
+   {
+    "fips": "47113",
+    "state": "TN",
+    "county": "MADISON",
+    "mean_production_bales": 41721.42857142857,
+    "tiles": [
+     "h10v05"
+    ]
+   },
+   {
+    "fips": "45031",
+    "state": "SC",
+    "county": "DARLINGTON",
+    "mean_production_bales": 41661.53846153846,
+    "tiles": [
+     "h11v05"
+    ]
+   },
+   {
+    "fips": "13251",
+    "state": "GA",
+    "county": "SCREVEN",
+    "mean_production_bales": 41335.71428571428,
+    "tiles": [
+     "h11v05"
+    ]
+   },
+   {
+    "fips": "22025",
+    "state": "LA",
+    "county": "CATAHOULA",
+    "mean_production_bales": 41300.0,
+    "tiles": [
+     "h10v05"
+    ]
+   },
+   {
+    "fips": "06019",
+    "state": "CA",
+    "county": "FRESNO",
+    "mean_production_bales": 41054.545454545456,
+    "tiles": [
+     "h08v05"
+    ]
+   },
+   {
+    "fips": "45017",
+    "state": "SC",
+    "county": "CALHOUN",
+    "mean_production_bales": 40214.28571428572,
+    "tiles": [
+     "h11v05"
+    ]
+   },
+   {
+    "fips": "01083",
+    "state": "AL",
+    "county": "LIMESTONE",
+    "mean_production_bales": 39721.42857142857,
+    "tiles": [
+     "h10v05"
+    ]
+   },
+   {
+    "fips": "05079",
+    "state": "AR",
+    "county": "LINCOLN",
+    "mean_production_bales": 39566.666666666664,
+    "tiles": [
+     "h10v05"
+    ]
+   },
+   {
+    "fips": "48415",
+    "state": "TX",
+    "county": "SCURRY",
+    "mean_production_bales": 39366.92307692308,
+    "tiles": [
+     "h09v05"
+    ]
+   },
+   {
+    "fips": "06065",
+    "state": "CA",
+    "county": "RIVERSIDE",
+    "mean_production_bales": 39175.0,
+    "tiles": [
+     "h08v05"
+    ]
+   },
+   {
+    "fips": "40149",
+    "state": "OK",
+    "county": "WASHITA",
+    "mean_production_bales": 38870.0,
+    "tiles": [
+     "h09v05"
+    ]
+   },
+   {
+    "fips": "05035",
+    "state": "AR",
+    "county": "CRITTENDEN",
+    "mean_production_bales": 38775.0,
+    "tiles": [
+     "h10v05"
+    ]
+   },
+   {
+    "fips": "28011",
+    "state": "MS",
+    "county": "BOLIVAR",
+    "mean_production_bales": 38113.63636363636,
+    "tiles": [
+     "h10v05"
+    ]
+   },
+   {
+    "fips": "01069",
+    "state": "AL",
+    "county": "HOUSTON",
+    "mean_production_bales": 38085.71428571428,
+    "tiles": [
+     "h10v05"
+    ]
+   },
+   {
+    "fips": "05017",
+    "state": "AR",
+    "county": "CHICOT",
+    "mean_production_bales": 38058.333333333336,
+    "tiles": [
+     "h10v05"
+    ]
+   },
+   {
+    "fips": "01053",
+    "state": "AL",
+    "county": "ESCAMBIA",
+    "mean_production_bales": 37785.71428571428,
+    "tiles": [
+     "h10v05"
+    ]
+   },
+   {
+    "fips": "13075",
+    "state": "GA",
+    "county": "COOK",
+    "mean_production_bales": 37585.71428571428,
+    "tiles": [
+     "h10v05"
+    ]
+   },
+   {
+    "fips": "48357",
+    "state": "TX",
+    "county": "OCHILTREE",
+    "mean_production_bales": 37213.333333333336,
+    "tiles": [
+     "h09v05"
+    ]
+   },
+   {
+    "fips": "48045",
+    "state": "TX",
+    "county": "BRISCOE",
+    "mean_production_bales": 37042.857142857145,
+    "tiles": [
+     "h09v05"
+    ]
+   },
+   {
+    "fips": "04009",
+    "state": "AZ",
+    "county": "GRAHAM",
+    "mean_production_bales": 36985.71428571428,
+    "tiles": [
+     "h08v05"
+    ]
+   },
+   {
+    "fips": "01019",
+    "state": "AL",
+    "county": "CHEROKEE",
+    "mean_production_bales": 36735.71428571428,
+    "tiles": [
+     "h10v05"
+    ]
+   },
+   {
+    "fips": "06031",
+    "state": "CA",
+    "county": "KINGS",
+    "mean_production_bales": 36507.142857142855,
+    "tiles": [
+     "h08v05"
+    ]
+   },
+   {
+    "fips": "40015",
+    "state": "OK",
+    "county": "CADDO",
+    "mean_production_bales": 36145.454545454544,
+    "tiles": [
+     "h09v05",
+     "h10v05"
+    ]
+   },
+   {
+    "fips": "28107",
+    "state": "MS",
+    "county": "PANOLA",
+    "mean_production_bales": 36103.57142857143,
+    "tiles": [
+     "h10v05"
+    ]
+   },
+   {
+    "fips": "48325",
+    "state": "TX",
+    "county": "MEDINA",
+    "mean_production_bales": 35717.142857142855,
+    "tiles": [
+     "h09v06"
+    ]
+   },
+   {
+    "fips": "01061",
+    "state": "AL",
+    "county": "GENEVA",
+    "mean_production_bales": 35630.769230769234,
+    "tiles": [
+     "h10v05"
+    ]
+   },
+   {
+    "fips": "04027",
+    "state": "AZ",
+    "county": "YUMA",
+    "mean_production_bales": 35628.57142857143,
+    "tiles": [
+     "h08v05"
+    ]
+   },
+   {
+    "fips": "48335",
+    "state": "TX",
+    "county": "MITCHELL",
+    "mean_production_bales": 34982.142857142855,
+    "tiles": [
+     "h09v05"
+    ]
+   },
+   {
+    "fips": "28151",
+    "state": "MS",
+    "county": "WASHINGTON",
+    "mean_production_bales": 34800.0,
+    "tiles": [
+     "h10v05"
+    ]
+   },
+   {
+    "fips": "13177",
+    "state": "GA",
+    "county": "LEE",
+    "mean_production_bales": 34528.57142857143,
+    "tiles": [
+     "h10v05"
+    ]
+   },
+   {
+    "fips": "48463",
+    "state": "TX",
+    "county": "UVALDE",
+    "mean_production_bales": 34026.42857142857,
+    "tiles": [
+     "h09v06"
+    ]
+   },
+   {
+    "fips": "47045",
+    "state": "TN",
+    "county": "DYER",
+    "mean_production_bales": 33807.692307692305,
+    "tiles": [
+     "h10v05"
+    ]
+   },
+   {
+    "fips": "48275",
+    "state": "TX",
+    "county": "KNOX",
+    "mean_production_bales": 32917.142857142855,
+    "tiles": [
+     "h09v05"
+    ]
+   },
+   {
+    "fips": "48383",
+    "state": "TX",
+    "county": "REAGAN",
+    "mean_production_bales": 32853.57142857143,
+    "tiles": [
+     "h09v05"
+    ]
+   },
+   {
+    "fips": "12113",
+    "state": "FL",
+    "county": "SANTA ROSA",
+    "mean_production_bales": 32654.545454545456,
+    "tiles": [
+     "h10v05"
+    ]
+   },
+   {
+    "fips": "13007",
+    "state": "GA",
+    "county": "BAKER",
+    "mean_production_bales": 32371.428571428572,
+    "tiles": [
+     "h10v05"
+    ]
+   },
+   {
+    "fips": "20191",
+    "state": "KS",
+    "county": "SUMNER",
+    "mean_production_bales": 31971.53846153846,
+    "tiles": [
+     "h10v05"
+    ]
+   },
+   {
+    "fips": "01077",
+    "state": "AL",
+    "county": "LAUDERDALE",
+    "mean_production_bales": 31521.428571428572,
+    "tiles": [
+     "h10v05"
+    ]
+   },
+   {
+    "fips": "48111",
+    "state": "TX",
+    "county": "DALLAM",
+    "mean_production_bales": 31250.0,
+    "tiles": [
+     "h09v05"
+    ]
+   },
+   {
+    "fips": "13161",
+    "state": "GA",
+    "county": "JEFF DAVIS",
+    "mean_production_bales": 31192.85714285714,
+    "tiles": [
+     "h10v05",
+     "h11v05"
+    ]
+   },
+   {
+    "fips": "22029",
+    "state": "LA",
+    "county": "CONCORDIA",
+    "mean_production_bales": 30753.846153846152,
+    "tiles": [
+     "h10v05"
+    ]
+   },
+   {
+    "fips": "48469",
+    "state": "TX",
+    "county": "VICTORIA",
+    "mean_production_bales": 30675.0,
+    "tiles": [
+     "h09v06"
+    ]
+   },
+   {
+    "fips": "01099",
+    "state": "AL",
+    "county": "MONROE",
+    "mean_production_bales": 30542.85714285714,
+    "tiles": [
+     "h10v05"
+    ]
+   },
+   {
+    "fips": "51093",
+    "state": "VA",
+    "county": "ISLE OF WIGHT",
+    "mean_production_bales": 30410.0,
+    "tiles": [
+     "h11v05"
+    ]
+   },
+   {
+    "fips": "13235",
+    "state": "GA",
+    "county": "PULASKI",
+    "mean_production_bales": 30400.0,
+    "tiles": [
+     "h10v05"
+    ]
+   },
+   {
+    "fips": "13165",
+    "state": "GA",
+    "county": "JENKINS",
+    "mean_production_bales": 30385.714285714286,
+    "tiles": [
+     "h11v05"
+    ]
+   },
+   {
+    "fips": "35025",
+    "state": "NM",
+    "county": "LEA",
+    "mean_production_bales": 29128.571428571428,
+    "tiles": [
+     "h09v05"
+    ]
+   },
+   {
+    "fips": "13003",
+    "state": "GA",
+    "county": "ATKINSON",
+    "mean_production_bales": 29114.285714285714,
+    "tiles": [
+     "h10v05"
+    ]
+   },
+   {
+    "fips": "48057",
+    "state": "TX",
+    "county": "CALHOUN",
+    "mean_production_bales": 29073.636363636364,
+    "tiles": [
+     "h09v06"
+    ]
+   },
+   {
+    "fips": "01079",
+    "state": "AL",
+    "county": "LAWRENCE",
+    "mean_production_bales": 28415.384615384617,
+    "tiles": [
+     "h10v05"
+    ]
+   },
+   {
+    "fips": "01039",
+    "state": "AL",
+    "county": "COVINGTON",
+    "mean_production_bales": 28335.714285714286,
+    "tiles": [
+     "h10v05"
+    ]
+   },
+   {
+    "fips": "01067",
+    "state": "AL",
+    "county": "HENRY",
+    "mean_production_bales": 28235.714285714286,
+    "tiles": [
+     "h10v05"
+    ]
+   },
+   {
+    "fips": "13037",
+    "state": "GA",
+    "county": "CALHOUN",
+    "mean_production_bales": 28007.14285714286,
+    "tiles": [
+     "h10v05"
+    ]
+   },
+   {
+    "fips": "40055",
+    "state": "OK",
+    "county": "GREER",
+    "mean_production_bales": 27900.0,
+    "tiles": [
+     "h09v05"
+    ]
+   },
+   {
+    "fips": "37147",
+    "state": "NC",
+    "county": "PITT",
+    "mean_production_bales": 27878.571428571428,
+    "tiles": [
+     "h11v05"
+    ]
+   },
+   {
+    "fips": "48179",
+    "state": "TX",
+    "county": "GRAY",
+    "mean_production_bales": 27327.85714285714,
+    "tiles": [
+     "h09v05"
+    ]
+   },
+   {
+    "fips": "48395",
+    "state": "TX",
+    "county": "ROBERTSON",
+    "mean_production_bales": 27187.777777777777,
+    "tiles": [
+     "h09v05"
+    ]
+   },
+   {
+    "fips": "22041",
+    "state": "LA",
+    "county": "FRANKLIN",
+    "mean_production_bales": 27127.272727272728,
+    "tiles": [
+     "h10v05"
+    ]
+   },
+   {
+    "fips": "51800",
+    "state": "VA",
+    "county": "SUFFOLK CITY",
+    "mean_production_bales": 27040.0,
+    "tiles": [
+     "h11v05"
+    ]
+   },
+   {
+    "fips": "13091",
+    "state": "GA",
+    "county": "DODGE",
+    "mean_production_bales": 26971.428571428572,
+    "tiles": [
+     "h10v05",
+     "h11v05"
+    ]
+   },
+   {
+    "fips": "37163",
+    "state": "NC",
+    "county": "SAMPSON",
+    "mean_production_bales": 26957.14285714286,
+    "tiles": [
+     "h11v05"
+    ]
+   },
+   {
+    "fips": "13193",
+    "state": "GA",
+    "county": "MACON",
+    "mean_production_bales": 26950.0,
+    "tiles": [
+     "h10v05"
+    ]
+   },
+   {
+    "fips": "13107",
+    "state": "GA",
+    "county": "EMANUEL",
+    "mean_production_bales": 26950.0,
+    "tiles": [
+     "h11v05"
+    ]
+   },
+   {
+    "fips": "37095",
+    "state": "NC",
+    "county": "HYDE",
+    "mean_production_bales": 26593.333333333332,
+    "tiles": [
+     "h11v05"
+    ]
+   },
+   {
+    "fips": "45089",
+    "state": "SC",
+    "county": "WILLIAMSBURG",
+    "mean_production_bales": 26505.0,
+    "tiles": [
+     "h11v05"
+    ]
+   },
+   {
+    "fips": "22083",
+    "state": "LA",
+    "county": "RICHLAND",
+    "mean_production_bales": 26292.30769230769,
+    "tiles": [
+     "h10v05"
+    ]
+   },
+   {
+    "fips": "13163",
+    "state": "GA",
+    "county": "JEFFERSON",
+    "mean_production_bales": 26161.53846153846,
+    "tiles": [
+     "h11v05"
+    ]
+   },
+   {
+    "fips": "37091",
+    "state": "NC",
+    "county": "HERTFORD",
+    "mean_production_bales": 25992.85714285714,
+    "tiles": [
+     "h11v05"
+    ]
+   },
+   {
+    "fips": "48233",
+    "state": "TX",
+    "county": "HUTCHINSON",
+    "mean_production_bales": 25744.444444444445,
+    "tiles": [
+     "h09v05"
+    ]
+   },
+   {
+    "fips": "45069",
+    "state": "SC",
+    "county": "MARLBORO",
+    "mean_production_bales": 25464.285714285714,
+    "tiles": [
+     "h11v05"
+    ]
+   },
+   {
+    "fips": "47069",
+    "state": "TN",
+    "county": "HARDEMAN",
+    "mean_production_bales": 25407.14285714286,
+    "tiles": [
+     "h10v05"
+    ]
+   },
+   {
+    "fips": "37013",
+    "state": "NC",
+    "county": "BEAUFORT",
+    "mean_production_bales": 25364.285714285714,
+    "tiles": [
+     "h11v05"
+    ]
+   },
+   {
+    "fips": "20151",
+    "state": "KS",
+    "county": "PRATT",
+    "mean_production_bales": 25334.545454545456,
+    "tiles": [
+     "h10v05"
+    ]
+   },
+   {
+    "fips": "48095",
+    "state": "TX",
+    "county": "CONCHO",
+    "mean_production_bales": 25222.30769230769,
+    "tiles": [
+     "h09v05"
+    ]
+   },
+   {
+    "fips": "29201",
+    "state": "MO",
+    "county": "SCOTT",
+    "mean_production_bales": 25200.0,
+    "tiles": [
+     "h10v05"
+    ]
+   },
+   {
+    "fips": "48205",
+    "state": "TX",
+    "county": "HARTLEY",
+    "mean_production_bales": 24955.0,
+    "tiles": [
+     "h09v05"
+    ]
+   },
+   {
+    "fips": "40075",
+    "state": "OK",
+    "county": "KIOWA",
+    "mean_production_bales": 24954.545454545456,
+    "tiles": [
+     "h09v05"
+    ]
+   },
+   {
+    "fips": "22017",
+    "state": "LA",
+    "county": "CADDO",
+    "mean_production_bales": 24790.909090909092,
+    "tiles": [
+     "h10v05"
+    ]
+   },
+   {
+    "fips": "48125",
+    "state": "TX",
+    "county": "DICKENS",
+    "mean_production_bales": 24770.714285714286,
+    "tiles": [
+     "h09v05"
+    ]
+   },
+   {
+    "fips": "48051",
+    "state": "TX",
+    "county": "BURLESON",
+    "mean_production_bales": 24695.0,
+    "tiles": [
+     "h09v05"
+    ]
+   },
+   {
+    "fips": "48487",
+    "state": "TX",
+    "county": "WILBARGER",
+    "mean_production_bales": 24675.0,
+    "tiles": [
+     "h09v05"
+    ]
+   },
+   {
+    "fips": "45061",
+    "state": "SC",
+    "county": "LEE",
+    "mean_production_bales": 24628.571428571428,
+    "tiles": [
+     "h11v05"
+    ]
+   },
+   {
+    "fips": "04019",
+    "state": "AZ",
+    "county": "PIMA",
+    "mean_production_bales": 24450.0,
+    "tiles": [
+     "h08v05"
+    ]
+   },
+   {
+    "fips": "48139",
+    "state": "TX",
+    "county": "ELLIS",
+    "mean_production_bales": 24271.428571428572,
+    "tiles": [
+     "h09v05"
+    ]
+   },
+   {
+    "fips": "48117",
+    "state": "TX",
+    "county": "DEAF SMITH",
+    "mean_production_bales": 24267.69230769231,
+    "tiles": [
+     "h09v05"
+    ]
+   },
+   {
+    "fips": "13005",
+    "state": "GA",
+    "county": "BACON",
+    "mean_production_bales": 23544.444444444445,
+    "tiles": [
+     "h10v05",
+     "h11v05"
+    ]
+   },
+   {
+    "fips": "28133",
+    "state": "MS",
+    "county": "SUNFLOWER",
+    "mean_production_bales": 23059.166666666668,
+    "tiles": [
+     "h10v05"
+    ]
+   },
+   {
+    "fips": "01031",
+    "state": "AL",
+    "county": "COFFEE",
+    "mean_production_bales": 22835.714285714286,
+    "tiles": [
+     "h10v05"
+    ]
+   },
+   {
+    "fips": "48129",
+    "state": "TX",
+    "county": "DONLEY",
+    "mean_production_bales": 22532.85714285714,
+    "tiles": [
+     "h09v05"
+    ]
+   },
+   {
+    "fips": "37073",
+    "state": "NC",
+    "county": "GATES",
+    "mean_production_bales": 22171.428571428572,
+    "tiles": [
+     "h11v05"
+    ]
+   },
+   {
+    "fips": "48217",
+    "state": "TX",
+    "county": "HILL",
+    "mean_production_bales": 22155.714285714286,
+    "tiles": [
+     "h09v05"
+    ]
+   },
+   {
+    "fips": "20189",
+    "state": "KS",
+    "county": "STEVENS",
+    "mean_production_bales": 22150.0,
+    "tiles": [
+     "h09v05"
+    ]
+   },
+   {
+    "fips": "01003",
+    "state": "AL",
+    "county": "BALDWIN",
+    "mean_production_bales": 22142.85714285714,
+    "tiles": [
+     "h10v05"
+    ]
+   },
+   {
+    "fips": "47157",
+    "state": "TN",
+    "county": "SHELBY",
+    "mean_production_bales": 21950.0,
+    "tiles": [
+     "h10v05"
+    ]
+   },
+   {
+    "fips": "13017",
+    "state": "GA",
+    "county": "BEN HILL",
+    "mean_production_bales": 21800.0,
+    "tiles": [
+     "h10v05"
+    ]
+   },
+   {
+    "fips": "05095",
+    "state": "AR",
+    "county": "MONROE",
+    "mean_production_bales": 21466.666666666668,
+    "tiles": [
+     "h10v05"
+    ]
+   },
+   {
+    "fips": "28125",
+    "state": "MS",
+    "county": "SHARKEY",
+    "mean_production_bales": 21466.666666666668,
+    "tiles": [
+     "h10v05"
+    ]
+   },
+   {
+    "fips": "28013",
+    "state": "MS",
+    "county": "CALHOUN",
+    "mean_production_bales": 21419.23076923077,
+    "tiles": [
+     "h10v05"
+    ]
+   },
+   {
+    "fips": "13229",
+    "state": "GA",
+    "county": "PIERCE",
+    "mean_production_bales": 21392.85714285714,
+    "tiles": [
+     "h10v05",
+     "h11v05"
+    ]
+   },
+   {
+    "fips": "22067",
+    "state": "LA",
+    "county": "MOREHOUSE",
+    "mean_production_bales": 21325.0,
+    "tiles": [
+     "h10v05"
+    ]
+   },
+   {
+    "fips": "45049",
+    "state": "SC",
+    "county": "HAMPTON",
+    "mean_production_bales": 21257.14285714286,
+    "tiles": [
+     "h11v05"
+    ]
+   },
+   {
+    "fips": "37041",
+    "state": "NC",
+    "county": "CHOWAN",
+    "mean_production_bales": 21100.0,
+    "tiles": [
+     "h11v05"
+    ]
+   },
+   {
+    "fips": "48033",
+    "state": "TX",
+    "county": "BORDEN",
+    "mean_production_bales": 21032.5,
+    "tiles": [
+     "h09v05"
+    ]
+   },
+   {
+    "fips": "37155",
+    "state": "NC",
+    "county": "ROBESON",
+    "mean_production_bales": 20821.428571428572,
+    "tiles": [
+     "h11v05"
+    ]
+   },
+   {
+    "fips": "48025",
+    "state": "TX",
+    "county": "BEE",
+    "mean_production_bales": 20737.5,
+    "tiles": [
+     "h09v06"
+    ]
+   },
+   {
+    "fips": "05043",
+    "state": "AR",
+    "county": "DREW",
+    "mean_production_bales": 20445.454545454544,
+    "tiles": [
+     "h10v05"
+    ]
+   },
+   {
+    "fips": "37143",
+    "state": "NC",
+    "county": "PERQUIMANS",
+    "mean_production_bales": 20285.714285714286,
+    "tiles": [
+     "h11v05"
+    ]
+   },
+   {
+    "fips": "37187",
+    "state": "NC",
+    "county": "WASHINGTON",
+    "mean_production_bales": 20215.384615384617,
+    "tiles": [
+     "h11v05"
+    ]
+   },
+   {
+    "fips": "13243",
+    "state": "GA",
+    "county": "RANDOLPH",
+    "mean_production_bales": 20192.30769230769,
+    "tiles": [
+     "h10v05"
+    ]
+   },
+   {
+    "fips": "37167",
+    "state": "NC",
+    "county": "STANLY",
+    "mean_production_bales": 20172.727272727272,
+    "tiles": [
+     "h11v05"
+    ]
+   },
+   {
+    "fips": "22035",
+    "state": "LA",
+    "county": "EAST CARROLL",
+    "mean_production_bales": 19912.5,
+    "tiles": [
+     "h10v05"
+    ]
+   },
+   {
+    "fips": "13153",
+    "state": "GA",
+    "county": "HOUSTON",
+    "mean_production_bales": 19742.85714285714,
+    "tiles": [
+     "h10v05"
+    ]
+   },
+   {
+    "fips": "28055",
+    "state": "MS",
+    "county": "ISSAQUENA",
+    "mean_production_bales": 19725.0,
+    "tiles": [
+     "h10v05"
+    ]
+   },
+   {
+    "fips": "37107",
+    "state": "NC",
+    "county": "LENOIR",
+    "mean_production_bales": 19285.714285714286,
+    "tiles": [
+     "h11v05"
+    ]
+   },
+   {
+    "fips": "12033",
+    "state": "FL",
+    "county": "ESCAMBIA",
+    "mean_production_bales": 19236.363636363636,
+    "tiles": [
+     "h10v05"
+    ]
+   },
+   {
+    "fips": "48197",
+    "state": "TX",
+    "county": "HARDEMAN",
+    "mean_production_bales": 19178.0,
+    "tiles": [
+     "h09v05"
+    ]
+   },
+   {
+    "fips": "48491",
+    "state": "TX",
+    "county": "WILLIAMSON",
+    "mean_production_bales": 19034.285714285714,
+    "tiles": [
+     "h09v05"
+    ]
+   },
+   {
+    "fips": "13267",
+    "state": "GA",
+    "county": "TATTNALL",
+    "mean_production_bales": 18869.23076923077,
+    "tiles": [
+     "h11v05"
+    ]
+   },
+   {
+    "fips": "28087",
+    "state": "MS",
+    "county": "LOWNDES",
+    "mean_production_bales": 18819.166666666668,
+    "tiles": [
+     "h10v05"
+    ]
+   },
+   {
+    "fips": "01047",
+    "state": "AL",
+    "county": "DALLAS",
+    "mean_production_bales": 18777.14285714286,
+    "tiles": [
+     "h10v05"
+    ]
+   },
+   {
+    "fips": "01045",
+    "state": "AL",
+    "county": "DALE",
+    "mean_production_bales": 18657.14285714286,
+    "tiles": [
+     "h10v05"
+    ]
+   },
+   {
+    "fips": "48329",
+    "state": "TX",
+    "county": "MIDLAND",
+    "mean_production_bales": 18633.333333333332,
+    "tiles": [
+     "h09v05"
+    ]
+   },
+   {
+    "fips": "40009",
+    "state": "OK",
+    "county": "BECKHAM",
+    "mean_production_bales": 18529.166666666668,
+    "tiles": [
+     "h09v05"
+    ]
+   },
+   {
+    "fips": "13043",
+    "state": "GA",
+    "county": "CANDLER",
+    "mean_production_bales": 18254.545454545456,
+    "tiles": [
+     "h11v05"
+    ]
+   },
+   {
+    "fips": "13305",
+    "state": "GA",
+    "county": "WAYNE",
+    "mean_production_bales": 18188.88888888889,
+    "tiles": [
+     "h10v05",
+     "h11v05"
+    ]
+   },
+   {
+    "fips": "48345",
+    "state": "TX",
+    "county": "MOTLEY",
+    "mean_production_bales": 18089.090909090908,
+    "tiles": [
+     "h09v05"
+    ]
+   },
+   {
+    "fips": "48101",
+    "state": "TX",
+    "county": "COTTLE",
+    "mean_production_bales": 18068.0,
+    "tiles": [
+     "h09v05"
+    ]
+   },
+   {
+    "fips": "48349",
+    "state": "TX",
+    "county": "NAVARRO",
+    "mean_production_bales": 17995.0,
+    "tiles": [
+     "h09v05"
+    ]
+   },
+   {
+    "fips": "37195",
+    "state": "NC",
+    "county": "WILSON",
+    "mean_production_bales": 17979.285714285714,
+    "tiles": [
+     "h11v05"
+    ]
+   },
+   {
+    "fips": "13023",
+    "state": "GA",
+    "county": "BLECKLEY",
+    "mean_production_bales": 17964.285714285714,
+    "tiles": [
+     "h10v05"
+    ]
+   },
+   {
+    "fips": "01051",
+    "state": "AL",
+    "county": "ELMORE",
+    "mean_production_bales": 17785.714285714286,
+    "tiles": [
+     "h10v05"
+    ]
+   },
+   {
+    "fips": "45027",
+    "state": "SC",
+    "county": "CLARENDON",
+    "mean_production_bales": 17625.384615384617,
+    "tiles": [
+     "h11v05"
+    ]
+   },
+   {
+    "fips": "48003",
+    "state": "TX",
+    "county": "ANDREWS",
+    "mean_production_bales": 17533.333333333332,
+    "tiles": [
+     "h09v05"
+    ]
+   },
+   {
+    "fips": "47103",
+    "state": "TN",
+    "county": "LINCOLN",
+    "mean_production_bales": 17450.0,
+    "tiles": [
+     "h10v05"
+    ]
+   },
+   {
+    "fips": "13185",
+    "state": "GA",
+    "county": "LOWNDES",
+    "mean_production_bales": 17425.0,
+    "tiles": [
+     "h10v05"
+    ]
+   },
+   {
+    "fips": "37093",
+    "state": "NC",
+    "county": "HOKE",
+    "mean_production_bales": 17185.714285714286,
+    "tiles": [
+     "h11v05"
+    ]
+   },
+   {
+    "fips": "48163",
+    "state": "TX",
+    "county": "FRIO",
+    "mean_production_bales": 16934.285714285714,
+    "tiles": [
+     "h09v06"
+    ]
+   },
+   {
+    "fips": "37079",
+    "state": "NC",
+    "county": "GREENE",
+    "mean_production_bales": 16554.545454545456,
+    "tiles": [
+     "h11v05"
+    ]
+   },
+   {
+    "fips": "28015",
+    "state": "MS",
+    "county": "CARROLL",
+    "mean_production_bales": 16377.142857142857,
+    "tiles": [
+     "h10v05"
+    ]
+   },
+   {
+    "fips": "45041",
+    "state": "SC",
+    "county": "FLORENCE",
+    "mean_production_bales": 16272.857142857143,
+    "tiles": [
+     "h11v05"
+    ]
+   },
+   {
+    "fips": "37103",
+    "state": "NC",
+    "county": "JONES",
+    "mean_production_bales": 16115.384615384615,
+    "tiles": [
+     "h11v05"
+    ]
+   },
+   {
+    "fips": "48249",
+    "state": "TX",
+    "county": "JIM WELLS",
+    "mean_production_bales": 15917.0,
+    "tiles": [
+     "h09v06"
+    ]
+   },
+   {
+    "fips": "48331",
+    "state": "TX",
+    "county": "MILAM",
+    "mean_production_bales": 15811.42857142857,
+    "tiles": [
+     "h09v05"
+    ]
+   },
+   {
+    "fips": "05069",
+    "state": "AR",
+    "county": "JEFFERSON",
+    "mean_production_bales": 15604.545454545454,
+    "tiles": [
+     "h10v05"
+    ]
+   },
+   {
+    "fips": "05085",
+    "state": "AR",
+    "county": "LONOKE",
+    "mean_production_bales": 15525.0,
+    "tiles": [
+     "h10v05"
+    ]
+   },
+   {
+    "fips": "48041",
+    "state": "TX",
+    "county": "BRAZOS",
+    "mean_production_bales": 15500.0,
+    "tiles": [
+     "h09v05"
+    ]
+   },
+   {
+    "fips": "48371",
+    "state": "TX",
+    "county": "PECOS",
+    "mean_production_bales": 15254.0,
+    "tiles": [
+     "h09v05"
+    ]
+   }
+  ],
+  "panel_json_sha256": "d75a41de865f9e1234446e7330d4911c9494743e2e7db7de65774ce81d311230"
+ },
+ "census_county_zip": {
+  "url": "https://www2.census.gov/geo/tiger/GENZ2020/shp/cb_2020_us_county_500k.zip",
+  "sha256": "1a45c87a5a0c322514c9d5c9ebcba5eb9df313bd38962f6db56107ba0ccacc6f"
+ },
+ "notes": [
+  "NASS year__GE/__LE were ignored by the API; first attempt stopped before writing when other years appeared; pulls done year by year",
+  "API key never written to disk"
+ ]
+}

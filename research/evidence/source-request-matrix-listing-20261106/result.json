@@ -1,0 +1,32 @@
+{
+  "schema": 1,
+  "status": "source_requests_bounded_not_data_admitted",
+  "contracts": 58,
+  "unknown_cells_upper_bound": 99523,
+  "unique_source_dates": 3108,
+  "source_kind_counts": {
+    "dated_daily": 7664,
+    "no_accepted_original_source_table": 38588,
+    "unchanged_annual_outside_known_bad_blocks": 50996,
+    "unchanged_annual_outside_known_bad_blocks_with_prefix_witness": 57,
+    "unresolved_identity_or_price": 551,
+    "verified_full_daily_settlement": 42,
+    "verified_weekly_prefix": 1625
+  },
+  "cell_origin_dependency_edges": 4778562,
+  "input_hashes": {
+    "unknown-ewma-cells.csv": "6d4afe0039a04f92ee1a6d94d8f76aa73827ca8b4a3ebb5aab7c0eb5e595e30c",
+    "origin-readiness.csv": "d5a973555895b738448c4e75adefb556cf901327d13b601f1b05927f6ef700e1",
+    "result.json": "50d00f20da28295489526ba9c472e20ac1ab84057770aaff71a3411d3205bb01"
+  },
+  "matrix_sha256": "cf79fd39fe95cfeb10e83929ceb6212cc5f80bf9e341d0267da88d35b72bad14",
+  "generator_sha256": "22ad6a413dbfaf0b535c0705f649dec0a9f404dff26c40340d9a9e92bec7a710",
+  "new_fits": 0,
+  "source_admission_granted": false,
+  "limits": [
+    "Upper bounds are not proven price errors or proof a contract was listed.",
+    "Edges reuse origins and cells; they are not unique fits, trials or affected dates.",
+    "Lifecycle evidence may establish absence; no listing date is inferred here.",
+    "This request scope does not resolve conditional annual data or historical availability."
+  ]
+}

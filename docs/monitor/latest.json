@@ -1,0 +1,42 @@
+{
+ "report": "2026-11",
+ "release": "2026-11-10",
+ "status": "ok",
+ "model_version": "model_v1",
+ "usda": {
+  "tx_harvested_acres": 3900000,
+  "tx_production_bales": 4100000.0,
+  "us_production_bales": 12794000.0
+ },
+ "outputs": {
+  "next_revision_direction": {
+   "TX": "down",
+   "US": "down"
+  },
+  "tx_harvested_acres": {
+   "interval80": [
+    2919763,
+    3635484
+   ],
+   "interval95": [
+    2464380,
+    4307270
+   ],
+   "pvp": 0.52,
+   "status": "model",
+   "value": 3258029
+  },
+  "tx_production_bales": {
+   "status": "model",
+   "value": 4070552
+  },
+  "us_production_bales": {
+   "status": "model",
+   "value": 12763510
+  }
+ },
+ "reasons": [],
+ "logged_utc": "2026-11-16T19:15:51Z",
+ "hash": "6fbabaeede0e7c2fdc8397e4a4d0d9f1bba466a5ab76053880de6e6dfc76939d",
+ "source": "https://esmis.nal.usda.gov/sites/default/release-files/796144/crop1126.txt"
+}

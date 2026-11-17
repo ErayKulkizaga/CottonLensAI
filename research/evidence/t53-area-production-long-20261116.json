@@ -1,0 +1,1008 @@
+{
+ "all": {
+  "by_month": {
+   "SEP": {
+    "seasons": 24,
+    "prod_usda": 12.497606744351268,
+    "prod_adjusted": 11.799229702817001,
+    "area_usda": 9.32637890463885,
+    "area_adjusted": 6.636360613937541
+   },
+   "OCT": {
+    "seasons": 23,
+    "prod_usda": 11.6978755603,
+    "prod_adjusted": 9.977567225651766,
+    "area_usda": 8.798104150683004,
+    "area_adjusted": 6.462890001122821
+   },
+   "NOV": {
+    "seasons": 23,
+    "prod_usda": 8.347136582002374,
+    "prod_adjusted": 7.254663611235771,
+    "area_usda": 9.20863669732141,
+    "area_adjusted": 6.652424995554154
+   },
+   "DEC": {
+    "seasons": 24,
+    "prod_usda": 5.2649326163810235,
+    "prod_adjusted": 4.797618513963387,
+    "area_usda": 8.915523211744611,
+    "area_adjusted": 6.800481842411554
+   }
+  },
+  "months_better": 4,
+  "year_block_p": 0.18965,
+  "seasons": [
+   2001,
+   2025
+  ]
+ },
+ "before_2008": {
+  "by_month": {
+   "SEP": {
+    "seasons": 7,
+    "prod_usda": 8.522971649607246,
+    "prod_adjusted": 10.644690420963846,
+    "area_usda": 2.569886979824866,
+    "area_adjusted": 1.8733365839953968
+   },
+   "OCT": {
+    "seasons": 7,
+    "prod_usda": 6.189443550774648,
+    "prod_adjusted": 6.857904778027593,
+    "area_usda": 2.2560341659720526,
+    "area_adjusted": 2.107345385487776
+   },
+   "NOV": {
+    "seasons": 5,
+    "prod_usda": 2.9288726944594297,
+    "prod_adjusted": 3.2486391294706762,
+    "area_usda": 1.61255411255411,
+    "area_adjusted": 1.5813308043631307
+   },
+   "DEC": {
+    "seasons": 6,
+    "prod_usda": 2.195916926727063,
+    "prod_adjusted": 2.1328702000240325,
+    "area_usda": 1.7061139343748017,
+    "area_adjusted": 1.9662599253537174
+   }
+  },
+  "months_better": 1,
+  "year_block_p": 0.96345,
+  "seasons": [
+   2001,
+   2007
+  ]
+ },
+ "from_2008": {
+  "by_month": {
+   "SEP": {
+    "seasons": 17,
+    "prod_usda": 14.13422119512822,
+    "prod_adjusted": 12.274628230638887,
+    "area_usda": 12.108463814856371,
+    "area_adjusted": 8.597605802737247
+   },
+   "OCT": {
+    "seasons": 16,
+    "prod_usda": 14.107814564467338,
+    "prod_adjusted": 11.342419546487346,
+    "area_usda": 11.660259768994045,
+    "area_adjusted": 8.368440770463152
+   },
+   "NOV": {
+    "seasons": 18,
+    "prod_usda": 9.852209884097638,
+    "prod_adjusted": 8.367448189503854,
+    "area_usda": 11.318659637534548,
+    "area_adjusted": 8.061062270884994
+   },
+   "DEC": {
+    "seasons": 18,
+    "prod_usda": 6.287937846265678,
+    "prod_adjusted": 5.685867951943172,
+    "area_usda": 11.318659637534548,
+    "area_adjusted": 8.4118891480975
+   }
+  },
+  "months_better": 4,
+  "year_block_p": 0.1243,
+  "seasons": [
+   2008,
+   2025
+  ]
+ },
+ "pass": false,
+ "data_seasons": {
+  "SEP": [
+   1992,
+   1993,
+   1995,
+   1996,
+   1997,
+   1998,
+   1999,
+   2000,
+   2001,
+   2002,
+   2003,
+   2004,
+   2005,
+   2006,
+   2007,
+   2008,
+   2009,
+   2010,
+   2011,
+   2012,
+   2013,
+   2014,
+   2015,
+   2016,
+   2017,
+   2018,
+   2019,
+   2020,
+   2021,
+   2022,
+   2023,
+   2024,
+   2025
+  ],
+  "OCT": [
+   1992,
+   1994,
+   1995,
+   1996,
+   1997,
+   1998,
+   1999,
+   2000,
+   2001,
+   2002,
+   2003,
+   2004,
+   2005,
+   2006,
+   2007,
+   2008,
+   2009,
+   2010,
+   2011,
+   2012,
+   2014,
+   2015,
+   2016,
+   2017,
+   2018,
+   2019,
+   2020,
+   2021,
+   2022,
+   2023,
+   2024
+  ],
+  "NOV": [
+   1995,
+   1996,
+   1997,
+   1998,
+   1999,
+   2000,
+   2001,
+   2002,
+   2003,
+   2004,
+   2005,
+   2006,
+   2007,
+   2008,
+   2009,
+   2010,
+   2011,
+   2012,
+   2013,
+   2014,
+   2015,
+   2016,
+   2017,
+   2018,
+   2019,
+   2020,
+   2021,
+   2022,
+   2023,
+   2024,
+   2025
+  ],
+  "DEC": [
+   1992,
+   1995,
+   1996,
+   1997,
+   1998,
+   1999,
+   2000,
+   2001,
+   2002,
+   2003,
+   2004,
+   2005,
+   2006,
+   2007,
+   2008,
+   2009,
+   2010,
+   2011,
+   2012,
+   2013,
+   2014,
+   2015,
+   2016,
+   2017,
+   2018,
+   2019,
+   2020,
+   2021,
+   2022,
+   2023,
+   2024,
+   2025
+  ]
+ },
+ "rows": [
+  {
+   "year": 2001,
+   "month": "SEP",
+   "area_err_usda": 5.555555555555557,
+   "area_err_adj": 1.712380807301846,
+   "prod_err_usda": 3.2863849765258246,
+   "prod_err_adj": -0.7522480663802122
+  },
+  {
+   "year": 2002,
+   "month": "SEP",
+   "area_err_usda": 2.1739130434782594,
+   "area_err_adj": 0.9511224848716476,
+   "prod_err_usda": -4.761904761904767,
+   "prod_err_adj": -7.710088238676116
+  },
+  {
+   "year": 2003,
+   "month": "SEP",
+   "area_err_usda": 3.3333333333333326,
+   "area_err_adj": 0.5777442249801936,
+   "prod_err_usda": -5.311778290993074,
+   "prod_err_adj": -8.993835209413536
+  },
+  {
+   "year": 2004,
+   "month": "SEP",
+   "area_err_usda": 2.727272727272723,
+   "area_err_adj": 0.41672343254105193,
+   "prod_err_usda": -9.560723514211888,
+   "prod_err_adj": -11.659112055973974
+  },
+  {
+   "year": 2005,
+   "month": "SEP",
+   "area_err_usda": 1.8181818181818081,
+   "area_err_adj": 4.582411344001579,
+   "prod_err_usda": -14.691943127962082,
+   "prod_err_adj": -16.946730013878774
+  },
+  {
+   "year": 2006,
+   "month": "SEP",
+   "area_err_usda": 2.380952380952384,
+   "area_err_adj": 2.5455641669747293,
+   "prod_err_usda": -6.896551724137934,
+   "prod_err_adj": -11.3694480636934
+  },
+  {
+   "year": 2007,
+   "month": "SEP",
+   "area_err_usda": 0.0,
+   "area_err_adj": 2.327409627296731,
+   "prod_err_usda": -15.151515151515149,
+   "prod_err_adj": -17.081371298730918
+  },
+  {
+   "year": 2008,
+   "month": "SEP",
+   "area_err_usda": 4.411764705882348,
+   "area_err_adj": 1.6965538008707566,
+   "prod_err_usda": 18.8340807174888,
+   "prod_err_adj": 15.551799125879517
+  },
+  {
+   "year": 2009,
+   "month": "SEP",
+   "area_err_usda": 5.405405405405405,
+   "area_err_adj": 2.5013907671379068,
+   "prod_err_usda": 16.883116883116877,
+   "prod_err_adj": 13.401730993968242
+  },
+  {
+   "year": 2011,
+   "month": "SEP",
+   "area_err_usda": 10.9375,
+   "area_err_adj": 6.370883621063247,
+   "prod_err_usda": 19.999999999999996,
+   "prod_err_adj": 14.147184266328416
+  },
+  {
+   "year": 2012,
+   "month": "SEP",
+   "area_err_usda": 22.448979591836736,
+   "area_err_adj": 18.59093308126489,
+   "prod_err_usda": 21.999999999999996,
+   "prod_err_adj": 16.218313854897602
+  },
+  {
+   "year": 2013,
+   "month": "SEP",
+   "area_err_usda": 6.060606060606055,
+   "area_err_adj": 1.8386336493557631,
+   "prod_err_usda": -1.6786570743405282,
+   "prod_err_adj": -5.907510162900742
+  },
+  {
+   "year": 2014,
+   "month": "SEP",
+   "area_err_usda": 10.679611650485432,
+   "area_err_adj": 7.17482776274226,
+   "prod_err_usda": 6.882591093117418,
+   "prod_err_adj": 2.847043685934203
+  },
+  {
+   "year": 2015,
+   "month": "SEP",
+   "area_err_usda": 0.0,
+   "area_err_adj": 2.715721376672299,
+   "prod_err_usda": 0.5244755244755206,
+   "prod_err_adj": -2.1333110675055944
+  },
+  {
+   "year": 2016,
+   "month": "SEP",
+   "area_err_usda": 1.8867924528301883,
+   "area_err_adj": 1.539041769795096,
+   "prod_err_usda": -18.518518518518523,
+   "prod_err_adj": -21.267629037035384
+  },
+  {
+   "year": 2017,
+   "month": "SEP",
+   "area_err_usda": 6.779661016949157,
+   "area_err_adj": 4.685560873073097,
+   "prod_err_usda": 0.3236245954692629,
+   "prod_err_adj": -1.880529556031063
+  },
+  {
+   "year": 2018,
+   "month": "SEP",
+   "area_err_usda": 6.666666666666665,
+   "area_err_adj": 0.4814479819770569,
+   "prod_err_usda": -5.109489051094895,
+   "prod_err_adj": -11.859871982009839
+  },
+  {
+   "year": 2019,
+   "month": "SEP",
+   "area_err_usda": 14.166666666666671,
+   "area_err_adj": 11.007948313900332,
+   "prod_err_usda": 26.582278481012665,
+   "prod_err_adj": 22.089318058172914
+  },
+  {
+   "year": 2020,
+   "month": "SEP",
+   "area_err_usda": 18.181818181818173,
+   "area_err_adj": 12.264242185499977,
+   "prod_err_usda": 29.102844638949676,
+   "prod_err_adj": 20.395153344972105
+  },
+  {
+   "year": 2021,
+   "month": "SEP",
+   "area_err_usda": 5.714285714285717,
+   "area_err_adj": 7.964182310403635,
+   "prod_err_usda": 11.688311688311682,
+   "prod_err_adj": 9.360806890737017
+  },
+  {
+   "year": 2022,
+   "month": "SEP",
+   "area_err_usda": 19.999999999999993,
+   "area_err_adj": 11.616059848391417,
+   "prod_err_usda": 4.575163398692816,
+   "prod_err_adj": -5.344646804104225
+  },
+  {
+   "year": 2023,
+   "month": "SEP",
+   "area_err_usda": 40.845070422535215,
+   "area_err_adj": 31.55771981613768,
+   "prod_err_usda": 55.268022181146016,
+   "prod_err_adj": 34.19875686613361
+  },
+  {
+   "year": 2024,
+   "month": "SEP",
+   "area_err_usda": 20.547945205479458,
+   "area_err_adj": 10.723710420505567,
+   "prod_err_usda": 1.7369727047146455,
+   "prod_err_adj": -9.458473598792638
+  },
+  {
+   "year": 2025,
+   "month": "SEP",
+   "area_err_usda": 11.111111111111118,
+   "area_err_adj": 13.430441067742214,
+   "prod_err_usda": -0.5736137667303964,
+   "prod_err_adj": -2.606600625458
+  },
+  {
+   "year": 2001,
+   "month": "OCT",
+   "area_err_usda": 5.555555555555557,
+   "area_err_adj": 5.83016267707725,
+   "prod_err_usda": 3.2863849765258246,
+   "prod_err_adj": 3.5875767134672554
+  },
+  {
+   "year": 2002,
+   "month": "OCT",
+   "area_err_usda": 2.1739130434782594,
+   "area_err_adj": 1.5777247274740842,
+   "prod_err_usda": -0.7936507936507908,
+   "prod_err_adj": -1.394588600732427
+  },
+  {
+   "year": 2003,
+   "month": "OCT",
+   "area_err_usda": 1.1363636363636354,
+   "area_err_adj": 0.01474643169902817,
+   "prod_err_usda": -7.621247113163976,
+   "prod_err_adj": -8.684471450744313
+  },
+  {
+   "year": 2004,
+   "month": "OCT",
+   "area_err_usda": 2.727272727272723,
+   "area_err_adj": 2.524353866375991,
+   "prod_err_usda": -5.68475452196382,
+   "prod_err_adj": -5.881094253340036
+  },
+  {
+   "year": 2005,
+   "month": "OCT",
+   "area_err_usda": 1.8181818181818081,
+   "area_err_adj": 2.859735059085833,
+   "prod_err_usda": -9.952606635071092,
+   "prod_err_adj": -10.864422656571882
+  },
+  {
+   "year": 2006,
+   "month": "OCT",
+   "area_err_usda": 2.380952380952384,
+   "area_err_adj": 1.2979636258806704,
+   "prod_err_usda": -6.896551724137934,
+   "prod_err_adj": -7.918111068252919
+  },
+  {
+   "year": 2007,
+   "month": "OCT",
+   "area_err_usda": 0.0,
+   "area_err_adj": 0.6467313108215728,
+   "prod_err_usda": -9.090909090909093,
+   "prod_err_adj": -9.67506870308431
+  },
+  {
+   "year": 2008,
+   "month": "OCT",
+   "area_err_usda": 2.9850746268656687,
+   "area_err_adj": 2.243457367868148,
+   "prod_err_usda": 18.8340807174888,
+   "prod_err_adj": 17.93256146522928
+  },
+  {
+   "year": 2009,
+   "month": "OCT",
+   "area_err_usda": 5.405405405405405,
+   "area_err_adj": 4.351659981019953,
+   "prod_err_usda": 8.225108225108224,
+   "prod_err_adj": 7.032806167663241
+  },
+  {
+   "year": 2010,
+   "month": "OCT",
+   "area_err_usda": 0.92592592592593,
+   "area_err_adj": 0.12077634102899311,
+   "prod_err_usda": 13.520408163265296,
+   "prod_err_adj": 12.605293826553353
+  },
+  {
+   "year": 2011,
+   "month": "OCT",
+   "area_err_usda": 10.9375,
+   "area_err_adj": 8.958467435793558,
+   "prod_err_usda": 14.28571428571428,
+   "prod_err_adj": 11.80140691714584
+  },
+  {
+   "year": 2012,
+   "month": "OCT",
+   "area_err_usda": 22.448979591836736,
+   "area_err_adj": 19.540330999902476,
+   "prod_err_usda": 21.999999999999996,
+   "prod_err_adj": 17.589652149631018
+  },
+  {
+   "year": 2014,
+   "month": "OCT",
+   "area_err_usda": 10.679611650485432,
+   "area_err_adj": 8.272475748848418,
+   "prod_err_usda": 1.2145748987854255,
+   "prod_err_adj": -1.4415224830725215
+  },
+  {
+   "year": 2015,
+   "month": "OCT",
+   "area_err_usda": 0.0,
+   "area_err_adj": 1.5498718500350546,
+   "prod_err_usda": -1.2237762237762184,
+   "prod_err_adj": -2.7313161733057534
+  },
+  {
+   "year": 2016,
+   "month": "OCT",
+   "area_err_usda": 1.8867924528301883,
+   "area_err_adj": 0.12001344275337314,
+   "prod_err_usda": -19.753086419753085,
+   "prod_err_adj": -21.17257562298568
+  },
+  {
+   "year": 2017,
+   "month": "OCT",
+   "area_err_usda": 5.172413793103447,
+   "area_err_adj": 4.459450989686724,
+   "prod_err_usda": -2.9126213592232997,
+   "prod_err_adj": -3.6371272404344013
+  },
+  {
+   "year": 2018,
+   "month": "OCT",
+   "area_err_usda": 6.666666666666665,
+   "area_err_adj": 1.8903613267111048,
+   "prod_err_usda": -2.1897810218978075,
+   "prod_err_adj": -6.951509609677464
+  },
+  {
+   "year": 2019,
+   "month": "OCT",
+   "area_err_usda": 14.166666666666671,
+   "area_err_adj": 11.603033425877308,
+   "prod_err_usda": 23.417721518987335,
+   "prod_err_adj": 19.838438364250877
+  },
+  {
+   "year": 2020,
+   "month": "OCT",
+   "area_err_usda": 18.181818181818173,
+   "area_err_adj": 13.956465227588735,
+   "prod_err_usda": 33.479212253829324,
+   "prod_err_adj": 26.924428267830457
+  },
+  {
+   "year": 2021,
+   "month": "OCT",
+   "area_err_usda": 5.714285714285717,
+   "area_err_adj": 6.093305559398918,
+   "prod_err_usda": 3.8961038961038863,
+   "prod_err_adj": 3.524933585225809
+  },
+  {
+   "year": 2022,
+   "month": "OCT",
+   "area_err_usda": 19.999999999999993,
+   "area_err_adj": 10.805866097422477,
+   "prod_err_usda": 11.111111111111116,
+   "prod_err_adj": -0.34222543606067246
+  },
+  {
+   "year": 2023,
+   "month": "OCT",
+   "area_err_usda": 40.845070422535215,
+   "area_err_adj": 31.986860034917804,
+   "prod_err_usda": 40.48059149722736,
+   "prod_err_adj": 22.18402945791769
+  },
+  {
+   "year": 2024,
+   "month": "OCT",
+   "area_err_usda": 20.547945205479458,
+   "area_err_adj": 7.94265649855739,
+   "prod_err_usda": 9.181141439205964,
+   "prod_err_adj": -5.768885976813454
+  },
+  {
+   "year": 2003,
+   "month": "NOV",
+   "area_err_usda": 1.1363636363636354,
+   "area_err_adj": 0.608091700920021,
+   "prod_err_usda": -3.002309468822173,
+   "prod_err_adj": -3.517856041851797
+  },
+  {
+   "year": 2004,
+   "month": "NOV",
+   "area_err_usda": 2.727272727272723,
+   "area_err_adj": 2.9941135806773977,
+   "prod_err_usda": -0.5167958656330796,
+   "prod_err_adj": -0.24314048171237834
+  },
+  {
+   "year": 2005,
+   "month": "NOV",
+   "area_err_usda": 1.8181818181818081,
+   "area_err_adj": 2.456352727151099,
+   "prod_err_usda": -7.5829383886255926,
+   "prod_err_adj": -8.15857746461207
+  },
+  {
+   "year": 2006,
+   "month": "NOV",
+   "area_err_usda": 2.380952380952384,
+   "area_err_adj": 1.7226506937151707,
+   "prod_err_usda": -1.7241379310344862,
+   "prod_err_adj": -2.3824296561507863
+  },
+  {
+   "year": 2007,
+   "month": "NOV",
+   "area_err_usda": 0.0,
+   "area_err_adj": 0.12544531935196543,
+   "prod_err_usda": -1.8181818181818188,
+   "prod_err_adj": -1.9411920030263485
+  },
+  {
+   "year": 2008,
+   "month": "NOV",
+   "area_err_usda": 2.9850746268656687,
+   "area_err_adj": 2.487667897282743,
+   "prod_err_usda": 14.34977578475336,
+   "prod_err_adj": 13.76648188976457
+  },
+  {
+   "year": 2009,
+   "month": "NOV",
+   "area_err_usda": 5.405405405405405,
+   "area_err_adj": 4.648747417600959,
+   "prod_err_usda": 6.060606060606055,
+   "prod_err_adj": 5.218964209097199
+  },
+  {
+   "year": 2010,
+   "month": "NOV",
+   "area_err_usda": 0.92592592592593,
+   "area_err_adj": 0.36736948720130097,
+   "prod_err_usda": 5.867346938775508,
+   "prod_err_adj": 5.27383768403642
+  },
+  {
+   "year": 2011,
+   "month": "NOV",
+   "area_err_usda": 10.9375,
+   "area_err_adj": 9.121720241811044,
+   "prod_err_usda": 10.000000000000009,
+   "prod_err_adj": 7.802161595353185
+  },
+  {
+   "year": 2012,
+   "month": "NOV",
+   "area_err_usda": 22.448979591836736,
+   "area_err_adj": 19.626596801182895,
+   "prod_err_usda": 17.999999999999993,
+   "prod_err_adj": 13.85632614717931
+  },
+  {
+   "year": 2013,
+   "month": "NOV",
+   "area_err_usda": 6.060606060606055,
+   "area_err_adj": 2.4491599148590706,
+   "prod_err_usda": -1.6786570743405282,
+   "prod_err_adj": -5.318628136031345
+  },
+  {
+   "year": 2014,
+   "month": "NOV",
+   "area_err_usda": 10.679611650485432,
+   "area_err_adj": 8.711234600484259,
+   "prod_err_usda": 3.6437246963562764,
+   "prod_err_adj": 1.4089488378361326
+  },
+  {
+   "year": 2015,
+   "month": "NOV",
+   "area_err_usda": 0.0,
+   "area_err_adj": 1.4168017946506097,
+   "prod_err_usda": 1.3986013986013957,
+   "prod_err_adj": -0.017946134888047194
+  },
+  {
+   "year": 2016,
+   "month": "NOV",
+   "area_err_usda": 1.8867924528301883,
+   "area_err_adj": 0.6023737284464589,
+   "prod_err_usda": -14.814814814814813,
+   "prod_err_adj": -15.915580004046104
+  },
+  {
+   "year": 2017,
+   "month": "NOV",
+   "area_err_usda": 5.172413793103447,
+   "area_err_adj": 4.067423653777469,
+   "prod_err_usda": -1.8338727076591121,
+   "prod_err_adj": -2.9645897883969097
+  },
+  {
+   "year": 2018,
+   "month": "NOV",
+   "area_err_usda": 6.666666666666665,
+   "area_err_adj": 0.9016002546049966,
+   "prod_err_usda": -2.1897810218978075,
+   "prod_err_adj": -7.879907296749766
+  },
+  {
+   "year": 2019,
+   "month": "NOV",
+   "area_err_usda": 14.166666666666671,
+   "area_err_adj": 11.506562194666547,
+   "prod_err_usda": 12.341772151898734,
+   "prod_err_adj": 8.964788977721794
+  },
+  {
+   "year": 2020,
+   "month": "NOV",
+   "area_err_usda": 18.181818181818173,
+   "area_err_adj": 12.422752338605592,
+   "prod_err_usda": 33.479212253829324,
+   "prod_err_adj": 24.701640537462023
+  },
+  {
+   "year": 2021,
+   "month": "NOV",
+   "area_err_usda": 5.714285714285717,
+   "area_err_adj": 4.7790384135338675,
+   "prod_err_usda": 5.1948051948051965,
+   "prod_err_adj": 6.133763588594476
+  },
+  {
+   "year": 2022,
+   "month": "NOV",
+   "area_err_usda": 19.999999999999993,
+   "area_err_adj": 8.350657638998916,
+   "prod_err_usda": 7.843137254901955,
+   "prod_err_adj": -5.864562056439404
+  },
+  {
+   "year": 2023,
+   "month": "NOV",
+   "area_err_usda": 40.845070422535215,
+   "area_err_adj": 31.75062811814155,
+   "prod_err_usda": 33.086876155268016,
+   "prod_err_adj": 15.352633578483266
+  },
+  {
+   "year": 2024,
+   "month": "NOV",
+   "area_err_usda": 20.547945205479458,
+   "area_err_adj": 8.515069734692785,
+   "prod_err_usda": 4.218362282878418,
+   "prod_err_adj": -9.489322376031629
+  },
+  {
+   "year": 2025,
+   "month": "NOV",
+   "area_err_usda": 11.111111111111118,
+   "area_err_adj": 13.373716645388841,
+   "prod_err_usda": 1.3384321223709472,
+   "prod_err_adj": -0.6839845729577965
+  },
+  {
+   "year": 2002,
+   "month": "DEC",
+   "area_err_usda": 2.1739130434782594,
+   "area_err_adj": 2.699882825864448,
+   "prod_err_usda": -0.7936507936507908,
+   "prod_err_adj": -0.25737659975638705
+  },
+  {
+   "year": 2003,
+   "month": "DEC",
+   "area_err_usda": 1.1363636363636354,
+   "area_err_adj": 1.3619025068711812,
+   "prod_err_usda": -3.002309468822173,
+   "prod_err_adj": -2.7805214364063358
+  },
+  {
+   "year": 2004,
+   "month": "DEC",
+   "area_err_usda": 2.727272727272723,
+   "area_err_adj": 2.8292937284442,
+   "prod_err_usda": -1.8087855297157618,
+   "prod_err_adj": -1.7056930814782656
+  },
+  {
+   "year": 2005,
+   "month": "DEC",
+   "area_err_usda": 1.8181818181818081,
+   "area_err_adj": 2.2723493903235794,
+   "prod_err_usda": -4.028436018957349,
+   "prod_err_adj": -4.454623277466174
+  },
+  {
+   "year": 2006,
+   "month": "DEC",
+   "area_err_usda": 2.380952380952384,
+   "area_err_adj": 2.4772797502734147,
+   "prod_err_usda": -1.7241379310344862,
+   "prod_err_adj": -1.627066651268927
+  },
+  {
+   "year": 2007,
+   "month": "DEC",
+   "area_err_usda": 0.0,
+   "area_err_adj": 0.15685135034548273,
+   "prod_err_usda": -1.8181818181818188,
+   "prod_err_adj": -1.9719401537681036
+  },
+  {
+   "year": 2008,
+   "month": "DEC",
+   "area_err_usda": 2.9850746268656687,
+   "area_err_adj": 2.78843759200458,
+   "prod_err_usda": 14.34977578475336,
+   "prod_err_adj": 14.11847201501275
+  },
+  {
+   "year": 2009,
+   "month": "DEC",
+   "area_err_usda": 5.405405405405405,
+   "area_err_adj": 4.997956960151492,
+   "prod_err_usda": 8.225108225108224,
+   "prod_err_adj": 7.7609481852524365
+  },
+  {
+   "year": 2010,
+   "month": "DEC",
+   "area_err_usda": 0.92592592592593,
+   "area_err_adj": 0.5198148043385721,
+   "prod_err_usda": 2.678571428571419,
+   "prod_err_adj": 2.259403433218088
+  },
+  {
+   "year": 2011,
+   "month": "DEC",
+   "area_err_usda": 10.9375,
+   "area_err_adj": 9.777421476495828,
+   "prod_err_usda": 5.714285714285716,
+   "prod_err_adj": 4.355015402001539
+  },
+  {
+   "year": 2012,
+   "month": "DEC",
+   "area_err_usda": 22.448979591836736,
+   "area_err_adj": 20.02629298703706,
+   "prod_err_usda": 10.000000000000009,
+   "prod_err_adj": 6.667710720415054
+  },
+  {
+   "year": 2013,
+   "month": "DEC",
+   "area_err_usda": 6.060606060606055,
+   "area_err_adj": 3.806191722971918,
+   "prod_err_usda": -1.6786570743405282,
+   "prod_err_adj": -3.982932673334394
+  },
+  {
+   "year": 2014,
+   "month": "DEC",
+   "area_err_usda": 10.679611650485432,
+   "area_err_adj": 8.837088203096993,
+   "prod_err_usda": -3.6437246963562764,
+   "prod_err_adj": -5.591212913335442
+  },
+  {
+   "year": 2015,
+   "month": "DEC",
+   "area_err_usda": 0.0,
+   "area_err_adj": 0.6751577739669803,
+   "prod_err_usda": 1.3986013986013957,
+   "prod_err_adj": 0.7185919949176167
+  },
+  {
+   "year": 2016,
+   "month": "DEC",
+   "area_err_usda": 1.8867924528301883,
+   "area_err_adj": 0.6111942265453515,
+   "prod_err_usda": -8.64197530864198,
+   "prod_err_adj": -9.814503073175263
+  },
+  {
+   "year": 2017,
+   "month": "DEC",
+   "area_err_usda": 5.172413793103447,
+   "area_err_adj": 5.662593186319379,
+   "prod_err_usda": 2.481121898597616,
+   "prod_err_adj": 3.013616227677063
+  },
+  {
+   "year": 2018,
+   "month": "DEC",
+   "area_err_usda": 6.666666666666665,
+   "area_err_adj": 2.6031771177037784,
+   "prod_err_usda": 2.1897810218978186,
+   "prod_err_adj": -2.0736753712856992
+  },
+  {
+   "year": 2019,
+   "month": "DEC",
+   "area_err_usda": 14.166666666666671,
+   "area_err_adj": 10.849246916945193,
+   "prod_err_usda": 4.430379746835444,
+   "prod_err_adj": 0.5443844830566258
+  },
+  {
+   "year": 2020,
+   "month": "DEC",
+   "area_err_usda": 18.181818181818173,
+   "area_err_adj": 12.713528079769123,
+   "prod_err_usda": 13.785557986870888,
+   "prod_err_adj": 6.657163095800489
+  },
+  {
+   "year": 2021,
+   "month": "DEC",
+   "area_err_usda": 5.714285714285717,
+   "area_err_adj": 5.257540077383254,
+   "prod_err_usda": 3.8961038961038863,
+   "prod_err_adj": 4.34694183237736
+  },
+  {
+   "year": 2022,
+   "month": "DEC",
+   "area_err_usda": 19.999999999999993,
+   "area_err_adj": 8.959327098283932,
+   "prod_err_usda": 7.843137254901955,
+   "prod_err_adj": -5.235201966202352
+  },
+  {
+   "year": 2023,
+   "month": "DEC",
+   "area_err_usda": 40.845070422535215,
+   "area_err_adj": 31.906461030144474,
+   "prod_err_usda": 14.602587800369694,
+   "prod_err_adj": -0.4412443047314474
+  },
+  {
+   "year": 2024,
+   "month": "DEC",
+   "area_err_usda": 20.547945205479458,
+   "area_err_adj": 6.83710028082625,
+   "prod_err_usda": -3.2258064516129004,
+   "prod_err_adj": -17.468127852620473
+  },
+  {
+   "year": 2025,
+   "month": "DEC",
+   "area_err_usda": 11.111111111111118,
+   "area_err_adj": 14.585475131770833,
+   "prod_err_usda": -4.397705544933084,
+   "prod_err_adj": -7.296477590563011
+  }
+ ]
+}

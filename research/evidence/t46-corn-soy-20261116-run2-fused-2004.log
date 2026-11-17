@@ -1,0 +1,8 @@
+corn SEP: US 357206935.37 vs USDA 356959949.89 (better 12 worse 12, p 0.672) | state_w 4.76 vs 4.81  cell_pass=False
+corn OCT: US 1.57 vs USDA 1.57 (better 12 worse 10, p 0.497) | state_w 3.54 vs 3.48  cell_pass=False
+corn NOV: US 1.03 vs USDA 1.02 (better 11 worse 13, p 0.564) | state_w 2.72 vs 2.75  cell_pass=False
+soy SEP: US 3.40 vs USDA 3.60 (better 14 worse 10, p 0.068) | state_w 5.67 vs 5.64  cell_pass=False
+soy OCT: US 2.03 vs USDA 1.90 (better 10 worse 12, p 0.712) | state_w 3.86 vs 3.85  cell_pass=False
+soy NOV: US 1.31 vs USDA 1.38 (better 11 worse 13, p 0.134) | state_w 2.72 vs 2.75  cell_pass=True
+corn crop_pass False | soy crop_pass False
+PRIMARY False | pooled mean gain -42340.340 pts, year-block p 0.6005 -> SECONDARY False

@@ -67,8 +67,11 @@ def qlike_features(names=None):
 
 def qlike_har(train, horizon, *, feature_names=None):
     """One declared log-link design, unchanged optimizer and past-only conditioning."""
-    from scipy.optimize import minimize
     names = qlike_features(feature_names)
+    require_training('har', 'cpu')
+    from cottonlens_ml.research.admission import require_qlike_inputs
+    require_qlike_inputs(train, horizon, names)
+    from scipy.optimize import minimize
     raw = train[names].to_numpy(dtype=float)
     actual = train[f'variance_target_{horizon}'].to_numpy(dtype=float)
     if (not np.isfinite(raw).all() or not np.isfinite(actual).all()
@@ -100,6 +103,8 @@ def qlike_har(train, horizon, *, feature_names=None):
 
 def fit_predict(history, train, test, spec, workspace):
     require_training(spec['family'], spec.get('device', 'cpu'))
+    from cottonlens_ml.research.admission import require_backend_inputs
+    require_backend_inputs(history, train, test, spec)
     h = spec['horizon']
     if spec['family'] == 'har' and spec.get('training_loss', 'log_mse') not in ('log_mse', 'qlike'):
         raise ValueError('Explicit supported HAR training loss required')

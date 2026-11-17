@@ -1,0 +1,189 @@
+"""T36: rolling percentage ensemble around the USDA correction, as pre-declared in docs/CROP_NOWCAST_TRIALS.md.
+
+Members per state-year: B = T25 bias-corrected USDA, H = T06 HGB (fsa_aug area), N = T35 CNN seed mean
+(when a preds dir is given), U = raw USDA. Ensemble = exp(sum w_k log member_k), w on a 0.05 simplex grid,
+chosen for year Y on states x years 2013..Y-1 (out-of-sample member predictions only). Fewer than 2 past
+years, or a state missing a member -> B. Scored with the T25 scorer. Dev years only.
+Usage: python stack.py feature_dir nass_dir fsa_csv out.json [cnn_preds_root]
+       python stack.py --late feature_dir nass_dir out.json   (T37, Nov/Dec)
+"""
+import itertools
+import json
+import os
+import sys
+from pathlib import Path
+
+import numpy as np
+import pandas as pd
+
+ROOT = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(ROOT))
+from research.crop_nowcast import county_up as C
+from research.crop_nowcast import usda_correction as UC
+
+SCORE_FROM = int(os.environ.get('COTTONLENS_SCORE_FROM', '2013'))
+
+
+def grid(k, step=0.05):
+    """All weight vectors of length k on the step-simplex (stars and bars)."""
+    n = round(1 / step)
+    rows = [np.diff([-1, *c, n + k - 1]) - 1 for c in itertools.combinations(range(n + k - 1), k - 1)]
+    return np.array(rows) / n
+
+
+def cnn_state(preds_dir, features_csv, nass_dir, ck):
+    p = pd.concat(pd.read_csv(f, dtype={'fips': str}) for f in Path(preds_dir).glob('preds_*_*.csv'))
+    p = p.assign(fips=p.fips.str.zfill(5)).groupby(['fips', 'year'], as_index=False).p.mean()
+    c = C.prepare(features_csv).merge(p.rename(columns={'p': 'p_ext'}), on=['fips', 'year'], how='left')
+    r, _ = C.run(c, nass_dir, ck, [], 'external', area='fsa_aug')
+    return r[['state', 'year', 'pred']].rename(columns={'pred': 'N'})
+
+
+def ensemble(f, members, weights_out):
+    """f has columns B and the members; returns f with column 'corr' = ensemble (B where not available)."""
+    L = np.log(f[members])
+    err = np.log(f.final)
+    W = grid(len(members))
+    out = f.B.copy()
+    for y in UC.TEST_YEARS:
+        past = f.year.lt(y) & f.year.ge(2013) & L.notna().all(axis=1) & f.final.notna()
+        if f[past].year.nunique() < 2:
+            weights_out[y] = None
+            continue
+        sse = ((L[past].to_numpy() @ W.T - err[past].to_numpy()[:, None]) ** 2).sum(axis=0)
+        w = W[sse.argmin()]
+        weights_out[y] = dict(zip(members, (round(float(v), 2) for v in w), strict=True))
+        cur = f.year.eq(y) & L.notna().all(axis=1)
+        out[cur] = np.exp(L[cur].to_numpy() @ w)
+    return f.assign(corr=out)
+
+
+def us_by_year(r, us):
+    """US error (%) per year, aggregated the same way as UC.score."""
+    j = r.groupby('year')[['corr', 'usda']].sum().join(us, rsuffix='_us').dropna()
+    return {int(y): round(float(100 * (v / q - 1)), 2) for y, v, q in zip(j.index, j.usda_us * j['corr'] / j.usda, j.final, strict=True)}
+
+
+def state_w(r, col):
+    r = r.dropna(subset=[col, 'final'])
+    return float(100 * np.average((r[col] / r.final - 1).abs(), weights=r.final))
+
+
+def main(feature_dir, nass_dir, fsa_csv, out_json, cnn_root=None):
+    res = {}
+    for ck in ('aug1', 'sep1', 'oct1'):
+        f, us = UC.build(feature_dir, nass_dir, ck, fsa_csv)
+        b = UC.fit_predict(f, [], rows=['fsa_gap'])
+        f = f.merge(b[['state', 'year', 'corr']].rename(columns={'corr': 'B'}), on=['state', 'year'])
+        csv = Path(feature_dir) / f'features_{ck}.csv'
+        h, _ = C.run(C.prepare(csv), nass_dir, ck, [k + '_a' for k in C.NDVI], 'hgb', area='fsa_aug')
+        f = f.merge(h[['state', 'year', 'pred']].rename(columns={'pred': 'H'}), on=['state', 'year'], how='left')
+        f['U'] = f.usda
+        members = ['B', 'H', 'U']
+        if cnn_root and (Path(cnn_root) / f'preds_{ck}').exists():
+            f = f.merge(cnn_state(Path(cnn_root) / f'preds_{ck}', csv, nass_dir, ck), on=['state', 'year'], how='left')
+            members.insert(2, 'N')
+        f = f[f.year.isin(UC.TEST_YEARS)]
+        weights = {}
+        e = ensemble(f, members, weights)
+        e, f = e[e.year >= SCORE_FROM], f[f.year >= SCORE_FROM]  # T39 scores sealed years only; weights still use all past
+        r_cov = {int(y): int((g[members].isna().any(axis=1)).sum()) for y, g in f.groupby('year')}
+        t25 = UC.score(f.assign(corr=f.B), us)
+        ens = UC.score(e, us)
+        r = {'members': members, 'weights': weights, 'T36': ens, 'T25_same_rows': t25,
+             'state_w': state_w(e, 'corr'), 'state_w_T25': state_w(f, 'B'), 'state_w_usda': state_w(f, 'usda'),
+             'states_falling_back_to_B': r_cov}
+        r['pass'] = {'beats_usda': ens['TX_model'] < ens['TX_usda'] and ens['US_model'] < ens['US_usda'],
+                     'beats_t25': ens['TX_model'] < t25['TX_model'] and ens['US_model'] < t25['US_model'],
+                     'state_w': r['state_w'] < min(r['state_w_usda'], r['state_w_T25'])}
+        r['pass'] = {k: bool(v) for k, v in r['pass'].items()}
+        r['pass']['ALL'] = all(r['pass'].values())
+        ue, ub = us_by_year(e, us), us_by_year(f.assign(corr=f.B), us)
+        r['US_by_year'] = {y: (ue[y], ub[y]) for y in ue}
+        r['US_years_better_than_T25'] = sum(abs(ue[y]) < abs(ub[y]) for y in ue)
+        r['US_years_worse_than_T25'] = sum(abs(ue[y]) > abs(ub[y]) for y in ue)
+        r['TX_years_better_than_T25'] = sum(abs(a) < abs(b) for (a, _), (b, _) in
+                                            zip(ens['TX_by_year'].values(), t25['TX_by_year'].values(), strict=True))
+        res[ck] = r
+        print(f"{ck} T36 {'+'.join(members)}: TX {ens['TX_model']:5.1f} | T25 {t25['TX_model']:5.1f} | USDA {ens['TX_usda']:5.1f}"
+              f"   US {ens['US_model']:4.1f} | T25 {t25['US_model']:4.1f} | USDA {ens['US_usda']:4.1f}"
+              f"   state_w {r['state_w']:4.1f} | T25 {r['state_w_T25']:4.1f} | USDA {r['state_w_usda']:4.1f}  pass={r['pass']['ALL']}")
+        print('   weights', weights)
+    Path(out_json).write_text(json.dumps(res, indent=1), encoding='utf-8')
+
+
+def gin_pace(f, gin_csv, asof='11-15'):
+    """T38: pace = log(running bales ginned by asof / USDA forecast); pace_a = pace minus the state's earlier-years mean."""
+    g = pd.read_csv(gin_csv, parse_dates=['asof'])
+    g = g[g['asof'].dt.strftime('%m-%d') == asof].assign(year=lambda x: x['asof'].dt.year)[['state', 'year', 'bales']]
+    f = f.merge(g, on=['state', 'year'], how='left').sort_values(['state', 'year'])
+    f['pace'] = np.log(f.bales / f.usda)
+    f['pace_a'] = f.pace - f.groupby('state').pace.transform(lambda x: x.expanding().mean().shift(1))
+    return f
+
+
+def late(feature_dir, nass_dir, usda_ck, feat_ck, bench_ck, gin_csv=None, mode='stack'):
+    """T37 (mode 'stack': B, H, U) / T38 (mode 'gin': ginning-pace correction G alone; 'stack+gin': B, H, U, G).
+    Members sit on USDA's usda_ck forecast; scored against USDA's bench_ck forecast."""
+    f, us = UC.usda_frame(nass_dir, usda_ck)
+    f['e'] = np.log(f.final / f.usda)
+    if gin_csv:
+        f = gin_pace(f, gin_csv)
+        f = f.merge(UC.fit_predict(f, ['pace_a'])[['state', 'year', 'corr']].rename(columns={'corr': 'G'}),
+                    on=['state', 'year'])
+    f = f.merge(UC.fit_predict(f, [])[['state', 'year', 'corr']].rename(columns={'corr': 'B'}), on=['state', 'year'])
+    h, _ = C.run(C.prepare(Path(feature_dir) / f'features_{feat_ck}.csv'), nass_dir, feat_ck, [k + '_a' for k in C.NDVI],
+                 'hgb', area='fsa_aug')
+    f = f.merge(h[['state', 'year', 'pred']].rename(columns={'pred': 'H'}), on=['state', 'year'], how='left')
+    f['U'] = f.usda
+    f = f[f.year.isin(UC.TEST_YEARS)]
+    weights = {}
+    members = {'stack': ['B', 'H', 'U'], 'gin': ['G'], 'stack+gin': ['B', 'H', 'U', 'G']}[mode]
+    e = f.assign(corr=f.G) if mode == 'gin' else ensemble(f, members, weights)
+    e = e[e.year >= SCORE_FROM]
+    fb, usb = UC.usda_frame(nass_dir, bench_ck)
+    e = e.merge(fb[['state', 'year', 'usda']].rename(columns={'usda': 'bench'}), on=['state', 'year']).dropna(subset=['bench', 'final'])
+    tx = e[e.state == 'TX']
+    j = e.groupby('year')[['corr', 'usda']].sum().join(us.rename(columns={'usda': 'us_m'})).join(usb.usda.rename('us_bench')).dropna()
+    j['us_hat'] = j.us_m * j['corr'] / j.usda
+    mape = lambda a, b: float(100 * (a / b - 1).abs().mean())
+    r = {'members': members, 'weights': weights, 'years': sorted(int(y) for y in j.index),
+         'TX': mape(tx['corr'], tx.final), 'TX_bench': mape(tx.bench, tx.final), 'TX_raw_usda_m': mape(tx.usda, tx.final),
+         'US': mape(j.us_hat, j.final), 'US_bench': mape(j.us_bench, j.final), 'US_raw_usda_m': mape(j.us_m, j.final),
+         'state_w': state_w(e, 'corr'), 'state_w_bench': state_w(e, 'bench'),
+         'TX_by_year': {int(y): (round(100 * (a / q - 1), 1), round(100 * (b / q - 1), 1))
+                        for y, a, b, q in zip(tx.year, tx['corr'], tx.bench, tx.final, strict=True)},
+         'US_by_year': {int(y): (round(100 * (a / q - 1), 1), round(100 * (b / q - 1), 1))
+                        for y, a, b, q in zip(j.index, j.us_hat, j.us_bench, j.final, strict=True)}}
+    r['pass'] = bool(r['TX'] < r['TX_bench'] and r['US'] < r['US_bench'] and r['state_w'] < r['state_w_bench'])
+    if gin_csv:
+        x = e.merge(fb[['state', 'year', 'usda']].rename(columns={'usda': 'dec'}), on=['state', 'year'])
+        x = x.assign(gh=np.log(x.G / x.usda), rv=np.log(x.dec / x.usda)).dropna(subset=['gh', 'rv'])
+        r['corr_G_vs_revision'], r['n_revision'] = float(np.corrcoef(x.gh, x.rv)[0, 1]), len(x)
+    print(f"{mode} USDA {usda_ck} + HGB {feat_ck} vs USDA {bench_ck}: TX {r['TX']:4.1f} vs {r['TX_bench']:4.1f} (raw {r['TX_raw_usda_m']:4.1f})"
+          f" | US {r['US']:4.1f} vs {r['US_bench']:4.1f} (raw {r['US_raw_usda_m']:4.1f}) | state_w {r['state_w']:4.1f} vs "
+          f"{r['state_w_bench']:4.1f}  pass={r['pass']}\n   weights {weights}")
+    return r
+
+
+def main_late(feature_dir, nass_dir, out_json):
+    res = {'primary_pre_10dec': late(feature_dir, nass_dir, 'nov1', 'dec1', 'dec1'),
+           'secondary_nov1': late(feature_dir, nass_dir, 'nov1', 'nov1', 'nov1'),
+           'secondary_post_dec': late(feature_dir, nass_dir, 'dec1', 'dec1', 'dec1')}
+    Path(out_json).write_text(json.dumps(res, indent=1), encoding='utf-8')
+
+
+def main_gin(feature_dir, nass_dir, gin_csv, out_json):
+    res = {'primary_gin_vs_dec': late(feature_dir, nass_dir, 'nov1', 'dec1', 'dec1', gin_csv, 'gin'),
+           'secondary_gin_vs_nov': late(feature_dir, nass_dir, 'nov1', 'dec1', 'nov1', gin_csv, 'gin'),
+           'secondary_stack_gin_vs_dec': late(feature_dir, nass_dir, 'nov1', 'dec1', 'dec1', gin_csv, 'stack+gin')}
+    Path(out_json).write_text(json.dumps(res, indent=1), encoding='utf-8')
+
+
+if __name__ == '__main__':
+    if sys.argv[1] == '--late':
+        main_late(*sys.argv[2:5])
+    elif sys.argv[1] == '--gin':
+        main_gin(*sys.argv[2:6])
+    else:
+        main(*sys.argv[1:6])

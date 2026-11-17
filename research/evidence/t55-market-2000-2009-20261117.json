@@ -1,0 +1,288 @@
+{
+ "events": 30,
+ "seasons": 10,
+ "mean_signed_return_pct": 0.4659987371910601,
+ "hit_rate": 0.5333333333333333,
+ "season_block_p": 0.08185,
+ "signal_hit_on_revision": 0.6666666666666666,
+ "price_sha256": "4511fc0346461c608ed7d8f46b6bfda3c7be3e79b3f04683636d1c92169ee792",
+ "events_list": [
+  {
+   "year": 2000,
+   "month": "OCT",
+   "release": "2000-10-12",
+   "signal_last_revision": -1.0,
+   "predicted_price_dir": 1.0,
+   "ret": 0.00795577302690198,
+   "actual_revision": -1.0
+  },
+  {
+   "year": 2000,
+   "month": "NOV",
+   "release": "2000-11-09",
+   "signal_last_revision": -1.0,
+   "predicted_price_dir": 1.0,
+   "ret": -0.010565942231725245,
+   "actual_revision": 1.0
+  },
+  {
+   "year": 2000,
+   "month": "DEC",
+   "release": "2000-12-12",
+   "signal_last_revision": 1.0,
+   "predicted_price_dir": -1.0,
+   "ret": -0.027518493174696346,
+   "actual_revision": -1.0
+  },
+  {
+   "year": 2001,
+   "month": "OCT",
+   "release": "2001-10-12",
+   "signal_last_revision": -1.0,
+   "predicted_price_dir": 1.0,
+   "ret": 0.03206109706092297,
+   "actual_revision": 1.0
+  },
+  {
+   "year": 2001,
+   "month": "NOV",
+   "release": "2001-11-09",
+   "signal_last_revision": 1.0,
+   "predicted_price_dir": -1.0,
+   "ret": 0.019406037931549047,
+   "actual_revision": 1.0
+  },
+  {
+   "year": 2001,
+   "month": "DEC",
+   "release": "2001-12-11",
+   "signal_last_revision": 1.0,
+   "predicted_price_dir": -1.0,
+   "ret": 0.020967424352675845,
+   "actual_revision": -1.0
+  },
+  {
+   "year": 2002,
+   "month": "OCT",
+   "release": "2002-10-11",
+   "signal_last_revision": -1.0,
+   "predicted_price_dir": 1.0,
+   "ret": -0.016207827692314325,
+   "actual_revision": -1.0
+  },
+  {
+   "year": 2002,
+   "month": "NOV",
+   "release": "2002-11-12",
+   "signal_last_revision": -1.0,
+   "predicted_price_dir": 1.0,
+   "ret": -0.017710609664939092,
+   "actual_revision": -1.0
+  },
+  {
+   "year": 2002,
+   "month": "DEC",
+   "release": "2002-12-10",
+   "signal_last_revision": -1.0,
+   "predicted_price_dir": 1.0,
+   "ret": 0.03845465862118225,
+   "actual_revision": -1.0
+  },
+  {
+   "year": 2003,
+   "month": "OCT",
+   "release": "2003-10-10",
+   "signal_last_revision": -1.0,
+   "predicted_price_dir": 1.0,
+   "ret": 0.039780010081609696,
+   "actual_revision": 1.0
+  },
+  {
+   "year": 2003,
+   "month": "NOV",
+   "release": "2003-11-12",
+   "signal_last_revision": 1.0,
+   "predicted_price_dir": -1.0,
+   "ret": -0.03879420090995822,
+   "actual_revision": 1.0
+  },
+  {
+   "year": 2003,
+   "month": "DEC",
+   "release": "2003-12-11",
+   "signal_last_revision": 1.0,
+   "predicted_price_dir": -1.0,
+   "ret": 0.0011453377458536806,
+   "actual_revision": 1.0
+  },
+  {
+   "year": 2004,
+   "month": "OCT",
+   "release": "2004-10-12",
+   "signal_last_revision": 1.0,
+   "predicted_price_dir": -1.0,
+   "ret": -0.037897416830961816,
+   "actual_revision": 1.0
+  },
+  {
+   "year": 2004,
+   "month": "NOV",
+   "release": "2004-11-12",
+   "signal_last_revision": 1.0,
+   "predicted_price_dir": -1.0,
+   "ret": 0.010428547880717787,
+   "actual_revision": 1.0
+  },
+  {
+   "year": 2004,
+   "month": "DEC",
+   "release": "2004-12-10",
+   "signal_last_revision": 1.0,
+   "predicted_price_dir": -1.0,
+   "ret": -0.012915507096207257,
+   "actual_revision": 1.0
+  },
+  {
+   "year": 2005,
+   "month": "OCT",
+   "release": "2005-10-12",
+   "signal_last_revision": 1.0,
+   "predicted_price_dir": -1.0,
+   "ret": 0.013145113362613259,
+   "actual_revision": 1.0
+  },
+  {
+   "year": 2005,
+   "month": "NOV",
+   "release": "2005-11-10",
+   "signal_last_revision": 1.0,
+   "predicted_price_dir": -1.0,
+   "ret": -0.004174523171922129,
+   "actual_revision": 1.0
+  },
+  {
+   "year": 2005,
+   "month": "DEC",
+   "release": "2005-12-09",
+   "signal_last_revision": 1.0,
+   "predicted_price_dir": -1.0,
+   "ret": -0.0005688590074646172,
+   "actual_revision": 1.0
+  },
+  {
+   "year": 2006,
+   "month": "OCT",
+   "release": "2006-10-12",
+   "signal_last_revision": -1.0,
+   "predicted_price_dir": 1.0,
+   "ret": 0.011304184278518647,
+   "actual_revision": 1.0
+  },
+  {
+   "year": 2006,
+   "month": "NOV",
+   "release": "2006-11-09",
+   "signal_last_revision": 1.0,
+   "predicted_price_dir": -1.0,
+   "ret": 0.006240611418986131,
+   "actual_revision": 1.0
+  },
+  {
+   "year": 2006,
+   "month": "DEC",
+   "release": "2006-12-11",
+   "signal_last_revision": 1.0,
+   "predicted_price_dir": -1.0,
+   "ret": 0.02915551991990295,
+   "actual_revision": 1.0
+  },
+  {
+   "year": 2007,
+   "month": "OCT",
+   "release": "2007-10-12",
+   "signal_last_revision": 1.0,
+   "predicted_price_dir": -1.0,
+   "ret": 0.002194348706884952,
+   "actual_revision": 1.0
+  },
+  {
+   "year": 2007,
+   "month": "NOV",
+   "release": "2007-11-09",
+   "signal_last_revision": 1.0,
+   "predicted_price_dir": -1.0,
+   "ret": -0.0007732630254615458,
+   "actual_revision": 1.0
+  },
+  {
+   "year": 2007,
+   "month": "DEC",
+   "release": "2007-12-11",
+   "signal_last_revision": 1.0,
+   "predicted_price_dir": -1.0,
+   "ret": -0.008848924006614745,
+   "actual_revision": 1.0
+  },
+  {
+   "year": 2008,
+   "month": "OCT",
+   "release": "2008-10-10",
+   "signal_last_revision": 1.0,
+   "predicted_price_dir": -1.0,
+   "ret": -0.018040207365802807,
+   "actual_revision": -1.0
+  },
+  {
+   "year": 2008,
+   "month": "NOV",
+   "release": "2008-11-10",
+   "signal_last_revision": -1.0,
+   "predicted_price_dir": 1.0,
+   "ret": -0.019926190499700347,
+   "actual_revision": -1.0
+  },
+  {
+   "year": 2008,
+   "month": "DEC",
+   "release": "2008-12-11",
+   "signal_last_revision": -1.0,
+   "predicted_price_dir": 1.0,
+   "ret": 0.017928562375773005,
+   "actual_revision": 1.0
+  },
+  {
+   "year": 2009,
+   "month": "OCT",
+   "release": "2009-10-09",
+   "signal_last_revision": 1.0,
+   "predicted_price_dir": -1.0,
+   "ret": 0.001747012436469575,
+   "actual_revision": -1.0
+  },
+  {
+   "year": 2009,
+   "month": "NOV",
+   "release": "2009-11-10",
+   "signal_last_revision": -1.0,
+   "predicted_price_dir": 1.0,
+   "ret": 0.021075013921527663,
+   "actual_revision": -1.0
+  },
+  {
+   "year": 2009,
+   "month": "DEC",
+   "release": "2009-12-10",
+   "signal_last_revision": -1.0,
+   "predicted_price_dir": 1.0,
+   "ret": -0.009450548953875426,
+   "actual_revision": 1.0
+  }
+ ],
+ "pass": false,
+ "secondary_2000_2011": {
+  "events": 34,
+  "mean_signed_return_pct": 0.4795897237661619,
+  "hit_rate": 0.5588235294117647,
+  "season_block_p": 0.0459
+ }
+}

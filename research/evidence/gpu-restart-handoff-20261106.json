@@ -1,0 +1,24 @@
+{
+  "schema": 1,
+  "purpose": "user_run_synthetic_native_worker_restart",
+  "requested_gpu": "L4",
+  "drive_folder": "https://drive.google.com/drive/u/0/folders/1rtMBiFl2lMBR2DVCB0Ez5UlB75j5uqy2",
+  "notebook": "CottonLens_L4_Restart_Drive.ipynb",
+  "source_archive": "cottonlens-gpu-restart-source.zip",
+  "source_archive_sha256": "81d0d1f17106f70d2044defe6066d2423963b37e5c30642d4f5a6a1642202e95",
+  "source_files": 144,
+  "drive_three_uploads_observed_complete": true,
+  "drive_fresh_download_verified": false,
+  "release_asset": "gpu-restart-handoff-20261106.zip",
+  "release_archive_sha256": "d7e836d587e021520e9be96dc7a9aaf691fe09d0cd62b21e017efe6dfb1bdc74",
+  "release_fresh_download_all_members_verified": true,
+  "local_control_tests_passed": 11,
+  "native_gpu_execution_verified": false,
+  "expected_train_on_batch_calls": 4,
+  "market_fits": 0,
+  "limits": [
+    "Abrupt worker process exit, not whole Colab-session loss.",
+    "Fixed deterministic Dense/Adam recipe; no stochastic RNG continuation claim.",
+    "No real GPU OOM allocation or automatic device/recipe fallback."
+  ]
+}

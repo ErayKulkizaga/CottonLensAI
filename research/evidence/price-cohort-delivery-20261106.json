@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "asset": "price-cohort-audit-20261106.zip",
+  "archive_sha256": "9dca82a3029b4f5d5fc3e476c19cdae6cac501655cf75b357fb0992d1ddc961d",
+  "members": {
+    "research/verify_naive_mae.py": "9edb7937492e25e7a469c1b893ddfcea77201098ca09db838579e3165197921b",
+    "research/tests/test_independent_price_cohort.py": "b9d716c64351b980e0b9f49c622d064be21950e8a6d7b21c04a3e7a5910ee1b2",
+    "research/evidence/price-independent-cohort-20261106.json": "016b17e66cbb8508169ced1afdcbbe0635c60464d9212fe037584275c1f859c0",
+    "research/evidence/price-independent-native-20261106.json": "23abdc30de6225fcaf4bcc8b79861261534363e7b4b0779edfdf0c44021c6a70"
+  },
+  "fresh_download_verified": true,
+  "fresh_independent_output_byte_identical": true,
+  "new_fits": 0,
+  "original_data_not_reuploaded": true
+}

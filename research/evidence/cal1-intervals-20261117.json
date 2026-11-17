@@ -1,0 +1,107 @@
+{
+ "v1_realtime": {
+  "n": 58,
+  "seasons": [
+   2011,
+   2025
+  ],
+  "coverage80": 0.5172413793103449,
+  "coverage95": 0.7931034482758621,
+  "coverage80_by_month": {
+   "DEC": 0.533,
+   "NOV": 0.533,
+   "OCT": 0.538,
+   "SEP": 0.467
+  },
+  "coverage95_by_month": {
+   "DEC": 0.8,
+   "NOV": 0.8,
+   "OCT": 0.769,
+   "SEP": 0.8
+  },
+  "mean_halfwidth80_pct": 7.64040324708829,
+  "mean_halfwidth95_pct": 20.46514148245227
+ },
+ "a_scaled": {
+  "n": 58,
+  "seasons": [
+   2011,
+   2025
+  ],
+  "coverage80": 0.5,
+  "coverage95": 0.7068965517241379,
+  "coverage80_by_month": {
+   "DEC": 0.467,
+   "NOV": 0.6,
+   "OCT": 0.385,
+   "SEP": 0.533
+  },
+  "coverage95_by_month": {
+   "DEC": 0.733,
+   "NOV": 0.8,
+   "OCT": 0.615,
+   "SEP": 0.667
+  },
+  "mean_halfwidth80_pct": 8.821228692832062,
+  "mean_halfwidth95_pct": 16.751021781193206
+ },
+ "b_window": {
+  "n": 58,
+  "seasons": [
+   2011,
+   2025
+  ],
+  "coverage80": 0.5689655172413793,
+  "coverage95": 0.7931034482758621,
+  "coverage80_by_month": {
+   "DEC": 0.6,
+   "NOV": 0.6,
+   "OCT": 0.538,
+   "SEP": 0.533
+  },
+  "coverage95_by_month": {
+   "DEC": 0.8,
+   "NOV": 0.8,
+   "OCT": 0.769,
+   "SEP": 0.8
+  },
+  "mean_halfwidth80_pct": 8.229903606383372,
+  "mean_halfwidth95_pct": 19.191872136032895
+ },
+ "c_double": {
+  "n": 58,
+  "seasons": [
+   2011,
+   2025
+  ],
+  "coverage80": 0.8275862068965517,
+  "coverage95": 0.9310344827586207,
+  "coverage80_by_month": {
+   "DEC": 0.8,
+   "NOV": 0.867,
+   "OCT": 0.769,
+   "SEP": 0.867
+  },
+  "coverage95_by_month": {
+   "DEC": 0.933,
+   "NOV": 0.933,
+   "OCT": 0.923,
+   "SEP": 0.933
+  },
+  "mean_halfwidth80_pct": 15.940094365733742,
+  "mean_halfwidth95_pct": 45.86543958025746
+ },
+ "eligible": [
+  "c_double"
+ ],
+ "chosen": "c_double",
+ "frozen": {
+  "method": "c_double",
+  "q80_log": 0.21924000000000002,
+  "q95_log": 0.5583639999999992,
+  "train_seasons": [
+   2008,
+   2025
+  ]
+ }
+}

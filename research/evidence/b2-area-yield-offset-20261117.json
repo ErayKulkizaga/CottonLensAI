@@ -1,0 +1,81 @@
+{
+ "1995_2011": {
+  "all_months": {
+   "n": 68,
+   "corr_area_yield": 0.2088576642950315,
+   "slope_yield_on_area": 0.34348892714469215,
+   "mae_area_pct": 3.6044639946221384,
+   "mae_total_pct": 7.884707762543621
+  },
+  "SEP": {
+   "n": 17,
+   "corr_area_yield": 0.34354405547691697,
+   "slope_yield_on_area": 0.7654237706277943,
+   "mae_area_pct": 3.778339630228583,
+   "mae_total_pct": 12.179391241391967
+  },
+  "OCT": {
+   "n": 17,
+   "corr_area_yield": 0.33451343411485723,
+   "slope_yield_on_area": 0.6246344750098235,
+   "mae_area_pct": 3.4395280630031957,
+   "mae_total_pct": 9.180836024068629
+  },
+  "NOV": {
+   "n": 17,
+   "corr_area_yield": 0.2516145946673308,
+   "slope_yield_on_area": 0.27705149002510654,
+   "mae_area_pct": 3.7337070075600276,
+   "mae_total_pct": 6.091051284954921
+  },
+  "DEC": {
+   "n": 17,
+   "corr_area_yield": -0.2834387744241513,
+   "slope_yield_on_area": -0.26094753108389046,
+   "mae_area_pct": 3.46628127769675,
+   "mae_total_pct": 4.087552499758965
+  }
+ },
+ "2012_2025": {
+  "all_months": {
+   "n": 54,
+   "corr_area_yield": -0.5695388438252863,
+   "slope_yield_on_area": -0.42160964240377174,
+   "mae_area_pct": 15.009259259259263,
+   "mae_total_pct": 9.903703703703707
+  },
+  "SEP": {
+   "n": 14,
+   "corr_area_yield": -0.35751178767537645,
+   "slope_yield_on_area": -0.26655039572883704,
+   "mae_area_pct": 14.864285714285714,
+   "mae_total_pct": 11.878571428571428
+  },
+  "OCT": {
+   "n": 12,
+   "corr_area_yield": -0.32209063780105973,
+   "slope_yield_on_area": -0.21830504384200786,
+   "mae_area_pct": 15.8,
+   "mae_total_pct": 13.075000000000001
+  },
+  "NOV": {
+   "n": 14,
+   "corr_area_yield": -0.6469217786362015,
+   "slope_yield_on_area": -0.4523356637520496,
+   "mae_area_pct": 14.742857142857144,
+   "mae_total_pct": 9.37857142857143
+  },
+  "DEC": {
+   "n": 14,
+   "corr_area_yield": -0.9151148944171403,
+   "slope_yield_on_area": -0.7198768314882981,
+   "mae_area_pct": 14.742857142857144,
+   "mae_total_pct": 5.735714285714287
+  }
+ },
+ "t51_gain_points": {
+  "area": 5.422710144927538,
+  "production": 1.9745866666666636,
+  "share_of_area_gain_kept_in_production": 0.3641328070086345
+ }
+}

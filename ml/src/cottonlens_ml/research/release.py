@@ -117,15 +117,18 @@ def export(experiment, repo):
     locked = read_record(experiment.root / 'locked.json')
     if read_record(experiment.root / 'diagnosis.json')['status'] != 'passed':
         raise ValueError('Diagnosis must pass before export')
+    receipts = verify_for_export(experiment, locked)
+    verified = _checked_price_lock(experiment, locked)
     pending = experiment.root / 'release.json'
     if pending.exists():
         prior = read_record(pending)
         if digest(Path(prior['path'])) != prior['sha256']:
             raise ValueError('Frozen release changed')
+        if (prior.get('reproduction') != receipts or prior.get('runtime_parity') != 'passed'
+                or prior.get('prospective_verified') is not False):
+            raise ValueError('Cached release is not bound to current verified reproduction')
         print('Validated release:', prior['path'], flush=True)
         return
-    receipts = verify_for_export(experiment, locked)
-    verified = _checked_price_lock(experiment, locked)
     market, full = load_frozen_data(experiment.identity['source_data'])
     full = feature_history(full, market)
     if experiment.identity.get('profile') == 'free-data-v1':

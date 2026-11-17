@@ -1,0 +1,125 @@
+{
+ "S0_texas_cotton_rolling": {
+  "months": {
+   "SEP": {
+    "rows": 18,
+    "seasons": 18,
+    "mae_usda_pct": 12.81277102111726,
+    "mae_adjusted_pct": 7.861103893350376,
+    "corr_pvp_e": -0.672165457259373
+   },
+   "OCT": {
+    "rows": 16,
+    "seasons": 16,
+    "mae_usda_pct": 13.165677450109413,
+    "mae_adjusted_pct": 7.624275994645763,
+    "corr_pvp_e": -0.700984881837131
+   },
+   "NOV": {
+    "rows": 18,
+    "seasons": 18,
+    "mae_usda_pct": 12.63549591475926,
+    "mae_adjusted_pct": 7.038305153422245,
+    "corr_pvp_e": -0.7264323482679296
+   },
+   "DEC": {
+    "rows": 18,
+    "seasons": 18,
+    "mae_usda_pct": 12.63549591475926,
+    "mae_adjusted_pct": 7.301687968031446,
+    "corr_pvp_e": -0.7178511376603613
+   }
+  },
+  "pooled_corr": -0.7022777994664879,
+  "pooled_corr_upper95_one_sided": -0.5566518734991596,
+  "mean_gain_log_pts": 5.230916793124852,
+  "year_block_p": 0.0003,
+  "months_better": 4,
+  "n_months": 4,
+  "pass_sign": true,
+  "pass_prediction": true,
+  "pass": true
+ },
+ "S1_ok_ks_cotton_loso": {
+  "months": {
+   "SEP": {
+    "rows": 46,
+    "seasons": 26,
+    "mae_usda_pct": 11.345896397631872,
+    "mae_adjusted_pct": 9.846441828542998,
+    "corr_pvp_e": -0.5921435079094296
+   },
+   "OCT": {
+    "rows": 42,
+    "seasons": 24,
+    "mae_usda_pct": 10.241391887764571,
+    "mae_adjusted_pct": 8.660109828567318,
+    "corr_pvp_e": -0.6426651584460055
+   },
+   "NOV": {
+    "rows": 45,
+    "seasons": 26,
+    "mae_usda_pct": 11.046682323490455,
+    "mae_adjusted_pct": 9.155110007376324,
+    "corr_pvp_e": -0.6278177990597198
+   },
+   "DEC": {
+    "rows": 45,
+    "seasons": 26,
+    "mae_usda_pct": 11.046682323490455,
+    "mae_adjusted_pct": 8.856353565249526,
+    "corr_pvp_e": -0.6029198556472524
+   }
+  },
+  "pooled_corr": -0.6137868760294611,
+  "pooled_corr_upper95_one_sided": -0.49190176501228317,
+  "mean_gain_log_pts": 1.7362335834415785,
+  "year_block_p": 0.05585,
+  "months_better": 4,
+  "n_months": 4,
+  "pass_sign": true,
+  "pass_prediction": false,
+  "pass": false
+ },
+ "S2_winter_wheat_loso": {
+  "months": {
+   "MAY": {
+    "rows": 42,
+    "seasons": 14,
+    "mae_usda_pct": 6.862709199079324,
+    "mae_adjusted_pct": 7.168901823478115,
+    "corr_pvp_e": 0.2049087357737655
+   },
+   "JUN": {
+    "rows": 27,
+    "seasons": 9,
+    "mae_usda_pct": 7.533563328797658,
+    "mae_adjusted_pct": 8.514232851924792,
+    "corr_pvp_e": 0.15843209735538727
+   },
+   "JUL": {
+    "rows": 42,
+    "seasons": 14,
+    "mae_usda_pct": 4.690233977536352,
+    "mae_adjusted_pct": 4.931206776070816,
+    "corr_pvp_e": -0.011882151109525745
+   },
+   "AUG": {
+    "rows": 42,
+    "seasons": 14,
+    "mae_usda_pct": 4.846757126305888,
+    "mae_adjusted_pct": 5.088067859134009,
+    "corr_pvp_e": -0.03440352441553892
+   }
+  },
+  "pooled_corr": 0.09117090141711065,
+  "pooled_corr_upper95_one_sided": 0.34499381224252446,
+  "mean_gain_log_pts": -0.3618168716454807,
+  "year_block_p": 0.96605,
+  "months_better": 0,
+  "n_months": 4,
+  "pass_sign": false,
+  "pass_prediction": false,
+  "pass": false
+ }
+}

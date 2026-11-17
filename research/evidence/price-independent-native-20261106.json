@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "status": "fresh_original_archive_native_and_independent_cohort_verified",
+  "parent_release": "price-only-median-result-20261105",
+  "parent_archive_sha256": "ddf449e4ec043ee42ee233a37f49570a4ed00c0a5fe26fa765298ca04934f8a7",
+  "parent_manifest_sha256": "7948cef7309f71174519eb8cb1562d3da3715fd0d03b2defe80c54e561626224",
+  "restored_files_post_replay_hash_checked": 2085,
+  "native_existing_market_fits_verified": 338,
+  "native_existing_synthetic_fits_verified": 4,
+  "native_max_return_difference": 0.0,
+  "native_receipt_sha256": "9be7cf3ab888a471e4468a4cdad42508ad37a13d88cdc35cf2b4e1999e650ba9",
+  "frozen_native_verifier_sha256": "45e9bfd427eec1bc6379fff0e79cf91ea1ce04b62d16ee767a146a8333b156b4",
+  "network_disabled_for_native_replay": true,
+  "training_disabled_for_native_replay": true,
+  "new_fits": 0,
+  "decision": "STOP",
+  "scope": "Fixed price-only median T+1 source; not all model families, named-contract or vendor availability acceptance."
+}

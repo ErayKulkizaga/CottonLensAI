@@ -1,0 +1,24 @@
+{
+  "schema": 1,
+  "status": "listing_scope_fresh_restore_and_offline_replay_verified",
+  "asset": "listing-coverage-review-20261106.zip",
+  "archive_sha256": "b662da58f8fad909884afdd8c5f47d34c4b5016edde947c4aaaa1ccbe728a44f",
+  "members_checked": 227,
+  "outputs_byte_identical": {
+    "independent.json": "33df5fe37c6dd80e43869f08f536470f0da9cd1b8839649564c26674c31e29a1",
+    "readiness/job-readiness.csv": "3aebdde9ac1f81bae9753d4f12f8e8aba42d85f02e204b1d03745cd9f78b01dd",
+    "readiness/origin-readiness.csv": "d5a973555895b738448c4e75adefb556cf901327d13b601f1b05927f6ef700e1",
+    "readiness/result.json": "50d00f20da28295489526ba9c472e20ac1ab84057770aaff71a3411d3205bb01",
+    "readiness/unknown-ewma-cells.csv": "6d4afe0039a04f92ee1a6d94d8f76aa73827ca8b4a3ebb5aab7c0eb5e595e30c",
+    "readiness/witness-overlay.json": "1d6124234aa0453537aa732626039adbf81c1c9c54c190936edc8b048fc37bd0",
+    "source-request-matrix-listing-20261106/contract-evidence-request.csv": "cf79fd39fe95cfeb10e83929ceb6212cc5f80bf9e341d0267da88d35b72bad14",
+    "source-request-matrix-listing-20261106/result.json": "4a2bda31945e5220cb84e3438c8b1076365c967965ebe6b0002e9e664d7ba002"
+  },
+  "network_disabled": true,
+  "training_disabled": true,
+  "new_fits": 0,
+  "official_current_expiry_csv_sha256": "a4affde79beb8cd945cd906691b7f42adc680a811918fe280bb79343d4595a98",
+  "historical_listing_dates_admitted": false,
+  "unknown_cell_upper_bound": 99523,
+  "all_required_ready": 0
+}

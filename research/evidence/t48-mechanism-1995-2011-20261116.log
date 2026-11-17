@@ -1,0 +1,15 @@
+TX AUG {'n': 17, 'mae_area': 4.369, 'mae_yield': 13.306, 'mae_total': 15.471, 'var_share_area': 0.212, 'var_share_yield': 0.788}
+TX SEP {'n': 17, 'mae_area': 3.778, 'mae_yield': 10.19, 'mae_total': 12.147, 'var_share_area': 0.237, 'var_share_yield': 0.766, 'corr_r_area': 0.488, 'corr_r_yield': 0.403}
+TX OCT {'n': 17, 'mae_area': 3.44, 'mae_yield': 7.143, 'mae_total': 9.172, 'var_share_area': 0.283, 'var_share_yield': 0.718, 'corr_r_area': 0.438, 'corr_r_yield': 0.459}
+TX NOV {'n': 17, 'mae_area': 3.734, 'mae_yield': 4.108, 'mae_total': 6.061, 'var_share_area': 0.463, 'var_share_yield': 0.542, 'corr_r_area': 0.379, 'corr_r_yield': 0.473}
+TX DEC {'n': 17, 'mae_area': 3.466, 'mae_yield': 3.54, 'mae_total': 4.048, 'var_share_area': 0.56, 'var_share_yield': 0.445, 'corr_r_area': 0.669, 'corr_r_yield': -0.247}
+US AUG {'n': 17, 'mae_area': 2.192, 'mae_yield': 7.165, 'mae_total': 7.806, 'var_share_area': 0.065, 'var_share_yield': 0.936}
+US SEP {'n': 17, 'mae_area': 2.003, 'mae_yield': 5.656, 'mae_total': 6.453, 'var_share_area': 0.122, 'var_share_yield': 0.876, 'corr_r_area': 0.085, 'corr_r_yield': 0.411}
+US OCT {'n': 17, 'mae_area': 1.726, 'mae_yield': 4.255, 'mae_total': 4.858, 'var_share_area': 0.199, 'var_share_yield': 0.8, 'corr_r_area': -0.05, 'corr_r_yield': 0.549}
+US NOV {'n': 17, 'mae_area': 1.693, 'mae_yield': 1.97, 'mae_total': 2.76, 'var_share_area': 0.41, 'var_share_yield': 0.582, 'corr_r_area': 0.347, 'corr_r_yield': 0.643}
+US DEC {'n': 17, 'mae_area': 1.617, 'mae_yield': 1.478, 'mae_total': 1.715, 'var_share_area': 0.534, 'var_share_yield': 0.46, 'corr_r_area': 0.526, 'corr_r_yield': -0.058}
+H1_TX_area_dominates_SepOctNov {'count': 0, 'pass': False}
+H2_TX_area_error_not_learned {'dec_over_aug': 0.7933086154573686, 'pass': True}
+H3_TX_momentum_in_area {'count': 2, 'pass': False}
+H4_US_yield_dominates_OctNovDec {'count': 2, 'pass': True}
+ALL PASS False

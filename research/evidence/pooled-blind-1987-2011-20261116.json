@@ -1,0 +1,61 @@
+{
+ "seasons": [
+  1987,
+  2011,
+  23
+ ],
+ "mean_gain_pts": 0.636875,
+ "year_block_p_one_sided": 0.0069,
+ "season_cells_better": 88,
+ "season_cells_worse": 40,
+ "cells": {
+  "SEP_TX": {
+   "seasons": 17,
+   "mean_gain_pts": 1.1529411764705881,
+   "better": 7,
+   "worse": 6
+  },
+  "SEP_US": {
+   "seasons": 17,
+   "mean_gain_pts": 0.6705882352941178,
+   "better": 9,
+   "worse": 6
+  },
+  "OCT_TX": {
+   "seasons": 21,
+   "mean_gain_pts": 1.4095238095238092,
+   "better": 10,
+   "worse": 4
+  },
+  "OCT_US": {
+   "seasons": 21,
+   "mean_gain_pts": 0.857142857142857,
+   "better": 12,
+   "worse": 5
+  },
+  "NOV_TX": {
+   "seasons": 19,
+   "mean_gain_pts": 0.32105263157894726,
+   "better": 9,
+   "worse": 5
+  },
+  "NOV_US": {
+   "seasons": 19,
+   "mean_gain_pts": 0.3526315789473684,
+   "better": 14,
+   "worse": 5
+  },
+  "DEC_TX": {
+   "seasons": 23,
+   "mean_gain_pts": 0.20434782608695645,
+   "better": 11,
+   "worse": 6
+  },
+  "DEC_US": {
+   "seasons": 23,
+   "mean_gain_pts": 0.2521739130434783,
+   "better": 16,
+   "worse": 3
+  }
+ }
+}

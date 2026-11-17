@@ -36,6 +36,7 @@ from cottonlens_ml.research.protocol import (
     mature,
     rows_at,
     split_manifest,
+    validate_inner_fold,
     verified_outer,
 )
 from cottonlens_ml.research.search import (
@@ -47,6 +48,8 @@ from cottonlens_ml.research.search import (
 from cottonlens_ml.runtime_guard import require_colab_training
 from cottonlens_ml.sprint import R2, R2_READINESS
 from cottonlens_ml.walkforward import summarize
+
+_HISTORY_UNSET = object()
 
 
 def root_path(root, name):
@@ -159,6 +162,14 @@ class Experiment:
         if self.history.date.max() >= pd.Timestamp('2024-01-01'):
             raise ValueError('Seen audit cannot enter research')
         self.ledger = Ledger(self.root / 'ledger', self.identity)
+        admission_path = self.root / 'admission' / 'manifest.json'
+        receipt_path = self.root / 'admission' / 'receipt.json'
+        if admission_path.exists() or receipt_path.exists():
+            from cottonlens_ml.research.admission import ExecutionAdmission
+            if not admission_path.is_file() or not receipt_path.is_file():
+                raise ValueError('Incomplete data admission; preserve failed preparation')
+            self.admission = ExecutionAdmission(
+                read_record(admission_path), read_record(receipt_path), self.root)
 
     def train_rows(self, cutoff, spec):
         rows = mature(self.history, cutoff, spec.get('years'))
@@ -168,12 +179,18 @@ class Experiment:
         return rows.loc[rows.date >= self.history.date.iloc[119]].copy()
 
     @staticmethod
-    def fit_specification(spec, train, validation, test, role, iterations):
-        return {'recipe': spec, 'role': role, 'iterations': iterations,
+    def fit_specification(spec, train, validation, test, role, iterations, *, history=_HISTORY_UNSET):
+        """Current execution supplies history; omission reads frozen legacy IDs."""
+        result = {'recipe': spec, 'role': role, 'iterations': iterations,
                 'train_dates': train.date.dt.strftime('%Y-%m-%d').tolist(),
                 'validation_dates': [] if validation is None else validation.date.dt.strftime('%Y-%m-%d').tolist(),
                 'test_dates': test.date.dt.strftime('%Y-%m-%d').tolist(),
                 'train_identity': frame_identity(train, list(train.columns))}
+        if history is not _HISTORY_UNSET:
+            from cottonlens_ml.research.admission import model_inputs_id
+            result.update(model_inputs_schema=2, model_inputs_id=model_inputs_id(
+                history, train, validation, test, spec, iterations))
+        return result
 
     def outer_chunks(self, test, spec):
         cadence = spec.get('cadence', 126)
@@ -185,15 +202,28 @@ class Experiment:
         return [(dates.loc[start + int(b) * cadence], test.loc[buckets.eq(b)]) for b in sorted(buckets.unique())]
 
     def fit(self, spec, train, validation, test, role, *, iterations=None, repeat=None):
-        specification = self.fit_specification(spec, train, validation, test, role, iterations)
+        from cottonlens_ml.research.admission import (
+            AdmissionError,
+            ExecutionAdmission,
+            require_model_inputs,
+        )
+        specification = self.fit_specification(spec, train, validation, test, role, iterations,
+                                               history=self.history)
+        admission = getattr(self, 'admission', None)
+        if not isinstance(admission, ExecutionAdmission):
+            raise AdmissionError('Exact input admission required before fit/cache use; '
+                                 'inspect historical records with frozen-source replay')
+        with admission.training_scope(self.identity, specification):
+            require_model_inputs(self.history, train, validation, test, spec, iterations)
         record = self.ledger.run(specification, lambda workspace: fit_predict(
             self.history, train, validation, test, spec, workspace, iterations=iterations), repeat=repeat,
-            before_compute=getattr(self, 'before_compute', None))
+            before_compute=getattr(self, 'before_compute', None), admission=getattr(self, 'admission', None))
         if getattr(self, 'after_fit', None):
             self.after_fit(record)
         return record
 
     def inner(self, spec, fold, repeat=None, progress=None):
+        validate_inner_fold(self.history, fold)
         records, scores = [], []
         for index, block in enumerate(fold['inner']):
             print(f'STAGE inner fold={fold["fold"]} block={index + 1}/3 '
@@ -240,9 +270,15 @@ class Experiment:
                 'origins': [d for r in records for d in r['result']['origins']]}
 
     def tune(self, family, horizon, fold, candidates, namespace):
+        validate_inner_fold(self.history, fold)
+        from cottonlens_ml.research.decision_cache import execution_binding, read_bound
+        request = {
+            'operation': 'tune', 'family': family, 'horizon': horizon,
+            'candidates': candidates, 'namespace': namespace, 'seeds': list(SEEDS)}
+        binding = execution_binding(self, fold, request, selection=True)
         marker = self.root / 'decisions' / namespace / f'{family}-t{horizon}-fold{fold["fold"]}.json'
         if marker.exists():
-            return read_record(marker)
+            return read_bound(marker, binding)
         evaluated = []
         for i, spec in enumerate(candidates):
             result = self.inner(spec, fold)
@@ -261,13 +297,19 @@ class Experiment:
         chosen = min(confirmed, key=lambda r: (r['score'], complexity(r['recipe'])))
         result = {'chosen': chosen, 'trials': [{'recipe': r['recipe'], 'score': r['score'], 'records': r['records']}
                                               for r in evaluated], 'fold': fold['fold'], 'selection_used_outer': False}
+        result['execution_binding'] = binding
+        result['execution_request'] = request
         freeze_record(marker, result)
         return result
 
     def outer(self, chosen, fold, namespace, *, repeat=None):
+        from cottonlens_ml.research.decision_cache import execution_binding, read_bound
+        binding = execution_binding(self, fold, {
+            'operation': 'outer', 'chosen': chosen, 'namespace': namespace, 'repeat': repeat},
+            selection=False)
         marker = self.root / ('reproduction' if repeat else 'outer') / namespace / f'{chosen["recipe"]["family"]}-t{chosen["recipe"]["horizon"]}-fold{fold["fold"]}.json'
         if marker.exists():
-            return read_record(marker)
+            return read_bound(marker, binding)
         if chosen['recipe']['family'] == 'ensemble':
             members = [self.outer(member['decision'], fold, member['namespace'], repeat=repeat)
                        for member in chosen['members']]
@@ -280,6 +322,7 @@ class Experiment:
             if self.identity.get('profile') == 'free-data-v1':
                 from cottonlens_ml.research.uncertainty import for_candidate
                 result['uncertainty'] = for_candidate(self.history, chosen, fold['origins'], predicted)
+            result['execution_binding'] = binding
             freeze_record(marker, result)
             return result
         test = rows_at(self.history, fold['origins'])
@@ -315,6 +358,7 @@ class Experiment:
         if self.identity.get('profile') == 'free-data-v1' and spec.get('task', 'price') == 'price':
             from cottonlens_ml.research.uncertainty import for_candidate
             result['uncertainty'] = for_candidate(self.history, chosen, fold['origins'], predicted)
+        result['execution_binding'] = binding
         freeze_record(marker, result)
         return result
 
@@ -344,43 +388,18 @@ def search(experiment, round_name, extension=0):
     budgets = BUDGETS[round_name]
     if extension < 0 or (extension and round_name == 'B'):
         raise ValueError('Extensions apply to price search rounds with a positive extension number')
-    extension_path = experiment.root / 'extensions' / f'{round_name}-{extension}.json'
-    baseline = None
     if extension:
-        previous = compare(experiment)
-        from cottonlens_ml.research.search import next_round
-        base = [r for r in previous['candidates'] if r['task'] == 'price' and r['namespace'] == round_name]
-        if {r['horizon'] for r in base} != {1, 5}:
-            raise ValueError('Complete the initial round before extending it')
-        histories = [read_record(experiment.root / 'extensions' / f'{round_name}-{i}.json')
-                     for i in range(1, extension)]
-        initial_score = float(np.mean([min(r['inner_score'] for r in base if r['horizon'] == h) for h in (1, 5)]))
-        gains = [1 - initial_score, *[r['relative_improvement'] for r in histories]]
-        if next_round(gains) != 'extend_top_two_families_64_each':
-            raise ValueError('Plateau: new information or diagnosis required')
-        allowed = {round_name, *[f'{round_name}-extension-{i}' for i in range(1, extension)]}
-        best = [r for r in previous['candidates'] if r['task'] == 'price' and r['namespace'] in allowed]
-        baseline = float(np.mean([min(r['inner_score'] for r in best if r['horizon'] == h) for h in (1, 5)]))
-        family_scores = {f: float(np.mean([min(r['inner_score'] for r in best if r['family'] == f and r['horizon'] == h)
-                                           for h in (1, 5)])) for f in {r['family'] for r in best}}
-        families = sorted(family_scores, key=lambda f: (family_scores[f], f))[:2]
-        budgets = {family: 64 for family in families}
-    namespace = round_name if not extension else f'{round_name}-extension-{extension}'
+        from cottonlens_ml.research.extensions import extend
+        return extend(experiment, round_name, extension)
+    namespace = round_name
     for family, count in budgets.items():
         for h in (1, 5):
             candidates = recipes(family, h, experiment.identity['groups']['base'], count,
                                  task='direction' if round_name == 'B' else 'price',
-                                 offset=0 if not extension else BUDGETS[round_name][family] + (extension - 1) * 64)
+                                 offset=0)
             for fold in experiment.identity['split']['folds']:
                 decision = experiment.tune(family, h, fold, candidates, namespace)
                 experiment.outer(decision['chosen'], fold, namespace)
-    if extension:
-        report = compare(experiment)
-        completed = [r for r in report['candidates'] if r['namespace'] == namespace]
-        current = float(np.mean([min(r['inner_score'] for r in completed if r['horizon'] == h) for h in (1, 5)]))
-        freeze_record(extension_path, {'baseline_inner_score': baseline, 'new_inner_score': current,
-                      'relative_improvement': max(0., (baseline - current) / baseline),
-                      'families': sorted(budgets), 'selection_used_outer': False})
 
 
 def reference_report(experiment):
@@ -499,10 +518,18 @@ def reproduce(experiment):
 
     locked = read_record(experiment.root / 'locked.json')
     plans = plan(experiment, locked)
+    # Evidence recovery is read-only across the whole repetition, including a
+    # horizon whose summary was lost. Missing proof must never trigger a rerun.
+    existing = any((experiment.root/'reproduction').rglob('*.json')) or any(
+        (experiment.root/name).exists() for h in plans for name in (
+            f'reproduction-t{h}.json', f'reproduction-t{h}-bound-v1.json',
+            f'reproduction-t{h}-bound-v2.json'))
+    if not existing:
+        existing = any(read_record(path).get('specification', {}).get('repeat_reason') == 'reproduction'
+                       for path in (experiment.ledger.root/'completed').glob('*.json'))
     for h, folds in plans.items():
         target = receipt_path(experiment, h)
-        legacy = experiment.root / f'reproduction-t{h}.json'
-        if not target.exists() and not legacy.exists():
+        if not existing:
             for item in folds:
                 experiment.outer(item.chosen, item.fold, item.namespace, repeat='reproduction')
         receipt = verified_receipt(experiment, locked, h, folds)

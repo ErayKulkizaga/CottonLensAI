@@ -1,0 +1,233 @@
+{
+ "2021_fsa_acres_web_as_of_080221.zip": {
+  "year": 2021,
+  "label": "2021 acreage data as of August 2, 2021",
+  "url": "https://www.fsa.usda.gov/sites/default/files/documents/2021_fsa_acres_web_as_of_080221.zip",
+  "bytes": 21710774,
+  "sha256": "92bcac6c7a3d32c9709ae0cba787efc4d40478cbca6056820bb31431a9cc8002"
+ },
+ "2021_fsa_acres_web_as_of_090121.zip": {
+  "year": 2021,
+  "label": "2021 acreage data as of September 1, 2021",
+  "url": "https://www.fsa.usda.gov/sites/default/files/documents/2021_fsa_acres_web_as_of_090121.zip",
+  "bytes": 22328896,
+  "sha256": "0670552fee8fc7bd1b9720b4d8b14b86dc7b7da99b8579fee63281c9038667b2"
+ },
+ "2020_FSA_acres_web_as_of_100120_gHlBad.zip": {
+  "year": 2020,
+  "label": "2020 acreage data as of October 1, 2020",
+  "url": "https://www.fsa.usda.gov/sites/default/files/documents/2020_FSA_acres_web_as_of_100120_gHlBad.zip",
+  "bytes": 22017286,
+  "sha256": "f670f8c8641db3171cbf253de6c4d917a7e53daed478cf8c7883be7ef20615b8"
+ },
+ "2020_FSA_acres_web_as_of_sept_2020_am6bkE.zip": {
+  "year": 2020,
+  "label": "2020 acreage data as of September 1, 2020",
+  "url": "https://www.fsa.usda.gov/sites/default/files/documents/2020_FSA_acres_web_as_of_sept_2020_am6bkE.zip",
+  "bytes": 21782792,
+  "sha256": "6b9678ea749cc36ba707724bccacf6756eacb823cc5dd5f8d72b59715ea1c69f"
+ },
+ "2020_fsa_acres_aug_2020-pSs53q.zip": {
+  "year": 2020,
+  "label": "2020 acreage data as of July 31, 2020",
+  "url": "https://www.fsa.usda.gov/sites/default/files/documents/2020_fsa_acres_aug_2020-pSs53q.zip",
+  "bytes": 21006819,
+  "sha256": "6730fb09af344a58e69ff531132ae703115dc8fd9ce87ffc4532bd3d9cf98c6c"
+ },
+ "2019_fsa_acres_oct_2019_kiro2rt.zip": {
+  "year": 2019,
+  "label": "2019 acreage data as of October 1, 2019",
+  "url": "https://www.fsa.usda.gov/sites/default/files/documents/2019_fsa_acres_oct_2019_kiro2rt.zip",
+  "bytes": 22150742,
+  "sha256": "b2c0ea018f7d81b124d43134f024225a2846941255780d723487732148d30b43"
+ },
+ "2019_fsa_acres_sept_2019-grmap.zip": {
+  "year": 2019,
+  "label": "2019 acreage data as of September 4, 2019",
+  "url": "https://www.fsa.usda.gov/sites/default/files/documents/2019_fsa_acres_sept_2019-grmap.zip",
+  "bytes": 21932419,
+  "sha256": "56320cad490453895998e97a186282ff0ac1d859b260018131c5f258d1e0422d"
+ },
+ "2019_fsa_acres_aug_22_2019-stpr.zip": {
+  "year": 2019,
+  "label": "2019 acreage data as of August 22, 2019",
+  "url": "https://www.fsa.usda.gov/sites/default/files/documents/2019_fsa_acres_aug_22_2019-stpr.zip",
+  "bytes": 20920281,
+  "sha256": "013c319805d59c87149f83c64b77ad92966bf3c3b1e34bd2e3fb217d96a839c0"
+ },
+ "2019_fsa_acres_aug_2019-srbp.zip": {
+  "year": 2019,
+  "label": "2019 acreage data as of August 1, 2019",
+  "url": "https://www.fsa.usda.gov/sites/default/files/documents/2019_fsa_acres_aug_2019-srbp.zip",
+  "bytes": 21645898,
+  "sha256": "f1e2b50839aae54b274c2feddf2f5ebe43e7cc825fe06b6b97cafd8ec5adc8c6"
+ },
+ "2018_fsa_acres_2018_1001.zip": {
+  "year": 2018,
+  "label": "2018 acreage data as of October 1, 2018",
+  "url": "https://www.fsa.usda.gov/sites/default/files/documents/2018_fsa_acres_2018_1001.zip",
+  "bytes": 20376941,
+  "sha256": "6222d712b1df916f3d89dcb2424e8cb8625327deecda9d2a2fbd7c00e18434ee"
+ },
+ "2018_fsa_acres_sep0618_csa1983.zip": {
+  "year": 2018,
+  "label": "2018 acreage data as of September 6, 2018",
+  "url": "https://www.fsa.usda.gov/sites/default/files/documents/2018_fsa_acres_sep0618_csa1983.zip",
+  "bytes": 19891392,
+  "sha256": "42ebdc45d70fe22602aa729b147626850b0cabc68afc5c42633d7b4f95ed6de9"
+ },
+ "2018_fsa_acres_080118_fsb3489.zip": {
+  "year": 2018,
+  "label": "2018 acreage data as of August 01, 2018",
+  "url": "https://www.fsa.usda.gov/sites/default/files/documents/2018_fsa_acres_080118_fsb3489.zip",
+  "bytes": 20058761,
+  "sha256": "d8b6cb319feb0ab2c007f6921610693cd92cdbe05450e07fd4fb718a3dc106fb"
+ },
+ "2017_fsa_acres_oct2017fsb12.zip": {
+  "year": 2017,
+  "label": "2017 acreage data as of October 1, 2017",
+  "url": "https://www.fsa.usda.gov/sites/default/files/documents/2017_fsa_acres_oct2017fsb12.zip",
+  "bytes": 24241832,
+  "sha256": "0716a1e1ee5254a6d306d6759f7edaad7c83164549cf1e90931019d9c2352628"
+ },
+ "2017_fsa_acres_sep2017kgrb10.zip": {
+  "year": 2017,
+  "label": "2017 acreage data as of September 1, 2017",
+  "url": "https://www.fsa.usda.gov/sites/default/files/documents/2017_fsa_acres_sep2017kgrb10.zip",
+  "bytes": 22611310,
+  "sha256": "b3faec1bd6441416a8e29590ac6eea6fd6f64a9b8e06fea7e41c5ecc4377e779"
+ },
+ "2017_fsa_acres_aug2017_gru49.zip": {
+  "year": 2017,
+  "label": "2017 acreage data as of August 1, 2017",
+  "url": "https://www.fsa.usda.gov/sites/default/files/documents/2017_fsa_acres_aug2017_gru49.zip",
+  "bytes": 21535181,
+  "sha256": "0b8e50164c744f40e748d120943f68770c886feea86038c6bc7793884678b94c"
+ },
+ "2016_fsa_acres_1003016_gs4.zip": {
+  "year": 2016,
+  "label": "2016 acreage data as of October 1, 2016",
+  "url": "https://www.fsa.usda.gov/sites/default/files/documents/2016_fsa_acres_1003016_gs4.zip",
+  "bytes": 21642959,
+  "sha256": "c694ea4df692d807336536335c98edcf6cf196dbc167458c197b4588c379c933"
+ },
+ "2016_fsa_acres_data_sep2016_gs42.zip": {
+  "year": 2016,
+  "label": "2016 acreage data as of September 1, 2016",
+  "url": "https://www.fsa.usda.gov/sites/default/files/documents/2016_fsa_acres_data_sep2016_gs42.zip",
+  "bytes": 21554268,
+  "sha256": "700c833a93f500fbaaed33060c83f329e63761c8656c701f5cf4d0afaf93b328"
+ },
+ "2016_fsa_acres_data_aug2016_dr6.zip": {
+  "year": 2016,
+  "label": "2016 acreage data as of August 1, 2016",
+  "url": "https://www.fsa.usda.gov/sites/default/files/documents/2016_fsa_acres_data_aug2016_dr6.zip",
+  "bytes": 21257003,
+  "sha256": "66f4af27886728987df64a2fdd39289ba9eea2f33ce1bd9ce33d6ec4b094d2bd"
+ },
+ "2015_fsa_acres_Oct2015.zip": {
+  "year": 2015,
+  "label": "2015 acreage data as of October 1, 2015",
+  "url": "https://www.fsa.usda.gov/sites/default/files/documents/2015_fsa_acres_Oct2015.zip",
+  "bytes": 21614748,
+  "sha256": "d7417f7ad3610c86f0d8c24d7a51b162c407ead27c05371bb47337e3444519ac"
+ },
+ "2015_fsa_acres_Sept2015.zip": {
+  "year": 2015,
+  "label": "2015 acreage data as of September 1, 2015",
+  "url": "https://www.fsa.usda.gov/sites/default/files/documents/2015_fsa_acres_Sept2015.zip",
+  "bytes": 21441547,
+  "sha256": "310fb818e15543b6fb87d63b99d0e38b18f71c1d9910203f648fb6b7f02aaa4f"
+ },
+ "2015_fsa_acres_Aug2015.zip": {
+  "year": 2015,
+  "label": "2015 acreage data as of August 1, 2014",
+  "url": "https://www.fsa.usda.gov/sites/default/files/documents/2015_fsa_acres_Aug2015.zip",
+  "bytes": 21067086,
+  "sha256": "69e7a93f1265f3bde433fabc69499f41b297c6dbd098200a78eb42fee639abc4"
+ },
+ "2014_fsa_acres_oct2014.zip": {
+  "year": 2014,
+  "label": "2014 acreage data as of October 2014",
+  "url": "https://www.fsa.usda.gov/sites/default/files/documents/2014_fsa_acres_oct2014.zip",
+  "bytes": 19268712,
+  "sha256": "90a9c162bc65be021e3003be872e8a54b4f5af97e34aee27404d06b41fafa9c2"
+ },
+ "2014_fsa_acres_sep_2014.zip": {
+  "year": 2014,
+  "label": "2014 acreage data as of September 2014",
+  "url": "https://www.fsa.usda.gov/sites/default/files/documents/2014_fsa_acres_sep_2014.zip",
+  "bytes": 19070640,
+  "sha256": "df6f9cc2b3bfe3522e5a779f88483749a14fffb041ad1095ee794cfca944ae52"
+ },
+ "2014_fsa_acres_aug_2014.zip": {
+  "year": 2014,
+  "label": "2014 acreage data as of August 2014",
+  "url": "https://www.fsa.usda.gov/sites/default/files/documents/2014_fsa_acres_aug_2014.zip",
+  "bytes": 18579974,
+  "sha256": "14bf89bcd139d7702e0e747e0d4bbf6235827a0c18d6c346337b1119d01e470c"
+ },
+ "2013_fsa_acres_oct_2013.zip": {
+  "year": 2013,
+  "label": "2013 acreage data as of October 2013",
+  "url": "https://www.fsa.usda.gov/sites/default/files/documents/2013_fsa_acres_oct_2013.zip",
+  "bytes": 19719551,
+  "sha256": "297b1d55cac721979a1d4904c89373ccffc01b64c4962ed0adc83b7d70d317f7"
+ },
+ "2013_fsa_acres_sep_2013.zip": {
+  "year": 2013,
+  "label": "2013 acreage data as of September 2013",
+  "url": "https://www.fsa.usda.gov/sites/default/files/documents/2013_fsa_acres_sep_2013.zip",
+  "bytes": 19542707,
+  "sha256": "15bddd44254e85d7153a7bd6fd7718e7cb765c16ec426e82543893ae8e922509"
+ },
+ "2013_fsa_acres_aug_2013.zip": {
+  "year": 2013,
+  "label": "2013 acreage data as of August 2013",
+  "url": "https://www.fsa.usda.gov/sites/default/files/documents/2013_fsa_acres_aug_2013.zip",
+  "bytes": 18573610,
+  "sha256": "ad2f91f241a8df0cf8088ff95eaa53a3bd2ea2dec2e736dfda3f1359e8e33a54"
+ },
+ "2012_fsa_acres_oct_2012.zip": {
+  "year": 2012,
+  "label": "2012 acreage data as of October 2012",
+  "url": "https://www.fsa.usda.gov/sites/default/files/documents/2012_fsa_acres_oct_2012.zip",
+  "bytes": 22972851,
+  "sha256": "b99e8471a19c0b4974c3fdb62c7e278639e3bfdc46a3785ded49b13fb2142134"
+ },
+ "2012_fsa_acres_sep_2012.zip": {
+  "year": 2012,
+  "label": "2012 acreage data as of September 2012",
+  "url": "https://www.fsa.usda.gov/sites/default/files/documents/2012_fsa_acres_sep_2012.zip",
+  "bytes": 15961265,
+  "sha256": "ba0507dd46b71f6c0b682379bd97882dd5d0eb6f39f4cf30a82780001e0f4e0e"
+ },
+ "2012_fsa_acres_aug_2012.zip": {
+  "year": 2012,
+  "label": "2012 acreage data as of August 2012",
+  "url": "https://www.fsa.usda.gov/sites/default/files/documents/2012_fsa_acres_aug_2012.zip",
+  "bytes": 18292926,
+  "sha256": "249d5706011e721330f70ce339a482188a8721a0d6a8e75013ad440e1ec37a48"
+ },
+ "2011_fsa_acres_detail_oct2011.zip": {
+  "year": 2011,
+  "label": "2011 by crop by county as of Oct 2011",
+  "url": "https://www.fsa.usda.gov/sites/default/files/documents/2011_fsa_acres_detail_oct2011.zip",
+  "bytes": 13323332,
+  "sha256": "78e4a3d076bb6802b3db39444dadcc5d0e1eb93ffe1bd3b7539eec81101728dc"
+ },
+ "2011_fsa_acre_det_sep11_1.zip": {
+  "year": 2011,
+  "label": "2011 by crop by county as of Sep 2011",
+  "url": "https://www.fsa.usda.gov/sites/default/files/documents/2011_fsa_acre_det_sep11_1.zip",
+  "bytes": 9174439,
+  "sha256": "9f55de602b010a7ef8c1fd0f1925e6655ce25cd3b936d52cd4d6d420c86e9faa"
+ },
+ "2011_fsa_acre_detail_aug11_3.zip": {
+  "year": 2011,
+  "label": "2011 by crop by county as of Aug 2011",
+  "url": "https://www.fsa.usda.gov/sites/default/files/documents/2011_fsa_acre_detail_aug11_3.zip",
+  "bytes": 10154817,
+  "sha256": "19f254e604c4181f8aed3ab7720d7f89e69c628c655299790dd9f506701ca528"
+ }
+}

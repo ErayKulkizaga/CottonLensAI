@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "status": "hashes_and_independent_adam_replay_verified",
+  "archive_sha256": "4832b5d51674fa590c50fa6cf752199c61bb9118e24d43db948ab7613b8e1bb7",
+  "source_archive_sha256": "4c6a206cd52d05131449f7c8dfd13e14b3b66ed299cce47c0368fb1289fdf3fc",
+  "probe_record_id": "b32c38b861905e773b5da66bc18b28333fcb16058c7fa97373f8ee1f2ea9c472",
+  "hardware_reported": "NVIDIA L4, 23034 MiB, 580.82.07",
+  "requested_gpu": "L4",
+  "tensorflow_reported": "2.20.0",
+  "probe_seconds_reported": 12.702884286000085,
+  "independent_max_abs_error": 1.1920928955078125e-07,
+  "absolute_tolerance": 1e-06,
+  "new_fits": 0,
+  "tensorflow_imported": false,
+  "market_skill": false,
+  "G1_G2_admission_granted": false,
+  "verifier_sha256": "608270688dd8eb5f17318cbb693ffb4d3af764d228b569cf3717b231592c5f31"
+}

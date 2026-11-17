@@ -1,0 +1,5 @@
+DEC: TX   5.0 vs USDA   5.3 (better 9 worse 8) | US  2.3 vs  2.5 (better 14 worse 7) | state_w  4.3 vs  4.5  pass=True
+SEP: TX  11.9 vs USDA  12.9 (better 10 worse 9) | US  6.0 vs  6.3 (better 9 worse 10) | state_w 10.5 vs 11.0  pass=False
+OCT: TX  11.3 vs USDA  12.1 (better 9 worse 9) | US  4.9 vs  5.5 (better 12 worse 9) | state_w  9.1 vs  9.3  pass=False
+NOV: TX   7.5 vs USDA   8.0 (better 13 worse 8) | US  3.5 vs  3.6 (better 12 worse 10) | state_w  6.2 vs  6.4  pass=True
+PRIMARY (Dec and Sep): False

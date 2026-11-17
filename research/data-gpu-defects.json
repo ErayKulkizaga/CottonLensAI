@@ -1,0 +1,371 @@
+{
+  "schema": 1,
+  "updated": "2026-11-07",
+  "scope": "Known defects and evidence gaps in the approved data/GPU remediation; not certification of every training path.",
+  "issues": [
+    {
+      "id": "DG-001",
+      "status": "EVIDENCE_GAP",
+      "problem": "Expired named-contract identities in 218 history/evaluation slots, including 217 scored targets.",
+      "affected_scope": "Three source-qualified named-risk profiles; not all CT=F experiments.",
+      "evidence": [
+        "research/evidence/lifecycle-recheck-20261106.json",
+        "docs/SOURCE_GATE_RECHECK_20261106.md"
+      ],
+      "remediation": "Preserve old results with source qualifications; require verified replacement cells and lifecycle evidence before new fits.",
+      "closure": "Complete source-bound repair and downstream dependency acceptance; recounting the defect is not repair."
+    },
+    {
+      "id": "DG-002",
+      "status": "FIXED_VERIFIED",
+      "problem": "Partial source tables inferred contract absence from month/rank.",
+      "affected_scope": "Readiness computation and its independent verifier.",
+      "evidence": [
+        "research/ams_cell_readiness.py",
+        "research/verify_ams_cell_readiness.py",
+        "research/tests/test_ams_cell_readiness.py",
+        "research/evidence/source-gate-review-20261106.json"
+      ],
+      "remediation": "Missing quotes in partial tables remain UNKNOWN. Strict real-source replay and independent computation agree.",
+      "closure": "Code defect fixed; this does not close DG-001 or DG-004."
+    },
+    {
+      "id": "DG-003",
+      "status": "FIXED_VERIFIED",
+      "problem": "Missing source tables defaulted to complete and implied absence.",
+      "affected_scope": "Readiness and independent cell lookup.",
+      "evidence": [
+        "research/tests/test_ams_cell_readiness.py",
+        "research/evidence/source-gate-review-20261106.json"
+      ],
+      "remediation": "Default completeness is false; uncertainty propagates through EWMA without hidden state reset.",
+      "closure": "Strict conditional scope has zero fully ready origins; no new market campaign admitted."
+    },
+    {
+      "id": "DG-004",
+      "status": "EVIDENCE_GAP",
+      "problem": "Full source/lifecycle/first-publication/vintage evidence is not available for every required dependency.",
+      "affected_scope": "Named-risk G1; actual price errors are not equivalent to potential unknown cells.",
+      "evidence": [
+        "research/evidence/source-gate-review-20261106.json",
+        "research/evidence/early-catalog-review-20261106.json",
+        "docs/DATA_SOURCE_REQUEST_20261106.md",
+        "research/evidence/source-request-matrix-20261106/result.json",
+        "research/evidence/source-request-matrix-listing-20261106/result.json",
+        "research/evidence/listing-coverage-delivery-20261106.json",
+        "research/evidence/ice-listing-schedule-20261106/result.json",
+        "research/evidence/ice-listing-rule-delivery-20261106.json",
+        "docs/ICE_DATA_REQUEST_DRAFT_20261106.md",
+        "research/evidence/ice-inquiry-status-20261106.json",
+        "research/evidence/ice-routing-status-20261106.json"
+      ],
+      "remediation": "G1 stays closed. Official Rule10.07 default schedule is now a hash-bound conditional diagnostic (83,312pre-month/1,216in-month/14,995post-month unknown cells), not actual historical absence admission. The user reports sending the58-contract lifecycle/exception/sample/quote inquiry. Actual sent content, delivery and reply are not independently verified; no source has been admitted. Updated user plan reports helpdesk routing to data@ice.com; no direct data evidence accepted and no message sent by assistant.",
+      "closure": "All required cells accepted, or separately preregistered narrower universe; current catalog limits do not prove global absence."
+    },
+    {
+      "id": "DG-005",
+      "status": "FIXED_VERIFIED",
+      "problem": "Direct QLIKE-HAR optimizer could fit without a data-admission scope.",
+      "affected_scope": "volatility.qlike_har direct entrypoint and nested adapter calls.",
+      "evidence": [
+        "ml/src/cottonlens_ml/research/admission.py",
+        "ml/src/cottonlens_ml/research/volatility.py",
+        "ml/tests/test_qlike_har.py"
+      ],
+      "remediation": "Require runtime permission and exact admitted training frame, horizon and ordered features before preprocessing or optimization.",
+      "closure": "Valid generated fit passes; absent/expired authority, changed labels/split/horizon/features stop before minimize."
+    },
+    {
+      "id": "DG-006",
+      "status": "EVIDENCE_GAP",
+      "problem": "Admission and temporal tests do not yet prove every preprocessing, selection and prediction path is protected.",
+      "affected_scope": "Full G2; feature-level causality is narrower than prediction/selection invariance.",
+      "evidence": [
+        "research/evidence/price-feature-prefix-audit-20261106.json",
+        "ml/tests/test_admission.py",
+        "ml/tests/test_temporal_audit.py",
+        "research/evidence/price-selection-boundary-20261106.json",
+        "ml/tests/test_selection_boundary.py",
+        "research/evidence/price-independent-cohort-20261106.json",
+        "research/evidence/price-independent-native-20261106.json",
+        "research/evidence/price-prediction-causality-20261106.json",
+        "research/evidence/prediction-causality-delivery-20261106.json",
+        "docs/G2_COVERAGE_20261107.md",
+        "research/evidence/text-learning-admission-20261107.json",
+        "research/evidence/decision-cache-oof-20261107.json",
+        "research/evidence/adaptive-ablation-cache-20261107.json",
+        "research/evidence/refinement-causality-release-cache-20261107.json",
+        "research/evidence/search-extension-causality-20261107.json"
+      ],
+      "remediation": "The fixed price-only T+1 cohort has independent exact-origin/target/value checks, Decimal loss/gate checks, active metrics and fresh native/preprocessing replay. All338fixed Ridge/Quantile native states pass first/last-test-origin prefix and future-price perturbation checks, including frozen outer weights. Fresh archive replay is byte-identical with network/training disabled. This does not prove how all selections were made; remaining selection-policy and other dataset/model contracts still need coverage.",
+      "closure": "Requirement-by-requirement G2 coverage including independent common-origin evaluation and native prediction replay."
+    },
+    {
+      "id": "DG-007",
+      "status": "FIXED_VERIFIED",
+      "problem": "L4 save/load and optimizer replay do not establish forced-session interruption, OOM or duplicate-worker handling.",
+      "affected_scope": "Fixed single-worker L4 synthetic worker/session restart, explicit PCG64/Philox mask continuation and bounded allocator OOM; not universal G3 or market-model certification.",
+      "evidence": [
+        "research/evidence/l4-technical-verification-20261106.json",
+        "research/evidence/source-gate-delivery-20261106.json",
+        "research/evidence/ledger-fault-controls-20261106.json",
+        "ml/tests/test_ledger_faults.py",
+        "research/evidence/gpu-restart-handoff-20261106.json",
+        "research/evidence/l4-restart-verification-20261106.json",
+        "research/evidence/l4-restart-delivery-20261106.json",
+        "research/evidence/l4-oom-package-20261106.json",
+        "research/evidence/l4-oom-verification-20261107.json",
+        "research/evidence/l4-oom-result-delivery-20261107.json",
+        "research/evidence/l4-session-handoff-20261107.json",
+        "research/evidence/l4-session-handoff-v2-20261107.json",
+        "research/evidence/l4-session-verification-20261107.json",
+        "research/evidence/l4-session-result-delivery-20261107.json",
+        "research/session_math.py",
+        "research/tests/test_session_math.py"
+      ],
+      "remediation": "User-returned L4 save/load, worker-exit/resume, bounded128MiB allocator-OOM/fresh-process recovery, and distinct-boot session/explicit RNG receipts passed independent hash/native checks. Session native reference/resume error is0; NumPy checks both Adam updates and predictions within1e-6. Prior receipts are preserved without rerunning probes. Ledger duplicate/attempt controls remain separately verified.",
+      "closure": "Scoped fault evidence is complete: actual returned session/RNG result and10-file fresh private Release restore reproduce offline verification with training imports blocked and0new fits. Boot/marker/hardware are reported witnesses, not remote attestation. Physical VRAM saturation, arbitrary Keras dropout/tf.data RNG, multi-GPU, other architectures, performance campaigns and G1/G2 admission are outside this closure."
+    },
+    {
+      "id": "DG-008",
+      "status": "EVIDENCE_GAP",
+      "problem": "Legacy LSTM positive comparison used unequal periods; missing predictions prevent a complete paired inference.",
+      "affected_scope": "Legacy comparison; not evidence that all engines fail.",
+      "evidence": [
+        "docs/NAIVE_MAE_AUDIT_20261105.md",
+        "docs/ROOT_CAUSE_REVIEW_20261106.md"
+      ],
+      "remediation": "Retract unequal-period advantage and preserve incomplete evidence; do not fill historical gaps by retraining.",
+      "closure": "Historical paired claim remains unavailable unless original required predictions are recovered."
+    },
+    {
+      "id": "DG-009",
+      "status": "FIXED_VERIFIED",
+      "problem": "Inner model-selection loops trusted supplied fold metadata without rechecking the frozen temporal boundaries at execution. No historical leakage occurrence is inferred from the missing guard.",
+      "affected_scope": "Experiment.inner, Experiment.tune and full_year.inner_price; fixed three-by-63 protocol.",
+      "evidence": [
+        "ml/src/cottonlens_ml/research/protocol.py",
+        "ml/tests/test_selection_boundary.py",
+        "research/evidence/price-selection-boundary-20261106.json"
+      ],
+      "remediation": "Reject outer-origin substitution, late or unknown T+1/T+5 maturity, duplicate/reordered/overlapping origins, missing blocks/rows, compressed recorded source observations and cutoff mismatch before fits.",
+      "closure": "Positive controls and injected defects exercised all three entrypoints; actual eight-year price split passed zero-fit replay. Vendor availability and other selection procedures remain outside this proof."
+    },
+    {
+      "id": "DG-010",
+      "status": "FIXED_VERIFIED",
+      "problem": "Direct concurrent Ledger.run calls relied on caller ownership, and an abrupt process exit could leave no durable attempt-start record.",
+      "affected_scope": "Research Ledger.run execution, staging/upload retry and summary metadata; existing completed records remain readable.",
+      "evidence": [
+        "ml/src/cottonlens_ml/research/ledger.py",
+        "ml/tests/test_ledger_faults.py",
+        "research/evidence/ledger-fault-controls-20261106.json"
+      ],
+      "remediation": "Serialize direct ledger execution with visible non-stealable ownership; record run_id before computation and after verified staging; correlate caught failures with the run. Unresolved starts are counted separately from completed fits.",
+      "closure": "Actual competing process rejected, hard-exit attempt/partial preserved, explicit verified-owner test recovery starts a distinct run; completed cache is reused and corrupted staging never retrains. This does not close native GPU G3."
+    },
+    {
+      "id": "DG-011",
+      "status": "FIXED_VERIFIED",
+      "problem": "Readiness treated complete ten-quote reports and conditional annual tables as proof of absence for all other contracts. Report completeness is not exchange listing completeness.",
+      "affected_scope": "Main readiness quote lookup and independently constructed verification pool; historical listings themselves remain unverified.",
+      "evidence": [
+        "research/ams_cell_readiness.py",
+        "research/verify_ams_cell_readiness.py",
+        "research/tests/test_ams_cell_readiness.py",
+        "research/evidence/listing-coverage-delivery-20261106.json"
+      ],
+      "remediation": "Only separate verified absence coverage can establish ABSENT; existing report constructors do not supply it. Current primary ICE expiry table has 15contracts but is not backdated to the historical universe.",
+      "closure": "Regression tests reject absence from a full ten-quote report. Zero-fit real-source rerun and independent verifier agree on99,523potential cells,0fully ready origins. Fresh restore reproduces eight outputs byte-identically. Lifecycle/PIT evidence gaps are not closed."
+    },
+    {
+      "id": "DG-012",
+      "status": "FIXED_VERIFIED",
+      "problem": "The independent price verifier checked equal arm cohorts but did not bind every exported origin and target to the frozen split/history.",
+      "affected_scope": "research.verify_naive_mae for fixed price-only median T+1; no actual wrong export was found.",
+      "evidence": [
+        "research/verify_naive_mae.py",
+        "research/tests/test_independent_price_cohort.py",
+        "research/evidence/price-independent-cohort-20261106.json",
+        "research/evidence/price-independent-native-20261106.json",
+        "research/evidence/price-cohort-delivery-20261106.json"
+      ],
+      "remediation": "Validate exact frozen cohort/targets, chronology, year/horizon, finite values, active rates and every annual gain; retain independent Decimal/bootstrap implementation.",
+      "closure": "Both-arm injected defects fail, clean controls pass, original2006-origin exports pass, and fresh native342fit replay has zero difference without training. Scope does not prove vendor availability or other model families."
+    },
+    {
+      "id": "DG-013",
+      "status": "FIXED_VERIFIED",
+      "problem": "Direct TextPreprocessor.fit could learn TF-IDF vocabulary/IDF and SVD without data admission; future-target feature validation occurred only after SVD. No historical leakage occurrence is inferred.",
+      "affected_scope": "Direct text preprocessing and nested fixed Ridge T+5 text adapter; no production artifact schema change.",
+      "evidence": [
+        "ml/src/cottonlens_ml/research/admission.py",
+        "ml/src/cottonlens_ml/research/text_adapter.py",
+        "ml/tests/test_text_admission.py",
+        "ml/tests/test_text_adapter.py",
+        "research/evidence/text-learning-admission-20261107.json",
+        "docs/G2_COVERAGE_20261107.md"
+      ],
+      "remediation": "Require exact dispatched training frame, ordered features and text config before learning; reject future-target features before vocabulary/SVD. Preserve no-fit deserialization and explicitly admitted synthetic controls.",
+      "closure": "Regression failed before fix at vocabulary learning; 11new controls and existing generated text/model admission checks pass. Source truth and full G2 remain separate open requirements."
+    },
+    {
+      "id": "DG-014",
+      "status": "FIXED_VERIFIED",
+      "problem": "Engine tune/outer reused self-hashed records by path without binding current candidates, selected members/weights or actual source frames. No historical occurrence is inferred.",
+      "affected_scope": "Experiment.tune and Experiment.outer, including inherited transfer panel context and nested ensembles.",
+      "evidence": [
+        "research/evidence/decision-cache-oof-20261107.json",
+        "ml/src/cottonlens_ml/research/decision_cache.py",
+        "ml/src/cottonlens_ml/research/engine.py",
+        "ml/src/cottonlens_ml/research/free_rounds.py",
+        "ml/tests/test_decision_cache.py",
+        "ml/tests/test_free_rounds.py"
+      ],
+      "remediation": "Bind exact request, fold, identity and bounded history/panel frames; reject missing/changed bindings before callbacks. Preserve historical read_record/frozen-source inspection and never silently retrain.",
+      "closure": "Generated valid/reuse and injected-fault controls pass in covered entrypoints. Other custom selection/cache paths and full G2 remain open."
+    },
+    {
+      "id": "DG-015",
+      "status": "FIXED_VERIFIED",
+      "problem": "Ensemble weights required common OOF origins but did not require the exact frozen three-by-63 inner cohort or recheck its maturity. No historical occurrence is inferred.",
+      "affected_scope": "free_rounds.ensemble_fold shared OOF cohort before member predictions and weight optimization.",
+      "evidence": [
+        "research/evidence/decision-cache-oof-20261107.json",
+        "ml/src/cottonlens_ml/research/decision_cache.py",
+        "ml/src/cottonlens_ml/research/engine.py",
+        "ml/src/cottonlens_ml/research/free_rounds.py",
+        "ml/tests/test_decision_cache.py",
+        "ml/tests/test_free_rounds.py"
+      ],
+      "remediation": "Validate temporal fold and exact ordered189inner origins for every seed before prediction/optimization; reject outer labels, missing origins and immature labels.",
+      "closure": "Generated valid/reuse and injected-fault controls pass in covered entrypoints. Other custom selection/cache paths and full G2 remain open."
+    },
+    {
+      "id": "DG-016",
+      "status": "FIXED_VERIFIED",
+      "problem": "Adaptive completed decisions and partial journals could be replayed without binding the current actual source/fold/features/budget and Optuna version. No historical leakage occurrence is inferred.",
+      "affected_scope": "adaptive.tune decisions, shared trial journal, per-namespace attempt, exact proposal/result binding and stopped extensions.",
+      "evidence": [
+        "research/evidence/adaptive-ablation-cache-20261107.json",
+        "ml/src/cottonlens_ml/research/decision_cache.py",
+        "ml/src/cottonlens_ml/research/engine.py",
+        "ml/src/cottonlens_ml/research/adaptive.py",
+        "ml/src/cottonlens_ml/research/ablation.py",
+        "ml/src/cottonlens_ml/research/free_rounds.py",
+        "ml/tests/test_adaptive.py",
+        "ml/tests/test_ablation_cache.py",
+        "ml/tests/test_free_rounds.py"
+      ],
+      "remediation": "Revalidate exact context on creation, resume and consumption; reject altered/unbound records without deleting old evidence or automatically retraining.",
+      "closure": "59generated controls pass under pinned Optuna4.5.0, including interrupted/completed invalidation, legitimate extension reuse, rehashed bad trial state, stale prior decisions, aggregate/plan corruption and stopped-extension zero-compute controls. Other custom paths/full G2 remain open."
+    },
+    {
+      "id": "DG-017",
+      "status": "FIXED_VERIFIED",
+      "problem": "Prior-choice/ablation consumers trusted stored selections and aggregate flags without revalidating current data/feature contracts and source decisions. No historical leakage occurrence is inferred.",
+      "affected_scope": "free_rounds.prior_choices/run and adaptive.search_tabular via shared read_selection/read_summary; ablation score/flag consistency.",
+      "evidence": [
+        "research/evidence/adaptive-ablation-cache-20261107.json",
+        "ml/src/cottonlens_ml/research/decision_cache.py",
+        "ml/src/cottonlens_ml/research/engine.py",
+        "ml/src/cottonlens_ml/research/adaptive.py",
+        "ml/src/cottonlens_ml/research/ablation.py",
+        "ml/src/cottonlens_ml/research/free_rounds.py",
+        "ml/tests/test_adaptive.py",
+        "ml/tests/test_ablation_cache.py",
+        "ml/tests/test_free_rounds.py"
+      ],
+      "remediation": "Revalidate exact context on creation, resume and consumption; reject altered/unbound records without deleting old evidence or automatically retraining.",
+      "closure": "59generated controls pass under pinned Optuna4.5.0, including interrupted/completed invalidation, legitimate extension reuse, rehashed bad trial state, stale prior decisions, aggregate/plan corruption and stopped-extension zero-compute controls. Other custom paths/full G2 remain open."
+    },
+    {
+      "id": "DG-018",
+      "status": "FIXED_VERIFIED",
+      "problem": "Legacy refinements ranked global all-fold inner-score averages and used that ranking in earlier folds; later-fold scores could change an earlier decision.",
+      "affected_scope": "research.refinements D/E and direct refinement ensemble; not all historical experiments.",
+      "evidence": [
+        "research/evidence/refinement-causality-release-cache-20261107.json",
+        "ml/src/cottonlens_ml/research/refinements.py",
+        "ml/src/cottonlens_ml/research/free_rounds.py",
+        "ml/src/cottonlens_ml/research/decision_cache.py",
+        "ml/src/cottonlens_ml/research/reproduction.py",
+        "ml/src/cottonlens_ml/research/release.py",
+        "ml/tests/test_refinements.py",
+        "ml/tests/test_reproduction.py",
+        "research/evidence/refinement-causality-release-cache-v2-20261107.json"
+      ],
+      "remediation": "Fold-local verified selection with separately named v2 policy records and retained native leaves; current reproduction/gates required before accepting cached exports. Preserve old records and frozen-source inspection.",
+      "closure": "80generated controls pass, including later-fold perturbation invariance, wrong OOF rejection, policy native replay and stale cached export refusal. No historical occurrence count or market success is inferred; full G2 remains open. Follow-up81-test control additionally verifies nonpositive folds stop both native refinement and ensemble computation."
+    },
+    {
+      "id": "DG-019",
+      "status": "FIXED_VERIFIED",
+      "problem": "Cached release export returned after archive hashing before checking current bound reproduction and paired price gates.",
+      "affected_scope": "research.release.export cache acceptance; native artifact/API schemas unchanged.",
+      "evidence": [
+        "research/evidence/refinement-causality-release-cache-20261107.json",
+        "ml/src/cottonlens_ml/research/refinements.py",
+        "ml/src/cottonlens_ml/research/free_rounds.py",
+        "ml/src/cottonlens_ml/research/decision_cache.py",
+        "ml/src/cottonlens_ml/research/reproduction.py",
+        "ml/src/cottonlens_ml/research/release.py",
+        "ml/tests/test_refinements.py",
+        "ml/tests/test_reproduction.py",
+        "research/evidence/refinement-causality-release-cache-v2-20261107.json"
+      ],
+      "remediation": "Fold-local verified selection with separately named v2 policy records and retained native leaves; current reproduction/gates required before accepting cached exports. Preserve old records and frozen-source inspection.",
+      "closure": "80generated controls pass, including later-fold perturbation invariance, wrong OOF rejection, policy native replay and stale cached export refusal. No historical occurrence count or market success is inferred; full G2 remains open. Follow-up81-test control additionally verifies nonpositive folds stop both native refinement and ensemble computation."
+    },
+    {
+      "id": "DG-020",
+      "status": "FIXED_VERIFIED",
+      "problem": "Legacy search extensions selected families and continuation using all-fold aggregate inner scores, allowing later-fold evidence to change earlier work. No actual historical misuse count is inferred.",
+      "affected_scope": "Non-free-data legacy engine.search A/C extensions; existing per-fold adaptive/free-data search remains separate.",
+      "evidence": [
+        "research/evidence/search-extension-causality-20261107.json",
+        "ml/src/cottonlens_ml/research/extensions.py",
+        "ml/src/cottonlens_ml/research/engine.py",
+        "ml/src/cottonlens_ml/research/refinements.py",
+        "ml/src/cottonlens_ml/research/reproduction.py",
+        "ml/tests/test_extensions.py",
+        "ml/tests/test_reproduction.py"
+      ],
+      "remediation": "Route to verified fold-local paired-horizon ranking, immutable per-fold receipt chains and source/candidate contracts. Keep original two-family64-candidate budget/offsets. Carry cached baseline forecasts for stopped folds without refits; preserve old artifacts in their original namespace.",
+      "closure": "77targeted generated controls and Ruff pass, including A/C future-fold perturbation invariance, plateau stopping, no-refit cache/derived recovery, rehashed receipt rejection, prefix and candidate integrity and native policy receipt replay. Full G1/G2 and historical occurrence audit remain open."
+    },
+    {
+      "id": "DG-021",
+      "status": "FIXED_VERIFIED",
+      "problem": "Per-fit cache identity omitted actual history/validation/test contents; changed inputs reused the same completed fit. This does not establish an actual historical misuse count.",
+      "affected_scope": "Experiment.fit completed/staged routing and exact fit ID; native reproduction ID compatibility/read-only recovery and current research export proof qualification.",
+      "evidence": [
+        "research/evidence/fit-input-cache-20261107.json",
+        "ml/src/cottonlens_ml/research/engine.py",
+        "ml/src/cottonlens_ml/research/reproduction.py",
+        "ml/src/cottonlens_ml/research/full_year.py",
+        "ml/src/cottonlens_ml/research/naive_mae.py",
+        "ml/tests/test_fit_input_cache.py",
+        "ml/tests/test_reproduction.py",
+        "research/evidence/interval-metric-curve-20261107.json"
+      ],
+      "remediation": "Bind every actual input in current fit specs and recheck exact admission before cache use. Preserve old IDs and qualify legacy native proof; refuse automatic missing-evidence retraining.",
+      "closure": "Six regressions failed on37b5ccd;109targeted and59pinned-Optuna adjacent tests pass, plus Ruff. Read-only current verifier preserves2054historical experiment files and342native fits with zero differences/new fits and STOP. Full G1/G2/protocol and archive coverage remain open. Complete CI exposed a learning-curve consumer/fixture migration gap; dual-format read-only lookup and exact generated admission are covered by the follow-up86-test receipt."
+    },
+    {
+      "id": "DG-022",
+      "status": "FIXED_VERIFIED",
+      "problem": "Interval metrics accepted broadcast/mismatched, empty, multidimensional, nonfinite or crossed interval inputs and invalid nominal coverage. No actual historical misuse count is inferred.",
+      "affected_scope": "full_year.interval_metrics domain and independent arithmetic controls; not all calibration input/source paths.",
+      "evidence": [
+        "research/evidence/interval-metric-curve-20261107.json",
+        "ml/src/cottonlens_ml/research/full_year.py",
+        "ml/src/cottonlens_ml/research/review.py",
+        "ml/tests/test_interval_metrics.py",
+        "ml/tests/test_research_review.py"
+      ],
+      "remediation": "Reject invalid numeric cohorts/coverage before scoring; preserve valid independent arithmetic and inclusive-boundary/zero-width semantics.",
+      "closure": "15injected invalid-domain regressions failed before correction;86targeted generated/read-only controls and Ruff pass. Source/PIT, all calibration paths and full G2 remain unproven."
+    }
+  ]
+}

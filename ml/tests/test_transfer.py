@@ -79,7 +79,7 @@ def test_transforms_weights_and_maturity_are_matched_to_cotton_only(experiment):
         transfer.training_state(exp.history,bad,test,spec)
 
 
-def test_existing_model_fit_receives_frozen_weights_and_saves_adapter(experiment,tmp_path,monkeypatch):
+def test_existing_model_fit_receives_frozen_weights_and_saves_adapter(admit_generated_models, experiment,tmp_path,monkeypatch):
     exp,_ = experiment
     spec,train,test = train_test(exp,transfer.GROUPS[1])
     expected = transfer.training_state(exp.history,train,test,spec)
@@ -129,7 +129,7 @@ def test_frozen_design_and_auxiliary_checksum_are_not_silently_replaced(experime
         transfer.TransferExperiment(exp.root)
 
 
-def test_shared_runner_interruption_resume_baselines_and_complete_report(experiment,monkeypatch):
+def test_shared_runner_interruption_resume_baselines_and_complete_report(admit_generated_jobs, experiment,monkeypatch):
     exp,_ = experiment
     computed,pause = [],[True]
 

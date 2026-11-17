@@ -1,0 +1,11 @@
+{
+  "schema": 1,
+  "status": "user_plan_reported_helpdesk_routing",
+  "basis": "User-edited current execution plan",
+  "plan_sha256": "ccad90aa5088ebde82767ac4df7e199f71cb067b46b90fe1f0e1fca62b0d4021",
+  "routing_recipient": "data@ice.com",
+  "assistant_messages_sent": 0,
+  "direct_data_reply_verified": false,
+  "forwarding_sent_independently_verified": false,
+  "source_admission_granted": false
+}

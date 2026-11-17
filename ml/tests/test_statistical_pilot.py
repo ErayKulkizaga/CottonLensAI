@@ -44,7 +44,7 @@ def test_statistical_guard_does_not_extend_local_or_ci_permission(monkeypatch):
     with pytest.raises(RuntimeError,match='CI'): runtime_guard.require_training('arima','cpu')
 
 
-def test_actual_statsmodels_synthetic_forecast_is_causal(synthetic_series,tmp_path,monkeypatch):
+def test_actual_statsmodels_synthetic_forecast_is_causal(admit_generated_backends, synthetic_series,tmp_path,monkeypatch):
     pytest.importorskip('statsmodels')
     monkeypatch.setattr(statistical_models,'require_training',lambda *args:None)
     rows=synthetic_series; train=rows.iloc[:150].copy(); test=rows.iloc[160:166].copy()
@@ -87,7 +87,7 @@ def test_failed_inner_candidate_stays_excluded_and_does_not_retry(tmp_path,monke
     with pytest.raises(ValueError,match='choice'): path_pilot.selected_decision(tmp_path/'changed.json',options)
 
 
-def test_actual_adapter_rejects_nonconvergence_without_writing_model(synthetic_series,tmp_path,monkeypatch):
+def test_actual_adapter_rejects_nonconvergence_without_writing_model(admit_generated_backends, synthetic_series,tmp_path,monkeypatch):
     from statsmodels.tsa.arima import model
     monkeypatch.setattr(statistical_models,'require_training',lambda *args:None)
     class Nonconverged:
@@ -129,7 +129,7 @@ def prepared(tmp_path,monkeypatch):
     return Experiment(root)
 
 
-def test_existing_runner_handles_multiple_candidates_resume_and_no_new_fit(prepared,monkeypatch):
+def test_existing_runner_handles_multiple_candidates_resume_and_no_new_fit(admit_generated_jobs, prepared,monkeypatch):
     exp=prepared; calls=[]; pause=[True]
     def inner(experiment,spec,fold,*,weights):
         if pause[0] and len(calls)==1: raise FitBudgetReached('Synthetic pause')

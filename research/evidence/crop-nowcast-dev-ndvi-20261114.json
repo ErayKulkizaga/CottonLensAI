@@ -1,0 +1,2355 @@
+{
+ "date": "2026-11-14",
+ "scope": "development years 2013-2021 only, rolling origin; sealed 2022-2025 untouched",
+ "data": {
+  "ndvi_tile_years": 65,
+  "tiles": [
+   "h08v05",
+   "h09v05",
+   "h09v06",
+   "h10v05",
+   "h11v05"
+  ],
+  "years": "2009-2021",
+  "counties": 263,
+  "ndvi_rows": 98544,
+  "june_acreage_files": {
+   "acrg0619.txt": {
+    "year": 2019,
+    "sha256": "e6d8e4d4e27888b0f9797c0a081bbbd890dbf65d5730b853b371fd2fb41e9803",
+    "states": 18
+   },
+   "acrg0620.txt": {
+    "year": 2020,
+    "sha256": "9c45397e273c27d73a2c412161604c711a55cb2f4a9c750976af74382a6183ca",
+    "states": 18
+   },
+   "acrg0621.txt": {
+    "year": 2021,
+    "sha256": "8bc59db66fd5c957bc61e6ece93d5247a53337a5e60e283e19355d1265423038",
+    "states": 18
+   },
+   "acrg_2012.txt": {
+    "year": 2012,
+    "sha256": "5c242cbf60ceb544c0135da60c8aa38d2db67375857df0752f74823bd283ceb7",
+    "states": 18
+   },
+   "acrg_2013.txt": {
+    "year": 2013,
+    "sha256": "8e8ef26553aa6c1423b105642fcf21975ee1ecc63f66f45be9074595cca1c761",
+    "states": 18
+   },
+   "acrg_2014.txt": {
+    "year": 2014,
+    "sha256": "0ebd69f055d1caf33bc83508a462bd4996e94fae5e5af88be14b45db1bd68e81",
+    "states": 18
+   },
+   "acrg_2015.txt": {
+    "year": 2015,
+    "sha256": "06140d4559796c6de3857c5a44e46e0c69ce2ba5db1ef47163d747c1c2739a0e",
+    "states": 18
+   },
+   "acrg_2016.txt": {
+    "year": 2016,
+    "sha256": "f99eef70b19315bea7cd03b9874015ffe2b268ee08c06b02794095310cfa5288",
+    "states": 18
+   },
+   "acrg_2017.txt": {
+    "year": 2017,
+    "sha256": "2783cc25ea8defebe7d8229598164d82ab145e9790409d1e0eb4c6e1262855ce",
+    "states": 18
+   },
+   "acrg_2018.txt": {
+    "year": 2018,
+    "sha256": "a1ed6df185a3808dd3995e0bb6860880f1b7a220b3ab50a22cf54e239124aba2",
+    "states": 18
+   }
+  },
+  "june_acreage_source": "https://esmis.nal.usda.gov/publication/acreage"
+ },
+ "variants_tried": {
+  "state_model": 12,
+  "county_up_march_area": 18,
+  "county_up_june_area": 18,
+  "blend_checks": 2,
+  "revision_tests": 2
+ },
+ "headline": {
+  "best_variant": "county NDVI-anomaly HGB, June area (consistently best across cutoffs; chosen after seeing results -> optimistic)",
+  "TX_mape": {
+   "aug1": [
+    18.9,
+    "USDA 14.8",
+    "base 20.8"
+   ],
+   "sep1": [
+    15.1,
+    "USDA 11.2"
+   ],
+   "oct1": [
+    12.7,
+    "USDA 11.0"
+   ]
+  },
+  "US_mape": {
+   "aug1": [
+    9.9,
+    "USDA 7.2"
+   ],
+   "sep1": [
+    7.9,
+    "USDA 6.3"
+   ],
+   "oct1": [
+    7.7,
+    "USDA 6.1"
+   ]
+  }
+ },
+ "gate": {
+  "rule": "Aug-1 TX error approaches USDA 14.8%",
+  "result": "NOT MET (18.9%)",
+  "consequence": "no preregistration, sealed years stay sealed"
+ },
+ "findings": [
+  "NDVI anomaly at county level is the strongest signal (oct1 corr +0.52 with log PPA ratio; TX +0.62), stronger than weather",
+  "state-level fit on raw NDVI levels overfits (17 states x few years) and is worse than base",
+  "March-intentions area adds ~6% mean TX error; June Acreage removes part of the handicap",
+  "oct1 per-acre error 9.8% and abandonment years 2019/2020 captured (+3%/0%) where USDA Aug was +33%/+36%",
+  "blend with USDA does not beat USDA (oct1 10.8 vs 11.0, noise); error corr 0.5-0.8",
+  "revision signal weak: sep1 corr +0.28 with final/USDA_AUG, sign hit 0.57 (0.65 if gap>10%), 9 seasons -> not significant"
+ ],
+ "negative": "satellite+public weather does not beat USDA monthly forecasts in any cutoff on development years",
+ "state_model": {
+  "aug1": {
+   "weather z": {
+    "TX_model_mape": 22.1,
+    "TX_base_mape": 20.99,
+    "TX_usda_mape": 14.75,
+    "US_model_mape": 12.98,
+    "US_base_mape": 13.03,
+    "US_usda_mape": 7.24,
+    "TX_by_year": {
+     "2013": {
+      "model": 28.8,
+      "usda": -1.7
+     },
+     "2014": {
+      "model": -17.5,
+      "usda": 15.0
+     },
+     "2015": {
+      "model": 9.7,
+      "usda": -7.3
+     },
+     "2016": {
+      "model": -41.9,
+      "usda": -22.2
+     },
+     "2017": {
+      "model": -30.0,
+      "usda": -5.1
+     },
+     "2018": {
+      "model": -3.1,
+      "usda": -5.1
+     },
+     "2019": {
+      "model": 12.4,
+      "usda": 32.9
+     },
+     "2020": {
+      "model": 42.2,
+      "usda": 35.7
+     },
+     "2021": {
+      "model": -13.4,
+      "usda": -7.8
+     }
+    }
+   },
+   "weather z+c": {
+    "TX_model_mape": 24.63,
+    "TX_base_mape": 20.99,
+    "TX_usda_mape": 14.75,
+    "US_model_mape": 11.93,
+    "US_base_mape": 13.03,
+    "US_usda_mape": 7.24,
+    "TX_by_year": {
+     "2013": {
+      "model": 34.2,
+      "usda": -1.7
+     },
+     "2014": {
+      "model": -10.5,
+      "usda": 15.0
+     },
+     "2015": {
+      "model": 11.1,
+      "usda": -7.3
+     },
+     "2016": {
+      "model": -46.9,
+      "usda": -22.2
+     },
+     "2017": {
+      "model": -21.2,
+      "usda": -5.1
+     },
+     "2018": {
+      "model": -19.5,
+      "usda": -5.1
+     },
+     "2019": {
+      "model": 25.7,
+      "usda": 32.9
+     },
+     "2020": {
+      "model": 37.5,
+      "usda": 35.7
+     },
+     "2021": {
+      "model": -15.1,
+      "usda": -7.8
+     }
+    }
+   },
+   "ndvi": {
+    "TX_model_mape": 27.53,
+    "TX_base_mape": 20.99,
+    "TX_usda_mape": 14.75,
+    "US_model_mape": 15.24,
+    "US_base_mape": 13.03,
+    "US_usda_mape": 7.24,
+    "TX_by_year": {
+     "2013": {
+      "model": -32.0,
+      "usda": -1.7
+     },
+     "2014": {
+      "model": -41.0,
+      "usda": 15.0
+     },
+     "2015": {
+      "model": -16.4,
+      "usda": -7.3
+     },
+     "2016": {
+      "model": -53.3,
+      "usda": -22.2
+     },
+     "2017": {
+      "model": -39.0,
+      "usda": -5.1
+     },
+     "2018": {
+      "model": -6.3,
+      "usda": -5.1
+     },
+     "2019": {
+      "model": -2.0,
+      "usda": 32.9
+     },
+     "2020": {
+      "model": 30.8,
+      "usda": 35.7
+     },
+     "2021": {
+      "model": -26.9,
+      "usda": -7.8
+     }
+    }
+   },
+   "weather z + ndvi": {
+    "TX_model_mape": 24.1,
+    "TX_base_mape": 20.99,
+    "TX_usda_mape": 14.75,
+    "US_model_mape": 15.24,
+    "US_base_mape": 13.03,
+    "US_usda_mape": 7.24,
+    "TX_by_year": {
+     "2013": {
+      "model": -7.8,
+      "usda": -1.7
+     },
+     "2014": {
+      "model": -36.6,
+      "usda": 15.0
+     },
+     "2015": {
+      "model": -17.1,
+      "usda": -7.3
+     },
+     "2016": {
+      "model": -53.9,
+      "usda": -22.2
+     },
+     "2017": {
+      "model": -38.3,
+      "usda": -5.1
+     },
+     "2018": {
+      "model": -10.8,
+      "usda": -5.1
+     },
+     "2019": {
+      "model": 3.4,
+      "usda": 32.9
+     },
+     "2020": {
+      "model": 29.0,
+      "usda": 35.7
+     },
+     "2021": {
+      "model": -19.9,
+      "usda": -7.8
+     }
+    }
+   }
+  },
+  "sep1": {
+   "weather z": {
+    "TX_model_mape": 17.62,
+    "TX_base_mape": 20.99,
+    "TX_usda_mape": 11.16,
+    "US_model_mape": 13.77,
+    "US_base_mape": 13.03,
+    "US_usda_mape": 6.27,
+    "TX_by_year": {
+     "2013": {
+      "model": 31.6,
+      "usda": -1.7
+     },
+     "2014": {
+      "model": -17.5,
+      "usda": 6.9
+     },
+     "2015": {
+      "model": -1.9,
+      "usda": 0.5
+     },
+     "2016": {
+      "model": -38.5,
+      "usda": -18.5
+     },
+     "2017": {
+      "model": -22.5,
+      "usda": 0.3
+     },
+     "2018": {
+      "model": 0.7,
+      "usda": -5.1
+     },
+     "2019": {
+      "model": 1.8,
+      "usda": 26.6
+     },
+     "2020": {
+      "model": 31.0,
+      "usda": 29.1
+     },
+     "2021": {
+      "model": -13.0,
+      "usda": 11.7
+     }
+    }
+   },
+   "weather z+c": {
+    "TX_model_mape": 16.99,
+    "TX_base_mape": 20.99,
+    "TX_usda_mape": 11.16,
+    "US_model_mape": 12.68,
+    "US_base_mape": 13.03,
+    "US_usda_mape": 6.27,
+    "TX_by_year": {
+     "2013": {
+      "model": 35.3,
+      "usda": -1.7
+     },
+     "2014": {
+      "model": -12.9,
+      "usda": 6.9
+     },
+     "2015": {
+      "model": -4.7,
+      "usda": 0.5
+     },
+     "2016": {
+      "model": -39.3,
+      "usda": -18.5
+     },
+     "2017": {
+      "model": -19.3,
+      "usda": 0.3
+     },
+     "2018": {
+      "model": -3.5,
+      "usda": -5.1
+     },
+     "2019": {
+      "model": -2.4,
+      "usda": 26.6
+     },
+     "2020": {
+      "model": 21.4,
+      "usda": 29.1
+     },
+     "2021": {
+      "model": -14.2,
+      "usda": 11.7
+     }
+    }
+   },
+   "ndvi": {
+    "TX_model_mape": 23.97,
+    "TX_base_mape": 20.99,
+    "TX_usda_mape": 11.16,
+    "US_model_mape": 13.28,
+    "US_base_mape": 13.03,
+    "US_usda_mape": 6.27,
+    "TX_by_year": {
+     "2013": {
+      "model": -15.0,
+      "usda": -1.7
+     },
+     "2014": {
+      "model": -38.5,
+      "usda": 6.9
+     },
+     "2015": {
+      "model": -15.1,
+      "usda": 0.5
+     },
+     "2016": {
+      "model": -52.5,
+      "usda": -18.5
+     },
+     "2017": {
+      "model": -34.7,
+      "usda": 0.3
+     },
+     "2018": {
+      "model": -16.2,
+      "usda": -5.1
+     },
+     "2019": {
+      "model": -4.8,
+      "usda": 26.6
+     },
+     "2020": {
+      "model": 17.5,
+      "usda": 29.1
+     },
+     "2021": {
+      "model": -21.3,
+      "usda": 11.7
+     }
+    }
+   },
+   "weather z + ndvi": {
+    "TX_model_mape": 21.89,
+    "TX_base_mape": 20.99,
+    "TX_usda_mape": 11.16,
+    "US_model_mape": 14.07,
+    "US_base_mape": 13.03,
+    "US_usda_mape": 6.27,
+    "TX_by_year": {
+     "2013": {
+      "model": -3.8,
+      "usda": -1.7
+     },
+     "2014": {
+      "model": -36.8,
+      "usda": 6.9
+     },
+     "2015": {
+      "model": -21.2,
+      "usda": 0.5
+     },
+     "2016": {
+      "model": -51.2,
+      "usda": -18.5
+     },
+     "2017": {
+      "model": -32.1,
+      "usda": 0.3
+     },
+     "2018": {
+      "model": -12.8,
+      "usda": -5.1
+     },
+     "2019": {
+      "model": -4.7,
+      "usda": 26.6
+     },
+     "2020": {
+      "model": 16.5,
+      "usda": 29.1
+     },
+     "2021": {
+      "model": -17.9,
+      "usda": 11.7
+     }
+    }
+   }
+  },
+  "oct1": {
+   "weather z": {
+    "TX_model_mape": 16.06,
+    "TX_base_mape": 20.99,
+    "TX_usda_mape": 11.01,
+    "US_model_mape": 11.84,
+    "US_base_mape": 13.03,
+    "US_usda_mape": 6.1,
+    "TX_by_year": {
+     "2013": {
+      "model": 27.3,
+      "usda": null
+     },
+     "2014": {
+      "model": 7.8,
+      "usda": 1.2
+     },
+     "2015": {
+      "model": -3.5,
+      "usda": -1.2
+     },
+     "2016": {
+      "model": -34.5,
+      "usda": -19.8
+     },
+     "2017": {
+      "model": -23.6,
+      "usda": -2.9
+     },
+     "2018": {
+      "model": 1.7,
+      "usda": -2.2
+     },
+     "2019": {
+      "model": 0.7,
+      "usda": 23.4
+     },
+     "2020": {
+      "model": 32.3,
+      "usda": 33.5
+     },
+     "2021": {
+      "model": -13.3,
+      "usda": 3.9
+     }
+    }
+   },
+   "weather z+c": {
+    "TX_model_mape": 16.63,
+    "TX_base_mape": 20.99,
+    "TX_usda_mape": 11.01,
+    "US_model_mape": 10.79,
+    "US_base_mape": 13.03,
+    "US_usda_mape": 6.1,
+    "TX_by_year": {
+     "2013": {
+      "model": 30.8,
+      "usda": null
+     },
+     "2014": {
+      "model": 7.7,
+      "usda": 1.2
+     },
+     "2015": {
+      "model": -6.7,
+      "usda": -1.2
+     },
+     "2016": {
+      "model": -44.8,
+      "usda": -19.8
+     },
+     "2017": {
+      "model": -9.7,
+      "usda": -2.9
+     },
+     "2018": {
+      "model": -4.7,
+      "usda": -2.2
+     },
+     "2019": {
+      "model": -2.6,
+      "usda": 23.4
+     },
+     "2020": {
+      "model": 27.2,
+      "usda": 33.5
+     },
+     "2021": {
+      "model": -15.6,
+      "usda": 3.9
+     }
+    }
+   },
+   "ndvi": {
+    "TX_model_mape": 22.56,
+    "TX_base_mape": 20.99,
+    "TX_usda_mape": 11.01,
+    "US_model_mape": 12.62,
+    "US_base_mape": 13.03,
+    "US_usda_mape": 6.1,
+    "TX_by_year": {
+     "2013": {
+      "model": -14.3,
+      "usda": null
+     },
+     "2014": {
+      "model": -39.7,
+      "usda": 1.2
+     },
+     "2015": {
+      "model": -17.3,
+      "usda": -1.2
+     },
+     "2016": {
+      "model": -50.6,
+      "usda": -19.8
+     },
+     "2017": {
+      "model": -31.4,
+      "usda": -2.9
+     },
+     "2018": {
+      "model": -15.5,
+      "usda": -2.2
+     },
+     "2019": {
+      "model": -6.9,
+      "usda": 23.4
+     },
+     "2020": {
+      "model": 9.9,
+      "usda": 33.5
+     },
+     "2021": {
+      "model": -17.4,
+      "usda": 3.9
+     }
+    }
+   },
+   "weather z + ndvi": {
+    "TX_model_mape": 20.18,
+    "TX_base_mape": 20.99,
+    "TX_usda_mape": 11.01,
+    "US_model_mape": 13.2,
+    "US_base_mape": 13.03,
+    "US_usda_mape": 6.1,
+    "TX_by_year": {
+     "2013": {
+      "model": -2.7,
+      "usda": null
+     },
+     "2014": {
+      "model": -28.7,
+      "usda": 1.2
+     },
+     "2015": {
+      "model": -23.7,
+      "usda": -1.2
+     },
+     "2016": {
+      "model": -49.4,
+      "usda": -19.8
+     },
+     "2017": {
+      "model": -30.6,
+      "usda": -2.9
+     },
+     "2018": {
+      "model": -9.6,
+      "usda": -2.2
+     },
+     "2019": {
+      "model": -8.0,
+      "usda": 23.4
+     },
+     "2020": {
+      "model": 13.6,
+      "usda": 33.5
+     },
+     "2021": {
+      "model": -15.3,
+      "usda": 3.9
+     }
+    }
+   }
+  }
+ },
+ "county_up_march": {
+  "aug1": {
+   "weather z/ridge": {
+    "TX_model_mape": 25.42,
+    "TX_base_mape": 20.99,
+    "TX_usda_mape": 14.75,
+    "US_model_mape": 16.65,
+    "US_base_mape": 13.03,
+    "US_usda_mape": 7.24,
+    "TX_by_year": {
+     "2013": {
+      "model": 14.9,
+      "usda": -1.7
+     },
+     "2014": {
+      "model": -26.6,
+      "usda": 15.0
+     },
+     "2015": {
+      "model": 28.9,
+      "usda": -7.3
+     },
+     "2016": {
+      "model": -36.9,
+      "usda": -22.2
+     },
+     "2017": {
+      "model": -18.7,
+      "usda": -5.1
+     },
+     "2018": {
+      "model": 11.5,
+      "usda": -5.1
+     },
+     "2019": {
+      "model": 18.5,
+      "usda": 32.9
+     },
+     "2020": {
+      "model": 53.7,
+      "usda": 35.7
+     },
+     "2021": {
+      "model": -19.1,
+      "usda": -7.8
+     }
+    }
+   },
+   "weather z/hgb": {
+    "TX_model_mape": 25.54,
+    "TX_base_mape": 20.99,
+    "TX_usda_mape": 14.75,
+    "US_model_mape": 15.27,
+    "US_base_mape": 13.03,
+    "US_usda_mape": 7.24,
+    "TX_by_year": {
+     "2013": {
+      "model": 53.1,
+      "usda": -1.7
+     },
+     "2014": {
+      "model": -8.1,
+      "usda": 15.0
+     },
+     "2015": {
+      "model": 2.9,
+      "usda": -7.3
+     },
+     "2016": {
+      "model": -45.1,
+      "usda": -22.2
+     },
+     "2017": {
+      "model": -19.5,
+      "usda": -5.1
+     },
+     "2018": {
+      "model": 2.5,
+      "usda": -5.1
+     },
+     "2019": {
+      "model": 24.3,
+      "usda": 32.9
+     },
+     "2020": {
+      "model": 52.6,
+      "usda": 35.7
+     },
+     "2021": {
+      "model": -21.9,
+      "usda": -7.8
+     }
+    }
+   },
+   "ndvi anom/ridge": {
+    "TX_model_mape": 23.86,
+    "TX_base_mape": 20.99,
+    "TX_usda_mape": 14.75,
+    "US_model_mape": 13.17,
+    "US_base_mape": 13.03,
+    "US_usda_mape": 7.24,
+    "TX_by_year": {
+     "2013": {
+      "model": -11.2,
+      "usda": -1.7
+     },
+     "2014": {
+      "model": -24.2,
+      "usda": 15.0
+     },
+     "2015": {
+      "model": 13.7,
+      "usda": -7.3
+     },
+     "2016": {
+      "model": -43.8,
+      "usda": -22.2
+     },
+     "2017": {
+      "model": -33.6,
+      "usda": -5.1
+     },
+     "2018": {
+      "model": -4.7,
+      "usda": -5.1
+     },
+     "2019": {
+      "model": 14.3,
+      "usda": 32.9
+     },
+     "2020": {
+      "model": 55.8,
+      "usda": 35.7
+     },
+     "2021": {
+      "model": -13.5,
+      "usda": -7.8
+     }
+    }
+   },
+   "ndvi anom/hgb": {
+    "TX_model_mape": 19.8,
+    "TX_base_mape": 20.99,
+    "TX_usda_mape": 14.75,
+    "US_model_mape": 11.18,
+    "US_base_mape": 13.03,
+    "US_usda_mape": 7.24,
+    "TX_by_year": {
+     "2013": {
+      "model": -9.9,
+      "usda": -1.7
+     },
+     "2014": {
+      "model": -21.5,
+      "usda": 15.0
+     },
+     "2015": {
+      "model": -0.4,
+      "usda": -7.3
+     },
+     "2016": {
+      "model": -46.0,
+      "usda": -22.2
+     },
+     "2017": {
+      "model": -27.7,
+      "usda": -5.1
+     },
+     "2018": {
+      "model": -0.4,
+      "usda": -5.1
+     },
+     "2019": {
+      "model": 16.3,
+      "usda": 32.9
+     },
+     "2020": {
+      "model": 41.9,
+      "usda": 35.7
+     },
+     "2021": {
+      "model": -14.2,
+      "usda": -7.8
+     }
+    }
+   },
+   "weather z + ndvi anom/ridge": {
+    "TX_model_mape": 25.22,
+    "TX_base_mape": 20.99,
+    "TX_usda_mape": 14.75,
+    "US_model_mape": 15.36,
+    "US_base_mape": 13.03,
+    "US_usda_mape": 7.24,
+    "TX_by_year": {
+     "2013": {
+      "model": 0.8,
+      "usda": -1.7
+     },
+     "2014": {
+      "model": -26.3,
+      "usda": 15.0
+     },
+     "2015": {
+      "model": 31.8,
+      "usda": -7.3
+     },
+     "2016": {
+      "model": -40.6,
+      "usda": -22.2
+     },
+     "2017": {
+      "model": -25.2,
+      "usda": -5.1
+     },
+     "2018": {
+      "model": 0.8,
+      "usda": -5.1
+     },
+     "2019": {
+      "model": 22.9,
+      "usda": 32.9
+     },
+     "2020": {
+      "model": 62.4,
+      "usda": 35.7
+     },
+     "2021": {
+      "model": -16.1,
+      "usda": -7.8
+     }
+    }
+   },
+   "weather z + ndvi anom/hgb": {
+    "TX_model_mape": 21.44,
+    "TX_base_mape": 20.99,
+    "TX_usda_mape": 14.75,
+    "US_model_mape": 12.3,
+    "US_base_mape": 13.03,
+    "US_usda_mape": 7.24,
+    "TX_by_year": {
+     "2013": {
+      "model": 11.4,
+      "usda": -1.7
+     },
+     "2014": {
+      "model": -2.2,
+      "usda": 15.0
+     },
+     "2015": {
+      "model": -5.3,
+      "usda": -7.3
+     },
+     "2016": {
+      "model": -45.0,
+      "usda": -22.2
+     },
+     "2017": {
+      "model": -26.3,
+      "usda": -5.1
+     },
+     "2018": {
+      "model": -2.9,
+      "usda": -5.1
+     },
+     "2019": {
+      "model": 29.6,
+      "usda": 32.9
+     },
+     "2020": {
+      "model": 55.1,
+      "usda": 35.7
+     },
+     "2021": {
+      "model": -15.2,
+      "usda": -7.8
+     }
+    }
+   }
+  },
+  "sep1": {
+   "weather z/ridge": {
+    "TX_model_mape": 22.24,
+    "TX_base_mape": 20.99,
+    "TX_usda_mape": 11.16,
+    "US_model_mape": 15.26,
+    "US_base_mape": 13.03,
+    "US_usda_mape": 6.27,
+    "TX_by_year": {
+     "2013": {
+      "model": 27.8,
+      "usda": -1.7
+     },
+     "2014": {
+      "model": -17.3,
+      "usda": 6.9
+     },
+     "2015": {
+      "model": 21.0,
+      "usda": 0.5
+     },
+     "2016": {
+      "model": -40.2,
+      "usda": -18.5
+     },
+     "2017": {
+      "model": -13.2,
+      "usda": 0.3
+     },
+     "2018": {
+      "model": 16.3,
+      "usda": -5.1
+     },
+     "2019": {
+      "model": 7.1,
+      "usda": 26.6
+     },
+     "2020": {
+      "model": 42.7,
+      "usda": 29.1
+     },
+     "2021": {
+      "model": -14.4,
+      "usda": 11.7
+     }
+    }
+   },
+   "weather z/hgb": {
+    "TX_model_mape": 24.55,
+    "TX_base_mape": 20.99,
+    "TX_usda_mape": 11.16,
+    "US_model_mape": 13.34,
+    "US_base_mape": 13.03,
+    "US_usda_mape": 6.27,
+    "TX_by_year": {
+     "2013": {
+      "model": 48.8,
+      "usda": -1.7
+     },
+     "2014": {
+      "model": -15.8,
+      "usda": 6.9
+     },
+     "2015": {
+      "model": 0.7,
+      "usda": 0.5
+     },
+     "2016": {
+      "model": -43.3,
+      "usda": -18.5
+     },
+     "2017": {
+      "model": -18.6,
+      "usda": 0.3
+     },
+     "2018": {
+      "model": 3.6,
+      "usda": -5.1
+     },
+     "2019": {
+      "model": 14.5,
+      "usda": 26.6
+     },
+     "2020": {
+      "model": 58.7,
+      "usda": 29.1
+     },
+     "2021": {
+      "model": -16.8,
+      "usda": 11.7
+     }
+    }
+   },
+   "ndvi anom/ridge": {
+    "TX_model_mape": 18.6,
+    "TX_base_mape": 20.99,
+    "TX_usda_mape": 11.16,
+    "US_model_mape": 11.97,
+    "US_base_mape": 13.03,
+    "US_usda_mape": 6.27,
+    "TX_by_year": {
+     "2013": {
+      "model": 24.7,
+      "usda": -1.7
+     },
+     "2014": {
+      "model": -16.8,
+      "usda": 6.9
+     },
+     "2015": {
+      "model": 20.6,
+      "usda": 0.5
+     },
+     "2016": {
+      "model": -40.8,
+      "usda": -18.5
+     },
+     "2017": {
+      "model": -12.3,
+      "usda": 0.3
+     },
+     "2018": {
+      "model": -12.8,
+      "usda": -5.1
+     },
+     "2019": {
+      "model": 6.1,
+      "usda": 26.6
+     },
+     "2020": {
+      "model": 33.3,
+      "usda": 29.1
+     },
+     "2021": {
+      "model": -0.2,
+      "usda": 11.7
+     }
+    }
+   },
+   "ndvi anom/hgb": {
+    "TX_model_mape": 17.64,
+    "TX_base_mape": 20.99,
+    "TX_usda_mape": 11.16,
+    "US_model_mape": 10.61,
+    "US_base_mape": 13.03,
+    "US_usda_mape": 6.27,
+    "TX_by_year": {
+     "2013": {
+      "model": 11.4,
+      "usda": -1.7
+     },
+     "2014": {
+      "model": -10.8,
+      "usda": 6.9
+     },
+     "2015": {
+      "model": 15.6,
+      "usda": 0.5
+     },
+     "2016": {
+      "model": -41.4,
+      "usda": -18.5
+     },
+     "2017": {
+      "model": -28.1,
+      "usda": 0.3
+     },
+     "2018": {
+      "model": -13.6,
+      "usda": -5.1
+     },
+     "2019": {
+      "model": 15.3,
+      "usda": 26.6
+     },
+     "2020": {
+      "model": 20.3,
+      "usda": 29.1
+     },
+     "2021": {
+      "model": 2.4,
+      "usda": 11.7
+     }
+    }
+   },
+   "weather z + ndvi anom/ridge": {
+    "TX_model_mape": 19.12,
+    "TX_base_mape": 20.99,
+    "TX_usda_mape": 11.16,
+    "US_model_mape": 12.47,
+    "US_base_mape": 13.03,
+    "US_usda_mape": 6.27,
+    "TX_by_year": {
+     "2013": {
+      "model": 39.4,
+      "usda": -1.7
+     },
+     "2014": {
+      "model": -16.8,
+      "usda": 6.9
+     },
+     "2015": {
+      "model": 17.6,
+      "usda": 0.5
+     },
+     "2016": {
+      "model": -45.8,
+      "usda": -18.5
+     },
+     "2017": {
+      "model": -5.5,
+      "usda": 0.3
+     },
+     "2018": {
+      "model": -6.5,
+      "usda": -5.1
+     },
+     "2019": {
+      "model": 1.1,
+      "usda": 26.6
+     },
+     "2020": {
+      "model": 37.4,
+      "usda": 29.1
+     },
+     "2021": {
+      "model": -1.8,
+      "usda": 11.7
+     }
+    }
+   },
+   "weather z + ndvi anom/hgb": {
+    "TX_model_mape": 18.88,
+    "TX_base_mape": 20.99,
+    "TX_usda_mape": 11.16,
+    "US_model_mape": 11.09,
+    "US_base_mape": 13.03,
+    "US_usda_mape": 6.27,
+    "TX_by_year": {
+     "2013": {
+      "model": 32.6,
+      "usda": -1.7
+     },
+     "2014": {
+      "model": -8.2,
+      "usda": 6.9
+     },
+     "2015": {
+      "model": 14.6,
+      "usda": 0.5
+     },
+     "2016": {
+      "model": -40.4,
+      "usda": -18.5
+     },
+     "2017": {
+      "model": -20.5,
+      "usda": 0.3
+     },
+     "2018": {
+      "model": -7.4,
+      "usda": -5.1
+     },
+     "2019": {
+      "model": 10.1,
+      "usda": 26.6
+     },
+     "2020": {
+      "model": 30.6,
+      "usda": 29.1
+     },
+     "2021": {
+      "model": -5.6,
+      "usda": 11.7
+     }
+    }
+   }
+  },
+  "oct1": {
+   "weather z/ridge": {
+    "TX_model_mape": 18.77,
+    "TX_base_mape": 20.99,
+    "TX_usda_mape": 11.01,
+    "US_model_mape": 13.79,
+    "US_base_mape": 13.03,
+    "US_usda_mape": 6.1,
+    "TX_by_year": {
+     "2013": {
+      "model": 31.0,
+      "usda": null
+     },
+     "2014": {
+      "model": 3.4,
+      "usda": 1.2
+     },
+     "2015": {
+      "model": 11.0,
+      "usda": -1.2
+     },
+     "2016": {
+      "model": -39.7,
+      "usda": -19.8
+     },
+     "2017": {
+      "model": -8.7,
+      "usda": -2.9
+     },
+     "2018": {
+      "model": 15.1,
+      "usda": -2.2
+     },
+     "2019": {
+      "model": 0.8,
+      "usda": 23.4
+     },
+     "2020": {
+      "model": 49.5,
+      "usda": 33.5
+     },
+     "2021": {
+      "model": -9.8,
+      "usda": 3.9
+     }
+    }
+   },
+   "weather z/hgb": {
+    "TX_model_mape": 26.76,
+    "TX_base_mape": 20.99,
+    "TX_usda_mape": 11.01,
+    "US_model_mape": 13.56,
+    "US_base_mape": 13.03,
+    "US_usda_mape": 6.1,
+    "TX_by_year": {
+     "2013": {
+      "model": 71.5,
+      "usda": null
+     },
+     "2014": {
+      "model": 7.5,
+      "usda": 1.2
+     },
+     "2015": {
+      "model": -2.1,
+      "usda": -1.2
+     },
+     "2016": {
+      "model": -44.1,
+      "usda": -19.8
+     },
+     "2017": {
+      "model": -22.0,
+      "usda": -2.9
+     },
+     "2018": {
+      "model": -11.2,
+      "usda": -2.2
+     },
+     "2019": {
+      "model": -4.6,
+      "usda": 23.4
+     },
+     "2020": {
+      "model": 65.0,
+      "usda": 33.5
+     },
+     "2021": {
+      "model": -12.8,
+      "usda": 3.9
+     }
+    }
+   },
+   "ndvi anom/ridge": {
+    "TX_model_mape": 16.32,
+    "TX_base_mape": 20.99,
+    "TX_usda_mape": 11.01,
+    "US_model_mape": 11.12,
+    "US_base_mape": 13.03,
+    "US_usda_mape": 6.1,
+    "TX_by_year": {
+     "2013": {
+      "model": 35.4,
+      "usda": null
+     },
+     "2014": {
+      "model": -16.4,
+      "usda": 1.2
+     },
+     "2015": {
+      "model": 19.3,
+      "usda": -1.2
+     },
+     "2016": {
+      "model": -26.6,
+      "usda": -19.8
+     },
+     "2017": {
+      "model": -8.5,
+      "usda": -2.9
+     },
+     "2018": {
+      "model": -6.6,
+      "usda": -2.2
+     },
+     "2019": {
+      "model": 5.6,
+      "usda": 23.4
+     },
+     "2020": {
+      "model": 23.3,
+      "usda": 33.5
+     },
+     "2021": {
+      "model": 5.2,
+      "usda": 3.9
+     }
+    }
+   },
+   "ndvi anom/hgb": {
+    "TX_model_mape": 14.41,
+    "TX_base_mape": 20.99,
+    "TX_usda_mape": 11.01,
+    "US_model_mape": 10.18,
+    "US_base_mape": 13.03,
+    "US_usda_mape": 6.1,
+    "TX_by_year": {
+     "2013": {
+      "model": 15.8,
+      "usda": null
+     },
+     "2014": {
+      "model": -15.0,
+      "usda": 1.2
+     },
+     "2015": {
+      "model": 29.8,
+      "usda": -1.2
+     },
+     "2016": {
+      "model": -32.7,
+      "usda": -19.8
+     },
+     "2017": {
+      "model": -9.3,
+      "usda": -2.9
+     },
+     "2018": {
+      "model": -6.5,
+      "usda": -2.2
+     },
+     "2019": {
+      "model": 6.8,
+      "usda": 23.4
+     },
+     "2020": {
+      "model": 7.3,
+      "usda": 33.5
+     },
+     "2021": {
+      "model": 6.5,
+      "usda": 3.9
+     }
+    }
+   },
+   "weather z + ndvi anom/ridge": {
+    "TX_model_mape": 19.45,
+    "TX_base_mape": 20.99,
+    "TX_usda_mape": 11.01,
+    "US_model_mape": 13.41,
+    "US_base_mape": 13.03,
+    "US_usda_mape": 6.1,
+    "TX_by_year": {
+     "2013": {
+      "model": 48.3,
+      "usda": null
+     },
+     "2014": {
+      "model": -22.4,
+      "usda": 1.2
+     },
+     "2015": {
+      "model": 15.2,
+      "usda": -1.2
+     },
+     "2016": {
+      "model": -37.9,
+      "usda": -19.8
+     },
+     "2017": {
+      "model": -1.2,
+      "usda": -2.9
+     },
+     "2018": {
+      "model": -6.2,
+      "usda": -2.2
+     },
+     "2019": {
+      "model": -3.0,
+      "usda": 23.4
+     },
+     "2020": {
+      "model": 32.3,
+      "usda": 33.5
+     },
+     "2021": {
+      "model": 8.7,
+      "usda": 3.9
+     }
+    }
+   },
+   "weather z + ndvi anom/hgb": {
+    "TX_model_mape": 16.26,
+    "TX_base_mape": 20.99,
+    "TX_usda_mape": 11.01,
+    "US_model_mape": 11.28,
+    "US_base_mape": 13.03,
+    "US_usda_mape": 6.1,
+    "TX_by_year": {
+     "2013": {
+      "model": 45.3,
+      "usda": null
+     },
+     "2014": {
+      "model": -5.9,
+      "usda": 1.2
+     },
+     "2015": {
+      "model": 8.2,
+      "usda": -1.2
+     },
+     "2016": {
+      "model": -38.8,
+      "usda": -19.8
+     },
+     "2017": {
+      "model": -17.9,
+      "usda": -2.9
+     },
+     "2018": {
+      "model": -10.1,
+      "usda": -2.2
+     },
+     "2019": {
+      "model": 1.7,
+      "usda": 23.4
+     },
+     "2020": {
+      "model": 18.1,
+      "usda": 33.5
+     },
+     "2021": {
+      "model": 0.3,
+      "usda": 3.9
+     }
+    }
+   }
+  }
+ },
+ "county_up_june": {
+  "aug1": {
+   "weather z/ridge": {
+    "TX_model_mape": 23.09,
+    "TX_base_mape": 20.83,
+    "TX_usda_mape": 14.75,
+    "US_model_mape": 14.01,
+    "US_base_mape": 11.9,
+    "US_usda_mape": 7.24,
+    "TX_by_year": {
+     "2013": {
+      "model": 19.1,
+      "usda": -1.7
+     },
+     "2014": {
+      "model": -26.1,
+      "usda": 15.0
+     },
+     "2015": {
+      "model": 17.6,
+      "usda": -7.3
+     },
+     "2016": {
+      "model": -34.6,
+      "usda": -22.2
+     },
+     "2017": {
+      "model": -22.2,
+      "usda": -5.1
+     },
+     "2018": {
+      "model": 13.0,
+      "usda": -5.1
+     },
+     "2019": {
+      "model": 16.0,
+      "usda": 32.9
+     },
+     "2020": {
+      "model": 39.0,
+      "usda": 35.7
+     },
+     "2021": {
+      "model": -20.3,
+      "usda": -7.8
+     }
+    }
+   },
+   "weather z/hgb": {
+    "TX_model_mape": 24.97,
+    "TX_base_mape": 20.83,
+    "TX_usda_mape": 14.75,
+    "US_model_mape": 14.12,
+    "US_base_mape": 11.9,
+    "US_usda_mape": 7.24,
+    "TX_by_year": {
+     "2013": {
+      "model": 58.6,
+      "usda": -1.7
+     },
+     "2014": {
+      "model": -7.4,
+      "usda": 15.0
+     },
+     "2015": {
+      "model": -6.1,
+      "usda": -7.3
+     },
+     "2016": {
+      "model": -43.0,
+      "usda": -22.2
+     },
+     "2017": {
+      "model": -23.0,
+      "usda": -5.1
+     },
+     "2018": {
+      "model": 3.9,
+      "usda": -5.1
+     },
+     "2019": {
+      "model": 21.8,
+      "usda": 32.9
+     },
+     "2020": {
+      "model": 37.9,
+      "usda": 35.7
+     },
+     "2021": {
+      "model": -23.0,
+      "usda": -7.8
+     }
+    }
+   },
+   "ndvi anom/ridge": {
+    "TX_model_mape": 20.48,
+    "TX_base_mape": 20.83,
+    "TX_usda_mape": 14.75,
+    "US_model_mape": 10.88,
+    "US_base_mape": 11.9,
+    "US_usda_mape": 7.24,
+    "TX_by_year": {
+     "2013": {
+      "model": -8.0,
+      "usda": -1.7
+     },
+     "2014": {
+      "model": -23.6,
+      "usda": 15.0
+     },
+     "2015": {
+      "model": 3.7,
+      "usda": -7.3
+     },
+     "2016": {
+      "model": -41.7,
+      "usda": -22.2
+     },
+     "2017": {
+      "model": -36.5,
+      "usda": -5.1
+     },
+     "2018": {
+      "model": -3.4,
+      "usda": -5.1
+     },
+     "2019": {
+      "model": 11.9,
+      "usda": 32.9
+     },
+     "2020": {
+      "model": 40.9,
+      "usda": 35.7
+     },
+     "2021": {
+      "model": -14.7,
+      "usda": -7.8
+     }
+    }
+   },
+   "ndvi anom/hgb": {
+    "TX_model_mape": 18.89,
+    "TX_base_mape": 20.83,
+    "TX_usda_mape": 14.75,
+    "US_model_mape": 9.85,
+    "US_base_mape": 11.9,
+    "US_usda_mape": 7.24,
+    "TX_by_year": {
+     "2013": {
+      "model": -6.6,
+      "usda": -1.7
+     },
+     "2014": {
+      "model": -20.9,
+      "usda": 15.0
+     },
+     "2015": {
+      "model": -9.1,
+      "usda": -7.3
+     },
+     "2016": {
+      "model": -43.9,
+      "usda": -22.2
+     },
+     "2017": {
+      "model": -30.8,
+      "usda": -5.1
+     },
+     "2018": {
+      "model": 1.0,
+      "usda": -5.1
+     },
+     "2019": {
+      "model": 13.9,
+      "usda": 32.9
+     },
+     "2020": {
+      "model": 28.3,
+      "usda": 35.7
+     },
+     "2021": {
+      "model": -15.4,
+      "usda": -7.8
+     }
+    }
+   },
+   "weather z + ndvi anom/ridge": {
+    "TX_model_mape": 22.67,
+    "TX_base_mape": 20.83,
+    "TX_usda_mape": 14.75,
+    "US_model_mape": 12.71,
+    "US_base_mape": 11.9,
+    "US_usda_mape": 7.24,
+    "TX_by_year": {
+     "2013": {
+      "model": 4.4,
+      "usda": -1.7
+     },
+     "2014": {
+      "model": -25.8,
+      "usda": 15.0
+     },
+     "2015": {
+      "model": 20.2,
+      "usda": -7.3
+     },
+     "2016": {
+      "model": -38.4,
+      "usda": -22.2
+     },
+     "2017": {
+      "model": -28.5,
+      "usda": -5.1
+     },
+     "2018": {
+      "model": 2.2,
+      "usda": -5.1
+     },
+     "2019": {
+      "model": 20.4,
+      "usda": 32.9
+     },
+     "2020": {
+      "model": 46.8,
+      "usda": 35.7
+     },
+     "2021": {
+      "model": -17.3,
+      "usda": -7.8
+     }
+    }
+   },
+   "weather z + ndvi anom/hgb": {
+    "TX_model_mape": 20.89,
+    "TX_base_mape": 20.83,
+    "TX_usda_mape": 14.75,
+    "US_model_mape": 11.11,
+    "US_base_mape": 11.9,
+    "US_usda_mape": 7.24,
+    "TX_by_year": {
+     "2013": {
+      "model": 15.4,
+      "usda": -1.7
+     },
+     "2014": {
+      "model": -1.4,
+      "usda": 15.0
+     },
+     "2015": {
+      "model": -13.6,
+      "usda": -7.3
+     },
+     "2016": {
+      "model": -42.9,
+      "usda": -22.2
+     },
+     "2017": {
+      "model": -29.5,
+      "usda": -5.1
+     },
+     "2018": {
+      "model": -1.5,
+      "usda": -5.1
+     },
+     "2019": {
+      "model": 26.9,
+      "usda": 32.9
+     },
+     "2020": {
+      "model": 40.2,
+      "usda": 35.7
+     },
+     "2021": {
+      "model": -16.4,
+      "usda": -7.8
+     }
+    }
+   }
+  },
+  "sep1": {
+   "weather z/ridge": {
+    "TX_model_mape": 20.22,
+    "TX_base_mape": 20.83,
+    "TX_usda_mape": 11.16,
+    "US_model_mape": 12.87,
+    "US_base_mape": 11.9,
+    "US_usda_mape": 6.27,
+    "TX_by_year": {
+     "2013": {
+      "model": 32.5,
+      "usda": -1.7
+     },
+     "2014": {
+      "model": -16.7,
+      "usda": 6.9
+     },
+     "2015": {
+      "model": 10.4,
+      "usda": 0.5
+     },
+     "2016": {
+      "model": -37.9,
+      "usda": -18.5
+     },
+     "2017": {
+      "model": -17.0,
+      "usda": 0.3
+     },
+     "2018": {
+      "model": 17.9,
+      "usda": -5.1
+     },
+     "2019": {
+      "model": 4.9,
+      "usda": 26.6
+     },
+     "2020": {
+      "model": 29.0,
+      "usda": 29.1
+     },
+     "2021": {
+      "model": -15.7,
+      "usda": 11.7
+     }
+    }
+   },
+   "weather z/hgb": {
+    "TX_model_mape": 24.41,
+    "TX_base_mape": 20.83,
+    "TX_usda_mape": 11.16,
+    "US_model_mape": 12.0,
+    "US_base_mape": 11.9,
+    "US_usda_mape": 6.27,
+    "TX_by_year": {
+     "2013": {
+      "model": 54.2,
+      "usda": -1.7
+     },
+     "2014": {
+      "model": -15.2,
+      "usda": 6.9
+     },
+     "2015": {
+      "model": -8.2,
+      "usda": 0.5
+     },
+     "2016": {
+      "model": -41.2,
+      "usda": -18.5
+     },
+     "2017": {
+      "model": -22.2,
+      "usda": 0.3
+     },
+     "2018": {
+      "model": 5.1,
+      "usda": -5.1
+     },
+     "2019": {
+      "model": 12.1,
+      "usda": 26.6
+     },
+     "2020": {
+      "model": 43.5,
+      "usda": 29.1
+     },
+     "2021": {
+      "model": -18.0,
+      "usda": 11.7
+     }
+    }
+   },
+   "ndvi anom/ridge": {
+    "TX_model_mape": 16.4,
+    "TX_base_mape": 20.83,
+    "TX_usda_mape": 11.16,
+    "US_model_mape": 9.2,
+    "US_base_mape": 11.9,
+    "US_usda_mape": 6.27,
+    "TX_by_year": {
+     "2013": {
+      "model": 29.3,
+      "usda": -1.7
+     },
+     "2014": {
+      "model": -16.1,
+      "usda": 6.9
+     },
+     "2015": {
+      "model": 10.0,
+      "usda": 0.5
+     },
+     "2016": {
+      "model": -38.6,
+      "usda": -18.5
+     },
+     "2017": {
+      "model": -16.1,
+      "usda": 0.3
+     },
+     "2018": {
+      "model": -11.6,
+      "usda": -5.1
+     },
+     "2019": {
+      "model": 3.9,
+      "usda": 26.6
+     },
+     "2020": {
+      "model": 20.5,
+      "usda": 29.1
+     },
+     "2021": {
+      "model": -1.6,
+      "usda": 11.7
+     }
+    }
+   },
+   "ndvi anom/hgb": {
+    "TX_model_mape": 15.14,
+    "TX_base_mape": 20.83,
+    "TX_usda_mape": 11.16,
+    "US_model_mape": 7.87,
+    "US_base_mape": 11.9,
+    "US_usda_mape": 6.27,
+    "TX_by_year": {
+     "2013": {
+      "model": 15.4,
+      "usda": -1.7
+     },
+     "2014": {
+      "model": -10.1,
+      "usda": 6.9
+     },
+     "2015": {
+      "model": 5.5,
+      "usda": 0.5
+     },
+     "2016": {
+      "model": -39.2,
+      "usda": -18.5
+     },
+     "2017": {
+      "model": -31.2,
+      "usda": 0.3
+     },
+     "2018": {
+      "model": -12.4,
+      "usda": -5.1
+     },
+     "2019": {
+      "model": 13.0,
+      "usda": 26.6
+     },
+     "2020": {
+      "model": 8.7,
+      "usda": 29.1
+     },
+     "2021": {
+      "model": 0.9,
+      "usda": 11.7
+     }
+    }
+   },
+   "weather z + ndvi anom/ridge": {
+    "TX_model_mape": 17.22,
+    "TX_base_mape": 20.83,
+    "TX_usda_mape": 11.16,
+    "US_model_mape": 9.64,
+    "US_base_mape": 11.9,
+    "US_usda_mape": 6.27,
+    "TX_by_year": {
+     "2013": {
+      "model": 44.4,
+      "usda": -1.7
+     },
+     "2014": {
+      "model": -16.1,
+      "usda": 6.9
+     },
+     "2015": {
+      "model": 7.3,
+      "usda": 0.5
+     },
+     "2016": {
+      "model": -43.7,
+      "usda": -18.5
+     },
+     "2017": {
+      "model": -9.7,
+      "usda": 0.3
+     },
+     "2018": {
+      "model": -5.2,
+      "usda": -5.1
+     },
+     "2019": {
+      "model": -0.9,
+      "usda": 26.6
+     },
+     "2020": {
+      "model": 24.3,
+      "usda": 29.1
+     },
+     "2021": {
+      "model": -3.3,
+      "usda": 11.7
+     }
+    }
+   },
+   "weather z + ndvi anom/hgb": {
+    "TX_model_mape": 16.73,
+    "TX_base_mape": 20.83,
+    "TX_usda_mape": 11.16,
+    "US_model_mape": 8.24,
+    "US_base_mape": 11.9,
+    "US_usda_mape": 6.27,
+    "TX_by_year": {
+     "2013": {
+      "model": 37.4,
+      "usda": -1.7
+     },
+     "2014": {
+      "model": -7.4,
+      "usda": 6.9
+     },
+     "2015": {
+      "model": 4.6,
+      "usda": 0.5
+     },
+     "2016": {
+      "model": -38.1,
+      "usda": -18.5
+     },
+     "2017": {
+      "model": -23.9,
+      "usda": 0.3
+     },
+     "2018": {
+      "model": -6.1,
+      "usda": -5.1
+     },
+     "2019": {
+      "model": 7.9,
+      "usda": 26.6
+     },
+     "2020": {
+      "model": 18.1,
+      "usda": 29.1
+     },
+     "2021": {
+      "model": -7.0,
+      "usda": 11.7
+     }
+    }
+   }
+  },
+  "oct1": {
+   "weather z/ridge": {
+    "TX_model_mape": 17.28,
+    "TX_base_mape": 20.83,
+    "TX_usda_mape": 11.01,
+    "US_model_mape": 12.2,
+    "US_base_mape": 11.9,
+    "US_usda_mape": 6.1,
+    "TX_by_year": {
+     "2013": {
+      "model": 35.7,
+      "usda": null
+     },
+     "2014": {
+      "model": 4.2,
+      "usda": 1.2
+     },
+     "2015": {
+      "model": 1.2,
+      "usda": -1.2
+     },
+     "2016": {
+      "model": -37.4,
+      "usda": -19.8
+     },
+     "2017": {
+      "model": -12.7,
+      "usda": -2.9
+     },
+     "2018": {
+      "model": 16.7,
+      "usda": -2.2
+     },
+     "2019": {
+      "model": -1.3,
+      "usda": 23.4
+     },
+     "2020": {
+      "model": 35.1,
+      "usda": 33.5
+     },
+     "2021": {
+      "model": -11.1,
+      "usda": 3.9
+     }
+    }
+   },
+   "weather z/hgb": {
+    "TX_model_mape": 27.11,
+    "TX_base_mape": 20.83,
+    "TX_usda_mape": 11.01,
+    "US_model_mape": 12.3,
+    "US_base_mape": 11.9,
+    "US_usda_mape": 6.1,
+    "TX_by_year": {
+     "2013": {
+      "model": 77.8,
+      "usda": null
+     },
+     "2014": {
+      "model": 8.3,
+      "usda": 1.2
+     },
+     "2015": {
+      "model": -10.7,
+      "usda": -1.2
+     },
+     "2016": {
+      "model": -42.0,
+      "usda": -19.8
+     },
+     "2017": {
+      "model": -25.4,
+      "usda": -2.9
+     },
+     "2018": {
+      "model": -10.0,
+      "usda": -2.2
+     },
+     "2019": {
+      "model": -6.6,
+      "usda": 23.4
+     },
+     "2020": {
+      "model": 49.2,
+      "usda": 33.5
+     },
+     "2021": {
+      "model": -14.1,
+      "usda": 3.9
+     }
+    }
+   },
+   "ndvi anom/ridge": {
+    "TX_model_mape": 13.9,
+    "TX_base_mape": 20.83,
+    "TX_usda_mape": 11.01,
+    "US_model_mape": 8.38,
+    "US_base_mape": 11.9,
+    "US_usda_mape": 6.1,
+    "TX_by_year": {
+     "2013": {
+      "model": 40.3,
+      "usda": null
+     },
+     "2014": {
+      "model": -15.7,
+      "usda": 1.2
+     },
+     "2015": {
+      "model": 8.9,
+      "usda": -1.2
+     },
+     "2016": {
+      "model": -23.9,
+      "usda": -19.8
+     },
+     "2017": {
+      "model": -12.4,
+      "usda": -2.9
+     },
+     "2018": {
+      "model": -5.4,
+      "usda": -2.2
+     },
+     "2019": {
+      "model": 3.4,
+      "usda": 23.4
+     },
+     "2020": {
+      "model": 11.5,
+      "usda": 33.5
+     },
+     "2021": {
+      "model": 3.7,
+      "usda": 3.9
+     }
+    }
+   },
+   "ndvi anom/hgb": {
+    "TX_model_mape": 12.65,
+    "TX_base_mape": 20.83,
+    "TX_usda_mape": 11.01,
+    "US_model_mape": 7.75,
+    "US_base_mape": 11.9,
+    "US_usda_mape": 6.1,
+    "TX_by_year": {
+     "2013": {
+      "model": 20.0,
+      "usda": null
+     },
+     "2014": {
+      "model": -14.3,
+      "usda": 1.2
+     },
+     "2015": {
+      "model": 18.5,
+      "usda": -1.2
+     },
+     "2016": {
+      "model": -30.2,
+      "usda": -19.8
+     },
+     "2017": {
+      "model": -13.3,
+      "usda": -2.9
+     },
+     "2018": {
+      "model": -5.2,
+      "usda": -2.2
+     },
+     "2019": {
+      "model": 4.6,
+      "usda": 23.4
+     },
+     "2020": {
+      "model": -3.0,
+      "usda": 33.5
+     },
+     "2021": {
+      "model": 4.9,
+      "usda": 3.9
+     }
+    }
+   },
+   "weather z + ndvi anom/ridge": {
+    "TX_model_mape": 17.57,
+    "TX_base_mape": 20.83,
+    "TX_usda_mape": 11.01,
+    "US_model_mape": 10.78,
+    "US_base_mape": 11.9,
+    "US_usda_mape": 6.1,
+    "TX_by_year": {
+     "2013": {
+      "model": 53.7,
+      "usda": null
+     },
+     "2014": {
+      "model": -21.8,
+      "usda": 1.2
+     },
+     "2015": {
+      "model": 5.1,
+      "usda": -1.2
+     },
+     "2016": {
+      "model": -35.5,
+      "usda": -19.8
+     },
+     "2017": {
+      "model": -5.5,
+      "usda": -2.9
+     },
+     "2018": {
+      "model": -4.9,
+      "usda": -2.2
+     },
+     "2019": {
+      "model": -4.9,
+      "usda": 23.4
+     },
+     "2020": {
+      "model": 19.6,
+      "usda": 33.5
+     },
+     "2021": {
+      "model": 7.1,
+      "usda": 3.9
+     }
+    }
+   },
+   "weather z + ndvi anom/hgb": {
+    "TX_model_mape": 14.68,
+    "TX_base_mape": 20.83,
+    "TX_usda_mape": 11.01,
+    "US_model_mape": 8.54,
+    "US_base_mape": 11.9,
+    "US_usda_mape": 6.1,
+    "TX_by_year": {
+     "2013": {
+      "model": 50.6,
+      "usda": null
+     },
+     "2014": {
+      "model": -5.2,
+      "usda": 1.2
+     },
+     "2015": {
+      "model": -1.3,
+      "usda": -1.2
+     },
+     "2016": {
+      "model": -36.5,
+      "usda": -19.8
+     },
+     "2017": {
+      "model": -21.5,
+      "usda": -2.9
+     },
+     "2018": {
+      "model": -8.9,
+      "usda": -2.2
+     },
+     "2019": {
+      "model": -0.3,
+      "usda": 23.4
+     },
+     "2020": {
+      "model": 6.8,
+      "usda": 33.5
+     },
+     "2021": {
+      "model": -1.1,
+      "usda": 3.9
+     }
+    }
+   }
+  }
+ }
+}

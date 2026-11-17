@@ -1,0 +1,96 @@
+{
+ "locked_utc": "2026-11-16T18:28:01Z",
+ "rule": "sign(Nov->Dec 2026 revision) = sign(Oct->Nov 2026 revision); unchanged Oct->Nov = no call",
+ "predictions": {
+  "US": {
+   "oct": 13059000.0,
+   "nov": 12794000.0,
+   "predicted_dec_direction": "down"
+  },
+  "AL": {
+   "oct": 710000.0,
+   "nov": 660000.0,
+   "predicted_dec_direction": "down"
+  },
+  "AZ": {
+   "oct": 250000.0,
+   "nov": 250000.0,
+   "predicted_dec_direction": "no call"
+  },
+  "AR": {
+   "oct": 1600000.0,
+   "nov": 1600000.0,
+   "predicted_dec_direction": "no call"
+  },
+  "CA": {
+   "oct": 70000.0,
+   "nov": 65000.0,
+   "predicted_dec_direction": "down"
+  },
+  "FL": {
+   "oct": 120000.0,
+   "nov": 110000.0,
+   "predicted_dec_direction": "down"
+  },
+  "GA": {
+   "oct": 2000000.0,
+   "nov": 2000000.0,
+   "predicted_dec_direction": "no call"
+  },
+  "KS": {
+   "oct": 90000.0,
+   "nov": 80000.0,
+   "predicted_dec_direction": "down"
+  },
+  "LA": {
+   "oct": 250000.0,
+   "nov": 260000.0,
+   "predicted_dec_direction": "up"
+  },
+  "MS": {
+   "oct": 850000.0,
+   "nov": 850000.0,
+   "predicted_dec_direction": "no call"
+  },
+  "MO": {
+   "oct": 880000.0,
+   "nov": 850000.0,
+   "predicted_dec_direction": "down"
+  },
+  "NM": {
+   "oct": 39000.0,
+   "nov": 39000.0,
+   "predicted_dec_direction": "no call"
+  },
+  "NC": {
+   "oct": 750000.0,
+   "nov": 780000.0,
+   "predicted_dec_direction": "up"
+  },
+  "OK": {
+   "oct": 190000.0,
+   "nov": 200000.0,
+   "predicted_dec_direction": "up"
+  },
+  "SC": {
+   "oct": 330000.0,
+   "nov": 340000.0,
+   "predicted_dec_direction": "up"
+  },
+  "TN": {
+   "oct": 420000.0,
+   "nov": 450000.0,
+   "predicted_dec_direction": "up"
+  },
+  "TX": {
+   "oct": 4350000.0,
+   "nov": 4100000.0,
+   "predicted_dec_direction": "down"
+  },
+  "VA": {
+   "oct": 160000.0,
+   "nov": 160000.0,
+   "predicted_dec_direction": "no call"
+  }
+ }
+}

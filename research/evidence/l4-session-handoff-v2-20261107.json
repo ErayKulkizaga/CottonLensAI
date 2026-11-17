@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "version": 2,
+  "supersedes": "l4-session-handoff-20261107.json",
+  "notebook": "CottonLens_L4_Remaining_Checks_Drive_v2.ipynb",
+  "source_sha256": "c9d84121ba0e433eaf6f65fbe8615a6223b5463dbdbc83198822482b9b63b6aa",
+  "notebook_sha256": "b60bdb3f641f501de076deca500df29f7b34643084480432578a2b5b4457196a",
+  "setup_project_path_verified": "/content/CottonLensAI",
+  "drive_v2_upload_completed": true,
+  "gpu_execution_verified": false,
+  "prior_checks_retrained": false,
+  "local_controls_passed": 12,
+  "market_fits": 0,
+  "planned_synthetic_train_on_batch_calls": 3
+}

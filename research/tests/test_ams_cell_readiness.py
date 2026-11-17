@@ -10,6 +10,7 @@ from research.ams_cell_readiness import (
     source_tables,
     trace,
 )
+from research.verify_ams_cell_readiness import source_cell_status
 
 
 def test_partial_far_quote_is_unknown_not_absent():
@@ -18,7 +19,23 @@ def test_partial_far_quote_is_unknown_not_absent():
     assert quote_cell(table, '2019-10-01', '2018-10-15') == (UNKNOWN, None)
     assert quote_cell(table, '2019-03-01', '2018-10-15') == (PRESENT, 75.)
     table['complete'] = True
+    assert quote_cell(table, '2019-10-01', '2018-10-15') == (UNKNOWN, None)
+    table['absence_coverage_verified'] = True
     assert quote_cell(table, '2019-10-01', '2018-10-15') == (ABSENT, None)
+
+
+@pytest.mark.parametrize('contract', ['2018-03-01', '2019-04-01'])
+def test_partial_table_cannot_prove_absence_from_month_or_rank(contract):
+    table = {'quotes': {'2019-03-01': '75.00', '2019-05-01': '76.00'},
+             'ranked': ['2019-03-01', '2019-05-01'], 'complete': False}
+    assert quote_cell(table, contract, '2018-10-15') == (UNKNOWN, None)
+    assert source_cell_status((table['quotes'], table['ranked'], False), contract) == UNKNOWN
+
+
+def test_missing_table_is_not_a_complete_empty_listing():
+    table = {'quotes': {}, 'ranked': [], 'complete': False}
+    assert quote_cell(table, '2018-03-01', '2020-01-01') == (UNKNOWN, None)
+    assert source_cell_status(({}, [], False), '2018-03-01') == UNKNOWN
 
 
 def test_unknown_ewma_state_does_not_reset_when_har_recovers():
@@ -71,3 +88,6 @@ def test_prefix_does_not_discard_unchanged_annual_far_quotes(tmp_path, suspect):
     tables, _ = source_tables(path, {'quotes': {}}, merged, {'2018-08-01'}, full)
     assert tables['2018-08-01']['complete'] is True
     assert tables['2018-08-01']['kind'] == 'verified_full_daily_settlement'
+    # A report with ten verified prices still does not establish the universe
+    # of listed contracts. Do not infer historical absence of an eleventh.
+    assert quote_cell(tables['2018-08-01'], '2020-10-01', '2018-08-01')[0] == UNKNOWN

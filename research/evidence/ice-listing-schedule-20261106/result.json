@@ -1,0 +1,31 @@
+{
+  "schema": 1,
+  "status": "conditional_rule_schedule_not_admission",
+  "contracts": 58,
+  "total_unknown_cells_unchanged": 99523,
+  "partition": {
+    "before_default_month": 83312,
+    "within_default_month": 1216,
+    "after_default_month": 14995
+  },
+  "current_expiry_month_matches": 15,
+  "rule_effective_annotation": "2007-11-16",
+  "new_fits": 0,
+  "source_cells_admitted": 0,
+  "historical_board_exceptions_verified": false,
+  "historical_actual_listing_dates_verified": false,
+  "input_sha256": {
+    "rule_pdf": "a3149a70e71fa32971e832b8b3da635390040f3ce3fce8f1211c7abc370b8190",
+    "expiry_csv": "a4affde79beb8cd945cd906691b7f42adc680a811918fe280bb79343d4595a98",
+    "readiness_report": "50d00f20da28295489526ba9c472e20ac1ab84057770aaff71a3411d3205bb01",
+    "unknown_cells": "6d4afe0039a04f92ee1a6d94d8f76aa73827ca8b4a3ebb5aab7c0eb5e595e30c"
+  },
+  "matrix_sha256": "7f2c703e1e06cbaa998b07d26c7550d90f15d70fd88e50e6eb2c2775308c571f",
+  "code_sha256": "4db4ada006890e09a50dcd349a069f08836a55a02253199c1fab14136e79cac2",
+  "limits": [
+    "A month schedule is not the actual first business/trading day.",
+    "The rule contains Board override language; historical exceptions are unchecked.",
+    "Current FTD month agreement is not historical listing or PIT proof.",
+    "No UNKNOWN cell is changed to ABSENT and no forecast or gate is changed."
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "schema": 1,
+  "asset": "l4-session-handoff-v2-20261107.zip",
+  "archive_sha256": "62475c68cb45e21e37b7e5e8aa4230140ff6c1054a0bd189f5be95118ffc47ba",
+  "fresh_members_checked": 7,
+  "notebook_ast_verified": true,
+  "fresh_restore_equal": true,
+  "gpu_execution_verified": false,
+  "new_fits": 0
+}

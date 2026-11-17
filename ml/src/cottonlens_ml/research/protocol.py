@@ -78,6 +78,55 @@ def rows_at(history, dates):
     return history.set_index('date', drop=False).loc[pd.to_datetime(dates)].reset_index(drop=True)
 
 
+def validate_inner_fold(history, fold):
+    """Recheck the shared T+5 purge before selection, including T+1 recipes.
+
+    These are recorded session dates, not proof of vendor publication times.
+    Do not repair, sort, intersect or silently drop malformed selection rows.
+    """
+    dates = pd.DatetimeIndex(history.date)
+    if dates.hasnans or dates.has_duplicates or not dates.is_monotonic_increasing:
+        raise ValueError('Selection history requires unique chronological dates')
+
+    def origins(values):
+        if not values:
+            raise ValueError('Selection origins must be nonempty')
+        result = pd.DatetimeIndex(pd.to_datetime(values))
+        if result.hasnans or result.has_duplicates or not result.is_monotonic_increasing:
+            raise ValueError('Selection origins must be unique and chronological')
+        if not result.isin(dates).all():
+            raise ValueError('Selection origin absent from history')
+        return result
+
+    outer = origins(fold['origins'])
+    if len(fold.get('inner', [])) != 3:
+        raise ValueError('Exactly three inner selection blocks required')
+    seen = []
+    for block in fold['inner']:
+        inner = origins(block['origins'])
+        if len(inner) != 63:
+            raise ValueError('Exactly 63 origins per inner selection block required')
+        if (np.diff(dates.get_indexer(inner)) != 1).any():
+            raise ValueError('Inner selection compressed source observations')
+        if inner.max() >= outer.min() or inner.isin(outer).any():
+            raise ValueError('Inner selection overlaps outer evaluation')
+        if seen and inner.min() <= seen[-1]:
+            raise ValueError('Inner selection blocks overlap or are reordered')
+        seen.extend(inner)
+        if 'cutoff' in block and pd.Timestamp(block['cutoff']) != inner.min():
+            raise ValueError('Inner selection cutoff differs from its first origin')
+        rows = rows_at(history, inner)
+        for h in (1, 5):
+            name = f'target_date_{h}'
+            if name not in rows:
+                raise ValueError('Selection target maturity is unknown')
+            target = pd.DatetimeIndex(rows[name])
+            if target.hasnans or (target <= inner).any() or (target >= outer.min()).any():
+                raise ValueError('Selection labels must mature strictly before outer evaluation')
+        if (rows.target_date_5 <= rows.target_date_1).any():
+            raise ValueError('Selection T+5 labels must follow T+1 labels')
+
+
 def frozen_outer_folds(folds):
     by_number = {f['fold']: f for f in folds}
     dates = [date for f in folds for date in f['origins']]

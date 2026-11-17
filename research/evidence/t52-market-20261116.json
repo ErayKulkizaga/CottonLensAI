@@ -1,0 +1,310 @@
+{
+ "events": 32,
+ "mean_signed_return_pct": 0.2663240582287979,
+ "hit_rate": 0.53125,
+ "season_block_p": 0.2988,
+ "by_era": {
+  "2010_2011": {
+   "events": 4,
+   "mean_signed_return_pct": 0.5815221230794254,
+   "hit_rate": 0.75
+  },
+  "2012_2021": {
+   "events": 28,
+   "mean_signed_return_pct": 0.22129576325013683,
+   "hit_rate": 0.5
+  }
+ },
+ "signal_hit_on_revision": 0.46875,
+ "events_list": [
+  {
+   "year": 2010,
+   "month": "DEC",
+   "release": "2010-12-10",
+   "signal_last_revision": -1.0,
+   "predicted_price_dir": 1.0,
+   "ret": 0.007474784028091541,
+   "actual_revision": -1.0
+  },
+  {
+   "year": 2011,
+   "month": "OCT",
+   "release": "2011-10-12",
+   "signal_last_revision": 1.0,
+   "predicted_price_dir": -1.0,
+   "ret": -0.029024481123954615,
+   "actual_revision": 1.0
+  },
+  {
+   "year": 2011,
+   "month": "NOV",
+   "release": "2011-11-09",
+   "signal_last_revision": 1.0,
+   "predicted_price_dir": -1.0,
+   "ret": -0.004517486476372845,
+   "actual_revision": -1.0
+  },
+  {
+   "year": 2011,
+   "month": "DEC",
+   "release": "2011-12-09",
+   "signal_last_revision": -1.0,
+   "predicted_price_dir": 1.0,
+   "ret": -0.017755866705241985,
+   "actual_revision": -1.0
+  },
+  {
+   "year": 2012,
+   "month": "OCT",
+   "release": "2012-10-11",
+   "signal_last_revision": -1.0,
+   "predicted_price_dir": 1.0,
+   "ret": -0.01946703045902165,
+   "actual_revision": 1.0
+  },
+  {
+   "year": 2012,
+   "month": "NOV",
+   "release": "2012-11-09",
+   "signal_last_revision": 1.0,
+   "predicted_price_dir": -1.0,
+   "ret": 0.004609626221699692,
+   "actual_revision": 1.0
+  },
+  {
+   "year": 2012,
+   "month": "DEC",
+   "release": "2012-12-11",
+   "signal_last_revision": 1.0,
+   "predicted_price_dir": -1.0,
+   "ret": 0.020229954486377544,
+   "actual_revision": -1.0
+  },
+  {
+   "year": 2013,
+   "month": "OCT",
+   "release": "2013-10-24",
+   "signal_last_revision": -1.0,
+   "predicted_price_dir": 1.0,
+   "ret": -0.018512140199070437,
+   "actual_revision": null
+  },
+  {
+   "year": 2014,
+   "month": "OCT",
+   "release": "2014-10-10",
+   "signal_last_revision": -1.0,
+   "predicted_price_dir": 1.0,
+   "ret": -0.006995824448114973,
+   "actual_revision": -1.0
+  },
+  {
+   "year": 2014,
+   "month": "NOV",
+   "release": "2014-11-10",
+   "signal_last_revision": -1.0,
+   "predicted_price_dir": 1.0,
+   "ret": -0.024211939689751993,
+   "actual_revision": 1.0
+  },
+  {
+   "year": 2014,
+   "month": "DEC",
+   "release": "2014-12-10",
+   "signal_last_revision": 1.0,
+   "predicted_price_dir": -1.0,
+   "ret": -0.005190490871404663,
+   "actual_revision": -1.0
+  },
+  {
+   "year": 2015,
+   "month": "OCT",
+   "release": "2015-10-09",
+   "signal_last_revision": 1.0,
+   "predicted_price_dir": -1.0,
+   "ret": 0.0,
+   "actual_revision": -1.0
+  },
+  {
+   "year": 2015,
+   "month": "NOV",
+   "release": "2015-11-10",
+   "signal_last_revision": -1.0,
+   "predicted_price_dir": 1.0,
+   "ret": 0.0004845155364634479,
+   "actual_revision": -1.0
+  },
+  {
+   "year": 2015,
+   "month": "DEC",
+   "release": "2015-12-09",
+   "signal_last_revision": -1.0,
+   "predicted_price_dir": 1.0,
+   "ret": 0.039980098533782815,
+   "actual_revision": -1.0
+  },
+  {
+   "year": 2016,
+   "month": "OCT",
+   "release": "2016-10-12",
+   "signal_last_revision": 1.0,
+   "predicted_price_dir": -1.0,
+   "ret": 0.026891662681085116,
+   "actual_revision": -1.0
+  },
+  {
+   "year": 2016,
+   "month": "NOV",
+   "release": "2016-11-09",
+   "signal_last_revision": -1.0,
+   "predicted_price_dir": 1.0,
+   "ret": -0.006713380167219896,
+   "actual_revision": 1.0
+  },
+  {
+   "year": 2016,
+   "month": "DEC",
+   "release": "2016-12-09",
+   "signal_last_revision": 1.0,
+   "predicted_price_dir": -1.0,
+   "ret": -0.008718872724863047,
+   "actual_revision": 1.0
+  },
+  {
+   "year": 2017,
+   "month": "OCT",
+   "release": "2017-10-12",
+   "signal_last_revision": 1.0,
+   "predicted_price_dir": -1.0,
+   "ret": -0.013033896473765516,
+   "actual_revision": -1.0
+  },
+  {
+   "year": 2017,
+   "month": "NOV",
+   "release": "2017-11-09",
+   "signal_last_revision": -1.0,
+   "predicted_price_dir": 1.0,
+   "ret": -0.004966360520944235,
+   "actual_revision": 1.0
+  },
+  {
+   "year": 2017,
+   "month": "DEC",
+   "release": "2017-12-12",
+   "signal_last_revision": 1.0,
+   "predicted_price_dir": -1.0,
+   "ret": -0.001233587102246858,
+   "actual_revision": 1.0
+  },
+  {
+   "year": 2018,
+   "month": "OCT",
+   "release": "2018-10-11",
+   "signal_last_revision": 1.0,
+   "predicted_price_dir": -1.0,
+   "ret": 0.00013012833552927816,
+   "actual_revision": 1.0
+  },
+  {
+   "year": 2018,
+   "month": "NOV",
+   "release": "2018-11-08",
+   "signal_last_revision": 1.0,
+   "predicted_price_dir": -1.0,
+   "ret": 0.0006330702417098877,
+   "actual_revision": -1.0
+  },
+  {
+   "year": 2018,
+   "month": "DEC",
+   "release": "2018-12-11",
+   "signal_last_revision": -1.0,
+   "predicted_price_dir": 1.0,
+   "ret": 0.001751087314143085,
+   "actual_revision": 1.0
+  },
+  {
+   "year": 2019,
+   "month": "OCT",
+   "release": "2019-10-10",
+   "signal_last_revision": -1.0,
+   "predicted_price_dir": 1.0,
+   "ret": 0.006697727548227839,
+   "actual_revision": -1.0
+  },
+  {
+   "year": 2019,
+   "month": "NOV",
+   "release": "2019-11-08",
+   "signal_last_revision": -1.0,
+   "predicted_price_dir": 1.0,
+   "ret": 0.005733381281579852,
+   "actual_revision": -1.0
+  },
+  {
+   "year": 2019,
+   "month": "DEC",
+   "release": "2019-12-10",
+   "signal_last_revision": -1.0,
+   "predicted_price_dir": 1.0,
+   "ret": 0.008377218467443548,
+   "actual_revision": -1.0
+  },
+  {
+   "year": 2020,
+   "month": "OCT",
+   "release": "2020-10-09",
+   "signal_last_revision": -1.0,
+   "predicted_price_dir": 1.0,
+   "ret": 0.021670083991198297,
+   "actual_revision": -1.0
+  },
+  {
+   "year": 2020,
+   "month": "NOV",
+   "release": "2020-11-10",
+   "signal_last_revision": -1.0,
+   "predicted_price_dir": 1.0,
+   "ret": -0.0021451781914700874,
+   "actual_revision": 1.0
+  },
+  {
+   "year": 2020,
+   "month": "DEC",
+   "release": "2020-12-10",
+   "signal_last_revision": 1.0,
+   "predicted_price_dir": -1.0,
+   "ret": 0.016428297542844028,
+   "actual_revision": -1.0
+  },
+  {
+   "year": 2021,
+   "month": "OCT",
+   "release": "2021-10-12",
+   "signal_last_revision": 1.0,
+   "predicted_price_dir": -1.0,
+   "ret": -0.031551895089959814,
+   "actual_revision": -1.0
+  },
+  {
+   "year": 2021,
+   "month": "NOV",
+   "release": "2021-11-09",
+   "signal_last_revision": -1.0,
+   "predicted_price_dir": 1.0,
+   "ret": 0.02399126806757579,
+   "actual_revision": 1.0
+  },
+  {
+   "year": 2021,
+   "month": "DEC",
+   "release": "2021-12-09",
+   "signal_last_revision": 1.0,
+   "predicted_price_dir": -1.0,
+   "ret": -0.04548328389222256,
+   "actual_revision": 1.0
+  }
+ ],
+ "pass": false
+}

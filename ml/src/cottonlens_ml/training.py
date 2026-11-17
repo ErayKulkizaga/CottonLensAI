@@ -24,6 +24,7 @@ from cottonlens_ml.protocol import (
     refit_rows,
     validate_partition,
 )
+from cottonlens_ml.research.admission import require_legacy_fit
 from cottonlens_ml.runtime_guard import require_colab_training
 from cottonlens_ml.selection import select_walkforward_name
 from cottonlens_ml.sequences import sequence_diagnostics
@@ -112,17 +113,23 @@ def naive_candidates(test: pd.DataFrame, validation: pd.DataFrame) -> dict[int, 
 def ridge_candidates(train, validation, test, feature_history=None) -> dict[int, Candidate]:
     """Fixed-parameter linear reference with the same safe refit origins as XGB/LSTM."""
     require_colab_training()
+    require_legacy_fit(_identity(train, validation, test, family="Ridge-preprocessing", horizon=[1, 5],
+                                role="preprocessing", config={"features": FEATURE_NAMES}, cutoff=test.date.min()))
     refit = refit_rows(train, validation, test, history=feature_history)
     ridge = _runtime("sklearn.linear_model").Ridge
     scaler = _scaler().fit(train[FEATURE_NAMES])
     refit_scaler = _scaler().fit(refit[FEATURE_NAMES])
     result = {}
     for horizon in (1, 5):
+        require_legacy_fit(_identity(train, validation, family="Ridge", horizon=horizon,
+                                    role="tuning", config={"alpha": 1.0}, cutoff=validation.date.min()))
         model = ridge(alpha=1.0).fit(scaler.transform(train[FEATURE_NAMES]), train[f"target_return_{horizon}"])
         validation_metrics = evaluate(
             validation.cotton_close.to_numpy(), validation[f"target_return_{horizon}"].to_numpy(),
             model.predict(scaler.transform(validation[FEATURE_NAMES])),
         )
+        require_legacy_fit(_identity(refit, family="Ridge", horizon=horizon,
+                                    role="evaluation_refit", config={"alpha": 1.0}, cutoff=test.date.min()))
         model = ridge(alpha=1.0).fit(refit_scaler.transform(refit[FEATURE_NAMES]), refit[f"target_return_{horizon}"])
         predictions = model.predict(refit_scaler.transform(test[FEATURE_NAMES]))
         config = {"alpha": 1.0}
@@ -169,6 +176,7 @@ def train_xgboost(train, validation, test, checkpoint_root: Path, feature_histor
                 model = _restored(checkpoint, identity, _load_xgb)
                 resumed = model is not None
                 if model is None:
+                    require_legacy_fit(identity)
                     kwargs = {key: value for key, value in config.items() if key != "early_stopping_metric"}
                     model = xgb.XGBRegressor(**kwargs, eval_metric=price_mae_metric(validation.cotton_close.to_numpy()))
                     model.fit(train[FEATURE_NAMES], train[f"target_return_{horizon}"],
@@ -196,6 +204,7 @@ def train_xgboost(train, validation, test, checkpoint_root: Path, feature_histor
         path = checkpoint_root / f"xgb-{identity_hash(identity)}-refit.json"
         selected = _restored(path, identity, _load_xgb)
         if selected is None:
+            require_legacy_fit(identity)
             selected = xgb.XGBRegressor(**locked)
             selected.fit(refit[FEATURE_NAMES], refit[f"target_return_{horizon}"], verbose=False)
             save_completed_checkpoint(path, identity, selected.save_model)
@@ -242,6 +251,9 @@ def _finite_sequences(x, y):
 
 def train_lstm(train, validation, test, checkpoint_root: Path, feature_history=None):
     require_colab_training()
+    preprocessing_frames = (train, validation, test) + (() if feature_history is None else (feature_history,))
+    require_legacy_fit(_identity(*preprocessing_frames, family="LSTM-preprocessing", horizon=[1, 5],
+                                role="preprocessing", config={"features": FEATURE_NAMES}, cutoff=test.date.min()))
     refit = refit_rows(train, validation, test, history=feature_history)
     tf = _runtime("tensorflow")
     mlflow = _runtime("mlflow")
@@ -272,6 +284,7 @@ def train_lstm(train, validation, test, checkpoint_root: Path, feature_history=N
                     model = None
             resumed = model is not None
             if model is None:
+                require_legacy_fit(identity)
                 model = _new_lstm(units, dropout)
                 history = model.fit(train_x, train_y, validation_data=(validation_x, validation_y),
                                     epochs=100, batch_size=64, verbose=2,
@@ -306,6 +319,7 @@ def train_lstm(train, validation, test, checkpoint_root: Path, feature_history=N
     path = checkpoint_root / f"lstm-{identity_hash(identity)}-refit.keras"
     selected = _restored(path, identity, tf.keras.models.load_model)
     if selected is None:
+        require_legacy_fit(identity)
         selected = _new_lstm(locked["units"], locked["dropout"])
         selected.fit(refit_x, target_scaler.transform(refit_y_raw).astype(np.float32),
                      epochs=locked["epochs"], batch_size=64, verbose=2)
@@ -330,6 +344,7 @@ def train_lstm(train, validation, test, checkpoint_root: Path, feature_history=N
 
 
 def _refit_locked(candidates, features, cutoff, checkpoint_root, *, role):
+    require_colab_training()
     cutoff = pd.Timestamp(cutoff)
     context = features.loc[features.date <= cutoff].copy()
     refit = complete_feature_rows(context)
@@ -356,12 +371,14 @@ def _refit_locked(candidates, features, cutoff, checkpoint_root, *, role):
             path = checkpoint_root / f"xgb-{identity_hash(identity)}-{role}.json"
             model = _restored(path, identity, _load_xgb)
             if model is None:
+                require_legacy_fit(identity)
                 model = _runtime("xgboost").XGBRegressor(**config)
                 model.fit(refit[FEATURE_NAMES], refit[f"target_return_{horizon}"], verbose=False)
                 save_completed_checkpoint(path, identity, model.save_model)
         elif candidate.name == "LSTM":
             key = identity_hash(identity)
             if key not in lstm_cache:
+                require_legacy_fit({**identity, 'admission_operation': 'preprocessing'})
                 scaler = _scaler().fit(refit[FEATURE_NAMES])
                 x, y = _sequences(refit, scaler, history=context, require_all=False)
                 _finite_sequences(x, y)
@@ -369,6 +386,7 @@ def _refit_locked(candidates, features, cutoff, checkpoint_root, *, role):
                 path = checkpoint_root / f"lstm-{key}-{role}.keras"
                 model = _restored(path, identity, _runtime("tensorflow").keras.models.load_model)
                 if model is None:
+                    require_legacy_fit(identity)
                     model = _new_lstm(config["units"], config["dropout"])
                     model.fit(x, target_scaler.transform(y).astype(np.float32), epochs=config["epochs"], batch_size=config["batch_size"], verbose=2)
                     save_completed_checkpoint(path, identity, model.save)
@@ -376,6 +394,7 @@ def _refit_locked(candidates, features, cutoff, checkpoint_root, *, role):
             model, scaler, target_scaler, count = lstm_cache[key]
             metadata["refit_sequence_rows"] = count
         elif candidate.name == "Ridge":
+            require_legacy_fit(identity)
             scaler = _scaler().fit(refit[FEATURE_NAMES])
             model = _runtime("sklearn.linear_model").Ridge(**config).fit(scaler.transform(refit[FEATURE_NAMES]), refit[f"target_return_{horizon}"])
         else:

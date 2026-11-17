@@ -1,0 +1,42 @@
+{
+  "schema": 1,
+  "status": "fold_local_refinement_and_cached_export_controls_verified",
+  "tests_passed": 81,
+  "market_fits": 0,
+  "estimator_fits": 0,
+  "fixtures": "Generated decisions, objective callbacks, numerical ensemble weights and byte-based native receipt fixtures; not market evidence.",
+  "pre_fix_reproduction": {
+    "source_commit": "8d81d50",
+    "finding": "Original D ranking selected xgboost for first-fold scores(.9,.95) when later scores(.1,.8); changed later scores(2,.1) switched first-fold family to catboost although first-fold evidence was identical.",
+    "observed_families": [
+      "xgboost",
+      "catboost"
+    ]
+  },
+  "source_hash_algorithm": "SHA256 after CRLF-to-LF normalization",
+  "source_hashes": {
+    "ml/src/cottonlens_ml/research/refinements.py": "b325d2a7c8d2423c7ffb82f99ba43a6d14370df12bde6d43a4bca2b5e3c315ba",
+    "ml/src/cottonlens_ml/research/free_rounds.py": "c0ce98d11e5ca35379e6ed0c2134338c11bcc8077d12da7b78c5f90df60bba59",
+    "ml/src/cottonlens_ml/research/decision_cache.py": "e6ba3effd15907478c0714e47eb7aa0e175924cd037ebdf4f0f75cacccd3eb9e",
+    "ml/src/cottonlens_ml/research/reproduction.py": "5d4d11e02a121a237375b767f76af691ff1d47310482204d74fe5245ce592075",
+    "ml/src/cottonlens_ml/research/release.py": "4beae588680e3748327113e5597ff29f6bfc5c274cfd44bf17492005846a8d73",
+    "ml/tests/test_refinements.py": "547a3d977e9795c871fbaa4b6cd84048c9727f3589f08d0d15b7d58869dbbaeb",
+    "ml/tests/test_reproduction.py": "2b11265151e48e35b22fd0e7e5b528c5f4d12dd0a82a296d0377003a38b8eab7"
+  },
+  "scope": [
+    "D/E and refinement ensemble rank only current-fold verified inner decisions, never aggregate comparison scores",
+    "Future-fold score/value perturbation leaves earlier policy records exactly unchanged",
+    "One-member policy ensemble retains actual leaf recipes; existing recursive export/OOF interfaces and bound native reproduction tested",
+    "Historical D/E records preserved; v2 policy namespace separates corrected selection",
+    "Cached export rechecks bound reproduction and paired gates before returning; same valid cache requires no new computation"
+  ],
+  "limits": [
+    "No actual historical refinement occurrence or affected-result count established by this control",
+    "Registry research-v1 summary is inconclusive/stopped before market search; role-name discovery does not prove absence in all archives",
+    "No publisher/PIT/source truth or independent market skill admitted",
+    "G1 and full G2 remain open; other protocol-specific execution paths still need requirement-level review"
+  ],
+  "ruff": "passed",
+  "supersedes": "refinement-causality-release-cache-20261107.json",
+  "stop_rule_regression": "Once native E refinement skipped a nonpositive fold, its ensemble could still compute. Added regression failed at the forbidden prediction callback before correction; both paths now stop for that fold."
+}

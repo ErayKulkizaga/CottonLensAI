@@ -4,8 +4,9 @@ from copy import deepcopy
 import numpy as np
 
 from cottonlens_ml.evaluation import evaluate
+from cottonlens_ml.research.decision_cache import read_selection
 from cottonlens_ml.research.ledger import freeze_record, read_record
-from cottonlens_ml.research.protocol import rows_at
+from cottonlens_ml.research.protocol import rows_at, validate_inner_fold
 from cottonlens_ml.research.search import recipes, simplex_weights
 from cottonlens_ml.runtime_guard import require_colab_training
 
@@ -15,7 +16,8 @@ def prior_choices(experiment, horizon, fold, namespaces):
     choices = []
     for namespace in namespaces:
         for path in sorted((experiment.root / 'decisions' / namespace).glob(f'*-t{horizon}-fold{fold["fold"]}.json')):
-            chosen = read_record(path)['chosen']
+            family = path.name.split('-t', 1)[0]
+            chosen = read_selection(experiment, path, fold, namespace, family, horizon)['chosen']
             if chosen['recipe'].get('task', 'price') == 'price':
                 choices.append({'namespace': namespace, 'decision': chosen, 'family': chosen['recipe']['family']})
     if not choices:
@@ -57,7 +59,8 @@ def run(experiment, round_name):
         raise ValueError('Experiment is locked')
     if read_record(experiment.root / 'diagnosis.json')['status'] != 'passed':
         raise ValueError('Diagnosis gate must pass')
-    read_record(experiment.root / 'ablation-summary.json')
+    from cottonlens_ml.research.ablation import read_summary
+    read_summary(experiment)
     if round_name not in ('B', 'C', 'E'):
         raise ValueError('Use ablate for data groups; available free rounds are A/B/C/E')
     if round_name == 'C':
@@ -103,8 +106,9 @@ def run(experiment, round_name):
                 ensemble_fold(experiment, horizon, fold, prior)
 
 
-def ensemble_fold(experiment, horizon, fold, ranked):
+def ensemble_fold(experiment, horizon, fold, ranked, *, output_namespace='free-E-ensemble'):
     """One member per family, selected by this fold's inner evidence only."""
+    validate_inner_fold(experiment.history, fold)
     selected, families = [], set()
     for candidate in ranked:
         if candidate['family'] not in families:
@@ -116,6 +120,10 @@ def ensemble_fold(experiment, horizon, fold, ranked):
         return
     inner, outer = [], []
     origins = selected[0]['decision']['seeds'][0]['origins']
+    expected = [date for block in fold['inner'] for date in block['origins']]
+    if origins != expected or any(
+            s['origins'] != expected for member in selected for s in member['decision']['seeds']):
+        raise ValueError('Ensemble requires the exact frozen inner OOF cohort')
     for member in selected:
         chosen = member['decision']
         if any(s['origins'] != origins for s in chosen['seeds']):
@@ -134,12 +142,12 @@ def ensemble_fold(experiment, horizon, fold, ranked):
         name for m in selected for name in m['decision']['recipe']['features'])), 'params': {}, 'seed': 42, 'cadence': 126}
     chosen = {'recipe': model, 'score': score, 'members': deepcopy(selected), 'weights': weights}
     marker = f'ensemble-t{horizon}-fold{fold["fold"]}.json'
-    freeze_record(experiment.root / 'decisions/free-E-ensemble' / marker,
+    freeze_record(experiment.root / 'decisions' / output_namespace / marker,
                   {'chosen': chosen, 'selection_used_outer': False, 'family_selection': 'this_fold_inner_only'})
     test = rows_at(experiment.history, fold['origins'])
     prediction = np.asarray(outer).T @ weights
     from cottonlens_ml.research.uncertainty import for_candidate
-    freeze_record(experiment.root / 'outer/free-E-ensemble' / marker,
+    freeze_record(experiment.root / 'outer' / output_namespace / marker,
                   {'recipe': model, 'predictions': prediction.tolist(), 'origins': fold['origins'],
                    'fold': fold['fold'], 'inner_score': score,
                    'metrics': evaluate(test.cotton_close.to_numpy(), test[f'target_return_{horizon}'].to_numpy(), prediction),

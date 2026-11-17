@@ -1,0 +1,79 @@
+{
+  "schema": 1,
+  "status": "exact_fit_input_cache_controls_verified",
+  "market_fits": 0,
+  "new_cache_tests_estimator_fits": 0,
+  "targeted_tests_passed": 109,
+  "adjacent_tests_passed": 59,
+  "adjacent_optuna_version": "4.5.0",
+  "targeted_warning": "Existing generated Quantile control: HiGHS threads option forwarded by scipy",
+  "targeted_suites": [
+    "test_fit_input_cache.py",
+    "test_reproduction.py",
+    "test_full_year.py",
+    "test_naive_mae.py",
+    "test_research.py"
+  ],
+  "adjacent_suites": [
+    "test_adaptive.py",
+    "test_ablation_cache.py",
+    "test_free_rounds.py",
+    "test_refinements.py",
+    "test_extensions.py",
+    "test_decision_cache.py"
+  ],
+  "pre_fix": {
+    "commit": "37b5ccddc85ee744eae35e0f2d368b021dba182e",
+    "regressions_failed": 6,
+    "method": "Execute prior committed engine in an isolated process against current generated fit-input-cache tests, selected with stale_admission or explicit_new_input.",
+    "observed": "Changed history/validation/test values reused a completed fit, even after explicit new input admission."
+  },
+  "scope": [
+    "Current fit specification includes schema2 and exact actual history/train/validation/test, order/dtypes, recipe and iterations identity",
+    "Exact admission rechecked before completed/staged cache reuse; missing/stale authority cannot reuse output",
+    "Identical staged upload resumes without duplicate computation; changed staged inputs rejected",
+    "Bound-reproduction-v2 qualifies full-input versus legacy-missing-input evidence; legacy cannot authorize a current export",
+    "Old fit IDs, v1/native evidence remain readable and unchanged; missing/both schema identities fail closed",
+    "Partial historical repetition, even after losing every summary/output marker, is detected from completed native ledger records and never silently retrained"
+  ],
+  "legacy_native_replay": {
+    "schema": 1,
+    "status": "verified",
+    "new_fits": 0,
+    "network_and_training_forbidden": true,
+    "historical_files_unchanged": 2054,
+    "native_receipt": {
+      "status": "verified",
+      "market_fits": 338,
+      "synthetic_fits": 4,
+      "max_native_return_difference": 0.0,
+      "fit_ids_sha256": "397e3ca390f4ff1696b2af4397fe0ddbdbc64d2bd77419ad31c628e9f05d0457",
+      "ready_sha256": "ba3b438b707f1547c80adbea565133e6c573c3261def3414655896ce32d5f351"
+    },
+    "decision": "STOP",
+    "historical_input_binding_scope": "legacy_missing_full_input_identity",
+    "origins_per_arm": {
+      "ridge": 2006,
+      "quantile": 2006
+    },
+    "parent_release": "price-only-median-result-20261105",
+    "parent_archive_sha256": "ddf449e4ec043ee42ee233a37f49570a4ed00c0a5fe26fa765298ca04934f8a7",
+    "scope": "Existing independently restored experiment subtree, not a new download or all2085archive members; current dual-schema verifier with network and fit callbacks forbidden"
+  },
+  "source_hash_algorithm": "SHA256 with CRLF normalized to LF",
+  "source_hashes": {
+    "ml/src/cottonlens_ml/research/engine.py": "5afeb272d58cbbf3c9fc2da3e4a3c0c7c1e56238e0233f148aa75da98b236eef",
+    "ml/src/cottonlens_ml/research/reproduction.py": "7e048b04d0cbb708284d020aa28b1a0960c5fa8627ab81276732c85c0c61d8f5",
+    "ml/src/cottonlens_ml/research/full_year.py": "dd01c3303402f45b9ee108212f25264a09aa57cc1972ae6b1d5e11944e0f4feb",
+    "ml/src/cottonlens_ml/research/naive_mae.py": "79d7c15e44fd68dc9940fe3b97603f1219c131efefc8afa7ff8c3a750cad3c7e",
+    "ml/tests/test_fit_input_cache.py": "50adcae90a2cefb0514ab5846be87d5f6e7ac7d5bd901981ef9cf55eb89b5d0d",
+    "ml/tests/test_reproduction.py": "6718f4072204ac16175db6a57ca10d621557648350a6f8f68f5be35fda5ae9cb"
+  },
+  "ruff": "passed",
+  "limits": [
+    "The targeted wider suites include generated-data estimator controls; zero estimator fits applies only to new callback/cache/reproduction controls and read-only native replay",
+    "Legacy input identities cannot be recovered by relabeling or rerunning; historical parity is not provider/PIT truth or new full-input proof",
+    "Full local ML invocation could not start: optional Optuna colorlog dependency absent in CPU environment; full GitHub CI separately required",
+    "Actual historical misuse occurrence counts, other protocol/interval consumers, archive coverage and full G2 remain unproven; G1 external source evidence remains missing"
+  ]
+}

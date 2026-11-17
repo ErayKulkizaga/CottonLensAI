@@ -18,7 +18,7 @@ def fixture():
     return f
 
 
-def test_known_fourth_effect_recovers_scale_and_ignores_future_targets(tmp_path):
+def test_known_fourth_effect_recovers_scale_and_ignores_future_targets(admit_generated_risk, tmp_path):
     f = fixture(); first, second = tmp_path/'a', tmp_path/'b'; first.mkdir(); second.mkdir()
     with patch('research.ct_shock_control.require_training'), patch('cottonlens_ml.research.volatility.require_training'):
         before = fit(f.iloc[:500], f.iloc[500:], first, 'signed')
@@ -65,7 +65,7 @@ def test_missing_source_value_is_not_dropped_or_imputed():
         project(f, f.date.iloc[:5].dt.strftime('%Y-%m-%d').tolist(), 'signed')
 
 
-def test_expired_session_stops_before_first_market_fit(tmp_path, monkeypatch):
+def test_expired_session_stops_before_first_market_fit(admit_generated_risk, admit_generated_jobs, tmp_path, monkeypatch):
     from types import SimpleNamespace
 
     from research import ct_shock_control as study

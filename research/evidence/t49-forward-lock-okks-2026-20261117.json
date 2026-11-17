@@ -1,0 +1,33 @@
+{
+ "locked_utc": "2026-11-17T08:32:59Z",
+ "model": "log(H_final / H_m) = a + b * pvp; OLS on pooled OK + KS seasons 2000-2025",
+ "coefficients": {
+  "NOV": {
+   "a": 0.0253148452265764,
+   "b": -0.4731322725954501,
+   "train_rows": 45
+  },
+  "DEC": {
+   "a": 0.023200380750274353,
+   "b": -0.46190589994540376,
+   "train_rows": 45
+  }
+ },
+ "locks": {
+  "OK": {
+   "usda_nov_acres": 320000.0,
+   "pvp": 0.63,
+   "locked_final_acres": 243609,
+   "implied_adjustment_pct": -23.87233759960247
+  },
+  "KS": {
+   "usda_nov_acres": 77000.0,
+   "pvp": 0.32,
+   "locked_final_acres": 67878,
+   "implied_adjustment_pct": -11.846227527666283
+  }
+ },
+ "dec_procedure": "On the 10 Dec 2026 report: H_final_hat = H_dec * exp(a_DEC + b_DEC * pvp), pvp = poor + very poor share for the last week ending on or before 30 Nov 2026.",
+ "scoring": "Absolute % error vs NASS final harvested area (May 2027), each state, compared with USDA Nov and Dec.",
+ "condition_2026_sha256": "76ab99a77d950f4d8b6881283aaab1257a14c38680e3c217dd47bdf92dbbc829"
+}

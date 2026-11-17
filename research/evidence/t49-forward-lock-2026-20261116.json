@@ -1,0 +1,26 @@
+{
+ "locked_utc": "2026-11-16T17:49:33Z",
+ "model": "log(H_final / H_m) = a + b * pvp; OLS on Texas 2000-2025",
+ "coefficients": {
+  "NOV": {
+   "a": 0.08514258344930134,
+   "b": -0.5096092749117692,
+   "train_seasons": 26
+  },
+  "DEC": {
+   "a": 0.07927108303069957,
+   "b": -0.4899674427352514,
+   "train_seasons": 26
+  }
+ },
+ "inputs_2026": {
+  "usda_tx_harvested_nov_acres": 3900000.0,
+  "pvp_tx_week_ending": "2026-10-25",
+  "pvp_tx": 0.52
+ },
+ "locked_tx_harvested_final_acres": 3258029,
+ "implied_adjustment_pct": -16.460803031554498,
+ "dec_procedure": "On the 10 Dec 2026 report: H_final_hat = H_dec * exp(a_DEC + b_DEC * pvp), with pvp = poor + very poor share of Texas cotton for the last week ending on or before 30 Nov 2026 (NASS Crop Progress).",
+ "scoring": "Absolute % error vs NASS final Texas upland harvested area (released May 2027), compared with USDA Nov and Dec.",
+ "condition_2026_sha256": "0b98b5aecf9b6a29f6a2a1b3f2e09248b217afb7d6e21792129b81e7d6b1e362"
+}

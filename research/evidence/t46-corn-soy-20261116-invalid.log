@@ -1,0 +1,52 @@
+C:\Users\Eray\AppData\Roaming\Python\Python313\site-packages\pandas\core\arraylike.py:402: RuntimeWarning: divide by zero encountered in log
+  result = getattr(ufunc, method)(*inputs, **kwargs)
+C:\Users\Eray\SEZAR\PROJELER\CottonLensAI-claude-review\research\crop_nowcast\momentum.py:55: RuntimeWarning: invalid value encountered in matmul
+  b = float(z @ tr.e.to_numpy() / (z @ z + LAM))
+C:\Users\Eray\AppData\Roaming\Python\Python313\site-packages\numpy\lib\_function_base_impl.py:587: RuntimeWarning: invalid value encountered in multiply
+  avg = avg_as_array = np.multiply(a, wgt,
+C:\Users\Eray\AppData\Roaming\Python\Python313\site-packages\pandas\core\arraylike.py:402: RuntimeWarning: divide by zero encountered in log
+  result = getattr(ufunc, method)(*inputs, **kwargs)
+C:\Users\Eray\SEZAR\PROJELER\CottonLensAI-claude-review\research\crop_nowcast\momentum.py:55: RuntimeWarning: invalid value encountered in matmul
+  b = float(z @ tr.e.to_numpy() / (z @ z + LAM))
+C:\Users\Eray\AppData\Roaming\Python\Python313\site-packages\numpy\lib\_function_base_impl.py:587: RuntimeWarning: invalid value encountered in multiply
+  avg = avg_as_array = np.multiply(a, wgt,
+C:\Users\Eray\AppData\Roaming\Python\Python313\site-packages\numpy\lib\_function_base_impl.py:587: RuntimeWarning: invalid value encountered in multiply
+  avg = avg_as_array = np.multiply(a, wgt,
+C:\Users\Eray\AppData\Roaming\Python\Python313\site-packages\pandas\core\arraylike.py:402: RuntimeWarning: divide by zero encountered in log
+  result = getattr(ufunc, method)(*inputs, **kwargs)
+C:\Users\Eray\SEZAR\PROJELER\CottonLensAI-claude-review\research\crop_nowcast\momentum.py:55: RuntimeWarning: invalid value encountered in matmul
+  b = float(z @ tr.e.to_numpy() / (z @ z + LAM))
+C:\Users\Eray\AppData\Roaming\Python\Python313\site-packages\numpy\lib\_function_base_impl.py:587: RuntimeWarning: invalid value encountered in multiply
+  avg = avg_as_array = np.multiply(a, wgt,
+C:\Users\Eray\AppData\Roaming\Python\Python313\site-packages\pandas\core\arraylike.py:402: RuntimeWarning: divide by zero encountered in log
+  result = getattr(ufunc, method)(*inputs, **kwargs)
+C:\Users\Eray\SEZAR\PROJELER\CottonLensAI-claude-review\research\crop_nowcast\momentum.py:55: RuntimeWarning: invalid value encountered in matmul
+  b = float(z @ tr.e.to_numpy() / (z @ z + LAM))
+C:\Users\Eray\AppData\Roaming\Python\Python313\site-packages\numpy\lib\_function_base_impl.py:587: RuntimeWarning: invalid value encountered in multiply
+  avg = avg_as_array = np.multiply(a, wgt,
+C:\Users\Eray\AppData\Roaming\Python\Python313\site-packages\pandas\core\arraylike.py:402: RuntimeWarning: divide by zero encountered in log
+  result = getattr(ufunc, method)(*inputs, **kwargs)
+C:\Users\Eray\SEZAR\PROJELER\CottonLensAI-claude-review\research\crop_nowcast\momentum.py:55: RuntimeWarning: invalid value encountered in matmul
+  b = float(z @ tr.e.to_numpy() / (z @ z + LAM))
+C:\Users\Eray\AppData\Roaming\Python\Python313\site-packages\numpy\lib\_function_base_impl.py:587: RuntimeWarning: invalid value encountered in multiply
+  avg = avg_as_array = np.multiply(a, wgt,
+C:\Users\Eray\AppData\Roaming\Python\Python313\site-packages\numpy\lib\_function_base_impl.py:587: RuntimeWarning: invalid value encountered in multiply
+  avg = avg_as_array = np.multiply(a, wgt,
+C:\Users\Eray\AppData\Roaming\Python\Python313\site-packages\numpy\_core\_methods.py:134: RuntimeWarning: invalid value encountered in reduce
+  ret = umr_sum(arr, axis, dtype, out, keepdims, where=where)
+C:\Users\Eray\AppData\Roaming\Python\Python313\site-packages\pandas\core\arraylike.py:402: RuntimeWarning: divide by zero encountered in log
+  result = getattr(ufunc, method)(*inputs, **kwargs)
+C:\Users\Eray\SEZAR\PROJELER\CottonLensAI-claude-review\research\crop_nowcast\momentum.py:55: RuntimeWarning: invalid value encountered in matmul
+  b = float(z @ tr.e.to_numpy() / (z @ z + LAM))
+C:\Users\Eray\AppData\Roaming\Python\Python313\site-packages\numpy\lib\_function_base_impl.py:587: RuntimeWarning: invalid value encountered in multiply
+  avg = avg_as_array = np.multiply(a, wgt,
+C:\Users\Eray\AppData\Roaming\Python\Python313\site-packages\numpy\_core\fromnumeric.py:86: RuntimeWarning: invalid value encountered in reduce
+  return ufunc.reduce(obj, axis, dtype, out, **passkwargs)
+corn SEP: US 357206976.20 vs USDA 356959949.89 (better 5 worse 19, p 1.000) | state_w nan vs nan  cell_pass=False
+corn OCT: US inf vs USDA 1.57 (better 7 worse 15, p 1.000) | state_w nan vs nan  cell_pass=False
+corn NOV: US 42.19 vs USDA 1.02 (better 6 worse 18, p 1.000) | state_w nan vs nan  cell_pass=False
+soy SEP: US 44.15 vs USDA 3.60 (better 8 worse 16, p 0.999) | state_w nan vs nan  cell_pass=False
+soy OCT: US inf vs USDA 1.90 (better 5 worse 17, p 0.250) | state_w nan vs nan  cell_pass=False
+soy NOV: US inf vs USDA 1.38 (better 6 worse 18, p 1.000) | state_w nan vs nan  cell_pass=False
+corn crop_pass False | soy crop_pass False
+PRIMARY False | pooled mean gain -inf pts, year-block p 0.2466 -> SECONDARY False

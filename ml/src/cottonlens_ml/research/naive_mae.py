@@ -430,6 +430,7 @@ def verify(folder):
     if {p.name for p in (folder/'median-outputs').glob('*.json')} != expected_outputs:
         raise ValueError('Incomplete/unregistered annual output cohort')
     from cottonlens_ml.research.engine import Experiment
+    from cottonlens_ml.research.reproduction import resolve_fit_identity
     for fold in design['split']['folds']:
         for group in GROUPS:
             name = f'{group}-t1-year{fold["year"]}.json'
@@ -447,7 +448,10 @@ def verify(folder):
                     spec = Experiment.fit_specification(recipe(design, group, 1), train, None, test,
                                                        f'inner-{fold["year"]}-{i}-{j}', 1)
                     spec['repeat_reason'] = None
-                    key = ledger.key(spec)
+                    full_spec = Experiment.fit_specification(recipe(design, group, 1), train, None, test,
+                        f'inner-{fold["year"]}-{i}-{j}', 1, history=history)
+                    full_spec['repeat_reason'] = None
+                    spec, key, _ = resolve_fit_identity(ledger, spec, full_spec)
                     record = read_record(ledger.root/'completed'/f'{key}.json')
                     maximum = max(maximum, verify_linear(record, ledger, history))
                     expected_ids.append(key)
@@ -464,7 +468,10 @@ def verify(folder):
                 spec = Experiment.fit_specification(recipe(design, group, 1), train, None, test,
                                                    f'path-outer-{group}-{fold["year"]}-{j}', 1)
                 spec['repeat_reason'] = None
-                key = ledger.key(spec)
+                full_spec = Experiment.fit_specification(recipe(design, group, 1), train, None, test,
+                    f'path-outer-{group}-{fold["year"]}-{j}', 1, history=history)
+                full_spec['repeat_reason'] = None
+                spec, key, _ = resolve_fit_identity(ledger, spec, full_spec)
                 record = read_record(ledger.root/'completed'/f'{key}.json')
                 maximum = max(maximum, verify_linear(record, ledger, history))
                 expected_ids.append(key)

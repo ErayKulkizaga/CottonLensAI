@@ -250,7 +250,7 @@ def test_correctly_identified_fit_with_corrupt_payload_is_rejected(packet):
 
 
 @pytest.mark.parametrize('factor', [1., -1.])
-def test_learning_control_uses_separate_ledger_and_rechecks_predictions(packet, monkeypatch, factor):
+def test_learning_control_uses_separate_ledger_and_rechecks_predictions(admit_generated_jobs, packet, monkeypatch, factor):
     repo, folder, _, _ = packet
     calls = []
     def fit(frame, train, validation, test, spec, workspace, **kwargs):

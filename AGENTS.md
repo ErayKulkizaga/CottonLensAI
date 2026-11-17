@@ -1,5 +1,9 @@
 # CottonLens AI contributor notes
 
+- User delivery preference (2026-11-07): batch compatible Colab checks in one resumable notebook; keep explicit stages for runtime changes and preserve verified cached results. Upload runnable notebooks and their source directly to the existing CottonLensAI Drive folder. Do not make the user download/extract/upload ZIPs. Never rerun completed probes merely to consolidate notebooks.
+
+- 2026-11-06 data/GPU remediation is in progress: docs/DATA_GPU_EXECUTION_PLAN_20261106.md and docs/DATA_GPU_PROGRESS_20261106.md. New research/legacy estimator fits require exact data admission; use frozen source for historical reproduction. Never mint VERIFIED availability from an unverified timestamp. Named-risk source G1 is blocked; no market campaign is admitted. Colab execution belongs to the user; provide checked notebook/source packages rather than operating Colab in the browser. User explicitly allowed L4 as an alternative to unavailable A100; device choice stays explicit, never silent fallback.
+
 - 2026-11-05 completed price-only-median-t1-v1:338 market +4 synthetic fits, STOP. Selected Quantile gain -0.082523435%,0/8years; raw also negative. Source3de9a246/designa929ded6 and all native evidence remain frozen. Do not repeat this recipe, open its conditional ablations or retune its grid. See docs/PRICE_ONLY_MEDIAN_RESULT_20261105.md. Naive/EWMA and disabled collectors remain.
 
 - The user approved the fixed price-only-median-t1-v1 CPU study (docs/NAIVE_MAE_AUDIT_20261105.md). Quantile is limited to that profile/recipe, same explicit CPU opt-in, one process and <=2 threads; no CI real-market training. Preserve the frozen source and 338 market/4 archived synthetic-control fit budget.

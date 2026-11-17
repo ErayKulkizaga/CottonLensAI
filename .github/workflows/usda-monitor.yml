@@ -1,0 +1,49 @@
+name: usda-monitor
+
+# Runs the USDA cotton forecast monitor after Crop Production release days (Aug-Dec, around the 8th-14th) and on demand.
+# Note: GitHub runs scheduled workflows only from the default branch; until this file is on main, use workflow_dispatch.
+on:
+  schedule:
+    - cron: "30 17 8-14 8-12 *"
+  workflow_dispatch:
+    inputs:
+      month:
+        description: "Report month YYYY-MM (default: current month)"
+        required: false
+
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - name: Install pinned dependencies
+        run: pip install numpy==2.1.3 pandas==2.2.3 scipy==1.15.2 scikit-learn==1.6.1
+      - name: Run monitor
+        run: python research/monitor/monitor.py run ${{ github.event.inputs.month }}
+      - name: Verify log chain
+        run: python research/monitor/monitor.py verify
+      - name: Publish performance page and latest.json
+        run: python research/monitor/publish.py
+      - name: Commit log and page if they changed
+        run: |
+          git config user.name "usda-monitor"
+          git config user.email "actions@users.noreply.github.com"
+          git add research/monitor/log.jsonl docs/monitor
+          git diff --cached --quiet || (git commit -m "monitor: log USDA report" && git push)
+      - name: Fail if the month's report is still missing on the 14th
+        run: python research/monitor/monitor.py check ${{ github.event.inputs.month }}
+      - name: Fail if the latest record fell back to USDA
+        run: python -c "import json,sys; r=json.load(open('docs/monitor/latest.json')); sys.exit(0 if r.get('status') in (None,'ok') else 1)"
+      - name: Open an issue on failure
+        if: failure()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh issue create --title "usda-monitor failed (${{ github.run_id }})" --body "Run ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }} failed. Check the log step, gates and the latest record." --label monitor || gh issue create --title "usda-monitor failed (${{ github.run_id }})" --body "Run ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }} failed."

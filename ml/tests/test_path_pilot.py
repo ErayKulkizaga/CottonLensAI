@@ -75,7 +75,7 @@ def test_design_cannot_expand_recipe_search(packet):
         path_pilot.validate_design(changed)
 
 
-def test_interruption_cache_complete_comparison_and_corrupt_marker(packet, monkeypatch):
+def test_interruption_cache_complete_comparison_and_corrupt_marker(admit_generated_jobs, packet, monkeypatch):
     folder, _, _ = packet
     experiment = Experiment(folder)
     computed, pause = [], [True]

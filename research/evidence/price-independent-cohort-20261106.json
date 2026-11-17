@@ -1,0 +1,59 @@
+{
+  "status": "verified",
+  "new_fits": 0,
+  "decimal_price_losses": 12036,
+  "paired_primary_intervals": 2,
+  "decision": "STOP",
+  "arms": {
+    "ridge/selected": {
+      "mae": 1.0225581136796895,
+      "naive_mae": 1.0209522418462387,
+      "gain_pct": -0.15729157228225876,
+      "direction_pct": 12.462612163509473,
+      "year_wins": 1,
+      "active_rate_pct": 24.77567298105683,
+      "active_direction_pct": 49.094567404426556
+    },
+    "ridge/raw": {
+      "mae": 1.0492952312169304,
+      "naive_mae": 1.0209522418462387,
+      "gain_pct": -2.776132732657266,
+      "direction_pct": 49.40179461615155,
+      "year_wins": 0,
+      "active_rate_pct": 100.0,
+      "active_direction_pct": 49.40179461615155
+    },
+    "quantile/selected": {
+      "mae": 1.0217947667061367,
+      "naive_mae": 1.0209522418462387,
+      "gain_pct": -0.08252343502124226,
+      "direction_pct": 11.665004985044865,
+      "year_wins": 0,
+      "active_rate_pct": 24.77567298105683,
+      "active_direction_pct": 45.87525150905433
+    },
+    "quantile/raw": {
+      "mae": 1.022163280177732,
+      "naive_mae": 1.0209522418462387,
+      "gain_pct": -0.11861850945187324,
+      "direction_pct": 48.20538384845464,
+      "year_wins": 3,
+      "active_rate_pct": 100.0,
+      "active_direction_pct": 48.20538384845464
+    }
+  },
+  "report_sha256": "a678e03a8bda43accc88ab59773219d09f9392a8f1fea814b38dea8d37eab799",
+  "cohort": {
+    "origins_per_arm": 2006,
+    "arms": [
+      "ridge",
+      "quantile"
+    ],
+    "horizon": 1,
+    "exact_frozen_cohort_verified": true,
+    "vendor_semantics_verified": false
+  },
+  "history_sha256": "bc3b2987cbdddea9fe625541ba7b4a27855d4b07f3c34c31909bc9b32cadd8c6",
+  "ready_sha256": "ba3b438b707f1547c80adbea565133e6c573c3261def3414655896ce32d5f351",
+  "verifier_sha256": "9edb7937492e25e7a469c1b893ddfcea77201098ca09db838579e3165197921b"
+}

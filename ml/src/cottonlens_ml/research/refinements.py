@@ -1,88 +1,110 @@
-"""Controlled information, history and cadence rounds; no silent cohort changes."""
+"""Fold-local information/history/cadence selection; preserve legacy evidence."""
 from copy import deepcopy
 
-import numpy as np
-
 from cottonlens_ml.cohort import content_id
-from cottonlens_ml.research.ledger import freeze_record, read_record
-from cottonlens_ml.research.protocol import rows_at
-from cottonlens_ml.research.search import recipes, simplex_weights
+from cottonlens_ml.research.decision_cache import execution_binding, read_bound
+from cottonlens_ml.research.free_rounds import ensemble_fold, prior_choices
+from cottonlens_ml.research.ledger import freeze_record
+from cottonlens_ml.research.protocol import validate_inner_fold, verified_outer
+from cottonlens_ml.research.search import recipes
+
+
+def publish_choice(experiment, horizon, fold, selected, namespace, *,
+                   cached_only=False, selection_policy='fold-local-refinement-v2'):
+    """One-member ensemble: fixed selection rule, actual native leaves retained."""
+    decision = deepcopy(selected['decision'])
+    chosen = {
+        'recipe': {'family': 'ensemble', 'horizon': horizon, 'task': 'price',
+                   'features': decision['recipe']['features'], 'params': {},
+                   'seed': 42, 'cadence': 126},
+        'score': decision['score'], 'members': [deepcopy(selected)], 'weights': [1.],
+        'seeds': decision['seeds'], 'selection_policy': selection_policy}
+    request = {'operation': 'fold-choice', 'namespace': namespace,
+               'family': 'ensemble', 'horizon': horizon, 'selected': content_id(selected)}
+    freeze_record(experiment.root/'decisions'/namespace/f'ensemble-t{horizon}-fold{fold["fold"]}.json',
+                  {'chosen': chosen, 'selection_used_outer': False,
+                   'execution_request': request,
+                   'execution_binding': execution_binding(experiment, fold, request, selection=True)})
+    if cached_only:
+        source_namespace = selected['namespace']
+        family = decision['recipe']['family']
+        source_request = {'operation': 'outer', 'chosen': decision,
+                          'namespace': source_namespace, 'repeat': None}
+        source = read_bound(experiment.root/'outer'/source_namespace/
+            f'{family}-t{horizon}-fold{fold["fold"]}.json',
+            execution_binding(experiment, fold, source_request, selection=False))
+        verified_outer(experiment.history, fold, source, family, horizon)
+        request = {'operation': 'outer', 'chosen': chosen, 'namespace': namespace, 'repeat': None}
+        freeze_record(experiment.root/'outer'/namespace/f'ensemble-t{horizon}-fold{fold["fold"]}.json',
+                      {**source, 'recipe': chosen['recipe'], 'inner_score': chosen['score'],
+                       'execution_binding': execution_binding(experiment, fold, request, selection=False)})
+    else:
+        experiment.outer(chosen, fold, namespace)
+
+
+def leaf_recipe(chosen):
+    while chosen['recipe']['family'] == 'ensemble':
+        if chosen['weights'] != [1.] or len(chosen['members']) != 1:
+            raise ValueError('History refinement requires one selected native recipe')
+        chosen = chosen['members'][0]['decision']
+    return chosen['recipe']
 
 
 def run_refinement(experiment, round_name):
-    from cottonlens_ml.research.engine import compare
     if round_name not in ('D', 'E'):
         raise ValueError('Expected round D or E')
-    report = compare(experiment)
+    if (experiment.root/'locked.json').exists():
+        raise ValueError('Locked experiment is immutable')
     for h in (1, 5):
-        candidates = [r for r in report['candidates'] if r['task'] == 'price' and r['horizon'] == h
-                      and r['namespace'] in ('A', 'C')]
-        if not candidates:
-            raise ValueError('Complete base model searches before feature/history refinement')
-        if round_name == 'D':
-            groups = [experiment.identity['groups']['expanded']]
-            for members in ([r for r in candidates if r['family'] in ('xgboost', 'catboost')],
-                            [r for r in candidates if r['family'] in ('mlp', 'lstm', 'tcn')]):
-                if not members:
-                    raise ValueError('Round D requires completed tabular and sequence searches')
-                best = min(members, key=lambda r: r['inner_score'])
-                for features in groups:
-                    namespace = 'D-' + content_id({'features': features})[:8]
+        for fold in experiment.identity['split']['folds']:
+            validate_inner_fold(experiment.history, fold)
+            namespaces = ['A', 'C']
+            if round_name == 'E':
+                namespaces += [p.name for p in sorted((experiment.root/'decisions').glob('D-*'))
+                               if p.is_dir()]
+            candidates = prior_choices(experiment, h, fold, namespaces)
+            if round_name == 'D':
+                features = experiment.identity['groups']['expanded']
+                native_namespace = 'D-' + content_id({'features': features})[:8]
+                for kind, families in (
+                    ('tabular', ('xgboost', 'catboost')),
+                    ('sequence', ('mlp', 'lstm', 'tcn'))):
+                    eligible = [c for c in candidates if c['family'] in families]
+                    if not eligible:
+                        raise ValueError('Round D requires this fold tabular and sequence decisions')
+                    best = eligible[0]
                     specs = recipes(best['family'], h, features, 32, offset=1000)
-                    for fold in experiment.identity['split']['folds']:
-                        chosen = experiment.tune(best['family'], h, fold, specs, namespace)
-                        experiment.outer(chosen['chosen'], fold, namespace)
-        else:
-            candidates += [r for r in report['candidates'] if r['task'] == 'price' and r['horizon'] == h
-                           and r['namespace'].startswith('D-')]
-            best = min(candidates, key=lambda r: r['inner_score'])
-            if best['inner_score'] >= 1:
-                freeze_record(experiment.root / f'refit-skipped-t{h}.json', {'reason': 'no_positive_inner_price_gain'})
-                continue
-            for fold in experiment.identity['split']['folds']:
-                previous = read_record(experiment.root / 'decisions' / best['namespace'] /
-                                       f'{best["family"]}-t{h}-fold{fold["fold"]}.json')
-                base = previous['chosen']['recipe']
-                specs = [{**base, 'years': years, 'cadence': cadence} for years in (3, 5, None) for cadence in (5, 21, 63, 126)]
-                chosen = experiment.tune(best['family'], h, fold, specs, 'E')
-                experiment.outer(chosen['chosen'], fold, 'E')
-            ensemble(experiment, h, candidates)
+                    result = experiment.tune(best['family'], h, fold, specs, native_namespace)
+                    publish_choice(experiment, h, fold,
+                        {'namespace': native_namespace, 'family': best['family'],
+                         'decision': result['chosen']},
+                        native_namespace + f'-{kind}-policy-v2')
+            else:
+                best = candidates[0]
+                if best['decision']['score'] >= 1:
+                    freeze_record(experiment.root/'refinement-v2'/f'skipped-t{h}-fold{fold["fold"]}.json',
+                                  {'reason': 'no_positive_this_fold_inner_gain',
+                                   'decision_identity': content_id(best),
+                                   'execution_binding': execution_binding(
+                                       experiment, fold, {'selected': best}, selection=True)})
+                    continue
+                base = leaf_recipe(best['decision'])
+                specs = [{**base, 'years': years, 'cadence': cadence}
+                         for years in (3, 5, None) for cadence in (5, 21, 63, 126)]
+                result = experiment.tune(base['family'], h, fold, specs, 'E-native-v2')
+                publish_choice(experiment, h, fold,
+                    {'namespace': 'E-native-v2', 'family': base['family'], 'decision': result['chosen']},
+                    'E-policy-v2')
+        if round_name == 'E':
+            ensemble(experiment, h)
 
 
-def ensemble(experiment, horizon, candidates):
-    """Fit weights only on inner OOF predictions; never on the outer outcomes."""
-    selected = sorted(candidates, key=lambda r: r['inner_score'])[:3]
-    if len(selected) < 2:
-        return
+def ensemble(experiment, horizon, candidates=None):
+    """Ignore legacy aggregate scores; select verified members within each fold."""
     for fold in experiment.identity['split']['folds']:
-        inner, outer, identities = [], [], []
-        for family in selected:
-            path = f'{family["family"]}-t{horizon}-fold{fold["fold"]}.json'
-            chosen = read_record(experiment.root / 'decisions' / family['namespace'] / path)['chosen']
-            predictions = np.mean([s['predictions'] for s in chosen['seeds']], axis=0)
-            inner.append(predictions)
-            rows = read_record(experiment.root / 'outer' / family['namespace'] / path)
-            outer.append(rows['predictions'])
-            identities.append({'family': family['family'], 'namespace': family['namespace'], 'decision': chosen})
-        origins = chosen['seeds'][0]['origins']
-        if any(read_record(experiment.root / 'decisions' / f['namespace'] /
-               f'{f["family"]}-t{horizon}-fold{fold["fold"]}.json')['chosen']['seeds'][0]['origins'] != origins for f in selected):
-            raise ValueError('Ensemble requires identical inner OOF origins')
-        past = rows_at(experiment.history, origins)
-        weights = simplex_weights(np.asarray(inner).T, past.cotton_close.to_numpy(), past[f'target_return_{horizon}'].to_numpy())
-        prediction = np.asarray(outer).T @ weights
-        from cottonlens_ml.evaluation import evaluate
-        test = rows_at(experiment.history, fold['origins'])
-        model = {'family': 'ensemble', 'horizon': horizon, 'task': 'price', 'features': experiment.identity['groups']['base'],
-                 'params': {}, 'members': identities, 'weights': weights, 'seed': 42, 'cadence': 126}
-        metrics = evaluate(test.cotton_close.to_numpy(), test[f'target_return_{horizon}'].to_numpy(), prediction)
-        inner_log = np.asarray(inner).T @ weights
-        inner_metrics = evaluate(past.cotton_close.to_numpy(), past[f'target_return_{horizon}'].to_numpy(), inner_log)
-        naive = evaluate(past.cotton_close.to_numpy(), past[f'target_return_{horizon}'].to_numpy(), np.zeros(len(past)))
-        freeze_record(experiment.root / 'outer' / 'E-ensemble' / f'ensemble-t{horizon}-fold{fold["fold"]}.json',
-                      {'recipe': model, 'predictions': prediction.tolist(), 'origins': fold['origins'],
-                       'fold': fold['fold'], 'metrics': metrics, 'inner_score': inner_metrics['mae'] / naive['mae'],
-                       'weight_fit_role': 'inner_oof_only'})
-        freeze_record(experiment.root / 'decisions' / 'E-ensemble' / f'ensemble-t{horizon}-fold{fold["fold"]}.json',
-                      {'chosen': {'recipe': deepcopy(model), 'score': inner_metrics['mae'] / naive['mae'],
-                                  'members': identities, 'weights': weights}, 'selection_used_outer': False})
+        namespaces = ['A', 'C'] + [
+            p.name for p in sorted((experiment.root/'decisions').glob('D-*')) if p.is_dir()]
+        ranked = prior_choices(experiment, horizon, fold, namespaces)
+        if ranked[0]['decision']['score'] >= 1:
+            continue
+        ensemble_fold(experiment, horizon, fold, ranked, output_namespace='E-ensemble-v2')
