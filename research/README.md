@@ -538,6 +538,9 @@ python -m cottonlens_ml.research.history_index --source-root output/recovered --
 
 ### Private GitHub ve Drive taşıması
 
+> 17 Kasım 2026: ana repo public yapıldı. Aşağıdaki release'lerin hepsi aynı etiketlerle private `ErayKulkizaga/CottonLensAI-evidence` deposuna taşındı (SHA-256 özetleri doğrulandı). Bu bölümdeki `gh release download TAG` komutlarına `-R ErayKulkizaga/CottonLensAI-evidence` ekleyin. Kanıt dosyalarındaki eski release bağlantıları değiştirilmedi.
+
+
 11 Ekim kullanıcı kararı: kalıcı bilimsel dosyalar private GitHub Releases'te,
 Drive yalnız geçici çalışma alanı. Depo private olarak doğrulandı. İlk363
 checkpoint/40.728.390 bayt taze GitHub indirmesinden hash kontrolüyle geri açıldı;
