@@ -9,8 +9,8 @@ For one report it:
   3. fetches the latest NASS Crop Progress cotton condition released on or before the survey date (the 1st);
   4. runs gates (states sum to US within 2%, Texas present, area x yield = production within 3%, condition at most
      21 days old, revision within +-50%); any failed gate makes that output fall back to USDA's own number;
-  5. applies the frozen model (model_v1.json): momentum correction for US/Texas production, anchoring correction
-     with an empirical 80% / 95% interval for Texas harvested area;
+  5. applies the frozen model (model_v2.json since 17 Nov 2026): momentum correction for US/Texas production,
+     anchoring correction with a real-time-calibrated 80% / 95% interval for Texas harvested area (CAL1);
   6. appends one record to an append-only JSONL log whose records are hash-chained (sha256 of the previous record).
 A report already in the log is not processed again.
 """
@@ -33,7 +33,7 @@ from research.crop_nowcast.t48_mechanism import rows as parse_area_yield
 BASE = 'https://esmis.nal.usda.gov'
 MON = {8: 'AUG', 9: 'SEP', 10: 'OCT', 11: 'NOV', 12: 'DEC'}
 DEFAULT_LOG = ROOT / 'research/monitor/log.jsonl'
-MODEL = ROOT / 'research/monitor/model_v1.json'
+MODEL = ROOT / 'research/monitor/model_v2.json'  # v2 = v1 + CAL1 intervals; earlier v1 records stay in the log
 
 
 def http(url):
