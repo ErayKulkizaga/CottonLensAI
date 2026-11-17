@@ -51,7 +51,7 @@ Büyük veri ve ara çıktılar `output/` klasöründe tutulur ve git'e girmez.
 
 ## Çalıştırma
 
-Rekolte araştırmasının ana sonuçlarını yeniden üretmek (7/7 sonuç eşleşir):
+Rekolte araştırmasının ana sonuçlarını (Teksas alan sonucu T51, T50 ve birleşik kör test dahil) yeniden üretmek; 10/10 sonuç eşleşir. Girdiler `output/` altında, parquet için `pyarrow` gerekir:
 
 ```bash
 python research/reproduce.py
@@ -70,10 +70,10 @@ Zamanlanmış görev (`.github/workflows/usda-monitor.yml`) Ağustos–Aralık a
 Testler:
 
 ```bash
-PYTHONPATH=ml/src python -m pytest -q research/tests
+PYTHONPATH=ml/src:ml python -m pytest -q research/tests
 ```
 
-Fiyat aşamasının 18 testi (`test_ct_*`, `test_session_handoff`) yerelde olmayan özel veriye bağlı olduğu için başarısız olur; rekolte ve monitör testleri geçer.
+Fiyat aşamasının 18 testi (`test_ct_*`, `test_session_handoff`) parquet okuduğu için `pyarrow` ister (`python -m pip install pyarrow`); pyarrow ve `ml` PYTHONPATH'te olunca 409 testin hepsi geçer.
 
 NASS QuickStats anahtarı `NASS_API_KEY` ortam değişkeninden ya da `~/.nass_api_key` dosyasından okunur. Anahtar repoya hiçbir zaman girmez.
 

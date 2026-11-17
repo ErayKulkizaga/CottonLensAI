@@ -7,7 +7,7 @@
 - The monitor's frozen models are `research/monitor/model_v1.json` (Nov 2026 record) and `model_v2.json` (from Dec 2026, CAL1 intervals). Never rewrite past log records; `log.jsonl` is hash-chained (`monitor.py verify`).
 - Price and return data after 2021-12-31 stay sealed.
 - NASS API key: `NASS_API_KEY` or `~/.nass_api_key`; never print or commit it.
-- Checks for research changes: `PYTHONPATH=ml/src python -m pytest -q research/tests` (18 price-phase tests fail locally without private data; that is expected). Ruff with the local user config reports pre-existing findings in older scripts; keep new files clean.
+- Checks for research changes: `PYTHONPATH=ml/src:ml python -m pytest -q research/tests` (the price-phase tests read parquet and need `pyarrow`; with it and `ml` on the path, all 409 pass). Ruff with the local user config reports pre-existing findings in older scripts; keep new files clean.
 - The price-phase operating notes (dated Oct–Nov 2026 instructions about collectors, cohorts and fit budgets) are archived in `docs/archive/price-phase/AGENTS_HISTORY_20261117.md`. They are history, not current instructions; the general rules below still apply.
 
 ## General rules

@@ -142,8 +142,12 @@ def build_record(year, month):
            'model_sha256': hashlib.sha256(MODEL.read_bytes()).hexdigest(), 'code_commit': git_commit(),
            'usda': {'us_production_bales': vals.get('US'), 'tx_production_bales': vals.get('TX'),
                     'tx_harvested_acres': round(tx_ay[0] * 1000) if tx_ay else None}, 'outputs': {}, 'gates': gates}
-    # momentum: US via state ratio, Texas directly
-    if gates['states_sum_us'] and gates['texas_present'] and gates['previous_report'] and m in model['momentum']:
+    # momentum: US via state ratio, Texas directly. A month the model has no coefficients for (August: no earlier
+    # report) is expected, not a failed gate, so it passes USDA through without a reason.
+    if m not in model['momentum']:
+        rec['outputs']['us_production_bales'] = {'value': vals.get('US'), 'status': 'no_model'}
+        rec['outputs']['tx_production_bales'] = {'value': vals.get('TX'), 'status': 'no_model'}
+    elif gates['states_sum_us'] and gates['texas_present'] and gates['previous_report']:
         b, sd = model['momentum'][m]['b'], model['momentum'][m]['sd']
         corr, base = 0.0, 0.0
         for st, v in states.items():
@@ -164,7 +168,9 @@ def build_record(year, month):
         rec['outputs']['us_production_bales'] = {'value': vals.get('US'), 'status': 'fallback_usda'}
         rec['outputs']['tx_production_bales'] = {'value': vals.get('TX'), 'status': 'fallback_usda'}
     # anchoring: Texas harvested area
-    if gates['tx_area_yield'] and gates['condition_fresh'] and m in model['anchoring_tx_area']:
+    if m not in model['anchoring_tx_area']:
+        rec['outputs']['tx_harvested_acres'] = {'value': round(tx_ay[0] * 1000) if tx_ay else None, 'status': 'no_model'}
+    elif gates['tx_area_yield'] and gates['condition_fresh']:
         a, bb = model['anchoring_tx_area'][m]['a'], model['anchoring_tx_area'][m]['b']
         H = tx_ay[0] * 1000
         eh = a + bb * cond[1]
@@ -216,7 +222,10 @@ def main(argv):
         ok, bad = verify(log)
         print('chain ok' if ok else f'chain broken at record {bad}')
         return 0 if ok else 1
-    when = argv[1] if len(argv) > 1 else dt.date.today().strftime('%Y-%m')
+    when = argv[1] if len(argv) > 1 and argv[1] else dt.datetime.now(dt.timezone.utc).strftime('%Y-%m')
+    if not re.fullmatch(r'\d{4}-\d{2}', when):  # the month can come from a manual workflow input
+        print('month must be YYYY-MM, got', repr(when))
+        return 2
     y, mo = map(int, when.split('-'))
     if cmd == 'check':  # freshness alarm: by the 14th of Aug-Dec the month's report should be logged
         today = dt.datetime.now(dt.timezone.utc).date()
@@ -224,6 +233,9 @@ def main(argv):
             not any(r.get('report') == f'{y}-{mo:02d}' for r in read_log(log))
         print(f'report missing for {when}' if missing else 'ok')
         return 1 if missing else 0
+    if mo not in MON:
+        print('no Crop Production cotton forecast in month', when)
+        return 0
     if any(r.get('report') == f'{y}-{mo:02d}' for r in read_log(log)):
         print('already logged', when)
         return 0

@@ -235,3 +235,41 @@ def test_monitor_publish_writes_latest_and_errors_once_finals_exist(tmp_path):
     assert json.loads((tmp_path / 'site/latest.json').read_text(encoding='utf-8'))['report'] == '2026-11'
     page = (tmp_path / 'site/index.html').read_text(encoding='utf-8')
     assert '+2.0%' in page and '+0.0%' in page  # USDA 100 vs final 98; monitor 98 vs 98
+
+
+def test_monitor_build_record_gates_and_months_without_model(monkeypatch):
+    import datetime as dt
+
+    from research.monitor import monitor as mon
+
+    def report(scale):  # TX + OK; area (1000 ac) x yield (lb) / 480 = production (1000 bales); states sum to US
+        ay = {'TX': (4000.0, 600.0, 5000.0 * scale), 'OK': (400.0, 600.0, 500.0 * scale)}
+        ay['US'] = (4400.0, 600.0, 5500.0 * scale)
+        return ay
+
+    reports = {8: report(1.0), 9: report(0.98)}
+    monkeypatch.setattr(mon, 'crop_production', lambda y, m: (dt.date(y, m, 12), {k: v[2] * 1000 for k, v in reports[m].items()},
+                                                              reports[m], 'sha', '/x.txt') if m in reports else None)
+    monkeypatch.setattr(mon, 'git_commit', lambda: 'test')
+    cond = {'value': (dt.date(2026, 8, 30), 0.4, 'sha', '/c.txt')}
+    monkeypatch.setattr(mon, 'condition_tx', lambda ref: cond['value'])
+
+    aug = mon.build_record(2026, 8)  # no coefficients and no earlier report: expected, not a failure
+    assert aug['status'] == 'ok' and aug['reasons'] == []
+    assert {o['status'] for o in aug['outputs'].values()} == {'no_model'}
+
+    sep = mon.build_record(2026, 9)
+    assert sep['status'] == 'ok' and sep['outputs']['tx_harvested_acres']['status'] == 'model'
+    assert sep['outputs']['next_revision_direction'] == {'US': 'down', 'TX': 'down'}
+
+    cond['value'] = None  # condition data missing: the area model must fall back to USDA and say why
+    stale = mon.build_record(2026, 9)
+    assert stale['status'] == 'partial_fallback'
+    assert stale['outputs']['tx_harvested_acres'] == {'value': 4_000_000, 'status': 'fallback_usda'}
+    assert stale['outputs']['us_production_bales']['status'] == 'model'
+
+
+def test_monitor_rejects_malformed_month():
+    from research.monitor.monitor import main
+
+    assert main(['run', '2026-11; echo injected']) == 2

@@ -123,6 +123,6 @@ They are reported with the same detail as the successes.
 - You, J., Li, X., Low, M., Lobell, D. & Ermon, S. (2017). Deep Gaussian process for crop yield prediction based on remote sensing data. *AAAI*.
 
 ## Reproducibility
-- `python research/reproduce.py` re-runs the headline results; 7/7 matched under the pinned environment.
+- `python research/reproduce.py` re-runs the headline results, including the Texas area result (T51), T50 and the pooled blind test; 10/10 matched under the pinned environment. The pooled step re-derives the pool from the committed per-era results.
 - The preregistrations are in `docs/T39_…` to `docs/T55_…` and the evidence files in `research/evidence/`.
 - The trial ledger is `docs/CROP_NOWCAST_TRIALS.md`.
