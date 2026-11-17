@@ -23,6 +23,9 @@ Every number here comes from the project's own ledgers, evidence files and docum
 | [11_QUESTIONS_FOR_CODEX.md](11_QUESTIONS_FOR_CODEX.md) | Open gaps in the Phase 1 record, as questions for Codex (Turkish) |
 | [13_LITERATURE_AND_CONTRIBUTION.md](13_LITERATURE_AND_CONTRIBUTION.md) | Prior work (smoothing in USDA forecasts, 1987–2023) and what this project adds; robustness and comparison with a published-style adjustment |
 | [15_USDA_ERROR_MECHANISM.md](15_USDA_ERROR_MECHANISM.md) | Where USDA's cotton error comes from: harvested area vs yield, and the 2012 shift in Texas (T48) |
+| [16_PORTFOLIO_BRIEF_AFTER_REVIEWS.md](16_PORTFOLIO_BRIEF_AFTER_REVIEWS.md) | Portfolio brief after the external reviews (16 Nov) |
+| [17_SUNUM_GUNCELLEME_CODEX.md](17_SUNUM_GUNCELLEME_CODEX.md) | Codex brief for the Turkish presentation: T50–T54, paper, dataset, CAL1/B2/B3 (17 Nov) |
+| [18_SUNUM_GUNCELLEME_CODEX_2.md](18_SUNUM_GUNCELLEME_CODEX_2.md) | Second Codex brief: T55, CAL1, B2, OK/KS locks, live monitor, repo layout, audit fixes, new link paths (17 Nov) |
 | [14_DECISIONS_AND_COMPUTE.md](14_DECISIONS_AND_COMPUTE.md) | Who decided what (owner vs AI tools), and recorded compute and cost |
 | [12_CODEX_ANSWERS.md](12_CODEX_ANSWERS.md) | Codex's sourced answers (16 Nov 2026): LSTM architecture, pre-ledger fit counts, forward-test status, line-by-line corrections. The corrections are applied in 01–04, 08 and 09 |
 
