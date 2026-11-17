@@ -16,7 +16,7 @@ import { ModelEvaluation, ModelMetric } from '../types';
       @else if (error()) { <div class="state-panel error"><strong>Metrics unavailable</strong><p>{{ error() }}</p></div> }
       @else {
         @if (isFixture()) { <div class="fixture-banner"><strong>Development fixture</strong><span>Metric values are illustrative placeholders, never production claims.</span></div> }
-        @if (!evaluation()?.walkforward_report && !isFixture()) { <div class="backtest-banner"><strong>Legacy evaluation</strong><span>This artifact has no walk-forward evidence. Its historical numbers must not be presented as independent validation.</span></div> }
+        @if (!evaluation()?.walkforward_report && !isFixture()) { <div class="backtest-banner"><strong>Legacy evaluation</strong><span>This artifact has no walk-forward evidence. Model superiority cannot be inferred unless metrics use verified identical forecast origins and targets. These historical results are not independent validation.</span></div> }
         @if (evaluation()?.walkforward_report) { <div class="backtest-banner"><strong>Historical audit</strong><span>The evaluation periods were previously observed. The 2024–2026 audit is descriptive only and cannot select or reject a candidate.</span></div> }
         <div class="model-summary">
           @for (horizon of [1, 5]; track horizon) {

@@ -12,6 +12,26 @@ from cottonlens_ml.research.models import fit_predict
 from cottonlens_ml.research.protocol import rows_at
 from cottonlens_ml.research.search import diagnostic_recipes
 
+VALIDATION_POLICY = 'all-executed-families-v2'
+
+
+def control_failures(controls, families):
+    """Re-evaluate measurements; a cached status is never a learning certificate."""
+    failures = []
+    executed = set(families) | {key.split('/')[0] for key in controls}
+    for family in sorted(executed):
+        gain = controls.get(f'{family}/known_signal', {}).get('relative_mae_gain')
+        if gain is None or not np.isfinite(gain) or gain < .5:
+            failures.append(f'{family}: known synthetic signal missing or gain below 50%')
+    if 'xgboost' in executed:
+        for kind, threshold, upper in (('small_subset_overfit', .9, False),
+                                       ('negative_block_shift', .2, True)):
+            gain = controls.get(f'xgboost/{kind}', {}).get('relative_mae_gain')
+            if (gain is None or not np.isfinite(gain)
+                    or (gain > threshold if upper else gain < threshold)):
+                failures.append(f'xgboost: {kind} failed or missing')
+    return failures
+
 
 def synthetic_control(kind):
     rng = np.random.default_rng(703)
@@ -38,13 +58,18 @@ def synthetic_control(kind):
 
 def diagnose(experiment):
     path = experiment.root / 'diagnosis.json'
-    if path.exists():
-        if read_record(path)['status'] != 'passed':
-            raise ValueError('Failed diagnosis requires a documented bug fix and new source/experiment identity')
-        return
-    controls = {}
     free_profile = experiment.identity.get('profile') == 'free-data-v1'
     families = ('xgboost', 'catboost') if free_profile else ('xgboost', 'catboost', 'mlp', 'lstm', 'tcn')
+    if path.exists():
+        cached = read_record(path)
+        failures = control_failures(cached.get('controls', {}), families)
+        if cached['status'] != 'passed' or failures:
+            raise ValueError('Failed diagnosis requires a documented bug fix and new source/experiment identity')
+        freeze_record(experiment.root / f'diagnosis-validation-{VALIDATION_POLICY}.json', {
+            'policy': VALIDATION_POLICY, 'source_record_id': content_id(cached),
+            'status': 'passed', 'families': list(families)})
+        return
+    controls = {}
     for family in families:
         # GPU compatibility smoke is intentionally small, including custom price metrics.
         for kind in (('known_signal', 'negative_block_shift', 'small_subset_overfit') if family == 'xgboost' else ('known_signal',)):
@@ -78,15 +103,10 @@ def diagnose(experiment):
                 lambda workspace, f=frame, tr=train, va=validation, te=test, s=spec:
                     fit_predict(f, tr, va, te, s, workspace, iterations=12))
             controls[f'{family}/{task}'] = {'record': record['experiment_id'], 'status': 'passed'}
-    failures = []
-    if controls['xgboost/known_signal']['relative_mae_gain'] < .5:
-        failures.append('known synthetic signal was not learned')
-    if controls['xgboost/small_subset_overfit']['relative_mae_gain'] < .9:
-        failures.append('small-subset learning sanity failed')
-    if controls['xgboost/negative_block_shift']['relative_mae_gain'] > .2:
-        failures.append('negative control unexpectedly predicts held-out synthetic targets')
+    failures = control_failures(controls, families)
     if failures:
-        freeze_record(path, {'status': 'failed', 'failures': failures, 'controls': controls})
+        freeze_record(path, {'status': 'failed', 'failures': failures, 'controls': controls,
+                             'validation_policy': VALIDATION_POLICY})
         raise ValueError('; '.join(failures))
     comparisons = []
     # The old scale/regularization hypothesis was already measured. Do not repeat
@@ -105,6 +125,7 @@ def diagnose(experiment):
                'volume_zero_source_cause': 'unverified', 'audit_used': False}
     freeze_record(experiment.root / 'quality.json', quality)
     freeze_record(path, {'status': 'passed', 'controls': controls, 'comparisons': comparisons,
+                        'validation_policy': VALIDATION_POLICY,
                         'conclusion': ('Tabular GPU controls passed; use ablate for information comparisons. '
                                        'Prior scale/regularization comparisons were not repeated.' if free_profile else
                                        'GPU and learning controls passed; regularization effects are measured, not presumed')})

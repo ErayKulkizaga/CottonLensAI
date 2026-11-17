@@ -11,3 +11,5 @@
 - Backend checks: `cd backend && python -m pytest -q && python -m ruff check .`.
 - Frontend check with Node 24.15+: `cd frontend && npm ci && npm run build`.
 - Before completing UI changes, render at 1440, 1024, and 390 px and confirm `scrollWidth - clientWidth === 0` at each width.
+
+- For historical Colab experiments, models, and related materials, first check the user-maintained local archive at `CottonLensAI Colab/CottonLensAI/` when present. Its completeness and integrity must be verified for each use; it is not necessarily available in other worktrees or clones.

@@ -83,6 +83,24 @@ The existing Experiment/Ledger and two workbenches are used. New metadata catalo
 
 ## Evidence and operating limits
 
+### Side-conversation follow-up queue — 2026-10-03
+
+The bounded completed-combination inventory now records 722 decisions and 8068 candidate
+evaluations (`output/reports/completed-combination-inventory-20261003/v2/inventory.json`).
+These repeat across years/groups and are not unique fits or independent evidence; full
+checkpoint payload availability was not reverified by this inventory. Squared and absolute
+objectives already have executed legacy XGBoost/CatBoost records.
+
+The main conversation is preparing `agri-nonlinear-pilot-v1`; this side-conversation update
+does not interrupt that work or claim training/completion. Follow-up order: a no-fit,
+same-origin MAE/MAPE/OOS-R²/Naive bridge table; finish the active fixed nonlinear comparison;
+then consider a bounded ARIMA baseline registration and, only with a distinct hypothesis,
+a small matched LightGBM pilot. These are queued proposals, not implemented runners or
+automatic training authorization. No broad search or simultaneous new architecture sweep
+is opened. DeepAR/N-BEATS remain conditional; the existing DLinear/exogenous ordering,
+two workbenches, single ledger, gates and D21 remain unchanged. See the final
+"Yan sohbet incelemesi" section in the canonical plan for scope, dependencies and decisions.
+
 - Price gate: at least 5% MAE improvement, T+1 53% / T+5 55% all-origin direction accuracy, at least 6/8 yearly wins. Flat forecasts are reported; conditional nonflat accuracy never replaces this gate.
 - Paired bootstrap: 10000 replicates, fold boundaries preserved, main block length 20 and sensitivity lengths 10/40. Post-hoc power assumptions and reused-history selection limits remain explicit.
 - The Windows collector records prospective Naive/EWMA forecasts and source vintages with cutoff/missing/no-backfill rules. Computer uptime and local Drive copy verification do not establish continuous service or cloud synchronization.
@@ -150,3 +168,203 @@ Research Workbench is configured for statistical-pilot-v1, status/RUN_TRAINING=F
 initial15-minute session; CPU runtime suffices. Old source packages/data/DB remain intact.
 Canonical gates, no-selection2024+ audit and D21 are unchanged; automatic release closed.
 Evidence:output/reports/statistical-implementation-20261003/completion.md.
+
+
+## Statistical Colab outcome: complete; close the fixed order pilot
+
+32/32 annual outputs verified on the same2006 Cotton origins/horizon.41 metadata
+packages restored;932 distinct saved computation IDs in the console log (including
+analytical references, not932 ARIMA fits). Six numerical inner candidates were excluded.
+Past-selected Naive/drift/ARIMA strategy Naive MAE gains:-0.287484%/-0.087902%; direction
+36.79%/23.73%, year wins1/8 for each horizon. Both gates and research-priority fail.
+Raw strategy also loses Naive. Naive/flat choices explain low all-origin direction;
+do not condition on nonflat forecasts or remove shrinkage.2017 T+1 inner score0.986502
+transported to a2.919244% outside MAE loss. Original data/year cohort remains unchanged.
+Saved bootstrap report replayed within1e-12 numeric tolerance; no new fit, full payload
+audit, fresh reproduction or runtime parity. Naive stays primary; no automatic wider
+ARIMA/LightGBM/sequence search. Next: consolidate completed evidence and register one
+distinct bounded information/model hypothesis. D21 and2024+ selection prohibition
+unchanged. Existing launcher returns to status/RUN_TRAINING=False; old DB preserved.
+Evidence:output/reports/statistical-colab-review-20261003/completion.md.
+
+
+## Bounded nonlinear temporal-representation contrast prepared — 3 October 2026
+
+Four completed matched pilots were consolidated:128 signed annual outputs,2006 exact
+common origins/prices/targets per horizon; no selected strategy meets the price gate.
+Scoped completed inventory has no XGBoost83-column dense-return-path comparison. This
+does not prove that no unavailable legacy experiment tried it. Linear60-observation
+Ridge path and fixed nonlinear six-feature transfer tested separate representations.
+One distinct mechanism test is nonlinear interactions in the same recorded path;
+it adds no new information channel and is not a broad GPU/hyperparameter search.
+
+nonlinear-path-pilot-v1 / research-nonlinear-path-pilot-v1: fixed CUDA XGBoost depth2,
+eta0.03,child weight20,L1=0,L2=1,seed42,sampling1,scaled log target,squared loss;
+base24 versus base+59 preceding returns83. Max600 trees/patience50, three past63-origin
+inner blocks; yearly median tree count and shrinkage locked before outside results,
+21-observation refits,5-observation purge/mature labels. Both arms use the same frozen
+2016–2023 origins; no row dropping for missing features or time compression.
+Use the preserved original24-feature snapshot, not the six-column transfer snapshot.
+Terminal2024+ targets are masked only in a new packet; old snapshots untouched.
+Budget772=96 stopping fits+676 refits,32 annual outputs; no new windows/recipes/seeds.
+P1/P5 paired price-MAE,10000 bootstrap,20 main/10/40 sensitivity,BH; reused-history
+evidence. Same research-priority and5%/53%/55%/6-of-8 price gates; no automatic release.
+Negative result closes this fixed hypothesis without expanding the same path grid.
+
+Existing Experiment/Ledger/matched runner and two workbenches retained. Colab GPU-only
+fitting; CPU fallback error. Status/compare use CPU; defaultstatus/RUN_TRAINING=False.
+489 ML tests passed/one skipped; final frozen-packet preparation test also passed.
+Only mocked/synthetic fits locally; no new market score or actual CUDA/reproduction
+claim. D21,2024+ no-selection audit, source availability limits,old DB and backups intact.
+Evidence:output/reports/research-decision-20261003/evidence.json;
+preregistration/implementation:output/reports/nonlinear-path-implementation-20261003/.
+
+Frozen design:32ba7324583d22918562bfb9ed575d2a562224ca56e84afa68cccfdc7c1c5dd8.
+
+
+## Fixed nonlinear return-path Colab outcome: complete; hypothesis closed
+
+772 distinct saved fit IDs,32 outputs and34 metadata packages verified. Eight checkpoint
+spot-checks confirm NVIDIA L4/cuda:0, payload hashes/mature labels and sampled locked
+annual tree counts; not a full772-model audit, reproduction or deployment parity.
+83-column Naive MAE gains:-0.004520%/-0.538577%; year wins3/8 /0/8.24-column control
+gains:-0.105540%/-0.473757%. Inner path gains:-0.101730%/-0.084072%,5/8 /2/8 inner wins.
+Both priority/price gates fail; BH P1/P5 p0.541146/0.692231. Raw path forecasts also lose
+Naive(-0.120841%/-1.163883%); removing shrinkage is unsupported. Flat forecasts504/1002
+explain selected all-origin direction36.89%/24.58%; do not replace the gate by nonflat
+coverage. Close fixed nonlinear path, no wider lag/depth/seed/history search or release.
+Naive primary,2024+ selection prohibition/D21 unchanged. Existing launcher status/
+RUN_TRAINING=False; GPU may close. Zero new fits; old DB and unrelated working tree kept.
+Evidence:output/reports/nonlinear-path-colab-review-20261003/completion.md.
+
+## Unified session and matched evidence update
+
+The existing Research Workbench now continues planned checkpoint pauses automatically
+within SESSION_MINUTES (default240; CPU maximum240, GPU maximum720). Frozen runners
+still receive segments no longer than60 minutes; fit code, sources and identities are
+unchanged. Complete cached stages need no new fits. Failure, interruption, missing
+terminal JSON or a pause without new saved progress stops the session; no lock removal
+or automatic failure retry. The budget is soft at fit/checkpoint boundaries. Compare
+runs once after completion, not after each paused segment. Run All remains read-only.
+
+40 scoped orchestration/notebook/supervisor tests passed; Ruff and diff checks passed.
+No actual model training or GPU throughput claim. Five matched pilots now contribute
+160 signed annual outputs on the same2006 origins per horizon; all selected price
+gates fail. Evidence:output/reports/research-decision-20261003/v2/evidence.json.
+Original consolidation and old release/snapshot/DB files remain intact.
+
+Decision: do not restart the completed pilots or open another same-feature parameter
+grid. A further fit requires a distinct registered information/model hypothesis and
+a finite budget. Session automation does not authorize a queue of new experiments or
+change the22 October decision checkpoint, price gates or seen-audit restrictions.
+
+## WASDE narrative source preflight: complete, not training-ready
+
+Added offline cotton-narrative extraction and causal assumed-date alignment in
+sources/wasde_text.py. Existing TXT files are tables; PDF commentary is a distinct
+candidate information channel.22 already-listed public PDFs acquired at zero cost;
+old versions preserved. Final signed corpus-v4 contains90 distinct reports/narratives,
+2016–2023, about219 words/report. Eight dated entries are explicitly excluded for
+date/layout/version ambiguity. URL aliases follow existing archive provenance rules;
+full URL matching avoids confusing multiple latest.pdf files. Exact parser snapshot
+and source/receipt/PDF hashes retained. No publication/vintage admission inferred.
+
+On the preserved1254-origin2019–2023 WASDE cohort, lag1/2 have no missing text;
+lag6 has five missing origins, retained. At least24 distinct past documents before
+every tested inner cutoff (availability preflight, not final target-maturity test).
+42 focused WASDE/parser/alignment tests passed; Ruff and diff checks passed. No fits.
+
+Next proposal: one fixed Ridge/TF-IDF128/SVD8 incremental-text comparison, T+5 only,
+against age/missingness and numeric-balance controls. Train-only unique documents;
+nominal lag1 with additional1/5-observation stresses. Planned45 annual outputs and
+954 refits, no parameter sweep. This remains a proposal until training adapter,
+checkpoint identities and workbench integration pass tests and exact recipes freeze.
+Five-year Tier-A discovery cannot establish the eight-year release gate or independent
+success; Naive stays primary. Existing launcher remains status/trainingFalse.
+Evidence:output/reports/wasde-text-audit-20261003/hypothesis-v2.json.
+
+## WASDE narrative pilot implementation: ready for a bounded Colab run
+
+The existing Experiment/Ledger and Research Workbench now support wasde-text-pilot-v1;
+no third notebook or parallel trainer. Three arms at each lag: base24 plus text timing
+(26 inputs), numeric WASDE plus the same timing (31), and numeric plus TF-IDF/SVD text
+(39). One Ridge alpha1, scaled-log target, seed42, T+5 only. Vocabulary/IDF/SVD learn
+only unique eligible training documents; daily repeats cannot inflate document counts.
+Missing text remains an origin with imputation/indicators. Exact vocabulary, IDF,
+components, numeric preprocessing, training document IDs and column order are saved
+in the fit payload and covered by the existing ledger checksums.
+
+Original1254-origin2019–2023 split,21-observation refit, five-observation label maturity,
+three63 past inner blocks and shrinkage grid unchanged. Lag1/2/6 arms isolate timing
+assumptions. Finite budget954 refits,45 annual outputs; no wider parameter search.
+Prepare checks mature-document availability without fitting. Cached decisions/outputs
+are checked against frozen recipes/origins/labels; missing or corrupt evidence stops
+without silent retraining. Metadata catalogues restore completed reports separately
+from model payloads. Auto-session/Run All trainingFalse defaults remain.
+
+ML suite:547 passed,1 skipped; synthetic fixtures only. Source/parser, workbench,
+ledger/metadata restore and transform round-trip contracts verified. Real narrative
+pilot training, CPU timing and model performance remain pending in Colab. No release,
+eight-block gate or Cotcast comparison is claimed. Tier A and D21 unchanged. Old DB,
+releases, source bundles and preservation backups untouched; no commit/push.
+Inputs and execution receipt:output/reports/wasde-text-pilot-implementation-20261003/.
+
+## WASDE narrative Colab outcome: complete; fixed hypothesis closed,4 October2026
+
+Reported16.02 minutes,45/45 verified annual outputs,1254 frozen origins. Restored three
+metadata packages and checked outputs against recipes, decisions, dates/prices/labels.
+No local fits.954 registered refits is a budget, not a full payload audit: cold Drive
+payload scan stopped; no post-run reproduction/deployment parity claim.
+Text lag1/2/6 Naive gains:-0.210299% /0% /-0.755777%, all0/5 strict yearly wins.
+Lag2 shrinkage selects zero every year (exact Naive). Lag1 inner contribution vs numeric
+is-0.309442%,0/5; outside contribution only+0.049843%,1/5. All priority tests fail.
+Raw text forecasts lose Naive by10.85–11.72%; removing shrinkage is unsupported.
+Close this fixed Ridge/TF-IDF/SVD hypothesis; no automatic encoder/seed/GPU expansion.
+Tier-A/five-year research does not evaluate the eight-block release gate. Naive primary,
+2024+ selection prohibition, original gates and22 October checkpoint unchanged.
+DB/source/old results preserved. Evidence:output/reports/wasde-text-colab-review-20261004/.
+
+## Next registered hypothesis: joint fundamental state,4 October2026
+
+Profile/experiment:fundamental-joint-pilot-v1/research-fundamental-joint-pilot-v1.
+Reuse frozen FAS/NASS/Texas-weather sources together; reviewed runs used them
+separately. Preserve2006 T+5 origins over2016–2023 and all missing rows. Same past-only
+selection/maturity/refit protocol; three lag stresses1/2/6. Complete interaction
+coverage886/2006 at each lag is reported separately, never used to select origins.
+Three arms: timing controls31 inputs, joint numerical sources46, fixed crop-condition
+products49. One CPU Ridge alpha1/seed42/scaled-log plus existing shrinkage per arm.
+Budget1521 refits(648 inner/873 outer),72 annual outputs. No parameter search.
+Compare interaction with BOTH controls at all lags; research priority requires
+>=0.5% inner gain,>=5/8 inner wins,positive outer gain and>=5/8 outer wins.
+No release/source admission/automatic larger search. Publication/vintage remains
+unverified Tier A. Original gates,Naive primary,2024+ prohibition and D21 unchanged.
+Implementation/preflight evidence:output/reports/fundamental-joint-implementation-20261004/.
+Real pilot fitting and predictive results are pending Colab; tests use synthetic data.
+
+
+## Availability-clock correction and completed pilot — 5 October 2026
+
+The approved `availability-clock-pilot-v1` completed 676 CPU Ridge fits, 32 annual
+outputs and 8,024 prediction rows on matched 2016–2023 origins. This is a Yahoo
+availability-assumption sensitivity experiment, not verified publication timing.
+T+1 selected control/available Naive gains: -0.328473% / -0.153805%; T+5:
+-0.799971% / -1.339565%. Both available arms win 0/8 years against Naive.
+T+1 improves slightly against control, but 87.54% of the loss reduction comes
+from selecting zero weight in 2020. Raw available predictions are worse than
+raw control overall. T+1 Naive-gain 95% upper bounds are 0.125691% (block20)
+and 0.019337% (block60), far below the unchanged 5% practical gate.
+Decision: retain Naive; no automatic grid/source/GPU expansion of this timing recipe.
+
+Legacy LSTM's 498-versus-439 origin comparison is invalid: reconstructed matched
+T+1 aggregate gain is -1.696141%, not +2.764668%. Full LSTM predictions are absent,
+so no paired CI is claimed. Historical TCN known-signal gain -23.593133% failed
+the learning control despite its old overall `passed`; all executed families
+now require >=50% known-signal gain and cached controls are re-evaluated.
+Old evidence remains immutable; corrections and 109-entry inventory are separate.
+Synthetic controls are not market results; incomplete runs are not negatives;
+T+5 source evidence does not settle T+1. Raw direction, selected direction and
+active rate differ; zero-shrinkage [0,0] intervals do not establish no source signal.
+Previously reviewed 2016–2023 and 2024+ history is not an independent holdout.
+
+Details and exact evidence paths: [availability-clock result](AVAILABILITY_CLOCK_RESULT_20261005.md).
+Existing release gates and the prohibition on 2024+ selection remain unchanged.

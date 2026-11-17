@@ -236,7 +236,7 @@ def model_evaluation(db: Session = Depends(get_db)) -> ModelEvaluationResponse:
             if report and imported.manifest.get('artifact_schema_version') == 3 else
             "Four pre-2024-06-18 rolling-origin folds; 2024 onward is a previously "
             "observed descriptive historical audit; it never selects or rejects a candidate."
-            if report else "Legacy artifact: walk-forward evidence is unavailable."
+            if report else "Legacy artifact: walk-forward evidence is unavailable. Model superiority cannot be inferred unless metrics use verified identical forecast origins and targets."
         ),
     )
 

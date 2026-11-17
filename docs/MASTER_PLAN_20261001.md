@@ -609,6 +609,67 @@ Pooled dış tahmin standart sapması kontrolün%59/%58'i, iki model tahmin kore
 
 Sabit ortak-lineer hipotez gate için yetersiz olarak kapanır; küçük eşlenmiş kontrol katkısı korunur. Alpha/seri payı/cadence veya aynı panel araması büyütülmez. Sonraki sınırlı iş tamamlanan model/objective/feature kombinasyonlarını recipe üreticisinin seçeneklerinden ayıran sicil envanteri ve tek farklı hipotezin ön kaydıdır. Absolute-error eski recipe üreticisinde zaten vardır; gerçekten çalıştırılmış receipt'ler doğrulanmadan yeni denenmemiş fikir diye sunulmaz. Kanıt `output/reports/agri-transfer-diagnosis-20261003/completion.md`;12 dosya Drive klasöründe hash-readback ile doğrulandı. ML kaynak kimliği,676 fit/32 çıktı, eski DB ve D21 değişmedi.
 
+### Yan sohbet incelemesi — koşullu takip sırası, 2026-10-03
+
+Bu ek yalnız sonraki araştırma kuyruğunu günceller; ana sohbette hazırlanan
+`agri-nonlinear-pilot-v1` sabit XGBoost ortak-eğitim karşılaştırmasını kesmez veya
+yeniden tasarlamaz. O pilotun mevcut ön kaydı, eşlenmiş kontrolü ve bütçesi önceliklidir;
+bu ek hazırlanan kodun tamamlandığı veya pilotun çalıştırıldığı anlamına gelmez.
+
+Tamamlanan kombinasyon envanteri `output/reports/completed-combination-inventory-20261003/v2/inventory.json`
+722 kayıtlı karar ve 8068 aday değerlendirmesi içerir. Değerlendirmeler yıllar/gruplar
+arasında tekrar eder; bağımsız deney veya benzersiz fit sayısı değildir. Eski XGBoost/
+CatBoost kare ve mutlak-hata hedefleri çalıştırılmış kayıtlarda bulunur; yeni fikir diye
+tekrarlanmaz. Bu metadata envanteri bütün model payload'larının yeniden doğrulanması
+veya inventory kapsamı dışındaki eski deneylerin hiç yapılmadığı kanıtı değildir.
+
+Takip işleri sırayla ve ayrı kararlarla açılır; hepsini otomatik çalıştırma izni değildir:
+
+1. **Yeni fit olmadan metrik köprüsü:** kayıtlı tahminlerden aynı veri/protokol/horizon/
+   origin'lerde fiyat-MAE (fiyat birimi), MAPE (%), gerçek OOS R² ve Naive'a göre MAE
+   kazancını tek tabloda göster. Mevcut review/raporlama kodunu kullan; farklı cohort'ları
+   yarıştırma. `100 × (1 − MAPE oranı)` yalnız açıkça etiketlenmiş betimleyici dönüşümdür;
+   R² veya yön doğruluğu değildir. Cotcast hedef/tarih/availability/protokolü bilinmeden
+   eşitlik veya üstünlük iddiası kurulmaz. Bu tablo aday seçimi için yeni metrik açmaz.
+2. **Aktif nonlinear pilotu tamamla ve karşılaştır:** test/kimlik/resume kapıları geçmeden
+   eğitim açılmaz; mevcut bütçe korunur. Sonuç tek karar raporuna bağlanır. Negatif sonuç
+   otomatik daha geniş GPU veya asset-weight/depth/cadence taraması başlatmaz.
+3. **Eksik istatistiksel referans için küçük ARIMA fizibilitesi:** geçmiş deneylerde gerçekten
+   çalıştırılmadığı doğrulandıktan sonra mevcut ledger içinde ayrı ön kayıt hazırlanır.
+   Naive, drift ve küçük, en fazla altı önceden sabitlenmiş ARIMA order'ı aynı origin'lerde
+   karşılaştırılır; differencing/order seçimi yalnız geçmiş iç validation'dadır. SARIMA
+   yalnız training verisinde gerekçeli mevsimsellik varsa ayrı hipotezdir. Aynı purge/
+   maturity/refit kuralları, başarısız fit kaydı ve sayısal bütçe ilk fit öncesi dondurulur.
+   ARIMA için mevcut yerel CPU allowlist izni varsayılmaz; guard/dependency/test sözleşmesi
+   ayrıca incelenir. Otomatik exhaustive `auto_arima` taraması açılmaz.
+4. **Koşullu LightGBM pilotu:** önceki ve aktif ağaç deneylerinden somut farklı hipotez
+   yazılabiliyorsa tek küçük eşlenmiş kontrol açılır. Aynı feature/cohort, loss, target ve
+   refit korunarak model ailesi değiştirilir; önceden sınırlı reçete ve toplam fit bütçesi
+   tanımlanır. Dependency/CPU-GPU desteği, ledger kimliği ve export fizibilitesi önce
+   doğrulanır. İç-validation katkısı olmadan geniş Optuna araması açılmaz; LightGBM tek
+   başına yeni bilgi veya başarı garantisi değildir.
+5. **Sequence/panel seçimi koşullu kalır:** mevcut DLinear → gerekçeli exogenous sırası
+   korunur. DeepAR olasılıksal ortak-seri hipotezi, N-BEATS ise ayrı univariate kontrol
+   olabilir; ikisi aynı anda büyük taramaya girmez. PyTorch Forecasting'in standart
+   N-BEATS'i dış feature kullanmaz; USDA/hava girdileri sessizce ona aktarılmaz. Yeni
+   aile ancak önceki raporla gerekçelendirilmiş tek ön kayıt ve Colab smoke/export kontrolü
+   sonrası açılır. Mevcut iki workbench/tek ledger kullanılır; yeni notebook hattı kurulmaz.
+
+Veri yeniden başlatılmaz: günlük CT=F geçmişi ve USDA kaynak pilotları mevcut. Alpha
+Vantage `COTTON` aylık/çeyreklik/yıllık global fiyat serisidir, günlük ICE kontratının
+yerine geçmez. WASDE yayın günü tek başına eski sürümün erişilebilirliğini kanıtlamaz.
+Kaynak/vintage/roll sınırları ve Kademe A/B değişmez. Günlük ICE kontratıyla birebir
+rakip kıyası yapılamaması, mevcut CT=F hedefinde ücretsiz araştırmayı durdurmaz.
+
+Başarı veya toplam maliyet garantisi verilmez: daha çok mimari/Optuna veya mevcut
+donanım %99 doğruluk, <%1 hata veya Cotcast eşitliği sağlamaz; toplam GPU harcaması
+otomatik $50 ile sınırlı değildir. Veri bütçesi0 TL, ayrı onay gerektiren harcamalar,
+%5 MAE, T+1 %53/T+5 %55 yön ve 6/8 blok gate'leri, 2024+ seçimsiz audit ve D21 aynen korunur.
+
+Kaynaklar: [Alpha Vantage Cotton API](https://www.alphavantage.co/documentation/),
+[PyTorch Forecasting model kapsamı](https://pytorch-forecasting.readthedocs.io/en/v1.7.0/api/pytorch_forecasting.models.html),
+[Cotcast'in kendi MAPE açıklaması](https://cotcast.ai/blog/global-cotton-trading-guide-strategies-profitability).
+
 
 ## Sabit nonlinear ortak-eğitim pilotu — 3 Ekim 2026
 
@@ -679,3 +740,202 @@ son helper-hash kontrolü sonrası5 odak testi geçti. Gerçek piyasa ARIMA fit'
 yeni skor, reproduction veya deployment parity yok. Release otomatik kapalı.
 Gates/2024+ audit/D21, eski DB/source paketleri ve tamamlanmış Colab deneyleri korunur.
 Ön kayıt/teslim:output/reports/statistical-implementation-20261003/.
+
+
+## Statistical Colab outcome: complete; close the fixed order pilot
+
+32/32 annual outputs verified on the same2006 Cotton origins/horizon.41 metadata
+packages restored;932 distinct saved computation IDs in the console log (including
+analytical references, not932 ARIMA fits). Six numerical inner candidates were excluded.
+Past-selected Naive/drift/ARIMA strategy Naive MAE gains:-0.287484%/-0.087902%; direction
+36.79%/23.73%, year wins1/8 for each horizon. Both gates and research-priority fail.
+Raw strategy also loses Naive. Naive/flat choices explain low all-origin direction;
+do not condition on nonflat forecasts or remove shrinkage.2017 T+1 inner score0.986502
+transported to a2.919244% outside MAE loss. Original data/year cohort remains unchanged.
+Saved bootstrap report replayed within1e-12 numeric tolerance; no new fit, full payload
+audit, fresh reproduction or runtime parity. Naive stays primary; no automatic wider
+ARIMA/LightGBM/sequence search. Next: consolidate completed evidence and register one
+distinct bounded information/model hypothesis. D21 and2024+ selection prohibition
+unchanged. Existing launcher returns to status/RUN_TRAINING=False; old DB preserved.
+Evidence:output/reports/statistical-colab-review-20261003/completion.md.
+
+
+## Bounded nonlinear temporal-representation contrast prepared — 3 October 2026
+
+Four completed matched pilots were consolidated:128 signed annual outputs,2006 exact
+common origins/prices/targets per horizon; no selected strategy meets the price gate.
+Scoped completed inventory has no XGBoost83-column dense-return-path comparison. This
+does not prove that no unavailable legacy experiment tried it. Linear60-observation
+Ridge path and fixed nonlinear six-feature transfer tested separate representations.
+One distinct mechanism test is nonlinear interactions in the same recorded path;
+it adds no new information channel and is not a broad GPU/hyperparameter search.
+
+nonlinear-path-pilot-v1 / research-nonlinear-path-pilot-v1: fixed CUDA XGBoost depth2,
+eta0.03,child weight20,L1=0,L2=1,seed42,sampling1,scaled log target,squared loss;
+base24 versus base+59 preceding returns83. Max600 trees/patience50, three past63-origin
+inner blocks; yearly median tree count and shrinkage locked before outside results,
+21-observation refits,5-observation purge/mature labels. Both arms use the same frozen
+2016–2023 origins; no row dropping for missing features or time compression.
+Use the preserved original24-feature snapshot, not the six-column transfer snapshot.
+Terminal2024+ targets are masked only in a new packet; old snapshots untouched.
+Budget772=96 stopping fits+676 refits,32 annual outputs; no new windows/recipes/seeds.
+P1/P5 paired price-MAE,10000 bootstrap,20 main/10/40 sensitivity,BH; reused-history
+evidence. Same research-priority and5%/53%/55%/6-of-8 price gates; no automatic release.
+Negative result closes this fixed hypothesis without expanding the same path grid.
+
+Existing Experiment/Ledger/matched runner and two workbenches retained. Colab GPU-only
+fitting; CPU fallback error. Status/compare use CPU; defaultstatus/RUN_TRAINING=False.
+489 ML tests passed/one skipped; final frozen-packet preparation test also passed.
+Only mocked/synthetic fits locally; no new market score or actual CUDA/reproduction
+claim. D21,2024+ no-selection audit, source availability limits,old DB and backups intact.
+Evidence:output/reports/research-decision-20261003/evidence.json;
+preregistration/implementation:output/reports/nonlinear-path-implementation-20261003/.
+
+Frozen design:32ba7324583d22918562bfb9ed575d2a562224ca56e84afa68cccfdc7c1c5dd8.
+
+
+## Fixed nonlinear return-path Colab outcome: complete; hypothesis closed
+
+772 distinct saved fit IDs,32 outputs and34 metadata packages verified. Eight checkpoint
+spot-checks confirm NVIDIA L4/cuda:0, payload hashes/mature labels and sampled locked
+annual tree counts; not a full772-model audit, reproduction or deployment parity.
+83-column Naive MAE gains:-0.004520%/-0.538577%; year wins3/8 /0/8.24-column control
+gains:-0.105540%/-0.473757%. Inner path gains:-0.101730%/-0.084072%,5/8 /2/8 inner wins.
+Both priority/price gates fail; BH P1/P5 p0.541146/0.692231. Raw path forecasts also lose
+Naive(-0.120841%/-1.163883%); removing shrinkage is unsupported. Flat forecasts504/1002
+explain selected all-origin direction36.89%/24.58%; do not replace the gate by nonflat
+coverage. Close fixed nonlinear path, no wider lag/depth/seed/history search or release.
+Naive primary,2024+ selection prohibition/D21 unchanged. Existing launcher status/
+RUN_TRAINING=False; GPU may close. Zero new fits; old DB and unrelated working tree kept.
+Evidence:output/reports/nonlinear-path-colab-review-20261003/completion.md.
+
+### Execution update: one bounded session, 3 October 2026
+
+Keep the two workbenches. Research pilot automatically continues planned pauses of
+the same registered experiment within a total session budget:240 minutes by default,
+maximum240 for CPU or720 for GPU. Frozen fit runners retain their60-minute segment
+limit and code identity. Compare once when complete. Failures, interruption and no
+saved progress stop without retrying or clearing locks. This is a soft budget at
+fit/checkpoint boundaries, not a completion-time guarantee. Run All remains status.
+
+The updated matched table verifies160 annual outputs from five completed pilots on
+identical2006 origins/horizon; no selected price gate passes. Existing evidence is
+preserved under its original identity; the new consolidation is version2. Do not
+automatically queue more same-feature searches. Any next fit needs a distinct written
+hypothesis and finite budget; unchanged D21 and release gates govern its decision.
+
+### Next information hypothesis: WASDE cotton commentary
+
+Source preflight produced90 checksummed cotton narrative reports for2016–2023;
+existing TXT tables are not a new text channel. Eight ambiguous date/layout/version
+entries excluded with reasons; no observation deleted. Tier A only: PDF cover date
+does not prove first publication/vintage. Monthly information updates are not1254
+independent news items. Corpus-v4 and exact extraction parser are pinned separately.
+
+First proposed test is T+5 only, one fixed Ridge alpha1 recipe. Train-only TF-IDF128
+unigrams/SVD8, fitted on unique eligible past documents (minimum12); no modern encoder
+or broad model search. Three arms isolate text from report age/missingness and existing
+World-balance ratios, using the preserved1254-origin2019–2023 cohort. Lag1 plus lag2/6
+stress, three past63 inner blocks,21 refit, five-observation purge and locked shrinkage.
+Planned45 outputs/954 refits. Priority needs>=0.5% inner gain against both controls,
+four of five positive inner years, positive outside contribution and four of five
+outside wins. Timing-fragile gain does not open wider search. No five-year/Tier-A
+price gate or release claim. This proposal is not training-ready: implement/test the
+train-only adapter and checkpoint identities, then freeze exact recipes and budget in
+the existing workbench/ledger before any fit. D21 and original gates unchanged.
+
+### Execution update: bounded narrative pilot ready, 3 October 2026
+
+The WASDE commentary proposal above is implemented in the existing CPU workbench
+and single ledger. Profile wasde-text-pilot-v1, separate experiment identity; T+5 only,
+one Ridge alpha1 per arm, three timing/numeric/text arms at lag1/2/6. Preserve the
+original1254-origin five-year cohort and all missing observations. The serializable
+TF-IDF128/min_df2/SVD8 transform uses unique mature training documents, seed42;
+scalers/target transform also remain train-only. Exact fitted state is checksummed.
+Prepare is metadata-only. Fixed budget954 refits/45 outputs and the stated contribution
+rule are frozen before the first fit. The existing launcher remains status/trainingFalse;
+user deliberately enables this pilot once, with automatic checkpoint-segment resume.
+
+547 ML tests passed,1 skipped; no real market fitting performed for this delivery.
+Colab timings and predictive results are pending. Compare checks both matching
+controls and every lag stress; a positive result authorizes review of this hypothesis,
+not automatic search, admission, deployment or a revised gate. A negative result closes
+this fixed text hypothesis. Monthly reports do not create1254 independent information
+updates. Source vintage/publication remains unverified Tier A; Naive primary,2024+
+selection prohibition and22 October decision checkpoint remain unchanged.
+
+### WASDE narrative decision,4 October2026
+
+The fixed T+5 Ridge/TF-IDF/SVD pilot completed45 outputs on1254 historical origins.
+No lag condition meets the registered contribution rule; lag2 returns exact Naive.
+Unshrunk predictions also lose Naive. Close this hypothesis; no automatic larger text
+or same-feature search. This does not rule out every future text model/source. Keep
+Naive primary, Tier-A restriction,2024+ selection ban and22 October checkpoint.
+Detailed checked evidence:output/reports/wasde-text-colab-review-20261004/completion.md.
+
+### Next bounded hypothesis: joint fundamental state,4 October2026
+
+The reviewed source experiments tested FAS export sales, NASS national Cotton
+condition and Texas weather separately. Register one combined representation in
+`fundamental-joint-pilot-v1`; do not repeat those experiments or the failed text pilot.
+Keep their exact shared2006 T+5 origins,2016–2023,21-observation refits, five-observation
+purge/maturity and three63 past inner blocks. All missing origins remain scored.
+Frozen parent histories contain3520 rows; only886 of2006 evaluation origins have
+all three interaction inputs together at each lag. This is coverage, not a new cohort.
+
+At lag1/2/6 compare timing/missingness/season controls(31 inputs), joint numerical
+sources(46), and the joint sources plus three fixed products(49): sales change,
+growing-season heat and growing-season rainfall, each multiplied by poor/very-poor
+crop-condition fraction. One Ridge alpha1/scaled-log/seed42 per arm; past-only
+shrinkage stays unchanged. No feature, model, cadence or seed search. Budget:
+648 inner and873 outer refits,1521 total,72 annual outputs. Source evidence remains
+Tier A; combining it does not establish publication timing or vintage validity.
+
+Prioritization requires interaction contribution against BOTH timing and joint
+controls: at least0.5% inner gain and5/8 inner wins, positive aggregate outer gain
+and5/8 outer wins, at all three lag stresses. This is a research decision only;
+Naive comparisons are still reported, no release gate or admission is evaluated.
+If negative, close this fixed joint-state hypothesis; do not automatically expand
+the interaction grid. CPU only, existing workbench/ledger/mirror, metadata-only
+prepare and checksum-bound packet. Original gates,2024+ ban and D21 remain fixed.
+
+
+## Availability-clock correction and completed pilot — 5 October 2026
+
+The approved `availability-clock-pilot-v1` completed 676 CPU Ridge fits, 32 annual
+outputs and 8,024 prediction rows on matched 2016–2023 origins. This is a Yahoo
+availability-assumption sensitivity experiment, not verified publication timing.
+T+1 selected control/available Naive gains: -0.328473% / -0.153805%; T+5:
+-0.799971% / -1.339565%. Both available arms win 0/8 years against Naive.
+T+1 improves slightly against control, but 87.54% of the loss reduction comes
+from selecting zero weight in 2020. Raw available predictions are worse than
+raw control overall. T+1 Naive-gain 95% upper bounds are 0.125691% (block20)
+and 0.019337% (block60), far below the unchanged 5% practical gate.
+Decision: retain Naive; no automatic grid/source/GPU expansion of this timing recipe.
+
+Legacy LSTM's 498-versus-439 origin comparison is invalid: reconstructed matched
+T+1 aggregate gain is -1.696141%, not +2.764668%. Full LSTM predictions are absent,
+so no paired CI is claimed. Historical TCN known-signal gain -23.593133% failed
+the learning control despite its old overall `passed`; all executed families
+now require >=50% known-signal gain and cached controls are re-evaluated.
+Old evidence remains immutable; corrections and 109-entry inventory are separate.
+Synthetic controls are not market results; incomplete runs are not negatives;
+T+5 source evidence does not settle T+1. Raw direction, selected direction and
+active rate differ; zero-shrinkage [0,0] intervals do not establish no source signal.
+Previously reviewed 2016–2023 and 2024+ history is not an independent holdout.
+
+Details and exact evidence paths: [availability-clock result](AVAILABILITY_CLOCK_RESULT_20261005.md).
+Existing release gates and the prohibition on 2024+ selection remain unchanged.
+
+
+## User decision: futures direction and position — 5 October 2026
+
+The user selected futures trade direction and position as the product decision.
+The initial contract is [TRADING_RESEARCH_CONTRACT_20261005.md](TRADING_RESEARCH_CONTRACT_20261005.md).
+Old price gates/results remain unchanged; the new objective does not certify old
+models. The next bounded proposal is a no-fit T+1 saved-signal execution-timing
+sensitivity, with fixed sign/flat decisions and no threshold search. Current CT=F
+OHLCV lacks contract identity/session timestamps; any resulting PnL is a proxy,
+not verified tradable net performance. Actual execution costs and risk budget
+must be fixed before any net-performance or position-sizing approval.
+No new fits, data acquisition or live trading were authorized by the goal choice.
