@@ -2,7 +2,7 @@
 
 Değerlendirmenin özeti: araştırma disiplini güçlü; bilimsel kanıt orta düzeyde; ürün kanıtı zayıf. Önerilen yön: yeni deney yapmayı bırakmak, tahmin aralıklarını kalibre etmek, alan→üretim kopukluğunu açıklamak, canlı sistemi tamamlamak, sunumu sadeleştirmek ve kullanıcı testi yapmak.
 
-`docs/RESEARCH_PLAN_20261116.md` dosyasının devamıdır. Mülakat yaklaşık 23 Kasım'da.
+`docs/archive/phase2-notes/RESEARCH_PLAN_20261116.md` dosyasının devamıdır. Mülakat yaklaşık 23 Kasım'da.
 
 ## 0. Eleştiri maddelerinin repoyla karşılaştırması
 | Madde | Durum | Not |

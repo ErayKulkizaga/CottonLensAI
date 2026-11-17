@@ -1,6 +1,6 @@
 """T46: the frozen revision-momentum rule (momentum.py, unchanged) applied to USDA corn-for-grain and soybean forecasts.
 
-Pre-declared in docs/T46_CORN_SOY_PREREG_20261116.md. Subcommands:
+Pre-declared in docs/prereg/T46_CORN_SOY_PREREG_20261116.md. Subcommands:
   parse  raw_dir root          2000-2011 Sep-Nov (and Aug) forecasts from cached Crop Production text reports
   pull   root first last       QuickStats state/US production (forecasts + finals), key from NASS_API_KEY
   check  root                  parser vs QuickStats on the overlap years 2012-2013 (counts only, no values printed)

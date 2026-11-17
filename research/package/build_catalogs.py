@@ -91,7 +91,7 @@ def experiments():
 
 def docs():
     rows = []
-    paths = sorted((ROOT / 'docs').glob('*.md')) + sorted((ROOT / 'docs/archive').glob('*.md'))
+    paths = sorted((ROOT / 'docs').rglob('*.md'))  # docs/ has prereg/ and archive/ subfolders since 17 Nov 2026
     for p in paths:
         t = p.read_text(encoding='utf-8', errors='ignore')
         title = next((ln.lstrip('# ').strip() for ln in t.splitlines() if ln.startswith('#')), p.stem)
@@ -135,7 +135,7 @@ def profiles():
     """One row per research profile: fits, families, recipe settings, feature sizes, registry results, documents."""
     T = json.loads((ROOT / 'research/trials.json').read_text(encoding='utf-8'))['records']
     R = json.loads((ROOT / 'research/registry.json').read_text(encoding='utf-8'))['records']
-    docs = {p: p.read_text(encoding='utf-8', errors='ignore') for p in list((ROOT / 'docs').glob('*.md')) + list((ROOT / 'docs/archive').glob('*.md'))}
+    docs = {p: p.read_text(encoding='utf-8', errors='ignore') for p in list((ROOT / 'docs').rglob('*.md'))}
     agg = defaultdict(lambda: {'fits': 0, 'records': 0, 'fam': Counter(), 'kind': Counter(), 'h': set(), 'loss': set(), 'target': set(),
                                'nf': [], 'params': Counter(), 'window': set(), 'roles': set()})
     for r in T:

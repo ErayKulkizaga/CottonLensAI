@@ -1,4 +1,4 @@
-"""T52 (docs/T52_MARKET_PREREG_20261116.md): report-day cotton futures return vs the predicted direction of USDA's
+"""T52 (docs/prereg/T52_MARKET_PREREG_20261116.md): report-day cotton futures return vs the predicted direction of USDA's
 next US production revision. Prices sealed at 2021-12-31 before any computation.
 Usage: python t52_market.py market_history.parquet out.json
 """

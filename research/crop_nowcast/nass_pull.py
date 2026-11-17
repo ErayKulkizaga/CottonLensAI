@@ -64,7 +64,7 @@ def fetch(params, key, year):
 def main(out_dir, first=MIN_YEAR, last=MAX_YEAR):
     first, last = int(first), int(last)
     key = nass_key()
-    if last >= SEALED_FROM and '--unseal' not in sys.argv:  # T39: pushed prereg docs/SEALED_TEST_T39_PREREG_20261115.md
+    if last >= SEALED_FROM and '--unseal' not in sys.argv:  # T39: pushed prereg docs/prereg/SEALED_TEST_T39_PREREG_20261115.md
         raise SystemExit('Sealed test years need --unseal after a pushed preregistration')
     out = Path(out_dir)
     out.mkdir(parents=True, exist_ok=True)

@@ -1,4 +1,4 @@
-"""T49: anchoring of USDA's in-season harvested area against public crop condition (docs/T49_ANCHORING_PREREG_20261116.md).
+"""T49: anchoring of USDA's in-season harvested area against public crop condition (docs/prereg/T49_ANCHORING_PREREG_20261116.md).
 
   pull  root        QuickStats: cotton condition OK/KS/TX 2000-2025; winter wheat harvested area (forecasts + finals)
                     and condition for KS/OK/TX 2012-2025. Key from NASS_API_KEY.

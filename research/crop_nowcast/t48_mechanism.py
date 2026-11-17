@@ -1,4 +1,4 @@
-"""T48: confirm the error mechanism found on 2012-2025 on 1995-2011 (preregistered: docs/T48_MECHANISM_PREREG_20261116.md).
+"""T48: confirm the error mechanism found on 2012-2025 on 1995-2011 (preregistered: docs/prereg/T48_MECHANISM_PREREG_20261116.md).
 
   parse  root            area / yield / production forecasts from cached 1995-2011 Crop Production text reports
   finals root            QuickStats upland harvested area and yield finals 1995-2011 ('YEAR' rows), key from NASS_API_KEY

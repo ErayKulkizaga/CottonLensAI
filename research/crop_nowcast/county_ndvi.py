@@ -1,6 +1,6 @@
 """County x composite NDVI over cotton pixels for the panel counties (MODIS MOD/MYD13Q1 v061).
 
-Leakage rules (see docs/CROP_NOWCAST_DATA_CONTRACT_20261113.md):
+Leakage rules (see docs/archive/phase2-notes/CROP_NOWCAST_DATA_CONTRACT_20261113.md):
 - cotton mask for season Y comes from the USDA CDL of year Y-1 (class 2); the
   multi-year frequency/cultivated layers are never used;
 - composites are dated by end_datetime; availability lags are applied later,

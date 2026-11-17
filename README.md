@@ -1,115 +1,95 @@
 # CottonLensAI
 
-CottonLensAI, ICE Cotton No. 2 günlük fiyat proxy'si üzerinde tahmin araştırmasını,
-checksum doğrulanmış model paketleriyle çalışan bir FastAPI/Angular uygulamasıyla birleştirir.
-Uygulama geçmiş tahminleri, model karşılaştırmalarını ve senaryo çıkarımını gösterir;
-`live` ve `backtest` kayıtları ayrı tutulur.
+ABD pamuk rekoltesi ve pamuk vadeli fiyatı üzerine bir araştırma projesi. Projenin sorusu: USDA'nın aylık rekolte tahmininden daha isabetli bir tahmin yapılabilir mi? Yapılamıyorsa USDA nerede ve neden yanılıyor?
 
-## Güncel bilimsel durum — 5 Kasım 2026
+Her test, verisine bakılmadan önce yazılıp git'e kaydedildi. Başarısız sonuçlar da saklanıyor.
 
-**Fiyat için Naive, risk için EWMA referansları korunuyor. Bağımsız ileri tahmin üstünlüğü gösterilmedi.**
-Fiyat araştırmasının kapıları en az %5 Naive-MAE kazancı, T+1 %53 / T+5 %55 yön
-ve sekiz yıllık protokolde en az 6/8 kazanımdır. 2016–2023 ile incelenmiş 2024+
-dönemleri yeniden kullanılan tarihsel kanıttır; bağımsız holdout değildir.
+## Sonuçlar (17 Kasım 2026)
 
-İki Windows toplama görevi 4 Kasım'da kapatıldı. Zamanında arşivlenmiş ilk ileri
-kayıtlar korunuyor; görevlerin çalışmış olması model başarısı değildir.
-Kaynak erişim saati, fiyat alanı ve kontrat kimliği sınırları [STATUS](docs/STATUS.md)'ta açıklanır.
+| İddia | Kanıt | Durum |
+|---|---|---|
+| Teksas hasat alanında USDA'dan daha isabetli | Hata %11,4 → %7,0 (2008–2025, p = 0,0005) | Kanıtlı; Teksas keşif eyaleti |
+| USDA'nın Teksas hatası 2012'de verimden hasat alanına kaydı | Eylül alan hatası %3,8 → %14,9; Chow testi p = 0,0005 | Kanıtlı |
+| USDA, kötü ürün durumuna gerekenin üçte ikisi kadar tepki veriyor | Oran 0,65–0,69; korelasyon −0,82 ile −0,88 | Kanıtlı |
+| Kör sezonlarda üretim tahmini USDA'dan daha yakın | 23 sezon, 88/128 karşılaştırma, p = 0,007 | Kanıtlı; dönemleri birleştirme kararı sonradan alındı |
+| USDA'nın bir sonraki revizyon yönü öngörülebilir | Kör pamukta %67, p = 0,012 (ön kayıtlı) | Eski dönemde var; 2012 sonrasında yok (%43) |
+| Bugünkü üretim tahmini USDA'dan anlamlı ölçüde iyi | p = 0,12–0,19 | Hayır; alan ve verim hataları birbirini dengeliyor |
+| Piyasada para kazandırır | T52 p = 0,30; T55 p = 0,082 | Hayır |
+| Tahmin aralıkları kalibre | Gerçek zamanlı kapsama %83 / %93 | Evet, ama geniş (%80 aralık için ±%16) |
 
-| Çalışma | Ölçülen sonuç ve kapsam |
-| --- | --- |
-| [Fiyat-only koşullu medyan, T+1](docs/PRICE_ONLY_MEDIAN_RESULT_20261105.md) | 338 piyasa +4 sentetik fit; 2.006 origin, seçilmiş Naive-MAE kazancı −%0,0825; STOP. |
-| [DXY/WTI zamanlama, T+1](docs/AVAILABILITY_CLOCK_RESULT_20261005.md) | 2.006 origin; seçilmiş Naive-MAE kazancı −%0,154. |
-| [Bölgesel WASDE, T+1](docs/WASDE_REGIONAL_T1_RESULT_20261008.md) | 1.254 origin; numeric D0/D1 kazancı −%0,523 / −%0,011. |
-| [Eşlenmiş fiyat-delta MAE/MSE](docs/PAIRED_PRICE_LOSS_RESULT_20261010.md) | 1.008 origin; MAE kolu MSE'den iyi, Naive kazancı −%0,488. |
-| [CT own-level / DXY risk](docs/CT_LEVEL_DXY_CONTROL_20261030.md) | Ön kayıtlı ikincil own-level tarihsel koşulları geçti; birincil DXY belirsiz. |
-| [Yakın dönem ve 2008–2009 risk](docs/STATUS.md) | Yakın dönemde 711 origin belirsiz; eski aynı-kontrat 252 origin'de seçilmiş model EWMA ile eşdeğer. |
-| [Uçtan uca uygulama/araştırma denetimi](docs/END_TO_END_AUDIT.md) | Paket kimliği, hedef olgunluğu, native çıkarım ve yayın makbuzları denetlendi; kapsam sınırları belgede. |
+İleriye dönük test: 2026 tahminleri kilitlendi (ABD üretimi, Teksas, Oklahoma ve Kansas hasat alanı). Puanlama 10 Aralık 2026 ve Mayıs 2027'de yapılacak; ayrıntılar [FORWARD_LOCK_2026.md](docs/FORWARD_LOCK_2026.md) içinde.
 
-Sentetik öğrenme kontrolleri piyasa performansı değildir. AMS yıllık kontrat
-kimliği kusurlarından etkilenen sonuçlar temiz aynı-kontrat sinyal kanıtı sayılmaz.
+Fiyat aşaması (Eylül–Kasım 2026, 32.934 kayıtlı model eğitimi) günlük fiyatta "fiyat değişmez" (naif) tahminini geçemedi. En iyi kazanç %0,22, hedef %5'ti. Bu aşamanın belgeleri [docs/archive/price-phase](docs/archive/price-phase/) altında.
 
-## Uygulamayı başlatma
+## Nereden başlamalı
 
-Docker Desktop'ın Linux motoru açıkken depo kökünde:
+| Okuyucu | Belge |
+|---|---|
+| Yeni başlayan, kısa özet isteyen | [Araştırma paketi](docs/research_package/README.md) ve [sayılar](docs/research_package/02_NUMBERS_CHEATSHEET.md) |
+| Hakem, araştırmacı | [Çalışma makalesi](docs/paper/WORKING_PAPER.md), [deney kaydı](docs/CROP_NOWCAST_TRIALS.md), [ön kayıtlar](docs/prereg/) |
+| Mülakat | [Türkçe soru-cevap](docs/research_package/09_INTERVIEW_QA_TR.md), [portfolyo sayfası](docs/portfolio/cotton-usda-research.html) |
+| Canlı sistem | [Monitör kararı (ADR)](docs/adr/0001-usda-forecast-monitor.md), [performans sayfası](docs/monitor/index.html) |
+| Güncel plan | [PLAN_REVIEW5_20261117.md](docs/PLAN_REVIEW5_20261117.md) |
+
+Bütün belgelerin dizini: [docs/README.md](docs/README.md).
+
+## Depo yapısı
+
+```
+research/crop_nowcast/   rekolte araştırması: T39–T55 betikleri, CAL1, B2, kilitler
+research/monitor/        canlı USDA rapor monitörü (model_v2, hash zincirli kayıt, publish)
+research/evidence/       sonuç dosyaları; SHA-256 makbuzlu, değiştirilmez
+research/tests/          rekolte ve monitör testleri
+research/*.py            fiyat aşamasının denetim ve doğrulama betikleri (tarihsel)
+ml/                      fiyat aşamasının ML paketi, deney sicili (ml/history.py), Colab notebook'ları
+backend/, frontend/      fiyat aşamasının FastAPI + Angular gösterim uygulaması
+docs/                    belgeler; dizini docs/README.md
+.github/workflows/       CI ve usda-monitor zamanlanmış görevi
+```
+
+Büyük veri ve ara çıktılar `output/` klasöründe tutulur ve git'e girmez.
+
+## Çalıştırma
+
+Rekolte araştırmasının ana sonuçlarını yeniden üretmek (7/7 sonuç eşleşir):
+
+```bash
+python research/reproduce.py
+```
+
+Monitör (USDA raporu, kayıt zinciri ve performans sayfası):
+
+```bash
+python research/monitor/monitor.py run 2026-12
+python research/monitor/monitor.py verify
+python research/monitor/publish.py
+```
+
+Zamanlanmış görev (`.github/workflows/usda-monitor.yml`) Ağustos–Aralık arasında her ayın 8'i ile 14'ü arasında çalışır. Rapor gelmezse ya da bir kontrol başarısız olursa otomatik olarak bir GitHub issue açar.
+
+Testler:
+
+```bash
+PYTHONPATH=ml/src python -m pytest -q research/tests
+```
+
+Fiyat aşamasının 18 testi (`test_ct_*`, `test_session_handoff`) yerelde olmayan özel veriye bağlı olduğu için başarısız olur; rekolte ve monitör testleri geçer.
+
+NASS QuickStats anahtarı `NASS_API_KEY` ortam değişkeninden ya da `~/.nass_api_key` dosyasından okunur. Anahtar repoya hiçbir zaman girmez.
+
+### Fiyat aşaması uygulaması ve ML ortamı (tarihsel)
 
 ```bash
 docker compose up --build
-```
-
-[Uygulama](http://localhost:8080) ve [API sözleşmesi](http://localhost:8080/api/v1/openapi.json).
-`Development fixture` banner'ı sentetik gösterim verisini belirtir. Gerçek model
-paketi `runtime/artifacts/current` içinde checksum ve içe aktarım kimliğiyle doğrulanır.
-Backend eğitim paketleri veya CUDA içermez.
-
-```bash
-docker compose down
-```
-
-Bu komut kalıcı veritabanını silmez. [Belge indeksi](docs/README.md),
-[backend](backend/pyproject.toml) ve [frontend](frontend/package.json) bağımlılıklarını açıklar.
-
-## Araştırma ve doğrulama
-
-Python 3.12 ve Node 24.15+ kullanın. ML için TensorFlow kurmadan ayrı CPU ortamı:
-
-```bash
 uv sync --project ml --only-group cpu --frozen
-python ml/history.py validate
 python ml/history.py check --family ridge --horizon 1
-python ml/history.py check --query availability
 ```
 
-CPU ortamını etkinleştirip `PYTHONPATH=ml/src:ml` (PowerShell: `$env:PYTHONPATH='ml/src;ml'`) ayarlayın:
+Bu komutlar fiyat aşamasının gösterim uygulamasını ve deney sicilini çalıştırır. Kurallar [AGENTS.md](AGENTS.md) içinde, eski README [docs/archive/README_HISTORY_20261105.md](docs/archive/README_HISTORY_20261105.md) içinde. Büyük kanıt paketleri private GitHub Releases'te; geri yükleme rehberi [research/README.md](research/README.md).
 
-```bash
-python -m pytest -q ml/tests research/tests
-```
+## Kurallar
 
-Backend ve frontend kontrolleri kendi klasörlerinde:
-
-```bash
-cd backend
-python -m pip install -e ".[dev]"
-python -m pytest -q
-python -m ruff check .
-cd ../frontend
-npm ci
-npm run build
-```
-
-CI yalnız sentetik/sözleşme testleri yapar. Gerçek küçük CPU fit'leri açık izin,
-tek süreç ve en fazla iki thread gerektirir. Sequence/GPU ve istatistiksel ARIMA
-fit'leri Colab sınırında kalır. [Contributor kuralları](AGENTS.md) ve kilit dosyaları geçerlidir.
-
-## Veri, modeller ve geri yükleme
-
-Kod/test/belgeler Git'te; büyük kaynaklar, native modeller, scaler'lar, tahminler
-ve ledger kanıtları checksum bağlı **private GitHub Releases** içinde tutulur.
-[Deney sicili ve arşiv rehberi](research/README.md), [arşiv envanteri](research/archive-summary.json)
-ve deneylerin kaynak/sonuç belgeleri ilgili Release'lere bağlantı verir.
-
-```bash
-gh release download evidence-20261005 --repo ErayKulkizaga/CottonLensAI --dir output/evidence-download
-python ml/evidence_restore.py --archive-dir output/evidence-download --destination output/recovered --prefix output/full-year/experiments/research-availability-clock-pilot-v1/
-```
-
-Geri yükleme checksum doğrular, eğitim başlatmaz ve mevcut dosyaları değiştirmez.
-Yeni paketlerin `research/storage.py` manifest biçimi için [arşiv rehberini](research/README.md) kullanın.
-Bütün eski checkpoint'lerin mevcut olduğu iddia edilmez: legacy TF-placement ve
-kısmi On-Call için bilinen model payload eksikleri korunmuş makbuzlarla belgelenmiştir.
-Sırlar, `.env`, özel veritabanları ve kişisel yapılandırmalar arşiv kapsamına girmez.
-
-## Sonraki araştırma
-
-[Onaylanan Naive-MAE planı](docs/NAIVE_MAE_PLAN_20261105.md): önce eski kanıtları
-ve Naive hatalarını doğrula; ardından yalnız fiyat geçmişiyle küçük koşullu medyan
-ve Ridge kontrolünü ön kayıtlı bütçede karşılaştır. İlk sabit deney tamamlandı: [sonuç STOP](docs/PRICE_ONLY_MEDIAN_RESULT_20261105.md).
-
-[GitHub kapsam teslimatı](docs/GITHUB_DELIVERY_20261105.md), [güncel durum](docs/STATUS.md),
-[araştırma sözleşmesi](docs/TRADING_RESEARCH_CONTRACT_20261005.md) ve
-[korunan README tarihçesi](docs/archive/README_HISTORY_20261105.md).
-
-Sabit araştırma CLI'sı: `python ml/naive_mae.py --help`. İlk audit/prepare adımları
-fit yapmaz; `pilot` yalnız açık CPU izni ve frozen kaynakla çalışır.
-[Audit ve ön kayıt](docs/NAIVE_MAE_AUDIT_20261105.md).
+- Testler veriye bakılmadan önce yazılır (`docs/prereg/`); sonradan yapılan değişiklikler yalnızca tarihli veri ya da ayrıştırma düzeltmeleridir.
+- `research/evidence/` altındaki dosyalar değiştirilmez; geçersiz koşular da saklanır.
+- 2021 sonrası fiyat verisi mühürlüdür.
+- Bu bir araştırma projesidir, alım satım sistemi değildir.

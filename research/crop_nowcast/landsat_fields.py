@@ -1,6 +1,6 @@
 """Field-scale Landsat NDVI features for the panel counties (Move 3, dev years only).
 
-Rules (docs/MOVE3_LANDSAT_FIELDS_PLAN_20261114.md):
+Rules (docs/archive/phase2-notes/MOVE3_LANDSAT_FIELDS_PLAN_20261114.md):
 - points = Y-1 CDL cotton cells on a 120 m (or --grid=30/60) EPSG:5070 grid inside the panel counties;
 - Landsat C2 L2 (5/7/8), Tier 1, scene cloud < 60 %, read from the 120 m COG overview,
   qa_pixel clear bit required (the 30 m grid reads full resolution);

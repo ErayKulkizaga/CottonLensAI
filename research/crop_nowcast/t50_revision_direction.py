@@ -1,4 +1,4 @@
-"""T50: does the sign of USDA's latest revision predict the sign of its next one? (docs/T50_REVISION_DIRECTION_PREREG_20261116.md)
+"""T50: does the sign of USDA's latest revision predict the sign of its next one? (docs/prereg/T50_REVISION_DIRECTION_PREREG_20261116.md)
 
 No fitted parameter: predicted sign(next revision) = sign(latest revision). Pairs with a zero revision are not scored.
 Usage: python t50_revision_direction.py out.json

@@ -1,6 +1,6 @@
 # CottonLensAI
 
-31 Ekim 2026 güncel durum: [ilk gerçek risk yayını](docs/CT_FIRST_PUBLICATION_20261031.md)
+31 Ekim 2026 güncel durum: [ilk gerçek risk yayını](docs/archive/price-phase/CT_FIRST_PUBLICATION_20261031.md)
 ham veriden bağımsız yeniden hesaplandı; kaynak/model ve tahmin paketlerinin
 zamanında arşivlendiği GitHub sunucu kaydıyla doğrulandı. **Bağımsız ileri
 tahmin üstünlüğü henüz gösterilmedi; ilk hedef 2 Kasım'dır.**
@@ -8,19 +8,19 @@ Kullanıcının onayladığı ayrı günlük görev, konsol açmadan yalnız 03:
 03:20 Türkiye saatiyle çalışır; ilk gerçek yayın tamamlandı. Eski
 saatlik görev kapalıdır. Bilgisayar uyanık ve kullanıcı oturumu açık olmalıdır.
 Yeni kayıtlar checksum doğrulanmış private Release parçalarında korunur;
-Drive'a yazılmaz. Güncel karar ve kanıt sınırları [STATUS](docs/STATUS.md)'tadır.
+Drive'a yazılmaz. Güncel karar ve kanıt sınırları [STATUS](docs/archive/price-phase/STATUS.md)'tadır.
 
-[Resmi takvim uzatması](docs/CT_CALENDAR_2027_20261031.md) kabul edildi;
+[Resmi takvim uzatması](docs/archive/price-phase/CT_CALENDAR_2027_20261031.md) kabul edildi;
 eski veriler ve ilk tahmin korundu. Kilitli 252 seanslık testin son hedefi
 **2 Kasım 2027**'dir; 2 Kasım 2026 yalnız ilk gerçekleşmedir.
 
-[Sıfır-fit karar kontrolü](docs/CT_INFERENCE_CALIBRATION_20261031.md),
+[Sıfır-fit karar kontrolü](docs/archive/price-phase/CT_INFERENCE_CALIBRATION_20261031.md),
 252 seansın güç garantisi olmadığını somut sentetik koşullarda gösterir.
 Piyasa üstünlüğü sonucu üretmez; kilitli tarif ve eski kanıtlar değişmedi.
 
 Aşağıdaki 29 Ekim kayıtları araştırma tarihçesidir.
 
-[Son tamamlanan CT risk deneyi](docs/CT_SHOCK_FORECAST_CONTROL_20261029.md):
+[Son tamamlanan CT risk deneyi](docs/archive/price-phase/CT_SHOCK_FORECAST_CONTROL_20261029.md):
 338 piyasa + 1 native öğrenme fit'i, iki eşit kapasitede işaretli/işaretsiz
 kol. Birincil EWMA QLIKE katkısı +0,00273; güven aralıkları sıfırı içeriyor,
 uç-kayıp duyarlılığı negatif. **Sağlam tahmin üstünlüğü henüz yok.**
@@ -34,15 +34,15 @@ ve sıra hataları gerçek HAR girdilerini etkiliyor. Son düzeltme kanıtı
 kaybı ölçümü değildir. Önceki AMS full-year sonuçları temiz aynı-kontrat
 becerisi veya sinyal yokluğu kanıtı sayılmaz; native dosyalar korunur.
 
-[Tam günlük kaynak denetimi](docs/AMS_REQUIRED_CELL_READINESS_20261029.md)
+[Tam günlük kaynak denetimi](docs/archive/price-phase/AMS_REQUIRED_CELL_READINESS_20261029.md)
 dört tarihin on-kontrat tablosunu ikiPDFokuyucusuyla doğruladı; şüpheli
 bloklarda22gün açık. Görünmeyen uzak vade fiyatları doldurulmaz veya EWMA
-sessizce sıfırlanmaz. Son iş sırası [STATUS](docs/STATUS.md), geçmiş deney
+sessizce sıfırlanmaz. Son iş sırası [STATUS](docs/archive/price-phase/STATUS.md), geçmiş deney
 kontrolü `python ml/history.py check`; yeni model/grid yoktur. Saatlik görev
 ve üç tetikleyici kapalıdır. Private Release taze401dosya ile geri kuruldu;
 11çıktı byte eşit yeniden üretildi.36ilgili test/Ruff geçti; yeni fit0.
 
-[Son CT işaret denetimi](docs/CT_SIGNED_RISK_SCORE_20261029.md) de sıfır-fit
+[Son CT işaret denetimi](docs/archive/price-phase/CT_SIGNED_RISK_SCORE_20261029.md) de sıfır-fit
 belirsiz sonuçlandı. Önceki ham risk modelinin net kazancının %91,55'i tek
 güne bağlı; o günün iki tarihli kaynağı aynı Jul-22 kontratını gösteriyor.
 Bu, genel işaret becerisi veya otomatik roll-hatası kanıtı değildir.
@@ -54,50 +54,50 @@ kuruldu ve hesaplar birebir tekrarlandı. Yeni model eğitimi açılmadı.
 Aşağıdaki önceki hükümler tarihli araştırma kayıtlarıdır; kaynak kabulü ve
 sonraki adımlar için yukarıdaki son düzeltme ve STATUS esas alınır.
 
-Son [eğrilik denetimi](docs/RISK_CURVATURE_SCORE_20261029.md), yalnız pamuk
-geçmişinden yeni karesel modele geçişi desteklemedi. [Mevcut DXY verisi](docs/DXY_RISK_SOURCE_AUDIT_20261029.md)
+Son [eğrilik denetimi](docs/archive/price-phase/RISK_CURVATURE_SCORE_20261029.md), yalnız pamuk
+geçmişinden yeni karesel modele geçişi desteklemedi. [Mevcut DXY verisi](docs/archive/price-phase/DXY_RISK_SOURCE_AUDIT_20261029.md)
 ham kaynaktan doğrulandı; bu alan mevcut risk modeline henüz gitmiyor ve
 tahmin katkısı sınanmadı. Yeni eğitim yok; EWMA üstünlüğü hâlâ gösterilmedi.
 
-[Zayıf risk öğretici kontrolü](docs/RISK_WEAK_TEACHER_20261029.md) tamamlandı:
+[Zayıf risk öğretici kontrolü](docs/archive/price-phase/RISK_WEAK_TEACHER_20261029.md) tamamlandı:
 mevcut model küçük, bilinen ve gürültülü katkının üç sabit senaryoda%65–87'sini
 öğrenebildi. Bu bir **sentetik öğrenme sonucu**, piyasa üstünlüğü değildir.
 Private native dosyalar ve bağımsız yeniden hesaplama doğrulandı; kontrol
-yeniden çalıştırılmayacak. Güncel karar [STATUS](docs/STATUS.md).
+yeniden çalıştırılmayacak. Güncel karar [STATUS](docs/archive/price-phase/STATUS.md).
 
 29 Ekim güncel durum: **güçlü EWMA referansını geçen risk tahmini henüz
-doğrulanmadı.** [Resmî günlük aynı-kontrat arşiviyle sekiz yıllık kontrol](docs/AMS_NAMED_EWMA_HAR_20261014.md)
+doğrulanmadı.** [Resmî günlük aynı-kontrat arşiviyle sekiz yıllık kontrol](docs/archive/price-phase/AMS_NAMED_EWMA_HAR_20261014.md)
 geçmiş kapsama sorununu giderdi; seçilmiş katkının aralıkları yine sıfırı
-içeriyor. [Vade eğrisi tanısı](docs/AMS_CURVE_RISK_MOMENT_20261029.md) da sabit
+içeriyor. [Vade eğrisi tanısı](docs/archive/price-phase/AMS_CURVE_RISK_MOMENT_20261029.md) da sabit
 koşulları geçmedi. Tamamlanan loss/scale/HAR eğitimleri tekrar edilmez.
-Güncel kararlar [STATUS](docs/STATUS.md), tekrar kontrolü `python ml/history.py check`.
+Güncel kararlar [STATUS](docs/archive/price-phase/STATUS.md), tekrar kontrolü `python ml/history.py check`.
 Saatlik Windows toplama görevi kullanıcı talebiyle kapalıdır; ilişkili Codex
 otomasyonu kaldırılmıştır. Otomatik veri toplama aktifmiş gibi değerlendirme.
 Aşağıdaki tarihli kayıtlar geçmişi korur; güncel devam talimatı değildir.
 
-[Son risk history kontrolü](docs/NAMED_RISK_HISTORY_CONTROL_20261012.md):
+[Son risk history kontrolü](docs/archive/price-phase/NAMED_RISK_HISTORY_CONTROL_20261012.md):
 aynı-kontrat geçmişi de hata azaltıyor; güçlü EWMA üstünlüğü hâlâ sağlam
 değil. Veri sürekliliği denetimi bazı train history'lerinin çok eski olduğunu
 gösterdi; ham örnek sayısı güncel günlük bilgi sayısı değildir.577private
 GitHub dosyası/zero-fit replay doğrulandı; yeni loss-fit veya GPU yok.
 
-Son [kontrollü risk eğitimi](docs/NAMED_RISK_LABEL_CONTROL_20261012.md):
+Son [kontrollü risk eğitimi](docs/archive/price-phase/NAMED_RISK_LABEL_CONTROL_20261012.md):
 aynı-kontrat etiketleri HAR'ın hatasını azalttı, fakat güçlü EWMA referansını
 geçmedi. 44+1 fit ve private GitHub geri kurması doğrulandı. Tahmin başarısı
 henüz kanıtlanmış değildir; sonraki soru aynı-kontrat geçmiş özellikleridir.
 
-Son [risk veri/ölçüm kontrolü](docs/RISK_MEASUREMENT_READINESS_20261012.md)
+Son [risk veri/ölçüm kontrolü](docs/archive/price-phase/RISK_MEASUREMENT_READINESS_20261012.md)
 aynı-kontrat günlük risk etiketlerini kurdu; mevcut eğitim kuralıyla yalnız2023
 destekleniyor. Eski risk tahminlerini bu hedefe taşımak da sağlam üstünlük
 üretmedi.126 gün beklemek küçük mevcut katkıyı kanıtlama garantisi değildir.
 Önce hedef/etiket mekanizmasının sınırlı kontrolü hazırlanır; yeni fit yoktur.
 
-12 Ekim bilimsel öncelik: [EWMA referansını geçen risk tahmini](docs/RISK_EVIDENCE_AUDIT_20261012.md).
+12 Ekim bilimsel öncelik: [EWMA referansını geçen risk tahmini](docs/archive/price-phase/RISK_EVIDENCE_AUDIT_20261012.md).
 Mevcut HAR/GARCH tahminleri yeni eğitim olmadan denetlendi: 482 native makbuz,
 4.012 eşlenmiş kayıp satırı. T+1 küçük pozitif katkısının iki güven aralığı
 sıfırı içeriyor; **risk üstünlüğü henüz doğrulanmadı**. EWMA korunur; yeni
 model/grid/ufuk taraması başlamaz. Eski fiyat/yön hedefleri ve kanıtları değişmez.
-Güncel sıra [STATUS](docs/STATUS.md), aşağıdaki depolama kayıtları tarihçedir.
+Güncel sıra [STATUS](docs/archive/price-phase/STATUS.md), aşağıdaki depolama kayıtları tarihçedir.
 
 11 Ekim: depo private yapıldı. Drive taşımasında önceki 32.484 dosya/4.108.647.287 bayt
 GitHub'dan yeniden indirilip doğrulandı; bunların 363'ü checkpoint/scaler/geçmiş
@@ -153,14 +153,14 @@ kapatıldı; frozen kaynak, karar saati ve ilk126 kilidi korundu.
 [Saklama ve geri kurma kuralları](research/README.md#private-github-ve-drive-taşıması).
 Bu koruma işi tamamlanmadan yeni sentetik/piyasa fit'i başlamaz.
 
-11 Ekim: [aynı named T+5 düzeninde zayıf-sinyal girdileri](docs/NAMED_WEAK_SIGNAL_READINESS_20261011.md)
+11 Ekim: [aynı named T+5 düzeninde zayıf-sinyal girdileri](docs/archive/price-phase/NAMED_WEAK_SIGNAL_READINESS_20261011.md)
 hazır: eski32 alan/246origin korunur; üç seed'de eşleşmiş null/injected.
 21.120 scalar satır ve oracle kalibrasyonu doğrulandı, 60 ilgili test geçti.
 Yeni profil fit0; oracle %10 beklenen avantaj öğrenilmiş başarı değildir.
 Tek sonraki iş aynı132 sentetik fit tasarımının mevcut engine/ledger
 bağlantısı ve taze GitHub ön kaydı; yeni piyasa model/grid yok.
 
-11 Ekim: [sıfır-fit MSE–MAE teşhisi](docs/NAMED_LOSS_DIAGNOSIS_20261011.md)
+11 Ekim: [sıfır-fit MSE–MAE teşhisi](docs/archive/price-phase/NAMED_LOSS_DIAGNOSIS_20261011.md)
 tamamlandı. Son deneyin iki kolu optimize edilen loss'ta da Naive'ın
 gerisinde; MAE'nin gizlediği pozitif MSE becerisi gösterilmedi. 44 native
 replay/870 satır/dört bağımsız aralık ve dört bozulma kontrolü doğrulandı.
@@ -174,15 +174,15 @@ Naive kazancı −%3,005765, mask −%0,493740; kaynak farkı belirsiz,
 numeric %5 pratik hedefi kurtarmıyor. Modeller ve tahminler
 [sonuç arşivinde](https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/named-history-source-result-20261011)
 korunur. Tek sonraki iş frozen tahminlerde sıfır-fit MSE–MAE ayrımı;
-yeni model/grid açılmaz. [Güncel kararlar](docs/STATUS.md).
+yeni model/grid açılmaz. [Güncel kararlar](docs/archive/price-phase/STATUS.md).
 
 [PR42: aynı kontrat geçmişinin kaynak katkısı](https://github.com/ErayKulkizaga/CottonLensAI/pull/42)
 tek sabit numeric–mask deneyi için ön kayda alındı: aynı 32 alan, aynı
 named T+5 cohort ve XGBoost; bütçe 44+4 fit. Taze arşiv restore ve 111
 ilgili test geçti; henüz yeni piyasa fit/skoru yok. Geçmiş saat/vintage
-varsayımı ve eski başarı kapıları korunur. [Güncel kararlar](docs/STATUS.md).
+varsayımı ve eski başarı kapıları korunur. [Güncel kararlar](docs/archive/price-phase/STATUS.md).
 
-11 Ekim: [aynı-kontrat geçmişi hazırlığı](docs/NAMED_HISTORY_READINESS_20261011.md)
+11 Ekim: [aynı-kontrat geçmişi hazırlığı](docs/archive/price-phase/NAMED_HISTORY_READINESS_20261011.md)
 tamamlandı, model fit0. Dört geçmiş getiri mevcut origin karar saatine göre
 kuruluyor; 3.520 tarih/14.080 endpoint ve22 sabit eğitim işi doğrulandı.
 En küçük528 olgun etikette510 tam-feature satırı;3×63 iç ve246 dış origin
@@ -191,7 +191,7 @@ Bu tahmin katkısı değildir. Tek sonraki iş aynı32 alan/sabit XGB ile
 numeric–mask kaynak katkısının ayrı ön kaydı; yeni eğitim henüz başlamaz.
 Saat/vintage varsayımı ve eski kararlar aşağıda korunur.
 
-11 Ekim: [sıfır-fit hata ayrımı](docs/NAMED_CAPACITY_CONTROL_T5_20261010.md#11-ekim-yönbüyüklük-hata-mekanizması-sonuç-sonrası-sıfır-fit) doğrulandı.
+11 Ekim: [sıfır-fit hata ayrımı](docs/archive/price-phase/NAMED_CAPACITY_CONTROL_T5_20261010.md#11-ekim-yönbüyüklük-hata-mekanizması-sonuç-sonrası-sıfır-fit) doğrulandı.
 Ham XGB'nin yön/büyüklük katkısı +12,319829, doğru-yön aşım cezası
 14,680944; net−2,361115 cent/lb toplamı. Yalnız aşım hatalarını geleceği
 bilerek kusursuz düzeltmek bile +%1,041249 kazanç sağlar; bu bir politika
@@ -199,7 +199,7 @@ veya gerçek başarı değildir. Yeni fit/tahmin0; eski sonuç değişmez.
 Tek sonraki iş aynı kontrat geçmişinin mevcut28 özellikte ve saklanan
 quote'larda temsil/erişilebilirlik denetimi; yeni model/grid başlamaz.
 
-11 Ekim — [sabit named T+5 kapasite sonucu](docs/NAMED_CAPACITY_CONTROL_T5_20261010.md) doğrulandı.
+11 Ekim — [sabit named T+5 kapasite sonucu](docs/archive/price-phase/NAMED_CAPACITY_CONTROL_T5_20261010.md) doğrulandı.
 Aynı 242 hedefte ham XGBoost, Ridge'e karşı +%7,444570 Naive-MAE birimi
 katkı sağlıyor; blok20/60 alt sınırları pozitif. Ancak Naive kazancı
 −%0,493740, ham yön %54,958678; iki aralığın %5 kazanç üst sınırları
@@ -211,22 +211,22 @@ kapasite etkisi; pratik hedef veya bağımsız holdout başarısı değil.
 yeni eğitim yapmadan yön–tahmin büyüklüğü hata katkısını ayırmaktır.
 Aşağıdaki önceki aşamalar kronolojik kanıt olarak korunur.
 
-11 Ekim: [tek sabit kapasite çalıştırması](docs/NAMED_CAPACITY_CONTROL_T5_20261010.md)
+11 Ekim: [tek sabit kapasite çalıştırması](docs/archive/price-phase/NAMED_CAPACITY_CONTROL_T5_20261010.md)
 22 piyasa+4 sentetik fit ile tamamlandı; 48 native çıkarım doğrulandı.
 Piyasa karar raporu henüz açık; fit tamamlanması Naive üstünlüğü değildir.
 Tek sonraki iş dondurulmuş sıfır-fit rapor/doğrulama zinciridir; yeniden
 eğitim veya yeni grid başlatılmaz. Önceki kararlar aşağıda korunur.
 
-Güncel tek iş: [sabit named-kontrat T+5 kapasite kontrolü](docs/NAMED_CAPACITY_CONTROL_T5_20261010.md).
+Güncel tek iş: [sabit named-kontrat T+5 kapasite kontrolü](docs/archive/price-phase/NAMED_CAPACITY_CONTROL_T5_20261010.md).
 PR39 label deneyi ve GitHub replay'i kapandı. Aynı 246/242/4 origin,
 train tarihi ve 28 özellikte tek sabit sığ XGBoost, dondurulmuş named
 Ridge'e karşı sınanacak; Ridge yeniden eğitilmez. Bütçe 22+4 fit,
 grid/early-stop yok. Kod/test/kimlik ve taze GitHub ön kayıt doğrulanmadan
 fit başlamaz. Saat/vintage varsayımı ve eski yayın kapıları korunur.
 
-Güncel sonuç: [T+5 ortak eğitim etiketi kontrolü](docs/NAMED_LABEL_CONTROL_T5_20261010.md);44+1 fit. Doğru kontrat etiketi ham hatayı azaltıyor; Naive hâlâ geçilmiyor. Birincil label etkisi yalnız geçmiş2023 için pozitif; üretim/bağımsız holdout başarısı değil.
+Güncel sonuç: [T+5 ortak eğitim etiketi kontrolü](docs/archive/price-phase/NAMED_LABEL_CONTROL_T5_20261010.md);44+1 fit. Doğru kontrat etiketi ham hatayı azaltıyor; Naive hâlâ geçilmiyor. Birincil label etkisi yalnız geçmiş2023 için pozitif; üretim/bağımsız holdout başarısı değil.
 
-[Sabit tahminlerin aynı kontrat testi](docs/ORIGIN_FIXED_FORECAST_TRANSPORT_20261010.md)
+[Sabit tahminlerin aynı kontrat testi](docs/archive/price-phase/ORIGIN_FIXED_FORECAST_TRANSPORT_20261010.md)
 tamamlandı,fit0.739 eşleşmiş fiyat ve10 bilinmeyen makbuz korunur.
 Ham T+5 Naive kazancı−%8,6642,seçilmiş−%0,6249; ham T+1−%3,3494.
 Yalnız proxy ölçümünü değiştirmek mevcut tahminleri kurtarmıyor.
@@ -236,7 +236,7 @@ ayrı ön kayıt gerekir. Naive/üretim kapıları ve eski kanıtlar korunur.
 
 ## Önceki tamamlanmış sıfır-fit aşamalar
 
-[Sabit kontrat hedefi kurulabilirliği](docs/FIXED_CONTRACT_FEASIBILITY_20261010.md)
+[Sabit kontrat hedefi kurulabilirliği](docs/archive/price-phase/FIXED_CONTRACT_FEASIBILITY_20261010.md)
 tamamlandı, yeni fit0. Aynı749 origin korunur; ikinci kontratta739 uygun
 etiket var. Gerçek kontrat geçmişi2020'de başlıyor; eski 2010 proxy
 etiketleri yeniden kullanılamaz, mevcut protokol doğrudan aktarılamıyor.
@@ -246,14 +246,14 @@ Bu gerçek zamanlı erişim veya tahmin başarısı ispatı değildir.
 
 ## Önceki tamamlanmış aşamalar
 
-[Eğri/carry tanısı](docs/CURVE_CARRY_ATTRIBUTION_20261010.md) tamamlandı, yeni fit0.
+[Eğri/carry tanısı](docs/archive/price-phase/CURVE_CARRY_ATTRIBUTION_20261010.md) tamamlandı, yeni fit0.
 74 geçiş origin'inde ham D0 katkısı +24,6573 hata toplamından gap çıkarılmış
 karşıolguda −3,3674'e dönüyor. Ekim2022'de proxy düşerken aynı Aralık
 kontratı yükselmiş; bunu fiyat yönü/pozisyon becerisi sayamayız. Eski tahminler
 ve karar değişmedi. Tek sonraki iş origin'de tanımlı sabit kontrat hedefinin
 mevcut quote'larla kurulabilirliğini sıfır-fit denetlemek; yeni eğitim yok.
 
-[Gerçek eğri T+5 sonucu](docs/CONTRACT_CURVE_T5_RESULT_20261010.md) tamamlandı:
+[Gerçek eğri T+5 sonucu](docs/archive/price-phase/CONTRACT_CURVE_T5_RESULT_20261010.md) tamamlandı:
 252 piyasa +1 ayrı sentetik fit,749 ortak origin/kol. Seçilmiş D0 Naive
 kazancı −%0,549260;ham −%7,242578.253 native çıkarım/12 seçim/16 aralık
 ve rapor/CSV/geçiş açıklaması yeniden fit olmadan doğrulandı. Eğri katkısı
@@ -263,23 +263,23 @@ sıradaki tek iş mevcut tahminlerde sıfır-fit bileşen denetimi,yeni grid yok
 
 ## Önceki araştırma aşamaları (korunan tarihsel kayıtlar)
 
-[Gerçek eğri T+5 ön kaydı](docs/CONTRACT_CURVE_T5_PROTOCOL_20261010.md) hazır:
+[Gerçek eğri T+5 ön kaydı](docs/archive/price-phase/CONTRACT_CURVE_T5_PROTOCOL_20261010.md) hazır:
 aynı749 origin/özellik, yalnız ufuk5;252 piyasa +en fazla1 sentetik fit
 tavanı, henüz0 fit. T+1 sonucu tekrarlanmaz. Geleceğin kontrat bilgisi model
 girdisi olmaz; kaynak saati/ilk-vintage varsayımları açık kalır.
 
-[Son sıfır-fit hedef denetimi](docs/CURVE_TARGET_INTEGRITY_20261010.md):
+[Son sıfır-fit hedef denetimi](docs/archive/price-phase/CURVE_TARGET_INTEGRITY_20261010.md):
 T+5 kontrat geçişi74 origin/15 olay; sürekli-seri hedefi geçişte vade farkını
 da içeriyor. Ex-post %2,89 hata azalması tahmin başarısı değildir. Sonraki
 T+5 ön kaydı bu ayrımı koruyacak; eski veri/model/tahminler değişmedi.
 
-[Gerçek vade farkı T+1 sonucu](docs/CONTRACT_CURVE_RESULT_20261010.md) tamamlandı:
+[Gerçek vade farkı T+1 sonucu](docs/archive/price-phase/CONTRACT_CURVE_RESULT_20261010.md) tamamlandı:
 252 piyasa +1 sentetik fit; 749 ortak origin/kol. Seçilmiş tahminler Naive'ye
 döndü; ham D0/D1 Naive kazancı −%2,7116/−%2,2827. 253 kayıtlı çıkarım ve
 rapor/CSV yeniden fit olmadan doğrulandı. Bu tek tarif hedefi kurtarmadı;
 saat/vintage varsayımı sürüyor, tüm eğride bilgi yokluğu sonucu çıkarılmaz.
 
-Tamamlanan sonucun ön kayıt tarifi: [gerçek vade farkı T+1 duyarlılığı](docs/CONTRACT_CURVE_PROTOCOL_20261010.md).
+Tamamlanan sonucun ön kayıt tarifi: [gerçek vade farkı T+1 duyarlılığı](docs/archive/price-phase/CONTRACT_CURVE_PROTOCOL_20261010.md).
 2021–2023'te 749 ortak origin; saat/ilk sürüm varsayımı açık, gerçek zamanlı
 erişim ispatı yok. Sabit Ridge ve 252 piyasa fit'i bütçesi; üç yıllık kaynak
 katkısı sonucu 6/8 yıl başarı koşulunun yerine geçmez. Naive korunur.
@@ -287,28 +287,28 @@ katkısı sonucu 6/8 yıl başarı koşulunun yerine geçmez. Naive korunur.
 Pamuk piyasası için **araştırma/ispat projesi** ve açıklanabilir tahmin uygulaması.
 ICE Cotton No. 2 referansında tahmin katkısı ve yön/pozisyon simülasyonu incelenir;
 gerçek alım/satım yapılmaz. Mevcut T+1/T+5 fiyat tahmininde Naive korunuyor. Son
-[Texas/NASS T+1 deneyi](docs/NASS_REGIONAL_T1_RESULT_20261009.md) tamamlandı:
+[Texas/NASS T+1 deneyi](docs/archive/price-phase/NASS_REGIONAL_T1_RESULT_20261009.md) tamamlandı:
 676 piyasa fit'i, 2.006 ortak origin/kol; seçilmiş D0/D1 Naive kazancı
 −%0,0274/−%0,2556. Sabit tarif %5 hedefini kurtarmadı; yeni grid açılmıyor.
 
-[Zayıf sinyal kontrolü](docs/WEAK_SIGNAL_RESULT_20261009.md) tamamlandı:
+[Zayıf sinyal kontrolü](docs/archive/price-phase/WEAK_SIGNAL_RESULT_20261009.md) tamamlandı:
 3.380 sentetik fit, 20 senaryo, 40.120 OOS satırı bağımsız doğrulandı.
 Ham/seçilmiş ortalama kazanç %1,955/%1,875; oracle %3,605. Kilitli karar
 `RAW_ONLY_RECOVERS`, fakat seçilmiş sonuç %50 koruma eşiğini yalnız 0,439 yüzde
 puan kaçırdı. Bu piyasa başarısı veya küçültmenin ana kusur olduğunun kanıtı
-değildir. [Seçim kararlılığı analizi](docs/SELECTION_STABILITY_RESULT_20261010.md)
+değildir. [Seçim kararlılığı analizi](docs/archive/price-phase/SELECTION_STABILITY_RESULT_20261010.md)
 de tamamlandı: enjekte koşulunda bir doğrulama bloğu çıkarılınca 59/80 karar
 değişiyor. Bu, küçültmeyi kaldırmayı veya piyasa başarısı iddiasını desteklemez.
-[Fiyat-MAE kalibrasyonu](docs/PRICE_MAE_CALIBRATION_RESULT_20261010.md) da
+[Fiyat-MAE kalibrasyonu](docs/archive/price-phase/PRICE_MAE_CALIBRATION_RESULT_20261010.md) da
 tamamlandı: yeni model fit'i 0, 169 geçmiş skaler düzeltme. Kalibre seçilmiş
 Naive kazancı −%0,02608; global bias düzeltmesi hedefi kurtarmadı.
 Naive korunur; bu tarif büyütülmez, otomatik yeni eğitim yok.
-[Eski loss araması](docs/LEGACY_LOSS_LINEAGE_RESULT_20261010.md) da yeniden
+[Eski loss araması](docs/archive/price-phase/LEGACY_LOSS_LINEAGE_RESULT_20261010.md) da yeniden
 kuruldu: 1.008 T+1 origin'de −%0,6110 kazanç, 1/8 dönem. MAE denenmişti;
 loss/hedef/parametreler birlikte değiştiği için kontrollü loss etkisi ayrılmamıştı.
 İlk sıfır-fit kayıt ve r2 ön kaydı korunuyor.
 
-[Kontrollü fiyat-loss sonucu](docs/PAIRED_PRICE_LOSS_RESULT_20261010.md) doğrulandı:
+[Kontrollü fiyat-loss sonucu](docs/archive/price-phase/PAIRED_PRICE_LOSS_RESULT_20261010.md) doğrulandı:
 aynı 1.008 T+1 origin'de MAE, MSE hatasını %1,458 azaltıyor; MAE'nin Naive
 kazancı −%0,4883, yönü %48,41. Bu loss katkısıdır, başarılı model değildir.
 54 kayıtlı çıkarım, altı paired aralık ve rapor/CSV replay'i yeni fit olmadan
@@ -316,10 +316,10 @@ geçti. Sonuç paketi ayrı Release'tedir; ön kayıt ve eski kanıtlar korunur.
 
 ## Nereden başlanır?
 
-1. [Güncel durum ve kararlar](docs/STATUS.md).
-   [10 Ekim karar eki](docs/RESEARCH_PRIORITY_ADDENDUM_20261010.md): #25–#27 sonuçları doğrulandı.
-   [Sıfır-fit bilgi elemesi](docs/INFORMATION_ADMISSION_20261010.md): mevcut gerçek vade fiyatları için kaynak/clock/cohort kabul kararı; yeni fit veya grid yok.
-2. [İspat amacı ve yardımcı simülasyonun sınırları](docs/TRADING_RESEARCH_CONTRACT_20261005.md).
+1. [Güncel durum ve kararlar](docs/archive/price-phase/STATUS.md).
+   [10 Ekim karar eki](docs/archive/price-phase/RESEARCH_PRIORITY_ADDENDUM_20261010.md): #25–#27 sonuçları doğrulandı.
+   [Sıfır-fit bilgi elemesi](docs/archive/price-phase/INFORMATION_ADMISSION_20261010.md): mevcut gerçek vade fiyatları için kaynak/clock/cohort kabul kararı; yeni fit veya grid yok.
+2. [İspat amacı ve yardımcı simülasyonun sınırları](docs/archive/price-phase/TRADING_RESEARCH_CONTRACT_20261005.md).
 3. **Yeni deney önermeden önce** [deney sicilini](research/README.md) kontrol edin.
 
 ```bash
@@ -353,33 +353,33 @@ Python giriş araçları `ml/` altında kalır: `history.py`, `full_year_cpu.py`
 
 ## Ölçülmüş son durum
 
-[Texas/NASS T+1 ön kaydı](docs/NASS_REGIONAL_T1_PREREGISTRATION_20261009.md):
+[Texas/NASS T+1 ön kaydı](docs/archive/price-phase/NASS_REGIONAL_T1_PREREGISTRATION_20261009.md):
 aynı 2.006 origin'de ulusal kondisyonun üzerine Texas katkısını sınayacak
 **676 piyasa + 1 sentetik** fit bütçesi kilitlenmişti ve deney tamamlandı.
-[Sonuç](docs/NASS_REGIONAL_T1_RESULT_20261009.md) bu sabit tarif için negatiftir;
+[Sonuç](docs/archive/price-phase/NASS_REGIONAL_T1_RESULT_20261009.md) bu sabit tarif için negatiftir;
 erişim ve vintage varsayımsaldır. Ön kayıt tarihsel belge olarak korunur.
 
-[NASS tek raporlu saat kontrolü](docs/NASS_CLOCK_CASE_20261009.md): 22 hücre
+[NASS tek raporlu saat kontrolü](docs/archive/price-phase/NASS_CLOCK_CASE_20261009.md): 22 hücre
 TXT/PDF'lerde eşleşti; metadata tarihsel erişim kanıtı sayılmadı. Sıfır fit,
 kabul kapalı. Sonraki iş tek varsayım-duyarlılığı ön kaydı; yeni model/grid yok.
 
-[Texas/NASS denetimi](docs/NASS_REGIONAL_AUDIT_20261009.md), mevcut 311 rapordan
+[Texas/NASS denetimi](docs/archive/price-phase/NASS_REGIONAL_AUDIT_20261009.md), mevcut 311 rapordan
 Texas kondisyonunu ve 636 gelişim tablosunu ayırdı; iki gerçek geçmiş-hafta
 revizyonu ayrı korundu. 949 girdi değişmedi. Ekim yalnız 46 raporda; tam sezon
 ve tarihsel erişim doğrulanmış değil. Sıfır fit, panel karantinada; önceki ulusal
 T+5 sonucu bu bölgesel bilgiyi test etmiş sayılmaz.
 
-[İleri yayın görevi](docs/FORWARD_RUNTIME_WINDOW_20261009.md), checksum bağlı
+[İleri yayın görevi](docs/archive/price-phase/FORWARD_RUNTIME_WINDOW_20261009.md), checksum bağlı
 sabit kodla gerçek gündüz toplamasında exit 0 verdi. Yayın penceresinde ağ/skor
 işi yapılmaz; yavaş yazımın son saat kontrolü düzeltildi. Zamanında tahmin henüz
 0; bu model başarısı değildir. Gece kontrolü için 03:35 Türkiye saatli devam aktif.
 
-[İleri kayıt denetimi](docs/FORWARD_EVIDENCE_AUDIT_20261009.md): 9 Ekim 08:09 UTC
+[İleri kayıt denetimi](docs/archive/price-phase/FORWARD_EVIDENCE_AUDIT_20261009.md): 9 Ekim 08:09 UTC
 snapshot'ında altı origin'in altısı missing, yayımlanmış tahmin **0**. Kaynak
 makbuzu/girdi/saat doğrulayan `research.live --status` tamamlandı; model eğitimi
 ve performans skoru yapılmadı. Görev kurulumu ileri tahmin kanıtı değildir.
 
-[Zamanlama deneyi](docs/AVAILABILITY_CLOCK_RESULT_20261005.md), 2016–2023'te her kol/ufuk için aynı 2.006 origin'de 676 küçük CPU fit tamamladı. DXY/WTI daha yeni barları fiilen kullandı; geçmiş Yahoo teslim saatleri **varsayımdır**.
+[Zamanlama deneyi](docs/archive/price-phase/AVAILABILITY_CLOCK_RESULT_20261005.md), 2016–2023'te her kol/ufuk için aynı 2.006 origin'de 676 küçük CPU fit tamamladı. DXY/WTI daha yeni barları fiilen kullandı; geçmiş Yahoo teslim saatleri **varsayımdır**.
 
 | Sonuç | T+1 Naive'ye fiyat-MAE kazancı | T+5 kazancı |
 |---|---:|---:|
@@ -390,19 +390,19 @@ Bu tarif pratik hedefi geçmedi. Sonuç bütün modellerin veya bütün temel ka
 
 Eski LSTM'nin 498 Naive / 439 LSTM origin karşılaştırması geçersizdi: aynı pencere için yeniden kurulan T+1 toplu kazanç **−%1,6961**, eski +%2,7647 iddiası geçersiz. Tam LSTM tahminleri bulunmadığından paired güven aralığı yok. TCN sentetik öğrenme kontrolünün yanlış `passed` yorumu ayrıca düzeltildi. [Düzeltme kayıtları](research/evidence/) eski artifact'leri değiştirmez.
 
-[İlk işlem hedefi teslimatı](docs/TRADING_WASDE_DELIVERY_20261005.md), mevcut tahminlerde 2.006 T+1 origin'i yeni fit olmadan inceledi. Seçilmiş müdahalenin brüt proxy sonucu tek aktif yıldan geliyor; kontrol katkısı belirsiz ve gerçek giriş/maliyet doğrulanmış değil. Bölgesel WASDE bilgisi 95 rapor/26 alanlı aday pakete geri alındı, eğitim kabulü verilmedi. Sürümlü karar saati ve CLI/engine tazelik eşitliği düzeltildi; 690 eski dosyanın SHA-256'sı korundu. [Yeni payload Release'i](https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/research-delivery-20261005) eski yedeğe ek kanıttır.
+[İlk işlem hedefi teslimatı](docs/archive/price-phase/TRADING_WASDE_DELIVERY_20261005.md), mevcut tahminlerde 2.006 T+1 origin'i yeni fit olmadan inceledi. Seçilmiş müdahalenin brüt proxy sonucu tek aktif yıldan geliyor; kontrol katkısı belirsiz ve gerçek giriş/maliyet doğrulanmış değil. Bölgesel WASDE bilgisi 95 rapor/26 alanlı aday pakete geri alındı, eğitim kabulü verilmedi. Sürümlü karar saati ve CLI/engine tazelik eşitliği düzeltildi; 690 eski dosyanın SHA-256'sı korundu. [Yeni payload Release'i](https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/research-delivery-20261005) eski yedeğe ek kanıttır.
 
-[Fiyat alanı/seans denetimi](docs/PRICE_SEMANTICS_AUDIT_20261005.md): 268/2.006 hedef barda `close` high–low aralığı dışında. Bu settlement/mark ayrımını gerektirir; doğrudan bozuk tahmin etiketi demek değildir. Ham proxy kazancı yalnız bu barlardan gelmiyor. Veri değiştirilmedi; tahmin araştırması broker/komisyon bilgisine bağlanmıyor.
+[Fiyat alanı/seans denetimi](docs/archive/price-phase/PRICE_SEMANTICS_AUDIT_20261005.md): 268/2.006 hedef barda `close` high–low aralığı dışında. Bu settlement/mark ayrımını gerektirir; doğrudan bozuk tahmin etiketi demek değildir. Ham proxy kazancı yalnız bu barlardan gelmiyor. Veri değiştirilmedi; tahmin araştırması broker/komisyon bilgisine bağlanmıyor.
 
-[Bölgesel WASDE doğrulaması](docs/WASDE_REGIONAL_VERIFICATION_20261008.md), 95 rapor/26 alanlı adayın kaynak değerlerini ve nedensel revizyonlarını ayrı denetler. 117 bilinmeyen revizyon hücresi korunur. Compile/import artık kaynak, tam değer, vintage ve saat kanıtını birbirine bağlar; yeniden checksum'lanan sonraki değerler eski kanıtı kullanamaz. Tarihsel erişilebilirlik onayı ve yeni piyasa becerisi iddiası yoktur; yeni fit başlatılmadı.
+[Bölgesel WASDE doğrulaması](docs/archive/price-phase/WASDE_REGIONAL_VERIFICATION_20261008.md), 95 rapor/26 alanlı adayın kaynak değerlerini ve nedensel revizyonlarını ayrı denetler. 117 bilinmeyen revizyon hücresi korunur. Compile/import artık kaynak, tam değer, vintage ve saat kanıtını birbirine bağlar; yeniden checksum'lanan sonraki değerler eski kanıtı kullanamaz. Tarihsel erişilebilirlik onayı ve yeni piyasa becerisi iddiası yoktur; yeni fit başlatılmadı.
 
 ## Veriler, modeller ve tam kanıt yedeği
 
-[Bölgesel WASDE T+1 sonucu](docs/WASDE_REGIONAL_T1_RESULT_20261008.md): ön kayıt değişmeden, dört kol × 1.254 origin üzerinde 424 piyasa fit'i tamamlandı. Sayısal D0/D1 seçilmiş Naive kazancı −%0,5229 / −%0,0107; ham kazanç −%10,2134 / −%9,3435. Pratik %5 hedefi bu sabit tarifte desteklenmiyor; **Naive korunur, program otomatik büyütülmez**. 2.682 eski dosya korundu. Saat/vintage varsayımı gerçek erişim kanıtı değildir. [Ek sonuç paketi](https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/wasde-regional-result-20261008) tahminleri, 424 fit checkpoint'ini ve ayrı sentetik kontrolü saklar.
+[Bölgesel WASDE T+1 sonucu](docs/archive/price-phase/WASDE_REGIONAL_T1_RESULT_20261008.md): ön kayıt değişmeden, dört kol × 1.254 origin üzerinde 424 piyasa fit'i tamamlandı. Sayısal D0/D1 seçilmiş Naive kazancı −%0,5229 / −%0,0107; ham kazanç −%10,2134 / −%9,3435. Pratik %5 hedefi bu sabit tarifte desteklenmiyor; **Naive korunur, program otomatik büyütülmez**. 2.682 eski dosya korundu. Saat/vintage varsayımı gerçek erişim kanıtı değildir. [Ek sonuç paketi](https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/wasde-regional-result-20261008) tahminleri, 424 fit checkpoint'ini ve ayrı sentetik kontrolü saklar.
 
-[11 Aralık 2018 WASDE kontrolü](docs/WASDE_CLOCK_CASE_20261008.md) tamamlandı: 11/14 Aralık PDF/XML çiftlerinde 392 hücre eşleşti; repost Cotton değerlerini değiştirmedi. Bağımsız üniversite kopyasının on değeri de eşleşti, fakat karar kesiminden önce erişim kanıtı kurulamadı. 2.190 eski dosya değişmedi. Tarihsel kabul ve yeni fit yok.
+[11 Aralık 2018 WASDE kontrolü](docs/archive/price-phase/WASDE_CLOCK_CASE_20261008.md) tamamlandı: 11/14 Aralık PDF/XML çiftlerinde 392 hücre eşleşti; repost Cotton değerlerini değiştirmedi. Bağımsız üniversite kopyasının on değeri de eşleşti, fakat karar kesiminden önce erişim kanıtı kurulamadı. 2.190 eski dosya değişmedi. Tarihsel kabul ve yeni fit yok.
 
-[Resmî WASDE geçmişiyle son mutabakat](docs/WASDE_AS_REPORTED_20261008.md): 95 raporun 950 temel değeri ve 2.470 toplam alan kontrolü eşleşti; fark yok, 117 bilinmeyen revizyon korundu. CSV teslim saati rapor saatinden ayrı tutuldu. Eski veriler değiştirilmedi; tarihsel eğitim kabulü ve yeni fit yok. [Ek kanıt paketi](https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/wasde-as-reported-20261008) yeniden kontrol için resmî export'ları ve çıktıları saklar.
+[Resmî WASDE geçmişiyle son mutabakat](docs/archive/price-phase/WASDE_AS_REPORTED_20261008.md): 95 raporun 950 temel değeri ve 2.470 toplam alan kontrolü eşleşti; fark yok, 117 bilinmeyen revizyon korundu. CSV teslim saati rapor saatinden ayrı tutuldu. Eski veriler değiştirilmedi; tarihsel eğitim kabulü ve yeni fit yok. [Ek kanıt paketi](https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/wasde-as-reported-20261008) yeniden kontrol için resmî export'ları ve çıktıları saklar.
 
 Büyük ham veriler, tahminler, checkpoint'ler, kaynak ZIP'leri ve ledger'lar [evidence-20261005 Release](https://github.com/ErayKulkizaga/CottonLensAI/releases/tag/evidence-20261005) altında tutulur. [Arşiv açıklaması](research/README.md) ve `research/archive-summary.json`, mevcut dosyaların kapsamını, eksikleri, redaksiyonları ve SHA-256 değerlerini gösterir. Git geçmişi korunur; bütün eski eğitimin eksiksiz geri kazanıldığı iddia edilmez.
 
@@ -442,23 +442,23 @@ Bu komut veritabanını silmez. Artifact kullanım/operasyon ayrıntıları [bel
 ## Araştırma araçları
 
 Sonraki iş **FAS ülke/commitment kabul denetimi**, yeni eğitim değildir.
-[Kaynak kabul koruması ve ortak-origin hizalaması](docs/FAS_REVIEWED_ALIGNMENT_20261009.md)
+[Kaynak kabul koruması ve ortak-origin hizalaması](docs/archive/price-phase/FAS_REVIEWED_ALIGNMENT_20261009.md)
 sentetik veride doğrulandı; bu, gerçek tarihsel sürüm/saat onayı değildir.
-Bekleme sırasında [karantina ülke paneli](docs/FAS_COUNTRY_PREPARATION_20261008.md)
+Bekleme sırasında [karantina ülke paneli](docs/archive/price-phase/FAS_COUNTRY_PREPARATION_20261008.md)
 hazırlandı: 752 hafta/3.008 satır, negatif satış ve bilinmeyenler korunur.
 29 Temmuz 2021 negatif stok bileşeni o haftanın stok paylarını tanımsız kılar.
 Bu panel eğitim girdisi değildir; kaynak kabulü, adapter/test ve ön kayıt kalır.
 Mevcut 15 ham kaynağın 752 haftalık ulusal toplamları doğrulandı.
-[İki haftalık ülke kontrolünde](docs/FAS_COUNTRY_REPORT_REVIEW_20261008.md) 24 alanın
+[İki haftalık ülke kontrolünde](docs/archive/price-phase/FAS_COUNTRY_REPORT_REVIEW_20261008.md) 24 alanın
 22'si eşleşti; Çin/Pakistan birikimli ihracatında −55/−53 balya fark korunur.
-[Alt sınıf aralık kontrolü](docs/FAS_MAY28_VERSION_AUDIT_20261008.md) iki farkın
+[Alt sınıf aralık kontrolü](docs/archive/price-phase/FAS_MAY28_VERSION_AUDIT_20261008.md) iki farkın
 yuvarlama varsayımıyla uyumlu olduğunu gösterdi; gerçek neden kanıtlanmadı.
-[Tarihsel form denetimi](docs/FAS_HISTORICAL_REFERENCE_20261008.md) dört kod için
+[Tarihsel form denetimi](docs/archive/price-phase/FAS_HISTORICAL_REFERENCE_20261008.md) dört kod için
 2020 tanığı buldu; özgün Çin hücresi hâlâ dış kanıt bekliyor. Aynı PDF/form
 araması tekrarlanmaz. Sonraki tek test ilk yayın sürümüne bağlı kesin değerdir;
 güncel API bunun yerine geçmez. Saat/vintage ve kaynak kabulü tamamlanmadan
 özellikler eğitime alınmaz.
-[Güncel sıra ve durma koşulları](docs/RESEARCH_DATA_REENTRY_PLAN_20261005.md).
+[Güncel sıra ve durma koşulları](docs/archive/price-phase/RESEARCH_DATA_REENTRY_PLAN_20261005.md).
 WASDE pilotu, DXY/WTI saat deneyi ve eski FAS ulusal T+5 tarifleri tekrar açılmaz.
 
 Güncel girişler [data workbench](ml/notebooks/cottonlens_data_workbench.ipynb) ve [research workbench](ml/notebooks/cottonlens_research_workbench.ipynb). Varsayılan akış durum/hazırlık kontrolüdür, eğitim değildir. Arşivdeki notebook'lar yalnız tarihsel protokolü incelemek içindir.
@@ -468,7 +468,7 @@ python ml/full_year_cpu.py --help
 python ml/source_bundle.py --output output/new-source.zip
 ```
 
-Yeni deney otomatik açılmaz. İzin verilen küçük CPU tarifleri ayrı CPU ortamında tek süreç ve en fazla iki thread kullanır; gerçek sequence/GPU ve istatistiksel ARIMA eğitimleri Colab sınırında kalır. CI gerçek piyasa eğitimi yapmaz. Kaynak kurulumları ve kimlik doğrulaması [AGENTS.md](AGENTS.md) ile mevcut kilit dosyalarına uyar. [USDA secret kurulumu](docs/USDA_COLAB_SETUP.md); gerçek anahtarlar depoya veya Release'e konmaz.
+Yeni deney otomatik açılmaz. İzin verilen küçük CPU tarifleri ayrı CPU ortamında tek süreç ve en fazla iki thread kullanır; gerçek sequence/GPU ve istatistiksel ARIMA eğitimleri Colab sınırında kalır. CI gerçek piyasa eğitimi yapmaz. Kaynak kurulumları ve kimlik doğrulaması [AGENTS.md](AGENTS.md) ile mevcut kilit dosyalarına uyar. [USDA secret kurulumu](docs/archive/price-phase/USDA_COLAB_SETUP.md); gerçek anahtarlar depoya veya Release'e konmaz.
 
 ## Kontroller
 

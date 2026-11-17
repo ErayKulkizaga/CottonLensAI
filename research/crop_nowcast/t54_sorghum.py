@@ -1,4 +1,4 @@
-"""T54 (docs/T54_SORGHUM_PREREG_20261116.md): anchoring of USDA grain-sorghum harvested area, Kansas + Texas.
+"""T54 (docs/prereg/T54_SORGHUM_PREREG_20261116.md): anchoring of USDA grain-sorghum harvested area, Kansas + Texas.
 Usage: python t54_sorghum.py pull root | python t54_sorghum.py run root out.json
 """
 import json

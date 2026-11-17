@@ -25,7 +25,7 @@
   "method": "c_double",
   "q80_log": 0.21924000000000002,
   "q95_log": 0.5583639999999992,
-  "source": "CAL1 (docs/CAL1_INTERVAL_CALIBRATION_PREREG_20261117.md): real-time coverage 2011-2025 0.83 (80%), 0.93 (95%)"
+  "source": "CAL1 (docs/prereg/CAL1_INTERVAL_CALIBRATION_PREREG_20261117.md): real-time coverage 2011-2025 0.83 (80%), 0.93 (95%)"
  },
  "momentum": {
   "DEC": {

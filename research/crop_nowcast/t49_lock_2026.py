@@ -1,6 +1,6 @@
 """T49 forward lock: Texas 2026 harvested area from USDA's 1 Nov 2026 forecast and the public poor/very-poor share.
 
-Model (pre-declared in docs/T49_ANCHORING_PREREG_20261116.md): log(H_final / H_m) = a + b * pvp, OLS on Texas seasons
+Model (pre-declared in docs/prereg/T49_ANCHORING_PREREG_20261116.md): log(H_final / H_m) = a + b * pvp, OLS on Texas seasons
 2000-2025 for report month m. Locks the November-based forecast now and the exact December formula (10 Dec 2026 report,
 pvp of the last week ending on or before 30 Nov 2026). Scored against the NASS final in May 2027.
 Usage: python t49_lock_2026.py t49_root out.json
