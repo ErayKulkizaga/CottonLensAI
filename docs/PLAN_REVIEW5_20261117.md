@@ -84,3 +84,14 @@ Değerlendirmenin özeti: araştırma disiplini güçlü; bilimsel kanıt orta d
 - Yeni ürün, bölge ya da dönem için yeni hipotez testi (T56 dahil).
 - Sunucu ya da veritabanı gerektiren bir API. Statik `latest.json` yeterli.
 - Mühürlü 2022 sonrası fiyat verisini açmak.
+
+## 5. Durum (17 Kasım 2026, akşam)
+| Paket | Durum |
+|---|---|
+| B1 · CAL1 | Tamamlandı. Yalnızca "2 kat" yöntemi kurala uydu (%83 / %93); geniş aralık. `model_v2` olarak donduruldu. |
+| B2 · alan–verim dengelenmesi | Tamamlandı. 2012 sonrası korelasyon −0,57 (Aralık −0,92); alan kazancının %36'sı üretime geçiyor. |
+| B3 · Oklahoma/Kansas kilidi | Tamamlandı. OK 243.609, KS 67.878 akre. |
+| A2–A4 | Kod tamamlandı ve test edildi (16 test). Otomatik çalışma PR #78'in `main`'e birleşmesini bekliyor. |
+| A1 · PR #78 birleştirme | Kullanıcı kararı bekleniyor. |
+| C · sunum | Codex'e verilecek (17. dokümanın 7. bölümü). |
+| D · kullanıcı testi | Kullanıcı yapacak. |

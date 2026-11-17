@@ -215,3 +215,23 @@ def test_monitor_parse_report_skips_contents_and_area_only_tables():
             'United States ...:   8,000.0   7,500.0    800    826   13,000.0  12,915.0\nAmerican Pima    :\n')
     rel, rows = parse_report(text)
     assert rel.month == 9 and rows['TX'] == (3600.0, 693.0, 5200.0) and rows['US'][2] == 12915.0
+
+
+def test_monitor_publish_writes_latest_and_errors_once_finals_exist(tmp_path):
+    import json
+
+    from research.monitor import publish
+    from research.monitor.monitor import append
+
+    log = tmp_path / 'log.jsonl'
+    append(log, {'report': '2026-11', 'release': '2026-11-10', 'status': 'ok', 'model_version': 'model_v2',
+                 'usda': {'us_production_bales': 100.0, 'tx_production_bales': 40.0, 'tx_harvested_acres': 10},
+                 'outputs': {'us_production_bales': {'value': 98, 'status': 'model'},
+                             'tx_harvested_acres': {'value': 8, 'status': 'model', 'interval80': [7, 9]}}})
+    finals = tmp_path / 'finals.json'
+    finals.write_text(json.dumps({'2026': {'us_production_bales': 98.0}}), encoding='utf-8')
+    publish.FINALS = finals
+    assert publish.main(['--log', str(log), '--out', str(tmp_path / 'site')]) == 0
+    assert json.loads((tmp_path / 'site/latest.json').read_text(encoding='utf-8'))['report'] == '2026-11'
+    page = (tmp_path / 'site/index.html').read_text(encoding='utf-8')
+    assert '+2.0%' in page and '+0.0%' in page  # USDA 100 vs final 98; monitor 98 vs 98

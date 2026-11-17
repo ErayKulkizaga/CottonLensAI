@@ -25,6 +25,7 @@ The research produced frozen rules (momentum production correction, Texas area a
    - It is trained through the 2025 season only and stored with its SHA-256 in every record.
    - A new model requires a new version file and is never edited in place.
 5. **Intervals from realised out-of-sample errors.** The Texas area 80% / 95% intervals use the empirical quantiles of the anchoring model's rolling out-of-sample errors (T51, 2008–2025). Rejected: in-sample conformal residuals. T51 showed they under-cover (80% → 64%).
+   **Superseded 17 Nov 2026 (CAL1):** applied in real time, using only earlier seasons, these quantiles cover 52% (80%) and 79% (95%) over 2011–2025, because Texas errors grew after 2012. Of three preregistered alternatives only "twice the real-time quantile" met the rule (83% / 93%); it is frozen as `model_v2` (80% half-width about ±16% of area). `model_v1` records stay in the log unchanged.
 6. **Append-only, hash-chained JSONL log.**
    - Each record holds the SHA-256 of the previous one.
    - `verify` detects any later edit (unit test).
@@ -42,3 +43,8 @@ The research produced frozen rules (momentum production correction, Texas area a
 - **Known limits:**
   - The 50% revision guard can trip on very small states (New Mexico in Nov 2025). Their revision is then treated as zero.
   - Intervals come from 70 out-of-sample errors in one regime period.
+
+## Update, 17 Nov 2026
+- `model_v2.json` (CAL1 intervals) is now the monitor's model; `build_model_v2.py` rebuilds it from the CAL1 evidence.
+- `publish.py` writes `docs/monitor/index.html` (the public performance history) and `docs/monitor/latest.json` (the latest record, a static stand-in for an API). Finals are added to `research/monitor/finals.json` when NASS publishes them.
+- The workflow fails, and opens a GitHub issue, if the month's report is not logged by the 14th, if the latest record fell back to USDA, or if any step errors.

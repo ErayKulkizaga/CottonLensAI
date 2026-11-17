@@ -74,3 +74,21 @@ Sayfa 17 Kasım 01:03 sürümünde T50–T54'ü, makaleyi, veri setini ve monit�
 
 ## 6. Codex'e verilecek istem
 > `docs/research_package/17_SUNUM_GUNCELLEME_CODEX.md` dosyasını oku ve bölüm 4'teki maddeleri `docs/portfolio/cottonlens-sunum.html` (CSS/JS aynı klasörde) üzerinde uygula. Her sayıyı dosyada adı geçen kanıtla doğrula. Bölüm 5'teki ifadeleri kullanma. Görsel dili ve yapıyı koru; masaüstü, telefon genişliği, açık ve koyu temada kontrol et. Bu klasörün dışındaki hiçbir dosyayı değiştirme, commit yapma.
+
+## 7. Ek: 17 Kasım planı uygulandı (`docs/PLAN_REVIEW5_20261117.md`)
+Beşinci dış değerlendirmeden sonra yeni hipotez testi yapılmadı; aşağıdakiler kalibrasyon, teşhis ve ürün işleridir.
+
+| İş | Sonuç | Kanıt |
+|---|---|---|
+| CAL1 · aralık kalibrasyonu (ön kayıtlı) | Eski yöntem gerçek zamanlı uygulandığında %80 aralık %52, %95 aralık %79 kapsıyordu. Üç aday yöntemden yalnızca "gerçek zamanlı kantilin 2 katı" kurala uydu: %83 / %93 kapsama. Aralık geniş: %80'de yaklaşık ±%16. Teksas 2026 için %80 aralığı **2,62–4,06 milyon akre**; USDA'nın 3,90 milyonu bu aralığın içinde. | `docs/CAL1_INTERVAL_CALIBRATION_PREREG_20261117.md`, `cal1-intervals-20261117.json` |
+| B2 · alan neden üretime geçmiyor (betimsel) | 2012 sonrasında Teksas'ta alan ve verim hataları zıt yönlü: korelasyon −0,57, Aralık'ta −0,92; 2012 öncesinde +0,21. USDA alanı fazla tahmin ettiğinde verimi eksik tahmin ediyor, çünkü terk edilen tarlalar en düşük verimli tarlalar. Alan düzeltmesindeki kazancın yalnızca %36'sı üretime geçiyor (5,4 puandan 2,0 puana). | `b2-area-yield-offset-20261117.json` |
+| B3 · Oklahoma ve Kansas 2026 kilidi | Oklahoma 243.609 akre (USDA 320.000, −%23,9); Kansas 67.878 akre (USDA 77.000, −%11,8). Bu iki eyalet keşifte kullanılmadı; Mayıs 2027'de puanlanacak. | `t49-forward-lock-okks-2026-20261117.json`, `docs/FORWARD_LOCK_2026.md` |
+| Monitör `model_v2` | CAL1 aralıkları monitöre eklendi. Kasım kaydı `model_v1` ile yapılmıştı ve değiştirilmedi. | `research/monitor/model_v2.json` |
+| Performans sayfası ve `latest.json` | Her rapor için USDA tahmini, monitör tahmini, aralık, durum ve (kesin değer gelince) hata gösteriliyor. İş akışı her çalıştırmada sayfayı yeniden üretiyor. | `docs/monitor/index.html`, `docs/monitor/latest.json`, `research/monitor/publish.py` |
+| Hata bildirimi | Rapor ayın 14'ünde hâlâ kayıtlı değilse, son kayıt USDA rakamına döndüyse ya da bir adım hata verdiyse iş akışı başarısız olup GitHub issue açıyor. | `.github/workflows/usda-monitor.yml` |
+
+**Sunumda kullanılacak cümleler:**
+- "Tahmin aralıklarımızı gerçek zamanlı test ettik ve dar olduklarını bulduk. Kalibre edilmiş aralık geniş ve USDA'nın rakamını da içeriyor. Belirsizliği olduğundan küçük göstermiyoruz."
+- "Alan kazancının üretime geçmemesinin nedenini bulduk: terk edilen tarlalar en düşük verimli tarlalar. Bu yüzden USDA'nın alan hatası ile verim hatası birbirini kısmen dengeliyor."
+
+**Ana sayfa sadeleştirmesi (plan C1):** üç bulgu + sınırlar + canlı monitör paneli (`docs/monitor/latest.json` okunarak). Deney arşivi ve 1.068 açılır alan ayrı bir sayfaya taşınmalı.

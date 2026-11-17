@@ -82,6 +82,8 @@ log(final / forecast) = area part + yield part, exactly.
 | Winter wheat | none |
 | Grain sorghum (T54) | the same negative relation (corr −0.44), but the correction does not beat USDA's already small area errors (p = 0.70) |
 
+**Why the area gain does not carry over (B2, descriptive).** After 2012 the Texas area and yield parts of USDA's error move in opposite directions: corr −0.57 over Sep–Dec (Dec −0.92), slope of the yield part on the area part −0.42; before 2012 the correlation was +0.21. When USDA overstates harvested area it understates yield per harvested acre, presumably because the fields later written off are the lowest-yielding. Only 36% of the anchoring model's gain on area (5.4 points) survives into production (2.0 points). A production-level correction would have to model both parts; that is left for a separate preregistration.
+
 **Production (T51, T53).** Area-corrected Texas production is better than USDA in 4 of 4 months after 2008 (for example October, 14.1% → 11.3%), but not significantly (p = 0.12). Before 2008 there was little area error to correct.
 
 ## 5. What did not work
@@ -101,6 +103,7 @@ They are reported with the same detail as the successes.
 - **2026 US production:** 12,763,510 bales (USDA Nov 12,794,000).
 - **Texas harvested area:** 3,258,029 acres (USDA 3,900,000; 80% interval 2.92–3.64 M).
 - **Directions of the 10 Dec 2026 revision:** US down, Texas down.
+- **Oklahoma and Kansas harvested area (independent states):** 243,609 and 67,878 acres (USDA 320,000 and 77,000).
 - **Monitor.** A public, hash-chained monitor (`research/monitor/`) reproduced these locks from the report text and will log every report.
 - **Scoring:** 10 Dec 2026 for the revision directions; May 2027 for the finals.
 
@@ -109,7 +112,7 @@ They are reported with the same detail as the successes.
 - Texas was the discovery state for the anchoring.
 - The blind-era pooling was chosen after seeing the eras.
 - The cause of the post-2012 change (FSA failed-acre timing, dryland economics) is untested.
-- Intervals estimated in-sample under-cover, so the monitor uses out-of-sample errors.
+- Intervals: in-sample conformal intervals under-cover (64% for 80%), and so do hindsight out-of-sample quantiles applied in real time (52%). Only a doubled real-time quantile calibrates (CAL1: 83% / 93%), and it is wide (about ±16% of area at 80%); the Texas 2026 80% interval (2.62–4.06 M acres) includes USDA's figure.
 
 ## References
 - Goyal, R. & Adjemian, M. K. (2023). Information rigidities in USDA crop production forecasts. *American Journal of Agricultural Economics* 105(5), 1405–1425.

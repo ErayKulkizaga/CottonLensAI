@@ -31,3 +31,19 @@ Per state: forecast = USDA_Dec × exp(−0.00567 · log(USDA_Dec / USDA_Nov) / 0
 - **Why it matters:** this is a direct, dated test of the anchoring mechanism (T48/M1/T49). It predicts that USDA's Texas harvested area will come down substantially by the final estimate.
 - **What is not locked:** no production forecast is derived from this area. Area and yield errors partly offset (T31/T32, `15_USDA_ERROR_MECHANISM.md`), so the production lock above stays the official production forecast.
 - Evidence: `research/evidence/t49-forward-lock-2026-20261116.json`.
+
+## Note, 17 Nov 2026: real-time interval calibration (CAL1)
+The 80% interval quoted for the Texas area lock (2.92–3.64 M acres) used hindsight quantiles and is not calibrated in real time. With the CAL1-calibrated `model_v2`, the 80% interval for the same point forecast is **2.62–4.06 M acres**; it includes USDA's 3.90 M. The point lock (3,258,029 acres) is unchanged.
+
+## Third lock: Oklahoma and Kansas harvested area, 17 Nov 2026
+The same anchoring model, fitted on pooled Oklahoma + Kansas seasons 2000–2025 (states never used for discovery), applied to USDA's 1 Nov 2026 figures:
+
+| State | USDA 1 Nov | Poor + very poor | Locked final | Adjustment |
+|---|---|---|---|---|
+| Oklahoma | 320,000 ac | 63% | **243,609 ac** | −23.9% |
+| Kansas | 77,000 ac | 32% | **67,878 ac** | −11.8% |
+
+- Point forecasts only; no calibrated interval exists for these states.
+- The December procedure is fixed in the evidence file.
+- Scored in May 2027 against the NASS finals.
+- Evidence: `research/evidence/t49-forward-lock-okks-2026-20261117.json`.

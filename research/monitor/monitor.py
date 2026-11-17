@@ -2,6 +2,7 @@
 
   run [YYYY-MM] [--log PATH]   process the Crop Production report of that month (default: current month)
   verify [--log PATH]          check the hash chain of the log
+  check [YYYY-MM]              exit 1 if, on or after the 14th of Aug-Dec, that month's report is not logged
 
 For one report it:
   1. fetches the report and the previous month's report from ESMIS (public text, no API key);
@@ -217,6 +218,12 @@ def main(argv):
         return 0 if ok else 1
     when = argv[1] if len(argv) > 1 else dt.date.today().strftime('%Y-%m')
     y, mo = map(int, when.split('-'))
+    if cmd == 'check':  # freshness alarm: by the 14th of Aug-Dec the month's report should be logged
+        today = dt.datetime.now(dt.timezone.utc).date()
+        missing = mo in MON and (today.year, today.month) == (y, mo) and today.day >= 14 and \
+            not any(r.get('report') == f'{y}-{mo:02d}' for r in read_log(log))
+        print(f'report missing for {when}' if missing else 'ok')
+        return 1 if missing else 0
     if any(r.get('report') == f'{y}-{mo:02d}' for r in read_log(log)):
         print('already logged', when)
         return 0
