@@ -32,6 +32,13 @@ STEPS = [
      'error-mechanism-2012-2025-20261116.json'),
     ('T48 mechanism 1995-2011', [f'{CN}/t48_mechanism.py', 'score', O / 'crop-nowcast-t48', '{out}'], {},
      't48-mechanism-1995-2011-20261116.json'),
+    ('T51 Texas area: anchoring 7.0% vs USDA 11.4%', [f'{CN}/t51_area_production.py', O / 't49', '{out}'], {},
+     't51-area-production-20261116.json'),
+    ('T50 next-revision direction (67%, p 0.012)', [f'{CN}/t50_revision_direction.py', '{out}'], {},
+     't50-revision-direction-20261116.json'),
+    # shortcut: pools the committed per-era results (t47-rolling, t45-blind); the two eras themselves are not re-run here
+    ('Pooled blind 1987-2011 (88/128, p 0.007)', [f'{CN}/pooled_blind.py', '{out}'], {},
+     'pooled-blind-1987-2011-20261116.json'),
 ]
 
 

@@ -7,7 +7,6 @@ Writes:
   DIR/index.html   every logged report: USDA vs the monitor, gates, model version, and errors once finals exist
 Finals come from research/monitor/finals.json, filled when NASS publishes them (May of the next year).
 """
-import datetime as dt
 import html
 import json
 import sys
@@ -74,7 +73,7 @@ th:nth-child(-n+2),td:nth-child(-n+2){{text-align:left}} th{{background:var(--so
 <h1>USDA cotton forecast monitor</h1>
 <p class="muted">Each USDA Crop Production report (Aug–Dec) is read from the public text, checked by gates, corrected by a frozen
 model, and appended to a hash-chained log. A failed gate passes USDA's own number through. Errors appear when NASS publishes
-the final (May of the next year). Generated {dt.datetime.now(dt.timezone.utc).strftime('%Y-%m-%d %H:%M UTC')}.</p>
+the final (May of the next year). Last record logged {html.escape(last['logged_utc']) if last else '—'}.</p>
 <p>{meta}</p>
 <div class="tbl"><table>
 <thead><tr><th>Report</th><th>Quantity</th><th>USDA</th><th>Monitor</th><th>80% interval</th><th>Status</th><th>Final</th>

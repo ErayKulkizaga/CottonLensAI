@@ -26,8 +26,10 @@ API = 'https://quickstats.nass.usda.gov/api/api_GET/?'
 def qs(key, **q):
     try:
         return json.loads(get(API + urllib.parse.urlencode(dict(q, key=key, format='JSON', source_desc='SURVEY'))))['data']
-    except (SystemExit, json.JSONDecodeError):
-        return []
+    except SystemExit as exc:
+        if str(exc) == 'http 400':  # QuickStats' answer to a query with no rows
+            return []
+        raise  # throttling or an outage after all retries must stop the pull, not look like missing data
 
 
 def cmd_pull(root):
